@@ -93,8 +93,10 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
               </Link>
             </div>
 
-            {/* Audio preview */}
+            {/* Audio preview — key ensures a full remount on artist change so
+                playing/progress state never bleeds across artists */}
             <DeezerPreview
+              key={artist.id}
               previewUrl={artist.previewUrl}
               previewTrack={artist.previewTrack}
               previewAlbum={artist.previewAlbum}

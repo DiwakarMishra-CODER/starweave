@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useCallback } from 'react';
+import { useRef, useState, useCallback, useEffect } from 'react';
 
 interface Props {
   previewUrl?: string | null;
@@ -26,6 +26,17 @@ export default function DeezerPreview({
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(30);
+
+  // Pause and reset when this instance is unmounted (e.g. artist panel switches nodes)
+  useEffect(() => {
+    return () => {
+      const audio = audioRef.current;
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    };
+  }, []);
 
   const toggle = useCallback(() => {
     const audio = audioRef.current;

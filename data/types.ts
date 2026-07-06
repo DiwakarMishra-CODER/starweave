@@ -75,6 +75,9 @@ export interface Artist {
   spotifyId?: string | null;
   musicbrainzId?: string | null;
 
+  // The chosen signature song — used at build time to find the correct iTunes preview.
+  signatureSong?: string;
+
   // ENRICHED AT BUILD TIME by scripts/build-graph.ts — do not author by hand.
   imageUrl?: string | null;    // Deezer artist photo (250×250)
   previewUrl?: string | null;  // iTunes 30s AAC preview URL

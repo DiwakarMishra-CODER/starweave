@@ -265,29 +265,53 @@ function cleanTitle(s: string): string {
     .trim();
 }
 
-async function fetchItunesPreview(name: string): Promise<ItunesPreview | null> {
-  try {
-    const url =
-      `https://itunes.apple.com/search?term=${encodeURIComponent(name)}&media=music&entity=song&limit=5`;
-    const res = await fetch(url);
-    if (!res.ok) return null;
-    const data = await res.json() as {
-      results: Array<{ artistName: string; trackName: string; collectionName: string; previewUrl?: string }>;
-    };
-    const match =
-      data.results.find(
-        t => t.previewUrl &&
-          t.artistName.toLowerCase().includes(name.toLowerCase().split(' ')[0]),
-      ) ?? data.results.find(t => t.previewUrl);
-    if (!match?.previewUrl) return null;
-    return {
-      previewUrl:   match.previewUrl,
-      previewTrack: cleanTitle(match.trackName),
-      previewAlbum: cleanTitle(match.collectionName),
-    };
-  } catch {
-    return null;
-  }
+async function fetchItunesPreview(artistName: string, songTitle: string): Promise<ItunesPreview | null> {
+  // Strip parenthetical subtitles for matching (e.g. "This Must Be the Place (Naive Melody)" → "this must be the place")
+  const songKey = (songTitle.toLowerCase().replace(/\s*\([^)]*\)\s*/g, '').trim() || songTitle.toLowerCase()).slice(0, 25);
+  // Skip very short first words like "My", "Yo", "A" — they match too broadly
+  const nameParts = artistName.normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/^(the|a|an)\s+/i, '').toLowerCase().split(/[\s&,+]/);
+  const artistKey = nameParts.find(p => p.length >= 3) ?? nameParts[0];
+
+  type Track = { artistName: string; trackName: string; collectionName: string; previewUrl?: string };
+  const isUnwanted = (t: Track) => {
+    const combined = `${t.trackName} ${t.collectionName}`.toLowerCase();
+    return /([\[(]live[)\]]|\blive\s+(at|in|from|version)\b|[\[(]demo[)\]]|[\[(]acoustic[)\]]|\bcover\b|movie clip)/.test(combined);
+  };
+
+  const tryFetch = async (term: string) => {
+    try {
+      const url = `https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=music&entity=song&limit=15`;
+      const res = await fetch(url);
+      if (!res.ok) return null;
+      const data = await res.json() as { results: Track[] };
+      // Prefer: right song + right artist + not live/demo
+      const match =
+        data.results.find(t =>
+          t.previewUrl &&
+          t.trackName.toLowerCase().includes(songKey) &&
+          t.artistName.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().includes(artistKey) &&
+          !isUnwanted(t),
+        ) ??
+        // Fallback: right song + not live/demo (relaxed artist check)
+        data.results.find(t =>
+          t.previewUrl &&
+          t.trackName.toLowerCase().includes(songKey) &&
+          !isUnwanted(t),
+        );
+      if (!match?.previewUrl) return null;
+      return {
+        previewUrl:   match.previewUrl,
+        previewTrack: cleanTitle(match.trackName),
+        previewAlbum: cleanTitle(match.collectionName),
+      };
+    } catch { return null; }
+  };
+
+  const result = await tryFetch(`${artistName} ${songTitle}`);
+  if (result) return result;
+  await new Promise(r => setTimeout(r, 100));
+  return tryFetch(songTitle);
 }
 
 async function enrichItunesPreviews(
@@ -296,13 +320,23 @@ async function enrichItunesPreviews(
   const result = new Map<string, ItunesPreview | null>();
   console.log(`  Fetching iTunes previews for ${artists.length} artists…`);
   let hits = 0;
+  const misses: string[] = [];
   for (const artist of artists) {
-    const preview = await fetchItunesPreview(artist.name);
+    const song = artist.signatureSong ?? artist.name;
+    const preview = await fetchItunesPreview(artist.name, song);
     result.set(artist.id, preview);
-    if (preview) hits++;
+    if (preview) {
+      hits++;
+    } else {
+      misses.push(`${artist.name} — "${artist.signatureSong ?? '(no signature song)'}"`);
+    }
     await new Promise(r => setTimeout(r, 60));
   }
   console.log(`✓ iTunes previews: ${hits}/${artists.length}`);
+  if (misses.length > 0) {
+    console.log('\n⚠  Signature songs not found on iTunes:');
+    misses.forEach(m => console.log(`   missing preview: ${m}`));
+  }
   return result;
 }
 
