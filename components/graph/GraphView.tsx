@@ -32,6 +32,7 @@ export default function GraphView({ graphData }: Props) {
   useEffect(() => {
     const id = searchParams.get('artist');
     if (id && graphData.artists.some(a => a.id === id)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: syncing selectedId to URL param; no external-subscription pattern applies
       setSelectedId(id);
     } else if (!id) {
       // Navigating to / with no artist param (e.g. logo click, router.push('/'))

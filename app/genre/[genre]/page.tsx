@@ -74,7 +74,7 @@ export default async function GenrePage({ params }: Props) {
           Guitar-pedal haze, oceanic walls of distortion, and vocals buried so deep in the mix
           they become texture. Shoegaze emerged from the UK in the late 1980s as a reaction
           against the studied cool of post-punk — something more overwhelming, more ambiguous,
-          harder to hold at arm's length.
+          harder to hold at arm&apos;s length.
         </p>
       </header>
 
@@ -88,8 +88,8 @@ export default async function GenrePage({ params }: Props) {
         </p>
         <p>
           By 1988–1991 a cluster of Oxford and Reading acts — Ride, Slowdive, Chapterhouse —
-          had formed around Creation and 4AD, the two labels that would define the genre's
-          first wave. My Bloody Valentine's <em>Loveless</em> (1991) set a ceiling nobody
+          had formed around Creation and 4AD, the two labels that would define the genre&apos;s
+          first wave. My Bloody Valentine&apos;s <em>Loveless</em> (1991) set a ceiling nobody
           has convincingly matched since.
         </p>
       </section>
@@ -97,7 +97,7 @@ export default async function GenrePage({ params }: Props) {
       <section className="genre-page__section">
         <h2>Pioneers</h2>
         <p>
-          These artists built the genre's first wave, most active between 1983 and 1995.
+          These artists built the genre&apos;s first wave, most active between 1983 and 1995.
           Many were initially dismissed as derivative by the press and commercially
           overlooked — all are now considered essential.
         </p>
@@ -115,7 +115,7 @@ export default async function GenrePage({ params }: Props) {
         <p>
           After a mid-90s backlash quieted the original wave, shoegaze never fully
           disappeared — it went underground and global. Artists like Deerhunter, Beach House,
-          Wolf Alice, and Korea's Parannoul absorbed the template and pushed it forward,
+          Wolf Alice, and Korea&apos;s Parannoul absorbed the template and pushed it forward,
           often in entirely different cultural contexts.
         </p>
         <div className="genre-page__artist-list">
