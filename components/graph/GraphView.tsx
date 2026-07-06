@@ -33,6 +33,10 @@ export default function GraphView({ graphData }: Props) {
     const id = searchParams.get('artist');
     if (id && graphData.artists.some(a => a.id === id)) {
       setSelectedId(id);
+    } else if (!id) {
+      // Navigating to / with no artist param (e.g. logo click, router.push('/'))
+      // should clear any selection that was set in a previous graph visit.
+      setSelectedId(null);
     }
   }, [searchParams, graphData.artists]);
 
@@ -65,15 +69,18 @@ export default function GraphView({ graphData }: Props) {
       router.push(`/artist/${artistId}`);
     } else {
       setSelectedId(artistId);
+      window.history.replaceState(null, '', `/?artist=${artistId}`);
     }
   }, [selectedId, router]);
 
   const handleSelectArtist = useCallback((id: string) => {
     setSelectedId(id);
+    window.history.replaceState(null, '', `/?artist=${id}`);
   }, []);
 
   const handleBackgroundClick = useCallback(() => {
     setSelectedId(null);
+    window.history.replaceState(null, '', '/');
   }, []);
 
   return (
@@ -98,8 +105,8 @@ export default function GraphView({ graphData }: Props) {
       <ArtistPanel
         artist={selectedArtist}
         graphData={graphData}
-        onClose={() => setSelectedId(null)}
-        onSelectArtist={id => setSelectedId(id)}
+        onClose={handleBackgroundClick}
+        onSelectArtist={handleSelectArtist}
       />
     </div>
   );

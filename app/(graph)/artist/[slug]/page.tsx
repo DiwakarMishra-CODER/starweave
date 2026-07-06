@@ -7,6 +7,8 @@ import SpotifyEmbed from '@/components/artist/SpotifyEmbed';
 import DeezerPreview from '@/components/artist/DeezerPreview';
 import ArtistBackground from '@/components/artist/ArtistBackground';
 import BackButton from '@/components/artist/BackButton';
+import StreamingLinks from '@/components/ui/StreamingLinks';
+import InfluenceGrid from '@/components/artist/InfluenceGrid';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -90,6 +92,10 @@ export default async function ArtistPage({ params }: Props) {
             <Link href={`/?artist=${artist.id}`} className="artist-page__graph-link">
               <span aria-hidden>✦</span> Explore the constellation
             </Link>
+
+            <div className="artist-page__listen-row">
+              <StreamingLinks query={artist.name} />
+            </div>
           </div>
         </div>
 
@@ -98,6 +104,7 @@ export default async function ArtistPage({ params }: Props) {
           previewUrl={artist.previewUrl}
           previewTrack={artist.previewTrack}
           previewAlbum={artist.previewAlbum}
+          streamingQuery={artist.signatureSong ? `${artist.name} ${artist.signatureSong}` : undefined}
         />
 
         <div className="artist-page__rule" aria-hidden />
@@ -145,6 +152,9 @@ export default async function ArtistPage({ params }: Props) {
                     {album.classicReason && (
                       <p className="album-card-visual__reason">{album.classicReason}</p>
                     )}
+                    <div className="album-card-visual__listen">
+                      <StreamingLinks query={`${artist.name} ${album.title}`} />
+                    </div>
                     <SpotifyEmbed spotifyId={album.spotifyId} type="album" compact />
                   </div>
                 </div>
@@ -153,100 +163,19 @@ export default async function ArtistPage({ params }: Props) {
           </section>
         )}
 
-        {/* Influences — visual chip roster */}
-        {(influences.length > 0 || influencedBy.length > 0) && (
-          <section className="artist-page__section artist-page__section--influences">
-            {influences.length > 0 && (
-              <div>
-                <h2 className="artist-page__section-title">Influenced by</h2>
-                <div className="influence-chips">
-                  {influences.map(edge => {
-                    const target = artistMap[edge.target];
-                    if (!target) return null;
-                    const chipColor = LAYER_COLORS[target.layer];
-                    return (
-                      <Link
-                        key={edge.target}
-                        href={`/artist/${edge.target}`}
-                        className="influence-chip"
-                        style={{ '--chip-color': chipColor } as React.CSSProperties}
-                      >
-                        <span className="influence-chip__avatar">
-                          {target.imageUrl ? (
-                            /* eslint-disable-next-line @next/next/no-img-element */
-                            <img
-                              src={target.imageUrl}
-                              alt=""
-                              className="influence-chip__img"
-                              width={36}
-                              height={36}
-                            />
-                          ) : (
-                            <span
-                              className="influence-chip__initial"
-                              style={{ background: chipColor }}
-                            >
-                              {target.name.charAt(0)}
-                            </span>
-                          )}
-                        </span>
-                        <span className="influence-chip__name">{target.name}</span>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
+        {/* Influences — circular avatar grid */}
+        <InfluenceGrid
+          title="Influenced by"
+          artists={influences.map(e => artistMap[e.target]).filter(a => !!a)}
+          emptyMessage="A root — no documented influences in this constellation."
+        />
+        <InfluenceGrid
+          title="Influenced"
+          artists={influencedBy.map(e => artistMap[e.source]).filter(a => !!a)}
+          emptyMessage="No documented descendants in this constellation yet."
+        />
 
-            {influencedBy.length > 0 && (
-              <div>
-                <h2 className="artist-page__section-title">Influenced</h2>
-                <div className="influence-chips">
-                  {influencedBy.map(edge => {
-                    const source = artistMap[edge.source];
-                    if (!source) return null;
-                    const chipColor = LAYER_COLORS[source.layer];
-                    return (
-                      <Link
-                        key={edge.source}
-                        href={`/artist/${edge.source}`}
-                        className="influence-chip"
-                        style={{ '--chip-color': chipColor } as React.CSSProperties}
-                      >
-                        <span className="influence-chip__avatar">
-                          {source.imageUrl ? (
-                            /* eslint-disable-next-line @next/next/no-img-element */
-                            <img
-                              src={source.imageUrl}
-                              alt=""
-                              className="influence-chip__img"
-                              width={36}
-                              height={36}
-                            />
-                          ) : (
-                            <span
-                              className="influence-chip__initial"
-                              style={{ background: chipColor }}
-                            >
-                              {source.name.charAt(0)}
-                            </span>
-                          )}
-                        </span>
-                        <span className="influence-chip__name">{source.name}</span>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-          </section>
-        )}
 
-        {typeof artist.influenceScore === 'number' && (
-          <p className="artist-page__score">
-            Influence score: {artist.influenceScore}
-          </p>
-        )}
       </div>
     </div>
   );

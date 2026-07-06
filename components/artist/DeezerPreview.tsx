@@ -1,11 +1,13 @@
 'use client';
 
 import { useRef, useState, useCallback, useEffect } from 'react';
+import StreamingLinks from '@/components/ui/StreamingLinks';
 
 interface Props {
   previewUrl?: string | null;
   previewTrack?: string | null;
   previewAlbum?: string | null;
+  streamingQuery?: string | null;
   compact?: boolean;
 }
 
@@ -19,6 +21,7 @@ export default function DeezerPreview({
   previewUrl,
   previewTrack,
   previewAlbum,
+  streamingQuery,
   compact = false,
 }: Props) {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -109,7 +112,10 @@ export default function DeezerPreview({
         </div>
       </div>
 
-      <span className="itp__source">30s preview · iTunes</span>
+      <div className="itp__footer">
+        {streamingQuery && <StreamingLinks query={streamingQuery} size="xs" />}
+        <span className="itp__source">30s preview · iTunes</span>
+      </div>
 
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio

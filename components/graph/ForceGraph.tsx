@@ -146,15 +146,22 @@ export default function ForceGraphCanvas({
   // ── Initial fit — runs once on the first real dimension snapshot ─────────────
   // By waiting for ResizeObserver we guarantee ForceGraph2D was initialized with
   // the correct canvas size, so warmupTicks and d3-zoom are both valid.
+  // Skip zoomToFit when an artist is already pre-selected (from URL); the camera
+  // focus effect handles framing in that case, avoiding a conflicting animation.
   useEffect(() => {
     if (!dimensions || didInitialFitRef.current) return;
+    if (selectedId) {
+      // Artist pre-selected — mark done so we never call zoomToFit after deselect
+      didInitialFitRef.current = true;
+      return;
+    }
     didInitialFitRef.current = true;
     const raf = requestAnimationFrame(() => {
       const dur = prefersReducedMotionRef.current ? 0 : 600;
       graphRef.current?.zoomToFit(dur, 60);
     });
     return () => cancelAnimationFrame(raf);
-  }, [dimensions]);
+  }, [dimensions, selectedId]);
 
   useEffect(() => {
     const isActive =
@@ -885,8 +892,8 @@ export default function ForceGraphCanvas({
         enableNodeDrag
         enableZoomInteraction
         enablePanInteraction
-        cooldownTicks={120}
-        warmupTicks={40}
+        cooldownTicks={40}
+        warmupTicks={300}
       />}
     </div>
   );

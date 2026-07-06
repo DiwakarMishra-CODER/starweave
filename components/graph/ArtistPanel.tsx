@@ -5,6 +5,7 @@ import type { Artist, Edge, GraphData } from '@/data/types';
 import { LAYER_COLORS, LAYER_LABELS } from '@/lib/colors';
 import SpotifyEmbed from '@/components/artist/SpotifyEmbed';
 import DeezerPreview from '@/components/artist/DeezerPreview';
+import StreamingLinks from '@/components/ui/StreamingLinks';
 
 interface Props {
   artist: Artist | null;
@@ -88,9 +89,12 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                 )}
               </div>
 
-              <Link href={`/artist/${artist.id}`} className="panel-full-link">
-                Full artist page →
-              </Link>
+              <div className="panel-footer-row">
+                <Link href={`/artist/${artist.id}`} className="panel-full-link">
+                  Full artist page →
+                </Link>
+                <StreamingLinks query={artist.name} size="xs" />
+              </div>
             </div>
 
             {/* Audio preview — key ensures a full remount on artist change so
@@ -100,6 +104,7 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
               previewUrl={artist.previewUrl}
               previewTrack={artist.previewTrack}
               previewAlbum={artist.previewAlbum}
+              streamingQuery={artist.signatureSong ? `${artist.name} ${artist.signatureSong}` : undefined}
               compact
             />
 
