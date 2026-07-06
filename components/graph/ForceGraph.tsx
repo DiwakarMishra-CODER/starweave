@@ -72,9 +72,9 @@ interface Props {
   graphData: GraphData;
   activeLayers: Set<Layer>;
   highlightPath: string[] | null;
-  selectedId: string | null;       // clicked node → focus mode
+  selectedId: string | null;
   onNodeClick: (artistId: string) => void;
-  onBackgroundClick: () => void;   // click empty canvas → clear focus
+  onBackgroundClick: () => void;
 }
 
 interface GraphNode extends Artist {
@@ -151,7 +151,7 @@ export default function ForceGraphCanvas({
   useEffect(() => {
     if (!dimensions || didInitialFitRef.current) return;
     if (selectedId) {
-      // Artist pre-selected — mark done so we never call zoomToFit after deselect
+      // Artist pre-selected from URL — camera focus effect handles framing.
       didInitialFitRef.current = true;
       return;
     }
@@ -224,7 +224,7 @@ export default function ForceGraphCanvas({
     fg.d3VelocityDecay?.(0.38);
   }, []);
 
-  // ── Spotlight spread — fires before the camera effect on the same selectedId change ──
+  // ── Spotlight spread ─────────────────────────────────────────────────────────
   // Moves focused cluster nodes outward so the camera frames the already-spread
   // positions. Restores originals on deselect (or when switching to a different node).
   useEffect(() => {
@@ -280,7 +280,7 @@ export default function ForceGraphCanvas({
       (n as any).vy = 0;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedId]);
+  }, [selectedId, dimensions]);
 
   // ── Camera focus on node click ──────────────────────────────────────────────
   // Frame the selected node + its direct neighbors in the left portion of the
@@ -360,7 +360,7 @@ export default function ForceGraphCanvas({
     // Step 2 — animated pan to the panel-adjusted centre.
     fg.centerAt(camX, centerGY, duration);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedId]);
+  }, [selectedId, dimensions]);
 
   // ── Derived sets ────────────────────────────────────────────────────────────
   const pathSet = useMemo(() => new Set<string>(highlightPath ?? []), [highlightPath]);
@@ -421,7 +421,6 @@ export default function ForceGraphCanvas({
       const isHovered   = n.id === hoveredId && selectedId === null;
       const isHoverNeighbor = hoveredId !== null && selectedId === null && neighborSet.has(n.id);
       const isInPath    = pathSet.has(n.id);
-
       const hasHighlight =
         selectedId !== null || hoveredId !== null || pathSet.size > 0;
 
@@ -452,10 +451,9 @@ export default function ForceGraphCanvas({
 
       // ── Photo eligibility ─────────────────────────────────────────────────
       // Resting state: hub nodes (score ≥ threshold) always show photo.
-      // Focus mode: focused node + ALL neighbors show their photo — they're
-      // big enough to be recognizable and it's the whole point of the spotlight.
+      // Focus mode: every cluster node shows photo; dimmed non-cluster nodes stay dots.
       const wantsPhoto =
-        (score >= ALWAYS_LABEL_THRESHOLD || isFocused || (selectedId !== null && isNeighbor))
+        (score >= ALWAYS_LABEL_THRESHOLD || isInFocusCluster)
         && !!n.imageUrl;
       if (wantsPhoto && n.imageUrl && !imgCache.has(n.imageUrl)) {
         // Kick off lazy load — canvas will pick it up on the next frame it's ready
@@ -471,6 +469,7 @@ export default function ForceGraphCanvas({
       const showPhoto = wantsPhoto && photoImg !== null;
 
       // In focus mode, raise the size caps so faces are large and recognizable.
+      // Genre mode: intermediate caps — faces are recognizable but smaller than focus.
       // Resting state keeps the original caps (hubs don't overwhelm the layout).
       const minPhotoR = isInFocusCluster ? 14 : PHOTO_MIN_R;
       const maxPhotoR = isInFocusCluster ? 48 : PHOTO_MAX_R;
@@ -801,11 +800,11 @@ export default function ForceGraphCanvas({
 
       const score  = n.influenceScore ?? 0;
       const baseR  = 3.5 + Math.sqrt(score) * 2.2;
-      const isFocused        = n.id === selectedId;
-      const isNeighbor       = selectedId !== null ? neighborSet.has(n.id) : false;
-      const isHovered        = n.id === hoveredId && selectedId === null;
-      const isInPath         = pathSet.has(n.id);
-      const isInFocusCluster = selectedId !== null && (isFocused || isNeighbor);
+      const isFocused           = n.id === selectedId;
+      const isNeighbor          = selectedId !== null ? neighborSet.has(n.id) : false;
+      const isHovered           = n.id === hoveredId && selectedId === null;
+      const isInPath            = pathSet.has(n.id);
+      const isInFocusCluster    = selectedId !== null && (isFocused || isNeighbor);
 
       const r = isInFocusCluster
         ? (isFocused ? baseR * 2.8 : baseR * 1.9)
@@ -813,7 +812,7 @@ export default function ForceGraphCanvas({
         : isInPath   ? baseR * 1.25
         : baseR;
 
-      const wantsPhoto = (score >= ALWAYS_LABEL_THRESHOLD || isFocused || (selectedId !== null && isNeighbor)) && !!n.imageUrl;
+      const wantsPhoto = (score >= ALWAYS_LABEL_THRESHOLD || isInFocusCluster) && !!n.imageUrl;
       const minPhotoR  = isInFocusCluster ? 14 : PHOTO_MIN_R;
       const maxPhotoR  = isInFocusCluster ? 48 : PHOTO_MAX_R;
       const er = wantsPhoto ? Math.min(Math.max(r, minPhotoR), maxPhotoR) : r;

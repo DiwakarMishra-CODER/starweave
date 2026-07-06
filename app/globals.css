@@ -1790,6 +1790,197 @@ h3 { font-size: 1.1rem; }
   line-height: 1.6;
 }
 
+/* ── Genre defining-albums — wider section + cards ───────────── */
+
+/* Outer section: wider than the 700px prose column */
+.genre-albums-section {
+  position: relative;
+  z-index: 3;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem 2.75rem;
+}
+
+.genre-albums-heading {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+  color: var(--color-text);
+}
+
+/* Lower prose continuation — same as .genre-page but wider + no top padding */
+.genre-page--lower {
+  padding-top: 0;
+  max-width: 900px;
+}
+
+/* Grid: ~4 square cards per row at 900px */
+.genre-albums {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 0.9rem;
+  align-items: start; /* keep all rows top-aligned; no stretching across card heights */
+}
+
+/* Card wrapper — positioned so the hover overlay can anchor to it */
+.genre-album-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.genre-album-card:hover {
+  border-color: color-mix(in srgb, var(--genre-color) 45%, transparent);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--genre-color) 14%, transparent);
+}
+
+/* Inner link covers the full card area for navigation */
+.genre-album-card__link {
+  display: block;
+  text-decoration: none;
+}
+
+/* Square cover wrapper — acts as stacking context for the hover overlay */
+.genre-album-card__cover-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.genre-album-card__cover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.genre-album-card__cover--placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+.genre-album-card__info {
+  padding: 0.55rem 0.65rem 0.65rem;
+}
+
+.genre-album-card__title {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-text);
+  margin-bottom: 0.15rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.genre-album-card__year {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--color-muted);
+  margin-bottom: 0.3rem;
+}
+
+.genre-album-card__artist {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: color-mix(in srgb, var(--genre-color) 80%, var(--color-muted));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Hover-reveal streaming icons ────────────────────────────── */
+/* Positioned absolutely over the square cover, sibling of the Link
+   so no nested <a> — icons have their own pointer-events: auto */
+.genre-album-card__listen-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  aspect-ratio: 1; /* mirrors .genre-album-card__cover-wrap */
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.28) 45%,
+    transparent 68%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.45rem;
+  padding-bottom: 0.65rem;
+  pointer-events: none; /* pass through to Link below; icons override below */
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.genre-album-card:hover .genre-album-card__listen-overlay {
+  opacity: 1;
+}
+
+/* Icon buttons within the overlay */
+.genre-album-card__listen-overlay a {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid transparent;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+  line-height: 0;
+}
+
+.genre-album-card__listen-overlay a[data-platform="spotify"] {
+  color: rgba(29, 185, 84, 0.85);
+  border-color: rgba(29, 185, 84, 0.25);
+}
+.genre-album-card__listen-overlay a[data-platform="apple"] {
+  color: rgba(255, 75, 110, 0.85);
+  border-color: rgba(255, 75, 110, 0.25);
+}
+.genre-album-card__listen-overlay a[data-platform="youtube"] {
+  color: rgba(255, 30, 30, 0.85);
+  border-color: rgba(255, 30, 30, 0.25);
+}
+
+.genre-album-card__listen-overlay a[data-platform="spotify"]:hover {
+  color: #1DB954;
+  background: rgba(29, 185, 84, 0.18);
+  border-color: rgba(29, 185, 84, 0.55);
+  box-shadow: 0 0 10px rgba(29, 185, 84, 0.3);
+}
+.genre-album-card__listen-overlay a[data-platform="apple"]:hover {
+  color: #ff4b6e;
+  background: rgba(255, 75, 110, 0.18);
+  border-color: rgba(255, 75, 110, 0.55);
+  box-shadow: 0 0 10px rgba(255, 75, 110, 0.3);
+}
+.genre-album-card__listen-overlay a[data-platform="youtube"]:hover {
+  color: #ff2020;
+  background: rgba(255, 30, 30, 0.18);
+  border-color: rgba(255, 30, 30, 0.55);
+  box-shadow: 0 0 10px rgba(255, 30, 30, 0.3);
+}
+
 /* ── Spotify embed ────────────────────────────────────────────── */
 .spotify-embed {
   border-radius: var(--radius);

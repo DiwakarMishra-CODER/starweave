@@ -30,13 +30,11 @@ export default function GraphView({ graphData }: Props) {
 
   const searchParams = useSearchParams();
   useEffect(() => {
-    const id = searchParams.get('artist');
-    if (id && graphData.artists.some(a => a.id === id)) {
+    const artistParam = searchParams.get('artist');
+    if (artistParam && graphData.artists.some(a => a.id === artistParam)) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: syncing selectedId to URL param; no external-subscription pattern applies
-      setSelectedId(id);
-    } else if (!id) {
-      // Navigating to / with no artist param (e.g. logo click, router.push('/'))
-      // should clear any selection that was set in a previous graph visit.
+      setSelectedId(artistParam);
+    } else if (!artistParam) {
       setSelectedId(null);
     }
   }, [searchParams, graphData.artists]);
