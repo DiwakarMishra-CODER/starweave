@@ -33,3 +33,22 @@ export const EDGE_PATH = '#F2A8C4';
 export const EDGE_HOVER = 'rgba(242, 168, 196, 0.65)';
 
 export const LAYERS: Layer[] = ['root', 'post-punk', 'shoegaze-dreampop', 'indie-alt', 'outside'];
+
+export const GENRE_COLORS: Record<string, string> = {
+  shoegaze:     '#F2A8C4',  // rose — shoegaze-dreampop layer
+  'dream-pop':  '#F2A8C4',
+  'post-punk':  '#8891F2',  // indigo — post-punk layer
+  goth:         '#8891F2',
+  'dance-punk': '#8891F2',
+  'proto-punk': '#8891F2',
+  'art-rock':   '#E8C87A',  // gold — root layer
+  underground:  '#E8C87A',
+  indie:        '#5FD0C0',  // teal — indie-alt layer
+  'indie-rock': '#5FD0C0',
+  'alt-rock':   '#5FD0C0',
+  'noise-rock': '#5FD0C0',
+  'jangle-pop': '#5FD0C0',
+  'power-pop':  '#5FD0C0',
+};
+
+export const DEFAULT_GENRE_COLOR = '#8891F2';

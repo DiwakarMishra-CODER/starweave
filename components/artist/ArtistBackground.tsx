@@ -41,7 +41,7 @@ const BLOBS = [
 
 // ─── component ───────────────────────────────────────────────────────────────
 
-export default function ArtistBackground({ layerColor }: { layerColor: string }) {
+export default function ArtistBackground({ layerColor, boost = 1 }: { layerColor: string; boost?: number }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -100,7 +100,8 @@ export default function ArtistBackground({ layerColor }: { layerColor: string })
 
       // ── 1. Breathing pulse — the "heartbeat" of the layer color ──────────
       // Period ≈ 7 s (2π / 9e-4 ≈ 6980 ms).  Alpha swings 0.08 → 0.42.
-      const breath = 0.08 + 0.34 * (0.5 + 0.5 * Math.sin(t * 9e-4));
+      const breathRaw = 0.08 + 0.34 * (0.5 + 0.5 * Math.sin(t * 9e-4));
+      const breath = Math.min(breathRaw * boost, 0.92);
       const bpR = Math.min(W, H) * 0.98;
       const bp = ctx!.createRadialGradient(W * 0.5, H * 0.38, 0, W * 0.5, H * 0.38, bpR);
       bp.addColorStop(0,   `rgba(${lr},${lg},${lb},${breath.toFixed(3)})`);
@@ -118,9 +119,10 @@ export default function ArtistBackground({ layerColor }: { layerColor: string })
         const r = Math.min(W, H) * b.rs * (1 + Math.sin(t * 2.2e-3 + b.ph) * 0.17);
 
         const [cr, cg, cb] = C[b.ci];
+        const ba = Math.min(b.a * boost, 0.92);
         const g = ctx!.createRadialGradient(x, y, 0, x, y, r);
-        g.addColorStop(0,    `rgba(${cr},${cg},${cb},${b.a})`);
-        g.addColorStop(0.45, `rgba(${cr},${cg},${cb},${(b.a * 0.38).toFixed(3)})`);
+        g.addColorStop(0,    `rgba(${cr},${cg},${cb},${ba.toFixed(3)})`);
+        g.addColorStop(0.45, `rgba(${cr},${cg},${cb},${(ba * 0.38).toFixed(3)})`);
         g.addColorStop(1,    'rgba(0,0,0,0)');
         ctx!.globalCompositeOperation = 'screen';
         ctx!.fillStyle = g;
@@ -174,7 +176,7 @@ export default function ArtistBackground({ layerColor }: { layerColor: string })
       cancelAnimationFrame(raf);
       ro.disconnect();
     };
-  }, [layerColor]);
+  }, [layerColor, boost]);
 
   return (
     <canvas
