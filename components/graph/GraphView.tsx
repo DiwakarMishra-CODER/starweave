@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import type { GraphData, Layer } from '@/data/types';
 import GraphControls from './GraphControls';
@@ -23,8 +24,17 @@ interface Props {
 }
 
 export default function GraphView({ graphData }: Props) {
+  const router = useRouter();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [activeLayers, setActiveLayers] = useState<Set<Layer>>(new Set());
+
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    const id = searchParams.get('artist');
+    if (id && graphData.artists.some(a => a.id === id)) {
+      setSelectedId(id);
+    }
+  }, [searchParams, graphData.artists]);
 
   const selectedArtist = selectedId
     ? (graphData.artists.find(a => a.id === selectedId) ?? null)
@@ -51,8 +61,12 @@ export default function GraphView({ graphData }: Props) {
   }, []);
 
   const handleNodeClick = useCallback((artistId: string) => {
-    setSelectedId(prev => (prev === artistId ? null : artistId));
-  }, []);
+    if (selectedId === artistId) {
+      router.push(`/artist/${artistId}`);
+    } else {
+      setSelectedId(artistId);
+    }
+  }, [selectedId, router]);
 
   const handleSelectArtist = useCallback((id: string) => {
     setSelectedId(id);

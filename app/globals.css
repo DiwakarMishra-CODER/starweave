@@ -954,18 +954,58 @@ h3 { font-size: 1.1rem; }
 }
 
 .artist-page__back {
+  position: absolute;
+  top: calc(var(--nav-height) + 1.25rem);
+  left: 1.5rem;
+  z-index: 60;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   color: var(--color-muted);
-  margin-bottom: 2.5rem;
-  transition: color var(--transition);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
 }
-.artist-page__back:hover { color: var(--color-text); }
+.artist-page__back:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-text);
+}
+
+.artist-page__graph-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  margin-top: 1.25rem;
+  padding: 0.42rem 1rem 0.42rem 0.8rem;
+  border-radius: 2rem;
+  border: 1px solid color-mix(in srgb, var(--layer-color) 38%, transparent);
+  background: color-mix(in srgb, var(--layer-color) 9%, transparent);
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--layer-color);
+  box-shadow:
+    0 0 18px color-mix(in srgb, var(--layer-color) 16%, transparent),
+    inset 0 0 12px color-mix(in srgb, var(--layer-color) 6%, transparent);
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+.artist-page__graph-link:hover {
+  background: color-mix(in srgb, var(--layer-color) 18%, transparent);
+  border-color: color-mix(in srgb, var(--layer-color) 65%, transparent);
+  box-shadow:
+    0 0 32px color-mix(in srgb, var(--layer-color) 32%, transparent),
+    inset 0 0 16px color-mix(in srgb, var(--layer-color) 10%, transparent);
+  color: white;
+}
 
 .artist-page__hero {
   display: grid;
@@ -1111,7 +1151,7 @@ h3 { font-size: 1.1rem; }
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 2rem;
-  align-items: start;
+  align-items: center;
 }
 
 .albums-visual--grid {
@@ -1143,6 +1183,15 @@ h3 { font-size: 1.1rem; }
   background: rgba(255, 255, 255, 0.06);
 }
 
+.albums-visual--solo .album-card-visual__cover {
+  align-self: stretch;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: unset;
+  /* left corners follow the card, right side stays square where it meets the text */
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
 .album-card-visual__cover--placeholder {
   aspect-ratio: 1;
   width: 100%;
@@ -1154,7 +1203,7 @@ h3 { font-size: 1.1rem; }
 }
 
 .albums-visual--solo .album-card-visual__body {
-  padding: 0.25rem 0 0;
+  padding: 1.25rem;
 }
 
 .album-card-visual__title {
@@ -1173,10 +1222,11 @@ h3 { font-size: 1.1rem; }
 }
 
 .album-card-visual__reason {
+  font-family: var(--font-body);
   font-size: 0.82rem;
-  line-height: 1.6;
+  font-style: normal;
+  line-height: 1.65;
   color: var(--color-muted);
-  font-style: italic;
   margin-bottom: 0.75rem;
 }
 
@@ -1274,7 +1324,9 @@ h3 { font-size: 1.1rem; }
 
 /* ── Browse page ──────────────────────────────────────────────── */
 .browse-page {
-  max-width: 900px;
+  position: relative;
+  z-index: 3;
+  max-width: 1100px;
   margin: 0 auto;
   padding: calc(var(--nav-height) + 2.5rem) 1.5rem 4rem;
 }
@@ -1353,64 +1405,181 @@ h3 { font-size: 1.1rem; }
   border-color: transparent;
 }
 
+.browse-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
 .browse-count {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.04em;
   color: var(--color-muted);
-  margin-bottom: 1rem;
+}
+
+.browse-sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.browse-sort__label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.browse-sort__select {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.03em;
+  padding: 0.3rem 1.6rem 0.3rem 0.55rem;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%239B96B8' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  transition: border-color var(--transition);
+}
+
+.browse-sort__select:focus {
+  outline: none;
+  border-color: var(--color-shoegaze);
+}
+
+.browse-sort__select option {
+  background: #17123a;
+  color: var(--color-text);
 }
 
 .artist-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
   gap: 0.75rem;
 }
 
+/* ── Artist card — photo-first visual layout ─────────────────── */
 .artist-card {
-  display: block;
-  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  background: rgba(14, 11, 26, 0.88);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 1rem 1.1rem;
-  transition: background var(--transition), border-color var(--transition);
+  overflow: hidden;
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
 }
 
 .artist-card:hover {
-  background: var(--color-surface-hover);
-  border-color: rgba(237, 234, 247, 0.14);
+  background: rgba(20, 16, 36, 0.94);
+  border-color: color-mix(in srgb, var(--layer-color, #8891F2) 55%, transparent);
+  box-shadow: 0 4px 24px color-mix(in srgb, var(--layer-color, #8891F2) 18%, transparent);
+  transform: translateY(-2px);
+}
+
+.artist-card__photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  flex-shrink: 0;
+}
+
+.artist-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+  transition: transform 420ms ease;
+}
+
+.artist-card:hover .artist-card__photo {
+  transform: scale(1.05);
+}
+
+.artist-card__photo-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: rgba(14, 11, 26, 0.75);
+}
+
+.artist-card__photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 45%,
+    rgba(14, 11, 26, 0.65) 100%
+  );
+}
+
+.artist-card__info {
+  padding: 0.7rem 0.85rem 0.8rem;
+}
+
+.artist-card__name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.2rem;
+  min-width: 0;
 }
 
 .artist-card__layer-dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  margin-right: 0.4rem;
-  vertical-align: middle;
+  flex-shrink: 0;
 }
 
 .artist-card__name {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 0.93rem;
   font-weight: 600;
-  margin-bottom: 0.3rem;
   line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .artist-card__genres {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-muted);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .artist-card__score {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.6rem;
   color: var(--color-muted);
+  opacity: 0.65;
 }
 
 /* ── Genre story page ─────────────────────────────────────────── */

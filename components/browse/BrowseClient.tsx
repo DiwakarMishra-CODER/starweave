@@ -5,6 +5,8 @@ import type { Artist, Genre, Layer } from '@/data/types';
 import { LAYER_COLORS, LAYER_LABELS, LAYERS } from '@/lib/colors';
 import ArtistCard from '@/components/artist/ArtistCard';
 
+type SortBy = 'influence' | 'alpha' | 'year';
+
 interface Props {
   artists: Artist[];
   genres: Genre[];
@@ -14,6 +16,7 @@ export default function BrowseClient({ artists, genres }: Props) {
   const [query, setQuery] = useState('');
   const [activeLayer, setActiveLayer] = useState<Layer | null>(null);
   const [activeGenre, setActiveGenre] = useState<string | null>(null);
+  const [sortBy, setSortBy] = useState<SortBy>('influence');
 
   const genreNames = Object.fromEntries(genres.map(g => [g.id, g.name]));
 
@@ -29,8 +32,12 @@ export default function BrowseClient({ artists, genres }: Props) {
     if (activeGenre) {
       result = result.filter(a => a.genres.includes(activeGenre));
     }
-    return [...result].sort((a, b) => (b.influenceScore ?? 0) - (a.influenceScore ?? 0));
-  }, [artists, query, activeLayer, activeGenre]);
+    return [...result].sort((a, b) => {
+      if (sortBy === 'alpha') return a.name.localeCompare(b.name);
+      if (sortBy === 'year') return (a.activeFrom ?? 9999) - (b.activeFrom ?? 9999);
+      return (b.influenceScore ?? 0) - (a.influenceScore ?? 0);
+    });
+  }, [artists, query, activeLayer, activeGenre, sortBy]);
 
   const topGenres = useMemo(() => {
     const counts = new Map<string, number>();
@@ -65,7 +72,7 @@ export default function BrowseClient({ artists, genres }: Props) {
             className={`browse-filter-chip${activeLayer === layer ? ' browse-filter-chip--active' : ''}`}
             style={
               activeLayer === layer
-                ? { background: LAYER_COLORS[layer], borderColor: LAYER_COLORS[layer] }
+                ? { background: LAYER_COLORS[layer], borderColor: LAYER_COLORS[layer], color: '#0e0b1a' }
                 : {}
             }
             onClick={() => setActiveLayer(prev => (prev === layer ? null : layer))}
@@ -94,9 +101,24 @@ export default function BrowseClient({ artists, genres }: Props) {
         ))}
       </div>
 
-      <p className="browse-count" aria-live="polite">
-        {filtered.length} {filtered.length === 1 ? 'artist' : 'artists'}
-      </p>
+      <div className="browse-toolbar">
+        <p className="browse-count" aria-live="polite">
+          {filtered.length} {filtered.length === 1 ? 'artist' : 'artists'}
+        </p>
+        <div className="browse-sort">
+          <label htmlFor="browse-sort" className="browse-sort__label">Sort</label>
+          <select
+            id="browse-sort"
+            className="browse-sort__select"
+            value={sortBy}
+            onChange={e => setSortBy(e.target.value as SortBy)}
+          >
+            <option value="influence">Influence</option>
+            <option value="alpha">A – Z</option>
+            <option value="year">Year / Era</option>
+          </select>
+        </div>
+      </div>
 
       <div className="artist-grid">
         {filtered.map(artist => (

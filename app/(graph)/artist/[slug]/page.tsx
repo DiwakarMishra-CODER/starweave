@@ -6,6 +6,7 @@ import { LAYER_COLORS, LAYER_LABELS } from '@/lib/colors';
 import SpotifyEmbed from '@/components/artist/SpotifyEmbed';
 import DeezerPreview from '@/components/artist/DeezerPreview';
 import ArtistBackground from '@/components/artist/ArtistBackground';
+import BackButton from '@/components/artist/BackButton';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -48,8 +49,8 @@ export default async function ArtistPage({ params }: Props) {
     <div className="artist-overlay" style={{ '--layer-color': color } as React.CSSProperties}>
       <ArtistBackground layerColor={color} />
       <div className="artist-bg-scrim" aria-hidden />
+      <BackButton />
       <div className="artist-page">
-        <Link href="/" className="artist-page__back">← Graph</Link>
 
         {/* Hero */}
         <div className="artist-page__hero">
@@ -85,8 +86,19 @@ export default async function ArtistPage({ params }: Props) {
             {artist.activeFrom && (
               <p className="artist-page__year">Active from {artist.activeFrom}</p>
             )}
+
+            <Link href={`/?artist=${artist.id}`} className="artist-page__graph-link">
+              <span aria-hidden>✦</span> Explore the constellation
+            </Link>
           </div>
         </div>
+
+        {/* Audio player — above the fold, before bio */}
+        <DeezerPreview
+          previewUrl={artist.previewUrl}
+          previewTrack={artist.previewTrack}
+          previewAlbum={artist.previewAlbum}
+        />
 
         <div className="artist-page__rule" aria-hidden />
 
@@ -103,13 +115,8 @@ export default async function ArtistPage({ params }: Props) {
           </p>
         )}
 
-        {/* Audio players */}
+        {/* Spotify (secondary, stays below bio) */}
         <SpotifyEmbed spotifyId={artist.spotifyId} type="artist" />
-        <DeezerPreview
-          previewUrl={artist.previewUrl}
-          previewTrack={artist.previewTrack}
-          previewAlbum={artist.previewAlbum}
-        />
 
         {/* Classic albums — visual card layout */}
         {artist.classicAlbums && artist.classicAlbums.length > 0 && (

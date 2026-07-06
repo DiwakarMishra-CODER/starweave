@@ -87,6 +87,10 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                   <span className="panel-tag">{artist.country}</span>
                 )}
               </div>
+
+              <Link href={`/artist/${artist.id}`} className="panel-full-link">
+                Full artist page →
+              </Link>
             </div>
 
             {/* Audio preview */}
@@ -208,10 +212,6 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
               </>
             )}
 
-            <div className="panel-divider" />
-            <Link href={`/artist/${artist.id}`} className="panel-full-link">
-              Full artist page →
-            </Link>
           </div>
         </>
       )}
