@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { href: '/', label: 'Graph' },
   { href: '/browse', label: 'Browse' },
   { href: '/genre/shoegaze', label: 'Genres' },
+  { href: '/scene/american-underground', label: 'Scenes' },
 ];
 
 export default function TopNav() {

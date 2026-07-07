@@ -1,4 +1,4 @@
-import type { Artist, Edge, Genre, GraphData } from './types';
+import type { Artist, Edge, Genre, GraphData, Scene } from './types';
 import { BIOS } from './bios';
 
 // ─────────────────────────────────────────────────────────────
@@ -121,7 +121,7 @@ const artists: Artist[] = [
   { id: 'the-replacements', name: 'The Replacements', layer: 'indie-alt', genres: ['alt-rock', 'power-pop'], scope: V1, country: 'US', activeFrom: 1979, signatureSong: 'Bastards of Young',
     classicAlbums: [ca('tim', 'Tim', 1985, "The Replacements' most polished record was also their most fully realized — Tommy Stinson's bass locked in tighter than on any previous release, Paul Westerberg's songwriting reaching a clarity of emotional expression that the band's characteristic sloppiness had previously obscured. 'Bastards of Young' is the manifesto, a mid-tempo anthem about generational disappointment that became the unofficial anthem of disaffected mid-80s American youth; 'Left of the Dial' is the tender pole, a tribute to college radio delivered with a directness Westerberg rarely allowed himself. It remains the entry point through which most listeners discover the band.")] },
   { id: 'pavement', name: 'Pavement', layer: 'indie-alt', genres: ['indie-rock', 'alt-rock'], scope: V1, country: 'US', activeFrom: 1989, signatureSong: 'Range Life',
-    classicAlbums: [ca('crooked-rain', 'Crooked Rain, Crooked Rain', 1994, "Where 'Slanted and Enchanted' was fractured and arch, this is Pavement at their most melodically generous — 'Cut Your Hair' is a genuine pop song and 'Gold Soundz' is one of the best rock ballads of the decade. Malkmus's sardonic lyricism is intact but the production has opened up, giving the songs room to breathe without sacrificing the lo-fi warmth that defined the band. It proved that indie indifference and real melodic ambition were not mutually exclusive, and remains the easiest entry point into the catalog.")] },
+    classicAlbums: [ca('slanted-and-enchanted', 'Slanted and Enchanted', 1992, "Pavement's debut is deliberately fractured — verses fray into tape hiss, hooks arrive slightly out of focus, and Stephen Malkmus's guitar lines slouch instead of resolve, turning lo-fi limitation into a stylistic signature rather than an excuse. 'Summer Babe (Winter Version)' is the entry point, a woozy, melodic non sequitur that somehow still functions as a single; 'Here' and 'Trigger Cut' show the same sleight of hand — real songcraft smuggled under a scuzzy, indifferent surface. It set the template for a decade of American indie rock that treated irony and melody as compatible instincts, not opposing ones.")] },
   { id: 'yo-la-tengo', name: 'Yo La Tengo', layer: 'indie-alt', genres: ['indie-rock', 'noise-rock'], scope: V1, country: 'US', activeFrom: 1984, signatureSong: 'Autumn Sweater',
     classicAlbums: [ca('heart-beating-as-one', 'I Can Hear the Heart Beating as One', 1997, "Yo La Tengo's fifth album was the record where their range became fully audible in a single listen — the seven-minute motorik drone of 'Moby Octopad,' the Velvet Underground-influenced pop of 'Stockholm Syndrome,' the full feedback assault of 'The Lie and How We Told It,' all without the shifts feeling discontinuous. Ira Kaplan and Georgia Hubley's vocal interplay creates an intimacy that the more aggressive tracks never fully dissipate; 'Sugarcube' became the band's closest approach to a radio hit, a deadpan guitar pop song with a hook so efficient it sounded accidental. The album demonstrated that the Velvet Underground's legacy could be developed rather than just imitated, that noise and tenderness could coexist within a single sustained artistic project.")] },
   { id: 'rem', name: 'R.E.M.', layer: 'indie-alt', genres: ['jangle-pop', 'alt-rock'], scope: V1, country: 'US', activeFrom: 1980, signatureSong: 'Losing My Religion',
@@ -249,4 +249,40 @@ const edges: Edge[] = [
 
 const artistsWithBios = artists.map(a => ({ ...a, bio: BIOS[a.id] ?? a.bio }));
 
-export const graphData: GraphData = { artists: artistsWithBios, genres, edges };
+// Scenes are a time + place, not a sound — see data/types.ts. Prose below is a
+// draft placeholder; final copy to be dropped in later without touching structure.
+const scenes: Scene[] = [
+  {
+    id: 'american-underground',
+    name: 'American Underground',
+    era: '1980–1991',
+    place: 'US',
+    deck: "Between 1980 and 1991, a scattered network of American bands built its own infrastructure — vans, college radio, all-ages clubs, and independent labels — because the mainstream music industry offered nothing for music this loud, this strange, or this indifferent to commercial polish. It became known simply as the underground, and it rewired what American rock could sound like.",
+    sections: [
+      {
+        heading: 'The Circuit',
+        paragraphs: [
+          "There was no single scene so much as a circuit: a loose, self-organized touring network stitched together by word of mouth, zines, and college radio stations willing to play what commercial rock stations would not. Bands slept on floors, split gas money, and booked their own shows in VFW halls and basements because no promoter would touch them.",
+          "Labels like SST, Twin/Tone, and Homestead ran the business side of this economy — pressing records on shoestring budgets, trading tour dates and studio time, and treating national exposure as a byproduct of persistence rather than a marketing plan. It was DIY not as an aesthetic choice but as the only available option.",
+        ],
+      },
+      {
+        heading: 'The Bands',
+        paragraphs: [
+          "The bands that emerged from this network shared almost nothing sonically — the sludgy melodicism of Hüsker Dü, the amp-worshipping sprawl of Dinosaur Jr., Sonic Youth's detuned art-noise, the ragged tunefulness of The Replacements, R.E.M.'s jangling mystery, Pixies' loud-quiet-loud tension, Pavement's shambling irony — but they shared the circuit, the labels, and a refusal to sound like anything on the radio.",
+          "Below is the community that built it — the artists in Starweave's graph who came out of this world.",
+        ],
+      },
+      {
+        heading: 'The Breakthrough',
+        paragraphs: [
+          "By the end of the decade, the underground's influence had outgrown its infrastructure. Nirvana — who toured the same clubs and released their debut on the same independent label system — carried the sound to the top of the charts in 1991, and major labels scrambled to sign anything that resembled it.",
+          "The circuit didn't survive its own success intact, but its DNA did: the idea that a band could build an audience without radio, without a major label, and without changing what it sounded like to get there became the founding myth of American indie rock for the next three decades.",
+        ],
+      },
+    ],
+    memberIds: ['husker-du', 'dinosaur-jr', 'sonic-youth', 'the-replacements', 'rem', 'pixies', 'pavement'],
+  },
+];
+
+export const graphData: GraphData = { artists: artistsWithBios, genres, scenes, edges };

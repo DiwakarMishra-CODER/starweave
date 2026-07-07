@@ -387,6 +387,7 @@ async function main() {
   const output: GraphData = {
     artists: enrichedArtists,
     genres:  graphData.genres,
+    scenes:  graphData.scenes,
     edges:   graphData.edges,
   };
 

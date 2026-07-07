@@ -32,15 +32,6 @@ export default function Legend({ activeLayers }: Props) {
               );
             })}
           </ul>
-          <div className="legend__divider" aria-hidden />
-          <div className="legend__edge-row">
-            <span className="legend__edge-line" aria-hidden />
-            Verified influence
-          </div>
-          <div className="legend__edge-row" style={{ marginTop: '0.3rem' }}>
-            <span className="legend__edge-line legend__edge-line--dashed" aria-hidden />
-            AI-suggested
-          </div>
         </div>
       )}
 

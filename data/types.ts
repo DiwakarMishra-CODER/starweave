@@ -46,6 +46,24 @@ export interface Genre {
   parent: string | null; // parent genre slug — builds the hierarchy
 }
 
+// A scene is a time + place, not a sound — distinct from Genre.
+// The narrative reads as a chronological arc (sections in order), not a
+// definitional structure. memberIds is the community who were there.
+export interface SceneSection {
+  heading: string;        // e.g. 'The Circuit'
+  paragraphs: string[];   // prose, rendered in order
+}
+
+export interface Scene {
+  id: string;              // slug, e.g. 'american-underground'
+  name: string;            // display name, e.g. 'American Underground'
+  era: string;             // display range, e.g. '1980–1991'
+  place: string;           // display place, e.g. 'US'
+  deck: string;            // opening paragraph, shown in the hero
+  sections: SceneSection[]; // narrative body, in chronological order
+  memberIds: string[];     // artist ids — the scene's community
+}
+
 export interface Album {
   id: string;
   title: string;
@@ -94,6 +112,7 @@ export interface Artist {
 export interface GraphData {
   artists: Artist[];
   genres: Genre[];
+  scenes: Scene[];
   edges: Edge[];
 }
 

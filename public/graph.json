@@ -1159,12 +1159,12 @@
       "signatureSong": "Range Life",
       "classicAlbums": [
         {
-          "id": "crooked-rain",
-          "title": "Crooked Rain, Crooked Rain",
-          "year": 1994,
+          "id": "slanted-and-enchanted",
+          "title": "Slanted and Enchanted",
+          "year": 1992,
           "isClassic": true,
-          "classicReason": "Where 'Slanted and Enchanted' was fractured and arch, this is Pavement at their most melodically generous — 'Cut Your Hair' is a genuine pop song and 'Gold Soundz' is one of the best rock ballads of the decade. Malkmus's sardonic lyricism is intact but the production has opened up, giving the songs room to breathe without sacrificing the lo-fi warmth that defined the band. It proved that indie indifference and real melodic ambition were not mutually exclusive, and remains the easiest entry point into the catalog.",
-          "imageUrl": "https://coverartarchive.org/release/f104257f-5699-4362-98fe-9d3ec6420cba/17805727123-500.jpg"
+          "classicReason": "Pavement's debut is deliberately fractured — verses fray into tape hiss, hooks arrive slightly out of focus, and Stephen Malkmus's guitar lines slouch instead of resolve, turning lo-fi limitation into a stylistic signature rather than an excuse. 'Summer Babe (Winter Version)' is the entry point, a woozy, melodic non sequitur that somehow still functions as a single; 'Here' and 'Trigger Cut' show the same sleight of hand — real songcraft smuggled under a scuzzy, indifferent surface. It set the template for a decade of American indie rock that treated irony and melody as compatible instincts, not opposing ones.",
+          "imageUrl": "https://coverartarchive.org/release/6ab37e32-c5a9-3f35-bf89-5aaf0cad3476/8923091701-500.jpg"
         }
       ],
       "bio": "Pavement were deeply committed to sounding as if they were not trying and deeply skilled at executing that commitment. Stephen Malkmus's lyrics — circling around ideas, approaching conclusions and abandoning them, making puns that were also genuine observations — gave the songs an intelligence that the lo-fi production and disengaged vocal delivery deliberately obscured. This was a form of wit that had few predecessors in rock music.\n\nSlanted and Enchanted (1992) was one of the most influential records of the nineties, not because of what it did but because of its attitude toward doing: the deliberate roughness of the production, the way the songs seemed to trust the listener to understand them without being spelled out. Crooked Rain, Crooked Rain (1994) refined the approach and added a more explicitly melodic layer; \"Cut Your Hair\" is genuinely a pop song, played straight. Wowee Zowee (1995), which scattered in more directions, is the record their most serious admirers prefer.",
@@ -2214,6 +2214,47 @@
       "status": "verified",
       "confidence": 0.6,
       "citation": null
+    }
+  ],
+  "scenes": [
+    {
+      "id": "american-underground",
+      "name": "American Underground",
+      "era": "1980–1991",
+      "place": "US",
+      "deck": "Between 1980 and 1991, a scattered network of American bands built its own infrastructure — vans, college radio, all-ages clubs, and independent labels — because the mainstream music industry offered nothing for music this loud, this strange, or this indifferent to commercial polish. It became known simply as the underground, and it rewired what American rock could sound like.",
+      "sections": [
+        {
+          "heading": "The Circuit",
+          "paragraphs": [
+            "There was no single scene so much as a circuit: a loose, self-organized touring network stitched together by word of mouth, zines, and college radio stations willing to play what commercial rock stations would not. Bands slept on floors, split gas money, and booked their own shows in VFW halls and basements because no promoter would touch them.",
+            "Labels like SST, Twin/Tone, and Homestead ran the business side of this economy — pressing records on shoestring budgets, trading tour dates and studio time, and treating national exposure as a byproduct of persistence rather than a marketing plan. It was DIY not as an aesthetic choice but as the only available option."
+          ]
+        },
+        {
+          "heading": "The Bands",
+          "paragraphs": [
+            "The bands that emerged from this network shared almost nothing sonically — the sludgy melodicism of Hüsker Dü, the amp-worshipping sprawl of Dinosaur Jr., Sonic Youth's detuned art-noise, the ragged tunefulness of The Replacements, R.E.M.'s jangling mystery, Pixies' loud-quiet-loud tension, Pavement's shambling irony — but they shared the circuit, the labels, and a refusal to sound like anything on the radio.",
+            "Below is the community that built it — the artists in Starweave's graph who came out of this world."
+          ]
+        },
+        {
+          "heading": "The Breakthrough",
+          "paragraphs": [
+            "By the end of the decade, the underground's influence had outgrown its infrastructure. Nirvana — who toured the same clubs and released their debut on the same independent label system — carried the sound to the top of the charts in 1991, and major labels scrambled to sign anything that resembled it.",
+            "The circuit didn't survive its own success intact, but its DNA did: the idea that a band could build an audience without radio, without a major label, and without changing what it sounded like to get there became the founding myth of American indie rock for the next three decades."
+          ]
+        }
+      ],
+      "memberIds": [
+        "husker-du",
+        "dinosaur-jr",
+        "sonic-youth",
+        "the-replacements",
+        "rem",
+        "pixies",
+        "pavement"
+      ]
     }
   ]
 }

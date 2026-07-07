@@ -5,13 +5,23 @@ import type { Artist, Edge, GraphData } from '@/data/types';
 import { LAYER_COLORS, LAYER_LABELS } from '@/lib/colors';
 import SpotifyEmbed from '@/components/artist/SpotifyEmbed';
 import DeezerPreview from '@/components/artist/DeezerPreview';
-import StreamingLinks from '@/components/ui/StreamingLinks';
+import ArtistBackground from '@/components/artist/ArtistBackground';
 
 interface Props {
   artist: Artist | null;
   graphData: GraphData;
   onClose: () => void;
   onSelectArtist: (id: string) => void;
+}
+
+// The panel is a quick peek, not the full read — keep only the first couple
+// of sentences so there's a reason to visit the full artist page.
+function truncateBio(bio: string, maxSentences: number): { text: string; truncated: boolean } {
+  const sentences = bio.match(/[^.!?]+[.!?]+(?:\s+|$)/g);
+  if (!sentences || sentences.length <= maxSentences) {
+    return { text: bio.trim(), truncated: false };
+  }
+  return { text: sentences.slice(0, maxSentences).join('').trim(), truncated: true };
 }
 
 export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist }: Props) {
@@ -27,6 +37,7 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
     : [];
 
   const color = artist ? LAYER_COLORS[artist.layer] : undefined;
+  const bioPreview = artist?.bio ? truncateBio(artist.bio, 2) : null;
 
   return (
     <aside
@@ -37,6 +48,12 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
     >
       {artist && (
         <>
+          {/* Subtle atmospheric tint, in the artist's own layer color — same
+              engine as the artist/genre/scene pages, tuned low and "calm"
+              (no drifting orbs/particles) since this is a reading surface —
+              the panel should stay clean and legible behind the text. */}
+          {color && <ArtistBackground layerColor={color} boost={0.4} scoped calm />}
+
           {/* ── Hero image ─────────────────────────────────────── */}
           <div className={`panel-hero${!artist.imageUrl ? ' panel-hero--no-image' : ''}`}>
             {artist.imageUrl ? (
@@ -89,16 +106,16 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                 )}
               </div>
 
-              <div className="panel-footer-row">
-                <Link href={`/artist/${artist.id}`} className="panel-full-link">
-                  Full artist page →
-                </Link>
-                <StreamingLinks query={artist.name} size="xs" />
-              </div>
+              <Link href={`/artist/${artist.id}`} className="panel-full-link">
+                Full artist page
+                <span className="panel-full-link__arrow" aria-hidden>→</span>
+              </Link>
             </div>
 
             {/* Audio preview — key ensures a full remount on artist change so
-                playing/progress state never bleeds across artists */}
+                playing/progress state never bleeds across artists. Its own
+                song-level "Listen on" links (via streamingQuery) are the only
+                Listen-on set in this panel — a quick-peek shows one, not two. */}
             <DeezerPreview
               key={artist.id}
               previewUrl={artist.previewUrl}
@@ -111,13 +128,20 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
             {/* Spotify embed (secondary) */}
             <SpotifyEmbed spotifyId={artist.spotifyId} type="artist" compact />
 
-            {/* Bio */}
-            {artist.bio && (
+            {/* Bio — truncated teaser; the full artist page has the complete text */}
+            {bioPreview && (
               <>
                 <div className="panel-divider" />
                 <div className="panel-section">
                   <p className="panel-section-title">About</p>
-                  <p className="panel-bio">{artist.bio}</p>
+                  <p className={`panel-bio${bioPreview.truncated ? ' panel-bio--truncated' : ''}`}>
+                    {bioPreview.text}
+                  </p>
+                  {bioPreview.truncated && (
+                    <Link href={`/artist/${artist.id}`} className="panel-bio-more">
+                      Read full bio →
+                    </Link>
+                  )}
                 </div>
               </>
             )}
@@ -167,9 +191,6 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                           >
                             {target.name}
                           </button>
-                          {edge.status === 'ai-suggested' && (
-                            <span className="panel-edge-badge">ai</span>
-                          )}
                         </li>
                       );
                     })}
@@ -203,9 +224,6 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                           >
                             {source.name}
                           </button>
-                          {edge.status === 'ai-suggested' && (
-                            <span className="panel-edge-badge">ai</span>
-                          )}
                         </li>
                       );
                     })}

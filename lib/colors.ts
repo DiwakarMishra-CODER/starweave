@@ -52,3 +52,11 @@ export const GENRE_COLORS: Record<string, string> = {
 };
 
 export const DEFAULT_GENRE_COLOR = '#8891F2';
+
+// Scenes are a time + place, not a sound — deliberately muted/warm (archival,
+// documentary) rather than the saturated single hues genres use.
+export const SCENE_COLORS: Record<string, string> = {
+  'american-underground': '#C9985E',
+};
+
+export const DEFAULT_SCENE_COLOR = '#C9985E';

@@ -41,7 +41,25 @@ const BLOBS = [
 
 // ─── component ───────────────────────────────────────────────────────────────
 
-export default function ArtistBackground({ layerColor, boost = 1 }: { layerColor: string; boost?: number }) {
+interface Props {
+  layerColor: string;
+  boost?: number;
+  // Optional hook for page-specific treatments (e.g. desaturating for an
+  // archival/documentary mood) without affecting other callers.
+  className?: string;
+  // Confines the canvas to its parent element instead of the viewport —
+  // for reuse inside a scrollable container like the graph side panel,
+  // rather than as a full-page backdrop. Sizes off the parent's own
+  // bounds and skips window-scroll parallax (the parent scrolls itself).
+  scoped?: boolean;
+  // Drops the drifting aurora blobs and star/particle field, keeping only
+  // the breathing tint and grain — for reading surfaces (e.g. the side
+  // panel) where discrete moving shapes behind text are a distraction
+  // rather than a full-page atmospheric backdrop.
+  calm?: boolean;
+}
+
+export default function ArtistBackground({ layerColor, boost = 1, className, scoped = false, calm = false }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -55,17 +73,24 @@ export default function ArtistBackground({ layerColor, boost = 1 }: { layerColor
     const C = auroraColors(lr, lg, lb);
 
     // ── size ──
+    const sizeTarget = scoped ? canvas.parentElement : document.documentElement;
     function resize() {
-      canvas!.width  = window.innerWidth;
-      canvas!.height = window.innerHeight;
+      if (scoped && canvas!.parentElement) {
+        canvas!.width  = canvas!.parentElement.clientWidth;
+        canvas!.height = canvas!.parentElement.clientHeight;
+      } else {
+        canvas!.width  = window.innerWidth;
+        canvas!.height = window.innerHeight;
+      }
     }
     resize();
     const ro = new ResizeObserver(resize);
-    ro.observe(document.documentElement);
+    if (sizeTarget) ro.observe(sizeTarget);
 
     // ── particles (normalized 0–1 coords) ──
     // dx/dy are per-frame deltas; at 60 fps dx=3e-4 → ~35 px/s on a 1920px screen.
-    const pts = Array.from({ length: 140 }, () => ({
+    // Skipped entirely in calm mode — nothing to build or animate.
+    const pts = calm ? [] : Array.from({ length: 140 }, () => ({
       x: Math.random(),
       y: Math.random(),
       z: Math.random(),                       // depth: size/brightness/parallax
@@ -111,45 +136,53 @@ export default function ArtistBackground({ layerColor, boost = 1 }: { layerColor
       ctx!.fillStyle = bp;
       ctx!.fillRect(0, 0, W, H);
 
-      // ── 2. Aurora / plasma blobs ──────────────────────────────────────────
-      for (const b of BLOBS) {
-        const x = (b.bx + Math.sin(t * b.f + b.ph)          * b.rx) * W;
-        const y = (b.by + Math.cos(t * b.f * 0.73 + b.ph * 1.3) * b.ry) * H;
-        // Radius pulses ±17 % over ~3 s (2π / 2.2e-3 ≈ 2860 ms)
-        const r = Math.min(W, H) * b.rs * (1 + Math.sin(t * 2.2e-3 + b.ph) * 0.17);
+      // ── 2. Aurora / plasma blobs — skipped in calm mode ────────────────────
+      // These are the drifting "orbs" that read as distracting shapes behind
+      // dense reading text; the breathing pulse above already carries the tint.
+      if (!calm) {
+        for (const b of BLOBS) {
+          const x = (b.bx + Math.sin(t * b.f + b.ph)          * b.rx) * W;
+          const y = (b.by + Math.cos(t * b.f * 0.73 + b.ph * 1.3) * b.ry) * H;
+          // Radius pulses ±17 % over ~3 s (2π / 2.2e-3 ≈ 2860 ms)
+          const r = Math.min(W, H) * b.rs * (1 + Math.sin(t * 2.2e-3 + b.ph) * 0.17);
 
-        const [cr, cg, cb] = C[b.ci];
-        const ba = Math.min(b.a * boost, 0.92);
-        const g = ctx!.createRadialGradient(x, y, 0, x, y, r);
-        g.addColorStop(0,    `rgba(${cr},${cg},${cb},${ba.toFixed(3)})`);
-        g.addColorStop(0.45, `rgba(${cr},${cg},${cb},${(ba * 0.38).toFixed(3)})`);
-        g.addColorStop(1,    'rgba(0,0,0,0)');
-        ctx!.globalCompositeOperation = 'screen';
-        ctx!.fillStyle = g;
-        ctx!.beginPath();
-        ctx!.arc(x, y, r, 0, Math.PI * 2);
-        ctx!.fill();
+          const [cr, cg, cb] = C[b.ci];
+          const ba = Math.min(b.a * boost, 0.92);
+          const g = ctx!.createRadialGradient(x, y, 0, x, y, r);
+          g.addColorStop(0,    `rgba(${cr},${cg},${cb},${ba.toFixed(3)})`);
+          g.addColorStop(0.45, `rgba(${cr},${cg},${cb},${(ba * 0.38).toFixed(3)})`);
+          g.addColorStop(1,    'rgba(0,0,0,0)');
+          ctx!.globalCompositeOperation = 'screen';
+          ctx!.fillStyle = g;
+          ctx!.beginPath();
+          ctx!.arc(x, y, r, 0, Math.PI * 2);
+          ctx!.fill();
+        }
       }
 
-      // ── 3. Star / particle field with scroll parallax ─────────────────────
-      ctx!.globalCompositeOperation = 'source-over';
-      const sy = window.scrollY;
-      for (const p of pts) {
-        p.x = ((p.x + p.dx) + 1) % 1;
-        p.y = ((p.y + p.dy) + 1) % 1;
+      // ── 3. Star / particle field with scroll parallax — skipped in calm mode ──
+      // Scoped instances (e.g. the side panel) scroll their own container,
+      // not the window, so window scroll position isn't a meaningful signal.
+      if (!calm) {
+        ctx!.globalCompositeOperation = 'source-over';
+        const sy = scoped ? 0 : window.scrollY;
+        for (const p of pts) {
+          p.x = ((p.x + p.dx) + 1) % 1;
+          p.y = ((p.y + p.dy) + 1) % 1;
 
-        const px = p.x * W;
-        // Parallax: deeper stars (high z) move less with scroll
-        const parallax = (sy * (1 - p.z) * 0.12) / H;
-        const py = (((p.y - parallax) % 1) + 1) % 1 * H;
+          const px = p.x * W;
+          // Parallax: deeper stars (high z) move less with scroll
+          const parallax = (sy * (1 - p.z) * 0.12) / H;
+          const py = (((p.y - parallax) % 1) + 1) % 1 * H;
 
-        const size  = 0.4 + p.z * 1.5;
-        const alpha = 0.12 + p.z * 0.58;
+          const size  = 0.4 + p.z * 1.5;
+          const alpha = 0.12 + p.z * 0.58;
 
-        ctx!.beginPath();
-        ctx!.arc(px, py, size, 0, Math.PI * 2);
-        ctx!.fillStyle = `rgba(235,222,255,${alpha.toFixed(2)})`;
-        ctx!.fill();
+          ctx!.beginPath();
+          ctx!.arc(px, py, size, 0, Math.PI * 2);
+          ctx!.fillStyle = `rgba(235,222,255,${alpha.toFixed(2)})`;
+          ctx!.fill();
+        }
       }
 
       // ── 4. Animated grain / shimmer ───────────────────────────────────────
@@ -176,19 +209,20 @@ export default function ArtistBackground({ layerColor, boost = 1 }: { layerColor
       cancelAnimationFrame(raf);
       ro.disconnect();
     };
-  }, [layerColor, boost]);
+  }, [layerColor, boost, scoped, calm]);
 
   return (
     <canvas
       ref={ref}
       aria-hidden
+      className={className}
       style={{
-        position: 'fixed',
+        position: scoped ? 'absolute' : 'fixed',
         inset: 0,
         width: '100%',
         height: '100%',
         pointerEvents: 'none',
-        zIndex: 1,
+        zIndex: scoped ? 0 : 1,
       }}
     />
   );

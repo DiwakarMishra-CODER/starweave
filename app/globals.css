@@ -346,36 +346,6 @@ h3 { font-size: 1.1rem; }
   flex-shrink: 0;
 }
 
-.legend__divider {
-  height: 1px;
-  background: var(--color-border);
-  margin: 0.45rem 0;
-}
-
-.legend__edge-row {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  font-size: 0.7rem;
-  color: var(--color-muted);
-}
-
-.legend__edge-line {
-  width: 22px;
-  height: 1.5px;
-  background: rgba(237, 234, 247, 0.35);
-  flex-shrink: 0;
-}
-
-.legend__edge-line--dashed {
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(155, 150, 184, 0.4) 0px,
-    rgba(155, 150, 184, 0.4) 4px,
-    transparent 4px,
-    transparent 8px
-  );
-}
 
 /* ── Graph controls ───────────────────────────────────────────── */
 .graph-controls {
@@ -664,17 +634,27 @@ h3 { font-size: 1.1rem; }
   }
 }
 
-/* ── Artist panel ─────────────────────────────────────────────── */
+/* ── Artist panel ─────────────────────────────────────────────────
+   Near-opaque so graph nodes never bleed through behind the text (that's
+   the readability priority), tinted to the artist's layer color so it
+   still feels part of the world, and feathered — not hard-bordered — on
+   the left: a narrow transparent-to-opaque ramp plus a soft outward shadow
+   so the panel melts into the graph instead of butting against it. */
 .artist-panel {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   width: var(--panel-width);
-  background: rgba(12, 9, 22, 0.96);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border-left: 1px solid var(--color-border);
+  background: linear-gradient(
+    to right,
+    transparent 0px,
+    color-mix(in srgb, var(--layer-color, var(--color-post-punk)) 12%, rgba(10, 8, 20, 0.95)) 28px,
+    color-mix(in srgb, var(--layer-color, var(--color-post-punk)) 10%, rgba(10, 8, 20, 0.97)) 100%
+  );
+  box-shadow: -56px 0 70px -35px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
   z-index: 30;
   display: flex;
   flex-direction: column;
@@ -694,6 +674,8 @@ h3 { font-size: 1.1rem; }
 }
 
 .artist-panel__inner {
+  position: relative;
+  z-index: 1;
   flex: 1;
   overflow-y: auto;
   padding: 1.1rem 1.2rem 2.5rem;
@@ -703,6 +685,7 @@ h3 { font-size: 1.1rem; }
 /* ── Panel hero image ─────────────────────────────────────────── */
 .panel-hero {
   position: relative;
+  z-index: 1;
   width: 100%;
   height: 210px;
   flex-shrink: 0;
@@ -844,6 +827,32 @@ h3 { font-size: 1.1rem; }
   opacity: 0.8;
 }
 
+/* Truncated teaser — fades into the panel's own (translucent) backdrop
+   rather than a hard-coded color, so it blends regardless of the current
+   artist's tint underneath. */
+.panel-bio--truncated {
+  mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+}
+
+.panel-bio-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--layer-color, var(--color-muted));
+  opacity: 0.75;
+  transition: opacity var(--transition);
+}
+
+.panel-bio-more:hover {
+  opacity: 1;
+}
+
 /* ── Panel edge list ──────────────────────────────────────────── */
 .panel-edge-list {
   display: flex;
@@ -890,31 +899,52 @@ h3 { font-size: 1.1rem; }
   color: var(--color-text);
 }
 
-.panel-edge-badge {
-  font-family: var(--font-mono);
-  font-size: 0.53rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: rgba(155, 150, 184, 0.45);
-  font-style: italic;
-}
-
-/* ── Panel footer link ────────────────────────────────────────── */
+/* ── Panel footer link ────────────────────────────────────────────
+   A real button, tinted to the artist's --layer-color — distinct from the
+   artist page's italic-display "✦ Explore the constellation" pill (that one
+   is about the graph; this one is "go deeper into this artist," so it keeps
+   the panel's mono/uppercase label voice instead of borrowing that style. */
 .panel-full-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  margin-top: 0.6rem;
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in srgb, var(--layer-color) 40%, transparent);
+  background: color-mix(in srgb, var(--layer-color) 10%, transparent);
   font-family: var(--font-mono);
   font-size: 0.67rem;
-  letter-spacing: 0.04em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--color-shoegaze);
-  margin-top: 0.25rem;
-  transition: opacity var(--transition);
+  color: var(--layer-color);
+  transition: background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, color 0.22s ease;
 }
 
 .panel-full-link:hover {
-  opacity: 0.72;
+  background: color-mix(in srgb, var(--layer-color) 22%, transparent);
+  border-color: color-mix(in srgb, var(--layer-color) 70%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--layer-color) 30%, transparent);
+  color: white;
+}
+
+.panel-full-link__arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.panel-full-link:hover .panel-full-link__arrow {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel-full-link__arrow {
+    transition: none;
+  }
+  .panel-full-link:hover .panel-full-link__arrow {
+    transform: none;
+  }
 }
 
 /* ── Artist page ──────────────────────────────────────────────── */
@@ -1706,8 +1736,10 @@ h3 { font-size: 1.1rem; }
   letter-spacing: -0.04em;
   line-height: 1.0;
   margin-bottom: 1.2rem;
-  color: var(--genre-color);
-  text-shadow: 0 0 60px color-mix(in srgb, var(--genre-color) 45%, transparent);
+  /* Slightly dimmed vs. the raw --genre-color — at this size + a full-strength
+     glow, saturated hues (shoegaze's pink especially) read as too bright/harsh. */
+  color: color-mix(in srgb, var(--genre-color) 80%, black);
+  text-shadow: 0 0 50px color-mix(in srgb, var(--genre-color) 30%, transparent);
 }
 
 .genre-page__deck {
@@ -1716,6 +1748,80 @@ h3 { font-size: 1.1rem; }
   line-height: 1.75;
   color: rgba(237, 234, 247, 0.78);
   max-width: 58ch;
+}
+
+/* ── Ignite CTA — the payoff action, front and center in the hero ───────
+   Deliberately distinct from the artist page's static .artist-page__graph-link:
+   tinted to the page's own --genre-color (genre or scene, never the artist
+   page's layer gold) and animated to draw the eye rather than just sit there. */
+.genre-ignite-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2.5rem;
+  border: 1.5px solid color-mix(in srgb, var(--genre-color) 55%, transparent);
+  background: color-mix(in srgb, var(--genre-color) 14%, transparent);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--genre-color);
+  text-decoration: none;
+  box-shadow:
+    0 0 20px color-mix(in srgb, var(--genre-color) 26%, transparent),
+    inset 0 0 14px color-mix(in srgb, var(--genre-color) 8%, transparent);
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
+  animation: genre-ignite-pulse 3.2s ease-in-out infinite;
+}
+
+.genre-ignite-btn:hover {
+  background: color-mix(in srgb, var(--genre-color) 28%, transparent);
+  border-color: color-mix(in srgb, var(--genre-color) 85%, transparent);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.genre-ignite-btn__icon {
+  flex-shrink: 0;
+}
+
+.genre-ignite-btn__arrow {
+  transition: transform 0.2s ease;
+}
+
+.genre-ignite-btn:hover .genre-ignite-btn__arrow {
+  transform: translateX(3px);
+}
+
+/* Secondary, calmer copy of the CTA — used at the end of the read. */
+.genre-ignite-btn--secondary {
+  margin-top: 1rem;
+  animation: none;
+  box-shadow:
+    0 0 14px color-mix(in srgb, var(--genre-color) 16%, transparent),
+    inset 0 0 10px color-mix(in srgb, var(--genre-color) 6%, transparent);
+}
+
+@keyframes genre-ignite-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 20px color-mix(in srgb, var(--genre-color) 26%, transparent),
+      inset 0 0 14px color-mix(in srgb, var(--genre-color) 8%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 40px color-mix(in srgb, var(--genre-color) 52%, transparent),
+      inset 0 0 22px color-mix(in srgb, var(--genre-color) 16%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .genre-ignite-btn {
+    animation: none;
+  }
 }
 
 /* ── Body sections ────────────────────────────────────────────── */
@@ -1981,6 +2087,56 @@ h3 { font-size: 1.1rem; }
   box-shadow: 0 0 10px rgba(255, 30, 30, 0.3);
 }
 
+/* ── Scene page — reuses .genre-page/.genre-albums-* structure above for
+   coherence; only genuinely new elements get their own rules below. ──── */
+
+/* Desaturated documentary/archival tint — distinct from a genre page's
+   saturated single-hue mood. Applied to the shared ArtistBackground canvas. */
+.scene-bg {
+  filter: saturate(0.55) sepia(0.16);
+}
+
+/* Era + place — a deliberate, stamped/archival treatment, bigger and more
+   present than .genre-page__super, since time + place is the scene's point. */
+.scene-page__stamp {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  margin-bottom: 1.5rem;
+  padding: 0.55rem 1.2rem;
+  border: 1.5px solid color-mix(in srgb, var(--genre-color) 60%, transparent);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--genre-color) 7%, transparent);
+  transform: rotate(-1.2deg);
+}
+
+.scene-page__stamp::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px dashed color-mix(in srgb, var(--genre-color) 40%, transparent);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.scene-page__stamp-place,
+.scene-page__stamp-era {
+  position: relative;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--genre-color);
+}
+
+.scene-page__stamp-sep {
+  position: relative;
+  opacity: 0.5;
+  color: var(--genre-color);
+}
+
 /* ── Spotify embed ────────────────────────────────────────────── */
 .spotify-embed {
   border-radius: var(--radius);
@@ -2209,19 +2365,6 @@ h3 { font-size: 1.1rem; }
 /* Placement: artist page hero — below the graph-link button */
 .artist-page__listen-row {
   margin-top: 0.9rem;
-}
-
-/* Placement: panel header — same row as "Full artist page →" */
-.panel-footer-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 0.35rem;
-}
-
-/* Remove margin-top from panel-full-link when inside the row */
-.panel-footer-row .panel-full-link {
-  margin-top: 0;
 }
 
 /* Placement: album card body — above SpotifyEmbed */

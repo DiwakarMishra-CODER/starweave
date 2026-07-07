@@ -26,18 +26,47 @@ interface Props {
 export default function GraphView({ graphData }: Props) {
   const router = useRouter();
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  // A genre's or scene's member artist ids, from ?genre=/?scene= — highlighted
+  // as a cluster in the graph. Mutually exclusive with selectedId: setting one
+  // always clears the other (enforced at every call site below).
+  const [highlightSetIds, setHighlightSetIds] = useState<string[] | null>(null);
   const [activeLayers, setActiveLayers] = useState<Set<Layer>>(new Set());
 
   const searchParams = useSearchParams();
   useEffect(() => {
     const artistParam = searchParams.get('artist');
+    const genreParam  = searchParams.get('genre');
+    const sceneParam  = searchParams.get('scene');
+
     if (artistParam && graphData.artists.some(a => a.id === artistParam)) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: syncing selectedId to URL param; no external-subscription pattern applies
       setSelectedId(artistParam);
-    } else if (!artistParam) {
-      setSelectedId(null);
+      setHighlightSetIds(null);
+      return;
     }
-  }, [searchParams, graphData.artists]);
+
+    if (genreParam) {
+      const ids = graphData.artists.filter(a => a.genres.includes(genreParam)).map(a => a.id);
+      if (ids.length > 0) {
+        setSelectedId(null);
+        setHighlightSetIds(ids);
+        return;
+      }
+    }
+
+    if (sceneParam) {
+      const scene = graphData.scenes.find(s => s.id === sceneParam);
+      const ids = scene ? scene.memberIds.filter(id => graphData.artists.some(a => a.id === id)) : [];
+      if (ids.length > 0) {
+        setSelectedId(null);
+        setHighlightSetIds(ids);
+        return;
+      }
+    }
+
+    setSelectedId(null);
+    setHighlightSetIds(null);
+  }, [searchParams, graphData.artists, graphData.scenes]);
 
   const selectedArtist = selectedId
     ? (graphData.artists.find(a => a.id === selectedId) ?? null)
@@ -68,17 +97,20 @@ export default function GraphView({ graphData }: Props) {
       router.push(`/artist/${artistId}`);
     } else {
       setSelectedId(artistId);
+      setHighlightSetIds(null);
       window.history.replaceState(null, '', `/?artist=${artistId}`);
     }
   }, [selectedId, router]);
 
   const handleSelectArtist = useCallback((id: string) => {
     setSelectedId(id);
+    setHighlightSetIds(null);
     window.history.replaceState(null, '', `/?artist=${id}`);
   }, []);
 
   const handleBackgroundClick = useCallback(() => {
     setSelectedId(null);
+    setHighlightSetIds(null);
     window.history.replaceState(null, '', '/');
   }, []);
 
@@ -96,6 +128,7 @@ export default function GraphView({ graphData }: Props) {
           activeLayers={activeLayers}
           highlightPath={null}
           selectedId={selectedId}
+          highlightSetIds={highlightSetIds}
           onNodeClick={handleNodeClick}
           onBackgroundClick={handleBackgroundClick}
         />
