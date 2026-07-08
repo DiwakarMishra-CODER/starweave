@@ -9,6 +9,7 @@ import ArtistSearch from './ArtistSearch';
 import ArtistPanel from './ArtistPanel';
 import Legend from '@/components/ui/Legend';
 import NebulaBackground from './NebulaBackground';
+import GraphOnboarding from './GraphOnboarding';
 
 const ForceGraphCanvas = dynamic(() => import('./ForceGraph'), {
   ssr: false,
@@ -117,6 +118,7 @@ export default function GraphView({ graphData }: Props) {
   return (
     <div className="graph-container">
       <NebulaBackground />
+      <GraphOnboarding />
       <GraphControls activeLayers={activeLayers} onToggleLayer={handleToggleLayer} />
       <ArtistSearch artists={graphData.artists} onSelectArtist={handleSelectArtist} />
       <Legend activeLayers={activeLayers} />

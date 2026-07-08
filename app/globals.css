@@ -262,6 +262,76 @@ h3 { font-size: 1.1rem; }
   position: relative;
 }
 
+/* ── Onboarding — first-visit-only tagline + interaction hint ────────
+   Orientation, not decoration: body/mono type only (never the display
+   font), muted color, non-interactive so it never intercepts clicks meant
+   for the graph. Stacked in the empty band below the navbar — well clear
+   of the graph's own vertical center, so it never overlaps nodes/edges. */
+.graph-onboarding {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  width: max-content;
+  max-width: min(70vw, 560px);
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.graph-onboarding--visible {
+  opacity: 1;
+}
+
+.graph-tagline {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  color: var(--color-muted);
+  opacity: 0.85;
+}
+
+.graph-tagline__cta {
+  color: var(--color-text);
+  opacity: 0.95;
+}
+
+.graph-hint {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  color: var(--color-muted);
+  opacity: 0.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .graph-onboarding {
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .graph-onboarding {
+    max-width: 88vw;
+  }
+
+  .graph-tagline {
+    font-size: 0.65rem;
+  }
+
+  .graph-hint {
+    font-size: 0.6rem;
+  }
+}
+
 .graph-loading {
   display: flex;
   align-items: center;
@@ -2135,6 +2205,265 @@ h3 { font-size: 1.1rem; }
   position: relative;
   opacity: 0.5;
   color: var(--genre-color);
+}
+
+/* ── About page — reuses .genre-page structure for coherence, but reads as
+   an editorial arrival, not a document: a real hero, a live (if unhurried)
+   nebula, per-section accent color drawn from the graph's own layer palette
+   (a deliberate echo of the site's own color language), and varied rhythm
+   instead of one uniform column. Sections set --section-accent inline; rules
+   below fall back to the page's own --genre-color where nothing is set. ── */
+.about-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow-y: auto;
+  padding-top: var(--nav-height);
+  background: linear-gradient(180deg, #17123a 0%, #0e0b1a 100%);
+}
+
+/* Hero — extra vertical room vs. a genre page's header, so arriving on
+   /about feels like a landing, not the first line of a document. */
+.about-page__hero {
+  padding: 4.5rem 2rem 3.5rem;
+  margin-bottom: 3.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-page__hero .genre-page__title {
+  margin-bottom: 0;
+}
+
+/* Small mono eyebrow above each section heading — tinted per-section via
+   --section-accent so the palette runs through the page like the graph's
+   own layers, instead of one flat color throughout. */
+.about-page__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--section-accent, var(--genre-color)) 85%, var(--color-muted));
+  margin-bottom: 0.6rem;
+}
+
+/* Restraint: accents live on eyebrows, cards, links, and swatches — section
+   headings themselves always stay the primary light text color, explicitly,
+   regardless of whatever --section-accent a given section carries. */
+.about-overlay .genre-page__section h2 {
+  color: var(--color-text);
+}
+
+/* "Why influence, not genre" — the conceptual heart of the page. More air,
+   a larger/lighter lede paragraph, and a colored left rule so it visibly
+   outweighs its neighbors rather than sitting in the same uniform column. */
+.about-page__section--emphasis {
+  margin: 4rem 0 4.5rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid color-mix(in srgb, var(--section-accent, var(--genre-color)) 45%, transparent);
+}
+
+.about-page__section--emphasis h2 {
+  font-size: 1.6rem;
+}
+
+.about-page__section--emphasis p {
+  font-size: 1.02rem;
+  line-height: 1.85;
+  opacity: 0.9;
+}
+
+/* Short declarative lines ("Nodes are artists…", "Node size reflects…") —
+   set apart from ordinary body paragraphs so they read as shown statements,
+   not documentation copy. */
+.about-page__statement {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--color-text);
+  opacity: 0.92;
+  margin: 1.5rem 0;
+}
+
+/* Colour legend — an actual designed moment (swatch + label), not inline
+   dots stitched into a sentence. */
+.about-page__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2rem;
+  margin: 1.5rem 0 1rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--color-border);
+}
+
+.about-page__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+/* Solid legend swatch — a plain colour key, deliberately NOT the graph
+   node's dark-fill-plus-glow treatment. The point here is to show the raw
+   palette clearly, not to mimic a node. */
+.about-page__legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--swatch-color);
+}
+
+.about-page__legend-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  color: var(--color-text);
+  opacity: 0.85;
+}
+
+/* Caption under the legend — the verbatim "Colours group artists…" sentence,
+   quieter than body text since the legend above already showed it. */
+.about-page__caption {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  opacity: 0.85;
+  margin-bottom: 1.75rem;
+}
+
+/* Three views (Graph / Genres / Scenes) as elegant linked blocks instead of
+   a run-on sentence — same words, shown rather than narrated. */
+.about-page__views {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.85rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.about-page__view-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--section-accent, var(--genre-color)) 28%, var(--color-border));
+  background: rgba(255, 255, 255, 0.025);
+  text-decoration: none;
+  transition: border-color var(--transition), background var(--transition), transform var(--transition);
+}
+
+.about-page__view-card:hover {
+  border-color: color-mix(in srgb, var(--section-accent, var(--genre-color)) 65%, transparent);
+  background: color-mix(in srgb, var(--section-accent, var(--genre-color)) 8%, transparent);
+  transform: translateY(-2px);
+}
+
+.about-page__view-label {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--section-accent, var(--genre-color));
+}
+
+.about-page__view-desc {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+/* "About the maker" — the emotional heart, set apart with its own warm
+   accent (rose — "the heart," in the site's own layer language), a subtle
+   divider, and a faint tinted wash rather than a hard visual break. */
+.about-page__personal {
+  position: relative;
+  margin-top: 1.5rem;
+  padding: 3rem 2rem 0.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--section-accent, var(--genre-color)) 25%, transparent);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--section-accent, var(--genre-color)) 6%, transparent) 0%,
+    transparent 40%
+  );
+}
+
+.about-page__personal::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: var(--section-accent, var(--genre-color));
+  border-radius: 2px;
+}
+
+/* GitHub CTA — same inviting-button language as .panel-full-link (bordered
+   pill, tinted to the section accent, glow + sliding arrow on hover). */
+.about-page__github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in srgb, var(--section-accent, var(--genre-color)) 40%, transparent);
+  background: color-mix(in srgb, var(--section-accent, var(--genre-color)) 10%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--section-accent, var(--genre-color));
+  text-decoration: none;
+  transition: background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, color 0.22s ease;
+}
+
+.about-page__github-link:hover {
+  background: color-mix(in srgb, var(--section-accent, var(--genre-color)) 22%, transparent);
+  border-color: color-mix(in srgb, var(--section-accent, var(--genre-color)) 70%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--section-accent, var(--genre-color)) 30%, transparent);
+  color: white;
+}
+
+.about-page__github-link__arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.about-page__github-link:hover .about-page__github-link__arrow {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page__github-link__arrow {
+    transition: none;
+  }
+
+  .about-page__github-link:hover .about-page__github-link__arrow {
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-page__hero {
+    padding: 3rem 1.5rem 2.5rem;
+  }
+
+  .about-page__section--emphasis {
+    padding-left: 1rem;
+  }
+
+  .about-page__personal {
+    padding: 2.5rem 1.25rem 0.5rem;
+  }
 }
 
 /* ── Spotify embed ────────────────────────────────────────────── */
