@@ -343,6 +343,26 @@ h3 { font-size: 1.1rem; }
   letter-spacing: 0.05em;
 }
 
+/* ── Graph canvas reveal ──────────────────────────────────────────
+   Node positions are already pre-settled (off-screen, before this ever
+   mounts — see presettleLayout in ForceGraph.tsx) by the time this element
+   is inserted, so this is a quick, on-brand fade-in from the dynamic-import
+   loading state, not a mask for any physics settling underneath. */
+@keyframes graph-canvas-reveal-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.graph-canvas-reveal {
+  animation: graph-canvas-reveal-in 240ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .graph-canvas-reveal {
+    animation: none;
+  }
+}
+
 /* ── Legend ───────────────────────────────────────────────────── */
 .legend {
   position: absolute;

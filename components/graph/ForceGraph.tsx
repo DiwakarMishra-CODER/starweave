@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useMemo, useCallback, useState } from 'react';
 import ForceGraph2D from 'react-force-graph-2d';
+import { forceSimulation, forceLink, forceManyBody, forceCenter } from 'd3-force-3d';
 import type { Artist, Edge, GraphData, Layer } from '@/data/types';
 import { LAYER_COLORS, LAYER_GLOW } from '@/lib/colors';
 import { getNeighbors, pathEdgeKeys } from '@/lib/graph-utils';
@@ -144,6 +145,40 @@ function createCollideForce(padding: number) {
   return force;
 }
 
+// ── Off-screen pre-settle ─────────────────────────────────────────────────────
+// Runs the exact charge/link/center/collide configuration the live force-config
+// effect below registers — charge -40, link distance 75/strength 0.25, center
+// 0.04, our collide force at COLLIDE_PADDING — on a throwaway d3-force
+// simulation, entirely in memory, before ForceGraph2D ever mounts. Mutates
+// `nodes`/`links` in place (x/y/vx/vy, and link.source/target from raw id
+// strings into node object references — the same resolution d3-force's own
+// forceLink does, and safe for the live simulation to redo: it no-ops on a
+// link whose source/target is already an object, see d3-force-3d's link.js).
+//
+// This is what actually kills the multi-second visible settle: nodes used to
+// arrive at a spiral/scattered start and animate into place over ~300
+// real-time animation frames (one tick per rendered frame). Ticking that
+// same 300-tick budget synchronously, with nothing on screen to paint yet,
+// takes well under a second — the graph simply appears already-settled on
+// its first frame.
+//
+// d3-force-3d ships no type declarations (see types/d3-force-3d.d.ts) —
+// the same reason createCollideForce above is hand-rolled rather than using
+// the library's own forceCollide.
+const PRESETTLE_TICKS = 300;
+
+function presettleLayout(nodes: GraphNode[], links: GraphLink[]): void {
+  const sim = forceSimulation(nodes, 2);
+  sim.stop(); // d3-force schedules its own auto-tick timer on creation — must
+              // stop it before it ever fires; we drive ticking manually below.
+  sim.force('link', forceLink<GraphNode, GraphLink>(links).id(n => n.id).distance(75).strength(0.25));
+  sim.force('charge', forceManyBody().strength(-40));
+  sim.force('center', forceCenter().strength(0.04));
+  sim.force('collide', createCollideForce(COLLIDE_PADDING));
+  sim.velocityDecay(0.38);
+  for (let i = 0; i < PRESETTLE_TICKS; i++) sim.tick();
+}
+
 // ── Dense-core zoom filter ───────────────────────────────────────────────────
 // At low charge, a handful of sparsely-linked artists settle noticeably
 // farther from the cluster centroid than everyone else — nothing (weak
@@ -259,6 +294,20 @@ export default function ForceGraphCanvas({
   // and jams nodes at the canvas origin on every navigation-back.
   const [dimensions, setDimensions] = useState<{ width: number; height: number } | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  // Starts at 0 so the library's own automatic post-mount cooldown — which
+  // starts ticking as an unconditional side effect of the graphData prop
+  // being applied, before any of our effects get a chance to run — does zero
+  // ticks on load: nodes are already final (presettleLayout, see stableData
+  // below), so there's nothing to settle.
+  //
+  // Only raised to a real budget from handleEngineStop, once that first
+  // (zero-tick) cooldown has already fully resolved — see that callback's
+  // comment for why this has to be event-gated rather than timed. Changing
+  // this prop has no onChange handler in the library, so raising it while
+  // the engine is already stopped is inert; it only matters for a FUTURE
+  // resetCountdown() call (e.g. a node drag), which then gets a real tick
+  // budget to animate with.
+  const [postMountCooldownTicks, setPostMountCooldownTicks] = useState(0);
 
   // ── Animated dim level ──────────────────────────────────────────────────────
   // Stored in a ref so the canvas rAF loop picks it up without React re-renders.
@@ -273,10 +322,14 @@ export default function ForceGraphCanvas({
   // Guards the one-time initial fit so window resizes don't re-trigger it
   const didInitialFitRef = useRef(false);
   // The initial fit must wait for BOTH: dimensions have settled (ResizeObserver
-  // debounce — see below) AND the reheated force simulation has actually
-  // stopped moving nodes (onEngineStop). Either can finish first; whichever
-  // is last calls tryInitialFit(), which only proceeds once both are true —
-  // this is what prevents framing a mid-settle, still-moving layout.
+  // debounce — see below) AND onEngineStop has fired at least once. Node
+  // positions are already final by then either way (presettleLayout — see
+  // stableData below), but onEngineStop still only fires once the library's
+  // own post-mount cooldown completes, which needs cooldownTicks to have
+  // been raised past 0 first (see postMountCooldownTicks) — in practice this
+  // resolves within the first couple of animation frames, not the ~7s it
+  // used to. Either condition can finish first; whichever is last calls
+  // tryInitialFit(), which only proceeds once both are true.
   const dimensionsSettledRef = useRef(false);
   const engineStoppedOnceRef = useRef(false);
   // Per-frame label state — both refs reset together at each new frame.
@@ -295,8 +348,8 @@ export default function ForceGraphCanvas({
   // compose-into-focus animation (see animateClusterIntoView) can detect
   // it's been superseded and stop touching node positions.
   const focusAnimTokenRef = useRef(0);
-  // Guards the one-time force-config + reheat (see that effect below) so it
-  // runs exactly once — even though the effect's dependency on `dimensions`
+  // Guards the one-time force-config registration (see that effect below) so
+  // it runs exactly once — even though the effect's dependency on `dimensions`
   // means it re-fires on every resize once graphRef.current is available.
   const forceConfigDoneRef = useRef(false);
 
@@ -311,16 +364,30 @@ export default function ForceGraphCanvas({
   // filter needs to read stableData.nodes — referencing a const declared
   // later in the same component is a hard error for the React Compiler, even
   // though the closure itself wouldn't run until after full render.
+  //
+  // presettleLayout runs synchronously here, during render (inside useMemo,
+  // not an effect) — before ForceGraph2D ever mounts, so there is no
+  // "scattered start" frame for it to ever paint. See that function's own
+  // comment for why this is what actually eliminates the visible settle.
+  //
+  // Runs twice per mount in dev (React Strict Mode double-invokes useMemo
+  // factories as a purity check) — harmless as presettleLayout is a pure,
+  // deterministic function of its inputs, and each run is well under 100ms.
+  // A ref-based guard to skip the second call was tried and reverted: this
+  // project's React Compiler lint config (react-hooks/refs) hard-rejects
+  // reading/writing a ref during render, which that guard requires.
   const stableData = useMemo(
-    () => ({
-      nodes: graphData.artists.map(a => ({ ...a })) as GraphNode[],
-      links: graphData.edges.map(e => ({ ...e })) as GraphLink[],
-    }),
+    () => {
+      const nodes = graphData.artists.map(a => ({ ...a })) as GraphNode[];
+      const links = graphData.edges.map(e => ({ ...e })) as GraphLink[];
+      presettleLayout(nodes, links);
+      return { nodes, links };
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 
-  // ── Initial fit — runs once BOTH dimensions and the reheated sim have settled ─
+  // ── Initial fit — runs once BOTH dimensions and onEngineStop have fired ──────
   // dimensions comes from a ResizeObserver, whose first callback(s) during a
   // busy initial mount (extra components/effects competing for the main
   // thread — e.g. onboarding doing a localStorage read + a couple of its own
@@ -333,16 +400,6 @@ export default function ForceGraphCanvas({
   // dimensions stops changing for a short window avoids fitting to a
   // not-yet-final size, without needing to know exactly why the timing
   // shifted.
-  //
-  // Separately: the force-config effect below reheats the simulation so the
-  // custom charge/link/center/collide forces actually get to run (see that
-  // effect's comment). That reheat can take a couple hundred ticks to fully
-  // settle — noticeably longer than the old fixed 150ms guess, which assumed
-  // (wrongly, as it turned out) that the graph was already final by then.
-  // zoomToFit must wait for that settle too, or it frames a still-moving
-  // layout. tryInitialFit() is the AND-gate: it only fires once dimensions
-  // have settled AND onEngineStop has confirmed the sim actually stopped
-  // moving nodes — whichever of the two finishes last triggers it.
   //
   // Skip zoomToFit when an artist/genre/scene is already pre-selected (from
   // URL); the camera focus effect handles framing in that case — including
@@ -432,40 +489,32 @@ export default function ForceGraphCanvas({
   }, []);
 
   // ── Force config (hairball guard) ───────────────────────────────────────────
-  // react-kapsule (the library underlying ForceGraph2D) applies the graphData
-  // prop DURING RENDER, which synchronously runs the library's own warmupTicks
-  // (300, with only the library's DEFAULT charge/link/center — none of our
-  // config below exists yet) and, with the default d3AlphaDecay/alphaMin,
-  // that warmup alone exhausts alpha down to ~alphaMin. This effect — a
-  // passive effect — cannot run until after that render has already
-  // committed, so by the time it registers our custom forces the simulation
-  // has already permanently stopped ticking (alpha below alphaMin). Simply
-  // calling d3Force(...) here was therefore dead code: charge/link/center/
-  // collide were registered but never once invoked.
-  //
-  // Fix: explicitly reheat (alpha back to 1, cooldown countdown reset) AFTER
-  // registering the custom forces, so they get a real, full settle. This is
-  // meant to be a ONE-TIME reheat, guarded by forceConfigDoneRef rather than
-  // an empty deps array — selecting/deselecting nodes later never re-triggers
-  // it, so it can't fight the spotlight-spread mechanism (applySpreadForCluster
-  // / savedPositionsRef), which assumes the sim stays stopped once cooldown
-  // ends — true again here, just true a bit later than before.
+  // Node positions are already fully settled by presettleLayout (see
+  // stableData above) by the time ForceGraph2D ever mounts, so this effect no
+  // longer needs to reheat the simulation to get a real settle out of it —
+  // it only needs to register the same charge/link/center/collide values on
+  // the LIVE simulation instance, so that anything which ticks it later
+  // (e.g. the library's own post-drag readjustment) uses the right physics
+  // instead of the library's bare defaults (charge -30, default link, center
+  // strength 1).
   //
   // Depends on `dimensions`: <ForceGraph2D> itself is only rendered once
   // dimensions is non-null (see the JSX below), so graphRef.current is
-  // guaranteed null on the very first commit — an effect with `[]` deps runs
-  // exactly then and permanently misses attaching these forces at all (this
-  // was silently dead code: charge/link/center/collide were never applied,
-  // the graph ran on the library's bare defaults for its entire lifetime).
+  // guaranteed null on the very first commit — an effect with `[]` deps would
+  // run exactly then and permanently miss attaching these forces at all.
   // Depending on `dimensions` makes this effect re-fire once the ref actually
-  // attaches; forceConfigDoneRef then ensures the config + reheat still only
-  // happens once, since `dimensions` also changes on every window resize.
+  // attaches; forceConfigDoneRef then ensures the config only happens once,
+  // since `dimensions` also changes on every window resize.
   //
-  // cooldownTicks is raised (40 → 300) to match the alpha budget a reheat to
-  // 1 actually needs to fully decay with default d3AlphaDecay — otherwise
-  // the visible settle would cut off mid-motion. tryInitialFit (above) is
-  // gated on onEngineStop specifically so zoomToFit waits for this to finish
-  // rather than racing it.
+  // Does NOT touch cooldownTicks — that used to be raised to 300 right here,
+  // which measurably lost the race against the library's own first post-mount
+  // tick: this effect (167ms after mount, per real browser measurement)
+  // consistently finished and raised cooldownTicks before the engine's first
+  // tick check ever ran (176ms), so the "start at 0" guard never actually
+  // engaged — the full 300-tick, ~5s cooldown ran every time regardless of
+  // presettleLayout already having solved the layout. Fixed by moving the
+  // raise to handleEngineStop instead (event-gated on the first natural
+  // cooldown actually finishing, not timed against it) — see that callback.
   useEffect(() => {
     if (forceConfigDoneRef.current) return;
     const fg = graphRef.current;
@@ -478,10 +527,9 @@ export default function ForceGraphCanvas({
     // without touching charge/link/center above, so overall spread/shape holds.
     fg.d3Force('collide', createCollideForce(COLLIDE_PADDING));
     fg.d3VelocityDecay?.(0.38);
-    // Reduced motion: converge in a couple dozen ticks instead of ~300 so the
-    // resettle resolves quickly rather than visibly animating for seconds.
+    // Reduced motion: converge in a couple dozen ticks instead of ~300 for
+    // any future tick cycle (e.g. post-drag readjustment) that does run.
     if (prefersReducedMotionRef.current) fg.d3AlphaDecay?.(0.1);
-    fg.d3ReheatSimulation?.();
   }, [dimensions]);
 
   // The single set of ids to spread + frame right now — see getActiveCluster.
@@ -763,8 +811,24 @@ export default function ForceGraphCanvas({
   }, [stableData.nodes, computeSpreadTargetsForCluster, computeCameraTargetForCluster]);
 
   const handleEngineStop = useCallback(() => {
-    // First time the (reheated) sim genuinely stops moving nodes — half of
-    // the initial-fit AND-gate; see tryInitialFit above.
+    // Fires once the library's post-mount cooldown completes. With
+    // cooldownTicks still at 0 (see that state's own comment), this first
+    // call fires after doing zero actual ticks — the check that decides to
+    // stop (cntTicks(1) > cooldownTicks(0)) is what calls onEngineStop, so
+    // there's no tick in between. That's exactly what we want:
+    // presettleLayout already solved the layout, so the first cooldown has
+    // nothing to do.
+    //
+    // Raising cooldownTicks here — after the fact, gated on this event
+    // rather than on a timer or another effect — is what actually fixes the
+    // race the previous attempt lost: there's no longer any window where
+    // cooldownTicks could be temporarily nonzero while the FIRST cooldown is
+    // still in flight, because we only ever raise it once that cooldown has
+    // already reported itself finished. This isn't a timing assumption —
+    // onEngineStop firing IS the event that means the first cooldown ended.
+    if (!engineStoppedOnceRef.current) {
+      setPostMountCooldownTicks(300);
+    }
     engineStoppedOnceRef.current = true;
     tryInitialFit();
     if (pendingClusterKeyRef.current && pendingClusterKeyRef.current === activeClusterKey) {
@@ -1288,73 +1352,84 @@ export default function ForceGraphCanvas({
   return (
     <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
       {/* Only mount once ResizeObserver has provided real dimensions.
-          Prevents the 800×600 → actual-size re-render that resets d3-zoom. */}
-      {dimensions && <ForceGraph2D
-        ref={graphRef}
-        graphData={stableData}
-        width={dimensions.width}
-        height={dimensions.height}
-        backgroundColor="rgba(0,0,0,0)"
-        nodeId="id"
-        linkSource="source"
-        linkTarget="target"
-        nodeCanvasObject={drawNode}
-        nodeCanvasObjectMode={() => 'replace'}
-        nodePointerAreaPaint={paintNodePointerArea}
-        linkCanvasObject={drawLink}
-        linkCanvasObjectMode={() => 'replace'}
-        onRenderFramePost={handleRenderFramePost}
-        nodeVisibility={isNodeVisible}
-        linkVisibility={isLinkVisible}
-        linkDirectionalArrowLength={(link: object) => {
-          const l = link as GraphLink;
-          const srcId = typeof l.source === 'object' ? (l.source as GraphNode).id : l.source as string;
-          const tgtId = typeof l.target === 'object' ? (l.target as GraphNode).id : l.target as string;
-          const isFocusOrSetEdge =
-            (selectedId !== null && (srcId === selectedId || tgtId === selectedId)) ||
-            (highlightSetMemberSet.size > 0 && (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId)));
-          return isFocusOrSetEdge ? 9 : 3;
-        }}
-        linkDirectionalArrowRelPos={(link: object) => {
-          const l = link as GraphLink;
-          const srcId = typeof l.source === 'object' ? (l.source as GraphNode).id : l.source as string;
-          const tgtId = typeof l.target === 'object' ? (l.target as GraphNode).id : l.target as string;
-          // Focus/set edges: midpoint keeps the arrow in open space, away from node images
-          const isFocusOrSetEdge =
-            (selectedId !== null && (srcId === selectedId || tgtId === selectedId)) ||
-            (highlightSetMemberSet.size > 0 && (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId)));
-          return isFocusOrSetEdge ? 0.5 : 0.85;
-        }}
-        linkDirectionalArrowColor={(link: object) => {
-          const l = link as GraphLink;
-          const srcId = typeof l.source === 'object' ? (l.source as GraphNode).id : l.source as string;
-          const tgtId = typeof l.target === 'object' ? (l.target as GraphNode).id : l.target as string;
-          // Focus edges: bright layer color so arrows are legible at a glance
-          if (selectedId !== null && (srcId === selectedId || tgtId === selectedId) && focusedNode) {
-            return LAYER_COLORS[focusedNode.layer];
-          }
-          const srcLayer = typeof l.source === 'object'
-            ? (l.source as GraphNode).layer
-            : 'outside' as Layer;
-          const baseColor = EDGE_TINT[srcLayer];
-          // Set edges: no single "hero" layer color, so brighten the normal tint instead.
-          const isSetEdge = highlightSetMemberSet.size > 0 &&
-            (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId));
-          return isSetEdge ? baseColor.replace(/[\d.]+\)$/, '0.85)') : baseColor;
-        }}
-        onNodeHover={handleNodeHover}
-        onNodeClick={handleNodeClick}
-        onBackgroundClick={onBackgroundClick}
-        onEngineStop={handleEngineStop}
-        enableNodeDrag
-        enableZoomInteraction
-        enablePanInteraction
-        // Matches warmupTicks — the reheat in the "Force config" effect above
-        // needs this much room to fully decay alpha with our custom forces
-        // actually registered (see that effect's comment for why 40 wasn't enough).
-        cooldownTicks={300}
-        warmupTicks={300}
-      />}
+          Prevents the 800×600 → actual-size re-render that resets d3-zoom.
+          By the time this mounts, stableData's nodes are already
+          pre-settled (see presettleLayout above), so there's no scattered
+          starting frame underneath the fade-in for the user to ever see —
+          this wrapper's only job is a quick, on-brand reveal instead of a
+          hard cut once the (already-loading) dynamic-import fallback
+          ("Mapping the constellation…") swaps in the real canvas. */}
+      {dimensions && <div className="graph-canvas-reveal" style={{ width: '100%', height: '100%' }}>
+        <ForceGraph2D
+          ref={graphRef}
+          graphData={stableData}
+          width={dimensions.width}
+          height={dimensions.height}
+          backgroundColor="rgba(0,0,0,0)"
+          nodeId="id"
+          linkSource="source"
+          linkTarget="target"
+          nodeCanvasObject={drawNode}
+          nodeCanvasObjectMode={() => 'replace'}
+          nodePointerAreaPaint={paintNodePointerArea}
+          linkCanvasObject={drawLink}
+          linkCanvasObjectMode={() => 'replace'}
+          onRenderFramePost={handleRenderFramePost}
+          nodeVisibility={isNodeVisible}
+          linkVisibility={isLinkVisible}
+          linkDirectionalArrowLength={(link: object) => {
+            const l = link as GraphLink;
+            const srcId = typeof l.source === 'object' ? (l.source as GraphNode).id : l.source as string;
+            const tgtId = typeof l.target === 'object' ? (l.target as GraphNode).id : l.target as string;
+            const isFocusOrSetEdge =
+              (selectedId !== null && (srcId === selectedId || tgtId === selectedId)) ||
+              (highlightSetMemberSet.size > 0 && (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId)));
+            return isFocusOrSetEdge ? 9 : 3;
+          }}
+          linkDirectionalArrowRelPos={(link: object) => {
+            const l = link as GraphLink;
+            const srcId = typeof l.source === 'object' ? (l.source as GraphNode).id : l.source as string;
+            const tgtId = typeof l.target === 'object' ? (l.target as GraphNode).id : l.target as string;
+            // Focus/set edges: midpoint keeps the arrow in open space, away from node images
+            const isFocusOrSetEdge =
+              (selectedId !== null && (srcId === selectedId || tgtId === selectedId)) ||
+              (highlightSetMemberSet.size > 0 && (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId)));
+            return isFocusOrSetEdge ? 0.5 : 0.85;
+          }}
+          linkDirectionalArrowColor={(link: object) => {
+            const l = link as GraphLink;
+            const srcId = typeof l.source === 'object' ? (l.source as GraphNode).id : l.source as string;
+            const tgtId = typeof l.target === 'object' ? (l.target as GraphNode).id : l.target as string;
+            // Focus edges: bright layer color so arrows are legible at a glance
+            if (selectedId !== null && (srcId === selectedId || tgtId === selectedId) && focusedNode) {
+              return LAYER_COLORS[focusedNode.layer];
+            }
+            const srcLayer = typeof l.source === 'object'
+              ? (l.source as GraphNode).layer
+              : 'outside' as Layer;
+            const baseColor = EDGE_TINT[srcLayer];
+            // Set edges: no single "hero" layer color, so brighten the normal tint instead.
+            const isSetEdge = highlightSetMemberSet.size > 0 &&
+              (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId));
+            return isSetEdge ? baseColor.replace(/[\d.]+\)$/, '0.85)') : baseColor;
+          }}
+          onNodeHover={handleNodeHover}
+          onNodeClick={handleNodeClick}
+          onBackgroundClick={onBackgroundClick}
+          onEngineStop={handleEngineStop}
+          enableNodeDrag
+          enableZoomInteraction
+          enablePanInteraction
+          // Nodes are already pre-settled (see presettleLayout/stableData
+          // above) before this ever mounts, so no warmup ticking is needed —
+          // 0 renders our precomputed positions on the very first frame,
+          // untouched. cooldownTicks starts at 0 for the same reason (see
+          // postMountCooldownTicks/the force-config effect above) and is
+          // raised to a real budget once the correct forces are registered.
+          warmupTicks={0}
+          cooldownTicks={postMountCooldownTicks}
+        />
+      </div>}
     </div>
   );
 }
