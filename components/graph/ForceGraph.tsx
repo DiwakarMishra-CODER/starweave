@@ -73,9 +73,118 @@ const EDGE_TINT: Record<Layer, string> = {
 // Threshold of 5 → exactly the top 5 hubs, no others.
 const ALWAYS_LABEL_THRESHOLD = 5;
 
+// ── Collision force ──────────────────────────────────────────────────────────
+// True resting (non-focused/non-hovered) outer radius of a node — base circle
+// per drawNode's baseR/PHOTO_MIN_R/PHOTO_MAX_R clamp, PLUS RING_WIDTH for any
+// node that shows a photo at rest (score >= ALWAYS_LABEL_THRESHOLD): drawNode
+// draws a hairline ring right at the photo edge, but paintNodePointerArea
+// below already treats `er + RING_WIDTH` as that node's real circular
+// footprint (its own comment: "the entire node — photo, ring, glow"). The
+// previous version of this force used bare `er`, undercounting hub/photo
+// nodes' true footprint by RING_WIDTH on each side.
+function restingNodeRadius(score: number): number {
+  const baseR = 3.5 + Math.sqrt(score) * 2.2;
+  const hasPhoto = score >= ALWAYS_LABEL_THRESHOLD;
+  const clamped = hasPhoto ? Math.min(Math.max(baseR, PHOTO_MIN_R), PHOTO_MAX_R) : baseR;
+  return hasPhoto ? clamped + RING_WIDTH : clamped;
+}
+
+// Padding on top of the touching-radius so nodes get a clearly visible gap,
+// not just a non-touching one.
+const COLLIDE_PADDING = 3;
+
+type CollideNode = { x?: number; y?: number; vx?: number; vy?: number; influenceScore?: number };
+
+// Minimal hand-rolled d3-force-compatible collision force (function + optional
+// .initialize(nodes)) — avoids importing d3-force-3d, which ships no type
+// declarations. O(n²) per tick is trivial at this graph's node count.
+//
+// Deliberately does NOT scale the correction by the simulation's `alpha`
+// (unlike the charge/link forces above). d3-force's real forceCollide never
+// scales by alpha either — collision is a positional constraint, not a
+// physical force, and its whole job is to keep fully resolving overlaps even
+// late in the simulation when alpha has decayed near zero. The previous
+// version of this force multiplied the correction by `alpha`, so once the
+// simulation cooled down the push became too weak to finish separating the
+// biggest (hub/photo) node pairs — exactly the nodes that need the most
+// total displacement to stop overlapping — leaving them visibly overlapping
+// once the simulation settled and ticking stopped.
+function createCollideForce(padding: number) {
+  let nodes: CollideNode[] = [];
+  function force() {
+    for (let i = 0; i < nodes.length; i++) {
+      const a = nodes[i];
+      if (a.x === undefined || a.y === undefined) continue;
+      const ra = restingNodeRadius(a.influenceScore ?? 0) + padding;
+      for (let j = i + 1; j < nodes.length; j++) {
+        const b = nodes[j];
+        if (b.x === undefined || b.y === undefined) continue;
+        const rb = restingNodeRadius(b.influenceScore ?? 0) + padding;
+        let dx = b.x - a.x;
+        let dy = b.y - a.y;
+        let dist = Math.sqrt(dx * dx + dy * dy);
+        const minDist = ra + rb;
+        if (dist >= minDist) continue;
+        if (dist === 0) {
+          dx = (Math.random() - 0.5) * 0.01;
+          dy = (Math.random() - 0.5) * 0.01;
+          dist = Math.sqrt(dx * dx + dy * dy);
+        }
+        const push = ((minDist - dist) / dist) * 0.5;
+        const ox = dx * push;
+        const oy = dy * push;
+        a.vx = (a.vx ?? 0) - ox;
+        a.vy = (a.vy ?? 0) - oy;
+        b.vx = (b.vx ?? 0) + ox;
+        b.vy = (b.vy ?? 0) + oy;
+      }
+    }
+  }
+  force.initialize = (ns: CollideNode[]) => { nodes = ns; };
+  return force;
+}
+
+// ── Dense-core zoom filter ───────────────────────────────────────────────────
+// At low charge, a handful of sparsely-linked artists settle noticeably
+// farther from the cluster centroid than everyone else — nothing (weak
+// charge, few/no links) pulls them back in. Letting zoomToFit's bounding box
+// include those stragglers forces the whole camera to zoom out just to keep
+// them on screen, leaving the actual cluster small with big empty margins.
+// Fitting to the nearest DENSE_CORE_PERCENTILE of nodes by distance from the
+// centroid excludes just the outliers — they're still rendered and reachable
+// via search/click, just excluded from the framing math.
+const DENSE_CORE_PERCENTILE = 0.9;
+
+function computeDenseCoreIds(nodes: { id: string; x?: number; y?: number }[]): Set<string> | null {
+  const positioned = nodes.filter(n => n.x !== undefined && n.y !== undefined);
+  if (positioned.length === 0) return null;
+  const cx = positioned.reduce((sum, n) => sum + n.x!, 0) / positioned.length;
+  const cy = positioned.reduce((sum, n) => sum + n.y!, 0) / positioned.length;
+  const byDist = positioned
+    .map(n => ({ id: n.id, dist: Math.hypot(n.x! - cx, n.y! - cy) }))
+    .sort((a, b) => a.dist - b.dist);
+  const cutoff = byDist[Math.floor(byDist.length * DENSE_CORE_PERCENTILE)]?.dist ?? Infinity;
+  return new Set(byDist.filter(n => n.dist <= cutoff).map(n => n.id));
+}
+
+// Screen-pixel margin around the fitted bounding box for zoomToFit calls —
+// reduced from the library-typical 60 so the dense core fills more of the
+// viewport instead of floating in a wide empty margin.
+const ZOOM_FIT_PADDING = 40;
+
 // Dim target alpha when a highlight (hover/focus/path) is active.
 const DIM_ALPHA = 0.09;
 const TRANSITION_MS = 220;
+
+// Idle edge appearance — edges recede into a soft faint web by default so a
+// dense graph doesn't read as a scribble of crossing lines. Only the edges
+// touching a focused/hovered node rise above this baseline.
+const EDGE_IDLE_ALPHA = 0.12;
+const EDGE_IDLE_WIDTH = 0.6;
+// Fast, subtle fade for edges lighting up/down on focus or hover — separate
+// from TRANSITION_MS (node dimming) so edges pop quicker without touching
+// that existing timing.
+const EDGE_GLOW_MS = 150;
 
 // Camera focus on node click — must match CSS --panel-width (380px).
 // When a node is selected the panel slides in from the right, so the
@@ -154,6 +263,8 @@ export default function ForceGraphCanvas({
   // ── Animated dim level ──────────────────────────────────────────────────────
   // Stored in a ref so the canvas rAF loop picks it up without React re-renders.
   const dimLevelRef = useRef(1.0); // 1.0 = full brightness; DIM_ALPHA = dimmed
+  // 0 = idle (all edges faint); 1 = a focused/hovered node's edges fully lit.
+  const edgeGlowLevelRef = useRef(0);
   const animFrameRef = useRef(0);
   const prefersReducedMotionRef = useRef(false);
   // Tracks whether a cluster (single-node or set) was active last run, so we
@@ -161,6 +272,13 @@ export default function ForceGraphCanvas({
   const prevClusterActiveRef = useRef(false);
   // Guards the one-time initial fit so window resizes don't re-trigger it
   const didInitialFitRef = useRef(false);
+  // The initial fit must wait for BOTH: dimensions have settled (ResizeObserver
+  // debounce — see below) AND the reheated force simulation has actually
+  // stopped moving nodes (onEngineStop). Either can finish first; whichever
+  // is last calls tryInitialFit(), which only proceeds once both are true —
+  // this is what prevents framing a mid-settle, still-moving layout.
+  const dimensionsSettledRef = useRef(false);
+  const engineStoppedOnceRef = useRef(false);
   // Per-frame label state — both refs reset together at each new frame.
   const labelQueueRef  = useRef<LabelCandidate[]>([]);
   const nodeCirclesRef = useRef<Array<{ x: number; y: number; r: number }>>([]);
@@ -177,35 +295,90 @@ export default function ForceGraphCanvas({
   // compose-into-focus animation (see animateClusterIntoView) can detect
   // it's been superseded and stop touching node positions.
   const focusAnimTokenRef = useRef(0);
+  // Guards the one-time force-config + reheat (see that effect below) so it
+  // runs exactly once — even though the effect's dependency on `dimensions`
+  // means it re-fires on every resize once graphRef.current is available.
+  const forceConfigDoneRef = useRef(false);
 
   useEffect(() => {
     prefersReducedMotionRef.current =
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }, []);
 
-  // ── Initial fit — runs once on the first real dimension snapshot ─────────────
-  // By waiting for ResizeObserver we guarantee ForceGraph2D was initialized with
-  // the correct canvas size, so warmupTicks and d3-zoom are both valid.
+  // ── Stable graph data (created once — prevents simulation restart) ──────────
+  // Declared here (before tryInitialFit below) rather than further down: it
+  // only depends on the graphData prop, and tryInitialFit's dense-core zoom
+  // filter needs to read stableData.nodes — referencing a const declared
+  // later in the same component is a hard error for the React Compiler, even
+  // though the closure itself wouldn't run until after full render.
+  const stableData = useMemo(
+    () => ({
+      nodes: graphData.artists.map(a => ({ ...a })) as GraphNode[],
+      links: graphData.edges.map(e => ({ ...e })) as GraphLink[],
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+
+  // ── Initial fit — runs once BOTH dimensions and the reheated sim have settled ─
+  // dimensions comes from a ResizeObserver, whose first callback(s) during a
+  // busy initial mount (extra components/effects competing for the main
+  // thread — e.g. onboarding doing a localStorage read + a couple of its own
+  // state-driven re-renders on a true first visit) can report a transient,
+  // too-small box before layout has fully settled. zoomToFit computes a
+  // camera transform for whatever size is current *at that instant* — if we
+  // lock it in immediately on the first reading and a later callback reports
+  // the real (larger) size, the canvas resizes but the transform doesn't,
+  // leaving the graph looking "crammed in a corner." Debouncing until
+  // dimensions stops changing for a short window avoids fitting to a
+  // not-yet-final size, without needing to know exactly why the timing
+  // shifted.
+  //
+  // Separately: the force-config effect below reheats the simulation so the
+  // custom charge/link/center/collide forces actually get to run (see that
+  // effect's comment). That reheat can take a couple hundred ticks to fully
+  // settle — noticeably longer than the old fixed 150ms guess, which assumed
+  // (wrongly, as it turned out) that the graph was already final by then.
+  // zoomToFit must wait for that settle too, or it frames a still-moving
+  // layout. tryInitialFit() is the AND-gate: it only fires once dimensions
+  // have settled AND onEngineStop has confirmed the sim actually stopped
+  // moving nodes — whichever of the two finishes last triggers it.
+  //
   // Skip zoomToFit when an artist/genre/scene is already pre-selected (from
   // URL); the camera focus effect handles framing in that case — including
   // the fresh-mount case where node positions aren't ready yet, via the
   // pendingClusterKeyRef/onEngineStop retry below, so framing is guaranteed
   // to happen either way.
   const hasPreselectedCluster = !!selectedId || !!(highlightSetIds && highlightSetIds.length > 0);
-  useEffect(() => {
-    if (!dimensions || didInitialFitRef.current) return;
+  const tryInitialFit = useCallback(() => {
+    if (didInitialFitRef.current) return;
+    if (!dimensionsSettledRef.current || !engineStoppedOnceRef.current) return;
     if (hasPreselectedCluster) {
       // Pre-selected from URL — camera focus effect handles framing.
       didInitialFitRef.current = true;
       return;
     }
     didInitialFitRef.current = true;
-    const raf = requestAnimationFrame(() => {
-      const dur = prefersReducedMotionRef.current ? 0 : 600;
-      graphRef.current?.zoomToFit(dur, 60);
-    });
-    return () => cancelAnimationFrame(raf);
-  }, [dimensions, hasPreselectedCluster]);
+    const dur = prefersReducedMotionRef.current ? 0 : 600;
+    const coreIds = computeDenseCoreIds(stableData.nodes);
+    graphRef.current?.zoomToFit(
+      dur,
+      ZOOM_FIT_PADDING,
+      coreIds ? (n: object) => coreIds.has((n as GraphNode).id) : undefined,
+    );
+    // stableData is a stable reference (see its own useMemo below) — reading
+    // it here doesn't need to be a dep.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasPreselectedCluster]);
+
+  useEffect(() => {
+    if (!dimensions || dimensionsSettledRef.current) return;
+    const settleTimer = setTimeout(() => {
+      dimensionsSettledRef.current = true;
+      tryInitialFit();
+    }, 150);
+    return () => clearTimeout(settleTimer);
+  }, [dimensions, tryInitialFit]);
 
   useEffect(() => {
     const isActive =
@@ -214,16 +387,19 @@ export default function ForceGraphCanvas({
       (highlightSetIds !== null && highlightSetIds.length > 0) ||
       (highlightPath !== null && highlightPath.length > 0);
     const target = isActive ? DIM_ALPHA : 1.0;
+    const glowTarget = isActive ? 1 : 0;
 
     cancelAnimationFrame(animFrameRef.current);
 
     if (prefersReducedMotionRef.current) {
       dimLevelRef.current = target;
+      edgeGlowLevelRef.current = glowTarget;
       return;
     }
 
     const from = dimLevelRef.current;
-    if (Math.abs(from - target) < 0.005) return;
+    const glowFrom = edgeGlowLevelRef.current;
+    if (Math.abs(from - target) < 0.005 && Math.abs(glowFrom - glowTarget) < 0.005) return;
 
     const start = performance.now();
     function tick(now: number) {
@@ -231,6 +407,12 @@ export default function ForceGraphCanvas({
       // ease-in-out cubic
       const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
       dimLevelRef.current = from + (target - from) * eased;
+
+      // Edges fade in/out faster than node dimming (EDGE_GLOW_MS < TRANSITION_MS).
+      const tGlow = Math.min((now - start) / EDGE_GLOW_MS, 1);
+      const easedGlow = tGlow < 0.5 ? 4 * tGlow * tGlow * tGlow : 1 - Math.pow(-2 * tGlow + 2, 3) / 2;
+      edgeGlowLevelRef.current = glowFrom + (glowTarget - glowFrom) * easedGlow;
+
       if (t < 1) animFrameRef.current = requestAnimationFrame(tick);
     }
     animFrameRef.current = requestAnimationFrame(tick);
@@ -249,25 +431,58 @@ export default function ForceGraphCanvas({
     return () => ro.disconnect();
   }, []);
 
-  // ── Stable graph data (created once — prevents simulation restart) ──────────
-  const stableData = useMemo(
-    () => ({
-      nodes: graphData.artists.map(a => ({ ...a })) as GraphNode[],
-      links: graphData.edges.map(e => ({ ...e })) as GraphLink[],
-    }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
-  );
-
   // ── Force config (hairball guard) ───────────────────────────────────────────
+  // react-kapsule (the library underlying ForceGraph2D) applies the graphData
+  // prop DURING RENDER, which synchronously runs the library's own warmupTicks
+  // (300, with only the library's DEFAULT charge/link/center — none of our
+  // config below exists yet) and, with the default d3AlphaDecay/alphaMin,
+  // that warmup alone exhausts alpha down to ~alphaMin. This effect — a
+  // passive effect — cannot run until after that render has already
+  // committed, so by the time it registers our custom forces the simulation
+  // has already permanently stopped ticking (alpha below alphaMin). Simply
+  // calling d3Force(...) here was therefore dead code: charge/link/center/
+  // collide were registered but never once invoked.
+  //
+  // Fix: explicitly reheat (alpha back to 1, cooldown countdown reset) AFTER
+  // registering the custom forces, so they get a real, full settle. This is
+  // meant to be a ONE-TIME reheat, guarded by forceConfigDoneRef rather than
+  // an empty deps array — selecting/deselecting nodes later never re-triggers
+  // it, so it can't fight the spotlight-spread mechanism (applySpreadForCluster
+  // / savedPositionsRef), which assumes the sim stays stopped once cooldown
+  // ends — true again here, just true a bit later than before.
+  //
+  // Depends on `dimensions`: <ForceGraph2D> itself is only rendered once
+  // dimensions is non-null (see the JSX below), so graphRef.current is
+  // guaranteed null on the very first commit — an effect with `[]` deps runs
+  // exactly then and permanently misses attaching these forces at all (this
+  // was silently dead code: charge/link/center/collide were never applied,
+  // the graph ran on the library's bare defaults for its entire lifetime).
+  // Depending on `dimensions` makes this effect re-fire once the ref actually
+  // attaches; forceConfigDoneRef then ensures the config + reheat still only
+  // happens once, since `dimensions` also changes on every window resize.
+  //
+  // cooldownTicks is raised (40 → 300) to match the alpha budget a reheat to
+  // 1 actually needs to fully decay with default d3AlphaDecay — otherwise
+  // the visible settle would cut off mid-motion. tryInitialFit (above) is
+  // gated on onEngineStop specifically so zoomToFit waits for this to finish
+  // rather than racing it.
   useEffect(() => {
+    if (forceConfigDoneRef.current) return;
     const fg = graphRef.current;
     if (!fg) return;
-    fg.d3Force('charge')?.strength(-600);
-    fg.d3Force('link')?.distance(110).strength(0.25);
+    forceConfigDoneRef.current = true;
+    fg.d3Force('charge')?.strength(-40);
+    fg.d3Force('link')?.distance(75).strength(0.25);
     fg.d3Force('center')?.strength(0.04);
+    // Collision only — stops the handful of nodes that physically overlap
+    // without touching charge/link/center above, so overall spread/shape holds.
+    fg.d3Force('collide', createCollideForce(COLLIDE_PADDING));
     fg.d3VelocityDecay?.(0.38);
-  }, []);
+    // Reduced motion: converge in a couple dozen ticks instead of ~300 so the
+    // resettle resolves quickly rather than visibly animating for seconds.
+    if (prefersReducedMotionRef.current) fg.d3AlphaDecay?.(0.1);
+    fg.d3ReheatSimulation?.();
+  }, [dimensions]);
 
   // The single set of ids to spread + frame right now — see getActiveCluster.
   const { ids: activeClusterIds, key: activeClusterKey } = useMemo(
@@ -431,7 +646,12 @@ export default function ForceGraphCanvas({
     if (clusterIds.length === 0) {
       // Only zoom out if we actually had a cluster active before — never on mount.
       if (wasActive) {
-        fg.zoomToFit(duration, 60);
+        const coreIds = computeDenseCoreIds(stableData.nodes);
+        fg.zoomToFit(
+          duration,
+          ZOOM_FIT_PADDING,
+          coreIds ? (n: object) => coreIds.has((n as GraphNode).id) : undefined,
+        );
       }
       return true;
     }
@@ -543,10 +763,14 @@ export default function ForceGraphCanvas({
   }, [stableData.nodes, computeSpreadTargetsForCluster, computeCameraTargetForCluster]);
 
   const handleEngineStop = useCallback(() => {
+    // First time the (reheated) sim genuinely stops moving nodes — half of
+    // the initial-fit AND-gate; see tryInitialFit above.
+    engineStoppedOnceRef.current = true;
+    tryInitialFit();
     if (pendingClusterKeyRef.current && pendingClusterKeyRef.current === activeClusterKey) {
       if (animateClusterIntoView(activeClusterIds)) pendingClusterKeyRef.current = null;
     }
-  }, [activeClusterKey, activeClusterIds, animateClusterIntoView]);
+  }, [activeClusterKey, activeClusterIds, animateClusterIntoView, tryInitialFit]);
 
   // ── Derived sets ────────────────────────────────────────────────────────────
   const pathSet = useMemo(() => new Set<string>(highlightPath ?? []), [highlightPath]);
@@ -839,9 +1063,7 @@ export default function ForceGraphCanvas({
                            (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId));
       const srcLayer     = (srcNode as GraphNode).layer;
       const edgeColor    = EDGE_TINT[srcLayer];
-
-      const hasHighlight = selectedId !== null || hoveredId !== null || pathSet.size > 0 || highlightSetMemberSet.size > 0;
-      const isDimmed     = hasHighlight && !isPathEdge && !isFocusEdge && !isHoverEdge && !isSetEdge;
+      const glow         = edgeGlowLevelRef.current;
 
       ctx.save();
 
@@ -862,22 +1084,25 @@ export default function ForceGraphCanvas({
           ctx.stroke();
         }
       } else if (isFocusEdge && focusedNode) {
-        // Focused artist's own layer color — their world glows in their color
+        // Focused artist's own layer color — their world glows in their color.
+        // Fades up from the idle faint baseline rather than snapping on, via
+        // edgeGlowLevelRef (fast, ~150ms — see EDGE_GLOW_MS).
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
         ctx.strokeStyle = LAYER_COLORS[focusedNode.layer];
-        ctx.globalAlpha = 0.82;
-        ctx.lineWidth = 2;
+        ctx.globalAlpha = EDGE_IDLE_ALPHA + (0.82 - EDGE_IDLE_ALPHA) * glow;
+        ctx.lineWidth = EDGE_IDLE_WIDTH + (2 - EDGE_IDLE_WIDTH) * glow;
         ctx.setLineDash([]);
         ctx.stroke();
       } else if (isHoverEdge) {
-        // Brightened tint on hover (no aberration)
+        // Brightened tint on hover (no aberration), same fade-up as focus edges.
+        const alpha = EDGE_IDLE_ALPHA + (0.75 - EDGE_IDLE_ALPHA) * glow;
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
-        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, '0.75)');
-        ctx.lineWidth = 1.6;
+        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${alpha})`);
+        ctx.lineWidth = EDGE_IDLE_WIDTH + (1.6 - EDGE_IDLE_WIDTH) * glow;
         ctx.setLineDash([]);
         ctx.stroke();
       } else if (isSetEdge) {
@@ -890,19 +1115,21 @@ export default function ForceGraphCanvas({
         ctx.lineWidth = 1.6;
         ctx.stroke();
       } else {
-        // Normal or dimmed — use animated dim level
-        ctx.globalAlpha = isDimmed ? dimLevelRef.current * 0.4 : 1;
+        // Idle / non-highlighted edges recede into a soft faint web at all
+        // times — whether nothing is selected, or something else is focused —
+        // so the graph never reads as a scribble of crossing lines. Only the
+        // edges above (focus/hover/set/path) rise above this baseline.
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
-        ctx.strokeStyle = edgeColor;
-        ctx.lineWidth = 1.1;
+        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${EDGE_IDLE_ALPHA})`);
+        ctx.lineWidth = EDGE_IDLE_WIDTH;
         ctx.stroke();
       }
 
       ctx.restore();
     },
-    [selectedId, hoveredId, pathSet, pathEdges, focusedNode, highlightSetMemberSet],
+    [selectedId, hoveredId, pathEdges, focusedNode, highlightSetMemberSet],
   );
 
   // ── Deferred label placement + rendering ─────────────────────────────────
@@ -940,20 +1167,29 @@ export default function ForceGraphCanvas({
         ly = ny + (dy / len) * gap;
       }
 
-      // Collision avoidance: step outward + try 5 angles, check labels AND circles
+      // Collision avoidance: nudge within a small radius close to the node,
+      // trying several nearby angles at each of a couple of small distance
+      // steps. A label must stay visibly attached to its node — mild overlap
+      // with another label/node is acceptable, but drifting far enough to
+      // read as "detached" is not. If nothing within that small radius is
+      // clear, fall back to the natural anchor (lx/ly are untouched below)
+      // and accept the overlap rather than jumping the label far away.
       const dxBase    = lx - nx;
       const dyBase    = ly - ny;
       const baseDist  = Math.max(Math.sqrt(dxBase * dxBase + dyBase * dyBase), 0.01);
       const baseAngle = Math.atan2(dyBase, dxBase);
 
+      const MAX_BUMP_STEPS = 2;
+      const BUMP_STRIDE     = textH * 0.8; // total max drift ≈ 1.6× a text line
+
       let placed = false;
       outer:
-      for (let step = 0; step < 6; step++) {
-        const dist   = baseDist + step * textH * 1.8;
+      for (let step = 0; step <= MAX_BUMP_STEPS; step++) {
+        const dist   = baseDist + step * BUMP_STRIDE;
         const angles = step === 0
           ? [baseAngle]
-          : [baseAngle, baseAngle + 0.35, baseAngle - 0.35,
-             baseAngle + 0.7,  baseAngle - 0.7];
+          : [baseAngle + 0.3, baseAngle - 0.3, baseAngle + 0.6, baseAngle - 0.6,
+             baseAngle + 0.9, baseAngle - 0.9];
 
         for (const ang of angles) {
           const cx   = nx + Math.cos(ang) * dist;
@@ -1113,7 +1349,10 @@ export default function ForceGraphCanvas({
         enableNodeDrag
         enableZoomInteraction
         enablePanInteraction
-        cooldownTicks={40}
+        // Matches warmupTicks — the reheat in the "Force config" effect above
+        // needs this much room to fully decay alpha with our custom forces
+        // actually registered (see that effect's comment for why 40 wasn't enough).
+        cooldownTicks={300}
         warmupTicks={300}
       />}
     </div>
