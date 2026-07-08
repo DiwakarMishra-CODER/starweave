@@ -1,0 +1,1526 @@
+{
+  "generatedAt": "2026-07-08T08:42:53.280Z",
+  "source": "https://query.wikidata.org/sparql (P737 \"influenced by\")",
+  "summary": {
+    "totalArtists": 60,
+    "currentGraphArtists": 46,
+    "candidateArtists": 14,
+    "resolved": 60,
+    "unresolved": 0,
+    "artistsWithAtLeastOneInfluence": 10,
+    "totalInfluenceLinks": 55,
+    "uniqueExternalInfluences": 42
+  },
+  "artists": {
+    "The Velvet Underground": {
+      "qid": "Q103550",
+      "wikidataLabel": "The Velvet Underground",
+      "influences": []
+    },
+    "Nico": {
+      "qid": "Q44634",
+      "wikidataLabel": "Nico",
+      "influences": []
+    },
+    "Television": {
+      "qid": "Q1160206",
+      "wikidataLabel": "Television",
+      "influences": []
+    },
+    "Talking Heads": {
+      "qid": "Q205001",
+      "wikidataLabel": "Talking Heads",
+      "influences": []
+    },
+    "Big Star": {
+      "qid": "Q72608",
+      "wikidataLabel": "Big Star",
+      "influences": []
+    },
+    "Joy Division": {
+      "qid": "Q172763",
+      "wikidataLabel": "Joy Division",
+      "influences": [
+        {
+          "name": "Sex Pistols",
+          "qid": "Q82545",
+          "status": "external"
+        },
+        {
+          "name": "Can",
+          "qid": "Q170132",
+          "status": "external"
+        }
+      ]
+    },
+    "New Order": {
+      "qid": "Q214990",
+      "wikidataLabel": "New Order",
+      "influences": []
+    },
+    "The Cure": {
+      "qid": "Q484427",
+      "wikidataLabel": "The Cure",
+      "influences": [
+        {
+          "name": "Television",
+          "qid": "Q1160206",
+          "status": "in-set"
+        }
+      ]
+    },
+    "Siouxsie & The Banshees": {
+      "qid": "Q323834",
+      "wikidataLabel": "Siouxsie and the Banshees",
+      "influences": []
+    },
+    "The Smiths": {
+      "qid": "Q180598",
+      "wikidataLabel": "The Smiths",
+      "influences": []
+    },
+    "Gang of Four": {
+      "qid": "Q1130624",
+      "wikidataLabel": "Gang of Four",
+      "influences": []
+    },
+    "Nick Cave & The Bad Seeds": {
+      "qid": "Q1051182",
+      "wikidataLabel": "Nick Cave and the Bad Seeds",
+      "influences": []
+    },
+    "The Jesus and Mary Chain": {
+      "qid": "Q1126301",
+      "wikidataLabel": "The Jesus and Mary Chain",
+      "influences": []
+    },
+    "Cocteau Twins": {
+      "qid": "Q588820",
+      "wikidataLabel": "Cocteau Twins",
+      "influences": []
+    },
+    "This Mortal Coil": {
+      "qid": "Q1754136",
+      "wikidataLabel": "This Mortal Coil",
+      "influences": [
+        {
+          "name": "Colin Newman",
+          "qid": "Q1641565",
+          "status": "external"
+        }
+      ]
+    },
+    "Julee Cruise": {
+      "qid": "Q272496",
+      "wikidataLabel": "Julee Cruise",
+      "influences": []
+    },
+    "The Sundays": {
+      "qid": "Q3122789",
+      "wikidataLabel": "The Sundays",
+      "influences": []
+    },
+    "Mazzy Star": {
+      "qid": "Q1132765",
+      "wikidataLabel": "Mazzy Star",
+      "influences": []
+    },
+    "My Bloody Valentine": {
+      "qid": "Q841042",
+      "wikidataLabel": "My Bloody Valentine",
+      "influences": []
+    },
+    "Slowdive": {
+      "qid": "Q1502037",
+      "wikidataLabel": "Slowdive",
+      "influences": []
+    },
+    "Ride": {
+      "qid": "Q4371",
+      "wikidataLabel": "Ride",
+      "influences": []
+    },
+    "Lush": {
+      "qid": "Q1668512",
+      "wikidataLabel": "Lush",
+      "influences": [
+        {
+          "name": "Kate Bush",
+          "qid": "Q636",
+          "status": "external"
+        }
+      ]
+    },
+    "Broadcast": {
+      "qid": "Q922155",
+      "wikidataLabel": "Broadcast",
+      "influences": []
+    },
+    "Beach House": {
+      "qid": "Q812842",
+      "wikidataLabel": "Beach House",
+      "influences": []
+    },
+    "Deerhunter": {
+      "qid": "Q1182499",
+      "wikidataLabel": "Deerhunter",
+      "influences": []
+    },
+    "Alvvays": {
+      "qid": "Q17437642",
+      "wikidataLabel": "Alvvays",
+      "influences": []
+    },
+    "Wolf Alice": {
+      "qid": "Q8029799",
+      "wikidataLabel": "Wolf Alice",
+      "influences": []
+    },
+    "Silversun Pickups": {
+      "qid": "Q312275",
+      "wikidataLabel": "Silversun Pickups",
+      "influences": []
+    },
+    "Fishmans": {
+      "qid": "Q5455118",
+      "wikidataLabel": "Fishmans",
+      "influences": []
+    },
+    "Sweet Trip": {
+      "qid": "Q7655559",
+      "wikidataLabel": "Sweet Trip",
+      "influences": []
+    },
+    "Parannoul": {
+      "qid": "Q106350497",
+      "wikidataLabel": "Parannoul",
+      "influences": []
+    },
+    "Pixies": {
+      "qid": "Q188464",
+      "wikidataLabel": "Pixies",
+      "influences": [
+        {
+          "name": "Neil Young",
+          "qid": "Q633",
+          "status": "external"
+        },
+        {
+          "name": "The Beatles",
+          "qid": "Q1299",
+          "status": "external"
+        },
+        {
+          "name": "David Bowie",
+          "qid": "Q5383",
+          "status": "in-set"
+        },
+        {
+          "name": "Big Star",
+          "qid": "Q72608",
+          "status": "in-set"
+        },
+        {
+          "name": "Sex Pistols",
+          "qid": "Q82545",
+          "status": "external"
+        },
+        {
+          "name": "The Who",
+          "qid": "Q93346",
+          "status": "external"
+        },
+        {
+          "name": "The Velvet Underground",
+          "qid": "Q103550",
+          "status": "in-set"
+        },
+        {
+          "name": "The Beach Boys",
+          "qid": "Q183048",
+          "status": "external"
+        },
+        {
+          "name": "The Kinks",
+          "qid": "Q188713",
+          "status": "external"
+        },
+        {
+          "name": "Thin Lizzy",
+          "qid": "Q202314",
+          "status": "external"
+        },
+        {
+          "name": "The Stooges",
+          "qid": "Q208767",
+          "status": "external"
+        },
+        {
+          "name": "Marc Bolan",
+          "qid": "Q287514",
+          "status": "external"
+        },
+        {
+          "name": "Dick Dale",
+          "qid": "Q346785",
+          "status": "external"
+        },
+        {
+          "name": "Ramones",
+          "qid": "Q483407",
+          "status": "external"
+        },
+        {
+          "name": "The Pretenders",
+          "qid": "Q667389",
+          "status": "external"
+        },
+        {
+          "name": "The Cars",
+          "qid": "Q858388",
+          "status": "external"
+        },
+        {
+          "name": "Hüsker Dü",
+          "qid": "Q862223",
+          "status": "in-set"
+        },
+        {
+          "name": "Cardiacs",
+          "qid": "Q1035697",
+          "status": "external"
+        },
+        {
+          "name": "Cheap Trick",
+          "qid": "Q1068713",
+          "status": "external"
+        },
+        {
+          "name": "Violent Femmes",
+          "qid": "Q1134615",
+          "status": "external"
+        },
+        {
+          "name": "Wire",
+          "qid": "Q1135620",
+          "status": "external"
+        },
+        {
+          "name": "Minutemen",
+          "qid": "Q1364766",
+          "status": "external"
+        },
+        {
+          "name": "The Gun Club",
+          "qid": "Q1398604",
+          "status": "external"
+        },
+        {
+          "name": "Richard Hell and the Voidoids",
+          "qid": "Q1473255",
+          "status": "external"
+        },
+        {
+          "name": "Pere Ubu",
+          "qid": "Q1500073",
+          "status": "external"
+        },
+        {
+          "name": "X",
+          "qid": "Q1570087",
+          "status": "external"
+        },
+        {
+          "name": "Mission of Burma",
+          "qid": "Q1939097",
+          "status": "external"
+        },
+        {
+          "name": "Volcano Suns",
+          "qid": "Q3562739",
+          "status": "external"
+        },
+        {
+          "name": "Pylon",
+          "qid": "Q4047683",
+          "status": "external"
+        },
+        {
+          "name": "Angst",
+          "qid": "Q4763957",
+          "status": "external"
+        }
+      ]
+    },
+    "Sonic Youth": {
+      "qid": "Q188626",
+      "wikidataLabel": "Sonic Youth",
+      "influences": []
+    },
+    "Dinosaur Jr.": {
+      "qid": "Q622944",
+      "wikidataLabel": "Dinosaur Jr.",
+      "influences": []
+    },
+    "Hüsker Dü": {
+      "qid": "Q862223",
+      "wikidataLabel": "Hüsker Dü",
+      "influences": []
+    },
+    "The Replacements": {
+      "qid": "Q1066024",
+      "wikidataLabel": "The Replacements",
+      "influences": []
+    },
+    "Pavement": {
+      "qid": "Q922445",
+      "wikidataLabel": "Pavement",
+      "influences": []
+    },
+    "Yo La Tengo": {
+      "qid": "Q221021",
+      "wikidataLabel": "Yo La Tengo",
+      "influences": []
+    },
+    "R.E.M.": {
+      "qid": "Q134969",
+      "wikidataLabel": "R.E.M.",
+      "influences": [
+        {
+          "name": "Patti Smith",
+          "qid": "Q557",
+          "status": "external"
+        },
+        {
+          "name": "The Velvet Underground",
+          "qid": "Q103550",
+          "status": "in-set"
+        },
+        {
+          "name": "Marquee Moon",
+          "qid": "Q432372",
+          "status": "external"
+        },
+        {
+          "name": "Roger McGuinn",
+          "qid": "Q449140",
+          "status": "external"
+        },
+        {
+          "name": "Horses",
+          "qid": "Q774927",
+          "status": "external"
+        },
+        {
+          "name": "The Troggs",
+          "qid": "Q943253",
+          "status": "external"
+        }
+      ]
+    },
+    "Radiohead": {
+      "qid": "Q44190",
+      "wikidataLabel": "Radiohead",
+      "influences": [
+        {
+          "name": "Pink Floyd",
+          "qid": "Q2306",
+          "status": "external"
+        }
+      ]
+    },
+    "The Stone Roses": {
+      "qid": "Q29606",
+      "wikidataLabel": "The Stone Roses",
+      "influences": []
+    },
+    "Interpol": {
+      "qid": "Q331790",
+      "wikidataLabel": "Interpol",
+      "influences": [
+        {
+          "name": "Joy Division",
+          "qid": "Q172763",
+          "status": "in-set"
+        },
+        {
+          "name": "Television",
+          "qid": "Q1160206",
+          "status": "in-set"
+        }
+      ]
+    },
+    "The Strokes": {
+      "qid": "Q211583",
+      "wikidataLabel": "The Strokes",
+      "influences": []
+    },
+    "Yeah Yeah Yeahs": {
+      "qid": "Q641858",
+      "wikidataLabel": "Yeah Yeah Yeahs",
+      "influences": []
+    },
+    "Geese": {
+      "qid": "Q110565450",
+      "wikidataLabel": "Geese",
+      "influences": []
+    },
+    "David Bowie": {
+      "qid": "Q5383",
+      "wikidataLabel": "David Bowie",
+      "influences": [
+        {
+          "name": "Bob Dylan",
+          "qid": "Q392",
+          "status": "external"
+        },
+        {
+          "name": "The Beatles",
+          "qid": "Q1299",
+          "status": "external"
+        },
+        {
+          "name": "Jacques Brel",
+          "qid": "Q1666",
+          "status": "external"
+        },
+        {
+          "name": "Pink Floyd",
+          "qid": "Q2306",
+          "status": "external"
+        },
+        {
+          "name": "Andy Warhol",
+          "qid": "Q5603",
+          "status": "external"
+        },
+        {
+          "name": "Little Richard",
+          "qid": "Q82222",
+          "status": "external"
+        },
+        {
+          "name": "The Velvet Underground",
+          "qid": "Q103550",
+          "status": "in-set"
+        },
+        {
+          "name": "Scott Walker",
+          "qid": "Q488603",
+          "status": "external"
+        }
+      ]
+    },
+    "Slint": {
+      "qid": "Q578979",
+      "wikidataLabel": "Slint",
+      "influences": []
+    },
+    "Guided By Voices": {
+      "qid": "Q1472033",
+      "wikidataLabel": "Guided by Voices",
+      "influences": []
+    },
+    "Built to Spill": {
+      "qid": "Q1003115",
+      "wikidataLabel": "Built to Spill",
+      "influences": []
+    },
+    "Modest Mouse": {
+      "qid": "Q431355",
+      "wikidataLabel": "Modest Mouse",
+      "influences": []
+    },
+    "The White Stripes": {
+      "qid": "Q268160",
+      "wikidataLabel": "The White Stripes",
+      "influences": []
+    },
+    "Blur": {
+      "qid": "Q485820",
+      "wikidataLabel": "Blur",
+      "influences": []
+    },
+    "Pulp": {
+      "qid": "Q504464",
+      "wikidataLabel": "Pulp",
+      "influences": []
+    },
+    "Stereolab": {
+      "qid": "Q334652",
+      "wikidataLabel": "Stereolab",
+      "influences": [
+        {
+          "name": "Can",
+          "qid": "Q170132",
+          "status": "external"
+        },
+        {
+          "name": "Neu!",
+          "qid": "Q181874",
+          "status": "external"
+        },
+        {
+          "name": "Juan García Esquivel",
+          "qid": "Q722627",
+          "status": "external"
+        }
+      ]
+    },
+    "Spiritualized": {
+      "qid": "Q1144015",
+      "wikidataLabel": "Spiritualized",
+      "influences": []
+    },
+    "The Flaming Lips": {
+      "qid": "Q523184",
+      "wikidataLabel": "The Flaming Lips",
+      "influences": []
+    },
+    "Fugazi": {
+      "qid": "Q277865",
+      "wikidataLabel": "Fugazi",
+      "influences": []
+    },
+    "Minor Threat": {
+      "qid": "Q81509",
+      "wikidataLabel": "Minor Threat",
+      "influences": []
+    },
+    "Fontaines D.C.": {
+      "qid": "Q65056403",
+      "wikidataLabel": "Fontaines D.C.",
+      "influences": []
+    },
+    "IDLES": {
+      "qid": "Q39070668",
+      "wikidataLabel": "Idles",
+      "influences": []
+    }
+  },
+  "unresolvedArtists": [],
+  "externalInfluences": [
+    {
+      "name": "Sex Pistols",
+      "qid": "Q82545",
+      "citationCount": 2,
+      "citedBy": [
+        "Joy Division",
+        "Pixies"
+      ],
+      "theirInfluences": [
+        {
+          "name": "David Bowie",
+          "qid": "Q5383"
+        },
+        {
+          "name": "Chuck Berry",
+          "qid": "Q5921"
+        },
+        {
+          "name": "Eddie Cochran",
+          "qid": "Q5969"
+        },
+        {
+          "name": "The Rolling Stones",
+          "qid": "Q11036"
+        },
+        {
+          "name": "The Who",
+          "qid": "Q93346"
+        },
+        {
+          "name": "The Velvet Underground",
+          "qid": "Q103550"
+        },
+        {
+          "name": "Kiss",
+          "qid": "Q124179"
+        },
+        {
+          "name": "Slade",
+          "qid": "Q156872"
+        },
+        {
+          "name": "The Kinks",
+          "qid": "Q188713"
+        },
+        {
+          "name": "The Stooges",
+          "qid": "Q208767"
+        },
+        {
+          "name": "T. Rex",
+          "qid": "Q211770"
+        },
+        {
+          "name": "Small Faces",
+          "qid": "Q222628"
+        },
+        {
+          "name": "Hawkwind",
+          "qid": "Q285966"
+        },
+        {
+          "name": "Alice Cooper",
+          "qid": "Q332032"
+        },
+        {
+          "name": "Ramones",
+          "qid": "Q483407"
+        },
+        {
+          "name": "The Deviants",
+          "qid": "Q691605"
+        },
+        {
+          "name": "MC5",
+          "qid": "Q830316"
+        },
+        {
+          "name": "New York Dolls",
+          "qid": "Q830586"
+        },
+        {
+          "name": "The Fugs",
+          "qid": "Q928304"
+        },
+        {
+          "name": "Mott the Hoople",
+          "qid": "Q1126287"
+        },
+        {
+          "name": "Faces",
+          "qid": "Q1136388"
+        },
+        {
+          "name": "Dr. Feelgood",
+          "qid": "Q1253897"
+        },
+        {
+          "name": "Edgar Broughton Band",
+          "qid": "Q1639834"
+        },
+        {
+          "name": "Pink Fairies",
+          "qid": "Q2095846"
+        },
+        {
+          "name": "The Modern Lovers",
+          "qid": "Q2294322"
+        }
+      ]
+    },
+    {
+      "name": "Can",
+      "qid": "Q170132",
+      "citationCount": 2,
+      "citedBy": [
+        "Joy Division",
+        "Stereolab"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "The Beatles",
+      "qid": "Q1299",
+      "citationCount": 2,
+      "citedBy": [
+        "Pixies",
+        "David Bowie"
+      ],
+      "theirInfluences": [
+        {
+          "name": "Ludwig van Beethoven",
+          "qid": "Q255"
+        },
+        {
+          "name": "Elvis Presley",
+          "qid": "Q303"
+        },
+        {
+          "name": "Bob Dylan",
+          "qid": "Q392"
+        },
+        {
+          "name": "Johann Sebastian Bach",
+          "qid": "Q1339"
+        },
+        {
+          "name": "Chuck Berry",
+          "qid": "Q5921"
+        },
+        {
+          "name": "Buddy Holly",
+          "qid": "Q5977"
+        },
+        {
+          "name": "Little Richard",
+          "qid": "Q82222"
+        },
+        {
+          "name": "Ravi Shankar",
+          "qid": "Q103774"
+        },
+        {
+          "name": "Timothy Leary",
+          "qid": "Q211731"
+        }
+      ]
+    },
+    {
+      "name": "Pink Floyd",
+      "qid": "Q2306",
+      "citationCount": 2,
+      "citedBy": [
+        "Radiohead",
+        "David Bowie"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Colin Newman",
+      "qid": "Q1641565",
+      "citationCount": 1,
+      "citedBy": [
+        "This Mortal Coil"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Kate Bush",
+      "qid": "Q636",
+      "citationCount": 1,
+      "citedBy": [
+        "Lush"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Neil Young",
+      "qid": "Q633",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "The Who",
+      "qid": "Q93346",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": [
+        {
+          "name": "Ludwig van Beethoven",
+          "qid": "Q255"
+        },
+        {
+          "name": "Jimi Hendrix",
+          "qid": "Q5928"
+        },
+        {
+          "name": "James Brown",
+          "qid": "Q5950"
+        },
+        {
+          "name": "The Kinks",
+          "qid": "Q188713"
+        },
+        {
+          "name": "Mose Allison",
+          "qid": "Q1382570"
+        }
+      ]
+    },
+    {
+      "name": "The Beach Boys",
+      "qid": "Q183048",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "The Kinks",
+      "qid": "Q188713",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Thin Lizzy",
+      "qid": "Q202314",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": [
+        {
+          "name": "Bob Dylan",
+          "qid": "Q392"
+        },
+        {
+          "name": "Led Zeppelin",
+          "qid": "Q2331"
+        },
+        {
+          "name": "Jimi Hendrix",
+          "qid": "Q5928"
+        },
+        {
+          "name": "The Rolling Stones",
+          "qid": "Q11036"
+        },
+        {
+          "name": "The Who",
+          "qid": "Q93346"
+        },
+        {
+          "name": "Deep Purple",
+          "qid": "Q101505"
+        },
+        {
+          "name": "Wishbone Ash",
+          "qid": "Q137758"
+        },
+        {
+          "name": "Slade",
+          "qid": "Q156872"
+        },
+        {
+          "name": "Jeff Beck",
+          "qid": "Q192474"
+        },
+        {
+          "name": "The Yardbirds",
+          "qid": "Q192725"
+        },
+        {
+          "name": "Cream",
+          "qid": "Q203736"
+        },
+        {
+          "name": "Small Faces",
+          "qid": "Q222628"
+        },
+        {
+          "name": "Van Morrison",
+          "qid": "Q272203"
+        },
+        {
+          "name": "The Allman Brothers Band",
+          "qid": "Q507327"
+        }
+      ]
+    },
+    {
+      "name": "The Stooges",
+      "qid": "Q208767",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": [
+        {
+          "name": "The Beatles",
+          "qid": "Q1299"
+        },
+        {
+          "name": "Jimi Hendrix",
+          "qid": "Q5928"
+        },
+        {
+          "name": "The Rolling Stones",
+          "qid": "Q11036"
+        },
+        {
+          "name": "The Doors",
+          "qid": "Q45354"
+        },
+        {
+          "name": "The Who",
+          "qid": "Q93346"
+        },
+        {
+          "name": "The Velvet Underground",
+          "qid": "Q103550"
+        },
+        {
+          "name": "Ravi Shankar",
+          "qid": "Q103774"
+        },
+        {
+          "name": "Frank Zappa",
+          "qid": "Q127330"
+        },
+        {
+          "name": "The Kinks",
+          "qid": "Q188713"
+        },
+        {
+          "name": "The Yardbirds",
+          "qid": "Q192725"
+        },
+        {
+          "name": "Sun Ra",
+          "qid": "Q354508"
+        },
+        {
+          "name": "Count Five",
+          "qid": "Q667342"
+        },
+        {
+          "name": "The Standells",
+          "qid": "Q765177"
+        },
+        {
+          "name": "The Sonics",
+          "qid": "Q904921"
+        },
+        {
+          "name": "The Fugs",
+          "qid": "Q928304"
+        },
+        {
+          "name": "The Troggs",
+          "qid": "Q943253"
+        },
+        {
+          "name": "The Kingsmen",
+          "qid": "Q970502"
+        },
+        {
+          "name": "The Pretty Things",
+          "qid": "Q1364657"
+        },
+        {
+          "name": "The Trashmen",
+          "qid": "Q1536429"
+        },
+        {
+          "name": "The Seeds",
+          "qid": "Q2142320"
+        },
+        {
+          "name": "Bob Marley & The Wailers",
+          "qid": "Q2525354"
+        }
+      ]
+    },
+    {
+      "name": "Marc Bolan",
+      "qid": "Q287514",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Dick Dale",
+      "qid": "Q346785",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Ramones",
+      "qid": "Q483407",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": [
+        {
+          "name": "The Beatles",
+          "qid": "Q1299"
+        },
+        {
+          "name": "Chuck Berry",
+          "qid": "Q5921"
+        },
+        {
+          "name": "Buddy Holly",
+          "qid": "Q5977"
+        },
+        {
+          "name": "The Rolling Stones",
+          "qid": "Q11036"
+        },
+        {
+          "name": "The Who",
+          "qid": "Q93346"
+        },
+        {
+          "name": "The Velvet Underground",
+          "qid": "Q103550"
+        },
+        {
+          "name": "Kiss",
+          "qid": "Q124179"
+        },
+        {
+          "name": "The Shangri-Las",
+          "qid": "Q129050"
+        },
+        {
+          "name": "Slade",
+          "qid": "Q156872"
+        },
+        {
+          "name": "The Beach Boys",
+          "qid": "Q183048"
+        },
+        {
+          "name": "The Stooges",
+          "qid": "Q208767"
+        },
+        {
+          "name": "T. Rex",
+          "qid": "Q211770"
+        },
+        {
+          "name": "Quiet Riot",
+          "qid": "Q221494"
+        },
+        {
+          "name": "Chubby Checker",
+          "qid": "Q317254"
+        },
+        {
+          "name": "Alice Cooper",
+          "qid": "Q332032"
+        },
+        {
+          "name": "The Sweet",
+          "qid": "Q487919"
+        },
+        {
+          "name": "The Ronettes",
+          "qid": "Q530886"
+        },
+        {
+          "name": "Count Five",
+          "qid": "Q667342"
+        },
+        {
+          "name": "Jonathan Richman",
+          "qid": "Q709470"
+        },
+        {
+          "name": "The Standells",
+          "qid": "Q765177"
+        },
+        {
+          "name": "Bay City Rollers",
+          "qid": "Q812073"
+        },
+        {
+          "name": "MC5",
+          "qid": "Q830316"
+        },
+        {
+          "name": "New York Dolls",
+          "qid": "Q830586"
+        },
+        {
+          "name": "Bobby Fuller",
+          "qid": "Q888539"
+        },
+        {
+          "name": "The Troggs",
+          "qid": "Q943253"
+        },
+        {
+          "name": "The Rivieras",
+          "qid": "Q951348"
+        },
+        {
+          "name": "Freddy Cannon",
+          "qid": "Q962043"
+        },
+        {
+          "name": "The Crystals",
+          "qid": "Q1475018"
+        },
+        {
+          "name": "The Trashmen",
+          "qid": "Q1536429"
+        },
+        {
+          "name": "The Music Machine",
+          "qid": "Q2255807"
+        },
+        {
+          "name": "The Remains",
+          "qid": "Q3110679"
+        },
+        {
+          "name": "Q20966651",
+          "qid": "Q20966651"
+        }
+      ]
+    },
+    {
+      "name": "The Pretenders",
+      "qid": "Q667389",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "The Cars",
+      "qid": "Q858388",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Cardiacs",
+      "qid": "Q1035697",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Cheap Trick",
+      "qid": "Q1068713",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": [
+        {
+          "name": "The Beatles",
+          "qid": "Q1299"
+        },
+        {
+          "name": "Led Zeppelin",
+          "qid": "Q2331"
+        },
+        {
+          "name": "The Rolling Stones",
+          "qid": "Q11036"
+        },
+        {
+          "name": "The Doors",
+          "qid": "Q45354"
+        },
+        {
+          "name": "Big Star",
+          "qid": "Q72608"
+        },
+        {
+          "name": "Sex Pistols",
+          "qid": "Q82545"
+        },
+        {
+          "name": "The Who",
+          "qid": "Q93346"
+        },
+        {
+          "name": "The Velvet Underground",
+          "qid": "Q103550"
+        },
+        {
+          "name": "Kiss",
+          "qid": "Q124179"
+        },
+        {
+          "name": "The Beach Boys",
+          "qid": "Q183048"
+        },
+        {
+          "name": "The Kinks",
+          "qid": "Q188713"
+        },
+        {
+          "name": "The Yardbirds",
+          "qid": "Q192725"
+        },
+        {
+          "name": "The Stooges",
+          "qid": "Q208767"
+        },
+        {
+          "name": "T. Rex",
+          "qid": "Q211770"
+        },
+        {
+          "name": "Wizzard",
+          "qid": "Q426015"
+        },
+        {
+          "name": "Terry Reid",
+          "qid": "Q666001"
+        },
+        {
+          "name": "Badfinger",
+          "qid": "Q798993"
+        },
+        {
+          "name": "Roy Wood",
+          "qid": "Q918484"
+        },
+        {
+          "name": "Mott the Hoople",
+          "qid": "Q1126287"
+        },
+        {
+          "name": "The Move",
+          "qid": "Q1133828"
+        },
+        {
+          "name": "Nazz",
+          "qid": "Q1346522"
+        },
+        {
+          "name": "Raspberries",
+          "qid": "Q2715339"
+        }
+      ]
+    },
+    {
+      "name": "Violent Femmes",
+      "qid": "Q1134615",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Wire",
+      "qid": "Q1135620",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Minutemen",
+      "qid": "Q1364766",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "The Gun Club",
+      "qid": "Q1398604",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Richard Hell and the Voidoids",
+      "qid": "Q1473255",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Pere Ubu",
+      "qid": "Q1500073",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "X",
+      "qid": "Q1570087",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Mission of Burma",
+      "qid": "Q1939097",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Volcano Suns",
+      "qid": "Q3562739",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Pylon",
+      "qid": "Q4047683",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Angst",
+      "qid": "Q4763957",
+      "citationCount": 1,
+      "citedBy": [
+        "Pixies"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Patti Smith",
+      "qid": "Q557",
+      "citationCount": 1,
+      "citedBy": [
+        "R.E.M."
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Marquee Moon",
+      "qid": "Q432372",
+      "citationCount": 1,
+      "citedBy": [
+        "R.E.M."
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Roger McGuinn",
+      "qid": "Q449140",
+      "citationCount": 1,
+      "citedBy": [
+        "R.E.M."
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Horses",
+      "qid": "Q774927",
+      "citationCount": 1,
+      "citedBy": [
+        "R.E.M."
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "The Troggs",
+      "qid": "Q943253",
+      "citationCount": 1,
+      "citedBy": [
+        "R.E.M."
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Bob Dylan",
+      "qid": "Q392",
+      "citationCount": 1,
+      "citedBy": [
+        "David Bowie"
+      ],
+      "theirInfluences": [
+        {
+          "name": "Woody Guthrie",
+          "qid": "Q4061"
+        },
+        {
+          "name": "Allen Ginsberg",
+          "qid": "Q6711"
+        },
+        {
+          "name": "Bertolt Brecht",
+          "qid": "Q38757"
+        },
+        {
+          "name": "Robert Johnson",
+          "qid": "Q192133"
+        },
+        {
+          "name": "Suze Rotolo",
+          "qid": "Q439920"
+        }
+      ]
+    },
+    {
+      "name": "Jacques Brel",
+      "qid": "Q1666",
+      "citationCount": 1,
+      "citedBy": [
+        "David Bowie"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Andy Warhol",
+      "qid": "Q5603",
+      "citationCount": 1,
+      "citedBy": [
+        "David Bowie"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Little Richard",
+      "qid": "Q82222",
+      "citationCount": 1,
+      "citedBy": [
+        "David Bowie"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Scott Walker",
+      "qid": "Q488603",
+      "citationCount": 1,
+      "citedBy": [
+        "David Bowie"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Neu!",
+      "qid": "Q181874",
+      "citationCount": 1,
+      "citedBy": [
+        "Stereolab"
+      ],
+      "theirInfluences": []
+    },
+    {
+      "name": "Juan García Esquivel",
+      "qid": "Q722627",
+      "citationCount": 1,
+      "citedBy": [
+        "Stereolab"
+      ],
+      "theirInfluences": []
+    }
+  ]
+}

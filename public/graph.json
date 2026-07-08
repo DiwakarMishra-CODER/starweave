@@ -26,7 +26,7 @@
         }
       ],
       "bio": "Formed in New York in 1965 around the axis of Lou Reed and John Cale, The Velvet Underground sound-designed a rock'n'roll that nobody had needed yet: literary, confrontational, half-destroyed. Reed brought the Brill Building's melodic instincts and an unflinching diarist's eye for street-level New York — heroin, transvestites, violence, boredom — while Cale's classical viola training turned the band's rhythm section into something more like controlled interference than a beat. Andy Warhol attached his name and a famous banana to their debut, giving them an art-world imprimatur that their commercial performance never warranted. In 1967, when everyone else was San Francisco and flowers, The Velvet Underground & Nico sounded like it was from another dimension entirely.\n\nTheir four studio albums trace an arc from the sublime noise damage of the debut through the more naked folk-rock of The Velvet Underground (1969) — an album so hushed and intimate it barely seems to exist. What's remarkable is that none of it resembled a trend: the band had no contemporaries and left no real imitators for a decade. Then, in the mid-eighties, the imitators arrived in large numbers. The cliché about the debut — \"everyone who bought it formed a band\" — is actually understated; the record's influence runs so deep in this graph that nearly every edge traces back to it eventually.",
-      "influenceScore": 20,
+      "influenceScore": 25,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/04692ede51ae79c1bc48acea2f644c9b/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4f/4f/d7/4f4fd781-75fa-d0f7-b6b6-54f4eb525f03/mzaf_1100325313778209968.plus.aac.p.m4a",
       "previewTrack": "Sunday Morning",
@@ -59,7 +59,7 @@
       ],
       "bio": "Born Christa Päffgen in Cologne in 1938, Nico arrived at the Factory already strange: a model and actress who had appeared in Fellini's La Dolce Vita and accumulated an extraordinary life before she was twenty-five. Her contribution to The Velvet Underground & Nico is often treated as an adjunct — a Warhol imposition the band resented — but her three solo lead vocals on that record, including the elegiac \"Femme Fatale\" and the bottomless \"I'll Be Your Mirror,\" have a quality Reed and Cale could not have manufactured themselves: a European melancholy, ancient and weightless.\n\nHer solo records — Chelsea Girl (1967), The Marble Index (1969), Desertshore (1970) — defined the cold, droning end of art-rock before that terminology existed. With John Cale producing, she played harmonium and sang songs that felt like transmissions from an occupied country. The Marble Index in particular: stark, barely accompanied, seemingly indifferent to any notion of entertainment. Artists as different as the Cocteau Twins, This Mortal Coil, and Julee Cruise carry something of Nico's hollowed-out beauty in their DNA.",
       "influenceScore": 0,
-      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/09766fc2d5ea6aa77553f73f893d3010/250x250-000000-80-0-0.jpg",
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/74b3939681f4234ce96bf7e5459b57ea/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/16/9a/1a/169a1a2b-af8e-4942-1519-94f84164dd49/mzaf_11472083960511048748.plus.aac.p.m4a",
       "previewTrack": "These Days",
       "previewAlbum": "Chelsea Girl"
@@ -161,6 +161,156 @@
       "previewAlbum": "#1 Record Radio City"
     },
     {
+      "id": "the-stooges",
+      "name": "The Stooges",
+      "layer": "root",
+      "genres": [
+        "proto-punk"
+      ],
+      "scope": [
+        "shoegaze-dreampop-v1",
+        "indie"
+      ],
+      "country": "US",
+      "activeFrom": 1967,
+      "signatureSong": "I Wanna Be Your Dog",
+      "classicAlbums": [
+        {
+          "id": "the-stooges-st",
+          "title": "The Stooges",
+          "year": 1969,
+          "isClassic": true,
+          "classicReason": "A primal, three-chord blast built around Ron Asheton's fuzz riffs and Iggy Pop's confrontational sneer, arriving fully formed before punk had a name for what it was. 'I Wanna Be Your Dog' reduces desire to a single sledgehammer riff and a sleigh-bell hook. VERIFY / rewrite.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/41/19/3b/41193bb2-ffc4-043f-4ddd-128c272d8f82/mzi.qimpmkxb.jpg/600x600bb.jpg"
+        }
+      ],
+      "influenceScore": 7,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/8e2ec19ce739191647d8d3e4ee5cb532/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/55/95/dd/5595dd0e-7dce-37f2-82d3-a5200cf3e7ff/mzaf_729219191203085620.plus.aac.p.m4a",
+      "previewTrack": "I Wanna Be Your Dog",
+      "previewAlbum": "The Stooges"
+    },
+    {
+      "id": "new-york-dolls",
+      "name": "New York Dolls",
+      "layer": "root",
+      "genres": [
+        "proto-punk"
+      ],
+      "scope": [
+        "shoegaze-dreampop-v1",
+        "indie"
+      ],
+      "country": "US",
+      "activeFrom": 1971,
+      "signatureSong": "Personality Crisis",
+      "classicAlbums": [
+        {
+          "id": "new-york-dolls-st",
+          "title": "New York Dolls",
+          "year": 1973,
+          "isClassic": true,
+          "classicReason": "Glam sleaze and Stones-derived swagger played sloppy and loud, with Johnny Thunders' guitar sound becoming a direct blueprint for punk guitarists who came after. 'Personality Crisis' piles on piano, cowbell, and a sneering David Johansen vocal until it nearly collapses under its own excess. VERIFY / rewrite.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/9f/bf/68/9fbf68a5-f2f2-6f89-3576-964c4fffb5ff/00602537890804.rgb.jpg/600x600bb.jpg"
+        }
+      ],
+      "influenceScore": 4,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/36c3c100c3248b88463ad983f50ffd60/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/dd/b4/a1/ddb4a1f3-1141-1cb5-8e3a-b5b17255f9c5/mzaf_15234022429592009773.plus.aac.p.m4a",
+      "previewTrack": "Personality Crisis",
+      "previewAlbum": "New York Dolls"
+    },
+    {
+      "id": "kraftwerk",
+      "name": "Kraftwerk",
+      "layer": "root",
+      "genres": [
+        "krautrock"
+      ],
+      "scope": [
+        "shoegaze-dreampop-v1",
+        "indie"
+      ],
+      "country": "DE",
+      "activeFrom": 1970,
+      "signatureSong": "Trans-Europe Express",
+      "classicAlbums": [
+        {
+          "id": "trans-europe-express",
+          "title": "Trans-Europe Express",
+          "year": 1977,
+          "isClassic": true,
+          "classicReason": "Kraftwerk built an entire electronic vocabulary from synthesizers and drum machines alone, imagining a gleaming, mechanized Europe as the album's organizing metaphor. The title track's motorik pulse became a foundational reference point for synth-pop, techno, and post-punk alike. VERIFY / rewrite.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/e2/80/bc/e280bcf9-4048-8c42-2b6b-d8b9c9bbed52/5099996602058_1500x1500_300dpi.jpg/600x600bb.jpg"
+        }
+      ],
+      "influenceScore": 3,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/12e1b0bf93eae2b9b1c3ad7dc6a0fcd4/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/43/b2/b0/43b2b010-156f-b321-30ab-48a5aff07d02/mzaf_3115365669483405076.plus.aac.p.m4a",
+      "previewTrack": "Trans-Europe Express",
+      "previewAlbum": "Trans-Europe Express"
+    },
+    {
+      "id": "can",
+      "name": "Can",
+      "layer": "root",
+      "genres": [
+        "krautrock"
+      ],
+      "scope": [
+        "shoegaze-dreampop-v1",
+        "indie"
+      ],
+      "country": "DE",
+      "activeFrom": 1968,
+      "signatureSong": "Halleluwah",
+      "classicAlbums": [
+        {
+          "id": "tago-mago",
+          "title": "Tago Mago",
+          "year": 1971,
+          "isClassic": true,
+          "classicReason": "Can fused free-jazz improvisation, tape editing, and a relentless motorik pulse from drummer Jaki Liebezeit into something with no real precedent in rock music. 'Halleluwah' stretches an eighteen-minute groove into a hypnotic, almost trance-like exercise in repetition and variation. VERIFY / rewrite.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music1/v4/ce/7e/be/ce7ebe2d-418a-bbf6-8fd6-054beff0cf18/724596905456.jpg/600x600bb.jpg"
+        }
+      ],
+      "influenceScore": 2,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/f049f77ebc471e7070fd1a817c8669fa/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/a4/b6/c6/a4b6c661-17b4-5e03-f723-e5e867ab073a/mzaf_17886584606019013110.plus.aac.p.m4a",
+      "previewTrack": "Halleluwah",
+      "previewAlbum": "The Singles"
+    },
+    {
+      "id": "neu",
+      "name": "Neu!",
+      "layer": "root",
+      "genres": [
+        "krautrock"
+      ],
+      "scope": [
+        "shoegaze-dreampop-v1",
+        "indie"
+      ],
+      "country": "DE",
+      "activeFrom": 1971,
+      "signatureSong": "Hallogallo",
+      "classicAlbums": [
+        {
+          "id": "neu-st",
+          "title": "Neu!",
+          "year": 1972,
+          "isClassic": true,
+          "classicReason": "Klaus Dinger and Michael Rother distilled krautrock to its rhythmic essence — the steady four-on-the-floor 'motorik' beat Dinger devised became one of the most influential drum patterns in rock history. 'Hallogallo' rides that beat for ten minutes of pure forward motion. VERIFY / rewrite.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/72/31/44/72314446-ff57-09b0-bb05-0ca0c9b487df/634457040847.jpg/600x600bb.jpg"
+        }
+      ],
+      "influenceScore": 3,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/bde893c5180d706211125ac13b884261/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/43/ac/d5/43acd546-890b-fdd0-5d3b-0ebaa0a3299e/mzaf_15932360912249293535.plus.aac.p.m4a",
+      "previewTrack": "Hallogallo",
+      "previewAlbum": "Neu!"
+    },
+    {
       "id": "joy-division",
       "name": "Joy Division",
       "layer": "post-punk",
@@ -185,7 +335,7 @@
         }
       ],
       "bio": "Joy Division formed in Manchester in 1976 out of the wreckage of the Sex Pistols' Free Trade Hall show — the one where, legend has it, so few people attended that half the future bands of British post-punk were among them. What they built out of the debris was something more tormented and more precise than most of their contemporaries: a music of isolation, industrial dread, and Ian Curtis's seizure-prone, prophetic baritone. Their debut Unknown Pleasures (1979), produced by Martin Hannett in an almost adversarial relationship with the band, sounds like it was recorded in a building mid-collapse — bass drum decay stretched out, guitars ghostly and distant, every surface stripped of warmth.\n\nThe tragedy of Curtis's suicide in May 1980, hours before the band's first American tour was due to begin, is both the inescapable fact of Joy Division's legacy and the thing that most risks obscuring their actual achievement. Closer (1980), recorded in the weeks before his death, is an extraordinary record — more austere than Unknown Pleasures, more patient, more final. Without Joy Division, post-punk has no emotional template, shoegaze has no sense of interiority, and New Order has a different future.",
-      "influenceScore": 2,
+      "influenceScore": 7,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/e9ff49cafea704d23dd6bfcd7e31b1db/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/2f/2f/79/2f2f7971-992e-5e2d-026d-03e4ada2851f/mzaf_17434098696813033314.plus.aac.p.m4a",
       "previewTrack": "Love Will Tear Us Apart",
@@ -249,7 +399,7 @@
         }
       ],
       "bio": "Robert Smith has been doing one of the more peculiar things in pop music for nearly five decades: maintaining a recognizable, emotionally coherent artistic persona across a bewildering range of styles, from the angular post-punk of Three Imaginary Boys (1979) to the eight-minute gothic anthems of Disintegration (1989) to the pop gleam of Kiss Me Kiss Me Kiss Me (1987), without any of it feeling discontinuous. The Cure's secret is that Smith's voice — its liquid self-pity, its specific timbre of wounded romanticism — is consistent even when the arrangement around it changes entirely.\n\nPornography (1982) remains the hardest record in the catalog: a wall of distortion and despair that influenced an entire school of shoegaze and gothic doom. The Head on the Door (1985) pivoted to something more approachable without any real loss of intensity. Disintegration found the balance: orchestral, melancholic, genuinely sad, and also full of songs that have played at proms for thirty years. There is no other band quite like them.",
-      "influenceScore": 0,
+      "influenceScore": 2,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/8c9afdb1385ece7ddf2f2c923c70c0bc/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/03/8e/e5/038ee567-32f6-43de-d0bf-c92df39db748/mzaf_3971362557824001.plus.aac.p.m4a",
       "previewTrack": "Pictures of You",
@@ -281,7 +431,7 @@
         }
       ],
       "bio": "Siouxsie Sioux and Steve Severin formed the Banshees as confrontational performance artists who happened to make music — their first \"gig\" at the 100 Club Punk Festival in 1976 was twenty minutes of improvised noise involving a drummer who had never played drums and Siouxsie reciting the Lord's Prayer over a guitar riff. By the time they released The Scream (1978), the noise had acquired structure and their version of post-punk was formally the most unusual of any of their contemporaries: John McKay's guitar was a maze of non-rock tunings and angles; Kenny Morris's drumming arrived at the beat from odd directions.\n\nWhat followed — Join Hands, Kaleidoscope, Juju, A Kiss in the Dreamhouse — constitutes one of the most consistently interesting catalogs in post-punk, each album reorganizing the band's sound around new obsessions. Siouxsie's voice, which could be ice-cold or operatically theatrical, became the template for goth femininity in a way that was actually more complicated than the aesthetic it inspired. The Banshees' guitar textures — those eerie arpeggiated lines on \"Spellbound\" or \"Slowdive\" — run directly through shoegaze and dream-pop in ways that remain under-acknowledged.",
-      "influenceScore": 2,
+      "influenceScore": 9,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/a29dd067cff228423b02ff6bc10c10c4/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/61/c3/3c/61c33c60-b1b1-e807-669b-b5e55ea50865/mzaf_14744696204040940587.plus.aac.p.m4a",
       "previewTrack": "Cities In Dust",
@@ -313,7 +463,7 @@
         }
       ],
       "bio": "The Smiths resolved a tension that seemed irresolvable: Morrissey's literary self-pity and bedroom despair married to Johnny Marr's exultant, sunlit jangle, and somehow the combination produced music that was simultaneously the most melancholic and the most joyful thing British indie had managed. The Smiths (1984), Meat Is Murder (1985), The Queen Is Dead (1986), and Strangeways, Here We Come (1987) — four studio albums in four years, each essentially complete, each finding new things to do with the same vocabulary.\n\nThe specificity of Morrissey's lyrics — Oscar Wilde quotations, provincial disaffection, suburban loneliness — prevented the music from generalizing into mere sadness, and the emotional precision made the despair funny in a way that still disarms people hearing it for the first time. Marr's guitar parts, which sound inevitable, were actually elaborately constructed: overdubbing four or five guitar tracks, using open tunings, playing lines that functioned as both melody and rhythm simultaneously. No band has been more cited as formative by British indie artists across three subsequent generations.",
-      "influenceScore": 2,
+      "influenceScore": 4,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/458e4ee61a7fc57a79ac2b9b20c47bd9/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/20/11/51/20115114-e6d1-bd5b-e958-9562ab58d19b/mzaf_13954921709237051462.plus.aac.p.m4a",
       "previewTrack": "There Is a Light That Never Goes Out",
@@ -345,7 +495,7 @@
         }
       ],
       "bio": "Gang of Four arrived from Leeds in 1977 with a manifesto disguised as a rock band. Their music — dry, percussive, the bass occupying the space where the rhythm guitar usually lived, the guitar itself used as a noise-source rather than a harmony instrument — was explicitly Marxist in its critique of consumer culture and its refusal of pleasure-as-distraction, and yet paradoxically it was one of the most physically compelling sounds of the era. You could dance to it, and the dancing felt politicized.\n\nEntertainment! (1979) is their founding text: songs about alienation that alienate the listener not through difficulty but through the intensity of their physical address. Hugo Burnham's drumming and Dave Allen's bass created a pocket that was simultaneously funky and anxious. The influence on what would become alternative dance — LCD Soundsystem, Interpol, Bloc Party — is immense and, unusually for post-punk, widely acknowledged. When the rest of the genre was making music to stare at the floor to, Gang of Four were making you move.",
-      "influenceScore": 0,
+      "influenceScore": 3,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/13bddaf70b7daa67f4eea73ec189f5c5/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/43/40/b7/4340b723-cdd3-1366-1b6b-58082c531eec/mzaf_378140571503420964.plus.aac.p.m4a",
       "previewTrack": "Damaged Goods",
@@ -384,6 +534,128 @@
       "previewAlbum": "The Boatman's Call (2011 - Remaster)"
     },
     {
+      "id": "wire",
+      "name": "Wire",
+      "layer": "post-punk",
+      "genres": [
+        "post-punk"
+      ],
+      "scope": [
+        "shoegaze-dreampop-v1",
+        "indie"
+      ],
+      "country": "UK",
+      "activeFrom": 1976,
+      "signatureSong": "Three Girl Rhumba",
+      "classicAlbums": [
+        {
+          "id": "pink-flag",
+          "title": "Pink Flag",
+          "year": 1977,
+          "isClassic": true,
+          "classicReason": "Twenty-one songs in thirty-five minutes, most of them stripped to a single riff or idea and cut off before they can repeat themselves — art-school minimalism disguised as a punk record. 'Three Girl Rhumba' later resurfaced, note for note, as Elastica's 'Connection.' VERIFY / rewrite.",
+          "imageUrl": "https://coverartarchive.org/release/80d0a4c9-ce91-4a15-bf15-1bb9913b814c/5851119537-500.jpg"
+        }
+      ],
+      "influenceScore": 3,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/39aec7baaaf2dff652f585528c687062/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/71/b4/34/71b43425-07c0-cbba-eda4-b5591ec02ea6/mzaf_15020022396392261893.plus.aac.p.m4a",
+      "previewTrack": "Three Girl Rhumba",
+      "previewAlbum": "Pink Flag"
+    },
+    {
+      "id": "the-birthday-party",
+      "name": "The Birthday Party",
+      "layer": "post-punk",
+      "genres": [
+        "post-punk",
+        "goth"
+      ],
+      "scope": [
+        "shoegaze-dreampop-v1",
+        "indie"
+      ],
+      "country": "AU",
+      "activeFrom": 1976,
+      "signatureSong": "Release the Bats",
+      "classicAlbums": [
+        {
+          "id": "junkyard",
+          "title": "Junkyard",
+          "year": 1982,
+          "isClassic": true,
+          "classicReason": "A feral, blues-damaged racket built around Rowland S. Howard's serrated slide guitar and a young Nick Cave's unhinged howl, more chaotic and more violent than anything the goth scene it partly spawned would attempt. 'Release the Bats' turned camp horror-movie imagery into a genuine art-punk anthem. VERIFY / rewrite.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/00/9b/13/009b1337-b03c-0d7e-9462-e366dc6665a8/22UMGIM28083.rgb.jpg/600x600bb.jpg"
+        }
+      ],
+      "influenceScore": 3,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/aa9c5a6758698dd50e2cd9860d6d0ca5/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f9/c0/b9/f9c0b9f3-5520-0c37-8b23-d84c6f8210a5/mzaf_4127462043472931760.plus.aac.p.m4a",
+      "previewTrack": "Release The Bats",
+      "previewAlbum": "Live 81-82"
+    },
+    {
+      "id": "fontaines-dc",
+      "name": "Fontaines D.C.",
+      "layer": "post-punk",
+      "genres": [
+        "post-punk",
+        "indie-rock"
+      ],
+      "scope": [
+        "shoegaze-dreampop-v1",
+        "indie"
+      ],
+      "country": "IE",
+      "activeFrom": 2017,
+      "signatureSong": "Boys in the Better Land",
+      "classicAlbums": [
+        {
+          "id": "dogrel",
+          "title": "Dogrel",
+          "year": 2019,
+          "isClassic": true,
+          "classicReason": "Grian Chatten's Dublin-accented sprechgesang rides taut, driving post-punk arrangements steeped in Irish literary tradition as much as Joy Division. 'Boys in the Better Land' turns a taxi-driver's rant into a snarling, propulsive statement. VERIFY / rewrite.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/d4/eb/cc/d4ebcc22-7fa0-1394-1eee-5120724b6d4a/720841216605_Cover.jpg/600x600bb.jpg"
+        }
+      ],
+      "influenceScore": 0,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/16a138afd9ed4678e4ff21e7fcfea648/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview114/v4/dc/c7/64/dcc76421-7759-4c44-7e18-6e4d20f11133/mzaf_5068652723691403061.plus.aac.p.m4a",
+      "previewTrack": "Boys in the Better Land",
+      "previewAlbum": "Dogrel"
+    },
+    {
+      "id": "idles",
+      "name": "IDLES",
+      "layer": "post-punk",
+      "genres": [
+        "post-punk"
+      ],
+      "scope": [
+        "shoegaze-dreampop-v1",
+        "indie"
+      ],
+      "country": "UK",
+      "activeFrom": 2009,
+      "signatureSong": "Danny Nedelko",
+      "classicAlbums": [
+        {
+          "id": "joy-as-act-of-resistance",
+          "title": "Joy as an Act of Resistance",
+          "year": 2018,
+          "isClassic": true,
+          "classicReason": "Joe Talbot's bellowed, confrontational sincerity over Bristol post-punk's blunt-force riffing turned political anger and vulnerability into an anthemic, cathartic live show. 'Danny Nedelko' is a pro-immigration singalong built on a battering-ram riff. VERIFY / rewrite.",
+          "imageUrl": "https://coverartarchive.org/release/0e7b387d-c6e1-4877-9826-4080e3a890eb/31116960228-500.jpg"
+        }
+      ],
+      "influenceScore": 0,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/74c82509e666e5880eadf4e5ef654b7c/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/89/34/d1/8934d10e-20d4-c1d6-6b4b-93ac9427985e/mzaf_2856690852404657968.plus.aac.p.m4a",
+      "previewTrack": "Danny Nedelko",
+      "previewAlbum": "Sounds Like LiBella Vol. 1"
+    },
+    {
       "id": "the-jesus-and-mary-chain",
       "name": "The Jesus and Mary Chain",
       "layer": "shoegaze-dreampop",
@@ -409,7 +681,7 @@
         }
       ],
       "bio": "On the evidence of \"Upside Down\" (1984), their debut single on Creation Records, it seemed possible that the Jesus and Mary Chain were doing a single, spectacular thing: they had placed the Velvet Underground's most abrasive noise behind a Phil Spector girl-group song and turned the volume up until the relationship became something genuinely new. Jim and William Reid played twenty-minute sets with their backs to the audience, generated feedback that caused walkouts and press features in equal measure, and seemed to be proving a point about the concealed violence in pop.\n\nPsychocandy (1985) is where the argument crystallized into art: feedback as texture, as melody, as the medium through which the sweetness of the songwriting is filtered. The album practically invented shoegaze's central aesthetic move — the guitar-noise veil over vulnerable emotion — and did so with a kind of bruised elegance that subsequent practitioners rarely matched. Their later albums — Darklands, Automatic, Honey's Dead — refined the palette in different directions, discovering new balances between aggression and tenderness. Nearly every guitar band of the late eighties owes them something.",
-      "influenceScore": 4,
+      "influenceScore": 5,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/9f256d7c618da0473cf57ca6afe8a6f2/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/7d/11/2d/7d112ded-a7db-261e-fe05-018752f7a883/mzaf_4838722881600777777.plus.aac.p.m4a",
       "previewTrack": "Just Like Honey",
@@ -441,7 +713,7 @@
         }
       ],
       "bio": "Elizabeth Fraser's voice is the most singular instrument in the Cocteau Twins' sonic world, and the Cocteau Twins' sonic world is itself extraordinary: dense, reverb-saturated, Robin Guthrie's guitars processed to the point of abstraction, Simon Raymonde's bass more felt than heard, and over all of it Fraser inventing a language that was not quite any language but carried the emotional weight of all of them. They began in 1979 in Grangemouth, Scotland, as a sparse post-punk unit, and became, over a decade of records, one of the most completely realized sonic environments in British music.\n\nHeaven or Las Vegas (1990) is the record that crystallized everything: production dense enough to be physically immersive, songs that function as emotional weather rather than narrative, Fraser's vocals — on \"Cherry-Coloured Funk,\" on \"Iceblink Luck\" — so intensely characterized that you don't need to understand the words to know exactly what is meant. The Cocteau Twins never explained themselves and resisted categorization at every stage. Their influence runs through every band in the dream-pop and shoegaze canons, less through specific techniques than through their insistence that emotional immersion was a legitimate artistic aim.",
-      "influenceScore": 8,
+      "influenceScore": 9,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/3bdd3587258a3bf73502ff6c65c295ec/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/46/03/91/460391bc-4154-31ed-7a6d-3e8e5c36dd64/mzaf_4069160857181811263.plus.aac.p.m4a",
       "previewTrack": "Cherry-Coloured Funk",
@@ -472,7 +744,7 @@
         }
       ],
       "bio": "This Mortal Coil was Ivo Watts-Russell, the founder of 4AD Records, but it was also, in practice, a rotating collective of nearly every significant artist on 4AD's roster at a given moment — and that institutional context is inseparable from the music. The records — It'll End in Tears (1984), Filigree & Shadow (1986), Blood (1991) — are assemblages: cover versions reanimated as chamber music, original compositions that felt like dreams half-recalled, arrangements that could contain a cello and a drum machine and a soprano in the same bar without incongruity.\n\nThe version of Tim Buckley's \"Song to the Siren\" that opens It'll End in Tears, with Elizabeth Fraser barely touching the notes, became one of the defining recordings of the era — less a cover than a haunting, as if the song had been heard through a wall in someone else's house. This Mortal Coil demonstrated that the 4AD aesthetic — the romantic melancholy, the horror of prettiness, the beauty of dread — was a coherent artistic position rather than a house style.",
-      "influenceScore": 0,
+      "influenceScore": 1,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/c8cf6afa4723623620e666e0286d3b84/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/e6/5c/5d/e65c5d43-55e2-37b1-bf02-214284567b80/mzaf_2907439581542056677.plus.aac.p.m4a",
       "previewTrack": "Song to the Siren",
@@ -597,7 +869,7 @@
         }
       ],
       "bio": "Kevin Shields spent approximately £250,000 making Loveless (1991) and nearly bankrupted Creation Records in the process. The budget was not wasted. Loveless remains the most fully realized statement in shoegaze — a record where the guitars are not so much distorted as liquefied, where the songs underneath the processing are immaculate pop songs that you can just barely hear, where Bilinda Butcher's and Shields's vocals float inside the music rather than sitting above it. It sounds like it was engineered by someone who wanted to make a record you could feel in your body before your ears processed it.\n\nThe route to Loveless was Isn't Anything (1988), which had done something no one had done before — used the tremolo arm not as a flourish but as a texture-making device, creating waves in the guitar sound that were controlled to the point of being compositional. Shields's technique involves a specific application of the whammy bar while the note is sustaining that produces an inhuman shimmer. It's been imitated for three decades and not replicated. The twenty-two-year gap between Loveless and m b v (2013) seemed to prove the point: there was nowhere further to take it.",
-      "influenceScore": 9,
+      "influenceScore": 10,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/3a27ec1beff8cae3a0196f32a6361195/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/13/14/3a/13143aa3-0a42-76c7-a47a-73686553a3a6/mzaf_922542330992832975.plus.aac.p.m4a",
       "previewTrack": "When You Sleep",
@@ -629,7 +901,7 @@
         }
       ],
       "bio": "The press response to Slowdive's emergence in the early nineties was actively hostile in ways that look embarrassing in retrospect. The NME coined the term \"shoegazing\" partly as a dismissal of bands like Slowdive — static, introspective, more interested in texture than showmanship. Just for a Day (1991) was tentative, Souvlaki (1993) was a masterpiece, and then the room had moved on before anyone could notice.\n\nSouvlaki succeeds because it never resolves the tension between the songs and the sound: Rachel Goswell and Neil Halstead's harmonies are warm and human, present in a way that My Bloody Valentine's vocals never quite were, while the guitar treatments wash the whole thing in a layer of distance. Songs like \"When the Sun Hits\" and \"Alison\" have the structural confidence of classics and the emotional temperature of dreams. Slowdive's 2017 reunion album, simply titled Slowdive, was received as a vindication — proof that the hostility had been wrong, not temporary.",
-      "influenceScore": 4,
+      "influenceScore": 5,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/16417737fe6efb615f826ef4902e7faf/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/72/45/03/724503da-39dc-8062-2280-c11ee391c550/mzaf_2817547000883931084.plus.aac.p.m4a",
       "previewTrack": "Alison",
@@ -724,7 +996,7 @@
         }
       ],
       "bio": "Trish Keenan and James Cargill had one of the most specific creative projects in British music: a sustained, formally rigorous investigation of the moment when pop music was becoming self-conscious about being pop music — late sixties and early seventies Britain, library music, the BBC Radiophonic Workshop, the avant-garde getting into mainstream broadcast. Their records sounded like artifacts of that period that had been discovered and carefully restored, except that Keenan's voice was too present, too alive, to be a simulacrum.\n\nHa Ha Sound (2003), Tender Buttons (2005), Berberian Sound Studio (the score for Peter Strickland's film, 2012) — each advanced a project of radical nostalgia, using vintage synthesis and tape manipulation as compositional materials rather than as costume. Keenan's death from H1N1 pneumonia in January 2011 ended the band at the point where it was still becoming. Berberian Sound Studio, released posthumously, remains one of the most unsettling and beautiful things in the electronic-adjacent British catalog.",
-      "influenceScore": 2,
+      "influenceScore": 3,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/db28425eb9769f5aa8c5ec77bb167906/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/b3/9d/f5/b39df589-fc89-8a12-d94a-bf1d2bef29ca/mzaf_8870053508917063565.plus.aac.p.m4a",
       "previewTrack": "Come On Let's Go",
@@ -1009,7 +1281,7 @@
         }
       ],
       "bio": "The Pixies arrived from Boston in 1987 with a template that Kurt Cobain later named explicitly: quiet/loud dynamics, melodic verses detonating into distorted choruses, lyrics that were alternately surrealist and directly violent, and Frank Black's extraordinary guitar-player-disguised-as-frontman at the center. Surfer Rosa (1988), produced by Steve Albini with a characteristic refusal of polish, and Doolittle (1989), their commercial peak, together described a new grammar for guitar rock that the mainstream would eventually catch up to.\n\nThe Pixies' influence on Nirvana is documented; their influence on British shoegaze is less discussed but equally real — the idea that pop melody could coexist with noise, that a song could be beautiful and ugly in the same measure, runs from the Pixies through My Bloody Valentine and beyond. Black Francis's lyrics, which suggested elaborate mythologies without providing them, and Kim Deal's bass — half-melodic, half-counterpoint — gave the band a tension that no subsequent reunion has quite reproduced.",
-      "influenceScore": 3,
+      "influenceScore": 6,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/521844a11b4e92f9ace7a6374c68ae7e/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/f2/94/56/f2945690-8739-02b1-86da-034f98db1c8b/mzaf_13477163061266397683.plus.aac.p.m4a",
       "previewTrack": "Where Is My Mind?",
@@ -1041,7 +1313,7 @@
         }
       ],
       "bio": "Sonic Youth are the permanent avant-garde of American rock: a band that spent four decades maintaining an experimental program — altered tunings, noise elements, free improvisation — inside the form of the rock band, never entirely surrendering the formal ambitions even when they signed to a major label and tried to make accessible records. Daydream Nation (1988), their double LP, is the canonical statement: nine tracks of alternately lyrical and confrontational guitar music, moving between beauty and something that is actively the opposite of beauty with complete fluency.\n\nThurston Moore and Lee Ranaldo had, between them, worked out an approach to the guitar — extended techniques, retuned to the point of non-correspondence with standard notation, played with drumsticks and other non-plectrum objects — that produced sounds with no precedent in rock music. Kim Gordon's bass and vocal were a different kind of presence: more confrontational, more politically intentional, the source of some of the band's most important statements. Their influence is not just on noise-rock and underground guitar music; it runs through the entire alternative ecosystem.",
-      "influenceScore": 5,
+      "influenceScore": 10,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/4cd0f903d64ef1f344d58f12f229fee2/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/e4/e8/3a/e4e83a53-027f-2eef-0d3f-e9558fd2867d/mzaf_11611864741895325008.plus.aac.p.m4a",
       "previewTrack": "Teen Age Riot",
@@ -1073,7 +1345,7 @@
         }
       ],
       "bio": "J Mascis has one of the most distinctive sensibilities in rock: melodic instincts that are genuinely affecting — the kind of simple, direct hooks that seem to have been waiting to exist — delivered through walls of guitar so loud that they constitute their own genre. You're Living All Over Me (1987) and Bug (1988) are two of the most fully realized records in American independent music, built on the productive gap between Mascis's hushed, exhausted vocal and the physical assault of the guitars behind it.\n\nMascis's guitar solos, which go on for as long as they need to, have been called self-indulgent by critics who have apparently never asked whether self-indulgence might be the point. His relationship with Lou Barlow — bassist on the early records, fired in 1989, eventually reconciled — generated as much heat and complexity as the music. The reunion lineup, which made Farm (2009) and Give a Glimpse of What Yer Not (2016), found both the strengths and the limits of what the Dinosaur Jr. model can be.",
-      "influenceScore": 0,
+      "influenceScore": 2,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/1708f50e7786fa6c681313fb35bb0a8d/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/6b/b8/62/6bb8625f-ce3c-6469-377f-c9633dd83b2f/mzaf_15196045924922004.plus.aac.p.m4a",
       "previewTrack": "Little Fury Things",
@@ -1136,7 +1408,7 @@
         }
       ],
       "bio": "The Replacements were incompetent in ways that were inseparable from their excellence. Paul Westerberg wrote songs of devastating emotional honesty — \"Here Comes a Regular,\" \"Unsatisfied,\" \"Bastards of Young\" — and delivered them in performances that ranged from transcendent to deliberately sabotaged, as if the band were afraid of their own sincerity and destruction was the only available defense. Bob Stinson's guitar, sloppy and luminous, matched the energy.\n\nLet It Be (1984) and Tim (1985) are the canonical works: American rock that sounds like it was made by people who had heard nothing, stolen nothing, and were making it up from the feelings directly available to them. The tension between Westerberg's perfectionist instincts and the band's self-destructive performance practice is the thing that makes the records live rather than merely document. Every subsequent American indie band that has made a virtue of imperfection, of showing the effort, owes something to Westerberg in particular.",
-      "influenceScore": 0,
+      "influenceScore": 3,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/1dd375083d22250cdb9988d5146ef8f0/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/b3/72/0a/b3720a7e-4412-6ea7-e6f5-76f356533eeb/mzaf_14325701908279843393.plus.aac.p.m4a",
       "previewTrack": "Bastards of Young",
@@ -1168,8 +1440,8 @@
         }
       ],
       "bio": "Pavement were deeply committed to sounding as if they were not trying and deeply skilled at executing that commitment. Stephen Malkmus's lyrics — circling around ideas, approaching conclusions and abandoning them, making puns that were also genuine observations — gave the songs an intelligence that the lo-fi production and disengaged vocal delivery deliberately obscured. This was a form of wit that had few predecessors in rock music.\n\nSlanted and Enchanted (1992) was one of the most influential records of the nineties, not because of what it did but because of its attitude toward doing: the deliberate roughness of the production, the way the songs seemed to trust the listener to understand them without being spelled out. Crooked Rain, Crooked Rain (1994) refined the approach and added a more explicitly melodic layer; \"Cut Your Hair\" is genuinely a pop song, played straight. Wowee Zowee (1995), which scattered in more directions, is the record their most serious admirers prefer.",
-      "influenceScore": 0,
-      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/8d970ce3f2abbcf4e9c7e4e8084f969f/250x250-000000-80-0-0.jpg",
+      "influenceScore": 4,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/f255cd3c7de80c8dffd41cc0300de69c/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/2a/78/38/2a783899-2d66-fc31-96d0-a63d3bef40bc/mzaf_17726457449484351283.plus.aac.p.m4a",
       "previewTrack": "Range Life",
       "previewAlbum": "Steady - EP"
@@ -1200,7 +1472,7 @@
         }
       ],
       "bio": "Ira Kaplan and Georgia Hubley have been making records together since 1984, and the longevity is itself an argument: very few bands maintain the quality, curiosity, and formal variety that Yo La Tengo has managed across four decades. Their catalog moves between noise rock, gentle country-inflected folk, electronic experimentation, and long droning improvisation — sometimes within the same record, as on I Can Hear the Heart Beating as One (1997), which is as good as any album released in its decade.\n\nThe Hoboken, New Jersey basement-to-world-stage trajectory is the indie music origin story made literal. Kaplan's guitar playing — which can be an eleven-minute noise piece or a two-minute jangly pop song, depending on the need — and Hubley's drumming, understated and precise, give the band a range that few bands manage without it sounding like a collection of projects. Their cover work, which includes versions of songs that surpass the originals, demonstrates a listening quality as important as any creative instinct.",
-      "influenceScore": 0,
+      "influenceScore": 1,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/54cda0670ad2fd37afe68362b20c3263/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/af/1c/6d/af1c6d98-4856-7a10-9e30-d0266a1f919d/mzaf_7998613698970017223.plus.aac.p.m4a",
       "previewTrack": "Autumn Sweater",
@@ -1232,7 +1504,7 @@
         }
       ],
       "bio": "R.E.M.'s 1983 debut Murmur arrived sounding like it had been made somewhere else: Athens, Georgia, which was itself somewhere else — a college town, southern but not southern-rock, full of people with eccentric record collections. Michael Stipe's vocals were buried in the mix and treated more as texture than as words; Peter Buck's guitar, jangly and melodic, drew on the Byrds and Big Star in equal measure; Mike Mills's bass was almost choral. The whole thing sounded like indie music before indie music was a genre.\n\nThe trajectory from Murmur to Automatic for the People (1992) is one of the great arcs in American rock: from obscurity to ubiquity without the essential qualities changing, only becoming more assured. Automatic for the People achieved the rare thing of being both critically acclaimed and genuinely popular — \"Everybody Hurts\" is a song that people use in real crises, which is not something you can manufacture. The post-Berry records were less essential, but the first twelve albums contain multitudes.",
-      "influenceScore": 2,
+      "influenceScore": 4,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/3a7f353f78c9a2cb48c50ea554d877d7/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/af/be/f5/afbef592-8f00-fe28-8ab4-5c070827b2f8/mzaf_4959761764791628207.plus.aac.p.m4a",
       "previewTrack": "Losing My Religion",
@@ -1264,7 +1536,7 @@
         }
       ],
       "bio": "Radiohead's career can be divided into the years before OK Computer (1997) and the years after, but that division is misleading. Pablo Honey and The Bends were the records of a band finding out what they were by elimination — finding that grunge would not do, that Britpop would not do, that the guitar band was a container that kept spilling. OK Computer's arrival was the moment the container broke: songs that addressed late-capitalist anxiety and alienation without the vocabulary of protest music, production that made guitar rock sound like it had no precedent.\n\nKid A (2000) is the riskiest record in mainstream rock: Thom Yorke had apparently decided that guitar music was finished and that electronic music was the future, and the record — all digital textures, Ondes Martenot, distorted voices — announced that decision without apology. The subsequent catalog has maintained the ambition without replicating the shock. Their influence on any band that operates in the space between art-rock ambition and pop accessibility is total.",
-      "influenceScore": 0,
+      "influenceScore": 1,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/96b688020014a21cb80a0268b90287f5/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/70/22/d6/7022d661-b3e0-9c64-5e18-dd6edaaa53d2/mzaf_12758650973786995732.plus.aac.p.m4a",
       "previewTrack": "Paranoid Android",
@@ -1296,7 +1568,7 @@
         }
       ],
       "bio": "The Stone Roses arrived in Manchester in 1989 with an album that felt like a manifesto for something that didn't yet have a name. The combination — John Squire's fluid guitar, Mani's melodic bass, Reni's flowing drumming, and Ian Brown's slightly flat vocals, which somehow made the flatness part of the point — created a sound that was simultaneously indebted to late sixties psychedelia and completely present tense. The Stone Roses (1989) was an independent album that the mainstream received as if it had been sent from the future.\n\n\"I Wanna Be Adored,\" \"She Bangs the Drums,\" \"I Am the Resurrection\" — each track demonstrated the band's ability to make something that felt both intimate and enormous without raising the volume or accelerating the tempo. The Madchester moment that followed — baggy, ecstasy, the Haçienda — gave them a scene that they slightly transcended. Second Coming (1994), five years in the making and massively anticipated, landed with the sound of expectations being adjusted. The first album remains.",
-      "influenceScore": 0,
+      "influenceScore": 1,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/f6023a3fa00893b8567f6e840e6b1a4e/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/3e/f0/ba/3ef0babf-0941-7ea1-c6f8-802bd3341990/mzaf_2530605196338347629.plus.aac.p.m4a",
       "previewTrack": "I Wanna Be Adored",
@@ -1328,7 +1600,7 @@
         }
       ],
       "bio": "Interpol were, in 2002, transparently influenced by Joy Division and the post-punk revival that the UK was then pursuing — and they made something of the transparency rather than hiding it. Paul Banks's baritone was not trying to be Ian Curtis's baritone, exactly, but it was clearly in the same tradition: controlled, slightly formal, delivering lyrics that were elliptical rather than transparent. Daniel Kessler's guitar parts had a mechanical precision that recalled the funk-inspired post-punk of Gang of Four as much as Joy Division's gloom.\n\nTurn on the Bright Lights (2002) is one of the best debut albums in the post-punk revival: every song a well-formed thing, the production by Peter Katis creating a world that was dark without being oppressive. Antics (2004) maintained the quality. The subsequent albums found the band working within their established idiom with decreasing urgency, which is the occupational hazard of a very specific sound. Their first two albums remain vivid in a way that most of the revival does not.",
-      "influenceScore": 0,
+      "influenceScore": 1,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/ca11e5724bfd7be68c0db67ee474bc9f/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/3a/34/2c/3a342c4c-ec92-b544-f7f0-c99e88e11e85/mzaf_3954536090126478201.plus.aac.p.m4a",
       "previewTrack": "Obstacle 1",
@@ -1392,7 +1664,7 @@
         }
       ],
       "bio": "Karen O is one of the more charismatic frontpeople in rock — not in the traditional sense of stage presence, which is its own genre, but in the sense of being impossible to look away from when she's performing. The Yeah Yeah Yeahs' early shows, which were genuinely confrontational, established an energy that Fever to Tell (2003) captured without diminishing. Nick Zinner's guitar — all riff, all attack, very little sustained note — gave the band its structural urgency; Brian Chase's drumming was its foundation.\n\nThe subsequent trajectory was ambitious: Show Your Bones (2006) added more formal structures; It's Blitz! (2009) took a hard turn into synth-pop, to largely positive effect. The band's willingness to try different things is admirable; the consequence is that the catalog is uneven in a way that the early records were not. Fever to Tell remains the statement: an album that sounds like it was made under pressure, by people who needed to make it.",
-      "influenceScore": 0,
+      "influenceScore": 2,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/474165e8b02acf8fd7d2aa19a08d7a6b/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/fa/6d/b6/fa6db6f5-328d-418d-d65f-e91477b40160/mzaf_13143394283385603955.plus.aac.p.m4a",
       "previewTrack": "Maps",
@@ -1420,7 +1692,7 @@
           "year": 2025,
           "isClassic": true,
           "classicReason": "Produced by Kenny Beats — known primarily for hip-hop, which is directly audible in the emphasis on drums and the weight of the low-end — Getting Killed builds its post-punk and art-rock framework over a rhythmic foundation more indebted to funk than to Ian Curtis's Manchester. 'Trinidad,' the opener, announces the record's ambitions immediately: a 13/8 time signature, Cameron Winter's vocals pitched between crooner and scream, guitars cutting in and out like a malfunctioning circuit. The New Yorker and Stereogum both named it their album of the year for 2025.",
-          "imageUrl": "https://coverartarchive.org/release/ec6ae29f-a4cd-4108-a470-1c0aea0698bf/43139071735-500.jpg"
+          "imageUrl": "https://coverartarchive.org/release/0bf006ce-45a5-4963-89cb-cd285fd768bb/42446231661-500.jpg"
         }
       ],
       "bio": "Geese are a Brooklyn band who formed when their members were still in high school, and Projector (2021) — their debut, released when they were mostly eighteen or nineteen — is either precocious in a good way or precocious in the slightly uncomfortable way, depending on how you respond to records that seem to have read more than they've lived. The art-rock ambitions are real: song structures that change time signatures and register without warning, guitar textures that move between delicacy and noise, a general willingness to sprawl.\n\nCameron Winter's lyrics, dense with references and affected in ways that are sometimes productive, give the record an identity that distinguishes it from mere proficiency. 3D Country (2023) found them expanding further, adding pedal steel and a broader Americana palette that suggested the sound was still in formation. Geese are a band worth watching: whether they make good on the early promise depends partly on what they do with the obvious influences they're still carrying.",
@@ -1429,6 +1701,190 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a2/90/67/a290675e-246b-6a4f-978b-76376dbca022/mzaf_17012130112191688969.plus.aac.p.m4a",
       "previewTrack": "Taxes",
       "previewAlbum": "Getting Killed"
+    },
+    {
+      "id": "built-to-spill",
+      "name": "Built to Spill",
+      "layer": "indie-alt",
+      "genres": [
+        "indie-rock",
+        "alt-rock"
+      ],
+      "scope": [
+        "shoegaze-dreampop-v1",
+        "indie"
+      ],
+      "country": "US",
+      "activeFrom": 1992,
+      "signatureSong": "Car",
+      "classicAlbums": [
+        {
+          "id": "perfect-from-now-on",
+          "title": "Perfect from Now On",
+          "year": 1997,
+          "isClassic": true,
+          "classicReason": "Doug Martsch stretched indie-rock song structures into long, guitar-forward suites, layering multiple lead lines over patient, unhurried arrangements. 'Car' rides a single guitar figure for six minutes without ever feeling static. VERIFY / rewrite.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/48/bb/21/48bb2111-970c-0115-134c-e7c98f2b2499/mzi.kxoduptv.jpg/600x600bb.jpg"
+        }
+      ],
+      "influenceScore": 1,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/28f673c966851c245f7463e2630aee89/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/6e/42/39/6e423980-907a-8933-d8e5-ee9af435ae2f/mzaf_17602018711491888675.plus.aac.p.m4a",
+      "previewTrack": "Car",
+      "previewAlbum": "There's Nothing Wrong with Love"
+    },
+    {
+      "id": "modest-mouse",
+      "name": "Modest Mouse",
+      "layer": "indie-alt",
+      "genres": [
+        "indie-rock",
+        "alt-rock"
+      ],
+      "scope": [
+        "shoegaze-dreampop-v1",
+        "indie"
+      ],
+      "country": "US",
+      "activeFrom": 1992,
+      "signatureSong": "Float On",
+      "classicAlbums": [
+        {
+          "id": "good-news",
+          "title": "Good News for People Who Love Bad News",
+          "year": 2004,
+          "isClassic": true,
+          "classicReason": "Isaac Brock's jittery, philosophical yelp found its widest audience on a record that balanced the band's angular, off-kilter tendencies with genuine pop hooks. 'Float On' turned free-floating anxiety into an unlikely singalong. VERIFY / rewrite.",
+          "imageUrl": "https://coverartarchive.org/release/6a3f44ed-51d8-4108-b117-ccb80552c2f0/1426304533-500.jpg"
+        }
+      ],
+      "influenceScore": 0,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/38bfaafbc55e3e691b2830c47df29aff/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/56/9e/95/569e9580-cf9f-33b5-2f28-f0c92e792262/mzaf_6868662654903542220.plus.aac.p.m4a",
+      "previewTrack": "Float On",
+      "previewAlbum": "Float On - Single"
+    },
+    {
+      "id": "blur",
+      "name": "Blur",
+      "layer": "indie-alt",
+      "genres": [
+        "alt-rock",
+        "indie-rock"
+      ],
+      "scope": [
+        "shoegaze-dreampop-v1",
+        "indie"
+      ],
+      "country": "UK",
+      "activeFrom": 1988,
+      "signatureSong": "Girls & Boys",
+      "classicAlbums": [
+        {
+          "id": "parklife",
+          "title": "Parklife",
+          "year": 1994,
+          "isClassic": true,
+          "classicReason": "Damon Albarn's sharply observed vignettes of English life, set to music that ranged from music-hall pastiche to synth-driven dance-pop, made Blur the defining band of the Britpop mainstream. 'Girls & Boys' turned package-holiday hedonism into a synth-disco hit. VERIFY / rewrite.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/8a/71/66/8a71664b-3baa-537b-e008-b32d86da27bc/5099997227755.jpg/600x600bb.jpg"
+        }
+      ],
+      "influenceScore": 1,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/e1fe5cc77138cba2bff3a26efeb8f5c6/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/20/98/b7/2098b7de-b86a-5a54-f04c-ae4b74acc089/mzaf_6096300583764075414.plus.aac.p.m4a",
+      "previewTrack": "Girls & Boys",
+      "previewAlbum": "Grill Party"
+    },
+    {
+      "id": "stereolab",
+      "name": "Stereolab",
+      "layer": "indie-alt",
+      "genres": [
+        "art-rock",
+        "indie-rock"
+      ],
+      "scope": [
+        "shoegaze-dreampop-v1",
+        "indie"
+      ],
+      "country": "UK",
+      "activeFrom": 1990,
+      "signatureSong": "Metronomic Underground",
+      "classicAlbums": [
+        {
+          "id": "emperor-tomato-ketchup",
+          "title": "Emperor Tomato Ketchup",
+          "year": 1996,
+          "isClassic": true,
+          "classicReason": "Laetitia Sadier's cool, Marxist-inflected vocals rode motorik krautrock rhythms and analog synth drones, filtered through a Great Society jingle's worth of easy-listening pop. 'Metronomic Underground' loops a single bassline into a hypnotic, nearly six-minute groove. VERIFY / rewrite.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ea/05/73/ea057313-4657-41ee-b4da-9d5c30b9bfef/5060384616094.jpg/600x600bb.jpg"
+        }
+      ],
+      "influenceScore": 2,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/f33f98f824d243a67e82b9fece7e6fca/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/6d/39/95/6d399510-16e4-90d3-cf35-476a7b683bb7/mzaf_8835325408358612125.plus.aac.p.m4a",
+      "previewTrack": "Metronomic Underground",
+      "previewAlbum": "Emperor Tomato Ketchup"
+    },
+    {
+      "id": "fugazi",
+      "name": "Fugazi",
+      "layer": "indie-alt",
+      "genres": [
+        "post-hardcore"
+      ],
+      "scope": [
+        "shoegaze-dreampop-v1",
+        "indie"
+      ],
+      "country": "US",
+      "activeFrom": 1986,
+      "signatureSong": "Waiting Room",
+      "classicAlbums": [
+        {
+          "id": "13-songs",
+          "title": "13 Songs",
+          "year": 1989,
+          "isClassic": true,
+          "classicReason": "Compiling Fugazi's first two EPs, this collection distilled Ian MacKaye and Guy Picciotto's dual-vocal, dub-inflected post-hardcore into a manifesto for the genre's next decade. 'Waiting Room' built an entire song from a single skeletal bassline before the guitars detonate. VERIFY / rewrite.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/57/63/ce/5763ce8a-c306-dea5-0dd3-39293b4e94a4/dj.exghwciw.jpg/600x600bb.jpg"
+        }
+      ],
+      "influenceScore": 0,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/5d22fbdb41cf57e6958e0a0af415512b/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/21/0a/ab/210aab71-f5db-d274-da95-39dfa175b42f/mzaf_6491175075837001289.plus.aac.p.m4a",
+      "previewTrack": "Waiting Room",
+      "previewAlbum": "13 Songs"
+    },
+    {
+      "id": "minor-threat",
+      "name": "Minor Threat",
+      "layer": "indie-alt",
+      "genres": [
+        "post-hardcore"
+      ],
+      "scope": [
+        "shoegaze-dreampop-v1",
+        "indie"
+      ],
+      "country": "US",
+      "activeFrom": 1980,
+      "signatureSong": "Straight Edge",
+      "classicAlbums": [
+        {
+          "id": "minor-threat-ep",
+          "title": "Minor Threat",
+          "year": 1981,
+          "isClassic": true,
+          "classicReason": "Ian MacKaye's brief, blunt hardcore songs set the template for the entire DC scene and, inadvertently, for a whole straight-edge subculture. 'Straight Edge' runs forty-six seconds and coined the movement's name in the process. VERIFY / rewrite.",
+          "imageUrl": "https://coverartarchive.org/release/724eee1e-69b9-42c7-a10e-ed9f1fc2aa95/6638318334-500.jpg"
+        }
+      ],
+      "influenceScore": 2,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/396a1f39921afafb6e51e294dea45b29/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/4f/e5/67/4fe567aa-c4aa-1740-25e2-5d8cbffdd86c/mzaf_11358505943177981545.plus.aac.p.m4a",
+      "previewTrack": "Straight Edge",
+      "previewAlbum": "First Two Seven Inches"
     },
     {
       "id": "david-bowie",
@@ -1455,7 +1911,7 @@
         }
       ],
       "bio": "David Bowie is many artists — the glam-rock alien, the blue-eyed soul singer, the Berlin experimentalist, the eighties pop icon, the nineties drum-and-bass enthusiast — and the problem with writing about him is deciding which one to begin with. The one who matters most to this graph is the Bowie of 1976–1979: the Berlin trilogy made with Brian Eno, Low, Heroes, and Lodger, records that dismantled the song's structure and reassembled it as something else. Side two of Low in particular — instrumentals named like emotional states, each one a complete thing — is one of the most radical moves a mainstream pop artist had made to that point.\n\nBut the through-line of influence is longer than the Berlin period. Ziggy Stardust (1972) defined what it meant to construct a rock persona as a formal act rather than an expression of authentic self — which is a definition with consequences for every post-punk act that followed. The production language Bowie developed with Tony Visconti, and the aesthetic logic he developed with Eno, became the grammar of alternative music in the eighties. Joy Division, the Cure, Siouxsie and the Banshees all cite him; he appears in this graph as the outside influence that explains many of the inside connections.",
-      "influenceScore": 4,
+      "influenceScore": 9,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/8301a6a09a24f4bb35950c59717defa0/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/4b/a8/39/4ba83913-d7a9-0cff-b287-78c599c0e43f/mzaf_2879061655195715459.plus.aac.p.m4a",
       "previewTrack": "Heroes",
@@ -1532,6 +1988,57 @@
       "id": "indie-rock",
       "name": "Indie rock",
       "parent": "indie"
+    },
+    {
+      "id": "krautrock",
+      "name": "Krautrock",
+      "parent": "indie"
+    },
+    {
+      "id": "post-hardcore",
+      "name": "Post-hardcore",
+      "parent": "post-punk"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "american-underground",
+      "name": "American Underground",
+      "era": "1980–1991",
+      "place": "US",
+      "deck": "Between 1980 and 1991, a scattered network of American bands built its own infrastructure — vans, college radio, all-ages clubs, and independent labels — because the mainstream music industry offered nothing for music this loud, this strange, or this indifferent to commercial polish. It became known simply as the underground, and it rewired what American rock could sound like.",
+      "sections": [
+        {
+          "heading": "The Circuit",
+          "paragraphs": [
+            "There was no single scene so much as a circuit: a loose, self-organized touring network stitched together by word of mouth, zines, and college radio stations willing to play what commercial rock stations would not. Bands slept on floors, split gas money, and booked their own shows in VFW halls and basements because no promoter would touch them.",
+            "Labels like SST, Twin/Tone, and Homestead ran the business side of this economy — pressing records on shoestring budgets, trading tour dates and studio time, and treating national exposure as a byproduct of persistence rather than a marketing plan. It was DIY not as an aesthetic choice but as the only available option."
+          ]
+        },
+        {
+          "heading": "The Bands",
+          "paragraphs": [
+            "The bands that emerged from this network shared almost nothing sonically — the sludgy melodicism of Hüsker Dü, the amp-worshipping sprawl of Dinosaur Jr., Sonic Youth's detuned art-noise, the ragged tunefulness of The Replacements, R.E.M.'s jangling mystery, Pixies' loud-quiet-loud tension, Pavement's shambling irony — but they shared the circuit, the labels, and a refusal to sound like anything on the radio.",
+            "Below is the community that built it — the artists in Starweave's graph who came out of this world."
+          ]
+        },
+        {
+          "heading": "The Breakthrough",
+          "paragraphs": [
+            "By the end of the decade, the underground's influence had outgrown its infrastructure. Nirvana — who toured the same clubs and released their debut on the same independent label system — carried the sound to the top of the charts in 1991, and major labels scrambled to sign anything that resembled it.",
+            "The circuit didn't survive its own success intact, but its DNA did: the idea that a band could build an audience without radio, without a major label, and without changing what it sounded like to get there became the founding myth of American indie rock for the next three decades."
+          ]
+        }
+      ],
+      "memberIds": [
+        "husker-du",
+        "dinosaur-jr",
+        "sonic-youth",
+        "the-replacements",
+        "rem",
+        "pixies",
+        "pavement"
+      ]
     }
   ],
   "edges": [
@@ -1896,14 +2403,6 @@
       "citation": null
     },
     {
-      "source": "fishmans",
-      "target": "talking-heads",
-      "type": "influence",
-      "status": "ai-suggested",
-      "confidence": 0.4,
-      "citation": null
-    },
-    {
       "source": "sweet-trip",
       "target": "my-bloody-valentine",
       "type": "influence",
@@ -2214,47 +2713,742 @@
       "status": "verified",
       "confidence": 0.6,
       "citation": null
-    }
-  ],
-  "scenes": [
+    },
     {
-      "id": "american-underground",
-      "name": "American Underground",
-      "era": "1980–1991",
-      "place": "US",
-      "deck": "Between 1980 and 1991, a scattered network of American bands built its own infrastructure — vans, college radio, all-ages clubs, and independent labels — because the mainstream music industry offered nothing for music this loud, this strange, or this indifferent to commercial polish. It became known simply as the underground, and it rewired what American rock could sound like.",
-      "sections": [
-        {
-          "heading": "The Circuit",
-          "paragraphs": [
-            "There was no single scene so much as a circuit: a loose, self-organized touring network stitched together by word of mouth, zines, and college radio stations willing to play what commercial rock stations would not. Bands slept on floors, split gas money, and booked their own shows in VFW halls and basements because no promoter would touch them.",
-            "Labels like SST, Twin/Tone, and Homestead ran the business side of this economy — pressing records on shoestring budgets, trading tour dates and studio time, and treating national exposure as a byproduct of persistence rather than a marketing plan. It was DIY not as an aesthetic choice but as the only available option."
-          ]
-        },
-        {
-          "heading": "The Bands",
-          "paragraphs": [
-            "The bands that emerged from this network shared almost nothing sonically — the sludgy melodicism of Hüsker Dü, the amp-worshipping sprawl of Dinosaur Jr., Sonic Youth's detuned art-noise, the ragged tunefulness of The Replacements, R.E.M.'s jangling mystery, Pixies' loud-quiet-loud tension, Pavement's shambling irony — but they shared the circuit, the labels, and a refusal to sound like anything on the radio.",
-            "Below is the community that built it — the artists in Starweave's graph who came out of this world."
-          ]
-        },
-        {
-          "heading": "The Breakthrough",
-          "paragraphs": [
-            "By the end of the decade, the underground's influence had outgrown its infrastructure. Nirvana — who toured the same clubs and released their debut on the same independent label system — carried the sound to the top of the charts in 1991, and major labels scrambled to sign anything that resembled it.",
-            "The circuit didn't survive its own success intact, but its DNA did: the idea that a band could build an audience without radio, without a major label, and without changing what it sounded like to get there became the founding myth of American indie rock for the next three decades."
-          ]
-        }
-      ],
-      "memberIds": [
-        "husker-du",
-        "dinosaur-jr",
-        "sonic-youth",
-        "the-replacements",
-        "rem",
-        "pixies",
-        "pavement"
-      ]
+      "source": "joy-division",
+      "target": "kraftwerk",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.75,
+      "citation": null
+    },
+    {
+      "source": "new-order",
+      "target": "kraftwerk",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.85,
+      "citation": null
+    },
+    {
+      "source": "new-order",
+      "target": "the-stooges",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "siouxsie-and-the-banshees",
+      "target": "kraftwerk",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "the-cure",
+      "target": "wire",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.7,
+      "citation": null
+    },
+    {
+      "source": "sonic-youth",
+      "target": "wire",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.65,
+      "citation": null
+    },
+    {
+      "source": "fugazi",
+      "target": "wire",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.7,
+      "citation": null
+    },
+    {
+      "source": "cocteau-twins",
+      "target": "the-birthday-party",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "dinosaur-jr",
+      "target": "the-birthday-party",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.5,
+      "citation": null
+    },
+    {
+      "source": "yeah-yeah-yeahs",
+      "target": "the-birthday-party",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "the-jesus-and-mary-chain",
+      "target": "the-stooges",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.8,
+      "citation": null
+    },
+    {
+      "source": "the-jesus-and-mary-chain",
+      "target": "new-york-dolls",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "sonic-youth",
+      "target": "the-stooges",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.7,
+      "citation": null
+    },
+    {
+      "source": "siouxsie-and-the-banshees",
+      "target": "the-stooges",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "the-smiths",
+      "target": "the-stooges",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.5,
+      "citation": null
+    },
+    {
+      "source": "the-smiths",
+      "target": "new-york-dolls",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "pixies",
+      "target": "the-stooges",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "david-bowie",
+      "target": "the-stooges",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "television",
+      "target": "new-york-dolls",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.65,
+      "citation": null
+    },
+    {
+      "source": "the-replacements",
+      "target": "new-york-dolls",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.65,
+      "citation": null
+    },
+    {
+      "source": "new-order",
+      "target": "david-bowie",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.7,
+      "citation": null
+    },
+    {
+      "source": "the-cure",
+      "target": "siouxsie-and-the-banshees",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.75,
+      "citation": null
+    },
+    {
+      "source": "the-cure",
+      "target": "joy-division",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.7,
+      "citation": null
+    },
+    {
+      "source": "nick-cave-and-the-bad-seeds",
+      "target": "david-bowie",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "the-jesus-and-mary-chain",
+      "target": "siouxsie-and-the-banshees",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "cocteau-twins",
+      "target": "joy-division",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.65,
+      "citation": null
+    },
+    {
+      "source": "julee-cruise",
+      "target": "this-mortal-coil",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "my-bloody-valentine",
+      "target": "siouxsie-and-the-banshees",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "my-bloody-valentine",
+      "target": "the-cure",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "my-bloody-valentine",
+      "target": "joy-division",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.5,
+      "citation": null
+    },
+    {
+      "source": "slowdive",
+      "target": "the-jesus-and-mary-chain",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.75,
+      "citation": null
+    },
+    {
+      "source": "slowdive",
+      "target": "the-cure",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.65,
+      "citation": null
+    },
+    {
+      "source": "slowdive",
+      "target": "siouxsie-and-the-banshees",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "slowdive",
+      "target": "david-bowie",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.5,
+      "citation": null
+    },
+    {
+      "source": "ride",
+      "target": "sonic-youth",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "ride",
+      "target": "the-stone-roses",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "ride",
+      "target": "dinosaur-jr",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "ride",
+      "target": "pixies",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "ride",
+      "target": "velvet-underground",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "lush",
+      "target": "siouxsie-and-the-banshees",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "broadcast",
+      "target": "stereolab",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.7,
+      "citation": null
+    },
+    {
+      "source": "deerhunter",
+      "target": "stereolab",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "alvvays",
+      "target": "the-smiths",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.75,
+      "citation": null
+    },
+    {
+      "source": "alvvays",
+      "target": "cocteau-twins",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.7,
+      "citation": null
+    },
+    {
+      "source": "alvvays",
+      "target": "pavement",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.65,
+      "citation": null
+    },
+    {
+      "source": "alvvays",
+      "target": "the-replacements",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "alvvays",
+      "target": "yo-la-tengo",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "alvvays",
+      "target": "rem",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "wolf-alice",
+      "target": "yeah-yeah-yeahs",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "wolf-alice",
+      "target": "siouxsie-and-the-banshees",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "wolf-alice",
+      "target": "blur",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "sweet-trip",
+      "target": "slowdive",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.7,
+      "citation": null
+    },
+    {
+      "source": "sweet-trip",
+      "target": "sonic-youth",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "sweet-trip",
+      "target": "broadcast",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "pixies",
+      "target": "sonic-youth",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "pixies",
+      "target": "rem",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "pixies",
+      "target": "david-bowie",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "pixies",
+      "target": "gang-of-four",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "sonic-youth",
+      "target": "minor-threat",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.5,
+      "citation": null
+    },
+    {
+      "source": "dinosaur-jr",
+      "target": "the-replacements",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "pavement",
+      "target": "the-replacements",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.65,
+      "citation": null
+    },
+    {
+      "source": "yo-la-tengo",
+      "target": "my-bloody-valentine",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "interpol",
+      "target": "siouxsie-and-the-banshees",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "interpol",
+      "target": "the-smiths",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "geese",
+      "target": "velvet-underground",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "geese",
+      "target": "yeah-yeah-yeahs",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "geese",
+      "target": "radiohead",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "geese",
+      "target": "interpol",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "built-to-spill",
+      "target": "dinosaur-jr",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.7,
+      "citation": null
+    },
+    {
+      "source": "built-to-spill",
+      "target": "pavement",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.65,
+      "citation": null
+    },
+    {
+      "source": "modest-mouse",
+      "target": "pavement",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.7,
+      "citation": null
+    },
+    {
+      "source": "modest-mouse",
+      "target": "pixies",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.65,
+      "citation": null
+    },
+    {
+      "source": "modest-mouse",
+      "target": "talking-heads",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "modest-mouse",
+      "target": "built-to-spill",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.65,
+      "citation": null
+    },
+    {
+      "source": "blur",
+      "target": "david-bowie",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "blur",
+      "target": "sonic-youth",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "blur",
+      "target": "pavement",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "stereolab",
+      "target": "neu",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.75,
+      "citation": null
+    },
+    {
+      "source": "stereolab",
+      "target": "can",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.75,
+      "citation": null
+    },
+    {
+      "source": "stereolab",
+      "target": "velvet-underground",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "fugazi",
+      "target": "sonic-youth",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "fugazi",
+      "target": "gang-of-four",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.7,
+      "citation": null
+    },
+    {
+      "source": "fugazi",
+      "target": "minor-threat",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.8,
+      "citation": null
+    },
+    {
+      "source": "fontaines-dc",
+      "target": "joy-division",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.65,
+      "citation": null
+    },
+    {
+      "source": "fontaines-dc",
+      "target": "pixies",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "idles",
+      "target": "gang-of-four",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.65,
+      "citation": null
+    },
+    {
+      "source": "idles",
+      "target": "joy-division",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "joy-division",
+      "target": "neu",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": null
+    },
+    {
+      "source": "siouxsie-and-the-banshees",
+      "target": "can",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.5,
+      "citation": null
+    },
+    {
+      "source": "siouxsie-and-the-banshees",
+      "target": "neu",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.5,
+      "citation": null
+    },
+    {
+      "source": "can",
+      "target": "velvet-underground",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": null
+    },
+    {
+      "source": "neu",
+      "target": "velvet-underground",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.5,
+      "citation": null
     }
   ]
 }

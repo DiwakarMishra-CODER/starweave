@@ -1,0 +1,1371 @@
+{
+  "generatedAt": "2026-07-07",
+  "method": "Web search across Wikipedia, AllMusic, band-member interviews, and reputable music press. Every claim requires a real source URL; critic/genre-comparison-only claims were excluded.",
+  "artistSetSize": 56,
+  "existingEdgesChecked": 23,
+  "summary": {
+    "proposedNewEdges": 72,
+    "existingEdgesNotFound": 23,
+    "nodeCandidatesWith2PlusCitations": 37
+  },
+  "proposedNewEdges": [
+    {
+      "from": "Joy Division",
+      "to": "Neu!",
+      "source": "https://en.wikipedia.org/wiki/Joy_Division",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "New Order",
+      "to": "David Bowie",
+      "source": "https://en.wikipedia.org/wiki/New_Order_(band)"
+    },
+    {
+      "from": "The Cure",
+      "to": "Siouxsie & The Banshees",
+      "source": "https://en.wikipedia.org/wiki/Robert_Smith_(musician)"
+    },
+    {
+      "from": "The Cure",
+      "to": "Joy Division",
+      "source": "https://en.wikipedia.org/wiki/Robert_Smith_(musician)"
+    },
+    {
+      "from": "Siouxsie & The Banshees",
+      "to": "Can",
+      "source": "https://en.wikipedia.org/wiki/Siouxsie_and_the_Banshees",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Siouxsie & The Banshees",
+      "to": "Neu!",
+      "source": "https://en.wikipedia.org/wiki/Siouxsie_and_the_Banshees",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Nick Cave & The Bad Seeds",
+      "to": "David Bowie",
+      "source": "https://en.wikipedia.org/wiki/The_Birthday_Party_(band)"
+    },
+    {
+      "from": "The Jesus and Mary Chain",
+      "to": "Siouxsie & The Banshees",
+      "source": "https://en.wikipedia.org/wiki/The_Jesus_and_Mary_Chain"
+    },
+    {
+      "from": "Cocteau Twins",
+      "to": "Joy Division",
+      "source": "https://en.wikipedia.org/wiki/Cocteau_Twins"
+    },
+    {
+      "from": "Julee Cruise",
+      "to": "This Mortal Coil",
+      "source": "https://www.rollingstone.com/music/music-news/dream-team-the-semi-mysterious-story-behind-the-music-of-twin-peaks-78506/"
+    },
+    {
+      "from": "My Bloody Valentine",
+      "to": "Siouxsie & The Banshees",
+      "source": "https://en.wikipedia.org/wiki/My_Bloody_Valentine_(band)"
+    },
+    {
+      "from": "My Bloody Valentine",
+      "to": "The Cure",
+      "source": "https://en.wikipedia.org/wiki/My_Bloody_Valentine_(band)"
+    },
+    {
+      "from": "My Bloody Valentine",
+      "to": "Joy Division",
+      "source": "https://en.wikipedia.org/wiki/My_Bloody_Valentine_(band)"
+    },
+    {
+      "from": "Slowdive",
+      "to": "The Jesus and Mary Chain",
+      "source": "https://en.wikipedia.org/wiki/Slowdive"
+    },
+    {
+      "from": "Slowdive",
+      "to": "The Cure",
+      "source": "https://en.wikipedia.org/wiki/Slowdive"
+    },
+    {
+      "from": "Slowdive",
+      "to": "Siouxsie & The Banshees",
+      "source": "https://en.wikipedia.org/wiki/Slowdive"
+    },
+    {
+      "from": "Slowdive",
+      "to": "David Bowie",
+      "source": "https://en.wikipedia.org/wiki/Slowdive"
+    },
+    {
+      "from": "Ride",
+      "to": "Sonic Youth",
+      "source": "https://en.wikipedia.org/wiki/Ride_(band)"
+    },
+    {
+      "from": "Ride",
+      "to": "The Stone Roses",
+      "source": "https://en.wikipedia.org/wiki/Ride_(band)"
+    },
+    {
+      "from": "Ride",
+      "to": "Dinosaur Jr.",
+      "source": "https://en.wikipedia.org/wiki/Ride_(band)"
+    },
+    {
+      "from": "Ride",
+      "to": "Pixies",
+      "source": "https://en.wikipedia.org/wiki/Ride_(band)"
+    },
+    {
+      "from": "Ride",
+      "to": "The Velvet Underground",
+      "source": "https://en.wikipedia.org/wiki/Ride_(band)"
+    },
+    {
+      "from": "Lush",
+      "to": "Siouxsie & The Banshees",
+      "source": "https://en.wikipedia.org/wiki/Lush_(band)"
+    },
+    {
+      "from": "Broadcast",
+      "to": "Stereolab",
+      "source": "https://en.wikipedia.org/wiki/Broadcast_(band)",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Deerhunter",
+      "to": "Stereolab",
+      "source": "https://en.wikipedia.org/wiki/Deerhunter",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Alvvays",
+      "to": "The Smiths",
+      "source": "https://en.wikipedia.org/wiki/Alvvays"
+    },
+    {
+      "from": "Alvvays",
+      "to": "Cocteau Twins",
+      "source": "https://en.wikipedia.org/wiki/Alvvays"
+    },
+    {
+      "from": "Alvvays",
+      "to": "Pavement",
+      "source": "https://en.wikipedia.org/wiki/Alvvays"
+    },
+    {
+      "from": "Alvvays",
+      "to": "The Replacements",
+      "source": "https://www.kexp.org/read/2018/7/30/molly-rankin-alvvays-talks-influences-inspiration-with-kexp/"
+    },
+    {
+      "from": "Alvvays",
+      "to": "Yo La Tengo",
+      "source": "https://www.stereogum.com/2201143/alvvays-blue-rev-interview/interviews/under-the-influence/"
+    },
+    {
+      "from": "Alvvays",
+      "to": "R.E.M.",
+      "source": "https://www.stereogum.com/2201143/alvvays-blue-rev-interview/interviews/under-the-influence/"
+    },
+    {
+      "from": "Wolf Alice",
+      "to": "Yeah Yeah Yeahs",
+      "source": "https://www.thelineofbestfit.com/features/interviews/wolf-alice-126334"
+    },
+    {
+      "from": "Wolf Alice",
+      "to": "Siouxsie & The Banshees",
+      "source": "https://en.wikipedia.org/wiki/Wolf_Alice"
+    },
+    {
+      "from": "Wolf Alice",
+      "to": "Blur",
+      "source": "https://en.wikipedia.org/wiki/Wolf_Alice",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Sweet Trip",
+      "to": "Slowdive",
+      "source": "https://en.wikipedia.org/wiki/Sweet_Trip"
+    },
+    {
+      "from": "Sweet Trip",
+      "to": "Sonic Youth",
+      "source": "https://en.wikipedia.org/wiki/Sweet_Trip"
+    },
+    {
+      "from": "Sweet Trip",
+      "to": "Broadcast",
+      "source": "https://en.wikipedia.org/wiki/Sweet_Trip"
+    },
+    {
+      "from": "Pixies",
+      "to": "Sonic Youth",
+      "source": "https://www.kerrang.com/frank-black-when-i-get-asked-about-nirvana-i-think-am-i-being-validated-because-some-other-dude-mentioned-my-name-f-ck-that"
+    },
+    {
+      "from": "Pixies",
+      "to": "R.E.M.",
+      "source": "https://en.wikipedia.org/wiki/Pixies_(band)"
+    },
+    {
+      "from": "Pixies",
+      "to": "David Bowie",
+      "source": "https://en.wikipedia.org/wiki/Pixies_(band)"
+    },
+    {
+      "from": "Pixies",
+      "to": "Gang of Four",
+      "source": "https://en.wikipedia.org/wiki/Pixies_(band)"
+    },
+    {
+      "from": "Sonic Youth",
+      "to": "Minor Threat",
+      "source": "https://en.wikipedia.org/wiki/Sonic_Youth",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Dinosaur Jr.",
+      "to": "The Replacements",
+      "source": "https://en.wikipedia.org/wiki/Dinosaur_Jr."
+    },
+    {
+      "from": "Pavement",
+      "to": "The Replacements",
+      "source": "https://en.wikipedia.org/wiki/Pavement_(band)"
+    },
+    {
+      "from": "Yo La Tengo",
+      "to": "My Bloody Valentine",
+      "source": "https://en.wikipedia.org/wiki/Yo_La_Tengo"
+    },
+    {
+      "from": "Interpol",
+      "to": "Siouxsie & The Banshees",
+      "source": "https://en.wikipedia.org/wiki/Interpol_(band)"
+    },
+    {
+      "from": "Interpol",
+      "to": "The Smiths",
+      "source": "https://en.wikipedia.org/wiki/Interpol_(band)"
+    },
+    {
+      "from": "Geese",
+      "to": "The Velvet Underground",
+      "source": "https://en.wikipedia.org/wiki/Geese_(band)"
+    },
+    {
+      "from": "Geese",
+      "to": "Yeah Yeah Yeahs",
+      "source": "https://en.wikipedia.org/wiki/Geese_(band)"
+    },
+    {
+      "from": "Geese",
+      "to": "Radiohead",
+      "source": "https://en.wikipedia.org/wiki/Geese_(band)"
+    },
+    {
+      "from": "Geese",
+      "to": "Interpol",
+      "source": "https://www.rollingstone.com/music/music-features/geese-podcast-why-real-bands-matter-1235527035/"
+    },
+    {
+      "from": "Built to Spill",
+      "to": "Dinosaur Jr.",
+      "source": "https://en.wikipedia.org/wiki/Built_to_Spill",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Built to Spill",
+      "to": "Pavement",
+      "source": "https://en.wikipedia.org/wiki/Built_to_Spill",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Modest Mouse",
+      "to": "Pavement",
+      "source": "https://en.wikipedia.org/wiki/Modest_Mouse",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Modest Mouse",
+      "to": "Pixies",
+      "source": "https://en.wikipedia.org/wiki/Modest_Mouse",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Modest Mouse",
+      "to": "Talking Heads",
+      "source": "https://en.wikipedia.org/wiki/Modest_Mouse",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Modest Mouse",
+      "to": "Built to Spill",
+      "source": "https://en.wikipedia.org/wiki/Built_to_Spill",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Blur",
+      "to": "David Bowie",
+      "source": "https://en.wikipedia.org/wiki/Blur_(band)",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Blur",
+      "to": "Sonic Youth",
+      "source": "https://en.wikipedia.org/wiki/Blur_(band)",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Blur",
+      "to": "Pavement",
+      "source": "https://en.wikipedia.org/wiki/Blur_(band)",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Stereolab",
+      "to": "Neu!",
+      "source": "https://en.wikipedia.org/wiki/Stereolab",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Stereolab",
+      "to": "Can",
+      "source": "https://en.wikipedia.org/wiki/Stereolab",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Stereolab",
+      "to": "The Velvet Underground",
+      "source": "https://en.wikipedia.org/wiki/Stereolab",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Fugazi",
+      "to": "Sonic Youth",
+      "source": "https://en.wikipedia.org/wiki/Fugazi",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Fugazi",
+      "to": "Gang of Four",
+      "source": "https://dmy.co/features/the-dummy-guide-to-fugazi",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Fugazi",
+      "to": "Minor Threat",
+      "source": "https://en.wikipedia.org/wiki/Fugazi",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Fontaines D.C.",
+      "to": "Joy Division",
+      "source": "https://www.guitarworld.com/artists/bassists/fontaines-d-c-deego-influential-joy-division-bassline",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Fontaines D.C.",
+      "to": "Pixies",
+      "source": "https://www.pastemagazine.com/music/fontaines-d-c/fontaines-d-c-pray-for-kindness-and-romance",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "IDLES",
+      "to": "Gang of Four",
+      "source": "https://www.nme.com/news/music/listen-to-idles-cover-of-gang-of-fours-damaged-goods-2950575",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "IDLES",
+      "to": "Joy Division",
+      "source": "https://faroutmagazine.co.uk/the-lasting-influence-of-gang-of-four/",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Can",
+      "to": "The Velvet Underground",
+      "source": "https://en.wikipedia.org/wiki/Can_(band)",
+      "note": "involves a proposed new node, not yet in the graph"
+    },
+    {
+      "from": "Neu!",
+      "to": "The Velvet Underground",
+      "source": "https://www.uncut.co.uk/features/the-lost-neu-interview-39316/",
+      "note": "involves a proposed new node, not yet in the graph"
+    }
+  ],
+  "existingEdgesNotFoundInSources": [
+    {
+      "from": "Nico",
+      "to": "The Velvet Underground",
+      "note": "no source found"
+    },
+    {
+      "from": "Mazzy Star",
+      "to": "The Velvet Underground",
+      "note": "no source found"
+    },
+    {
+      "from": "Mazzy Star",
+      "to": "The Jesus and Mary Chain",
+      "note": "no source found"
+    },
+    {
+      "from": "My Bloody Valentine",
+      "to": "Cocteau Twins",
+      "note": "no source found"
+    },
+    {
+      "from": "Ride",
+      "to": "The Jesus and Mary Chain",
+      "note": "no source found"
+    },
+    {
+      "from": "Broadcast",
+      "to": "The Velvet Underground",
+      "note": "no source found"
+    },
+    {
+      "from": "Beach House",
+      "to": "Slowdive",
+      "note": "no source found"
+    },
+    {
+      "from": "Beach House",
+      "to": "Broadcast",
+      "note": "no source found"
+    },
+    {
+      "from": "Deerhunter",
+      "to": "My Bloody Valentine",
+      "note": "no source found"
+    },
+    {
+      "from": "Deerhunter",
+      "to": "Broadcast",
+      "note": "no source found"
+    },
+    {
+      "from": "Alvvays",
+      "to": "The Sundays",
+      "note": "no source found"
+    },
+    {
+      "from": "Alvvays",
+      "to": "Slowdive",
+      "note": "no source found"
+    },
+    {
+      "from": "Wolf Alice",
+      "to": "Slowdive",
+      "note": "no source found"
+    },
+    {
+      "from": "Fishmans",
+      "to": "Talking Heads",
+      "note": "no source found"
+    },
+    {
+      "from": "Parannoul",
+      "to": "Slowdive",
+      "note": "no source found"
+    },
+    {
+      "from": "Parannoul",
+      "to": "My Bloody Valentine",
+      "note": "no source found"
+    },
+    {
+      "from": "Parannoul",
+      "to": "Fishmans",
+      "note": "no source found"
+    },
+    {
+      "from": "Hüsker Dü",
+      "to": "The Velvet Underground",
+      "note": "no source found"
+    },
+    {
+      "from": "The Replacements",
+      "to": "The Velvet Underground",
+      "note": "no source found"
+    },
+    {
+      "from": "Pavement",
+      "to": "The Velvet Underground",
+      "note": "no source found"
+    },
+    {
+      "from": "The Strokes",
+      "to": "Television",
+      "note": "no source found"
+    },
+    {
+      "from": "Yeah Yeah Yeahs",
+      "to": "Pixies",
+      "note": "no source found"
+    },
+    {
+      "from": "Geese",
+      "to": "Talking Heads",
+      "note": "no source found"
+    }
+  ],
+  "nodeCandidates": [
+    {
+      "name": "The Beatles",
+      "citationCount": 11,
+      "citedBy": [
+        "Big Star",
+        "Siouxsie & The Banshees",
+        "Wolf Alice",
+        "Pixies",
+        "The Replacements",
+        "Radiohead",
+        "The Stone Roses",
+        "Blur",
+        "Fugazi",
+        "Can",
+        "Neu!"
+      ],
+      "sources": [
+        {
+          "artist": "Big Star",
+          "url": "https://en.wikipedia.org/wiki/Big_Star"
+        },
+        {
+          "artist": "Siouxsie & The Banshees",
+          "url": "https://en.wikipedia.org/wiki/Siouxsie_and_the_Banshees"
+        },
+        {
+          "artist": "Wolf Alice",
+          "url": "https://en.wikipedia.org/wiki/Wolf_Alice"
+        },
+        {
+          "artist": "Pixies",
+          "url": "https://en.wikipedia.org/wiki/Pixies_(band)"
+        },
+        {
+          "artist": "The Replacements",
+          "url": "https://en.wikipedia.org/wiki/The_Replacements_(band)"
+        },
+        {
+          "artist": "Radiohead",
+          "url": "https://en.wikipedia.org/wiki/Radiohead"
+        },
+        {
+          "artist": "The Stone Roses",
+          "url": "https://en.wikipedia.org/wiki/The_Stone_Roses"
+        },
+        {
+          "artist": "Blur",
+          "url": "https://en.wikipedia.org/wiki/Blur_(band)"
+        },
+        {
+          "artist": "Fugazi",
+          "url": "https://en.wikipedia.org/wiki/Fugazi"
+        },
+        {
+          "artist": "Can",
+          "url": "https://en.wikipedia.org/wiki/Can_(band)"
+        },
+        {
+          "artist": "Neu!",
+          "url": "https://www.uncut.co.uk/features/the-lost-neu-interview-39316/"
+        }
+      ]
+    },
+    {
+      "name": "The Rolling Stones",
+      "citationCount": 6,
+      "citedBy": [
+        "Big Star",
+        "Deerhunter",
+        "Dinosaur Jr.",
+        "The Replacements",
+        "The Stone Roses",
+        "Neu!"
+      ],
+      "sources": [
+        {
+          "artist": "Big Star",
+          "url": "https://en.wikipedia.org/wiki/Big_Star"
+        },
+        {
+          "artist": "Deerhunter",
+          "url": "https://en.wikipedia.org/wiki/Deerhunter"
+        },
+        {
+          "artist": "Dinosaur Jr.",
+          "url": "https://en.wikipedia.org/wiki/Dinosaur_Jr."
+        },
+        {
+          "artist": "The Replacements",
+          "url": "https://en.wikipedia.org/wiki/The_Replacements_(band)"
+        },
+        {
+          "artist": "The Stone Roses",
+          "url": "https://en.wikipedia.org/wiki/The_Stone_Roses"
+        },
+        {
+          "artist": "Neu!",
+          "url": "https://www.uncut.co.uk/features/the-lost-neu-interview-39316/"
+        }
+      ]
+    },
+    {
+      "name": "Neil Young",
+      "citationCount": 5,
+      "citedBy": [
+        "New Order",
+        "Sonic Youth",
+        "Dinosaur Jr.",
+        "Yeah Yeah Yeahs",
+        "Built to Spill"
+      ],
+      "sources": [
+        {
+          "artist": "New Order",
+          "url": "https://en.wikipedia.org/wiki/New_Order_(band)"
+        },
+        {
+          "artist": "Sonic Youth",
+          "url": "https://en.wikipedia.org/wiki/Sonic_Youth"
+        },
+        {
+          "artist": "Dinosaur Jr.",
+          "url": "https://en.wikipedia.org/wiki/Dinosaur_Jr."
+        },
+        {
+          "artist": "Yeah Yeah Yeahs",
+          "url": "https://en.wikipedia.org/wiki/Yeah_Yeah_Yeahs"
+        },
+        {
+          "artist": "Built to Spill",
+          "url": "https://en.wikipedia.org/wiki/Built_to_Spill"
+        }
+      ]
+    },
+    {
+      "name": "New York Dolls",
+      "citationCount": 4,
+      "citedBy": [
+        "Television",
+        "The Smiths",
+        "The Jesus and Mary Chain",
+        "The Replacements"
+      ],
+      "sources": [
+        {
+          "artist": "Television",
+          "url": "https://en.wikipedia.org/wiki/Television_(band)"
+        },
+        {
+          "artist": "The Smiths",
+          "url": "https://en.wikipedia.org/wiki/The_Smiths"
+        },
+        {
+          "artist": "The Jesus and Mary Chain",
+          "url": "https://en.wikipedia.org/wiki/The_Jesus_and_Mary_Chain"
+        },
+        {
+          "artist": "The Replacements",
+          "url": "https://en.wikipedia.org/wiki/The_Replacements_(band)"
+        }
+      ]
+    },
+    {
+      "name": "Iggy Pop",
+      "citationCount": 4,
+      "citedBy": [
+        "Joy Division",
+        "New Order",
+        "Pixies",
+        "David Bowie"
+      ],
+      "sources": [
+        {
+          "artist": "Joy Division",
+          "url": "https://en.wikipedia.org/wiki/Joy_Division"
+        },
+        {
+          "artist": "New Order",
+          "url": "https://en.wikipedia.org/wiki/New_Order_(band)"
+        },
+        {
+          "artist": "Pixies",
+          "url": "https://en.wikipedia.org/wiki/Pixies_(band)"
+        },
+        {
+          "artist": "David Bowie",
+          "url": "https://en.wikipedia.org/wiki/David_Bowie"
+        }
+      ]
+    },
+    {
+      "name": "Kraftwerk",
+      "citationCount": 4,
+      "citedBy": [
+        "Joy Division",
+        "New Order",
+        "Siouxsie & The Banshees",
+        "Neu!"
+      ],
+      "sources": [
+        {
+          "artist": "Joy Division",
+          "url": "https://en.wikipedia.org/wiki/Joy_Division"
+        },
+        {
+          "artist": "New Order",
+          "url": "https://en.wikipedia.org/wiki/New_Order_(band)"
+        },
+        {
+          "artist": "Siouxsie & The Banshees",
+          "url": "https://en.wikipedia.org/wiki/Siouxsie_and_the_Banshees"
+        },
+        {
+          "artist": "Neu!",
+          "url": "https://en.wikipedia.org/wiki/Neu!"
+        }
+      ]
+    },
+    {
+      "name": "Jimi Hendrix",
+      "citationCount": 4,
+      "citedBy": [
+        "The Cure",
+        "Gang of Four",
+        "The Stone Roses",
+        "Can"
+      ],
+      "sources": [
+        {
+          "artist": "The Cure",
+          "url": "https://en.wikipedia.org/wiki/Robert_Smith_(musician)"
+        },
+        {
+          "artist": "Gang of Four",
+          "url": "https://en.wikipedia.org/wiki/Gang_of_Four_(band)"
+        },
+        {
+          "artist": "The Stone Roses",
+          "url": "https://en.wikipedia.org/wiki/The_Stone_Roses"
+        },
+        {
+          "artist": "Can",
+          "url": "https://en.wikipedia.org/wiki/Can_(band)"
+        }
+      ]
+    },
+    {
+      "name": "Sex Pistols",
+      "citationCount": 4,
+      "citedBy": [
+        "The Cure",
+        "Cocteau Twins",
+        "The Replacements",
+        "The Stone Roses"
+      ],
+      "sources": [
+        {
+          "artist": "The Cure",
+          "url": "https://en.wikipedia.org/wiki/Robert_Smith_(musician)"
+        },
+        {
+          "artist": "Cocteau Twins",
+          "url": "https://en.wikipedia.org/wiki/Cocteau_Twins"
+        },
+        {
+          "artist": "The Replacements",
+          "url": "https://en.wikipedia.org/wiki/The_Replacements_(band)"
+        },
+        {
+          "artist": "The Stone Roses",
+          "url": "https://en.wikipedia.org/wiki/The_Stone_Roses"
+        }
+      ]
+    },
+    {
+      "name": "Bob Dylan",
+      "citationCount": 3,
+      "citedBy": [
+        "Nico",
+        "The Replacements",
+        "Yo La Tengo"
+      ],
+      "sources": [
+        {
+          "artist": "Nico",
+          "url": "https://en.wikipedia.org/wiki/Nico"
+        },
+        {
+          "artist": "The Replacements",
+          "url": "https://en.wikipedia.org/wiki/The_Replacements_(band)"
+        },
+        {
+          "artist": "Yo La Tengo",
+          "url": "https://en.wikipedia.org/wiki/Yo_La_Tengo"
+        }
+      ]
+    },
+    {
+      "name": "Steve Reich",
+      "citationCount": 3,
+      "citedBy": [
+        "Television",
+        "Stereolab",
+        "Can"
+      ],
+      "sources": [
+        {
+          "artist": "Television",
+          "url": "https://en.wikipedia.org/wiki/Television_(band)"
+        },
+        {
+          "artist": "Stereolab",
+          "url": "https://en.wikipedia.org/wiki/Stereolab"
+        },
+        {
+          "artist": "Can",
+          "url": "https://en.wikipedia.org/wiki/Can_(band)"
+        }
+      ]
+    },
+    {
+      "name": "The Byrds",
+      "citationCount": 3,
+      "citedBy": [
+        "Big Star",
+        "Hüsker Dü",
+        "The Stone Roses"
+      ],
+      "sources": [
+        {
+          "artist": "Big Star",
+          "url": "https://en.wikipedia.org/wiki/Big_Star"
+        },
+        {
+          "artist": "Hüsker Dü",
+          "url": "https://en.wikipedia.org/wiki/H%C3%BCsker_D%C3%BC"
+        },
+        {
+          "artist": "The Stone Roses",
+          "url": "https://en.wikipedia.org/wiki/The_Stone_Roses"
+        }
+      ]
+    },
+    {
+      "name": "The Kinks",
+      "citationCount": 3,
+      "citedBy": [
+        "Big Star",
+        "Yo La Tengo",
+        "Blur"
+      ],
+      "sources": [
+        {
+          "artist": "Big Star",
+          "url": "https://en.wikipedia.org/wiki/Big_Star"
+        },
+        {
+          "artist": "Yo La Tengo",
+          "url": "https://en.wikipedia.org/wiki/Yo_La_Tengo"
+        },
+        {
+          "artist": "Blur",
+          "url": "https://en.wikipedia.org/wiki/Blur_(band)"
+        }
+      ]
+    },
+    {
+      "name": "Wire",
+      "citationCount": 3,
+      "citedBy": [
+        "The Cure",
+        "Sonic Youth",
+        "Fugazi"
+      ],
+      "sources": [
+        {
+          "artist": "The Cure",
+          "url": "https://en.wikipedia.org/wiki/Robert_Smith_(musician)"
+        },
+        {
+          "artist": "Sonic Youth",
+          "url": "https://en.wikipedia.org/wiki/Sonic_Youth"
+        },
+        {
+          "artist": "Fugazi",
+          "url": "https://dmy.co/features/the-dummy-guide-to-fugazi"
+        }
+      ]
+    },
+    {
+      "name": "T. Rex",
+      "citationCount": 3,
+      "citedBy": [
+        "Siouxsie & The Banshees",
+        "The Smiths",
+        "R.E.M."
+      ],
+      "sources": [
+        {
+          "artist": "Siouxsie & The Banshees",
+          "url": "https://en.wikipedia.org/wiki/Siouxsie_and_the_Banshees"
+        },
+        {
+          "artist": "The Smiths",
+          "url": "https://faroutmagazine.co.uk/when-the-smiths-became-the-voice-of-a-generation/"
+        },
+        {
+          "artist": "R.E.M.",
+          "url": "https://en.wikipedia.org/wiki/R.E.M."
+        }
+      ]
+    },
+    {
+      "name": "Patti Smith",
+      "citationCount": 3,
+      "citedBy": [
+        "The Smiths",
+        "Sonic Youth",
+        "R.E.M."
+      ],
+      "sources": [
+        {
+          "artist": "The Smiths",
+          "url": "https://stevepafford.com/smiths/"
+        },
+        {
+          "artist": "Sonic Youth",
+          "url": "https://en.wikipedia.org/wiki/Sonic_Youth"
+        },
+        {
+          "artist": "R.E.M.",
+          "url": "https://en.wikipedia.org/wiki/R.E.M."
+        }
+      ]
+    },
+    {
+      "name": "The Birthday Party",
+      "citationCount": 3,
+      "citedBy": [
+        "Cocteau Twins",
+        "Dinosaur Jr.",
+        "Yeah Yeah Yeahs"
+      ],
+      "sources": [
+        {
+          "artist": "Cocteau Twins",
+          "url": "https://en.wikipedia.org/wiki/Cocteau_Twins"
+        },
+        {
+          "artist": "Dinosaur Jr.",
+          "url": "https://en.wikipedia.org/wiki/Dinosaur_Jr."
+        },
+        {
+          "artist": "Yeah Yeah Yeahs",
+          "url": "https://en.wikipedia.org/wiki/Yeah_Yeah_Yeahs"
+        }
+      ]
+    },
+    {
+      "name": "The Fall",
+      "citationCount": 3,
+      "citedBy": [
+        "Deerhunter",
+        "Pavement",
+        "Fontaines D.C."
+      ],
+      "sources": [
+        {
+          "artist": "Deerhunter",
+          "url": "https://en.wikipedia.org/wiki/Deerhunter"
+        },
+        {
+          "artist": "Pavement",
+          "url": "https://en.wikipedia.org/wiki/Pavement_(band)"
+        },
+        {
+          "artist": "Fontaines D.C.",
+          "url": "https://www.nme.com/big-reads/fontaines-dc-cover-interview-2020-a-heroes-death-2682101"
+        }
+      ]
+    },
+    {
+      "name": "Lou Reed",
+      "citationCount": 3,
+      "citedBy": [
+        "Pixies",
+        "Geese",
+        "David Bowie"
+      ],
+      "sources": [
+        {
+          "artist": "Pixies",
+          "url": "https://www.kerrang.com/frank-black-when-i-get-asked-about-nirvana-i-think-am-i-being-validated-because-some-other-dude-mentioned-my-name-f-ck-that"
+        },
+        {
+          "artist": "Geese",
+          "url": "https://www.rollingstone.com/music/music-features/geese-podcast-why-real-bands-matter-1235527035/"
+        },
+        {
+          "artist": "David Bowie",
+          "url": "https://en.wikipedia.org/wiki/David_Bowie"
+        }
+      ]
+    },
+    {
+      "name": "Ramones",
+      "citationCount": 3,
+      "citedBy": [
+        "Hüsker Dü",
+        "The Replacements",
+        "Yeah Yeah Yeahs"
+      ],
+      "sources": [
+        {
+          "artist": "Hüsker Dü",
+          "url": "https://en.wikipedia.org/wiki/H%C3%BCsker_D%C3%BC"
+        },
+        {
+          "artist": "The Replacements",
+          "url": "https://en.wikipedia.org/wiki/The_Replacements_(band)"
+        },
+        {
+          "artist": "Yeah Yeah Yeahs",
+          "url": "https://en.wikipedia.org/wiki/Yeah_Yeah_Yeahs"
+        }
+      ]
+    },
+    {
+      "name": "John Cage",
+      "citationCount": 2,
+      "citedBy": [
+        "The Velvet Underground",
+        "Sonic Youth"
+      ],
+      "sources": [
+        {
+          "artist": "The Velvet Underground",
+          "url": "https://en.wikipedia.org/wiki/The_Velvet_Underground"
+        },
+        {
+          "artist": "Sonic Youth",
+          "url": "https://en.wikipedia.org/wiki/Sonic_Youth"
+        }
+      ]
+    },
+    {
+      "name": "La Monte Young",
+      "citationCount": 2,
+      "citedBy": [
+        "The Velvet Underground",
+        "Sonic Youth"
+      ],
+      "sources": [
+        {
+          "artist": "The Velvet Underground",
+          "url": "https://en.wikipedia.org/wiki/The_Velvet_Underground"
+        },
+        {
+          "artist": "Sonic Youth",
+          "url": "https://en.wikipedia.org/wiki/Sonic_Youth"
+        }
+      ]
+    },
+    {
+      "name": "Parliament-Funkadelic",
+      "citationCount": 2,
+      "citedBy": [
+        "Talking Heads",
+        "Gang of Four"
+      ],
+      "sources": [
+        {
+          "artist": "Talking Heads",
+          "url": "https://en.wikipedia.org/wiki/Talking_Heads"
+        },
+        {
+          "artist": "Gang of Four",
+          "url": "https://en.wikipedia.org/wiki/Gang_of_Four_(band)"
+        }
+      ]
+    },
+    {
+      "name": "The Doors",
+      "citationCount": 2,
+      "citedBy": [
+        "Joy Division",
+        "The Strokes"
+      ],
+      "sources": [
+        {
+          "artist": "Joy Division",
+          "url": "https://en.wikipedia.org/wiki/Joy_Division"
+        },
+        {
+          "artist": "The Strokes",
+          "url": "https://en.wikipedia.org/wiki/The_Strokes"
+        }
+      ]
+    },
+    {
+      "name": "Cabaret Voltaire",
+      "citationCount": 2,
+      "citedBy": [
+        "New Order",
+        "Deerhunter"
+      ],
+      "sources": [
+        {
+          "artist": "New Order",
+          "url": "https://en.wikipedia.org/wiki/New_Order_(band)"
+        },
+        {
+          "artist": "Deerhunter",
+          "url": "https://en.wikipedia.org/wiki/Deerhunter"
+        }
+      ]
+    },
+    {
+      "name": "Buzzcocks",
+      "citationCount": 2,
+      "citedBy": [
+        "The Cure",
+        "The Replacements"
+      ],
+      "sources": [
+        {
+          "artist": "The Cure",
+          "url": "https://en.wikipedia.org/wiki/Robert_Smith_(musician)"
+        },
+        {
+          "artist": "The Replacements",
+          "url": "https://en.wikipedia.org/wiki/The_Replacements_(band)"
+        }
+      ]
+    },
+    {
+      "name": "Iggy Pop and the Stooges",
+      "citationCount": 2,
+      "citedBy": [
+        "Siouxsie & The Banshees",
+        "The Smiths"
+      ],
+      "sources": [
+        {
+          "artist": "Siouxsie & The Banshees",
+          "url": "https://en.wikipedia.org/wiki/Siouxsie_and_the_Banshees"
+        },
+        {
+          "artist": "The Smiths",
+          "url": "https://www.nme.com/blogs/nme-blogs/the-roots-of-the-smiths-777820"
+        }
+      ]
+    },
+    {
+      "name": "Leonard Cohen",
+      "citationCount": 2,
+      "citedBy": [
+        "Nick Cave & The Bad Seeds",
+        "Geese"
+      ],
+      "sources": [
+        {
+          "artist": "Nick Cave & The Bad Seeds",
+          "url": "https://en.wikipedia.org/wiki/Nick_Cave"
+        },
+        {
+          "artist": "Geese",
+          "url": "https://www.rollingstone.com/music/music-features/geese-podcast-why-real-bands-matter-1235527035/"
+        }
+      ]
+    },
+    {
+      "name": "The Stooges",
+      "citationCount": 2,
+      "citedBy": [
+        "The Jesus and Mary Chain",
+        "Sonic Youth"
+      ],
+      "sources": [
+        {
+          "artist": "The Jesus and Mary Chain",
+          "url": "https://en.wikipedia.org/wiki/Psychocandy"
+        },
+        {
+          "artist": "Sonic Youth",
+          "url": "https://en.wikipedia.org/wiki/Sonic_Youth"
+        }
+      ]
+    },
+    {
+      "name": "Smashing Pumpkins",
+      "citationCount": 2,
+      "citedBy": [
+        "Silversun Pickups",
+        "Parannoul"
+      ],
+      "sources": [
+        {
+          "artist": "Silversun Pickups",
+          "url": "https://en.wikipedia.org/wiki/Silversun_Pickups"
+        },
+        {
+          "artist": "Parannoul",
+          "url": "https://www.jellybones.net/interviews/parannoul"
+        }
+      ]
+    },
+    {
+      "name": "Violent Femmes",
+      "citationCount": 2,
+      "citedBy": [
+        "Silversun Pickups",
+        "Pixies"
+      ],
+      "sources": [
+        {
+          "artist": "Silversun Pickups",
+          "url": "https://en.wikipedia.org/wiki/Silversun_Pickups (press notes)"
+        },
+        {
+          "artist": "Pixies",
+          "url": "https://www.kerrang.com/frank-black-when-i-get-asked-about-nirvana-i-think-am-i-being-validated-because-some-other-dude-mentioned-my-name-f-ck-that"
+        }
+      ]
+    },
+    {
+      "name": "The Chameleons",
+      "citationCount": 2,
+      "citedBy": [
+        "Sweet Trip",
+        "Interpol"
+      ],
+      "sources": [
+        {
+          "artist": "Sweet Trip",
+          "url": "https://en.wikipedia.org/wiki/Sweet_Trip"
+        },
+        {
+          "artist": "Interpol",
+          "url": "https://en.wikipedia.org/wiki/Interpol_(band)"
+        }
+      ]
+    },
+    {
+      "name": "Echo & the Bunnymen",
+      "citationCount": 2,
+      "citedBy": [
+        "Pavement",
+        "Interpol"
+      ],
+      "sources": [
+        {
+          "artist": "Pavement",
+          "url": "https://en.wikipedia.org/wiki/Pavement_(band)"
+        },
+        {
+          "artist": "Interpol",
+          "url": "https://en.wikipedia.org/wiki/Interpol_(band)"
+        }
+      ]
+    },
+    {
+      "name": "Soft Boys",
+      "citationCount": 2,
+      "citedBy": [
+        "Yo La Tengo",
+        "R.E.M."
+      ],
+      "sources": [
+        {
+          "artist": "Yo La Tengo",
+          "url": "https://en.wikipedia.org/wiki/Yo_La_Tengo"
+        },
+        {
+          "artist": "R.E.M.",
+          "url": "https://en.wikipedia.org/wiki/R.E.M."
+        }
+      ]
+    },
+    {
+      "name": "Miles Davis",
+      "citationCount": 2,
+      "citedBy": [
+        "Radiohead",
+        "Can"
+      ],
+      "sources": [
+        {
+          "artist": "Radiohead",
+          "url": "https://en.wikipedia.org/wiki/Radiohead"
+        },
+        {
+          "artist": "Can",
+          "url": "https://en.wikipedia.org/wiki/Can_(band)"
+        }
+      ]
+    },
+    {
+      "name": "The Clash",
+      "citationCount": 2,
+      "citedBy": [
+        "The Stone Roses",
+        "Fugazi"
+      ],
+      "sources": [
+        {
+          "artist": "The Stone Roses",
+          "url": "https://en.wikipedia.org/wiki/The_Stone_Roses"
+        },
+        {
+          "artist": "Fugazi",
+          "url": "https://dmy.co/features/the-dummy-guide-to-fugazi"
+        }
+      ]
+    },
+    {
+      "name": "Bad Brains",
+      "citationCount": 2,
+      "citedBy": [
+        "Fugazi",
+        "Minor Threat"
+      ],
+      "sources": [
+        {
+          "artist": "Fugazi",
+          "url": "https://en.wikipedia.org/wiki/Fugazi"
+        },
+        {
+          "artist": "Minor Threat",
+          "url": "https://www.brooklynvegan.com/ian-mackaye-talks-minor-threat-fugazi-bad-brains-making-records-more-in-new-interview/"
+        }
+      ]
+    },
+    {
+      "name": "Black Flag",
+      "citationCount": 2,
+      "citedBy": [
+        "Fugazi",
+        "Minor Threat"
+      ],
+      "sources": [
+        {
+          "artist": "Fugazi",
+          "url": "https://en.wikipedia.org/wiki/Fugazi"
+        },
+        {
+          "artist": "Minor Threat",
+          "url": "https://www.brooklynvegan.com/ian-mackaye-talks-minor-threat-fugazi-bad-brains-making-records-more-in-new-interview/"
+        }
+      ]
+    }
+  ]
+}
