@@ -40,6 +40,26 @@ export type EdgeStatus = 'verified' | 'ai-suggested';
 // Phasing. v1 renders only 'shoegaze-dreampop-v1'. Later phases add rows.
 export type Scope = 'shoegaze-dreampop-v1' | 'indie' | 'underground';
 
+// Second color/layout axis, orthogonal to Layer — separates the graph into
+// three broad clusters (core roots / region-one indie-alt lineage / island-two
+// electronic lineage) for the force-graph's realm-separation forces and
+// gold/magenta coloring (see lib/colors.ts's resolveNodeColor family).
+// Optional: absent on an Artist means "no realm assigned" (the resolvers in
+// lib/colors.ts fall back to Layer-based coloring in that case).
+export type Realm = 'core' | 'region-one' | 'electronic';
+
+// Sub-grouping within realm: 'electronic' — which family of electronic music
+// a node belongs to. Drives the per-lineage magenta/pink-purple shade.
+export type Lineage =
+  | 'krautrock'
+  | 'synth-pop'
+  | 'idm'
+  | 'ambient-drone'
+  | 'electronic-indie-dancepunk'
+  | 'trip-hop-downtempo'
+  | 'hyperpop-pcmusic'
+  | 'art-electronic';
+
 export interface Genre {
   id: string;            // slug, e.g. 'shoegaze'
   name: string;          // display, e.g. 'Shoegaze'
@@ -95,6 +115,10 @@ export interface Artist {
 
   // The chosen signature song — used at build time to find the correct iTunes preview.
   signatureSong?: string;
+
+  // Realm/lineage — see the Realm/Lineage type comments above.
+  realm?: Realm;
+  lineage?: Lineage;
 
   // ENRICHED AT BUILD TIME by scripts/build-graph.ts — do not author by hand.
   imageUrl?: string | null;    // Deezer artist photo (250×250)

@@ -368,13 +368,10 @@ interface Props {
 interface GraphNode extends Artist {
   x?: number;
   y?: number;
-  // Additive: sandbox datasets (e.g. data/island-two-data.ts) tag nodes with
-  // these; every real region-one Artist has neither, so resolveNodeColor/
-  // resolveNodeGlow/resolveEdgeTint's fallback branch — identical to the
-  // pre-existing LAYER_COLORS[layer]/LAYER_GLOW[layer]/EDGE_TINT[layer]
-  // lookups — is the only branch region-one nodes ever take.
-  realm?: string;
-  lineage?: string;
+  // realm/lineage are inherited from Artist itself (data/types.ts) — a node
+  // without either (realm undefined) takes resolveNodeColor/resolveNodeGlow/
+  // resolveEdgeTint's fallback branch, identical to the pre-existing
+  // LAYER_COLORS[layer]/LAYER_GLOW[layer]/EDGE_TINT[layer] lookups.
 }
 
 interface GraphLink {
