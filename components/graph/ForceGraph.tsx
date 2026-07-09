@@ -4,7 +4,7 @@ import { useRef, useEffect, useMemo, useCallback, useState } from 'react';
 import ForceGraph2D from 'react-force-graph-2d';
 import { forceSimulation, forceLink, forceManyBody, forceCenter } from 'd3-force-3d';
 import type { Artist, Edge, GraphData, Layer } from '@/data/types';
-import { LAYER_COLORS, LAYER_GLOW } from '@/lib/colors';
+import { resolveNodeColor, resolveNodeGlow, resolveEdgeTint } from '@/lib/colors';
 import { getNeighbors, pathEdgeKeys } from '@/lib/graph-utils';
 
 // AABB overlap test for label collision avoidance [x, y, w, h]
@@ -76,16 +76,12 @@ const NEIGHBOR_MIN_SCREEN_R = 20;        // px — neighbor nodes' circle/photo 
 const FOCUS_LABEL_MIN_SCREEN_PX = 13;    // px — focused node's label floor
 const NEIGHBOR_LABEL_MIN_SCREEN_PX = 11; // px — neighbor labels' floor
 
-// Edge colors tinted toward source-node layer. All influence edges render
-// uniformly regardless of verified/ai-suggested status — see Edge['status']
-// in data/types.ts, still recorded in the data but no longer distinguished visually.
-const EDGE_TINT: Record<Layer, string> = {
-  root:                'rgba(232, 200, 122, 0.4)',
-  'post-punk':         'rgba(136, 145, 242, 0.4)',
-  'shoegaze-dreampop': 'rgba(242, 168, 196, 0.4)',
-  'indie-alt':         'rgba(95,  208, 192, 0.4)',
-  outside:             'rgba(237, 235, 245, 0.38)',
-};
+// Edge tint (by source-node layer, or by realm/lineage for sandbox datasets)
+// now resolved via resolveEdgeTint (@/lib/colors) — moved there so the
+// realm/lineage resolvers can reference the same map. All influence edges
+// render uniformly regardless of verified/ai-suggested status — see
+// Edge['status'] in data/types.ts, still recorded in the data but no longer
+// distinguished visually.
 
 // Always-on label threshold: nodes with influenceScore >= this get permanent labels.
 // Scores: VU=20, MBV=9, CT=8, Television=5, SY=5, JAMC=4, Slowdive=4, Bowie=4…
@@ -270,6 +266,13 @@ interface Props {
 interface GraphNode extends Artist {
   x?: number;
   y?: number;
+  // Additive: sandbox datasets (e.g. data/island-two-data.ts) tag nodes with
+  // these; every real region-one Artist has neither, so resolveNodeColor/
+  // resolveNodeGlow/resolveEdgeTint's fallback branch — identical to the
+  // pre-existing LAYER_COLORS[layer]/LAYER_GLOW[layer]/EDGE_TINT[layer]
+  // lookups — is the only branch region-one nodes ever take.
+  realm?: string;
+  lineage?: string;
 }
 
 interface GraphLink {
@@ -951,8 +954,8 @@ export default function ForceGraphCanvas({
         : isInPath   ? baseR * 1.25
         : baseR;
 
-      const color = LAYER_COLORS[n.layer];
-      const glow  = LAYER_GLOW[n.layer];
+      const color = resolveNodeColor(n);
+      const glow  = resolveNodeGlow(n);
 
       // ── Photo eligibility ─────────────────────────────────────────────────
       // Resting state: hub nodes (score ≥ threshold) always show photo.
@@ -1156,8 +1159,7 @@ export default function ForceGraphCanvas({
       // than uniformly dimmed along with the unrelated rest of the graph.
       const isSetEdge    = highlightSetMemberSet.size > 0 &&
                            (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId));
-      const srcLayer     = (srcNode as GraphNode).layer;
-      const edgeColor    = EDGE_TINT[srcLayer];
+      const edgeColor    = resolveEdgeTint(srcNode as GraphNode);
       const glow         = edgeGlowLevelRef.current;
 
       ctx.save();
@@ -1185,7 +1187,7 @@ export default function ForceGraphCanvas({
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
-        ctx.strokeStyle = LAYER_COLORS[focusedNode.layer];
+        ctx.strokeStyle = resolveNodeColor(focusedNode);
         ctx.globalAlpha = EDGE_IDLE_ALPHA + (0.82 - EDGE_IDLE_ALPHA) * glow;
         ctx.lineWidth = EDGE_IDLE_WIDTH + (2 - EDGE_IDLE_WIDTH) * glow;
         ctx.setLineDash([]);
@@ -1440,12 +1442,12 @@ export default function ForceGraphCanvas({
             const tgtId = typeof l.target === 'object' ? (l.target as GraphNode).id : l.target as string;
             // Focus edges: bright layer color so arrows are legible at a glance
             if (selectedId !== null && (srcId === selectedId || tgtId === selectedId) && focusedNode) {
-              return LAYER_COLORS[focusedNode.layer];
+              return resolveNodeColor(focusedNode);
             }
-            const srcLayer = typeof l.source === 'object'
-              ? (l.source as GraphNode).layer
-              : 'outside' as Layer;
-            const baseColor = EDGE_TINT[srcLayer];
+            const srcNodeForTint = typeof l.source === 'object'
+              ? (l.source as GraphNode)
+              : ({ layer: 'outside' as Layer } as GraphNode);
+            const baseColor = resolveEdgeTint(srcNodeForTint);
             // Set edges: no single "hero" layer color, so brighten the normal tint instead.
             const isSetEdge = highlightSetMemberSet.size > 0 &&
               (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId));

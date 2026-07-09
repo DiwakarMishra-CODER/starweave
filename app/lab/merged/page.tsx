@@ -33,6 +33,11 @@ export default function MergedLabPage() {
       layer: 'outside' as Layer,
       genres: [] as string[],
       scope: [] as Scope[],
+      // Carry through the stub anchor's own realm/lineage (e.g. Brian Eno's
+      // realm: 'core', lineage: 'ambient-drone') so he resolves to the gold
+      // core color instead of falling back to a bare, untagged node.
+      realm: a.realm,
+      lineage: a.lineage,
     }));
 
   const combinedArtists = [...regionOne.artists, ...islandTwoNodes, ...missingAnchors];
