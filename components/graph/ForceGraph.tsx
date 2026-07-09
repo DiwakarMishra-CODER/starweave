@@ -58,6 +58,24 @@ const RING_WIDTH   = 2.5;   // colored ring that wraps the photo
 const PHOTO_MIN_R  = 9;     // min canvas radius for a recognizable face
 const PHOTO_MAX_R  = 22;    // cap so large hubs don't overwhelm layout
 
+// ── Click-focus readability floor ────────────────────────────────────────────
+// Additive on top of the existing focus/neighbor size-up below (baseR * 2.8 /
+// * 1.9, minPhotoR/maxPhotoR) — that scale-up is in WORLD units, so when a
+// clicked node's neighbors are spread far apart, the camera (unchanged, see
+// applyCameraFocusForCluster) has to zoom out to fit them all, which shrinks
+// their ON-SCREEN size right back down regardless of the world-space boost.
+// These floors guarantee a minimum on-screen size no matter how far out the
+// camera sits, the same way the existing `8 / globalScale` label formula
+// below already compensates for zoom — just with headroom high enough to
+// matter at the zoom levels a widely-spread cluster forces.
+// Scoped to true click-focus only (selectedId's focused node + its direct
+// neighbors) — hover, path-finding, and genre/scene highlighting keep their
+// existing sizing untouched.
+const FOCUS_MIN_SCREEN_R = 28;           // px — focused node's circle/photo floor
+const NEIGHBOR_MIN_SCREEN_R = 20;        // px — neighbor nodes' circle/photo floor
+const FOCUS_LABEL_MIN_SCREEN_PX = 13;    // px — focused node's label floor
+const NEIGHBOR_LABEL_MIN_SCREEN_PX = 11; // px — neighbor labels' floor
+
 // Edge colors tinted toward source-node layer. All influence edges render
 // uniformly regardless of verified/ai-suggested status — see Edge['status']
 // in data/types.ts, still recorded in the data but no longer distinguished visually.
@@ -960,9 +978,16 @@ export default function ForceGraphCanvas({
       // Resting state keeps the original caps (hubs don't overwhelm the layout).
       const minPhotoR = isInFocusCluster ? 14 : PHOTO_MIN_R;
       const maxPhotoR = isInFocusCluster ? 48 : PHOTO_MAX_R;
-      const er = showPhoto
+      let er = showPhoto
         ? Math.min(Math.max(r, minPhotoR), maxPhotoR)
         : r;
+      // Click-focus readability floor (see constants above) — additive, only
+      // ever grows er further, never shrinks it below what the existing
+      // logic above already produced.
+      if (selectedId !== null && (isFocused || isNeighbor)) {
+        const minScreenR = isFocused ? FOCUS_MIN_SCREEN_R : NEIGHBOR_MIN_SCREEN_R;
+        er = Math.max(er, minScreenR / globalScale);
+      }
 
       ctx.save();
       ctx.globalAlpha = alpha;
@@ -1074,7 +1099,13 @@ export default function ForceGraphCanvas({
       }
 
       if (showLabel) {
-        const fontSize = Math.max(7, Math.min(9, 8 / globalScale));
+        let fontSize = Math.max(7, Math.min(9, 8 / globalScale));
+        // Click-focus readability floor — same rationale as er above: additive,
+        // only grows the label further, never shrinks below the existing size.
+        if (selectedId !== null && (isFocused || isNeighbor)) {
+          const minLabelScreenPx = isFocused ? FOCUS_LABEL_MIN_SCREEN_PX : NEIGHBOR_LABEL_MIN_SCREEN_PX;
+          fontSize = Math.max(fontSize, minLabelScreenPx / globalScale);
+        }
         const bright   = isFocused || isNeighbor || alwaysLabel || isInPath || isSetMember;
         // Radial placement for neighbors: push label away from focused node.
         const useRadial = isNeighbor && focusedNode?.x !== undefined && focusedNode?.y !== undefined;
@@ -1304,7 +1335,7 @@ export default function ForceGraphCanvas({
   // Must replicate the same er (visual radius) as drawNode so the entire node —
   // photo, ring, glow — is one unified circular target with no dead zones.
   const paintNodePointerArea = useCallback(
-    (node: object, color: string, ctx: CanvasRenderingContext2D) => {
+    (node: object, color: string, ctx: CanvasRenderingContext2D, globalScale: number) => {
       const n = node as GraphNode;
       if (n.x === undefined || n.y === undefined) return;
 
@@ -1326,7 +1357,14 @@ export default function ForceGraphCanvas({
       const wantsPhoto = (score >= ALWAYS_LABEL_THRESHOLD || isInFocusCluster) && !!n.imageUrl;
       const minPhotoR  = isInFocusCluster ? 14 : PHOTO_MIN_R;
       const maxPhotoR  = isInFocusCluster ? 48 : PHOTO_MAX_R;
-      const er = wantsPhoto ? Math.min(Math.max(r, minPhotoR), maxPhotoR) : r;
+      let er = wantsPhoto ? Math.min(Math.max(r, minPhotoR), maxPhotoR) : r;
+      // Mirrors drawNode's click-focus readability floor exactly, so the
+      // clickable area always matches the enlarged visual circle — no dead
+      // zone around a node that reads bigger on screen than it hit-tests.
+      if (selectedId !== null && (isFocused || isNeighbor)) {
+        const minScreenR = isFocused ? FOCUS_MIN_SCREEN_R : NEIGHBOR_MIN_SCREEN_R;
+        er = Math.max(er, minScreenR / globalScale);
+      }
 
       ctx.beginPath();
       ctx.arc(n.x, n.y, er + RING_WIDTH, 0, Math.PI * 2);
