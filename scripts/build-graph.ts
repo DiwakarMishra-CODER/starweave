@@ -272,6 +272,10 @@ async function fetchItunesPreview(artistName: string, songTitle: string): Promis
   const nameParts = artistName.normalize('NFD').replace(/[̀-ͯ]/g, '')
     .replace(/^(the|a|an)\s+/i, '').toLowerCase().split(/[\s&,+]/);
   const artistKey = nameParts.find(p => p.length >= 3) ?? nameParts[0];
+  // All significant words in the artist name (not just the first) — used by
+  // the relaxed fallback below so it still requires SOME real connection to
+  // the artist, rather than none at all (see that branch's comment for why).
+  const artistWords = nameParts.filter(p => p.length >= 3);
 
   type Track = { artistName: string; trackName: string; collectionName: string; previewUrl?: string };
   const isUnwanted = (t: Track) => {
@@ -293,12 +297,20 @@ async function fetchItunesPreview(artistName: string, songTitle: string): Promis
           t.artistName.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().includes(artistKey) &&
           !isUnwanted(t),
         ) ??
-        // Fallback: right song + not live/demo (relaxed artist check)
-        data.results.find(t =>
-          t.previewUrl &&
-          t.trackName.toLowerCase().includes(songKey) &&
-          !isUnwanted(t),
-        );
+        // Fallback: right song + not live/demo, but still requires at least
+        // one significant word of the artist's name to appear somewhere in
+        // the result's artist name. A fully artist-less fallback (dropping
+        // this check to just the song title) confidently returns a same-
+        // titled song by a totally unrelated artist whenever the real
+        // recording isn't on iTunes at all — which happens (My Bloody
+        // Valentine's "When You Sleep" from Loveless isn't on iTunes or
+        // Deezer under any search we've tried) — rather than correctly
+        // reporting no match.
+        data.results.find(t => {
+          if (!t.previewUrl || !t.trackName.toLowerCase().includes(songKey) || isUnwanted(t)) return false;
+          const tArtist = t.artistName.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+          return artistWords.some(w => tArtist.includes(w));
+        });
       if (!match?.previewUrl) return null;
       return {
         previewUrl:   match.previewUrl,
@@ -314,6 +326,21 @@ async function fetchItunesPreview(artistName: string, songTitle: string): Promis
   return tryFetch(songTitle);
 }
 
+// Some signature songs genuinely aren't on iTunes or Deezer under any
+// recording by the actual artist — confirmed by hand, not just a search-
+// matching failure (e.g. My Bloody Valentine's back catalog has long had
+// messy digital distribution; Pavement's "Range Life" has a history of
+// rights friction over its Stone Temple Pilots/Smashing Pumpkins lyric).
+// Rather than leave these with no preview at all, search for a different,
+// genuinely available track by the same artist instead — signatureSong
+// itself is untouched (it's locked/verified data used elsewhere), this only
+// changes what plays in the embedded preview player, which always labels
+// itself honestly via previewTrack regardless of what's searched for here.
+const PREVIEW_TRACK_OVERRIDES: Record<string, string> = {
+  'my-bloody-valentine': 'Only Shallow',
+  pavement: 'Gold Soundz',
+};
+
 async function enrichItunesPreviews(
   artists: Artist[],
 ): Promise<Map<string, ItunesPreview | null>> {
@@ -322,13 +349,13 @@ async function enrichItunesPreviews(
   let hits = 0;
   const misses: string[] = [];
   for (const artist of artists) {
-    const song = artist.signatureSong ?? artist.name;
+    const song = PREVIEW_TRACK_OVERRIDES[artist.id] ?? artist.signatureSong ?? artist.name;
     const preview = await fetchItunesPreview(artist.name, song);
     result.set(artist.id, preview);
     if (preview) {
       hits++;
     } else {
-      misses.push(`${artist.name} — "${artist.signatureSong ?? '(no signature song)'}"`);
+      misses.push(`${artist.name} — "${song}"`);
     }
     await new Promise(r => setTimeout(r, 60));
   }
