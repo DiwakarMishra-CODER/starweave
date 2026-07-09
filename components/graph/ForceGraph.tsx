@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useMemo, useCallback, useState } from 'react';
 import ForceGraph2D from 'react-force-graph-2d';
-import { forceSimulation, forceLink, forceManyBody, forceCenter } from 'd3-force-3d';
+import { forceSimulation, forceLink, forceManyBody, forceCenter, forceX, forceY } from 'd3-force-3d';
 import type { Artist, Edge, GraphData, Layer } from '@/data/types';
 import { resolveNodeColor, resolveNodeGlow, resolveEdgeTint } from '@/lib/colors';
 import { getNeighbors, pathEdgeKeys } from '@/lib/graph-utils';
@@ -181,14 +181,116 @@ function createCollideForce(padding: number) {
 // the library's own forceCollide.
 const PRESETTLE_TICKS = 300;
 
+// ── Realm separation (tunable — rough first pass, not final tuning) ─────────
+// Pulls realm-tagged nodes toward one of three "home" positions so
+// core/region-one/electronic read as three loosely separated clusters
+// instead of one hairball. A node with no `realm` at all — every real
+// region-one Artist on the plain graph, and any node a caller doesn't
+// explicitly tag — gets exactly 0 strength from BOTH the x- and y-force
+// below (see realmPullStrengthX/Y), so it contributes nothing for them: only
+// the existing charge/link/center/collide forces above apply, unchanged
+// from before this force existed.
+//
+// TUNING KNOBS — every value governing where the three clusters sit and how
+// hard they're pulled lives here, together, so they stay easy to dial.
+const REALM_HOME_X_CORE = 0;          // core realm home x — canvas center
+const REALM_HOME_X_REGION_ONE = -200; // region-one realm home x — left of center — brought in from -260 to reduce empty space to the core
+const REALM_HOME_X_ELECTRONIC = 200;  // electronic realm home x — right of center — brought in from 260 to reduce empty space to the core
+const REALM_HOME_Y_CORE = 0;          // core realm home y — canvas center
+const REALM_HOME_Y_REGION_ONE = 0;    // region-one realm home y — same centerline as electronic below (both at Y=0), so this is a centering pull, not a separating one: it compacts vertical spread without tilting, since both realms share one target
+const REALM_HOME_Y_ELECTRONIC = 0;    // electronic realm home y — see region-one comment above
+const CORE_PULL_STRENGTH = 1.2;       // core-only horizontal pull toward center — raised from 0.65: core must be the most strongly-positioned thing in the graph so it wins against its own heavy edges into region-one, rather than getting dragged into that mass
+const CORE_PULL_STRENGTH_Y = 1.2;     // core-only vertical pull toward center — same strength as CORE_PULL_STRENGTH, applied on the Y axis too, so core nodes clump to a single (center, center) point rather than just lining up on a vertical axis
+const REALM_PULL_STRENGTH = 0.6;      // region-one + electronic horizontal pull toward their home x — raised from 0.4 for a tighter hug to each realm's home point
+const REALM_PULL_STRENGTH_Y = 0.3;    // region-one + electronic vertical pull toward the shared centerline (REALM_HOME_Y_REGION_ONE/ELECTRONIC = 0 above) — turned back on (was 0) to compact vertical spread; safe from the earlier tilt because both realms now share the same Y target instead of opposing ones. Core's own Y pull is separate — see CORE_PULL_STRENGTH_Y above — and is unaffected by this value.
+const REALM_CHARGE = -22;             // charge (repulsion) for any realm-tagged node — weaker than the graph's normal -40 so each realm's bloom can pull tighter without its own internal repulsion fighting that pull. Realm-less nodes (every real region-one Artist on the plain graph) keep exactly -40 — see chargeStrength below.
+
+// Core glow — realm === 'core' nodes only (drawNode below). Both multipliers
+// are applied as `<original value> * (isCore ? MULT : 1)`, so for every
+// non-core node (every region-one node, and every non-core island-two node)
+// the multiplier is exactly 1 and the drawn glow is bit-for-bit identical to
+// before this addition — nothing about their color, radius, or intensity
+// changes. The glow COLOR itself is untouched (still resolveNodeGlow's
+// existing gold, LAYER_GLOW.root's #E8C87A family) — only its size/brightness
+// scale up for core.
+const CORE_GLOW_RADIUS_MULT = 1.4;    // scales both the bloom haze radius and the shadowBlur size for core nodes — toned down from 2.0, smaller halo
+const CORE_GLOW_INTENSITY = 1.4;      // scales the bloom haze's inner/mid alpha stops for core nodes (clamped to 1 so it can't exceed fully opaque) — toned down from 1.8, a notch less bright/saturated
+
+// Link strength: within-realm edges keep the graph's original strength;
+// cross-realm ("bridge") edges are weakened so each realm can clump into
+// its own bloom while bridges stretch thin across the gaps between them.
+// core↔region-one bridges are weakened even further than a general bridge
+// (LINK_STRENGTH_CORE_BRIDGE) — core nodes (Kraftwerk, Eno, VU) carry heavy
+// edges into the dense region-one cluster that were dragging the core
+// off-center even against a strong central pull; this is the actual fix for
+// that drag, not just a stronger pull fighting it. Any edge touching a
+// realm-less node — every edge in region-one's plain graph, where neither
+// endpoint is ever tagged — falls through to LINK_STRENGTH_WITHIN, i.e.
+// exactly the original 0.25, unchanged.
+const LINK_STRENGTH_WITHIN = 0.25;                      // unchanged from the original single global value
+const LINK_STRENGTH_BRIDGE = LINK_STRENGTH_WITHIN / 3;      // general cross-realm weakening — roughly one-third of within
+const LINK_STRENGTH_CORE_BRIDGE = LINK_STRENGTH_BRIDGE / 4; // core↔region-one specifically — even weaker than the general bridge
+
+function edgeRealms(
+  link: { source: { realm?: string } | string; target: { realm?: string } | string },
+): [string | undefined, string | undefined] {
+  const srcRealm = typeof link.source === 'object' ? link.source.realm : undefined;
+  const tgtRealm = typeof link.target === 'object' ? link.target.realm : undefined;
+  return [srcRealm, tgtRealm];
+}
+
+function linkStrength(link: { source: { realm?: string } | string; target: { realm?: string } | string }): number {
+  const [srcRealm, tgtRealm] = edgeRealms(link);
+  if (!srcRealm || !tgtRealm) return LINK_STRENGTH_WITHIN; // realm-less endpoint(s) — keeps today's strength
+  if (srcRealm === tgtRealm) return LINK_STRENGTH_WITHIN;  // within-realm — full strength
+  if ((srcRealm === 'core' && tgtRealm === 'region-one') || (srcRealm === 'region-one' && tgtRealm === 'core')) {
+    return LINK_STRENGTH_CORE_BRIDGE;
+  }
+  return LINK_STRENGTH_BRIDGE; // any other cross-realm pair (electronic↔region-one, electronic↔core)
+}
+
+function realmHomeX(node: { realm?: string }): number {
+  if (node.realm === 'core') return REALM_HOME_X_CORE;
+  if (node.realm === 'region-one') return REALM_HOME_X_REGION_ONE;
+  if (node.realm === 'electronic') return REALM_HOME_X_ELECTRONIC;
+  return 0; // unused — realmPullStrengthX returns 0 for this case, so this never moves the node
+}
+
+function realmPullStrengthX(node: { realm?: string }): number {
+  if (node.realm === 'core') return CORE_PULL_STRENGTH;
+  if (node.realm === 'region-one' || node.realm === 'electronic') return REALM_PULL_STRENGTH;
+  return 0;
+}
+
+function realmHomeY(node: { realm?: string }): number {
+  if (node.realm === 'core') return REALM_HOME_Y_CORE;
+  if (node.realm === 'region-one') return REALM_HOME_Y_REGION_ONE;
+  if (node.realm === 'electronic') return REALM_HOME_Y_ELECTRONIC;
+  return 0; // unused — realmPullStrengthY returns 0 for this case, so this never moves the node
+}
+
+function realmPullStrengthY(node: { realm?: string }): number {
+  if (node.realm === 'core') return CORE_PULL_STRENGTH_Y;
+  if (node.realm === 'region-one' || node.realm === 'electronic') return REALM_PULL_STRENGTH_Y;
+  return 0;
+}
+
+function chargeStrength(node: { realm?: string }): number {
+  return node.realm === 'core' || node.realm === 'region-one' || node.realm === 'electronic'
+    ? REALM_CHARGE
+    : -40; // unchanged default for every realm-less node — the plain region-one graph never sees anything but this
+}
+
 function presettleLayout(nodes: GraphNode[], links: GraphLink[]): void {
   const sim = forceSimulation(nodes, 2);
   sim.stop(); // d3-force schedules its own auto-tick timer on creation — must
               // stop it before it ever fires; we drive ticking manually below.
-  sim.force('link', forceLink<GraphNode, GraphLink>(links).id(n => n.id).distance(75).strength(0.25));
-  sim.force('charge', forceManyBody().strength(-40));
+  sim.force('link', forceLink<GraphNode, GraphLink>(links).id(n => n.id).distance(75).strength(linkStrength));
+  sim.force('charge', forceManyBody<GraphNode>().strength(chargeStrength));
   sim.force('center', forceCenter().strength(0.04));
   sim.force('collide', createCollideForce(COLLIDE_PADDING));
+  sim.force('realmX', forceX<GraphNode>(realmHomeX).strength(realmPullStrengthX));
+  sim.force('realmY', forceY<GraphNode>(realmHomeY).strength(realmPullStrengthY));
   sim.velocityDecay(0.38);
   for (let i = 0; i < PRESETTLE_TICKS; i++) sim.tick();
 }
@@ -541,12 +643,18 @@ export default function ForceGraphCanvas({
     const fg = graphRef.current;
     if (!fg) return;
     forceConfigDoneRef.current = true;
-    fg.d3Force('charge')?.strength(-40);
-    fg.d3Force('link')?.distance(75).strength(0.25);
+    fg.d3Force('charge')?.strength(chargeStrength);
+    fg.d3Force('link')?.distance(75).strength(linkStrength);
     fg.d3Force('center')?.strength(0.04);
     // Collision only — stops the handful of nodes that physically overlap
     // without touching charge/link/center above, so overall spread/shape holds.
     fg.d3Force('collide', createCollideForce(COLLIDE_PADDING));
+    // Realm separation — see the constants/comment above presettleLayout.
+    // Registered as brand-new named forces (same pattern as 'collide' just
+    // above), not a getter/setter on a library default — these forces don't
+    // exist until we add them. Zero effect on any node without a realm.
+    fg.d3Force('realmX', forceX<GraphNode>(realmHomeX).strength(realmPullStrengthX));
+    fg.d3Force('realmY', forceY<GraphNode>(realmHomeY).strength(realmPullStrengthY));
     fg.d3VelocityDecay?.(0.38);
     // Reduced motion: converge in a couple dozen ticks instead of ~300 for
     // any future tick cycle (e.g. post-drag readjustment) that does run.
@@ -956,6 +1064,10 @@ export default function ForceGraphCanvas({
 
       const color = resolveNodeColor(n);
       const glow  = resolveNodeGlow(n);
+      // Core glow boost — see CORE_GLOW_RADIUS_MULT/CORE_GLOW_INTENSITY above.
+      // false for every node without realm === 'core', i.e. every region-one
+      // node (plain graph or merged route) and every non-core island-two node.
+      const isCore = n.realm === 'core';
 
       // ── Photo eligibility ─────────────────────────────────────────────────
       // Resting state: hub nodes (score ≥ threshold) always show photo.
@@ -997,11 +1109,13 @@ export default function ForceGraphCanvas({
 
       // ── Outer bloom haze ──
       if (!isDimmed) {
-        const bloomMult = isFocused ? 4.0 : isHovered ? 3.5 : 2.8;
+        const bloomMult = (isFocused ? 4.0 : isHovered ? 3.5 : 2.8) * (isCore ? CORE_GLOW_RADIUS_MULT : 1);
         const bloomR = er * bloomMult;
+        const innerAlpha = (isFocused ? 0.30 : 0.22) * (isCore ? CORE_GLOW_INTENSITY : 1);
+        const midAlpha = 0.07 * (isCore ? CORE_GLOW_INTENSITY : 1);
         const grad = ctx.createRadialGradient(n.x, n.y, er * 0.5, n.x, n.y, bloomR);
-        grad.addColorStop(0,    glow.replace('0.7)', isFocused ? '0.30)' : '0.22)'));
-        grad.addColorStop(0.5,  glow.replace('0.7)', '0.07)'));
+        grad.addColorStop(0,    glow.replace('0.7)', `${Math.min(innerAlpha, 1)})`));
+        grad.addColorStop(0.5,  glow.replace('0.7)', `${Math.min(midAlpha, 1)})`));
         grad.addColorStop(1,    glow.replace('0.7)', '0)'));
         ctx.beginPath();
         ctx.arc(n.x, n.y, bloomR, 0, Math.PI * 2);
@@ -1010,11 +1124,11 @@ export default function ForceGraphCanvas({
       }
 
       // ── Core shadow glow ──
-      ctx.shadowBlur = isFocused ? 32
+      ctx.shadowBlur = (isFocused ? 32
                      : isHovered ? 22
                      : isInPath  ? 16
                      : score >= ALWAYS_LABEL_THRESHOLD ? 14
-                     : 10;
+                     : 10) * (isCore ? CORE_GLOW_RADIUS_MULT : 1);
       ctx.shadowColor = glow;
 
       // ── Node fill (becomes the colored ring when a photo is overlaid) ──

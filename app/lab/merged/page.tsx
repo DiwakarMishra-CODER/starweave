@@ -19,6 +19,31 @@ export default function MergedLabPage() {
   const regionOne = loadGraphData();
   const regionOneIds = new Set(regionOne.artists.map(a => a.id));
 
+  // Ids data/island-two-data.ts's stubAnchors declares realm: 'core' for
+  // (Velvet Underground, Kraftwerk, Can, Neu!, Brian Eno). Four of those
+  // five are ALSO real region-one Artist nodes — without checking this set,
+  // the blanket realm: 'region-one' tag below would overwrite their
+  // intended core tag. Brian Eno isn't a real region-one node, so he never
+  // reaches this map; he's tagged correctly via the separate missingAnchors
+  // branch below instead.
+  const coreIds = new Set(stubAnchors.filter(a => a.realm === 'core').map(a => a.id));
+
+  // Tag a fresh copy of every region-one artist with realm: 'core' (for the
+  // 4 core-anchor ids above) or realm: 'region-one' (everyone else) so
+  // ForceGraph's realm-separation force (see the REALM_HOME_X_* constants in
+  // components/graph/ForceGraph.tsx) pulls them toward the right home point
+  // on THIS route. This never mutates loadGraphData()'s cached objects
+  // (spread creates new objects) — the plain "/" region-one route reads
+  // that same cache and never sees this tag. It also doesn't change color:
+  // resolveNodeColor/Glow/EdgeTint already resolve 'core' to the existing
+  // root gold, and fall back to LAYER_COLORS[layer] for 'region-one' (any
+  // realm other than 'core'/'electronic'), so both look identical to before
+  // for their respective layer.
+  const taggedRegionOneArtists = regionOne.artists.map(a => ({
+    ...a,
+    realm: coreIds.has(a.id) ? ('core' as const) : ('region-one' as const),
+  }));
+
   // island-two's edges assume all 24 stub-anchor ids already exist as real
   // region-one artists. True for 23 of them — but Brian Eno is referenced
   // throughout region-one bios (Talking Heads, OMD, Slowdive...) without
@@ -40,7 +65,7 @@ export default function MergedLabPage() {
       lineage: a.lineage,
     }));
 
-  const combinedArtists = [...regionOne.artists, ...islandTwoNodes, ...missingAnchors];
+  const combinedArtists = [...taggedRegionOneArtists, ...islandTwoNodes, ...missingAnchors];
   const combinedEdges = [...regionOne.edges, ...islandTwoEdges];
 
   // Region-one's own influenceScore values (already baked into graph.json by
