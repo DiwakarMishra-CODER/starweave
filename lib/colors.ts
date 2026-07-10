@@ -119,6 +119,35 @@ export function resolveEdgeTint(node: RealmLineageNode): string {
   return EDGE_TINT[node.layer];
 }
 
+// Human-readable label per island-two lineage — used by resolveNodeLabel
+// below and by Legend's electronic section.
+export const LINEAGE_LABELS: Record<string, string> = {
+  krautrock:                    'Krautrock',
+  'synth-pop':                  'Synth-pop',
+  idm:                          'IDM',
+  'ambient-drone':              'Ambient / Drone',
+  'electronic-indie-dancepunk': 'Electronic-indie / Dance-punk',
+  'trip-hop-downtempo':         'Trip-hop / Downtempo',
+  'hyperpop-pcmusic':           'Hyperpop / PC Music',
+  'art-electronic':             'Art-electronic',
+};
+
+function lineageLabel(lineage?: string): string {
+  return LINEAGE_LABELS[lineage ?? ''] ?? 'Electronic';
+}
+
+// Same fallback pattern as resolveNodeColor/resolveNodeGlow/resolveEdgeTint
+// above — a realm-less node (every real region-one Artist without this
+// tag) or one explicitly tagged realm: 'region-one' both fall through to
+// the existing LAYER_LABELS[layer] text, byte-for-byte unchanged from
+// before this function existed.
+export function resolveNodeLabel(node: RealmLineageNode): string {
+  if (!node.realm) return LAYER_LABELS[node.layer];
+  if (node.realm === 'core') return 'Core';
+  if (node.realm === 'electronic') return lineageLabel(node.lineage);
+  return LAYER_LABELS[node.layer];
+}
+
 export const GENRE_COLORS: Record<string, string> = {
   shoegaze:     '#F2A8C4',  // rose — shoegaze-dreampop layer
   'dream-pop':  '#F2A8C4',

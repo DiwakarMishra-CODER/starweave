@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { loadGraphData } from '@/lib/graph-data';
-import { LAYER_COLORS, LAYER_LABELS } from '@/lib/colors';
+import { resolveNodeColor, resolveNodeLabel } from '@/lib/colors';
 import SpotifyEmbed from '@/components/artist/SpotifyEmbed';
 import DeezerPreview from '@/components/artist/DeezerPreview';
 import ArtistBackground from '@/components/artist/ArtistBackground';
@@ -41,7 +41,7 @@ export default async function ArtistPage({ params }: Props) {
 
   const influences   = data.edges.filter(e => e.source === artist.id && e.type === 'influence');
   const influencedBy = data.edges.filter(e => e.target === artist.id && e.type === 'influence');
-  const color = LAYER_COLORS[artist.layer];
+  const color = resolveNodeColor(artist);
 
   const metaParts: string[] = [];
   if (artist.genres.length > 0) metaParts.push(artist.genres.map(g => genreMap[g] ?? g).join(', '));
@@ -76,7 +76,7 @@ export default async function ArtistPage({ params }: Props) {
                 style={{ background: color }}
                 aria-hidden
               />
-              <span className="artist-page__layer-label">{LAYER_LABELS[artist.layer]}</span>
+              <span className="artist-page__layer-label">{resolveNodeLabel(artist)}</span>
             </div>
 
             <h1 className="artist-page__name">{artist.name}</h1>

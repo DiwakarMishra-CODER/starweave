@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Artist } from '@/data/types';
-import { LAYER_COLORS } from '@/lib/colors';
+import { resolveNodeColor } from '@/lib/colors';
 
 interface Props {
   artist: Artist;
@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function ArtistCard({ artist, genreNames }: Props) {
-  const color = LAYER_COLORS[artist.layer];
+  const color = resolveNodeColor(artist);
   const genreLabels = artist.genres
     .slice(0, 2)
     .map(g => genreNames[g] ?? g)

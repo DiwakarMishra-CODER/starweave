@@ -1,12 +1,27 @@
 'use client';
 
 import { useState } from 'react';
-import { LAYER_COLORS, LAYER_LABELS, LAYERS } from '@/lib/colors';
+import { LAYER_COLORS, LAYER_LABELS, LAYERS, LINEAGE_COLORS, LINEAGE_LABELS } from '@/lib/colors';
 import type { Layer } from '@/data/types';
 
 interface Props {
   activeLayers?: Set<Layer>;
 }
+
+// Fixed iteration order for the electronic section — LINEAGE_COLORS/LABELS
+// are plain Records (insertion-ordered in practice, but an explicit list
+// here doesn't depend on that and reads in a deliberate sequence: roughly
+// oldest-to-newest lineage, matching the audit's own family order).
+const LINEAGES = [
+  'krautrock',
+  'synth-pop',
+  'idm',
+  'ambient-drone',
+  'electronic-indie-dancepunk',
+  'trip-hop-downtempo',
+  'hyperpop-pcmusic',
+  'art-electronic',
+] as const;
 
 export default function Legend({ activeLayers }: Props) {
   const [open, setOpen] = useState(true);
@@ -17,6 +32,18 @@ export default function Legend({ activeLayers }: Props) {
     <div className="legend" role="complementary" aria-label="Graph legend">
       {open && (
         <div className="legend__body">
+          {/* Core — single static swatch, no filtering (display-only, like Electronic below). */}
+          <p className="legend__group-label">Core</p>
+          <ul className="legend__items">
+            <li className="legend__item">
+              <span className="legend__dot" style={{ background: LAYER_COLORS.root }} aria-hidden />
+              Core
+            </li>
+          </ul>
+
+          {/* Region one — the original 5 layers, unchanged behavior: still
+              dims against the existing activeLayers filter from GraphControls. */}
+          <p className="legend__group-label">Region one</p>
           <ul className="legend__items">
             {LAYERS.map(layer => {
               const dimmed = activeLayers && activeLayers.size > 0 && !activeLayers.has(layer);
@@ -31,6 +58,21 @@ export default function Legend({ activeLayers }: Props) {
                 </li>
               );
             })}
+          </ul>
+
+          {/* Electronic — one row per island-two lineage, static display only. */}
+          <p className="legend__group-label">Electronic</p>
+          <ul className="legend__items">
+            {LINEAGES.map(lineage => (
+              <li key={lineage} className="legend__item">
+                <span
+                  className="legend__dot"
+                  style={{ background: LINEAGE_COLORS[lineage] }}
+                  aria-hidden
+                />
+                {LINEAGE_LABELS[lineage]}
+              </li>
+            ))}
           </ul>
         </div>
       )}

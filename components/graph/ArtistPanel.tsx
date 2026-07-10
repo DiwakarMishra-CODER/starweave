@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import type { Artist, Edge, GraphData } from '@/data/types';
-import { LAYER_COLORS, LAYER_LABELS } from '@/lib/colors';
+import { resolveNodeColor, resolveNodeLabel } from '@/lib/colors';
 import SpotifyEmbed from '@/components/artist/SpotifyEmbed';
 import DeezerPreview from '@/components/artist/DeezerPreview';
 import ArtistBackground from '@/components/artist/ArtistBackground';
@@ -36,7 +36,7 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
     ? graphData.edges.filter(e => e.target === artist.id && e.type === 'influence')
     : [];
 
-  const color = artist ? LAYER_COLORS[artist.layer] : undefined;
+  const color = artist ? resolveNodeColor(artist) : undefined;
   const bioPreview = artist?.bio ? truncateBio(artist.bio, 2) : null;
 
   return (
@@ -89,7 +89,7 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                   style={{ background: color }}
                   aria-hidden
                 />
-                {LAYER_LABELS[artist.layer]}
+                {resolveNodeLabel(artist)}
                 {artist.activeFrom && (
                   <span style={{ opacity: 0.6 }}>· est. {artist.activeFrom}</span>
                 )}
@@ -182,7 +182,7 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                         <li key={edge.target} className="panel-edge-item">
                           <span
                             className="panel-edge-dot"
-                            style={{ background: LAYER_COLORS[target.layer] }}
+                            style={{ background: resolveNodeColor(target) }}
                             aria-hidden
                           />
                           <button
@@ -215,7 +215,7 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                         <li key={edge.source} className="panel-edge-item">
                           <span
                             className="panel-edge-dot"
-                            style={{ background: LAYER_COLORS[source.layer] }}
+                            style={{ background: resolveNodeColor(source) }}
                             aria-hidden
                           />
                           <button

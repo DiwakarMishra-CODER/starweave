@@ -415,10 +415,32 @@ h3 { font-size: 1.1rem; }
   margin-bottom: 0.6rem;
 }
 
+/* Group headers (Core / Region one / Electronic) — mirrors
+   .graph-controls__group-label exactly for visual consistency between the
+   two panels. */
+.legend__group-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.legend__group-label:first-child {
+  margin-top: 0;
+}
+
 .legend__items {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.legend__items:last-child {
+  margin-bottom: 0;
 }
 
 .legend__item {
