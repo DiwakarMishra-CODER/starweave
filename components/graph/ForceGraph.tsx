@@ -7,6 +7,12 @@ import type { Artist, Edge, GraphData, Layer } from '@/data/types';
 import { resolveNodeColor, resolveNodeGlow, resolveEdgeTint } from '@/lib/colors';
 import { getNeighbors, pathEdgeKeys } from '@/lib/graph-utils';
 
+// Dev-only zoom readout (tuning instrument for the zoom-based cloud/detail
+// reveal work) — flip to false to remove the on-screen number without
+// deleting the plumbing. Reads globalScale that onRenderFramePost already
+// receives every frame; no new camera/zoom system.
+const SHOW_ZOOM_READOUT = true;
+
 // AABB overlap test for label collision avoidance [x, y, w, h]
 function rectsOverlap(
   a: [number, number, number, number],
@@ -351,6 +357,200 @@ const CAMERA_PADDING = 60;  // tighter frame → cluster fills more of the clear
 const CAMERA_MS = 600;     // transition duration (ms)
 const SPREAD_FACTOR = 2.6; // spotlight-spread outward scale from cluster centroid
 
+// User-scroll zoom clamp for the unfocused overview — distinct from MAX_ZOOM
+// above (that one caps what the focus camera itself will dial in to).
+// react-force-graph-2d only exposes minZoom/maxZoom as declarative props —
+// its ref's methodNames whitelist (zoom/zoomToFit/centerAt/d3Force/etc.)
+// does NOT include minZoom/maxZoom, even though the underlying force-graph
+// kapsule instance has both as callable setters. So this has to be driven
+// via React state on <ForceGraph2D minZoom maxZoom>, not graphRef.
+const SCROLL_MIN_ZOOM = 2.5;
+const SCROLL_MAX_ZOOM = 7;
+// force-graph's own library defaults (force-graph.js: minZoom default 0.01,
+// maxZoom default 1000) — used as the "unclamped" bounds while a focus view
+// is active, rather than inventing new numbers that might not cover every
+// focus target (zoomToFit's dense-core fit isn't bounded by MAX_ZOOM at all).
+const UNCLAMPED_MIN_ZOOM = 0.01;
+const UNCLAMPED_MAX_ZOOM = 1000;
+const CLAMPED_BOUNDS: [number, number] = [SCROLL_MIN_ZOOM, SCROLL_MAX_ZOOM];
+const UNCLAMPED_BOUNDS: [number, number] = [UNCLAMPED_MIN_ZOOM, UNCLAMPED_MAX_ZOOM];
+
+// ── Node opacity fade by zoom (P2 of the zoom-based cloud/detail reveal) ────
+// Overview only — drawNode forces this to 1 whenever a focus view is open
+// (see isFocusModeActive there), since focus legitimately zooms below
+// FADE_ZOOM_OUT to frame neighbors and those neighbors must stay visible.
+// Fully solid at/above FADE_ZOOM_IN — unchanged from pre-fade behavior.
+// Fully invisible at/below FADE_ZOOM_OUT, for every node, hubs included.
+const FADE_ZOOM_OUT = 2.5;
+const FADE_ZOOM_IN = 4;
+// Shifts each node's fade-START point (not its zero point) down from
+// FADE_ZOOM_IN by this many zoom-units per sqrt(influenceScore) — so a hub
+// holds full opacity over a wider range while zooming out, then fades over a
+// narrower stretch just above FADE_ZOOM_OUT. Every node still reaches
+// exactly 0 at FADE_ZOOM_OUT regardless of this value. Set to 0 to disable.
+const FADE_HUB_BIAS_STRENGTH = 0.15;
+
+function computeZoomFade(globalScale: number, influenceScore: number): number {
+  if (globalScale >= FADE_ZOOM_IN) return 1;
+  if (globalScale <= FADE_ZOOM_OUT) return 0;
+  const maxShift = FADE_ZOOM_IN - FADE_ZOOM_OUT - 0.01; // keep fadeStart above FADE_ZOOM_OUT
+  const hubShift = Math.min(FADE_HUB_BIAS_STRENGTH * Math.sqrt(influenceScore), maxShift);
+  const fadeStart = FADE_ZOOM_IN - hubShift;
+  if (globalScale >= fadeStart) return 1;
+  return (globalScale - FADE_ZOOM_OUT) / (fadeStart - FADE_ZOOM_OUT);
+}
+
+// ── Realm cloud (P3 of the zoom-based cloud/detail reveal) — electronic
+// realm only for now; region-one/core get their own cloud once this one's
+// look is tuned. Drawn in onRenderFramePre, the only hook that fires before
+// links/nodes are painted, so the cloud sits fully behind everything.
+//
+// Color pulled from the existing realm/lineage source (lib/colors.ts), not
+// invented: resolveNodeGlow already falls through to that module's
+// designated generic-electronic color when called with no lineage. Fixed
+// alpha "0.7)" baked in — each gradient stop below replaces it with its own
+// value, the same string-replace idiom drawNode's bloom haze already uses.
+const ELECTRONIC_CLOUD_GLOW = resolveNodeGlow({ realm: 'electronic', layer: 'outside' });
+
+// Radius = RMS distance of the realm's nodes from their centroid (a robust
+// "typical spread" — unlike a max-distance, one outlier node can't blow it
+// out) × this multiplier. Large on purpose: the soft edge needs to reach
+// past the outer nodes (including outlying ghost hubs below) so the whole
+// realm reads as one covering nebula, not a pool at the centroid.
+const CLOUD_RADIUS_MULTIPLIER = 4.2;
+
+// 3 gradient blobs, outer→inner, as [radius fraction of cloudR, peak alpha
+// at center] — ALL drawn from the same (cx, cy) centroid (see the single
+// createRadialGradient center used for every entry below). Concentric by
+// construction: only the radius/alpha vary per blob, never the center, so
+// they layer into one mass instead of reading as separate pools. Luminosity
+// accumulates toward the middle instead of one flat painted disc. Tune
+// brightness by eye via the alphas. Peak stays below CORE_CLOUD_BLOBS' peak
+// so the realm clouds read as genuinely lit but still sit under the core.
+const CLOUD_BLOBS: Array<[radiusFraction: number, peakAlpha: number]> = [
+  [1.0, 0.22],
+  [0.6, 0.36],
+  [0.32, 0.58],
+];
+
+// Ghost hubs — the N highest-influenceScore nodes in the realm glow faintly
+// through the cloud, like bright stars in a nebula. Deliberately tiny/dim —
+// barely-there pinpricks, not their own light-pools: each hub draws its own
+// gradient centered on that node (not the cloud's centroid), so if these get
+// too large/bright they compete with the single cloud instead of living
+// inside it. Peak alpha caps how bright they ever get, even at full cloud
+// bloom (zoom === FADE_ZOOM_OUT).
+const CLOUD_GHOST_HUB_COUNT = 3;
+const CLOUD_GHOST_HUB_RADIUS_FRACTION = 0.09; // of cloudR
+const CLOUD_GHOST_HUB_PEAK_ALPHA = 0.20; // nudged up from 0.14 to stay perceptible against the brighter CLOUD_BLOBS above; still well below the cloud's own peak
+
+// ── Core blaze — the 5 realm === 'core' nodes' cloud. Same mechanism as the
+// electronic cloud above (centroid + RMS-radius, concentric stacked
+// gradients, 'lighter' compositing, same cloudFade/isFocusModeActive), but
+// tuned to be the single brightest, most concentrated glow on screen — the
+// galaxy's focal anchor, not another diffuse nebula. No ghost hubs here —
+// not requested, and core nodes already render normally via the existing
+// P2 fade.
+
+// Tighter than the realm clouds — a concentrated blaze, not a wide haze.
+// Still meaningfully smaller than CLOUD_RADIUS_MULTIPLIER/REGION_ONE_CLOUD_
+// RADIUS_MULTIPLIER even after this bump, so the core stays a concentrated
+// center of gravity rather than growing into a fourth diffuse cloud.
+const CORE_CLOUD_RADIUS_MULTIPLIER = 1.6;
+
+// Same [radiusFraction, peakAlpha] recipe as CLOUD_BLOBS, but far more
+// intense — this is what makes the core outshine both realm clouds.
+const CORE_CLOUD_BLOBS: Array<[radiusFraction: number, peakAlpha: number]> = [
+  [1.0, 0.30],
+  [0.55, 0.55],
+  [0.28, 0.88],
+];
+
+// A wide, faint extension drawn past CORE_CLOUD_BLOBS' own radiusFraction-1.0
+// edge — the "soft halo" that makes the core read as a blazing center of
+// gravity rather than a small lone star, kept separate from the tight blaze
+// above so its size/intensity can be tuned on its own.
+const CORE_CLOUD_HALO_RADIUS_FRACTION = 1.8; // of coreCloudR
+const CORE_CLOUD_HALO_ALPHA = 0.10;
+
+// ── Smooth falloff shape, shared by every core layer (the halo above and
+// every CORE_CLOUD_BLOBS entry) — see addCoreGradientStops below. Previously
+// each blob held a flat plateau (two stops at the SAME alpha) before
+// dropping, which read as a hard-edged hot "disc" sitting inside a visibly
+// separate halo. alpha(t) = peakAlpha * (1 - t)^power, t = normalized
+// distance from center (0 at the very center, 1 at the outer edge) — this is
+// strictly decreasing at every point starting at t=0, so there's no flat
+// segment, and using the exact same curve at every scale (halo included)
+// means the additive stack has no seam between "disc" and "halo": one
+// continuous falloff from center to edge.
+const CORE_CLOUD_FALLOFF_POWER = 2.2; // >1 = gaussian-like: steep near center, gentle near the edge
+const CORE_CLOUD_STOP_COUNT = 8; // sampled stops approximating the curve — more = smoother
+
+// How far out (as a fraction of a layer's own radius) the near-white center
+// color finishes blending into the sourced gold below. Alpha keeps falling
+// the whole time per the curve above — this only blends color, it never
+// holds alpha flat, so it can't reintroduce the plateau.
+const CORE_CLOUD_HOT_CENTER_FRACTION = 0.22;
+
+// Gold as separate RGB channels — matches lib/colors.ts's CORE_COLOR
+// ('#E8C87A', i.e. resolveNodeColor({realm:'core',...})), same sourced gold
+// as before, just numeric so it can be blended with white below.
+const CORE_GOLD_RGB: [number, number, number] = [232, 200, 122];
+
+function coreStopColor(t: number): string {
+  if (t >= CORE_CLOUD_HOT_CENTER_FRACTION) {
+    const [r, g, b] = CORE_GOLD_RGB;
+    return `${r}, ${g}, ${b}`;
+  }
+  const mix = t / CORE_CLOUD_HOT_CENTER_FRACTION; // 0 (white) -> 1 (gold) as t goes 0 -> CORE_CLOUD_HOT_CENTER_FRACTION
+  const [gr, gg, gb] = CORE_GOLD_RGB;
+  const r = Math.round(255 + (gr - 255) * mix);
+  const g = Math.round(255 + (gg - 255) * mix);
+  const b = Math.round(255 + (gb - 255) * mix);
+  return `${r}, ${g}, ${b}`;
+}
+
+function addCoreGradientStops(grad: CanvasGradient, peakAlpha: number): void {
+  for (let i = 0; i <= CORE_CLOUD_STOP_COUNT; i++) {
+    const t = i / CORE_CLOUD_STOP_COUNT;
+    const alpha = (peakAlpha * Math.pow(1 - t, CORE_CLOUD_FALLOFF_POWER)).toFixed(3);
+    grad.addColorStop(t, `rgba(${coreStopColor(t)}, ${alpha})`);
+  }
+}
+
+// hex '#RRGGBB' -> 'rgba(r, g, b, alpha)' — this file has no existing
+// hex->rgba helper (lib/colors.ts has an equivalent but it's private), and
+// the region-one cloud below needs a color that ISN'T sourced from the
+// per-layer palette (unlike electronic/core) — it's a new cloud-only tone,
+// so the tunable hex constant needs to stay the single source of truth for
+// its derived glow string rather than a second hand-maintained value.
+function hexToRgba(hex: string, alpha: number): string {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+// ── Region-one cloud — the 'region-one' realm's cloud (left side). Same
+// mechanism as the electronic/core clouds above. Region-one nodes still
+// color individually by their own `layer` field (unchanged) — this cloud is
+// one flat color for the region as a whole, not a per-node read.
+//
+// Soft cool periwinkle/violet-blue, deliberately distinct from the gold core
+// and magenta electronic cloud — tune the hex by eye.
+const REGION_ONE_CLOUD_COLOR = '#8A9CE0';
+const REGION_ONE_CLOUD_GLOW = hexToRgba(REGION_ONE_CLOUD_COLOR, 0.7); // same "0.7)" suffix convention as ELECTRONIC_CLOUD_GLOW/CORE_CLOUD_GLOW
+
+// Matched to the electronic cloud (CLOUD_RADIUS_MULTIPLIER/CLOUD_BLOBS) —
+// own named constants, not a shared reference, so each realm's cloud can
+// still be tuned independently even though the two are kept as peers.
+const REGION_ONE_CLOUD_RADIUS_MULTIPLIER = 4.2;
+const REGION_ONE_CLOUD_BLOBS: Array<[radiusFraction: number, peakAlpha: number]> = [
+  [1.0, 0.22],
+  [0.6, 0.36],
+  [0.32, 0.58],
+];
+
 interface Props {
   graphData: GraphData;
   activeLayers: Set<Layer>;
@@ -409,11 +609,25 @@ export default function ForceGraphCanvas({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const graphRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  // Dev zoom readout — see SHOW_ZOOM_READOUT above. Written directly (no
+  // setState) so the per-frame update never triggers a React re-render.
+  const zoomReadoutRef = useRef<HTMLDivElement>(null);
+  // Live globalScale, refreshed every frame in handleRenderFramePre (which
+  // fires before arrows paint) — linkDirectionalArrowColor below needs the
+  // current zoom to fade arrows the same way drawLink fades edge lines, but
+  // that accessor is a plain per-link callback with no globalScale argument.
+  const currentGlobalScaleRef = useRef(1);
   // Null until ResizeObserver fires — ForceGraph2D is not rendered before then,
   // which prevents the hardcoded-default → real-size bounce that resets d3-zoom
   // and jams nodes at the canvas origin on every navigation-back.
   const [dimensions, setDimensions] = useState<{ width: number; height: number } | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  // [min, max] passed straight through as <ForceGraph2D minZoom maxZoom>
+  // props — see the SCROLL_MIN_ZOOM comment above for why this has to be
+  // state (declarative props) rather than a graphRef method call, and
+  // applyCameraFocusForCluster/animateClusterIntoView for the bail-and-retry
+  // this requires to keep a widen ordered before the zoom() that needs it.
+  const [scrollZoomBounds, setScrollZoomBounds] = useState<[number, number]>(CLAMPED_BOUNDS);
   // Starts at 0 so the library's own automatic post-mount cooldown — which
   // starts ticking as an unconditional side effect of the graphData prop
   // being applied, before any of our effects get a chance to run — does zero
@@ -452,6 +666,10 @@ export default function ForceGraphCanvas({
   // tryInitialFit(), which only proceeds once both are true.
   const dimensionsSettledRef = useRef(false);
   const engineStoppedOnceRef = useRef(false);
+  // Pending "re-engage the scroll clamp" timeout from the last defocus —
+  // cancelled if a new focus supersedes it before it fires (see
+  // applyCameraFocusForCluster/animateClusterIntoView).
+  const zoomClampRestoreTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   // Per-frame label state — both refs reset together at each new frame.
   const labelQueueRef  = useRef<LabelCandidate[]>([]);
   const nodeCirclesRef = useRef<Array<{ x: number; y: number; r: number }>>([]);
@@ -658,6 +876,18 @@ export default function ForceGraphCanvas({
     if (prefersReducedMotionRef.current) fg.d3AlphaDecay?.(0.1);
   }, [dimensions]);
 
+  // Scroll-zoom clamp starts at CLAMPED_BOUNDS (scrollZoomBounds' initial
+  // state) and is passed straight to <ForceGraph2D minZoom maxZoom> below;
+  // the focus camera (applyCameraFocusForCluster/animateClusterIntoView)
+  // widens it for as long as a focus view is open and restores it on defocus.
+
+  // Cancel any pending clamp-restore timeout on unmount.
+  useEffect(() => {
+    return () => {
+      if (zoomClampRestoreTimerRef.current !== null) clearTimeout(zoomClampRestoreTimerRef.current);
+    };
+  }, []);
+
   // The single set of ids to spread + frame right now — see getActiveCluster.
   const { ids: activeClusterIds, key: activeClusterKey } = useMemo(
     () => getActiveCluster(selectedId, highlightSetIds, graphData.edges),
@@ -826,6 +1056,14 @@ export default function ForceGraphCanvas({
           ZOOM_FIT_PADDING,
           coreIds ? (n: object) => coreIds.has((n as GraphNode).id) : undefined,
         );
+        // Re-engage the scroll clamp only once this zoom-out transition has
+        // actually finished — restoring synchronously here would fight the
+        // in-flight zoomToFit transition for the same d3-zoom scale.
+        if (zoomClampRestoreTimerRef.current !== null) clearTimeout(zoomClampRestoreTimerRef.current);
+        zoomClampRestoreTimerRef.current = setTimeout(() => {
+          zoomClampRestoreTimerRef.current = null;
+          setScrollZoomBounds(CLAMPED_BOUNDS);
+        }, duration);
       }
       return true;
     }
@@ -837,12 +1075,33 @@ export default function ForceGraphCanvas({
     const cameraTarget = computeCameraTargetForCluster(clusterIds, new Map());
     if (!cameraTarget) return true; // degenerate bounding box, nothing more to do
 
+    // A focus view is opening — cancel any pending clamp-restore left over
+    // from a just-superseded defocus.
+    if (zoomClampRestoreTimerRef.current !== null) {
+      clearTimeout(zoomClampRestoreTimerRef.current);
+      zoomClampRestoreTimerRef.current = null;
+    }
+    // The scroll clamp must be widened before the zoom() call below (e.g.
+    // Kraftwerk's neighbors need ~0.92, well under the 2.5 floor) — but
+    // <ForceGraph2D>'s minZoom/maxZoom are declarative props (no imperative
+    // setter is exposed on the ref — see the SCROLL_MIN_ZOOM comment), so a
+    // state update here only takes effect on this component's NEXT render.
+    // Request it and bail; this callback's identity changes when
+    // scrollZoomBounds changes (it's a dep below), which re-fires the effect
+    // that calls this function — by then the widened props have already
+    // committed, since <ForceGraph2D> applies them during its own render,
+    // which finishes before any passive effect of this same update runs.
+    if (scrollZoomBounds[0] !== UNCLAMPED_MIN_ZOOM) {
+      setScrollZoomBounds(UNCLAMPED_BOUNDS);
+      return false;
+    }
+
     // Step 1 — instant zoom (no d3-zoom transition → no conflict with step 2).
     fg.zoom(cameraTarget.targetZoom, 0);
     // Step 2 — animated pan to the panel-adjusted centre.
     fg.centerAt(cameraTarget.camX, cameraTarget.centerGY, duration);
     return true;
-  }, [stableData.nodes, computeCameraTargetForCluster]);
+  }, [stableData.nodes, computeCameraTargetForCluster, scrollZoomBounds]);
 
   useEffect(() => {
     const ready = applyCameraFocusForCluster(activeClusterIds);
@@ -885,6 +1144,22 @@ export default function ForceGraphCanvas({
 
     prevClusterActiveRef.current = true;
     if (cameraTarget) {
+      // Composing into a focus view — cancel any pending clamp-restore left
+      // over from a just-superseded defocus.
+      if (zoomClampRestoreTimerRef.current !== null) {
+        clearTimeout(zoomClampRestoreTimerRef.current);
+        zoomClampRestoreTimerRef.current = null;
+      }
+      // Same bail-and-retry as applyCameraFocusForCluster above — the widen
+      // must land on <ForceGraph2D>'s minZoom/maxZoom props (no imperative
+      // setter exists) before zoom() below, which only happens on this
+      // component's next render. Bailing here re-snapshots savedPositionsRef
+      // on retry, which is harmless: nothing moves between this call and the
+      // retry a render later.
+      if (scrollZoomBounds[0] !== UNCLAMPED_MIN_ZOOM) {
+        setScrollZoomBounds(UNCLAMPED_BOUNDS);
+        return false;
+      }
       fg.zoom(cameraTarget.targetZoom, 0);
       fg.centerAt(cameraTarget.camX, cameraTarget.centerGY, duration);
     }
@@ -934,7 +1209,7 @@ export default function ForceGraphCanvas({
     requestAnimationFrame(tick);
 
     return true;
-  }, [stableData.nodes, computeSpreadTargetsForCluster, computeCameraTargetForCluster]);
+  }, [stableData.nodes, computeSpreadTargetsForCluster, computeCameraTargetForCluster, scrollZoomBounds]);
 
   const handleEngineStop = useCallback(() => {
     // Fires once the library's post-mount cooldown completes. With
@@ -1045,7 +1320,13 @@ export default function ForceGraphCanvas({
         !isSetMember;
 
       // Animated alpha for dimmed nodes (reads live from ref — smooth without re-renders)
-      const alpha = isDimmed ? dimLevelRef.current : 1.0;
+      // Zoom fade (P2, overview only) — forced to 1 whenever a focus view is
+      // open (selectedId or a genre/scene set active), the same two-mode
+      // split the scroll-zoom clamp above uses. See computeZoomFade/
+      // FADE_ZOOM_OUT/FADE_ZOOM_IN/FADE_HUB_BIAS_STRENGTH.
+      const isFocusModeActive = selectedId !== null || highlightSetMemberSet.size > 0;
+      const zoomFade = isFocusModeActive ? 1 : computeZoomFade(globalScale, score);
+      const alpha = (isDimmed ? dimLevelRef.current : 1.0) * zoomFade;
 
       // ── Size ──
       // In focus mode, both the selected node and its neighbors scale up so
@@ -1244,7 +1525,7 @@ export default function ForceGraphCanvas({
 
   // ── Edge drawing ────────────────────────────────────────────────────────────
   const drawLink = useCallback(
-    (link: object, ctx: CanvasRenderingContext2D) => {
+    (link: object, ctx: CanvasRenderingContext2D, globalScale: number) => {
       const l = link as GraphLink;
       const srcNode = typeof l.source === 'object' ? l.source : null;
       const tgtNode = typeof l.target === 'object' ? l.target : null;
@@ -1273,14 +1554,22 @@ export default function ForceGraphCanvas({
       const edgeColor    = resolveEdgeTint(srcNode as GraphNode);
       const glow         = edgeGlowLevelRef.current;
 
+      // Zoom fade (P2/P3 coupling) — same two-mode split and same unbiased
+      // reference curve the electronic cloud uses (no per-endpoint hub bias
+      // for edges). Forced to 1 whenever a focus view is open so focused-
+      // cluster edges (and every other edge — the whole graph, same as
+      // drawNode) stay solid regardless of zoom.
+      const isFocusModeActive = selectedId !== null || highlightSetMemberSet.size > 0;
+      const edgeFade = isFocusModeActive ? 1 : computeZoomFade(globalScale, 0);
+
       ctx.save();
 
       if (isPathEdge) {
         // Chromatic aberration for path-finding mode
         const offsets = [
-          { dx: -1, color: 'rgba(255, 30, 90, 0.9)' },
-          { dx:  0, color: 'rgba(242, 168, 196, 0.9)' },
-          { dx:  1, color: 'rgba(0, 200, 255, 0.9)' },
+          { dx: -1, color: `rgba(255, 30, 90, ${(0.9 * edgeFade).toFixed(3)})` },
+          { dx:  0, color: `rgba(242, 168, 196, ${(0.9 * edgeFade).toFixed(3)})` },
+          { dx:  1, color: `rgba(0, 200, 255, ${(0.9 * edgeFade).toFixed(3)})` },
         ];
         for (const { dx, color } of offsets) {
           ctx.beginPath();
@@ -1299,13 +1588,13 @@ export default function ForceGraphCanvas({
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
         ctx.strokeStyle = resolveNodeColor(focusedNode);
-        ctx.globalAlpha = EDGE_IDLE_ALPHA + (0.82 - EDGE_IDLE_ALPHA) * glow;
+        ctx.globalAlpha = (EDGE_IDLE_ALPHA + (0.82 - EDGE_IDLE_ALPHA) * glow) * edgeFade;
         ctx.lineWidth = EDGE_IDLE_WIDTH + (2 - EDGE_IDLE_WIDTH) * glow;
         ctx.setLineDash([]);
         ctx.stroke();
       } else if (isHoverEdge) {
         // Brightened tint on hover (no aberration), same fade-up as focus edges.
-        const alpha = EDGE_IDLE_ALPHA + (0.75 - EDGE_IDLE_ALPHA) * glow;
+        const alpha = (EDGE_IDLE_ALPHA + (0.75 - EDGE_IDLE_ALPHA) * glow) * edgeFade;
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
@@ -1319,7 +1608,7 @@ export default function ForceGraphCanvas({
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
-        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, '0.7)');
+        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${(0.7 * edgeFade).toFixed(3)})`);
         ctx.lineWidth = 1.6;
         ctx.stroke();
       } else {
@@ -1327,10 +1616,14 @@ export default function ForceGraphCanvas({
         // times — whether nothing is selected, or something else is focused —
         // so the graph never reads as a scribble of crossing lines. Only the
         // edges above (focus/hover/set/path) rise above this baseline.
+        // Also the branch responsible for almost every edge on screen in the
+        // resting overview state — edgeFade is what lets the P3 cloud show
+        // through as nodes fade at FADE_ZOOM_OUT, instead of the idle web
+        // staying at full EDGE_IDLE_ALPHA regardless of zoom.
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
-        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${EDGE_IDLE_ALPHA})`);
+        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${(EDGE_IDLE_ALPHA * edgeFade).toFixed(3)})`);
         ctx.lineWidth = EDGE_IDLE_WIDTH;
         ctx.stroke();
       }
@@ -1340,11 +1633,194 @@ export default function ForceGraphCanvas({
     [selectedId, hoveredId, pathEdges, focusedNode, highlightSetMemberSet],
   );
 
+  // ── Realm cloud (electronic only, overview only) ────────────────────────
+  // Fires before links/nodes are painted (see the CLOUD_* constants above),
+  // so everything drawn here sits fully behind them.
+  const handleRenderFramePre = useCallback((ctx: CanvasRenderingContext2D, globalScale: number) => {
+    // Unconditional, before any early return below — linkDirectionalArrowColor
+    // reads this every frame regardless of focus/zoom state (see its own gate).
+    currentGlobalScaleRef.current = globalScale;
+
+    const isFocusModeActive = selectedId !== null || highlightSetMemberSet.size > 0;
+    if (isFocusModeActive) return; // focus nodes stay solid — no clouds, per the two-mode split
+
+    // Inverse of the P2 node fade, reusing the exact same constants/function
+    // so cloud-in and nodes-out are perfectly complementary (sum to 1 at every
+    // zoom) — no gap, no overlap-mush. Uses the unbiased reference curve
+    // (score 0): individual nodes fade at their own hub-biased rate, but
+    // there's no single "the nodes' " curve to invert otherwise.
+    const cloudFade = 1 - computeZoomFade(globalScale, 0);
+    if (cloudFade <= 0) return; // zoom >= FADE_ZOOM_IN — draw nothing, not just zero-alpha
+
+    // ── Core blaze — reuses cloudFade/isFocusModeActive computed above (the
+    // same inverse-fade coupling and focus exemption as the electronic cloud
+    // below), but is otherwise fully self-contained (own node lookup, own
+    // centroid, own save/restore) so it draws independently of the
+    // electronic cloud's own node count and never touches that code.
+    const coreNodes: (GraphNode & { x: number; y: number })[] = [];
+    for (const n of stableData.nodes) {
+      if (n.realm === 'core' && n.x !== undefined && n.y !== undefined) {
+        coreNodes.push(n as GraphNode & { x: number; y: number });
+      }
+    }
+    if (coreNodes.length > 0) {
+      let coreSumX = 0, coreSumY = 0;
+      for (const n of coreNodes) { coreSumX += n.x; coreSumY += n.y; }
+      const coreCx = coreSumX / coreNodes.length;
+      const coreCy = coreSumY / coreNodes.length;
+
+      let coreSumSqDist = 0;
+      for (const n of coreNodes) {
+        const dx = n.x - coreCx;
+        const dy = n.y - coreCy;
+        coreSumSqDist += dx * dx + dy * dy;
+      }
+      const coreRms = Math.sqrt(coreSumSqDist / coreNodes.length);
+      const coreCloudR = Math.max(coreRms * CORE_CLOUD_RADIUS_MULTIPLIER, 30);
+
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter'; // additive — same reasoning as the electronic cloud below
+
+      // Wide soft halo, drawn first (underneath the tight hot blobs below) —
+      // see CORE_CLOUD_HALO_RADIUS_FRACTION/ALPHA above for why this is its
+      // own lever rather than another CORE_CLOUD_BLOBS entry. Same
+      // addCoreGradientStops curve as the tight blobs below, just at a much
+      // larger radius/lower peak — one consistent falloff shape at every
+      // scale is what keeps the whole stack seamless.
+      const haloR = coreCloudR * CORE_CLOUD_HALO_RADIUS_FRACTION;
+      const haloGrad = ctx.createRadialGradient(coreCx, coreCy, 0, coreCx, coreCy, haloR);
+      addCoreGradientStops(haloGrad, CORE_CLOUD_HALO_ALPHA * cloudFade);
+      ctx.beginPath();
+      ctx.arc(coreCx, coreCy, haloR, 0, Math.PI * 2);
+      ctx.fillStyle = haloGrad;
+      ctx.fill();
+
+      for (const [radiusFraction, peakAlpha] of CORE_CLOUD_BLOBS) {
+        const r = coreCloudR * radiusFraction;
+        // Every blob shares this exact (coreCx, coreCy) — strictly
+        // concentric, same reasoning as the electronic cloud's stack below.
+        const grad = ctx.createRadialGradient(coreCx, coreCy, 0, coreCx, coreCy, r);
+        addCoreGradientStops(grad, peakAlpha * cloudFade);
+        ctx.beginPath();
+        ctx.arc(coreCx, coreCy, r, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+      }
+
+      ctx.restore();
+    }
+
+    // ── Region-one cloud — reuses cloudFade/isFocusModeActive computed
+    // above, same self-contained pattern as the core blaze (own node lookup,
+    // own centroid, own save/restore) so it draws independently of the
+    // electronic cloud's node count and never touches that code.
+    const regionOneNodes: (GraphNode & { x: number; y: number })[] = [];
+    for (const n of stableData.nodes) {
+      if (n.realm === 'region-one' && n.x !== undefined && n.y !== undefined) {
+        regionOneNodes.push(n as GraphNode & { x: number; y: number });
+      }
+    }
+    if (regionOneNodes.length > 0) {
+      let r1SumX = 0, r1SumY = 0;
+      for (const n of regionOneNodes) { r1SumX += n.x; r1SumY += n.y; }
+      const r1Cx = r1SumX / regionOneNodes.length;
+      const r1Cy = r1SumY / regionOneNodes.length;
+
+      let r1SumSqDist = 0;
+      for (const n of regionOneNodes) {
+        const dx = n.x - r1Cx;
+        const dy = n.y - r1Cy;
+        r1SumSqDist += dx * dx + dy * dy;
+      }
+      const r1Rms = Math.sqrt(r1SumSqDist / regionOneNodes.length);
+      const r1CloudR = Math.max(r1Rms * REGION_ONE_CLOUD_RADIUS_MULTIPLIER, 40);
+
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter';
+
+      for (const [radiusFraction, peakAlpha] of REGION_ONE_CLOUD_BLOBS) {
+        const r = r1CloudR * radiusFraction;
+        // Every blob shares this exact (r1Cx, r1Cy) — strictly concentric,
+        // same reasoning as the electronic cloud's stack below.
+        const grad = ctx.createRadialGradient(r1Cx, r1Cy, 0, r1Cx, r1Cy, r);
+        grad.addColorStop(0, REGION_ONE_CLOUD_GLOW.replace('0.7)', `${(peakAlpha * cloudFade).toFixed(3)})`));
+        grad.addColorStop(1, REGION_ONE_CLOUD_GLOW.replace('0.7)', '0)')); // fades to fully transparent — no hard rim
+        ctx.beginPath();
+        ctx.arc(r1Cx, r1Cy, r, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+      }
+
+      ctx.restore();
+    }
+
+    const electronicNodes: (GraphNode & { x: number; y: number })[] = [];
+    for (const n of stableData.nodes) {
+      if (n.realm === 'electronic' && n.x !== undefined && n.y !== undefined) {
+        electronicNodes.push(n as GraphNode & { x: number; y: number });
+      }
+    }
+    if (electronicNodes.length === 0) return;
+
+    let sumX = 0, sumY = 0;
+    for (const n of electronicNodes) { sumX += n.x; sumY += n.y; }
+    const cx = sumX / electronicNodes.length;
+    const cy = sumY / electronicNodes.length;
+
+    let sumSqDist = 0;
+    for (const n of electronicNodes) {
+      const dx = n.x - cx;
+      const dy = n.y - cy;
+      sumSqDist += dx * dx + dy * dy;
+    }
+    const rms = Math.sqrt(sumSqDist / electronicNodes.length);
+    const cloudR = Math.max(rms * CLOUD_RADIUS_MULTIPLIER, 40); // floor guards a degenerate near-point cloud
+
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter'; // additive — overlapping glow brightens, never washes out
+
+    for (const [radiusFraction, peakAlpha] of CLOUD_BLOBS) {
+      const r = cloudR * radiusFraction;
+      // Every blob shares this exact (cx, cy) — strictly concentric, so the
+      // stack reads as one mass, not several offset pools.
+      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+      grad.addColorStop(0, ELECTRONIC_CLOUD_GLOW.replace('0.7)', `${(peakAlpha * cloudFade).toFixed(3)})`));
+      grad.addColorStop(1, ELECTRONIC_CLOUD_GLOW.replace('0.7)', '0)')); // fades to fully transparent — no hard rim
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+
+    // Ghost hubs — tied to the same cloudFade, so they only ghost in as the
+    // cloud blooms rather than following a separate, competing fade curve.
+    const ghostHubs = [...electronicNodes]
+      .sort((a, b) => (b.influenceScore ?? 0) - (a.influenceScore ?? 0))
+      .slice(0, CLOUD_GHOST_HUB_COUNT);
+    for (const n of ghostHubs) {
+      const glow = resolveNodeGlow(n);
+      const hubR = cloudR * CLOUD_GHOST_HUB_RADIUS_FRACTION;
+      const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, hubR);
+      grad.addColorStop(0, glow.replace('0.7)', `${(CLOUD_GHOST_HUB_PEAK_ALPHA * cloudFade).toFixed(3)})`));
+      grad.addColorStop(1, glow.replace('0.7)', '0)'));
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, hubR, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+
+    ctx.restore();
+  }, [stableData.nodes, selectedId, highlightSetMemberSet]);
+
   // ── Deferred label placement + rendering ─────────────────────────────────
   // Called after every node has been drawn — nodeCirclesRef holds ALL circles.
   // Labels are placed here (not in drawNode) so collision detection against
   // node photos is complete before any label position is committed.
-  const handleRenderFramePost = useCallback((ctx: CanvasRenderingContext2D) => {
+  const handleRenderFramePost = useCallback((ctx: CanvasRenderingContext2D, globalScale: number) => {
+    if (SHOW_ZOOM_READOUT && zoomReadoutRef.current) {
+      zoomReadoutRef.current.textContent = `zoom ${globalScale.toFixed(2)}`;
+    }
+
     const candidates = labelQueueRef.current;
     if (!candidates.length) return;
 
@@ -1502,6 +1978,25 @@ export default function ForceGraphCanvas({
 
   return (
     <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
+      {SHOW_ZOOM_READOUT && (
+        <div
+          ref={zoomReadoutRef}
+          aria-hidden
+          style={{
+            position: 'fixed',
+            bottom: 8,
+            left: 8,
+            zIndex: 9999,
+            fontFamily: 'IBM Plex Mono, monospace',
+            fontSize: 11,
+            color: 'rgba(255, 255, 255, 0.35)',
+            pointerEvents: 'none',
+            userSelect: 'none',
+          }}
+        >
+          zoom —
+        </div>
+      )}
       {/* Only mount once ResizeObserver has provided real dimensions.
           Prevents the 800×600 → actual-size re-render that resets d3-zoom.
           By the time this mounts, stableData's nodes are already
@@ -1516,6 +2011,8 @@ export default function ForceGraphCanvas({
           graphData={stableData}
           width={dimensions.width}
           height={dimensions.height}
+          minZoom={scrollZoomBounds[0]}
+          maxZoom={scrollZoomBounds[1]}
           backgroundColor="rgba(0,0,0,0)"
           nodeId="id"
           linkSource="source"
@@ -1525,6 +2022,7 @@ export default function ForceGraphCanvas({
           nodePointerAreaPaint={paintNodePointerArea}
           linkCanvasObject={drawLink}
           linkCanvasObjectMode={() => 'replace'}
+          onRenderFramePre={handleRenderFramePre}
           onRenderFramePost={handleRenderFramePost}
           nodeVisibility={isNodeVisible}
           linkVisibility={isLinkVisible}
@@ -1562,7 +2060,14 @@ export default function ForceGraphCanvas({
             // Set edges: no single "hero" layer color, so brighten the normal tint instead.
             const isSetEdge = highlightSetMemberSet.size > 0 &&
               (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId));
-            return isSetEdge ? baseColor.replace(/[\d.]+\)$/, '0.85)') : baseColor;
+            // Same zoom fade as drawLink's edge lines (this accessor has no
+            // globalScale argument, so it reads the live value tracked in
+            // handleRenderFramePre) — without this, arrowheads stayed fully
+            // opaque at FADE_ZOOM_OUT while the lines under them faded out.
+            const isFocusModeActive = selectedId !== null || highlightSetMemberSet.size > 0;
+            const edgeFade = isFocusModeActive ? 1 : computeZoomFade(currentGlobalScaleRef.current, 0);
+            const alpha = (isSetEdge ? 0.85 : parseFloat(baseColor.match(/[\d.]+(?=\)$)/)?.[0] ?? '1')) * edgeFade;
+            return baseColor.replace(/[\d.]+\)$/, `${alpha.toFixed(3)})`);
           }}
           onNodeHover={handleNodeHover}
           onNodeClick={handleNodeClick}
