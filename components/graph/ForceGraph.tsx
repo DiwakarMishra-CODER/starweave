@@ -82,6 +82,62 @@ const NEIGHBOR_MIN_SCREEN_R = 20;        // px — neighbor nodes' circle/photo 
 const FOCUS_LABEL_MIN_SCREEN_PX = 13;    // px — focused node's label floor
 const NEIGHBOR_LABEL_MIN_SCREEN_PX = 11; // px — neighbor labels' floor
 
+// ── Zoom-size dampening (detail zoom decluttering) ──────────────────────────
+// Node radius/label fontSize are otherwise graph-space constants with no
+// globalScale term at all, and node positions are equally fixed (one-time
+// presettleLayout) — so on screen, both radius and inter-node gap scale by
+// the exact same globalScale factor as you zoom, and their RATIO never
+// changes. Zooming in just magnifies everything uniformly; it can never
+// open up relative breathing room, which is why photos/labels stay just as
+// overlapped at zoom 4.3 as at zoom 3.5. Fix: shrink the graph-space
+// radius/fontSize themselves, relative to the (unchanged) node spacing,
+// once you're zoomed in past ZOOM_SIZE_REFERENCE — real gaps open up and
+// the label collision search below actually has room to work with.
+// Clamped to exactly 1 at/below the reference zoom, so cloud/overview
+// rendering (which all happens well below this zoom) is untouched.
+const ZOOM_SIZE_REFERENCE = 3.5; // globalScale below which sizing is unchanged from today
+const ZOOM_SIZE_DAMPEN = 0.75;   // 0 = no dampening (old behavior), 1 = constant on-screen size past the reference
+function computeZoomSizeMult(globalScale: number): number {
+  if (globalScale <= ZOOM_SIZE_REFERENCE) return 1;
+  return Math.pow(ZOOM_SIZE_REFERENCE / globalScale, ZOOM_SIZE_DAMPEN);
+}
+
+// ── Label collision search (widened — see the demotion logic in
+// onRenderFramePost) — now that zoom-size dampening opens up real gaps at
+// high zoom, the bump search has room to use. Was 2 steps / 0.8×textH.
+const LABEL_BUMP_MAX_STEPS = 3;
+const LABEL_BUMP_STRIDE_MULT = 1.1; // × textH per step
+
+// ── Label chip (dark rounded pill behind label text) ────────────────────────
+// Replaces the old shadow-halo (three stacked fillText calls at decreasing
+// shadowBlur) — a soft glow reads fine against plain background but not
+// against a bright node/edge underneath. A solid chip guarantees contrast
+// regardless of what's behind it. Same rect used for BOTH the visible chip
+// and the label-collision math below (labelRects) — one source of truth, so
+// collision avoidance always matches what's actually drawn.
+const LABEL_CHIP_PAD_X = 6;   // px — horizontal padding around the text
+const LABEL_CHIP_PAD_Y = 3;   // px — vertical padding around the text
+const LABEL_CHIP_RADIUS = 6;  // px — corner rounding
+const LABEL_CHIP_MAX_ALPHA = 0.72; // chip background peak opacity (scaled by the label's own alpha)
+
+function drawRoundedRect(
+  ctx: CanvasRenderingContext2D,
+  x: number, y: number, w: number, h: number, r: number,
+): void {
+  const rr = Math.min(r, w / 2, h / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + rr, y);
+  ctx.lineTo(x + w - rr, y);
+  ctx.arcTo(x + w, y, x + w, y + rr, rr);
+  ctx.lineTo(x + w, y + h - rr);
+  ctx.arcTo(x + w, y + h, x + w - rr, y + h, rr);
+  ctx.lineTo(x + rr, y + h);
+  ctx.arcTo(x, y + h, x, y + h - rr, rr);
+  ctx.lineTo(x, y + rr);
+  ctx.arcTo(x, y, x + rr, y, rr);
+  ctx.closePath();
+}
+
 // Edge tint (by source-node layer, or by realm/lineage for sandbox datasets)
 // now resolved via resolveEdgeTint (@/lib/colors) — moved there so the
 // realm/lineage resolvers can reference the same map. All influence edges
@@ -118,7 +174,7 @@ type CollideNode = { x?: number; y?: number; vx?: number; vy?: number; influence
 
 // Minimal hand-rolled d3-force-compatible collision force (function + optional
 // .initialize(nodes)) — avoids importing d3-force-3d, which ships no type
-// declarations. O(n²) per tick is trivial at this graph's node count.
+// declarations. O(n²) per iteration is trivial at this graph's node count.
 //
 // Deliberately does NOT scale the correction by the simulation's `alpha`
 // (unlike the charge/link forces above). d3-force's real forceCollide never
@@ -130,9 +186,23 @@ type CollideNode = { x?: number; y?: number; vx?: number; vy?: number; influence
 // biggest (hub/photo) node pairs — exactly the nodes that need the most
 // total displacement to stop overlapping — leaving them visibly overlapping
 // once the simulation settled and ticking stopped.
+//
+// Runs COLLIDE_ITERATIONS resolution passes per external tick, correcting
+// position directly (not just velocity). One velocity-only pass per tick
+// converges fine for a handful of scattered overlaps, but a realm cluster
+// (e.g. ~57 region-one nodes all pulled toward the same home point at the
+// weaker REALM_CHARGE repulsion) is dense enough that some pairs — reported:
+// Mazzy Star / Modest Mouse — never fully separated within the fixed
+// PRESETTLE_TICKS budget: velocity added late in the simulation gets
+// multiplied by velocityDecay and only partially applied to position by the
+// next external tick's own integration step. Direct position correction
+// resolves each pass's overlap immediately, so multiple passes per tick
+// converge far faster than waiting on more external ticks would.
+const COLLIDE_ITERATIONS = 3;
+
 function createCollideForce(padding: number) {
   let nodes: CollideNode[] = [];
-  function force() {
+  function resolveOnce() {
     for (let i = 0; i < nodes.length; i++) {
       const a = nodes[i];
       if (a.x === undefined || a.y === undefined) continue;
@@ -154,12 +224,21 @@ function createCollideForce(padding: number) {
         const push = ((minDist - dist) / dist) * 0.5;
         const ox = dx * push;
         const oy = dy * push;
+        // Immediate position correction — the hard constraint itself —
+        // plus a matching velocity nudge so the next external tick's other
+        // forces (link/charge) don't re-integrate from a stale vx/vy and
+        // undo it.
+        a.x -= ox; a.y -= oy;
+        b.x += ox; b.y += oy;
         a.vx = (a.vx ?? 0) - ox;
         a.vy = (a.vy ?? 0) - oy;
         b.vx = (b.vx ?? 0) + ox;
         b.vy = (b.vy ?? 0) + oy;
       }
     }
+  }
+  function force() {
+    for (let iter = 0; iter < COLLIDE_ITERATIONS; iter++) resolveOnce();
   }
   force.initialize = (ns: CollideNode[]) => { nodes = ns; };
   return force;
@@ -188,28 +267,96 @@ function createCollideForce(padding: number) {
 const PRESETTLE_TICKS = 300;
 
 // ── Realm separation (tunable — rough first pass, not final tuning) ─────────
-// Pulls realm-tagged nodes toward one of three "home" positions so
-// core/region-one/electronic read as three loosely separated clusters
-// instead of one hairball. A node with no `realm` at all — every real
-// region-one Artist on the plain graph, and any node a caller doesn't
-// explicitly tag — gets exactly 0 strength from BOTH the x- and y-force
-// below (see realmPullStrengthX/Y), so it contributes nothing for them: only
-// the existing charge/link/center/collide forces above apply, unchanged
-// from before this force existed.
+// Pulls realm-tagged nodes toward a "home" position so each realm reads as
+// a loosely separated cluster instead of one hairball. A node with no
+// `realm` at all — every real region-one Artist on the plain graph, and any
+// node a caller doesn't explicitly tag — gets exactly 0 strength from BOTH
+// the x- and y-force below (see realmPullStrengthX/Y), so it contributes
+// nothing for them: only the existing charge/link/center/collide forces
+// above apply, unchanged from before this force existed.
 //
-// TUNING KNOBS — every value governing where the three clusters sit and how
-// hard they're pulled lives here, together, so they stay easy to dial.
-const REALM_HOME_X_CORE = 0;          // core realm home x — canvas center
-const REALM_HOME_X_REGION_ONE = -200; // region-one realm home x — left of center — brought in from -260 to reduce empty space to the core
-const REALM_HOME_X_ELECTRONIC = 200;  // electronic realm home x — right of center — brought in from 260 to reduce empty space to the core
-const REALM_HOME_Y_CORE = 0;          // core realm home y — canvas center
-const REALM_HOME_Y_REGION_ONE = 0;    // region-one realm home y — same centerline as electronic below (both at Y=0), so this is a centering pull, not a separating one: it compacts vertical spread without tilting, since both realms share one target
-const REALM_HOME_Y_ELECTRONIC = 0;    // electronic realm home y — see region-one comment above
-const CORE_PULL_STRENGTH = 1.2;       // core-only horizontal pull toward center — raised from 0.65: core must be the most strongly-positioned thing in the graph so it wins against its own heavy edges into region-one, rather than getting dragged into that mass
-const CORE_PULL_STRENGTH_Y = 1.2;     // core-only vertical pull toward center — same strength as CORE_PULL_STRENGTH, applied on the Y axis too, so core nodes clump to a single (center, center) point rather than just lining up on a vertical axis
-const REALM_PULL_STRENGTH = 0.6;      // region-one + electronic horizontal pull toward their home x — raised from 0.4 for a tighter hug to each realm's home point
-const REALM_PULL_STRENGTH_Y = 0.3;    // region-one + electronic vertical pull toward the shared centerline (REALM_HOME_Y_REGION_ONE/ELECTRONIC = 0 above) — turned back on (was 0) to compact vertical spread; safe from the earlier tilt because both realms now share the same Y target instead of opposing ones. Core's own Y pull is separate — see CORE_PULL_STRENGTH_Y above — and is unaffected by this value.
+// RADIAL LAYOUT — core sits at dead center; every non-core realm is placed
+// evenly around it on an ellipse. Data-driven: computeRealmHomePositions
+// below derives the list of non-core realms actually present in the node
+// set (not a hardcoded name list) and spaces them evenly by index, so
+// adding a 3rd/4th realm later needs no formula change here — it just
+// re-spaces automatically.
+//
+// TUNING KNOBS — every value governing the ellipse size/rotation and how
+// hard each realm is pulled toward its point on it lives here, together.
+// Kept small enough that zoomToFit's dense-core fit (see DENSE_CORE_
+// PERCENTILE below) still lands at or above SCROLL_MIN_ZOOM (now 1.6, was
+// 2.5 — raised as the realm count grew from 3 to 6 spread positions; see the
+// SCROLL_MIN_ZOOM comment below) — the user can't scroll out any further
+// than that floor, so if the ellipse is wider than what fits at that zoom,
+// the realms spill off-screen with no way to compensate. First-pass values
+// (420/260) were too wide; these are a more conservative starting point at
+// the same ~1.6:1 aspect ratio.
+const REALM_RADIUS_X = 230; // ellipse semi-axis, horizontal — wider than tall to fill a landscape viewport
+const REALM_RADIUS_Y = 145; // ellipse semi-axis, vertical
+const REALM_ANGLE_OFFSET = 0; // degrees — rotates the whole arrangement; spin to a pleasing orientation by eye
+const CORE_PULL_STRENGTH = 1.2;       // core-only horizontal pull toward center — core must be the most strongly-positioned thing in the graph so it wins against its own heavy edges into region-one, rather than getting dragged into that mass
+const CORE_PULL_STRENGTH_Y = 1.2;     // core-only vertical pull toward center — same strength as CORE_PULL_STRENGTH (core's target is the origin on both axes, so this being separate is harmless, not load-bearing)
+// One strength for BOTH axes on every non-core realm — deliberately
+// isotropic. The old linear layout could get away with a weaker Y pull
+// (every realm shared Y=0, so Y was just a vertical-compacting force, not a
+// real separating axis) but a true ellipse needs equal pull on both axes:
+// a realm placed near the top/bottom of the ellipse is mostly a Y-offset
+// from center, one near the sides is mostly an X-offset, and an asymmetric
+// strength would under-pull whichever axis matters more for a given realm's
+// angle — settling some realms closer to center than others by accident of
+// angle rather than by design.
+const REALM_PULL_STRENGTH = 0.6;
 const REALM_CHARGE = -22;             // charge (repulsion) for any realm-tagged node — weaker than the graph's normal -40 so each realm's bloom can pull tighter without its own internal repulsion fighting that pull. Realm-less nodes (every real region-one Artist on the plain graph) keep exactly -40 — see chargeStrength below.
+
+// Fixed compass-style angle (degrees) per known realm — a named, tunable
+// arrangement rather than pure auto-spacing, so adding a realm can't shift
+// the existing ones. 0 = right/+X, 90 = below/+Y (canvas Y increases
+// downward), 180 = left/-X, 270 = above/-Y. Any realm NOT listed here (a
+// future addition without a config update) falls back to even auto-spacing
+// among just the unlisted realms in computeRealmHomePositions below —
+// preserves the original "never breaks on an unknown realm" behavior.
+const REALM_ANGLE_DEG: Record<string, number> = {
+  electronic: 0,                    // right
+  'region-one': 180,                // left
+  'folk-confessional': 45,          // bottom-right — moved from 90 (below) to open real space between electronic (0) and american-underground; 90 had folk/american-underground/region-one bunched only 45° apart each, reading as one crowded cloud instead of three
+  'emo-posthardcore': 315,          // upper-right — open slot between electronic (right) and above core
+  'post-rock-drone-noise': 247.5,   // upper-left, the geometric midpoint between region-one (180) and emo-posthardcore (315) — deliberately centered in that gap (not 225, which sat only 45° from region-one and read as "beside" it) since this realm bridges heavily to both (Sonic Youth/JAMC/Joy Division into region-one, Slint/Big Black into emo)
+  'american-underground': 112.5,    // bottom — the geometric midpoint between folk-confessional's new position (45) and region-one (180), now with real separation from both instead of sitting only 45° from region-one
+};
+
+// Scans the actual node set for distinct non-core realms present (not a
+// hardcoded name list — REALM_ANGLE_DEG above only fixes the ANGLE for the
+// realms named in it; the scan itself still works for any realm), sorts
+// them for a deterministic order regardless of array/insertion order, then
+// places each at its REALM_ANGLE_DEG angle (or auto-spaces the leftovers).
+// core always maps to the origin. Called once per layout pass (presettle,
+// and once in the live-sim force-config effect) — not per node.
+function computeRealmHomePositions(nodes: { realm?: string }[]): Map<string, { x: number; y: number }> {
+  const nonCoreRealms = Array.from(
+    new Set(nodes.map(n => n.realm).filter((r): r is string => !!r && r !== 'core')),
+  ).sort();
+
+  const positions = new Map<string, { x: number; y: number }>();
+  positions.set('core', { x: 0, y: 0 });
+
+  // Realms without a fixed REALM_ANGLE_DEG entry auto-space evenly among
+  // themselves (not among the full realm count) so they never collide with
+  // a named realm's angle.
+  const unlisted = nonCoreRealms.filter(r => !(r in REALM_ANGLE_DEG));
+  nonCoreRealms.forEach(realm => {
+    const namedAngleDeg = REALM_ANGLE_DEG[realm];
+    const angleDeg = namedAngleDeg !== undefined
+      ? namedAngleDeg
+      : (unlisted.indexOf(realm) * 360) / unlisted.length;
+    const angle = ((REALM_ANGLE_OFFSET + angleDeg) * Math.PI) / 180;
+    positions.set(realm, {
+      x: REALM_RADIUS_X * Math.cos(angle),
+      y: REALM_RADIUS_Y * Math.sin(angle),
+    });
+  });
+  return positions;
+}
 
 // Core glow — realm === 'core' nodes only (drawNode below). Both multipliers
 // are applied as `<original value> * (isCore ? MULT : 1)`, so for every
@@ -255,36 +402,44 @@ function linkStrength(link: { source: { realm?: string } | string; target: { rea
   return LINK_STRENGTH_BRIDGE; // any other cross-realm pair (electronic↔region-one, electronic↔core)
 }
 
-function realmHomeX(node: { realm?: string }): number {
-  if (node.realm === 'core') return REALM_HOME_X_CORE;
-  if (node.realm === 'region-one') return REALM_HOME_X_REGION_ONE;
-  if (node.realm === 'electronic') return REALM_HOME_X_ELECTRONIC;
-  return 0; // unused — realmPullStrengthX returns 0 for this case, so this never moves the node
+// Factories, not plain functions — each closes over a homePositions map
+// computed once per layout pass by computeRealmHomePositions (the map
+// depends on which realms are actually present in that pass's node set).
+function makeRealmHomeX(homePositions: Map<string, { x: number; y: number }>) {
+  return (node: { realm?: string }): number => {
+    if (!node.realm) return 0; // unused — realmPullStrengthX returns 0 for this case, so this never moves the node
+    return homePositions.get(node.realm)?.x ?? 0;
+  };
+}
+
+function makeRealmHomeY(homePositions: Map<string, { x: number; y: number }>) {
+  return (node: { realm?: string }): number => {
+    if (!node.realm) return 0; // unused — realmPullStrengthY returns 0 for this case, so this never moves the node
+    return homePositions.get(node.realm)?.y ?? 0;
+  };
 }
 
 function realmPullStrengthX(node: { realm?: string }): number {
   if (node.realm === 'core') return CORE_PULL_STRENGTH;
-  if (node.realm === 'region-one' || node.realm === 'electronic') return REALM_PULL_STRENGTH;
+  if (node.realm) return REALM_PULL_STRENGTH; // any non-core realm — data-driven, no per-realm branch needed
   return 0;
-}
-
-function realmHomeY(node: { realm?: string }): number {
-  if (node.realm === 'core') return REALM_HOME_Y_CORE;
-  if (node.realm === 'region-one') return REALM_HOME_Y_REGION_ONE;
-  if (node.realm === 'electronic') return REALM_HOME_Y_ELECTRONIC;
-  return 0; // unused — realmPullStrengthY returns 0 for this case, so this never moves the node
 }
 
 function realmPullStrengthY(node: { realm?: string }): number {
   if (node.realm === 'core') return CORE_PULL_STRENGTH_Y;
-  if (node.realm === 'region-one' || node.realm === 'electronic') return REALM_PULL_STRENGTH_Y;
+  if (node.realm) return REALM_PULL_STRENGTH; // isotropic — see REALM_PULL_STRENGTH's comment above
   return 0;
 }
 
 function chargeStrength(node: { realm?: string }): number {
-  return node.realm === 'core' || node.realm === 'region-one' || node.realm === 'electronic'
-    ? REALM_CHARGE
-    : -40; // unchanged default for every realm-less node — the plain region-one graph never sees anything but this
+  // Data-driven, matching realmPullStrengthX/Y above — ANY realm-tagged node
+  // gets the weaker charge, not an enumerated list of known realm names.
+  // The enumerated version silently gave a newly-added realm (folk-
+  // confessional) the default -40 instead of REALM_CHARGE, nearly doubling
+  // its nodes' mutual repulsion relative to region-one/electronic and
+  // fighting its own realm-home pull — the direct cause of it failing to
+  // cluster into a tight, separate cloud.
+  return node.realm ? REALM_CHARGE : -40; // realm-less node (the plain region-one graph) keeps exactly -40, unchanged
 }
 
 function presettleLayout(nodes: GraphNode[], links: GraphLink[]): void {
@@ -295,8 +450,9 @@ function presettleLayout(nodes: GraphNode[], links: GraphLink[]): void {
   sim.force('charge', forceManyBody<GraphNode>().strength(chargeStrength));
   sim.force('center', forceCenter().strength(0.04));
   sim.force('collide', createCollideForce(COLLIDE_PADDING));
-  sim.force('realmX', forceX<GraphNode>(realmHomeX).strength(realmPullStrengthX));
-  sim.force('realmY', forceY<GraphNode>(realmHomeY).strength(realmPullStrengthY));
+  const realmHomePositions = computeRealmHomePositions(nodes);
+  sim.force('realmX', forceX<GraphNode>(makeRealmHomeX(realmHomePositions)).strength(realmPullStrengthX));
+  sim.force('realmY', forceY<GraphNode>(makeRealmHomeY(realmHomePositions)).strength(realmPullStrengthY));
   sim.velocityDecay(0.38);
   for (let i = 0; i < PRESETTLE_TICKS; i++) sim.tick();
 }
@@ -338,6 +494,31 @@ const TRANSITION_MS = 220;
 // touching a focused/hovered node rise above this baseline.
 const EDGE_IDLE_ALPHA = 0.12;
 const EDGE_IDLE_WIDTH = 0.6;
+
+// Core-touching edges stay faintly visible at cloud zoom instead of fading
+// to 0 like everything else — without them, the three realm clouds float
+// unlinked and read as "random scattered dots" rather than a connected
+// structure. Every other edge (within-realm, AND any cross-realm edge that
+// doesn't touch core) is untouched — still fades fully via edgeFade, that's
+// the clutter this fade was built to remove. Tried "any cross-realm bridge"
+// and "significant bridges" (core OR high-influenceScore) first — both
+// still read as a crisscross web; "touches core" alone is what actually
+// reads as a few clean arms radiating from the center. Remaps edgeFade into
+// [CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM..1] (a floor, not 0) rather than a
+// new threshold — the node-side equivalent of this floor pattern was
+// removed when drawNode moved to the anchors-only redesign (see ANCHOR_COUNT),
+// but edges still use it: it's what keeps these threads visible at cloud zoom.
+const CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM = 0.015; // opacity — barely-there wispy filament, not a bright line
+const CORE_EDGE_THREAD_GLOW_BLUR = 6; // intensity — soft glow, strongest at cloud zoom, 0 by detail zoom
+
+// Every other edge (within-realm, and cross-realm bridges that don't touch
+// core) still fades all the way to 0 above — reads as bare scattered dots
+// with no sense of a web underneath the core arms. Same floor pattern as
+// CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM, just a lower floor: enough for the
+// overall shape to read as "connected," dim enough to stay entirely behind
+// the core threads. No glow (unlike the core branch) — these are background
+// texture, not featured arms.
+const IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM = 0.045;
 // Fast, subtle fade for edges lighting up/down on focus or hover — separate
 // from TRANSITION_MS (node dimming) so edges pop quicker without touching
 // that existing timing.
@@ -364,7 +545,16 @@ const SPREAD_FACTOR = 2.6; // spotlight-spread outward scale from cluster centro
 // does NOT include minZoom/maxZoom, even though the underlying force-graph
 // kapsule instance has both as callable setters. So this has to be driven
 // via React state on <ForceGraph2D minZoom maxZoom>, not graphRef.
-const SCROLL_MIN_ZOOM = 2.5;
+// Lowered from 2.5: with six realms now spread to their own distinct
+// positions around the layout ellipse (see REALM_ANGLE_DEG) instead of
+// three overlapping in one arc, the combined bounding extent of every
+// realm's cluster no longer fits inside a zoom-2.5 viewport. FADE_ZOOM_OUT
+// deliberately stays at 2.5, NOT lowered alongside this — the new headroom
+// between 1.6 and 2.5 is extra room to pull back while already fully in
+// cloud-dot rendering (computeZoomFade is already 0, i.e. full cloud, for
+// any globalScale at/below FADE_ZOOM_OUT), not a new visual state to design
+// for. See the REALM_RADIUS_X/Y comment above for the root-cause coupling.
+const SCROLL_MIN_ZOOM = 1.6;
 const SCROLL_MAX_ZOOM = 7;
 // force-graph's own library defaults (force-graph.js: minZoom default 0.01,
 // maxZoom default 1000) — used as the "unclamped" bounds while a focus view
@@ -382,13 +572,171 @@ const UNCLAMPED_BOUNDS: [number, number] = [UNCLAMPED_MIN_ZOOM, UNCLAMPED_MAX_ZO
 // Fully solid at/above FADE_ZOOM_IN — unchanged from pre-fade behavior.
 // Fully invisible at/below FADE_ZOOM_OUT, for every node, hubs included.
 const FADE_ZOOM_OUT = 2.5;
-const FADE_ZOOM_IN = 4;
+const FADE_ZOOM_IN = 3.5;
 // Shifts each node's fade-START point (not its zero point) down from
 // FADE_ZOOM_IN by this many zoom-units per sqrt(influenceScore) — so a hub
 // holds full opacity over a wider range while zooming out, then fades over a
 // narrower stretch just above FADE_ZOOM_OUT. Every node still reaches
 // exactly 0 at FADE_ZOOM_OUT regardless of this value. Set to 0 to disable.
 const FADE_HUB_BIAS_STRENGTH = 0.15;
+
+// The ~N most influential nodes globally (by influenceScore) that get a
+// name label at cloud zoom — "meaning without clutter" landmarks on the
+// star-map. Every node still gets a visible dot at cloud zoom (see
+// CLOUD_DOT_* below) — this only gates LABELS, not the dot itself. Computed
+// once in a useMemo (see topAnchorIds near stableData), not per-frame.
+const ANCHOR_COUNT = 12;
+
+// ── Crisp colored dot at cloud zoom — EVERY node, not just anchors. A
+// modest solid-colored core + a tight soft glow halo (both cached sprites —
+// see the perf report), crossfading against the existing bloom-haze/fill/
+// photo path via cloudDotFade/zoomFade (computed per-node in drawNode):
+// cloudDotFade = 1 - zoomFade, so the two are exact complements — summing to
+// 1 at every zoom, never both invisible at once. 0 in focus mode or at/above
+// FADE_ZOOM_IN, so detail zoom/focus stay byte-for-byte the existing
+// rendering, ramping to full cloud-dot treatment at FADE_ZOOM_OUT.
+//
+// An earlier version of this (applying it only to the top ANCHOR_COUNT
+// nodes, oversized/bright enough to read as a landmark) is why these values
+// are deliberately modest now: applied to all ~106 nodes, additive glow at
+// that size/intensity was adding up fast and reading as a blown-out white
+// wash rather than clean colored dots. No twinkle, no influence-based
+// brightness boost either — dropped for a calmer, simpler look now that
+// this runs for every node instead of 12 (see the report for why).
+//
+// Reworked toward a deep-space-starfield reference: nodes should read as
+// tiny sharp points with strong faint/bright variation (few bright, many
+// faint), not uniform circles. A flat 1:1 size mult against baseR (already
+// sqrt(influenceScore)-scaled for the DETAIL view) drew a real hub's dot as
+// big as a full detail-zoom circle — replaced with its own flat min/max
+// range plus a gentle sqrt(score) growth, independent of baseR entirely.
+const CLOUD_DOT_MIN_R = 1.3;       // world units — point size for a typical/low-score node
+const CLOUD_DOT_MAX_R = 3.2;       // world units — cap on even the biggest hub's point
+const CLOUD_DOT_HUB_GROWTH = 0.28; // × sqrt(score) added on top of CLOUD_DOT_MIN_R, capped at CLOUD_DOT_MAX_R
+const CLOUD_DOT_BRIGHTNESS = 0.7;  // peak core alpha ceiling — actual per-node alpha is also scaled by score just below
+const CLOUD_DOT_MIN_BRIGHTNESS_FRACTION = 0.35; // faintest (score 0) nodes still read at this fraction of CLOUD_DOT_BRIGHTNESS
+const CLOUD_DOT_BRIGHTNESS_GROWTH = 0.12;        // × sqrt(score) added on top of the floor above, capped at 1
+const CLOUD_DOT_GLOW_TIGHTNESS = 1.6; // halo radius × core radius — modest, well short of the detail dot's wide bloom haze (2.8–4×)
+const CLOUD_DOT_GLOW_INTENSITY = 0.18; // halo peak alpha — kept low: additive glow across many hubs adds up fast even at a modest per-node value
+// Only hubs/anchors get the soft bloom halo — everyone else is a bare
+// point, per the reference (most stars are just points; a few bloom).
+const CLOUD_DOT_HALO_MIN_SCORE = ALWAYS_LABEL_THRESHOLD;
+
+// ── Glow sprite cache (perf) ────────────────────────────────────────────────
+// Before this, every radial-glow draw (nebula, bloom haze, star halo) built
+// a brand-new CanvasGradient — with 2-3 addColorStop calls each — from
+// scratch, per node, per frame. Once autoPauseRedraw={false} made the whole
+// canvas repaint continuously (needed for the twinkle), that meant ~300
+// gradient constructions/frame, ~18,000/second: the actual cause of the lag.
+//
+// Fix: a radial gradient's shape scales perfectly under drawImage (no
+// distortion, unlike e.g. a blur) — so each DISTINCT (shape, color) pair
+// only needs ONE reference-resolution bitmap, rendered once, reused forever
+// via drawImage + globalAlpha for brightness. There are only ~14 distinct
+// glow colors in the whole dataset (5 layer colors + core gold + 8
+// electronic lineages), so this collapses "one gradient per node per frame"
+// into a handful of cached bitmaps stamped via drawImage (one of the
+// cheapest canvas operations) — same visual result, a fraction of the cost.
+const GLOW_SPRITE_REFERENCE_RADIUS = 64; // px — reference bitmap size; drawImage scales it to each node's actual radius, so this only needs to be "big enough to look smooth," not exact
+
+function buildGlowSprite(build: (grad: CanvasGradient) => void, innerFraction = 0): HTMLCanvasElement {
+  const refR = GLOW_SPRITE_REFERENCE_RADIUS;
+  const size = refR * 2;
+  const canvas = document.createElement('canvas');
+  canvas.width = size;
+  canvas.height = size;
+  const octx = canvas.getContext('2d')!;
+  const grad = octx.createRadialGradient(refR, refR, refR * innerFraction, refR, refR, refR);
+  build(grad);
+  octx.beginPath();
+  octx.arc(refR, refR, refR, 0, Math.PI * 2);
+  octx.fillStyle = grad;
+  octx.fill();
+  return canvas;
+}
+
+// Stamps a cached sprite at (x, y) scaled to `radius`, with `peakAlpha`
+// composited via globalAlpha (the sprite itself is always baked at peak
+// alpha 1.0 — canvas composites source-alpha × globalAlpha, so this
+// reproduces exactly what a fresh gradient at that peak alpha would have
+// drawn). Callers that need globalAlpha restored afterward for further
+// drawing must do so themselves (same convention already used elsewhere in
+// this file for temporary globalAlpha overrides).
+function stampGlowSprite(
+  ctx: CanvasRenderingContext2D, sprite: HTMLCanvasElement,
+  x: number, y: number, radius: number, peakAlpha: number,
+): void {
+  ctx.globalAlpha = Math.max(0, Math.min(1, peakAlpha));
+  ctx.drawImage(sprite, x - radius, y - radius, radius * 2, radius * 2);
+}
+
+// 2-stop "peak at center -> fully transparent at edge" shape — shared by
+// drawNodeGlow (region-one/electronic nebula) and the star halo below, since
+// both use the exact same relative shape and only the color differs.
+const glow2StopSpriteCache = new Map<string, HTMLCanvasElement>();
+function get2StopGlowSprite(glowColor: string): HTMLCanvasElement {
+  let sprite = glow2StopSpriteCache.get(glowColor);
+  if (!sprite) {
+    sprite = buildGlowSprite(grad => {
+      grad.addColorStop(0, glowColor.replace('0.7)', '1)'));
+      grad.addColorStop(1, glowColor.replace('0.7)', '0)'));
+    });
+    glow2StopSpriteCache.set(glowColor, sprite);
+  }
+  return sprite;
+}
+
+// Solid opaque-color circle — the star's bright core (see drawNode below).
+// Even cheaper than a gradient sprite: no stops, just a fill.
+const solidCircleSpriteCache = new Map<string, HTMLCanvasElement>();
+function getSolidCircleSprite(hexColor: string): HTMLCanvasElement {
+  let sprite = solidCircleSpriteCache.get(hexColor);
+  if (!sprite) {
+    const refR = GLOW_SPRITE_REFERENCE_RADIUS;
+    const size = refR * 2;
+    const canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    const octx = canvas.getContext('2d')!;
+    octx.beginPath();
+    octx.arc(refR, refR, refR, 0, Math.PI * 2);
+    octx.fillStyle = hexColor;
+    octx.fill();
+    solidCircleSpriteCache.set(hexColor, canvas);
+    return canvas;
+  }
+  return sprite;
+}
+
+// drawNode's "Outer bloom haze," resting case only (not isFocused/
+// isHovered — see that block's own comment for why those two stay on the
+// original per-call gradient). Ratio-normalized to the ORIGINAL resting
+// values (innerAlpha=0.22, midAlpha=0.07): peak (stop 0) = 1.0 reference,
+// stop 0.5 = 0.07/0.22 of peak, stop 1 = 0 — the real peak alpha is applied
+// via ctx.globalAlpha at stamp time (see drawNode), which reproduces the
+// original gradient's composited result exactly (source-alpha × globalAlpha
+// is how canvas already composites a gradient fill against whatever
+// globalAlpha happens to be active). isCore changes the ORIGINAL gradient's
+// inner-start-radius (createRadialGradient's r0 = er*0.5, expressed as a
+// FRACTION of bloomR = er*bloomMult, and bloomMult itself differs for core
+// via CORE_GLOW_RADIUS_MULT) — not just a uniform scale — so core needs its
+// own sprite variant, not just a brighter/bigger draw of the same one.
+const bloomHazeSpriteCache = new Map<string, HTMLCanvasElement>();
+function getBloomHazeSprite(glowColor: string, isCoreNode: boolean): HTMLCanvasElement {
+  const key = `${glowColor}|${isCoreNode ? 'core' : 'std'}`;
+  let sprite = bloomHazeSpriteCache.get(key);
+  if (!sprite) {
+    const bloomMult = 2.8 * (isCoreNode ? CORE_GLOW_RADIUS_MULT : 1);
+    const innerFraction = 0.5 / bloomMult; // matches the original createRadialGradient(..., er*0.5, ..., bloomR) ratio
+    sprite = buildGlowSprite(grad => {
+      grad.addColorStop(0,   glowColor.replace('0.7)', '1)'));
+      grad.addColorStop(0.5, glowColor.replace('0.7)', `${(0.07 / 0.22).toFixed(4)})`));
+      grad.addColorStop(1,   glowColor.replace('0.7)', '0)'));
+    }, innerFraction);
+    bloomHazeSpriteCache.set(key, sprite);
+  }
+  return sprite;
+}
 
 function computeZoomFade(globalScale: number, influenceScore: number): number {
   if (globalScale >= FADE_ZOOM_IN) return 1;
@@ -400,130 +748,93 @@ function computeZoomFade(globalScale: number, influenceScore: number): number {
   return (globalScale - FADE_ZOOM_OUT) / (fadeStart - FADE_ZOOM_OUT);
 }
 
-// ── Realm cloud (P3 of the zoom-based cloud/detail reveal) — electronic
-// realm only for now; region-one/core get their own cloud once this one's
-// look is tuned. Drawn in onRenderFramePre, the only hook that fires before
-// links/nodes are painted, so the cloud sits fully behind everything.
-//
-// Color pulled from the existing realm/lineage source (lib/colors.ts), not
-// invented: resolveNodeGlow already falls through to that module's
-// designated generic-electronic color when called with no lineage. Fixed
-// alpha "0.7)" baked in — each gradient stop below replaces it with its own
-// value, the same string-replace idiom drawNode's bloom haze already uses.
-const ELECTRONIC_CLOUD_GLOW = resolveNodeGlow({ realm: 'electronic', layer: 'outside' });
+// Photos/labels fully gone at/below this zoom — deliberately its OWN
+// threshold and its OWN unbiased curve (computePhotoLabelFade below), not
+// zoomFade/computeZoomFade above. computeZoomFade's hub bias shifts a high-
+// influenceScore node's fade-start close to FADE_ZOOM_OUT (so ITS DOT lingers
+// longest, which is intended) — but wantsPhoto only ever applies to exactly
+// those high-score nodes, so reusing that same biased curve for photos let
+// the highest-score nodes' photos/labels linger too, showing up right at
+// load (e.g. zoom ~2.55) instead of being fully gone. Shares FADE_ZOOM_IN as
+// the top end, so "full photos/names at detail zoom" stays a single source
+// of truth.
+const PHOTO_LABEL_FADE_OUT_ZOOM = 2.8;
 
-// Radius = RMS distance of the realm's nodes from their centroid (a robust
-// "typical spread" — unlike a max-distance, one outlier node can't blow it
-// out) × this multiplier. Large on purpose: the soft edge needs to reach
-// past the outer nodes (including outlying ghost hubs below) so the whole
-// realm reads as one covering nebula, not a pool at the centroid.
-const CLOUD_RADIUS_MULTIPLIER = 4.2;
-
-// 3 gradient blobs, outer→inner, as [radius fraction of cloudR, peak alpha
-// at center] — ALL drawn from the same (cx, cy) centroid (see the single
-// createRadialGradient center used for every entry below). Concentric by
-// construction: only the radius/alpha vary per blob, never the center, so
-// they layer into one mass instead of reading as separate pools. Luminosity
-// accumulates toward the middle instead of one flat painted disc. Tune
-// brightness by eye via the alphas. Peak stays below CORE_CLOUD_BLOBS' peak
-// so the realm clouds read as genuinely lit but still sit under the core.
-const CLOUD_BLOBS: Array<[radiusFraction: number, peakAlpha: number]> = [
-  [1.0, 0.22],
-  [0.6, 0.36],
-  [0.32, 0.58],
-];
-
-// Ghost hubs — the N highest-influenceScore nodes in the realm glow faintly
-// through the cloud, like bright stars in a nebula. Deliberately tiny/dim —
-// barely-there pinpricks, not their own light-pools: each hub draws its own
-// gradient centered on that node (not the cloud's centroid), so if these get
-// too large/bright they compete with the single cloud instead of living
-// inside it. Peak alpha caps how bright they ever get, even at full cloud
-// bloom (zoom === FADE_ZOOM_OUT).
-const CLOUD_GHOST_HUB_COUNT = 3;
-const CLOUD_GHOST_HUB_RADIUS_FRACTION = 0.09; // of cloudR
-const CLOUD_GHOST_HUB_PEAK_ALPHA = 0.20; // nudged up from 0.14 to stay perceptible against the brighter CLOUD_BLOBS above; still well below the cloud's own peak
-
-// ── Core blaze — the 5 realm === 'core' nodes' cloud. Same mechanism as the
-// electronic cloud above (centroid + RMS-radius, concentric stacked
-// gradients, 'lighter' compositing, same cloudFade/isFocusModeActive), but
-// tuned to be the single brightest, most concentrated glow on screen — the
-// galaxy's focal anchor, not another diffuse nebula. No ghost hubs here —
-// not requested, and core nodes already render normally via the existing
-// P2 fade.
-
-// Tighter than the realm clouds — a concentrated blaze, not a wide haze.
-// Still meaningfully smaller than CLOUD_RADIUS_MULTIPLIER/REGION_ONE_CLOUD_
-// RADIUS_MULTIPLIER even after this bump, so the core stays a concentrated
-// center of gravity rather than growing into a fourth diffuse cloud.
-const CORE_CLOUD_RADIUS_MULTIPLIER = 1.6;
-
-// Same [radiusFraction, peakAlpha] recipe as CLOUD_BLOBS, but far more
-// intense — this is what makes the core outshine both realm clouds.
-const CORE_CLOUD_BLOBS: Array<[radiusFraction: number, peakAlpha: number]> = [
-  [1.0, 0.30],
-  [0.55, 0.55],
-  [0.28, 0.88],
-];
-
-// A wide, faint extension drawn past CORE_CLOUD_BLOBS' own radiusFraction-1.0
-// edge — the "soft halo" that makes the core read as a blazing center of
-// gravity rather than a small lone star, kept separate from the tight blaze
-// above so its size/intensity can be tuned on its own.
-const CORE_CLOUD_HALO_RADIUS_FRACTION = 1.8; // of coreCloudR
-const CORE_CLOUD_HALO_ALPHA = 0.10;
-
-// ── Smooth falloff shape, shared by every core layer (the halo above and
-// every CORE_CLOUD_BLOBS entry) — see addCoreGradientStops below. Previously
-// each blob held a flat plateau (two stops at the SAME alpha) before
-// dropping, which read as a hard-edged hot "disc" sitting inside a visibly
-// separate halo. alpha(t) = peakAlpha * (1 - t)^power, t = normalized
-// distance from center (0 at the very center, 1 at the outer edge) — this is
-// strictly decreasing at every point starting at t=0, so there's no flat
-// segment, and using the exact same curve at every scale (halo included)
-// means the additive stack has no seam between "disc" and "halo": one
-// continuous falloff from center to edge.
-const CORE_CLOUD_FALLOFF_POWER = 2.2; // >1 = gaussian-like: steep near center, gentle near the edge
-const CORE_CLOUD_STOP_COUNT = 8; // sampled stops approximating the curve — more = smoother
-
-// How far out (as a fraction of a layer's own radius) the near-white center
-// color finishes blending into the sourced gold below. Alpha keeps falling
-// the whole time per the curve above — this only blends color, it never
-// holds alpha flat, so it can't reintroduce the plateau.
-const CORE_CLOUD_HOT_CENTER_FRACTION = 0.22;
-
-// Gold as separate RGB channels — matches lib/colors.ts's CORE_COLOR
-// ('#E8C87A', i.e. resolveNodeColor({realm:'core',...})), same sourced gold
-// as before, just numeric so it can be blended with white below.
-const CORE_GOLD_RGB: [number, number, number] = [232, 200, 122];
-
-function coreStopColor(t: number): string {
-  if (t >= CORE_CLOUD_HOT_CENTER_FRACTION) {
-    const [r, g, b] = CORE_GOLD_RGB;
-    return `${r}, ${g}, ${b}`;
-  }
-  const mix = t / CORE_CLOUD_HOT_CENTER_FRACTION; // 0 (white) -> 1 (gold) as t goes 0 -> CORE_CLOUD_HOT_CENTER_FRACTION
-  const [gr, gg, gb] = CORE_GOLD_RGB;
-  const r = Math.round(255 + (gr - 255) * mix);
-  const g = Math.round(255 + (gg - 255) * mix);
-  const b = Math.round(255 + (gb - 255) * mix);
-  return `${r}, ${g}, ${b}`;
+function computePhotoLabelFade(globalScale: number): number {
+  if (globalScale >= FADE_ZOOM_IN) return 1;
+  if (globalScale <= PHOTO_LABEL_FADE_OUT_ZOOM) return 0;
+  return (globalScale - PHOTO_LABEL_FADE_OUT_ZOOM) / (FADE_ZOOM_IN - PHOTO_LABEL_FADE_OUT_ZOOM);
 }
 
-function addCoreGradientStops(grad: CanvasGradient, peakAlpha: number): void {
-  for (let i = 0; i <= CORE_CLOUD_STOP_COUNT; i++) {
-    const t = i / CORE_CLOUD_STOP_COUNT;
-    const alpha = (peakAlpha * Math.pow(1 - t, CORE_CLOUD_FALLOFF_POWER)).toFixed(3);
-    grad.addColorStop(t, `rgba(${coreStopColor(t)}, ${alpha})`);
-  }
+// ── Per-node nebula glow (P3 of the zoom-based cloud/detail reveal) ────────
+// Replaces an earlier approach that drew one circular radial-gradient "blob"
+// per realm at that realm's centroid — it read as a clean lamp, not a
+// nebula, because a real scatter of nodes is never a circle. Instead, EVERY
+// realm-tagged node draws its own soft glow at its own position, additively
+// blended ('lighter'): dense clumps sum into bright solid mass, sparse edges
+// trail off wispy, and the aggregate shape follows the actual (irregular)
+// footprint of that realm's node scatter. Drawn in onRenderFramePre, the
+// only hook that fires before links/nodes are painted, so every glow sits
+// fully behind them. Same cloudFade/isFocusModeActive gating as before.
+//
+// The crisp colored dots (see CLOUD_DOT_* above) are the main content at
+// cloud zoom now — clouds recede to a subtle atmospheric backdrop giving
+// depth/region-identity, not competing for attention. One multiplier
+// applied to every realm's peak alpha (region-one/electronic/core alike) at
+// the point of use below, rather than hand-editing three separate constants.
+const CLOUD_BACKDROP_INTENSITY = 0.08;
+
+// ── Near-black background wash (cloud zoom only) ────────────────────────────
+// The page behind the (transparent) canvas has its own lighter radial
+// gradient (see app/globals.css --color-bg-lift) — fine for detail
+// zoom/focus, but against a starfield reference the overview needs to read
+// as near-black no matter what's showing through underneath. Painted first
+// in handleRenderFramePre, in raw screen space (transform reset, so it
+// covers the full canvas regardless of current pan/zoom), faded by the same
+// cloudFade as everything else so it recedes back to the normal page
+// background by FADE_ZOOM_IN — detail zoom/focus never see this at all.
+const OVERVIEW_BG_WASH_COLOR = '6, 5, 14'; // near-black deep navy, r/g/b only — alpha appended at draw time
+const OVERVIEW_BG_WASH_MAX_ALPHA = 0.92;
+
+// ── Decorative dust starfield (cloud zoom only) ─────────────────────────────
+// ~106 real artist nodes can't fill a "hundreds of tiny stars" starfield on
+// their own. This is pure decoration — static positions, no click/hover/
+// label, not part of stableData/GraphNode at all — generated once and
+// scattered with jitter around each realm's existing home cluster (reusing
+// computeRealmHomePositions/REALM_RADIUS_X/Y, so density already follows the
+// real realm regions without any separate placement logic). Drawn as plain
+// filled circles (no gradient/sprite — hundreds of tiny dots is already
+// cheap without one) between the background wash and the nebula/real nodes,
+// faded by the same cloudFade so they recede on zoom-in like everything
+// else at cloud zoom.
+const DUST_STAR_COUNT = 450;
+const DUST_STAR_MIN_R = 0.4;             // world units
+const DUST_STAR_MAX_R = 1.3;             // world units
+const DUST_STAR_MIN_ALPHA = 0.06;
+const DUST_STAR_MAX_ALPHA = 0.55;
+const DUST_STAR_TINT_FRACTION = 0.12;    // fraction of stars given a faint realm tint instead of pale white
+const DUST_STAR_CLUSTER_SPREAD = 1.6;    // × realm ellipse radius — how far dust scatters from its realm's home position
+const DUST_STAR_PALE_COLOR = '#F4F2FF';  // most stars — pale white/lavender, not realm-colored
+const DUST_STAR_ELECTRONIC_TINT = '#C77DD1'; // representative electronic tint for the rare tinted dust star (krautrock hex from LINEAGE_COLORS)
+const DUST_STAR_FOLK_TINT = '#8CAA52'; // representative folk tint for the rare tinted dust star (freak-folk hex from FOLK_LINEAGE_COLORS)
+const DUST_STAR_EMO_TINT = '#B02E2E'; // representative emo tint for the rare tinted dust star (post-hardcore hex from EMO_LINEAGE_COLORS)
+const DUST_STAR_POSTROCK_TINT = '#6B3FA0'; // representative post-rock tint for the rare tinted dust star (post-rock hex from POSTROCK_LINEAGE_COLORS)
+const DUST_STAR_AMERICAN_UNDERGROUND_TINT = '#B85C2E'; // representative american-underground tint for the rare tinted dust star (college-rock hex from AMERICAN_UNDERGROUND_LINEAGE_COLORS)
+
+interface DustStar {
+  x: number;
+  y: number;
+  r: number;
+  alpha: number;
+  color: string;
 }
 
 // hex '#RRGGBB' -> 'rgba(r, g, b, alpha)' — this file has no existing
 // hex->rgba helper (lib/colors.ts has an equivalent but it's private), and
-// the region-one cloud below needs a color that ISN'T sourced from the
-// per-layer palette (unlike electronic/core) — it's a new cloud-only tone,
-// so the tunable hex constant needs to stay the single source of truth for
-// its derived glow string rather than a second hand-maintained value.
+// the region-one glow below needs a color that ISN'T sourced from the
+// per-layer palette (unlike electronic/core) — it's a new glow-only tone, so
+// the tunable hex constant needs to stay the single source of truth for its
+// derived glow string rather than a second hand-maintained value.
 function hexToRgba(hex: string, alpha: number): string {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
@@ -531,25 +842,133 @@ function hexToRgba(hex: string, alpha: number): string {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-// ── Region-one cloud — the 'region-one' realm's cloud (left side). Same
-// mechanism as the electronic/core clouds above. Region-one nodes still
-// color individually by their own `layer` field (unchanged) — this cloud is
-// one flat color for the region as a whole, not a per-node read.
+// Draws one soft radial glow at (x, y): peak alpha at center, fading to
+// fully transparent at the edge — no hard rim. Shared by region-one (one
+// flat color for the whole region) and electronic (each node's own real
+// lineage color) below; core uses its own hotter addCoreGradientStops curve
+// instead (see further down). Uses the cached 2-stop sprite (see the perf
+// section above) instead of building a fresh gradient every call — this ran
+// for every realm-tagged node, every frame, and was a primary source of lag.
+function drawNodeGlow(
+  ctx: CanvasRenderingContext2D,
+  x: number, y: number, radius: number,
+  glowColor: string, peakAlpha: number,
+): void {
+  stampGlowSprite(ctx, get2StopGlowSprite(glowColor), x, y, radius, peakAlpha);
+}
+
+// ── Region-one — one flat color for the whole region (region-one nodes
+// still color individually by their own `layer` field elsewhere, unchanged;
+// this glow is deliberately NOT a per-node/per-layer read — see the report
+// for why: no dedicated realm color or lineage field to draw from, and an
+// earlier task explicitly ruled out a multi-colored region-one cloud).
 //
 // Soft cool periwinkle/violet-blue, deliberately distinct from the gold core
-// and magenta electronic cloud — tune the hex by eye.
+// and magenta electronic glow — tune the hex by eye.
 const REGION_ONE_CLOUD_COLOR = '#8A9CE0';
-const REGION_ONE_CLOUD_GLOW = hexToRgba(REGION_ONE_CLOUD_COLOR, 0.7); // same "0.7)" suffix convention as ELECTRONIC_CLOUD_GLOW/CORE_CLOUD_GLOW
+const REGION_ONE_CLOUD_GLOW = hexToRgba(REGION_ONE_CLOUD_COLOR, 0.7); // same "0.7)" suffix convention drawNodeGlow expects
 
-// Matched to the electronic cloud (CLOUD_RADIUS_MULTIPLIER/CLOUD_BLOBS) —
-// own named constants, not a shared reference, so each realm's cloud can
-// still be tuned independently even though the two are kept as peers.
-const REGION_ONE_CLOUD_RADIUS_MULTIPLIER = 4.2;
-const REGION_ONE_CLOUD_BLOBS: Array<[radiusFraction: number, peakAlpha: number]> = [
-  [1.0, 0.22],
-  [0.6, 0.36],
-  [0.32, 0.58],
-];
+// Region-one/electronic kept as matched peers — own named constants, not a
+// shared reference, so each can still be tuned independently. Raised from
+// 40/0.16: region-one's sparser edge nodes (nearer the core, e.g. Bowie,
+// Talking Heads) sat too far apart for their glows to merge into the dense
+// left side's continuous mass, leaving them uncovered. Watch for bleed into
+// core/electronic if pushed much higher — core sits closest, at the
+// ellipse's center.
+const REGION_ONE_NODE_GLOW_RADIUS = 60; // px — bigger than a node's own drawn radius, so neighbors' glows overlap and merge
+// Cut to ~1/3 of 0.22 — at this radius/density, dozens of overlapping
+// 'lighter'-composited glows were summing past 1.0 and clipping to pure
+// white at cluster centers instead of reading as a dim, colored haze.
+const REGION_ONE_NODE_GLOW_PEAK_ALPHA = 0.16; // low per-node — density (many overlapping glows) is what builds brightness, not any single node
+
+// ── Electronic — each node's own real lineage color via resolveNodeGlow
+// (same source the old "ghost hub" nodes already used; now every electronic
+// node gets this, not just the top few by influenceScore). Matched to
+// region-one's bump above.
+const ELECTRONIC_NODE_GLOW_RADIUS = 60;
+const ELECTRONIC_NODE_GLOW_PEAK_ALPHA = 0.16; // matched to region-one above
+
+// ── Folk & Confessional — each node's own real lineage color via
+// resolveNodeGlow, same per-node-color pattern as electronic (folk has 5
+// sub-lineages like electronic's 8, unlike region-one's single flat color).
+// Matched to region-one/electronic's values as a starting point.
+const FOLK_NODE_GLOW_RADIUS = 60;
+const FOLK_NODE_GLOW_PEAK_ALPHA = 0.16;
+
+// ── Emo & Post-Hardcore — each node's own real lineage color via
+// resolveNodeGlow, same per-node-color pattern as electronic/folk (4
+// sub-lineages). Matched to the other realm glows as a starting point.
+const EMO_NODE_GLOW_RADIUS = 60;
+const EMO_NODE_GLOW_PEAK_ALPHA = 0.16;
+
+// ── Post-Rock, Drone & Noise — each node's own real lineage color via
+// resolveNodeGlow, same per-node-color pattern as electronic/folk/emo (3
+// sub-lineages). Matched to the other realm glows as a starting point.
+const POSTROCK_NODE_GLOW_RADIUS = 60;
+const POSTROCK_NODE_GLOW_PEAK_ALPHA = 0.16;
+
+// ── American Underground — each node's own real lineage color via
+// resolveNodeGlow, same per-node-color pattern as electronic/folk/emo/
+// post-rock above (3 sub-lineages). Matched to the other realm glows as a
+// starting point.
+const AMERICAN_UNDERGROUND_NODE_GLOW_RADIUS = 60;
+const AMERICAN_UNDERGROUND_NODE_GLOW_PEAK_ALPHA = 0.16;
+
+// ── Core — hot gold, brighter/tighter than the realm glows above so the
+// merged knot still blazes hottest. Reuses the smooth falloff curve below
+// (already tuned for a continuous, non-plateaued center-to-edge falloff)
+// per node instead of per realm-centroid.
+//
+// alpha(t) = peakAlpha * (1 - t)^power, t = normalized distance from center
+// (0 at the very center, 1 at the glow's own edge) — strictly decreasing at
+// every point starting at t=0, so no flat "disc" segment. >1 = gaussian-like:
+// steep near the center, gentle near the edge.
+const CORE_CLOUD_FALLOFF_POWER = 2.2;
+const CORE_CLOUD_STOP_COUNT = 8; // sampled stops approximating the curve — more = smoother
+
+// Gold as separate RGB channels — matches lib/colors.ts's CORE_COLOR
+// ('#E8C87A', i.e. resolveNodeColor({realm:'core',...})).
+const CORE_GOLD_RGB: [number, number, number] = [232, 200, 122];
+
+// Larger and brighter per-node than the realm glows — only 5 core nodes,
+// clustered tightly by CORE_PULL_STRENGTH, so each needs real presence to
+// merge into one bright knot rather than 5 separate dots. Cut to ~1/3 of
+// 0.55 for the same reason as the realm glows above — 5 overlapping glows
+// this size/alpha were clipping the knot's center to pure white.
+const CORE_NODE_GLOW_RADIUS = 90;
+const CORE_NODE_GLOW_PEAK_ALPHA = 0.30;
+
+// Flat gold at every stop — no white-hot center blend. A near-white center,
+// additively composited across the core's several overlapping node glows,
+// was exactly the kind of blown-out bright center this backdrop must never
+// produce; it should read as a dim, dark-toned gold haze, not a glowing
+// lamp. Alpha still falls off smoothly via addCoreGradientStops below —
+// only the color itself no longer brightens toward white near the center.
+function coreStopColor(): string {
+  const [r, g, b] = CORE_GOLD_RGB;
+  return `${r}, ${g}, ${b}`;
+}
+
+function addCoreGradientStops(grad: CanvasGradient, peakAlpha: number): void {
+  for (let i = 0; i <= CORE_CLOUD_STOP_COUNT; i++) {
+    const t = i / CORE_CLOUD_STOP_COUNT;
+    const alpha = (peakAlpha * Math.pow(1 - t, CORE_CLOUD_FALLOFF_POWER)).toFixed(3);
+    grad.addColorStop(t, `rgba(${coreStopColor()}, ${alpha})`);
+  }
+}
+
+// Single cached sprite (only one shape/color combination exists for core) —
+// addCoreGradientStops already parameterizes stops as fractions of the
+// gradient's own radius, so building it once at peakAlpha=1 as the
+// reference and applying the real peak via globalAlpha at stamp time
+// reproduces the original per-call gradient exactly.
+let coreNebulaSprite: HTMLCanvasElement | null = null;
+function drawCoreNodeGlow(ctx: CanvasRenderingContext2D, x: number, y: number, radius: number, peakAlpha: number): void {
+  if (!coreNebulaSprite) {
+    coreNebulaSprite = buildGlowSprite(grad => addCoreGradientStops(grad, 1));
+  }
+  stampGlowSprite(ctx, coreNebulaSprite, x, y, radius, peakAlpha);
+}
 
 interface Props {
   graphData: GraphData;
@@ -563,6 +982,14 @@ interface Props {
   highlightSetIds: string[] | null;
   onNodeClick: (artistId: string) => void;
   onBackgroundClick: () => void;
+  // True while an /artist/[slug] page overlay is covering the graph — see
+  // app/(graph)/layout.tsx, which keeps this component mounted underneath
+  // that overlay rather than unmounting it. The canvas is fully hidden in
+  // that state, so there's nothing to gain from redrawing it every frame;
+  // see the autoPauseRedraw prop below. Defaults to false (never
+  // backgrounded) so every existing caller is unaffected if it doesn't
+  // pass this prop.
+  isBackgrounded?: boolean;
 }
 
 interface GraphNode extends Artist {
@@ -593,6 +1020,8 @@ interface LabelCandidate {
   fontSize: number;
   bright: boolean;
   alpha: number;
+  score: number;        // influenceScore — breaks ties when two forced labels collide (see forced below)
+  forced: boolean;      // alwaysLabel tier (hub/anchor) — persistent regardless of hover/focus; see the demotion logic in onRenderFramePost
   radialFromX?: number; // focus node x — set for neighbors to push label radially
   radialFromY?: number;
 }
@@ -605,6 +1034,7 @@ export default function ForceGraphCanvas({
   highlightSetIds,
   onNodeClick,
   onBackgroundClick,
+  isBackgrounded = false,
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const graphRef = useRef<any>(null);
@@ -724,6 +1154,54 @@ export default function ForceGraphCanvas({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
+
+  // The ~ANCHOR_COUNT highest-influenceScore nodes globally — the only ones
+  // that stay visible (as small "star" anchors + a label) at cloud zoom; see
+  // drawNode. Computed once here, not per-frame/per-node.
+  const topAnchorIds = useMemo(() => {
+    const ranked = [...stableData.nodes].sort(
+      (a, b) => (b.influenceScore ?? 0) - (a.influenceScore ?? 0),
+    );
+    return new Set(ranked.slice(0, ANCHOR_COUNT).map(n => n.id));
+  }, [stableData.nodes]);
+
+  // ── Decorative dust starfield (see DUST_STAR_* above) ───────────────────────
+  // Generated once from the same realm home positions the real layout
+  // already settled around (computeRealmHomePositions) — jittered scatter
+  // per realm, not a separate placement system. Pure decoration: never
+  // touched by click/hover/label/highlight logic, not part of GraphNode.
+  const dustStars = useMemo<DustStar[]>(() => {
+    const homePositions = [...computeRealmHomePositions(stableData.nodes).entries()];
+    if (homePositions.length === 0) return [];
+
+    const tintForRealm = (realm: string): string => {
+      if (realm === 'core') return `rgb(${CORE_GOLD_RGB.join(', ')})`;
+      if (realm === 'region-one') return REGION_ONE_CLOUD_COLOR;
+      if (realm === 'folk-confessional') return DUST_STAR_FOLK_TINT;
+      if (realm === 'emo-posthardcore') return DUST_STAR_EMO_TINT;
+      if (realm === 'post-rock-drone-noise') return DUST_STAR_POSTROCK_TINT;
+      if (realm === 'american-underground') return DUST_STAR_AMERICAN_UNDERGROUND_TINT;
+      return DUST_STAR_ELECTRONIC_TINT;
+    };
+
+    const stars: DustStar[] = [];
+    for (let i = 0; i < DUST_STAR_COUNT; i++) {
+      const [realm, home] = homePositions[Math.floor(Math.random() * homePositions.length)];
+      // Sum of 3 uniforms — a cheap triangular spread favoring the cluster
+      // center over a flat uniform scatter, without pulling in a real
+      // gaussian helper for a decorative effect.
+      const jitterX = (Math.random() + Math.random() + Math.random() - 1.5) / 1.5;
+      const jitterY = (Math.random() + Math.random() + Math.random() - 1.5) / 1.5;
+      stars.push({
+        x: home.x + jitterX * REALM_RADIUS_X * DUST_STAR_CLUSTER_SPREAD,
+        y: home.y + jitterY * REALM_RADIUS_Y * DUST_STAR_CLUSTER_SPREAD,
+        r: DUST_STAR_MIN_R + Math.random() * (DUST_STAR_MAX_R - DUST_STAR_MIN_R),
+        alpha: DUST_STAR_MIN_ALPHA + Math.random() * (DUST_STAR_MAX_ALPHA - DUST_STAR_MIN_ALPHA),
+        color: Math.random() < DUST_STAR_TINT_FRACTION ? tintForRealm(realm) : DUST_STAR_PALE_COLOR,
+      });
+    }
+    return stars;
+  }, [stableData.nodes]);
 
   // ── Initial fit — runs once BOTH dimensions and onEngineStop have fired ──────
   // dimensions comes from a ResizeObserver, whose first callback(s) during a
@@ -868,8 +1346,9 @@ export default function ForceGraphCanvas({
     // Registered as brand-new named forces (same pattern as 'collide' just
     // above), not a getter/setter on a library default — these forces don't
     // exist until we add them. Zero effect on any node without a realm.
-    fg.d3Force('realmX', forceX<GraphNode>(realmHomeX).strength(realmPullStrengthX));
-    fg.d3Force('realmY', forceY<GraphNode>(realmHomeY).strength(realmPullStrengthY));
+    const realmHomePositions = computeRealmHomePositions(stableData.nodes);
+    fg.d3Force('realmX', forceX<GraphNode>(makeRealmHomeX(realmHomePositions)).strength(realmPullStrengthX));
+    fg.d3Force('realmY', forceY<GraphNode>(makeRealmHomeY(realmHomePositions)).strength(realmPullStrengthY));
     fg.d3VelocityDecay?.(0.38);
     // Reduced motion: converge in a couple dozen ticks instead of ~300 for
     // any future tick cycle (e.g. post-drag readjustment) that does run.
@@ -1082,7 +1561,7 @@ export default function ForceGraphCanvas({
       zoomClampRestoreTimerRef.current = null;
     }
     // The scroll clamp must be widened before the zoom() call below (e.g.
-    // Kraftwerk's neighbors need ~0.92, well under the 2.5 floor) — but
+    // Kraftwerk's neighbors need ~0.92, well under the 1.6 floor) — but
     // <ForceGraph2D>'s minZoom/maxZoom are declarative props (no imperative
     // setter is exposed on the ref — see the SCROLL_MIN_ZOOM comment), so a
     // state update here only takes effect on this component's NEXT render.
@@ -1326,7 +1805,38 @@ export default function ForceGraphCanvas({
       // FADE_ZOOM_OUT/FADE_ZOOM_IN/FADE_HUB_BIAS_STRENGTH.
       const isFocusModeActive = selectedId !== null || highlightSetMemberSet.size > 0;
       const zoomFade = isFocusModeActive ? 1 : computeZoomFade(globalScale, score);
-      const alpha = (isDimmed ? dimLevelRef.current : 1.0) * zoomFade;
+      // One of the ~ANCHOR_COUNT highest-influenceScore nodes globally —
+      // gates LABELS only now (see the label logic further down), not the
+      // dot itself. Computed once in topAnchorIds (useMemo, alongside
+      // stableData), not per-frame.
+      const isAnchor = topAnchorIds.has(n.id);
+      // Crisp cloud-zoom dot fade — 0 in focus mode or at/above FADE_ZOOM_IN
+      // (detail zoom stays byte-for-byte the existing rendering below), 1 at
+      // full cloud zoom. The exact complement of zoomFade (which drives the
+      // existing bloom-haze/fill/photo path below): the two sum to 1 at
+      // every zoom, so a node is never fully invisible in between — this is
+      // what makes "dots resolve into full detailed nodes" a continuous
+      // crossfade rather than a gap.
+      const cloudDotFade = isFocusModeActive ? 0 : 1 - zoomFade;
+      const dimFactor = isDimmed ? dimLevelRef.current : 1.0;
+      // Photo/label fade — its own unbiased curve/threshold (see
+      // PHOTO_LABEL_FADE_OUT_ZOOM/computePhotoLabelFade above), NOT zoomFade
+      // — reaches exactly 0 at/below that threshold (photo dissolves fully;
+      // labels show NONE, not a floored remnant).
+      const photoLabelFade = isFocusModeActive ? 1 : computePhotoLabelFade(globalScale);
+      const photoOpacity = dimFactor * photoLabelFade;
+      // Base (detail-style) dot/glow alpha — reaches exactly 0 at
+      // FADE_ZOOM_OUT, the exact complement of cloudDotFade above: at cloud
+      // zoom this fades out as the crisp cloud-zoom dot (below) fades in,
+      // and vice versa approaching detail zoom.
+      const alpha = dimFactor * zoomFade;
+      // Same zoomFade also SHRINKS the detail-style bloom/shadow/fill path's
+      // own radius below (not just its opacity) — without this, a hub's
+      // FADE_HUB_BIAS_STRENGTH head start meant its zoomFade (and therefore
+      // alpha) was already 0.3-0.5 at cloud zoom while its drawn radius
+      // stayed full-size, reading as a big, semi-transparent disc instead of
+      // a small point resolving smoothly into the full node as you zoom in.
+      const overviewSizeShrink = isFocusModeActive ? 1 : zoomFade;
 
       // ── Size ──
       // In focus mode, both the selected node and its neighbors scale up so
@@ -1371,9 +1881,24 @@ export default function ForceGraphCanvas({
       // Resting state keeps the original caps (hubs don't overwhelm the layout).
       const minPhotoR = isInFocusCluster ? 14 : PHOTO_MIN_R;
       const maxPhotoR = isInFocusCluster ? 48 : PHOTO_MAX_R;
+      const erPhoto = Math.min(Math.max(r, minPhotoR), maxPhotoR);
+      // Crossfades the node's own radius between its natural dot size and
+      // the larger photo-clamped size, on photoOpacity — the point shrinks
+      // to its normal (unshrunk) dot size as the photo dissolves. No
+      // separate cloud-zoom size shrink anymore: a non-anchor's dot fades
+      // to invisible via alpha alone (see above), and an anchor's cloud-zoom
+      // size comes entirely from the star sprite's own sizing, not this.
       let er = showPhoto
-        ? Math.min(Math.max(r, minPhotoR), maxPhotoR)
+        ? r + (erPhoto - r) * photoOpacity
         : r;
+      // Zoom-size dampening (see ZOOM_SIZE_REFERENCE/DAMPEN above) — applied
+      // BEFORE the click-focus floor just below, so the floor still
+      // guarantees its own on-screen minimum regardless: dampening only
+      // ever shrinks the "natural" size, it can't undercut the floor.
+      // No-op (mult === 1) at/below ZOOM_SIZE_REFERENCE, i.e. everywhere the
+      // cloud/overview rendering above actually runs.
+      const zoomSizeMult = computeZoomSizeMult(globalScale);
+      er *= zoomSizeMult;
       // Click-focus readability floor (see constants above) — additive, only
       // ever grows er further, never shrinks it below what the existing
       // logic above already produced.
@@ -1381,24 +1906,46 @@ export default function ForceGraphCanvas({
         const minScreenR = isFocused ? FOCUS_MIN_SCREEN_R : NEIGHBOR_MIN_SCREEN_R;
         er = Math.max(er, minScreenR / globalScale);
       }
+      // Detail-style radius for the bloom/fill path just below ONLY — see
+      // overviewSizeShrink's comment above. `er` itself stays unshrunk for
+      // the photo/label/collision code further down, none of which is
+      // visible at cloud zoom anyway (photoOpacity/label alpha are already
+      // 0 there via their own thresholds).
+      const erOverview = Math.max(er * overviewSizeShrink, 0.01);
 
       ctx.save();
       ctx.globalAlpha = alpha;
 
       // ── Outer bloom haze ──
-      if (!isDimmed) {
-        const bloomMult = (isFocused ? 4.0 : isHovered ? 3.5 : 2.8) * (isCore ? CORE_GLOW_RADIUS_MULT : 1);
-        const bloomR = er * bloomMult;
-        const innerAlpha = (isFocused ? 0.30 : 0.22) * (isCore ? CORE_GLOW_INTENSITY : 1);
-        const midAlpha = 0.07 * (isCore ? CORE_GLOW_INTENSITY : 1);
-        const grad = ctx.createRadialGradient(n.x, n.y, er * 0.5, n.x, n.y, bloomR);
-        grad.addColorStop(0,    glow.replace('0.7)', `${Math.min(innerAlpha, 1)})`));
-        grad.addColorStop(0.5,  glow.replace('0.7)', `${Math.min(midAlpha, 1)})`));
-        grad.addColorStop(1,    glow.replace('0.7)', '0)'));
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, bloomR, 0, Math.PI * 2);
-        ctx.fillStyle = grad;
-        ctx.fill();
+      // alpha > 0.01 skips this entirely for the ~94 non-anchor nodes at
+      // cloud zoom (alpha is now unfloored — see above — so it's genuinely
+      // ~0 there): no sprite-stamp for something that would be invisible.
+      if (!isDimmed && alpha > 0.01) {
+        if (!isFocused && !isHovered) {
+          // Resting case — nearly every node, nearly every frame. Cached
+          // sprite instead of a fresh gradient (see getBloomHazeSprite's
+          // comment/the perf report) — isFocused/isHovered fall through to
+          // the original inline gradient below, which is at most 1-2 nodes
+          // at a time and not worth caching.
+          const bloomMult = 2.8 * (isCore ? CORE_GLOW_RADIUS_MULT : 1);
+          const bloomR = erOverview * bloomMult;
+          const innerAlpha = 0.22 * (isCore ? CORE_GLOW_INTENSITY : 1);
+          stampGlowSprite(ctx, getBloomHazeSprite(glow, isCore), n.x, n.y, bloomR, Math.min(innerAlpha, 1) * alpha);
+          ctx.globalAlpha = alpha; // restore — stampGlowSprite set it to the combined peak value above
+        } else {
+          const bloomMult = (isFocused ? 4.0 : 3.5) * (isCore ? CORE_GLOW_RADIUS_MULT : 1);
+          const bloomR = erOverview * bloomMult;
+          const innerAlpha = (isFocused ? 0.30 : 0.22) * (isCore ? CORE_GLOW_INTENSITY : 1);
+          const midAlpha = 0.07 * (isCore ? CORE_GLOW_INTENSITY : 1);
+          const grad = ctx.createRadialGradient(n.x, n.y, erOverview * 0.5, n.x, n.y, bloomR);
+          grad.addColorStop(0,    glow.replace('0.7)', `${Math.min(innerAlpha, 1)})`));
+          grad.addColorStop(0.5,  glow.replace('0.7)', `${Math.min(midAlpha, 1)})`));
+          grad.addColorStop(1,    glow.replace('0.7)', '0)'));
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, bloomR, 0, Math.PI * 2);
+          ctx.fillStyle = grad;
+          ctx.fill();
+        }
       }
 
       // ── Core shadow glow ──
@@ -1406,18 +1953,64 @@ export default function ForceGraphCanvas({
                      : isHovered ? 22
                      : isInPath  ? 16
                      : score >= ALWAYS_LABEL_THRESHOLD ? 14
-                     : 10) * (isCore ? CORE_GLOW_RADIUS_MULT : 1);
+                     : 10) * (isCore ? CORE_GLOW_RADIUS_MULT : 1) * overviewSizeShrink;
       ctx.shadowColor = glow;
 
       // ── Node fill (becomes the colored ring when a photo is overlaid) ──
       ctx.beginPath();
-      ctx.arc(n.x, n.y, er, 0, Math.PI * 2);
+      ctx.arc(n.x, n.y, erOverview, 0, Math.PI * 2);
       ctx.fillStyle = color;
       ctx.fill();
       ctx.shadowBlur = 0;
 
+      // ── Crisp cloud-zoom dot (every node — see CLOUD_DOT_* above) ───────────
+      // A modest solid-colored core + a tight soft halo, crossfading against
+      // the bloom-haze/fill/photo path above via cloudDotFade (the exact
+      // complement of zoomFade). Both cached sprites (perf report) — no
+      // shadowBlur, the halo sprite alone reads as "glowing" without the
+      // extra cost. No twinkle/influence-boost (dropped — see the report):
+      // a calm, uniform brightness reads as clean colored dots rather than
+      // a busy or blown-out wash once applied to every node instead of 12.
+      if (cloudDotFade > 0) {
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+
+        // Strong faint/bright variation by score — most nodes sit near the
+        // floor (faint), hubs climb toward the ceiling (bright), instead of
+        // every node reading at the same flat brightness.
+        const scoreBrightness = Math.min(1, CLOUD_DOT_MIN_BRIGHTNESS_FRACTION + Math.sqrt(score) * CLOUD_DOT_BRIGHTNESS_GROWTH);
+        const dotBrightness = CLOUD_DOT_BRIGHTNESS * scoreBrightness * cloudDotFade * dimFactor;
+
+        // Flat min/max range, independent of baseR (see CLOUD_DOT_MIN_R's
+        // comment above) — a tiny sharp point for most nodes, only growing
+        // modestly for real hubs, never a big circle.
+        const dotCoreR = Math.min(CLOUD_DOT_MAX_R, CLOUD_DOT_MIN_R + Math.sqrt(score) * CLOUD_DOT_HUB_GROWTH);
+
+        // Soft bloom halo reserved for hubs/anchors — most nodes are a bare
+        // sharp point, matching the reference's "few bright, many faint".
+        if (score >= CLOUD_DOT_HALO_MIN_SCORE || isAnchor) {
+          const haloR = dotCoreR * CLOUD_DOT_GLOW_TIGHTNESS;
+          // Halo stays additive — that's what makes it read as glowing light.
+          stampGlowSprite(ctx, get2StopGlowSprite(glow), n.x, n.y, haloR, CLOUD_DOT_GLOW_INTENSITY * dotBrightness);
+        }
+        // Core switches to normal blending — additive was stacking with the
+        // halo above AND the nebula glow underneath, which for any node
+        // whose real color is already near-white (layer 'outside', e.g.
+        // Bowie — #EDEBF5, by design close to white) accumulated into a
+        // genuinely blown-out glowing orb, the harshest thing on screen.
+        // Normal blending shows the node's TRUE color at a fixed opacity —
+        // it can't stack brighter than that regardless of what's underneath.
+        ctx.globalCompositeOperation = 'source-over';
+        stampGlowSprite(ctx, getSolidCircleSprite(color), n.x, n.y, dotCoreR, dotBrightness);
+
+        ctx.restore();
+      }
+
       // ── Photo clip + glowing ring ─────────────────────────────────────────
       if (showPhoto) {
+        // Photo's own alpha — fades fully to 0 by FADE_ZOOM_OUT, dissolving
+        // into the fill circle already drawn above at the floored `alpha`.
+        ctx.globalAlpha = photoOpacity;
         // Photo fills the full node circle — the colored fill behind it is
         // the source of the core shadowBlur glow drawn above; the photo
         // covers it cleanly, leaving only the outward glow halo visible.
@@ -1441,6 +2034,7 @@ export default function ForceGraphCanvas({
         ctx.lineWidth   = 0.85;
         ctx.stroke();
         ctx.shadowBlur  = 0;
+        ctx.globalAlpha = alpha; // restore to the (floored) dot alpha for anything drawn after
 
         // Focused: a second, wider ghost ring further out
         if (isFocused) {
@@ -1478,10 +2072,13 @@ export default function ForceGraphCanvas({
       ctx.shadowBlur = 0;
 
       // ── Label logic (three tiers) ────────────────────────────────────────────
-      // Tier 1 — always-on: hub landmarks (score ≥ threshold), never when dimmed
+      // Tier 1 — always-on: hub landmarks (score ≥ threshold, OR one of the
+      // anchors regardless of raw score — in practice the top ANCHOR_COUNT
+      // are almost certainly already above the threshold, but this makes it
+      // exact rather than assumed), never when dimmed
       // Tier 2 — hover: the hovered node only
       // Tier 3 — focus: the focused node + every direct neighbor
-      const alwaysLabel = score >= ALWAYS_LABEL_THRESHOLD && !isDimmed;
+      const alwaysLabel = (isAnchor || score >= ALWAYS_LABEL_THRESHOLD) && !isDimmed;
       const showLabel   = isFocused || isNeighbor || isHovered || alwaysLabel || isInPath || isSetMember;
 
       // ── Per-frame state reset ──────────────────────────────────────────────────
@@ -1495,6 +2092,10 @@ export default function ForceGraphCanvas({
 
       if (showLabel) {
         let fontSize = Math.max(7, Math.min(9, 8 / globalScale));
+        // Zoom-size dampening (see ZOOM_SIZE_REFERENCE/DAMPEN above) — same
+        // rationale/ordering as er's above: applied before the click-focus
+        // floor so the floor's own guaranteed on-screen minimum still holds.
+        fontSize *= zoomSizeMult;
         // Click-focus readability floor — same rationale as er above: additive,
         // only grows the label further, never shrinks below the existing size.
         if (selectedId !== null && (isFocused || isNeighbor)) {
@@ -1506,9 +2107,25 @@ export default function ForceGraphCanvas({
         const useRadial = isNeighbor && focusedNode?.x !== undefined && focusedNode?.y !== undefined;
         // Queue only position/style — placement runs in onRenderFramePost
         // once ALL node circles are collected, so every label avoids every node.
+        // Anchors use dimFactor (never fades with zoom, only with dimming —
+        // an anchor's name must stay legible at cloud zoom, that's the whole
+        // point). Everyone else keeps photoOpacity, which already correctly
+        // fades non-anchor labels to true 0 by cloud zoom and back to full
+        // by detail zoom — outside the cloud-zoom band the two are identical
+        // anyway (photoLabelFade reaches 1 there), so this only changes
+        // anything exactly where it needs to.
+        // "forced" = shown purely via the persistent hub/anchor tier, at
+        // rest — NOT because the user is actively focused/hovering/pathing
+        // it. Only this tier is eligible for the collision demotion in
+        // onRenderFramePost: hiding a label the user is directly engaging
+        // with (their click-focus, a hover, a path node) would be worse
+        // than the rare overlap, so those keep the old accept-overlap
+        // fallback regardless of this flag.
+        const forced = alwaysLabel && !isFocused && !isNeighbor && !isHovered && !isInPath && !isSetMember;
         labelQueueRef.current.push({
           name: n.name, nx: n.x, ny: n.y, er,
-          fontSize, bright, alpha,
+          fontSize, bright, alpha: isAnchor ? dimFactor : photoOpacity,
+          score, forced,
           radialFromX: useRadial ? focusedNode!.x : undefined,
           radialFromY: useRadial ? focusedNode!.y : undefined,
         });
@@ -1520,7 +2137,7 @@ export default function ForceGraphCanvas({
 
       ctx.restore();
     },
-    [selectedId, hoveredId, pathSet, neighborSet, focusedNode, highlightSetMemberSet],
+    [selectedId, hoveredId, pathSet, neighborSet, focusedNode, highlightSetMemberSet, topAnchorIds],
   );
 
   // ── Edge drawing ────────────────────────────────────────────────────────────
@@ -1551,6 +2168,14 @@ export default function ForceGraphCanvas({
       // than uniformly dimmed along with the unrelated rest of the graph.
       const isSetEdge    = highlightSetMemberSet.size > 0 &&
                            (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId));
+      // Core-touching edge — the "galaxy arms" radiating from the blazing
+      // center to each realm cloud. Every real node already carries a realm
+      // (backfilled in seed-data.ts), so this is a direct comparison, no
+      // extra lookup. Deliberately not a "cross-realm bridge" check — any
+      // edge touching core qualifies, including a core↔core edge; anything
+      // NOT touching core (within-realm, or a cross-realm edge between two
+      // non-core realms) does not, no matter how significant its endpoints.
+      const isCoreEdge = (srcNode as GraphNode).realm === 'core' || (tgtNode as GraphNode).realm === 'core';
       const edgeColor    = resolveEdgeTint(srcNode as GraphNode);
       const glow         = edgeGlowLevelRef.current;
 
@@ -1611,19 +2236,58 @@ export default function ForceGraphCanvas({
         ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${(0.7 * edgeFade).toFixed(3)})`);
         ctx.lineWidth = 1.6;
         ctx.stroke();
-      } else {
-        // Idle / non-highlighted edges recede into a soft faint web at all
-        // times — whether nothing is selected, or something else is focused —
-        // so the graph never reads as a scribble of crossing lines. Only the
-        // edges above (focus/hover/set/path) rise above this baseline.
-        // Also the branch responsible for almost every edge on screen in the
-        // resting overview state — edgeFade is what lets the P3 cloud show
-        // through as nodes fade at FADE_ZOOM_OUT, instead of the idle web
-        // staying at full EDGE_IDLE_ALPHA regardless of zoom.
+      } else if (isCoreEdge && edgeFade < 1) {
+        // `edgeFade < 1` makes cloud-zoom-only a STRUCTURAL gate, not just a
+        // formula that happens to converge with idle at edgeFade===1 (the
+        // previous fix only corrected the formula, which was fragile — any
+        // future retune of either alpha constant could silently reintroduce
+        // a detail-zoom mismatch). At full detail zoom or in focus mode
+        // (edgeFade forced to 1) this branch is skipped entirely and falls
+        // through to the plain idle branch below — one source of truth for
+        // "what a normal edge looks like."
+        // Faint glowing thread — a "galaxy arm" radiating from the blazing
+        // core out to a realm cloud (or, for a core↔core edge, within the
+        // core knot itself), so the clouds read as one connected structure
+        // at cloud zoom instead of floating unlinked. Only core-touching
+        // edges reach this branch — see isCoreEdge above for why that's the
+        // rule (not "any cross-realm bridge") — a few clean arms, not a
+        // crisscross. Same floor pattern as the dot's DOT_OPACITY_AT_CLOUD_
+        // ZOOM: never reaches 0 like the idle branch below does. Glow is
+        // strongest at cloud zoom and fades to exactly 0 by FADE_ZOOM_IN, so
+        // by full detail this looks identical to any other idle edge —
+        // geometry and width never change, only alpha/glow do.
+        // Target is EDGE_IDLE_ALPHA (the idle branch's own resting alpha),
+        // NOT 1 — interpolating to 1 made every core-touching edge render
+        // fully opaque at detail zoom instead of receding to the same calm
+        // idle look every other edge gets by FADE_ZOOM_IN, contradicting
+        // the "looks identical to any other idle edge" comment just above.
+        const coreEdgeAlpha = CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM + (EDGE_IDLE_ALPHA - CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM) * edgeFade;
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
-        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${(EDGE_IDLE_ALPHA * edgeFade).toFixed(3)})`);
+        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${coreEdgeAlpha.toFixed(3)})`);
+        ctx.lineWidth = EDGE_IDLE_WIDTH;
+        ctx.shadowColor = edgeColor.replace(/[\d.]+\)$/, '1)');
+        ctx.shadowBlur = CORE_EDGE_THREAD_GLOW_BLUR * (1 - edgeFade);
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+      } else {
+        // Idle / non-highlighted edges recede into a soft faint web at all
+        // times — whether nothing is selected, or something else is
+        // focused — so the graph never reads as a scribble of crossing
+        // lines. Only the edges above (focus/hover/set/path/core) rise
+        // above this baseline. Every within-realm edge lands here, plus
+        // every cross-realm edge that doesn't touch core (see isCoreEdge
+        // above). Same floor pattern as the core-edge branch, just a much
+        // lower floor (IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM) — without it these
+        // vanished entirely at cloud zoom, leaving only the core's few
+        // "arms" and making everything else look like unconnected scattered
+        // dots. Still fully recedes to the plain idle look by FADE_ZOOM_IN.
+        const idleEdgeAlpha = IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM + (EDGE_IDLE_ALPHA - IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM) * edgeFade;
+        ctx.beginPath();
+        ctx.moveTo(sx, sy);
+        ctx.lineTo(tx, ty);
+        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${idleEdgeAlpha.toFixed(3)})`);
         ctx.lineWidth = EDGE_IDLE_WIDTH;
         ctx.stroke();
       }
@@ -1652,165 +2316,67 @@ export default function ForceGraphCanvas({
     const cloudFade = 1 - computeZoomFade(globalScale, 0);
     if (cloudFade <= 0) return; // zoom >= FADE_ZOOM_IN — draw nothing, not just zero-alpha
 
-    // ── Core blaze — reuses cloudFade/isFocusModeActive computed above (the
-    // same inverse-fade coupling and focus exemption as the electronic cloud
-    // below), but is otherwise fully self-contained (own node lookup, own
-    // centroid, own save/restore) so it draws independently of the
-    // electronic cloud's own node count and never touches that code.
-    const coreNodes: (GraphNode & { x: number; y: number })[] = [];
-    for (const n of stableData.nodes) {
-      if (n.realm === 'core' && n.x !== undefined && n.y !== undefined) {
-        coreNodes.push(n as GraphNode & { x: number; y: number });
-      }
-    }
-    if (coreNodes.length > 0) {
-      let coreSumX = 0, coreSumY = 0;
-      for (const n of coreNodes) { coreSumX += n.x; coreSumY += n.y; }
-      const coreCx = coreSumX / coreNodes.length;
-      const coreCy = coreSumY / coreNodes.length;
-
-      let coreSumSqDist = 0;
-      for (const n of coreNodes) {
-        const dx = n.x - coreCx;
-        const dy = n.y - coreCy;
-        coreSumSqDist += dx * dx + dy * dy;
-      }
-      const coreRms = Math.sqrt(coreSumSqDist / coreNodes.length);
-      const coreCloudR = Math.max(coreRms * CORE_CLOUD_RADIUS_MULTIPLIER, 30);
-
-      ctx.save();
-      ctx.globalCompositeOperation = 'lighter'; // additive — same reasoning as the electronic cloud below
-
-      // Wide soft halo, drawn first (underneath the tight hot blobs below) —
-      // see CORE_CLOUD_HALO_RADIUS_FRACTION/ALPHA above for why this is its
-      // own lever rather than another CORE_CLOUD_BLOBS entry. Same
-      // addCoreGradientStops curve as the tight blobs below, just at a much
-      // larger radius/lower peak — one consistent falloff shape at every
-      // scale is what keeps the whole stack seamless.
-      const haloR = coreCloudR * CORE_CLOUD_HALO_RADIUS_FRACTION;
-      const haloGrad = ctx.createRadialGradient(coreCx, coreCy, 0, coreCx, coreCy, haloR);
-      addCoreGradientStops(haloGrad, CORE_CLOUD_HALO_ALPHA * cloudFade);
-      ctx.beginPath();
-      ctx.arc(coreCx, coreCy, haloR, 0, Math.PI * 2);
-      ctx.fillStyle = haloGrad;
-      ctx.fill();
-
-      for (const [radiusFraction, peakAlpha] of CORE_CLOUD_BLOBS) {
-        const r = coreCloudR * radiusFraction;
-        // Every blob shares this exact (coreCx, coreCy) — strictly
-        // concentric, same reasoning as the electronic cloud's stack below.
-        const grad = ctx.createRadialGradient(coreCx, coreCy, 0, coreCx, coreCy, r);
-        addCoreGradientStops(grad, peakAlpha * cloudFade);
-        ctx.beginPath();
-        ctx.arc(coreCx, coreCy, r, 0, Math.PI * 2);
-        ctx.fillStyle = grad;
-        ctx.fill();
-      }
-
-      ctx.restore();
-    }
-
-    // ── Region-one cloud — reuses cloudFade/isFocusModeActive computed
-    // above, same self-contained pattern as the core blaze (own node lookup,
-    // own centroid, own save/restore) so it draws independently of the
-    // electronic cloud's node count and never touches that code.
-    const regionOneNodes: (GraphNode & { x: number; y: number })[] = [];
-    for (const n of stableData.nodes) {
-      if (n.realm === 'region-one' && n.x !== undefined && n.y !== undefined) {
-        regionOneNodes.push(n as GraphNode & { x: number; y: number });
-      }
-    }
-    if (regionOneNodes.length > 0) {
-      let r1SumX = 0, r1SumY = 0;
-      for (const n of regionOneNodes) { r1SumX += n.x; r1SumY += n.y; }
-      const r1Cx = r1SumX / regionOneNodes.length;
-      const r1Cy = r1SumY / regionOneNodes.length;
-
-      let r1SumSqDist = 0;
-      for (const n of regionOneNodes) {
-        const dx = n.x - r1Cx;
-        const dy = n.y - r1Cy;
-        r1SumSqDist += dx * dx + dy * dy;
-      }
-      const r1Rms = Math.sqrt(r1SumSqDist / regionOneNodes.length);
-      const r1CloudR = Math.max(r1Rms * REGION_ONE_CLOUD_RADIUS_MULTIPLIER, 40);
-
-      ctx.save();
-      ctx.globalCompositeOperation = 'lighter';
-
-      for (const [radiusFraction, peakAlpha] of REGION_ONE_CLOUD_BLOBS) {
-        const r = r1CloudR * radiusFraction;
-        // Every blob shares this exact (r1Cx, r1Cy) — strictly concentric,
-        // same reasoning as the electronic cloud's stack below.
-        const grad = ctx.createRadialGradient(r1Cx, r1Cy, 0, r1Cx, r1Cy, r);
-        grad.addColorStop(0, REGION_ONE_CLOUD_GLOW.replace('0.7)', `${(peakAlpha * cloudFade).toFixed(3)})`));
-        grad.addColorStop(1, REGION_ONE_CLOUD_GLOW.replace('0.7)', '0)')); // fades to fully transparent — no hard rim
-        ctx.beginPath();
-        ctx.arc(r1Cx, r1Cy, r, 0, Math.PI * 2);
-        ctx.fillStyle = grad;
-        ctx.fill();
-      }
-
-      ctx.restore();
-    }
-
-    const electronicNodes: (GraphNode & { x: number; y: number })[] = [];
-    for (const n of stableData.nodes) {
-      if (n.realm === 'electronic' && n.x !== undefined && n.y !== undefined) {
-        electronicNodes.push(n as GraphNode & { x: number; y: number });
-      }
-    }
-    if (electronicNodes.length === 0) return;
-
-    let sumX = 0, sumY = 0;
-    for (const n of electronicNodes) { sumX += n.x; sumY += n.y; }
-    const cx = sumX / electronicNodes.length;
-    const cy = sumY / electronicNodes.length;
-
-    let sumSqDist = 0;
-    for (const n of electronicNodes) {
-      const dx = n.x - cx;
-      const dy = n.y - cy;
-      sumSqDist += dx * dx + dy * dy;
-    }
-    const rms = Math.sqrt(sumSqDist / electronicNodes.length);
-    const cloudR = Math.max(rms * CLOUD_RADIUS_MULTIPLIER, 40); // floor guards a degenerate near-point cloud
-
+    // ── Near-black background wash ──
+    // Raw screen space (transform reset) so this covers the full canvas
+    // regardless of current pan/zoom/DPR — see OVERVIEW_BG_WASH_* above.
     ctx.save();
-    ctx.globalCompositeOperation = 'lighter'; // additive — overlapping glow brightens, never washes out
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = `rgba(${OVERVIEW_BG_WASH_COLOR}, ${(OVERVIEW_BG_WASH_MAX_ALPHA * cloudFade).toFixed(3)})`;
+    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.restore();
 
-    for (const [radiusFraction, peakAlpha] of CLOUD_BLOBS) {
-      const r = cloudR * radiusFraction;
-      // Every blob shares this exact (cx, cy) — strictly concentric, so the
-      // stack reads as one mass, not several offset pools.
-      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-      grad.addColorStop(0, ELECTRONIC_CLOUD_GLOW.replace('0.7)', `${(peakAlpha * cloudFade).toFixed(3)})`));
-      grad.addColorStop(1, ELECTRONIC_CLOUD_GLOW.replace('0.7)', '0)')); // fades to fully transparent — no hard rim
-      ctx.beginPath();
-      ctx.arc(cx, cy, r, 0, Math.PI * 2);
-      ctx.fillStyle = grad;
-      ctx.fill();
-    }
+    // One shared additive context for every realm-tagged node's individual
+    // glow — order between realms doesn't matter ('lighter' is commutative),
+    // so core/region-one/electronic can all draw into the same save/restore.
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter'; // additive — overlapping glow brightens and merges, never washes out
 
-    // Ghost hubs — tied to the same cloudFade, so they only ghost in as the
-    // cloud blooms rather than following a separate, competing fade curve.
-    const ghostHubs = [...electronicNodes]
-      .sort((a, b) => (b.influenceScore ?? 0) - (a.influenceScore ?? 0))
-      .slice(0, CLOUD_GHOST_HUB_COUNT);
-    for (const n of ghostHubs) {
-      const glow = resolveNodeGlow(n);
-      const hubR = cloudR * CLOUD_GHOST_HUB_RADIUS_FRACTION;
-      const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, hubR);
-      grad.addColorStop(0, glow.replace('0.7)', `${(CLOUD_GHOST_HUB_PEAK_ALPHA * cloudFade).toFixed(3)})`));
-      grad.addColorStop(1, glow.replace('0.7)', '0)'));
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, hubR, 0, Math.PI * 2);
-      ctx.fillStyle = grad;
-      ctx.fill();
+    const cloudBackdropFade = cloudFade * CLOUD_BACKDROP_INTENSITY;
+    for (const n of stableData.nodes) {
+      if (n.x === undefined || n.y === undefined) continue;
+      if (n.realm === 'core') {
+        drawCoreNodeGlow(ctx, n.x, n.y, CORE_NODE_GLOW_RADIUS, CORE_NODE_GLOW_PEAK_ALPHA * cloudBackdropFade);
+      } else if (n.realm === 'region-one') {
+        drawNodeGlow(ctx, n.x, n.y, REGION_ONE_NODE_GLOW_RADIUS, REGION_ONE_CLOUD_GLOW, REGION_ONE_NODE_GLOW_PEAK_ALPHA * cloudBackdropFade);
+      } else if (n.realm === 'electronic') {
+        // Each node's own real lineage color — same source the old ghost
+        // hubs used, now applied to every electronic node, not just the
+        // top few by influenceScore.
+        drawNodeGlow(ctx, n.x, n.y, ELECTRONIC_NODE_GLOW_RADIUS, resolveNodeGlow(n), ELECTRONIC_NODE_GLOW_PEAK_ALPHA * cloudBackdropFade);
+      } else if (n.realm === 'folk-confessional') {
+        // Same per-node-own-lineage-color pattern as electronic above.
+        drawNodeGlow(ctx, n.x, n.y, FOLK_NODE_GLOW_RADIUS, resolveNodeGlow(n), FOLK_NODE_GLOW_PEAK_ALPHA * cloudBackdropFade);
+      } else if (n.realm === 'emo-posthardcore') {
+        // Same per-node-own-lineage-color pattern as electronic/folk above.
+        drawNodeGlow(ctx, n.x, n.y, EMO_NODE_GLOW_RADIUS, resolveNodeGlow(n), EMO_NODE_GLOW_PEAK_ALPHA * cloudBackdropFade);
+      } else if (n.realm === 'post-rock-drone-noise') {
+        // Same per-node-own-lineage-color pattern as electronic/folk/emo above.
+        drawNodeGlow(ctx, n.x, n.y, POSTROCK_NODE_GLOW_RADIUS, resolveNodeGlow(n), POSTROCK_NODE_GLOW_PEAK_ALPHA * cloudBackdropFade);
+      } else if (n.realm === 'american-underground') {
+        // Same per-node-own-lineage-color pattern as electronic/folk/emo/post-rock above.
+        drawNodeGlow(ctx, n.x, n.y, AMERICAN_UNDERGROUND_NODE_GLOW_RADIUS, resolveNodeGlow(n), AMERICAN_UNDERGROUND_NODE_GLOW_PEAK_ALPHA * cloudBackdropFade);
+      }
     }
 
     ctx.restore();
-  }, [stableData.nodes, selectedId, highlightSetMemberSet]);
+
+    // ── Decorative dust starfield ──
+    // Drawn after the nebula (in front of it) but before links/nodes are
+    // painted (this whole hook fires pre-paint) — see DUST_STAR_* above.
+    // Plain filled circles, no composite/gradient: hundreds of these need to
+    // stay cheap, and "sharp tiny point" doesn't want a soft sprite anyway.
+    ctx.save();
+    const dustFade = cloudFade; // fades out on zoom-in alongside everything else at cloud zoom
+    for (const star of dustStars) {
+      ctx.globalAlpha = star.alpha * dustFade;
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+      ctx.fillStyle = star.color;
+      ctx.fill();
+    }
+    ctx.restore();
+  }, [stableData.nodes, dustStars, selectedId, highlightSetMemberSet]);
 
   // ── Deferred label placement + rendering ─────────────────────────────────
   // Called after every node has been drawn — nodeCirclesRef holds ALL circles.
@@ -1830,12 +2396,28 @@ export default function ForceGraphCanvas({
     ctx.textAlign    = 'center';
     ctx.textBaseline = 'middle';
 
-    for (const { name, nx, ny, er, fontSize, bright, alpha, radialFromX, radialFromY } of candidates) {
+    // Forced (persistent hub/anchor) labels get first pick of placement,
+    // highest-influenceScore first — so when two forced labels contest the
+    // same space, the higher-score one always wins and the lower-score one
+    // is the one left to demote (see the !placed branch below). Non-forced
+    // (focus/hover/path) candidates are processed after, in whatever order
+    // they were queued — there are at most a couple of those at once and
+    // they never lose a spot they can reach.
+    const orderedCandidates = [...candidates].sort(
+      (a, b) => Number(b.forced) - Number(a.forced) || b.score - a.score,
+    );
+
+    for (const { name, nx, ny, er, fontSize, bright, alpha, forced, radialFromX, radialFromY } of orderedCandidates) {
+      // Fully invisible at cloud zoom (photoOpacity floors to exactly 0 —
+      // see drawNode) but was still running measureText/collision-avoidance/
+      // shadowBlur/fillText for nothing every frame. Skip entirely — a
+      // label this faint contributes zero visible pixels either way.
+      if (alpha < 0.01) continue;
       ctx.font = `${fontSize}px Inter, sans-serif`;
       const textW = ctx.measureText(name).width;
       const textH = fontSize;
-      const padH  = 2;
-      const padV  = 1;
+      const padH  = LABEL_CHIP_PAD_X;
+      const padV  = LABEL_CHIP_PAD_Y;
 
       // Base anchor: directly below the node edge, or radially away from focused node
       const labelGap = er + 4;
@@ -1863,8 +2445,8 @@ export default function ForceGraphCanvas({
       const baseDist  = Math.max(Math.sqrt(dxBase * dxBase + dyBase * dyBase), 0.01);
       const baseAngle = Math.atan2(dyBase, dxBase);
 
-      const MAX_BUMP_STEPS = 2;
-      const BUMP_STRIDE     = textH * 0.8; // total max drift ≈ 1.6× a text line
+      const MAX_BUMP_STEPS = LABEL_BUMP_MAX_STEPS;
+      const BUMP_STRIDE     = textH * LABEL_BUMP_STRIDE_MULT;
 
       let placed = false;
       outer:
@@ -1894,29 +2476,45 @@ export default function ForceGraphCanvas({
         }
       }
       if (!placed) {
+        if (forced) {
+          // Demote: this forced label couldn't find a clear spot near its
+          // node — since forced candidates are processed highest-score
+          // first (see orderedCandidates above), whatever it collided with
+          // already had priority. Hide it entirely rather than draw two
+          // forced labels overlapping.
+          continue;
+        }
+        // Non-forced (focus/hover/path): rare and transient, and hiding the
+        // thing the user is actively engaging with would be worse than a
+        // little overlap — keep the old accept-the-overlap fallback.
         labelRects.push([
           lx - textW / 2 - padH, ly - textH / 2 - padV,
           textW + padH * 2,      textH + padV * 2,
         ]);
       }
 
-      // Soft dark halo — three layers of decreasing blur, no hard rect
+      // Dark rounded chip behind the text (see LABEL_CHIP_* above) — same
+      // rect placement already computed for collision avoidance, so the
+      // chip always exactly matches what the search reasoned about.
       const textColor = bright
         ? `rgba(237,234,247,${(alpha * 0.92).toFixed(3)})`
         : `rgba(237,234,247,${(alpha * 0.6).toFixed(3)})`;
 
-      ctx.shadowColor = 'rgba(10,8,22,0.95)';
-      ctx.shadowBlur  = 7;
-      ctx.fillStyle   = textColor;
-      ctx.fillText(name, lx, ly);
-      ctx.shadowBlur = 4;
-      ctx.fillText(name, lx, ly);
-      ctx.shadowBlur = 0;
+      // Scaled by alpha, not fixed — otherwise the chip stays at full
+      // strength even once the glyph itself has faded to invisible, leaving
+      // a dark smudge where a "no labels" cloud-zoom label used to be.
+      ctx.fillStyle = `rgba(10, 8, 22, ${(alpha * LABEL_CHIP_MAX_ALPHA).toFixed(3)})`;
+      drawRoundedRect(
+        ctx,
+        lx - textW / 2 - padH, ly - textH / 2 - padV,
+        textW + padH * 2,      textH + padV * 2,
+        LABEL_CHIP_RADIUS,
+      );
+      ctx.fill();
+
+      ctx.fillStyle = textColor;
       ctx.fillText(name, lx, ly);
     }
-
-    ctx.shadowColor = 'transparent';
-    ctx.shadowBlur  = 0;
   }, []);
 
   // ── Pointer hit-area ─────────────────────────────────────────────────────
@@ -1947,6 +2545,10 @@ export default function ForceGraphCanvas({
       const minPhotoR  = isInFocusCluster ? 14 : PHOTO_MIN_R;
       const maxPhotoR  = isInFocusCluster ? 48 : PHOTO_MAX_R;
       let er = wantsPhoto ? Math.min(Math.max(r, minPhotoR), maxPhotoR) : r;
+      // Zoom-size dampening — must mirror drawNode's exactly (same formula,
+      // same ordering before the floor below) or the clickable area drifts
+      // out of sync with the shrunk visual circle at high zoom.
+      er *= computeZoomSizeMult(globalScale);
       // Mirrors drawNode's click-focus readability floor exactly, so the
       // clickable area always matches the enlarged visual circle — no dead
       // zone around a node that reads bigger on screen than it hit-tests.
@@ -2013,6 +2615,25 @@ export default function ForceGraphCanvas({
           height={dimensions.height}
           minZoom={scrollZoomBounds[0]}
           maxZoom={scrollZoomBounds[1]}
+          // Keeps the canvas painting every animation frame instead of only
+          // on interaction (the library's default) — needed for the zoom-
+          // based cloud/detail crossfade (drawNode/handleRenderFramePre),
+          // which continuously re-evaluates against the live globalScale
+          // rather than only repainting on interaction. Safe: tickFrame()'s
+          // own layoutTick() only ever advances physics while
+          // state.engineRunning is true, which is permanently false once
+          // the simulation settles — this only makes paint continuous, it
+          // can't reheat or move nodes.
+          //
+          // Suspended (autoPauseRedraw={true}, the library's own default
+          // gate) while isBackgrounded — an /artist/[slug] overlay is
+          // covering this canvas entirely, so continuing to redraw every
+          // frame only burns CPU competing with that page's own animation
+          // (ArtistBackground's aurora) for nothing visible. Resumes
+          // instantly on navigating back: canvas redraws are a full
+          // immediate-mode repaint each frame, not incremental, so there's
+          // no stale-frame flash from having been paused.
+          autoPauseRedraw={isBackgrounded}
           backgroundColor="rgba(0,0,0,0)"
           nodeId="id"
           linkSource="source"
@@ -2030,20 +2651,25 @@ export default function ForceGraphCanvas({
             const l = link as GraphLink;
             const srcId = typeof l.source === 'object' ? (l.source as GraphNode).id : l.source as string;
             const tgtId = typeof l.target === 'object' ? (l.target as GraphNode).id : l.target as string;
-            const isFocusOrSetEdge =
+            // Arrows only on focused/hovered/set-highlighted edges — direction
+            // matters there. Plain resting edges (the general web, including
+            // path-find mode) get no arrowhead at all: just a line.
+            const isHighlightedEdge =
               (selectedId !== null && (srcId === selectedId || tgtId === selectedId)) ||
+              (hoveredId !== null && selectedId === null && (srcId === hoveredId || tgtId === hoveredId)) ||
               (highlightSetMemberSet.size > 0 && (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId)));
-            return isFocusOrSetEdge ? 9 : 3;
+            return isHighlightedEdge ? 9 : 0;
           }}
           linkDirectionalArrowRelPos={(link: object) => {
             const l = link as GraphLink;
             const srcId = typeof l.source === 'object' ? (l.source as GraphNode).id : l.source as string;
             const tgtId = typeof l.target === 'object' ? (l.target as GraphNode).id : l.target as string;
-            // Focus/set edges: midpoint keeps the arrow in open space, away from node images
-            const isFocusOrSetEdge =
+            // Focus/hover/set edges: midpoint keeps the arrow in open space, away from node images
+            const isHighlightedEdge =
               (selectedId !== null && (srcId === selectedId || tgtId === selectedId)) ||
+              (hoveredId !== null && selectedId === null && (srcId === hoveredId || tgtId === hoveredId)) ||
               (highlightSetMemberSet.size > 0 && (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId)));
-            return isFocusOrSetEdge ? 0.5 : 0.85;
+            return isHighlightedEdge ? 0.5 : 0.85;
           }}
           linkDirectionalArrowColor={(link: object) => {
             const l = link as GraphLink;

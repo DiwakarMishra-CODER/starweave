@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useCallback, useEffect } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import type { GraphData, Layer } from '@/data/types';
 import GraphControls from './GraphControls';
@@ -26,6 +26,12 @@ interface Props {
 
 export default function GraphView({ graphData }: Props) {
   const router = useRouter();
+  const pathname = usePathname();
+  // True on /artist/[slug] — the graph stays mounted underneath that page's
+  // fixed overlay (see app/(graph)/layout.tsx) rather than unmounting, so
+  // this flag exists purely to tell the canvas it's fully hidden and can
+  // stop its continuous per-frame redraw until the user navigates back.
+  const isBackgrounded = pathname.startsWith('/artist/');
   const [selectedId, setSelectedId] = useState<string | null>(null);
   // A genre's or scene's member artist ids, from ?genre=/?scene= — highlighted
   // as a cluster in the graph. Mutually exclusive with selectedId: setting one
@@ -133,6 +139,7 @@ export default function GraphView({ graphData }: Props) {
           highlightSetIds={highlightSetIds}
           onNodeClick={handleNodeClick}
           onBackgroundClick={handleBackgroundClick}
+          isBackgrounded={isBackgrounded}
         />
       </div>
 

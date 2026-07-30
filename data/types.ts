@@ -46,7 +46,7 @@ export type Scope = 'shoegaze-dreampop-v1' | 'indie' | 'underground';
 // gold/magenta coloring (see lib/colors.ts's resolveNodeColor family).
 // Optional: absent on an Artist means "no realm assigned" (the resolvers in
 // lib/colors.ts fall back to Layer-based coloring in that case).
-export type Realm = 'core' | 'region-one' | 'electronic';
+export type Realm = 'core' | 'region-one' | 'electronic' | 'folk-confessional' | 'emo-posthardcore' | 'post-rock-drone-noise' | 'american-underground';
 
 // Sub-grouping within realm: 'electronic' — which family of electronic music
 // a node belongs to. Drives the per-lineage magenta/pink-purple shade.
@@ -58,7 +58,24 @@ export type Lineage =
   | 'electronic-indie-dancepunk'
   | 'trip-hop-downtempo'
   | 'hyperpop-pcmusic'
-  | 'art-electronic';
+  | 'art-electronic'
+  | 'folk-roots'
+  | 'freak-folk'
+  | 'confessional'
+  | 'slowcore'
+  | 'indie-folk'
+  | 'hardcore-roots'
+  | 'post-hardcore'
+  | 'midwest-emo'
+  | 'math-rock'
+  | 'post-rock'
+  | 'no-wave'
+  | 'drone'
+  | 'noise-alt'
+  | 'college-rock'
+  | 'indie-rock'
+  | 'psych'
+  | 'neo-psych';
 
 export interface Genre {
   id: string;            // slug, e.g. 'shoegaze'

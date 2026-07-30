@@ -87,6 +87,86 @@ export const LINEAGE_COLORS: Record<string, string> = {
 // every current island-two lineage is covered).
 const DEFAULT_ELECTRONIC_COLOR = '#C77DD1';
 
+// realm: 'folk-confessional' — one shade per folk-realm lineage, a warm
+// yellow-green/olive family (hue ~70-85°) deliberately far from every other
+// family in this file: region-one's indie-alt teal (#5FD0C0, hue ~170°,
+// blue-green) reads clearly cooler, electronic's LINEAGE_COLORS (hue
+// ~300-330°, magenta) and core's gold (#E8C87A, hue ~42°, orange-yellow)
+// are both well clear of this range too. folk-roots is the deepest/most
+// saturated (the elders), each subsequent lineage progressively brighter/
+// lighter, same "one flat shade per lineage" structure as LINEAGE_COLORS.
+export const FOLK_LINEAGE_COLORS: Record<string, string> = {
+  'folk-roots':   '#78963C',
+  'freak-folk':   '#8CAA52',
+  confessional:   '#A1BD6C',
+  slowcore:       '#B7D089',
+  'indie-folk':   '#CEE3AA',
+};
+
+// Fallback for a folk lineage string not in the map above (defensive only —
+// every current folk-realm lineage is covered).
+const DEFAULT_FOLK_COLOR = '#8CAA52';
+
+// realm: 'emo-posthardcore' — one shade per emo-realm lineage, a red/crimson
+// family (hue ~355-8°) distinct from every other family in this file:
+// region-one's teal (~170°), electronic's magenta (~300-330°), core/root's
+// gold (~42°), and folk's yellow-green/olive (~70-85°) are all well clear of
+// this range. hardcore-roots is the deepest/most saturated (the scene's
+// literal origin point), each subsequent lineage progressively brighter,
+// same "one flat shade per lineage, darkest-to-brightest by era" structure
+// as FOLK_LINEAGE_COLORS/LINEAGE_COLORS.
+export const EMO_LINEAGE_COLORS: Record<string, string> = {
+  'hardcore-roots': '#8C1E1E',
+  'post-hardcore':  '#B02E2E',
+  'midwest-emo':    '#D14A3A',
+  'math-rock':      '#F26B52',
+};
+
+// Fallback for an emo lineage string not in the map above (defensive only —
+// every current emo-realm lineage is covered).
+const DEFAULT_EMO_COLOR = '#B02E2E';
+
+// realm: 'post-rock-drone-noise' — one shade per lineage, a true purple/
+// violet family (hue ~271°, blue-violet) held deliberately apart from every
+// other family in this file: region-one's post-punk indigo (#8891F2, hue
+// ~235°, much lighter/pastel), electronic's magenta family (hue ~300-330°),
+// emo's red/crimson family (hue ~0-8°), folk's yellow-green/olive (hue
+// ~70-85°), and core/root's gold (hue ~42°) are all well clear of this
+// range. no-wave is the deepest/most saturated (the scene's 1970s NYC
+// origin point), post-rock sits in the middle, drone is the lightest —
+// same "one flat shade per lineage, darkest-to-brightest" structure as
+// EMO_LINEAGE_COLORS/FOLK_LINEAGE_COLORS/LINEAGE_COLORS.
+export const POSTROCK_LINEAGE_COLORS: Record<string, string> = {
+  'no-wave':   '#3B1F5C',
+  'post-rock': '#6B3FA0',
+  drone:       '#A87FD1',
+};
+
+// Fallback for a post-rock-realm lineage string not in the map above
+// (defensive only — every current lineage is covered).
+const DEFAULT_POSTROCK_COLOR = '#6B3FA0';
+
+// realm: 'american-underground' — one shade per lineage, an amber/orange/
+// rust family (hue ~18-22°) held deliberately apart from every other family
+// in this file, including core/root's gold (#E8C87A, hue ~42°, much paler
+// and yellower) — this family stays low-hue, toward orange-red/rust rather
+// than drifting up toward gold. Also clear of region-one's post-punk indigo
+// (~235°), electronic's magenta (~300-330°), folk's yellow-green (~70-85°),
+// emo's red/crimson (~0-8°, redder/less orange than this), and post-rock's
+// violet (~271°). noise-alt is the deepest/most saturated (the 80s noise-
+// rock pioneers), college-rock sits in the middle, indie-rock is the
+// lightest/most contemporary — same "one flat shade per lineage,
+// darkest-to-brightest" structure as the other multi-lineage realms.
+export const AMERICAN_UNDERGROUND_LINEAGE_COLORS: Record<string, string> = {
+  'noise-alt':     '#7A3418',
+  'college-rock':  '#B85C2E',
+  'indie-rock':    '#E8834A',
+};
+
+// Fallback for an american-underground lineage string not in the map above
+// (defensive only — every current lineage is covered).
+const DEFAULT_AMERICAN_UNDERGROUND_COLOR = '#B85C2E';
+
 function hexToRgba(hex: string, alpha: number): string {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
@@ -98,10 +178,30 @@ function electronicColor(lineage?: string): string {
   return LINEAGE_COLORS[lineage ?? ''] ?? DEFAULT_ELECTRONIC_COLOR;
 }
 
+function folkColor(lineage?: string): string {
+  return FOLK_LINEAGE_COLORS[lineage ?? ''] ?? DEFAULT_FOLK_COLOR;
+}
+
+function emoColor(lineage?: string): string {
+  return EMO_LINEAGE_COLORS[lineage ?? ''] ?? DEFAULT_EMO_COLOR;
+}
+
+function postrockColor(lineage?: string): string {
+  return POSTROCK_LINEAGE_COLORS[lineage ?? ''] ?? DEFAULT_POSTROCK_COLOR;
+}
+
+function americanUndergroundColor(lineage?: string): string {
+  return AMERICAN_UNDERGROUND_LINEAGE_COLORS[lineage ?? ''] ?? DEFAULT_AMERICAN_UNDERGROUND_COLOR;
+}
+
 export function resolveNodeColor(node: RealmLineageNode): string {
   if (!node.realm) return LAYER_COLORS[node.layer];
   if (node.realm === 'core') return CORE_COLOR;
   if (node.realm === 'electronic') return electronicColor(node.lineage);
+  if (node.realm === 'folk-confessional') return folkColor(node.lineage);
+  if (node.realm === 'emo-posthardcore') return emoColor(node.lineage);
+  if (node.realm === 'post-rock-drone-noise') return postrockColor(node.lineage);
+  if (node.realm === 'american-underground') return americanUndergroundColor(node.lineage);
   return LAYER_COLORS[node.layer];
 }
 
@@ -109,6 +209,10 @@ export function resolveNodeGlow(node: RealmLineageNode): string {
   if (!node.realm) return LAYER_GLOW[node.layer];
   if (node.realm === 'core') return CORE_GLOW;
   if (node.realm === 'electronic') return hexToRgba(electronicColor(node.lineage), 0.7);
+  if (node.realm === 'folk-confessional') return hexToRgba(folkColor(node.lineage), 0.7);
+  if (node.realm === 'emo-posthardcore') return hexToRgba(emoColor(node.lineage), 0.7);
+  if (node.realm === 'post-rock-drone-noise') return hexToRgba(postrockColor(node.lineage), 0.7);
+  if (node.realm === 'american-underground') return hexToRgba(americanUndergroundColor(node.lineage), 0.7);
   return LAYER_GLOW[node.layer];
 }
 
@@ -116,6 +220,10 @@ export function resolveEdgeTint(node: RealmLineageNode): string {
   if (!node.realm) return EDGE_TINT[node.layer];
   if (node.realm === 'core') return CORE_EDGE_TINT;
   if (node.realm === 'electronic') return hexToRgba(electronicColor(node.lineage), 0.4);
+  if (node.realm === 'folk-confessional') return hexToRgba(folkColor(node.lineage), 0.4);
+  if (node.realm === 'emo-posthardcore') return hexToRgba(emoColor(node.lineage), 0.4);
+  if (node.realm === 'post-rock-drone-noise') return hexToRgba(postrockColor(node.lineage), 0.4);
+  if (node.realm === 'american-underground') return hexToRgba(americanUndergroundColor(node.lineage), 0.4);
   return EDGE_TINT[node.layer];
 }
 
@@ -136,6 +244,56 @@ function lineageLabel(lineage?: string): string {
   return LINEAGE_LABELS[lineage ?? ''] ?? 'Electronic';
 }
 
+// Human-readable label per folk-realm lineage — mirrors LINEAGE_LABELS above.
+export const FOLK_LINEAGE_LABELS: Record<string, string> = {
+  'folk-roots':  'Folk Roots',
+  'freak-folk':  'Freak Folk',
+  confessional:  'Confessional',
+  slowcore:      'Slowcore',
+  'indie-folk':  'Indie Folk',
+};
+
+function folkLineageLabel(lineage?: string): string {
+  return FOLK_LINEAGE_LABELS[lineage ?? ''] ?? 'Folk & Confessional';
+}
+
+// Human-readable label per emo-realm lineage — mirrors LINEAGE_LABELS/
+// FOLK_LINEAGE_LABELS above.
+export const EMO_LINEAGE_LABELS: Record<string, string> = {
+  'hardcore-roots': 'Hardcore Roots',
+  'post-hardcore':  'Post-Hardcore',
+  'midwest-emo':    'Midwest Emo',
+  'math-rock':      'Math Rock',
+};
+
+function emoLineageLabel(lineage?: string): string {
+  return EMO_LINEAGE_LABELS[lineage ?? ''] ?? 'Emo & Post-Hardcore';
+}
+
+// Human-readable label per post-rock-realm lineage — mirrors
+// EMO_LINEAGE_LABELS/FOLK_LINEAGE_LABELS/LINEAGE_LABELS above.
+export const POSTROCK_LINEAGE_LABELS: Record<string, string> = {
+  'no-wave':   'No Wave',
+  'post-rock': 'Post-Rock',
+  drone:       'Drone',
+};
+
+function postrockLineageLabel(lineage?: string): string {
+  return POSTROCK_LINEAGE_LABELS[lineage ?? ''] ?? 'Post-Rock, Drone & Noise';
+}
+
+// Human-readable label per american-underground lineage — mirrors
+// POSTROCK_LINEAGE_LABELS/EMO_LINEAGE_LABELS/FOLK_LINEAGE_LABELS above.
+export const AMERICAN_UNDERGROUND_LINEAGE_LABELS: Record<string, string> = {
+  'noise-alt':    'Noise & Alt',
+  'college-rock': 'College Rock',
+  'indie-rock':   'Indie Rock',
+};
+
+function americanUndergroundLineageLabel(lineage?: string): string {
+  return AMERICAN_UNDERGROUND_LINEAGE_LABELS[lineage ?? ''] ?? 'American Underground';
+}
+
 // Same fallback pattern as resolveNodeColor/resolveNodeGlow/resolveEdgeTint
 // above — a realm-less node (every real region-one Artist without this
 // tag) or one explicitly tagged realm: 'region-one' both fall through to
@@ -145,6 +303,10 @@ export function resolveNodeLabel(node: RealmLineageNode): string {
   if (!node.realm) return LAYER_LABELS[node.layer];
   if (node.realm === 'core') return 'Core';
   if (node.realm === 'electronic') return lineageLabel(node.lineage);
+  if (node.realm === 'folk-confessional') return folkLineageLabel(node.lineage);
+  if (node.realm === 'emo-posthardcore') return emoLineageLabel(node.lineage);
+  if (node.realm === 'post-rock-drone-noise') return postrockLineageLabel(node.lineage);
+  if (node.realm === 'american-underground') return americanUndergroundLineageLabel(node.lineage);
   return LAYER_LABELS[node.layer];
 }
 
