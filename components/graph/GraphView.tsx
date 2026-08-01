@@ -27,16 +27,25 @@ interface Props {
 export default function GraphView({ graphData }: Props) {
   const router = useRouter();
   const pathname = usePathname();
-  // True on /artist/[slug] — the graph stays mounted underneath that page's
-  // fixed overlay (see app/(graph)/layout.tsx) rather than unmounting, so
-  // this flag exists purely to tell the canvas it's fully hidden and can
-  // stop its continuous per-frame redraw until the user navigates back.
-  const isBackgrounded = pathname.startsWith('/artist/');
+  // True on /artist/[slug], /genre/[genre], /genres, /scene/[scene], or
+  // /browse — the graph stays mounted underneath that page's fixed overlay
+  // (see app/(graph)/layout.tsx) rather than unmounting, so this flag
+  // exists purely to tell the canvas it's fully hidden and can stop its
+  // continuous per-frame redraw until the user navigates back.
+  const isBackgrounded =
+    pathname.startsWith('/artist/') || pathname.startsWith('/genre/') || pathname === '/genres' ||
+    pathname.startsWith('/scene/') || pathname.startsWith('/browse');
   const [selectedId, setSelectedId] = useState<string | null>(null);
   // A genre's or scene's member artist ids, from ?genre=/?scene= — highlighted
   // as a cluster in the graph. Mutually exclusive with selectedId: setting one
   // always clears the other (enforced at every call site below).
   const [highlightSetIds, setHighlightSetIds] = useState<string[] | null>(null);
+  // Which set member is re-centered as the spread's hub, set by clicking a
+  // member while a set is active (see handleSetMemberClick) — lets the user
+  // browse within a genre/scene set without ever leaving it. Reset to null
+  // everywhere highlightSetIds itself changes or clears, so a stale pin from
+  // a previous set never leaks into a new one.
+  const [highlightSetPinnedId, setHighlightSetPinnedId] = useState<string | null>(null);
   const [activeLayers, setActiveLayers] = useState<Set<Layer>>(new Set());
 
   const searchParams = useSearchParams();
@@ -49,6 +58,7 @@ export default function GraphView({ graphData }: Props) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: syncing selectedId to URL param; no external-subscription pattern applies
       setSelectedId(artistParam);
       setHighlightSetIds(null);
+      setHighlightSetPinnedId(null);
       return;
     }
 
@@ -57,6 +67,7 @@ export default function GraphView({ graphData }: Props) {
       if (ids.length > 0) {
         setSelectedId(null);
         setHighlightSetIds(ids);
+        setHighlightSetPinnedId(null);
         return;
       }
     }
@@ -67,16 +78,23 @@ export default function GraphView({ graphData }: Props) {
       if (ids.length > 0) {
         setSelectedId(null);
         setHighlightSetIds(ids);
+        setHighlightSetPinnedId(null);
         return;
       }
     }
 
     setSelectedId(null);
     setHighlightSetIds(null);
+    setHighlightSetPinnedId(null);
   }, [searchParams, graphData.artists, graphData.scenes]);
 
-  const selectedArtist = selectedId
-    ? (graphData.artists.find(a => a.id === selectedId) ?? null)
+  // The artist shown in the slide-over panel — either the fully-focused
+  // node, or (while browsing within a set) the pinned set member. The two
+  // are mutually exclusive in practice: highlightSetPinnedId is only ever
+  // set while selectedId is null (see handleSetMemberClick).
+  const panelArtistId = selectedId ?? highlightSetPinnedId;
+  const selectedArtist = panelArtistId
+    ? (graphData.artists.find(a => a.id === panelArtistId) ?? null)
     : null;
 
   const handleToggleLayer = useCallback((layer: Layer) => {
@@ -105,21 +123,42 @@ export default function GraphView({ graphData }: Props) {
     } else {
       setSelectedId(artistId);
       setHighlightSetIds(null);
+      setHighlightSetPinnedId(null);
       window.history.replaceState(null, '', `/?artist=${artistId}`);
     }
   }, [selectedId, router]);
 
+  // Clicking a member of the active genre/scene set re-centers the set on
+  // that member instead of exiting to a full single-artist focus — the set
+  // (highlightSetIds) and URL are left untouched, only the pin moves.
+  const handleSetMemberClick = useCallback((artistId: string) => {
+    setHighlightSetPinnedId(artistId);
+  }, []);
+
   const handleSelectArtist = useCallback((id: string) => {
     setSelectedId(id);
     setHighlightSetIds(null);
+    setHighlightSetPinnedId(null);
     window.history.replaceState(null, '', `/?artist=${id}`);
   }, []);
 
   const handleBackgroundClick = useCallback(() => {
     setSelectedId(null);
     setHighlightSetIds(null);
+    setHighlightSetPinnedId(null);
     window.history.replaceState(null, '', '/');
   }, []);
+
+  // Closing the panel: if it's showing a full single-artist focus, exit
+  // that entirely (existing behavior). If it's only showing a pinned set
+  // member, just unpin — stay in set mode with the auto-picked hub.
+  const handlePanelClose = useCallback(() => {
+    if (selectedId !== null) {
+      handleBackgroundClick();
+    } else {
+      setHighlightSetPinnedId(null);
+    }
+  }, [selectedId, handleBackgroundClick]);
 
   return (
     <div className="graph-container">
@@ -137,7 +176,9 @@ export default function GraphView({ graphData }: Props) {
           highlightPath={null}
           selectedId={selectedId}
           highlightSetIds={highlightSetIds}
+          highlightSetPinnedId={highlightSetPinnedId}
           onNodeClick={handleNodeClick}
+          onSetMemberClick={handleSetMemberClick}
           onBackgroundClick={handleBackgroundClick}
           isBackgrounded={isBackgrounded}
         />
@@ -146,7 +187,7 @@ export default function GraphView({ graphData }: Props) {
       <ArtistPanel
         artist={selectedArtist}
         graphData={graphData}
-        onClose={handleBackgroundClick}
+        onClose={handlePanelClose}
         onSelectArtist={handleSelectArtist}
       />
     </div>

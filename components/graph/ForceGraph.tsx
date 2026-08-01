@@ -34,39 +34,85 @@ function rectOverlapsCircle(
   return dx * dx + dy * dy < cr * cr;
 }
 
-// The single set of ids to frame together right now (and, for a node focus
-// only — see `spread` below — spread apart), plus a stable primitive key
-// identifying that selection (for effect deps / pending-retry comparisons —
-// arrays are a fresh reference every render, strings compare by value).
-// Single-node focus (id + its direct neighbors) takes priority; otherwise a
-// highlighted genre/scene set. The two are mutually exclusive by construction
-// in GraphView (selectedId and highlightSetIds are never both set).
+// Picks the member of a genre/scene set with the most edges to OTHER
+// MEMBERS OF THE SAME SET (either direction) to anchor the spotlight-spread
+// from — see getActiveCluster below. Ties broken by graph-wide degree.
 //
-// `spread` distinguishes the two cluster kinds for applySpreadForCluster /
-// animateClusterIntoView: true only for a node focus. A focused node's direct
-// neighbors are pulled toward it by their shared edge (forceLink distance 75)
-// and often sit close enough to overlap, so spreading them apart from their
-// shared centroid makes the cluster legible. A genre/scene set has no such
-// local-overlap problem — its members already sit wherever the realm-
-// separation forces settled them, typically each in their own realm's home
-// cluster on the opposite side of the layout from each other — so applying
-// the same outward spread only balloons the bounding box (by SPREAD_FACTOR
-// on top of distances that can already span most of the graph), forcing the
-// camera to zoom out far past what the set's own natural positions need and
-// leaving cross-realm members looking flung to the edges of an over-wide
-// frame instead of gathered into a legible cluster.
+// Graph-wide degree was tried first and rejected: a node can dominate the
+// whole graph's edge count without being what actually holds ITS OWN genre
+// together. Kraftwerk has in-degree 22 graph-wide, but almost none of it is
+// from other krautrock-tagged artists citing it back — picking it as
+// krautrock's hub left 5 of that set's 6 other members with no line to their
+// own supposed center, reading as stranded rather than spread. In-set degree
+// picks the member other members actually connect to, which is what a
+// visual "spine" for the set needs.
+function pickSetHub(memberIds: string[], edges: Edge[]): string {
+  const memberSet = new Set(memberIds);
+  const inSetDegree = new Map<string, number>(memberIds.map(id => [id, 0]));
+  const graphWideDegree = new Map<string, number>(memberIds.map(id => [id, 0]));
+  for (const e of edges) {
+    if (graphWideDegree.has(e.source)) graphWideDegree.set(e.source, graphWideDegree.get(e.source)! + 1);
+    if (graphWideDegree.has(e.target)) graphWideDegree.set(e.target, graphWideDegree.get(e.target)! + 1);
+    if (memberSet.has(e.source) && memberSet.has(e.target)) {
+      inSetDegree.set(e.source, inSetDegree.get(e.source)! + 1);
+      inSetDegree.set(e.target, inSetDegree.get(e.target)! + 1);
+    }
+  }
+  let bestId = memberIds[0];
+  let bestInSet = -1;
+  let bestGraphWide = -1;
+  for (const id of memberIds) {
+    const inSet = inSetDegree.get(id) ?? 0;
+    const graphWide = graphWideDegree.get(id) ?? 0;
+    if (inSet > bestInSet || (inSet === bestInSet && graphWide > bestGraphWide)) {
+      bestInSet = inSet;
+      bestGraphWide = graphWide;
+      bestId = id;
+    }
+  }
+  return bestId;
+}
+
+// The single set of ids to spread + frame together right now, and a stable
+// primitive key identifying that selection (for effect deps / pending-retry
+// comparisons — arrays are a fresh reference every render, strings compare
+// by value). Single-node focus (id + its direct neighbors) takes priority;
+// otherwise a highlighted genre/scene set. The two are mutually exclusive by
+// construction in GraphView (selectedId and highlightSetIds are never both
+// set). Either way, `ids[0]` is the cluster's anchor — the focused node
+// itself for a node focus, the set's highest-in-set-degree member
+// (pickSetHub) for a genre/scene set — which is what
+// computeSpreadTargetsForCluster spreads every other member outward from.
+// `isSet` selects which of the two spread factors (SPREAD_FACTOR /
+// SET_SPREAD_FACTOR) applies — a set clusters tightly by realm positioning
+// already and needs less outward push than a focus cluster's neighbors,
+// scattered across realms, do.
+// pinnedHubId lets a click on a set member re-center the spread on that
+// member instead of the auto-picked one (see handleNodeClick/onSetMemberClick)
+// — clicking within an active set should stay scoped to the set, not jump
+// out to a full single-artist focus showing every real connection. Ignored
+// if it isn't actually a member of the current set (stale pin after the
+// set itself changed).
 function getActiveCluster(
   selectedId: string | null,
   highlightSetIds: string[] | null,
   edges: Edge[],
-): { ids: string[]; key: string; spread: boolean } {
+  pinnedHubId?: string | null,
+): { ids: string[]; key: string; isSet: boolean } {
   if (selectedId) {
-    return { ids: [selectedId, ...getNeighbors(selectedId, edges)], key: `artist:${selectedId}`, spread: true };
+    return { ids: [selectedId, ...getNeighbors(selectedId, edges)], key: `artist:${selectedId}`, isSet: false };
   }
   if (highlightSetIds && highlightSetIds.length > 0) {
-    return { ids: highlightSetIds, key: `set:${highlightSetIds.join(',')}`, spread: false };
+    const hubId = pinnedHubId && highlightSetIds.includes(pinnedHubId)
+      ? pinnedHubId
+      : pickSetHub(highlightSetIds, edges);
+    const rest = highlightSetIds.filter(id => id !== hubId);
+    // hubId is part of the key (not just the member list) so switching the
+    // pinned hub within the same set still counts as a new cluster and
+    // re-triggers the spread/camera effects below.
+    return { ids: [hubId, ...rest], key: `set:${highlightSetIds.join(',')}:${hubId}`, isSet: true };
   }
-  return { ids: [], key: '', spread: false };
+  return { ids: [], key: '', isSet: false };
 }
 
 // ── Lazy image cache ─────────────────────────────────────────────────────────
@@ -110,11 +156,26 @@ const NEIGHBOR_LABEL_MIN_SCREEN_PX = 11; // px — neighbor labels' floor
 // the label collision search below actually has room to work with.
 // Clamped to exactly 1 at/below the reference zoom, so cloud/overview
 // rendering (which all happens well below this zoom) is untouched.
-const ZOOM_SIZE_REFERENCE = 3.5; // globalScale below which sizing is unchanged from today
+//
+// This threshold was tuned around click-focus's own typical camera fit — a
+// small cluster (one artist + a handful of neighbors) commonly lands at or
+// near MAX_ZOOM (also 3.5), right at the reference, so manually zooming in
+// from there engages dampening almost immediately. A genre/scene set's
+// camera fit is nowhere near that: 18+ members spread across realms settle
+// around 1.0-1.6× (see SET_SPREAD_FACTOR's comment) — reusing the same 3.5
+// reference meant a set had to be zoomed in far past its own natural
+// viewing range, to the point only 1-2 members were even on screen, before
+// dampening ever engaged. Net effect: zooming into a set never visibly
+// "shrank" anything the way zooming into a focused node does, because the
+// effect was gated behind a zoom level nobody browsing a set ever reached.
+// SET_ZOOM_SIZE_REFERENCE gives sets their own, much lower threshold, sized
+// to their own resting zoom instead of click-focus's.
+const ZOOM_SIZE_REFERENCE = 3.5;     // globalScale below which sizing is unchanged from today (click-focus / no highlight)
+const SET_ZOOM_SIZE_REFERENCE = 1.3; // same idea, scaled to a genre/scene set's own ~1.0-1.6 resting zoom
 const ZOOM_SIZE_DAMPEN = 0.75;   // 0 = no dampening (old behavior), 1 = constant on-screen size past the reference
-function computeZoomSizeMult(globalScale: number): number {
-  if (globalScale <= ZOOM_SIZE_REFERENCE) return 1;
-  return Math.pow(ZOOM_SIZE_REFERENCE / globalScale, ZOOM_SIZE_DAMPEN);
+function computeZoomSizeMult(globalScale: number, reference: number = ZOOM_SIZE_REFERENCE): number {
+  if (globalScale <= reference) return 1;
+  return Math.pow(reference / globalScale, ZOOM_SIZE_DAMPEN);
 }
 
 // ── Label collision search (widened — see the demotion logic in
@@ -512,8 +573,13 @@ function computeDenseCoreIds(nodes: { id: string; x?: number; y?: number }[]): S
 // viewport instead of floating in a wide empty margin.
 const ZOOM_FIT_PADDING = 40;
 
-// Dim target alpha when a highlight (hover/focus/path) is active.
-const DIM_ALPHA = 0.09;
+// Dim target alpha when a highlight (hover/focus/path/set) is active.
+// Lowered from 0.09: a genre/scene set's frame is often zoomed out enough
+// (see SET_SPREAD_FACTOR's comment) that most of the graph is on screen at
+// once, and combined with the full-detail-size rendering non-cluster nodes
+// used to get regardless of mode (see isInFocusCluster below), 0.09 read as
+// a wall of faint but visible ghost nodes rather than a quiet backdrop.
+const DIM_ALPHA = 0.04;
 const TRANSITION_MS = 220;
 
 // Idle edge appearance — edges recede into a soft faint web by default so a
@@ -577,7 +643,8 @@ const LEFT_UI_WIDTH = 160;
 const MAX_ZOOM = 3.5;       // raised so small clusters can zoom in tighter
 const CAMERA_PADDING = 60;  // tighter frame → cluster fills more of the clear area
 const CAMERA_MS = 600;     // transition duration (ms)
-const SPREAD_FACTOR = 2.6; // spotlight-spread outward scale from cluster centroid
+const SPREAD_FACTOR = 2.6;     // click-focus spotlight-spread outward scale — a focused node's neighbors are scattered across realms and need real separation to stop photos overlapping
+const SET_SPREAD_FACTOR = 1.6; // genre/scene set spread scale — a set clusters tightly by realm positioning already, so it needs less outward push than a focus cluster to stop members overlapping; tune here if sets still pile up or still land too wide
 
 // User-scroll zoom clamp for the unfocused overview — distinct from MAX_ZOOM
 // above (that one caps what the focus camera itself will dial in to).
@@ -1021,7 +1088,16 @@ interface Props {
   // node + its neighbors. Mutually exclusive with selectedId (enforced by
   // the caller): when selectedId is set, this is ignored.
   highlightSetIds: string[] | null;
+  // Which set member (if any) is re-centered as the spread's hub, from a
+  // click on a member while the set is active — see getActiveCluster's
+  // pinnedHubId. Ignored when highlightSetIds is empty/null.
+  highlightSetPinnedId?: string | null;
   onNodeClick: (artistId: string) => void;
+  // Fires instead of onNodeClick when the clicked node is a member of the
+  // active genre/scene set — lets the caller re-center the set on that
+  // member (see highlightSetPinnedId) instead of exiting to a full
+  // single-artist focus. Falls back to onNodeClick if not provided.
+  onSetMemberClick?: (artistId: string) => void;
   onBackgroundClick: () => void;
   // True while an /artist/[slug] page overlay is covering the graph — see
   // app/(graph)/layout.tsx, which keeps this component mounted underneath
@@ -1073,7 +1149,9 @@ export default function ForceGraphCanvas({
   highlightPath,
   selectedId,
   highlightSetIds,
+  highlightSetPinnedId = null,
   onNodeClick,
+  onSetMemberClick,
   onBackgroundClick,
   isBackgrounded = false,
 }: Props) {
@@ -1409,9 +1487,9 @@ export default function ForceGraphCanvas({
   }, []);
 
   // The single set of ids to spread + frame right now — see getActiveCluster.
-  const { ids: activeClusterIds, key: activeClusterKey, spread: activeClusterSpread } = useMemo(
-    () => getActiveCluster(selectedId, highlightSetIds, graphData.edges),
-    [selectedId, highlightSetIds, graphData.edges],
+  const { ids: activeClusterIds, key: activeClusterKey, isSet: activeClusterIsSet } = useMemo(
+    () => getActiveCluster(selectedId, highlightSetIds, graphData.edges, highlightSetPinnedId),
+    [selectedId, highlightSetIds, graphData.edges, highlightSetPinnedId],
   );
 
   // ── Spotlight spread ─────────────────────────────────────────────────────────
@@ -1419,16 +1497,27 @@ export default function ForceGraphCanvas({
   // without mutating anything. null means the simulation hasn't positioned
   // the cluster's primary node (clusterIds[0]) yet; an empty map means
   // there's nothing to spread (0 or 1 node).
-  const computeSpreadTargetsForCluster = useCallback((clusterIds: string[], shouldSpread: boolean): Map<string, { x: number; y: number }> | null => {
+  //
+  // Spreads every member outward from clusterIds[0] — the cluster's anchor
+  // (the focused node itself for a node focus, the set's highest-in-set-
+  // degree member for a genre/scene set; see getActiveCluster/pickSetHub) —
+  // not from the cluster's arithmetic-mean centroid. For a node focus this is
+  // nearly the same thing in practice (the focused node's own neighbors sit
+  // close around it, so the centroid was already near its position), but for
+  // a genre/scene set spanning several realms the centroid can float in
+  // empty space between them. Anchoring to a real member's own position at
+  // least gives the spread a stable, non-jittering point to radiate from
+  // (the anchor doesn't move at all — its own offset from itself is zero) —
+  // though note the outward SCALE factor, not the origin, is what actually
+  // controls the resulting bounding box size (scaling a fixed point set by a
+  // factor from any single origin produces the same-size bounding box
+  // regardless of which point you scale from), which is why isSet selects a
+  // smaller factor below rather than relying on the anchor choice alone.
+  const computeSpreadTargetsForCluster = useCallback((clusterIds: string[], isSet: boolean): Map<string, { x: number; y: number }> | null => {
     if (clusterIds.length === 0) return new Map();
 
-    const primary = stableData.nodes.find(n => n.id === clusterIds[0]);
-    if (primary?.x === undefined || primary?.y === undefined) return null;
-
-    // A genre/scene set: "ready" (primary is positioned) but nothing to
-    // move — see getActiveCluster's `spread` comment for why. The camera-fit
-    // step downstream then reads each node's untouched, natural position.
-    if (!shouldSpread) return new Map();
+    const anchor = stableData.nodes.find(n => n.id === clusterIds[0]);
+    if (anchor?.x === undefined || anchor?.y === undefined) return null;
 
     const idSet = new Set(clusterIds);
     const clusterNodes = stableData.nodes.filter(
@@ -1436,14 +1525,15 @@ export default function ForceGraphCanvas({
     );
     if (clusterNodes.length < 2) return new Map();
 
-    const cx = clusterNodes.reduce((s, n) => s + n.x!, 0) / clusterNodes.length;
-    const cy = clusterNodes.reduce((s, n) => s + n.y!, 0) / clusterNodes.length;
+    const ax = anchor.x;
+    const ay = anchor.y;
+    const factor = isSet ? SET_SPREAD_FACTOR : SPREAD_FACTOR;
 
     const targets = new Map<string, { x: number; y: number }>();
     for (const n of clusterNodes) {
-      const dx = n.x! - cx;
-      const dy = n.y! - cy;
-      targets.set(n.id, { x: cx + dx * SPREAD_FACTOR, y: cy + dy * SPREAD_FACTOR });
+      const dx = n.x! - ax;
+      const dy = n.y! - ay;
+      targets.set(n.id, { x: ax + dx * factor, y: ay + dy * factor });
     }
     return targets;
   }, [stableData.nodes]);
@@ -1453,10 +1543,8 @@ export default function ForceGraphCanvas({
   // Returns true once handled (spread applied, deselected, or nothing to
   // spread); false when the simulation hasn't positioned the cluster yet —
   // the caller then leaves a pending marker so onEngineStop can retry.
-  const applySpreadForCluster = useCallback((clusterIds: string[], shouldSpread: boolean): boolean => {
-    // Always restore first — handles deselect, cluster-to-cluster switches,
-    // and switching from a spread focus cluster to a non-spread genre/scene
-    // set (whose own branch below never touches these nodes' positions).
+  const applySpreadForCluster = useCallback((clusterIds: string[], isSet: boolean): boolean => {
+    // Always restore first — handles both deselect and cluster-to-cluster switches.
     if (savedPositionsRef.current) {
       for (const [savedId, pos] of savedPositionsRef.current) {
         const node = stableData.nodes.find(n => n.id === savedId);
@@ -1472,7 +1560,7 @@ export default function ForceGraphCanvas({
       savedPositionsRef.current = null;
     }
 
-    const targets = computeSpreadTargetsForCluster(clusterIds, shouldSpread);
+    const targets = computeSpreadTargetsForCluster(clusterIds, isSet);
     if (targets === null) return false;
     if (targets.size === 0) return true;
 
@@ -1485,9 +1573,9 @@ export default function ForceGraphCanvas({
     }
     savedPositionsRef.current = saved;
 
-    // Scale each node outward from the centroid so nodes fill the frame
-    // with comfortable gaps. Simulation is paused after initial cooldown,
-    // so these positions hold until we restore them on deselect.
+    // Scale each node outward from the cluster's anchor so nodes fill the
+    // frame with comfortable gaps. Simulation is paused after initial
+    // cooldown, so these positions hold until we restore them on deselect.
     for (const [nodeId, pos] of targets) {
       const n = stableData.nodes.find(nn => nn.id === nodeId);
       if (n) {
@@ -1506,10 +1594,10 @@ export default function ForceGraphCanvas({
     // Any new cluster/resize invalidates an in-flight compose-into-focus
     // animation from a previous cluster (see animateClusterIntoView).
     focusAnimTokenRef.current++;
-    const ready = applySpreadForCluster(activeClusterIds, activeClusterSpread);
+    const ready = applySpreadForCluster(activeClusterIds, activeClusterIsSet);
     pendingClusterKeyRef.current = ready ? null : activeClusterKey;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeClusterKey, activeClusterSpread, dimensions, applySpreadForCluster]);
+  }, [activeClusterKey, activeClusterIsSet, dimensions, applySpreadForCluster]);
 
   // ── Camera focus on node click / genre / scene selection ────────────────────
   // Frame the cluster (a single node + its direct neighbors, or a whole
@@ -1647,12 +1735,12 @@ export default function ForceGraphCanvas({
   // their spread targets while the camera pans/zooms to the same
   // destination, so it reads as one continuous "composing into focus"
   // motion rather than settle-then-snap.
-  const animateClusterIntoView = useCallback((clusterIds: string[], shouldSpread: boolean): boolean => {
+  const animateClusterIntoView = useCallback((clusterIds: string[], isSet: boolean): boolean => {
     const fg = graphRef.current;
     if (!fg) return false;
     if (clusterIds.length === 0) return true; // nothing to animate
 
-    const computedTargets = computeSpreadTargetsForCluster(clusterIds, shouldSpread);
+    const computedTargets = computeSpreadTargetsForCluster(clusterIds, isSet);
     if (computedTargets === null) return false; // simulation still hasn't positioned the cluster
     const targets = computedTargets;
 
@@ -1760,9 +1848,9 @@ export default function ForceGraphCanvas({
     engineStoppedOnceRef.current = true;
     tryInitialFit();
     if (pendingClusterKeyRef.current && pendingClusterKeyRef.current === activeClusterKey) {
-      if (animateClusterIntoView(activeClusterIds, activeClusterSpread)) pendingClusterKeyRef.current = null;
+      if (animateClusterIntoView(activeClusterIds, activeClusterIsSet)) pendingClusterKeyRef.current = null;
     }
-  }, [activeClusterKey, activeClusterIds, activeClusterSpread, animateClusterIntoView, tryInitialFit]);
+  }, [activeClusterKey, activeClusterIds, activeClusterIsSet, animateClusterIntoView, tryInitialFit]);
 
   // ── Derived sets ────────────────────────────────────────────────────────────
   const pathSet = useMemo(() => new Set<string>(highlightPath ?? []), [highlightPath]);
@@ -1771,8 +1859,14 @@ export default function ForceGraphCanvas({
     [highlightPath],
   );
 
-  // Neighbors come from selectedId (focus mode) or hoveredId (hover mode).
-  const activeHighlightId = selectedId ?? hoveredId;
+  // Neighbors come from selectedId (focus mode) or hoveredId (hover mode) —
+  // but NOT hoveredId while a genre/scene set is active (highlightSetIds
+  // non-empty and selectedId null, since the two are mutually exclusive).
+  // Otherwise hovering a node outside the set would pull in its real,
+  // unrelated neighbors — the same leak click-focus already avoids for
+  // free via its own selectedId !== null short-circuit.
+  const isSetModeActive = !!highlightSetIds && highlightSetIds.length > 0 && selectedId === null;
+  const activeHighlightId = selectedId ?? (isSetModeActive ? null : hoveredId);
   const neighborSet = useMemo(
     () => (activeHighlightId ? getNeighbors(activeHighlightId, graphData.edges) : new Set<string>()),
     [activeHighlightId, graphData.edges],
@@ -1828,12 +1922,20 @@ export default function ForceGraphCanvas({
       // ── Three-tier classification ──
       const isFocused   = n.id === selectedId;
       const isNeighbor  = selectedId !== null ? neighborSet.has(n.id) : false;
-      const isHovered   = n.id === hoveredId && selectedId === null;
-      const isHoverNeighbor = hoveredId !== null && selectedId === null && neighborSet.has(n.id);
-      const isInPath    = pathSet.has(n.id);
       // Genre/scene set member — same visual tier as a single-focus neighbor
       // (crisp, not blown-out), just without one node standing out as "the" focus.
       const isSetMember = highlightSetMemberSet.has(n.id);
+      // True while a genre/scene set is highlighted (selectedId is always
+      // null then, per getActiveCluster's mutual-exclusivity contract).
+      // Hover-driven reveal (isHovered/isHoverNeighbor just below) must stay
+      // off in this mode — otherwise hovering a node outside the set pulls
+      // in its unrelated photo and neighbors, defeating the point of the
+      // set filter. Click-focus already gets this for free via its own
+      // selectedId !== null check on both lines below.
+      const isSetModeActive = highlightSetMemberSet.size > 0;
+      const isHovered   = n.id === hoveredId && selectedId === null && !isSetModeActive;
+      const isHoverNeighbor = hoveredId !== null && selectedId === null && !isSetModeActive && neighborSet.has(n.id);
+      const isInPath    = pathSet.has(n.id);
       const hasHighlight =
         selectedId !== null || hoveredId !== null || pathSet.size > 0 || highlightSetMemberSet.size > 0;
 
@@ -1846,26 +1948,40 @@ export default function ForceGraphCanvas({
         !isInPath &&
         !isSetMember;
 
+      // A node "in the active highlight" — the focused node + its neighbors
+      // in click-focus mode, or every member of a genre/scene set. Drives
+      // both the enlarged size below AND the zoom-fade gating just below:
+      // these nodes should always render fully resolved regardless of the
+      // camera's actual zoom (a set's camera fit can land anywhere from a
+      // tight zoom to well into cloud-zoom range — see SET_SPREAD_FACTOR's
+      // comment), while everything NOT in the highlight follows the real
+      // cloud/detail crossfade curve so it recedes to a small cloud dot
+      // instead of reading as a wall of full-size, merely-faded-alpha
+      // circles.
+      const isInFocusCluster = (selectedId !== null && (isFocused || isNeighbor)) || isSetMember;
+
       // Animated alpha for dimmed nodes (reads live from ref — smooth without re-renders)
-      // Zoom fade (P2, overview only) — forced to 1 whenever a focus view is
-      // open (selectedId or a genre/scene set active), the same two-mode
-      // split the scroll-zoom clamp above uses. See computeZoomFade/
-      // FADE_ZOOM_OUT/FADE_ZOOM_IN/FADE_HUB_BIAS_STRENGTH.
+      // Zoom fade (P2, overview only). isInFocusCluster forces this to 1 —
+      // a node that IS the thing being shown off (a focus cluster member or
+      // a set member) should never render as a half-faded cloud dot,
+      // regardless of camera distance. Everything else follows the real
+      // curve. See computeZoomFade/FADE_ZOOM_OUT/FADE_ZOOM_IN/FADE_HUB_BIAS_STRENGTH.
       const isFocusModeActive = selectedId !== null || highlightSetMemberSet.size > 0;
-      const zoomFade = isFocusModeActive ? 1 : computeZoomFade(globalScale, score);
+      const zoomFade = isInFocusCluster ? 1 : computeZoomFade(globalScale, score);
       // One of the ~ANCHOR_COUNT highest-influenceScore nodes globally —
       // gates LABELS only now (see the label logic further down), not the
       // dot itself. Computed once in topAnchorIds (useMemo, alongside
       // stableData), not per-frame.
       const isAnchor = topAnchorIds.has(n.id);
-      // Crisp cloud-zoom dot fade — 0 in focus mode or at/above FADE_ZOOM_IN
-      // (detail zoom stays byte-for-byte the existing rendering below), 1 at
-      // full cloud zoom. The exact complement of zoomFade (which drives the
-      // existing bloom-haze/fill/photo path below): the two sum to 1 at
-      // every zoom, so a node is never fully invisible in between — this is
-      // what makes "dots resolve into full detailed nodes" a continuous
-      // crossfade rather than a gap.
-      const cloudDotFade = isFocusModeActive ? 0 : 1 - zoomFade;
+      // Crisp cloud-zoom dot fade — 0 for any node in the active highlight
+      // (see isInFocusCluster above) or at/above FADE_ZOOM_IN (detail zoom
+      // stays byte-for-byte the existing rendering below), 1 at full cloud
+      // zoom. The exact complement of zoomFade (which drives the existing
+      // bloom-haze/fill/photo path below): the two sum to 1 at every zoom,
+      // so a node is never fully invisible in between — this is what makes
+      // "dots resolve into full detailed nodes" a continuous crossfade
+      // rather than a gap.
+      const cloudDotFade = isInFocusCluster ? 0 : 1 - zoomFade;
       const dimFactor = isDimmed ? dimLevelRef.current : 1.0;
       // Photo/label fade — its own unbiased curve/threshold (see
       // PHOTO_LABEL_FADE_OUT_ZOOM/computePhotoLabelFade above), NOT zoomFade
@@ -1884,14 +2000,13 @@ export default function ForceGraphCanvas({
       // alpha) was already 0.3-0.5 at cloud zoom while its drawn radius
       // stayed full-size, reading as a big, semi-transparent disc instead of
       // a small point resolving smoothly into the full node as you zoom in.
-      const overviewSizeShrink = isFocusModeActive ? 1 : zoomFade;
+      const overviewSizeShrink = isInFocusCluster ? 1 : zoomFade;
 
       // ── Size ──
       // In focus mode, both the selected node and its neighbors scale up so
       // images and labels are clearly legible. Relative size order is preserved
       // (focused > hub-neighbor > small-neighbor). Hover/path modes unchanged.
       // Set members use the same "neighbor" tier — a set has no single hero node.
-      const isInFocusCluster = (selectedId !== null && (isFocused || isNeighbor)) || isSetMember;
       const r = isInFocusCluster
         ? (isFocused ? baseR * 2.8 : baseR * 1.9)
         : isHovered  ? baseR * 1.5
@@ -1943,9 +2058,12 @@ export default function ForceGraphCanvas({
       // BEFORE the click-focus floor just below, so the floor still
       // guarantees its own on-screen minimum regardless: dampening only
       // ever shrinks the "natural" size, it can't undercut the floor.
-      // No-op (mult === 1) at/below ZOOM_SIZE_REFERENCE, i.e. everywhere the
-      // cloud/overview rendering above actually runs.
-      const zoomSizeMult = computeZoomSizeMult(globalScale);
+      // No-op (mult === 1) at/below the active reference, i.e. everywhere
+      // the cloud/overview rendering above actually runs. Uses
+      // SET_ZOOM_SIZE_REFERENCE while a genre/scene set is active — see its
+      // comment above for why the click-focus-tuned default never engaged
+      // within a set's own, much lower resting zoom.
+      const zoomSizeMult = computeZoomSizeMult(globalScale, isSetModeActive ? SET_ZOOM_SIZE_REFERENCE : ZOOM_SIZE_REFERENCE);
       er *= zoomSizeMult;
       // Click-focus readability floor (see constants above) — additive, only
       // ever grows er further, never shrinks it below what the existing
@@ -2020,38 +2138,53 @@ export default function ForceGraphCanvas({
       // a calm, uniform brightness reads as clean colored dots rather than
       // a busy or blown-out wash once applied to every node instead of 12.
       if (cloudDotFade > 0) {
-        ctx.save();
-        ctx.globalCompositeOperation = 'lighter';
-
         // Strong faint/bright variation by score — most nodes sit near the
         // floor (faint), hubs climb toward the ceiling (bright), instead of
         // every node reading at the same flat brightness.
         const scoreBrightness = Math.min(1, CLOUD_DOT_MIN_BRIGHTNESS_FRACTION + Math.sqrt(score) * CLOUD_DOT_BRIGHTNESS_GROWTH);
         const dotBrightness = CLOUD_DOT_BRIGHTNESS * scoreBrightness * cloudDotFade * dimFactor;
 
-        // Flat min/max range, independent of baseR (see CLOUD_DOT_MIN_R's
-        // comment above) — a tiny sharp point for most nodes, only growing
-        // modestly for real hubs, never a big circle.
-        const dotCoreR = Math.min(CLOUD_DOT_MAX_R, CLOUD_DOT_MIN_R + Math.sqrt(score) * CLOUD_DOT_HUB_GROWTH);
+        // Skip the sprite stamps entirely below a visibility floor — same
+        // pattern as the bloom-haze block's `alpha > 0.01` gate above (a
+        // node this faint is indistinguishable from not drawn at all). A
+        // dimmed background node's dimFactor (DIM_ALPHA = 0.04) alone pulls
+        // most low/mid-score nodes under this floor. That matters here
+        // specifically because cloudDotFade is 1 (this whole block runs)
+        // for EVERY non-cluster node whenever a genre/scene set's camera
+        // fit lands in cloud-zoom range — routinely all ~270+ of them,
+        // every single frame (autoPauseRedraw={false} never stops
+        // repainting) — where click-focus's typically tighter, higher-zoom
+        // fit keeps cloudDotFade near 0 for the same nodes and skips this
+        // block already. Without this floor, that difference in camera
+        // zoom directly became a difference in frame cost.
+        if (dotBrightness > 0.01) {
+          ctx.save();
+          ctx.globalCompositeOperation = 'lighter';
 
-        // Soft bloom halo reserved for hubs/anchors — most nodes are a bare
-        // sharp point, matching the reference's "few bright, many faint".
-        if (score >= CLOUD_DOT_HALO_MIN_SCORE || isAnchor) {
-          const haloR = dotCoreR * CLOUD_DOT_GLOW_TIGHTNESS;
-          // Halo stays additive — that's what makes it read as glowing light.
-          stampGlowSprite(ctx, get2StopGlowSprite(glow), n.x, n.y, haloR, CLOUD_DOT_GLOW_INTENSITY * dotBrightness);
+          // Flat min/max range, independent of baseR (see CLOUD_DOT_MIN_R's
+          // comment above) — a tiny sharp point for most nodes, only growing
+          // modestly for real hubs, never a big circle.
+          const dotCoreR = Math.min(CLOUD_DOT_MAX_R, CLOUD_DOT_MIN_R + Math.sqrt(score) * CLOUD_DOT_HUB_GROWTH);
+
+          // Soft bloom halo reserved for hubs/anchors — most nodes are a bare
+          // sharp point, matching the reference's "few bright, many faint".
+          if (score >= CLOUD_DOT_HALO_MIN_SCORE || isAnchor) {
+            const haloR = dotCoreR * CLOUD_DOT_GLOW_TIGHTNESS;
+            // Halo stays additive — that's what makes it read as glowing light.
+            stampGlowSprite(ctx, get2StopGlowSprite(glow), n.x, n.y, haloR, CLOUD_DOT_GLOW_INTENSITY * dotBrightness);
+          }
+          // Core switches to normal blending — additive was stacking with the
+          // halo above AND the nebula glow underneath, which for any node
+          // whose real color is already near-white (layer 'outside', e.g.
+          // Bowie — #EDEBF5, by design close to white) accumulated into a
+          // genuinely blown-out glowing orb, the harshest thing on screen.
+          // Normal blending shows the node's TRUE color at a fixed opacity —
+          // it can't stack brighter than that regardless of what's underneath.
+          ctx.globalCompositeOperation = 'source-over';
+          stampGlowSprite(ctx, getSolidCircleSprite(color), n.x, n.y, dotCoreR, dotBrightness);
+
+          ctx.restore();
         }
-        // Core switches to normal blending — additive was stacking with the
-        // halo above AND the nebula glow underneath, which for any node
-        // whose real color is already near-white (layer 'outside', e.g.
-        // Bowie — #EDEBF5, by design close to white) accumulated into a
-        // genuinely blown-out glowing orb, the harshest thing on screen.
-        // Normal blending shows the node's TRUE color at a fixed opacity —
-        // it can't stack brighter than that regardless of what's underneath.
-        ctx.globalCompositeOperation = 'source-over';
-        stampGlowSprite(ctx, getSolidCircleSprite(color), n.x, n.y, dotCoreR, dotBrightness);
-
-        ctx.restore();
       }
 
       // ── Photo clip + glowing ring ─────────────────────────────────────────
@@ -2208,8 +2341,13 @@ export default function ForceGraphCanvas({
       const isPathEdge   = pathEdges.has(edgeKey);
       // Focus edges: any edge touching the focused node
       const isFocusEdge  = selectedId !== null && (srcId === selectedId || tgtId === selectedId);
-      // Hover brightened edge (only when no focus mode active)
-      const isHoverEdge  = hoveredId !== null && selectedId === null &&
+      // Hover brightened edge — only when no focus mode AND no genre/scene
+      // set is active. Without the set check, hovering a node outside an
+      // active set would light up its real, unrelated edges — exactly the
+      // "connections to nodes not in shoegaze" leak the set filter exists
+      // to prevent.
+      const isSetModeActive = highlightSetMemberSet.size > 0;
+      const isHoverEdge  = hoveredId !== null && selectedId === null && !isSetModeActive &&
                            (srcId === hoveredId || tgtId === hoveredId);
       // Set edges: BOTH endpoints must be genre/scene set members — an edge
       // out to a non-member (a different realm, a different genre entirely)
@@ -2234,11 +2372,23 @@ export default function ForceGraphCanvas({
 
       // Zoom fade (P2/P3 coupling) — same two-mode split and same unbiased
       // reference curve the electronic cloud uses (no per-endpoint hub bias
-      // for edges). Forced to 1 whenever a focus view is open so focused-
-      // cluster edges (and every other edge — the whole graph, same as
-      // drawNode) stay solid regardless of zoom.
+      // for edges). Forced to 1 whenever a focus view is open so the
+      // highlighted edges themselves (path/focus/hover/set, below) stay
+      // solid regardless of zoom — this one is deliberately left on the
+      // broad isFocusModeActive (focus OR set), not just node-focus, because
+      // it only ever reaches the branches that render an edge we WANT lit.
       const isFocusModeActive = selectedId !== null || highlightSetMemberSet.size > 0;
       const edgeFade = isFocusModeActive ? 1 : computeZoomFade(globalScale, 0);
+      // Separate fade for the two BACKGROUND branches below (idle, core-edge)
+      // — these render the ghost web, not anything highlighted, so they
+      // should never inherit the "stay solid" override just because a
+      // genre/scene set happens to also be active. isNodeFocusActive (click-
+      // focus only) keeps that override where it's correct — a focus
+      // cluster always zooms in tight — while a set's ghost edges follow the
+      // real cloud-zoom curve instead, same reasoning as drawNode's
+      // isNodeFocusActive split.
+      const isNodeFocusActive = selectedId !== null;
+      const ghostEdgeFade = isNodeFocusActive ? 1 : computeZoomFade(globalScale, 0);
 
       ctx.save();
 
@@ -2289,7 +2439,7 @@ export default function ForceGraphCanvas({
         ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${(0.7 * edgeFade).toFixed(3)})`);
         ctx.lineWidth = 1.6;
         ctx.stroke();
-      } else if (isCoreEdge && edgeFade < 1) {
+      } else if (isCoreEdge && ghostEdgeFade < 1) {
         // `edgeFade < 1` makes cloud-zoom-only a STRUCTURAL gate, not just a
         // formula that happens to converge with idle at edgeFade===1 (the
         // previous fix only corrected the formula, which was fragile — any
@@ -2314,14 +2464,14 @@ export default function ForceGraphCanvas({
         // fully opaque at detail zoom instead of receding to the same calm
         // idle look every other edge gets by FADE_ZOOM_IN, contradicting
         // the "looks identical to any other idle edge" comment just above.
-        const coreEdgeAlpha = CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM + (EDGE_IDLE_ALPHA - CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM) * edgeFade;
+        const coreEdgeAlpha = CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM + (EDGE_IDLE_ALPHA - CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM) * ghostEdgeFade;
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
         ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${coreEdgeAlpha.toFixed(3)})`);
         ctx.lineWidth = EDGE_IDLE_WIDTH;
         ctx.shadowColor = edgeColor.replace(/[\d.]+\)$/, '1)');
-        ctx.shadowBlur = CORE_EDGE_THREAD_GLOW_BLUR * (1 - edgeFade);
+        ctx.shadowBlur = CORE_EDGE_THREAD_GLOW_BLUR * (1 - ghostEdgeFade);
         ctx.stroke();
         ctx.shadowBlur = 0;
       } else {
@@ -2336,7 +2486,7 @@ export default function ForceGraphCanvas({
         // vanished entirely at cloud zoom, leaving only the core's few
         // "arms" and making everything else look like unconnected scattered
         // dots. Still fully recedes to the plain idle look by FADE_ZOOM_IN.
-        const idleEdgeAlpha = IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM + (EDGE_IDLE_ALPHA - IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM) * edgeFade;
+        const idleEdgeAlpha = IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM + (EDGE_IDLE_ALPHA - IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM) * ghostEdgeFade;
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
@@ -2583,7 +2733,12 @@ export default function ForceGraphCanvas({
       const baseR  = 3.5 + Math.sqrt(score) * 2.2;
       const isFocused           = n.id === selectedId;
       const isNeighbor          = selectedId !== null ? neighborSet.has(n.id) : false;
-      const isHovered           = n.id === hoveredId && selectedId === null;
+      // Same hover-gate as drawNode's isSetModeActive — a hovered node
+      // outside an active genre/scene set must not get the enlarged
+      // isHovered hit-area treatment, mirroring what click-focus already
+      // does via its own selectedId !== null check.
+      const isSetModeActive     = highlightSetMemberSet.size > 0;
+      const isHovered           = n.id === hoveredId && selectedId === null && !isSetModeActive;
       const isInPath            = pathSet.has(n.id);
       const isSetMember         = highlightSetMemberSet.has(n.id);
       const isInFocusCluster    = (selectedId !== null && (isFocused || isNeighbor)) || isSetMember;
@@ -2599,9 +2754,9 @@ export default function ForceGraphCanvas({
       const maxPhotoR  = isInFocusCluster ? 48 : PHOTO_MAX_R;
       let er = wantsPhoto ? Math.min(Math.max(r, minPhotoR), maxPhotoR) : r;
       // Zoom-size dampening — must mirror drawNode's exactly (same formula,
-      // same ordering before the floor below) or the clickable area drifts
-      // out of sync with the shrunk visual circle at high zoom.
-      er *= computeZoomSizeMult(globalScale);
+      // same reference selection, same ordering before the floor below) or
+      // the clickable area drifts out of sync with the shrunk visual circle.
+      er *= computeZoomSizeMult(globalScale, isSetModeActive ? SET_ZOOM_SIZE_REFERENCE : ZOOM_SIZE_REFERENCE);
       // Mirrors drawNode's click-focus readability floor exactly, so the
       // clickable area always matches the enlarged visual circle — no dead
       // zone around a node that reads bigger on screen than it hit-tests.
@@ -2626,9 +2781,18 @@ export default function ForceGraphCanvas({
   const handleNodeClick = useCallback(
     (node: object) => {
       const n = node as GraphNode;
-      onNodeClick(n.id);
+      // Clicking a member of the active genre/scene set should re-center
+      // the set on that member, not exit to a full single-artist focus
+      // (which would pull in every real connection, most of them outside
+      // the set). Clicking anything else — a non-member, or any node when
+      // no set is active — keeps the existing onNodeClick behavior.
+      if (highlightSetMemberSet.has(n.id) && onSetMemberClick) {
+        onSetMemberClick(n.id);
+      } else {
+        onNodeClick(n.id);
+      }
     },
-    [onNodeClick],
+    [onNodeClick, onSetMemberClick, highlightSetMemberSet],
   );
 
   return (
@@ -2706,10 +2870,15 @@ export default function ForceGraphCanvas({
             const tgtId = typeof l.target === 'object' ? (l.target as GraphNode).id : l.target as string;
             // Arrows only on focused/hovered/set-highlighted edges — direction
             // matters there. Plain resting edges (the general web, including
-            // path-find mode) get no arrowhead at all: just a line.
+            // path-find mode) get no arrowhead at all: just a line. The
+            // hover clause is suppressed while a genre/scene set is active
+            // (same reasoning as drawLink's isHoverEdge) — otherwise
+            // hovering a node outside the set draws an arrowhead on one of
+            // its real, unrelated edges.
+            const isSetModeActive = highlightSetMemberSet.size > 0;
             const isHighlightedEdge =
               (selectedId !== null && (srcId === selectedId || tgtId === selectedId)) ||
-              (hoveredId !== null && selectedId === null && (srcId === hoveredId || tgtId === hoveredId)) ||
+              (hoveredId !== null && selectedId === null && !isSetModeActive && (srcId === hoveredId || tgtId === hoveredId)) ||
               (highlightSetMemberSet.size > 0 && (highlightSetMemberSet.has(srcId) && highlightSetMemberSet.has(tgtId)));
             return isHighlightedEdge ? 9 : 0;
           }}
@@ -2717,10 +2886,13 @@ export default function ForceGraphCanvas({
             const l = link as GraphLink;
             const srcId = typeof l.source === 'object' ? (l.source as GraphNode).id : l.source as string;
             const tgtId = typeof l.target === 'object' ? (l.target as GraphNode).id : l.target as string;
-            // Focus/hover/set edges: midpoint keeps the arrow in open space, away from node images
+            // Focus/hover/set edges: midpoint keeps the arrow in open space,
+            // away from node images. Same hover-suppression-during-set-mode
+            // reasoning as linkDirectionalArrowLength above.
+            const isSetModeActive = highlightSetMemberSet.size > 0;
             const isHighlightedEdge =
               (selectedId !== null && (srcId === selectedId || tgtId === selectedId)) ||
-              (hoveredId !== null && selectedId === null && (srcId === hoveredId || tgtId === hoveredId)) ||
+              (hoveredId !== null && selectedId === null && !isSetModeActive && (srcId === hoveredId || tgtId === hoveredId)) ||
               (highlightSetMemberSet.size > 0 && (highlightSetMemberSet.has(srcId) && highlightSetMemberSet.has(tgtId)));
             return isHighlightedEdge ? 0.5 : 0.85;
           }}
