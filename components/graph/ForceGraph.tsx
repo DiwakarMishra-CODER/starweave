@@ -34,24 +34,39 @@ function rectOverlapsCircle(
   return dx * dx + dy * dy < cr * cr;
 }
 
-// The single set of ids to spread + frame together right now, and a stable
-// primitive key identifying that selection (for effect deps / pending-retry
-// comparisons — arrays are a fresh reference every render, strings compare
-// by value). Single-node focus (id + its direct neighbors) takes priority;
-// otherwise a highlighted genre/scene set. The two are mutually exclusive by
-// construction in GraphView (selectedId and highlightSetIds are never both set).
+// The single set of ids to frame together right now (and, for a node focus
+// only — see `spread` below — spread apart), plus a stable primitive key
+// identifying that selection (for effect deps / pending-retry comparisons —
+// arrays are a fresh reference every render, strings compare by value).
+// Single-node focus (id + its direct neighbors) takes priority; otherwise a
+// highlighted genre/scene set. The two are mutually exclusive by construction
+// in GraphView (selectedId and highlightSetIds are never both set).
+//
+// `spread` distinguishes the two cluster kinds for applySpreadForCluster /
+// animateClusterIntoView: true only for a node focus. A focused node's direct
+// neighbors are pulled toward it by their shared edge (forceLink distance 75)
+// and often sit close enough to overlap, so spreading them apart from their
+// shared centroid makes the cluster legible. A genre/scene set has no such
+// local-overlap problem — its members already sit wherever the realm-
+// separation forces settled them, typically each in their own realm's home
+// cluster on the opposite side of the layout from each other — so applying
+// the same outward spread only balloons the bounding box (by SPREAD_FACTOR
+// on top of distances that can already span most of the graph), forcing the
+// camera to zoom out far past what the set's own natural positions need and
+// leaving cross-realm members looking flung to the edges of an over-wide
+// frame instead of gathered into a legible cluster.
 function getActiveCluster(
   selectedId: string | null,
   highlightSetIds: string[] | null,
   edges: Edge[],
-): { ids: string[]; key: string } {
+): { ids: string[]; key: string; spread: boolean } {
   if (selectedId) {
-    return { ids: [selectedId, ...getNeighbors(selectedId, edges)], key: `artist:${selectedId}` };
+    return { ids: [selectedId, ...getNeighbors(selectedId, edges)], key: `artist:${selectedId}`, spread: true };
   }
   if (highlightSetIds && highlightSetIds.length > 0) {
-    return { ids: highlightSetIds, key: `set:${highlightSetIds.join(',')}` };
+    return { ids: highlightSetIds, key: `set:${highlightSetIds.join(',')}`, spread: false };
   }
-  return { ids: [], key: '' };
+  return { ids: [], key: '', spread: false };
 }
 
 // ── Lazy image cache ─────────────────────────────────────────────────────────
@@ -292,8 +307,13 @@ const PRESETTLE_TICKS = 300;
 // the realms spill off-screen with no way to compensate. First-pass values
 // (420/260) were too wide; these are a more conservative starting point at
 // the same ~1.6:1 aspect ratio.
-const REALM_RADIUS_X = 230; // ellipse semi-axis, horizontal — wider than tall to fill a landscape viewport
-const REALM_RADIUS_Y = 145; // ellipse semi-axis, vertical
+// Raised from 230/145 — with six realms at even 60° spacing (see
+// REALM_ANGLE_DEG below), the tightest neighbor chord was still visually
+// tight even after evening the angles out. This bump needs SCROLL_MIN_ZOOM
+// re-checked empirically against the wider ellipse — do not assume the
+// existing 1.6 floor still fits without looking.
+const REALM_RADIUS_X = 260; // ellipse semi-axis, horizontal — wider than tall to fill a landscape viewport
+const REALM_RADIUS_Y = 165; // ellipse semi-axis, vertical
 const REALM_ANGLE_OFFSET = 0; // degrees — rotates the whole arrangement; spin to a pleasing orientation by eye
 const CORE_PULL_STRENGTH = 1.2;       // core-only horizontal pull toward center — core must be the most strongly-positioned thing in the graph so it wins against its own heavy edges into region-one, rather than getting dragged into that mass
 const CORE_PULL_STRENGTH_Y = 1.2;     // core-only vertical pull toward center — same strength as CORE_PULL_STRENGTH (core's target is the origin on both axes, so this being separate is harmless, not load-bearing)
@@ -316,13 +336,20 @@ const REALM_CHARGE = -22;             // charge (repulsion) for any realm-tagged
 // future addition without a config update) falls back to even auto-spacing
 // among just the unlisted realms in computeRealmHomePositions below —
 // preserves the original "never breaks on an unknown realm" behavior.
+// Evened to exact 60° spacing (was 0/45/112.5/180/247.5/315 — a 45° pinch
+// around electronic on one side). Same order/adjacency as before, just
+// uniformly spread: every neighbor pair is now equidistant, widening the
+// tightest chord (previously the 45° electronic<->folk / emo<->electronic
+// gaps) by about a third. Unlike a REALM_RADIUS bump, this has no coupling
+// to SCROLL_MIN_ZOOM — the ellipse's overall extent is unchanged, only the
+// angular distribution around it.
 const REALM_ANGLE_DEG: Record<string, number> = {
   electronic: 0,                    // right
+  'folk-confessional': 60,          // bottom-right
+  'american-underground': 120,      // bottom-left
   'region-one': 180,                // left
-  'folk-confessional': 45,          // bottom-right — moved from 90 (below) to open real space between electronic (0) and american-underground; 90 had folk/american-underground/region-one bunched only 45° apart each, reading as one crowded cloud instead of three
-  'emo-posthardcore': 315,          // upper-right — open slot between electronic (right) and above core
-  'post-rock-drone-noise': 247.5,   // upper-left, the geometric midpoint between region-one (180) and emo-posthardcore (315) — deliberately centered in that gap (not 225, which sat only 45° from region-one and read as "beside" it) since this realm bridges heavily to both (Sonic Youth/JAMC/Joy Division into region-one, Slint/Big Black into emo)
-  'american-underground': 112.5,    // bottom — the geometric midpoint between folk-confessional's new position (45) and region-one (180), now with real separation from both instead of sitting only 45° from region-one
+  'post-rock-drone-noise': 240,     // upper-left
+  'emo-posthardcore': 300,          // upper-right
 };
 
 // Scans the actual node set for distinct non-core realms present (not a
@@ -492,7 +519,11 @@ const TRANSITION_MS = 220;
 // Idle edge appearance — edges recede into a soft faint web by default so a
 // dense graph doesn't read as a scribble of crossing lines. Only the edges
 // touching a focused/hovered node rise above this baseline.
-const EDGE_IDLE_ALPHA = 0.12;
+// Lowered from 0.12 — tuned when the graph was roughly a third its current
+// size; the same alpha now means far more edges crossing the same detail-
+// zoom viewport, reading as a bright uniform crosshatch over the nodes
+// rather than individually legible relationships.
+const EDGE_IDLE_ALPHA = 0.06;
 const EDGE_IDLE_WIDTH = 0.6;
 
 // Core-touching edges stay faintly visible at cloud zoom instead of fading
@@ -509,7 +540,13 @@ const EDGE_IDLE_WIDTH = 0.6;
 // removed when drawNode moved to the anchors-only redesign (see ANCHOR_COUNT),
 // but edges still use it: it's what keeps these threads visible at cloud zoom.
 const CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM = 0.015; // opacity — barely-there wispy filament, not a bright line
-const CORE_EDGE_THREAD_GLOW_BLUR = 6; // intensity — soft glow, strongest at cloud zoom, 0 by detail zoom
+// Lowered from 6 (was tuned for three realm clouds; with six now, ~95
+// core-touching edges glow simultaneously and the blur bloom was
+// compounding into the reported "petals" look around the core). Deliberately
+// a bare, easy-to-retune constant rather than derived from anything else —
+// expect to want a value between 3 and 6 depending on how this reads with
+// six realms; nudge here only, no other formula depends on it.
+const CORE_EDGE_THREAD_GLOW_BLUR = 3; // intensity — soft glow, strongest at cloud zoom, 0 by detail zoom
 
 // Every other edge (within-realm, and cross-realm bridges that don't touch
 // core) still fades all the way to 0 above — reads as bare scattered dots
@@ -518,7 +555,11 @@ const CORE_EDGE_THREAD_GLOW_BLUR = 6; // intensity — soft glow, strongest at c
 // overall shape to read as "connected," dim enough to stay entirely behind
 // the core threads. No glow (unlike the core branch) — these are background
 // texture, not featured arms.
-const IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM = 0.045;
+// Lowered from 0.045 — with six realm clouds now reading as distinct color
+// zones (post 60°-spacing + glow-blur fixes), this idle web was still dense
+// enough to fill the visual gaps between clusters and read as one continuous
+// mass rather than separated clouds.
+const IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM = 0.02;
 // Fast, subtle fade for edges lighting up/down on focus or hover — separate
 // from TRANSITION_MS (node dimming) so edges pop quicker without touching
 // that existing timing.
@@ -1368,7 +1409,7 @@ export default function ForceGraphCanvas({
   }, []);
 
   // The single set of ids to spread + frame right now — see getActiveCluster.
-  const { ids: activeClusterIds, key: activeClusterKey } = useMemo(
+  const { ids: activeClusterIds, key: activeClusterKey, spread: activeClusterSpread } = useMemo(
     () => getActiveCluster(selectedId, highlightSetIds, graphData.edges),
     [selectedId, highlightSetIds, graphData.edges],
   );
@@ -1378,11 +1419,16 @@ export default function ForceGraphCanvas({
   // without mutating anything. null means the simulation hasn't positioned
   // the cluster's primary node (clusterIds[0]) yet; an empty map means
   // there's nothing to spread (0 or 1 node).
-  const computeSpreadTargetsForCluster = useCallback((clusterIds: string[]): Map<string, { x: number; y: number }> | null => {
+  const computeSpreadTargetsForCluster = useCallback((clusterIds: string[], shouldSpread: boolean): Map<string, { x: number; y: number }> | null => {
     if (clusterIds.length === 0) return new Map();
 
     const primary = stableData.nodes.find(n => n.id === clusterIds[0]);
     if (primary?.x === undefined || primary?.y === undefined) return null;
+
+    // A genre/scene set: "ready" (primary is positioned) but nothing to
+    // move — see getActiveCluster's `spread` comment for why. The camera-fit
+    // step downstream then reads each node's untouched, natural position.
+    if (!shouldSpread) return new Map();
 
     const idSet = new Set(clusterIds);
     const clusterNodes = stableData.nodes.filter(
@@ -1407,8 +1453,10 @@ export default function ForceGraphCanvas({
   // Returns true once handled (spread applied, deselected, or nothing to
   // spread); false when the simulation hasn't positioned the cluster yet —
   // the caller then leaves a pending marker so onEngineStop can retry.
-  const applySpreadForCluster = useCallback((clusterIds: string[]): boolean => {
-    // Always restore first — handles both deselect and cluster-to-cluster switches.
+  const applySpreadForCluster = useCallback((clusterIds: string[], shouldSpread: boolean): boolean => {
+    // Always restore first — handles deselect, cluster-to-cluster switches,
+    // and switching from a spread focus cluster to a non-spread genre/scene
+    // set (whose own branch below never touches these nodes' positions).
     if (savedPositionsRef.current) {
       for (const [savedId, pos] of savedPositionsRef.current) {
         const node = stableData.nodes.find(n => n.id === savedId);
@@ -1424,7 +1472,7 @@ export default function ForceGraphCanvas({
       savedPositionsRef.current = null;
     }
 
-    const targets = computeSpreadTargetsForCluster(clusterIds);
+    const targets = computeSpreadTargetsForCluster(clusterIds, shouldSpread);
     if (targets === null) return false;
     if (targets.size === 0) return true;
 
@@ -1458,10 +1506,10 @@ export default function ForceGraphCanvas({
     // Any new cluster/resize invalidates an in-flight compose-into-focus
     // animation from a previous cluster (see animateClusterIntoView).
     focusAnimTokenRef.current++;
-    const ready = applySpreadForCluster(activeClusterIds);
+    const ready = applySpreadForCluster(activeClusterIds, activeClusterSpread);
     pendingClusterKeyRef.current = ready ? null : activeClusterKey;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeClusterKey, dimensions, applySpreadForCluster]);
+  }, [activeClusterKey, activeClusterSpread, dimensions, applySpreadForCluster]);
 
   // ── Camera focus on node click / genre / scene selection ────────────────────
   // Frame the cluster (a single node + its direct neighbors, or a whole
@@ -1599,12 +1647,12 @@ export default function ForceGraphCanvas({
   // their spread targets while the camera pans/zooms to the same
   // destination, so it reads as one continuous "composing into focus"
   // motion rather than settle-then-snap.
-  const animateClusterIntoView = useCallback((clusterIds: string[]): boolean => {
+  const animateClusterIntoView = useCallback((clusterIds: string[], shouldSpread: boolean): boolean => {
     const fg = graphRef.current;
     if (!fg) return false;
     if (clusterIds.length === 0) return true; // nothing to animate
 
-    const computedTargets = computeSpreadTargetsForCluster(clusterIds);
+    const computedTargets = computeSpreadTargetsForCluster(clusterIds, shouldSpread);
     if (computedTargets === null) return false; // simulation still hasn't positioned the cluster
     const targets = computedTargets;
 
@@ -1712,9 +1760,9 @@ export default function ForceGraphCanvas({
     engineStoppedOnceRef.current = true;
     tryInitialFit();
     if (pendingClusterKeyRef.current && pendingClusterKeyRef.current === activeClusterKey) {
-      if (animateClusterIntoView(activeClusterIds)) pendingClusterKeyRef.current = null;
+      if (animateClusterIntoView(activeClusterIds, activeClusterSpread)) pendingClusterKeyRef.current = null;
     }
-  }, [activeClusterKey, activeClusterIds, animateClusterIntoView, tryInitialFit]);
+  }, [activeClusterKey, activeClusterIds, activeClusterSpread, animateClusterIntoView, tryInitialFit]);
 
   // ── Derived sets ────────────────────────────────────────────────────────────
   const pathSet = useMemo(() => new Set<string>(highlightPath ?? []), [highlightPath]);
@@ -2163,11 +2211,16 @@ export default function ForceGraphCanvas({
       // Hover brightened edge (only when no focus mode active)
       const isHoverEdge  = hoveredId !== null && selectedId === null &&
                            (srcId === hoveredId || tgtId === hoveredId);
-      // Set edges: any edge touching a genre/scene set member — keeps lineage
-      // (including connections out to non-member influences) legible rather
-      // than uniformly dimmed along with the unrelated rest of the graph.
+      // Set edges: BOTH endpoints must be genre/scene set members — an edge
+      // out to a non-member (a different realm, a different genre entirely)
+      // is real but not part of what the set is showing, and drawing it
+      // anyway is what made a genre filter look like noise rather than a
+      // lineage: filtering to shoegaze (18 members) used to draw every edge
+      // touching any of them, including ones shooting off to unrelated
+      // artists in other realms — around 250 edges for a set that only has
+      // a few dozen genuinely internal to it.
       const isSetEdge    = highlightSetMemberSet.size > 0 &&
-                           (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId));
+                           (highlightSetMemberSet.has(srcId) && highlightSetMemberSet.has(tgtId));
       // Core-touching edge — the "galaxy arms" radiating from the blazing
       // center to each realm cloud. Every real node already carries a realm
       // (backfilled in seed-data.ts), so this is a direct comparison, no
@@ -2657,7 +2710,7 @@ export default function ForceGraphCanvas({
             const isHighlightedEdge =
               (selectedId !== null && (srcId === selectedId || tgtId === selectedId)) ||
               (hoveredId !== null && selectedId === null && (srcId === hoveredId || tgtId === hoveredId)) ||
-              (highlightSetMemberSet.size > 0 && (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId)));
+              (highlightSetMemberSet.size > 0 && (highlightSetMemberSet.has(srcId) && highlightSetMemberSet.has(tgtId)));
             return isHighlightedEdge ? 9 : 0;
           }}
           linkDirectionalArrowRelPos={(link: object) => {
@@ -2668,7 +2721,7 @@ export default function ForceGraphCanvas({
             const isHighlightedEdge =
               (selectedId !== null && (srcId === selectedId || tgtId === selectedId)) ||
               (hoveredId !== null && selectedId === null && (srcId === hoveredId || tgtId === hoveredId)) ||
-              (highlightSetMemberSet.size > 0 && (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId)));
+              (highlightSetMemberSet.size > 0 && (highlightSetMemberSet.has(srcId) && highlightSetMemberSet.has(tgtId)));
             return isHighlightedEdge ? 0.5 : 0.85;
           }}
           linkDirectionalArrowColor={(link: object) => {
@@ -2683,9 +2736,11 @@ export default function ForceGraphCanvas({
               ? (l.source as GraphNode)
               : ({ layer: 'outside' as Layer } as GraphNode);
             const baseColor = resolveEdgeTint(srcNodeForTint);
-            // Set edges: no single "hero" layer color, so brighten the normal tint instead.
+            // Set edges: no single "hero" layer color, so brighten the normal
+            // tint instead. Both endpoints must be set members — see drawLink's
+            // isSetEdge comment for why this isn't "either endpoint."
             const isSetEdge = highlightSetMemberSet.size > 0 &&
-              (highlightSetMemberSet.has(srcId) || highlightSetMemberSet.has(tgtId));
+              (highlightSetMemberSet.has(srcId) && highlightSetMemberSet.has(tgtId));
             // Same zoom fade as drawLink's edge lines (this accessor has no
             // globalScale argument, so it reads the live value tracked in
             // handleRenderFramePre) — without this, arrowheads stayed fully
