@@ -81,6 +81,8 @@ export interface Genre {
   id: string;            // slug, e.g. 'shoegaze'
   name: string;          // display, e.g. 'Shoegaze'
   parent: string | null; // parent genre slug — builds the hierarchy
+  emerged?: number;       // year the genre emerged — undefined for pure containers (electronic, folk, indie, underground)
+  emergedBasis?: string;  // what that year refers to (an album, a term being coined, a scene forming) — emergence dates are contested, so a bare year is unsupportable; same discipline as the edge citation field
 }
 
 // A scene is a time + place, not a sound — distinct from Genre.
