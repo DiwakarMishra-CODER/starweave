@@ -2904,6 +2904,143 @@ h3 { font-size: 1.1rem; }
   background: rgba(155, 150, 184, 0.35);
 }
 
+/* ── Genre index / timeline poster map ───────────────────────── */
+.genres-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow-y: auto;
+  padding-top: var(--nav-height);
+  background: var(--color-bg);
+}
+
+.genres-page {
+  position: relative;
+  z-index: 3;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 4rem;
+}
+
+.genres-page__header {
+  margin-bottom: 1rem;
+}
+
+.genres-page__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.genres-page__deck {
+  max-width: 760px;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+
+/* The diagram wants to own most of the viewport on first load ("no scroll" —
+   see CLAUDE.md's genre-timeline entry) — the SVG itself scales its own
+   height with width via viewBox, so this wrapper doesn't force a fixed px
+   height; it just keeps the diagram from stretching past a sane max-width. */
+.genre-timeline {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto 1.5rem;
+}
+
+.genre-timeline__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Deliberately NOT inside the scaled SVG viewBox — this stays at real CSS
+   pixel sizes no matter how far the diagram itself has scaled down at a
+   narrower viewport, so hovering a genre is always fully readable even
+   when the diagram's own inline labels have shrunk below comfort. */
+.genre-timeline__tooltip {
+  position: fixed;
+  z-index: 200;
+  pointer-events: none;
+  max-width: 260px;
+  padding: 0.6rem 0.75rem;
+  background: rgba(20, 16, 34, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.genre-timeline__tooltip-name {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.genre-timeline__tooltip-meta {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  line-height: 1.4;
+  margin-bottom: 0.2rem;
+}
+
+.genre-timeline__tooltip-count {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.genres-az {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1.5rem;
+}
+
+.genres-az__heading {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.genres-az__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.25rem 1rem;
+}
+
+.genres-az__item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.35rem 0.4rem;
+  border-radius: 6px;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.8125rem;
+}
+
+.genres-az__item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.genres-az__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.genres-az__count {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-muted);
+  flex-shrink: 0;
+}
+
 /* ── Mobile adjustments ───────────────────────────────────────── */
 @media (max-width: 600px) {
   .artist-panel {

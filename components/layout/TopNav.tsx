@@ -8,7 +8,7 @@ import ChromaTitle from '@/components/ui/ChromaTitle';
 const NAV_LINKS = [
   { href: '/', label: 'Graph' },
   { href: '/browse', label: 'Browse' },
-  { href: '/genre/shoegaze', label: 'Genres' },
+  { href: '/genres', label: 'Genres' },
   { href: '/scene/american-underground', label: 'Scenes' },
   { href: '/about', label: 'About' },
 ];
