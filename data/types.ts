@@ -155,7 +155,32 @@ export interface GraphData {
   genres: Genre[];
   scenes: Scene[];
   edges: Edge[];
+  rejectedEdges: RejectedEdge[];
 }
+
+// Explicit-effort states only. 'cited' is NOT a member here — it's derived
+// from `citation` being non-null (see resolveCitationStatus below), so it
+// can never drift out of sync with the citation field itself.
+// 'unsourceable' = research explicitly looked and failed to find a quotable
+//   source for a real, accepted, undisputed influence — a genuine property
+//   of the data (the most self-evident influences are the least citable),
+//   not a research failure. Only ever set when an audit document recorded
+//   that failure explicitly.
+// 'unchecked'/undefined = default. Nobody has looked yet. Never assign this
+//   explicitly — its whole meaning is "no one wrote anything here."
+export type CitationStatus = 'unsourceable' | 'unchecked';
+
+// Who is speaking in `citation`, not how confident we are (that's
+// `confidence`). Kept separate from the citation string itself so the tier
+// is metadata a UI can render as a marker, not a word the reader has to
+// parse out of prose. Populated only on cited edges — meaningless without
+// a citation to characterize.
+// 'first-person' = the artist's own quoted or directly-reported statement.
+// 'reported'     = a publication states/lists the fact, no direct quote
+//                  (e.g. a Wikipedia influence-section listing).
+// 'critic'       = a critic's comparison or analysis, not the artist's own
+//                  account.
+export type SourceTier = 'first-person' | 'reported' | 'critic';
 
 export interface Edge {
   // CONVENTION: source = the INFLUENCED artist (the disciple),
@@ -168,4 +193,24 @@ export interface Edge {
   status: EdgeStatus;
   confidence: number;        // 0..1
   citation?: string | null;  // source URL/text for verified edges (fill in)
+  citationStatus?: CitationStatus; // see CitationStatus above; omit unless 'unsourceable'
+  sourceTier?: SourceTier;   // see SourceTier above; only meaningful when citation is set
+}
+
+// Single source of truth for the three-way cited/unsourceable/unchecked
+// read. Any UI showing citation state should call this rather than reading
+// `citation`/`citationStatus` directly, so the two fields can't disagree.
+export function resolveCitationStatus(edge: Pick<Edge, 'citation' | 'citationStatus'>): 'cited' | CitationStatus {
+  if (edge.citation) return 'cited';
+  return edge.citationStatus ?? 'unchecked';
+}
+
+// A documented case of an artist explicitly denying a commonly-assumed
+// influence — recorded so a future research pass doesn't re-propose and
+// "confirm" the same false edge off the same critic comparisons.
+export interface RejectedEdge {
+  source: string;    // the artist who denies it
+  target: string;    // the claimed influence
+  citation: string;  // source + what was actually said
+  strength: 'clean' | 'contested';
 }

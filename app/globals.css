@@ -1011,6 +1011,120 @@ h3 { font-size: 1.1rem; }
   color: var(--color-text);
 }
 
+/* ── Influences — citation affordance ─────────────────────────────
+   New classes rather than restructuring .panel-edge-item, so the
+   "Influenced by" list (still plain .panel-edge-item rows) stays
+   byte-for-byte unchanged. .panel-influence-item is a column so an
+   optional footnote line can sit under the dot/name row without
+   disturbing that row's own centered layout. */
+.panel-influence-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-influence-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.38rem 0.45rem;
+  border-radius: var(--radius);
+  transition: background var(--transition);
+}
+
+.panel-influence-row:hover {
+  background: rgba(237, 234, 247, 0.05);
+}
+
+.panel-influence-row:hover .panel-edge-link {
+  color: var(--color-text);
+}
+
+/* The "Source" toggle — quiet until the row is hovered/focused, so a
+   scannable list of influences doesn't turn into a row of loud buttons,
+   but present on every cited row so it still reads as "click me" once
+   noticed. Text label, not a bare glyph — matches the panel's existing
+   mono/uppercase tag voice (.panel-tag, .panel-section-title) rather than
+   introducing an icon-only affordance. */
+.panel-influence-cite {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.22rem;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.16rem 0.45rem;
+  border-radius: 20px;
+  border: 1px solid color-mix(in srgb, var(--layer-color) 32%, transparent);
+  background: color-mix(in srgb, var(--layer-color) 7%, transparent);
+  color: color-mix(in srgb, var(--layer-color) 80%, var(--color-muted) 20%);
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity var(--transition), background var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.panel-influence-row:hover .panel-influence-cite,
+.panel-influence-cite:focus-visible {
+  opacity: 0.9;
+}
+
+.panel-influence-cite--open {
+  opacity: 1;
+  background: color-mix(in srgb, var(--layer-color) 18%, transparent);
+  border-color: color-mix(in srgb, var(--layer-color) 55%, transparent);
+  color: var(--layer-color);
+}
+
+.panel-influence-cite__chevron {
+  display: inline-block;
+  font-size: 0.62rem;
+  line-height: 1;
+  transition: transform var(--transition);
+}
+
+.panel-influence-cite--open .panel-influence-cite__chevron {
+  transform: rotate(180deg);
+}
+
+/* The footnote/marginal-note line itself — a ruled left border rather than
+   a boxed card, so it reads as evidence attached to the row above it, not
+   a separate UI component. Indent (0.45rem row padding + 6px dot +
+   0.5rem gap ≈ 1.3rem) lines the rule up under the artist name, not the dot. */
+.panel-influence-note {
+  margin: 0.1rem 0 0.3rem 1.3rem;
+  padding-left: 0.6rem;
+  border-left: 2px solid color-mix(in srgb, var(--layer-color) 35%, transparent);
+  line-height: 1.55;
+}
+
+/* Unsourceable reads as a finding, not an apology: always visible (no
+   click needed — there's no quote to hide behind one), set in the same
+   confident mono/label voice as the Source toggle rather than an italic
+   hedge, and tinted with the artist's own accent color like everything
+   else in the panel instead of a desaturated "warning grey". */
+.panel-influence-note--unsourceable {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.01em;
+  color: color-mix(in srgb, var(--layer-color) 78%, var(--color-text) 22%);
+  opacity: 0.9;
+}
+
+/* The citation text itself — the panel's own body face (not mono, which
+   read as debug/log output rather than evidence), italic and a size down
+   from .panel-bio, so a two-sentence quote reads as a footnote attached
+   to the row above it rather than competing with the bio/album copy. */
+.panel-influence-note--citation {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.76rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  opacity: 0.78;
+}
+
 /* ── Panel footer link ────────────────────────────────────────────
    A real button, tinted to the artist's --layer-color — distinct from the
    artist page's italic-display "✦ Explore the constellation" pill (that one

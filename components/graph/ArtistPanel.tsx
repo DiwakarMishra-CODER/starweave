@@ -1,7 +1,9 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import type { Artist, Edge, GraphData } from '@/data/types';
+import { resolveCitationStatus } from '@/data/types';
 import { resolveNodeColor, resolveNodeLabel } from '@/lib/colors';
 import SpotifyEmbed from '@/components/artist/SpotifyEmbed';
 import DeezerPreview from '@/components/artist/DeezerPreview';
@@ -24,10 +26,81 @@ function truncateBio(bio: string, maxSentences: number): { text: string; truncat
   return { text: sentences.slice(0, maxSentences).join('').trim(), truncated: true };
 }
 
+// One row in either the Influences or Influenced-by list. `other` is
+// whichever end of the edge isn't the panel's current artist (the
+// influence, for Influences; the disciple, for Influenced-by) — the
+// citation itself belongs to the edge either way, so the same row/toggle/
+// note logic applies regardless of which direction the list is reading.
+function InfluenceEdgeRow({
+  edge,
+  other,
+  isExpanded,
+  onToggleCitation,
+  onSelectArtist,
+}: {
+  edge: Edge;
+  other: Artist;
+  isExpanded: boolean;
+  onToggleCitation: () => void;
+  onSelectArtist: (id: string) => void;
+}) {
+  const status = resolveCitationStatus(edge);
+  return (
+    <li className="panel-influence-item">
+      <div className="panel-influence-row">
+        <span
+          className="panel-edge-dot"
+          style={{ background: resolveNodeColor(other) }}
+          aria-hidden
+        />
+        <button className="panel-edge-link" onClick={() => onSelectArtist(other.id)}>
+          {other.name}
+        </button>
+        {status === 'cited' && (
+          <button
+            className={`panel-influence-cite${isExpanded ? ' panel-influence-cite--open' : ''}`}
+            onClick={onToggleCitation}
+            aria-expanded={isExpanded}
+            aria-label={`${isExpanded ? 'Hide' : 'Show'} source for ${other.name}`}
+          >
+            Source
+            <span className="panel-influence-cite__chevron" aria-hidden>⌄</span>
+          </button>
+        )}
+      </div>
+      {status === 'unsourceable' && (
+        <p className="panel-influence-note panel-influence-note--unsourceable">
+          Widely accepted — no first-person source found.
+        </p>
+      )}
+      {status === 'cited' && isExpanded && edge.citation && (
+        <p className="panel-influence-note panel-influence-note--citation">
+          {edge.citation}
+        </p>
+      )}
+    </li>
+  );
+}
+
 export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist }: Props) {
   const open = artist !== null;
   const artistMap = Object.fromEntries(graphData.artists.map(a => [a.id, a]));
   const genreMap = Object.fromEntries(graphData.genres.map(g => [g.id, g.name]));
+
+  // Which cited-influence rows have their source quote expanded. Keyed by
+  // edge.target (unique within one artist's influences list). Reset on
+  // artist change so switching artists never leaves a stale row expanded.
+  const [expandedCitations, setExpandedCitations] = useState<Set<string>>(new Set());
+  useEffect(() => {
+    setExpandedCitations(new Set());
+  }, [artist?.id]);
+  const toggleCitation = (key: string) =>
+    setExpandedCitations(prev => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
 
   const influences: Edge[] = artist
     ? graphData.edges.filter(e => e.source === artist.id && e.type === 'influence')
@@ -168,7 +241,13 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
               </>
             )}
 
-            {/* Influences */}
+            {/* Influences — carries citation state (see resolveCitationStatus
+                in data/types.ts). 'unchecked' renders identically to before
+                (dot + name, nothing else) — silence, not a "not yet
+                checked" flag. 'cited' gets a Source toggle that expands the
+                quote inline. 'unsourceable' gets a persistent note, since
+                there's no quote text to hide behind a click — it's a
+                finding, not a gap. */}
             {influences.length > 0 && (
               <>
                 <div className="panel-divider" />
@@ -178,20 +257,16 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                     {influences.map(edge => {
                       const target = artistMap[edge.target];
                       if (!target) return null;
+                      const key = `${edge.source}->${edge.target}`;
                       return (
-                        <li key={edge.target} className="panel-edge-item">
-                          <span
-                            className="panel-edge-dot"
-                            style={{ background: resolveNodeColor(target) }}
-                            aria-hidden
-                          />
-                          <button
-                            className="panel-edge-link"
-                            onClick={() => onSelectArtist(target.id)}
-                          >
-                            {target.name}
-                          </button>
-                        </li>
+                        <InfluenceEdgeRow
+                          key={key}
+                          edge={edge}
+                          other={target}
+                          isExpanded={expandedCitations.has(key)}
+                          onToggleCitation={() => toggleCitation(key)}
+                          onSelectArtist={onSelectArtist}
+                        />
                       );
                     })}
                   </ul>
@@ -211,20 +286,16 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                     {influencedBy.slice(0, 6).map(edge => {
                       const source = artistMap[edge.source];
                       if (!source) return null;
+                      const key = `${edge.source}->${edge.target}`;
                       return (
-                        <li key={edge.source} className="panel-edge-item">
-                          <span
-                            className="panel-edge-dot"
-                            style={{ background: resolveNodeColor(source) }}
-                            aria-hidden
-                          />
-                          <button
-                            className="panel-edge-link"
-                            onClick={() => onSelectArtist(source.id)}
-                          >
-                            {source.name}
-                          </button>
-                        </li>
+                        <InfluenceEdgeRow
+                          key={key}
+                          edge={edge}
+                          other={source}
+                          isExpanded={expandedCitations.has(key)}
+                          onToggleCitation={() => toggleCitation(key)}
+                          onSelectArtist={onSelectArtist}
+                        />
                       );
                     })}
                     {influencedBy.length > 6 && (
