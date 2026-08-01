@@ -39,6 +39,68 @@ function nameVariants(name: string): string[] {
   return [...new Set(variants)];
 }
 
+// ── Fetch with a hard timeout ─────────────────────────────────────────────────
+// Plain fetch() has no timeout: if a third-party API accepts the connection
+// and never responds (observed repeatedly against MusicBrainz/CAA after many
+// build:data runs in one session — presumably soft rate-limiting by going
+// silent rather than returning 429), the whole pipeline hangs forever with
+// no error. Every fetch() in this file goes through this instead.
+async function fetchWithTimeout(url: string, opts: RequestInit = {}, timeoutMs = 8000): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...opts, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+// ── iTunes rate-limit backoff ─────────────────────────────────────────────────
+// iTunes Search API throttles hard under sustained use — undocumented exact
+// threshold, empirically somewhere around 60-70 rapid requests in one run —
+// and does it by returning a non-2xx status (observed as 403) rather than a
+// clearly-labeled 429. A genuine "no match" from this endpoint is a 200 with
+// an empty results array, never a 404, so any !res.ok here is essentially
+// always the rate limit, not a real miss. Earlier code treated the two
+// identically, which silently misreported ~150 rate-limited artists as
+// "signature song not found on iTunes" in a single run once the graph grew
+// past ~70 nodes. Shared across both iTunes call sites in this file (preview
+// search and album-cover search) so a block detected by one phase also
+// pauses the other, since the loops run fully sequentially and both hit the
+// same endpoint/limit.
+let itunesBlockedUntil = 0;
+let itunesConsecutiveBlocks = 0;
+
+async function fetchItunesWithBackoff(url: string): Promise<Response | null> {
+  const wait = itunesBlockedUntil - Date.now();
+  if (wait > 0) await new Promise(r => setTimeout(r, wait));
+
+  let res: Response;
+  try {
+    res = await fetchWithTimeout(url);
+  } catch {
+    return null;
+  }
+  if (res.ok) {
+    itunesConsecutiveBlocks = 0;
+    return res;
+  }
+
+  itunesConsecutiveBlocks++;
+  const backoffMs = Math.min(60_000 * 2 ** (itunesConsecutiveBlocks - 1), 300_000);
+  itunesBlockedUntil = Date.now() + backoffMs;
+  console.log(`   ⏳ iTunes returned ${res.status} (likely rate-limited) — backing off ${Math.round(backoffMs / 1000)}s`);
+  await new Promise(r => setTimeout(r, backoffMs));
+  try {
+    const retryRes = await fetchWithTimeout(url);
+    if (retryRes.ok) {
+      itunesConsecutiveBlocks = 0;
+      return retryRes;
+    }
+  } catch { /* fall through to null */ }
+  return null;
+}
+
 // ── Deezer (public, no auth) — artist images ─────────────────────────────────
 // /search/artist gives picture_medium reliably. Track preview endpoints are
 // geo-restricted in many regions and return empty data[], so previews come
@@ -46,7 +108,7 @@ function nameVariants(name: string): string[] {
 
 async function fetchDeezerImage(name: string): Promise<string | null> {
   try {
-    const res = await fetch(
+    const res = await fetchWithTimeout(
       `https://api.deezer.com/search/artist?q=${encodeURIComponent(name)}&limit=3`,
     );
     if (!res.ok) return null;
@@ -75,7 +137,7 @@ async function fetchDeezerAlbumCover(artistName: string, albumTitle: string): Pr
   const tryDeezer = async (term: string) => {
     try {
       const url = `https://api.deezer.com/search/album?q=${encodeURIComponent(term)}&limit=5`;
-      const res = await fetch(url);
+      const res = await fetchWithTimeout(url);
       if (!res.ok) return null;
       const data = await res.json() as {
         data: Array<{ title: string; cover_xl?: string; cover_medium?: string }>;
@@ -128,7 +190,7 @@ async function fetchMusicBrainzCover(artistName: string, albumTitle: string): Pr
     const artistKey = artistName.normalize('NFD').replace(/[̀-ͯ]/g, '');
     const titleKey  = albumTitle.toLowerCase().split(':')[0].trim();
     const query = `artist:"${artistKey}" AND release:"${albumTitle}"`;
-    const searchRes = await fetch(
+    const searchRes = await fetchWithTimeout(
       `https://musicbrainz.org/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=5`,
       { headers: { 'User-Agent': 'Starweave/1.0 (build-script)' } },
     );
@@ -145,7 +207,7 @@ async function fetchMusicBrainzCover(artistName: string, albumTitle: string): Pr
     for (const release of releases) {
       await new Promise(r => setTimeout(r, 250));
       try {
-        const caaRes = await fetch(
+        const caaRes = await fetchWithTimeout(
           `https://coverartarchive.org/release/${release.id}`,
           { headers: { 'User-Agent': 'Starweave/1.0 (build-script)' } },
         );
@@ -175,8 +237,8 @@ async function fetchItunesAlbumCover(artistName: string, albumTitle: string): Pr
   const tryFetch = async (term: string) => {
     try {
       const url = `https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=music&entity=album&limit=5`;
-      const res = await fetch(url);
-      if (!res.ok) return null;
+      const res = await fetchItunesWithBackoff(url);
+      if (!res?.ok) return null;
       const data = await res.json() as {
         results: Array<{ artistName: string; collectionName: string; artworkUrl100?: string }>;
       };
@@ -286,8 +348,8 @@ async function fetchItunesPreview(artistName: string, songTitle: string): Promis
   const tryFetch = async (term: string) => {
     try {
       const url = `https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=music&entity=song&limit=15`;
-      const res = await fetch(url);
-      if (!res.ok) return null;
+      const res = await fetchItunesWithBackoff(url);
+      if (!res?.ok) return null;
       const data = await res.json() as { results: Track[] };
       // Prefer: right song + right artist + not live/demo
       const match =
@@ -416,6 +478,7 @@ async function main() {
     genres:  graphData.genres,
     scenes:  graphData.scenes,
     edges:   graphData.edges,
+    rejectedEdges: graphData.rejectedEdges,
   };
 
   const outPath = resolve(ROOT, 'public', 'graph.json');
