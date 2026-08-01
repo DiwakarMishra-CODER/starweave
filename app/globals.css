@@ -1634,12 +1634,25 @@ h3 { font-size: 1.1rem; }
 }
 
 /* ── Browse page ──────────────────────────────────────────────── */
+/* Full-viewport overlay — same pattern as .artist-overlay/.genre-overlay
+   (the persistent graph stays mounted underneath, in the (graph) route
+   group, so this must be fully opaque or the canvas would show through). */
+.browse-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow-y: auto;
+  padding-top: var(--nav-height);
+  background: var(--color-bg);
+}
+
 .browse-page {
   position: relative;
   z-index: 3;
   max-width: 1100px;
   margin: 0 auto;
-  padding: calc(var(--nav-height) + 2.5rem) 1.5rem 4rem;
+  /* nav-height is already accounted for by .browse-overlay's padding-top above */
+  padding: 2.5rem 1.5rem 4rem;
 }
 
 .browse-page__header {

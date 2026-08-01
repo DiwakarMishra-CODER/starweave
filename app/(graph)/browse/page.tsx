@@ -12,9 +12,9 @@ export default function BrowsePage() {
   const data = loadGraphData();
 
   return (
-    <>
+    <div className="browse-overlay">
       {/* Canvas and scrim are siblings of browse-page, not children.
-          This keeps them in the root stacking context at z:1/2,
+          This keeps them in browse-overlay's stacking context at z:1/2,
           so browse-page at z:3 correctly renders above them. */}
       <ArtistBackground layerColor="#8891F2" />
       <div className="artist-bg-scrim" aria-hidden />
@@ -29,6 +29,6 @@ export default function BrowsePage() {
 
         <BrowseClient artists={data.artists} genres={data.genres} />
       </div>
-    </>
+    </div>
   );
 }
