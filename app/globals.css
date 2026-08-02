@@ -1698,11 +1698,12 @@ h3 { font-size: 1.1rem; }
   border-color: var(--color-shoegaze);
 }
 
-/* ── Browse filter dropdowns (genre / scene / era) ───────────────
+/* ── Browse filter dropdowns (genre / scene / era / sort) ────────
    One shared control-group language: button trigger + floating panel,
-   matched in height/padding/font to .browse-sort__select right below so
-   all four (genre, scene, era, sort) read as one row, not three ad hoc
-   controls plus a leftover native select. */
+   the same .browse-dropdown/.browse-dropdown__button/__panel classes for
+   all four controls (genre/scene/era multi-select via FilterDropdown,
+   sort single-select via SortDropdown) — no leftover native select with
+   its own chrome sitting next to three custom ones. */
 .browse-dropdown-row {
   display: flex;
   flex-wrap: wrap;
@@ -1844,6 +1845,30 @@ h3 { font-size: 1.1rem; }
   color: var(--color-muted);
 }
 
+/* Sort's single-select rows — plain buttons instead of label+checkbox,
+   sharing .browse-dropdown__option's padding/radius/hover via that same
+   class, with resets for the button-specific bits (no native button
+   chrome, full width, left-aligned) plus a checkmark instead of a box. */
+.browse-dropdown__option--radio {
+  width: 100%;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+.browse-dropdown__option--selected {
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+.browse-dropdown__option-check {
+  flex-shrink: 0;
+  color: var(--color-shoegaze);
+  font-size: 0.75rem;
+}
+
 .browse-dropdown__empty {
   padding: 0.5rem;
   font-size: 0.78rem;
@@ -1935,54 +1960,6 @@ h3 { font-size: 1.1rem; }
   color: var(--color-muted);
 }
 
-.browse-sort {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.browse-sort__label {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-}
-
-.browse-sort__select {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  color: var(--color-text);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 0.5rem 1.8rem 0.5rem 0.75rem;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%239B96B8' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.65rem center;
-  transition: color var(--transition), background var(--transition), border-color var(--transition);
-}
-
-.browse-sort__select:hover {
-  color: var(--color-text);
-  background-color: rgba(255, 255, 255, 0.06);
-}
-
-.browse-sort__select:focus {
-  outline: none;
-  border-color: var(--color-shoegaze);
-}
-
-.browse-sort__select option {
-  background: #17123a;
-  color: var(--color-text);
-}
-
 /* ── Narrow widths: stack the control row so panels never overflow
      the viewport horizontally regardless of which button they hang off ── */
 @media (max-width: 640px) {
@@ -1991,8 +1968,7 @@ h3 { font-size: 1.1rem; }
     align-items: stretch;
   }
 
-  .browse-dropdown,
-  .browse-sort {
+  .browse-dropdown {
     width: 100%;
   }
 
@@ -2006,10 +1982,6 @@ h3 { font-size: 1.1rem; }
     right: 0;
     width: auto;
     max-width: none;
-  }
-
-  .browse-sort__select {
-    flex: 1;
   }
 }
 

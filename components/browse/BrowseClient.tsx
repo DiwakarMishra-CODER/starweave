@@ -4,10 +4,17 @@ import { useMemo, useState } from 'react';
 import type { Artist, Genre, Scene } from '@/data/types';
 import ArtistCard from '@/components/artist/ArtistCard';
 import FilterDropdown, { type FilterOption } from '@/components/browse/FilterDropdown';
+import SortDropdown, { type SortOption } from '@/components/browse/SortDropdown';
 
 type SortBy = 'influence' | 'alpha' | 'year';
-type DropdownKey = 'genre' | 'scene' | 'era';
+type DropdownKey = 'genre' | 'scene' | 'era' | 'sort';
 type FilterKind = 'genre' | 'scene' | 'era';
+
+const SORT_OPTIONS: SortOption[] = [
+  { id: 'influence', label: 'Influence' },
+  { id: 'alpha', label: 'A – Z' },
+  { id: 'year', label: 'Year / Era' },
+];
 
 interface Props {
   artists: Artist[];
@@ -198,21 +205,14 @@ export default function BrowseClient({ artists, genres, scenes }: Props) {
           onOpenChange={open => setOpenDropdown(open ? 'era' : null)}
         />
 
-        <div className="browse-sort">
-          <label htmlFor="browse-sort" className="browse-sort__label">
-            Sort
-          </label>
-          <select
-            id="browse-sort"
-            className="browse-sort__select"
-            value={sortBy}
-            onChange={e => setSortBy(e.target.value as SortBy)}
-          >
-            <option value="influence">Influence</option>
-            <option value="alpha">A – Z</option>
-            <option value="year">Year / Era</option>
-          </select>
-        </div>
+        <SortDropdown
+          label="Sort"
+          options={SORT_OPTIONS}
+          value={sortBy}
+          onChange={id => setSortBy(id as SortBy)}
+          isOpen={openDropdown === 'sort'}
+          onOpenChange={open => setOpenDropdown(open ? 'sort' : null)}
+        />
       </div>
 
       {activeFilters.length > 0 && (
