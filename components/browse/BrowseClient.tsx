@@ -1,24 +1,112 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import type { Artist, Genre, Layer } from '@/data/types';
-import { LAYER_COLORS, LAYER_LABELS, LAYERS } from '@/lib/colors';
+import { useMemo, useState } from 'react';
+import type { Artist, Genre, Scene } from '@/data/types';
 import ArtistCard from '@/components/artist/ArtistCard';
+import FilterDropdown, { type FilterOption } from '@/components/browse/FilterDropdown';
 
 type SortBy = 'influence' | 'alpha' | 'year';
+type DropdownKey = 'genre' | 'scene' | 'era';
+type FilterKind = 'genre' | 'scene' | 'era';
 
 interface Props {
   artists: Artist[];
   genres: Genre[];
+  scenes: Scene[];
 }
 
-export default function BrowseClient({ artists, genres }: Props) {
+interface EraBucket {
+  id: string;
+  label: string;
+  test: (year: number) => boolean;
+}
+
+// 169 of 293 artists carry no `activeFrom` in the live data, despite
+// CLAUDE.md's claim that every artist has one — 'unknown' surfaces that gap
+// as a real, selectable bucket instead of silently dropping those artists
+// out of every era filter.
+const ERA_BUCKETS: EraBucket[] = [
+  { id: '1960s', label: '1960s', test: y => y < 1970 },
+  { id: '1970s', label: '1970s', test: y => y >= 1970 && y < 1980 },
+  { id: '1980s', label: '1980s', test: y => y >= 1980 && y < 1990 },
+  { id: '1990s', label: '1990s', test: y => y >= 1990 && y < 2000 },
+  { id: '2000s', label: '2000s', test: y => y >= 2000 && y < 2010 },
+  { id: '2010s+', label: '2010s+', test: y => y >= 2010 },
+];
+
+function eraIdOf(year: number | undefined): string {
+  if (year == null) return 'unknown';
+  return ERA_BUCKETS.find(b => b.test(year))?.id ?? 'unknown';
+}
+
+const KIND_LABELS: Record<FilterKind, string> = {
+  genre: 'Genre',
+  scene: 'Scene',
+  era: 'Era',
+};
+
+function toggleId(prev: Set<string>, id: string): Set<string> {
+  const next = new Set(prev);
+  if (next.has(id)) next.delete(id);
+  else next.add(id);
+  return next;
+}
+
+export default function BrowseClient({ artists, genres, scenes }: Props) {
   const [query, setQuery] = useState('');
-  const [activeLayer, setActiveLayer] = useState<Layer | null>(null);
-  const [activeGenre, setActiveGenre] = useState<string | null>(null);
+  const [selectedGenres, setSelectedGenres] = useState<Set<string>>(new Set());
+  const [selectedScenes, setSelectedScenes] = useState<Set<string>>(new Set());
+  const [selectedEras, setSelectedEras] = useState<Set<string>>(new Set());
+  const [openDropdown, setOpenDropdown] = useState<DropdownKey | null>(null);
   const [sortBy, setSortBy] = useState<SortBy>('influence');
 
-  const genreNames = Object.fromEntries(genres.map(g => [g.id, g.name]));
+  const genreNames = useMemo(() => Object.fromEntries(genres.map(g => [g.id, g.name])), [genres]);
+  const sceneNames = useMemo(() => Object.fromEntries(scenes.map(s => [s.id, s.name])), [scenes]);
+
+  const genreOptions: FilterOption[] = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const artist of artists) {
+      for (const g of artist.genres) counts.set(g, (counts.get(g) ?? 0) + 1);
+    }
+    return [...genres]
+      .map(g => ({ id: g.id, label: g.name, count: counts.get(g.id) ?? 0 }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+  }, [artists, genres]);
+
+  const sceneOptions: FilterOption[] = useMemo(
+    () =>
+      [...scenes]
+        .map(s => ({ id: s.id, label: s.name, count: s.memberIds.length }))
+        .sort((a, b) => a.label.localeCompare(b.label)),
+    [scenes]
+  );
+
+  const sceneMembership = useMemo(() => {
+    const map = new Map<string, Set<string>>();
+    for (const scene of scenes) {
+      for (const artistId of scene.memberIds) {
+        if (!map.has(artistId)) map.set(artistId, new Set());
+        map.get(artistId)!.add(scene.id);
+      }
+    }
+    return map;
+  }, [scenes]);
+
+  const eraOptions: FilterOption[] = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const artist of artists) {
+      const id = eraIdOf(artist.activeFrom);
+      counts.set(id, (counts.get(id) ?? 0) + 1);
+    }
+    const unknownCount = counts.get('unknown') ?? 0;
+    return [
+      ...ERA_BUCKETS.map(b => ({ id: b.id, label: b.label, count: counts.get(b.id) ?? 0 })),
+      // Hidden while the gap is fully closed (0 artists) — reappears on its own
+      // if a future artist is ever added without activeFrom, rather than
+      // silently masking a real data gap behind a hardcoded removal.
+      ...(unknownCount > 0 ? [{ id: 'unknown', label: 'Unknown', count: unknownCount }] : []),
+    ];
+  }, [artists]);
 
   const filtered = useMemo(() => {
     let result = artists;
@@ -26,31 +114,49 @@ export default function BrowseClient({ artists, genres }: Props) {
       const q = query.trim().toLowerCase();
       result = result.filter(a => a.name.toLowerCase().includes(q));
     }
-    if (activeLayer) {
-      result = result.filter(a => a.layer === activeLayer);
+    if (selectedGenres.size > 0) {
+      result = result.filter(a => a.genres.some(g => selectedGenres.has(g)));
     }
-    if (activeGenre) {
-      result = result.filter(a => a.genres.includes(activeGenre));
+    if (selectedScenes.size > 0) {
+      result = result.filter(a => {
+        const memberOf = sceneMembership.get(a.id);
+        if (!memberOf) return false;
+        for (const s of selectedScenes) if (memberOf.has(s)) return true;
+        return false;
+      });
+    }
+    if (selectedEras.size > 0) {
+      result = result.filter(a => selectedEras.has(eraIdOf(a.activeFrom)));
     }
     return [...result].sort((a, b) => {
       if (sortBy === 'alpha') return a.name.localeCompare(b.name);
       if (sortBy === 'year') return (a.activeFrom ?? 9999) - (b.activeFrom ?? 9999);
       return (b.influenceScore ?? 0) - (a.influenceScore ?? 0);
     });
-  }, [artists, query, activeLayer, activeGenre, sortBy]);
+  }, [artists, query, selectedGenres, selectedScenes, selectedEras, sceneMembership, sortBy]);
 
-  const topGenres = useMemo(() => {
-    const counts = new Map<string, number>();
-    for (const artist of artists) {
-      for (const g of artist.genres) {
-        counts.set(g, (counts.get(g) ?? 0) + 1);
-      }
+  const activeFilters = useMemo(() => {
+    const list: { kind: FilterKind; id: string; label: string }[] = [];
+    for (const id of selectedGenres) list.push({ kind: 'genre', id, label: genreNames[id] ?? id });
+    for (const id of selectedScenes) list.push({ kind: 'scene', id, label: sceneNames[id] ?? id });
+    for (const id of selectedEras) {
+      const label = eraOptions.find(o => o.id === id)?.label ?? id;
+      list.push({ kind: 'era', id, label });
     }
-    return [...counts.entries()]
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 8)
-      .map(([id]) => id);
-  }, [artists]);
+    return list;
+  }, [selectedGenres, selectedScenes, selectedEras, genreNames, sceneNames, eraOptions]);
+
+  function removeFilter(kind: FilterKind, id: string) {
+    if (kind === 'genre') setSelectedGenres(prev => toggleId(prev, id));
+    else if (kind === 'scene') setSelectedScenes(prev => toggleId(prev, id));
+    else setSelectedEras(prev => toggleId(prev, id));
+  }
+
+  function clearAll() {
+    setSelectedGenres(new Set());
+    setSelectedScenes(new Set());
+    setSelectedEras(new Set());
+  }
 
   return (
     <>
@@ -65,48 +171,37 @@ export default function BrowseClient({ artists, genres }: Props) {
         />
       </div>
 
-      <div className="browse-filters" role="group" aria-label="Layer filters">
-        {LAYERS.map(layer => (
-          <button
-            key={layer}
-            className={`browse-filter-chip${activeLayer === layer ? ' browse-filter-chip--active' : ''}`}
-            style={
-              activeLayer === layer
-                ? { background: LAYER_COLORS[layer], borderColor: LAYER_COLORS[layer], color: '#0e0b1a' }
-                : {}
-            }
-            onClick={() => setActiveLayer(prev => (prev === layer ? null : layer))}
-            aria-pressed={activeLayer === layer}
-          >
-            {LAYER_LABELS[layer]}
-          </button>
-        ))}
-      </div>
+      <div className="browse-dropdown-row" role="group" aria-label="Browse filters">
+        <FilterDropdown
+          label="Genre"
+          options={genreOptions}
+          selected={selectedGenres}
+          onToggle={id => setSelectedGenres(prev => toggleId(prev, id))}
+          isOpen={openDropdown === 'genre'}
+          onOpenChange={open => setOpenDropdown(open ? 'genre' : null)}
+          searchable
+        />
+        <FilterDropdown
+          label="Scene"
+          options={sceneOptions}
+          selected={selectedScenes}
+          onToggle={id => setSelectedScenes(prev => toggleId(prev, id))}
+          isOpen={openDropdown === 'scene'}
+          onOpenChange={open => setOpenDropdown(open ? 'scene' : null)}
+        />
+        <FilterDropdown
+          label="Era"
+          options={eraOptions}
+          selected={selectedEras}
+          onToggle={id => setSelectedEras(prev => toggleId(prev, id))}
+          isOpen={openDropdown === 'era'}
+          onOpenChange={open => setOpenDropdown(open ? 'era' : null)}
+        />
 
-      <div className="browse-filters" role="group" aria-label="Genre filters">
-        {topGenres.map(gId => (
-          <button
-            key={gId}
-            className={`browse-filter-chip${activeGenre === gId ? ' browse-filter-chip--active' : ''}`}
-            style={
-              activeGenre === gId
-                ? { background: 'var(--color-shoegaze)', borderColor: 'var(--color-shoegaze)', color: '#0e0b1a' }
-                : {}
-            }
-            onClick={() => setActiveGenre(prev => (prev === gId ? null : gId))}
-            aria-pressed={activeGenre === gId}
-          >
-            {genreNames[gId] ?? gId}
-          </button>
-        ))}
-      </div>
-
-      <div className="browse-toolbar">
-        <p className="browse-count" aria-live="polite">
-          {filtered.length} {filtered.length === 1 ? 'artist' : 'artists'}
-        </p>
         <div className="browse-sort">
-          <label htmlFor="browse-sort" className="browse-sort__label">Sort</label>
+          <label htmlFor="browse-sort" className="browse-sort__label">
+            Sort
+          </label>
           <select
             id="browse-sort"
             className="browse-sort__select"
@@ -118,6 +213,36 @@ export default function BrowseClient({ artists, genres }: Props) {
             <option value="year">Year / Era</option>
           </select>
         </div>
+      </div>
+
+      {activeFilters.length > 0 && (
+        <div className="browse-active-filters">
+          {activeFilters.map(f => (
+            <span key={`${f.kind}-${f.id}`} className="browse-active-chip">
+              <span className="browse-active-chip__kind">{KIND_LABELS[f.kind]}</span>
+              {f.label}
+              <button
+                type="button"
+                className="browse-active-chip__remove"
+                onClick={() => removeFilter(f.kind, f.id)}
+                aria-label={`Remove ${KIND_LABELS[f.kind]} filter: ${f.label}`}
+              >
+                ×
+              </button>
+            </span>
+          ))}
+          {activeFilters.length >= 2 && (
+            <button type="button" className="browse-clear-all" onClick={clearAll}>
+              Clear all
+            </button>
+          )}
+        </div>
+      )}
+
+      <div className="browse-toolbar">
+        <p className="browse-count" aria-live="polite">
+          {filtered.length} {filtered.length === 1 ? 'artist' : 'artists'}
+        </p>
       </div>
 
       <div className="artist-grid">

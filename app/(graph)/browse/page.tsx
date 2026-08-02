@@ -27,7 +27,7 @@ export default function BrowsePage() {
           </p>
         </header>
 
-        <BrowseClient artists={data.artists} genres={data.genres} />
+        <BrowseClient artists={data.artists} genres={data.genres} scenes={data.scenes} />
       </div>
     </div>
   );
