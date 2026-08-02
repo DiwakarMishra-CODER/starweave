@@ -245,8 +245,10 @@ export function resolveEdgeTint(node: RealmLineageNode): string {
 }
 
 // Ordered list of every realm, in the app's canonical display order — the
-// same list the graph's realm filter (GraphControls) and legend (Legend)
-// both iterate, so they always show the same 7 rows in the same order.
+// same list the graph's realm filter (GraphControls) iterates, so its 7
+// rows always render in the same order. (A separate bottom-left legend
+// panel used to iterate this too, showing the same realms a second time —
+// removed as a duplicate once GraphControls' filter took over that job.)
 export const REALMS: Realm[] = [
   'core',
   'region-one',

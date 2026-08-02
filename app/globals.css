@@ -262,72 +262,97 @@ h3 { font-size: 1.1rem; }
   position: relative;
 }
 
-/* ── Onboarding — first-visit-only tagline + interaction hint ────────
-   Orientation, not decoration: body/mono type only (never the display
-   font), muted color, non-interactive so it never intercepts clicks meant
-   for the graph. Stacked in the empty band below the navbar — well clear
-   of the graph's own vertical center, so it never overlaps nodes/edges. */
+/* ── Onboarding — persistent orientation card, dismissed not timed out ──
+   Bottom-center: clear of the top navbar, the top-left "Jump to realm"
+   control, and the top-right search field, and off to the side of the
+   bottom-left zoom readout rather than stacked on it. Persistent until the
+   user dismisses it (× or clicking a node — see GraphView) — no auto-hide
+   timer, since anything on a timer is either gone before it's read or a
+   nag while it's up. A one-time fade-in on mount (CSS animation, no JS
+   timing state) is purely cosmetic; dismissal itself is instant. */
 .graph-onboarding {
   position: absolute;
-  top: 1rem;
+  bottom: 1.5rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 15;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.3rem;
-  width: max-content;
-  max-width: min(70vw, 560px);
-  text-align: center;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.6s ease;
+  max-width: min(90vw, 420px);
+  padding: 0.7rem 1.9rem 0.7rem 1rem;
+  background: rgba(14, 11, 26, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  animation: graph-onboarding-fade-in 0.4s ease;
 }
 
-.graph-onboarding--visible {
-  opacity: 1;
+@keyframes graph-onboarding-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-.graph-tagline {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.01em;
-  line-height: 1.5;
-  color: var(--color-muted);
-  opacity: 0.85;
+.graph-onboarding__line {
+  margin: 0;
 }
 
-.graph-tagline__cta {
+.graph-onboarding__line--primary {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  line-height: 1.4;
   color: var(--color-text);
-  opacity: 0.95;
+  margin-bottom: 0.3rem;
 }
 
-.graph-hint {
+.graph-onboarding__line--secondary {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.64rem;
   letter-spacing: 0.02em;
   line-height: 1.4;
   color: var(--color-muted);
-  opacity: 0.7;
+}
+
+.graph-onboarding__close {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.graph-onboarding__close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-text);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .graph-onboarding {
-    transition: none;
+    animation: none;
   }
 }
 
 @media (max-width: 640px) {
   .graph-onboarding {
     max-width: 88vw;
+    bottom: 1rem;
   }
 
-  .graph-tagline {
-    font-size: 0.65rem;
+  .graph-onboarding__line--primary {
+    font-size: 0.75rem;
   }
 
-  .graph-hint {
+  .graph-onboarding__line--secondary {
     font-size: 0.6rem;
   }
 }
@@ -362,102 +387,6 @@ h3 { font-size: 1.1rem; }
     animation: none;
   }
 }
-
-/* ── Legend ───────────────────────────────────────────────────── */
-.legend {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 1.25rem;
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Body panel — grows upward above the toggle button. */
-.legend__body {
-  background: rgba(14, 11, 26, 0.8);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 0.85rem 1rem;
-  min-width: 200px;
-  margin-bottom: 0.45rem;
-}
-
-/* Toggle button — always visible at the bottom of the legend container. */
-.legend__toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.45rem 0.75rem;
-  background: rgba(14, 11, 26, 0.8);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-  cursor: pointer;
-  transition: color var(--transition), background var(--transition);
-  align-self: flex-start;
-}
-.legend__toggle:hover { color: var(--color-text); }
-
-/* Kept for potential future use; no longer rendered in JSX. */
-.legend__title {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-  margin-bottom: 0.6rem;
-}
-
-/* Group headers (Core / Region one / Electronic) — mirrors
-   .graph-controls__group-label exactly for visual consistency between the
-   two panels. */
-.legend__group-label {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-  margin-bottom: 0.5rem;
-  margin-top: 0.6rem;
-}
-
-.legend__group-label:first-child {
-  margin-top: 0;
-}
-
-.legend__items {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  margin-bottom: 0.6rem;
-}
-
-.legend__items:last-child {
-  margin-bottom: 0;
-}
-
-.legend__item {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  font-size: 0.75rem;
-  color: var(--color-text);
-}
-
-.legend__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
 
 /* ── Graph controls ───────────────────────────────────────────── */
 .graph-controls {
@@ -495,29 +424,94 @@ h3 { font-size: 1.1rem; }
   backdrop-filter: blur(16px);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 0.85rem;
-  min-width: 200px;
+  padding: 0.75rem;
+  /* Fixed regardless of tab, so switching Realms/Genres/Scenes doesn't
+     visibly resize the panel out from under the cursor. */
+  width: 230px;
 }
 
-.graph-controls__group-label {
+/* ── Realms / Genres / Scenes switcher — replaces the old single
+   "Realms" group-label now that there are three lists to distinguish,
+   not one. */
+.graph-controls__tabs {
+  display: flex;
+  gap: 0.3rem;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.graph-controls__tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 0.3rem 0.4rem;
+  border-radius: var(--radius);
   font-family: var(--font-mono);
   font-size: 0.62rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-muted);
-  margin-bottom: 0.5rem;
-  margin-top: 0.6rem;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
 }
 
-.graph-controls__group-label:first-child {
-  margin-top: 0;
+.graph-controls__tab:hover {
+  color: var(--color-text);
+}
+
+.graph-controls__tab--active {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.graph-controls__search {
+  width: 100%;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  padding: 0.4rem 0.55rem;
+  margin-bottom: 0.5rem;
+}
+
+.graph-controls__search::placeholder {
+  color: var(--color-muted);
+}
+
+.graph-controls__search:focus {
+  outline: none;
+  border-color: var(--color-shoegaze);
+}
+
+.graph-controls__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+/* Genres only (55 items) — Realms (7) and Scenes (12) never need to scroll. */
+.graph-controls__options--scroll {
+  max-height: 260px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.graph-controls__empty {
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  text-align: center;
 }
 
 .graph-controls__check {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.3rem 0.1rem;
+  padding: 0.32rem 0.35rem;
   cursor: pointer;
   font-size: 0.78rem;
   color: var(--color-text);
@@ -529,11 +523,68 @@ h3 { font-size: 1.1rem; }
   background: var(--color-surface);
 }
 
+/* The one visible sign a row is the current selection — checked/aria state
+   alone isn't enough since the real <input> is visually hidden (.sr-only).
+   Without this there was no way to tell which realm/genre/scene (if any)
+   was active at a glance. */
+.graph-controls__check--active {
+  background: color-mix(in srgb, var(--color-shoegaze) 14%, transparent);
+  color: var(--color-text);
+}
+
+.graph-controls__check--active:hover {
+  background: color-mix(in srgb, var(--color-shoegaze) 20%, transparent);
+}
+
+.graph-controls__check-mark {
+  flex-shrink: 0;
+  color: var(--color-shoegaze);
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
 .graph-controls__swatch {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
+}
+
+.graph-controls__option-label {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.graph-controls__option-count {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-muted);
+}
+
+.graph-controls__clear {
+  display: block;
+  width: 100%;
+  margin-top: 0.6rem;
+  padding: 0.4rem 0.1rem 0;
+  border: none;
+  border-top: 1px solid var(--color-border);
+  background: none;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.graph-controls__clear:hover {
+  color: var(--color-text);
 }
 
 /* ── Artist Search ────────────────────────────────────────────── */
@@ -542,7 +593,10 @@ h3 { font-size: 1.1rem; }
   top: 1rem;
   right: 1.25rem;
   z-index: 20;
-  width: 220px;
+  /* Same width formula as .artist-search__list below, so the input and its
+     dropdown always share identical left/right edges instead of the
+     dropdown overhanging a narrower box above it. */
+  width: min(300px, calc(100vw - 2.5rem));
 }
 
 .artist-search__input-wrap {
@@ -552,11 +606,12 @@ h3 { font-size: 1.1rem; }
   backdrop-filter: blur(12px);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  transition: border-color var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
 .artist-search__input-wrap:focus-within {
-  border-color: rgba(237, 235, 245, 0.28);
+  border-color: var(--color-shoegaze);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-shoegaze) 22%, transparent);
 }
 
 .artist-search__icon {
@@ -576,6 +631,11 @@ h3 { font-size: 1.1rem; }
   font-family: var(--font-body);
   font-size: 0.78rem;
   padding: 0.45rem 0.4rem;
+}
+
+.artist-search__input:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 .artist-search__input::placeholder {
@@ -600,13 +660,19 @@ h3 { font-size: 1.1rem; }
 .artist-search__clear:hover { color: var(--color-text); }
 
 .artist-search__list {
-  margin-top: 0.35rem;
+  /* Positioned rather than a normal flow child, anchored to the input's own
+     right edge — same width formula as .artist-search itself above, so the
+     dropdown lines up flush with the input box instead of overhanging it. */
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  width: min(300px, calc(100vw - 2.5rem));
   background: rgba(14, 11, 26, 0.95);
   backdrop-filter: blur(16px);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 0.35rem;
-  max-height: 300px;
+  max-height: 340px;
   overflow-y: auto;
   list-style: none;
   scrollbar-width: thin;
@@ -614,16 +680,16 @@ h3 { font-size: 1.1rem; }
 }
 
 .artist-search__item {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   width: 100%;
   text-align: left;
   background: none;
   border: none;
-  padding: 0.42rem 0.65rem;
+  padding: 0.4rem 0.6rem;
   border-radius: var(--radius);
   color: var(--color-text);
-  font-family: var(--font-body);
-  font-size: 0.8rem;
   cursor: pointer;
   transition: background var(--transition);
 }
@@ -632,11 +698,70 @@ h3 { font-size: 1.1rem; }
   background: rgba(237, 235, 245, 0.08);
 }
 
+.artist-search__item-avatar {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid;
+}
+
+.artist-search__item-avatar-fallback {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0e0b1a;
+}
+
+.artist-search__item-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 0.1rem;
+}
+
+.artist-search__item-name {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist-search__item-genres {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.02em;
+  color: var(--color-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .artist-search__overflow {
   padding: 0.4rem 0.65rem;
   font-family: var(--font-mono);
   font-size: 0.6rem;
   letter-spacing: 0.06em;
+  color: var(--color-muted);
+}
+
+.artist-search__section-label {
+  padding: 0.3rem 0.65rem 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--color-muted);
 }
 
@@ -3711,10 +3836,7 @@ h3 { font-size: 1.1rem; }
   .artist-panel {
     width: 100%;
   }
-  .artist-search {
-    width: calc(100vw - 2.5rem);
-  }
-  .legend {
-    display: none;
-  }
+  /* .artist-search itself no longer needs an override here — its base rule
+     already uses min(300px, calc(100vw - 2.5rem)), the same formula
+     .artist-search__list uses, so both narrow identically in step. */
 }

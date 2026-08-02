@@ -1,16 +1,16 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import type { GraphData, Realm } from '@/data/types';
 import GraphControls from './GraphControls';
 import ArtistSearch from './ArtistSearch';
 import ArtistPanel from './ArtistPanel';
-import Legend from '@/components/ui/Legend';
-import { REALMS } from '@/lib/colors';
 import NebulaBackground from './NebulaBackground';
 import GraphOnboarding from './GraphOnboarding';
+
+const ONBOARDING_STORAGE_KEY = 'starweave:onboarding-seen';
 
 const ForceGraphCanvas = dynamic(() => import('./ForceGraph'), {
   ssr: false,
@@ -47,8 +47,67 @@ export default function GraphView({ graphData }: Props) {
   // everywhere highlightSetIds itself changes or clears, so a stale pin from
   // a previous set never leaks into a new one.
   const [highlightSetPinnedId, setHighlightSetPinnedId] = useState<string | null>(null);
-  const [activeRealms, setActiveRealms] = useState<Set<Realm>>(new Set());
+  // Single-select: at most one realm filtered at a time. null = no filter,
+  // everything shown.
+  const [activeRealm, setActiveRealm] = useState<Realm | null>(null);
+  // Which genre/scene (if any) is the current highlightSetIds source — kept
+  // alongside the generic member-id list so GraphControls' Genres/Scenes
+  // tabs know which single row (if any) to show as selected, the same way
+  // activeRealm already does for the Realms tab.
+  const [activeGenreId, setActiveGenreId] = useState<string | null>(null);
+  const [activeSceneId, setActiveSceneId] = useState<string | null>(null);
+  // Onboarding hint — persistent until dismissed (× or clicking a node),
+  // never on a timer. Starts false (not visible) so there's no flash before
+  // the effect below has had a chance to read localStorage; flips true only
+  // if this browser has never dismissed it.
+  const [onboardingOpen, setOnboardingOpen] = useState(false);
 
+  useEffect(() => {
+    let seen = true;
+    try {
+      seen = localStorage.getItem(ONBOARDING_STORAGE_KEY) === '1';
+    } catch {
+      // Storage unavailable (private browsing, disabled, etc.) — treat as
+      // unseen rather than crash.
+      seen = false;
+    }
+    if (!seen) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: visibility depends on reading localStorage, an external system that can't be read during render
+      setOnboardingOpen(true);
+    }
+  }, []);
+
+  // Only persisted when the user actually dismisses it (click × or click a
+  // node) — not the moment it's shown — so reloading without interacting
+  // shows it again next time, per "remember the dismissal," not "remember
+  // that it was rendered."
+  const dismissOnboarding = useCallback(() => {
+    setOnboardingOpen(false);
+    try {
+      localStorage.setItem(ONBOARDING_STORAGE_KEY, '1');
+    } catch {
+      // Nothing we can do — worst case it shows again next visit.
+    }
+  }, []);
+
+  // Syncs selectedId/highlightSetIds/activeGenreId/activeSceneId to the
+  // ?artist=/?genre=/?scene= URL params — never activeRealm, which has no
+  // URL representation at all (no ?realm= param exists). This effect fires
+  // on more than just a real navigation: every handler in this file calls
+  // window.history.replaceState(...) after setting its own state (so a
+  // selection is shareable/refresh-safe), and in this Next.js version that
+  // replaceState call itself retriggers useSearchParams() even when the URL
+  // string is byte-identical to before (e.g. handleSelectRealm's plain '/').
+  // Previously this effect's "no params" fallback also reset activeRealm —
+  // harmless for genre/artist/scene selections (whose own replaceState calls
+  // encode real params this effect re-derives back to the same state) but
+  // fatal for realm: handleSelectRealm's replaceState('/') has no params to
+  // re-derive from, so the very next tick's fallback branch wiped the realm
+  // that was just selected, making a realm's camera focus revert to the
+  // full-graph view immediately after landing on it. Every handler that
+  // actually needs to clear activeRealm (handleSelectGenre, handleSelectScene,
+  // handleSelectArtist, handleNodeClick, handleBackgroundClick) already does
+  // so itself — this effect doesn't need to duplicate that.
   const searchParams = useSearchParams();
   useEffect(() => {
     const artistParam = searchParams.get('artist');
@@ -60,6 +119,8 @@ export default function GraphView({ graphData }: Props) {
       setSelectedId(artistParam);
       setHighlightSetIds(null);
       setHighlightSetPinnedId(null);
+      setActiveGenreId(null);
+      setActiveSceneId(null);
       return;
     }
 
@@ -69,6 +130,8 @@ export default function GraphView({ graphData }: Props) {
         setSelectedId(null);
         setHighlightSetIds(ids);
         setHighlightSetPinnedId(null);
+        setActiveGenreId(genreParam);
+        setActiveSceneId(null);
         return;
       }
     }
@@ -80,6 +143,8 @@ export default function GraphView({ graphData }: Props) {
         setSelectedId(null);
         setHighlightSetIds(ids);
         setHighlightSetPinnedId(null);
+        setActiveGenreId(null);
+        setActiveSceneId(sceneParam);
         return;
       }
     }
@@ -87,6 +152,8 @@ export default function GraphView({ graphData }: Props) {
     setSelectedId(null);
     setHighlightSetIds(null);
     setHighlightSetPinnedId(null);
+    setActiveGenreId(null);
+    setActiveSceneId(null);
   }, [searchParams, graphData.artists, graphData.scenes]);
 
   // The artist shown in the slide-over panel — either the fully-focused
@@ -98,34 +165,88 @@ export default function GraphView({ graphData }: Props) {
     ? (graphData.artists.find(a => a.id === panelArtistId) ?? null)
     : null;
 
-  const handleToggleRealm = useCallback((realm: Realm) => {
-    setActiveRealms(prev => {
-      const next = new Set(prev);
-      if (next.has(realm)) {
-        next.delete(realm);
-      } else {
-        if (next.size === 0) {
-          REALMS.forEach(r => next.add(r));
-          next.delete(realm);
-        } else {
-          next.add(realm);
-        }
-      }
-      if (next.size === REALMS.length) return new Set();
-      return next;
-    });
-  }, []);
+  // Pure camera shortcut: clicking a realm pans/zooms there; clicking the
+  // same realm again resets to null, which flies the camera back to the
+  // full default view (see getActiveCluster/applyCameraFocusForCluster in
+  // ForceGraph.tsx). Nothing is hidden or filtered — every node stays
+  // rendered throughout. Realm, click-focus, and genre/scene sets are one
+  // "where's the camera pointed" axis between them — selecting a realm
+  // exits the other two, and clears the URL's own artist/genre/scene param
+  // so a refresh can't resurrect a different answer than what's on screen.
+  const handleSelectRealm = useCallback((realm: Realm) => {
+    if (activeRealm === realm) {
+      setActiveRealm(null);
+      return;
+    }
+    setActiveRealm(realm);
+    setSelectedId(null);
+    setHighlightSetIds(null);
+    setHighlightSetPinnedId(null);
+    setActiveGenreId(null);
+    setActiveSceneId(null);
+    window.history.replaceState(null, '', '/');
+  }, [activeRealm]);
+
+  // Same shape as handleSelectRealm, for the Genres/Scenes tabs (see
+  // GraphControls) — sets highlightSetIds directly (same effect the ?genre=
+  // URL sync above produces) rather than routing through a navigation, and
+  // mirrors the URL for shareability/refresh. Clicking the currently active
+  // genre again clears back to the default view, same toggle-off as realm.
+  const handleSelectGenre = useCallback((genreId: string) => {
+    if (activeGenreId === genreId) {
+      setActiveGenreId(null);
+      setHighlightSetIds(null);
+      setHighlightSetPinnedId(null);
+      window.history.replaceState(null, '', '/');
+      return;
+    }
+    const ids = graphData.artists.filter(a => a.genres.includes(genreId)).map(a => a.id);
+    if (ids.length === 0) return; // defensive — every real genre has at least one tagged artist
+    setSelectedId(null);
+    setActiveRealm(null);
+    setActiveSceneId(null);
+    setHighlightSetPinnedId(null);
+    setHighlightSetIds(ids);
+    setActiveGenreId(genreId);
+    window.history.replaceState(null, '', `/?genre=${genreId}`);
+  }, [activeGenreId, graphData.artists]);
+
+  const handleSelectScene = useCallback((sceneId: string) => {
+    if (activeSceneId === sceneId) {
+      setActiveSceneId(null);
+      setHighlightSetIds(null);
+      setHighlightSetPinnedId(null);
+      window.history.replaceState(null, '', '/');
+      return;
+    }
+    const scene = graphData.scenes.find(s => s.id === sceneId);
+    const ids = scene ? scene.memberIds.filter(id => graphData.artists.some(a => a.id === id)) : [];
+    if (ids.length === 0) return;
+    setSelectedId(null);
+    setActiveRealm(null);
+    setActiveGenreId(null);
+    setHighlightSetPinnedId(null);
+    setHighlightSetIds(ids);
+    setActiveSceneId(sceneId);
+    window.history.replaceState(null, '', `/?scene=${sceneId}`);
+  }, [activeSceneId, graphData.artists, graphData.scenes]);
 
   const handleNodeClick = useCallback((artistId: string) => {
+    // Clicking a node is the interaction the hint is teaching — treat it as
+    // "understood" the same as dismissing via the × (see dismissOnboarding).
+    if (onboardingOpen) dismissOnboarding();
     if (selectedId === artistId) {
       router.push(`/artist/${artistId}`);
     } else {
       setSelectedId(artistId);
       setHighlightSetIds(null);
       setHighlightSetPinnedId(null);
+      setActiveRealm(null);
+      setActiveGenreId(null);
+      setActiveSceneId(null);
       window.history.replaceState(null, '', `/?artist=${artistId}`);
     }
-  }, [selectedId, router]);
+  }, [selectedId, router, onboardingOpen, dismissOnboarding]);
 
   // Clicking a member of the active genre/scene set re-centers the set on
   // that member instead of exiting to a full single-artist focus — the set
@@ -138,13 +259,28 @@ export default function GraphView({ graphData }: Props) {
     setSelectedId(id);
     setHighlightSetIds(null);
     setHighlightSetPinnedId(null);
+    setActiveRealm(null);
+    setActiveGenreId(null);
+    setActiveSceneId(null);
     window.history.replaceState(null, '', `/?artist=${id}`);
   }, []);
 
+  // Set by GraphControls' onOutsideClick right before the click that closed
+  // the "Jump to" panel also lands on the canvas underneath it — that click
+  // is only meant to close the menu, not to deselect whatever's active.
+  const suppressBackgroundClickRef = useRef(false);
+
   const handleBackgroundClick = useCallback(() => {
+    if (suppressBackgroundClickRef.current) {
+      suppressBackgroundClickRef.current = false;
+      return;
+    }
     setSelectedId(null);
     setHighlightSetIds(null);
     setHighlightSetPinnedId(null);
+    setActiveRealm(null);
+    setActiveGenreId(null);
+    setActiveSceneId(null);
     window.history.replaceState(null, '', '/');
   }, []);
 
@@ -162,16 +298,27 @@ export default function GraphView({ graphData }: Props) {
   return (
     <div className="graph-container">
       <NebulaBackground />
-      <GraphOnboarding />
-      <GraphControls activeRealms={activeRealms} onToggleRealm={handleToggleRealm} />
-      <ArtistSearch artists={graphData.artists} onSelectArtist={handleSelectArtist} />
-      <Legend activeRealms={activeRealms} />
+      <GraphOnboarding open={onboardingOpen} onDismiss={dismissOnboarding} />
+      <GraphControls
+        activeRealm={activeRealm}
+        onSelectRealm={handleSelectRealm}
+        artists={graphData.artists}
+        genres={graphData.genres}
+        activeGenreId={activeGenreId}
+        onSelectGenre={handleSelectGenre}
+        scenes={graphData.scenes}
+        activeSceneId={activeSceneId}
+        onSelectScene={handleSelectScene}
+        onClear={handleBackgroundClick}
+        onOutsideClick={() => { suppressBackgroundClickRef.current = true; }}
+      />
+      <ArtistSearch artists={graphData.artists} genres={graphData.genres} onSelectArtist={handleSelectArtist} />
 
       {/* z-index: 1 keeps the canvas above the nebula (z-index: 0) */}
       <div style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%' }}>
         <ForceGraphCanvas
           graphData={graphData}
-          activeRealms={activeRealms}
+          activeRealm={activeRealm}
           highlightPath={null}
           selectedId={selectedId}
           highlightSetIds={highlightSetIds}

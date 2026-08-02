@@ -76,31 +76,46 @@ function pickSetHub(memberIds: string[], edges: Edge[]): string {
 // The single set of ids to spread + frame together right now, and a stable
 // primitive key identifying that selection (for effect deps / pending-retry
 // comparisons — arrays are a fresh reference every render, strings compare
-// by value). Single-node focus (id + its direct neighbors) takes priority;
-// otherwise a highlighted genre/scene set. The two are mutually exclusive by
-// construction in GraphView (selectedId and highlightSetIds are never both
-// set). Either way, `ids[0]` is the cluster's anchor — the focused node
-// itself for a node focus, the set's highest-in-set-degree member
-// (pickSetHub) for a genre/scene set — which is what
+// by value). Priority: single-node focus (id + its direct neighbors), then a
+// highlighted genre/scene set, then the realm filter's own selection — all
+// three are mutually exclusive by construction (selectedId/highlightSetIds
+// per GraphView; realmMemberIds only ever reaches this function when neither
+// of the other two is active, since GraphView derives it independently of
+// them). Either way, `ids[0]` is the cluster's anchor — the focused node
+// itself for a node focus, the highest-in-set-degree member (pickSetHub)
+// for a genre/scene set or a realm selection — which is what
 // computeSpreadTargetsForCluster spreads every other member outward from.
-// `isSet` selects which of the two spread factors (SPREAD_FACTOR /
-// SET_SPREAD_FACTOR) applies — a set clusters tightly by realm positioning
-// already and needs less outward push than a focus cluster's neighbors,
-// scattered across realms, do.
+// `spreadFactor` (SPREAD_FACTOR / SET_SPREAD_FACTOR / REALM_SPREAD_FACTOR,
+// all defined below) selects how far computeSpreadTargetsForCluster pushes
+// members outward from the anchor. A click-focus's neighbors are scattered
+// across realms and need real separation to stop photos overlapping; a
+// genre/scene set clusters somewhat tighter but can still span several
+// realms. A realm selection is different in kind, not just degree: its
+// members are ALL already clustered together by the layout's own
+// realm-separation forces (see REALM_PULL_STRENGTH/REALM_CHARGE), so
+// spreading them further (even at the gentler SET_SPREAD_FACTOR) just
+// inflates the bounding box for no reason — for a large realm (region-one,
+// electronic) this could inflate it enough that the camera has to zoom back
+// out almost as far as the full-graph view, which is what made jumping to a
+// realm look like it "popped back out" instead of framing that realm.
+// REALM_SPREAD_FACTOR = 1 is a true no-op (target = original position), so a
+// realm selection frames members at their real, already-clustered positions.
 // pinnedHubId lets a click on a set member re-center the spread on that
 // member instead of the auto-picked one (see handleNodeClick/onSetMemberClick)
 // — clicking within an active set should stay scoped to the set, not jump
 // out to a full single-artist focus showing every real connection. Ignored
 // if it isn't actually a member of the current set (stale pin after the
-// set itself changed).
+// set itself changed). Realm selections have no pinned-hub concept — the
+// hub is always freshly picked by pickSetHub.
 function getActiveCluster(
   selectedId: string | null,
   highlightSetIds: string[] | null,
+  realmMemberIds: string[] | null,
   edges: Edge[],
   pinnedHubId?: string | null,
-): { ids: string[]; key: string; isSet: boolean } {
+): { ids: string[]; key: string; spreadFactor: number } {
   if (selectedId) {
-    return { ids: [selectedId, ...getNeighbors(selectedId, edges)], key: `artist:${selectedId}`, isSet: false };
+    return { ids: [selectedId, ...getNeighbors(selectedId, edges)], key: `artist:${selectedId}`, spreadFactor: SPREAD_FACTOR };
   }
   if (highlightSetIds && highlightSetIds.length > 0) {
     const hubId = pinnedHubId && highlightSetIds.includes(pinnedHubId)
@@ -110,9 +125,14 @@ function getActiveCluster(
     // hubId is part of the key (not just the member list) so switching the
     // pinned hub within the same set still counts as a new cluster and
     // re-triggers the spread/camera effects below.
-    return { ids: [hubId, ...rest], key: `set:${highlightSetIds.join(',')}:${hubId}`, isSet: true };
+    return { ids: [hubId, ...rest], key: `set:${highlightSetIds.join(',')}:${hubId}`, spreadFactor: SET_SPREAD_FACTOR };
   }
-  return { ids: [], key: '', isSet: false };
+  if (realmMemberIds && realmMemberIds.length > 0) {
+    const hubId = pickSetHub(realmMemberIds, edges);
+    const rest = realmMemberIds.filter(id => id !== hubId);
+    return { ids: [hubId, ...rest], key: `realm:${hubId}:${realmMemberIds.length}`, spreadFactor: REALM_SPREAD_FACTOR };
+  }
+  return { ids: [], key: '', spreadFactor: SPREAD_FACTOR };
 }
 
 // ── Lazy image cache ─────────────────────────────────────────────────────────
@@ -645,6 +665,7 @@ const CAMERA_PADDING = 60;  // tighter frame → cluster fills more of the clear
 const CAMERA_MS = 600;     // transition duration (ms)
 const SPREAD_FACTOR = 2.6;     // click-focus spotlight-spread outward scale — a focused node's neighbors are scattered across realms and need real separation to stop photos overlapping
 const SET_SPREAD_FACTOR = 1.6; // genre/scene set spread scale — a set clusters tightly by realm positioning already, so it needs less outward push than a focus cluster to stop members overlapping; tune here if sets still pile up or still land too wide
+const REALM_SPREAD_FACTOR = 1; // realm selection: a true no-op (target = original position) — see getActiveCluster's comment for why realm members shouldn't be spread at all
 
 // User-scroll zoom clamp for the unfocused overview — distinct from MAX_ZOOM
 // above (that one caps what the focus camera itself will dial in to).
@@ -1080,7 +1101,7 @@ function drawCoreNodeGlow(ctx: CanvasRenderingContext2D, x: number, y: number, r
 
 interface Props {
   graphData: GraphData;
-  activeRealms: Set<Realm>;
+  activeRealm: Realm | null;
   highlightPath: string[] | null;
   selectedId: string | null;
   // A genre's or scene's member artist ids — highlighted as a cluster
@@ -1145,7 +1166,7 @@ interface LabelCandidate {
 
 export default function ForceGraphCanvas({
   graphData,
-  activeRealms,
+  activeRealm,
   highlightPath,
   selectedId,
   highlightSetIds,
@@ -1219,10 +1240,11 @@ export default function ForceGraphCanvas({
   // cancelled if a new focus supersedes it before it fires (see
   // applyCameraFocusForCluster/animateClusterIntoView).
   const zoomClampRestoreTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  // Per-frame label state — both refs reset together at each new frame.
+  // Per-frame label state — both refs reset together, once per frame, in
+  // handleRenderFramePre (see its own comment for why that's the reset
+  // point rather than a timing heuristic inside drawNode).
   const labelQueueRef  = useRef<LabelCandidate[]>([]);
   const nodeCirclesRef = useRef<Array<{ x: number; y: number; r: number }>>([]);
-  const labelFrameRef  = useRef(0); // performance.now() snapshot of last reset
   // Saves original cluster positions so they can be restored on deselect.
   const savedPositionsRef = useRef<Map<string, { x: number; y: number }> | null>(null);
   // Set (to the active cluster's key) when spread/camera-focus can't run yet
@@ -1486,10 +1508,20 @@ export default function ForceGraphCanvas({
     };
   }, []);
 
+  // Every artist in the currently-selected realm filter (GraphControls) —
+  // null when nothing's selected (no filter, "show everything", not
+  // "cluster to nothing").
+  const realmMemberIds = useMemo(
+    () => (activeRealm === null
+      ? null
+      : stableData.nodes.filter(n => n.realm === activeRealm).map(n => n.id)),
+    [stableData.nodes, activeRealm],
+  );
+
   // The single set of ids to spread + frame right now — see getActiveCluster.
-  const { ids: activeClusterIds, key: activeClusterKey, isSet: activeClusterIsSet } = useMemo(
-    () => getActiveCluster(selectedId, highlightSetIds, graphData.edges, highlightSetPinnedId),
-    [selectedId, highlightSetIds, graphData.edges, highlightSetPinnedId],
+  const { ids: activeClusterIds, key: activeClusterKey, spreadFactor: activeClusterSpreadFactor } = useMemo(
+    () => getActiveCluster(selectedId, highlightSetIds, realmMemberIds, graphData.edges, highlightSetPinnedId),
+    [selectedId, highlightSetIds, realmMemberIds, graphData.edges, highlightSetPinnedId],
   );
 
   // ── Spotlight spread ─────────────────────────────────────────────────────────
@@ -1511,9 +1543,10 @@ export default function ForceGraphCanvas({
   // though note the outward SCALE factor, not the origin, is what actually
   // controls the resulting bounding box size (scaling a fixed point set by a
   // factor from any single origin produces the same-size bounding box
-  // regardless of which point you scale from), which is why isSet selects a
-  // smaller factor below rather than relying on the anchor choice alone.
-  const computeSpreadTargetsForCluster = useCallback((clusterIds: string[], isSet: boolean): Map<string, { x: number; y: number }> | null => {
+  // regardless of which point you scale from), which is why the caller
+  // passes a smaller factor (or REALM_SPREAD_FACTOR's true no-op) below
+  // rather than relying on the anchor choice alone.
+  const computeSpreadTargetsForCluster = useCallback((clusterIds: string[], factor: number): Map<string, { x: number; y: number }> | null => {
     if (clusterIds.length === 0) return new Map();
 
     const anchor = stableData.nodes.find(n => n.id === clusterIds[0]);
@@ -1527,7 +1560,6 @@ export default function ForceGraphCanvas({
 
     const ax = anchor.x;
     const ay = anchor.y;
-    const factor = isSet ? SET_SPREAD_FACTOR : SPREAD_FACTOR;
 
     const targets = new Map<string, { x: number; y: number }>();
     for (const n of clusterNodes) {
@@ -1543,7 +1575,7 @@ export default function ForceGraphCanvas({
   // Returns true once handled (spread applied, deselected, or nothing to
   // spread); false when the simulation hasn't positioned the cluster yet —
   // the caller then leaves a pending marker so onEngineStop can retry.
-  const applySpreadForCluster = useCallback((clusterIds: string[], isSet: boolean): boolean => {
+  const applySpreadForCluster = useCallback((clusterIds: string[], factor: number): boolean => {
     // Always restore first — handles both deselect and cluster-to-cluster switches.
     if (savedPositionsRef.current) {
       for (const [savedId, pos] of savedPositionsRef.current) {
@@ -1560,7 +1592,7 @@ export default function ForceGraphCanvas({
       savedPositionsRef.current = null;
     }
 
-    const targets = computeSpreadTargetsForCluster(clusterIds, isSet);
+    const targets = computeSpreadTargetsForCluster(clusterIds, factor);
     if (targets === null) return false;
     if (targets.size === 0) return true;
 
@@ -1594,10 +1626,10 @@ export default function ForceGraphCanvas({
     // Any new cluster/resize invalidates an in-flight compose-into-focus
     // animation from a previous cluster (see animateClusterIntoView).
     focusAnimTokenRef.current++;
-    const ready = applySpreadForCluster(activeClusterIds, activeClusterIsSet);
+    const ready = applySpreadForCluster(activeClusterIds, activeClusterSpreadFactor);
     pendingClusterKeyRef.current = ready ? null : activeClusterKey;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeClusterKey, activeClusterIsSet, dimensions, applySpreadForCluster]);
+  }, [activeClusterKey, activeClusterSpreadFactor, dimensions, applySpreadForCluster]);
 
   // ── Camera focus on node click / genre / scene selection ────────────────────
   // Frame the cluster (a single node + its direct neighbors, or a whole
@@ -1735,12 +1767,12 @@ export default function ForceGraphCanvas({
   // their spread targets while the camera pans/zooms to the same
   // destination, so it reads as one continuous "composing into focus"
   // motion rather than settle-then-snap.
-  const animateClusterIntoView = useCallback((clusterIds: string[], isSet: boolean): boolean => {
+  const animateClusterIntoView = useCallback((clusterIds: string[], factor: number): boolean => {
     const fg = graphRef.current;
     if (!fg) return false;
     if (clusterIds.length === 0) return true; // nothing to animate
 
-    const computedTargets = computeSpreadTargetsForCluster(clusterIds, isSet);
+    const computedTargets = computeSpreadTargetsForCluster(clusterIds, factor);
     if (computedTargets === null) return false; // simulation still hasn't positioned the cluster
     const targets = computedTargets;
 
@@ -1848,9 +1880,9 @@ export default function ForceGraphCanvas({
     engineStoppedOnceRef.current = true;
     tryInitialFit();
     if (pendingClusterKeyRef.current && pendingClusterKeyRef.current === activeClusterKey) {
-      if (animateClusterIntoView(activeClusterIds, activeClusterIsSet)) pendingClusterKeyRef.current = null;
+      if (animateClusterIntoView(activeClusterIds, activeClusterSpreadFactor)) pendingClusterKeyRef.current = null;
     }
-  }, [activeClusterKey, activeClusterIds, activeClusterIsSet, animateClusterIntoView, tryInitialFit]);
+  }, [activeClusterKey, activeClusterIds, activeClusterSpreadFactor, animateClusterIntoView, tryInitialFit]);
 
   // ── Derived sets ────────────────────────────────────────────────────────────
   const pathSet = useMemo(() => new Set<string>(highlightPath ?? []), [highlightPath]);
@@ -1884,30 +1916,6 @@ export default function ForceGraphCanvas({
   const focusedNode = useMemo(
     () => (selectedId ? stableData.nodes.find(n => n.id === selectedId) ?? null : null),
     [selectedId, stableData.nodes],
-  );
-
-  // ── Visibility ──────────────────────────────────────────────────────────────
-  const isNodeVisible = useCallback(
-    (node: object) => {
-      const n = node as GraphNode;
-      if (activeRealms.size === 0) return true;
-      return !!n.realm && activeRealms.has(n.realm);
-    },
-    [activeRealms],
-  );
-
-  const isLinkVisible = useCallback(
-    (link: object) => {
-      const l = link as GraphLink;
-      if (activeRealms.size === 0) return true;
-      const srcId = typeof l.source === 'object' ? l.source.id : l.source;
-      const tgtId = typeof l.target === 'object' ? l.target.id : l.target;
-      const srcNode = stableData.nodes.find(n => n.id === srcId);
-      const tgtNode = stableData.nodes.find(n => n.id === tgtId);
-      if (!srcNode || !tgtNode) return false;
-      return !!srcNode.realm && !!tgtNode.realm && activeRealms.has(srcNode.realm) && activeRealms.has(tgtNode.realm);
-    },
-    [activeRealms, stableData.nodes],
   );
 
   // ── Node drawing ────────────────────────────────────────────────────────────
@@ -2189,9 +2197,24 @@ export default function ForceGraphCanvas({
 
       // ── Photo clip + glowing ring ─────────────────────────────────────────
       if (showPhoto) {
-        // Photo's own alpha — fades fully to 0 by FADE_ZOOM_OUT, dissolving
-        // into the fill circle already drawn above at the floored `alpha`.
-        ctx.globalAlpha = photoOpacity;
+        // Photo's own alpha snaps to 0/1 on the ZOOM crossfade only
+        // (photoLabelFade), not the combined photoOpacity — drawing it
+        // semi-transparent during the zoom-in ramp let the solid color fill
+        // drawn above (same size, same position, fully opaque) bleed
+        // through as a colored tint/wash over the image, worst mid-
+        // crossfade and only gone once photoLabelFade reached exactly 1 at
+        // FADE_ZOOM_IN (which is why zooming further in "cleared" it up).
+        // dimFactor is still applied multiplicatively on top — a dimmed
+        // (non-focus-cluster) node's photo must stay genuinely faint, not
+        // jump to full brightness just because it cleared the zoom snap.
+        // photoOpacity itself (dimFactor * photoLabelFade) can't be used for
+        // the snap test directly: dimFactor is never exactly 0 (it floors at
+        // DIM_ALPHA, not 0), so a fully-dimmed node's photoOpacity is still
+        // a tiny positive number and would incorrectly pass a ">0" snap
+        // check, popping every dimmed hub's photo to full opacity instead of
+        // staying faint — the SIZE still ramps smoothly via photoOpacity
+        // (see `er` above); only this specific alpha decision changes.
+        ctx.globalAlpha = (photoLabelFade > 0 ? 1 : 0) * dimFactor;
         // Photo fills the full node circle — the colored fill behind it is
         // the source of the core shadowBlur glow drawn above; the photo
         // covers it cleanly, leaving only the outward glow halo visible.
@@ -2206,7 +2229,12 @@ export default function ForceGraphCanvas({
         );
         ctx.restore(); // removes clip path
 
-        // Hairline ring with layer-color shadow glow — luminous edge, not a band
+        // Hairline ring with layer-color shadow glow — luminous edge, not a
+        // band. Kept on the original gradual photoOpacity fade (not the
+        // snapped alpha above) — a thin ring easing in reads nothing like a
+        // whole tinted photo, so there's no reason to give up its smoother
+        // appearance too.
+        ctx.globalAlpha = photoOpacity;
         ctx.shadowColor = color;
         ctx.shadowBlur  = isFocused ? 14 : isHovered ? 11 : 8;
         ctx.beginPath();
@@ -2262,14 +2290,9 @@ export default function ForceGraphCanvas({
       const alwaysLabel = (isAnchor || score >= ALWAYS_LABEL_THRESHOLD) && !isDimmed;
       const showLabel   = isFocused || isNeighbor || isHovered || alwaysLabel || isInPath || isSetMember;
 
-      // ── Per-frame state reset ──────────────────────────────────────────────────
-      // >10 ms gap between drawNode calls = new animation frame: clear all state.
-      const nowMs = performance.now();
-      if (nowMs - labelFrameRef.current > 10) {
-        labelFrameRef.current  = nowMs;
-        labelQueueRef.current  = [];
-        nodeCirclesRef.current = [];
-      }
+      // Per-frame label/circle queues are reset once in onRenderFramePre (see
+      // handleRenderFramePre), not here — see that reset's comment for why a
+      // >10ms-gap timing heuristic between drawNode calls was unreliable.
 
       if (showLabel) {
         let fontSize = Math.max(7, Math.min(9, 8 / globalScale));
@@ -2507,6 +2530,26 @@ export default function ForceGraphCanvas({
     // Unconditional, before any early return below — linkDirectionalArrowColor
     // reads this every frame regardless of focus/zoom state (see its own gate).
     currentGlobalScaleRef.current = globalScale;
+
+    // Reset the label-placement queues exactly once per frame, here — the
+    // one hook guaranteed to fire once per render pass before any node is
+    // drawn. Previously this reset lived inside drawNode itself, guarded by
+    // "has more than 10ms passed since the last reset" as a proxy for "is
+    // this a new frame" (drawNode runs once per NODE, not once per frame,
+    // so it has no direct signal for that). On a slower frame — all ~293
+    // nodes plus edges/glows/labels genuinely can take that long — a stall
+    // partway through one frame's node loop could cross the 10ms mark, so
+    // the heuristic fired again mid-frame: it wiped nodeCirclesRef/
+    // labelQueueRef midway through registering that same frame's nodes,
+    // so the collision search for labels processed after the false reset
+    // no longer saw the nodes drawn before it. A forced/anchor label (e.g.
+    // The Velvet Underground, always labeled) could land in a different
+    // spot than the one processed moments earlier in the same frame,
+    // depending on exactly when the misfire happened — read as the label
+    // flickering between two positions once every so often, worse whenever
+    // the frame was already slow enough to trigger it.
+    labelQueueRef.current  = [];
+    nodeCirclesRef.current = [];
 
     const isFocusModeActive = selectedId !== null || highlightSetMemberSet.size > 0;
     if (isFocusModeActive) return; // focus nodes stay solid — no clouds, per the two-mode split
@@ -2862,8 +2905,6 @@ export default function ForceGraphCanvas({
           linkCanvasObjectMode={() => 'replace'}
           onRenderFramePre={handleRenderFramePre}
           onRenderFramePost={handleRenderFramePost}
-          nodeVisibility={isNodeVisible}
-          linkVisibility={isLinkVisible}
           linkDirectionalArrowLength={(link: object) => {
             const l = link as GraphLink;
             const srcId = typeof l.source === 'object' ? (l.source as GraphNode).id : l.source as string;
