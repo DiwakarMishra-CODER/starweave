@@ -3,7 +3,7 @@
 import { useRef, useEffect, useMemo, useCallback, useState } from 'react';
 import ForceGraph2D from 'react-force-graph-2d';
 import { forceSimulation, forceLink, forceManyBody, forceCenter, forceX, forceY } from 'd3-force-3d';
-import type { Artist, Edge, GraphData, Layer } from '@/data/types';
+import type { Artist, Edge, GraphData, Layer, Realm } from '@/data/types';
 import { resolveNodeColor, resolveNodeGlow, resolveEdgeTint } from '@/lib/colors';
 import { getNeighbors, pathEdgeKeys } from '@/lib/graph-utils';
 
@@ -1080,7 +1080,7 @@ function drawCoreNodeGlow(ctx: CanvasRenderingContext2D, x: number, y: number, r
 
 interface Props {
   graphData: GraphData;
-  activeLayers: Set<Layer>;
+  activeRealms: Set<Realm>;
   highlightPath: string[] | null;
   selectedId: string | null;
   // A genre's or scene's member artist ids — highlighted as a cluster
@@ -1145,7 +1145,7 @@ interface LabelCandidate {
 
 export default function ForceGraphCanvas({
   graphData,
-  activeLayers,
+  activeRealms,
   highlightPath,
   selectedId,
   highlightSetIds,
@@ -1890,24 +1890,24 @@ export default function ForceGraphCanvas({
   const isNodeVisible = useCallback(
     (node: object) => {
       const n = node as GraphNode;
-      if (activeLayers.size === 0) return true;
-      return activeLayers.has(n.layer);
+      if (activeRealms.size === 0) return true;
+      return !!n.realm && activeRealms.has(n.realm);
     },
-    [activeLayers],
+    [activeRealms],
   );
 
   const isLinkVisible = useCallback(
     (link: object) => {
       const l = link as GraphLink;
-      if (activeLayers.size === 0) return true;
+      if (activeRealms.size === 0) return true;
       const srcId = typeof l.source === 'object' ? l.source.id : l.source;
       const tgtId = typeof l.target === 'object' ? l.target.id : l.target;
       const srcNode = stableData.nodes.find(n => n.id === srcId);
       const tgtNode = stableData.nodes.find(n => n.id === tgtId);
       if (!srcNode || !tgtNode) return false;
-      return activeLayers.has(srcNode.layer) && activeLayers.has(tgtNode.layer);
+      return !!srcNode.realm && !!tgtNode.realm && activeRealms.has(srcNode.realm) && activeRealms.has(tgtNode.realm);
     },
-    [activeLayers, stableData.nodes],
+    [activeRealms, stableData.nodes],
   );
 
   // ── Node drawing ────────────────────────────────────────────────────────────

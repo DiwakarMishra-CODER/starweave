@@ -3,11 +3,12 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
-import type { GraphData, Layer } from '@/data/types';
+import type { GraphData, Realm } from '@/data/types';
 import GraphControls from './GraphControls';
 import ArtistSearch from './ArtistSearch';
 import ArtistPanel from './ArtistPanel';
 import Legend from '@/components/ui/Legend';
+import { REALMS } from '@/lib/colors';
 import NebulaBackground from './NebulaBackground';
 import GraphOnboarding from './GraphOnboarding';
 
@@ -46,7 +47,7 @@ export default function GraphView({ graphData }: Props) {
   // everywhere highlightSetIds itself changes or clears, so a stale pin from
   // a previous set never leaks into a new one.
   const [highlightSetPinnedId, setHighlightSetPinnedId] = useState<string | null>(null);
-  const [activeLayers, setActiveLayers] = useState<Set<Layer>>(new Set());
+  const [activeRealms, setActiveRealms] = useState<Set<Realm>>(new Set());
 
   const searchParams = useSearchParams();
   useEffect(() => {
@@ -97,22 +98,20 @@ export default function GraphView({ graphData }: Props) {
     ? (graphData.artists.find(a => a.id === panelArtistId) ?? null)
     : null;
 
-  const handleToggleLayer = useCallback((layer: Layer) => {
-    setActiveLayers(prev => {
+  const handleToggleRealm = useCallback((realm: Realm) => {
+    setActiveRealms(prev => {
       const next = new Set(prev);
-      if (next.has(layer)) {
-        next.delete(layer);
+      if (next.has(realm)) {
+        next.delete(realm);
       } else {
         if (next.size === 0) {
-          const allLayers: Layer[] = ['root', 'post-punk', 'shoegaze-dreampop', 'indie-alt', 'outside'];
-          allLayers.forEach(l => next.add(l));
-          next.delete(layer);
+          REALMS.forEach(r => next.add(r));
+          next.delete(realm);
         } else {
-          next.add(layer);
+          next.add(realm);
         }
       }
-      const allLayers: Layer[] = ['root', 'post-punk', 'shoegaze-dreampop', 'indie-alt', 'outside'];
-      if (next.size === allLayers.length) return new Set();
+      if (next.size === REALMS.length) return new Set();
       return next;
     });
   }, []);
@@ -164,15 +163,15 @@ export default function GraphView({ graphData }: Props) {
     <div className="graph-container">
       <NebulaBackground />
       <GraphOnboarding />
-      <GraphControls activeLayers={activeLayers} onToggleLayer={handleToggleLayer} />
+      <GraphControls activeRealms={activeRealms} onToggleRealm={handleToggleRealm} />
       <ArtistSearch artists={graphData.artists} onSelectArtist={handleSelectArtist} />
-      <Legend activeLayers={activeLayers} />
+      <Legend activeRealms={activeRealms} />
 
       {/* z-index: 1 keeps the canvas above the nebula (z-index: 0) */}
       <div style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%' }}>
         <ForceGraphCanvas
           graphData={graphData}
-          activeLayers={activeLayers}
+          activeRealms={activeRealms}
           highlightPath={null}
           selectedId={selectedId}
           highlightSetIds={highlightSetIds}

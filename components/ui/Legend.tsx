@@ -1,29 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { LAYER_COLORS, LAYER_LABELS, LAYERS, LINEAGE_COLORS, LINEAGE_LABELS } from '@/lib/colors';
-import type { Layer } from '@/data/types';
+import { REALMS, REALM_LABELS, REALM_COLORS } from '@/lib/colors';
+import type { Realm } from '@/data/types';
 
 interface Props {
-  activeLayers?: Set<Layer>;
+  activeRealms?: Set<Realm>;
 }
 
-// Fixed iteration order for the electronic section — LINEAGE_COLORS/LABELS
-// are plain Records (insertion-ordered in practice, but an explicit list
-// here doesn't depend on that and reads in a deliberate sequence: roughly
-// oldest-to-newest lineage, matching the audit's own family order).
-const LINEAGES = [
-  'krautrock',
-  'synth-pop',
-  'idm',
-  'ambient-drone',
-  'electronic-indie-dancepunk',
-  'trip-hop-downtempo',
-  'hyperpop-pcmusic',
-  'art-electronic',
-] as const;
-
-export default function Legend({ activeLayers }: Props) {
+export default function Legend({ activeRealms }: Props) {
   const [open, setOpen] = useState(true);
 
   return (
@@ -32,47 +17,29 @@ export default function Legend({ activeLayers }: Props) {
     <div className="legend" role="complementary" aria-label="Graph legend">
       {open && (
         <div className="legend__body">
-          {/* Core — single static swatch, no filtering (display-only, like Electronic below). */}
-          <p className="legend__group-label">Core</p>
+          {/* One row per realm — this is the axis the graph actually renders
+              distinguishably (node color). The finer per-lineage shading
+              inside a realm isn't a legend-worthy distinction: every
+              lineage within one realm renders as a near-identical shade of
+              that realm's single hue (see lib/colors.ts's lineage color
+              comments), so listing all ~20 of them here was claiming
+              visual differences that don't exist and eating a third of
+              the panel doing it. */}
+          <p className="legend__group-label">Realms</p>
           <ul className="legend__items">
-            <li className="legend__item">
-              <span className="legend__dot" style={{ background: LAYER_COLORS.root }} aria-hidden />
-              Core
-            </li>
-          </ul>
-
-          {/* Region one — the original 5 layers, unchanged behavior: still
-              dims against the existing activeLayers filter from GraphControls. */}
-          <p className="legend__group-label">Region one</p>
-          <ul className="legend__items">
-            {LAYERS.map(layer => {
-              const dimmed = activeLayers && activeLayers.size > 0 && !activeLayers.has(layer);
+            {REALMS.map(realm => {
+              const dimmed = activeRealms && activeRealms.size > 0 && !activeRealms.has(realm);
               return (
-                <li key={layer} className="legend__item" style={{ opacity: dimmed ? 0.35 : 1 }}>
+                <li key={realm} className="legend__item" style={{ opacity: dimmed ? 0.35 : 1 }}>
                   <span
                     className="legend__dot"
-                    style={{ background: LAYER_COLORS[layer] }}
+                    style={{ background: REALM_COLORS[realm] }}
                     aria-hidden
                   />
-                  {LAYER_LABELS[layer]}
+                  {REALM_LABELS[realm]}
                 </li>
               );
             })}
-          </ul>
-
-          {/* Electronic — one row per island-two lineage, static display only. */}
-          <p className="legend__group-label">Electronic</p>
-          <ul className="legend__items">
-            {LINEAGES.map(lineage => (
-              <li key={lineage} className="legend__item">
-                <span
-                  className="legend__dot"
-                  style={{ background: LINEAGE_COLORS[lineage] }}
-                  aria-hidden
-                />
-                {LINEAGE_LABELS[lineage]}
-              </li>
-            ))}
           </ul>
         </div>
       )}
@@ -88,7 +55,7 @@ export default function Legend({ activeLayers }: Props) {
           <circle cx="1.5" cy="6" r="1.5" fill="currentColor" opacity=".5" />
           <circle cx="10.5" cy="6" r="1.5" fill="currentColor" opacity=".5" />
         </svg>
-        Layers
+        Realms
         <svg
           width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden
           style={{

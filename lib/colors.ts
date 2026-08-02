@@ -1,4 +1,4 @@
-import type { Layer } from '@/data/types';
+import type { Layer, Realm } from '@/data/types';
 
 export const LAYER_COLORS: Record<Layer, string> = {
   root: '#E8C87A',
@@ -68,6 +68,20 @@ export interface RealmLineageNode {
 const CORE_COLOR = LAYER_COLORS.root;
 const CORE_GLOW = LAYER_GLOW.root;
 const CORE_EDGE_TINT = EDGE_TINT.root;
+
+// realm: 'region-one' — every real region-one Artist carries no `lineage`
+// (unlike the five newer realms), so before this branch existed it fell
+// through resolveNodeColor's final `LAYER_COLORS[node.layer]` line and
+// painted by the dead 5-value Layer field instead — one realm rendering as
+// five different colors (root gold, post-punk indigo, shoegaze-dreampop
+// pink, indie-alt teal, outside near-white). Reuses the existing indie-alt
+// teal verbatim (same reuse-don't-invent precedent as CORE_COLOR above) —
+// teal sits at hue ~170°, the widest hue gap of any candidate (~85° of
+// clearance from folk's ~70-85° family, ~101° from post-rock's ~271°),
+// so a flat region-one reads as clearly distinct from all six other realms.
+const REGION_ONE_COLOR = LAYER_COLORS['indie-alt'];
+const REGION_ONE_GLOW = LAYER_GLOW['indie-alt'];
+const REGION_ONE_EDGE_TINT = EDGE_TINT['indie-alt'];
 
 // realm: 'electronic' — one shade per island-two lineage, magenta/pink-purple
 // family. Mid-to-light (dark vanishes on the #0E0B1A background),
@@ -197,6 +211,7 @@ function americanUndergroundColor(lineage?: string): string {
 export function resolveNodeColor(node: RealmLineageNode): string {
   if (!node.realm) return LAYER_COLORS[node.layer];
   if (node.realm === 'core') return CORE_COLOR;
+  if (node.realm === 'region-one') return REGION_ONE_COLOR;
   if (node.realm === 'electronic') return electronicColor(node.lineage);
   if (node.realm === 'folk-confessional') return folkColor(node.lineage);
   if (node.realm === 'emo-posthardcore') return emoColor(node.lineage);
@@ -208,6 +223,7 @@ export function resolveNodeColor(node: RealmLineageNode): string {
 export function resolveNodeGlow(node: RealmLineageNode): string {
   if (!node.realm) return LAYER_GLOW[node.layer];
   if (node.realm === 'core') return CORE_GLOW;
+  if (node.realm === 'region-one') return REGION_ONE_GLOW;
   if (node.realm === 'electronic') return hexToRgba(electronicColor(node.lineage), 0.7);
   if (node.realm === 'folk-confessional') return hexToRgba(folkColor(node.lineage), 0.7);
   if (node.realm === 'emo-posthardcore') return hexToRgba(emoColor(node.lineage), 0.7);
@@ -219,6 +235,7 @@ export function resolveNodeGlow(node: RealmLineageNode): string {
 export function resolveEdgeTint(node: RealmLineageNode): string {
   if (!node.realm) return EDGE_TINT[node.layer];
   if (node.realm === 'core') return CORE_EDGE_TINT;
+  if (node.realm === 'region-one') return REGION_ONE_EDGE_TINT;
   if (node.realm === 'electronic') return hexToRgba(electronicColor(node.lineage), 0.4);
   if (node.realm === 'folk-confessional') return hexToRgba(folkColor(node.lineage), 0.4);
   if (node.realm === 'emo-posthardcore') return hexToRgba(emoColor(node.lineage), 0.4);
@@ -227,86 +244,67 @@ export function resolveEdgeTint(node: RealmLineageNode): string {
   return EDGE_TINT[node.layer];
 }
 
-// Human-readable label per island-two lineage — used by resolveNodeLabel
-// below and by Legend's electronic section.
-export const LINEAGE_LABELS: Record<string, string> = {
-  krautrock:                    'Krautrock',
-  'synth-pop':                  'Synth-pop',
-  idm:                          'IDM',
-  'ambient-drone':              'Ambient / Drone',
-  'electronic-indie-dancepunk': 'Electronic-indie / Dance-punk',
-  'trip-hop-downtempo':         'Trip-hop / Downtempo',
-  'hyperpop-pcmusic':           'Hyperpop / PC Music',
-  'art-electronic':             'Art-electronic',
+// Ordered list of every realm, in the app's canonical display order — the
+// same list the graph's realm filter (GraphControls) and legend (Legend)
+// both iterate, so they always show the same 7 rows in the same order.
+export const REALMS: Realm[] = [
+  'core',
+  'region-one',
+  'american-underground',
+  'electronic',
+  'folk-confessional',
+  'emo-posthardcore',
+  'post-rock-drone-noise',
+];
+
+// Single display name per realm — this is the distinction a visitor can
+// actually see (node color, legend, filter). The finer per-lineage
+// subdivisions inside a realm exist for layout/data structure, not because
+// they're visually distinguishable — see the lineage color comments above,
+// where every lineage within one realm renders as a near-identical shade
+// of that realm's one hue.
+export const REALM_LABELS: Record<Realm, string> = {
+  core: 'Core',
+  'region-one': 'Region One',
+  'american-underground': 'American Underground',
+  electronic: 'Electronic',
+  'folk-confessional': 'Folk Confessional',
+  'emo-posthardcore': 'Emo / Post-hardcore',
+  'post-rock-drone-noise': 'Post-rock / Drone / Noise',
 };
 
-function lineageLabel(lineage?: string): string {
-  return LINEAGE_LABELS[lineage ?? ''] ?? 'Electronic';
-}
-
-// Human-readable label per folk-realm lineage — mirrors LINEAGE_LABELS above.
-export const FOLK_LINEAGE_LABELS: Record<string, string> = {
-  'folk-roots':  'Folk Roots',
-  'freak-folk':  'Freak Folk',
-  confessional:  'Confessional',
-  slowcore:      'Slowcore',
-  'indie-folk':  'Indie Folk',
+// Single representative swatch per realm, for the legend and the realm
+// filter — each reuses that realm's own DEFAULT_*_COLOR (the same mid-tone
+// shade a lineage-less/unrecognized node in that realm already falls back
+// to), so the swatch always matches what most of that realm's nodes render.
+export const REALM_COLORS: Record<Realm, string> = {
+  core: CORE_COLOR,
+  'region-one': REGION_ONE_COLOR,
+  'american-underground': DEFAULT_AMERICAN_UNDERGROUND_COLOR,
+  electronic: DEFAULT_ELECTRONIC_COLOR,
+  'folk-confessional': DEFAULT_FOLK_COLOR,
+  'emo-posthardcore': DEFAULT_EMO_COLOR,
+  'post-rock-drone-noise': DEFAULT_POSTROCK_COLOR,
 };
-
-function folkLineageLabel(lineage?: string): string {
-  return FOLK_LINEAGE_LABELS[lineage ?? ''] ?? 'Folk & Confessional';
-}
-
-// Human-readable label per emo-realm lineage — mirrors LINEAGE_LABELS/
-// FOLK_LINEAGE_LABELS above.
-export const EMO_LINEAGE_LABELS: Record<string, string> = {
-  'hardcore-roots': 'Hardcore Roots',
-  'post-hardcore':  'Post-Hardcore',
-  'midwest-emo':    'Midwest Emo',
-  'math-rock':      'Math Rock',
-};
-
-function emoLineageLabel(lineage?: string): string {
-  return EMO_LINEAGE_LABELS[lineage ?? ''] ?? 'Emo & Post-Hardcore';
-}
-
-// Human-readable label per post-rock-realm lineage — mirrors
-// EMO_LINEAGE_LABELS/FOLK_LINEAGE_LABELS/LINEAGE_LABELS above.
-export const POSTROCK_LINEAGE_LABELS: Record<string, string> = {
-  'no-wave':   'No Wave',
-  'post-rock': 'Post-Rock',
-  drone:       'Drone',
-};
-
-function postrockLineageLabel(lineage?: string): string {
-  return POSTROCK_LINEAGE_LABELS[lineage ?? ''] ?? 'Post-Rock, Drone & Noise';
-}
-
-// Human-readable label per american-underground lineage — mirrors
-// POSTROCK_LINEAGE_LABELS/EMO_LINEAGE_LABELS/FOLK_LINEAGE_LABELS above.
-export const AMERICAN_UNDERGROUND_LINEAGE_LABELS: Record<string, string> = {
-  'noise-alt':    'Noise & Alt',
-  'college-rock': 'College Rock',
-  'indie-rock':   'Indie Rock',
-};
-
-function americanUndergroundLineageLabel(lineage?: string): string {
-  return AMERICAN_UNDERGROUND_LINEAGE_LABELS[lineage ?? ''] ?? 'American Underground';
-}
 
 // Same fallback pattern as resolveNodeColor/resolveNodeGlow/resolveEdgeTint
-// above — a realm-less node (every real region-one Artist without this
-// tag) or one explicitly tagged realm: 'region-one' both fall through to
-// the existing LAYER_LABELS[layer] text, byte-for-byte unchanged from
-// before this function existed.
+// above — a realm-less node or one explicitly tagged realm: 'region-one'
+// both fall through to the existing LAYER_LABELS[layer] text, byte-for-byte
+// unchanged from before this function existed. The five lineage-bearing
+// realms return their REALM's display name rather than the specific
+// lineage (e.g. 'Electronic', not 'Hyperpop / PC Music') — a lineage
+// string is an internal clustering label a visitor has no way to verify;
+// the genre tags shown alongside already convey what kind of music this
+// is, and a realm name is a real category the rest of the UI (legend,
+// filter, URLs) also uses.
 export function resolveNodeLabel(node: RealmLineageNode): string {
   if (!node.realm) return LAYER_LABELS[node.layer];
-  if (node.realm === 'core') return 'Core';
-  if (node.realm === 'electronic') return lineageLabel(node.lineage);
-  if (node.realm === 'folk-confessional') return folkLineageLabel(node.lineage);
-  if (node.realm === 'emo-posthardcore') return emoLineageLabel(node.lineage);
-  if (node.realm === 'post-rock-drone-noise') return postrockLineageLabel(node.lineage);
-  if (node.realm === 'american-underground') return americanUndergroundLineageLabel(node.lineage);
+  if (node.realm === 'core') return REALM_LABELS.core;
+  if (node.realm === 'electronic') return REALM_LABELS.electronic;
+  if (node.realm === 'folk-confessional') return REALM_LABELS['folk-confessional'];
+  if (node.realm === 'emo-posthardcore') return REALM_LABELS['emo-posthardcore'];
+  if (node.realm === 'post-rock-drone-noise') return REALM_LABELS['post-rock-drone-noise'];
+  if (node.realm === 'american-underground') return REALM_LABELS['american-underground'];
   return LAYER_LABELS[node.layer];
 }
 
