@@ -7,17 +7,37 @@ import type { GraphData } from '@/data/types';
 // Pure data/layout computation — no DOM, safe to run in a Server Component.
 // x/y are resolved to final pixel coordinates here (not left to the
 // component) because the row-packing decisions below need real pixel widths
-// to reason about label collisions — see COMPACT_BAND_IDS's comment.
+// to reason about label collisions — see the packing loop's comment.
+//
+// Re-derived for the 2026 genre-hierarchy pass (parent + alsoFrom — see
+// data/seed-data.ts's file-level comment on the genres array): the old
+// layout was built for eleven scattered roots, most of them 0-1-child
+// orphans, and leaned on a two-tier system (a handful of "major" bands
+// packed by bare rank overlap, plus a shared "compact strip" for the tiny
+// orphans, packed by label-aware interval coloring since bare-rank packing
+// undercounted their real footprint). That split doesn't apply anymore:
+// reparenting collapsed eleven roots to five, and only one of those five
+// (minimalism, held out of the no-wave reparenting for a real chronology
+// violation — see seed-data.ts) is still a trivial single-node band. Every
+// band now gets the SAME treatment — heavy-path decomposition for chains,
+// label-aware interval packing for lanes — since a genuinely deep band
+// (garage-rock's subtree alone is 26 of the 51 dated genres) has exactly
+// the same label-collision risk the old compact strip was built to solve,
+// not a different problem than the tiny bands had.
 
 // ── Geometry constants — shared source of truth with GenreTimeline.tsx ──
 export const VIEW_W = 1400;
 export const PAD_LEFT = 34;
 export const PAD_RIGHT = 46;
-export const PAD_TOP = 10;
+// Raised from 10: row-0 nodes (the band roots) sit right at this offset, and
+// their glow filter's blur region extends well past their own radius — too
+// little headroom here let that glow bleed up toward the SVG's very top
+// edge, close enough to the header block above it to read as a collision.
+export const PAD_TOP = 24;
 export const AXIS_H = 34;
 // Base per-lane pixel pitch; bands with more lanes get MORE than this (see
 // bandPitch below) — a 1-lane band doesn't need the breathing room a
-// 5-lane band does, and forcing them to match either starves the busy band
+// 10-lane band does, and forcing them to match either starves the busy band
 // or wastes space on the quiet one.
 export const BASE_LANE_PITCH = 20;
 export const EXTRA_PITCH_PER_LANE = 6;
@@ -43,21 +63,22 @@ export interface TimelineNode {
   rank: number; // 0..N-1, ordinal position among dated genres sorted by (emerged, name)
   x: number; // resolved pixel position
   y: number; // resolved pixel position
-  lane: number; // physical row index WITHIN this node's band/strip — used to
+  lane: number; // physical row index WITHIN this node's band — used to
   // group same-row labels for truncation, not a global index
-  bandId: string; // the top-level lineage this node belongs to
-  parentId: string | null; // effective parent for drawing an edge — null if this node's real
-  // parent is either absent or a pure container (electronic/folk/indie/underground),
-  // which are excluded from the timeline entirely
+  bandId: string; // the top-level root this node's subtree belongs to
+  parentId: string | null; // primary parent for drawing the structural edge and the
+  // layout position — null if this node's real parent is either absent or a pure
+  // container (electronic/folk/indie/underground), which are excluded from the
+  // timeline entirely
+  alsoFromIds: string[]; // secondary parents — drawn as distinct lines, never affect x/y
   alwaysLabeled: boolean;
-  color: string; // resolved directly from the node's own lineage family —
-  // independent of which layout group (major band vs. compact strip) it
-  // renders in, so moving a band into the compact strip never changes its color
-  isCompact: boolean;
+  color: string; // resolved from the node's ROOT (band) — flat per root, not
+  // shaded by sub-lineage, so the whole subtree reads as one branch color
+  isCompact: boolean; // true only for a genuinely single-node band (currently just minimalism)
 }
 
 export interface TimelineBand {
-  id: string; // the root/orphan genre id anchoring this band, or '__COMPACT__'
+  id: string; // the root genre id anchoring this band
   name: string;
   color: string;
   laneCount: number;
@@ -76,46 +97,22 @@ export interface GenreTimelineLayout {
 
 const CONTAINER_IDS = new Set(['underground', 'indie', 'electronic', 'folk']);
 
-// These 9 genres are each their own band with zero or one child (power-pop
-// is the one exception with a child, jangle-pop — included anyway per an
-// explicit call: it's a 2-node band, not meaningfully different from the
-// 8 true singletons for space purposes). Each one used to reserve a full
-// dedicated lane + band gap despite having nothing to branch into — 9 rows
-// and 8 gaps spent on what's often a single dot. Collapsed into one shared
-// "compact strip" at the bottom instead, packed by real (label-width-aware)
-// interval coloring rather than a fixed row count.
-const COMPACT_BAND_IDS = new Set([
-  'singer-songwriter', 'power-pop', 'indie-folk', 'garage-rock',
-  'alt-country', 'freak-folk', 'minimalism', 'folk-punk',
-  // post-rock meets the identical criteria (no parent, no children) but
-  // wasn't in the list this was requested against — included for
-  // consistency since it's the same shape of problem; flagged in the report.
-  'post-rock',
-]);
-
-// Six curated hue families (matching the app's existing per-family palette
-// convention — see Design system in CLAUDE.md) grouping the graph's ~15 real
-// timeline roots by musical affinity. This is a presentation-only grouping:
-// bands sharing a family share a hue, but no edge is ever drawn between
-// different bands — the underlying parent data has no connection between
-// them, and this layer doesn't invent one.
-const BAND_FAMILY: Record<string, { hue: string; shades: string[] }> = {
-  'proto-punk': { hue: 'indigo', shades: ['#8891F2'] },
-  krautrock: { hue: 'magenta', shades: ['#C77DD1'] },
-  'indie-rock': { hue: 'teal', shades: ['#5FD0C0', '#4BB8A8', '#7FE0D2'] },
-  'alt-rock': { hue: 'teal', shades: ['#4BB8A8'] },
-  'power-pop': { hue: 'teal', shades: ['#7FE0D2'] },
-  'art-rock': { hue: 'gold', shades: ['#E8C87A', '#D9AE55', '#C99530'] },
-  'garage-rock': { hue: 'gold', shades: ['#D9AE55'] },
-  'post-rock': { hue: 'gold', shades: ['#C99530'] },
-  'psychedelic-pop': { hue: 'rose', shades: ['#F2A8C4', '#D97FA0'] },
-  minimalism: { hue: 'rose', shades: ['#D97FA0'] },
-  'singer-songwriter': { hue: 'folk', shades: ['#78963C'] },
-  'alt-country': { hue: 'folk', shades: ['#8CAA52'] },
-  'freak-folk': { hue: 'folk', shades: ['#A1BD6C'] },
-  'indie-folk': { hue: 'folk', shades: ['#B7D089'] },
-  'folk-punk': { hue: 'folk', shades: ['#CEE3AA'] },
+// One flat color per root — every genre in a root's subtree gets that
+// root's color, full stop. The pre-2026-pass version shaded each old
+// sub-family with its own tint (proto-punk vs. its post-punk children,
+// etc.); with only four real branches now (plus minimalism, held out as a
+// genuine edge case, not a fifth peer branch) a single flat hue per root is
+// what actually reads as "four colours, meaningful, readable at a glance"
+// instead of a dozen barely-distinguishable shades. All five hexes are
+// reused from the app's existing palette (lib/colors.ts) — none invented.
+const ROOT_COLOR: Record<string, string> = {
+  'garage-rock': '#E8C87A',       // LAYER_COLORS.root gold — the graph's earliest chronological root (1963) and its biggest branch by far (26 of 51 dated genres)
+  'art-rock': '#C77DD1',          // LINEAGE_COLORS.krautrock magenta — this branch IS the krautrock/electronic lineage
+  'psychedelic-pop': '#F2A8C4',   // LAYER_COLORS['shoegaze-dreampop'] rose
+  'singer-songwriter': '#78963C', // FOLK_LINEAGE_COLORS['folk-roots'] olive-green
+  minimalism: '#9b96b8',          // neutral — a held, single-node edge case, not a real fifth peer branch (see seed-data.ts)
 };
+const DEFAULT_ROOT_COLOR = '#8891F2';
 
 function effectiveParent(g: { parent: string | null }, byId: Map<string, { id: string; parent: string | null }>): string | null {
   if (g.parent === null) return null;
@@ -134,6 +131,7 @@ export function buildGenreTimeline(graphData: GraphData): GenreTimelineLayout {
   }
   const byId = new Map(genres.map(g => [g.id, g]));
   const dated = genres.filter(g => g.emerged !== undefined);
+  const datedIds = new Set(dated.map(g => g.id));
 
   const sorted = dated.slice().sort((a, b) => a.emerged! - b.emerged! || a.name.localeCompare(b.name));
   const rankOf = new Map<string, number>();
@@ -189,66 +187,34 @@ export function buildGenreTimeline(graphData: GraphData): GenreTimelineLayout {
   }
   for (const r of bandRootIds) buildChain(r, r);
 
-  const majorBandIds = bandRootIds
-    .filter(id => !COMPACT_BAND_IDS.has(id))
-    .sort((a, b) => subtreeArtists(b) - subtreeArtists(a));
-  const compactBandIds = bandRootIds.filter(id => COMPACT_BAND_IDS.has(id));
+  // Every root is a real band now — ordered by total subtree artist weight,
+  // biggest first (garage-rock's ~330-artist branch, down to minimalism's
+  // single node).
+  const orderedBandIds = bandRootIds.slice().sort((a, b) => subtreeArtists(b) - subtreeArtists(a));
 
   const bands: TimelineBand[] = [];
-  const laneOfChainStart = new Map<string, number>(); // chain.startId -> lane WITHIN its band/strip
-  const bandOfChainStart = new Map<string, string>(); // chain.startId -> resolved band id ('__COMPACT__' for compact members)
+  const laneOfChainStart = new Map<string, number>(); // chain.startId -> lane WITHIN its band
   const yStartOfBand = new Map<string, number>(); // band id -> pixel y of lane 0
   const pitchOfBand = new Map<string, number>();
 
   let cursorY = PAD_TOP;
 
-  // ── Major bands: same per-band greedy interval-coloring as before, but
-  // pitch now scales with how many lanes the band actually needs — a band
-  // with more branches gets more room per branch, not the same fixed pitch
-  // every other band gets. ──
-  for (const bandId of majorBandIds) {
+  // Label-aware interval coloring, applied uniformly to every band: a
+  // chain's occupied interval is extended past its last node's own rank by
+  // how many ranks its label needs, so two dots with no real rank overlap
+  // still land on separate lanes if their labels would otherwise collide.
+  // Plain point-interval coloring undercounts this — it only checks bare
+  // rank overlap, not the label text that actually has to fit next to it.
+  const labelRankSpan = (name: string) => (estimateLabelWidth(name) + LABEL_GAP_PAD) / rankStep;
+  const effectiveEnd = (c: Chain) => {
+    const lastNode = byId.get(c.nodeIds[c.nodeIds.length - 1])!;
+    return c.endRank + labelRankSpan(lastNode.name);
+  };
+
+  for (const bandId of orderedBandIds) {
     const bandChains = (chainOfBand.get(bandId) ?? []).slice().sort((a, b) => a.startRank - b.startRank);
     const laneEndRank: number[] = [];
     for (const c of bandChains) {
-      let placed = -1;
-      for (let lane = 0; lane < laneEndRank.length; lane++) {
-        if (laneEndRank[lane] < c.startRank) { placed = lane; break; }
-      }
-      if (placed === -1) { placed = laneEndRank.length; laneEndRank.push(-1); }
-      laneEndRank[placed] = c.endRank;
-      laneOfChainStart.set(c.startId, placed);
-      bandOfChainStart.set(c.startId, bandId);
-    }
-    const laneCount = laneEndRank.length;
-    const pitch = BASE_LANE_PITCH + EXTRA_PITCH_PER_LANE * (laneCount - 1);
-    yStartOfBand.set(bandId, cursorY);
-    pitchOfBand.set(bandId, pitch);
-    const family = BAND_FAMILY[bandId];
-    bands.push({ id: bandId, name: byId.get(bandId)!.name, color: family?.shades[0] ?? '#8891F2', laneCount, isCompact: false });
-    cursorY += laneCount * pitch + BAND_GAP;
-  }
-
-  // ── Compact strip: every tiny orphan band merged into one shared region,
-  // packed with LABEL-WIDTH-AWARE interval coloring — a chain's occupied
-  // interval is extended past its last node's own rank by how many ranks
-  // its label needs, so two dots with no real overlap (e.g. garage-rock
-  // 1963, minimalism 1964 — one rank apart) still land on separate rows if
-  // their labels would otherwise collide. Plain point-interval coloring
-  // undercounts this badly: it says all 9 of these fit on ONE shared row
-  // (they never overlap as bare points), but their labels absolutely would.
-  // ──
-  if (compactBandIds.length > 0) {
-    const compactChains = compactBandIds
-      .flatMap(id => chainOfBand.get(id) ?? [])
-      .slice()
-      .sort((a, b) => a.startRank - b.startRank);
-    const labelRankSpan = (name: string) => (estimateLabelWidth(name) + LABEL_GAP_PAD) / rankStep;
-    const effectiveEnd = (c: Chain) => {
-      const lastNode = byId.get(c.nodeIds[c.nodeIds.length - 1])!;
-      return c.endRank + labelRankSpan(lastNode.name);
-    };
-    const laneEndRank: number[] = [];
-    for (const c of compactChains) {
       const end = effectiveEnd(c);
       let placed = -1;
       for (let lane = 0; lane < laneEndRank.length; lane++) {
@@ -257,29 +223,30 @@ export function buildGenreTimeline(graphData: GraphData): GenreTimelineLayout {
       if (placed === -1) { placed = laneEndRank.length; laneEndRank.push(-1); }
       laneEndRank[placed] = end;
       laneOfChainStart.set(c.startId, placed);
-      bandOfChainStart.set(c.startId, '__COMPACT__');
     }
     const laneCount = laneEndRank.length;
-    yStartOfBand.set('__COMPACT__', cursorY);
-    pitchOfBand.set('__COMPACT__', BASE_LANE_PITCH);
-    bands.push({ id: '__COMPACT__', name: 'Independent strands', color: '#9b96b8', laneCount, isCompact: true });
-    cursorY += laneCount * BASE_LANE_PITCH;
+    const pitch = BASE_LANE_PITCH + EXTRA_PITCH_PER_LANE * (laneCount - 1);
+    yStartOfBand.set(bandId, cursorY);
+    pitchOfBand.set(bandId, pitch);
+    bands.push({
+      id: bandId,
+      name: byId.get(bandId)!.name,
+      color: ROOT_COLOR[bandId] ?? DEFAULT_ROOT_COLOR,
+      laneCount,
+      isCompact: laneCount === 1 && bandChains.length === 1 && bandChains[0].nodeIds.length === 1,
+    });
+    cursorY += laneCount * pitch + BAND_GAP;
   }
 
   const plotH = cursorY + PAD_TOP;
   const viewH = plotH + AXIS_H;
 
-  // Assign lane + resolved band to every node (a chain's non-start members
-  // inherit the chain's own lane/band — they're the straight continuation).
+  // Assign lane to every node (a chain's non-start members inherit the
+  // chain's own lane — they're the straight continuation).
   const laneOfNode = new Map<string, number>();
-  const resolvedBandOfNode = new Map<string, string>();
   for (const c of chains) {
     const lane = laneOfChainStart.get(c.startId)!;
-    const band = bandOfChainStart.get(c.startId)!;
-    for (const nid of c.nodeIds) {
-      laneOfNode.set(nid, lane);
-      resolvedBandOfNode.set(nid, band);
-    }
+    for (const nid of c.nodeIds) laneOfNode.set(nid, lane);
   }
 
   const ALWAYS_LABEL_COUNT_THRESHOLD = 10;
@@ -289,7 +256,7 @@ export function buildGenreTimeline(graphData: GraphData): GenreTimelineLayout {
   }
 
   const effParentOf = new Map<string, string | null>(dated.map(g => [g.id, effectiveParent(g, byId)]));
-  function findOriginalBand(id: string): string {
+  function findBandRoot(id: string): string {
     let cur = id;
     let p = effParentOf.get(cur) ?? null;
     while (p !== null) {
@@ -300,11 +267,13 @@ export function buildGenreTimeline(graphData: GraphData): GenreTimelineLayout {
   }
 
   const nodes: TimelineNode[] = dated.map(g => {
-    const originalBandId = findOriginalBand(g.id);
-    const resolvedBand = resolvedBandOfNode.get(g.id)!;
+    const bandRootId = findBandRoot(g.id);
     const lane = laneOfNode.get(g.id)!;
-    const family = BAND_FAMILY[originalBandId];
     const rank = rankOf.get(g.id)!;
+    // alsoFrom entries are validated at write time (see the hierarchy pass's
+    // report) but re-filtered here defensively: a secondary parent must
+    // still be a real, dated, non-container genre to draw a line to it.
+    const alsoFromIds = (g.alsoFrom ?? []).filter(id => datedIds.has(id) && id !== g.parent);
     return {
       id: g.id,
       name: g.name,
@@ -313,13 +282,14 @@ export function buildGenreTimeline(graphData: GraphData): GenreTimelineLayout {
       count: counts.get(g.id) ?? 0,
       rank,
       x: xOf(rank),
-      y: yStartOfBand.get(resolvedBand)! + lane * pitchOfBand.get(resolvedBand)!,
+      y: yStartOfBand.get(bandRootId)! + lane * pitchOfBand.get(bandRootId)!,
       lane,
-      bandId: originalBandId,
+      bandId: bandRootId,
       parentId: effParentOf.get(g.id) ?? null,
+      alsoFromIds,
       alwaysLabeled: alwaysLabeledIds.has(g.id),
-      color: family?.shades[0] ?? '#8891F2',
-      isCompact: resolvedBand === '__COMPACT__',
+      color: ROOT_COLOR[bandRootId] ?? DEFAULT_ROOT_COLOR,
+      isCompact: bands.find(b => b.id === bandRootId)?.isCompact ?? false,
     };
   });
   nodes.sort((a, b) => a.rank - b.rank);
@@ -345,7 +315,7 @@ export function buildGenreTimeline(graphData: GraphData): GenreTimelineLayout {
 }
 
 // Returns the chain of ids from `id` up to (and including) its band root,
-// via effective parents — used to highlight the full ancestral line on hover.
+// via primary parents — used to highlight the full ancestral line on hover.
 export function ancestorChain(id: string, layout: GenreTimelineLayout): string[] {
   const chain: string[] = [];
   let cur: string | undefined = id;

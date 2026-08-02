@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { href: '/', label: 'Graph' },
   { href: '/browse', label: 'Browse' },
   { href: '/genres', label: 'Genres' },
-  { href: '/scene/american-underground', label: 'Scenes' },
+  { href: '/scenes', label: 'Scenes' },
   { href: '/about', label: 'About' },
 ];
 

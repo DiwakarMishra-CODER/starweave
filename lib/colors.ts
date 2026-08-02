@@ -325,14 +325,85 @@ export const GENRE_COLORS: Record<string, string> = {
   'noise-rock': '#5FD0C0',
   'jangle-pop': '#5FD0C0',
   'power-pop':  '#5FD0C0',
+  'art-pop':    '#E8C87A',  // gold — child of art-rock, same lineage
+  krautrock:    '#C77DD1',  // reuses LINEAGE_COLORS.krautrock (electronic realm)
+  ambient:      '#C99AE0',  // reuses LINEAGE_COLORS['ambient-drone']
+  hyperpop:     '#FF6EC7',  // reuses LINEAGE_COLORS['hyperpop-pcmusic']
+  'hardcore-punk': '#8C1E1E', // reuses EMO_LINEAGE_COLORS['hardcore-roots'] — most tagged artists carry that lineage
+  punk:            '#8891F2', // indigo — same family as its proto-punk parent
+  'post-hardcore': '#B02E2E', // reuses EMO_LINEAGE_COLORS['post-hardcore']
+  emo:             '#D14A3A', // reuses EMO_LINEAGE_COLORS['midwest-emo'] — distinct from post-hardcore's shade
+  'synth-pop':     '#E066C4', // reuses LINEAGE_COLORS['synth-pop']
+  'lo-fi':         '#5FD0C0', // teal — same family as indie-rock/noise-rock
+  'post-rock':     '#6B3FA0', // reuses POSTROCK_LINEAGE_COLORS['post-rock']
+  'indie-pop':     '#F2A8C4', // rose — same family as shoegaze/dream-pop, its heaviest overlap
+  'midwest-emo':   '#D14A3A', // reuses EMO_LINEAGE_COLORS['midwest-emo'] — same shade as its emo parent
+  'math-rock':     '#F26B52', // reuses EMO_LINEAGE_COLORS['math-rock'] — brightest of the emo family
+  'no-wave':       '#3B1F5C', // reuses POSTROCK_LINEAGE_COLORS['no-wave']
+  darkwave:        '#A87FD1', // reuses POSTROCK_LINEAGE_COLORS['drone'] — goth's electronic-leaning cousin
+  'garage-rock':   '#E8C87A', // gold — root genre, same family as art-rock/krautrock
+  'chamber-pop':   '#5FD0C0', // teal — indie-rock family
+  'singer-songwriter': '#78963C', // reuses FOLK_LINEAGE_COLORS['folk-roots']
+  'indie-folk':    '#CEE3AA', // reuses FOLK_LINEAGE_COLORS['indie-folk']
+  'alt-country':   '#B85C2E', // reuses AMERICAN_UNDERGROUND_LINEAGE_COLORS['college-rock']
+  slowcore:        '#B7D089', // reuses FOLK_LINEAGE_COLORS['slowcore']
+  'bedroom-pop':   '#5FD0C0', // teal — indie-rock family, small genre
+  'psychedelic-pop': '#A56DD6', // reuses LINEAGE_COLORS['art-electronic']
+  idm:             '#B25CC9', // reuses LINEAGE_COLORS.idm
+  industrial:      '#F25FA8', // reuses LINEAGE_COLORS['electronic-indie-dancepunk']
+  drone:           '#A87FD1', // reuses POSTROCK_LINEAGE_COLORS['drone'] — same family as darkwave
+  'trip-hop':      '#B0679E', // reuses LINEAGE_COLORS['trip-hop-downtempo']
+  'neo-psychedelia': '#A56DD6', // same as its psychedelic-pop parent
+  'experimental-pop': '#FF6EC7', // reuses LINEAGE_COLORS['hyperpop-pcmusic']
+  'riot-grrrl':    '#8891F2', // indigo — same family as its punk parent
+  vaporwave:       '#C99AE0', // reuses LINEAGE_COLORS['ambient-drone'] — same family as ambient
+  'freak-folk':    '#8CAA52', // reuses FOLK_LINEAGE_COLORS['freak-folk']
+  britpop:         '#5FD0C0', // teal — indie-rock family
+  grunge:          '#7A3418', // reuses AMERICAN_UNDERGROUND_LINEAGE_COLORS['noise-alt']
+  'noise-pop':     '#5FD0C0', // teal — same family as its noise-rock parent
+  minimalism:      '#3B1F5C', // reuses POSTROCK_LINEAGE_COLORS['no-wave'] — same family as its 2 tagged artists' real lineage
+  'folk-punk':     '#8891F2', // indigo — punk half of the blend
+  'hypnagogic-pop': '#A56DD6', // same as its psychedelic-pop grandparent
+  electronic:      '#C77DD1', // reuses LINEAGE_COLORS.krautrock — the realm's own founding lineage
+  folk:            '#A1BD6C', // reuses FOLK_LINEAGE_COLORS.confessional — the mode the page argues "folk" now means
 };
 
 export const DEFAULT_GENRE_COLOR = '#8891F2';
 
-// Scenes are a time + place, not a sound — deliberately muted/warm (archival,
-// documentary) rather than the saturated single hues genres use.
+// Rebuilt for consistent perceived brightness, not just distinct hues — the
+// previous set (each reused wholesale from an existing lineage family) put
+// no-wave/dischord/sst at each family's own DEEPEST shade (the "1970s/80s
+// origin point" convention those families use elsewhere), which reads fine
+// as a lineage-color accent but fails badly as a scene's own background/
+// title color: no-wave's #3B1F5C measured 1.42:1 contrast against the
+// #0e0b1a background — a title in that color was reported illegible, and
+// dischord (2.14:1) and sst (2.16:1) had the same problem one notch less
+// severe. Meanwhile the other 9 scenes ranged 4.88:1 (Bristol) to 14.05:1
+// (Glasgow) — legible individually, but Glasgow's bar still visibly
+// "popped" next to Bristol's, which is what "no bar should recede" is
+// actually asking to fix.
+//
+// This set targets one fixed WCAG relative luminance (~0.40, i.e. ~8.3:1
+// contrast against the page background) at a consistent HSL saturation
+// (0.60), varying ONLY hue, spaced roughly 30° apart around the wheel —
+// genuinely equal brightness by the same math used to catch the illegible
+// case above, not just "looks about as bright to me." riot-grrrl is the one
+// deliberate exception, kept at its original #8891F2 (6.82:1, still well
+// above the 4.5:1 text-legibility floor) because it was chosen to match the
+// riot-grrrl GENRE's own color on purpose — changing it would break that.
 export const SCENE_COLORS: Record<string, string> = {
-  'american-underground': '#C9985E',
+  dischord:      '#E49494', // 0°   — warm red-pink
+  sst:           '#D89E64', // 30°  — tan-orange
+  'elephant-6':  '#AFAF2C', // 60°  — olive-yellow
+  seattle:       '#76BC2F', // 90°  — grass green
+  glasgow:       '#31C331', // 120° — green
+  windmill:      '#30C178', // 150° — spring green-teal, closest match to its own prior teal identity
+  manchester:    '#2FBCBC', // 180° — cyan-teal
+  'no-wave':     '#7DAEDF', // 210° — steel blue — was the illegible #3B1F5C; this is the fix
+  'riot-grrrl':  '#8891F2', // 235° — indigo — KEPT UNCHANGED, matches GENRE_COLORS['riot-grrrl'] deliberately
+  '4ad':         '#C09AE6', // 270° — lavender
+  creation:      '#E28BE2', // 300° — magenta/orchid
+  bristol:       '#E390BA', // 330° — dusty rose
 };
 
 export const DEFAULT_SCENE_COLOR = '#C9985E';

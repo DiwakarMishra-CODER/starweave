@@ -110,7 +110,7 @@ export default function AboutPage() {
               <span className="about-page__view-label">Genres</span>
               <span className="about-page__view-desc">organize by sound</span>
             </Link>
-            <Link href="/scene/american-underground" className="about-page__view-card">
+            <Link href="/scenes" className="about-page__view-card">
               <span className="about-page__view-label">Scenes</span>
               <span className="about-page__view-desc">
                 capture a specific time, place, and community

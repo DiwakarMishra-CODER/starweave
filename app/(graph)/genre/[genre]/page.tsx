@@ -3,17 +3,20 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { loadGraphData } from '@/lib/graph-data';
 import { GENRE_COLORS, DEFAULT_GENRE_COLOR } from '@/lib/colors';
+import { getGenreLineage } from '@/lib/genre-lineage';
+import { GENRE_PAGES } from '@/data/genre-pages';
 import ArtistBackground from '@/components/artist/ArtistBackground';
 import ArtistCircleGrid from '@/components/artist/ArtistCircleGrid';
 import AlbumGrid from '@/components/artist/AlbumGrid';
 import IgniteGraphButton from '@/components/artist/IgniteGraphButton';
+import GenreLineageStrip from '@/components/artist/GenreLineageStrip';
 
 interface Props {
   params: Promise<{ genre: string }>;
 }
 
-// Only shoegaze is fully built in v1; others render a stub.
-const BUILT_GENRES = new Set(['shoegaze']);
+// Genres with a full story page live in data/genre-pages.ts; others render a stub.
+const BUILT_GENRES = new Set(Object.keys(GENRE_PAGES));
 
 export function generateStaticParams() {
   const data = loadGraphData();
@@ -59,25 +62,30 @@ export default async function GenrePage({ params }: Props) {
     );
   }
 
-  // --- Shoegaze story ---
-  const shoegazeArtists = data.artists.filter(a =>
-    a.genres.includes('shoegaze'),
-  );
-  const pioneers = shoegazeArtists.filter(a =>
-    a.activeFrom && a.activeFrom < 1995,
-  );
-  const modern = shoegazeArtists.filter(a =>
-    a.activeFrom && a.activeFrom >= 1995,
-  );
+  // --- Content-defined genre story (see data/genre-pages.ts) ---
+  const content = GENRE_PAGES[genre]!;
+  const lineage = getGenreLineage(data.genres, genre);
+
   // "View in graph" highlights every artist in this genre as a cluster.
   const graphHref = `/?genre=${genre}`;
   const graphLabel = `See ${genreData.name} light up the graph`;
 
-  // One classic album per artist, sorted chronologically.
-  const definingAlbums = shoegazeArtists
-    .filter(a => a.classicAlbums && a.classicAlbums.length > 0)
+  // Curated, not derived — see the file-level comment in data/genre-pages.ts.
+  // An artist can carry this genre's tag while their classicAlbum belongs to
+  // a different one; content.definingAlbums is the hand-picked subset whose
+  // album genuinely fits.
+  const definingAlbums = content.definingAlbums
+    .map(id => data.artists.find(a => a.id === id))
+    .filter((a): a is NonNullable<typeof a> => a !== undefined && !!a.classicAlbums?.length)
     .map(a => ({ artist: a, album: a.classicAlbums![0] }))
     .sort((a, b) => (a.album.year ?? 0) - (b.album.year ?? 0));
+
+  const resolvedSections = content.sections.map(section => ({
+    ...section,
+    artists: section.artistIds
+      .map(id => data.artists.find(a => a.id === id))
+      .filter((a): a is NonNullable<typeof a> => a !== undefined),
+  }));
 
   return (
     <div
@@ -91,62 +99,44 @@ export default async function GenrePage({ params }: Props) {
       <article className="genre-page">
         <header className="genre-page__header">
           <p className="genre-page__super">Genre story</p>
-          <h1 className="genre-page__title">Shoegaze</h1>
-          <p className="genre-page__deck">
-            Guitar-pedal haze, oceanic walls of distortion, and vocals buried so deep in the mix
-            they become texture. Shoegaze emerged from the UK in the late 1980s as a reaction
-            against the studied cool of post-punk — something more overwhelming, more ambiguous,
-            harder to hold at arm&apos;s length.
-          </p>
+          <h1 className="genre-page__title">{genreData.name}</h1>
+          <p className="genre-page__deck">{content.deck}</p>
           <IgniteGraphButton href={graphHref} label={graphLabel} />
         </header>
 
+        {lineage && (
+          <GenreLineageStrip lineage={lineage} />
+        )}
+
         <section className="genre-page__section">
           <h2>Origin</h2>
-          <p>
-            The name came from a dismissive joke — these guitarists spent their live sets
-            staring at their pedalboards, lost in the sound they were making. The Jesus and
-            Mary Chain sparked the template in 1985 with <em>Psychocandy</em>: Velvet Underground
-            drones run through walls of feedback, with melodies buried underneath.
-          </p>
-          <p>
-            By 1988–1991 a cluster of Oxford and Reading acts — Ride, Slowdive, Chapterhouse —
-            had formed around Creation and 4AD, the two labels that would define the genre&apos;s
-            first wave. My Bloody Valentine&apos;s <em>Loveless</em> (1991) set a ceiling nobody
-            has convincingly matched since.
-          </p>
+          {content.originParagraphs.map((p, i) => <p key={i}>{p}</p>)}
+        </section>
+
+        <section className="genre-page__section">
+          <h2>The sound</h2>
+          <p>{content.soundParagraph}</p>
         </section>
       </article>
 
-      {/* Defining albums — wider section, breaks out of prose column */}
+      {/* Defining albums — wider section, breaks out of prose column. Placed
+          right after "The sound" (and before the artist sections below) so
+          the covers — the most visually arresting element on the page —
+          appear before a reader has scrolled through four blocks of prose
+          with nothing to look at. */}
       <AlbumGrid heading="Defining albums" items={definingAlbums} />
 
       {/* Lower prose — 700px reading width, no top padding */}
       <div className="genre-page genre-page--lower">
-        <section className="genre-page__section">
-          <h2>Pioneers</h2>
-          <p>
-            These artists built the genre&apos;s first wave, most active between 1983 and 1995.
-            Many were initially dismissed as derivative by the press and commercially
-            overlooked — all are now considered essential.
-          </p>
-          <div className="genre-page__section-artists">
-            <ArtistCircleGrid artists={pioneers} />
-          </div>
-        </section>
-
-        <section className="genre-page__section">
-          <h2>Modern torchbearers</h2>
-          <p>
-            After a mid-90s backlash quieted the original wave, shoegaze never fully
-            disappeared — it went underground and global. Artists like Deerhunter, Beach House,
-            Wolf Alice, and Korea&apos;s Parannoul absorbed the template and pushed it forward,
-            often in entirely different cultural contexts.
-          </p>
-          <div className="genre-page__section-artists">
-            <ArtistCircleGrid artists={modern} />
-          </div>
-        </section>
+        {resolvedSections.map(section => (
+          <section className="genre-page__section" key={section.title}>
+            <h2>{section.title}</h2>
+            <p>{section.blurb}</p>
+            <div className="genre-page__section-artists">
+              <ArtistCircleGrid artists={section.artists} />
+            </div>
+          </section>
+        ))}
 
         <IgniteGraphButton href={graphHref} label={graphLabel} secondary />
       </div>

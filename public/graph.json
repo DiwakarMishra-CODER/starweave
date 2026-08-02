@@ -465,6 +465,7 @@
       "layer": "post-punk",
       "genres": [
         "jangle-pop",
+        "indie-pop",
         "indie-rock"
       ],
       "scope": [
@@ -1057,7 +1058,8 @@
       "name": "Beach House",
       "layer": "shoegaze-dreampop",
       "genres": [
-        "dream-pop"
+        "dream-pop",
+        "indie-pop"
       ],
       "scope": [
         "shoegaze-dreampop-v1",
@@ -1493,6 +1495,7 @@
       "layer": "indie-alt",
       "genres": [
         "lo-fi",
+        "indie-pop",
         "indie-rock",
         "alt-rock"
       ],
@@ -1528,6 +1531,7 @@
       "layer": "indie-alt",
       "genres": [
         "noise-rock",
+        "indie-pop",
         "indie-rock"
       ],
       "scope": [
@@ -1562,6 +1566,7 @@
       "layer": "indie-alt",
       "genres": [
         "jangle-pop",
+        "indie-pop",
         "alt-rock"
       ],
       "scope": [
@@ -4323,6 +4328,7 @@
       "layer": "outside",
       "genres": [
         "bedroom-pop",
+        "indie-pop",
         "folk"
       ],
       "scope": [
@@ -4353,10 +4359,10 @@
       "name": "Japanese Breakfast",
       "layer": "outside",
       "genres": [
-        "indie-pop",
-        "indie-rock",
         "dream-pop",
-        "chamber-pop"
+        "chamber-pop",
+        "indie-pop",
+        "indie-rock"
       ],
       "scope": [
         "underground"
@@ -4387,6 +4393,7 @@
       "layer": "outside",
       "genres": [
         "bedroom-pop",
+        "indie-pop",
         "folk"
       ],
       "scope": [
@@ -4698,6 +4705,7 @@
       "genres": [
         "lo-fi",
         "psychedelic-pop",
+        "indie-pop",
         "indie-rock"
       ],
       "scope": [
@@ -6367,6 +6375,7 @@
       "layer": "outside",
       "genres": [
         "lo-fi",
+        "indie-pop",
         "indie-rock"
       ],
       "scope": [
@@ -6398,6 +6407,7 @@
       "layer": "outside",
       "genres": [
         "lo-fi",
+        "indie-pop",
         "indie-rock"
       ],
       "scope": [
@@ -6647,6 +6657,7 @@
       "layer": "outside",
       "genres": [
         "lo-fi",
+        "indie-pop",
         "indie-rock"
       ],
       "scope": [
@@ -6833,6 +6844,7 @@
       "layer": "outside",
       "genres": [
         "psychedelic-pop",
+        "indie-pop",
         "indie-rock"
       ],
       "scope": [
@@ -6895,7 +6907,8 @@
       "layer": "outside",
       "genres": [
         "psychedelic-pop",
-        "art-pop"
+        "art-pop",
+        "indie-pop"
       ],
       "scope": [
         "underground"
@@ -9143,6 +9156,7 @@
       "layer": "outside",
       "genres": [
         "indie-folk",
+        "indie-pop",
         "folk",
         "indie-rock"
       ],
@@ -9357,7 +9371,7 @@
     {
       "id": "proto-punk",
       "name": "Proto-punk",
-      "parent": null,
+      "parent": "garage-rock",
       "emerged": 1967,
       "emergedBasis": "The Velvet Underground, then the Stooges in 1969"
     },
@@ -9372,6 +9386,9 @@
       "id": "goth",
       "name": "Gothic rock",
       "parent": "post-punk",
+      "alsoFrom": [
+        "art-rock"
+      ],
       "emerged": 1979,
       "emergedBasis": "Bauhaus, \"Bela Lugosi's Dead\""
     },
@@ -9379,6 +9396,9 @@
       "id": "dance-punk",
       "name": "Dance-punk",
       "parent": "post-punk",
+      "alsoFrom": [
+        "krautrock"
+      ],
       "emerged": 1979,
       "emergedBasis": "Gang of Four, Entertainment!"
     },
@@ -9386,13 +9406,17 @@
       "id": "jangle-pop",
       "name": "Jangle pop",
       "parent": "power-pop",
+      "alsoFrom": [
+        "indie-pop",
+        "proto-punk"
+      ],
       "emerged": 1983,
       "emergedBasis": "R.E.M.'s Murmur and the Smiths"
     },
     {
       "id": "power-pop",
       "name": "Power pop",
-      "parent": null,
+      "parent": "psychedelic-pop",
       "emerged": 1972,
       "emergedBasis": "Big Star, #1 Record"
     },
@@ -9400,6 +9424,10 @@
       "id": "shoegaze",
       "name": "Shoegaze",
       "parent": "dream-pop",
+      "alsoFrom": [
+        "noise-pop",
+        "goth"
+      ],
       "emerged": 1988,
       "emergedBasis": "My Bloody Valentine, Isn't Anything"
     },
@@ -9407,6 +9435,11 @@
       "id": "dream-pop",
       "name": "Dream pop",
       "parent": "post-punk",
+      "alsoFrom": [
+        "art-rock",
+        "art-pop",
+        "goth"
+      ],
       "emerged": 1984,
       "emergedBasis": "Cocteau Twins, Treasure"
     },
@@ -9414,27 +9447,32 @@
       "id": "noise-rock",
       "name": "Noise rock",
       "parent": "no-wave",
+      "alsoFrom": [
+        "proto-punk",
+        "hardcore-punk",
+        "industrial"
+      ],
       "emerged": 1981,
       "emergedBasis": "Sonic Youth and Swans in New York"
     },
     {
       "id": "alt-rock",
       "name": "Alternative rock",
-      "parent": null,
+      "parent": "noise-rock",
       "emerged": 1987,
       "emergedBasis": "The American college-radio wave before Nevermind"
     },
     {
       "id": "indie-rock",
       "name": "Indie rock",
-      "parent": null,
+      "parent": "alt-rock",
       "emerged": 1990,
       "emergedBasis": "American indie consolidating after Sub Pop"
     },
     {
       "id": "krautrock",
       "name": "Krautrock",
-      "parent": null,
+      "parent": "art-rock",
       "emerged": 1968,
       "emergedBasis": "Can and Amon Duul form in West Germany"
     },
@@ -9442,6 +9480,10 @@
       "id": "post-hardcore",
       "name": "Post-hardcore",
       "parent": "hardcore-punk",
+      "alsoFrom": [
+        "noise-rock",
+        "post-punk"
+      ],
       "emerged": 1985,
       "emergedBasis": "Rites of Spring and Big Black"
     },
@@ -9459,6 +9501,9 @@
       "id": "hardcore-punk",
       "name": "Hardcore punk",
       "parent": "punk",
+      "alsoFrom": [
+        "proto-punk"
+      ],
       "emerged": 1980,
       "emergedBasis": "Black Flag, Nervous Breakdown"
     },
@@ -9466,6 +9511,9 @@
       "id": "emo",
       "name": "Emo",
       "parent": "post-hardcore",
+      "alsoFrom": [
+        "punk"
+      ],
       "emerged": 1994,
       "emergedBasis": "Sunny Day Real Estate, Diary"
     },
@@ -9480,13 +9528,21 @@
       "id": "math-rock",
       "name": "Math rock",
       "parent": "post-hardcore",
+      "alsoFrom": [
+        "art-rock"
+      ],
       "emerged": 1994,
       "emergedBasis": "Drive Like Jehu, Yank Crime"
     },
     {
       "id": "post-rock",
       "name": "Post-rock",
-      "parent": null,
+      "parent": "krautrock",
+      "alsoFrom": [
+        "art-rock",
+        "noise-rock",
+        "post-punk"
+      ],
       "emerged": 1991,
       "emergedBasis": "Talk Talk's Laughing Stock and Slint's Spiderland; Simon Reynolds coined the term in 1994"
     },
@@ -9501,6 +9557,10 @@
       "id": "drone",
       "name": "Drone",
       "parent": "ambient",
+      "alsoFrom": [
+        "minimalism",
+        "noise-rock"
+      ],
       "emerged": 1990,
       "emergedBasis": "The Stars of the Lid generation of long-form drone"
     },
@@ -9522,6 +9582,10 @@
       "id": "industrial",
       "name": "Industrial",
       "parent": "krautrock",
+      "alsoFrom": [
+        "art-rock",
+        "proto-punk"
+      ],
       "emerged": 1975,
       "emergedBasis": "Throbbing Gristle form in Hull"
     },
@@ -9529,6 +9593,10 @@
       "id": "grunge",
       "name": "Grunge",
       "parent": "alt-rock",
+      "alsoFrom": [
+        "noise-rock",
+        "hardcore-punk"
+      ],
       "emerged": 1989,
       "emergedBasis": "Sub Pop; Nirvana's Bleach"
     },
@@ -9536,13 +9604,17 @@
       "id": "lo-fi",
       "name": "Lo-fi",
       "parent": "indie-rock",
+      "alsoFrom": [
+        "alt-rock",
+        "singer-songwriter"
+      ],
       "emerged": 1992,
       "emergedBasis": "Sebadoh, Guided by Voices and Pavement"
     },
     {
       "id": "folk-punk",
       "name": "Folk punk",
-      "parent": "folk",
+      "parent": "singer-songwriter",
       "emerged": 1985,
       "emergedBasis": "Violent Femmes-descended acoustic punk"
     },
@@ -9550,6 +9622,10 @@
       "id": "chamber-pop",
       "name": "Chamber pop",
       "parent": "indie-rock",
+      "alsoFrom": [
+        "singer-songwriter",
+        "art-rock"
+      ],
       "emerged": 1996,
       "emergedBasis": "Belle and Sebastian; later Sufjan Stevens"
     },
@@ -9557,6 +9633,10 @@
       "id": "art-pop",
       "name": "Art pop",
       "parent": "art-rock",
+      "alsoFrom": [
+        "singer-songwriter",
+        "post-punk"
+      ],
       "emerged": 1979,
       "emergedBasis": "Kate Bush and Talking Heads"
     },
@@ -9592,13 +9672,17 @@
       "id": "experimental-pop",
       "name": "Experimental pop",
       "parent": "psychedelic-pop",
+      "alsoFrom": [
+        "dream-pop",
+        "shoegaze"
+      ],
       "emerged": 1996,
       "emergedBasis": "Stereolab and the Olivia Tremor Control"
     },
     {
       "id": "freak-folk",
       "name": "Freak folk",
-      "parent": "folk",
+      "parent": "singer-songwriter",
       "emerged": 2003,
       "emergedBasis": "Devendra Banhart and Joanna Newsom"
     },
@@ -9627,6 +9711,10 @@
       "id": "synth-pop",
       "name": "Synth-pop",
       "parent": "krautrock",
+      "alsoFrom": [
+        "industrial",
+        "post-punk"
+      ],
       "emerged": 1978,
       "emergedBasis": "The Human League and Gary Numan"
     },
@@ -9655,6 +9743,9 @@
       "id": "idm",
       "name": "IDM",
       "parent": "synth-pop",
+      "alsoFrom": [
+        "ambient"
+      ],
       "emerged": 1992,
       "emergedBasis": "Warp's Artificial Intelligence compilation"
     },
@@ -9668,7 +9759,7 @@
     {
       "id": "alt-country",
       "name": "Alt-country",
-      "parent": "folk",
+      "parent": "singer-songwriter",
       "emerged": 1990,
       "emergedBasis": "Uncle Tupelo, No Depression"
     },
@@ -9676,6 +9767,9 @@
       "id": "bedroom-pop",
       "name": "Bedroom pop",
       "parent": "indie-rock",
+      "alsoFrom": [
+        "singer-songwriter"
+      ],
       "emerged": 2016,
       "emergedBasis": "Clairo and the streaming-era home recording wave"
     },
@@ -9683,20 +9777,23 @@
       "id": "slowcore",
       "name": "Slowcore",
       "parent": "indie-rock",
+      "alsoFrom": [
+        "dream-pop"
+      ],
       "emerged": 1990,
       "emergedBasis": "Codeine, Low and Galaxie 500"
     },
     {
       "id": "singer-songwriter",
       "name": "Singer-songwriter",
-      "parent": "folk",
+      "parent": null,
       "emerged": 1967,
       "emergedBasis": "Leonard Cohen, Joni Mitchell, Nick Drake"
     },
     {
       "id": "indie-folk",
       "name": "Indie folk",
-      "parent": "folk",
+      "parent": "singer-songwriter",
       "emerged": 2004,
       "emergedBasis": "Sufjan Stevens and Iron & Wine"
     },
@@ -9711,83 +9808,481 @@
       "id": "indie-pop",
       "name": "Indie pop",
       "parent": "post-punk",
+      "alsoFrom": [
+        "jangle-pop",
+        "singer-songwriter"
+      ],
       "emerged": 1983,
       "emergedBasis": "The Smiths; Postcard Records had laid the ground"
     }
   ],
   "scenes": [
     {
-      "id": "american-underground",
-      "name": "American Underground",
-      "era": "1980–1991",
-      "place": "US",
-      "deck": "Between 1980 and 1991, a scattered network of American bands built its own infrastructure — vans, college radio, all-ages clubs, and independent labels — because the mainstream music industry offered nothing for music this loud, this strange, or this indifferent to commercial polish. It became known simply as the underground, and it rewired what American rock could sound like.",
-      "sections": [
+      "id": "no-wave",
+      "name": "No Wave",
+      "era": "1978–1983",
+      "place": "Lower Manhattan",
+      "city": "Lower Manhattan",
+      "yearStart": 1978,
+      "yearEnd": 1983,
+      "blurb": "The scene born from the 1978 No New York compilation — abrasive, atonal, and deliberately hostile to rock convention — plus the guitar-orchestra wave of Glenn Branca and Rhys Chatham that grew up alongside it, with Swans emerging directly out of the same downtown scene.",
+      "placeAndTime": [
+        "The scene's first tier lived in Lower Manhattan's loft and storefront circuit between 1976 and 1979 — cheap, unzoned spaces standing in for clubs, where DNA, Mars, Teenage Jesus and the Jerks, and James Chance and the Contortions played to the same few hundred people night after night. Brian Eno, in New York for other reasons, caught enough of it to produce No New York (1978), the compilation that gave the scene a name and a document for anyone who hadn't been in the room.",
+        "A second tier grew directly out of that milieu between 1979 and 1982: Glenn Branca and Rhys Chatham's massed-guitar ensembles, and Swans, formed by Michael Gira in 1982 out of the same downtown scene the compilation acts had defined. Branca's own label, Neutral Records, released Swans' debut album, Filth — the guitar-orchestra wing and the emerging noise-rock wing sharing not just a scene but a release schedule."
+      ],
+      "memberRoles": [
         {
-          "heading": "The Circuit",
-          "paragraphs": [
-            "There was no single scene so much as a circuit: a loose, self-organized touring network stitched together by word of mouth, zines, and college radio stations willing to play what commercial rock stations would not. Bands slept on floors, split gas money, and booked their own shows in VFW halls and basements because no promoter would touch them.",
-            "Labels like SST, Twin/Tone, and Homestead ran the business side of this economy — pressing records on shoestring budgets, trading tour dates and studio time, and treating national exposure as a byproduct of persistence rather than a marketing plan. It was DIY not as an aesthetic choice but as the only available option."
-          ]
+          "artistId": "dna",
+          "role": "One of the four acts on No New York; Arto Lindsay and Ikue Mori's anti-technique approach set the scene's most structurally uncompromising benchmark."
         },
         {
-          "heading": "The Bands",
-          "paragraphs": [
-            "The bands that emerged from this network shared almost nothing sonically — the sludgy melodicism of Hüsker Dü, the amp-worshipping sprawl of Dinosaur Jr., Sonic Youth's detuned art-noise, the ragged tunefulness of The Replacements, R.E.M.'s jangling mystery, Pixies' loud-quiet-loud tension, Pavement's shambling irony — but they shared the circuit, the labels, and a refusal to sound like anything on the radio.",
-            "Below is the community that built it — the artists in Starweave's graph who came out of this world."
-          ]
+          "artistId": "mars",
+          "role": "Formed earliest of the compilation acts and pushed furthest from conventional rock; a Mars show was reportedly what sent Lydia Lunch off to start her own band."
         },
         {
-          "heading": "The Breakthrough",
-          "paragraphs": [
-            "By the end of the decade, the underground's influence had outgrown its infrastructure. Nirvana — who toured the same clubs and released their debut on the same independent label system — carried the sound to the top of the charts in 1991, and major labels scrambled to sign anything that resembled it.",
-            "The circuit didn't survive its own success intact, but its DNA did: the idea that a band could build an audience without radio, without a major label, and without changing what it sounded like to get there became the founding myth of American indie rock for the next three decades."
-          ]
+          "artistId": "teenage-jesus-and-the-jerks",
+          "role": "Lydia Lunch's band, started after seeing Mars perform live; became the scene's most concentrated statement of deliberate ugliness and brevity."
+        },
+        {
+          "artistId": "james-chance-and-the-contortions",
+          "role": "Brought a trained funk rhythm section into the same rooms, giving the compilation its danceable, confrontational counterpoint to the other three acts' pure noise."
+        },
+        {
+          "artistId": "swans",
+          "role": "Formed in 1982 directly out of the downtown scene; Michael Gira called Branca's early concerts \"the epitome of how high music can go,\" and the band's debut, Filth, came out on Branca's own Neutral Records."
+        },
+        {
+          "artistId": "glenn-branca",
+          "role": "Ran Neutral Records out of the same scene, releasing Swans' debut; had played in Rhys Chatham's Guitar Trio ensemble from 1977 to 1979 before building his own massed-guitar pieces."
+        },
+        {
+          "artistId": "rhys-chatham",
+          "role": "Composed Guitar Trio (1977), the piece Branca played in before striking out on his own — the two composers' related but separate guitar-orchestra practices grew out of the same downtown room."
         }
       ],
+      "legacy": "No New York's rejection of rock technique fed directly into noise rock and Sonic Youth's own guitar language, while Branca and Chatham's massed-guitar pieces shaped how a generation of post-rock and math-rock guitarists thought about tuning and repetition. Swans carried the scene's extremity forward for decades under its own name, long after the lofts that produced it were gone.",
       "memberIds": [
+        "dna",
+        "mars",
+        "teenage-jesus-and-the-jerks",
+        "james-chance-and-the-contortions",
+        "swans",
+        "glenn-branca",
+        "rhys-chatham"
+      ]
+    },
+    {
+      "id": "4ad",
+      "name": "4AD",
+      "era": "1980–1995",
+      "place": "London",
+      "city": "London",
+      "yearStart": 1980,
+      "yearEnd": 1995,
+      "blurb": "Ivo Watts-Russell's London label built a shared gothic-ethereal house sound and, in This Mortal Coil, a literal label-artist collective drawing its lineup from the wider roster.",
+      "placeAndTime": [
+        "4AD was Ivo Watts-Russell's label from the outset, and by the early 1980s that meant something more specific than a shared roster: a deliberate house sound (reverbed, gothic, melancholic-but-beautiful) reinforced visually by Vaughan Oliver's sleeve designs under the name 23 Envelope, so that a 4AD record was identifiable by its cover before the needle ever dropped. Watts-Russell signed for a specific ear rather than a specific genre — Boston noise-pop (Pixies) sat on the same roster as Melbourne neoclassical duo Dead Can Dance — and the connective tissue was never sound so much as sensibility.",
+        "This Mortal Coil made that sensibility explicit. It was Watts-Russell's own project, not a band so much as a standing invitation to whoever was on the roster at the time — Cocteau Twins' Elizabeth Fraser and Robin Guthrie among them — to record other people's songs as chamber music. That a label could stage its own artists as a collective and have the results, most famously the cover of Tim Buckley's \"Song to the Siren,\" read as a coherent artistic statement is the clearest evidence that 4AD in this period was a curated aesthetic community, not just a distribution deal."
+      ],
+      "memberRoles": [
+        {
+          "artistId": "this-mortal-coil",
+          "role": "Ivo Watts-Russell's own project — the label's curatorial ethos turned into an actual recording lineup, pulling in roster-mates like Cocteau Twins' Elizabeth Fraser and Robin Guthrie to record covers as 4AD house music."
+        },
+        {
+          "artistId": "cocteau-twins",
+          "role": "The label's longest-serving flagship act and the clearest expression of its reverbed, ethereal house sound — the reference point every other 4AD signing got measured against."
+        },
+        {
+          "artistId": "lush",
+          "role": "Arrived later and closest to the exit into Britpop; Spooky (1992) was produced by Cocteau Twins' Robin Guthrie, carrying the house sound directly into Lush's own records."
+        },
+        {
+          "artistId": "red-house-painters",
+          "role": "Signed by Watts-Russell despite sounding nothing like the rest of the roster — Mark Kozelek's slowcore was shaped by the same atmospheres (This Mortal Coil, Cocteau Twins) even where the surface had none of their gloss."
+        },
+        {
+          "artistId": "dead-can-dance",
+          "role": "Relocated from Melbourne specifically to be on this label; expanded 4AD's palette into neoclassical and non-Western territory while working from the same reverbed, Cocteau Twins-adjacent atmosphere as labelmates."
+        },
+        {
+          "artistId": "pixies",
+          "role": "The roster's outlier — loud, American, produced by Steve Albini in direct opposition to the label's reputation for gauze — signed by Watts-Russell anyway, proof the 4AD ear was never just a genre rule."
+        }
+      ],
+      "legacy": "4AD's house aesthetic outlived the label's original run, setting the visual and sonic template — Vaughan Oliver's sleeve art as much as the reverbed vocal sound — that dream-pop and shoegaze bands spent the following decade working from or against. This Mortal Coil in particular normalized the idea of a label as a creative collective rather than a distribution arrangement, a model since revisited by small labels wanting their signings to feel like one artistic project rather than a catalog.",
+      "memberIds": [
+        "this-mortal-coil",
+        "cocteau-twins",
+        "lush",
+        "red-house-painters",
+        "dead-can-dance",
+        "pixies"
+      ]
+    },
+    {
+      "id": "dischord",
+      "name": "Dischord",
+      "era": "1980–1993",
+      "place": "Washington DC",
+      "city": "Washington DC",
+      "yearStart": 1980,
+      "yearEnd": 1993,
+      "blurb": "Ian MacKaye's Washington DC label and scene were the same room — MacKaye played in two of its bands, and Rites of Spring's members went on to form half of Fugazi.",
+      "placeAndTime": [
+        "Ian MacKaye and Jeff Nelson started Dischord Records as teenagers, simply to put out records by their own band and the handful of others playing the same small DC hardcore shows around them — a label built to document a scene its founders were already inside of, rather than to sign one from outside. That closeness meant the label's roster and the scene's actual social network were never really separate things: the same handful of musicians kept re-forming into new bands under the same label for well over a decade."
+      ],
+      "memberRoles": [
+        {
+          "artistId": "fugazi",
+          "role": "MacKaye's band after Minor Threat, formed with Rites of Spring's Guy Picciotto and Brendan Canty and carrying Bad Brains' influence forward as the label's longest-running and most enduring act."
+        },
+        {
+          "artistId": "minor-threat",
+          "role": "MacKaye and Nelson's first band, formed specifically to give Dischord something of their own to release."
+        },
+        {
+          "artistId": "bad-brains",
+          "role": "Predated the DC scene and set it in motion — MacKaye's pre-Minor Threat band saw a Bad Brains show and came out transformed, and Picciotto later named them among Fugazi's own influences too."
+        },
+        {
+          "artistId": "rites-of-spring",
+          "role": "Lasted barely a year, but its two core members, Picciotto and Canty, carried its emotionally raw \"emocore\" sound directly into Fugazi afterward."
+        },
+        {
+          "artistId": "the-dismemberment-plan",
+          "role": "Arrived a decade later out of the same Dischord-shaped DC underground, working in the post-hardcore vocabulary Fugazi and Bad Brains had already set down."
+        }
+      ],
+      "legacy": "Dischord's insistence on five-dollar shows, no major-label deals, and total DIY control became the reference model for post-hardcore's entire operating ethic, and Fugazi in particular proved a serious touring band could run for decades entirely outside the industry's normal terms.",
+      "memberIds": [
+        "fugazi",
+        "minor-threat",
+        "bad-brains",
+        "rites-of-spring",
+        "the-dismemberment-plan"
+      ]
+    },
+    {
+      "id": "sst",
+      "name": "SST Records",
+      "era": "1978–1990",
+      "place": "Los Angeles",
+      "city": "Los Angeles",
+      "yearStart": 1978,
+      "yearEnd": 1990,
+      "blurb": "Greg Ginn's Los Angeles label turned hardcore into a distribution network for the country's furthest-out guitar music — a room as much as a roster.",
+      "placeAndTime": [
+        "SST started as Greg Ginn's ham-radio parts mail-order business, run out of Hermosa Beach and San Pedro, before Ginn turned it into a record label for his own band, Black Flag. From there it became less a single room than an operation: Ginn signing and releasing bands he wanted to hear, then booking them onto shared bills and shared tours so a national hardcore circuit existed where none had before. Bands with no connection to Los Angeles at all — Hüsker Dü from Minneapolis, Sonic Youth from New York — plugged directly into that SST-run touring network alongside the label's own South Bay acts."
+      ],
+      "memberRoles": [
+        {
+          "artistId": "minutemen",
+          "role": "San Pedro locals and part of Ginn's own South Bay circle, touring the SST network constantly on almost no money alongside Black Flag."
+        },
+        {
+          "artistId": "black-flag",
+          "role": "Greg Ginn's own band and the reason the label existed in the first place; its relentless touring schedule set the operating template every other SST act followed."
+        },
+        {
+          "artistId": "husker-du",
+          "role": "Signed in from Minneapolis, plugging a Midwest band into a Los Angeles-run circuit and helping prove SST's network extended well past California."
+        },
+        {
+          "artistId": "descendents",
+          "role": "South Bay labelmates connected to Black Flag directly through drummer Bill Stevenson's stint in that band, keeping the label's family of players tightly overlapping."
+        },
+        {
+          "artistId": "sonic-youth",
+          "role": "New York outsiders who toured the SST circuit despite no California roots; Lee Ranaldo has voiced admiration for Black Flag, more a mark of the label's camaraderie than a direct sound-influence claim."
+        }
+      ],
+      "legacy": "SST's shared-bill touring model built the infrastructure American underground rock ran on for the rest of the 1980s, and its example — a working band's label distributing whatever else it wanted to hear — became the template college and indie labels followed afterward.",
+      "memberIds": [
+        "minutemen",
+        "black-flag",
         "husker-du",
-        "dinosaur-jr",
-        "sonic-youth",
-        "the-replacements",
-        "rem",
-        "pixies",
-        "pavement"
+        "descendents",
+        "sonic-youth"
+      ]
+    },
+    {
+      "id": "riot-grrrl",
+      "name": "Riot Grrrl",
+      "era": "1990–1994",
+      "place": "Olympia",
+      "city": "Olympia",
+      "yearStart": 1990,
+      "yearEnd": 1994,
+      "blurb": "The feminist punk movement that grew out of Olympia, Washington's cassette-and-zine DIY scene — Evergreen State College, K Records, and Kill Rock Stars all in the same small town.",
+      "placeAndTime": [
+        "Olympia was a small state-capital college town built around Evergreen State College, an experimental school with no traditional grading system that drew exactly the kind of art-school-minded misfits who went on to start these bands. The town already had a functioning DIY music infrastructure before riot grrrl existed — Calvin Johnson's K Records had been putting out lo-fi, homemade records for years — and Kill Rock Stars emerged alongside the same scene as it grew, giving the movement a label of its own.",
+        "In a town this size, the scene was a handful of overlapping people playing the same small run of venues and house shows, trading zines as readily as they traded show flyers — the kind of close-quarters, everyone-knows-everyone network a town like Olympia could produce and a larger city couldn't."
+      ],
+      "memberRoles": [
+        {
+          "artistId": "bikini-kill",
+          "role": "Formed first, in 1990, out of Olympia's small DIY circuit — the band most identified with the scene that grew up around it."
+        },
+        {
+          "artistId": "bratmobile",
+          "role": "Formed the following year when Allison Wolfe and Molly Neuman, already writing a zine together, started a band in the same town, running a parallel circuit alongside Bikini Kill."
+        },
+        {
+          "artistId": "sleater-kinney",
+          "role": "Arrived in 1994, later than the other two, out of the same Olympia network; the band has since named both Bikini Kill and Bratmobile as direct influences."
+        }
+      ],
+      "legacy": "Kill Rock Stars outlasted the movement itself to become a lasting indie label, and Olympia's small-town, zine-and-cassette model of self-organizing a scene became a template later DIY punk and indie circuits consciously imitated.",
+      "memberIds": [
+        "bikini-kill",
+        "bratmobile",
+        "sleater-kinney"
+      ]
+    },
+    {
+      "id": "bristol",
+      "name": "Bristol",
+      "era": "1988–1997",
+      "place": "Bristol",
+      "city": "Bristol",
+      "yearStart": 1988,
+      "yearEnd": 1997,
+      "blurb": "A downtempo, bass-heavy sound built out of the same Bristol sound systems and studios, blending hip-hop, dub, and soul into what critics later called trip-hop.",
+      "placeAndTime": [
+        "Massive Attack's founding members came directly out of the Wild Bunch, a loose Bristol DJ-and-MC sound system that had been playing hip-hop, dub, and soul to local crowds through the mid-1980s before splintering into several separate projects once it dissolved. Bristol's relationship to that music wasn't an import — the city's long-standing Caribbean immigrant community had supported sound-system culture for years before any of these acts existed, and it's that infrastructure, not a studio or a label, that the scene actually grew out of.",
+        "The four acts here stayed genuinely local and interconnected rather than just regionally adjacent: Geoff Barrow worked as a tape-op on Massive Attack's Blue Lines sessions and used the spare studio hours he was given there to start Portishead, and Tricky — another Wild Bunch alumnus — rapped on Blue Lines and Protection before going solo. Sneaker Pimps arrived from outside Bristol a few years later, but named both Massive Attack and Portishead directly as the reason they sounded the way they did."
+      ],
+      "memberRoles": [
+        {
+          "artistId": "massive-attack",
+          "role": "Formed from the wreckage of the Wild Bunch sound system and became the scene's hub — nearly every other act here either grew directly out of their sessions or named them as the reason they started."
+        },
+        {
+          "artistId": "portishead",
+          "role": "Geoff Barrow worked as a tape-op on Massive Attack's Blue Lines sessions and used the spare studio time he was given there to build his own project — the clearest line of direct, practical descent in the whole scene."
+        },
+        {
+          "artistId": "tricky",
+          "role": "A Wild Bunch member in his own right before Massive Attack existed under that name; rapped on Blue Lines and Protection before leaving to make Maxinquaye alone."
+        },
+        {
+          "artistId": "sneaker-pimps",
+          "role": "Arrived last and from outside Bristol, but producer Liam Howe named both Massive Attack's Blue Lines and Portishead's album directly as the records that shaped Sneaker Pimps' sound."
+        }
+      ],
+      "legacy": "The Bristol sound left the city with a genre name it never asked for — critics called it trip-hop, a term Massive Attack in particular has always resisted — but the slow tempos, dub bass, and cinematic sampling defined here shaped downtempo and electronic pop internationally for the rest of the decade. Portishead's own eleven-year gap between their second album and Third (2008) became its own kind of template: a scene that never needed to stay prolific to stay influential.",
+      "memberIds": [
+        "massive-attack",
+        "portishead",
+        "tricky",
+        "sneaker-pimps"
+      ]
+    },
+    {
+      "id": "creation",
+      "name": "Creation Records",
+      "era": "1983–1999",
+      "place": "London",
+      "city": "London",
+      "yearStart": 1983,
+      "yearEnd": 1999,
+      "blurb": "Alan McGee's London label bankrolled the UK's noisiest guitar music through the 1980s and '90s, from the Mary Chain's feedback-pop debut to My Bloody Valentine's studio excess.",
+      "placeAndTime": [
+        "Alan McGee ran Creation on instinct and appetite for risk rather than Ivo Watts-Russell's curatorial calm a few miles across London — he signed noise before he could have known if it would resolve into songs, and stayed in business by gambling, not vetting. The Jesus and Mary Chain's earliest gigs, barely twenty minutes long and ending in feedback and walkouts, were exactly the kind of bet McGee kept making.",
+        "That temperament reached its limit with My Bloody Valentine's Loveless (1991): Kevin Shields' pursuit of a specific, inhuman guitar sound ran the studio bill up for years past its original budget and, by McGee's own repeated public account since, helped push Creation's finances to the edge at the time. The album that nearly broke the label is also the one Creation is best remembered for."
+      ],
+      "memberRoles": [
+        {
+          "artistId": "the-jesus-and-mary-chain",
+          "role": "McGee's first major gamble — Psychocandy (1985) proved a Creation record could be genuinely dangerous-sounding and still sell, setting the label's noise-first template before anyone else here had released a note."
+        },
+        {
+          "artistId": "my-bloody-valentine",
+          "role": "Took McGee's gambling instinct to its limit: Kevin Shields' pursuit of Loveless ran years over schedule and reportedly helped push Creation's finances to the brink — the most expensive bet the label ever made, and the one it's best remembered for."
+        },
+        {
+          "artistId": "slowdive",
+          "role": "Descended directly from both labelmates — the Mary Chain's noise and My Bloody Valentine's guitar treatments — and absorbed the worst of the UK music press' hostility toward the label's sound in real time, years before that hostility reversed itself."
+        },
+        {
+          "artistId": "ride",
+          "role": "Also grew directly out of the Mary Chain and My Bloody Valentine's example, but brought the sound to its widest audience yet — Nowhere (1990) was the rare Creation shoegaze record that was a commercial hit on arrival, not just a critical one."
+        }
+      ],
+      "legacy": "Creation's gamble-not-curate model produced shoegaze's two defining records, Psychocandy and Loveless, inside a single decade, and nearly went broke doing it — a sharp contrast to 4AD's steadier hand a few miles away, visible in how differently the two labels' rosters still sound today. McGee kept the label running into the Britpop years that followed, but this run is the one that shaped guitar music for a generation after Creation folded in 1999.",
+      "memberIds": [
+        "the-jesus-and-mary-chain",
+        "my-bloody-valentine",
+        "slowdive",
+        "ride"
       ]
     },
     {
       "id": "windmill",
       "name": "The Windmill Scene",
-      "era": "2016–2020",
+      "era": "2016–present",
       "place": "Brixton, South London, UK",
-      "deck": "In the years around 2016 to 2020, a run of art-literate, genre-restless bands converged on one small Brixton pub venue — the Windmill — where a permissive booker and a rotating cast of overlapping members turned a 150-capacity room into a genuine incubator. Unlike the American Underground's DIY infrastructure built out of necessity, this was a scene built out of proximity and curiosity: prog, jazz, no-wave, post-punk and krautrock all treated as equally fair game by musicians who mostly met each other on that stage.",
-      "sections": [
+      "city": "Brixton, South London",
+      "yearStart": 2016,
+      "blurb": "Since 2016, a run of art-literate, genre-restless bands has converged on one small Brixton pub venue — the Windmill — where a permissive booker and a rotating cast of overlapping members turned a 150-capacity room into a genuine incubator, still active today.",
+      "placeAndTime": [
+        "The Windmill isn't a genre venue — it's a Brixton pub room that will book almost anything, run by promoters willing to give unsigned, half-formed bands a regular slot and an audience that's mostly other musicians. That informality, more than any shared sound, is what let a small circle of acts trade members, ideas, and stage time for years before any of them had a record deal.",
+        "The bands that came out of it share almost no fixed genre — jazz-inflected post-punk, glitchy chamber-pop, motorik dance-punk, prog-scrambled art-rock — but they share the room, overlapping lineups, and a wave of press attention that landed on all of them at once around 2019 and hasn't really let up since."
+      ],
+      "memberRoles": [
         {
-          "heading": "The Venue",
-          "paragraphs": [
-            "The Windmill wasn't a genre venue so much as a room that would book almost anything, run by promoters willing to give unformed, unsigned bands a regular slot and an audience of other musicians. That informality let a small circle of acts trade members, ideas and stage time long before any of them had a record deal.",
-            "The bands that came out of it shared almost no fixed sound — jazz-inflected post-punk, glitchy chamber-pop, krautrock-motorik dance music, prog-scrambled art-rock — but they shared the room, the lineup overlaps, and a critical mass of press attention that arrived all at once around 2019."
-          ]
+          "artistId": "black-midi",
+          "role": "The scene's most sonically extreme act and, by reputation, its center of gravity — their controlled-chaos live sets became the thing other Windmill regulars measured their own gigs against."
         },
         {
-          "heading": "The Bands",
-          "paragraphs": [
-            "black midi's controlled-chaos guitar interplay, Black Country, New Road's klezmer-inflected post-rock, Squid's motorik dance-punk, and Jockstrap's collision of chamber-pop and glitch electronics all trace back to the same handful of stages and the same small audience of other musicians watching from the crowd.",
-            "Below is the community that built it — the artists in Starweave's graph who came out of this world."
-          ]
+          "artistId": "black-country-new-road",
+          "role": "Formed a couple of years after black midi out of an earlier band's remnants, and became stage-mates and label-mates rather than direct followers — Georgia Ellery's parallel membership in Jockstrap tied the two bands together directly."
         },
         {
-          "heading": "The Breakthrough",
-          "paragraphs": [
-            "Mercury Prize nominations for black midi and Black Country, New Road, and widespread critical attention for Squid and Jockstrap, took the scene from a single pub circuit to an internationally-covered story within a couple of years."
-          ]
+          "artistId": "squid",
+          "role": "The one act here that didn't start in London — met at university in Brighton and only became part of this scene once they relocated and started playing the same stage as black midi and Black Country, New Road."
+        },
+        {
+          "artistId": "jockstrap",
+          "role": "Formed out of the Guildhall School rather than the Windmill circuit itself, but Georgia Ellery's parallel membership in Black Country, New Road made the two bands' overlap concrete rather than just a shared bill."
         }
       ],
+      "legacy": "Mercury Prize nominations for black midi and Black Country, New Road, and wide critical attention for Squid and Jockstrap, took the scene from a single pub circuit to an internationally covered story within a couple of years. It's too recent to say yet what these bands will go on to influence — the more honest claim is just how fast a 150-capacity room turned into an internationally-watched scene.",
       "memberIds": [
         "black-midi",
         "black-country-new-road",
         "squid",
         "jockstrap"
+      ]
+    },
+    {
+      "id": "manchester",
+      "name": "Manchester",
+      "era": "1976–1981",
+      "place": "Manchester",
+      "city": "Manchester",
+      "yearStart": 1976,
+      "yearEnd": 1981,
+      "blurb": "The Manchester scene that grew out of the Sex Pistols' 1976 Free Trade Hall gigs, producing post-punk's two defining tonal opposites in Joy Division and The Fall alongside pop-punk's Buzzcocks.",
+      "placeAndTime": [
+        "On June 4, 1976, the Sex Pistols played a poorly attended gig at Manchester's Free Trade Hall that Buzzcocks had organized and booked themselves onto as support — a booking made on the strength of a single NME review and a trip down to London to persuade the band to come north. The audience was small, but its legend has only grown since: a disproportionate number of the people in that room went on to form the bands that defined Manchester post-punk over the following five years.",
+        "Tony Wilson, a Granada TV presenter who was in the Free Trade Hall audience himself, formed Factory Records a couple of years later and signed Joy Division — turning the loose, gig-sparked scene into something with an actual institutional home, a label rather than just a shared origin story."
+      ],
+      "memberRoles": [
+        {
+          "artistId": "joy-division",
+          "role": "Formed later that same year by musicians who were present, or said to have been present, at the Free Trade Hall show — the gig's most direct and most mythologized consequence."
+        },
+        {
+          "artistId": "the-fall",
+          "role": "Formed the same year as Joy Division, out of the same city and moment, but built around Mark E. Smith's contempt for conventional structure into post-punk's other tonal pole — abrasive where Joy Division was austere."
+        },
+        {
+          "artistId": "buzzcocks",
+          "role": "The connective tissue for the whole scene — organized and played the gig that started it, before Pete Shelley steered the band itself toward faster, stranger pop-punk once Howard Devoto left."
+        }
+      ],
+      "legacy": "The Free Trade Hall gig became one of British music's most-cited origin stories, and Joy Division's Martin Hannett-produced records set an emotional and sonic template — for post-punk's interiority, later for shoegaze's — that outlasted the scene itself by decades. Factory Records gave the slightly later Manchester scene its institutional home and, in Joy Division's afterlife as New Order, its own separate second act.",
+      "memberIds": [
+        "joy-division",
+        "the-fall",
+        "buzzcocks"
+      ]
+    },
+    {
+      "id": "elephant-6",
+      "name": "Elephant 6",
+      "era": "1993–2000",
+      "place": "Denver then Athens, Georgia",
+      "city": "Denver then Athens, Georgia",
+      "yearStart": 1993,
+      "yearEnd": 2000,
+      "blurb": "A loose collective of psychedelic-pop bands who started in Denver before relocating to Athens, Georgia, sharing members, home-recording gear, and a shared four-track ethos.",
+      "placeAndTime": [
+        "Jeff Mangum, Bill Doss, Will Cullen Hart, and Robert Schneider grew up together as friends in Ruston, Louisiana, absorbing the same Beatles and Beach Boys records before scattering and regrouping first in Denver and then in Athens, Georgia, where the loose collective took the Elephant 6 Recording Company name. What held the group together wasn't a shared address so much as shared equipment and method — four-track home recording passed between members' bedrooms rather than time booked in a commercial studio.",
+        "Robert Schneider produced across much of the collective's catalog, a circumstance of how Elephant 6 pooled its limited resources rather than a case of him influencing the other bands' sound."
+      ],
+      "memberRoles": [
+        {
+          "artistId": "neutral-milk-hotel",
+          "role": "Jeff Mangum, one of the original Ruston friends, moved to Athens specifically to be near the rest of the collective before recording as Neutral Milk Hotel."
+        },
+        {
+          "artistId": "of-montreal",
+          "role": "Kevin Barnes joined the collective later, in Athens, after it had already relocated there — not one of the original Ruston friends, but folded into the same circle once he arrived."
+        },
+        {
+          "artistId": "olivia-tremor-control",
+          "role": "Bill Doss and Will Cullen Hart, both original Ruston friends alongside Mangum, pushed the collective's more experimental, tape-collage wing furthest."
+        }
+      ],
+      "legacy": "In the Aeroplane Over the Sea's slow rediscovery turned Elephant 6's bedroom four-track aesthetic into a direct reference point for a later generation of indie bands, including members of Arcade Fire and the Shins, while Olivia Tremor Control's studio abstraction found later admirers in acts as large as Radiohead and the Flaming Lips.",
+      "memberIds": [
+        "neutral-milk-hotel",
+        "of-montreal",
+        "olivia-tremor-control"
+      ]
+    },
+    {
+      "id": "seattle",
+      "name": "Seattle",
+      "era": "1988–1992",
+      "place": "Seattle",
+      "city": "Seattle",
+      "yearStart": 1988,
+      "yearEnd": 1992,
+      "blurb": "The Sub Pop-adjacent grunge scene at the turn of the '90s, alongside the more melodic, off-kilter emo of Sunny Day Real Estate working the same clubs.",
+      "placeAndTime": [
+        "Sub Pop was the connective institution: a shoestring local label that put out Mudhoney's and Nirvana's earliest records and, through its own grimy Pacific Northwest branding, gave a loose cluster of Seattle-area bands a shared identity before they had much else in common. The city's club circuit was small enough that bands working in entirely different registers — Sub Pop's grunge acts and a post-hardcore-schooled band like Sunny Day Real Estate, also on the label — played the same rooms to the same audiences without belonging to the same sound at all."
+      ],
+      "memberRoles": [
+        {
+          "artistId": "nirvana",
+          "role": "Formed in nearby Aberdeen and folded into the Seattle scene through Sub Pop, which released Bleach before the band left the city's orbit entirely with Nevermind."
+        },
+        {
+          "artistId": "mudhoney",
+          "role": "One of Sub Pop's first signings and the clearest early document of the label's fuzzed-out house sound; Kurt Cobain named them his favorite band."
+        },
+        {
+          "artistId": "sunny-day-real-estate",
+          "role": "Signed to Sub Pop just as its grunge-defined identity was shifting, playing the same Seattle circuit as the city's grunge bands while sounding nothing like them."
+        }
+      ],
+      "legacy": "Nirvana's breakout took the Sub Pop sound global almost overnight and effectively ended grunge's run as an underground genre, while Sunny Day Real Estate's members carried the city's other current forward — into Foo Fighters and into what would become second-wave emo.",
+      "memberIds": [
+        "nirvana",
+        "mudhoney",
+        "sunny-day-real-estate"
+      ]
+    },
+    {
+      "id": "glasgow",
+      "name": "Glasgow",
+      "era": "1996–2010",
+      "place": "Glasgow",
+      "city": "Glasgow",
+      "yearStart": 1996,
+      "yearEnd": 2010,
+      "blurb": "A twee, literate indie-pop scene centered on Belle and Sebastian, whose early lineup and sound directly shaped scene-mates like Camera Obscura. Thin at two members, but real — the bios explicitly cross-reference each other.",
+      "placeAndTime": [
+        "Belle and Sebastian formed in Glasgow in 1996, a full generation after Alan Horne's Postcard Records had already established a Glaswegian tradition of literate, melodic, unglamorous indie-pop through Orange Juice and Aztec Camera in the early 1980s. Camera Obscura formed the same year, out of a scene overlapping closely enough with Belle and Sebastian's that Stuart Murdoch produced some of Camera Obscura's earliest recordings himself — the one concrete link between the two acts on this list."
+      ],
+      "memberRoles": [
+        {
+          "artistId": "belle-and-sebastian",
+          "role": "Arrived first and set the template — Stuart Murdoch's hushed, home-recorded songwriting gave the wider scene its defining sound before Camera Obscura had released anything."
+        },
+        {
+          "artistId": "camera-obscura",
+          "role": "Formed the same year out of an overlapping circle; Murdoch produced some of the band's earliest recordings before Tracyanne Campbell established her own songwriting voice."
+        }
+      ],
+      "legacy": "Two bands, one direct production credit between them — a short list by design, not by omission. What survived past this scene's own decade is a specifically Glaswegian version of indie-pop, literate and unglamorous, that both acts carried further than Postcard's original run ever reached.",
+      "memberIds": [
+        "belle-and-sebastian",
+        "camera-obscura"
       ]
     }
   ],

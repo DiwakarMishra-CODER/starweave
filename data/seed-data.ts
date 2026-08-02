@@ -18,62 +18,89 @@ import { BIOS } from './bios';
 // pipeline; a few classicAlbums are included as worked examples.
 // ─────────────────────────────────────────────────────────────
 
+// Genre hierarchy pass 3 (2026) — real interconnection, not a clean lie.
+// `parent` is primary (drives layout); `alsoFrom` is secondary (drawn, never
+// affects position) — see data/types.ts. Both were checked against the
+// graph's own edges (genre-influence-flow-report.md at the repo root),
+// corrected for indie-rock/alt-rock/etc.'s sheer artist-count advantage by
+// using density (edges / source-artists x target-artists), not raw counts.
+//
+// Four real roots now: garage-rock, art-rock, psychedelic-pop,
+// singer-songwriter. `folk` (a container, like electronic/indie) loses its
+// last remaining real children this pass and becomes a true leaf container —
+// same state `electronic` reached in an earlier pass, not a new problem.
+//
+// `minimalism` was proposed as a child of `no-wave` this pass and is
+// deliberately NOT applied: minimalism emerged 1964 (Terry Riley, In C),
+// no-wave 1978 — a 14-year violation of "an ancestor can't postdate its
+// descendant," the same rule that caught and fixed several backwards
+// parents in the original hierarchy passes. minimalism stays a root
+// (5 roots in practice, not the 4 this pass otherwise achieves) until a
+// chronologically valid parent is found. Flagged, not silently applied.
 const genres: Genre[] = [
   { id: 'underground', name: 'Underground', parent: null },       // future top parent
   { id: 'indie', name: 'Indie', parent: 'underground' },
   { id: 'art-rock', name: 'Art rock', parent: null, emerged: 1967, emergedBasis: "The Velvet Underground & Nico" },
-  { id: 'proto-punk', name: 'Proto-punk', parent: null, emerged: 1967, emergedBasis: "The Velvet Underground, then the Stooges in 1969" },
+  { id: 'proto-punk', name: 'Proto-punk', parent: 'garage-rock', emerged: 1967, emergedBasis: "The Velvet Underground, then the Stooges in 1969" },
   { id: 'post-punk', name: 'Post-punk', parent: 'punk', emerged: 1978, emergedBasis: "Wire's Chairs Missing; Public Image Ltd" },
-  { id: 'goth', name: 'Gothic rock', parent: 'post-punk', emerged: 1979, emergedBasis: "Bauhaus, \"Bela Lugosi's Dead\"" },
-  { id: 'dance-punk', name: 'Dance-punk', parent: 'post-punk', emerged: 1979, emergedBasis: "Gang of Four, Entertainment!" },
-  { id: 'jangle-pop', name: 'Jangle pop', parent: 'power-pop', emerged: 1983, emergedBasis: "R.E.M.'s Murmur and the Smiths" },
-  { id: 'power-pop', name: 'Power pop', parent: null, emerged: 1972, emergedBasis: "Big Star, #1 Record" },
-  { id: 'shoegaze', name: 'Shoegaze', parent: 'dream-pop', emerged: 1988, emergedBasis: "My Bloody Valentine, Isn't Anything" },
-  { id: 'dream-pop', name: 'Dream pop', parent: 'post-punk', emerged: 1984, emergedBasis: "Cocteau Twins, Treasure" },
-  { id: 'noise-rock', name: 'Noise rock', parent: 'no-wave', emerged: 1981, emergedBasis: "Sonic Youth and Swans in New York" },
-  { id: 'alt-rock', name: 'Alternative rock', parent: null, emerged: 1987, emergedBasis: "The American college-radio wave before Nevermind" },
-  { id: 'indie-rock', name: 'Indie rock', parent: null, emerged: 1990, emergedBasis: "American indie consolidating after Sub Pop" },
-  { id: 'krautrock', name: 'Krautrock', parent: null, emerged: 1968, emergedBasis: "Can and Amon Duul form in West Germany" },
-  { id: 'post-hardcore', name: 'Post-hardcore', parent: 'hardcore-punk', emerged: 1985, emergedBasis: "Rites of Spring and Big Black" },
+  { id: 'goth', name: 'Gothic rock', parent: 'post-punk', alsoFrom: ['art-rock'], emerged: 1979, emergedBasis: "Bauhaus, \"Bela Lugosi's Dead\"" },
+  { id: 'dance-punk', name: 'Dance-punk', parent: 'post-punk', alsoFrom: ['krautrock'], emerged: 1979, emergedBasis: "Gang of Four, Entertainment!" },
+  { id: 'jangle-pop', name: 'Jangle pop', parent: 'power-pop', alsoFrom: ['indie-pop', 'proto-punk'], emerged: 1983, emergedBasis: "R.E.M.'s Murmur and the Smiths" },
+  { id: 'power-pop', name: 'Power pop', parent: 'psychedelic-pop', emerged: 1972, emergedBasis: "Big Star, #1 Record" },
+  { id: 'shoegaze', name: 'Shoegaze', parent: 'dream-pop', alsoFrom: ['noise-pop', 'goth'], emerged: 1988, emergedBasis: "My Bloody Valentine, Isn't Anything" },
+  { id: 'dream-pop', name: 'Dream pop', parent: 'post-punk', alsoFrom: ['art-rock', 'art-pop', 'goth'], emerged: 1984, emergedBasis: "Cocteau Twins, Treasure" },
+  { id: 'noise-rock', name: 'Noise rock', parent: 'no-wave', alsoFrom: ['proto-punk', 'hardcore-punk', 'industrial'], emerged: 1981, emergedBasis: "Sonic Youth and Swans in New York" },
+  { id: 'alt-rock', name: 'Alternative rock', parent: 'noise-rock', emerged: 1987, emergedBasis: "The American college-radio wave before Nevermind" },
+  { id: 'indie-rock', name: 'Indie rock', parent: 'alt-rock', emerged: 1990, emergedBasis: "American indie consolidating after Sub Pop" },
+  { id: 'krautrock', name: 'Krautrock', parent: 'art-rock', emerged: 1968, emergedBasis: "Can and Amon Duul form in West Germany" },
+  { id: 'post-hardcore', name: 'Post-hardcore', parent: 'hardcore-punk', alsoFrom: ['noise-rock', 'post-punk'], emerged: 1985, emergedBasis: "Rites of Spring and Big Black" },
   { id: 'electronic', name: 'Electronic', parent: 'underground' },
   { id: 'folk', name: 'Folk', parent: 'underground' },
-  { id: 'hardcore-punk', name: 'Hardcore punk', parent: 'punk', emerged: 1980, emergedBasis: "Black Flag, Nervous Breakdown" },
-  { id: 'emo', name: 'Emo', parent: 'post-hardcore', emerged: 1994, emergedBasis: "Sunny Day Real Estate, Diary" },
+  { id: 'hardcore-punk', name: 'Hardcore punk', parent: 'punk', alsoFrom: ['proto-punk'], emerged: 1980, emergedBasis: "Black Flag, Nervous Breakdown" },
+  { id: 'emo', name: 'Emo', parent: 'post-hardcore', alsoFrom: ['punk'], emerged: 1994, emergedBasis: "Sunny Day Real Estate, Diary" },
   { id: 'midwest-emo', name: 'Midwest emo', parent: 'emo', emerged: 1997, emergedBasis: "Cap'n Jazz and American Football" },
-  { id: 'math-rock', name: 'Math rock', parent: 'post-hardcore', emerged: 1994, emergedBasis: "Drive Like Jehu, Yank Crime" },
-  { id: 'post-rock', name: 'Post-rock', parent: null, emerged: 1991, emergedBasis: "Talk Talk's Laughing Stock and Slint's Spiderland; Simon Reynolds coined the term in 1994" },
+  { id: 'math-rock', name: 'Math rock', parent: 'post-hardcore', alsoFrom: ['art-rock'], emerged: 1994, emergedBasis: "Drive Like Jehu, Yank Crime" },
+  { id: 'post-rock', name: 'Post-rock', parent: 'krautrock', alsoFrom: ['art-rock', 'noise-rock', 'post-punk'], emerged: 1991, emergedBasis: "Talk Talk's Laughing Stock and Slint's Spiderland; Simon Reynolds coined the term in 1994" },
   { id: 'no-wave', name: 'No wave', parent: 'post-punk', emerged: 1978, emergedBasis: "The No New York compilation" },
-  { id: 'drone', name: 'Drone', parent: 'ambient', emerged: 1990, emergedBasis: "The Stars of the Lid generation of long-form drone" },
+  { id: 'drone', name: 'Drone', parent: 'ambient', alsoFrom: ['minimalism', 'noise-rock'], emerged: 1990, emergedBasis: "The Stars of the Lid generation of long-form drone" },
   { id: 'darkwave', name: 'Darkwave', parent: 'goth', emerged: 1985, emergedBasis: "European goth crossed with electronics" },
+  // Proposed this pass as a child of no-wave (Branca/Chatham, 1978->1979) —
+  // held, not applied: minimalism emerged 1964, predating no-wave (1978) by
+  // 14 years. See the file-level comment above. Remains a root.
   { id: 'minimalism', name: 'Minimalism', parent: null, emerged: 1964, emergedBasis: "Terry Riley, In C" },
-  { id: 'industrial', name: 'Industrial', parent: 'krautrock', emerged: 1975, emergedBasis: "Throbbing Gristle form in Hull" },
-  { id: 'grunge', name: 'Grunge', parent: 'alt-rock', emerged: 1989, emergedBasis: "Sub Pop; Nirvana's Bleach" },
-  { id: 'lo-fi', name: 'Lo-fi', parent: 'indie-rock', emerged: 1992, emergedBasis: "Sebadoh, Guided by Voices and Pavement" },
-  { id: 'folk-punk', name: 'Folk punk', parent: 'folk', emerged: 1985, emergedBasis: "Violent Femmes-descended acoustic punk" },
-  { id: 'chamber-pop', name: 'Chamber pop', parent: 'indie-rock', emerged: 1996, emergedBasis: "Belle and Sebastian; later Sufjan Stevens" },
-  { id: 'art-pop', name: 'Art pop', parent: 'art-rock', emerged: 1979, emergedBasis: "Kate Bush and Talking Heads" },
+  { id: 'industrial', name: 'Industrial', parent: 'krautrock', alsoFrom: ['art-rock', 'proto-punk'], emerged: 1975, emergedBasis: "Throbbing Gristle form in Hull" },
+  { id: 'grunge', name: 'Grunge', parent: 'alt-rock', alsoFrom: ['noise-rock', 'hardcore-punk'], emerged: 1989, emergedBasis: "Sub Pop; Nirvana's Bleach" },
+  { id: 'lo-fi', name: 'Lo-fi', parent: 'indie-rock', alsoFrom: ['alt-rock', 'singer-songwriter'], emerged: 1992, emergedBasis: "Sebadoh, Guided by Voices and Pavement" },
+  { id: 'folk-punk', name: 'Folk punk', parent: 'singer-songwriter', emerged: 1985, emergedBasis: "Violent Femmes-descended acoustic punk" },
+  { id: 'chamber-pop', name: 'Chamber pop', parent: 'indie-rock', alsoFrom: ['singer-songwriter', 'art-rock'], emerged: 1996, emergedBasis: "Belle and Sebastian; later Sufjan Stevens" },
+  { id: 'art-pop', name: 'Art pop', parent: 'art-rock', alsoFrom: ['singer-songwriter', 'post-punk'], emerged: 1979, emergedBasis: "Kate Bush and Talking Heads" },
   { id: 'garage-rock', name: 'Garage rock', parent: null, emerged: 1963, emergedBasis: "The Kingsmen, \"Louie Louie\"" },
   { id: 'britpop', name: 'Britpop', parent: 'indie-rock', emerged: 1994, emergedBasis: "Blur's Parklife and Oasis' Definitely Maybe" },
   { id: 'psychedelic-pop', name: 'Psychedelic pop', parent: null, emerged: 1966, emergedBasis: "The Beach Boys and Beatles turn psychedelic" },
   { id: 'neo-psychedelia', name: 'Neo-psychedelia', parent: 'psychedelic-pop', emerged: 1990, emergedBasis: "The Flaming Lips and Mercury Rev" },
-  { id: 'experimental-pop', name: 'Experimental pop', parent: 'psychedelic-pop', emerged: 1996, emergedBasis: "Stereolab and the Olivia Tremor Control" },
-  { id: 'freak-folk', name: 'Freak folk', parent: 'folk', emerged: 2003, emergedBasis: "Devendra Banhart and Joanna Newsom" },
+  // Not in the edge analysis at any threshold — kept anyway, chronologically
+  // plausible and worth the connectedness. See Phase 1d in the hierarchy pass.
+  { id: 'experimental-pop', name: 'Experimental pop', parent: 'psychedelic-pop', alsoFrom: ['dream-pop', 'shoegaze'], emerged: 1996, emergedBasis: "Stereolab and the Olivia Tremor Control" },
+  { id: 'freak-folk', name: 'Freak folk', parent: 'singer-songwriter', emerged: 2003, emergedBasis: "Devendra Banhart and Joanna Newsom" },
   { id: 'punk', name: 'Punk', parent: 'proto-punk', emerged: 1976, emergedBasis: "Ramones' debut; the Sex Pistols' first gigs" },
   { id: 'riot-grrrl', name: 'Riot grrrl', parent: 'punk', emerged: 1991, emergedBasis: "Bikini Kill and the Olympia scene" },
   { id: 'ambient', name: 'Ambient', parent: 'krautrock', emerged: 1978, emergedBasis: "Brian Eno, Music for Airports" },
-  { id: 'synth-pop', name: 'Synth-pop', parent: 'krautrock', emerged: 1978, emergedBasis: "The Human League and Gary Numan" },
+  { id: 'synth-pop', name: 'Synth-pop', parent: 'krautrock', alsoFrom: ['industrial', 'post-punk'], emerged: 1978, emergedBasis: "The Human League and Gary Numan" },
   { id: 'hyperpop', name: 'Hyperpop', parent: 'idm', emerged: 2013, emergedBasis: "PC Music founded" },
+  // Not in the edge analysis at any threshold — kept anyway, see Phase 1d.
   { id: 'trip-hop', name: 'Trip-hop', parent: 'ambient', emerged: 1991, emergedBasis: "Massive Attack, Blue Lines" },
+  // Not in the edge analysis at any threshold — kept anyway, see Phase 1d.
   { id: 'vaporwave', name: 'Vaporwave', parent: 'hypnagogic-pop', emerged: 2010, emergedBasis: "Chuck Person's Eccojams Vol. 1" },
-  { id: 'idm', name: 'IDM', parent: 'synth-pop', emerged: 1992, emergedBasis: "Warp's Artificial Intelligence compilation" },
+  { id: 'idm', name: 'IDM', parent: 'synth-pop', alsoFrom: ['ambient'], emerged: 1992, emergedBasis: "Warp's Artificial Intelligence compilation" },
+  // Not in the edge analysis at any threshold — kept anyway, see Phase 1d.
   { id: 'hypnagogic-pop', name: 'Hypnagogic pop', parent: 'psychedelic-pop', emerged: 2009, emergedBasis: "The term coined around Ariel Pink" },
-  { id: 'alt-country', name: 'Alt-country', parent: 'folk', emerged: 1990, emergedBasis: "Uncle Tupelo, No Depression" },
-  { id: 'bedroom-pop', name: 'Bedroom pop', parent: 'indie-rock', emerged: 2016, emergedBasis: "Clairo and the streaming-era home recording wave" },
-  { id: 'slowcore', name: 'Slowcore', parent: 'indie-rock', emerged: 1990, emergedBasis: "Codeine, Low and Galaxie 500" },
-  { id: 'singer-songwriter', name: 'Singer-songwriter', parent: 'folk', emerged: 1967, emergedBasis: "Leonard Cohen, Joni Mitchell, Nick Drake" },
-  { id: 'indie-folk', name: 'Indie folk', parent: 'folk', emerged: 2004, emergedBasis: "Sufjan Stevens and Iron & Wine" },
+  { id: 'alt-country', name: 'Alt-country', parent: 'singer-songwriter', emerged: 1990, emergedBasis: "Uncle Tupelo, No Depression" },
+  { id: 'bedroom-pop', name: 'Bedroom pop', parent: 'indie-rock', alsoFrom: ['singer-songwriter'], emerged: 2016, emergedBasis: "Clairo and the streaming-era home recording wave" },
+  { id: 'slowcore', name: 'Slowcore', parent: 'indie-rock', alsoFrom: ['dream-pop'], emerged: 1990, emergedBasis: "Codeine, Low and Galaxie 500" },
+  { id: 'singer-songwriter', name: 'Singer-songwriter', parent: null, emerged: 1967, emergedBasis: "Leonard Cohen, Joni Mitchell, Nick Drake" },
+  { id: 'indie-folk', name: 'Indie folk', parent: 'singer-songwriter', emerged: 2004, emergedBasis: "Sufjan Stevens and Iron & Wine" },
   { id: 'noise-pop', name: 'Noise pop', parent: 'noise-rock', emerged: 1985, emergedBasis: "The Jesus and Mary Chain, Psychocandy" },
-  { id: 'indie-pop', name: 'Indie pop', parent: 'post-punk', emerged: 1983, emergedBasis: "The Smiths; Postcard Records had laid the ground" },
+  { id: 'indie-pop', name: 'Indie pop', parent: 'post-punk', alsoFrom: ['jangle-pop', 'singer-songwriter'], emerged: 1983, emergedBasis: "The Smiths; Postcard Records had laid the ground" },
 ];
 
 const V1: Artist['scope'] = ['shoegaze-dreampop-v1', 'indie'];
@@ -113,7 +140,7 @@ const artists: Artist[] = [
     classicAlbums: [ca('disintegration', 'Disintegration', 1989, "The album where the Cure's layered guitar aesthetic reached its fullest expression — Smith's acoustic and electric parts multiplied and panned into a shimmering density that fills the stereo image completely. 'Plainsong' opens with a synthesiser swell that takes ninety seconds to resolve into a song; 'Lovesong,' the closest the record comes to pop, reached number one in America against all odds. Disintegration defined an entire aesthetic register — big, sorrowful, beautiful — that the shoegaze generation built upon.")] },
   { id: 'siouxsie-and-the-banshees', name: 'Siouxsie & The Banshees', layer: 'post-punk', genres: ['post-punk', 'goth'], scope: V1, country: 'UK', activeFrom: 1976, signatureSong: 'Cities in Dust',
     classicAlbums: [ca('juju', 'Juju', 1981, "Siouxsie & The Banshees distilled everything that made their early records intense and made it more controlled and surgical — the guitars sharper, the arrangements darker and more theatrical. John McGeoch's guitar work is some of the most inventive post-punk playing ever committed to tape, moving between scraped percussive textures and full melodic leads within the same song. Juju established the template for gothic rock as a coherent aesthetic — dramatic, physical, and sophisticated.")] },
-  { id: 'the-smiths', name: 'The Smiths', layer: 'post-punk', genres: ['jangle-pop', 'indie-rock'], scope: V1, country: 'UK', activeFrom: 1982, signatureSong: 'There Is a Light That Never Goes Out',
+  { id: 'the-smiths', name: 'The Smiths', layer: 'post-punk', genres: ['jangle-pop', 'indie-pop', 'indie-rock'], scope: V1, country: 'UK', activeFrom: 1982, signatureSong: 'There Is a Light That Never Goes Out',
     classicAlbums: [ca('queen-is-dead', 'The Queen Is Dead', 1986, "Stephen Street's production gave The Queen Is Dead a rawer, more direct sound than Meat Is Murder, and it suits the material: Morrissey had never been more nakedly literary or more sharply funny, and Marr had never played with more rhythmic momentum. The title track careens through a guitar attack with Morrissey raging at the monarchy and his own desolation simultaneously; 'There Is a Light That Never Goes Out' is the pop apex, making teenage yearning feel enormous and universal. Frequently cited as the greatest British album ever made — and unlike most such claims, that is not obviously wrong.")] },
   { id: 'gang-of-four', name: 'Gang of Four', layer: 'post-punk', genres: ['post-punk', 'dance-punk'], scope: V1, country: 'UK', activeFrom: 1976, signatureSong: 'Damaged Goods',
     classicAlbums: [ca('entertainment', 'Entertainment!', 1979, "Gang of Four's debut is both a musical manifesto and a Marxist textbook — the funk rhythms stripped of all decorative excess, the lyrics annotating the commodity relationships inside everyday desire with a precision no other rock band has matched. Hugo Burnham's drums and Dave Allen's bass lock together like machine components while Andy Gill's guitar attacks in sharp, percussive stabs; 'Damaged Goods' is the most concentrated expression of this, four minutes of controlled aggression set to a jagged riff. Its tension — between dancing and thinking, pleasure and critique — has never been resolved because the band deliberately refused to resolve it.")] },
@@ -151,7 +178,7 @@ const artists: Artist[] = [
     classicAlbums: [ca('spooky', 'Spooky', 1992, "Produced by Robin Guthrie of the Cocteau Twins, Spooky is Lush at their most directly dreamy — Guthrie's guitar processing blurring the edges of Miki Berenyi and Emma Anderson's dual vocals while the rhythm section keeps the songs moving forward rather than dissolving into pure texture. Berenyi and Anderson's harmonies — both singing lead simultaneously in different registers — give the album a duality that no other shoegaze record matched. The Guthrie connection situates it sonically between 4AD's existing dream-pop aesthetic and the grungier shoegaze emerging from Creation Records.")] },
   { id: 'broadcast', name: 'Broadcast', layer: 'shoegaze-dreampop', genres: ['dream-pop', 'art-rock'], scope: V1, country: 'UK', activeFrom: 1995, signatureSong: 'Come On Let\'s Go',
     classicAlbums: [ca('tender-buttons', 'Tender Buttons', 2005, "With Tender Buttons, Broadcast shed their rhythm section entirely — just Trish Keenan and James Cargill, using synthesisers, drum machines, and tape loops to construct an electronic landscape that sounds less like pop music than library music recorded by aliens. 'Tears in the Typing Pool' achieves something remarkable: a song with a hook, built entirely from synthesiser tones and drum machine patterns that nonetheless carries the emotional weight of a personal lyric. The album distilled Broadcast's entire aesthetic into its essential components and influenced the wave of UK electronic music that followed, from Ghost Box Records to Panda Bear's studio approach.")] },
-  { id: 'beach-house', name: 'Beach House', layer: 'shoegaze-dreampop', genres: ['dream-pop'], scope: V1, country: 'US', activeFrom: 2004, signatureSong: 'Space Song',
+  { id: 'beach-house', name: 'Beach House', layer: 'shoegaze-dreampop', genres: ['dream-pop', 'indie-pop'], scope: V1, country: 'US', activeFrom: 2004, signatureSong: 'Space Song',
     classicAlbums: [ca('teen-dream', 'Teen Dream', 2010, "Victoria Legrand and Alex Scally recorded Teen Dream after three years developing their approach in near-total obscurity, and the album sounds like something perfected in private — every reverb tail exactly calibrated, every drum pattern precisely weighted between the deliberate and the hypnotic. 'Norway' and 'Used to Be' demonstrate Legrand's gift for vocals that seem to be remembering something rather than addressing the listener directly; 'Silver Soul' became the band's most replayed track in the decade that followed. It made Beach House unavoidable for everyone who built their record collection around Mazzy Star and the Cocteau Twins.")] },
   { id: 'deerhunter', name: 'Deerhunter', layer: 'shoegaze-dreampop', genres: ['shoegaze', 'indie-rock'], scope: V1, country: 'US', activeFrom: 2001, signatureSong: 'Helicopter',
     classicAlbums: [ca('halcyon-digest', 'Halcyon Digest', 2010, "Bradford Cox's songwriting operates through deliberate obscurity — lyrics that feel confessional but resist paraphrase, images that accumulate emotional charge without resolving into narrative — and the production matches that ambiguity with arrangements that blur the line between retro and contemporary. 'Helicopter' sounds like it was recorded in 1966 and 2010 simultaneously; 'He Would Have Laughed' is a tribute to Jay Reatard that operates as elegy and celebration at once. It established Cox as one of the most distinctly literary lyricists in contemporary indie rock.")] },
@@ -184,13 +211,13 @@ const artists: Artist[] = [
   { id: 'the-replacements', name: 'The Replacements', layer: 'indie-alt', genres: ['power-pop', 'alt-rock'], scope: V1, country: 'US', activeFrom: 1979, signatureSong: 'Bastards of Young',
     realm: 'american-underground', lineage: 'college-rock',
     classicAlbums: [ca('tim', 'Tim', 1985, "The Replacements' most polished record was also their most fully realized — Tommy Stinson's bass locked in tighter than on any previous release, Paul Westerberg's songwriting reaching a clarity of emotional expression that the band's characteristic sloppiness had previously obscured. 'Bastards of Young' is the manifesto, a mid-tempo anthem about generational disappointment that became the unofficial anthem of disaffected mid-80s American youth; 'Left of the Dial' is the tender pole, a tribute to college radio delivered with a directness Westerberg rarely allowed himself. It remains the entry point through which most listeners discover the band.")] },
-  { id: 'pavement', name: 'Pavement', layer: 'indie-alt', genres: ['lo-fi', 'indie-rock', 'alt-rock'], scope: V1, country: 'US', activeFrom: 1989, signatureSong: 'Range Life',
+  { id: 'pavement', name: 'Pavement', layer: 'indie-alt', genres: ['lo-fi', 'indie-pop', 'indie-rock', 'alt-rock'], scope: V1, country: 'US', activeFrom: 1989, signatureSong: 'Range Life',
     realm: 'american-underground', lineage: 'noise-alt',
     classicAlbums: [ca('slanted-and-enchanted', 'Slanted and Enchanted', 1992, "Pavement's debut is deliberately fractured — verses fray into tape hiss, hooks arrive slightly out of focus, and Stephen Malkmus's guitar lines slouch instead of resolve, turning lo-fi limitation into a stylistic signature rather than an excuse. 'Summer Babe (Winter Version)' is the entry point, a woozy, melodic non sequitur that somehow still functions as a single; 'Here' and 'Trigger Cut' show the same sleight of hand — real songcraft smuggled under a scuzzy, indifferent surface. It set the template for a decade of American indie rock that treated irony and melody as compatible instincts, not opposing ones.")] },
-  { id: 'yo-la-tengo', name: 'Yo La Tengo', layer: 'indie-alt', genres: ['noise-rock', 'indie-rock'], scope: V1, country: 'US', activeFrom: 1984, signatureSong: 'Autumn Sweater',
+  { id: 'yo-la-tengo', name: 'Yo La Tengo', layer: 'indie-alt', genres: ['noise-rock', 'indie-pop', 'indie-rock'], scope: V1, country: 'US', activeFrom: 1984, signatureSong: 'Autumn Sweater',
     realm: 'american-underground', lineage: 'college-rock',
     classicAlbums: [ca('heart-beating-as-one', 'I Can Hear the Heart Beating as One', 1997, "Yo La Tengo's fifth album was the record where their range became fully audible in a single listen — the seven-minute motorik drone of 'Moby Octopad,' the Velvet Underground-influenced pop of 'Stockholm Syndrome,' the full feedback assault of 'The Lie and How We Told It,' all without the shifts feeling discontinuous. Ira Kaplan and Georgia Hubley's vocal interplay creates an intimacy that the more aggressive tracks never fully dissipate; 'Sugarcube' became the band's closest approach to a radio hit, a deadpan guitar pop song with a hook so efficient it sounded accidental. The album demonstrated that the Velvet Underground's legacy could be developed rather than just imitated, that noise and tenderness could coexist within a single sustained artistic project.")] },
-  { id: 'rem', name: 'R.E.M.', layer: 'indie-alt', genres: ['jangle-pop', 'alt-rock'], scope: V1, country: 'US', activeFrom: 1980, signatureSong: 'Losing My Religion',
+  { id: 'rem', name: 'R.E.M.', layer: 'indie-alt', genres: ['jangle-pop', 'indie-pop', 'alt-rock'], scope: V1, country: 'US', activeFrom: 1980, signatureSong: 'Losing My Religion',
     realm: 'american-underground', lineage: 'college-rock',
     classicAlbums: [ca('murmur', 'Murmur', 1983, "Produced by Mitch Easter and Don Dixon at a studio in Winston-Salem, Murmur established R.E.M.'s sonic identity with unusual completeness for a debut — Michael Stipe's deliberately obscured vocals over Peter Buck's chiming Rickenbacker guitar created a texture that sounded like no other American band then operating. 'Radio Free Europe' is the definitive statement; 'Talk About the Passion' and 'Perfect Circle' demonstrate the band's range between urgency and atmosphere. Murmur served as the bridge between punk energy and pop songcraft that American independent rock needed, with a precision that seemed effortless.")] },
   { id: 'radiohead', name: 'Radiohead', layer: 'indie-alt', genres: ['art-rock', 'alt-rock'], scope: V1, country: 'UK', activeFrom: 1985, signatureSong: 'Paranoid Android',
@@ -463,13 +490,13 @@ const artists: Artist[] = [
   { id: 'ethel-cain', name: 'Ethel Cain', layer: 'outside', genres: ['dream-pop', 'folk'], scope: ['underground'], realm: 'folk-confessional', lineage: 'confessional', signatureSong: 'American Teenager',
     bio: "Hayden Anhedonia began releasing music as Ethel Cain in the late 2010s, building a devoted online following before Preacher's Daughter (2022) brought her a considerably wider audience. Raised in a religious household in Florida, she has drawn directly on that background — evangelical Christianity, small-town Southern life — for a fictional narrative persona that runs across her records, blending gothic Americana, ambient textures, and pop songwriting into a sound distinct from any single genre.\n\nPreacher's Daughter, a loosely narrative concept album following its title character's life and death, combines shoegaze-indebted guitar textures with more straightforwardly melodic songwriting, and its scope and ambition established Cain as one of the more closely watched new songwriters of the early 2020s, drawing comparisons across gothic country, dream-pop, and confessional singer-songwriter traditions alike.",
     classicAlbums: [ca('preachers-daughter', "Preacher's Daughter", 2022, "Preacher's Daughter tells a loose narrative across its runtime, moving from bright, almost radio-ready songwriting toward increasingly bleak, ambient territory as its story darkens. \"American Teenager\" is the record's clearest pop moment, a driving, anthemic chorus wrapped around lyrics about small-town disillusionment and looming dread. Later tracks strip that brightness away almost entirely, replacing it with distorted guitar drones and extended ambient passages. The contrast across the album's length is the whole point — a coming-of-age record that ends up somewhere far darker than where it started.")] },
-  { id: 'snail-mail', name: 'Snail Mail', layer: 'outside', genres: ['bedroom-pop', 'folk'], scope: ['underground'], realm: 'folk-confessional', lineage: 'confessional', signatureSong: 'Pristine',
+  { id: 'snail-mail', name: 'Snail Mail', layer: 'outside', genres: ['bedroom-pop', 'indie-pop', 'folk'], scope: ['underground'], realm: 'folk-confessional', lineage: 'confessional', signatureSong: 'Pristine',
     bio: "Lindsey Jordan began writing songs as a teenager in Maryland, playing in the DIY scene around Ellicott City before releasing Lush (2018) at eighteen years old to widespread critical acclaim. Her guitar playing, more technically accomplished than much of the lo-fi indie rock she was initially grouped with, combined with lyrics about first love and heartbreak delivered in a flat, unadorned voice that gave the songs an understated intensity.\n\nJordan has continued to develop her sound on subsequent records, incorporating more polished production and a wider range of influences while keeping the emotional directness of her debut intact. Lush in particular has remained a touchstone for younger guitar-based songwriters for the way it treated teenage heartbreak with a seriousness and technical care that few of her contemporaries brought to similar subject matter.",
     classicAlbums: [ca('snail-mail-lush', 'Lush', 2018, "Lush pairs Jordan's clean, technically assured guitar playing with a flat, deliberately unadorned vocal delivery that makes the songs' emotional peaks land harder for how little they're oversold. \"Pristine\" builds from a simple verse into a chorus where her voice finally opens up, singing \"I'll never love anyone else\" with a directness that avoids any hint of irony. \"Heat Wave\" shows the same restraint applied to a slower, more resigned song. Recorded at eighteen, it treats teenage heartbreak with a technical seriousness few records aimed at the same subject bother to attempt.")] },
-  { id: 'japanese-breakfast', name: 'Japanese Breakfast', layer: 'outside', genres: ['indie-pop', 'indie-rock', 'dream-pop', 'chamber-pop'], scope: ['underground'], realm: 'folk-confessional', lineage: 'confessional', signatureSong: 'Be Sweet',
+  { id: 'japanese-breakfast', name: 'Japanese Breakfast', layer: 'outside', genres: ['dream-pop', 'chamber-pop', 'indie-pop', 'indie-rock'], scope: ['underground'], realm: 'folk-confessional', lineage: 'confessional', signatureSong: 'Be Sweet',
     bio: "Michelle Zauner began recording as Japanese Breakfast following the death of her mother, channeling that grief into two albums, Psychopomp (2016) and Soft Sounds from Another Planet (2017), that combined dream-pop textures with unusually direct lyrics about loss. She became more widely known in subsequent years both for her music and for her memoir Crying in H Mart, which expanded on the same material in prose.\n\nJubilee (2021) marked a deliberate turn away from that grief-focused songwriting toward a brighter, more maximalist pop sound, incorporating horns, synthesizers, and a wider emotional range than her earlier records had allowed herself. The shift was framed explicitly by Zauner as a choice to write about joy after years spent writing almost exclusively about loss, and the record was received as a significant creative expansion rather than a departure from what had made her music distinctive.",
     classicAlbums: [ca('jubilee', 'Jubilee', 2021, "Jubilee opens with a full horn section, a deliberate statement of intent after two albums built mostly around hushed dream-pop textures. \"Be Sweet\" pairs a driving, synth-pop groove with lyrics about trust and self-doubt, Zauner's voice more confident and forward in the mix than on her earlier, grief-centered records. \"Kokomo, IN\" shows the album's gentler side, a soft ballad sung from someone else's perspective. The whole record reads as a deliberate turn toward joy and abundance after two albums spent almost entirely inside loss.")] },
-  { id: 'clairo', name: 'Clairo', layer: 'outside', genres: ['bedroom-pop', 'folk'], scope: ['underground'], realm: 'folk-confessional', lineage: 'confessional', signatureSong: 'Bags',
+  { id: 'clairo', name: 'Clairo', layer: 'outside', genres: ['bedroom-pop', 'indie-pop', 'folk'], scope: ['underground'], realm: 'folk-confessional', lineage: 'confessional', signatureSong: 'Bags',
     bio: "Claire Cottrill began posting lo-fi bedroom-pop recordings online as a teenager, and the unexpected viral success of one such song brought her a wide audience before she had released a proper album. Immunity (2019), produced with Rostam Batmanglij, moved her sound toward fuller, more considered arrangements while keeping the intimate, conversational vocal style of her earlier bedroom recordings.\n\nCottrill has continued to develop a warmer, more acoustic-leaning sound on subsequent albums, drawing increasingly on 1970s soft-rock and folk influences she's cited from her parents' record collection. Her trajectory — from viral bedroom-pop artist to a songwriter working in dialogue with an older folk and soft-rock lineage — has made her a frequently discussed example of how that internet-era path can develop into a more traditional singer-songwriter career.",
     classicAlbums: [ca('immunity', 'Immunity', 2019, "Immunity moves Clairo's hushed, conversational vocal style into fuller, more considered production, Rostam Batmanglij's arrangements adding texture without ever overwhelming the intimacy of her delivery. \"Bags\" pairs a soft, mid-tempo groove with a lyric about the disorientation of a new crush, Clairo's flat delivery undercutting any sense of melodrama. \"Alewife\" strips things back further, built around a simple guitar figure and a direct account of a friend's crisis. It's a record that treats emotional restraint as its own kind of intensity.")] },
   { id: 'julia-holter', name: 'Julia Holter', layer: 'outside', genres: ['art-pop', 'experimental-pop'], scope: ['underground'], realm: 'folk-confessional', lineage: 'confessional', signatureSong: 'Feel You',
@@ -503,7 +530,7 @@ const artists: Artist[] = [
   { id: 'kurt-vile', name: 'Kurt Vile', layer: 'outside', genres: ['indie-folk', 'folk'], scope: ['underground'], realm: 'folk-confessional', lineage: 'indie-folk', signatureSong: 'Wakin on a Pretty Day',
     bio: "Kurt Vile began his career as a member of The War on Drugs before establishing a prolific solo catalog built around fingerpicked and layered electric guitar, a laconic vocal delivery, and lyrics that treat everyday drift and self-doubt with an unhurried, often very funny plainspokenness. His music draws explicitly on Philadelphia forebears like Dinosaur Jr. and on classic rock and folk figures including Neil Young and Bob Dylan, filtered through a hazy, unhurried production style.\n\nWakin on a Pretty Daze (2013) expanded his songs to unusual lengths, several stretching past nine minutes on the strength of repetition and mood rather than conventional structure, and it established him as one of the more distinctive guitarist-songwriters of his generation. Vile has continued to release records at a steady pace since, maintaining the same unhurried, guitar-heavy aesthetic across a catalog that treats laid-back delivery as compatible with real technical and emotional depth.",
     classicAlbums: [ca('wakin-on-a-pretty-daze', 'Wakin on a Pretty Daze', 2013, "Wakin on a Pretty Daze stretches several of its songs well past the length a more conventional record would allow, trusting repetition and Vile's layered, fingerpicked guitar to carry the extra time rather than any buildup toward a climax. \"Wakin on a Pretty Day\" runs past nine minutes on the strength of a single warm, unhurried riff and a lyric about drifting through an ordinary day without any real event to report. \"KV Crimes\" shows a slightly more driving side of the same laid-back sensibility. It's a record that makes a genuine formal argument for patience as a songwriting tool in its own right.")] },
-  { id: 'mac-demarco', name: 'Mac DeMarco', layer: 'outside', genres: ['lo-fi', 'psychedelic-pop', 'indie-rock'], scope: ['underground'], realm: 'folk-confessional', lineage: 'indie-folk', signatureSong: 'Chamber of Reflection',
+  { id: 'mac-demarco', name: 'Mac DeMarco', layer: 'outside', genres: ['lo-fi', 'psychedelic-pop', 'indie-pop', 'indie-rock'], scope: ['underground'], realm: 'folk-confessional', lineage: 'indie-folk', signatureSong: 'Chamber of Reflection',
     bio: "Mac DeMarco built an early following through a persona as much as through his music — goofy, self-deprecating, prone to on-stage antics — before Salad Days (2014) established him as a more serious songwriter, its warped, chorus-heavy guitar tone and unhurried, slacker melodies distinguishing his sound clearly from his indie-rock contemporaries. His lyrics moved between wry humor and unexpectedly sincere reflections on adulthood and relationships, often within the same song.\n\nDeMarco has continued to release music at a steady, often lo-fi pace since, including surprise free releases distributed directly to fans, while gradually incorporating more overt influences from 1970s soft rock and jazz into his sound. His combination of a loose, unserious public persona with genuinely considered songwriting has made him a distinctive and influential figure in 2010s indie rock.",
     classicAlbums: [ca('salad-days', 'Salad Days', 2014, "Salad Days wraps its warped, chorus-pedal guitar tone and unhurried tempos around lyrics that move between slacker humor and genuine anxiety about growing older. \"Chamber of Reflection\" strips the guitar back almost entirely in favor of a synthesizer figure, DeMarco's voice more vulnerable than his goofier public persona would suggest. The title track sets the record's tone directly, admitting to feeling \"just like a kid\" while gently doubting whether that's something to be proud of. It's a record that uses a loose, unserious surface to carry real reflection underneath.")] },
   { id: 'the-mountain-goats', name: 'The Mountain Goats', layer: 'outside', genres: ['indie-folk', 'folk'], scope: ['underground'], realm: 'folk-confessional', lineage: 'indie-folk', signatureSong: 'This Year',
@@ -802,13 +829,13 @@ const artists: Artist[] = [
     signatureSong: 'Smells Like Teen Spirit',
     bio: "Nirvana formed in Aberdeen, Washington in 1987, built around the songwriting of Kurt Cobain, whose melodic instincts and love of the Pixies' quiet-loud dynamics fused with a hardcore- and noise-rock-schooled underground sensibility absorbed from Black Flag, the Melvins, and the broader Pacific Northwest DIY scene the band came up in. Early releases on Sub Pop placed them within the loosely defined grunge scene, though Cobain's own reference points ran wider and stranger than that label suggested — Sonic Youth, R.E.M., and the Vaselines all left visible marks on his writing.\n\nNevermind (1991) took the band's underground songcraft and pushed it through a cleaner, more compressed production, and its reach far outstripped anything the band or its label expected, pulling large parts of American alternative rock into the mainstream almost overnight. Cobain remained ambivalent about that reach for the rest of the band's brief existence, repeatedly distancing Nirvana from the more macho, apolitical hard-rock scene it was often lumped in with, and continuing to point interviewers toward the underground bands — Sonic Youth, the Breeders, the Vaselines, Daniel Johnston — he considered the real foundation of what he was doing.",
     classicAlbums: [ca('nevermind', 'Nevermind', 1991, "Nevermind takes the quiet-loud dynamics Kurt Cobain openly borrowed from the Pixies and tightens them into some of the most immediate songwriting of the decade. \"Smells Like Teen Spirit\" rides a four-chord riff into a chorus that turns adolescent apathy into a genuine anthem, Dave Grohl's drumming giving the track a physical force no amount of radio play has worn down. The rest of the album balances that same tension between melody and noise, never settling for one at the expense of the other. Its reach far outran anyone's expectations, but the record's underground bones — hardcore's speed, noise rock's dissonance — are still audible underneath the polish.")] },
-  { id: 'sebadoh', name: 'Sebadoh', layer: 'outside', genres: ['lo-fi', 'indie-rock'], scope: ['underground'], realm: 'american-underground', lineage: 'noise-alt',
+  { id: 'sebadoh', name: 'Sebadoh', layer: 'outside', genres: ['lo-fi', 'indie-pop', 'indie-rock'], scope: ['underground'], realm: 'american-underground', lineage: 'noise-alt',
     signatureSong: 'Rebound',
     bio: "Sebadoh formed around Lou Barlow after his acrimonious departure from Dinosaur Jr., initially as a lo-fi home-recording outlet before growing into a full band alongside Eric Gaffney and later Jason Loewenstein. The early cassette-only releases leaned into hiss, tape warble, and confessional candor as compositional tools rather than limitations, helping define what would become known as lo-fi indie rock alongside contemporaries like Pavement and Guided by Voices.\n\nBakesale (1994) sharpened that aesthetic into tighter, more immediate songwriting without abandoning the rawness that had defined the band's earlier records, splitting time between Barlow's melodic, wounded pop songs and Loewenstein's more abrasive contributions. Barlow has since described his own influence with characteristic self-deprecation, joking that he helped inspire a generation of young men making badly recorded love songs — a nod to the many DIY bedroom acts who cite Sebadoh and Dinosaur Jr. as a shared starting point, even where the direct lines are hard to draw.",
     classicAlbums: [ca('bakesale', 'Bakesale', 1994, "Bakesale sharpens Sebadoh's lo-fi instincts into some of Lou Barlow's most direct songwriting, without smoothing away the rawness that made the earlier tapes feel so personal. \"Rebound\" rides a plainspoken melody and a lyric about romantic uncertainty that never reaches for anything more complicated than what it is. The record's hiss and rough edges read as texture rather than limitation, exactly the lo-fi ethos Sebadoh helped establish. It remains the album where the band's confessional bedroom-recording approach and genuine pop songcraft lined up most completely.")] },
 
   // -- college-rock --
-  { id: 'guided-by-voices', name: 'Guided by Voices', layer: 'outside', genres: ['lo-fi', 'indie-rock'], scope: ['underground'], realm: 'american-underground', lineage: 'college-rock',
+  { id: 'guided-by-voices', name: 'Guided by Voices', layer: 'outside', genres: ['lo-fi', 'indie-pop', 'indie-rock'], scope: ['underground'], realm: 'american-underground', lineage: 'college-rock',
     signatureSong: 'I Am a Scientist',
     bio: "Guided by Voices formed in Dayton, Ohio in 1983 around schoolteacher Robert Pollard, who spent most of the following decade recording prolifically in home studios and basements with a rotating cast of collaborators while working a day job and playing almost no shows outside the Dayton area. Pollard's songwriting drew on a deep, specifically British record collection — jangle-pop, prog, and classic rock filtered through a lo-fi, four-track haze — and he wrote in fragments, favoring songs that ended just as they seemed to be starting.\n\nBee Thousand (1994) collected dozens of these fragments into an album that felt less like a set of finished songs than a transmission from another radio dial entirely, and it became the record most responsible for establishing Guided by Voices as a foundational lo-fi act rather than a curiosity. Pollard's ambition to write songs as good as his own favorite bands, paired with total indifference to studio polish, made the band a direct reference point for a generation of lo-fi and bedroom-pop musicians who followed.",
     classicAlbums: [ca('bee-thousand', 'Bee Thousand', 1994, "Bee Thousand crams dozens of fragments — some barely a minute long — into an album that feels like tuning across radio stations rather than listening to a single record. \"I Am a Scientist\" is one of the few tracks allowed to fully resolve, its plainspoken melody and hiss-caked production summing up the whole approach: real songcraft delivered with total indifference to studio polish. Robert Pollard's prolific, fragment-based writing method turns the album's roughness into its own kind of structure. It remains the record most responsible for making lo-fi indie rock feel like a legitimate tradition rather than a limitation.")] },
@@ -842,7 +869,7 @@ const artists: Artist[] = [
     signatureSong: 'The Way We Get By',
     bio: "Spoon formed in Austin, Texas in 1993 around Britt Daniel and drummer Jim Eno, developing a sound built on rhythmic precision and deliberate omission — space left in an arrangement was treated as carefully as any note actually played. Daniel has cited Wire and Talking Heads as formative early touchstones, drawn to their lyrical economy and angular restraint, later adding Gang of Four and Public Image Ltd. to a listening diet that shaped the band's increasingly minimal, groove-forward songwriting.\n\nKill the Moonlight (2002) distilled that minimalism to its sharpest point yet, built on skeletal arrangements of piano, drums, and clipped guitar that left remarkable space around Daniel's voice. The album became a critical and commercial turning point for the band, expanding their audience considerably and cementing a reputation for consistency that Spoon has maintained across two decades of records without ever repeating the same arrangement twice.",
     classicAlbums: [ca('kill-the-moonlight', 'Kill the Moonlight', 2002, "Kill the Moonlight strips Spoon's arrangements down to almost nothing — a clipped guitar figure, a handclap, a few bars of silence — and trusts the empty space to do as much work as the notes. \"The Way We Get By\" rides a simple piano riff and Jim Eno's tight, unfussy drumming into one of the band's most immediate hooks, built almost entirely on restraint. Nothing on the record reaches for a bigger sound than it needs. It remains the clearest statement of Spoon's minimalist, rhythm-first songwriting philosophy.")] },
-  { id: 'car-seat-headrest', name: 'Car Seat Headrest', layer: 'outside', genres: ['lo-fi', 'indie-rock'], scope: ['underground'], realm: 'american-underground', lineage: 'indie-rock',
+  { id: 'car-seat-headrest', name: 'Car Seat Headrest', layer: 'outside', genres: ['lo-fi', 'indie-pop', 'indie-rock'], scope: ['underground'], realm: 'american-underground', lineage: 'indie-rock',
     signatureSong: 'Beach Life-In-Death',
     bio: "Car Seat Headrest began as the solo bedroom-recording project of Will Toledo, who self-released a prolific string of lo-fi albums on Bandcamp before assembling a full band and moving to more conventional studio production. Toledo has been unusually direct in interviews about naming his real influences — Guided by Voices, Nirvana, and the Who among them — while explicitly rejecting the frequently repeated comparisons to Pavement, Sonic Youth, Dinosaur Jr., and the Strokes, attributing the resemblance to shared older influences rather than any direct lineage.\n\nTwin Fantasy, originally self-released in 2011 and re-recorded with a full band in 2018, follows a fraught teenage relationship across an extended, emotionally raw song cycle, and the re-recording became the version most widely heard, bringing Toledo's early bedroom songwriting to a considerably larger audience without sanding down its confessional intensity. The project's evolution from lo-fi solo recordings to full-band arrangements mirrors a path several of Toledo's own generation of DIY musicians have since followed.",
     classicAlbums: [ca('twin-fantasy', 'Twin Fantasy', 2018, "Twin Fantasy follows a fraught teenage relationship across an extended, unusually candid song cycle, its 2018 full-band re-recording bringing Will Toledo's original 2011 bedroom version into sharper, more widely heard focus. \"Beach Life-In-Death\" stretches past ten minutes, moving through several distinct sections that read as a single unbroken confession rather than a conventional verse-chorus structure. Toledo's lyrics stay specific and unguarded even as the arrangements grow more ambitious than his earlier lo-fi work allowed. It remains the album most responsible for turning a prolific bedroom project into a full band with a genuine audience.")] },
@@ -866,7 +893,7 @@ const artists: Artist[] = [
     signatureSong: 'Common People',
     bio: "Pulp formed in Sheffield in the late 1970s around Jarvis Cocker, spending well over a decade in relative obscurity before finding wider recognition during the Britpop era of the mid-1990s. Cocker has named Scott Walker and Leonard Cohen as his chief influences, describing a formative encounter in which Cohen personally warned him to be careful exploring what Cocker calls the \"sacred mechanics\" of songwriting — advice Cocker has said he has followed across his career — alongside a broader debt to the Velvet Underground, the Kinks, and the glam-era theatricality of David Bowie and T. Rex.\n\nDifferent Class (1995) became the album most responsible for Pulp's commercial and critical peak, pairing Cocker's wry, class-conscious lyricism with a sharper, more danceable version of the band's sound than their earlier, more marginal records had attempted. The album's mix of social observation and genuine pop craft set Pulp apart from many of their Britpop contemporaries, and its songs remained the ones most associated with the band's identity long after the initial wave of attention had passed.",
     classicAlbums: [ca('different-class', 'Different Class', 1995, "Different Class pairs Jarvis Cocker's wry, class-conscious lyricism with the sharpest, most danceable arrangements Pulp had yet attempted. \"Common People\" builds a driving synth-and-guitar pulse under a lyric that turns a specific social observation into a genuine pop anthem, the tension between the song's bitterness and its infectiousness never resolving. The album's mix of satire and real craft set it apart from much of the Britpop it's often filed alongside. Decades later, it remains the record most identified with Pulp's brief run at the center of British pop culture.")] },
-  { id: 'the-shins', name: 'The Shins', layer: 'outside', genres: ['psychedelic-pop', 'indie-rock'], scope: ['underground'], realm: 'american-underground', lineage: 'indie-rock',
+  { id: 'the-shins', name: 'The Shins', layer: 'outside', genres: ['psychedelic-pop', 'indie-pop', 'indie-rock'], scope: ['underground'], realm: 'american-underground', lineage: 'indie-rock',
     signatureSong: 'New Slang',
     bio: "The Shins formed around singer-songwriter James Mercer, who built the band's early sound out of jangling, reverb-drenched guitars and melodies indebted to the classic pop he grew up on, later citing Echo & the Bunnymen, the Cure, and the Smiths as the bands that most shaped him as a teenager. Mercer's affinity for the Elephant 6 collective's psychedelic pop scene, and specifically Olivia Tremor Control's experimental streak, placed the band in conversation with a wider underground of melody-focused, studio-adventurous indie pop even though the Shins emerged from a different geographic scene entirely.\n\nOh, Inverted World (2001) established the template Mercer would return to across the band's catalog — warm, hook-driven songwriting wrapped in lo-fi-tinged production — and its slow-building word-of-mouth success, aided considerably by its prominent use in film, made it one of the most widely heard indie pop records of the early 2000s. The album's combination of melodic generosity and understated production became a genuine influence on the wave of indie pop that followed it later in the decade.",
     classicAlbums: [ca('oh-inverted-world', 'Oh, Inverted World', 2001, "Oh, Inverted World wraps warm, hook-driven melodies in lo-fi-tinged, reverb-heavy production that never quite lets the songs sound as polished as they are. \"New Slang\" rides a simple acoustic-guitar figure and James Mercer's plaintive vocal into one of the most quietly memorable choruses of the era, its melancholy never tipping into melodrama. The album's unhurried, melody-first approach set it apart from the more aggressive indie rock surrounding it at the time. It became one of the most widely heard indie pop records of the decade, its influence audible in a whole wave of bands that followed.")] },
@@ -876,7 +903,7 @@ const artists: Artist[] = [
     signatureSong: 'In the Aeroplane Over the Sea',
     bio: "Neutral Milk Hotel formed around Jeff Mangum, who moved to Athens, Georgia to be near a circle of like-minded musicians doing bedroom recordings steeped in the Beatles, the Beach Boys, and the Kinks — the loose collective of friends and collaborators that became known as the Elephant 6 Recording Company. Mangum's songwriting fused that 1960s psych-pop foundation with a raw, distorted lo-fi production style and an increasingly surreal, image-dense lyrical approach that set the band apart from its more straightforwardly melodic Elephant 6 peers.\n\nIn the Aeroplane Over the Sea (1998) drew its central inspiration from an unlikely source: Mangum has spoken about reading Anne Frank's diary and being consumed by the idea of a time machine that could somehow save her, and that fixation runs through the album's oblique, emotionally overwhelming lyrics even where it's never stated outright. The album found only a modest audience on release before Mangum largely withdrew from public performing, and its slow-building rediscovery over the following decade turned it into one of the most influential and most emphatically cited records in American indie rock, inspiring musicians who would go on to found bands including Arcade Fire and the Shins.",
     classicAlbums: [ca('in-the-aeroplane-over-the-sea', 'In the Aeroplane Over the Sea', 1998, "In the Aeroplane Over the Sea fuses Jeff Mangum's raw, distorted lo-fi production with a lyrical intensity that reads as genuinely overwhelmed rather than merely poetic. The title track lays acoustic guitar and horns under images that never fully resolve into a clear narrative, yet land with the emotional force of one — the album's central inspiration, reportedly Anne Frank's diary and Mangum's fixation on somehow rescuing her across time, is never named outright but shapes everything on the record. Nothing about the arrangements is conventionally pretty, and that roughness only deepens the intensity. Barely noticed on release, it became one of the most influential and most emphatically cited albums in American indie rock's history.")] },
-  { id: 'of-montreal', name: 'of Montreal', layer: 'outside', genres: ['psychedelic-pop', 'art-pop'], scope: ['underground'], realm: 'american-underground', lineage: 'psych',
+  { id: 'of-montreal', name: 'of Montreal', layer: 'outside', genres: ['psychedelic-pop', 'art-pop', 'indie-pop'], scope: ['underground'], realm: 'american-underground', lineage: 'psych',
     signatureSong: 'Gronlandic Edit',
     bio: "of Montreal formed around Kevin Barnes, who moved to Athens, Georgia and fell in with the same Elephant 6-affiliated circle of bedroom-recording musicians steeped in the Beatles, the Beach Boys, and the Kinks that also produced Neutral Milk Hotel and Olivia Tremor Control. Barnes's own influences have rotated dramatically by album — early psychedelic pop giving way to a Prince- and Bowie-inflected electro sound, then late-1960s rock, then contemporary EDM and electronic production — with Bowie, Prince, Kate Bush, and Patti Smith among the names he's named as shaping how he makes music generally.\n\nHissing Fauna, Are You the Destroyer? (2007) marked one of the most dramatic of those turns, channeling a period of personal crisis into brighter, more dance-oriented electronic-pop arrangements that sat in stark tension with the album's often bleak lyrical content. The record became one of the band's most widely praised and commercially significant releases, and its combination of surface exuberance and underlying darkness set the template for the persona-driven, genre-hopping approach Barnes has continued to pursue across the records that followed.",
     classicAlbums: [ca('hissing-fauna', 'Hissing Fauna, Are You the Destroyer?', 2007, "Hissing Fauna, Are You the Destroyer? channels a period of real personal crisis into bright, danceable electro-pop, the mismatch between the music's exuberance and the lyrics' darkness never fully resolving. \"Gronlandic Edit\" rides a buoyant synth hook under lyrics about depression and self-erasure, the tension between the two giving the song a genuine unease beneath its catchiness. Kevin Barnes's shift toward electronic production marked one of several dramatic reinventions across his catalog. It remains the album most responsible for widening of Montreal's audience beyond the Elephant 6 underground that produced him.")] },
@@ -1217,7 +1244,7 @@ const artists: Artist[] = [
   { id: 'pinback', name: 'Pinback', layer: 'outside', genres: ['math-rock', 'indie-rock'], scope: ['underground'], country: 'US', activeFrom: 1998, realm: 'american-underground', lineage: 'indie-rock', signatureSong: 'Penelope',
     bio: "Pinback formed in San Diego in 1998 around Rob Crow and Zach Smith, both veterans of the city's aggressive DIY scene through their earlier bands Heavy Vegetable and Three Mile Pilot respectively. The two brought sharply opposite relationships to influence into the same project: Smith has argued that fewer influences produce more original work, once claiming to own around twenty CDs total, while Crow is a voracious listener whose earlier band Heavy Vegetable name-checked Slint, Can, the Velvet Underground, Zappa, Captain Beefheart, the Residents, and Devo in a single song about what radio ignored.\n\nBlue Screen Life, released in 2001, became the album where that tension between minimalism and dense reference points first resolved into a sound distinctly the band's own. Crow has also lent his voice to Drive Like Jehu's Yank Crime, and Pinback's debut album sampled drumming from the Minutemen's George Hurley, small details tracing the band's roots through San Diego's wider underground even as its own sound moved in a more melodic direction.",
     classicAlbums: [ca('blue-screen-life', 'Blue Screen Life', 2001, "Blue Screen Life builds intricate, interlocking guitar and bass melodies into songs that feel meticulously constructed without ever sounding stiff. \"Penelope\" layers Rob Crow and Zach Smith's voices over an instrumental part that shifts and unspools gradually, rewarding close listening more than immediate hooks. The record's precision reflects the band's origins in San Diego's technically demanding underground scene, even as its melodic sensibility softens that scene's harder edges. It remains the clearest statement of Pinback's particular, hard-won blend of math-rock intricacy and genuine pop instinct.")] },
-  { id: 'waxahatchee', name: 'Waxahatchee', layer: 'outside', genres: ['indie-folk', 'folk', 'indie-rock'], scope: ['underground'], country: 'US', activeFrom: 2010, realm: 'folk-confessional', lineage: 'indie-folk', signatureSong: 'Fire',
+  { id: 'waxahatchee', name: 'Waxahatchee', layer: 'outside', genres: ['indie-folk', 'indie-pop', 'folk', 'indie-rock'], scope: ['underground'], country: 'US', activeFrom: 2010, realm: 'folk-confessional', lineage: 'indie-folk', signatureSong: 'Fire',
     bio: "Katie Crutchfield records as Waxahatchee, taking the name from Waxahatchee Creek near her childhood home in Alabama, after earlier fronting the punk-leaning band P.S. Eliot. She has cited Lucinda Williams as her single most direct songwriting influence, saying her own approach to structure is \"identical to Lucinda\" and noting that, like Williams, she rarely writes a bridge into her songs. Crutchfield has also recorded Jason Molina covers, on the Great Thunder EP, tracing another line back through American songwriting's plainspoken tradition.\n\nSaint Cloud, released in 2020, arrived after a period of major personal change, including a newly sober outlook that reshaped Crutchfield's songwriting and life alike. The album became her most widely praised to date, read by many as the record where her literary influences and the plainspoken American songwriting tradition she draws from finally arrived at a fully formed voice of her own.",
     classicAlbums: [ca('saint-cloud', 'Saint Cloud', 2020, "Saint Cloud trades Waxahatchee's earlier lo-fi rock for a warmer, countryfied sound, pedal steel and organ filling in space where distortion used to sit. \"Fire\" turns a simple, repeated vow into the record's emotional center, Katie Crutchfield's voice steady and unguarded over a spare, twangy arrangement. The songwriting favors plainspoken directness over metaphor throughout, structured in short, direct verses that skip the conventional bridge almost entirely, trusting plain statement over ornament. It's the sound of a songwriter fully in command of the American tradition she draws from.")] },
 
@@ -2962,69 +2989,282 @@ const artistsWithBios = artists.map(a => ({
   realm: a.realm ?? (CORE_IDS.has(a.id) ? 'core' : 'region-one'),
 }));
 
-// Scenes are a time + place, not a sound — see data/types.ts. Prose below is a
-// draft placeholder; final copy to be dropped in later without touching structure.
+// Scenes are a time + place, not a sound — see data/types.ts. Every scene
+// below carries full content: placeAndTime (the physical room), memberRoles
+// (one line per member on their role IN THIS SCENE, not a bio recap), and
+// legacy (the downstream) — see the 2026 scene-page pass in CLAUDE.md.
+// Scene pages are deliberately short: 3-7 artists, a few years, one room.
+// american-underground (the scene, not the realm) was retired in the
+// earlier scene-schema pass: its 7 members spanned 6 cities with no shared
+// room (Minneapolis, Amherst, New York, Athens, Boston, Stockton) and it
+// collided in name with the realm of the same id. 3 of its 7 members picked
+// up real scenes below (husker-du, sonic-youth -> sst; pixies -> 4ad); the
+// other 4 (dinosaur-jr, the-replacements, rem, pavement) correctly have no
+// scene.
 const scenes: Scene[] = [
   {
-    id: 'american-underground',
-    name: 'American Underground',
-    era: '1980–1991',
-    place: 'US',
-    deck: "Between 1980 and 1991, a scattered network of American bands built its own infrastructure — vans, college radio, all-ages clubs, and independent labels — because the mainstream music industry offered nothing for music this loud, this strange, or this indifferent to commercial polish. It became known simply as the underground, and it rewired what American rock could sound like.",
-    sections: [
-      {
-        heading: 'The Circuit',
-        paragraphs: [
-          "There was no single scene so much as a circuit: a loose, self-organized touring network stitched together by word of mouth, zines, and college radio stations willing to play what commercial rock stations would not. Bands slept on floors, split gas money, and booked their own shows in VFW halls and basements because no promoter would touch them.",
-          "Labels like SST, Twin/Tone, and Homestead ran the business side of this economy — pressing records on shoestring budgets, trading tour dates and studio time, and treating national exposure as a byproduct of persistence rather than a marketing plan. It was DIY not as an aesthetic choice but as the only available option.",
-        ],
-      },
-      {
-        heading: 'The Bands',
-        paragraphs: [
-          "The bands that emerged from this network shared almost nothing sonically — the sludgy melodicism of Hüsker Dü, the amp-worshipping sprawl of Dinosaur Jr., Sonic Youth's detuned art-noise, the ragged tunefulness of The Replacements, R.E.M.'s jangling mystery, Pixies' loud-quiet-loud tension, Pavement's shambling irony — but they shared the circuit, the labels, and a refusal to sound like anything on the radio.",
-          "Below is the community that built it — the artists in Starweave's graph who came out of this world.",
-        ],
-      },
-      {
-        heading: 'The Breakthrough',
-        paragraphs: [
-          "By the end of the decade, the underground's influence had outgrown its infrastructure. Nirvana — who toured the same clubs and released their debut on the same independent label system — carried the sound to the top of the charts in 1991, and major labels scrambled to sign anything that resembled it.",
-          "The circuit didn't survive its own success intact, but its DNA did: the idea that a band could build an audience without radio, without a major label, and without changing what it sounded like to get there became the founding myth of American indie rock for the next three decades.",
-        ],
-      },
+    id: 'no-wave',
+    name: 'No Wave',
+    era: '1978–1983',
+    place: 'Lower Manhattan',
+    city: 'Lower Manhattan',
+    yearStart: 1978,
+    yearEnd: 1983,
+    blurb: "The scene born from the 1978 No New York compilation — abrasive, atonal, and deliberately hostile to rock convention — plus the guitar-orchestra wave of Glenn Branca and Rhys Chatham that grew up alongside it, with Swans emerging directly out of the same downtown scene.",
+    placeAndTime: [
+      "The scene's first tier lived in Lower Manhattan's loft and storefront circuit between 1976 and 1979 — cheap, unzoned spaces standing in for clubs, where DNA, Mars, Teenage Jesus and the Jerks, and James Chance and the Contortions played to the same few hundred people night after night. Brian Eno, in New York for other reasons, caught enough of it to produce No New York (1978), the compilation that gave the scene a name and a document for anyone who hadn't been in the room.",
+      "A second tier grew directly out of that milieu between 1979 and 1982: Glenn Branca and Rhys Chatham's massed-guitar ensembles, and Swans, formed by Michael Gira in 1982 out of the same downtown scene the compilation acts had defined. Branca's own label, Neutral Records, released Swans' debut album, Filth — the guitar-orchestra wing and the emerging noise-rock wing sharing not just a scene but a release schedule.",
     ],
-    memberIds: ['husker-du', 'dinosaur-jr', 'sonic-youth', 'the-replacements', 'rem', 'pixies', 'pavement'],
+    memberRoles: [
+      { artistId: 'dna', role: "One of the four acts on No New York; Arto Lindsay and Ikue Mori's anti-technique approach set the scene's most structurally uncompromising benchmark." },
+      { artistId: 'mars', role: "Formed earliest of the compilation acts and pushed furthest from conventional rock; a Mars show was reportedly what sent Lydia Lunch off to start her own band." },
+      { artistId: 'teenage-jesus-and-the-jerks', role: "Lydia Lunch's band, started after seeing Mars perform live; became the scene's most concentrated statement of deliberate ugliness and brevity." },
+      { artistId: 'james-chance-and-the-contortions', role: "Brought a trained funk rhythm section into the same rooms, giving the compilation its danceable, confrontational counterpoint to the other three acts' pure noise." },
+      { artistId: 'swans', role: "Formed in 1982 directly out of the downtown scene; Michael Gira called Branca's early concerts \"the epitome of how high music can go,\" and the band's debut, Filth, came out on Branca's own Neutral Records." },
+      { artistId: 'glenn-branca', role: "Ran Neutral Records out of the same scene, releasing Swans' debut; had played in Rhys Chatham's Guitar Trio ensemble from 1977 to 1979 before building his own massed-guitar pieces." },
+      { artistId: 'rhys-chatham', role: "Composed Guitar Trio (1977), the piece Branca played in before striking out on his own — the two composers' related but separate guitar-orchestra practices grew out of the same downtown room." },
+    ],
+    legacy: "No New York's rejection of rock technique fed directly into noise rock and Sonic Youth's own guitar language, while Branca and Chatham's massed-guitar pieces shaped how a generation of post-rock and math-rock guitarists thought about tuning and repetition. Swans carried the scene's extremity forward for decades under its own name, long after the lofts that produced it were gone.",
+    memberIds: ['dna', 'mars', 'teenage-jesus-and-the-jerks', 'james-chance-and-the-contortions', 'swans', 'glenn-branca', 'rhys-chatham'],
+  },
+  {
+    id: '4ad',
+    name: '4AD',
+    era: '1980–1995',
+    place: 'London',
+    city: 'London',
+    yearStart: 1980,
+    yearEnd: 1995,
+    blurb: "Ivo Watts-Russell's London label built a shared gothic-ethereal house sound and, in This Mortal Coil, a literal label-artist collective drawing its lineup from the wider roster.",
+    placeAndTime: [
+      "4AD was Ivo Watts-Russell's label from the outset, and by the early 1980s that meant something more specific than a shared roster: a deliberate house sound (reverbed, gothic, melancholic-but-beautiful) reinforced visually by Vaughan Oliver's sleeve designs under the name 23 Envelope, so that a 4AD record was identifiable by its cover before the needle ever dropped. Watts-Russell signed for a specific ear rather than a specific genre — Boston noise-pop (Pixies) sat on the same roster as Melbourne neoclassical duo Dead Can Dance — and the connective tissue was never sound so much as sensibility.",
+      "This Mortal Coil made that sensibility explicit. It was Watts-Russell's own project, not a band so much as a standing invitation to whoever was on the roster at the time — Cocteau Twins' Elizabeth Fraser and Robin Guthrie among them — to record other people's songs as chamber music. That a label could stage its own artists as a collective and have the results, most famously the cover of Tim Buckley's \"Song to the Siren,\" read as a coherent artistic statement is the clearest evidence that 4AD in this period was a curated aesthetic community, not just a distribution deal.",
+    ],
+    memberRoles: [
+      { artistId: 'this-mortal-coil', role: "Ivo Watts-Russell's own project — the label's curatorial ethos turned into an actual recording lineup, pulling in roster-mates like Cocteau Twins' Elizabeth Fraser and Robin Guthrie to record covers as 4AD house music." },
+      { artistId: 'cocteau-twins', role: "The label's longest-serving flagship act and the clearest expression of its reverbed, ethereal house sound — the reference point every other 4AD signing got measured against." },
+      { artistId: 'lush', role: "Arrived later and closest to the exit into Britpop; Spooky (1992) was produced by Cocteau Twins' Robin Guthrie, carrying the house sound directly into Lush's own records." },
+      { artistId: 'red-house-painters', role: "Signed by Watts-Russell despite sounding nothing like the rest of the roster — Mark Kozelek's slowcore was shaped by the same atmospheres (This Mortal Coil, Cocteau Twins) even where the surface had none of their gloss." },
+      { artistId: 'dead-can-dance', role: "Relocated from Melbourne specifically to be on this label; expanded 4AD's palette into neoclassical and non-Western territory while working from the same reverbed, Cocteau Twins-adjacent atmosphere as labelmates." },
+      { artistId: 'pixies', role: "The roster's outlier — loud, American, produced by Steve Albini in direct opposition to the label's reputation for gauze — signed by Watts-Russell anyway, proof the 4AD ear was never just a genre rule." },
+    ],
+    legacy: "4AD's house aesthetic outlived the label's original run, setting the visual and sonic template — Vaughan Oliver's sleeve art as much as the reverbed vocal sound — that dream-pop and shoegaze bands spent the following decade working from or against. This Mortal Coil in particular normalized the idea of a label as a creative collective rather than a distribution arrangement, a model since revisited by small labels wanting their signings to feel like one artistic project rather than a catalog.",
+    memberIds: ['this-mortal-coil', 'cocteau-twins', 'lush', 'red-house-painters', 'dead-can-dance', 'pixies'],
+  },
+  {
+    id: 'dischord',
+    name: 'Dischord',
+    era: '1980–1993',
+    place: 'Washington DC',
+    city: 'Washington DC',
+    yearStart: 1980,
+    yearEnd: 1993,
+    blurb: "Ian MacKaye's Washington DC label and scene were the same room — MacKaye played in two of its bands, and Rites of Spring's members went on to form half of Fugazi.",
+    placeAndTime: [
+      "Ian MacKaye and Jeff Nelson started Dischord Records as teenagers, simply to put out records by their own band and the handful of others playing the same small DC hardcore shows around them — a label built to document a scene its founders were already inside of, rather than to sign one from outside. That closeness meant the label's roster and the scene's actual social network were never really separate things: the same handful of musicians kept re-forming into new bands under the same label for well over a decade.",
+    ],
+    memberRoles: [
+      { artistId: 'fugazi', role: "MacKaye's band after Minor Threat, formed with Rites of Spring's Guy Picciotto and Brendan Canty and carrying Bad Brains' influence forward as the label's longest-running and most enduring act." },
+      { artistId: 'minor-threat', role: "MacKaye and Nelson's first band, formed specifically to give Dischord something of their own to release." },
+      { artistId: 'bad-brains', role: "Predated the DC scene and set it in motion — MacKaye's pre-Minor Threat band saw a Bad Brains show and came out transformed, and Picciotto later named them among Fugazi's own influences too." },
+      { artistId: 'rites-of-spring', role: "Lasted barely a year, but its two core members, Picciotto and Canty, carried its emotionally raw \"emocore\" sound directly into Fugazi afterward." },
+      { artistId: 'the-dismemberment-plan', role: "Arrived a decade later out of the same Dischord-shaped DC underground, working in the post-hardcore vocabulary Fugazi and Bad Brains had already set down." },
+    ],
+    legacy: "Dischord's insistence on five-dollar shows, no major-label deals, and total DIY control became the reference model for post-hardcore's entire operating ethic, and Fugazi in particular proved a serious touring band could run for decades entirely outside the industry's normal terms.",
+    memberIds: ['fugazi', 'minor-threat', 'bad-brains', 'rites-of-spring', 'the-dismemberment-plan'],
+  },
+  {
+    id: 'sst',
+    name: 'SST Records',
+    era: '1978–1990',
+    place: 'Los Angeles',
+    city: 'Los Angeles',
+    yearStart: 1978,
+    yearEnd: 1990,
+    blurb: "Greg Ginn's Los Angeles label turned hardcore into a distribution network for the country's furthest-out guitar music — a room as much as a roster.",
+    placeAndTime: [
+      "SST started as Greg Ginn's ham-radio parts mail-order business, run out of Hermosa Beach and San Pedro, before Ginn turned it into a record label for his own band, Black Flag. From there it became less a single room than an operation: Ginn signing and releasing bands he wanted to hear, then booking them onto shared bills and shared tours so a national hardcore circuit existed where none had before. Bands with no connection to Los Angeles at all — Hüsker Dü from Minneapolis, Sonic Youth from New York — plugged directly into that SST-run touring network alongside the label's own South Bay acts.",
+    ],
+    memberRoles: [
+      { artistId: 'minutemen', role: "San Pedro locals and part of Ginn's own South Bay circle, touring the SST network constantly on almost no money alongside Black Flag." },
+      { artistId: 'black-flag', role: "Greg Ginn's own band and the reason the label existed in the first place; its relentless touring schedule set the operating template every other SST act followed." },
+      { artistId: 'husker-du', role: "Signed in from Minneapolis, plugging a Midwest band into a Los Angeles-run circuit and helping prove SST's network extended well past California." },
+      { artistId: 'descendents', role: "South Bay labelmates connected to Black Flag directly through drummer Bill Stevenson's stint in that band, keeping the label's family of players tightly overlapping." },
+      { artistId: 'sonic-youth', role: "New York outsiders who toured the SST circuit despite no California roots; Lee Ranaldo has voiced admiration for Black Flag, more a mark of the label's camaraderie than a direct sound-influence claim." },
+    ],
+    legacy: "SST's shared-bill touring model built the infrastructure American underground rock ran on for the rest of the 1980s, and its example — a working band's label distributing whatever else it wanted to hear — became the template college and indie labels followed afterward.",
+    memberIds: ['minutemen', 'black-flag', 'husker-du', 'descendents', 'sonic-youth'],
+  },
+  {
+    id: 'riot-grrrl',
+    name: 'Riot Grrrl',
+    era: '1990–1994',
+    place: 'Olympia',
+    city: 'Olympia',
+    yearStart: 1990,
+    yearEnd: 1994,
+    blurb: "The feminist punk movement that grew out of Olympia, Washington's cassette-and-zine DIY scene — Evergreen State College, K Records, and Kill Rock Stars all in the same small town.",
+    placeAndTime: [
+      "Olympia was a small state-capital college town built around Evergreen State College, an experimental school with no traditional grading system that drew exactly the kind of art-school-minded misfits who went on to start these bands. The town already had a functioning DIY music infrastructure before riot grrrl existed — Calvin Johnson's K Records had been putting out lo-fi, homemade records for years — and Kill Rock Stars emerged alongside the same scene as it grew, giving the movement a label of its own.",
+      "In a town this size, the scene was a handful of overlapping people playing the same small run of venues and house shows, trading zines as readily as they traded show flyers — the kind of close-quarters, everyone-knows-everyone network a town like Olympia could produce and a larger city couldn't.",
+    ],
+    memberRoles: [
+      { artistId: 'bikini-kill', role: "Formed first, in 1990, out of Olympia's small DIY circuit — the band most identified with the scene that grew up around it." },
+      { artistId: 'bratmobile', role: "Formed the following year when Allison Wolfe and Molly Neuman, already writing a zine together, started a band in the same town, running a parallel circuit alongside Bikini Kill." },
+      { artistId: 'sleater-kinney', role: "Arrived in 1994, later than the other two, out of the same Olympia network; the band has since named both Bikini Kill and Bratmobile as direct influences." },
+    ],
+    legacy: "Kill Rock Stars outlasted the movement itself to become a lasting indie label, and Olympia's small-town, zine-and-cassette model of self-organizing a scene became a template later DIY punk and indie circuits consciously imitated.",
+    memberIds: ['bikini-kill', 'bratmobile', 'sleater-kinney'],
+  },
+  {
+    id: 'bristol',
+    name: 'Bristol',
+    era: '1988–1997',
+    place: 'Bristol',
+    city: 'Bristol',
+    yearStart: 1988,
+    yearEnd: 1997,
+    blurb: "A downtempo, bass-heavy sound built out of the same Bristol sound systems and studios, blending hip-hop, dub, and soul into what critics later called trip-hop.",
+    placeAndTime: [
+      "Massive Attack's founding members came directly out of the Wild Bunch, a loose Bristol DJ-and-MC sound system that had been playing hip-hop, dub, and soul to local crowds through the mid-1980s before splintering into several separate projects once it dissolved. Bristol's relationship to that music wasn't an import — the city's long-standing Caribbean immigrant community had supported sound-system culture for years before any of these acts existed, and it's that infrastructure, not a studio or a label, that the scene actually grew out of.",
+      "The four acts here stayed genuinely local and interconnected rather than just regionally adjacent: Geoff Barrow worked as a tape-op on Massive Attack's Blue Lines sessions and used the spare studio hours he was given there to start Portishead, and Tricky — another Wild Bunch alumnus — rapped on Blue Lines and Protection before going solo. Sneaker Pimps arrived from outside Bristol a few years later, but named both Massive Attack and Portishead directly as the reason they sounded the way they did.",
+    ],
+    memberRoles: [
+      { artistId: 'massive-attack', role: "Formed from the wreckage of the Wild Bunch sound system and became the scene's hub — nearly every other act here either grew directly out of their sessions or named them as the reason they started." },
+      { artistId: 'portishead', role: "Geoff Barrow worked as a tape-op on Massive Attack's Blue Lines sessions and used the spare studio time he was given there to build his own project — the clearest line of direct, practical descent in the whole scene." },
+      { artistId: 'tricky', role: "A Wild Bunch member in his own right before Massive Attack existed under that name; rapped on Blue Lines and Protection before leaving to make Maxinquaye alone." },
+      { artistId: 'sneaker-pimps', role: "Arrived last and from outside Bristol, but producer Liam Howe named both Massive Attack's Blue Lines and Portishead's album directly as the records that shaped Sneaker Pimps' sound." },
+    ],
+    legacy: "The Bristol sound left the city with a genre name it never asked for — critics called it trip-hop, a term Massive Attack in particular has always resisted — but the slow tempos, dub bass, and cinematic sampling defined here shaped downtempo and electronic pop internationally for the rest of the decade. Portishead's own eleven-year gap between their second album and Third (2008) became its own kind of template: a scene that never needed to stay prolific to stay influential.",
+    memberIds: ['massive-attack', 'portishead', 'tricky', 'sneaker-pimps'],
+  },
+  {
+    id: 'creation',
+    name: 'Creation Records',
+    era: '1983–1999',
+    place: 'London',
+    city: 'London',
+    yearStart: 1983,
+    yearEnd: 1999,
+    blurb: "Alan McGee's London label bankrolled the UK's noisiest guitar music through the 1980s and '90s, from the Mary Chain's feedback-pop debut to My Bloody Valentine's studio excess.",
+    placeAndTime: [
+      "Alan McGee ran Creation on instinct and appetite for risk rather than Ivo Watts-Russell's curatorial calm a few miles across London — he signed noise before he could have known if it would resolve into songs, and stayed in business by gambling, not vetting. The Jesus and Mary Chain's earliest gigs, barely twenty minutes long and ending in feedback and walkouts, were exactly the kind of bet McGee kept making.",
+      "That temperament reached its limit with My Bloody Valentine's Loveless (1991): Kevin Shields' pursuit of a specific, inhuman guitar sound ran the studio bill up for years past its original budget and, by McGee's own repeated public account since, helped push Creation's finances to the edge at the time. The album that nearly broke the label is also the one Creation is best remembered for.",
+    ],
+    memberRoles: [
+      { artistId: 'the-jesus-and-mary-chain', role: "McGee's first major gamble — Psychocandy (1985) proved a Creation record could be genuinely dangerous-sounding and still sell, setting the label's noise-first template before anyone else here had released a note." },
+      { artistId: 'my-bloody-valentine', role: "Took McGee's gambling instinct to its limit: Kevin Shields' pursuit of Loveless ran years over schedule and reportedly helped push Creation's finances to the brink — the most expensive bet the label ever made, and the one it's best remembered for." },
+      { artistId: 'slowdive', role: "Descended directly from both labelmates — the Mary Chain's noise and My Bloody Valentine's guitar treatments — and absorbed the worst of the UK music press' hostility toward the label's sound in real time, years before that hostility reversed itself." },
+      { artistId: 'ride', role: "Also grew directly out of the Mary Chain and My Bloody Valentine's example, but brought the sound to its widest audience yet — Nowhere (1990) was the rare Creation shoegaze record that was a commercial hit on arrival, not just a critical one." },
+    ],
+    legacy: "Creation's gamble-not-curate model produced shoegaze's two defining records, Psychocandy and Loveless, inside a single decade, and nearly went broke doing it — a sharp contrast to 4AD's steadier hand a few miles away, visible in how differently the two labels' rosters still sound today. McGee kept the label running into the Britpop years that followed, but this run is the one that shaped guitar music for a generation after Creation folded in 1999.",
+    memberIds: ['the-jesus-and-mary-chain', 'my-bloody-valentine', 'slowdive', 'ride'],
   },
   {
     id: 'windmill',
     name: 'The Windmill Scene',
-    era: '2016–2020',
+    era: '2016–present',
     place: 'Brixton, South London, UK',
-    deck: "In the years around 2016 to 2020, a run of art-literate, genre-restless bands converged on one small Brixton pub venue — the Windmill — where a permissive booker and a rotating cast of overlapping members turned a 150-capacity room into a genuine incubator. Unlike the American Underground's DIY infrastructure built out of necessity, this was a scene built out of proximity and curiosity: prog, jazz, no-wave, post-punk and krautrock all treated as equally fair game by musicians who mostly met each other on that stage.",
-    sections: [
-      {
-        heading: 'The Venue',
-        paragraphs: [
-          "The Windmill wasn't a genre venue so much as a room that would book almost anything, run by promoters willing to give unformed, unsigned bands a regular slot and an audience of other musicians. That informality let a small circle of acts trade members, ideas and stage time long before any of them had a record deal.",
-          "The bands that came out of it shared almost no fixed sound — jazz-inflected post-punk, glitchy chamber-pop, krautrock-motorik dance music, prog-scrambled art-rock — but they shared the room, the lineup overlaps, and a critical mass of press attention that arrived all at once around 2019.",
-        ],
-      },
-      {
-        heading: 'The Bands',
-        paragraphs: [
-          "black midi's controlled-chaos guitar interplay, Black Country, New Road's klezmer-inflected post-rock, Squid's motorik dance-punk, and Jockstrap's collision of chamber-pop and glitch electronics all trace back to the same handful of stages and the same small audience of other musicians watching from the crowd.",
-          "Below is the community that built it — the artists in Starweave's graph who came out of this world.",
-        ],
-      },
-      {
-        heading: 'The Breakthrough',
-        paragraphs: [
-          "Mercury Prize nominations for black midi and Black Country, New Road, and widespread critical attention for Squid and Jockstrap, took the scene from a single pub circuit to an internationally-covered story within a couple of years.",
-        ],
-      },
+    city: 'Brixton, South London',
+    yearStart: 2016,
+    // No yearEnd — deliberately absent, not set to the current year (which
+    // would read as a claimed end date). black midi, Black Country New
+    // Road, Squid, and Jockstrap are all still active; this is the only
+    // scene in the graph that hasn't actually closed.
+    blurb: "Since 2016, a run of art-literate, genre-restless bands has converged on one small Brixton pub venue — the Windmill — where a permissive booker and a rotating cast of overlapping members turned a 150-capacity room into a genuine incubator, still active today.",
+    placeAndTime: [
+      "The Windmill isn't a genre venue — it's a Brixton pub room that will book almost anything, run by promoters willing to give unsigned, half-formed bands a regular slot and an audience that's mostly other musicians. That informality, more than any shared sound, is what let a small circle of acts trade members, ideas, and stage time for years before any of them had a record deal.",
+      "The bands that came out of it share almost no fixed genre — jazz-inflected post-punk, glitchy chamber-pop, motorik dance-punk, prog-scrambled art-rock — but they share the room, overlapping lineups, and a wave of press attention that landed on all of them at once around 2019 and hasn't really let up since.",
     ],
+    memberRoles: [
+      { artistId: 'black-midi', role: "The scene's most sonically extreme act and, by reputation, its center of gravity — their controlled-chaos live sets became the thing other Windmill regulars measured their own gigs against." },
+      { artistId: 'black-country-new-road', role: "Formed a couple of years after black midi out of an earlier band's remnants, and became stage-mates and label-mates rather than direct followers — Georgia Ellery's parallel membership in Jockstrap tied the two bands together directly." },
+      { artistId: 'squid', role: "The one act here that didn't start in London — met at university in Brighton and only became part of this scene once they relocated and started playing the same stage as black midi and Black Country, New Road." },
+      { artistId: 'jockstrap', role: "Formed out of the Guildhall School rather than the Windmill circuit itself, but Georgia Ellery's parallel membership in Black Country, New Road made the two bands' overlap concrete rather than just a shared bill." },
+    ],
+    legacy: "Mercury Prize nominations for black midi and Black Country, New Road, and wide critical attention for Squid and Jockstrap, took the scene from a single pub circuit to an internationally covered story within a couple of years. It's too recent to say yet what these bands will go on to influence — the more honest claim is just how fast a 150-capacity room turned into an internationally-watched scene.",
     memberIds: ['black-midi', 'black-country-new-road', 'squid', 'jockstrap'],
+  },
+  {
+    id: 'manchester',
+    name: 'Manchester',
+    era: '1976–1981',
+    place: 'Manchester',
+    city: 'Manchester',
+    yearStart: 1976,
+    yearEnd: 1981,
+    blurb: "The Manchester scene that grew out of the Sex Pistols' 1976 Free Trade Hall gigs, producing post-punk's two defining tonal opposites in Joy Division and The Fall alongside pop-punk's Buzzcocks.",
+    placeAndTime: [
+      "On June 4, 1976, the Sex Pistols played a poorly attended gig at Manchester's Free Trade Hall that Buzzcocks had organized and booked themselves onto as support — a booking made on the strength of a single NME review and a trip down to London to persuade the band to come north. The audience was small, but its legend has only grown since: a disproportionate number of the people in that room went on to form the bands that defined Manchester post-punk over the following five years.",
+      "Tony Wilson, a Granada TV presenter who was in the Free Trade Hall audience himself, formed Factory Records a couple of years later and signed Joy Division — turning the loose, gig-sparked scene into something with an actual institutional home, a label rather than just a shared origin story.",
+    ],
+    memberRoles: [
+      { artistId: 'joy-division', role: "Formed later that same year by musicians who were present, or said to have been present, at the Free Trade Hall show — the gig's most direct and most mythologized consequence." },
+      { artistId: 'the-fall', role: "Formed the same year as Joy Division, out of the same city and moment, but built around Mark E. Smith's contempt for conventional structure into post-punk's other tonal pole — abrasive where Joy Division was austere." },
+      { artistId: 'buzzcocks', role: "The connective tissue for the whole scene — organized and played the gig that started it, before Pete Shelley steered the band itself toward faster, stranger pop-punk once Howard Devoto left." },
+    ],
+    legacy: "The Free Trade Hall gig became one of British music's most-cited origin stories, and Joy Division's Martin Hannett-produced records set an emotional and sonic template — for post-punk's interiority, later for shoegaze's — that outlasted the scene itself by decades. Factory Records gave the slightly later Manchester scene its institutional home and, in Joy Division's afterlife as New Order, its own separate second act.",
+    memberIds: ['joy-division', 'the-fall', 'buzzcocks'],
+  },
+  {
+    id: 'elephant-6',
+    name: 'Elephant 6',
+    era: '1993–2000',
+    place: 'Denver then Athens, Georgia',
+    city: 'Denver then Athens, Georgia',
+    yearStart: 1993,
+    yearEnd: 2000,
+    blurb: "A loose collective of psychedelic-pop bands who started in Denver before relocating to Athens, Georgia, sharing members, home-recording gear, and a shared four-track ethos.",
+    placeAndTime: [
+      "Jeff Mangum, Bill Doss, Will Cullen Hart, and Robert Schneider grew up together as friends in Ruston, Louisiana, absorbing the same Beatles and Beach Boys records before scattering and regrouping first in Denver and then in Athens, Georgia, where the loose collective took the Elephant 6 Recording Company name. What held the group together wasn't a shared address so much as shared equipment and method — four-track home recording passed between members' bedrooms rather than time booked in a commercial studio.",
+      "Robert Schneider produced across much of the collective's catalog, a circumstance of how Elephant 6 pooled its limited resources rather than a case of him influencing the other bands' sound.",
+    ],
+    memberRoles: [
+      { artistId: 'neutral-milk-hotel', role: "Jeff Mangum, one of the original Ruston friends, moved to Athens specifically to be near the rest of the collective before recording as Neutral Milk Hotel." },
+      { artistId: 'of-montreal', role: "Kevin Barnes joined the collective later, in Athens, after it had already relocated there — not one of the original Ruston friends, but folded into the same circle once he arrived." },
+      { artistId: 'olivia-tremor-control', role: "Bill Doss and Will Cullen Hart, both original Ruston friends alongside Mangum, pushed the collective's more experimental, tape-collage wing furthest." },
+    ],
+    legacy: "In the Aeroplane Over the Sea's slow rediscovery turned Elephant 6's bedroom four-track aesthetic into a direct reference point for a later generation of indie bands, including members of Arcade Fire and the Shins, while Olivia Tremor Control's studio abstraction found later admirers in acts as large as Radiohead and the Flaming Lips.",
+    memberIds: ['neutral-milk-hotel', 'of-montreal', 'olivia-tremor-control'],
+  },
+  {
+    id: 'seattle',
+    name: 'Seattle',
+    era: '1988–1992',
+    place: 'Seattle',
+    city: 'Seattle',
+    yearStart: 1988,
+    yearEnd: 1992,
+    blurb: "The Sub Pop-adjacent grunge scene at the turn of the '90s, alongside the more melodic, off-kilter emo of Sunny Day Real Estate working the same clubs.",
+    placeAndTime: [
+      "Sub Pop was the connective institution: a shoestring local label that put out Mudhoney's and Nirvana's earliest records and, through its own grimy Pacific Northwest branding, gave a loose cluster of Seattle-area bands a shared identity before they had much else in common. The city's club circuit was small enough that bands working in entirely different registers — Sub Pop's grunge acts and a post-hardcore-schooled band like Sunny Day Real Estate, also on the label — played the same rooms to the same audiences without belonging to the same sound at all.",
+    ],
+    memberRoles: [
+      { artistId: 'nirvana', role: "Formed in nearby Aberdeen and folded into the Seattle scene through Sub Pop, which released Bleach before the band left the city's orbit entirely with Nevermind." },
+      { artistId: 'mudhoney', role: "One of Sub Pop's first signings and the clearest early document of the label's fuzzed-out house sound; Kurt Cobain named them his favorite band." },
+      { artistId: 'sunny-day-real-estate', role: "Signed to Sub Pop just as its grunge-defined identity was shifting, playing the same Seattle circuit as the city's grunge bands while sounding nothing like them." },
+    ],
+    legacy: "Nirvana's breakout took the Sub Pop sound global almost overnight and effectively ended grunge's run as an underground genre, while Sunny Day Real Estate's members carried the city's other current forward — into Foo Fighters and into what would become second-wave emo.",
+    memberIds: ['nirvana', 'mudhoney', 'sunny-day-real-estate'],
+  },
+  {
+    id: 'glasgow',
+    name: 'Glasgow',
+    era: '1996–2010',
+    place: 'Glasgow',
+    city: 'Glasgow',
+    yearStart: 1996,
+    yearEnd: 2010,
+    blurb: "A twee, literate indie-pop scene centered on Belle and Sebastian, whose early lineup and sound directly shaped scene-mates like Camera Obscura. Thin at two members, but real — the bios explicitly cross-reference each other.",
+    placeAndTime: [
+      "Belle and Sebastian formed in Glasgow in 1996, a full generation after Alan Horne's Postcard Records had already established a Glaswegian tradition of literate, melodic, unglamorous indie-pop through Orange Juice and Aztec Camera in the early 1980s. Camera Obscura formed the same year, out of a scene overlapping closely enough with Belle and Sebastian's that Stuart Murdoch produced some of Camera Obscura's earliest recordings himself — the one concrete link between the two acts on this list.",
+    ],
+    memberRoles: [
+      { artistId: 'belle-and-sebastian', role: "Arrived first and set the template — Stuart Murdoch's hushed, home-recorded songwriting gave the wider scene its defining sound before Camera Obscura had released anything." },
+      { artistId: 'camera-obscura', role: "Formed the same year out of an overlapping circle; Murdoch produced some of the band's earliest recordings before Tracyanne Campbell established her own songwriting voice." },
+    ],
+    legacy: "Two bands, one direct production credit between them — a short list by design, not by omission. What survived past this scene's own decade is a specifically Glaswegian version of indie-pop, literate and unglamorous, that both acts carried further than Postcard's original run ever reached.",
+    memberIds: ['belle-and-sebastian', 'camera-obscura'],
   },
 ];
 

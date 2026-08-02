@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { graphData } from '../data/seed-data';
-import type { Artist, GraphData } from '../data/types';
+import type { Artist, Album, GraphData } from '../data/types';
 import { validateEdges, computeInfluenceScores } from './pipeline';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -265,11 +265,16 @@ async function fetchItunesAlbumCover(artistName: string, albumTitle: string): Pr
   return tryFetch(albumTitle);
 }
 
+interface AlbumFetchEntry {
+  artistId: string;
+  artistName: string;
+  album: Album;
+}
+
 async function enrichAlbumCovers(
-  artists: Artist[],
+  albums: AlbumFetchEntry[],
 ): Promise<Map<string, string | null>> {
   const result = new Map<string, string | null>();
-  const albums = artists.flatMap(a => (a.classicAlbums ?? []).map(al => ({ artistId: a.id, artistName: a.name, album: al })));
   console.log(`  Fetching album covers (iTunes → Deezer → MusicBrainz/CAA)…`);
   let itunesHits = 0, deezerHits = 0, mbHits = 0;
   for (const { artistId, artistName, album } of albums) {
@@ -429,10 +434,43 @@ async function enrichItunesPreviews(
   return result;
 }
 
+// ── Enrichment cache ─────────────────────────────────────────────────────────
+// public/graph.json is committed to the repo, so the previous run's fetched
+// imageUrl/previewUrl/previewTrack/previewAlbum/album-imageUrl values are
+// already sitting on disk every time this script runs. Re-fetching all 293
+// artists (+ ~290 albums) from Deezer/iTunes/MusicBrainz every single time —
+// even for a pure genre-tag or edge edit with zero new artists — is what
+// makes build:data take ~20 minutes when the actual enrichment work needed
+// is often zero. Read that previous output back in and skip the network
+// entirely for anything unchanged.
+//
+// "Unchanged" is judged per artist by name + signatureSong (both feed the
+// search terms sent to Deezer/iTunes) and per album by title, scoped under
+// an unchanged artist name (album search terms include the artist name too).
+// A new artist id, a rename, or a retitled classic album all correctly fall
+// through to a real fetch — this only ever skips work for entries that are
+// byte-for-byte the same as what was already successfully resolved.
+//
+// --force / FORCE_REFETCH=1 bypasses the cache entirely (treats the previous
+// output as absent), specifically so the artists/albums that came up empty
+// last time — the ~22 missing previews, ~18 missing covers noted in past
+// build logs — can be retried by hand later if a source adds coverage.
+// Without this, a `null` cached result would never be attempted again.
+function loadPreviousArtists(outPath: string): Artist[] {
+  try {
+    const prev = JSON.parse(readFileSync(outPath, 'utf-8')) as GraphData;
+    return prev.artists ?? [];
+  } catch {
+    return []; // no previous file, or unreadable — everything is treated as new
+  }
+}
+
 // ── Main ─────────────────────────────────────────────────────────────────────
 async function main() {
   loadEnvLocal();
   console.log('\n🌌 Starweave — build-graph pipeline\n');
+
+  const force = process.argv.includes('--force') || process.env.FORCE_REFETCH === '1';
 
   const errors = validateEdges(graphData.artists, graphData.edges);
   if (errors.length > 0) {
@@ -452,13 +490,77 @@ async function main() {
     console.log('ℹ  Spotify enrichment skipped (requires Premium app — using Deezer images instead)');
   }
 
+  const outPath = resolve(ROOT, 'public', 'graph.json');
+  const oldArtists = force ? [] : loadPreviousArtists(outPath);
+  const oldArtistById = new Map(oldArtists.map(a => [a.id, a]));
+  if (force) {
+    console.log('⚡ --force / FORCE_REFETCH=1 set — ignoring cache, re-fetching everything');
+  }
+
+  const needsImageFetch = (a: Artist) => {
+    const old = oldArtistById.get(a.id);
+    return !old || old.name !== a.name;
+  };
+  const needsPreviewFetch = (a: Artist) => {
+    const old = oldArtistById.get(a.id);
+    return !old || old.name !== a.name || old.signatureSong !== a.signatureSong;
+  };
+  const allAlbumEntries: AlbumFetchEntry[] = graphData.artists.flatMap(a =>
+    (a.classicAlbums ?? []).map(al => ({ artistId: a.id, artistName: a.name, album: al })),
+  );
+  const needsAlbumFetch = ({ artistId, artistName, album }: AlbumFetchEntry) => {
+    const old = oldArtistById.get(artistId);
+    if (!old || old.name !== artistName) return true;
+    const oldAlbum = (old.classicAlbums ?? []).find(x => x.id === album.id);
+    return !oldAlbum || oldAlbum.title !== album.title;
+  };
+
+  const imageFetchTargets = graphData.artists.filter(needsImageFetch);
+  const previewFetchTargets = graphData.artists.filter(needsPreviewFetch);
+  const albumFetchTargets = allAlbumEntries.filter(needsAlbumFetch);
+  console.log(
+    `✓ Cache: ${graphData.artists.length - imageFetchTargets.length}/${graphData.artists.length} images, ` +
+    `${graphData.artists.length - previewFetchTargets.length}/${graphData.artists.length} previews, ` +
+    `${allAlbumEntries.length - albumFetchTargets.length}/${allAlbumEntries.length} album covers reused unchanged`,
+  );
+
   // Deezer and iTunes previews run in parallel; album covers run after to avoid
   // hitting iTunes rate limits from two simultaneous iTunes fetch loops.
-  const [imageMap, previewMap] = await Promise.all([
-    enrichDeezerImages(graphData.artists),
-    enrichItunesPreviews(graphData.artists),
+  const [freshImageMap, freshPreviewMap] = await Promise.all([
+    enrichDeezerImages(imageFetchTargets),
+    enrichItunesPreviews(previewFetchTargets),
   ]);
-  const albumCoverMap = await enrichAlbumCovers(graphData.artists);
+  const freshAlbumCoverMap = await enrichAlbumCovers(albumFetchTargets);
+
+  // Merge: an id present in the fresh map was actually fetched this run (even
+  // a `null` there is a real, current result) and wins outright; anything
+  // absent from the fresh map wasn't fetched, so fall back to the cached
+  // value from the previous output.
+  const imageMap = new Map<string, string | null>();
+  for (const a of graphData.artists) {
+    imageMap.set(a.id, freshImageMap.has(a.id) ? freshImageMap.get(a.id) ?? null : oldArtistById.get(a.id)?.imageUrl ?? null);
+  }
+  const previewMap = new Map<string, ItunesPreview | null>();
+  for (const a of graphData.artists) {
+    if (freshPreviewMap.has(a.id)) {
+      previewMap.set(a.id, freshPreviewMap.get(a.id) ?? null);
+    } else {
+      const old = oldArtistById.get(a.id);
+      previewMap.set(a.id, old?.previewUrl
+        ? { previewUrl: old.previewUrl, previewTrack: old.previewTrack ?? '', previewAlbum: old.previewAlbum ?? '' }
+        : null);
+    }
+  }
+  const albumCoverMap = new Map<string, string | null>();
+  for (const { artistId, album } of allAlbumEntries) {
+    const key = `${artistId}::${album.id}`;
+    if (freshAlbumCoverMap.has(key)) {
+      albumCoverMap.set(key, freshAlbumCoverMap.get(key) ?? null);
+    } else {
+      const oldAlbum = oldArtistById.get(artistId)?.classicAlbums?.find(x => x.id === album.id);
+      albumCoverMap.set(key, oldAlbum?.imageUrl ?? null);
+    }
+  }
 
   const enrichedArtists = graphData.artists.map(a => ({
     ...a,
@@ -481,7 +583,6 @@ async function main() {
     rejectedEdges: graphData.rejectedEdges,
   };
 
-  const outPath = resolve(ROOT, 'public', 'graph.json');
   mkdirSync(resolve(ROOT, 'public'), { recursive: true });
   writeFileSync(outPath, JSON.stringify(output, null, 2));
   console.log(`✓ Wrote ${outPath}`);

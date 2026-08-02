@@ -36,10 +36,15 @@ export default function GenresIndexPage() {
           <p className="genres-page__deck">
             {layout.rankCount} dated genres, positioned by when each one emerged — not by elapsed
             calendar time, so a crowded few years (like 1978–85) get the room eleven genres actually
-            need instead of the sliver a linear year scale would give it. Hover a genre to trace its
-            full lineage back to its root; everything else dims. Click any dot to open that genre.
+            need instead of the sliver a linear year scale would give it.
           </p>
         </header>
+
+        {/* Own line, not folded into the deck above — testers weren't
+            reading that far into a five-line paragraph to find "click any
+            dot to open that genre." This sits where the eye lands on
+            reaching the diagram instead. */}
+        <p className="genre-timeline__hint">Hover to trace a lineage · click to open a genre</p>
 
         <GenreTimeline
           nodes={layout.nodes}

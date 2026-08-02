@@ -11,9 +11,10 @@ interface Props {
   items: AlbumGridItem[];
 }
 
-// Wide (900px) square-cover grid with hover listen-on links — shared by the
-// genre and scene page design system. Keyed off the --genre-color custom
-// property set by whichever page wrapper renders it.
+// Square-cover grid with hover listen-on links, used by genre pages'
+// "Defining albums" section (scene pages have no equivalent — that's the
+// genre page's job, see the scene page's own header comment). Keyed off the
+// --genre-color custom property set by whichever page wrapper renders it.
 export default function AlbumGrid({ heading, items }: Props) {
   if (items.length === 0) return null;
 
@@ -34,8 +35,8 @@ export default function AlbumGrid({ heading, items }: Props) {
                       src={album.imageUrl}
                       alt={`${album.title} cover`}
                       className="genre-album-card__cover"
-                      width={280}
-                      height={280}
+                      width={150}
+                      height={150}
                     />
                   ) : (
                     <div className="genre-album-card__cover--placeholder" aria-hidden />

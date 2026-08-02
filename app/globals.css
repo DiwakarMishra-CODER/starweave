@@ -1918,6 +1918,14 @@ h3 { font-size: 1.1rem; }
   background: var(--color-bg);
 }
 
+/* One shared container width for every genre/scene page section — prose,
+   defining albums, artist grids, member rosters all live at this same
+   700px column so nothing on the page has its own competing left edge. This
+   was briefly widened to 1020px so card grids could sit at ~230px; reverted
+   — the prose column was correct at 700px all along, widening it stranded
+   the text at the left of a mostly-empty container. The grids fit inside
+   the narrow column now (~150px cards, 4 across, see .genre-albums and
+   .scene-roster below), not the other way around. */
 .genre-page {
   position: relative;
   z-index: 3;
@@ -2063,6 +2071,67 @@ h3 { font-size: 1.1rem; }
   }
 }
 
+/* ── Lineage strip — ancestors chained up to the current genre, children
+   (if any) listed below. Orientation, not a section — kept small and quiet
+   relative to the hero above it. ──────────────────────────────────────── */
+.genre-lineage-strip {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.genre-lineage-strip__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.genre-lineage-strip__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.genre-lineage-strip__link {
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.genre-lineage-strip__link:hover {
+  color: var(--genre-color);
+}
+
+.genre-lineage-strip__sep {
+  color: var(--color-muted);
+  opacity: 0.5;
+}
+
+.genre-lineage-strip__current {
+  font-weight: 700;
+  color: var(--genre-color);
+}
+
+.genre-lineage-strip__children {
+  margin-top: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.genre-lineage-strip__children-label {
+  margin-right: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.65;
+}
+
 /* ── Body sections ────────────────────────────────────────────── */
 .genre-page__section {
   margin-bottom: 2.75rem;
@@ -2135,13 +2204,16 @@ h3 { font-size: 1.1rem; }
   line-height: 1.6;
 }
 
-/* ── Genre defining-albums — wider section + cards ───────────── */
+/* ── Genre defining-albums — same shared container as the prose above ── */
 
-/* Outer section: wider than the 700px prose column */
+/* Same width + horizontal padding as .genre-page, so this section's cards
+   share the exact left edge as the prose sections around it (previously an
+   independent 900px container — a second left edge, part of the column-
+   alignment bug fixed across .genre-page/.genre-page--lower/.scene-roster). */
 .genre-albums-section {
   position: relative;
   z-index: 3;
-  max-width: 900px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 0 1.5rem 2.75rem;
 }
@@ -2155,16 +2227,23 @@ h3 { font-size: 1.1rem; }
   color: var(--color-text);
 }
 
-/* Lower prose continuation — same as .genre-page but wider + no top padding */
+/* Lower prose continuation — same as .genre-page, no top padding. No longer
+   overrides max-width — it shares .genre-page's own width now. */
 .genre-page--lower {
   padding-top: 0;
-  max-width: 900px;
 }
 
-/* Grid: ~4 square cards per row at 900px */
+/* Grid: 4 square cards per row at the shared 700px width (~150px each —
+   smaller than before, and that's the intended trade: a single left edge
+   across the whole page is worth smaller cards. Album counts are curated to
+   land on 4/8/12, which only produce clean rows at four across, so the
+   column count itself is fixed; auto-fill rather than auto-fit so a
+   below-4 grid, e.g. darkwave's 2-album exception, still renders cards at
+   the same fixed size as every other genre page instead of stretching to
+   fill the row). */
 .genre-albums {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 0.9rem;
   align-items: start; /* keep all rows top-aligned; no stretching across card heights */
 }
@@ -2374,6 +2453,81 @@ h3 { font-size: 1.1rem; }
   position: relative;
   opacity: 0.5;
   color: var(--genre-color);
+}
+
+/* The final "What came out of it" + CTA block reuses .genre-page--lower's
+   shared wrapper (for consistent vertical rhythm/margins with the roster
+   above it). No extra override needed here any more — the container itself
+   is back to a narrow 700px, so a bare paragraph reads comfortably without
+   its own additional narrowing. */
+
+/* ── Scene member roster — large photos, 2-7 cards, room to breathe ──────
+   No independent max-width any more — shares the page's 700px container
+   edge. auto-fit (not auto-fill) is kept deliberately: unlike the album
+   grid, member counts aren't curated to land on a round number, so a thin
+   scene (e.g. Glasgow's 2 members) stretches to fill the row rather than
+   sitting half-empty next to reserved blank tracks. */
+.scene-roster {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+}
+
+.scene-roster__card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.scene-roster__photo {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: color-mix(in srgb, var(--genre-color) 18%, rgba(255, 255, 255, 0.06));
+  border: 1px solid color-mix(in srgb, var(--genre-color) 30%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--genre-color) 14%, transparent);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.scene-roster__card:hover .scene-roster__photo {
+  box-shadow: 0 0 32px color-mix(in srgb, var(--genre-color) 32%, transparent);
+  transform: translateY(-2px);
+}
+
+.scene-roster__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scene-roster__initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--genre-color);
+}
+
+.scene-roster__name {
+  margin-top: 0.7rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.scene-roster__role {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-muted);
 }
 
 /* ── About page — reuses .genre-page structure for coherence, but reads as
@@ -2923,7 +3077,13 @@ h3 { font-size: 1.1rem; }
 }
 
 .genres-page__header {
-  margin-bottom: 1rem;
+  /* Was 1rem — the top row of nodes (Garage rock, Punk, Post-punk) read as
+     colliding with the header text at some viewport widths. Widened
+     defensively alongside PAD_TOP (lib/genre-timeline.ts) and the SVG's own
+     overflow clipping below, since the exact mechanism (tight margin vs.
+     glow bleed past the viewBox edge) wasn't fully isolated — this
+     combination removes the risk either way. */
+  margin-bottom: 2rem;
 }
 
 .genres-page__title {
@@ -2949,13 +3109,40 @@ h3 { font-size: 1.1rem; }
   position: relative;
   width: 100%;
   max-width: 1400px;
-  margin: 0 auto 1.5rem;
+  /* Bottom margin tightened (was 1.5rem) together with .genres-az's own
+     padding-top below, so more of the A-Z list's second row clears the
+     fold — the diagram itself (AXIS_H/PAD_TOP in lib/genre-timeline.ts)
+     is untouched. */
+  margin: 0 auto 0.5rem;
 }
 
 .genre-timeline__svg {
   display: block;
   width: 100%;
   height: auto;
+  /* Explicit, not relying on the browser default for an outermost <svg> —
+     a node's glow filter region extends well past its own radius (see
+     genre-node-glow in GenreTimeline.tsx), and row-0 sits close enough to
+     the top edge that an unclipped glow could bleed above the viewBox and
+     into the header block sitting right above this element. */
+  overflow: hidden;
+}
+
+/* Small, quiet instruction sitting where the eye lands on reaching the
+   diagram — "click any dot to open that genre" lived only inside the intro
+   paragraph before, and testers weren't reading that far into a five-line
+   block. This is deliberately its own short line, not folded back into the
+   deck. */
+/* Matches .genres-page__deck's size/weight/family deliberately — mono at
+   0.6875rem read as caption chrome (an axis label, not a sentence someone
+   wrote) and the eye skipped it. A tight margin-bottom (vs. the header's own
+   2rem above it) is what makes it read as belonging to the diagram rather
+   than floating equidistant between two blocks. */
+.genre-timeline__hint {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+  margin-bottom: 0.35rem;
 }
 
 /* Deliberately NOT inside the scaled SVG viewBox — this stays at real CSS
@@ -2994,9 +3181,25 @@ h3 { font-size: 1.1rem; }
   color: rgba(255, 255, 255, 0.6);
 }
 
+/* The line that turns this from a data-viz readout into a visible link —
+   set off by a rule so it reads as a distinct action, not just the last
+   fact in the list. Color comes from the hovered node's own root-branch
+   color (passed as --tooltip-cta-color), tying the CTA to the same visual
+   language as the diagram rather than a generic accent. */
+.genre-timeline__tooltip-cta {
+  margin-top: 0.45rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--tooltip-cta-color, #8891f2);
+}
+
 .genres-az {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 1.5rem;
+  padding-top: 0.75rem;
 }
 
 .genres-az__heading {
@@ -3039,6 +3242,268 @@ h3 { font-size: 1.1rem; }
   font-size: 0.6875rem;
   color: var(--color-muted);
   flex-shrink: 0;
+}
+
+/* ── Scenes index / regional timeline ────────────────────────── */
+.scenes-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow-y: auto;
+  padding-top: var(--nav-height);
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Flex column filling the full viewport height (minus the nav bar) —
+   .scenes-timeline below stretches to fill whatever's left after the
+   header, so the diagram uses the whole window instead of stopping at a
+   fixed compact height and leaving empty background below it on any
+   viewport taller than the original 1400x750 design target. */
+.scenes-page {
+  position: relative;
+  z-index: 3;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.scenes-page__header {
+  flex: 0 0 auto;
+  margin-bottom: 0.6rem;
+}
+
+.scenes-page__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.scenes-page__deck {
+  max-width: 760px;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+.scenes-timeline {
+  position: relative;
+  width: 100%;
+  margin: 1rem 0 0.5rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Height comes from the flex parent, not an intrinsic value — the
+   component reads the actual rendered height via ResizeObserver and scales
+   bar heights/gaps/faces to fill exactly that much room (see
+   ScenesTimeline.tsx). Absolutely-positioned children (ticks, rows) never
+   feed back into this element's own size, so there's no layout circularity. */
+.scenes-timeline__plot {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.scenes-timeline__axis {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.scenes-timeline__tick {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.scenes-timeline__tick:first-child {
+  transform: translateX(0);
+}
+
+.scenes-timeline__tick:last-child {
+  transform: translateX(-100%);
+}
+
+.scenes-timeline__tick-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: rgba(155, 150, 184, 0.65);
+  white-space: nowrap;
+  margin-bottom: 0.25rem;
+}
+
+.scenes-timeline__tick-line {
+  position: absolute;
+  left: 0;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
+}
+
+.scenes-timeline__row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+/* Scene name always comes first — "London" alone can't tell 4AD and
+   Creation apart, but "4AD · London" always can. Eponymous scenes
+   (Manchester, Bristol, Seattle, Glasgow) skip the redundant repeat — see
+   sceneLabelText() in lib/scenes-timeline.ts. Labels always sit outside the
+   bar now (never inside competing with faces) and are their own <Link>,
+   sized/positioned entirely via inline style (left/transform) since the
+   flip-to-avoid-clipping logic depends on measured plot width. */
+.scenes-timeline__label {
+  position: absolute;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.scenes-timeline__label--dimmed {
+  opacity: 0.28;
+}
+
+.scenes-timeline__label--hovered {
+  color: var(--scene-color);
+}
+
+/* Hit area is the bar/label only — NOT the row. A row can be far wider than
+   its bar (packed rows especially span most of the axis), so hover/dim must
+   never trigger from the empty space around a bar; only .scenes-timeline__bar
+   and .scenes-timeline__label carry the mouse handlers and the dim/hover
+   classes below. */
+.scenes-timeline__bar {
+  position: absolute;
+  display: block;
+  border-radius: 999px;
+  min-width: 40px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+  text-decoration: none;
+  overflow: visible;
+}
+
+.scenes-timeline__bar--dimmed {
+  opacity: 0.28;
+  filter: saturate(0.5);
+}
+
+.scenes-timeline__bar--hovered {
+  transform: scale(1.03);
+  z-index: 20;
+}
+
+.scenes-timeline__bar-truemark {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 0;
+  border-left: 1px dashed rgba(255, 255, 255, 0.45);
+  z-index: 1;
+}
+
+.scenes-timeline__faces {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  right: 0;
+  bottom: 0;
+  display: block;
+}
+
+.scenes-timeline__face {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--color-bg);
+  background: var(--color-bg);
+}
+
+.scenes-timeline__face img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scenes-timeline__face-initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: rgba(14, 11, 26, 0.85);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* Rendered once at .scenes-timeline__plot's own top level now, not nested
+   inside a per-row div — every row shares the same z-index and is its own
+   stacking context (position:absolute + z-index creates one), so a nested
+   z-index:30 tooltip could never outrank a DIFFERENT row's content, only
+   siblings within its own row. That's what let another scene's label read
+   through this one's tooltip. Background is fully opaque now too (was
+   rgba(...,0.96) — visually close to solid but not quite, and not the
+   actual cause of the bleed-through, which was the stacking bug above). */
+.scenes-timeline__tooltip {
+  position: absolute;
+  z-index: 30;
+  max-width: 280px;
+  padding: 0.6rem 0.75rem;
+  background: #14101f;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
+.scenes-timeline__tooltip-name {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+
+.scenes-timeline__tooltip-meta {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-muted);
+  margin-bottom: 0.35rem;
+}
+
+.scenes-timeline__tooltip-members {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+@media (max-width: 700px) {
+  .scenes-timeline__tick-label {
+    font-size: 0.625rem;
+  }
 }
 
 /* ── Mobile adjustments ───────────────────────────────────────── */

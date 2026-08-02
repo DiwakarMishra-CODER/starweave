@@ -27,14 +27,14 @@ interface Props {
 export default function GraphView({ graphData }: Props) {
   const router = useRouter();
   const pathname = usePathname();
-  // True on /artist/[slug], /genre/[genre], /genres, /scene/[scene], or
-  // /browse — the graph stays mounted underneath that page's fixed overlay
-  // (see app/(graph)/layout.tsx) rather than unmounting, so this flag
-  // exists purely to tell the canvas it's fully hidden and can stop its
-  // continuous per-frame redraw until the user navigates back.
+  // True on /artist/[slug], /genre/[genre], /genres, /scene/[scene],
+  // /scenes, or /browse — the graph stays mounted underneath that page's
+  // fixed overlay (see app/(graph)/layout.tsx) rather than unmounting, so
+  // this flag exists purely to tell the canvas it's fully hidden and can
+  // stop its continuous per-frame redraw until the user navigates back.
   const isBackgrounded =
     pathname.startsWith('/artist/') || pathname.startsWith('/genre/') || pathname === '/genres' ||
-    pathname.startsWith('/scene/') || pathname.startsWith('/browse');
+    pathname.startsWith('/scene/') || pathname === '/scenes' || pathname.startsWith('/browse');
   const [selectedId, setSelectedId] = useState<string | null>(null);
   // A genre's or scene's member artist ids, from ?genre=/?scene= — highlighted
   // as a cluster in the graph. Mutually exclusive with selectedId: setting one

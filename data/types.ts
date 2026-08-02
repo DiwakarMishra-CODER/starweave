@@ -80,26 +80,34 @@ export type Lineage =
 export interface Genre {
   id: string;            // slug, e.g. 'shoegaze'
   name: string;          // display, e.g. 'Shoegaze'
-  parent: string | null; // parent genre slug — builds the hierarchy
+  parent: string | null; // primary parent genre slug — drives layout/position in the tree
+  alsoFrom?: string[];    // secondary parents — real influence, drawn on top of the tree, never affects layout position. A genre never repeats its own `parent` here (that would be redundant, not additive).
   emerged?: number;       // year the genre emerged — undefined for pure containers (electronic, folk, indie, underground)
   emergedBasis?: string;  // what that year refers to (an album, a term being coined, a scene forming) — emergence dates are contested, so a bare year is unsupportable; same discipline as the edge citation field
 }
 
-// A scene is a time + place, not a sound — distinct from Genre.
-// The narrative reads as a chronological arc (sections in order), not a
-// definitional structure. memberIds is the community who were there.
-export interface SceneSection {
-  heading: string;        // e.g. 'The Circuit'
-  paragraphs: string[];   // prose, rendered in order
+// A scene is a time + place, not a sound — distinct from Genre. Scene pages
+// are deliberately short (3-7 artists, a few years, one room) — see the
+// SceneMemberRole/placeAndTime/legacy fields below, added in the 2026 scene-
+// page pass that replaced an earlier deck/sections shape (a genre-page-style
+// narrative arc that ran too long for how small a scene actually is).
+export interface SceneMemberRole {
+  artistId: string;  // must be one of the scene's memberIds
+  role: string;      // this member's specific role IN THIS SCENE — one line, not a generic bio snippet
 }
 
 export interface Scene {
-  id: string;              // slug, e.g. 'american-underground'
-  name: string;            // display name, e.g. 'American Underground'
-  era: string;             // display range, e.g. '1980–1991'
-  place: string;           // display place, e.g. 'US'
-  deck: string;            // opening paragraph, shown in the hero
-  sections: SceneSection[]; // narrative body, in chronological order
+  id: string;              // slug, e.g. 'no-wave'
+  name: string;            // display name, e.g. 'No New York'
+  era: string;             // display range, e.g. '1978–1983'
+  place: string;           // display place, e.g. 'Lower Manhattan'
+  city: string;            // timeline-index location, e.g. 'Washington DC', 'Bristol', 'Lower Manhattan'
+  yearStart: number;
+  yearEnd?: number;        // the year the SCENE stopped being a coherent thing, not the year the bands stopped — omit entirely for a scene that hasn't closed (currently just Windmill; every other scene here has genuinely ended even where its members are still active). The /scenes timeline renders an open bar (a fade, not a hard stop) when this is absent.
+  blurb: string;           // one or two sentences, for compact/timeline display (the /scenes index tooltip, meta description)
+  placeAndTime: string[];  // 1-2 paragraphs, rendered in order — the physical room: venue/house/studio, who booked it, who owned the gear. What makes a scene a scene rather than a genre.
+  memberRoles: SceneMemberRole[]; // one per member, in memberIds order — their specific role in this scene, with internal influence edges worked into the prose where the graph records them
+  legacy: string;          // 2-3 sentences — the downstream, what came out of it
   memberIds: string[];     // artist ids — the scene's community
 }
 
