@@ -5,6 +5,7 @@ import Link from 'next/link';
 import type { Artist, Edge, GraphData } from '@/data/types';
 import { resolveCitationStatus } from '@/data/types';
 import { resolveNodeColor, resolveNodeLabel } from '@/lib/colors';
+import { countryName } from '@/lib/format';
 import SpotifyEmbed from '@/components/artist/SpotifyEmbed';
 import DeezerPreview from '@/components/artist/DeezerPreview';
 import ArtistBackground from '@/components/artist/ArtistBackground';
@@ -45,6 +46,15 @@ function InfluenceEdgeRow({
   onSelectArtist: (id: string) => void;
 }) {
   const status = resolveCitationStatus(edge);
+  // Both cited and unsourceable rows collapse behind the same toggle now —
+  // only 'unchecked' (nobody's looked) gets no button at all, since there's
+  // nothing on either side of a click for it to reveal. Cited and
+  // unsourceable get differently-labeled, differently-colored buttons (see
+  // .panel-influence-cite--unsourceable) so the state is legible without
+  // clicking, but the same collapsed-by-default shape either way — a row
+  // with real evidence and a row with none now take up the same amount of
+  // space until you ask.
+  const hasToggle = status === 'cited' || status === 'unsourceable';
   return (
     <li className="panel-influence-item">
       <div className="panel-influence-row">
@@ -56,24 +66,24 @@ function InfluenceEdgeRow({
         <button className="panel-edge-link" onClick={() => onSelectArtist(other.id)}>
           {other.name}
         </button>
-        {status === 'cited' && (
+        {hasToggle && (
           <button
-            className={`panel-influence-cite${isExpanded ? ' panel-influence-cite--open' : ''}`}
+            className={`panel-influence-cite${status === 'unsourceable' ? ' panel-influence-cite--unsourceable' : ''}${isExpanded ? ' panel-influence-cite--open' : ''}`}
             onClick={onToggleCitation}
             aria-expanded={isExpanded}
             aria-label={`${isExpanded ? 'Hide' : 'Show'} source for ${other.name}`}
           >
-            Source
+            {status === 'cited' ? 'Source' : 'No source'}
             <span className="panel-influence-cite__chevron" aria-hidden>⌄</span>
           </button>
         )}
       </div>
-      {status === 'unsourceable' && (
+      {isExpanded && status === 'unsourceable' && (
         <p className="panel-influence-note panel-influence-note--unsourceable">
-          Widely accepted — no first-person source found.
+          Widely accepted, unsourced.
         </p>
       )}
-      {status === 'cited' && isExpanded && edge.citation && (
+      {isExpanded && status === 'cited' && edge.citation && (
         <p className="panel-influence-note panel-influence-note--citation">
           {edge.citation}
         </p>
@@ -92,7 +102,19 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
   // artist change so switching artists never leaves a stale row expanded.
   const [expandedCitations, setExpandedCitations] = useState<Set<string>>(new Set());
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: resetting UI state keyed to the artist prop's identity, not deriving render output
     setExpandedCitations(new Set());
+  }, [artist?.id]);
+
+  // How many "Influenced by" rows are currently shown — starts at INFLUENCED_BY_PAGE_SIZE,
+  // grows by the same amount each time "+N more" is clicked, so a hub like Velvet
+  // Underground (56 entries) reveals in comfortable chunks instead of one giant dump.
+  // Reset on artist change so switching artists always starts collapsed again.
+  const INFLUENCED_BY_PAGE_SIZE = 6;
+  const [influencedByShown, setInfluencedByShown] = useState(INFLUENCED_BY_PAGE_SIZE);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: resetting UI state keyed to the artist prop's identity, not deriving render output
+    setInfluencedByShown(INFLUENCED_BY_PAGE_SIZE);
   }, [artist?.id]);
   const toggleCitation = (key: string) =>
     setExpandedCitations(prev => {
@@ -172,10 +194,13 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
 
               <div className="panel-tags">
                 {artist.genres.map(g => (
-                  <span key={g} className="panel-tag">{genreMap[g] ?? g}</span>
+                  <Link key={g} href={`/genre/${g}`} className="panel-tag genre-tag-chip">
+                    {genreMap[g] ?? g}
+                    <span className="genre-tag-chip__arrow" aria-hidden>→</span>
+                  </Link>
                 ))}
                 {artist.country && (
-                  <span className="panel-tag">{artist.country}</span>
+                  <span className="panel-tag">{countryName(artist.country)}</span>
                 )}
               </div>
 
@@ -252,7 +277,7 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
               <>
                 <div className="panel-divider" />
                 <div className="panel-section">
-                  <p className="panel-section-title">Influences</p>
+                  <p className="panel-section-title">Roots</p>
                   <ul className="panel-edge-list">
                     {influences.map(edge => {
                       const target = artistMap[edge.target];
@@ -280,10 +305,10 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                 <div className="panel-divider" />
                 <div className="panel-section">
                   <p className="panel-section-title">
-                    Influenced ({influencedBy.length})
+                    Descendants ({influencedBy.length})
                   </p>
                   <ul className="panel-edge-list">
-                    {influencedBy.slice(0, 6).map(edge => {
+                    {influencedBy.slice(0, influencedByShown).map(edge => {
                       const source = artistMap[edge.source];
                       if (!source) return null;
                       const key = `${edge.source}->${edge.target}`;
@@ -298,9 +323,16 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                         />
                       );
                     })}
-                    {influencedBy.length > 6 && (
-                      <li style={{ fontSize: '0.72rem', color: 'var(--color-muted)', paddingLeft: '0.5rem', paddingTop: '0.2rem' }}>
-                        +{influencedBy.length - 6} more
+                    {influencedBy.length > influencedByShown && (
+                      <li>
+                        <button
+                          type="button"
+                          className="panel-edge-more"
+                          onClick={() => setInfluencedByShown(n => n + INFLUENCED_BY_PAGE_SIZE)}
+                        >
+                          +{influencedBy.length - influencedByShown} more
+                          <span className="panel-edge-more__chevron" aria-hidden>⌄</span>
+                        </button>
                       </li>
                     )}
                   </ul>

@@ -150,8 +150,20 @@ const DEFAULT_EMO_COLOR = '#B02E2E';
 // origin point), post-rock sits in the middle, drone is the lightest —
 // same "one flat shade per lineage, darkest-to-brightest" structure as
 // EMO_LINEAGE_COLORS/FOLK_LINEAGE_COLORS/LINEAGE_COLORS.
+// no-wave was originally #3B1F5C (1.42:1 contrast against #0e0b1a — the
+// same illegible value SCENE_COLORS' no-wave entry was already flagged and
+// fixed for, see that map's own comment). That value was never fixed HERE,
+// so no-wave-lineage artists (Swans, Blonde Redhead, Mars, DNA, Teenage
+// Jesus and the Jerks, James Chance and the Contortions) rendered with
+// visually dead node fills and near-invisible focus-mode edges — reported
+// directly ("Swans/Blonde Redhead edges too faint, MBV/Cocteau Twins look
+// fine"). #683A9C keeps the same ~268° hue and stays the deepest of the
+// three shades (still darker than post-rock), but lifts contrast from
+// 1.42:1 to 2.47:1 — just under post-rock's own 2.63:1, which nobody has
+// flagged as illegible, rather than chasing a much brighter target that
+// would abandon "no-wave is the deepest" entirely.
 export const POSTROCK_LINEAGE_COLORS: Record<string, string> = {
-  'no-wave':   '#3B1F5C',
+  'no-wave':   '#683A9C',
   'post-rock': '#6B3FA0',
   drone:       '#A87FD1',
 };
@@ -267,12 +279,12 @@ export const REALMS: Realm[] = [
 // of that realm's one hue.
 export const REALM_LABELS: Record<Realm, string> = {
   core: 'Core',
-  'region-one': 'Region One',
+  'region-one': 'Punk to Dream Pop',
   'american-underground': 'American Underground',
   electronic: 'Electronic',
   'folk-confessional': 'Folk Confessional',
-  'emo-posthardcore': 'Emo / Post-hardcore',
-  'post-rock-drone-noise': 'Post-rock / Drone / Noise',
+  'emo-posthardcore': 'Emo & Post-Hardcore',
+  'post-rock-drone-noise': 'Post-Rock, Drone & Noise',
 };
 
 // Single representative swatch per realm, for the legend and the realm
@@ -289,19 +301,22 @@ export const REALM_COLORS: Record<Realm, string> = {
   'post-rock-drone-noise': DEFAULT_POSTROCK_COLOR,
 };
 
-// Same fallback pattern as resolveNodeColor/resolveNodeGlow/resolveEdgeTint
-// above — a realm-less node or one explicitly tagged realm: 'region-one'
-// both fall through to the existing LAYER_LABELS[layer] text, byte-for-byte
-// unchanged from before this function existed. The five lineage-bearing
-// realms return their REALM's display name rather than the specific
-// lineage (e.g. 'Electronic', not 'Hyperpop / PC Music') — a lineage
-// string is an internal clustering label a visitor has no way to verify;
-// the genre tags shown alongside already convey what kind of music this
-// is, and a realm name is a real category the rest of the UI (legend,
-// filter, URLs) also uses.
+// Only a genuinely realm-less node falls through to LAYER_LABELS[layer] now.
+// region-one used to be the one realm still reporting its fine-grained Layer
+// text here ('Post-punk / Goth', 'Outside influences') instead of a realm
+// name — a leftover from before d8fd0c0 flattened its node COLOR to one flat
+// teal; once the dot stopped varying by layer, the label still doing so just
+// read as a mismatch (same-colored dot, five different badge texts). Every
+// realm now reports its own REALM's display name rather than a finer
+// lineage/layer (e.g. 'Electronic', not 'Hyperpop / PC Music') — that finer
+// string is an internal clustering label a visitor has no way to verify; the
+// genre tags shown alongside already convey what kind of music this is, and
+// a realm name is a real category the rest of the UI (legend, filter, URLs)
+// also uses.
 export function resolveNodeLabel(node: RealmLineageNode): string {
   if (!node.realm) return LAYER_LABELS[node.layer];
   if (node.realm === 'core') return REALM_LABELS.core;
+  if (node.realm === 'region-one') return REALM_LABELS['region-one'];
   if (node.realm === 'electronic') return REALM_LABELS.electronic;
   if (node.realm === 'folk-confessional') return REALM_LABELS['folk-confessional'];
   if (node.realm === 'emo-posthardcore') return REALM_LABELS['emo-posthardcore'];
@@ -339,7 +354,7 @@ export const GENRE_COLORS: Record<string, string> = {
   'indie-pop':     '#F2A8C4', // rose — same family as shoegaze/dream-pop, its heaviest overlap
   'midwest-emo':   '#D14A3A', // reuses EMO_LINEAGE_COLORS['midwest-emo'] — same shade as its emo parent
   'math-rock':     '#F26B52', // reuses EMO_LINEAGE_COLORS['math-rock'] — brightest of the emo family
-  'no-wave':       '#3B1F5C', // reuses POSTROCK_LINEAGE_COLORS['no-wave']
+  'no-wave':       '#683A9C', // reuses POSTROCK_LINEAGE_COLORS['no-wave']
   darkwave:        '#A87FD1', // reuses POSTROCK_LINEAGE_COLORS['drone'] — goth's electronic-leaning cousin
   'garage-rock':   '#E8C87A', // gold — root genre, same family as art-rock/krautrock
   'chamber-pop':   '#5FD0C0', // teal — indie-rock family
@@ -361,7 +376,7 @@ export const GENRE_COLORS: Record<string, string> = {
   britpop:         '#5FD0C0', // teal — indie-rock family
   grunge:          '#7A3418', // reuses AMERICAN_UNDERGROUND_LINEAGE_COLORS['noise-alt']
   'noise-pop':     '#5FD0C0', // teal — same family as its noise-rock parent
-  minimalism:      '#3B1F5C', // reuses POSTROCK_LINEAGE_COLORS['no-wave'] — same family as its 2 tagged artists' real lineage
+  minimalism:      '#683A9C', // reuses POSTROCK_LINEAGE_COLORS['no-wave'] — same family as its 2 tagged artists' real lineage
   'folk-punk':     '#8891F2', // indigo — punk half of the blend
   'hypnagogic-pop': '#A56DD6', // same as its psychedelic-pop grandparent
   electronic:      '#C77DD1', // reuses LINEAGE_COLORS.krautrock — the realm's own founding lineage

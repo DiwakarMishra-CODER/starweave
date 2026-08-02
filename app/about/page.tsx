@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { LAYER_COLORS } from '@/lib/colors';
+import { LAYER_COLORS, REALMS, REALM_COLORS, REALM_LABELS } from '@/lib/colors';
+import { loadGraphData } from '@/lib/graph-data';
 import ArtistBackground from '@/components/artist/ArtistBackground';
 
 export const metadata: Metadata = {
-  title: 'About — Starweave',
+  title: 'About - Starweave',
 };
 
 // Roots gold — the page's own identity color (hero, title glow, atmosphere
@@ -13,19 +14,27 @@ export const metadata: Metadata = {
 // colors, rather than one flat tint for the whole page.
 const ABOUT_COLOR = LAYER_COLORS.root;
 
-const LEGEND = [
-  { label: 'Roots', color: LAYER_COLORS.root },
-  { label: 'Post-punk', color: LAYER_COLORS['post-punk'] },
-  { label: 'Shoegaze / Dream-pop', color: LAYER_COLORS['shoegaze-dreampop'] },
-  { label: 'Indie / Alt-rock', color: LAYER_COLORS['indie-alt'] },
-  { label: 'Outside influences', color: LAYER_COLORS.outside },
-];
+// Sourced from lib/colors.ts's own REALMS/REALM_LABELS/REALM_COLORS — the
+// same three exports GraphControls' realm filter iterates — rather than a
+// hand-typed list, so this legend can't quietly drift out of sync with the
+// live graph the way the old 5-layer version did once realms shipped.
+const LEGEND = REALMS.map(realm => ({ label: REALM_LABELS[realm], color: REALM_COLORS[realm] }));
 
 // A reading page, not the graph — same shell as the genre/scene pages, but
 // an editorial arrival: a real hero, a live (unhurried) nebula behind it,
 // and per-section accents from the graph's own layer palette instead of one
 // flat tint and a uniform column.
 export default function AboutPage() {
+  // Live counts, not hand-typed ones — the graph has grown several times
+  // over since this page was first written (one lineage to seven realms),
+  // and a hard-coded number here would just go stale again the next time it
+  // does. Pulling from loadGraphData() means this paragraph updates itself.
+  const data = loadGraphData();
+  const artistCount = data.artists.length;
+  const edgeCount = data.edges.length;
+  const genreCount = data.genres.length;
+  const sceneCount = data.scenes.length;
+
   return (
     <div
       className="about-overlay"
@@ -47,10 +56,18 @@ export default function AboutPage() {
           <p className="about-page__eyebrow">The idea</p>
           <h2>What it is</h2>
           <p>
-            Starweave is an interactive map of influence in indie music — a way to see not just
+            Starweave is an interactive map of influence in indie music - a way to see not just
             what an artist sounds like, but where they came from and what they led to. Every node
             is an artist; every line is a thread of influence, running from the people who shaped
             a sound to the people who carried it forward.
+          </p>
+          <p>
+            It started as a single lineage - British post-punk running into shoegaze and dream
+            pop - and has since grown into {REALMS.length} connected realms: that original spine,
+            plus electronic, folk and confessional songwriting, emo and post-hardcore, post-rock
+            and drone, and the American underground. All {artistCount} artists and{' '}
+            {edgeCount.toLocaleString()} sourced influence connections trace back to one root:
+            The Velvet Underground, 1965.
           </p>
         </section>
 
@@ -62,7 +79,7 @@ export default function AboutPage() {
           <h2>Why influence, not genre</h2>
           <p>
             Most music sites organize by genre tags or popularity. Starweave organizes by
-            lineage — the actual connective tissue between artists. No sound appears from
+            lineage - the actual connective tissue between artists. No sound appears from
             nowhere: the Velvet Underground&apos;s drones run through Joy Division and the Jesus
             and Mary Chain, into shoegaze, into the bands making records today. Genre tells you
             what something sounds like. Influence tells you the story of how it got here. That
@@ -93,8 +110,8 @@ export default function AboutPage() {
             ))}
           </div>
           <p className="about-page__caption">
-            Colours group artists into layers — roots, post-punk, shoegaze / dream-pop,
-            indie / alt-rock, and outside influences.
+            Colour marks which realm an artist belongs to - each of the {REALMS.length} realms
+            gets one hue family of its own.
           </p>
 
           <p className="about-page__statement">
@@ -106,22 +123,23 @@ export default function AboutPage() {
               <span className="about-page__view-label">Graph</span>
               <span className="about-page__view-desc">lets you explore freely</span>
             </Link>
-            <Link href="/genre/shoegaze" className="about-page__view-card">
+            <Link href="/browse" className="about-page__view-card">
+              <span className="about-page__view-label">Browse</span>
+              <span className="about-page__view-desc">search and filter every artist directly</span>
+            </Link>
+            <Link href="/genres" className="about-page__view-card">
               <span className="about-page__view-label">Genres</span>
-              <span className="about-page__view-desc">organize by sound</span>
+              <span className="about-page__view-desc">
+                traces {genreCount} genres from first emergence to now
+              </span>
             </Link>
             <Link href="/scenes" className="about-page__view-card">
               <span className="about-page__view-label">Scenes</span>
               <span className="about-page__view-desc">
-                capture a specific time, place, and community
+                {sceneCount} real rooms - a specific time, place, and community
               </span>
             </Link>
           </div>
-
-          <p>
-            Right now Starweave maps one connected world — the guitar-indie lineage rooted in the
-            Velvet Underground — with more to come.
-          </p>
         </section>
 
         <section
@@ -131,19 +149,19 @@ export default function AboutPage() {
           <p className="about-page__eyebrow">The maker</p>
           <h2>Diwakar Mishra</h2>
           <p>
-            I&apos;m Diwakar Mishra. Music influence has fascinated me ever since I got into indie
-            music and started falling down its endless branches of genres. Put on Alvvays and you
-            can hear Cocteau Twins, My Bloody Valentine, The Smiths, Pavement, and Camera Obscura
-            all at once. That&apos;s the thing I find beautiful: you can hear the lineage.
+            Music influence has fascinated me ever since I got into indie music and started
+            falling down its endless branches of genres. Put on Alvvays and you can hear Cocteau
+            Twins, My Bloody Valentine, The Smiths, Pavement, and Camera Obscura all at once.
+            That&apos;s the thing I find beautiful: you can hear the lineage.
           </p>
           <p>
             And the lineage tells strange, wonderful stories. Cocteau Twins took the gloomy,
-            atmospheric sound of gothic rock and post-punk and flipped it — kept all that density
+            atmospheric sound of gothic rock and post-punk and flipped it - kept all that density
             and reverb but pointed it the opposite way, toward something heavenly, dreamy, and
-            otherworldly. They turned darkness into bliss, and in doing so invented dream pop —
+            otherworldly. They turned darkness into bliss, and in doing so invented dream pop -
             the most beautiful genre there is. You can trace a band making records now, like
             Geese, all the way back to the Velvet Underground in 1965. Starweave is my attempt to
-            draw those lines — to make the hidden family tree of indie music something you can
+            draw those lines - to make the hidden family tree of indie music something you can
             actually see and follow.
           </p>
           <p>

@@ -398,6 +398,18 @@ const REALM_RADIUS_Y = 165; // ellipse semi-axis, vertical
 const REALM_ANGLE_OFFSET = 0; // degrees — rotates the whole arrangement; spin to a pleasing orientation by eye
 const CORE_PULL_STRENGTH = 1.2;       // core-only horizontal pull toward center — core must be the most strongly-positioned thing in the graph so it wins against its own heavy edges into region-one, rather than getting dragged into that mass
 const CORE_PULL_STRENGTH_Y = 1.2;     // core-only vertical pull toward center — same strength as CORE_PULL_STRENGTH (core's target is the origin on both axes, so this being separate is harmless, not load-bearing)
+// The Velvet Underground specifically (not "core" generally) gets an even
+// stronger pull to the same (0,0) origin — every core node targets that
+// point, so without this they jostle for it via collision rather than any
+// one of them owning it. VU is the one artist the whole graph is framed
+// around ("rooted at The Velvet Underground"), and it's already the
+// biggest, most heavily-linked node in the graph (influenceScore 56, next
+// highest is 32), so in practice it barely moves anyway — this just makes
+// that already-almost-true position exact rather than incidental. Twice
+// CORE_PULL_STRENGTH is enough to decisively win against Kraftwerk/Can/
+// Neu!/Eno's own pull to the same point, so they settle just outside VU
+// instead of contesting it.
+const VU_PULL_STRENGTH = CORE_PULL_STRENGTH * 2;
 // One strength for BOTH axes on every non-core realm — deliberately
 // isotropic. The old linear layout could get away with a weaker Y pull
 // (every realm shared Y=0, so Y was just a vertical-compacting force, not a
@@ -477,6 +489,44 @@ function computeRealmHomePositions(nodes: { realm?: string }[]): Map<string, { x
 const CORE_GLOW_RADIUS_MULT = 1.4;    // scales both the bloom haze radius and the shadowBlur size for core nodes — toned down from 2.0, smaller halo
 const CORE_GLOW_INTENSITY = 1.4;      // scales the bloom haze's inner/mid alpha stops for core nodes (clamped to 1 so it can't exceed fully opaque) — toned down from 1.8, a notch less bright/saturated
 
+// Velvet Underground's own extra boost on top of the shared core boost above
+// — it's the one node the whole graph is framed around (see VU_PULL_STRENGTH
+// pinning it to the exact center), so it gets a visibly hotter glow and a
+// slow breathing pulse rather than just being "one of the five core nodes."
+// Applied via its own dedicated gradient in drawNode (bypassing the shared
+// getBloomHazeSprite cache — see that function's own comment on why a
+// different gradient shape needs its own sprite/path), not by cranking
+// these shared CORE_* constants, so Kraftwerk/Can/Neu!/Eno are untouched.
+const VU_GLOW_RADIUS_MULT = 1.9;
+const VU_GLOW_INTENSITY = 1.6;
+const VU_PULSE_PERIOD_MS = 4200;      // one full breath, slow enough to read as alive rather than flickery
+const VU_PULSE_DEPTH = 0.22;          // swings the glow between (1 - depth) and (1 + depth) of its resting brightness
+
+// Screen-pixel floors for VU's cloud-zoom dot (see the "Crisp cloud-zoom
+// dot" branch in drawNode) — every other size/radius on this page is a
+// WORLD-space unit that the canvas's own zoom transform scales down like
+// everything else, so at the deep zoom-out the initial "fit all 293 nodes"
+// view actually sits at, VU_GLOW_RADIUS_MULT alone still shrank to a
+// handful of sub-visible pixels right along with it: multiplying a tiny
+// number by 1.9 is still a tiny number. These are divided by globalScale at
+// the call site (same `minScreenR / globalScale` floor pattern the click-
+// focus readability floor already uses elsewhere in this file), which
+// guarantees an actual minimum ON-SCREEN pixel size no matter how far
+// zoomed out the camera is — the fix that world-space multipliers alone
+// can't provide.
+const VU_MIN_CORE_SCREEN_R = 13;
+const VU_MIN_HALO_SCREEN_R = 34;
+
+// VU's cloud-zoom halo alpha, deliberately NOT derived from
+// CLOUD_DOT_GLOW_INTENSITY (0.18) — that value is kept low specifically
+// because it's applied to every hub/anchor at once and an additive glow
+// across many of them stacks up fast (see its own comment). VU is a single
+// one-off node, so that ceiling doesn't apply to it; without its own much
+// higher base, VU_GLOW_INTENSITY's multiplier was only ever lifting an
+// already-tiny alpha (~0.13) to a still-faint ~0.2, indistinguishable from
+// an ordinary anchor's own halo.
+const VU_HALO_ALPHA = 0.7;
+
 // Link strength: within-realm edges keep the graph's original strength;
 // cross-realm ("bridge") edges are weakened so each realm can clump into
 // its own bloom while bridges stretch thin across the gaps between them.
@@ -527,13 +577,15 @@ function makeRealmHomeY(homePositions: Map<string, { x: number; y: number }>) {
   };
 }
 
-function realmPullStrengthX(node: { realm?: string }): number {
+function realmPullStrengthX(node: { id: string; realm?: string }): number {
+  if (node.id === 'velvet-underground') return VU_PULL_STRENGTH;
   if (node.realm === 'core') return CORE_PULL_STRENGTH;
   if (node.realm) return REALM_PULL_STRENGTH; // any non-core realm — data-driven, no per-realm branch needed
   return 0;
 }
 
-function realmPullStrengthY(node: { realm?: string }): number {
+function realmPullStrengthY(node: { id: string; realm?: string }): number {
+  if (node.id === 'velvet-underground') return VU_PULL_STRENGTH;
   if (node.realm === 'core') return CORE_PULL_STRENGTH_Y;
   if (node.realm) return REALM_PULL_STRENGTH; // isotropic — see REALM_PULL_STRENGTH's comment above
   return 0;
@@ -592,6 +644,41 @@ function computeDenseCoreIds(nodes: { id: string; x?: number; y?: number }[]): S
 // reduced from the library-typical 60 so the dense core fills more of the
 // viewport instead of floating in a wide empty margin.
 const ZOOM_FIT_PADDING = 40;
+
+// The library's own zoomToFit() centers on the dense-core bounding box's own
+// center ((minX+maxX)/2, (minY+maxY)/2) — not on graph-origin (0,0), which is
+// where VU_PULL_STRENGTH actually pins Velvet Underground. With six realms
+// of uneven size spaced around the origin, that bounding box is asymmetric
+// enough (confirmed by replicating the real layout offline) that framing on
+// its own center left VU sitting ~12 units below the framed middle of the
+// screen, not in it — the pull fix alone wasn't sufficient because nothing
+// was actually asking the camera to center on (0,0) in the first place.
+// This replicates zoomToFit's own scale math (same bounding box, same
+// padding) but returns just the zoom level, so the caller can pan to true
+// origin instead of the bbox's own center — same "compute the number,
+// apply it yourself" split used by computeCameraTargetForCluster elsewhere
+// in this file, for the same reason (owning the pan target, not the scale).
+function computeOverviewZoom(
+  nodes: { id: string; x?: number; y?: number }[],
+  coreIds: Set<string> | null,
+  canvasWidth: number,
+  canvasHeight: number,
+): number | null {
+  const filtered = coreIds ? nodes.filter(n => coreIds.has(n.id)) : nodes;
+  const positioned = filtered.filter(n => n.x !== undefined && n.y !== undefined);
+  if (positioned.length === 0) return null;
+  const minX = Math.min(...positioned.map(n => n.x!));
+  const maxX = Math.max(...positioned.map(n => n.x!));
+  const minY = Math.min(...positioned.map(n => n.y!));
+  const maxY = Math.max(...positioned.map(n => n.y!));
+  const bbW = maxX - minX;
+  const bbH = maxY - minY;
+  if (bbW <= 0 || bbH <= 0) return null;
+  return Math.min(
+    (canvasWidth - ZOOM_FIT_PADDING * 2) / bbW,
+    (canvasHeight - ZOOM_FIT_PADDING * 2) / bbH,
+  );
+}
 
 // Dim target alpha when a highlight (hover/focus/path/set) is active.
 // Lowered from 0.09: a genre/scene set's frame is often zoomed out enough
@@ -949,6 +1036,13 @@ const DUST_STAR_FOLK_TINT = '#8CAA52'; // representative folk tint for the rare 
 const DUST_STAR_EMO_TINT = '#B02E2E'; // representative emo tint for the rare tinted dust star (post-hardcore hex from EMO_LINEAGE_COLORS)
 const DUST_STAR_POSTROCK_TINT = '#6B3FA0'; // representative post-rock tint for the rare tinted dust star (post-rock hex from POSTROCK_LINEAGE_COLORS)
 const DUST_STAR_AMERICAN_UNDERGROUND_TINT = '#B85C2E'; // representative american-underground tint for the rare tinted dust star (college-rock hex from AMERICAN_UNDERGROUND_LINEAGE_COLORS)
+// Twinkle: alpha oscillates between TWINKLE_FLOOR and 1× a star's own base
+// alpha — never fully dark, so it reads as a shimmer, not a blink. Distinct
+// min/max period per star (not one shared period) is what keeps 450 stars
+// from breathing in visible lockstep — see DustStar's own comment.
+const DUST_STAR_TWINKLE_FLOOR = 0.15;
+const DUST_STAR_TWINKLE_PERIOD_MIN_MS = 1100;
+const DUST_STAR_TWINKLE_PERIOD_MAX_MS = 2800;
 
 interface DustStar {
   x: number;
@@ -956,6 +1050,14 @@ interface DustStar {
   r: number;
   alpha: number;
   color: string;
+  // Per-star twinkle phase (radians) + period (ms) — generated once here,
+  // not per frame, so the render loop only ever does one Math.sin per star
+  // (see the dust-star render loop's own comment) rather than reconstructing
+  // anything. Different phase AND period per star (not just phase) so 450
+  // stars don't all breathe in lockstep, which would read as one pulsing
+  // blob instead of an actual sky.
+  twinklePhase: number;
+  twinklePeriodMs: number;
 }
 
 // hex '#RRGGBB' -> 'rgba(r, g, b, alpha)' — this file has no existing
@@ -1339,6 +1441,8 @@ export default function ForceGraphCanvas({
         r: DUST_STAR_MIN_R + Math.random() * (DUST_STAR_MAX_R - DUST_STAR_MIN_R),
         alpha: DUST_STAR_MIN_ALPHA + Math.random() * (DUST_STAR_MAX_ALPHA - DUST_STAR_MIN_ALPHA),
         color: Math.random() < DUST_STAR_TINT_FRACTION ? tintForRealm(realm) : DUST_STAR_PALE_COLOR,
+        twinklePhase: Math.random() * Math.PI * 2,
+        twinklePeriodMs: DUST_STAR_TWINKLE_PERIOD_MIN_MS + Math.random() * (DUST_STAR_TWINKLE_PERIOD_MAX_MS - DUST_STAR_TWINKLE_PERIOD_MIN_MS),
       });
     }
     return stars;
@@ -1375,11 +1479,19 @@ export default function ForceGraphCanvas({
     didInitialFitRef.current = true;
     const dur = prefersReducedMotionRef.current ? 0 : 600;
     const coreIds = computeDenseCoreIds(stableData.nodes);
-    graphRef.current?.zoomToFit(
-      dur,
-      ZOOM_FIT_PADDING,
-      coreIds ? (n: object) => coreIds.has((n as GraphNode).id) : undefined,
-    );
+    const fg = graphRef.current;
+    if (fg) {
+      const canvasW = containerRef.current?.offsetWidth  ?? 800;
+      const canvasH = containerRef.current?.offsetHeight ?? 600;
+      const targetZoom = computeOverviewZoom(stableData.nodes, coreIds, canvasW, canvasH);
+      if (targetZoom !== null) {
+        // Instant zoom + animated pan, not the library's own zoomToFit (which
+        // would animate both AND center on the dense-core bbox's own center —
+        // see computeOverviewZoom's comment for why that's not graph-origin).
+        fg.zoom(targetZoom, 0);
+        fg.centerAt(0, 0, dur);
+      }
+    }
     // stableData is a stable reference (see its own useMemo below) — reading
     // it here doesn't need to be a dep.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -1698,11 +1810,17 @@ export default function ForceGraphCanvas({
       // Only zoom out if we actually had a cluster active before — never on mount.
       if (wasActive) {
         const coreIds = computeDenseCoreIds(stableData.nodes);
-        fg.zoomToFit(
-          duration,
-          ZOOM_FIT_PADDING,
-          coreIds ? (n: object) => coreIds.has((n as GraphNode).id) : undefined,
-        );
+        // Same instant-zoom + centered-pan split as tryInitialFit, and for
+        // the same reason — the library's own zoomToFit centers on the
+        // dense-core bbox's own center, not graph-origin, which is where
+        // VU_PULL_STRENGTH actually pins Velvet Underground.
+        const canvasW = containerRef.current?.offsetWidth  ?? 800;
+        const canvasH = containerRef.current?.offsetHeight ?? 600;
+        const targetZoom = computeOverviewZoom(stableData.nodes, coreIds, canvasW, canvasH);
+        if (targetZoom !== null) {
+          fg.zoom(targetZoom, 0);
+          fg.centerAt(0, 0, duration);
+        }
         // Re-engage the scroll clamp only once this zoom-out transition has
         // actually finished — restoring synchronously here would fight the
         // in-flight zoomToFit transition for the same d3-zoom scale.
@@ -2027,6 +2145,28 @@ export default function ForceGraphCanvas({
       // false for every node without realm === 'core', i.e. every region-one
       // node (plain graph or merged route) and every non-core island-two node.
       const isCore = n.realm === 'core';
+      // Velvet Underground's own extra boost — see VU_GLOW_RADIUS_MULT above.
+      // pulseMult oscillates 1±VU_PULSE_DEPTH; performance.now() is safe to
+      // call directly here (not stored in a ref) because this whole canvas
+      // already repaints every frame regardless of physics state
+      // (autoPauseRedraw={false}), so there's no risk of it going stale.
+      const isVU = n.id === 'velvet-underground';
+      const pulseMult = isVU
+        ? 1 + Math.sin((performance.now() % VU_PULSE_PERIOD_MS) / VU_PULSE_PERIOD_MS * Math.PI * 2) * VU_PULSE_DEPTH
+        : 1;
+      // The special treatment is for the far, constellation-scale view where
+      // VU reads as "the sun of the graph" — reported as distracting once
+      // you're actually looking at a focus cluster it happens to be part of
+      // (not just when VU itself is the clicked node — isFocused alone
+      // missed the case where VU shows up as a NEIGHBOR of whatever else is
+      // focused, e.g. clicking LCD Soundsystem, which has a real edge to
+      // VU, still lit VU up like a sun sitting right next to the actual
+      // focus), or once already zoomed in close enough to be reading detail
+      // (photo, label, etc.) right next to it. Suppressed in both cases; VU
+      // then falls through to the exact same rendering every other core
+      // node gets (still isCore's own boost, just not VU's extra one on
+      // top, and no pulse).
+      const vuSpecialActive = isVU && !isInFocusCluster && globalScale < 3;
 
       // ── Photo eligibility ─────────────────────────────────────────────────
       // Resting state: hub nodes (score ≥ threshold) always show photo.
@@ -2095,7 +2235,31 @@ export default function ForceGraphCanvas({
       // cloud zoom (alpha is now unfloored — see above — so it's genuinely
       // ~0 there): no sprite-stamp for something that would be invisible.
       if (!isDimmed && alpha > 0.01) {
-        if (!isFocused && !isHovered) {
+        if (vuSpecialActive) {
+          // Velvet Underground's own dedicated glow (see VU_GLOW_RADIUS_MULT
+          // above) — always a fresh gradient, never the shared cached
+          // sprite: there's only ever one of this node, so this pays the
+          // same low per-frame cost the isFocused/isHovered branch below
+          // already pays for 1-2 nodes at a time. A white-hot inner stop
+          // (instead of flat gold) plus the breathing pulseMult computed
+          // above are what make it read as a hotter, alive center rather
+          // than just a bigger core node.
+          const baseBloomMult  = (isFocused ? 4.0 : isHovered ? 3.5 : 2.8) * CORE_GLOW_RADIUS_MULT * VU_GLOW_RADIUS_MULT;
+          const baseInnerAlpha = (isFocused ? 0.30 : 0.22) * CORE_GLOW_INTENSITY * VU_GLOW_INTENSITY;
+          const baseMidAlpha   = 0.07 * CORE_GLOW_INTENSITY * VU_GLOW_INTENSITY;
+          const bloomR = erOverview * baseBloomMult * pulseMult;
+          const innerAlpha = Math.min(baseInnerAlpha * pulseMult, 1);
+          const midAlpha = Math.min(baseMidAlpha, 1);
+          const grad = ctx.createRadialGradient(n.x, n.y, erOverview * 0.15, n.x, n.y, bloomR);
+          grad.addColorStop(0,    `rgba(255, 250, 235, ${innerAlpha})`);
+          grad.addColorStop(0.3,  glow.replace('0.7)', `${innerAlpha})`));
+          grad.addColorStop(0.6,  glow.replace('0.7)', `${midAlpha})`));
+          grad.addColorStop(1,    glow.replace('0.7)', '0)'));
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, bloomR, 0, Math.PI * 2);
+          ctx.fillStyle = grad;
+          ctx.fill();
+        } else if (!isFocused && !isHovered) {
           // Resting case — nearly every node, nearly every frame. Cached
           // sprite instead of a fresh gradient (see getBloomHazeSprite's
           // comment/the perf report) — isFocused/isHovered fall through to
@@ -2127,7 +2291,7 @@ export default function ForceGraphCanvas({
                      : isHovered ? 22
                      : isInPath  ? 16
                      : score >= ALWAYS_LABEL_THRESHOLD ? 14
-                     : 10) * (isCore ? CORE_GLOW_RADIUS_MULT : 1) * overviewSizeShrink;
+                     : 10) * (isCore ? CORE_GLOW_RADIUS_MULT : 1) * (vuSpecialActive ? VU_GLOW_RADIUS_MULT * pulseMult : 1) * overviewSizeShrink;
       ctx.shadowColor = glow;
 
       // ── Node fill (becomes the colored ring when a photo is overlaid) ──
@@ -2173,10 +2337,60 @@ export default function ForceGraphCanvas({
           // comment above) — a tiny sharp point for most nodes, only growing
           // modestly for real hubs, never a big circle.
           const dotCoreR = Math.min(CLOUD_DOT_MAX_R, CLOUD_DOT_MIN_R + Math.sqrt(score) * CLOUD_DOT_HUB_GROWTH);
+          // Isolates the legitimate fade/dim behavior (zoom crossfade, focus-
+          // mode dimming) from dotBrightness's OWN ceiling (CLOUD_DOT_BRIGHTNESS
+          // × scoreBrightness, both deliberately conservative for the shared
+          // many-hubs-at-once system) — VU's own alpha below is built from
+          // this instead of dotBrightness directly, so its much higher
+          // VU_HALO_ALPHA base isn't multiplied back down by a ceiling meant
+          // for everyone else.
+          const fadeAndDim = cloudDotFade * dimFactor;
 
-          // Soft bloom halo reserved for hubs/anchors — most nodes are a bare
-          // sharp point, matching the reference's "few bright, many faint".
-          if (score >= CLOUD_DOT_HALO_MIN_SCORE || isAnchor) {
+          if (vuSpecialActive) {
+            // Velvet Underground keeps its bigger, hotter, breathing glow
+            // even at full cloud zoom instead of reading as just another
+            // bright dot — same VU_GLOW_RADIUS_MULT/pulseMult as the detail-
+            // zoom bloom haze above, so it doesn't visually "turn off" its
+            // special treatment on zoom-out the way the detail-only bloom
+            // haze/shadowBlur do once cloudDotFade takes over. A dedicated
+            // gradient (white-hot center, same as the detail path) rather
+            // than the shared get2StopGlowSprite cache — there's only one
+            // of this node, so this costs the same as the one extra draw
+            // call every hub/anchor already pays for its own halo just below.
+            // pulseMult multiplies AFTER the max(), not inside the world-
+            // space term — at deep zoom-out the screen-space floor is the
+            // larger of the two (that's the whole point of it), so a
+            // pulseMult buried inside the losing branch of the max() never
+            // affected the final radius at all: the pulse was fully masked
+            // by the floor, which is exactly why it looked static when
+            // zoomed out. Applying it to the maxed result instead means the
+            // breathing is always visible, whichever term is winning.
+            const vuHaloR = Math.max(
+              dotCoreR * CLOUD_DOT_GLOW_TIGHTNESS * VU_GLOW_RADIUS_MULT,
+              VU_MIN_HALO_SCREEN_R / globalScale,
+            ) * pulseMult;
+            const vuHaloAlpha = Math.min(VU_HALO_ALPHA * fadeAndDim * pulseMult, 1);
+            const vuGrad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, vuHaloR);
+            vuGrad.addColorStop(0,    `rgba(255, 250, 235, ${vuHaloAlpha})`);
+            vuGrad.addColorStop(0.35, glow.replace('0.7)', `${vuHaloAlpha})`));
+            vuGrad.addColorStop(1,    glow.replace('0.7)', '0)'));
+            // ctx.globalAlpha is still whatever the "Outer bloom haze" block
+            // set it to earlier in this function (dimFactor * zoomFade) — at
+            // deep zoom-out zoomFade is ~0, so that ambient alpha alone
+            // would crush this gradient to near-invisible regardless of the
+            // alpha already baked into its own rgba() stops above. Every
+            // other draw in this cloud-dot block goes through
+            // stampGlowSprite, which sets its OWN globalAlpha internally
+            // before drawing (see its call sites' "restore" comments) — this
+            // is a raw ctx.fill(), so it needs the same reset done by hand.
+            ctx.globalAlpha = 1;
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, vuHaloR, 0, Math.PI * 2);
+            ctx.fillStyle = vuGrad;
+            ctx.fill();
+          } else if (score >= CLOUD_DOT_HALO_MIN_SCORE || isAnchor) {
+            // Soft bloom halo reserved for hubs/anchors — most nodes are a bare
+            // sharp point, matching the reference's "few bright, many faint".
             const haloR = dotCoreR * CLOUD_DOT_GLOW_TIGHTNESS;
             // Halo stays additive — that's what makes it read as glowing light.
             stampGlowSprite(ctx, get2StopGlowSprite(glow), n.x, n.y, haloR, CLOUD_DOT_GLOW_INTENSITY * dotBrightness);
@@ -2189,7 +2403,14 @@ export default function ForceGraphCanvas({
           // Normal blending shows the node's TRUE color at a fixed opacity —
           // it can't stack brighter than that regardless of what's underneath.
           ctx.globalCompositeOperation = 'source-over';
-          stampGlowSprite(ctx, getSolidCircleSprite(color), n.x, n.y, dotCoreR, dotBrightness);
+          // VU's own solid core gets a modest, non-pulsing size bump (the
+          // pulse lives entirely in the halo above; pulsing a hard-edged dot
+          // this small would read as jitter rather than breathing) AND full-
+          // strength opacity instead of dotBrightness's own 0.7 ceiling —
+          // VU should read as solid, saturated gold, not 70%-see-through.
+          const coreR = vuSpecialActive ? Math.max(dotCoreR * 1.4, VU_MIN_CORE_SCREEN_R / globalScale) : dotCoreR;
+          const coreAlpha = vuSpecialActive ? Math.min(fadeAndDim, 1) : dotBrightness;
+          stampGlowSprite(ctx, getSolidCircleSprite(color), n.x, n.y, coreR, coreAlpha);
 
           ctx.restore();
         }
@@ -2281,10 +2502,12 @@ export default function ForceGraphCanvas({
       ctx.shadowBlur = 0;
 
       // ── Label logic (three tiers) ────────────────────────────────────────────
-      // Tier 1 — always-on: hub landmarks (score ≥ threshold, OR one of the
-      // anchors regardless of raw score — in practice the top ANCHOR_COUNT
-      // are almost certainly already above the threshold, but this makes it
-      // exact rather than assumed), never when dimmed
+      // Tier 1 — hub landmarks (score ≥ threshold, OR one of the anchors
+      // regardless of raw score — in practice the top ANCHOR_COUNT are
+      // almost certainly already above the threshold, but this makes it
+      // exact rather than assumed), never when dimmed. Still zoom-gated like
+      // everyone else (see photoOpacity below) — "always" means "without
+      // needing hover/focus/path", not "regardless of zoom."
       // Tier 2 — hover: the hovered node only
       // Tier 3 — focus: the focused node + every direct neighbor
       const alwaysLabel = (isAnchor || score >= ALWAYS_LABEL_THRESHOLD) && !isDimmed;
@@ -2311,13 +2534,14 @@ export default function ForceGraphCanvas({
         const useRadial = isNeighbor && focusedNode?.x !== undefined && focusedNode?.y !== undefined;
         // Queue only position/style — placement runs in onRenderFramePost
         // once ALL node circles are collected, so every label avoids every node.
-        // Anchors use dimFactor (never fades with zoom, only with dimming —
-        // an anchor's name must stay legible at cloud zoom, that's the whole
-        // point). Everyone else keeps photoOpacity, which already correctly
-        // fades non-anchor labels to true 0 by cloud zoom and back to full
-        // by detail zoom — outside the cloud-zoom band the two are identical
-        // anyway (photoLabelFade reaches 1 there), so this only changes
-        // anything exactly where it needs to.
+        // Anchors used to get dimFactor here (never fades with zoom, only
+        // with dimming), so the graph's dozen biggest names stayed lettered
+        // in at full cloud zoom, before the background wash even starts
+        // clearing. Switched to the same photoOpacity every other label
+        // uses — names (anchors included) now stay fully hidden through
+        // cloud zoom and only resolve in as the background itself starts
+        // transitioning toward detail zoom, same fade window as everything
+        // else on this canvas.
         // "forced" = shown purely via the persistent hub/anchor tier, at
         // rest — NOT because the user is actively focused/hovering/pathing
         // it. Only this tier is eligible for the collision demotion in
@@ -2328,7 +2552,7 @@ export default function ForceGraphCanvas({
         const forced = alwaysLabel && !isFocused && !isNeighbor && !isHovered && !isInPath && !isSetMember;
         labelQueueRef.current.push({
           name: n.name, nx: n.x, ny: n.y, er,
-          fontSize, bright, alpha: isAnchor ? dimFactor : photoOpacity,
+          fontSize, bright, alpha: photoOpacity,
           score, forced,
           radialFromX: useRadial ? focusedNode!.x : undefined,
           radialFromY: useRadial ? focusedNode!.y : undefined,
@@ -2612,10 +2836,18 @@ export default function ForceGraphCanvas({
     // painted (this whole hook fires pre-paint) — see DUST_STAR_* above.
     // Plain filled circles, no composite/gradient: hundreds of these need to
     // stay cheap, and "sharp tiny point" doesn't want a soft sprite anyway.
+    // Twinkle is one extra Math.sin per star per frame using each star's own
+    // pre-generated phase/period (see DustStar) — no gradient reconstruction,
+    // so this doesn't repeat the earlier twinkle attempt's lag regression
+    // (that one rebuilt a CanvasGradient per star per frame; this is just an
+    // alpha multiplier on the same plain fill already happening here).
     ctx.save();
     const dustFade = cloudFade; // fades out on zoom-in alongside everything else at cloud zoom
+    const twinkleNow = performance.now();
     for (const star of dustStars) {
-      ctx.globalAlpha = star.alpha * dustFade;
+      const twinkle = DUST_STAR_TWINKLE_FLOOR
+        + (1 - DUST_STAR_TWINKLE_FLOOR) * (0.5 + 0.5 * Math.sin(twinkleNow / star.twinklePeriodMs * Math.PI * 2 + star.twinklePhase));
+      ctx.globalAlpha = star.alpha * dustFade * twinkle;
       ctx.beginPath();
       ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
       ctx.fillStyle = star.color;

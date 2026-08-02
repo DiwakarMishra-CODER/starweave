@@ -676,16 +676,13 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // of Resistance is post-punk, already claimed on that page); fugazi
     // (Repeater is post-hardcore, claimed on that page); jeff-rosenstock
     // (WORRY. is modern DIY punk, real but a notch below the others);
-    // bratmobile, mudhoney (genuine candidates, cut for space). mc5 and
-    // sex-pistols have no classicAlbum on file (one of the three artists in
-    // this graph with no bio/album content at all — see the pending list).
-    // Normalization pass: cut from 7 to 4 — X-Ray Spex, Wipers, and Bikini
-    // Kill dropped in favor of a UK/US-balanced four (Ramones and Patti
-    // Smith for the US, The Clash and Buzzcocks for the UK). This removes
-    // riot grrrl's only representation in punk's own grid — riot-grrrl now
-    // has its own dedicated page instead, which is the more honest home for
-    // Bikini Kill's record.
-    definingAlbums: ['ramones', 'the-clash', 'patti-smith', 'buzzcocks'],
+    // bratmobile, mudhoney (genuine candidates, cut for space).
+    // Sex Pistols led with Never Mind the Bollocks once the band's
+    // bio/classicAlbum content was written (it previously had none — see
+    // the old note this replaced); Buzzcocks dropped from the grid to make
+    // room, though Buzzcocks stays tagged and still appears in the UK
+    // section below.
+    definingAlbums: ['sex-pistols', 'ramones', 'the-clash', 'patti-smith'],
     sections: [
       {
         title: 'The first wave, UK',

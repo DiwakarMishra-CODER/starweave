@@ -1,20 +1,15 @@
 'use client';
 
 import { useMemo, useState, useRef, useEffect } from 'react';
-import type { Artist, Genre } from '@/data/types';
+import type { Artist, Edge, Genre } from '@/data/types';
 import { resolveNodeColor } from '@/lib/colors';
 
 interface Props {
   artists: Artist[];
   genres: Genre[];
+  edges: Edge[];
   onSelectArtist: (id: string) => void;
 }
-
-// Number of "Start here" suggestions shown when the search box is focused
-// with an empty query — a cold visitor's entry point into 293 otherwise-
-// unlabeled nodes. Ranked by influenceScore (in-degree of influence edges),
-// not hand-picked, so it stays correct as the roster grows.
-const START_HERE_COUNT = 6;
 
 function ArtistRow({
   artist,
@@ -31,6 +26,7 @@ function ArtistRow({
     <li role="option">
       <button
         className="artist-search__item"
+        style={{ '--row-color': color } as React.CSSProperties}
         onPointerDown={e => { e.preventDefault(); onSelect(artist.id); }}
       >
         {artist.imageUrl ? (
@@ -65,7 +61,7 @@ function ArtistRow({
   );
 }
 
-export default function ArtistSearch({ artists, genres, onSelectArtist }: Props) {
+export default function ArtistSearch({ artists, genres, edges, onSelectArtist }: Props) {
   const [query, setQuery]   = useState('');
   const [open, setOpen]     = useState(false);
   const inputRef            = useRef<HTMLInputElement>(null);
@@ -76,12 +72,26 @@ export default function ArtistSearch({ artists, genres, onSelectArtist }: Props)
   const q      = query.trim().toLowerCase();
   const matches = q ? sorted.filter(a => a.name.toLowerCase().includes(q)) : [];
 
-  const startHere = useMemo(
-    () => [...artists]
-      .sort((a, b) => (b.influenceScore ?? 0) - (a.influenceScore ?? 0))
-      .slice(0, START_HERE_COUNT),
-    [artists],
-  );
+  // Empty-query view: every artist, not a hand-picked top-N — the whole
+  // point of dropping "Start here" is that a fixed shortlist read as if the
+  // graph only had 6 artists in it. Ranked by TOTAL edge count (both
+  // directions, not just influenceScore's in-degree-only count), so a
+  // heavily-cited root and a disciple with a long list of stated influences
+  // both rank by how connected they actually are, not just how often
+  // they're cited. The existing .artist-search__list is already a scrollable
+  // (max-height + overflow-y) container, so showing all 293 here doesn't
+  // need any new scroll mechanism — it just needed something worth scrolling.
+  const browseAll = useMemo(() => {
+    const edgeCount = new Map<string, number>();
+    for (const e of edges) {
+      edgeCount.set(e.source, (edgeCount.get(e.source) ?? 0) + 1);
+      edgeCount.set(e.target, (edgeCount.get(e.target) ?? 0) + 1);
+    }
+    return [...artists].sort((a, b) => {
+      const diff = (edgeCount.get(b.id) ?? 0) - (edgeCount.get(a.id) ?? 0);
+      return diff !== 0 ? diff : a.name.localeCompare(b.name);
+    });
+  }, [artists, edges]);
 
   function handleSelect(id: string) {
     onSelectArtist(id);
@@ -141,8 +151,7 @@ export default function ArtistSearch({ artists, genres, onSelectArtist }: Props)
 
       {open && !q && (
         <ul id="artist-search-list" className="artist-search__list" role="listbox">
-          <li className="artist-search__section-label" aria-hidden>Start here</li>
-          {startHere.map(a => (
+          {browseAll.map(a => (
             <ArtistRow
               key={a.id}
               artist={a}

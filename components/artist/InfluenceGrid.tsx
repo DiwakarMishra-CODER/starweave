@@ -1,20 +1,25 @@
-import type { Artist } from '@/data/types';
+import type { Artist, Edge } from '@/data/types';
 import ArtistCircleGrid from './ArtistCircleGrid';
+
+export interface InfluenceItem {
+  artist: Artist;
+  edge: Edge;
+}
 
 interface Props {
   title: string;
-  artists: Artist[];
+  items: InfluenceItem[];
   emptyMessage: string;
 }
 
-export default function InfluenceGrid({ title, artists, emptyMessage }: Props) {
+export default function InfluenceGrid({ title, items, emptyMessage }: Props) {
   return (
     <section className="artist-page__section">
       <h2 className="artist-page__section-title">{title}</h2>
-      {artists.length === 0 ? (
+      {items.length === 0 ? (
         <p className="influence-grid__empty">{emptyMessage}</p>
       ) : (
-        <ArtistCircleGrid artists={artists} />
+        <ArtistCircleGrid items={items} />
       )}
     </section>
   );

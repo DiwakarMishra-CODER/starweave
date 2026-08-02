@@ -105,7 +105,20 @@ const MIN_BAR_RATIO = 1;
 const MAX_BAR_RATIO = 1.55;
 const GAP_RATIO = 0.45;
 export const AXIS_HEADER_HEIGHT = 24;
-const MIN_BAR_HEIGHT_FLOOR = 20; // guards against comically tiny bars if the window is very short — the page scrolls in that case instead, which is fine
+// A MIN_BAR_HEIGHT_FLOOR used to clamp k UPWARD on short windows/many rows,
+// on the assumption that the resulting overflow was harmless because
+// ".scenes-overlay scrolls in that case, which is fine." In practice the
+// last one or two rows (whichever scenes sort last — currently Elephant 6
+// and Glasgow, the smallest) rendered past the bottom of the plot with no
+// way to reach them, reported directly ("going out of the page... there is
+// no below"). Since k IS the exact-fit scale factor by construction (see
+// the comment above), ANY k above it produces MORE total content height
+// than is actually available — there's no floor value that both avoids
+// comically tiny bars AND guarantees a fit; the two are mutually exclusive
+// once a row count needs more room than the window actually has. Given the
+// choice, always fitting inside the given height (accepting smaller bars on
+// a short window) is what's actually asked for, so k is never allowed to
+// exceed the exact-fit value at all.
 
 export interface VerticalSizing {
   barHeights: number[]; // parallel to the scenes array passed in
@@ -129,10 +142,13 @@ export function computeVerticalSizing(scenes: SceneTimelineScene[], availableHei
   const denom = baseSum + baseGapUnits;
 
   const usable = Math.max(0, availableHeight - AXIS_HEADER_HEIGHT);
-  const rawK = denom > 0 ? usable / denom : 0;
-  const k = Math.max(rawK, MIN_BAR_HEIGHT_FLOOR / MIN_BAR_RATIO);
+  const k = denom > 0 ? usable / denom : 0;
 
-  const barHeights = ratios.map(r => Math.round(r * k));
+  // Math.floor, not Math.round, on every individual bar height — rounding
+  // even one bar UP is enough to push the fit guarantee above `usable`
+  // again (rounding 12 bars up by up to 0.5px each can compound to several
+  // px), and there's no equivalent risk from always rounding down.
+  const barHeights = ratios.map(r => Math.floor(r * k));
   const rowGap = k * GAP_RATIO;
   // Face size follows the SHORTEST bar (every bar must be able to fit its
   // own faces regardless of member count), then step/pad follow face size.

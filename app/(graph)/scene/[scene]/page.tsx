@@ -72,6 +72,7 @@ export default async function ScenePage({ params }: Props) {
             <span className="scene-page__stamp-era">{sceneData.era}</span>
           </div>
           <p className="genre-page__deck">{sceneData.blurb}</p>
+          <IgniteGraphButton href={graphHref} label={graphLabel} />
         </header>
 
         <section className="genre-page__section">

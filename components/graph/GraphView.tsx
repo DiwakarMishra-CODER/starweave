@@ -312,7 +312,7 @@ export default function GraphView({ graphData }: Props) {
         onClear={handleBackgroundClick}
         onOutsideClick={() => { suppressBackgroundClickRef.current = true; }}
       />
-      <ArtistSearch artists={graphData.artists} genres={graphData.genres} onSelectArtist={handleSelectArtist} />
+      <ArtistSearch artists={graphData.artists} genres={graphData.genres} edges={graphData.edges} onSelectArtist={handleSelectArtist} />
 
       {/* z-index: 1 keeps the canvas above the nebula (z-index: 0) */}
       <div style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%' }}>

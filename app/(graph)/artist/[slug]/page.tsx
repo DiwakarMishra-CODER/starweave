@@ -3,12 +3,14 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { loadGraphData } from '@/lib/graph-data';
 import { resolveNodeColor, resolveNodeLabel } from '@/lib/colors';
+import { countryName } from '@/lib/format';
 import SpotifyEmbed from '@/components/artist/SpotifyEmbed';
 import DeezerPreview from '@/components/artist/DeezerPreview';
 import ArtistBackground from '@/components/artist/ArtistBackground';
 import BackButton from '@/components/artist/BackButton';
 import StreamingLinks from '@/components/ui/StreamingLinks';
 import InfluenceGrid from '@/components/artist/InfluenceGrid';
+import type { Artist, Edge } from '@/data/types';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -43,9 +45,19 @@ export default async function ArtistPage({ params }: Props) {
   const influencedBy = data.edges.filter(e => e.target === artist.id && e.type === 'influence');
   const color = resolveNodeColor(artist);
 
+  // Edge kept alongside its artist (not just a flat Artist[]) so citation
+  // status/text can travel with each row — InfluenceGrid/ArtistCircleGrid
+  // need the edge to render the "Show sources" list view.
+  function toItems(edges: Edge[], idOf: (e: Edge) => string): { edge: Edge; artist: Artist }[] {
+    return edges
+      .map(edge => ({ edge, artist: artistMap[idOf(edge)] }))
+      .filter((x): x is { edge: Edge; artist: Artist } => !!x.artist);
+  }
+  const influenceItems   = toItems(influences, e => e.target);
+  const influencedByItems = toItems(influencedBy, e => e.source);
+
   const metaParts: string[] = [];
-  if (artist.genres.length > 0) metaParts.push(artist.genres.map(g => genreMap[g] ?? g).join(', '));
-  if (artist.country) metaParts.push(artist.country);
+  if (artist.country) metaParts.push(countryName(artist.country));
 
   return (
     <div className="artist-overlay" style={{ '--layer-color': color } as React.CSSProperties}>
@@ -80,6 +92,17 @@ export default async function ArtistPage({ params }: Props) {
             </div>
 
             <h1 className="artist-page__name">{artist.name}</h1>
+
+            {artist.genres.length > 0 && (
+              <div className="artist-page__genre-tags">
+                {artist.genres.map(g => (
+                  <Link key={g} href={`/genre/${g}`} className="genre-tag-chip genre-tag-chip--lg">
+                    {genreMap[g] ?? g}
+                    <span className="genre-tag-chip__arrow" aria-hidden>→</span>
+                  </Link>
+                ))}
+              </div>
+            )}
 
             {metaParts.length > 0 && (
               <p className="artist-page__meta-row">{metaParts.join(' · ')}</p>
@@ -163,15 +186,17 @@ export default async function ArtistPage({ params }: Props) {
           </section>
         )}
 
-        {/* Influences — circular avatar grid */}
+        {/* Influences — circular avatar grid, with a per-section "Show
+            sources" toggle to switch to a citation list (see InfluenceGrid/
+            ArtistCircleGrid). */}
         <InfluenceGrid
-          title="Influenced by"
-          artists={influences.map(e => artistMap[e.target]).filter(a => !!a)}
+          title="Roots"
+          items={influenceItems}
           emptyMessage="A root — no documented influences in this constellation."
         />
         <InfluenceGrid
-          title="Influenced"
-          artists={influencedBy.map(e => artistMap[e.source]).filter(a => !!a)}
+          title="Descendants"
+          items={influencedByItems}
           emptyMessage="No documented descendants in this constellation yet."
         />
 
