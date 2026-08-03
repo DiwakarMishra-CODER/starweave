@@ -486,10 +486,6 @@ async function main() {
       .map(([id, s]) => `${id}=${s}`).join(', ')
   })`);
 
-  if (process.env.SPOTIFY_CLIENT_ID) {
-    console.log('ℹ  Spotify enrichment skipped (requires Premium app — using Deezer images instead)');
-  }
-
   const outPath = resolve(ROOT, 'public', 'graph.json');
   const oldArtists = force ? [] : loadPreviousArtists(outPath);
   const oldArtistById = new Map(oldArtists.map(a => [a.id, a]));

@@ -23,7 +23,7 @@ function ArtistRow({
   onSelect: (id: string) => void;
 }) {
   return (
-    <li role="option">
+    <li role="option" aria-selected={false}>
       <button
         className="artist-search__item"
         style={{ '--row-color': color } as React.CSSProperties}
@@ -138,6 +138,7 @@ export default function ArtistSearch({ artists, genres, edges, onSelectArtist }:
             if (e.key === 'Escape') { setOpen(false); setQuery(''); }
             if (e.key === 'Enter' && matches.length === 1) handleSelect(matches[0].id);
           }}
+          role="combobox"
           aria-label="Find artist"
           aria-expanded={open}
           aria-controls="artist-search-list"

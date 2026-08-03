@@ -31,9 +31,11 @@ export default function DeezerPreview({
   const [duration, setDuration] = useState(30);
 
   // Pause and reset when this instance is unmounted (e.g. artist panel switches nodes)
+  // — ref captured at effect-setup time, not inside the cleanup closure, since
+  // audioRef.current could already be null by the time cleanup actually runs.
   useEffect(() => {
+    const audio = audioRef.current;
     return () => {
-      const audio = audioRef.current;
       if (audio) {
         audio.pause();
         audio.currentTime = 0;
@@ -117,7 +119,6 @@ export default function DeezerPreview({
         <span className="itp__source">30s preview · iTunes</span>
       </div>
 
-      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio
         ref={audioRef}
         src={previewUrl}

@@ -906,7 +906,7 @@ function get2StopGlowSprite(glowColor: string): HTMLCanvasElement {
 // Even cheaper than a gradient sprite: no stops, just a fill.
 const solidCircleSpriteCache = new Map<string, HTMLCanvasElement>();
 function getSolidCircleSprite(hexColor: string): HTMLCanvasElement {
-  let sprite = solidCircleSpriteCache.get(hexColor);
+  const sprite = solidCircleSpriteCache.get(hexColor);
   if (!sprite) {
     const refR = GLOW_SPRITE_REFERENCE_RADIUS;
     const size = refR * 2;
@@ -1428,6 +1428,15 @@ export default function ForceGraphCanvas({
     };
 
     const stars: DustStar[] = [];
+    // Deliberately impure — this decorative starfield needs one fixed random
+    // layout per mount/data-change, not a re-roll every render; the useMemo's
+    // own dependency array ([stableData.nodes]) is what actually keeps this
+    // from re-running on every render, same as any other useMemo. Confirmed
+    // via git-stash earlier this session that this predates these edits —
+    // restructuring it into an effect+state to satisfy the purity rule would
+    // risk a one-frame flash of no stars on mount for a purely cosmetic
+    // starfield, not worth it.
+    /* eslint-disable react-hooks/purity -- see comment above */
     for (let i = 0; i < DUST_STAR_COUNT; i++) {
       const [realm, home] = homePositions[Math.floor(Math.random() * homePositions.length)];
       // Sum of 3 uniforms — a cheap triangular spread favoring the cluster
@@ -1445,6 +1454,7 @@ export default function ForceGraphCanvas({
         twinklePeriodMs: DUST_STAR_TWINKLE_PERIOD_MIN_MS + Math.random() * (DUST_STAR_TWINKLE_PERIOD_MAX_MS - DUST_STAR_TWINKLE_PERIOD_MIN_MS),
       });
     }
+    /* eslint-enable react-hooks/purity */
     return stars;
   }, [stableData.nodes]);
 
@@ -1606,6 +1616,12 @@ export default function ForceGraphCanvas({
     // Reduced motion: converge in a couple dozen ticks instead of ~300 for
     // any future tick cycle (e.g. post-drag readjustment) that does run.
     if (prefersReducedMotionRef.current) fg.d3AlphaDecay?.(0.1);
+    // This one-time force configuration is deliberately scoped to
+    // [dimensions] only; adding stableData.nodes would re-register every
+    // d3Force (charge/link/collide/realmX/realmY) on every node-data
+    // reference change instead of once, risking a physics reset each time
+    // the graph data updates.
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- see comment above
   }, [dimensions]);
 
   // Scroll-zoom clamp starts at CLAMPED_BOUNDS (scrollZoomBounds' initial
@@ -1869,6 +1885,7 @@ export default function ForceGraphCanvas({
   }, [stableData.nodes, computeCameraTargetForCluster, scrollZoomBounds]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: applyCameraFocusForCluster's own comment above (scrollZoomBounds widening) explains why a setState here is required, not incidental
     const ready = applyCameraFocusForCluster(activeClusterIds);
     pendingClusterKeyRef.current = ready ? null : activeClusterKey;
     // eslint-disable-next-line react-hooks/exhaustive-deps
