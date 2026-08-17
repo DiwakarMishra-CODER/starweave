@@ -148,10 +148,12 @@ export default async function ArtistPage({ params }: Props) {
         {/* Spotify (secondary, stays below bio) */}
         <SpotifyEmbed spotifyId={artist.spotifyId} type="artist" />
 
-        {/* Classic albums — visual card layout */}
+        {/* Major album(s) — visual card layout */}
         {artist.classicAlbums && artist.classicAlbums.length > 0 && (
           <section className="artist-page__section">
-            <h2 className="artist-page__section-title">Classic albums</h2>
+            <h2 className="artist-page__section-title">
+              {artist.classicAlbums.length === 1 ? 'Major album' : 'Major albums'}
+            </h2>
             <div className={`albums-visual${artist.classicAlbums.length === 1 ? ' albums-visual--solo' : ' albums-visual--grid'}`}>
               {artist.classicAlbums.map(album => (
                 <div key={album.id} className="album-card-visual">

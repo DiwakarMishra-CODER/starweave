@@ -61,6 +61,11 @@ export default function GraphView({ graphData }: Props) {
   // the effect below has had a chance to read localStorage; flips true only
   // if this browser has never dismissed it.
   const [onboardingOpen, setOnboardingOpen] = useState(false);
+  // Same first-visit signal as the hint above, deliberately sharing one key:
+  // the "Jump to…" control is a collapsed button a first-timer has no reason
+  // to click, so on a first visit it's opened for them once. Once the hint has
+  // been dismissed (which is what writes the key), neither auto-appears again.
+  const [controlsAutoOpen, setControlsAutoOpen] = useState(false);
 
   useEffect(() => {
     let seen = true;
@@ -72,8 +77,10 @@ export default function GraphView({ graphData }: Props) {
       seen = false;
     }
     if (!seen) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: visibility depends on reading localStorage, an external system that can't be read during render
+      /* eslint-disable react-hooks/set-state-in-effect -- intentional: visibility depends on reading localStorage, an external system that can't be read during render */
       setOnboardingOpen(true);
+      setControlsAutoOpen(true);
+      /* eslint-enable react-hooks/set-state-in-effect */
     }
   }, []);
 
@@ -231,10 +238,25 @@ export default function GraphView({ graphData }: Props) {
     window.history.replaceState(null, '', `/?scene=${sceneId}`);
   }, [activeSceneId, graphData.artists, graphData.scenes]);
 
+  // Set by GraphControls' onOutsideClick right before the click that closed
+  // the "Jump to" panel also lands on the canvas underneath it — that click
+  // is only meant to close the menu, not to deselect whatever's active.
+  // Exactly one of the three canvas handlers below fires per click, and each
+  // clears the flag, so it can never stay armed past the click it was set
+  // for. (It used to be cleared only by handleBackgroundClick, which left it
+  // armed whenever the closing click landed on a node instead — harmless
+  // while the panel started closed, but the default path once it auto-opens
+  // on a first visit: the next click on empty space would silently not
+  // deselect.) Declared above the handlers so they capture it, not the other
+  // way round — the react-hooks/immutability rule rejects the reverse order.
+  const suppressBackgroundClickRef = useRef(false);
+
   const handleNodeClick = useCallback((artistId: string) => {
     // Clicking a node is the interaction the hint is teaching — treat it as
     // "understood" the same as dismissing via the × (see dismissOnboarding).
     if (onboardingOpen) dismissOnboarding();
+    // This click consumed the suppress flag (see suppressBackgroundClickRef).
+    suppressBackgroundClickRef.current = false;
     if (selectedId === artistId) {
       router.push(`/artist/${artistId}`);
     } else {
@@ -252,6 +274,8 @@ export default function GraphView({ graphData }: Props) {
   // that member instead of exiting to a full single-artist focus — the set
   // (highlightSetIds) and URL are left untouched, only the pin moves.
   const handleSetMemberClick = useCallback((artistId: string) => {
+    // This click consumed the suppress flag (see suppressBackgroundClickRef).
+    suppressBackgroundClickRef.current = false;
     setHighlightSetPinnedId(artistId);
   }, []);
 
@@ -264,11 +288,6 @@ export default function GraphView({ graphData }: Props) {
     setActiveSceneId(null);
     window.history.replaceState(null, '', `/?artist=${id}`);
   }, []);
-
-  // Set by GraphControls' onOutsideClick right before the click that closed
-  // the "Jump to" panel also lands on the canvas underneath it — that click
-  // is only meant to close the menu, not to deselect whatever's active.
-  const suppressBackgroundClickRef = useRef(false);
 
   const handleBackgroundClick = useCallback(() => {
     if (suppressBackgroundClickRef.current) {
@@ -311,6 +330,7 @@ export default function GraphView({ graphData }: Props) {
         onSelectScene={handleSelectScene}
         onClear={handleBackgroundClick}
         onOutsideClick={() => { suppressBackgroundClickRef.current = true; }}
+        initialOpen={controlsAutoOpen}
       />
       <ArtistSearch artists={graphData.artists} genres={graphData.genres} edges={graphData.edges} onSelectArtist={handleSelectArtist} />
 

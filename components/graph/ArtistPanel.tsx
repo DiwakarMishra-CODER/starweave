@@ -244,12 +244,14 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
               </>
             )}
 
-            {/* Classic albums */}
+            {/* Major album(s) */}
             {artist.classicAlbums && artist.classicAlbums.length > 0 && (
               <>
                 <div className="panel-divider" />
                 <div className="panel-section">
-                  <p className="panel-section-title">Classic albums</p>
+                  <p className="panel-section-title">
+                    {artist.classicAlbums.length === 1 ? 'Major album' : 'Major albums'}
+                  </p>
                   {artist.classicAlbums.map(album => (
                     <div key={album.id} style={{ marginBottom: '0.5rem' }}>
                       <p style={{ fontSize: '0.85rem', fontWeight: 600, lineHeight: 1.3 }}>

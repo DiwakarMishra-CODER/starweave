@@ -26,6 +26,10 @@ interface Props {
   // background-click deselect) would otherwise also fire from that same
   // click, since the click's only real intent here was to close the menu.
   onOutsideClick?: () => void;
+  // One-shot: opens the panel once, when it flips false -> true (the caller
+  // reads localStorage in an effect, so it can't be true on first render).
+  // Never reopens it — once the user closes the panel it stays closed.
+  initialOpen?: boolean;
 }
 
 // One control for all three "jump to" axes (realm / genre / scene) rather
@@ -37,6 +41,7 @@ export default function GraphControls({
   scenes, activeSceneId, onSelectScene,
   onClear,
   onOutsideClick,
+  initialOpen,
 }: Props) {
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState<Tab>('realms');
@@ -92,6 +97,14 @@ export default function GraphControls({
       return next;
     });
   }
+
+  // First-visit auto-open. Deps are [initialOpen] alone, so this fires only on
+  // the false -> true transition and can't fight the user by reopening the
+  // panel after they close it.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: the caller derives this from localStorage, which can't be read during render
+    if (initialOpen) setOpen(true);
+  }, [initialOpen]);
 
   useEffect(() => {
     if (!open) return;

@@ -302,22 +302,29 @@ h3 { font-size: 1.1rem; }
 }
 
 /* ── Onboarding — persistent orientation card, dismissed not timed out ──
-   Bottom-center: clear of the top navbar, the top-left "Jump to realm"
-   control, and the top-right search field, and off to the side of the
-   bottom-left zoom readout rather than stacked on it. Persistent until the
-   user dismisses it (× or clicking a node — see GraphView) — no auto-hide
-   timer, since anything on a timer is either gone before it's read or a
-   nag while it's up. A one-time fade-in on mount (CSS animation, no JS
-   timing state) is purely cosmetic; dismissal itself is instant. */
+   A titled card: name, one-line lede, then a key/action grid covering the
+   four gestures (scroll-zoom first — it's the one the graph can't hint at
+   on its own). The last row names the top-left "Jump to…" control, which
+   GraphView also auto-opens on a first visit, so the copy and that control
+   introduce each other.
+   Bottom-center: clear of the top navbar, the top-left "Jump to…" control,
+   and the top-right search field, and off to the side of the bottom-left
+   zoom readout rather than stacked on it. Persistent until the user
+   dismisses it (× or clicking a node — see GraphView) — no auto-hide timer,
+   since anything on a timer is either gone before it's read or a nag while
+   it's up. A one-time fade-and-lift on mount (CSS animation, no JS timing
+   state) is purely cosmetic; dismissal itself is instant. */
 .graph-onboarding {
   position: absolute;
   bottom: 1.5rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 15;
-  max-width: min(90vw, 420px);
-  padding: 0.7rem 1.9rem 0.7rem 1rem;
-  background: rgba(14, 11, 26, 0.85);
+  max-width: min(92vw, 440px);
+  padding: 0.85rem 2rem 0.9rem 1.05rem;
+  /* Denser than a normal panel: this card carries several lines of text over
+     a canvas that's still moving underneath it. */
+  background: rgba(14, 11, 26, 0.92);
   backdrop-filter: blur(12px);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -325,28 +332,64 @@ h3 { font-size: 1.1rem; }
   animation: graph-onboarding-fade-in 0.4s ease;
 }
 
+/* The card is centered with translateX(-50%), so the keyframes must animate
+   the whole transform — animating translateY alone would drop the centering
+   for the duration of the animation. */
 @keyframes graph-onboarding-fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from { opacity: 0; transform: translate(-50%, 6px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
 }
 
-.graph-onboarding__line {
+.graph-onboarding__title {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--color-root);
+}
+
+.graph-onboarding__lede {
   margin: 0;
-}
-
-.graph-onboarding__line--primary {
   font-family: var(--font-body);
-  font-size: 0.8rem;
-  line-height: 1.4;
+  font-size: 0.78rem;
+  line-height: 1.45;
   color: var(--color-text);
-  margin-bottom: 0.3rem;
 }
 
-.graph-onboarding__line--secondary {
+/* Two real grid columns rather than nested rows, so every action's left edge
+   lines up regardless of how wide its key is. */
+.graph-onboarding__hints {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.7rem;
+  row-gap: 0.35rem;
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Lets each row's two spans participate in the grid above directly. */
+.graph-onboarding__hint {
+  display: contents;
+}
+
+.graph-onboarding__key {
+  padding-top: 0.1rem;
   font-family: var(--font-mono);
-  font-size: 0.64rem;
-  letter-spacing: 0.02em;
-  line-height: 1.4;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  white-space: nowrap;
+  color: var(--color-root);
+}
+
+.graph-onboarding__action {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  line-height: 1.45;
   color: var(--color-muted);
 }
 
@@ -387,12 +430,20 @@ h3 { font-size: 1.1rem; }
     bottom: 1rem;
   }
 
-  .graph-onboarding__line--primary {
-    font-size: 0.75rem;
+  .graph-onboarding__title {
+    font-size: 0.88rem;
   }
 
-  .graph-onboarding__line--secondary {
-    font-size: 0.6rem;
+  .graph-onboarding__lede {
+    font-size: 0.73rem;
+  }
+
+  .graph-onboarding__key {
+    font-size: 0.56rem;
+  }
+
+  .graph-onboarding__action {
+    font-size: 0.68rem;
   }
 }
 

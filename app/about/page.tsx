@@ -20,6 +20,29 @@ const ABOUT_COLOR = LAYER_COLORS.root;
 // live graph the way the old 5-layer version did once realms shipped.
 const LEGEND = REALMS.map(realm => ({ label: REALM_LABELS[realm], color: REALM_COLORS[realm] }));
 
+// Spelled-out numbers for the one worked example in the prose below. The
+// counts still have to be derived (see the consts in the component), but a
+// numeral dropped mid-sentence reads as a stat readout, and that paragraph is
+// meant to read as writing. Falls back to the numeral past ninety-nine, which
+// no single artist's edge count comes near.
+const ONES = [
+  'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine',
+  'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen',
+  'seventeen', 'eighteen', 'nineteen',
+];
+const TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+function spell(n: number): string {
+  if (n < 0 || !Number.isInteger(n)) return String(n);
+  if (n < 20) return ONES[n];
+  if (n < 100) {
+    const tens = TENS[Math.floor(n / 10)];
+    const ones = n % 10;
+    return ones ? `${tens}-${ONES[ones]}` : tens;
+  }
+  return String(n);
+}
+
 // A reading page, not the graph — same shell as the genre/scene pages, but
 // an editorial arrival: a real hero, a live (unhurried) nebula behind it,
 // and per-section accents from the graph's own layer palette instead of one
@@ -34,6 +57,22 @@ export default function AboutPage() {
   const edgeCount = data.edges.length;
   const genreCount = data.genres.length;
   const sceneCount = data.scenes.length;
+  // Same reasoning as the counts above — every number this page states about
+  // its own sourcing is derived, never typed by hand, so the claims can't
+  // drift away from the data the way the old "all N artists trace back to one
+  // root" line did (it was never true: 57 artists don't descend from the
+  // Velvet Underground, and several — Dylan, Joni Mitchell, Karen Dalton —
+  // predate them outright).
+  const vuDirectCount = data.edges.filter(e => e.target === 'velvet-underground').length;
+  const citedCount = data.edges.filter(e => e.citation && e.citation.trim()).length;
+  const firstPersonCount = data.edges.filter(e => e.sourceTier === 'first-person').length;
+  const deniedCount = data.rejectedEdges.length;
+  // The worked example in "Why influence, not genre" below. Derived for the
+  // same reason as everything else here: these two numbers are the example's
+  // whole point, and a hand-typed pair would be wrong the next time an edge
+  // lands on My Bloody Valentine.
+  const mbvShapedBy = data.edges.filter(e => e.source === 'my-bloody-valentine').length;
+  const mbvShaped = data.edges.filter(e => e.target === 'my-bloody-valentine').length;
 
   return (
     <div
@@ -63,11 +102,12 @@ export default function AboutPage() {
           </p>
           <p>
             It started as a single lineage - British post-punk running into shoegaze and dream
-            pop - and has since grown into {REALMS.length} connected realms: that original spine,
-            plus electronic, folk and confessional songwriting, emo and post-hardcore, post-rock
-            and drone, and the American underground. All {artistCount} artists and{' '}
-            {edgeCount.toLocaleString()} sourced influence connections trace back to one root:
-            The Velvet Underground, 1965.
+            pop - and has since grown into {REALMS.length} connected realms holding{' '}
+            {artistCount} artists and {edgeCount.toLocaleString()} connections. It grew outward
+            from one band: The Velvet Underground, 1965, who {vuDirectCount}{' '}artists here name
+            directly. Around that spine sit the other headwaters - Bob Dylan and Joni
+            Mitchell&apos;s songwriting, Kraftwerk&apos;s machines, the Stooges&apos; noise -
+            each feeding a branch of its own.
           </p>
         </section>
 
@@ -80,10 +120,23 @@ export default function AboutPage() {
           <p>
             Most music sites organize by genre tags or popularity. Starweave organizes by
             lineage - the actual connective tissue between artists. No sound appears from
-            nowhere: the Velvet Underground&apos;s drones run through Joy Division and the Jesus
-            and Mary Chain, into shoegaze, into the bands making records today. Genre tells you
-            what something sounds like. Influence tells you the story of how it got here. That
-            story is the thing Starweave tries to make visible.
+            nowhere. Genre tells you what something sounds like; influence tells you the story
+            of how it got here.
+          </p>
+          <p>
+            Influence is also the measure that counts here. Mainstream success gets tallied in
+            sales and streams, but down this end of music a record&apos;s standing is settled by
+            who it changed. The Velvet Underground barely sold anything while they existed, and
+            no artist in this graph is named more often.
+          </p>
+          <p>
+            None of it asks you to already know the names. Pick a single artist and the shape
+            shows itself. My Bloody Valentine sit at a crossing: {spell(mbvShapedBy)} lines run
+            into them - the Ramones, The Cure, Joy Division, Cocteau Twins - and {spell(mbvShaped)}{' '}run
+            back out, through Tame Impala, Sigur Rós, Mogwai, Deerhunter. Not one of those lines
+            is a guess. Slowdive&apos;s Neil Halstead named the exact gap his own band was built
+            in: &quot;When I listened to My Bloody Valentine and Cocteau Twins I wanted something
+            between those sounds.&quot;
           </p>
         </section>
 
@@ -110,18 +163,30 @@ export default function AboutPage() {
             ))}
           </div>
           <p className="about-page__caption">
-            Colour marks which realm an artist belongs to - each of the {REALMS.length} realms
-            gets one hue family of its own.
+            A realm is a family of sound - one broad branch of the graph. Color marks which one
+            an artist belongs to, and each of the {REALMS.length} gets a hue family of its own.
           </p>
 
           <p className="about-page__statement">
             Node size reflects how far an artist&apos;s influence reaches.
           </p>
 
+          <p className="about-page__statement">
+            Every line has a source behind it.
+          </p>
+          <p className="about-page__caption">
+            {citedCount} of the {edgeCount.toLocaleString()} connections cite a real, named one
+            - {firstPersonCount} of those the artist saying it in their own words. Another {deniedCount}{' '}record
+            the opposite: an artist flatly denying an influence everyone assumes, kept so the
+            graph doesn&apos;t repeat it. Open any artist to read the quote behind each connection.
+          </p>
+
           <div className="about-page__views">
             <Link href="/" className="about-page__view-card">
               <span className="about-page__view-label">Graph</span>
-              <span className="about-page__view-desc">lets you explore freely</span>
+              <span className="about-page__view-desc">
+                all {artistCount} artists at once - click one to light up its lineage
+              </span>
             </Link>
             <Link href="/browse" className="about-page__view-card">
               <span className="about-page__view-label">Browse</span>

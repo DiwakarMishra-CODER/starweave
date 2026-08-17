@@ -754,6 +754,21 @@ const SPREAD_FACTOR = 2.6;     // click-focus spotlight-spread outward scale —
 const SET_SPREAD_FACTOR = 1.6; // genre/scene set spread scale — a set clusters tightly by realm positioning already, so it needs less outward push than a focus cluster to stop members overlapping; tune here if sets still pile up or still land too wide
 const REALM_SPREAD_FACTOR = 1; // realm selection: a true no-op (target = original position) — see getActiveCluster's comment for why realm members shouldn't be spread at all
 
+// Per-realm camera zoom, overriding the bounding-box fit in
+// computeCameraTargetForCluster. That fit frames every member of the realm,
+// so the biggest rosters (region-one at 71 nodes, american-underground at 55)
+// resolve to the furthest-out zoom of any realm — the two that most need to
+// be readable end up the least readable. These are pinned to a fixed zoom
+// instead; the framing is intentionally tighter than the full roster, so the
+// realm now overflows the viewport and is panned around rather than seen
+// whole. Still under MAX_ZOOM (3.5), and reachable because a focus view
+// widens the scroll clamp to UNCLAMPED_BOUNDS. Add a realm here only to
+// override its fit; any realm left out keeps the automatic fit.
+const REALM_ZOOM_OVERRIDE: Partial<Record<Realm, number>> = {
+  'region-one': 3.32,
+  'american-underground': 3.32,
+};
+
 // User-scroll zoom clamp for the unfocused overview — distinct from MAX_ZOOM
 // above (that one caps what the focus camera itself will dial in to).
 // react-force-graph-2d only exposes minZoom/maxZoom as declarative props —
@@ -1293,7 +1308,25 @@ export default function ForceGraphCanvas({
   // which prevents the hardcoded-default → real-size bounce that resets d3-zoom
   // and jams nodes at the canvas origin on every navigation-back.
   const [dimensions, setDimensions] = useState<{ width: number; height: number } | null>(null);
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  // Hover is split into "what the library last reported" and "is the pointer
+  // actually over the canvas," because force-graph stores the last pointer
+  // position and never clears it when the pointer leaves (there is no
+  // pointerleave/mouseout handler in the library — only pointermove keeps
+  // pointerPos up to date), while re-running its hit test against that stored
+  // position on EVERY animation frame. With autoPauseRedraw={false} that loop
+  // never idles, so parking the cursor on an overlay (the "Jump to…" panel,
+  // the search field, the artist panel) and then moving the camera hovers
+  // whatever node happens to slide under that stale screen point — which is
+  // exactly what made picking a realm light up an unrelated node sitting
+  // behind the panel's own text. The overlays are DOM siblings of the canvas,
+  // so the canvas genuinely receives no pointer events while the cursor is on
+  // one; tracking that here is what the library is missing.
+  const [rawHoveredId, setRawHoveredId] = useState<string | null>(null);
+  const [pointerOverCanvas, setPointerOverCanvas] = useState(true);
+  // Derived, and deliberately still named hoveredId so every downstream read
+  // (drawNode, drawLink, neighborSet, the arrow props) picks up the
+  // suppression for free rather than each having to remember to check.
+  const hoveredId = pointerOverCanvas ? rawHoveredId : null;
   // [min, max] passed straight through as <ForceGraph2D minZoom maxZoom>
   // props — see the SCROLL_MIN_ZOOM comment above for why this has to be
   // state (declarative props) rather than a graphRef method call, and
@@ -1800,14 +1833,22 @@ export default function ForceGraphCanvas({
       const availW = Math.max(canvasW - PANEL_WIDTH - LEFT_UI_WIDTH, 200);
       const availH = Math.max(canvasH, 200);
 
-      const targetZoom = Math.max(Math.min(availW / bbW, availH / bbH, MAX_ZOOM), 0.5);
+      const fitZoom = Math.max(Math.min(availW / bbW, availH / bbH, MAX_ZOOM), 0.5);
+      // activeRealm is non-null only when a realm IS the active cluster —
+      // selecting one clears selectedId/highlightSetIds, and getActiveCluster
+      // only reaches its realm branch when both of those are empty — so this
+      // can't leak a realm's zoom into an artist-focus or genre/scene frame.
+      const override = activeRealm !== null ? REALM_ZOOM_OVERRIDE[activeRealm] : undefined;
+      const targetZoom = override ?? fitZoom;
       const centerGX = (minX + maxX) / 2;
       const centerGY = (minY + maxY) / 2;
+      // Depends on targetZoom, so it has to be computed after the override is
+      // resolved — otherwise the pan offset would be sized for the fit zoom.
       const camX = centerGX + (PANEL_WIDTH - LEFT_UI_WIDTH) / (2 * targetZoom);
 
       return { targetZoom, camX, centerGY };
     },
-    [stableData.nodes],
+    [stableData.nodes, activeRealm],
   );
 
   // Returns true once handled; false when the cluster's primary node hasn't
@@ -3065,9 +3106,16 @@ export default function ForceGraphCanvas({
     [selectedId, hoveredId, neighborSet, pathSet, highlightSetMemberSet],
   );
 
+  // Kept in sync with the library unconditionally, even while the pointer is
+  // off-canvas — the suppression lives in the derived hoveredId above. Doing
+  // it that way round means re-entering the canvas over the same node the
+  // library still considers hovered restores the highlight immediately; if
+  // this callback dropped those events instead, the library would see no
+  // change to report and the node would stay un-highlighted until the pointer
+  // moved to a different one and back.
   const handleNodeHover = useCallback((node: object | null) => {
     const n = node as GraphNode | null;
-    setHoveredId(n?.id ?? null);
+    setRawHoveredId(n?.id ?? null);
   }, []);
 
   const handleNodeClick = useCallback(
@@ -3116,7 +3164,15 @@ export default function ForceGraphCanvas({
           this wrapper's only job is a quick, on-brand reveal instead of a
           hard cut once the (already-loading) dynamic-import fallback
           ("Mapping the constellation…") swaps in the real canvas. */}
-      {dimensions && <div className="graph-canvas-reveal" style={{ width: '100%', height: '100%' }}>
+      {dimensions && <div
+        className="graph-canvas-reveal"
+        style={{ width: '100%', height: '100%' }}
+        // enter/leave rather than over/out: these don't re-fire as the pointer
+        // crosses into the canvas child, so this is a true "is the cursor on
+        // the graph" signal. See the rawHoveredId/pointerOverCanvas comment.
+        onPointerEnter={() => setPointerOverCanvas(true)}
+        onPointerLeave={() => setPointerOverCanvas(false)}
+      >
         <ForceGraph2D
           ref={graphRef}
           graphData={stableData}

@@ -79,7 +79,7 @@ npm run lint         # eslint
 - Layer filter — operates on the live graph (physics keeps running; only draw is filtered)
 - Hover — highlights node + direct connections, dims the rest
 - Shortest path — BFS over directed influence edges, highlights path on canvas with chromatic-aberration effect
-- Artist pages — bio, genres, classic albums, influences + descendants
+- Artist pages — bio, genres, major album, influences + descendants
 - Genre story — `/genre/shoegaze` fully built; others stubbed; all marked AI-drafted
 - Browse + search — list all v1 artists, filter by layer/genre, sorted by influence score
 
