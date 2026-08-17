@@ -93,7 +93,16 @@ export interface Genre {
 // narrative arc that ran too long for how small a scene actually is).
 export interface SceneMemberRole {
   artistId: string;  // must be one of the scene's memberIds
-  role: string;      // this member's specific role IN THIS SCENE — one line, not a generic bio snippet
+  // This member's specific role IN THIS SCENE — one line, not a generic bio
+  // snippet. Keep it roughly 120-230 characters, the range every existing
+  // scene sits in. This is a layout constraint, not just a style preference:
+  // SceneMemberRoster renders these into a CSS grid (.scene-roster), where
+  // every card in a row takes the height of the tallest card in that row, so
+  // one oversized role leaves visible dead space under all of its neighbours.
+  // A 449-character role broke the DC Hardcore roster exactly this way once.
+  // If there is more to say, it belongs in placeAndTime (a paragraph array)
+  // or legacy, not here.
+  role: string;
 }
 
 export interface Scene {

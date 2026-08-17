@@ -1411,6 +1411,18 @@ const edges: Edge[] = [
   inf('radiohead', 'pixies', 0.80, 'verified', "Jonny Greenwood has described teenage trips to London to see Throwing Muses and Pixies.", undefined, 'first-person'),
   inf('radiohead', 'talking-heads', 0.70, 'verified', 'The band\'s own name derives from Talking Heads\' "Radio Head"; Remain in Light is audible on Kid A.', undefined, 'reported'),
   inf('radiohead', 'rem', 0.85, 'verified', 'Thom Yorke has said R.E.M. "turned my life upside down... Shortly after, I signed up for art school."', undefined, 'first-person'),
+  // Re-searched Aug 2026 (second attempt, per the "don't infer unsourceable
+  // from one interview's silence" rule) across four angles: Yorke first-person,
+  // O'Brien/gear-and-technique, Greenwood favourite-albums, and a quote-anchored
+  // search. Nothing first-person exists. Everything findable falls into a
+  // category this project already excludes: critic resemblance ("The Bends'
+  // swirling guitars recall those Kevin Shields orchestrated on Loveless"),
+  // unattributed "Loveless inspired bands such as Radiohead, Smashing Pumpkins,
+  // Mogwai..." roundups, and Autre's editorially-curated "Tracking Radiohead's
+  // Influences" playlist. Guitar.com's own Kevin Shields feature (Michael
+  // Leonard, Apr 2021) doesn't mention Radiohead once. Chronology is fine
+  // (Loveless 1991, The Bends 1995) -- this is plausible and undisputed, just
+  // genuinely unstated by the band. Settled, not unfinished: don't re-run it.
   inf('radiohead', 'my-bloody-valentine', 0.55, 'verified', null, 'unsourceable'),
   inf('the-stone-roses', 'the-jesus-and-mary-chain', 0.5, 'verified', null, 'unsourceable'),
   inf('the-stone-roses', 'the-smiths', 0.45, 'verified', null, 'unsourceable'),
@@ -3167,25 +3179,31 @@ const scenes: Scene[] = [
     memberIds: ['this-mortal-coil', 'cocteau-twins', 'lush', 'red-house-painters', 'dead-can-dance', 'pixies'],
   },
   {
-    id: 'dischord',
-    name: 'Dischord',
+    // Named for the scene, not the label. Dischord Records documented this
+    // room and is inseparable from it, but Bad Brains — the band that started
+    // the whole thing — never released on Dischord, and naming the scene after
+    // the label made its most important progenitor look like a guest. Same
+    // reasoning as no-new-york -> no-wave and olympia -> riot-grrrl.
+    id: 'dc-hardcore',
+    name: 'DC Hardcore',
     era: '1980–1993',
     place: 'Washington DC',
     city: 'Washington DC',
     yearStart: 1980,
     yearEnd: 1993,
-    blurb: "Ian MacKaye's Washington DC label and scene were the same room — MacKaye played in two of its bands, and Rites of Spring's members went on to form half of Fugazi.",
+    blurb: "A few dozen teenagers in Washington DC invented American hardcore's fastest music, its most durable independent label, and — without meaning to — a lifelong sobriety movement.",
     placeAndTime: [
-      "Ian MacKaye and Jeff Nelson started Dischord Records as teenagers, simply to put out records by their own band and the handful of others playing the same small DC hardcore shows around them — a label built to document a scene its founders were already inside of, rather than to sign one from outside. That closeness meant the label's roster and the scene's actual social network were never really separate things: the same handful of musicians kept re-forming into new bands under the same label for well over a decade.",
+      "Ian MacKaye and Jeff Nelson started Dischord Records as teenagers, simply to put out records by their own band and the handful of others playing the same small DC hardcore shows around them — a label built to document a scene its founders were already inside of, rather than to sign one from outside. That closeness meant the label's roster and the scene's actual social network were never really separate things: the same handful of musicians kept re-forming into new bands under the same label for well over a decade. Bad Brains, the band that set the whole thing moving, never released a record on Dischord at all — which is the clearest sign that the scene and the label were related but not identical.",
+      "The scene's furthest-travelling export left almost by accident. Minor Threat's \"Straight Edge\" (1981) runs under a minute and was written as one teenager's description of not drinking or taking drugs — a statement about himself, not a rule for anyone else. It was read as a manifesto anyway, and hardened into an international subculture with its own orthodoxy and its own enforcement, which Ian MacKaye spent the following decades explaining he had never meant to write. It is now better known than most of the music it came from.",
     ],
     memberRoles: [
       { artistId: 'fugazi', role: "MacKaye's band after Minor Threat, formed with Rites of Spring's Guy Picciotto and Brendan Canty and carrying Bad Brains' influence forward as the label's longest-running and most enduring act." },
-      { artistId: 'minor-threat', role: "MacKaye and Nelson's first band, formed specifically to give Dischord something of their own to release." },
+      { artistId: 'minor-threat', role: "MacKaye and Nelson's first band, formed specifically to give Dischord something of their own to release, and the source of the scene's furthest-travelling export in a song called \"Straight Edge\"." },
       { artistId: 'bad-brains', role: "Predated the DC scene and set it in motion — MacKaye's pre-Minor Threat band saw a Bad Brains show and came out transformed, and Picciotto later named them among Fugazi's own influences too." },
       { artistId: 'rites-of-spring', role: "Lasted barely a year, but its two core members, Picciotto and Canty, carried its emotionally raw \"emocore\" sound directly into Fugazi afterward." },
       { artistId: 'the-dismemberment-plan', role: "Arrived a decade later out of the same Dischord-shaped DC underground, working in the post-hardcore vocabulary Fugazi and Bad Brains had already set down." },
     ],
-    legacy: "Dischord's insistence on five-dollar shows, no major-label deals, and total DIY control became the reference model for post-hardcore's entire operating ethic, and Fugazi in particular proved a serious touring band could run for decades entirely outside the industry's normal terms.",
+    legacy: "Dischord's insistence on five-dollar shows, no major-label deals, and total DIY control became the reference model for post-hardcore's entire operating ethic, and Fugazi in particular proved a serious touring band could run for decades entirely outside the industry's normal terms. The scene's other export travelled further and less deliberately: straight edge outgrew the record that named it, spread worldwide as a subculture with its own orthodoxy, and is now better known than most of the music it came from. Rites of Spring's short, emotionally raw run is the third line out of here, feeding the emo and post-hardcore realm this graph traces downstream.",
     memberIds: ['fugazi', 'minor-threat', 'bad-brains', 'rites-of-spring', 'the-dismemberment-plan'],
   },
   {
@@ -3242,38 +3260,89 @@ const scenes: Scene[] = [
     blurb: "A downtempo, bass-heavy sound built out of the same Bristol sound systems and studios, blending hip-hop, dub, and soul into what critics later called trip-hop.",
     placeAndTime: [
       "Massive Attack's founding members came directly out of the Wild Bunch, a loose Bristol DJ-and-MC sound system that had been playing hip-hop, dub, and soul to local crowds through the mid-1980s before splintering into several separate projects once it dissolved. Bristol's relationship to that music wasn't an import — the city's long-standing Caribbean immigrant community had supported sound-system culture for years before any of these acts existed, and it's that infrastructure, not a studio or a label, that the scene actually grew out of.",
-      "The four acts here stayed genuinely local and interconnected rather than just regionally adjacent: Geoff Barrow worked as a tape-op on Massive Attack's Blue Lines sessions and used the spare studio hours he was given there to start Portishead, and Tricky — another Wild Bunch alumnus — rapped on Blue Lines and Protection before going solo. Sneaker Pimps arrived from outside Bristol a few years later, but named both Massive Attack and Portishead directly as the reason they sounded the way they did.",
+      "The three acts here stayed genuinely local and interconnected rather than just regionally adjacent: Geoff Barrow worked as a tape-op on Massive Attack's Blue Lines sessions and used the spare studio hours he was given there to start Portishead, and Tricky — another Wild Bunch alumnus — rapped on Blue Lines and Protection before going solo. Plenty of later acts named these records as the reason they sounded the way they did, but naming an influence is not the same as having been in the room, and only the ones who were are listed here.",
     ],
     memberRoles: [
       { artistId: 'massive-attack', role: "Formed from the wreckage of the Wild Bunch sound system and became the scene's hub — nearly every other act here either grew directly out of their sessions or named them as the reason they started." },
       { artistId: 'portishead', role: "Geoff Barrow worked as a tape-op on Massive Attack's Blue Lines sessions and used the spare studio time he was given there to build his own project — the clearest line of direct, practical descent in the whole scene." },
       { artistId: 'tricky', role: "A Wild Bunch member in his own right before Massive Attack existed under that name; rapped on Blue Lines and Protection before leaving to make Maxinquaye alone." },
-      { artistId: 'sneaker-pimps', role: "Arrived last and from outside Bristol, but producer Liam Howe named both Massive Attack's Blue Lines and Portishead's album directly as the records that shaped Sneaker Pimps' sound." },
     ],
     legacy: "The Bristol sound left the city with a genre name it never asked for — critics called it trip-hop, a term Massive Attack in particular has always resisted — but the slow tempos, dub bass, and cinematic sampling defined here shaped downtempo and electronic pop internationally for the rest of the decade. Portishead's own eleven-year gap between their second album and Third (2008) became its own kind of template: a scene that never needed to stay prolific to stay influential.",
-    memberIds: ['massive-attack', 'portishead', 'tricky', 'sneaker-pimps'],
+    memberIds: ['massive-attack', 'portishead', 'tricky'],
   },
+  // Creation Records was removed here. Its four acts came from four different
+  // towns (East Kilbride, Dublin/London, Reading, Oxford) with no shared
+  // venue, sessions or personnel — a label roster, not a room, which is the
+  // same reason Warp was rejected. Worse, two of its four member roles were
+  // influence claims ("descended directly from labelmates") that already
+  // exist as sourced first-person edges, so the scene was duplicating edges
+  // in the wrong structure while asserting a co-location that never happened.
   {
-    id: 'creation',
-    name: 'Creation Records',
-    era: '1983–1999',
-    place: 'London',
-    city: 'London',
-    yearStart: 1983,
-    yearEnd: 1999,
-    blurb: "Alan McGee's London label bankrolled the UK's noisiest guitar music through the 1980s and '90s, from the Mary Chain's feedback-pop debut to My Bloody Valentine's studio excess.",
+    id: 'cbgb',
+    name: 'CBGB',
+    era: '1974–1977',
+    place: 'The Bowery, New York',
+    city: 'New York',
+    yearStart: 1974,
+    yearEnd: 1977,
+    blurb: "Hilly Kristal's Bowery dive booked bands on one condition — play your own songs — and four groups who sounded nothing alike built American punk out of that single rule.",
     placeAndTime: [
-      "Alan McGee ran Creation on instinct and appetite for risk rather than Ivo Watts-Russell's curatorial calm a few miles across London — he signed noise before he could have known if it would resolve into songs, and stayed in business by gambling, not vetting. The Jesus and Mary Chain's earliest gigs, barely twenty minutes long and ending in feedback and walkouts, were exactly the kind of bet McGee kept making.",
-      "That temperament reached its limit with My Bloody Valentine's Loveless (1991): Kevin Shields' pursuit of a specific, inhuman guitar sound ran the studio bill up for years past its original budget and, by McGee's own repeated public account since, helped push Creation's finances to the edge at the time. The album that nearly broke the label is also the one Creation is best remembered for.",
+      "CBGB opened at 315 Bowery in 1973 under Hilly Kristal and his ex-wife Karen, named for the country, bluegrass and blues he intended to book and never really did. The room was long, narrow and filthy, on a stretch of the Bowery nobody else wanted, and what made it matter was not its stage but its booking policy: from early 1974 Kristal would take almost any band provided they played original material. The rule was partly idealism and partly economics — covers meant paying performance royalties — and its effect was to filter for the only thing these bands had in common, which was having written something themselves.",
+      "That policy is why the room produced no house sound. Television's guitar interplay owed more to Coltrane than to rock and roll, the Ramones played two-minute songs at one volume, Patti Smith was a poet who had backed into a band, and Talking Heads were art students studying the form from the outside. They shared a stage, a bar and an audience for about three years, and almost nothing else.",
     ],
     memberRoles: [
-      { artistId: 'the-jesus-and-mary-chain', role: "McGee's first major gamble — Psychocandy (1985) proved a Creation record could be genuinely dangerous-sounding and still sell, setting the label's noise-first template before anyone else here had released a note." },
-      { artistId: 'my-bloody-valentine', role: "Took McGee's gambling instinct to its limit: Kevin Shields' pursuit of Loveless ran years over schedule and reportedly helped push Creation's finances to the brink — the most expensive bet the label ever made, and the one it's best remembered for." },
-      { artistId: 'slowdive', role: "Descended directly from both labelmates — the Mary Chain's noise and My Bloody Valentine's guitar treatments — and absorbed the worst of the UK music press' hostility toward the label's sound in real time, years before that hostility reversed itself." },
-      { artistId: 'ride', role: "Also grew directly out of the Mary Chain and My Bloody Valentine's example, but brought the sound to its widest audience yet — Nowhere (1990) was the rare Creation shoegaze record that was a commercial hit on arrival, not just a critical one." },
+      { artistId: 'ramones', role: "Queens four-piece who took the original-material rule to its logical extreme — two-minute songs, one tempo, no solos — and toured the UK in 1976 in front of the musicians who would form the Sex Pistols and the Clash." },
+      { artistId: 'television', role: "Arrived in the Bowery in 1974 and effectively opened the room to rock bands; Marquee Moon (1977) is the scene's least punk record and its most technically ambitious." },
+      { artistId: 'patti-smith', role: "Came to the stage from poetry rather than from bands, and her 1975 residency with Television is what turned a bar with a booking policy into a scene people travelled to see." },
+      { artistId: 'talking-heads', role: "Art-school outsiders who played their first proper gig here in 1975; David Byrne has recounted Johnny Ramone handing them an opening slot with the endorsement \"Sure, they're gonna suck, so no problem.\"" },
     ],
-    legacy: "Creation's gamble-not-curate model produced shoegaze's two defining records, Psychocandy and Loveless, inside a single decade, and nearly went broke doing it — a sharp contrast to 4AD's steadier hand a few miles away, visible in how differently the two labels' rosters still sound today. McGee kept the label running into the Britpop years that followed, but this run is the one that shaped guitar music for a generation after Creation folded in 1999.",
-    memberIds: ['the-jesus-and-mary-chain', 'my-bloody-valentine', 'slowdive', 'ride'],
+    legacy: "Almost nothing connects these four musically, and that is the point: the graph records the Ramones' own drummer separating his CBGB peers from his actual influences, so no influence edges run between most of them. What they shared was a room and a rule, and each left it in a different direction — the Ramones into punk, Television into art rock, Smith into poetry-as-performance, Talking Heads into art-pop and eventually Remain in Light. The scene's descendants are enormous and almost entirely separate from one another.",
+    memberIds: ['ramones', 'television', 'patti-smith', 'talking-heads'],
+  },
+  {
+    id: 'dusseldorf',
+    name: 'Düsseldorf–Cologne',
+    era: '1968–1974',
+    place: 'Düsseldorf and Cologne',
+    city: 'Düsseldorf',
+    yearStart: 1968,
+    yearEnd: 1974,
+    blurb: "Two Rhineland cities forty kilometers apart, one producer's farmhouse studio, and a set of bands who decided post-war German music should not sound American.",
+    placeAndTime: [
+      "This was never a single venue. Can formed in Cologne in 1968 around two Stockhausen students and built their own studio; Kraftwerk formed in Düsseldorf in 1970; Neu! formed in Düsseldorf in 1971 when Klaus Dinger and Michael Rother left an early Kraftwerk lineup. The cities are about forty kilometers apart, and the scene was that corridor rather than any one room — a generation with no interest in reproducing Anglo-American blues rock, working out what German music could sound like instead.",
+      "The closest thing to a shared room was Conny Plank's studio on a farm outside Cologne. Plank engineered every Neu! recording and Kraftwerk's first four albums, and the scene's window closes where his involvement does: Autobahn (1974) was the last Kraftwerk record he worked on, after which the band moved into its own Kling Klang studio and out of everyone else's orbit.",
+    ],
+    memberRoles: [
+      { artistId: 'kraftwerk', role: "Started as one more long-form Düsseldorf experiment and left as something else entirely; Autobahn (1974) both ends this scene and begins the lineage most of the graph's electronic side descends from." },
+      { artistId: 'neu', role: "Formed by two musicians who had just left Kraftwerk — the scene's one hard personnel link — and built the motorik beat that Dinger described as a way of removing everything decorative from rock drumming." },
+      { artistId: 'can', role: "The Cologne end of the corridor and the oldest of the three, working from a conservatoire background rather than a rock one, with a rhythm section precise enough to make improvisation sound composed." },
+    ],
+    legacy: "Everything downstream of this corridor arrived by a different route than the bands intended: Neu!'s motorik became the default rhythm of post-punk and indie, Can's rhythm section became a permanent reference for anyone building songs out of repetition, and Kraftwerk's machines were picked up first by Detroit techno and the Bronx rather than by anyone in Europe. All three are core nodes in this graph, and the electronic realm is essentially their descendants.",
+    memberIds: ['kraftwerk', 'neu', 'can'],
+  },
+  {
+    // Two members, deliberately the shortest page alongside Glasgow — thin
+    // but real should read as complete, not padded out to match the others.
+    // Dylan and Dalton have no influence edge between them in either
+    // direction and this scene does not assert one: it records that they
+    // were in the same room, which is what a Scene is for.
+    id: 'greenwich-village',
+    name: 'Greenwich Village',
+    era: '1961–1965',
+    place: 'Greenwich Village, New York',
+    city: 'New York',
+    yearStart: 1961,
+    yearEnd: 1965,
+    blurb: "A few square blocks of Manhattan coffeehouses where the songs belonged to everybody and the performers were judged on what they could do with them.",
+    placeAndTime: [
+      "The Village folk revival ran on rooms that barely qualified as venues — coffeehouses and basket houses around MacDougal and Bleecker where performers were paid from a basket passed around the audience, if at all. The circuit was small enough that everyone played the same handful of rooms and watched each other do it, and its repertoire was largely traditional and shared: the same songs moved from singer to singer, so a performance was measured by interpretation rather than authorship. That is what made it a scene rather than a set of solo careers, and it is also what made it fragile — once writing your own material became the point, the shared songbook that held it together stopped mattering.",
+    ],
+    memberRoles: [
+      { artistId: 'bob-dylan', role: "Arrived in New York in 1961 steeped in Woody Guthrie and spent five years outgrowing the revival that made him, plugging in for Highway 61 Revisited in 1965 while parts of the folk audience treated it as a betrayal." },
+      { artistId: 'karen-dalton', role: "The singer Dylan singled out as his favorite in the Village, and the one who left least behind — she mistrusted recording, sang other writers' songs rather than her own, and made both her albums somewhat against her own wishes." },
+    ],
+    legacy: "The revival's most famous participant spent the rest of the decade dismantling it, and the interpretive tradition it ran on — take a song someone else wrote and make it yours — receded as songwriting became the measure of a folk artist. Dalton is the clearer inheritance: her cracked, jazz-inflected phrasing found its audience decades late, and the confessional and freak-folk lineages this graph traces run through singers who found her long after the Village had gone.",
+    memberIds: ['bob-dylan', 'karen-dalton'],
   },
   {
     id: 'windmill',

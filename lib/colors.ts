@@ -407,8 +407,12 @@ export const DEFAULT_GENRE_COLOR = '#8891F2';
 // above the 4.5:1 text-legibility floor) because it was chosen to match the
 // riot-grrrl GENRE's own color on purpose — changing it would break that.
 export const SCENE_COLORS: Record<string, string> = {
-  dischord:      '#E49494', // 0°   — warm red-pink
+  'dc-hardcore': '#E49494', // 0°   — warm red-pink (renamed from 'dischord'; same hue)
   sst:           '#D89E64', // 30°  — tan-orange
+  dusseldorf:    '#CCA633', // 45°  — gold. The one genuinely new hue: every 30° slot was
+                            //        already taken, so this splits the sst/elephant-6 gap and
+                            //        sits ~15° from each. Solved to the same target as the
+                            //        rest (luminance 0.403, 8.39:1 on #0e0b1a).
   'elephant-6':  '#AFAF2C', // 60°  — olive-yellow
   seattle:       '#76BC2F', // 90°  — grass green
   glasgow:       '#31C331', // 120° — green
@@ -417,8 +421,13 @@ export const SCENE_COLORS: Record<string, string> = {
   'no-wave':     '#7DAEDF', // 210° — steel blue — was the illegible #3B1F5C; this is the fix
   'riot-grrrl':  '#8891F2', // 235° — indigo — KEPT UNCHANGED, matches GENRE_COLORS['riot-grrrl'] deliberately
   '4ad':         '#C09AE6', // 270° — lavender
-  creation:      '#E28BE2', // 300° — magenta/orchid
+  cbgb:          '#E28BE2', // 300° — magenta/orchid, inherited from the removed 'creation'
+                            //        entry, so the wheel keeps its existing spacing
   bristol:       '#E390BA', // 330° — dusty rose
+  'greenwich-village':
+                 '#E492A7', // 345° — rose-pink. Second gap-splitter (after dusseldorf's
+                            //        45°): at 14 scenes the wheel no longer divides into
+                            //        clean 30° steps, so this sits ~15° off bristol.
 };
 
 export const DEFAULT_SCENE_COLOR = '#C9985E';
