@@ -42,20 +42,38 @@ const OPEN_ENDED_MIN_SPAN = 4;
 // guaranteed no two rows ever share a vertical position, is what actually
 // fixes that.
 //
-// Ordering by member count (rather than start year) still matters
-// independent of that fix: start-year order put every bar's left edge
-// further right than the one above it, producing a diagonal "staircase"
-// with large empty triangles top-right and bottom-left. Sorting by count
-// scatters early/late bars across rows instead, so the composition doesn't
-// read as a ramp — the shared time axis (unaffected by row order) is still
-// what shows every real overlap (SST/Dischord, 4AD/Creation, riot
-// grrrl/Seattle).
+// Rows are ordered by start year, member count descending as the tiebreak.
+//
+// This deliberately REVERSES an earlier decision, so don't re-revert it from
+// the old note. Rows used to sort by member count, on the reasoning that
+// start-year order puts every bar's left edge further right than the one
+// above it, producing a diagonal "staircase" with empty triangles top-right
+// and bottom-left, and that scattering early/late bars across rows keeps the
+// composition from reading as a ramp.
+//
+// That held at 12 scenes inside a 44-year window, where the bars clustered
+// horizontally anyway and the scatter was invisible. It stopped holding once
+// the axis stretched to 59 years (1961–2020) with three scenes isolated in
+// the sparse left third: with row position unrelated to bar position, reading
+// down the rows gave 28.8% → 32.2% → … → 93.2% → 11.9% → …, and the earliest
+// scene of all (Greenwich Village, left edge 0%) landed at row 12 with twelve
+// rows of empty space above and left of it. Measured deviation between row
+// order and chronological order was 3.57 rows mean, 12 max — reported
+// directly as the page looking disjointed, with one bar "lonely in a corner."
+//
+// Sorted by year the staircase is back, and its empty triangles are simply
+// the shape of the data: scenes genuinely start progressively later. What it
+// buys is that the two isolated bars become the timeline's endpoints rather
+// than outliers, and a reader can scan top-to-bottom and read chronology,
+// which is the point of a timeline. The shared time axis (unaffected by row
+// order either way) still shows every real overlap (SST/DC Hardcore,
+// Bristol/Seattle, riot grrrl/Seattle).
 export function resolveSceneTimelineScenes(graphData: GraphData): SceneTimelineScene[] {
   const artistById = new Map(graphData.artists.map(a => [a.id, a]));
 
   return graphData.scenes
     .slice()
-    .sort((a, b) => b.memberIds.length - a.memberIds.length || a.yearStart - b.yearStart)
+    .sort((a, b) => a.yearStart - b.yearStart || b.memberIds.length - a.memberIds.length)
     .map((s, row) => {
       const members = s.memberIds
         .map(id => artistById.get(id))
