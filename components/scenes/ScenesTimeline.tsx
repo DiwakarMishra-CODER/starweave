@@ -43,8 +43,8 @@ export default function ScenesTimeline({ scenes }: Props) {
 
   const { width: plotWidth, height: plotHeight } = plotSize;
 
-  const { axisStart, axisEnd, span } = useMemo(() => computeAxis(scenes), [scenes]);
-  const yearTicks = useMemo(() => computeYearTicks(axisStart, axisEnd), [axisStart, axisEnd]);
+  const scale = useMemo(() => computeAxis(scenes), [scenes]);
+  const yearTicks = useMemo(() => computeYearTicks(scale, plotWidth), [scale, plotWidth]);
 
   const sizing = useMemo(() => computeVerticalSizing(scenes, plotHeight), [scenes, plotHeight]);
 
@@ -52,11 +52,11 @@ export default function ScenesTimeline({ scenes }: Props) {
     () => scenes.map((s, i) => ({
       scene: s,
       geo: computeBarGeometry(
-        s, axisStart, span, plotWidth,
-        sizing.barHeights[i], sizing.faceSize, sizing.faceStep, sizing.facePad,
+        s, scale, plotWidth,
+        sizing.barHeights[i], sizing.faceSize, sizing.faceStep,
       ),
     })),
-    [scenes, axisStart, span, plotWidth, sizing],
+    [scenes, scale, plotWidth, sizing],
   );
 
   // One row per scene → each row's own (scaled) bar height sets its height,
@@ -105,16 +105,15 @@ export default function ScenesTimeline({ scenes }: Props) {
         {/* Year axis + faint vertical gridlines — shared across every row so
             time-aligned overlaps (SST/Dischord, 4AD/Creation, riot
             grrrl/Seattle) are visible at a glance without hovering anything.
-            Rows are ordered by member count descending (see
-            resolveSceneTimelineScenes), not by start year, so bars scatter
-            across the shared axis instead of forming a start-year
-            staircase. */}
+            Tick spacing is deliberately uneven: the axis is density-weighted
+            (see computeAxis), so evenly-spaced years would hide exactly the
+            compression the scale is applying. */}
         <div className="scenes-timeline__axis" aria-hidden>
           {yearTicks.map(year => (
             <div
               key={year}
               className="scenes-timeline__tick"
-              style={{ left: `${((year - axisStart) / span) * 100}%` }}
+              style={{ left: `${scale.yearToPct(year)}%` }}
             >
               <span className="scenes-timeline__tick-label">{year}</span>
               <span className="scenes-timeline__tick-line" style={{ top: AXIS_HEADER_HEIGHT, height: Math.max(0, plotHeight - AXIS_HEADER_HEIGHT) }} />
@@ -140,7 +139,7 @@ export default function ScenesTimeline({ scenes }: Props) {
                 className={`scenes-timeline__bar${isDimmed ? ' scenes-timeline__bar--dimmed' : ''}${isHovered ? ' scenes-timeline__bar--hovered' : ''}`}
                 style={{
                   left: `${geo.leftPct}%`,
-                  width: geo.widthIsPx ? `${geo.widthPx}px` : `${geo.trueWidthPct}%`,
+                  width: `${geo.widthPct}%`,
                   height: geo.barHeight,
                   top: 0,
                   // Open-ended (Windmill only): square off the right corner
@@ -160,25 +159,18 @@ export default function ScenesTimeline({ scenes }: Props) {
                 onMouseLeave={onUnhover}
                 aria-label={`${scene.name} — ${scene.city}, ${scene.era} — ${scene.members.length} artists${scene.isOpenEnded ? ', ongoing' : ''}`}
               >
-                {geo.widthIsPx && !scene.isOpenEnded && (
-                  <span
-                    className="scenes-timeline__bar-truemark"
-                    style={{ left: `${(geo.trueWidthPct / 100) * plotWidth}px` }}
-                    title="Bar extended past the scene's real end year so its members' faces stay legible"
-                  />
-                )}
                 <span className="scenes-timeline__faces">
                   {scene.members.map((m, mi) => (
                     <span
                       key={m.id}
                       className="scenes-timeline__face"
-                      style={{ left: mi * sizing.faceStep, zIndex: scene.members.length - mi, width: sizing.faceSize, height: sizing.faceSize }}
+                      style={{ left: mi * geo.faceStep, zIndex: scene.members.length - mi, width: geo.faceSize, height: geo.faceSize }}
                     >
                       {m.imageUrl ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img src={m.imageUrl} alt="" width={sizing.faceSize} height={sizing.faceSize} />
+                        <img src={m.imageUrl} alt="" width={geo.faceSize} height={geo.faceSize} />
                       ) : (
-                        <span className="scenes-timeline__face-initial" style={{ fontSize: Math.max(8, sizing.faceSize * 0.4) }}>{m.name.charAt(0)}</span>
+                        <span className="scenes-timeline__face-initial" style={{ fontSize: Math.max(8, geo.faceSize * 0.4) }}>{m.name.charAt(0)}</span>
                       )}
                     </span>
                   ))}

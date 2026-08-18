@@ -4107,15 +4107,6 @@ h3 { font-size: 1.1rem; }
   z-index: 20;
 }
 
-.scenes-timeline__bar-truemark {
-  position: absolute;
-  top: -4px;
-  bottom: -4px;
-  width: 0;
-  border-left: 1px dashed rgba(255, 255, 255, 0.45);
-  z-index: 1;
-}
-
 .scenes-timeline__faces {
   position: absolute;
   top: 0;

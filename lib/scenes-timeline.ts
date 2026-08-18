@@ -95,18 +95,123 @@ export function resolveSceneTimelineScenes(graphData: GraphData): SceneTimelineS
     });
 }
 
-export function computeAxis(scenes: SceneTimelineScene[]) {
-  const axisStart = Math.min(...scenes.map(s => s.yearStart));
-  const axisEnd = Math.max(...scenes.map(s => s.yearEnd));
-  return { axisStart, axisEnd, span: axisEnd - axisStart };
+// ── Non-linear, density-weighted time axis ────────────────────────────────
+// The axis allocates width by how many scenes occupy a stretch of years, not
+// by elapsed time. A linear scale was fine while every scene sat inside one
+// 44-year window, but the roster now runs 1961-2020 and is not remotely
+// uniform: eleven of fourteen scenes live between 1976 and 2000, while
+// 1965-68 and 2010-16 contain literally nothing. Linear, that gave the
+// crowded quarter-century ~41% of the width and handed the rest to two
+// near-empty margins.
+//
+// Same principle the /genres timeline already uses (see lib/genre-timeline.ts,
+// where x is ordinal rank among dated genres rather than a year scale), but it
+// cannot be borrowed directly: a genre is a point, a scene is an interval, so
+// this needs a continuous monotonic year -> position mapping that both ends of
+// a bar can be pushed through, not a rank lookup.
+//
+// Construction: cut the axis at every yearStart and yearEnd, count how many
+// scenes overlap each resulting segment, and give the segment a share of the
+// width proportional to `duration * (DENSITY_FLOOR + sceneCount)`. Positions
+// interpolate linearly inside a segment, so the mapping is continuous and
+// strictly increasing, and bar widths still mean something — a longer scene in
+// the same neighbourhood is still a longer bar.
+//
+// DENSITY_FLOOR is what an empty year is worth relative to a year holding one
+// scene. At 0.35 the two dead stretches collapse to under 2% of the width each
+// (from 15% and 10% linear) without vanishing entirely, which keeps the gap
+// legible as a gap. Raise it to flatten the effect, lower it to compress the
+// empty margins harder.
+const DENSITY_FLOOR = 0.35;
+
+export interface AxisScale {
+  axisStart: number;
+  axisEnd: number;
+  span: number;
+  // Year -> percentage across the plot (0-100). Monotonic; clamps outside the
+  // axis range. Every bar edge and every tick goes through this.
+  yearToPct: (year: number) => number;
 }
 
-export function computeYearTicks(axisStart: number, axisEnd: number): number[] {
-  const ticks: number[] = [];
-  for (let y = Math.ceil(axisStart / 5) * 5; y <= axisEnd; y += 5) ticks.push(y);
-  if (!ticks.includes(axisStart)) ticks.unshift(axisStart);
-  if (!ticks.includes(axisEnd)) ticks.push(axisEnd);
-  return Array.from(new Set(ticks)).sort((a, b) => a - b);
+export function computeAxis(scenes: SceneTimelineScene[]): AxisScale {
+  const axisStart = Math.min(...scenes.map(s => s.yearStart));
+  const axisEnd = Math.max(...scenes.map(s => s.yearEnd));
+  const span = axisEnd - axisStart;
+
+  const cuts = Array.from(
+    new Set([axisStart, axisEnd, ...scenes.flatMap(s => [s.yearStart, s.yearEnd])]),
+  ).sort((a, b) => a - b);
+
+  const segments = cuts.slice(0, -1).map((from, i) => {
+    const to = cuts[i + 1];
+    const overlapping = scenes.filter(s => s.yearStart < to && s.yearEnd > from).length;
+    return { from, to, weight: (to - from) * (DENSITY_FLOOR + overlapping) };
+  });
+
+  const totalWeight = segments.reduce((sum, seg) => sum + seg.weight, 0);
+
+  // Cumulative percentage at each cut point, so a lookup is one scan plus a
+  // linear interpolation rather than a re-sum per call.
+  const cumulative: number[] = [0];
+  let running = 0;
+  for (const seg of segments) {
+    running += totalWeight > 0 ? (seg.weight / totalWeight) * 100 : 0;
+    cumulative.push(running);
+  }
+
+  const yearToPct = (year: number): number => {
+    if (year <= axisStart) return 0;
+    if (year >= axisEnd) return 100;
+    for (let i = 0; i < segments.length; i++) {
+      const { from, to } = segments[i];
+      if (year >= from && year <= to) {
+        const t = to === from ? 0 : (year - from) / (to - from);
+        return cumulative[i] + t * (cumulative[i + 1] - cumulative[i]);
+      }
+    }
+    return 100;
+  };
+
+  return { axisStart, axisEnd, span, yearToPct };
+}
+
+// Minimum on-screen gap between two tick labels before the later one is
+// dropped. Ticks stay on the same every-5-years grid, but a non-linear axis
+// can squeeze two of them within a few pixels of each other inside a
+// compressed stretch (1965 and 1970 sit ~19px apart at the current data), and
+// two overlapping four-digit labels are worse than one missing one.
+const MIN_TICK_GAP_PX = 34;
+
+// Candidate ticks are still every 5 years plus both endpoints — deliberately
+// NOT re-spaced to look even. Uneven tick spacing is the honest readout of a
+// non-linear axis: it is what shows the compression rather than hiding it.
+export function computeYearTicks(scale: AxisScale, plotWidthPx: number): number[] {
+  const { axisStart, axisEnd, yearToPct } = scale;
+
+  const candidates: number[] = [];
+  for (let y = Math.ceil(axisStart / 5) * 5; y <= axisEnd; y += 5) candidates.push(y);
+  if (!candidates.includes(axisStart)) candidates.unshift(axisStart);
+  if (!candidates.includes(axisEnd)) candidates.push(axisEnd);
+  const sorted = Array.from(new Set(candidates)).sort((a, b) => a - b);
+
+  if (plotWidthPx <= 0) return sorted;
+
+  // Both endpoints always survive; interior ticks yield to whichever tick was
+  // last kept. The end is reserved before the sweep so a tick crowding it is
+  // dropped rather than the endpoint itself.
+  const kept: number[] = [];
+  let lastPx = -Infinity;
+  for (const year of sorted) {
+    const px = (yearToPct(year) / 100) * plotWidthPx;
+    const isEndpoint = year === axisStart || year === axisEnd;
+    const endPx = plotWidthPx;
+    if (isEndpoint) { kept.push(year); lastPx = px; continue; }
+    if (px - lastPx < MIN_TICK_GAP_PX) continue;
+    if (endPx - px < MIN_TICK_GAP_PX) continue;
+    kept.push(year);
+    lastPx = px;
+  }
+  return kept;
 }
 
 // ── Vertical sizing — scales to fill whatever height the browser actually
@@ -197,42 +302,93 @@ export function sceneLabelText(scene: Pick<SceneTimelineScene, 'name' | 'city'>)
 
 export interface SceneBarGeometry {
   leftPct: number;
-  trueWidthPct: number;
+  widthPct: number;
   widthPx: number;
-  widthIsPx: boolean; // true when the true-duration width lost out to the face-driven minimum
   barHeight: number;
+  // Per-bar face metrics. Capped at the global values from
+  // computeVerticalSizing and shrunk only for a bar too narrow to seat its
+  // members at full size — see the comment on computeBarGeometry.
+  faceSize: number;
+  faceStep: number;
   labelText: string;
   labelWidthPx: number;
 }
 
+// Ratios that computeVerticalSizing uses to derive faceStep/facePad from
+// faceSize, repeated here so a per-bar face size can be re-derived
+// consistently rather than scaling three numbers independently.
+const FACE_STEP_RATIO = 0.62;
+// Mirrors `.scenes-timeline__faces { left: 14px }` in globals.css — the faces
+// strip is inset from the bar's left edge by a fixed amount, so that inset is
+// unavailable to the faces themselves and has to come off the usable width
+// here. computeVerticalSizing's facePad is NOT this number and is not used by
+// the renderer at all; the CSS owns the inset.
+const FACES_LEFT_INSET_PX = 14;
+// Below this a face stops reading as a face at all. A bar too narrow to seat
+// its members even at this size lets them overflow its right edge slightly,
+// which is a cosmetic blemish; widening the bar instead would misstate the
+// scene's end year, which is not.
+const MIN_BAR_FACE_SIZE = 11;
+
+// A bar's width is ALWAYS its true span on the axis. It used to be allowed to
+// grow past its real end year when its members' faces would not otherwise fit
+// (CBGB, three years and four members, was the case this existed for), with a
+// dashed tick drawn at the true end to admit the distortion. That traded a
+// correct chart for a footnote explaining an incorrect one, and the dashed
+// mark read as a rendering glitch.
+//
+// Instead the faces shrink to fit the bar they sit in: per-bar face size,
+// capped at the global size so nothing is ever drawn larger than the shared
+// rhythm, floored so it stays legible. Under the density-weighted axis only
+// the two narrowest bars need this at all, and both land within a couple of
+// pixels of the global size.
 export function computeBarGeometry(
   scene: SceneTimelineScene,
-  axisStart: number,
-  span: number,
+  scale: AxisScale,
   plotWidthPx: number,
   barHeight: number,
   faceSize: number,
   faceStep: number,
-  facePad: number,
 ): SceneBarGeometry {
-  const leftPct = ((scene.yearStart - axisStart) / span) * 100;
-  const trueWidthPct = ((scene.yearEnd - scene.yearStart) / span) * 100;
-  const trueWidthPx = (trueWidthPct / 100) * plotWidthPx;
+  const leftPct = scale.yearToPct(scene.yearStart);
+  const widthPct = Math.max(0, scale.yearToPct(scene.yearEnd) - leftPct);
+  const widthPx = (widthPct / 100) * plotWidthPx;
 
-  const facesWidthPx = facePad * 2 + faceSize + Math.max(0, scene.members.length - 1) * faceStep;
+  // n faces at size f occupy f * (1 + (n-1)*STEP), inside a strip already
+  // inset from the bar's left edge; invert that for the largest f this bar
+  // can actually seat.
+  const faceCount = Math.max(1, scene.members.length);
+  const usableWidthPx = Math.max(0, widthPx - FACES_LEFT_INSET_PX);
+  const widthPerUnit = 1 + (faceCount - 1) * FACE_STEP_RATIO;
+  const fittedSize = Math.floor(usableWidthPx / widthPerUnit);
 
-  const widthIsPx = facesWidthPx > trueWidthPx;
-  const widthPx = widthIsPx ? facesWidthPx : trueWidthPx;
+  let barFaceSize = Math.max(MIN_BAR_FACE_SIZE, Math.min(faceSize, fittedSize));
+  // Keep the shared step whenever the bar seats faces at full size, so the
+  // common case stays pixel-identical to the global rhythm.
+  let barFaceStep = barFaceSize === faceSize ? faceStep : Math.round(barFaceSize * FACE_STEP_RATIO);
+
+  // The step above is rounded, and rounding up can put the row back over the
+  // width `fittedSize` was just solved for — a one-pixel overflow on exactly
+  // the bars this logic exists to protect. Step down until it genuinely fits
+  // at the integer sizes actually rendered, or until the floor is reached.
+  while (
+    barFaceSize > MIN_BAR_FACE_SIZE
+    && barFaceSize + (faceCount - 1) * barFaceStep > usableWidthPx
+  ) {
+    barFaceSize -= 1;
+    barFaceStep = Math.round(barFaceSize * FACE_STEP_RATIO);
+  }
 
   const labelText = sceneLabelText(scene);
   const labelWidthPx = labelText.length * LABEL_GLYPH_W;
 
   return {
     leftPct,
-    trueWidthPct,
+    widthPct,
     widthPx,
-    widthIsPx,
     barHeight,
+    faceSize: barFaceSize,
+    faceStep: barFaceStep,
     labelText,
     labelWidthPx,
   };
