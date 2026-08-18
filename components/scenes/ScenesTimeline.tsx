@@ -16,6 +16,9 @@ interface Props {
   scenes: SceneTimelineScene[];
 }
 
+// See flipTooltipUp below — the vertical room a tooltip is assumed to need.
+const TOOLTIP_RESERVE_PX = 132;
+
 export default function ScenesTimeline({ scenes }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [plotSize, setPlotSize] = useState({ width: 1352, height: 560 });
@@ -99,6 +102,13 @@ export default function ScenesTimeline({ scenes }: Props) {
 
   const hoveredRow = hoveredId ? rows.find(r => r.scene.id === hoveredId) ?? null : null;
 
+  // Room a tooltip needs below a bar before it would overhang the plot. A
+  // deliberate over-estimate rather than a measured height: measuring would
+  // mean rendering first and repositioning after, which flickers on every
+  // first hover, and erring large only flips a row or two early.
+  const flipTooltipUp = hoveredRow !== null
+    && hoveredRow.rowTop + hoveredRow.geo.barHeight + 6 + TOOLTIP_RESERVE_PX > plotHeight;
+
   return (
     <div className="scenes-timeline">
       <div className="scenes-timeline__plot" ref={containerRef}>
@@ -148,8 +158,11 @@ export default function ScenesTimeline({ scenes }: Props) {
                   // ends here, softly," where a squared edge trailing into
                   // nothing reads as "this continues past what's drawn."
                   borderRadius: scene.isOpenEnded ? '999px 0 0 999px' : undefined,
+                  // Tapers but never reaches transparent: the bar has to
+                  // still be visibly present at the plot's extreme right edge,
+                  // or an ongoing scene reads as having stopped short of it.
                   background: scene.isOpenEnded
-                    ? `linear-gradient(90deg, ${scene.color}, color-mix(in srgb, ${scene.color} 60%, black) 70%, transparent 100%)`
+                    ? `linear-gradient(90deg, ${scene.color} 0%, color-mix(in srgb, ${scene.color} 72%, black) 62%, color-mix(in srgb, ${scene.color} 42%, transparent) 100%)`
                     : `linear-gradient(135deg, ${scene.color}, color-mix(in srgb, ${scene.color} 60%, black))`,
                   boxShadow: isHovered
                     ? `0 0 0 1px color-mix(in srgb, ${scene.color} 70%, white), 0 0 24px color-mix(in srgb, ${scene.color} 55%, transparent)`
@@ -196,11 +209,21 @@ export default function ScenesTimeline({ scenes }: Props) {
           <div
             className="scenes-timeline__tooltip"
             style={{
-              // Positioned relative to .scenes-timeline__plot directly now
-              // (an explicit pixel top, not the old top:100% which relied on
-              // being nested inside the row it belonged to) — just below the
-              // hovered row's own bar.
-              top: hoveredRow.rowTop + hoveredRow.geo.barHeight + 6,
+              // Positioned relative to .scenes-timeline__plot directly (an
+              // explicit pixel offset, not the old top:100% which relied on
+              // being nested inside the row it belonged to).
+              //
+              // Below the bar normally, ABOVE it for rows near the bottom.
+              // The flip is not cosmetic: .scenes-overlay is the scroll
+              // container, so a tooltip hanging past the plot's bottom edge
+              // grew the scrollable height on hover and shrank it again on
+              // unhover — the page visibly jumped every time the pointer left
+              // a bottom-row bar. Anchoring by `bottom` when flipped means the
+              // tooltip grows upward from the bar's top edge and never needs
+              // its own height measured.
+              ...(flipTooltipUp
+                ? { bottom: Math.max(0, plotHeight - hoveredRow.rowTop + 6) }
+                : { top: hoveredRow.rowTop + hoveredRow.geo.barHeight + 6 }),
               ...(hoveredRow.wouldClipRight
                 ? { left: hoveredRow.barLeftPx, transform: 'translateX(-100%)' }
                 : { left: hoveredRow.barRightPx }),

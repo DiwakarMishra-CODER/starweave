@@ -23,14 +23,27 @@ export interface SceneTimelineScene {
   members: SceneTimelineMember[];
 }
 
-// A scene with no yearEnd (currently just Windmill) hasn't closed — its
-// bands are all still active. It still needs SOME width for axis/layout
-// math, so it gets a synthetic span rather than a real end date: matches
-// the scene's own original 4-year run (2016-2020) for visual continuity,
-// not an attempt to guess how long it'll actually last. The renderer draws
-// this with a fade instead of a hard stop specifically so nobody reads the
-// synthetic number as a claimed end date.
+// A scene with no yearEnd (currently just Windmill) hasn't closed — its bands
+// are all still active. It still needs SOME definite number for axis and width
+// math, so it gets a synthetic end: the CURRENT year, i.e. "still running as of
+// now," which is the only end date that is actually true of an ongoing scene.
+//
+// This used to be a flat yearStart + 4, chosen to mirror Windmill's own first
+// four years. That silently went stale — by 2026 it was drawing a decade-old
+// scene as a four-year sliver pinned to the right edge, roughly a third the
+// width it should have. Deriving from the current year is self-maintaining:
+// the bar grows as the scene keeps running, without anyone remembering to
+// bump a constant.
+//
+// The floor still applies so a scene that started this year (or, defensively,
+// one with a future start) can't collapse to a zero-width bar. The renderer
+// draws an open-ended scene with a fade rather than a hard stop specifically
+// so this synthetic number is never read as a claimed end date.
 const OPEN_ENDED_MIN_SPAN = 4;
+
+function resolveOpenEndedYearEnd(yearStart: number): number {
+  return Math.max(yearStart + OPEN_ENDED_MIN_SPAN, new Date().getFullYear());
+}
 
 // One row per scene, ordered by member count descending (not by start year).
 // Packed rows (an earlier attempt shared a row between non-overlapping
@@ -86,7 +99,7 @@ export function resolveSceneTimelineScenes(graphData: GraphData): SceneTimelineS
         city: s.city,
         era: s.era,
         yearStart: s.yearStart,
-        yearEnd: s.yearEnd ?? s.yearStart + OPEN_ENDED_MIN_SPAN,
+        yearEnd: s.yearEnd ?? resolveOpenEndedYearEnd(s.yearStart),
         isOpenEnded: s.yearEnd === undefined,
         color: SCENE_COLORS[s.id] ?? DEFAULT_SCENE_COLOR,
         row,
