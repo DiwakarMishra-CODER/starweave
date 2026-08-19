@@ -4,7 +4,7 @@
 
 **[starweaves.vercel.app](https://starweaves.vercel.app/)**
 
-In mainstream music, legacy is measured in sales. In underground music it is measured in descendants: the Velvet Underground's first album famously sold almost nothing, and nearly everyone who bought a copy started a band. Starweave is an attempt to make that claim *checkable* - to render influence as a navigable graph where every edge carries a real, named source you can go and read.
+In mainstream music, legacy is measured in sales. In underground music it is measured in descendants: the Velvet Underground's first album famously sold almost nothing, and nearly everyone who bought a copy started a band. Starweave is an attempt to make that claim *checkable* - to render influence as a graph where 887 of its 1,041 edges carry a real, named source you can go and read, and the rest say plainly why they don't.
 
 ![The full constellation, all seven realms, with the evidence filter](docs/images/hero-constellation.jpg)
 
@@ -31,7 +31,7 @@ Starweave is not a music-discovery app with a graph bolted on. The graph *is* th
 
 Three things make it more than a D3 demo:
 
-1. **The data is hand-curated and cited.** 1,041 edges, each carrying a real source. 52% are first-person - the artist themselves saying it, on the record. Not scraped, not inferred from co-listening.
+1. **The data is hand-curated and cited.** 887 of 1,041 edges carry a named source; 544 are first-person, the artist themselves saying it on the record. Not scraped, not inferred from co-listening. The 132 edges nobody has stated on the record are marked `unsourceable` rather than quietly dropped or quietly asserted.
 2. **It refuses to guess.** A claim with no findable source is either marked as unsourced or not written at all. 26 recorded artist *denials* are stored separately so a future pass cannot "rediscover" a myth the artist has already rejected.
 3. **It is one persistent canvas.** The force simulation never unmounts. Navigating from the graph to an artist page to a genre timeline and back preserves camera, selection and physics state.
 
