@@ -20,7 +20,6 @@ In mainstream music, legacy is measured in sales. In underground music it is mea
 - [Project structure](#project-structure)
 - [Running it](#running-it)
 - [Testing](#testing)
-- [Known gaps](#known-gaps)
 
 ---
 
@@ -268,18 +267,6 @@ npm run dev           # localhost:3000
 - **Build validator** - dangling edge endpoints must fail the build
 - **BFS path-finding** - the shortest-path traversal between any two artists
 - **Component rendering**
-
----
-
-## Known gaps
-
-Kept honest rather than hidden:
-
-- **Not deployed yet.** `npm run build` produces a working production build; no host is configured.
-- **22 edges remain `unchecked`** - inherited from early passes, not yet verified.
-- **Per-artist genre tagging is under-specified.** The genre *vocabulary* has been audited three times; which genres individual artists carry has not. A handful are known to be tagged inconsistently with their actual sound.
-- **`/genres` labels shrink below ~1250px** on desktop. Phones scroll horizontally at full label size instead; the middle range is the unsolved case.
-- **A few album covers fall back to placeholders** where no artwork exists on any of the three enrichment sources.
 
 ---
 
