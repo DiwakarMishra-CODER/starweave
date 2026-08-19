@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import type { Artist, Genre, Scene } from '@/data/types';
+import type { Artist, Edge, Genre, Scene } from '@/data/types';
 import ArtistCard from '@/components/artist/ArtistCard';
 import FilterDropdown, { type FilterOption } from '@/components/browse/FilterDropdown';
 import SortDropdown, { type SortOption } from '@/components/browse/SortDropdown';
@@ -20,6 +20,7 @@ interface Props {
   artists: Artist[];
   genres: Genre[];
   scenes: Scene[];
+  edges: Edge[];
 }
 
 interface EraBucket {
@@ -59,7 +60,26 @@ function toggleId(prev: Set<string>, id: string): Set<string> {
   return next;
 }
 
-export default function BrowseClient({ artists, genres, scenes }: Props) {
+export default function BrowseClient({ artists, genres, scenes, edges }: Props) {
+  // One pass over the edge set for the whole grid, rather than each card
+  // filtering 1,041 edges for itself. Roots = who shaped them (outgoing),
+  // descendants = who they shaped (incoming) -- the same split the artist
+  // pages label with those words.
+  const connectionCounts = useMemo(() => {
+    const counts = new Map<string, { roots: number; descendants: number }>();
+    const bump = (id: string, key: 'roots' | 'descendants') => {
+      const cur = counts.get(id) ?? { roots: 0, descendants: 0 };
+      cur[key] += 1;
+      counts.set(id, cur);
+    };
+    for (const e of edges) {
+      if (e.type !== 'influence') continue;
+      bump(e.source, 'roots');
+      bump(e.target, 'descendants');
+    }
+    return counts;
+  }, [edges]);
+
   const [query, setQuery] = useState('');
   const [selectedGenres, setSelectedGenres] = useState<Set<string>>(new Set());
   const [selectedScenes, setSelectedScenes] = useState<Set<string>>(new Set());
@@ -247,7 +267,13 @@ export default function BrowseClient({ artists, genres, scenes }: Props) {
 
       <div className="artist-grid">
         {filtered.map(artist => (
-          <ArtistCard key={artist.id} artist={artist} genreNames={genreNames} />
+          <ArtistCard
+            key={artist.id}
+            artist={artist}
+            genreNames={genreNames}
+            roots={connectionCounts.get(artist.id)?.roots ?? 0}
+            descendants={connectionCounts.get(artist.id)?.descendants ?? 0}
+          />
         ))}
       </div>
 

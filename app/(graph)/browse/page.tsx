@@ -23,11 +23,11 @@ export default function BrowsePage() {
         <header className="browse-page__header">
           <h1 className="browse-page__title">Browse artists</h1>
           <p className="browse-page__subtitle">
-            {data.artists.length} artists across {data.edges.length} influence edges
+            {data.artists.length} artists, {data.edges.length.toLocaleString()} documented influences
           </p>
         </header>
 
-        <BrowseClient artists={data.artists} genres={data.genres} scenes={data.scenes} />
+        <BrowseClient artists={data.artists} genres={data.genres} scenes={data.scenes} edges={data.edges} />
       </div>
     </div>
   );

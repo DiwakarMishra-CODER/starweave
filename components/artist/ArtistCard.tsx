@@ -5,9 +5,23 @@ import { resolveNodeColor } from '@/lib/colors';
 interface Props {
   artist: Artist;
   genreNames: Record<string, string>;
+  /**
+   * Counted by the caller once over the whole edge set, not derived from
+   * artist.influenceScore. That field is in-degree ONLY, and the card used to
+   * print it as "N influences" -- which says the opposite of what it measures:
+   * the Velvet Underground cites nobody, yet its card claimed 56 influences.
+   * It also meant the 96 artists with in-degree 0 (a third of the graph,
+   * Alvvays among them) rendered with no number at all despite having a list
+   * of stated influences.
+   *
+   * Named for the artist page's own sections so the two agree: roots are who
+   * shaped them, descendants are who they shaped.
+   */
+  roots: number;
+  descendants: number;
 }
 
-export default function ArtistCard({ artist, genreNames }: Props) {
+export default function ArtistCard({ artist, genreNames, roots, descendants }: Props) {
   const color = resolveNodeColor(artist);
   const genreLabels = artist.genres
     .slice(0, 2)
@@ -54,9 +68,16 @@ export default function ArtistCard({ artist, genreNames }: Props) {
         {genreLabels && (
           <p className="artist-card__genres">{genreLabels}</p>
         )}
-        {typeof artist.influenceScore === 'number' && artist.influenceScore > 0 && (
+        {/* Descendants first: that is the figure the Influence sort ranks by,
+            so the order of the grid stays explained by the first number on the
+            card. A zero side is dropped rather than printed -- but never both,
+            since the no-orphans rule means every artist has at least one edge. */}
+        {(descendants > 0 || roots > 0) && (
           <p className="artist-card__score">
-            {artist.influenceScore} {artist.influenceScore === 1 ? 'influence' : 'influences'}
+            {[
+              descendants > 0 && `${descendants} ${descendants === 1 ? 'descendant' : 'descendants'}`,
+              roots > 0 && `${roots} ${roots === 1 ? 'root' : 'roots'}`,
+            ].filter(Boolean).join(' · ')}
           </p>
         )}
       </div>

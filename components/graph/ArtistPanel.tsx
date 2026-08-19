@@ -423,7 +423,7 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
               <>
                 <div className="panel-divider" />
                 <div className="panel-section">
-                  <p className="panel-section-title">Roots</p>
+                  <p className="panel-section-title">Roots ({influences.length})</p>
                   <ul className="panel-edge-list">
                     {influences.map(edge => {
                       const target = artistMap[edge.target];

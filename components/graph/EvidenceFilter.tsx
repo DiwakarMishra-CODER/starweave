@@ -1,86 +1,64 @@
 'use client';
 
-import { useState } from 'react';
 import type { EvidenceFilter } from '@/data/types';
 
 interface Props {
   value: EvidenceFilter;
   onChange: (next: EvidenceFilter) => void;
-  /** Edge count surviving each mode, computed once by the caller. */
+  /** Connection count surviving each mode, computed once by the caller. */
   counts: Record<EvidenceFilter, number>;
 }
 
-// The graph's whole argument is that its edges are checkable. This control is
-// how a visitor tests that rather than taking it on faith: drop everything
-// except what the artists said themselves, and look at what survives.
+// The graph's whole argument is that its connections are checkable. This is how
+// a visitor tests that instead of taking it on faith: hide everything except
+// what the artists said themselves, and see what survives.
 //
-// Two modes, not three — see the note on EvidenceFilter in data/types.ts for
-// why the middle "has a citation" tier was cut. Labels are written as things a
-// person would say out loud; "first-person", "sourceTier" and "cited" are the
-// data model's vocabulary and have no business on screen.
-const MODES: { value: EvidenceFilter; label: string; hint: string }[] = [
-  {
-    value: 'all',
-    label: 'Everything',
-    hint: 'Every documented influence, however it was sourced',
-  },
-  {
-    value: 'first-person',
-    label: 'In their own words',
-    hint: 'Only where the artist said it themselves, on the record',
-  },
+// Two visible options rather than a single checkbox. A lone tickbox states an
+// action but not that there is a choice, so there is no reason to click it; two
+// rows with one lit shows both states at once and reads as a control on sight.
+//
+// The words name the SOURCE OF THE CLAIM, because that is the only thing
+// separating the two sets. An earlier version said "Evidence — Everything / In
+// their own words · 1,041 edges", which named the axis but never the thing:
+// "edges" is graph vocabulary to someone who came here for music, and neither
+// mode said what picking it would do.
+const MODES: { value: EvidenceFilter; label: string }[] = [
+  { value: 'all', label: 'All influences' },
+  { value: 'first-person', label: 'Said by the artist' },
 ];
 
 export default function EvidenceFilterControl({ value, onChange, counts }: Props) {
-  // Starts open: this is the control that explains what the project is, and a
-  // collapsed bar gives a first-time visitor no reason to look for it. Once
-  // they know it is there, collapsing hands the corner of the canvas back.
-  const [open, setOpen] = useState(true);
-  const active = MODES.find(m => m.value === value) ?? MODES[0];
+  // Derived, never typed: the caption can't drift from the data behind it.
+  const fromOthers = counts.all - counts['first-person'];
 
   return (
-    <div
-      className={`evidence-filter${open ? ' evidence-filter--open' : ''}`}
-      role="group"
-      aria-label="Filter connections by evidence"
-    >
-      {/* The header is the toggle in both states, so the count and the control
-          never separate — collapsed, this whole bar is the only thing left. */}
-      <button
-        className="evidence-filter__head"
-        onClick={() => setOpen(v => !v)}
-        aria-expanded={open}
-        aria-label={open ? 'Collapse evidence filter' : 'Expand evidence filter'}
-      >
-        <span className="evidence-filter__title">Evidence</span>
-        <span className="evidence-filter__count">
-          <strong>{counts[value].toLocaleString()}</strong> edges
-        </span>
-        {/* Collapsed, the count alone doesn't say WHICH mode produced it. */}
-        {!open && value !== 'all' && (
-          <span className="evidence-filter__badge">{active.label}</span>
-        )}
-        <span className="evidence-filter__chevron" aria-hidden>⌄</span>
-      </button>
+    <div className="evidence-filter" role="radiogroup" aria-label="Which influences to show">
+      <p className="evidence-filter__eyebrow">Show</p>
 
-      {open && (
-        <div className="evidence-filter__body">
-          <div className="evidence-filter__options">
-            {MODES.map(mode => (
-              <button
-                key={mode.value}
-                className={`evidence-filter__option${value === mode.value ? ' evidence-filter__option--active' : ''}`}
-                onClick={() => onChange(mode.value)}
-                aria-pressed={value === mode.value}
-                title={`${mode.hint} — ${counts[mode.value].toLocaleString()} edges`}
-              >
-                {mode.label}
-              </button>
-            ))}
-          </div>
-          <p className="evidence-filter__hint">{active.hint}</p>
-        </div>
-      )}
+      <div className="evidence-filter__options">
+        {MODES.map(mode => {
+          const active = value === mode.value;
+          return (
+            <button
+              key={mode.value}
+              type="button"
+              role="radio"
+              aria-checked={active}
+              className={`evidence-filter__option${active ? ' evidence-filter__option--active' : ''}`}
+              onClick={() => onChange(mode.value)}
+            >
+              <span className="evidence-filter__option-label">{mode.label}</span>
+              <span className="evidence-filter__option-count">{counts[mode.value].toLocaleString()}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Teaches the distinction once, so the two numbers above mean something
+          rather than reading as trivia. */}
+      <p className="evidence-filter__note">
+        The other {fromOthers.toLocaleString()} come from critics and press.
+      </p>
     </div>
   );
 }
