@@ -4569,30 +4569,39 @@ h3 { font-size: 1.1rem; }
 
 
 /* ── Evidence filter ──────────────────────────────────────────────
-   Bottom-left: the only corner of the canvas with no permanent chrome
-   ("Jump to…" top-left, search top-right, onboarding bottom-centre, panel
-   right). Sits above the mobile bottom sheet rather than under it — see the
+   A collapsible bar, bottom-left: the only corner of the canvas with no
+   permanent chrome ("Jump to…" top-left, search top-right, onboarding
+   bottom-centre, panel right). Collapsed it is a single line carrying the
+   live edge count; expanded it adds the two modes and a line of explanation.
+   Sits above the mobile bottom sheet rather than under it — see the
    narrow-layout rule at the end of this block. */
 .evidence-filter {
   position: absolute;
   bottom: 1.25rem;
   left: 1.25rem;
   z-index: 20;
-  width: 200px;
-  padding: 0.6rem 0.7rem 0.55rem;
   background: rgba(14, 11, 26, 0.82);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--color-border);
+  border-radius: 999px;
+  overflow: hidden;
+  transition: border-radius var(--transition);
+}
+
+.evidence-filter--open {
   border-radius: var(--radius);
 }
 
+/* The whole header is the toggle, so the count and the control never come
+   apart — collapsed, this row is the entire component. */
 .evidence-filter__head {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
   gap: 0.5rem;
-  margin-bottom: 0.45rem;
+  width: 100%;
+  padding: 0.42rem 0.75rem;
+  text-align: left;
 }
 
 .evidence-filter__title {
@@ -4609,6 +4618,7 @@ h3 { font-size: 1.1rem; }
   font-family: var(--font-mono);
   font-size: 0.625rem;
   color: var(--color-muted);
+  margin-right: auto;
 }
 
 .evidence-filter__count strong {
@@ -4617,18 +4627,46 @@ h3 { font-size: 1.1rem; }
   font-variant-numeric: tabular-nums;
 }
 
+/* Collapsed, a bare count doesn't say which mode produced it. Only shown
+   when a filter is actually narrowing something. */
+.evidence-filter__badge {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  color: var(--color-text);
+  padding: 0.08rem 0.4rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-root) 18%, transparent);
+  white-space: nowrap;
+}
+
+.evidence-filter__chevron {
+  font-size: 0.9rem;
+  line-height: 0.6;
+  color: var(--color-muted);
+  transition: transform var(--transition);
+}
+
+.evidence-filter--open .evidence-filter__chevron {
+  transform: rotate(180deg);
+}
+
+.evidence-filter__body {
+  padding: 0 0.75rem 0.6rem;
+}
+
+/* Side by side rather than stacked — two options read as a switch, which is
+   what this is, and it keeps the expanded state bar-shaped. */
 .evidence-filter__options {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
 .evidence-filter__option {
-  text-align: left;
-  padding: 0.3rem 0.45rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 5px;
   font-family: var(--font-body);
   font-size: 0.7rem;
+  white-space: nowrap;
   color: var(--color-muted);
   transition: background var(--transition), color var(--transition);
 }
@@ -4646,6 +4684,7 @@ h3 { font-size: 1.1rem; }
 
 .evidence-filter__hint {
   margin-top: 0.4rem;
+  max-width: 280px;
   font-size: 0.625rem;
   line-height: 1.35;
   color: var(--color-muted);
@@ -4661,12 +4700,7 @@ h3 { font-size: 1.1rem; }
   .evidence-filter {
     left: 0.75rem;
     right: 0.75rem;
-    width: auto;
     bottom: calc(104px + env(safe-area-inset-bottom, 0px) + 0.6rem);
-  }
-
-  .evidence-filter__options {
-    flex-direction: row;
   }
 
   .evidence-filter__option {
@@ -4676,7 +4710,7 @@ h3 { font-size: 1.1rem; }
     padding: 0.35rem 0.2rem;
   }
 
-  /* Three labels across a phone leave no room for a sentence under them, and
+  /* Two labels plus a sentence is more than a phone's width can carry, and
      the active option already names the mode. */
   .evidence-filter__hint {
     display: none;
