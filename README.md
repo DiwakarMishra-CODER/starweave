@@ -2,6 +2,8 @@
 
 **An interactive map of who influenced whom in indie music - 293 artists, 1,041 sourced influence relationships, rooted at the Velvet Underground.**
 
+**[starweaves.vercel.app](https://starweaves.vercel.app/)**
+
 In mainstream music, legacy is measured in sales. In underground music it is measured in descendants: the Velvet Underground's first album famously sold almost nothing, and nearly everyone who bought a copy started a band. Starweave is an attempt to make that claim *checkable* - to render influence as a navigable graph where every edge carries a real, named source you can go and read.
 
 ![The full constellation, all seven realms, with the evidence filter](docs/images/hero-constellation.jpg)
@@ -240,6 +242,9 @@ tests/                vitest - BFS, build validator, components
 ---
 
 ## Running it
+
+The deployed build is at [starweaves.vercel.app](https://starweaves.vercel.app/).
+To run it locally:
 
 ```bash
 npm install
