@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { loadGraphData } from '@/lib/graph-data';
 import { SCENE_COLORS, DEFAULT_SCENE_COLOR } from '@/lib/colors';
 import ArtistBackground from '@/components/artist/ArtistBackground';
+import BackButton from '@/components/ui/BackButton';
 import SceneMemberRoster from '@/components/scenes/SceneMemberRoster';
 import IgniteGraphButton from '@/components/artist/IgniteGraphButton';
 
@@ -57,6 +58,7 @@ export default async function ScenePage({ params }: Props) {
     >
       <ArtistBackground layerColor={sceneColor} boost={1.1} className="scene-bg" />
       <div className="artist-bg-scrim" aria-hidden />
+      <BackButton />
 
       {/* Hero + Place and time — 700px reading width, same as a genre page's
           opening beat. Scene pages stay short: no lineage strip (scenes

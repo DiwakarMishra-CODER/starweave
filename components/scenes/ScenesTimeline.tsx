@@ -11,6 +11,7 @@ import {
   LABEL_GAP,
   type SceneTimelineScene,
 } from '@/lib/scenes-timeline';
+import { useCoarsePointer } from '@/lib/use-media-query';
 
 interface Props {
   scenes: SceneTimelineScene[];
@@ -23,6 +24,11 @@ export default function ScenesTimeline({ scenes }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [plotSize, setPlotSize] = useState({ width: 1352, height: 560 });
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const isCoarsePointer = useCoarsePointer();
+  // Touch only: which scene the next tap would OPEN. Separate from hoveredId
+  // because a synthesised mouseenter lands before the click on the same tap,
+  // so hoveredId is already set by the time the click handler runs.
+  const [touchArmedId, setTouchArmedId] = useState<string | null>(null);
 
   // .scenes-timeline__plot is flex:1 inside a column that fills the
   // viewport (see globals.css) — its rendered height is whatever's actually
@@ -136,7 +142,21 @@ export default function ScenesTimeline({ scenes }: Props) {
           const isDimmed = hoveredId !== null && !isHovered;
 
           const onHover = () => setHoveredId(scene.id);
-          const onUnhover = () => setHoveredId(null);
+          // Touch keeps the tooltip up until another bar is tapped — the
+          // synthesised mouseleave fires immediately after the tap and would
+          // otherwise close the tooltip that same gesture just opened.
+          const onUnhover = () => { if (!isCoarsePointer) setHoveredId(null); };
+          // Both the bar and the label are <Link>s, so on touch the first tap
+          // navigated straight to the scene page — meaning the tooltip (dates,
+          // member count, the whole reason a bar is hoverable) was unreachable
+          // on a phone. First tap now shows it; a second tap opens the page.
+          const onActivate = (e: React.MouseEvent) => {
+            if (!isCoarsePointer) return;
+            if (touchArmedId === scene.id) return;
+            e.preventDefault();
+            setTouchArmedId(scene.id);
+            setHoveredId(scene.id);
+          };
 
           return (
             <div
@@ -170,6 +190,7 @@ export default function ScenesTimeline({ scenes }: Props) {
                 }}
                 onMouseEnter={onHover}
                 onMouseLeave={onUnhover}
+                onClick={onActivate}
                 aria-label={`${scene.name} — ${scene.city}, ${scene.era} — ${scene.members.length} artists${scene.isOpenEnded ? ', ongoing' : ''}`}
               >
                 <span className="scenes-timeline__faces">
@@ -196,6 +217,7 @@ export default function ScenesTimeline({ scenes }: Props) {
                 style={{ ...labelStyle, top: geo.barHeight / 2, '--scene-color': scene.color } as React.CSSProperties}
                 onMouseEnter={onHover}
                 onMouseLeave={onUnhover}
+                onClick={onActivate}
               >
                 {geo.labelText}
               </Link>
@@ -234,6 +256,19 @@ export default function ScenesTimeline({ scenes }: Props) {
               {hoveredRow.scene.city} · {hoveredRow.scene.era} · {hoveredRow.scene.members.length} artists
             </p>
             <p className="scenes-timeline__tooltip-members">{hoveredRow.scene.members.map(m => m.name).join(', ')}</p>
+            {/* Touch only: the first tap opened this tooltip instead of
+                following the bar's link, so the page has to say that the
+                link is still there and how to take it. The tooltip is
+                pointer-events:none, so this states the gesture rather than
+                being a tap target itself. */}
+            {isCoarsePointer && touchArmedId === hoveredRow.scene.id && (
+              <p
+                className="scenes-timeline__tooltip-cta"
+                style={{ '--scene-color': hoveredRow.scene.color } as React.CSSProperties}
+              >
+                Tap again to open {hoveredRow.scene.name} →
+              </p>
+            )}
           </div>
         )}
       </div>

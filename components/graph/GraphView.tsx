@@ -1,12 +1,14 @@
 'use client';
 
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect, useMemo, useRef } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
-import type { GraphData, Realm } from '@/data/types';
+import type { GraphData, Realm, EvidenceFilter } from '@/data/types';
+import { edgePassesEvidenceFilter } from '@/data/types';
 import GraphControls from './GraphControls';
 import ArtistSearch from './ArtistSearch';
 import ArtistPanel from './ArtistPanel';
+import EvidenceFilterControl from './EvidenceFilter';
 import NebulaBackground from './NebulaBackground';
 import GraphOnboarding from './GraphOnboarding';
 
@@ -28,14 +30,24 @@ interface Props {
 export default function GraphView({ graphData }: Props) {
   const router = useRouter();
   const pathname = usePathname();
-  // True on /artist/[slug], /genre/[genre], /genres, /scene/[scene],
-  // /scenes, or /browse — the graph stays mounted underneath that page's
-  // fixed overlay (see app/(graph)/layout.tsx) rather than unmounting, so
-  // this flag exists purely to tell the canvas it's fully hidden and can
-  // stop its continuous per-frame redraw until the user navigates back.
+  // True on every content route in the (graph) group — the graph stays
+  // mounted underneath that page's fixed overlay (see app/(graph)/layout.tsx)
+  // rather than unmounting, so this flag exists purely to tell the canvas it's
+  // fully hidden and can stop its continuous per-frame redraw until the user
+  // navigates back.
+  //
+  // Every entry here has to be kept in step with what actually lives in the
+  // route group. /about was the last page still sitting OUTSIDE it, which
+  // meant navigating from /about to the graph crossed a route-group boundary
+  // and forced (graph)/layout.tsx — and therefore GraphView's ~293-node,
+  // PRESETTLE_TICKS-deep presettleLayout — to mount from scratch, a ~6s stall
+  // with the old page still on screen and no feedback. Third time this exact
+  // bug appeared (see the /genre, /scene and /browse moves before it): moving
+  // a page into the group and adding it here are two halves of one fix.
   const isBackgrounded =
     pathname.startsWith('/artist/') || pathname.startsWith('/genre/') || pathname === '/genres' ||
-    pathname.startsWith('/scene/') || pathname === '/scenes' || pathname.startsWith('/browse');
+    pathname.startsWith('/scene/') || pathname === '/scenes' || pathname.startsWith('/browse') ||
+    pathname === '/about';
   const [selectedId, setSelectedId] = useState<string | null>(null);
   // A genre's or scene's member artist ids, from ?genre=/?scene= — highlighted
   // as a cluster in the graph. Mutually exclusive with selectedId: setting one
@@ -50,6 +62,9 @@ export default function GraphView({ graphData }: Props) {
   // Single-select: at most one realm filtered at a time. null = no filter,
   // everything shown.
   const [activeRealm, setActiveRealm] = useState<Realm | null>(null);
+  // Evidence filter — ghosts edges that don't meet the chosen sourcing bar.
+  // See edgePassesEvidenceFilter in data/types.ts.
+  const [evidenceFilter, setEvidenceFilter] = useState<EvidenceFilter>('all');
   // Which genre/scene (if any) is the current highlightSetIds source — kept
   // alongside the generic member-id list so GraphControls' Genres/Scenes
   // tabs know which single row (if any) to show as selected, the same way
@@ -132,6 +147,22 @@ export default function GraphView({ graphData }: Props) {
     }
 
     if (genreParam) {
+      // Already showing exactly this genre — bail before touching any state.
+      // This effect fires on far more than real navigations (see the header
+      // comment above), and re-applying identical state is NOT free:
+      // setHighlightSetIds would hand back a BRAND-NEW array every time (new
+      // activeClusterIds identity, so ForceGraph's spread and camera effects
+      // both re-fire), and setHighlightSetPinnedId(null) would throw away the
+      // member the user just clicked. Together those two made clicking a set
+      // member move the camera to that member and then snap it straight back
+      // to the set's auto-picked hub about a second later.
+      //
+      // Same bug class, same fix as the activeRealm regression described in
+      // the header comment — the effect was clearing state that the handlers
+      // already own. Every handler that genuinely needs to drop the pin
+      // (handleSelectRealm/Genre/Scene, handleNodeClick, handleSelectArtist,
+      // handleBackgroundClick, handlePanelClose) does it itself.
+      if (genreParam === activeGenreId) return;
       const ids = graphData.artists.filter(a => a.genres.includes(genreParam)).map(a => a.id);
       if (ids.length > 0) {
         setSelectedId(null);
@@ -144,6 +175,8 @@ export default function GraphView({ graphData }: Props) {
     }
 
     if (sceneParam) {
+      // Same early bail as the genre branch above, for the same reason.
+      if (sceneParam === activeSceneId) return;
       const scene = graphData.scenes.find(s => s.id === sceneParam);
       const ids = scene ? scene.memberIds.filter(id => graphData.artists.some(a => a.id === id)) : [];
       if (ids.length > 0) {
@@ -161,12 +194,21 @@ export default function GraphView({ graphData }: Props) {
     setHighlightSetPinnedId(null);
     setActiveGenreId(null);
     setActiveSceneId(null);
-  }, [searchParams, graphData.artists, graphData.scenes]);
+    // activeGenreId/activeSceneId are read by the two early bails above, so
+    // they belong here — a genuine navigation to a DIFFERENT genre/scene still
+    // falls through and re-applies everything.
+  }, [searchParams, graphData.artists, graphData.scenes, activeGenreId, activeSceneId]);
 
   // The artist shown in the slide-over panel — either the fully-focused
   // node, or (while browsing within a set) the pinned set member. The two
   // are mutually exclusive in practice: highlightSetPinnedId is only ever
   // set while selectedId is null (see handleSetMemberClick).
+  // Counted once here rather than per render of the control.
+  const evidenceCounts = useMemo(() => ({
+    all: graphData.edges.length,
+    'first-person': graphData.edges.filter(e => edgePassesEvidenceFilter(e, 'first-person')).length,
+  }), [graphData.edges]);
+
   const panelArtistId = selectedId ?? highlightSetPinnedId;
   const selectedArtist = panelArtistId
     ? (graphData.artists.find(a => a.id === panelArtistId) ?? null)
@@ -347,8 +389,15 @@ export default function GraphView({ graphData }: Props) {
           onSetMemberClick={handleSetMemberClick}
           onBackgroundClick={handleBackgroundClick}
           isBackgrounded={isBackgrounded}
+          evidenceFilter={evidenceFilter}
         />
       </div>
+
+      <EvidenceFilterControl
+        value={evidenceFilter}
+        onChange={setEvidenceFilter}
+        counts={evidenceCounts}
+      />
 
       <ArtistPanel
         artist={selectedArtist}

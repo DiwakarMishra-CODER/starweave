@@ -3,9 +3,11 @@
 import { useRef, useEffect, useMemo, useCallback, useState } from 'react';
 import ForceGraph2D from 'react-force-graph-2d';
 import { forceSimulation, forceLink, forceManyBody, forceCenter, forceX, forceY } from 'd3-force-3d';
-import type { Artist, Edge, GraphData, Layer, Realm } from '@/data/types';
+import type { Artist, Edge, EvidenceFilter, GraphData, Layer, Realm } from '@/data/types';
+import { edgePassesEvidenceFilter } from '@/data/types';
 import { resolveNodeColor, resolveNodeGlow, resolveEdgeTint } from '@/lib/colors';
 import { getNeighbors, pathEdgeKeys } from '@/lib/graph-utils';
+import { useCoarsePointer } from '@/lib/use-media-query';
 
 // Dev-only zoom readout (tuning instrument for the zoom-based cloud/detail
 // reveal work) — flip to false to remove the on-screen number without
@@ -162,6 +164,15 @@ const FOCUS_MIN_SCREEN_R = 28;           // px — focused node's circle/photo f
 const NEIGHBOR_MIN_SCREEN_R = 20;        // px — neighbor nodes' circle/photo floor
 const FOCUS_LABEL_MIN_SCREEN_PX = 13;    // px — focused node's label floor
 const NEIGHBOR_LABEL_MIN_SCREEN_PX = 11; // px — neighbor labels' floor
+
+// px — minimum hit-target RADIUS on a touch device, i.e. a ~22px-wide target.
+// Applied in paintNodePointerArea only, never in drawNode: this inflates what
+// is tappable without changing what is drawn. Kept below the usual 44px
+// accessibility diameter on purpose — at cloud zoom the constellation is dense
+// enough that a 44px target would swallow several neighbouring nodes, and a
+// tap landing on the wrong artist is worse than one that misses.
+const MIN_TOUCH_SCREEN_R = 11;
+
 
 // ── Zoom-size dampening (detail zoom decluttering) ──────────────────────────
 // Node radius/label fontSize are otherwise graph-space constants with no
@@ -696,6 +707,12 @@ const TRANSITION_MS = 220;
 // size; the same alpha now means far more edges crossing the same detail-
 // zoom viewport, reading as a bright uniform crosshatch over the nodes
 // rather than individually legible relationships.
+// What an edge fades to when it fails the active evidence filter. Ghosted,
+// never removed: the constellation's shape IS the thing being looked at, and
+// deleting half its threads would read as a rendering fault rather than as an
+// argument about sourcing. Low enough that the surviving edges clearly carry
+// the structure, high enough that the discarded ones are still visibly there.
+const EVIDENCE_FAIL_ALPHA_MULT = 0.12;
 const EDGE_IDLE_ALPHA = 0.06;
 const EDGE_IDLE_WIDTH = 0.6;
 
@@ -719,7 +736,10 @@ const CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM = 0.015; // opacity — barely-there 
 // a bare, easy-to-retune constant rather than derived from anything else —
 // expect to want a value between 3 and 6 depending on how this reads with
 // six realms; nudge here only, no other formula depends on it.
-const CORE_EDGE_THREAD_GLOW_BLUR = 3; // intensity — soft glow, strongest at cloud zoom, 0 by detail zoom
+const CORE_EDGE_THREAD_GLOW_BLUR = 3; // now a WIDTH delta in px, not a shadowBlur radius — see the core-edge branch in drawLink for why the blur was removed
+// How faint the wide underlay stroke is relative to the thread itself. Low
+// enough that the pair reads as one soft filament rather than two lines.
+const CORE_EDGE_THREAD_GLOW_ALPHA_FRACTION = 0.45;
 
 // Every other edge (within-realm, and cross-realm bridges that don't touch
 // core) still fades all the way to 0 above — reads as bare scattered dots
@@ -747,6 +767,28 @@ const PANEL_WIDTH = 380;
 // The expandable panel (200px) only appears on demand, so 160px is accurate
 // for normal graph interaction and reclaims 60px of usable horizontal space.
 const LEFT_UI_WIDTH = 160;
+// Touch equivalents of the two above. On a phone the panel is a bottom sheet
+// (see the artist-panel rules in the max-width:600px block of globals.css),
+// so the chrome to compensate for is horizontal-full-width and vertical-short
+// rather than vertical-full-height and horizontal-wide.
+//
+// SHEET_PEEK_HEIGHT must match the collapsed sheet's CSS height — same
+// hand-kept correspondence as PANEL_WIDTH and --panel-width above. It is
+// deliberately the COLLAPSED height even though the sheet can expand: framing
+// is done once per selection, and re-framing every time the user expands or
+// collapses would put the camera in constant motion under their thumb.
+const SHEET_PEEK_HEIGHT = 104;
+// The canvas width below which the panel becomes that sheet. Must match the
+// NARROW_LAYOUT_QUERY breakpoint (lib/use-media-query.ts) and the --peek /
+// --expanded rules in globals.css. Compared against the live canvas width
+// rather than a media query so the camera and the panel can never disagree
+// about which shape of chrome is on screen — a space question, answered by
+// space, not by pointer type.
+const SHEET_MAX_CANVAS_WIDTH = 600;
+// Breathing room at the left/right edges of a phone screen, standing in for
+// LEFT_UI_WIDTH — there is no persistent side chrome to clear on touch, the
+// search having collapsed to an icon.
+const TOUCH_EDGE_MARGIN = 24;
 const MAX_ZOOM = 3.5;       // raised so small clusters can zoom in tighter
 const CAMERA_PADDING = 60;  // tighter frame → cluster fills more of the clear area
 const CAMERA_MS = 600;     // transition duration (ms)
@@ -795,6 +837,43 @@ const UNCLAMPED_MIN_ZOOM = 0.01;
 const UNCLAMPED_MAX_ZOOM = 1000;
 const CLAMPED_BOUNDS: [number, number] = [SCROLL_MIN_ZOOM, SCROLL_MAX_ZOOM];
 const UNCLAMPED_BOUNDS: [number, number] = [UNCLAMPED_MIN_ZOOM, UNCLAMPED_MAX_ZOOM];
+
+// ── Narrow-viewport zoom floor ──────────────────────────────────────────────
+// SCROLL_MIN_ZOOM above is a DESKTOP number: it was picked by eye against a
+// ~1400px-wide canvas and never re-derived from the viewport (its own comment
+// says as much). That's fine until the canvas is a phone, where the fit that
+// shows all seven realms lands far below 1.6 — and since the floor is handed
+// to d3-zoom as scaleExtent, even the programmatic initial fit gets clamped UP
+// to it. The result on a phone is landing inside one realm with no way to pull
+// out, because the floor IS the wall.
+//
+// The fix is deliberately gated on canvas width rather than applied
+// everywhere: at or above NARROW_VIEWPORT_WIDTH the floor is exactly
+// SCROLL_MIN_ZOOM and this whole mechanism is a no-op, so no desktop viewport
+// can have its framing changed by this. Whether the desktop fit *also* wants a
+// number below 1.6 is a real open question (see the REALM_RADIUS_X/Y comment),
+// but it's a separate decision from making phones work and isn't made here.
+const NARROW_VIEWPORT_WIDTH = 900;
+// Headroom below the exact everything-fits zoom, so pulling all the way out on
+// a phone lands with a margin around the constellation rather than hard against
+// its bounding box.
+const NARROW_FIT_HEADROOM = 0.85;
+
+function computeMinScrollZoom(
+  nodes: { id: string; x?: number; y?: number }[],
+  canvasWidth: number,
+  canvasHeight: number,
+): number {
+  if (canvasWidth >= NARROW_VIEWPORT_WIDTH) return SCROLL_MIN_ZOOM;
+  // Fits EVERY node, not computeOverviewZoom's dense-core subset (coreIds
+  // null). The initial fit deliberately frames the densest 90% and lets the
+  // outliers sit off-screen; a floor has the opposite job — "you can always
+  // pull back far enough to see the whole thing" — and the nodes the
+  // dense-core cut discards are exactly the outermost ones.
+  const fit = computeOverviewZoom(nodes, null, canvasWidth, canvasHeight);
+  if (fit === null) return SCROLL_MIN_ZOOM;
+  return Math.min(SCROLL_MIN_ZOOM, fit * NARROW_FIT_HEADROOM);
+}
 
 // ── Node opacity fade by zoom (P2 of the zoom-based cloud/detail reveal) ────
 // Overview only — drawNode forces this to 1 whenever a focus view is open
@@ -1039,6 +1118,9 @@ const OVERVIEW_BG_WASH_MAX_ALPHA = 0.92;
 // faded by the same cloudFade so they recede on zoom-in like everything
 // else at cloud zoom.
 const DUST_STAR_COUNT = 450;
+// Touch devices get roughly a third of the starfield — see the dustStars memo
+// for why the full count is a worse deal on a phone than on a laptop.
+const DUST_STAR_COUNT_TOUCH = 150;
 const DUST_STAR_MIN_R = 0.4;             // world units
 const DUST_STAR_MAX_R = 1.3;             // world units
 const DUST_STAR_MIN_ALPHA = 0.06;
@@ -1237,6 +1319,11 @@ interface Props {
   // single-artist focus. Falls back to onNodeClick if not provided.
   onSetMemberClick?: (artistId: string) => void;
   onBackgroundClick: () => void;
+  // Which edges count as evidenced enough to stay lit — see
+  // edgePassesEvidenceFilter. Applied as a final alpha multiplier in drawLink
+  // rather than as another branch, so it composes with focus/set/zoom fading
+  // instead of interacting with any of it.
+  evidenceFilter: EvidenceFilter;
   // True while an /artist/[slug] page overlay is covering the graph — see
   // app/(graph)/layout.tsx, which keeps this component mounted underneath
   // that overlay rather than unmounting it. The canvas is fully hidden in
@@ -1263,6 +1350,10 @@ interface GraphLink {
   status: Edge['status'];
   confidence: number;
   citation?: string | null;
+  // Present at runtime already: stableData builds links as a full {...edge}
+  // spread. Declared here so the evidence filter can read them without a cast.
+  citationStatus?: Edge['citationStatus'];
+  sourceTier?: Edge['sourceTier'];
 }
 
 // Label candidate — queued during drawNode (node position + style),
@@ -1291,6 +1382,7 @@ export default function ForceGraphCanvas({
   onNodeClick,
   onSetMemberClick,
   onBackgroundClick,
+  evidenceFilter,
   isBackgrounded = false,
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -1323,16 +1415,40 @@ export default function ForceGraphCanvas({
   // one; tracking that here is what the library is missing.
   const [rawHoveredId, setRawHoveredId] = useState<string | null>(null);
   const [pointerOverCanvas, setPointerOverCanvas] = useState(true);
+  // True on a touch device (no mouse) — see lib/use-coarse-pointer.ts. Needed
+  // during render because every draw callback reads hoveredId just below.
+  const isCoarsePointer = useCoarsePointer();
   // Derived, and deliberately still named hoveredId so every downstream read
   // (drawNode, drawLink, neighborSet, the arrow props) picks up the
   // suppression for free rather than each having to remember to check.
-  const hoveredId = pointerOverCanvas ? rawHoveredId : null;
+  //
+  // Hard-nulled on touch. There is no hover on a touch screen, but the
+  // library still runs its hit test against the last pointer position on
+  // every frame and never clears it (see pointerOverCanvas above) — so a tap
+  // would leave that node reading as "hovered" indefinitely, lighting up its
+  // neighbours and edges with no gesture available to undo it. Killing the
+  // signal at the source means tap-to-focus is the one and only interaction,
+  // and every downstream isHovered/isHoverNeighbor/isHoverEdge branch goes
+  // cold for free.
+  const hoveredId = isCoarsePointer ? null : (pointerOverCanvas ? rawHoveredId : null);
   // [min, max] passed straight through as <ForceGraph2D minZoom maxZoom>
   // props — see the SCROLL_MIN_ZOOM comment above for why this has to be
   // state (declarative props) rather than a graphRef method call, and
   // applyCameraFocusForCluster/animateClusterIntoView for the bail-and-retry
   // this requires to keep a widen ordered before the zoom() that needs it.
   const [scrollZoomBounds, setScrollZoomBounds] = useState<[number, number]>(CLAMPED_BOUNDS);
+  // The resting (non-focus-view) bounds, recomputed from the live canvas size
+  // by the effect below — CLAMPED_BOUNDS on any desktop-width viewport, a
+  // lower floor on a phone (see computeMinScrollZoom).
+  //
+  // Deliberately a ref rather than state or a memo: every consumer of
+  // `scrollZoomBounds` in the camera code is already load-bearing as an effect
+  // dependency, and the defocus restore path below reads this from inside a
+  // setTimeout. Making it a dependency instead would re-fire
+  // applyCameraFocusForCluster — the exact second-re-frame hazard that
+  // callback's own comment (see prevClusterActiveRef, ~40 lines down) exists
+  // to prevent.
+  const restingZoomBoundsRef = useRef<[number, number]>(CLAMPED_BOUNDS);
   // Starts at 0 so the library's own automatic post-mount cooldown — which
   // starts ticking as an unconditional side effect of the graphData prop
   // being applied, before any of our effects get a chance to run — does zero
@@ -1387,7 +1503,23 @@ export default function ForceGraphCanvas({
   // mount + URL-preselected artist/genre/scene, e.g. "View in graph"/genre
   // and scene pages). onEngineStop retries once the simulation settles, so
   // the result matches a click/selection made on an already-settled graph.
-  const pendingClusterKeyRef = useRef<string | null>(null);
+  //
+  // Deliberately TWO markers, one per path, plus a record of what the camera
+  // has already framed. All three used to be one shared ref, which is what
+  // made clicking a member of a genre/scene set move the camera and then jerk
+  // it back about a second later: the spread effect and the camera effect both
+  // wrote the same marker (last writer won, so one path's "I bailed" could be
+  // erased by the other's "I'm fine"), and onEngineStop then fired a THIRD
+  // camera animation via animateClusterIntoView. That third one frames from
+  // not-yet-applied spread targets while applyCameraFocusForCluster frames
+  // from nodes' current positions, so the two disagree — two CAMERA_MS
+  // transitions back to back, landing in different places.
+  const pendingSpreadKeyRef = useRef<string | null>(null);
+  const pendingCameraKeyRef = useRef<string | null>(null);
+  // The last cluster key the camera successfully framed. onEngineStop must
+  // never re-frame a cluster already framed: the simulation settling is not a
+  // reason to move a camera that is already where it belongs.
+  const framedClusterKeyRef = useRef<string | null>(null);
   // Bumped whenever the active cluster/dimensions change so an in-flight
   // compose-into-focus animation (see animateClusterIntoView) can detect
   // it's been superseded and stop touching node positions.
@@ -1470,7 +1602,15 @@ export default function ForceGraphCanvas({
     // risk a one-frame flash of no stars on mount for a purely cosmetic
     // starfield, not worth it.
     /* eslint-disable react-hooks/purity -- see comment above */
-    for (let i = 0; i < DUST_STAR_COUNT; i++) {
+    // Thinned on touch. Each star is an individual arc+fill every frame
+    // (autoPauseRedraw={false} — see DUST_STAR_COUNT, they're plain circles,
+    // not sprites), and a phone now frames the WHOLE constellation rather
+    // than a cropped part of it, so all of them rasterize at once where on
+    // desktop many sat off-screen. Pure decoration behind the real nodes —
+    // the cheapest honest thing to cut, and the only render-loop change made
+    // here without a device measurement.
+    const dustCount = isCoarsePointer ? DUST_STAR_COUNT_TOUCH : DUST_STAR_COUNT;
+    for (let i = 0; i < dustCount; i++) {
       const [realm, home] = homePositions[Math.floor(Math.random() * homePositions.length)];
       // Sum of 3 uniforms — a cheap triangular spread favoring the cluster
       // center over a flat uniform scatter, without pulling in a real
@@ -1489,7 +1629,7 @@ export default function ForceGraphCanvas({
     }
     /* eslint-enable react-hooks/purity */
     return stars;
-  }, [stableData.nodes]);
+  }, [stableData.nodes, isCoarsePointer]);
 
   // ── Initial fit — runs once BOTH dimensions and onEngineStop have fired ──────
   // dimensions comes from a ResizeObserver, whose first callback(s) during a
@@ -1508,7 +1648,7 @@ export default function ForceGraphCanvas({
   // Skip zoomToFit when an artist/genre/scene is already pre-selected (from
   // URL); the camera focus effect handles framing in that case — including
   // the fresh-mount case where node positions aren't ready yet, via the
-  // pendingClusterKeyRef/onEngineStop retry below, so framing is guaranteed
+  // pendingSpreadKeyRef/pendingCameraKeyRef + onEngineStop retry below, so framing is guaranteed
   // to happen either way.
   const hasPreselectedCluster = !!selectedId || !!(highlightSetIds && highlightSetIds.length > 0);
   const tryInitialFit = useCallback(() => {
@@ -1521,11 +1661,19 @@ export default function ForceGraphCanvas({
     }
     didInitialFitRef.current = true;
     const dur = prefersReducedMotionRef.current ? 0 : 600;
-    const coreIds = computeDenseCoreIds(stableData.nodes);
     const fg = graphRef.current;
     if (fg) {
       const canvasW = containerRef.current?.offsetWidth  ?? 800;
       const canvasH = containerRef.current?.offsetHeight ?? 600;
+      // Desktop frames the densest 90% and lets the outermost nodes sit just
+      // off-screen — there's room to pan to them and the tighter crop reads
+      // better. A phone has no such room: cropping 10% of a constellation
+      // that's already only a few hundred pixels wide means whole realm edges
+      // are simply gone on arrival, with nothing on screen suggesting they
+      // exist. Below NARROW_VIEWPORT_WIDTH, fit everything.
+      const coreIds = canvasW < NARROW_VIEWPORT_WIDTH
+        ? null
+        : computeDenseCoreIds(stableData.nodes);
       const targetZoom = computeOverviewZoom(stableData.nodes, coreIds, canvasW, canvasH);
       if (targetZoom !== null) {
         // Instant zoom + animated pan, not the library's own zoomToFit (which
@@ -1539,6 +1687,34 @@ export default function ForceGraphCanvas({
     // it here doesn't need to be a dep.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasPreselectedCluster]);
+
+  // Re-derive the resting zoom floor whenever the canvas size changes (mount,
+  // resize, phone rotation). Declared BEFORE the settle-timer effect below on
+  // purpose: minZoom is a declarative prop, so a widened floor only reaches
+  // d3-zoom on the next render — and tryInitialFit's fg.zoom() call would be
+  // clamped by the OLD floor if it ran first. The 150ms settle window is what
+  // guarantees the new prop has landed by the time the fit runs.
+  useEffect(() => {
+    if (!dimensions) return;
+    const next: [number, number] = [
+      computeMinScrollZoom(stableData.nodes, dimensions.width, dimensions.height),
+      SCROLL_MAX_ZOOM,
+    ];
+    if (
+      next[0] === restingZoomBoundsRef.current[0] &&
+      next[1] === restingZoomBoundsRef.current[1]
+    ) return;
+    restingZoomBoundsRef.current = next;
+    // Only push it to the live props when no focus view owns the bounds — a
+    // focus view runs UNCLAMPED and restores from restingZoomBoundsRef on its
+    // way out, so it picks the new floor up for free rather than being yanked
+    // out of its own widened range mid-animation.
+    if (!prevClusterActiveRef.current) setScrollZoomBounds(next);
+    // stableData is a stable reference (see its own useMemo) — node positions
+    // are final after presettleLayout and never change identity, so depending
+    // on it here would be inert noise.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dimensions]);
 
   useEffect(() => {
     if (!dimensions || dimensionsSettledRef.current) return;
@@ -1788,7 +1964,7 @@ export default function ForceGraphCanvas({
     // animation from a previous cluster (see animateClusterIntoView).
     focusAnimTokenRef.current++;
     const ready = applySpreadForCluster(activeClusterIds, activeClusterSpreadFactor);
-    pendingClusterKeyRef.current = ready ? null : activeClusterKey;
+    pendingSpreadKeyRef.current = ready ? null : activeClusterKey;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeClusterKey, activeClusterSpreadFactor, dimensions, applySpreadForCluster]);
 
@@ -1807,7 +1983,7 @@ export default function ForceGraphCanvas({
   // node's current x/y where provided — so the camera can frame where the
   // cluster is about to end up rather than where it currently sits.
   const computeCameraTargetForCluster = useCallback(
-    (clusterIds: string[], overrides: Map<string, { x: number; y: number }>): { targetZoom: number; camX: number; centerGY: number } | null => {
+    (clusterIds: string[], overrides: Map<string, { x: number; y: number }>): { targetZoom: number; camX: number; camY: number } | null => {
       const positions: { x: number; y: number }[] = [];
       for (const nid of clusterIds) {
         const override = overrides.get(nid);
@@ -1830,8 +2006,24 @@ export default function ForceGraphCanvas({
 
       const canvasW = containerRef.current?.offsetWidth  ?? 800;
       const canvasH = containerRef.current?.offsetHeight ?? 600;
-      const availW = Math.max(canvasW - PANEL_WIDTH - LEFT_UI_WIDTH, 200);
-      const availH = Math.max(canvasH, 200);
+      // The panel is a right-hand drawer when there's room and a bottom
+      // sheet when there isn't, so the clear area it leaves behind is a
+      // different shape and the compensation has to be too. Getting this
+      // wrong is not subtle at phone size: the desktop branch subtracts 540px
+      // of chrome width, which on a 390px canvas drives availW straight to
+      // its 200px floor (solving the zoom for a viewport that doesn't exist)
+      // and then shifts camX by a further ~110 graph units to clear a drawer
+      // that isn't on screen.
+      // Which chrome is actually on screen is a question of room, not of
+      // input device: a narrow laptop window gets the same bottom sheet a
+      // phone does. Keyed to the same breakpoint the CSS uses.
+      const isSheetLayout = canvasW < SHEET_MAX_CANVAS_WIDTH;
+      const availW = isSheetLayout
+        ? Math.max(canvasW - TOUCH_EDGE_MARGIN * 2, 200)
+        : Math.max(canvasW - PANEL_WIDTH - LEFT_UI_WIDTH, 200);
+      const availH = isSheetLayout
+        ? Math.max(canvasH - SHEET_PEEK_HEIGHT, 200)
+        : Math.max(canvasH, 200);
 
       const fitZoom = Math.max(Math.min(availW / bbW, availH / bbH, MAX_ZOOM), 0.5);
       // activeRealm is non-null only when a realm IS the active cluster —
@@ -1842,11 +2034,23 @@ export default function ForceGraphCanvas({
       const targetZoom = override ?? fitZoom;
       const centerGX = (minX + maxX) / 2;
       const centerGY = (minY + maxY) / 2;
-      // Depends on targetZoom, so it has to be computed after the override is
-      // resolved — otherwise the pan offset would be sized for the fit zoom.
-      const camX = centerGX + (PANEL_WIDTH - LEFT_UI_WIDTH) / (2 * targetZoom);
+      // Both offsets depend on targetZoom, so they have to be computed after
+      // the override is resolved — otherwise the pan would be sized for the
+      // fit zoom rather than the zoom actually being applied.
+      //
+      // Touch gets no horizontal offset (the sheet spans the full width, so
+      // the clear area is already horizontally centred) and a vertical one
+      // instead — the exact mirror of the desktop formula. Adding to camY
+      // moves the camera DOWN in graph space, which moves the cluster UP on
+      // screen, into the strip above the sheet.
+      const camX = isSheetLayout
+        ? centerGX
+        : centerGX + (PANEL_WIDTH - LEFT_UI_WIDTH) / (2 * targetZoom);
+      const camY = isSheetLayout
+        ? centerGY + SHEET_PEEK_HEIGHT / (2 * targetZoom)
+        : centerGY;
 
-      return { targetZoom, camX, centerGY };
+      return { targetZoom, camX, camY };
     },
     [stableData.nodes, activeRealm],
   );
@@ -1884,7 +2088,23 @@ export default function ForceGraphCanvas({
         if (zoomClampRestoreTimerRef.current !== null) clearTimeout(zoomClampRestoreTimerRef.current);
         zoomClampRestoreTimerRef.current = setTimeout(() => {
           zoomClampRestoreTimerRef.current = null;
-          setScrollZoomBounds(CLAMPED_BOUNDS);
+          // A focus view can open during this CAMERA_MS window, and the
+          // cancel below (the "focus view is opening" block) only runs when
+          // applyCameraFocusForCluster actually reaches it — it returns
+          // earlier on !fg and on the not-yet-positioned primary-node guard.
+          // If the timer survives to here with a cluster active, writing
+          // scrollZoomBounds would change a dependency of this very callback,
+          // re-firing the camera effect into its clamp-widen bail and out the
+          // other side as a SECOND full re-frame, ~600ms after the click that
+          // caused none of it. Skip instead: the focus path owns the bounds
+          // while it's open, and its own defocus re-arms this timer later, so
+          // the clamp is never permanently lost.
+          if (prevClusterActiveRef.current) return;
+          // restingZoomBoundsRef, not CLAMPED_BOUNDS — on a narrow viewport
+          // the resting floor is lower than SCROLL_MIN_ZOOM, and restoring the
+          // constant here would silently re-impose the desktop wall the moment
+          // a user closed their first focus view.
+          setScrollZoomBounds(restingZoomBoundsRef.current);
         }, duration);
       }
       return true;
@@ -1921,14 +2141,17 @@ export default function ForceGraphCanvas({
     // Step 1 — instant zoom (no d3-zoom transition → no conflict with step 2).
     fg.zoom(cameraTarget.targetZoom, 0);
     // Step 2 — animated pan to the panel-adjusted centre.
-    fg.centerAt(cameraTarget.camX, cameraTarget.centerGY, duration);
+    fg.centerAt(cameraTarget.camX, cameraTarget.camY, duration);
     return true;
   }, [stableData.nodes, computeCameraTargetForCluster, scrollZoomBounds]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: applyCameraFocusForCluster's own comment above (scrollZoomBounds widening) explains why a setState here is required, not incidental
     const ready = applyCameraFocusForCluster(activeClusterIds);
-    pendingClusterKeyRef.current = ready ? null : activeClusterKey;
+    pendingCameraKeyRef.current = ready ? null : activeClusterKey;
+    // Record the framing so the onEngineStop retry below can tell "never got
+    // framed" apart from "already framed, leave it alone."
+    if (ready) framedClusterKeyRef.current = activeClusterKey;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeClusterKey, dimensions, applyCameraFocusForCluster]);
 
@@ -1984,7 +2207,7 @@ export default function ForceGraphCanvas({
         return false;
       }
       fg.zoom(cameraTarget.targetZoom, 0);
-      fg.centerAt(cameraTarget.camX, cameraTarget.centerGY, duration);
+      fg.centerAt(cameraTarget.camX, cameraTarget.camY, duration);
     }
 
     // No cluster to spread, reduced motion, or no active camera transition to
@@ -2055,8 +2278,20 @@ export default function ForceGraphCanvas({
     }
     engineStoppedOnceRef.current = true;
     tryInitialFit();
-    if (pendingClusterKeyRef.current && pendingClusterKeyRef.current === activeClusterKey) {
-      if (animateClusterIntoView(activeClusterIds, activeClusterSpreadFactor)) pendingClusterKeyRef.current = null;
+    // Retry only a cluster that genuinely never got applied — either path
+    // reporting itself unready counts — and never one the camera has already
+    // framed. That last guard is what stops the snap-back: without it, a
+    // settle event re-ran animateClusterIntoView over an already-correct
+    // camera and dragged it somewhere slightly different.
+    const needsRetry =
+      pendingSpreadKeyRef.current === activeClusterKey ||
+      pendingCameraKeyRef.current === activeClusterKey;
+    if (needsRetry && framedClusterKeyRef.current !== activeClusterKey) {
+      if (animateClusterIntoView(activeClusterIds, activeClusterSpreadFactor)) {
+        pendingSpreadKeyRef.current = null;
+        pendingCameraKeyRef.current = null;
+        framedClusterKeyRef.current = activeClusterKey;
+      }
     }
   }, [activeClusterKey, activeClusterIds, activeClusterSpreadFactor, animateClusterIntoView, tryInitialFit]);
 
@@ -2642,6 +2877,17 @@ export default function ForceGraphCanvas({
       const srcId   = typeof l.source === 'object' ? l.source.id : l.source;
       const tgtId   = typeof l.target === 'object' ? l.target.id : l.target;
       const edgeKey = `${srcId}→${tgtId}`;
+      // Final, single multiplier for the evidence filter. Deliberately NOT a
+      // branch: drawLink already has six alpha paths (focus, hover, path,
+      // core-thread, idle-web, arrows) and adding a seventh condition to each
+      // is how the isInFocusCluster/isFocusModeActive class of bug happened.
+      // One factor, multiplied into every alpha computation. Most paths bake
+      // alpha into the strokeStyle rgba string rather than ctx.globalAlpha, so
+      // this has to reach the numbers, not the context. The two core-thread
+      // strokes inherit it via coreEdgeAlpha.
+      const evidenceMult = edgePassesEvidenceFilter(l, evidenceFilter)
+        ? 1
+        : EVIDENCE_FAIL_ALPHA_MULT;
 
       const isPathEdge   = pathEdges.has(edgeKey);
       // Focus edges: any edge touching the focused node
@@ -2700,9 +2946,9 @@ export default function ForceGraphCanvas({
       if (isPathEdge) {
         // Chromatic aberration for path-finding mode
         const offsets = [
-          { dx: -1, color: `rgba(255, 30, 90, ${(0.9 * edgeFade).toFixed(3)})` },
-          { dx:  0, color: `rgba(242, 168, 196, ${(0.9 * edgeFade).toFixed(3)})` },
-          { dx:  1, color: `rgba(0, 200, 255, ${(0.9 * edgeFade).toFixed(3)})` },
+          { dx: -1, color: `rgba(255, 30, 90, ${(0.9 * edgeFade * evidenceMult).toFixed(3)})` },
+          { dx:  0, color: `rgba(242, 168, 196, ${(0.9 * edgeFade * evidenceMult).toFixed(3)})` },
+          { dx:  1, color: `rgba(0, 200, 255, ${(0.9 * edgeFade * evidenceMult).toFixed(3)})` },
         ];
         for (const { dx, color } of offsets) {
           ctx.beginPath();
@@ -2721,13 +2967,13 @@ export default function ForceGraphCanvas({
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
         ctx.strokeStyle = resolveNodeColor(focusedNode);
-        ctx.globalAlpha = (EDGE_IDLE_ALPHA + (0.82 - EDGE_IDLE_ALPHA) * glow) * edgeFade;
+        ctx.globalAlpha = ((EDGE_IDLE_ALPHA + (0.82 - EDGE_IDLE_ALPHA) * glow) * edgeFade) * evidenceMult;
         ctx.lineWidth = EDGE_IDLE_WIDTH + (2 - EDGE_IDLE_WIDTH) * glow;
         ctx.setLineDash([]);
         ctx.stroke();
       } else if (isHoverEdge) {
         // Brightened tint on hover (no aberration), same fade-up as focus edges.
-        const alpha = (EDGE_IDLE_ALPHA + (0.75 - EDGE_IDLE_ALPHA) * glow) * edgeFade;
+        const alpha = (EDGE_IDLE_ALPHA + (0.75 - EDGE_IDLE_ALPHA) * glow) * edgeFade * evidenceMult;
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
@@ -2741,7 +2987,7 @@ export default function ForceGraphCanvas({
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
-        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${(0.7 * edgeFade).toFixed(3)})`);
+        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${(0.7 * edgeFade * evidenceMult).toFixed(3)})`);
         ctx.lineWidth = 1.6;
         ctx.stroke();
       } else if (isCoreEdge && ghostEdgeFade < 1) {
@@ -2769,16 +3015,35 @@ export default function ForceGraphCanvas({
         // fully opaque at detail zoom instead of receding to the same calm
         // idle look every other edge gets by FADE_ZOOM_IN, contradicting
         // the "looks identical to any other idle edge" comment just above.
-        const coreEdgeAlpha = CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM + (EDGE_IDLE_ALPHA - CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM) * ghostEdgeFade;
+        const coreEdgeAlpha = (CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM + (EDGE_IDLE_ALPHA - CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM) * ghostEdgeFade) * evidenceMult;
+        // The glow is a wide, fainter underlay stroke — NOT ctx.shadowBlur.
+        //
+        // shadowBlur is the most expensive primitive in Canvas 2D (it forces
+        // an offscreen blur pass per draw), and this branch runs for all 126
+        // core-touching edges on every frame at cloud zoom AND throughout
+        // genre/scene set mode, where ghostEdgeFade is 0 so the blur ran at
+        // full strength. That was the whole reason set mode felt like ~20fps
+        // while click-focus felt like 60: click-focus sets ghostEdgeFade to 1
+        // and skips this branch entirely, so it never paid the cost.
+        //
+        // Two plain strokes cost essentially nothing and read the same at
+        // these alphas — the thread tops out at 0.015 opacity, so the blur
+        // was buying a barely-perceptible softening at an enormous price.
+        // CORE_EDGE_THREAD_GLOW_BLUR is reused as the width delta so the
+        // existing tuning constant still means "how soft is this filament."
+        // Do not reintroduce shadowBlur here.
+        const glowSpread = CORE_EDGE_THREAD_GLOW_BLUR * (1 - ghostEdgeFade);
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
+        if (glowSpread > 0) {
+          ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${(coreEdgeAlpha * CORE_EDGE_THREAD_GLOW_ALPHA_FRACTION).toFixed(4)})`);
+          ctx.lineWidth = EDGE_IDLE_WIDTH + glowSpread;
+          ctx.stroke();
+        }
         ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${coreEdgeAlpha.toFixed(3)})`);
         ctx.lineWidth = EDGE_IDLE_WIDTH;
-        ctx.shadowColor = edgeColor.replace(/[\d.]+\)$/, '1)');
-        ctx.shadowBlur = CORE_EDGE_THREAD_GLOW_BLUR * (1 - ghostEdgeFade);
         ctx.stroke();
-        ctx.shadowBlur = 0;
       } else {
         // Idle / non-highlighted edges recede into a soft faint web at all
         // times — whether nothing is selected, or something else is
@@ -2791,7 +3056,7 @@ export default function ForceGraphCanvas({
         // vanished entirely at cloud zoom, leaving only the core's few
         // "arms" and making everything else look like unconnected scattered
         // dots. Still fully recedes to the plain idle look by FADE_ZOOM_IN.
-        const idleEdgeAlpha = IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM + (EDGE_IDLE_ALPHA - IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM) * ghostEdgeFade;
+        const idleEdgeAlpha = (IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM + (EDGE_IDLE_ALPHA - IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM) * ghostEdgeFade) * evidenceMult;
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
@@ -2802,7 +3067,7 @@ export default function ForceGraphCanvas({
 
       ctx.restore();
     },
-    [selectedId, hoveredId, pathEdges, focusedNode, highlightSetMemberSet],
+    [selectedId, hoveredId, pathEdges, focusedNode, highlightSetMemberSet, evidenceFilter],
   );
 
   // ── Realm cloud (electronic only, overview only) ────────────────────────
@@ -3097,13 +3362,24 @@ export default function ForceGraphCanvas({
         const minScreenR = isFocused ? FOCUS_MIN_SCREEN_R : NEIGHBOR_MIN_SCREEN_R;
         er = Math.max(er, minScreenR / globalScale);
       }
+      // Touch only: floor the hit target at a fingertip. This is a DELIBERATE
+      // break from the "must mirror drawNode exactly" rule above, and the only
+      // one in this function — a hit area LARGER than the visual circle costs
+      // nothing (d3 picks the topmost hit, and the paint is invisible), while
+      // the reverse leaves dead zones. At the full-constellation zoom a phone
+      // now lands on, a mid-tier node draws about 3px across; nobody can tap
+      // that. Converted through globalScale because er is in graph space and
+      // MIN_TOUCH_SCREEN_R is the screen-pixel size a finger actually needs.
+      if (isCoarsePointer) {
+        er = Math.max(er, MIN_TOUCH_SCREEN_R / globalScale);
+      }
 
       ctx.beginPath();
       ctx.arc(n.x, n.y, er + RING_WIDTH, 0, Math.PI * 2);
       ctx.fillStyle = color;
       ctx.fill();
     },
-    [selectedId, hoveredId, neighborSet, pathSet, highlightSetMemberSet],
+    [selectedId, hoveredId, neighborSet, pathSet, highlightSetMemberSet, isCoarsePointer],
   );
 
   // Kept in sync with the library unconditionally, even while the pointer is
@@ -3272,7 +3548,25 @@ export default function ForceGraphCanvas({
           onNodeClick={handleNodeClick}
           onBackgroundClick={onBackgroundClick}
           onEngineStop={handleEngineStop}
-          enableNodeDrag
+          // Dragging is OFF on purpose. This layout is authored, not emergent:
+          // presettleLayout solves it over PRESETTLE_TICKS before the canvas
+          // mounts, cooldownTicks starts at 0 so the live engine renders those
+          // positions untouched, and each realm sits at a hand-assigned angle
+          // (REALM_ANGLE_DEG). Position carries meaning here.
+          //
+          // The library calls resetCountdown() on drag, which reheats the
+          // simulation to full alpha with every force live (charge, link,
+          // center, collide, realmX/realmY), so all ~293 nodes re-settle at
+          // once — pulling one node visibly convulsed the whole constellation.
+          // Worse mid-focus, where applySpreadForCluster writes x/y by hand and
+          // stashes originals in savedPositionsRef: the reheat drags nodes off
+          // their spread targets while restore-on-deselect still writes the
+          // saved values back, leaving physics and spread state disagreeing.
+          //
+          // Pinning nodes (fx/fy) so only the dragged one moves was considered
+          // and rejected — it fights applySpreadForCluster, which animates x/y
+          // directly and would be overridden by pinned coordinates.
+          enableNodeDrag={false}
           enableZoomInteraction
           enablePanInteraction
           // Nodes are already pre-settled (see presettleLayout/stableData

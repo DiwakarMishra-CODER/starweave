@@ -95,7 +95,9 @@ export interface GenreTimelineLayout {
   plotH: number; // resolved plot height (excludes the axis strip)
 }
 
-const CONTAINER_IDS = new Set(['underground', 'indie', 'electronic', 'folk']);
+// 'underground' and 'indie' used to be in here too; both were deleted from the
+// genre vocabulary for carrying zero artists (see the note in data/seed-data.ts).
+const CONTAINER_IDS = new Set(['electronic', 'folk']);
 
 // One flat color per root — every genre in a root's subtree gets that
 // root's color, full stop. The pre-2026-pass version shaded each old

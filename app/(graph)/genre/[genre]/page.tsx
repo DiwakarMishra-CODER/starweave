@@ -6,6 +6,7 @@ import { GENRE_COLORS, DEFAULT_GENRE_COLOR } from '@/lib/colors';
 import { getGenreLineage } from '@/lib/genre-lineage';
 import { GENRE_PAGES } from '@/data/genre-pages';
 import ArtistBackground from '@/components/artist/ArtistBackground';
+import BackButton from '@/components/ui/BackButton';
 import ArtistCircleGrid from '@/components/artist/ArtistCircleGrid';
 import AlbumGrid from '@/components/artist/AlbumGrid';
 import IgniteGraphButton from '@/components/artist/IgniteGraphButton';
@@ -47,6 +48,7 @@ export default async function GenrePage({ params }: Props) {
       >
         <ArtistBackground layerColor={genreColor} boost={1.7} />
         <div className="artist-bg-scrim" aria-hidden />
+        <BackButton />
         <div className="genre-stub">
           <p className="genre-stub__title">{genreData.name}</p>
           <p className="genre-stub__text">
@@ -94,6 +96,7 @@ export default async function GenrePage({ params }: Props) {
     >
       <ArtistBackground layerColor={genreColor} boost={1.7} />
       <div className="artist-bg-scrim" aria-hidden />
+      <BackButton />
 
       {/* Prose — 700px reading width */}
       <article className="genre-page">

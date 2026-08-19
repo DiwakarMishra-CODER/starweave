@@ -4,6 +4,7 @@ import { useMemo, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import type { TimelineNode } from '@/lib/genre-timeline';
 import { VIEW_W, PAD_LEFT, PAD_RIGHT, AVG_GLYPH_W, LABEL_GAP_PAD, estimateLabelWidth } from '@/lib/genre-timeline';
+import { useCoarsePointer } from '@/lib/use-media-query';
 
 interface Props {
   nodes: TimelineNode[];
@@ -32,7 +33,15 @@ function truncateToWidth(text: string, maxWidth: number): string {
 
 export default function GenreTimeline({ nodes, rankCount, yearMarks, viewH, plotH }: Props) {
   const router = useRouter();
+  const isCoarsePointer = useCoarsePointer();
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  // Touch only: which node the next tap would OPEN. Deliberately separate
+  // state from hoveredId rather than reusing it, because mobile Safari
+  // synthesises a mouseenter before the click on the same tap — hoveredId is
+  // therefore already set to this node by the time handleClick runs, and
+  // keying the two-step off it would navigate on the first tap, which is
+  // exactly the behaviour being fixed. Only handleClick ever writes this.
+  const [touchArmedId, setTouchArmedId] = useState<string | null>(null);
   const [tooltip, setTooltip] = useState<{ x: number; y: number; node: TimelineNode } | null>(null);
 
   const nodesById = useMemo(() => new Map(nodes.map(n => [n.id, n])), [nodes]);
@@ -148,12 +157,39 @@ export default function GenreTimeline({ nodes, rankCount, yearMarks, viewH, plot
     setTooltip({ x: e.clientX, y: e.clientY, node });
   }, []);
   const handleLeave = useCallback(() => {
+    // On touch the synthesised mouseleave arrives right after the tap and
+    // would wipe the highlight the tap just placed. Touch clears explicitly
+    // instead — see handleBackgroundClick.
+    if (isCoarsePointer) return;
     setHoveredId(null);
     setTooltip(null);
-  }, []);
-  const handleClick = useCallback((id: string) => {
-    router.push(`/genre/${id}`);
-  }, [router]);
+  }, [isCoarsePointer]);
+
+  // Desktop: hovering already traced the lineage, so a click means "open it."
+  // Touch: there is no hover, so the first tap has to BE the hover — it
+  // highlights the ancestor chain and opens the tooltip, and only a second
+  // tap on the same node navigates. Without this the page's whole reason to
+  // exist (tracing a lineage) is unreachable on a phone: every tap left for
+  // /genre/[id] before anything was highlighted.
+  const handleClick = useCallback((node: TimelineNode, e: React.MouseEvent) => {
+    if (isCoarsePointer && touchArmedId !== node.id) {
+      setTouchArmedId(node.id);
+      setHoveredId(node.id);
+      setTooltip({ x: e.clientX, y: e.clientY, node });
+      return;
+    }
+    router.push(`/genre/${node.id}`);
+  }, [router, isCoarsePointer, touchArmedId]);
+
+  // Tapping empty canvas clears the selection — the touch counterpart of
+  // moving the cursor off a node.
+  const handleBackgroundClick = useCallback((e: React.MouseEvent) => {
+    if (!isCoarsePointer) return;
+    if (e.target !== e.currentTarget) return;
+    setTouchArmedId(null);
+    setHoveredId(null);
+    setTooltip(null);
+  }, [isCoarsePointer]);
 
   // Secondary edges as a flat list up front (each drawn once, keyed by both
   // endpoints) — curved rather than straight, per the routing note: with 41
@@ -171,12 +207,19 @@ export default function GenreTimeline({ nodes, rankCount, yearMarks, viewH, plot
   }, [nodes, nodesById]);
 
   return (
-    <div className="genre-timeline">
+    // --genre-timeline-view-w is handed to CSS rather than hardcoded there so
+    // the narrow-viewport horizontal-scroll rule can pin the SVG to its real
+    // drawing width without that number drifting from VIEW_W.
+    <div
+      className="genre-timeline"
+      style={{ '--genre-timeline-view-w': `${VIEW_W}px` } as React.CSSProperties}
+    >
       <svg
         viewBox={`0 0 ${VIEW_W} ${viewH}`}
         className="genre-timeline__svg"
         role="img"
         aria-label="Genre emergence timeline, subway-map style"
+        onClick={handleBackgroundClick}
       >
         <defs>
           {/* Shared glow filter — matches the main graph canvas's node glow
@@ -270,7 +313,7 @@ export default function GenreTimeline({ nodes, rankCount, yearMarks, viewH, plot
               onMouseEnter={e => handleEnter(n, e)}
               onMouseMove={e => handleMove(n, e)}
               onMouseLeave={handleLeave}
-              onClick={() => handleClick(n.id)}
+              onClick={e => handleClick(n, e)}
               style={{ cursor: 'pointer' }}
             >
               {/* Invisible larger hit-area so small dots stay easy to hover/click.
@@ -371,7 +414,14 @@ export default function GenreTimeline({ nodes, rankCount, yearMarks, viewH, plot
           {/* The single highest-value fix here — without this line the
               tooltip reads as a pure data-viz readout, and testers
               consistently didn't realize a node was clickable. */}
-          <p className="genre-timeline__tooltip-cta">Open {tooltip.node.name} →</p>
+          {/* The tooltip is pointer-events:none (so it can't block hover on
+              desktop), which means this line can't itself be a tap target —
+              on touch it states what the next tap does rather than being it. */}
+          <p className="genre-timeline__tooltip-cta">
+            {isCoarsePointer && touchArmedId === tooltip.node.id
+              ? `Tap again to open ${tooltip.node.name} →`
+              : `Open ${tooltip.node.name} →`}
+          </p>
         </div>
       )}
     </div>

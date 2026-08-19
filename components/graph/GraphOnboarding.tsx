@@ -1,5 +1,7 @@
 'use client';
 
+import { useCoarsePointer } from '@/lib/use-media-query';
+
 interface Props {
   open: boolean;
   onDismiss: () => void;
@@ -8,12 +10,24 @@ interface Props {
 // The interactions this card names, in the order a first-timer needs them.
 // Zoom leads because it's the one gesture the graph can't hint at on its own:
 // pulled out, every artist is an anonymous dot, and nothing on screen says
-// that scrolling in resolves faces and names. The "Jump to…" row names the
+// that zooming in resolves faces and names. The "Jump to…" row names the
 // top-left control, which GraphView also auto-opens on a first visit.
-const HINTS: { key: string; action: string }[] = [
+//
+// Two sets, because naming a gesture the device doesn't have is worse than
+// naming none: a phone has no scroll wheel, no cursor and no hover, and its
+// version of "click again to open" is a second tap. Same four rows, same
+// order, same closing "Jump to…" row either way.
+const POINTER_HINTS: { key: string; action: string }[] = [
   { key: 'Scroll', action: 'zoom out for the whole constellation, in for faces and names' },
   { key: 'Click', action: 'a node to focus it — click again to open the artist' },
   { key: 'Drag', action: 'to pan · click empty space to deselect' },
+  { key: 'Jump to…', action: 'fly the camera to a realm, genre, or scene' },
+];
+
+const TOUCH_HINTS: { key: string; action: string }[] = [
+  { key: 'Pinch', action: 'out for the whole constellation, in for faces and names' },
+  { key: 'Tap', action: 'a node to focus it — tap again to open the artist' },
+  { key: 'Swipe', action: 'to pan · tap empty space to deselect' },
   { key: 'Jump to…', action: 'fly the camera to a realm, genre, or scene' },
 ];
 
@@ -23,7 +37,9 @@ const HINTS: { key: string; action: string }[] = [
 // dismissed the choice is remembered (localStorage, see GraphView) so it
 // never comes back on later visits.
 export default function GraphOnboarding({ open, onDismiss }: Props) {
+  const isCoarsePointer = useCoarsePointer();
   if (!open) return null;
+  const hints = isCoarsePointer ? TOUCH_HINTS : POINTER_HINTS;
 
   return (
     <div className="graph-onboarding" role="note" aria-label="How Starweave works">
@@ -39,7 +55,7 @@ export default function GraphOnboarding({ open, onDismiss }: Props) {
         An interactive map of who influenced whom in indie music.
       </p>
       <ul className="graph-onboarding__hints">
-        {HINTS.map(hint => (
+        {hints.map(hint => (
           <li key={hint.key} className="graph-onboarding__hint">
             <span className="graph-onboarding__key">{hint.key}</span>
             <span className="graph-onboarding__action">{hint.action}</span>

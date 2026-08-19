@@ -2,12 +2,13 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { loadGraphData } from '@/lib/graph-data';
+import { compareEdgesByEvidence } from '@/data/types';
 import { resolveNodeColor, resolveNodeLabel } from '@/lib/colors';
 import { countryName } from '@/lib/format';
 import SpotifyEmbed from '@/components/artist/SpotifyEmbed';
 import DeezerPreview from '@/components/artist/DeezerPreview';
 import ArtistBackground from '@/components/artist/ArtistBackground';
-import BackButton from '@/components/artist/BackButton';
+import BackButton from '@/components/ui/BackButton';
 import StreamingLinks from '@/components/ui/StreamingLinks';
 import InfluenceGrid from '@/components/artist/InfluenceGrid';
 import type { Artist, Edge } from '@/data/types';
@@ -41,8 +42,11 @@ export default async function ArtistPage({ params }: Props) {
   const genreMap  = Object.fromEntries(data.genres.map(g => [g.id, g.name]));
   const artistMap = Object.fromEntries(data.artists.map(a => [a.id, a]));
 
-  const influences   = data.edges.filter(e => e.source === artist.id && e.type === 'influence');
-  const influencedBy = data.edges.filter(e => e.target === artist.id && e.type === 'influence');
+  // Same ordering as the graph's slide-over panel — sourced connections first.
+  // See compareEdgesByEvidence; both surfaces render citation state, so they
+  // have to agree.
+  const influences   = data.edges.filter(e => e.source === artist.id && e.type === 'influence').sort(compareEdgesByEvidence);
+  const influencedBy = data.edges.filter(e => e.target === artist.id && e.type === 'influence').sort(compareEdgesByEvidence);
   const color = resolveNodeColor(artist);
 
   // Edge kept alongside its artist (not just a flat Artist[]) so citation

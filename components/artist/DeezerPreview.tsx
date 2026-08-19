@@ -1,7 +1,8 @@
 'use client';
 
-import { useRef, useState, useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import StreamingLinks from '@/components/ui/StreamingLinks';
+import { useAudioPreview, type AudioPreviewController } from '@/lib/use-audio-preview';
 
 interface Props {
   previewUrl?: string | null;
@@ -9,6 +10,13 @@ interface Props {
   previewAlbum?: string | null;
   streamingQuery?: string | null;
   compact?: boolean;
+  /**
+   * Optional externally-owned transport. Omitted (every usage outside the
+   * graph's artist panel), this component owns its own via useAudioPreview
+   * and behaves exactly as it always has. Passed, the owner is driving the
+   * same <audio> element from somewhere else too — see lib/use-audio-preview.
+   */
+  controller?: AudioPreviewController;
 }
 
 function fmt(s: number): string {
@@ -23,17 +31,25 @@ export default function DeezerPreview({
   previewAlbum,
   streamingQuery,
   compact = false,
+  controller,
 }: Props) {
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [playing, setPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(30);
+  // Hooks can't be called conditionally, so the fallback controller is always
+  // created; when `controller` is supplied it simply goes unused, and its
+  // <audio> element is never rendered so it owns nothing.
+  const ownController = useAudioPreview();
+  const { audioRef, playing, progress, currentTime, duration, toggle, seek, audioProps } =
+    controller ?? ownController;
 
   // Pause and reset when this instance is unmounted (e.g. artist panel switches nodes)
   // — ref captured at effect-setup time, not inside the cleanup closure, since
   // audioRef.current could already be null by the time cleanup actually runs.
+  //
+  // Skipped when an external controller owns the element: that owner outlives
+  // this component and stops playback itself (see the panel's artist-change
+  // effect), so pausing here on unmount would kill audio the owner still
+  // considers live.
   useEffect(() => {
+    if (controller) return;
     const audio = audioRef.current;
     return () => {
       if (audio) {
@@ -41,28 +57,7 @@ export default function DeezerPreview({
         audio.currentTime = 0;
       }
     };
-  }, []);
-
-  const toggle = useCallback(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    if (playing) {
-      audio.pause();
-    } else {
-      audio.play().catch(() => {});
-    }
-  }, [playing]);
-
-  const seek = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const frac = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-    const t = frac * (audio.duration || 30);
-    audio.currentTime = t;
-    setCurrentTime(t);
-    setProgress(frac);
-  }, []);
+  }, [controller, audioRef]);
 
   if (!previewUrl) return null;
 
@@ -123,23 +118,7 @@ export default function DeezerPreview({
         ref={audioRef}
         src={previewUrl}
         preload="none"
-        onPlay={() => setPlaying(true)}
-        onPause={() => setPlaying(false)}
-        onEnded={() => {
-          setPlaying(false);
-          setProgress(0);
-          setCurrentTime(0);
-        }}
-        onTimeUpdate={() => {
-          const a = audioRef.current;
-          if (!a) return;
-          setCurrentTime(a.currentTime);
-          setProgress(a.currentTime / (a.duration || 30));
-        }}
-        onLoadedMetadata={() => {
-          const a = audioRef.current;
-          if (a && a.duration) setDuration(a.duration);
-        }}
+        {...audioProps}
       />
     </div>
   );

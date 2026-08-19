@@ -224,6 +224,67 @@ export function resolveCitationStatus(edge: Pick<Edge, 'citation' | 'citationSta
   return edge.citationStatus ?? 'unchecked';
 }
 
+// ── Evidence filter ─────────────────────────────────────────────────────────
+// The graph's central claim is that its edges are checkable, and the honest
+// way to back that up is to let a visitor subtract: drop every connection
+// except the ones an artist stated themselves, and see what shape survives.
+// Roughly half of them do.
+//
+// Deliberately binary. An earlier version had a middle "has a citation" tier
+// (887 edges), but that distinction is already surfaced per-edge in the artist
+// panel — a cited row offers its quote, an unsourceable one prints "Widely
+// accepted, no first-person source found". Repeating it as a graph-wide mode
+// duplicated a row-level detail while diluting the one comparison worth
+// making, which is everything against the artist's own testimony.
+export type EvidenceFilter = 'all' | 'first-person';
+
+export function edgePassesEvidenceFilter(
+  edge: Pick<Edge, 'sourceTier'>,
+  filter: EvidenceFilter,
+): boolean {
+  return filter === 'all' || edge.sourceTier === 'first-person';
+}
+
+// Display order for an artist's influence/descendant lists. Without this they
+// render in seed-data declaration order, which regularly put an unsourced
+// connection at the very top of an artist's list — the first thing a reader
+// sees, and the worst possible advertisement for a graph whose whole argument
+// is that its connections are defensible.
+//
+// The ranking is by how a row READS on screen, not by how much research went
+// into it. That makes one position deliberately counter-intuitive:
+// 'unsourceable' sorts BELOW 'unchecked' even though it represents strictly
+// more work (someone looked, and recorded that no first-person source exists).
+// It sorts last because it is the only state that prints a visible caveat,
+// while 'unchecked' renders no note at all. Don't "fix" this by swapping them.
+const CITATION_RANK: Record<'cited' | CitationStatus, number> = {
+  cited: 0,
+  unchecked: 1,
+  unsourceable: 2,
+};
+
+// Within cited rows, lead with the strongest kind of evidence — an artist
+// saying it themselves beats a publication reporting it, which beats a critic
+// drawing the comparison.
+const SOURCE_TIER_RANK: Record<SourceTier, number> = {
+  'first-person': 0,
+  reported: 1,
+  critic: 2,
+};
+
+// Comparator for Array.prototype.sort, which is stable in modern JS — equally
+// ranked edges keep their authored order rather than being shuffled.
+export function compareEdgesByEvidence(a: Edge, b: Edge): number {
+  const byStatus = CITATION_RANK[resolveCitationStatus(a)] - CITATION_RANK[resolveCitationStatus(b)];
+  if (byStatus !== 0) return byStatus;
+
+  const tierA = a.sourceTier ? SOURCE_TIER_RANK[a.sourceTier] : 3;
+  const tierB = b.sourceTier ? SOURCE_TIER_RANK[b.sourceTier] : 3;
+  if (tierA !== tierB) return tierA - tierB;
+
+  return (b.confidence ?? 0) - (a.confidence ?? 0);
+}
+
 // A documented case of an artist explicitly denying a commonly-assumed
 // influence — recorded so a future research pass doesn't re-propose and
 // "confirm" the same false edge off the same critic comparisons.

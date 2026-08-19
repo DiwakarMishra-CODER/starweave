@@ -274,15 +274,23 @@ h3 { font-size: 1.1rem; }
 }
 
 /* ── Page shell ───────────────────────────────────────────────── */
+/* vh first, dvh second, throughout this file: on a mobile browser 100vh is
+   the viewport WITH the URL bar hidden, which is taller than what's actually
+   visible on load — so a 100vh full-height page puts its own bottom edge
+   under the browser chrome and shifts as that chrome retracts. dvh tracks the
+   real visible height. The vh line stays as the fallback for anything that
+   doesn't know dvh; on desktop the two are identical. */
 .page-shell {
   padding-top: var(--nav-height);
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* ── Graph page (full-viewport) ───────────────────────────────── */
 .graph-page {
   padding-top: var(--nav-height);
   height: 100vh;
+  height: 100dvh;
   position: relative;
   overflow: hidden;
   /* Override body gradient with a richer, graph-specific central glow */
@@ -298,6 +306,7 @@ h3 { font-size: 1.1rem; }
 .graph-container {
   width: 100%;
   height: calc(100vh - var(--nav-height));
+  height: calc(100dvh - var(--nav-height));
   position: relative;
 }
 
@@ -470,6 +479,17 @@ h3 { font-size: 1.1rem; }
 
 .graph-canvas-reveal {
   animation: graph-canvas-reveal-in 240ms ease-out;
+}
+
+/* Pinch and drag on the canvas must drive the graph's own camera, not the
+   browser's page zoom / scroll. Scoped to coarse pointers so a laptop
+   trackpad's own pinch and scroll gestures are left exactly as they were —
+   this is the one rule in the mobile pass that isn't behind a width query,
+   so it's behind a pointer query instead. */
+@media (pointer: coarse) {
+  .graph-canvas-reveal {
+    touch-action: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1549,7 +1569,8 @@ h3 { font-size: 1.1rem; }
   padding: 2rem 2rem 5rem;
 }
 
-.artist-page__back {
+/* Shared back control for the artist/genre/scene overlay pages. */
+.page-back {
   position: absolute;
   top: calc(var(--nav-height) + 1.25rem);
   left: 1.5rem;
@@ -1568,7 +1589,7 @@ h3 { font-size: 1.1rem; }
   cursor: pointer;
   transition: background var(--transition), border-color var(--transition), color var(--transition);
 }
-.artist-page__back:hover {
+.page-back:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.2);
   color: var(--color-text);
@@ -3823,6 +3844,28 @@ h3 { font-size: 1.1rem; }
   overflow: hidden;
 }
 
+/* ── Timelines on a phone: scroll, don't shrink ──────────────────
+   Both diagrams are drawn into a fixed-width coordinate space and scaled to
+   fit by their viewBox, so a narrow viewport shrinks the LABELS along with
+   everything else — at 390px the genre labels land near 2px, which is not a
+   readability annoyance but an unreadable page. Pinning the SVG to its real
+   drawing width and scrolling the container sideways keeps every label at
+   the size it was designed at, and a swipeable timeline is a natural phone
+   gesture besides. The tooltip is position:fixed off clientX/clientY, so it
+   is unaffected by the scroll offset. */
+@media (max-width: 900px) {
+  .genre-timeline {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .genre-timeline__svg {
+    width: var(--genre-timeline-view-w, 1400px);
+    max-width: none;
+  }
+}
+
 /* Small, quiet instruction sitting where the eye lands on reaching the
    diagram — "click any dot to open that genre" lived only inside the intro
    paragraph before, and testers weren't reading that far into a five-line
@@ -4011,6 +4054,37 @@ h3 { font-size: 1.1rem; }
   min-height: 0;
 }
 
+/* Matches .genre-timeline__tooltip-cta's role on the other timeline — see the
+   phone-scroll note above .genre-timeline's own media query. */
+.scenes-timeline__tooltip-cta {
+  margin-top: 0.45rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--scene-color, #8891f2);
+}
+
+/* Same shrink-vs-scroll problem as /genres, different mechanism: this plot
+   sizes itself from a ResizeObserver on its own box, so giving it a
+   min-width is enough — it measures the wider box and lays every bar out
+   against that. min-height keeps 14 rows from being solved down to hairlines
+   in a phone's vertical space; .scenes-overlay already scrolls vertically. */
+@media (max-width: 900px) {
+  .scenes-timeline {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .scenes-timeline__plot {
+    min-width: 860px;
+    min-height: 620px;
+  }
+}
+
 .scenes-timeline__axis {
   position: absolute;
   inset: 0;
@@ -4194,10 +4268,417 @@ h3 { font-size: 1.1rem; }
 
 /* ── Mobile adjustments ───────────────────────────────────────── */
 @media (max-width: 600px) {
+  /* ── Graph chrome: search collapses to its own icon ──────────────
+     At 390px the search box (300px wide, anchored right) and the
+     "Jump to…" toggle (anchored left) overlap by roughly 60px — they were
+     laid out against a viewport with room for both. Collapsing the search
+     to a puck the size of its own magnifier glyph resolves it without
+     hiding either control, and "Jump to…" is the one that has to stay
+     legible: with the whole constellation on screen it's the only way to
+     get anywhere specific.
+
+     Expansion is :focus-within, so this needs no JS and no component
+     change — tapping the puck focuses the input inside it, which widens
+     the box in the same gesture. */
+  .artist-search {
+    width: 2.375rem;
+    transition: width 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .artist-search:focus-within {
+    width: calc(100vw - 2.5rem);
+  }
+
+  /* Collapsed, the input is a full-size invisible tap target sitting under
+     the icon — the box has to stay tappable to be openable at all, so the
+     text is hidden rather than the field. */
+  .artist-search:not(:focus-within) .artist-search__input {
+    color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .artist-search:not(:focus-within) .artist-search__input::placeholder {
+    color: transparent;
+  }
+
+  .artist-search__icon {
+    margin-left: 0.55rem;
+    margin-right: 0.1rem;
+  }
+
+  /* Follows the expanded box rather than its own min() — the dropdown only
+     ever renders while focus-within is true, so it is always measuring
+     against the open width. */
+  .artist-search__list {
+    width: 100%;
+    max-height: 45dvh;
+  }
+
+  /* ── Artist panel: bottom sheet, not a full-screen takeover ──────
+     The panel used to go width:100% here, which covers the graph
+     completely — so tapping a node to focus it hid the very thing you had
+     just focused. A sheet leaves the top of the canvas visible, which is
+     also where the focused node's cluster has just been framed. */
+  /* Pre-hydration fallback only. Below this width the panel is the bottom
+     sheet below, driven by the --peek/--expanded classes ArtistPanel adds at
+     the same breakpoint — but the server renders without them (see
+     getServerSnapshot in lib/use-media-query.ts), so this keeps a full-width
+     drawer rather than an unstyled one in that window.
+
+     The sheet is deliberately NOT gated here. Styling it by width while the
+     component rendered it by pointer type was a real bug: a narrow laptop
+     window got the sheet's CSS and none of its markup — a 104px panel wrapped
+     around a 128px hero with nothing able to expand it. One gate, one
+     question. */
   .artist-panel {
     width: 100%;
   }
-  /* .artist-search itself no longer needs an override here — its base rule
-     already uses min(300px, calc(100vw - 2.5rem)), the same formula
-     .artist-search__list uses, so both narrow identically in step. */
+}
+
+/* ── Artist panel: a two-state bottom sheet (narrow layouts) ─────
+   A full-height sheet covered the constellation you had just tapped into.
+   The default is now a peek bar — identity, influence counts, a play
+   button — that leaves the graph roughly 85% of the screen; expanding is a
+   deliberate act for when you actually want to read.
+
+   --peek-h must stay in step with SHEET_PEEK_HEIGHT in ForceGraph.tsx,
+   which offsets the focus camera so the framed cluster lands ABOVE this
+   bar. Same hand-kept correspondence as --panel-width / PANEL_WIDTH. The
+   camera always frames against the peek height, never the expanded one, so
+   expanding never moves the graph under the user's thumb. */
+.artist-panel--peek,
+.artist-panel--expanded {
+  --peek-h: 104px;
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(var(--peek-h) + env(safe-area-inset-bottom, 0px));
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+  border-top: 1px solid var(--color-border);
+  /* Base rule fades left-to-right for a right-hand drawer; a sheet has to
+     fade top-to-bottom or the tint reads as lighting from the wrong edge. */
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--layer-color, var(--color-post-punk)) 12%, rgba(10, 8, 20, 0.96)) 0,
+    color-mix(in srgb, var(--layer-color, var(--color-post-punk)) 10%, rgba(10, 8, 20, 0.98)) 100%
+  );
+  box-shadow: 0 -40px 60px -30px rgba(0, 0, 0, 0.65);
+  transform: translateY(100%);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  transition:
+    transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 280ms ease;
+}
+
+.artist-panel--expanded {
+  height: calc(78dvh + env(safe-area-inset-bottom, 0px));
+}
+
+/* Two classes deep so this outranks the base .artist-panel--open rule
+   (translateX) without touching it — the drawer still slides in from the
+   right everywhere this sheet isn't active. */
+.artist-panel--open.artist-panel--peek,
+.artist-panel--open.artist-panel--expanded {
+  transform: translateY(0);
+}
+
+/* Collapsed: the peek bar IS the sheet. The hero and the scroll area are
+   hidden rather than unmounted, so the <audio> element inside keeps
+   playing while the bar's own play button controls it. */
+.artist-panel--peek .panel-hero,
+.artist-panel--peek .artist-panel__inner {
+  display: none;
+}
+
+/* Hero shortens when expanded — at 210px it ate a third of the sheet
+   before a word of the bio, and the peek bar above already shows the
+   photo. */
+.artist-panel--expanded .panel-hero {
+  height: 128px;
+}
+
+/* Momentum scrolling inside the sheet without the page behind it taking
+   over once the list hits its end. */
+.artist-panel--expanded .artist-panel__inner {
+  overscroll-behavior: contain;
+  padding-bottom: 3rem;
+}
+
+/* ── Peek bar ──────────────────────────────────────────────────── */
+.panel-peek {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  padding: 0 0.85rem 0.55rem;
+}
+
+.panel-peek__handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  /* Deliberately generous for a 4px grip: this is the primary expand
+     control and a thumb needs a real target. */
+  padding: 0.6rem 0 0.45rem;
+}
+
+.panel-peek__close {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.5rem;
+  width: 30px;
+  height: 30px;
+  font-size: 0.8rem;
+  line-height: 1;
+  color: var(--color-muted);
+}
+
+.panel-peek__grip {
+  display: block;
+  width: 36px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(237, 234, 247, 0.28);
+}
+
+.panel-peek__row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.panel-peek__row--sub {
+  margin-top: 0.3rem;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.panel-peek__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1.5px solid var(--layer-color, var(--color-border));
+}
+
+.panel-peek__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.panel-peek__name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.panel-peek__meta {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.panel-peek__play {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: var(--color-bg);
+  background: var(--layer-color, var(--color-post-punk));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--layer-color, var(--color-post-punk)) 45%, transparent);
+}
+
+.panel-peek__chevron {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--color-muted);
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.artist-panel--expanded .panel-peek__chevron {
+  transform: rotate(180deg);
+}
+
+/* Song title and connection count share the left half of the sub-row; the
+   title is the part allowed to truncate, since the count is short, fixed and
+   the one piece that must stay whole. */
+.panel-peek__sub {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.panel-peek__song {
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-style: italic;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.panel-peek__dot {
+  color: var(--color-muted);
+  font-size: 0.625rem;
+  flex-shrink: 0;
+}
+
+.panel-peek__counts {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.03em;
+  color: var(--color-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.panel-peek__full {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.03em;
+  color: var(--layer-color, var(--color-post-punk));
+  white-space: nowrap;
+}
+
+
+/* ── Evidence filter ──────────────────────────────────────────────
+   Bottom-left: the only corner of the canvas with no permanent chrome
+   ("Jump to…" top-left, search top-right, onboarding bottom-centre, panel
+   right). Sits above the mobile bottom sheet rather than under it — see the
+   narrow-layout rule at the end of this block. */
+.evidence-filter {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  z-index: 20;
+  width: 200px;
+  padding: 0.6rem 0.7rem 0.55rem;
+  background: rgba(14, 11, 26, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.evidence-filter__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+
+.evidence-filter__title {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* The count carries the argument, so it gets the weight — watching this fall
+   from 1,041 to 544 is the entire reason the control exists. */
+.evidence-filter__count {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--color-muted);
+}
+
+.evidence-filter__count strong {
+  color: var(--color-root);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.evidence-filter__options {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.evidence-filter__option {
+  text-align: left;
+  padding: 0.3rem 0.45rem;
+  border-radius: 5px;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  transition: background var(--transition), color var(--transition);
+}
+
+.evidence-filter__option:hover {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.evidence-filter__option--active {
+  background: color-mix(in srgb, var(--color-root) 16%, transparent);
+  color: var(--color-text);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-root) 34%, transparent);
+}
+
+.evidence-filter__hint {
+  margin-top: 0.4rem;
+  font-size: 0.625rem;
+  line-height: 1.35;
+  color: var(--color-muted);
+  opacity: 0.75;
+}
+
+/* Narrow layouts: the artist panel becomes a bottom sheet (--peek-h, see the
+   sheet block above), so this has to sit clear of it rather than behind it.
+   Lifted unconditionally rather than only while a node is selected — a
+   control that jumps position on selection is worse than one sitting a little
+   high when nothing is open. */
+@media (max-width: 600px) {
+  .evidence-filter {
+    left: 0.75rem;
+    right: 0.75rem;
+    width: auto;
+    bottom: calc(104px + env(safe-area-inset-bottom, 0px) + 0.6rem);
+  }
+
+  .evidence-filter__options {
+    flex-direction: row;
+  }
+
+  .evidence-filter__option {
+    flex: 1;
+    text-align: center;
+    font-size: 0.65rem;
+    padding: 0.35rem 0.2rem;
+  }
+
+  /* Three labels across a phone leave no room for a sentence under them, and
+     the active option already names the mode. */
+  .evidence-filter__hint {
+    display: none;
+  }
 }

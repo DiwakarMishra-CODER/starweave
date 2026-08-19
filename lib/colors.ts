@@ -279,7 +279,17 @@ export const REALMS: Realm[] = [
 // of that realm's one hue.
 export const REALM_LABELS: Record<Realm, string> = {
   core: 'Core',
-  'region-one': 'Punk to Dream Pop',
+  // "to Shoegaze", not "to Dream Pop": the label names an arc, and shoegaze is
+  // where that arc actually ends. In this graph's own genre hierarchy
+  // shoegaze's parent IS dream-pop (1988 descending from 1984), so ending the
+  // name at dream pop stops a generation short and implies it is the terminus
+  // when it is really the parent of what came next. Dream pop is the larger
+  // cohort (18 region-one artists to shoegaze's 15, and 8 carry both tags), so
+  // this is a call about where the line reaches rather than about which is
+  // bigger. Caveat kept deliberately: neither name covers the realm's real
+  // tail, which runs to 2021 (black midi, Squid, Jockstrap, beabadoobee,
+  // Fontaines D.C.) -- fixing that needs a label that names no terminus at all.
+  'region-one': 'Punk to Shoegaze',
   'american-underground': 'American Underground',
   electronic: 'Electronic',
   'folk-confessional': 'Folk Confessional',
