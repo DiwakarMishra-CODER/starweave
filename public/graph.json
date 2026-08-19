@@ -257,7 +257,7 @@
       ],
       "bio": "Kraftwerk formed in Düsseldorf in 1970 around Ralf Hütter and Florian Schneider, emerging from the same fertile West German avant-garde scene that produced Can and Neu! — though Kraftwerk's early, more exploratory records gave little indication of where the group was headed. Autobahn (1974), with its twenty-two-minute title track compressed into a hit single, was the turning point: an all-electronic sound built to evoke the experience of driving, and the first sign that a fully synthetic pop music was possible.\n\nTrans-Europe Express (1977), The Man-Machine (1978), and Computer World (1981) refined that vision into something austere, funny, and totally controlled — Hütter and Schneider presenting themselves as interchangeable components in their own machine, performing behind mannequins built in their likeness. The group's insistence that the synthesizer, the vocoder, and the drum machine were not novelties but a complete musical language reshaped synth-pop, techno, electro, and hip-hop; Afrika Bambaataa's \"Planet Rock\" lifted Trans-Europe Express wholesale, and it is difficult to find a strand of electronic music since that doesn't run back through this one band.",
       "realm": "core",
-      "influenceScore": 24,
+      "influenceScore": 23,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/12e1b0bf93eae2b9b1c3ad7dc6a0fcd4/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/43/b2/b0/43b2b010-156f-b321-30ab-48a5aff07d02/mzaf_3115365669483405076.plus.aac.p.m4a",
       "previewTrack": "Trans-Europe Express",
@@ -322,7 +322,7 @@
       ],
       "bio": "Neu! formed in Düsseldorf in 1971 when Klaus Dinger and Michael Rother, both briefly members of an early lineup of Kraftwerk, struck out to pursue a sound too rhythmically insistent for that group at the time. Their self-titled debut established what Dinger called \"motorik\" — a steady, forward-driving beat, played on a stripped-down kit, that removed the fills and flourishes of conventional rock drumming and left only relentless, hypnotic momentum underneath Rother's shimmering, effects-treated guitar.\n\nThe group recorded on almost no budget: Neu! 2 (1973) famously pads out its second side with manipulated, pitch-shifted versions of songs from the same sessions because the label wouldn't fund new recording. Neu! 75 (1975) split cleanly between Rother's ambient side and Dinger's more aggressive, proto-punk material, a preview of the different directions each man pursued after the group's tense dissolution — Rother into ambient collaborations with Cluster and Brian Eno, Dinger into La Düsseldorf. Neu! sold almost nothing on release and became, retroactively, one of the most cited influences in rock: Bowie, Eno, Stereolab, and virtually every band that has ever been called \"motorik\" owes them a direct debt.",
       "realm": "core",
-      "influenceScore": 11,
+      "influenceScore": 10,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/bde893c5180d706211125ac13b884261/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/43/ac/d5/43acd546-890b-fdd0-5d3b-0ebaa0a3299e/mzaf_15932360912249293535.plus.aac.p.m4a",
       "previewTrack": "Hallogallo",
@@ -387,7 +387,7 @@
       ],
       "bio": "The story of New Order starts with a decision that should have been impossible: three of the four surviving members of Joy Division resolved to continue, rename themselves, and let the music evolve rather than fossilize under grief. What followed is one of the more extraordinary transformations in pop — from the raw post-punk of their early 7-inches to \"Blue Monday\" (1983), which remains the best-selling 12-inch single in UK history and arrived as if from another genre entirely. The drum machines, Roland synthesizers, and bass-heavy production weren't a betrayal of Joy Division's aesthetic; they were its logical extension into a changed world.\n\nPower, Corruption & Lies (1983) and Low-life (1985) refined the template: dance music with a rock band's arrangement instincts, or vice versa. New Order understood that the dichotomy was false before most people had articulated it. Their influence on the post-punk revival of the early 2000s — Interpol, Editors, the Killers — is obvious. Their influence on everything that calls itself \"indie electronic\" is equally pervasive, if less often credited.",
       "realm": "region-one",
-      "influenceScore": 8,
+      "influenceScore": 7,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/1579c1b8f3abc354cbb3ed63cda19b55/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/0f/43/1c/0f431c1a-119c-6614-2736-3fbc4c8a597c/mzaf_3646998447648845325.plus.aac.p.m4a",
       "previewTrack": "Blue Monday",
@@ -1134,7 +1134,7 @@
       ],
       "country": "CA",
       "activeFrom": 2011,
-      "signatureSong": "Archie, Marry Me",
+      "signatureSong": "Dreams Tonite",
       "classicAlbums": [
         {
           "id": "blue-rev",
@@ -1149,9 +1149,9 @@
       "realm": "region-one",
       "influenceScore": 0,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/d510615ee7ec09d1bf602b633ff1659a/250x250-000000-80-0-0.jpg",
-      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/f7/0d/10/f70d1011-be6a-1555-6bed-483bf899d66b/mzaf_844303095766460557.plus.aac.p.m4a",
-      "previewTrack": "Archie, Marry Me",
-      "previewAlbum": "Alvvays"
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/26/73/fd/2673fdaa-6bfe-54e3-c0dd-884afb19bce0/mzaf_11273602793506297863.plus.aac.p.m4a",
+      "previewTrack": "Dreams Tonite",
+      "previewAlbum": "Antisocialites"
     },
     {
       "id": "wolf-alice",
@@ -1483,7 +1483,7 @@
         }
       ],
       "bio": "The Replacements were incompetent in ways that were inseparable from their excellence. Paul Westerberg wrote songs of devastating emotional honesty — \"Here Comes a Regular,\" \"Unsatisfied,\" \"Bastards of Young\" — and delivered them in performances that ranged from transcendent to deliberately sabotaged, as if the band were afraid of their own sincerity and destruction was the only available defense. Bob Stinson's guitar, sloppy and luminous, matched the energy.\n\nLet It Be (1984) and Tim (1985) are the canonical works: American rock that sounds like it was made by people who had heard nothing, stolen nothing, and were making it up from the feelings directly available to them. The tension between Westerberg's perfectionist instincts and the band's self-destructive performance practice is the thing that makes the records live rather than merely document. Every subsequent American indie band that has made a virtue of imperfection, of showing the effort, owes something to Westerberg in particular.",
-      "influenceScore": 7,
+      "influenceScore": 8,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/1dd375083d22250cdb9988d5146ef8f0/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/b3/72/0a/b3720a7e-4412-6ea7-e6f5-76f356533eeb/mzaf_14325701908279843393.plus.aac.p.m4a",
       "previewTrack": "Bastards of Young",
@@ -1519,7 +1519,7 @@
         }
       ],
       "bio": "Pavement were deeply committed to sounding as if they were not trying and deeply skilled at executing that commitment. Stephen Malkmus's lyrics — circling around ideas, approaching conclusions and abandoning them, making puns that were also genuine observations — gave the songs an intelligence that the lo-fi production and disengaged vocal delivery deliberately obscured. This was a form of wit that had few predecessors in rock music.\n\nSlanted and Enchanted (1992) was one of the most influential records of the nineties, not because of what it did but because of its attitude toward doing: the deliberate roughness of the production, the way the songs seemed to trust the listener to understand them without being spelled out. Crooked Rain, Crooked Rain (1994) refined the approach and added a more explicitly melodic layer; \"Cut Your Hair\" is genuinely a pop song, played straight. Wowee Zowee (1995), which scattered in more directions, is the record their most serious admirers prefer.",
-      "influenceScore": 7,
+      "influenceScore": 8,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/8d970ce3f2abbcf4e9c7e4e8084f969f/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/3f/c6/08/3fc608d6-090e-9a2e-1c7b-391f7832dbfc/mzaf_17312437127209948202.plus.aac.p.m4a",
       "previewTrack": "Gold Soundz",
@@ -2034,7 +2034,7 @@
       ],
       "bio": "David Bowie is many artists — the glam-rock alien, the blue-eyed soul singer, the Berlin experimentalist, the eighties pop icon, the nineties drum-and-bass enthusiast — and the problem with writing about him is deciding which one to begin with. The one who matters most to this graph is the Bowie of 1976–1979: the Berlin trilogy made with Brian Eno, Low, Heroes, and Lodger, records that dismantled the song's structure and reassembled it as something else. Side two of Low in particular — instrumentals named like emotional states, each one a complete thing — is one of the most radical moves a mainstream pop artist had made to that point.\n\nBut the through-line of influence is longer than the Berlin period. Ziggy Stardust (1972) defined what it meant to construct a rock persona as a formal act rather than an expression of authentic self — which is a definition with consequences for every post-punk act that followed. The production language Bowie developed with Tony Visconti, and the aesthetic logic he developed with Eno, became the grammar of alternative music in the eighties. Joy Division, the Cure, Siouxsie and the Banshees all cite him; he appears in this graph as the outside influence that explains many of the inside connections.",
       "realm": "region-one",
-      "influenceScore": 26,
+      "influenceScore": 25,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/8301a6a09a24f4bb35950c59717defa0/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/4b/a8/39/4ba83913-d7a9-0cff-b287-78c599c0e43f/mzaf_2879061655195715459.plus.aac.p.m4a",
       "previewTrack": "Heroes",
@@ -2101,7 +2101,7 @@
           "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/46/8f/36/468f365f-cbb2-0c38-fb23-86309176a633/00602557131529.rgb.jpg/600x600bb.jpg"
         }
       ],
-      "influenceScore": 4,
+      "influenceScore": 5,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/3b5226363750109d75fd59b187d8b539/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/b9/11/1f/b9111f32-ff2c-c537-c37d-40f60aa27f8b/mzaf_13045051276869613430.plus.aac.p.m4a",
       "previewTrack": "Oscillations",
@@ -2261,7 +2261,7 @@
           "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/60/b1/b0/60b1b052-1a98-b1c7-7554-dc68d91da6e7/13UABIM56819.rgb.jpg/600x600bb.jpg"
         }
       ],
-      "influenceScore": 5,
+      "influenceScore": 4,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/06f77120f73572daef39f5c740d88396/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/fb/bd/8f/fbbd8f96-b30d-40f6-c91a-7668330390bb/mzaf_5831637823041295870.plus.aac.p.m4a",
       "previewTrack": "Don't You Want Me",
@@ -2293,7 +2293,7 @@
           "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/22/0b/3e/220b3e54-a7bf-bd8e-c547-f5825cec4f45/21UMGIM62305.rgb.jpg/600x600bb.jpg"
         }
       ],
-      "influenceScore": 6,
+      "influenceScore": 7,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/5f1af4ba28f3136c03fd1196092e7c22/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/3b/0b/d0/3b0bd0ae-b450-00dd-3a31-2d372f503b37/mzaf_1265393616095927658.plus.aac.p.m4a",
       "previewTrack": "Enola Gay",
@@ -3458,7 +3458,7 @@
           "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/12/38/d0/1238d076-0a43-5758-1876-5ab6d256d648/5016958995157.png/600x600bb.jpg"
         }
       ],
-      "influenceScore": 9,
+      "influenceScore": 8,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/592fdd6886d9885e7572e783506fcded/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/9f/66/27/9f662755-0dc2-678d-2986-2f62f18e8ccb/mzaf_3045265892977245319.plus.aac.p.m4a",
       "previewTrack": "Jóga",
@@ -4480,12 +4480,12 @@
       "bio": "Claire Cottrill began posting lo-fi bedroom-pop recordings online as a teenager, and the unexpected viral success of one such song brought her a wide audience before she had released a proper album. Immunity (2019), produced with Rostam Batmanglij, moved her sound toward fuller, more considered arrangements while keeping the intimate, conversational vocal style of her earlier bedroom recordings.\n\nCottrill has continued to develop a warmer, more acoustic-leaning sound on subsequent albums, drawing increasingly on 1970s soft-rock and folk influences she's cited from her parents' record collection. Her trajectory — from viral bedroom-pop artist to a songwriter working in dialogue with an older folk and soft-rock lineage — has made her a frequently discussed example of how that internet-era path can develop into a more traditional singer-songwriter career.",
       "classicAlbums": [
         {
-          "id": "immunity",
-          "title": "Immunity",
-          "year": 2019,
+          "id": "charm",
+          "title": "Charm",
+          "year": 2024,
           "isClassic": true,
-          "classicReason": "Immunity moves Clairo's hushed, conversational vocal style into fuller, more considered production, Rostam Batmanglij's arrangements adding texture without ever overwhelming the intimacy of her delivery. \"Bags\" pairs a soft, mid-tempo groove with a lyric about the disorientation of a new crush, Clairo's flat delivery undercutting any sense of melodrama. \"Alewife\" strips things back further, built around a simple guitar figure and a direct account of a friend's crisis. It's a record that treats emotional restraint as its own kind of intensity.",
-          "imageUrl": "https://coverartarchive.org/release/92d4edd2-7540-43e9-8eef-cba124fcf42a/39958758604-500.jpg"
+          "classicReason": "Charm trades bedroom-pop's laptop intimacy for a room full of players, cut live to analog tape with Leon Michels and a band pulled from the soul and jazz session world. It's warm and unhurried in a way Clairo's earlier records never tried to be, moving between soft rock, jazz and psychedelic folk without ever tipping into pastiche. \"Sexy to Someone\" is the thesis in miniature: a loose, sunlit groove carrying a lyric about wanting a reason to leave the house. It's the record where the internet's most famous bedroom artist stopped sounding like a bedroom at all.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f7/8c/19/f78c1951-ced5-fea6-251b-50914d96fd62/00196922948305_Cover.jpg/600x600bb.jpg"
         }
       ],
       "influenceScore": 0,
@@ -7115,7 +7115,7 @@
           "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/da/cc/ca/dacccae4-4f00-f451-6051-46d04a7d5099/093624911791.jpg/600x600bb.jpg"
         }
       ],
-      "influenceScore": 4,
+      "influenceScore": 2,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/24cc4b670f63bec063db94fd490a49db/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/19/f5/3a/19f53ae0-bc45-9874-a950-a8645268aebc/mzaf_2975609157599388084.plus.aac.p.m4a",
       "previewTrack": "Race for the Prize",
@@ -7532,7 +7532,7 @@
           "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/64/79/67/64796709-9482-2221-b1b7-64cdbe1b99f2/dj.fuppzyzi.jpg/600x600bb.jpg"
         }
       ],
-      "influenceScore": 8,
+      "influenceScore": 4,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/17ab546d331720a84e92ea75816f0dfe/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/be/8f/fd/be8ffd04-1cee-2e2a-2c44-86670ffd609f/mzaf_17079070247245279859.plus.aac.p.m4a",
       "previewTrack": "My Girls",
@@ -9554,16 +9554,6 @@
   ],
   "genres": [
     {
-      "id": "underground",
-      "name": "Underground",
-      "parent": null
-    },
-    {
-      "id": "indie",
-      "name": "Indie",
-      "parent": "underground"
-    },
-    {
       "id": "art-rock",
       "name": "Art rock",
       "parent": null,
@@ -9692,12 +9682,12 @@
     {
       "id": "electronic",
       "name": "Electronic",
-      "parent": "underground"
+      "parent": null
     },
     {
       "id": "folk",
       "name": "Folk",
-      "parent": "underground"
+      "parent": null
     },
     {
       "id": "hardcore-punk",
@@ -11560,7 +11550,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's New Order page.",
+      "citation": "Puja Patel, \"Inside New Order's First Album Without Founding Bassist Peter Hook,\" Rolling Stone (21 Jan 2015), listing Neil Young, David Bowie and Iggy Pop among the band's early influences.",
       "sourceTier": "reported"
     },
     {
@@ -11569,26 +11559,24 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's The Cure page.",
-      "sourceTier": "reported"
+      "citation": "Robert Smith, in Mark Paytress's Siouxsie & the Banshees: The Authorised Biography (2003), p.96, on playing with the Banshees: \"On stage that first night with the Banshees, I was blown away by how powerful I felt playing that kind of music. It was so different to what we were doing with the Cure... Being a Banshee really changed my attitude to what I was doing.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "the-cure",
       "target": "joy-division",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.65,
-      "citation": "Wikipedia's The Cure page.",
-      "sourceTier": "reported"
+      "confidence": 0.45,
+      "citation": null
     },
     {
       "source": "nick-cave-and-the-bad-seeds",
       "target": "david-bowie",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.65,
-      "citation": "Wikipedia's Nick Cave & The Bad Seeds page.",
-      "sourceTier": "reported"
+      "confidence": 0.45,
+      "citation": null
     },
     {
       "source": "the-jesus-and-mary-chain",
@@ -11596,7 +11584,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's The Jesus and Mary Chain page.",
+      "citation": "Jim Reid on BBC Radio 6 Music (4 Mar 2012), naming a liking for Pink Floyd, Siouxsie and the Banshees, the Monkees and Muddy Waters -- stated as taste, separately from the band's cited early influences.",
       "sourceTier": "reported"
     },
     {
@@ -11632,8 +11620,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Cocteau Twins page.",
-      "sourceTier": "reported"
+      "citation": "Bill Prince, \"New 2 U: Cocteau Twins,\" Sounds (11 Sept 1982), describing the band as \"mixing strong Siouxsie and the Banshees and Joy Division influences\" -- a contemporary reviewer's reading rather than the band's own account.",
+      "sourceTier": "critic"
     },
     {
       "source": "julee-cruise",
@@ -11641,8 +11629,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Rolling Stone feature.",
-      "sourceTier": "critic"
+      "citation": null
     },
     {
       "source": "my-bloody-valentine",
@@ -11650,8 +11637,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's My Bloody Valentine page.",
-      "sourceTier": "reported"
+      "citation": "Kevin Shields to Karen Leng, Double J / ABC (8 Apr 2021), on the dark post-punk bands the band drew from: \"the best of all was Siouxsie and the Banshees, the Cure and Killing Joke.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "my-bloody-valentine",
@@ -11659,8 +11646,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's My Bloody Valentine page.",
-      "sourceTier": "reported"
+      "citation": "Kevin Shields to Karen Leng, Double J / ABC (8 Apr 2021), same answer: \"the best of all was Siouxsie and the Banshees, the Cure and Killing Joke.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "my-bloody-valentine",
@@ -11668,7 +11655,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's My Bloody Valentine page.",
+      "citation": "Mike McGonigal, Loveless (33 1/3 series, 2007), p.21, on the band's early post-punk influences: the Birthday Party, the Cramps and Joy Division.",
       "sourceTier": "reported"
     },
     {
@@ -11740,7 +11727,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Slowdive page.",
+      "citation": "The band is named after a Siouxsie and the Banshees single, which Rachel Goswell suggested as a favourite; Neil Halstead's account of it appears in Asa Eisenhardt's When the Sun Hits interview (1 Aug 2014). Simon Reynolds, writing in The New York Times (1 Dec 1991), separately placed the band's formative listening with post-punk groups like the Cure and the Banshees.",
       "sourceTier": "reported"
     },
     {
@@ -11749,7 +11736,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Slowdive page.",
+      "citation": "Neil Halstead and Rachel Goswell naming David Bowie, the Byrds, the Rolling Stones, Cocteau Twins, My Bloody Valentine and Psychocandy in a Berlin audio interview, December 1991. Thin sourcing: the recording circulates without a credited publisher or interviewer.",
       "sourceTier": "reported"
     },
     {
@@ -11866,8 +11853,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Broadcast page.",
-      "sourceTier": "reported"
+      "citation": "Mikey Jones, \"The Essential... Broadcast,\" Fact Magazine (19 Feb 2015), where Stereolab appears as a comparison critics reached for in the band's early years rather than as an influence either member claimed.",
+      "sourceTier": "critic"
     },
     {
       "source": "deerhunter",
@@ -11875,34 +11862,34 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Deerhunter page.",
-      "sourceTier": "reported"
+      "citation": "Ben Ratliff, \"A Stew of Rock and Pop Influences, Mixed Well and Served Slickly,\" The New York Times (9 Dec 2008), hearing the Breeders, Stereolab, krautrock and Sonic Youth's noise breakdowns in the live set -- the reviewer's reading, not the band's account.",
+      "sourceTier": "critic"
     },
     {
       "source": "alvvays",
       "target": "the-smiths",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.65,
-      "citation": "Wikipedia's Alvvays page.",
-      "sourceTier": "reported"
+      "confidence": 0.85,
+      "citation": "Tape Op, Geoff Stanfield (May 2023). Molly Rankin on writing \"Pressed\": \"We were trying to do a Smiths' verse and an R.E.M. chorus, and then it morphs into whatever it is by the end of the song.\" Producer Shawn Everett confirms it in the same interview -- \"They were going for The Smiths' reference.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "alvvays",
       "target": "cocteau-twins",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.65,
-      "citation": "Wikipedia's Alvvays page.",
-      "sourceTier": "reported"
+      "confidence": 0.75,
+      "citation": "Ilana Kaplan, SPIN (11 Mar 2015) and Rebecca Schiller, Diffuser.fm (21 Nov 2014) independently list Cocteau Twins among Molly Rankin's named influences. Asked separately by Pitchfork to name a perfect 10 album, she chose their Heaven or Las Vegas -- \"I think it flows very well and it's also just otherworldly beauty and also menacing at the same time\" -- which speaks to how deeply she holds the record rather than to influence on its own.",
+      "sourceTier": "first-person"
     },
     {
       "source": "alvvays",
       "target": "pavement",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.65,
-      "citation": "Wikipedia's Alvvays page.",
+      "confidence": 0.6,
+      "citation": "Ilana Kaplan, SPIN (11 Mar 2015), \"SXSW Lone Stars: Alvvays on Archie's Identity and Scot-Pop,\" and Rebecca Schiller, Diffuser.fm (21 Nov 2014) both report Pavement among Molly Rankin's named influences. Reported as a name on her own list rather than a claim she elaborates on, hence the lower confidence.",
       "sourceTier": "reported"
     },
     {
@@ -11910,17 +11897,16 @@
       "target": "the-replacements",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.85,
-      "citation": "KEXP feature/interview on Alvvays.",
-      "sourceTier": "first-person"
+      "confidence": 0.5,
+      "citation": null
     },
     {
       "source": "alvvays",
       "target": "yo-la-tengo",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.85,
-      "citation": "Stereogum feature/interview on Alvvays.",
+      "confidence": 0.8,
+      "citation": "Stereogum \"Under The Influence,\" Rachel Brodsky (3 Oct 2022). Molly Rankin: \"I know Al has a lot of love for Yo La Tengo, as do I. I've seen them performing in many formations.\"",
       "sourceTier": "first-person"
     },
     {
@@ -11929,7 +11915,25 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Stereogum feature/interview on Alvvays.",
+      "citation": "Tape Op, Geoff Stanfield (May 2023). Alec O'Hanley on the same session: \"We tried to go full [R.E.M.] Murmur/Reckoning,\" and Molly Rankin describes writing \"a Smiths' verse and an R.E.M. chorus.\"",
+      "sourceTier": "first-person"
+    },
+    {
+      "source": "alvvays",
+      "target": "my-bloody-valentine",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.85,
+      "citation": "Tape Op, Geoff Stanfield (May 2023). Alec O'Hanley: \"One thing we loved about Kevin Shields was the limitations he put on his stuff that's My Bloody Valentine\" -- discussed as a working method, down to reusing the reverse reverb on a Yamaha SPX90.",
+      "sourceTier": "first-person"
+    },
+    {
+      "source": "wolf-alice",
+      "target": "the-replacements",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.85,
+      "citation": "In Pitchfork's \"Perfect 10\" video series, Wolf Alice chose the Replacements' Tim, and one of the band described Paul Westerberg as \"super influential to me.\"",
       "sourceTier": "first-person"
     },
     {
@@ -11947,7 +11951,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Wolf Alice page.",
+      "citation": "The Guardian's Wolf Alice webchat (11 Sept 2018), where the band name a liking for the Vines, the Beatles, the Band, Siouxsie and the Banshees, Blur and Courtney Love. Stated as taste rather than as influence.",
       "sourceTier": "reported"
     },
     {
@@ -11956,7 +11960,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Wolf Alice page.",
+      "citation": "The Guardian's Wolf Alice webchat (11 Sept 2018), same answer naming Siouxsie and the Banshees, Blur and Courtney Love among the band's likes. Stated as taste rather than as influence.",
       "sourceTier": "reported"
     },
     {
@@ -11992,8 +11996,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Sweet Trip page.",
-      "sourceTier": "reported"
+      "citation": "Jesse Taconelli, \"Sonemic Interview: Sweet Trip\" (20 Dec 2020), in which Roberto Burgos and Valerie Cooper list their own inspirations: Aphex Twin, My Bloody Valentine, Slowdive, Sonic Youth, Broadcast, Cocteau Twins, Pale Saints and others.",
+      "sourceTier": "first-person"
     },
     {
       "source": "pixies",
@@ -12010,8 +12014,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Pixies page.",
-      "sourceTier": "reported"
+      "citation": "Black Francis to Scott Pelley, The Guardian (2022), calling R.E.M. \"hugely influential\" on his songwriting in the period before Come On Pilgrim.",
+      "sourceTier": "first-person"
     },
     {
       "source": "pixies",
@@ -12064,7 +12068,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Pixies page.",
+      "citation": "Ben Sisario, Doolittle (33 1/3 series, 2006), p.128, on Kim Deal's listening: the artists she took in included XTC, Gang of Four and Elvis Costello.",
       "sourceTier": "reported"
     },
     {
@@ -12073,8 +12077,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Sonic Youth page.",
-      "sourceTier": "reported"
+      "citation": "Michael Azerrad, Our Band Could Be Your Life (2001), p.273: after seeing Minor Threat play in May 1982, Thurston Moore called them \"the greatest live band I have ever seen.\" Praise for them as a live act, alongside the band's broader turn toward hardcore.",
+      "sourceTier": "first-person"
     },
     {
       "source": "dinosaur-jr",
@@ -12082,7 +12086,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Dinosaur Jr. page.",
+      "citation": "Michael Azerrad, Our Band Could Be Your Life (2001), p.350, on what the band moved toward after high school: slower but still aggressive music -- Black Sabbath, the Replacements and Neil Young.",
       "sourceTier": "reported"
     },
     {
@@ -12091,7 +12095,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Pavement page.",
+      "citation": "The Quietus, \"Organised Chaos: Swell Maps Interviewed\" (24 May 2021), which records the Replacements and Swell Maps among the influences Scott Kannberg has cited.",
       "sourceTier": "reported"
     },
     {
@@ -12109,8 +12113,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Interpol page.",
-      "sourceTier": "reported"
+      "citation": "Will Hodgkinson, \"Interpol: misery loves a comeback,\" The Times (9 Jul 2022), on songs \"recalling the post-punk iciness of Echo & the Bunnymen and Siouxsie and the Banshees\" -- a critic's comparison, not a claim the band makes.",
+      "sourceTier": "critic"
     },
     {
       "source": "interpol",
@@ -12118,8 +12122,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Interpol page.",
-      "sourceTier": "reported"
+      "citation": "Rob Sheffield's Rolling Stone review of Turn On the Bright Lights (14 Aug 2002), drawing comparisons to Joy Division, Echo and the Bunnymen and the Smiths -- a critic's reading. Note the band has publicly denied the Joy Division comparison elsewhere.",
+      "sourceTier": "critic"
     },
     {
       "source": "geese",
@@ -12127,8 +12131,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Geese page.",
-      "sourceTier": "reported"
+      "citation": "Geese naming their own influences to Bela Omoeva, WRBB Radio (21 Mar 2024), a list that runs from the Velvet Underground and Television through Radiohead, Deerhunter and Funkadelic.",
+      "sourceTier": "first-person"
     },
     {
       "source": "geese",
@@ -12162,9 +12166,8 @@
       "target": "dinosaur-jr",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.65,
-      "citation": "Wikipedia's Built to Spill page.",
-      "sourceTier": "reported"
+      "confidence": 0.45,
+      "citation": null
     },
     {
       "source": "built-to-spill",
@@ -12172,35 +12175,32 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Built to Spill page.",
-      "sourceTier": "reported"
+      "citation": "Tim Sendra's AllMusic biography, describing the band's sound as an intermixture of \"postmodern, Pavement-style pop\" and the \"loose, spacious jamming\" of Neil Young -- a stylistic comparison rather than a stated influence.",
+      "sourceTier": "critic"
     },
     {
       "source": "modest-mouse",
       "target": "pavement",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.65,
-      "citation": "Wikipedia's Modest Mouse page.",
-      "sourceTier": "reported"
+      "confidence": 0.45,
+      "citation": null
     },
     {
       "source": "modest-mouse",
       "target": "pixies",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.65,
-      "citation": "Wikipedia's Modest Mouse page.",
-      "sourceTier": "reported"
+      "confidence": 0.45,
+      "citation": null
     },
     {
       "source": "modest-mouse",
       "target": "talking-heads",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.65,
-      "citation": "Wikipedia's Modest Mouse page.",
-      "sourceTier": "reported"
+      "confidence": 0.45,
+      "citation": null
     },
     {
       "source": "modest-mouse",
@@ -12208,8 +12208,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Modest Mouse page.",
-      "sourceTier": "reported"
+      "citation": "Mark Richardson, \"Built to Spill,\" Pitchfork (7 May 2006): Built to Spill's work \"has been said to have been an influence on alternative rock acts such as Modest Mouse and Death Cab for Cutie.\"",
+      "sourceTier": "critic"
     },
     {
       "source": "blur",
@@ -12217,7 +12217,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Blur page.",
+      "citation": "Wikipedia's Blur page lists David Bowie first among the band's influences, alongside Bobby Womack, William Onyeabor, the B-52's, the Kinks, Pink Floyd, the Jam and Depeche Mode.",
       "sourceTier": "reported"
     },
     {
@@ -12225,9 +12225,8 @@
       "target": "sonic-youth",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.65,
-      "citation": "Wikipedia's Blur page.",
-      "sourceTier": "reported"
+      "confidence": 0.5,
+      "citation": null
     },
     {
       "source": "blur",
@@ -12235,7 +12234,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Blur page.",
+      "citation": "John Harris, Britpop!: Cool Britannia and the Spectacular Demise of English Rock (2004), pp.259-60: Graham Coxon \"made a point of listening to noisy American alternative rock bands such as Pavement.\"",
       "sourceTier": "reported"
     },
     {
@@ -12244,8 +12243,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Stereolab page.",
-      "sourceTier": "reported"
+      "citation": "Jim Sullivan, The Boston Globe (5 Nov 1997), on a band \"often pegged as Velvet Underground-influenced retro-futurists\"; Barney Hoskyns in Rolling Stone (Oct 1997) similarly described Dots and Loops moving \"ever further away from the one-chord Velvets drone-mesh of its early days.\" Critics' framing throughout -- Tim Gane has spoken about Neu!, not the Velvet Underground.",
+      "sourceTier": "critic"
     },
     {
       "source": "fugazi",
@@ -12253,8 +12252,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Fugazi page.",
-      "sourceTier": "reported"
+      "citation": "Guy Picciotto, Cultural Glitch (Nov 3, 2011): \"Fugazi's influences include Bad Brains, the Faith, Void, Minutemen, Black Flag, Sonic Youth, the Ex.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "fugazi",
@@ -12271,7 +12270,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Fugazi page.",
+      "citation": "Paul Brannigan, Louder (16 Apr 2014), \"Ian MacKaye on Minor Threat, Fugazi and the power of Punk Rock\": Fugazi formed out of the groups MacKaye moved through after Minor Threat dissolved -- direct personnel continuity rather than an influence claimed from outside.",
       "sourceTier": "reported"
     },
     {
@@ -12316,7 +12315,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Joy Division page.",
+      "citation": "Bernard Sumner, Chapter and Verse - New Order, Joy Division and Me (2014), recalling that Ian Curtis drew on the Doors, Iggy Pop, Bowie, Kraftwerk, the Velvet Underground and Neu!; Stephen Morris separately credited the motorik drum beats of Neu! and Can to Daniel Jones, Electronic Beats (28 Jun 2011).",
       "sourceTier": "reported"
     },
     {
@@ -12352,7 +12351,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Siouxsie & The Banshees page.",
+      "citation": "Michael Bracewell, \"Her dark materials,\" The Guardian (25 Sept 2005), recording the band's \"love for Can, Kraftwerk and Neu!\" alongside their stated first influences.",
       "sourceTier": "reported"
     },
     {
@@ -12361,7 +12360,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Siouxsie & The Banshees page.",
+      "citation": "Michael Bracewell, \"Her dark materials,\" The Guardian (25 Sept 2005), same passage: a \"love for Can, Kraftwerk and Neu!\"",
       "sourceTier": "reported"
     },
     {
@@ -12370,7 +12369,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Wikipedia's Can page.",
+      "citation": "Richie Unterberger's interview with Holger Czukay (Krautrock.com, 1997), on Can's early rock reference points: the opening of \"Father Cannot Yell\" was inspired by the Velvet Underground's \"European Son.\"",
       "sourceTier": "reported"
     },
     {
@@ -14593,7 +14592,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.7,
-      "citation": "Cited in folk-audit-FINAL.md §G as a documented slowcore-lineage influence relationship (Codeine predates and is widely cited as a formative reference point for Low’s sound); independently corroborated by this realm’s own audit (emo-audit-DRAFT.md §6), which found Duster and American Football separately naming Codeine, making this a 3-source cross-realm convergence."
+      "citation": "Codeine predate and are widely cited as a formative reference point for the slowcore sound Low worked in; the same lineage claim recurs independently in Duster's and American Football's own accounts of what they were listening to.",
+      "sourceTier": "reported"
     },
     {
       "source": "have-a-nice-life",
@@ -14691,7 +14691,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Wikipedia/Teen Idles (Ian MacKaye's pre-Minor Threat band, same two core members): \"After seeing a Bad Brains concert, MacKaye and Nelson began playing in a punk band.\" Corroborated by Wikipedia/Ian MacKaye (\"looked up to hardcore bands like Bad Brains and Black Flag\") and Lyle Preslar on Scott Crawford's Spoke podcast (May 25, 2021), crediting Dr. Know's guitar technique directly."
+      "citation": "Wikipedia/Teen Idles (Ian MacKaye's pre-Minor Threat band, same two core members): \"After seeing a Bad Brains concert, MacKaye and Nelson began playing in a punk band.\" Corroborated by Wikipedia/Ian MacKaye (\"looked up to hardcore bands like Bad Brains and Black Flag\") and Lyle Preslar on Scott Crawford's Spoke podcast (May 25, 2021), crediting Dr. Know's guitar technique directly.",
+      "sourceTier": "first-person"
     },
     {
       "source": "minor-threat",
@@ -14699,7 +14700,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Wikipedia/Teen Idles, same sourcing as minor-threat -> bad-brains: Teen Idles (MacKaye/Nelson's band immediately preceding Minor Threat) formed after direct exposure to the DC/LA hardcore scene, naming Black Flag alongside Bad Brains."
+      "citation": "Wikipedia/Teen Idles (Ian MacKaye's pre-Minor Threat band, same two core members): \"After seeing a Bad Brains concert, MacKaye and Nelson began playing in a punk band.\" Corroborated by Wikipedia/Ian MacKaye (\"looked up to hardcore bands like Bad Brains and Black Flag\") and Lyle Preslar on Scott Crawford's Spoke podcast (May 25, 2021), crediting Dr. Know's guitar technique directly. Teen Idles (MacKaye/Nelson's band immediately preceding Minor Threat) formed after direct exposure to the DC/LA hardcore scene, naming Black Flag alongside Bad Brains.",
+      "sourceTier": "reported"
     },
     {
       "source": "fugazi",
@@ -14707,7 +14709,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Guy Picciotto, Cultural Glitch (Nov 3, 2011): \"Fugazi's influences include Bad Brains, the Faith, Void, Minutemen, Black Flag, Sonic Youth, the Ex.\""
+      "citation": "Guy Picciotto, Cultural Glitch (Nov 3, 2011): \"Fugazi's influences include Bad Brains, the Faith, Void, Minutemen, Black Flag, Sonic Youth, the Ex.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "fugazi",
@@ -14715,7 +14718,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Guy Picciotto, Cultural Glitch (Nov 3, 2011), same quote as fugazi -> bad-brains."
+      "citation": "Guy Picciotto, Cultural Glitch (Nov 3, 2011): \"Fugazi's influences include Bad Brains, the Faith, Void, Minutemen, Black Flag, Sonic Youth, the Ex.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "fugazi",
@@ -14723,7 +14727,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Guy Picciotto, Cultural Glitch (Nov 3, 2011), same quote as fugazi -> bad-brains."
+      "citation": "Guy Picciotto, Cultural Glitch (Nov 3, 2011): \"Fugazi's influences include Bad Brains, the Faith, Void, Minutemen, Black Flag, Sonic Youth, the Ex.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "interpol",
@@ -14731,7 +14736,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Wikipedia/Fugazi: Daniel Kessler \"has also cited the band as an influence.\""
+      "citation": "Wikipedia/Fugazi: Daniel Kessler \"has also cited the band as an influence.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "modest-mouse",
@@ -14739,7 +14745,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Jeremiah Green (Modest Mouse): \"Fugazi was probably my biggest influence as far as wanting to start a band.\""
+      "citation": "Jeremiah Green (Modest Mouse): \"Fugazi was probably my biggest influence as far as wanting to start a band.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "blur",
@@ -14747,7 +14754,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Graham Coxon: his introduction to Fugazi (and the Picciotto-led Rites of Spring) in the mid-90s was \"one of the most musically significant moments of his life.\""
+      "citation": "Graham Coxon: his introduction to Fugazi (and the Picciotto-led Rites of Spring) in the mid-90s was \"one of the most musically significant moments of his life.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "bon-iver",
@@ -14755,7 +14763,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.55,
-      "citation": "Wikipedia/Fugazi lists Justin Vernon among artists citing the band as an influence; underlying primary-source text not independently re-fetched by this audit, flagged weaker-tier."
+      "citation": "Wikipedia's Fugazi page lists Justin Vernon among the artists who have cited the band as an influence.",
+      "sourceTier": "reported"
     },
     {
       "source": "sunny-day-real-estate",
@@ -14763,7 +14772,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Eric Grubbs, Post: A Look at the Influence of Post-Hardcore 1985-2007 (2008), p.72: early influences \"included Dischord Records bands like Rites of Spring... and Fugazi.\""
+      "citation": "Eric Grubbs, Post: A Look at the Influence of Post-Hardcore 1985-2007 (2008), p.72: early influences \"included Dischord Records bands like Rites of Spring... and Fugazi.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "american-football",
@@ -14771,7 +14781,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.7,
-      "citation": "Steve Holmes, Crack Magazine: \"The single most important band of the 90s was Fugazi\" (corroborated by Wikipedia/Rolling Stone). Read as historical/scene acknowledgment rather than a sonic-influence claim -- see american-football -> nick-drake for the band's own account of its actual sonic influences."
+      "citation": "Steve Holmes, Crack Magazine: \"The single most important band of the 90s was Fugazi\" (corroborated by Wikipedia/Rolling Stone). Read as historical/scene acknowledgment rather than a sonic.",
+      "sourceTier": "first-person"
     },
     {
       "source": "cap-n-jazz",
@@ -14779,7 +14790,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Mike Kinsella, Rolling Stone (2016): \"Cap'n Jazz had that sort of Dischord, Fugazi influence.\""
+      "citation": "Mike Kinsella, Rolling Stone (2016): \"Cap'n Jazz had that sort of Dischord, Fugazi influence.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "at-the-drive-in",
@@ -14787,7 +14799,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.6,
-      "citation": "Fugazi's own Wikipedia page and ATDI's own Wikipedia page both name Fugazi among ATDI's \"key influences\"; underlying citation is a dead-link footnote, flagged weaker-tier."
+      "citation": "Fugazi's own Wikipedia page and ATDI's own Wikipedia page both name Fugazi among ATDI's \"key influences\"; underlying citation is a dead-link footnote, flagged weaker-tier.",
+      "sourceTier": "reported"
     },
     {
       "source": "refused",
@@ -14795,7 +14808,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Dennis Lyxzen (Refused) has named Fugazi's Red Medicine his favorite Fugazi album, cited as a direct influence while recording."
+      "citation": "Dennis Lyxzen (Refused) has named Fugazi's Red Medicine his favorite Fugazi album, cited as a direct influence while recording.",
+      "sourceTier": "first-person"
     },
     {
       "source": "la-dispute",
@@ -14803,7 +14817,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Documented fact: La Dispute covered Fugazi's \"Strangelight\" for the 2021 compilation Silence Is a Dangerous Sound."
+      "citation": "Documented fact: La Dispute covered Fugazi's \"Strangelight\" for the 2021 compilation Silence Is a Dangerous Sound.",
+      "sourceTier": "reported"
     },
     {
       "source": "jeff-rosenstock",
@@ -14811,7 +14826,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Dan Ozzi, Noisey/Vice (Jan 20, 2014): described as \"the Fugazi for the internet age of punk\"; independently corroborated with the same framing by David Anthony, The A.V. Club (Aug 20, 2015). A critic comparison rather than a first-person craft-influence statement -- see also jeff-rosenstock -> minor-threat."
+      "citation": "Dan Ozzi, Noisey/Vice (Jan 20, 2014): described as \"the Fugazi for the internet age of punk\"; independently corroborated with the same framing by David Anthony, The A.V. Club (Aug 20, 2015). A critic comparison rather than a first.",
+      "sourceTier": "critic"
     },
     {
       "source": "far-apart",
@@ -14819,7 +14835,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Far Apart's own Bandcamp bio (written for the 2025 reissue): \"Drawing inspiration from bands like Fugazi, Drive Like Jehu, and Jawbox.\""
+      "citation": "Far Apart's own Bandcamp bio (written for the 2025 reissue): \"Drawing inspiration from bands like Fugazi, Drive Like Jehu, and Jawbox.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "unwound",
@@ -14827,7 +14844,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Justin Trosper, Piero Scaruffi interview (1999): \"more influenced by the DC punk thing happening back then... (husker du/black flag/mission of burma)\"; Fugazi also named directly in the band's general influences list (AllMusic/Fred Thomas)."
+      "citation": "Justin Trosper, Piero Scaruffi interview (1999): \"more influenced by the DC punk thing happening back then... (husker du/black flag/mission of burma)\"; Fugazi also named directly in the band's general influences list (AllMusic/Fred Thomas).",
+      "sourceTier": "first-person"
     },
     {
       "source": "brand-new",
@@ -14835,7 +14853,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Jesse Lacey, DrownedInSound (Sept 17, 2009): \"influenced by Polvo, Archers of Loaf, Fugazi and Modest Mouse.\""
+      "citation": "Jesse Lacey, DrownedInSound (Sept 17, 2009): \"influenced by Polvo, Archers of Loaf, Fugazi and Modest Mouse.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "the-dismemberment-plan",
@@ -14843,7 +14862,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.55,
-      "citation": "Treble review of Emergency & I draws the Fugazi lineage; snippet-only source, page 403'd on direct re-fetch attempt, flagged weaker-tier."
+      "citation": "Treble review of Emergency & I draws the Fugazi lineage; snippet-only source, page 403'd on direct re-fetch attempt, flagged weaker-tier.",
+      "sourceTier": "critic"
     },
     {
       "source": "minutemen",
@@ -14851,7 +14871,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.7,
-      "citation": "Wikipedia/Minutemen: \"influenced heavily by bands such as the Pop Group, Wire, Creedence Clearwater Revival, Pere Ubu, and Richard Hell & The Voidoids\" -- Wire is the only one of these already a graph node."
+      "citation": "Wikipedia/Minutemen: \"influenced heavily by bands such as the Pop Group, Wire, Creedence Clearwater Revival, Pere Ubu, and Richard Hell & The Voidoids\" -- Wire is the only one of these already a graph node.",
+      "sourceTier": "reported"
     },
     {
       "source": "minutemen",
@@ -14859,7 +14880,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Wikipedia/Dead Kennedys \"Influence\" section, AllMusic-sourced \"Similar Artists\" listing rather than a member quote -- flagged weaker-tier."
+      "citation": "Wikipedia/Dead Kennedys \"Influence\" section, AllMusic-sourced \"Similar Artists\" listing rather than a member quote -- flagged weaker-tier.",
+      "sourceTier": "critic"
     },
     {
       "source": "slint",
@@ -14867,7 +14889,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Wikipedia/Slint: \"Artists that influenced Slint include Leonard Cohen, Neil Young, Nick Cave, Madonna, Philip Glass, Minutemen and Big Black.\""
+      "citation": "Wikipedia/Slint: \"Artists that influenced Slint include Leonard Cohen, Neil Young, Nick Cave, Madonna, Philip Glass, Minutemen and Big Black.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "black-flag",
@@ -14875,7 +14898,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Greg Ginn, Wikipedia/Black Flag: \"We were influenced by the Stooges and then the Ramones; they inspired us.\""
+      "citation": "Greg Ginn, Wikipedia/Black Flag: \"We were influenced by the Stooges and then the Ramones; they inspired us.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "black-flag",
@@ -14883,7 +14907,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.55,
-      "citation": "Wikipedia/Henry Rollins -- sourced to Rollins's pre-Black-Flag biography, not a full-band statement, flagged weaker-tier."
+      "citation": "Wikipedia/Henry Rollins -- sourced to Rollins's pre-Black-Flag biography, not a full-band statement, flagged weaker-tier.",
+      "sourceTier": "reported"
     },
     {
       "source": "sonic-youth",
@@ -14891,7 +14916,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Lee Ranaldo, Wikipedia/Sonic Youth -- SST-label admiration rather than a direct sound-influence claim, flagged weaker-tier."
+      "citation": "Lee Ranaldo, Wikipedia/Sonic Youth -- SST-label admiration rather than a direct sound-influence claim, flagged weaker-tier.",
+      "sourceTier": "first-person"
     },
     {
       "source": "the-jesus-lizard",
@@ -14899,7 +14925,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Duane Denison, guitarguitar.co.uk (Apr 2, 2021): compositional approach drew on \"bands of the US underground scenes like Black Flag, Husker Du, Butthole Surfers and Big Black.\""
+      "citation": "Duane Denison, guitarguitar.co.uk (Apr 2, 2021): compositional approach drew on \"bands of the US underground scenes like Black Flag, Husker Du, Butthole Surfers and Big Black.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "la-dispute",
@@ -14907,7 +14934,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.6,
-      "citation": "Jacob Fricke, The Badger Herald: Black Flag's My War (spoken-word/hardcore split) \"acted as an influence on La Dispute's style\" -- critic-only framing."
+      "citation": "Jacob Fricke, The Badger Herald: Black Flag's My War (spoken-word/hardcore split) \"acted as an influence on La Dispute's style\" -- critic-only framing.",
+      "sourceTier": "critic"
     },
     {
       "source": "unwound",
@@ -14915,7 +14943,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Justin Trosper, Piero Scaruffi interview (1999): \"more influenced by... US hardcore (husker du/black flag/mission of burma).\""
+      "citation": "Justin Trosper, Piero Scaruffi interview (1999): \"more influenced by... US hardcore (husker du/black flag/mission of burma).\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "at-the-drive-in",
@@ -14923,7 +14952,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Wikipedia/At The Drive-In: Bad Brains among \"key influences\"; the band's own name partly derives from Bad Brains' \"At the Movies.\""
+      "citation": "Wikipedia/At The Drive-In: Bad Brains among \"key influences\"; the band's own name partly derives from Bad Brains' \"At the Movies.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "the-dismemberment-plan",
@@ -14931,7 +14961,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.6,
-      "citation": "Travis Morrison, WBUR (Dec 26, 2014): \"nothing... clears out my sinuses like Bad Brains\" -- same interview places his hardcore discovery in his \"mid-late 30s,\" likely after Bad Brains' classic-era work, flagged with a timing caveat."
+      "citation": "Travis Morrison, WBUR (Dec 26, 2014): \"nothing... clears out my sinuses like Bad Brains\" -- same interview places his hardcore discovery in his \"mid-late 30s,\" likely after Bad Brains' classic-era work, flagged with a timing caveat.",
+      "sourceTier": "first-person"
     },
     {
       "source": "descendents",
@@ -14939,7 +14970,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same AllMusic-sourced Wikipedia footnote as minutemen -> dead-kennedys -- weaker-tier sourcing, and Descendents' only surviving edge (audit flagged this node as thin, ~1 solid in-graph connection)."
+      "citation": "Wikipedia's Dead Kennedys page, via an AllMusic-sourced footnote rather than any member statement.",
+      "sourceTier": "critic"
     },
     {
       "source": "rites-of-spring",
@@ -14947,7 +14979,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\""
+      "citation": "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "rites-of-spring",
@@ -14955,7 +14988,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "John Dugan, Stop Smiling -- same quote as rites-of-spring -> wire."
+      "citation": "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "rites-of-spring",
@@ -14963,7 +14997,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "John Dugan, Stop Smiling -- same quote as rites-of-spring -> wire."
+      "citation": "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "rites-of-spring",
@@ -14971,7 +15006,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "John Dugan, Stop Smiling -- same quote as rites-of-spring -> wire."
+      "citation": "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "rites-of-spring",
@@ -14979,7 +15015,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "John Dugan, Stop Smiling -- same quote as rites-of-spring -> wire."
+      "citation": "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "blur",
@@ -14987,7 +15024,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Graham Coxon's account names Fugazi \"(and the Picciotto-led Rites of Spring)\" together as a formative discovery."
+      "citation": "Graham Coxon's account names Fugazi \"(and the Picciotto-led Rites of Spring)\" together as a formative discovery.",
+      "sourceTier": "first-person"
     },
     {
       "source": "sunny-day-real-estate",
@@ -14995,7 +15033,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Eric Grubbs, Post (2008), same source as sunny-day-real-estate -> fugazi; independently corroborated by Nate Mendel: \"We ourselves would look at Rites of Spring.\""
+      "citation": "Eric Grubbs, Post: A Look at the Influence of Post-Hardcore 1985-2007 (2008), p.72: early influences \"included Dischord Records bands like Rites of Spring... and Fugazi.\" Eric Grubbs, Post (2008); independently corroborated by Nate Mendel: \"We ourselves would look at Rites of Spring.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "pavement",
@@ -15003,7 +15042,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Bob Nastanovich (Pavement) ranked Spiderland among his favorite albums -- Rob Jovanovic, Perfect Sound Forever (2004)."
+      "citation": "Bob Nastanovich (Pavement) ranked Spiderland among his favorite albums -- Rob Jovanovic, Perfect Sound Forever (2004).",
+      "sourceTier": "first-person"
     },
     {
       "source": "american-football",
@@ -15011,7 +15051,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016): \"Tortoise and post-rock bands like Slint were an influence.\""
+      "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016): \"Tortoise and post-rock bands like Slint were an influence.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "drive-like-jehu",
@@ -15019,7 +15060,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Vish Khanna podcast (Oct 8, 2015): stated influences include \"Mission of Burma, the Gories, Bastro, Slint, Sonic Youth, the Wipers, and krautrock bands such as Neu!\""
+      "citation": "Vish Khanna podcast (Oct 8, 2015): stated influences include \"Mission of Burma, the Gories, Bastro, Slint, Sonic Youth, the Wipers, and krautrock bands such as Neu!\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "drive-like-jehu",
@@ -15027,7 +15069,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Vish Khanna podcast (Oct 8, 2015), same source as drive-like-jehu -> slint."
+      "citation": "Vish Khanna podcast (Oct 8, 2015): stated influences include \"Mission of Burma, the Gories, Bastro, Slint, Sonic Youth, the Wipers, and krautrock bands such as Neu!\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "drive-like-jehu",
@@ -15035,7 +15078,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Vish Khanna podcast (Oct 8, 2015), same source as drive-like-jehu -> slint."
+      "citation": "Vish Khanna podcast (Oct 8, 2015): stated influences include \"Mission of Burma, the Gories, Bastro, Slint, Sonic Youth, the Wipers, and krautrock bands such as Neu!\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "at-the-drive-in",
@@ -15043,7 +15087,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Cedric Bixler-Zavala: \"there would be no Relationship of Command without Drive Like Jehu\"; SPIN (2013): \"people like Hot Snakes and Drive Like Jehu were our strongest influences.\""
+      "citation": "Cedric Bixler-Zavala: \"there would be no Relationship of Command without Drive Like Jehu\"; SPIN (2013): \"people like Hot Snakes and Drive Like Jehu were our strongest influences.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "modest-mouse",
@@ -15051,7 +15096,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Isaac Brock (2007): \"Jehu is one of my favorite all-time bands actually.\""
+      "citation": "Isaac Brock (2007): \"Jehu is one of my favorite all-time bands actually.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "american-football",
@@ -15059,15 +15105,16 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.55,
-      "citation": "Crack Magazine -- journalist's list rather than a direct Steve Holmes quote, flagged weaker-tier; contrast the fully solid american-football -> nick-drake / -> red-house-painters edges below."
+      "citation": "Crack Magazine, in the writer's own list of the band's touchstones rather than a quote from Steve Holmes.",
+      "sourceTier": "critic"
     },
     {
       "source": "get-up-kids",
       "target": "drive-like-jehu",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.65,
-      "citation": "Matt Pryor / Jim Suptic (The Get Up Kids), direct member quotes/features cited in this audit's cross-referenced research; exact outlet not preserved in the audit draft, flagged for tighter sourcing on a follow-up pass."
+      "confidence": 0.5,
+      "citation": null
     },
     {
       "source": "christie-front-drive",
@@ -15075,7 +15122,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Sputnik Music / Last.fm aggregator bio (mirrored across both), naming Drive Like Jehu as an influence -- aggregator-tier sourcing, same caveat class as The Human League/The Knife in the electronic-realm audit precedent."
+      "citation": "A Sputnik Music / Last.fm bio, mirrored across both sites, naming Drive Like Jehu as an influence -- aggregator text with no named origin.",
+      "sourceTier": "critic"
     },
     {
       "source": "the-jesus-lizard",
@@ -15083,7 +15131,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "David Yow: the band was \"four white guys who liked to play a cross between Led Zeppelin and the Birthday Party.\""
+      "citation": "David Yow: the band was \"four white guys who liked to play a cross between Led Zeppelin and the Birthday Party.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "the-jesus-lizard",
@@ -15091,7 +15140,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.7,
-      "citation": "Duane Denison, on his own guitar influences (Andy Gill's playing)."
+      "citation": "Duane Denison, on his own guitar influences (Andy Gill's playing).",
+      "sourceTier": "first-person"
     },
     {
       "source": "the-jesus-lizard",
@@ -15099,7 +15149,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.7,
-      "citation": "Duane Denison, on his own guitar influences (John McGeoch's playing)."
+      "citation": "Duane Denison, on his own guitar influences (John McGeoch's playing).",
+      "sourceTier": "first-person"
     },
     {
       "source": "the-jesus-lizard",
@@ -15107,7 +15158,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Duane Denison, same US-underground-guitar citation as the-jesus-lizard -> black-flag / -> big-black."
+      "citation": "Duane Denison, guitarguitar.co.uk (Apr 2, 2021): compositional approach drew on \"bands of the US underground scenes like Black Flag, Husker Du, Butthole Surfers and Big Black.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "fugazi",
@@ -15115,7 +15167,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Joe Lally (Fugazi's bassist) named among musicians citing The Jesus Lizard as an influence/favorite."
+      "citation": "Joe Lally (Fugazi's bassist) named among musicians citing The Jesus Lizard as an influence/favorite.",
+      "sourceTier": "reported"
     },
     {
       "source": "unwound",
@@ -15123,7 +15176,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Sara Lund, Stereogum \"Turntable Interview\" (Nov 15, 2012)."
+      "citation": "Sara Lund, Stereogum \"Turntable Interview\" (Nov 15, 2012).",
+      "sourceTier": "first-person"
     },
     {
       "source": "brand-new",
@@ -15131,7 +15185,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "CHARTattack (Nov 25, 2009): \"Tierney's bass playing emulated Husker Du and The Jesus Lizard.\""
+      "citation": "CHARTattack (Nov 25, 2009): \"Tierney's bass playing emulated Husker Du and The Jesus Lizard.\"",
+      "sourceTier": "critic"
     },
     {
       "source": "unwound",
@@ -15139,7 +15194,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Justin Trosper, Piero Scaruffi interview (1999): \"more influenced by the DC punk thing happening back then and just more interesting US hardcore (husker du/black flag/mission of burma) and punk from England (wire/gang of four/joy division).\""
+      "citation": "Justin Trosper, Piero Scaruffi interview (1999): \"more influenced by the DC punk thing happening back then and just more interesting US hardcore (husker du/black flag/mission of burma) and punk from England (wire/gang of four/joy division).\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "unwound",
@@ -15147,7 +15203,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Justin Trosper, Scaruffi interview (1999), same quote as unwound -> husker-du."
+      "citation": "Justin Trosper, Piero Scaruffi interview (1999): \"more influenced by the DC punk thing happening back then and just more interesting US hardcore (husker du/black flag/mission of burma) and punk from England (wire/gang of four/joy division).\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "unwound",
@@ -15155,7 +15212,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Justin Trosper, Scaruffi interview (1999), same quote as unwound -> husker-du."
+      "citation": "Justin Trosper, Piero Scaruffi interview (1999): \"more influenced by the DC punk thing happening back then and just more interesting US hardcore (husker du/black flag/mission of burma) and punk from England (wire/gang of four/joy division).\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "unwound",
@@ -15163,7 +15221,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Justin Trosper, Scaruffi interview (1999), same quote as unwound -> husker-du."
+      "citation": "Justin Trosper, Piero Scaruffi interview (1999): \"more influenced by the DC punk thing happening back then and just more interesting US hardcore (husker du/black flag/mission of burma) and punk from England (wire/gang of four/joy division).\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "unwound",
@@ -15171,7 +15230,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.6,
-      "citation": "Fred Thomas, AllMusic bio -- critic-sourced rather than a member quote."
+      "citation": "Fred Thomas, AllMusic bio -- critic-sourced rather than a member quote.",
+      "sourceTier": "critic"
     },
     {
       "source": "unwound",
@@ -15179,7 +15239,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Fred Thomas, AllMusic bio, same source as unwound -> sonic-youth -- critic-sourced and weaker-tier."
+      "citation": "Fred Thomas, AllMusic bio -- critic-sourced rather than a member quote. Fred Thomas, AllMusic bio -- critic-sourced and weaker-tier.",
+      "sourceTier": "critic"
     },
     {
       "source": "unwound",
@@ -15187,7 +15248,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Fred Thomas, AllMusic bio, same source as unwound -> sonic-youth -- critic-sourced and weaker-tier."
+      "citation": "Fred Thomas, AllMusic bio -- critic-sourced rather than a member quote. Fred Thomas, AllMusic bio -- critic-sourced and weaker-tier.",
+      "sourceTier": "critic"
     },
     {
       "source": "modest-mouse",
@@ -15195,15 +15257,16 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Wikipedia Legacy section; no reproduced quote found, flagged weaker-tier."
+      "citation": "Wikipedia Legacy section; no reproduced quote found, flagged weaker-tier.",
+      "sourceTier": "reported"
     },
     {
       "source": "trail-of-dead",
       "target": "unwound",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.6,
-      "citation": "...And You Will Know Us by the Trail of Dead cited among artists naming Unwound as an influence, cross-referenced in this audit's Unwound research pass; exact outlet/quote text not preserved in the audit draft, flagged for tighter sourcing on a follow-up pass."
+      "confidence": 0.5,
+      "citation": null
     },
     {
       "source": "sunny-day-real-estate",
@@ -15211,7 +15274,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.7,
-      "citation": "Eric Grubbs, Post (2008): early influences \"included Dischord Records bands like Rites of Spring, Shudder to Think, Nomeansno... and Fugazi.\" NoMeansNo's only confirmed edge in either direction -- a specifically chased NoMeansNo -> Refused link could not be corroborated by either band's own documented influence lists; the act is written despite falling below the usual 2-edge bar, per explicit instruction."
+      "citation": "Eric Grubbs, Post: A Look at the Influence of Post-Hardcore 1985-2007 (2008), p.72: the band's early influences \"included Dischord Records bands like Rites of Spring, Shudder to Think, Nomeansno... and Fugazi.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "la-dispute",
@@ -15219,7 +15283,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "From The Garage interview (Dec 13, 2010): \"Post-hardcore bands like Thursday, Refused, At the Drive-In and Glassjaw.\""
+      "citation": "From The Garage interview (Dec 13, 2010): \"Post-hardcore bands like Thursday, Refused, At the Drive-In and Glassjaw.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "at-the-drive-in",
@@ -15227,7 +15292,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.55,
-      "citation": "Jim Ward called Sunny Day Real Estate \"Fugazi beyond Fugazi\" -- Wikipedia-mediated quote, flagged weaker-tier."
+      "citation": "Jim Ward called Sunny Day Real Estate \"Fugazi beyond Fugazi\" -- Wikipedia-mediated quote, flagged weaker-tier.",
+      "sourceTier": "first-person"
     },
     {
       "source": "la-dispute",
@@ -15235,15 +15301,16 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "From The Garage interview (Dec 13, 2010), same source as la-dispute -> refused."
+      "citation": "From The Garage interview (Dec 13, 2010): \"Post-hardcore bands like Thursday, Refused, At the Drive-In and Glassjaw.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "trail-of-dead",
       "target": "at-the-drive-in",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.6,
-      "citation": "...And You Will Know Us by the Trail of Dead cited among artists naming At The Drive-In as an influence, cross-referenced in this audit's At The Drive-In research pass; exact outlet/quote text not preserved in the audit draft, flagged for tighter sourcing on a follow-up pass."
+      "confidence": 0.5,
+      "citation": null
     },
     {
       "source": "slint",
@@ -15251,7 +15318,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Wikipedia/Slint: \"Artists that influenced Slint include... Minutemen and Big Black\" -- same source as slint -> minutemen."
+      "citation": "Wikipedia/Slint: \"Artists that influenced Slint include Leonard Cohen, Neil Young, Nick Cave, Madonna, Philip Glass, Minutemen and Big Black.\" \"Artists that influenced Slint include... Minutemen and Big Black\" --.",
+      "sourceTier": "reported"
     },
     {
       "source": "the-jesus-lizard",
@@ -15259,7 +15327,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Duane Denison, guitarguitar.co.uk (Apr 2, 2021), same US-underground-guitar quote as the-jesus-lizard -> black-flag: \"bands of the US underground scenes like Black Flag, Husker Du, Butthole Surfers and Big Black.\""
+      "citation": "Duane Denison, guitarguitar.co.uk (Apr 2, 2021): compositional approach drew on \"bands of the US underground scenes like Black Flag, Husker Du, Butthole Surfers and Big Black.\" Duane Denison, guitarguitar.co.uk (Apr 2, 2021): \"bands of the US underground scenes like Black Flag, Husker Du, Butthole Surfers and Big Black.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "toe",
@@ -15267,7 +15336,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Hirokazu Yamazaki, Tone Glow interview: \"the guitarist from Cap'n Jazz who plays for a band called Ghosts and Vodka [Victor Villarreal]... they were instrumental, and that was a big inspiration for me.\""
+      "citation": "Hirokazu Yamazaki, Tone Glow interview: \"the guitarist from Cap'n Jazz who plays for a band called Ghosts and Vodka [Victor Villarreal]... they were instrumental, and that was a big inspiration for me.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "american-football",
@@ -15275,7 +15345,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.9,
-      "citation": "Steve Holmes, quoted in Paste Magazine, Matt Mitchell, \"American Football's Silver Jubilee\" (Sept 16, 2024): the band leaned toward \"slow, quiet, pretty songs more influenced by Red House Painters and Nick Drake\" than the post-hardcore/emo sound around them; independently corroborated by the same account in Steve Holmes' Vice oral history \"Never Meant\" (Feb 2, 2016). Airtight, directly quoted, first-person."
+      "citation": "Steve Holmes, quoted in Paste Magazine, Matt Mitchell, \"American Football's Silver Jubilee\" (Sept 16, 2024): the band leaned toward \"slow, quiet, pretty songs more influenced by Red House Painters and Nick Drake\" than the post-hardcore/emo sound around them; independently corroborated by the same account in Steve Holmes' Vice oral history \"Never Meant\" (Feb 2, 2016). Airtight, directly quoted, first-person.",
+      "sourceTier": "first-person"
     },
     {
       "source": "american-football",
@@ -15283,7 +15354,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.9,
-      "citation": "Steve Holmes, Paste Magazine (Sept 16, 2024) / Vice oral history (Feb 2, 2016) -- same quote as american-football -> nick-drake."
+      "citation": "Steve Holmes, quoted in Paste Magazine, Matt Mitchell, \"American Football's Silver Jubilee\" (Sept 16, 2024): the band leaned toward \"slow, quiet, pretty songs more influenced by Red House Painters and Nick Drake\" than the post-hardcore/emo sound around them; independently corroborated by the same account in Steve Holmes' Vice oral history \"Never Meant\" (Feb 2, 2016). Airtight, directly quoted, first-person. Steve Holmes, Paste Magazine (Sept 16, 2024) / Vice oral history (Feb 2, 2016) --.",
+      "sourceTier": "first-person"
     },
     {
       "source": "american-football",
@@ -15291,7 +15363,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016)."
+      "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016).",
+      "sourceTier": "first-person"
     },
     {
       "source": "american-football",
@@ -15299,7 +15372,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016), same interview as american-football -> elliott-smith."
+      "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016). Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016).",
+      "sourceTier": "first-person"
     },
     {
       "source": "american-football",
@@ -15307,7 +15381,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016), same interview as american-football -> elliott-smith."
+      "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016). Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016).",
+      "sourceTier": "first-person"
     },
     {
       "source": "american-football",
@@ -15315,7 +15390,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016), same interview as american-football -> elliott-smith."
+      "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016). Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016).",
+      "sourceTier": "first-person"
     },
     {
       "source": "american-football",
@@ -15323,7 +15399,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016), same interview as american-football -> elliott-smith."
+      "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016). Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016).",
+      "sourceTier": "first-person"
     },
     {
       "source": "american-football",
@@ -15331,7 +15408,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.55,
-      "citation": "Crack Magazine -- journalist's list rather than a direct Holmes quote, flagged weaker-tier."
+      "citation": "Crack Magazine -- journalist's list rather than a direct Holmes quote, flagged weaker-tier.",
+      "sourceTier": "critic"
     },
     {
       "source": "american-football",
@@ -15339,7 +15417,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.7,
-      "citation": "Cross-referenced across this audit's American Football and Duster research passes (see duster -> codeine) and independently in folk-audit-FINAL.md via low -> codeine -- a 3-source convergence."
+      "citation": "Named across American Football's and Duster's separate accounts of the slowcore records behind their sound, converging with the same Codeine lineage claim that Low's own influences rest on.",
+      "sourceTier": "reported"
     },
     {
       "source": "ethel-cain",
@@ -15347,7 +15426,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Kerrang!, on her cover of \"For Sure\" for the LP1 (Covers) 25th-anniversary release: \"Their sonic storytelling has inspired me in more ways than I can count.\""
+      "citation": "Kerrang!, on her cover of \"For Sure\" for the LP1 (Covers) 25th-anniversary release: \"Their sonic storytelling has inspired me in more ways than I can count.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "duster",
@@ -15355,7 +15435,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Clay Parton, La Linea Mason & Dixon interview (Aug 7, 2020): \"codeine but also like Rorshach and Thelonius Monk and The Velvet Underground.\""
+      "citation": "Clay Parton, La Linea Mason & Dixon interview (Aug 7, 2020): \"codeine but also like Rorshach and Thelonius Monk and The Velvet Underground.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "duster",
@@ -15363,7 +15444,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Clay Parton, La Linea Mason & Dixon interview (Aug 7, 2020), same quote as duster -> velvet-underground."
+      "citation": "Clay Parton, La Linea Mason & Dixon interview (Aug 7, 2020): \"codeine but also like Rorshach and Thelonius Monk and The Velvet Underground.\" Clay Parton, La Linea Mason & Dixon interview (Aug 7, 2020).",
+      "sourceTier": "first-person"
     },
     {
       "source": "far-apart",
@@ -15371,7 +15453,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.7,
-      "citation": "Far Apart's own Bandcamp bio (written for the 2025 reissue): \"Drawing inspiration from bands like Fugazi, Drive Like Jehu, and Jawbox.\""
+      "citation": "Far Apart's own Bandcamp bio (written for the 2025 reissue): \"Drawing inspiration from bands like Fugazi, Drive Like Jehu, and Jawbox.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "far-apart",
@@ -15379,7 +15462,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.55,
-      "citation": "Far Apart's own Bandcamp bio: formed in 1995 and named after a Cure song -- a documented fact rather than a stated-influence claim, flagged accordingly."
+      "citation": "Far Apart's own Bandcamp bio: formed in 1995 and named after a Cure song -- a documented fact rather than a stated-influence claim, flagged accordingly.",
+      "sourceTier": "reported"
     },
     {
       "source": "hum",
@@ -15387,7 +15471,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Hum's official band bio (h-u-m.net/bio/): Matt Talbott's favorite bands include \"Dinosaur Jr., Failure, Bitch Magnet, The Flaming Lips, Rush, The Police, R.E.M., Love Cup, and My Bloody Valentine.\""
+      "citation": "Hum's official band bio (h-u-m.net/bio/): Matt Talbott's favorite bands include \"Dinosaur Jr., Failure, Bitch Magnet, The Flaming Lips, Rush, The Police, R.E.M., Love Cup, and My Bloody Valentine.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "hum",
@@ -15395,7 +15480,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Hum's official band bio, same quote as hum -> dinosaur-jr."
+      "citation": "Hum's official band bio (h-u-m.net/bio/): Matt Talbott's favorite bands include \"Dinosaur Jr., Failure, Bitch Magnet, The Flaming Lips, Rush, The Police, R.E.M., Love Cup, and My Bloody Valentine.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "hum",
@@ -15403,7 +15489,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Hum's official band bio, same quote as hum -> dinosaur-jr."
+      "citation": "Hum's official band bio (h-u-m.net/bio/): Matt Talbott's favorite bands include \"Dinosaur Jr., Failure, Bitch Magnet, The Flaming Lips, Rush, The Police, R.E.M., Love Cup, and My Bloody Valentine.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "the-dismemberment-plan",
@@ -15411,7 +15498,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.7,
-      "citation": "Travis Morrison, WBUR (Dec 26, 2014): a \"huge Neil Young fan,\" citing Young's concept-album approach."
+      "citation": "Travis Morrison, WBUR (Dec 26, 2014): a \"huge Neil Young fan,\" citing Young's concept-album approach.",
+      "sourceTier": "first-person"
     },
     {
       "source": "brand-new",
@@ -15419,7 +15507,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Alternative Press (Aug 23, 2017): \"known for naming The Smiths and their frontman Morrissey as favorites.\""
+      "citation": "Alternative Press (Aug 23, 2017): \"known for naming The Smiths and their frontman Morrissey as favorites.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "brand-new",
@@ -15427,7 +15516,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "BBC (Feb 12, 2007): Lacey \"cited English rock bands such as Ride, The Stone Roses and The Beatles.\""
+      "citation": "BBC (Feb 12, 2007): Lacey \"cited English rock bands such as Ride, The Stone Roses and The Beatles.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "brand-new",
@@ -15435,7 +15525,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "BBC (Feb 12, 2007), same source as brand-new -> ride."
+      "citation": "BBC (Feb 12, 2007): Lacey \"cited English rock bands such as Ride, The Stone Roses and The Beatles.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "brand-new",
@@ -15443,7 +15534,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "CHARTattack (Nov 25, 2009): \"noisier elements were influenced by adolescent favorites Sonic Youth and My Bloody Valentine.\""
+      "citation": "CHARTattack (Nov 25, 2009): \"noisier elements were influenced by adolescent favorites Sonic Youth and My Bloody Valentine.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "brand-new",
@@ -15451,7 +15543,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "CHARTattack (Nov 25, 2009), same source as brand-new -> sonic-youth."
+      "citation": "CHARTattack (Nov 25, 2009): \"noisier elements were influenced by adolescent favorites Sonic Youth and My Bloody Valentine.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "brand-new",
@@ -15459,7 +15552,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "CHARTattack (Nov 25, 2009): \"Tierney's bass playing emulated Husker Du and The Jesus Lizard.\""
+      "citation": "CHARTattack (Nov 25, 2009): \"Tierney's bass playing emulated Husker Du and The Jesus Lizard.\"",
+      "sourceTier": "critic"
     },
     {
       "source": "brand-new",
@@ -15467,7 +15561,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Jesse Lacey, DrownedInSound (Sept 17, 2009): \"influenced by Polvo, Archers of Loaf, Fugazi and Modest Mouse.\""
+      "citation": "Jesse Lacey, DrownedInSound (Sept 17, 2009): \"influenced by Polvo, Archers of Loaf, Fugazi and Modest Mouse.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "la-dispute",
@@ -15475,7 +15570,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "BBC Radio 1 \"Under the Influence with La Dispute\": \"influences from Joanna Newsom, The Mountain Goats and Modest Mouse.\""
+      "citation": "BBC Radio 1 \"Under the Influence with La Dispute\": \"influences from Joanna Newsom, The Mountain Goats and Modest Mouse.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "la-dispute",
@@ -15483,7 +15579,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "BBC Radio 1 \"Under the Influence with La Dispute,\" same source as la-dispute -> modest-mouse."
+      "citation": "BBC Radio 1 \"Under the Influence with La Dispute\": \"influences from Joanna Newsom, The Mountain Goats and Modest Mouse.\" BBC Radio 1 \"Under the Influence with La Dispute,\".",
+      "sourceTier": "first-person"
     },
     {
       "source": "la-dispute",
@@ -15491,7 +15588,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "BBC Radio 1 \"Under the Influence with La Dispute,\" same source as la-dispute -> modest-mouse."
+      "citation": "BBC Radio 1 \"Under the Influence with La Dispute\": \"influences from Joanna Newsom, The Mountain Goats and Modest Mouse.\" BBC Radio 1 \"Under the Influence with La Dispute,\".",
+      "sourceTier": "first-person"
     },
     {
       "source": "jeff-rosenstock",
@@ -15499,15 +15597,16 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.7,
-      "citation": "Documented fact: Jeff Rosenstock (solo) performed a full Minor Threat cover set at The Fest 15 (2016). Node merges Jeff Rosenstock solo, Bomb the Music Industry!, and The Arrogant Sons of Bitches -- same person (see code comment on the artist literal); this and jeff-rosenstock -> fugazi are the node's only 2 edges, flagged thin."
+      "citation": "Documented fact: Jeff Rosenstock (solo) performed a full Minor Threat cover set at The Fest 15 (2016). Node merges Jeff Rosenstock solo, Bomb the Music Industry!, and The Arrogant Sons of Bitches -- same person (see code comment on the artist literal); this are the node's only 2 edges, flagged thin.",
+      "sourceTier": "reported"
     },
     {
       "source": "get-up-kids",
       "target": "the-jesus-lizard",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.65,
-      "citation": "Jim Suptic (The Get Up Kids), direct member quote/feature cited in this audit's cross-referenced research; exact outlet not preserved in the audit draft, flagged for tighter sourcing on a follow-up pass."
+      "confidence": 0.5,
+      "citation": null
     },
     {
       "source": "godspeed-you-black-emperor",
@@ -15515,7 +15614,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "The Wire, May 2000 (archived, brainwashed.com/godspeed/wire2.html): \"From groups like Black Flag and The Minutemen they've taken the whole work ethic, the 'serious as your life' drive that sent Henry Rollins and co across the States in the back of a van...\""
+      "citation": "The Wire, May 2000 (archived, brainwashed.com/godspeed/wire2.html): \"From groups like Black Flag and The Minutemen they've taken the whole work ethic, the 'serious as your life' drive that sent Henry Rollins and co across the States in the back of a van...\"",
+      "sourceTier": "reported"
     },
     {
       "source": "godspeed-you-black-emperor",
@@ -15523,7 +15623,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "The Wire, May 2000, same interview as godspeed-you-black-emperor -> black-flag."
+      "citation": "The Wire, May 2000 (archived, brainwashed.com/godspeed/wire2.html): \"From groups like Black Flag and The Minutemen they've taken the whole work ethic, the 'serious as your life' drive that sent Henry Rollins and co across the States in the back of a van...\"",
+      "sourceTier": "reported"
     },
     {
       "source": "sigur-ros",
@@ -15531,7 +15632,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "The Guardian, Gareth Grundy, \"Jonsi: Soundtrack of my life\" (May 30, 2010): names Ride among early influences."
+      "citation": "The Guardian, Gareth Grundy, \"Jonsi: Soundtrack of my life\" (May 30, 2010): names Ride among early influences.",
+      "sourceTier": "first-person"
     },
     {
       "source": "sigur-ros",
@@ -15539,7 +15641,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "The Guardian, Gareth Grundy (May 30, 2010), same source as sigur-ros -> ride."
+      "citation": "The Guardian, Gareth Grundy, \"Jonsi: Soundtrack of my life\" (May 30, 2010): names Ride among early influences.",
+      "sourceTier": "first-person"
     },
     {
       "source": "sigur-ros",
@@ -15547,7 +15650,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "The Guardian (Aug 18, 2020), per Wikipedia citation: Jonsi says he hadn't actually heard Cocteau Twins until introduced by Alex Somers, after which he said \"they're so good, man!\" -- a discovered-affinity claim more than a formative-influence one, flagged weaker-tier."
+      "citation": "The Guardian (Aug 18, 2020), per Wikipedia citation: Jonsi says he hadn't actually heard Cocteau Twins until introduced by Alex Somers, after which he said \"they're so good, man!\" -- a discovered-affinity claim more than a formative-influence one, flagged weaker-tier.",
+      "sourceTier": "first-person"
     },
     {
       "source": "mogwai",
@@ -15555,7 +15659,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Slugmag, Justin Burch interview (Aug 13, 2004)."
+      "citation": "Slugmag, Justin Burch interview (Aug 13, 2004).",
+      "sourceTier": "first-person"
     },
     {
       "source": "mogwai",
@@ -15563,7 +15668,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Slugmag (Aug 13, 2004); independently corroborated by Glide Magazine (2011): early songs \"sounded like God Machine or Joy Division or Slint.\""
+      "citation": "Slugmag (Aug 13, 2004); independently corroborated by Glide Magazine (2011): early songs \"sounded like God Machine or Joy Division or Slint.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "mogwai",
@@ -15571,7 +15677,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Slugmag, Justin Burch interview (Aug 13, 2004), same source as mogwai -> sonic-youth."
+      "citation": "Slugmag, Justin Burch interview (Aug 13, 2004). Slugmag, Justin Burch interview (Aug 13, 2004).",
+      "sourceTier": "first-person"
     },
     {
       "source": "mogwai",
@@ -15579,7 +15686,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Slugmag, Justin Burch interview (Aug 13, 2004), same source as mogwai -> sonic-youth."
+      "citation": "Slugmag, Justin Burch interview (Aug 13, 2004). Slugmag, Justin Burch interview (Aug 13, 2004).",
+      "sourceTier": "first-person"
     },
     {
       "source": "mogwai",
@@ -15587,7 +15695,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Slugmag, Justin Burch interview (Aug 13, 2004), same source as mogwai -> sonic-youth."
+      "citation": "Slugmag, Justin Burch interview (Aug 13, 2004). Slugmag, Justin Burch interview (Aug 13, 2004).",
+      "sourceTier": "first-person"
     },
     {
       "source": "mogwai",
@@ -15595,7 +15704,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Slugmag, Justin Burch interview (Aug 13, 2004), same source as mogwai -> sonic-youth."
+      "citation": "Slugmag, Justin Burch interview (Aug 13, 2004). Slugmag, Justin Burch interview (Aug 13, 2004).",
+      "sourceTier": "first-person"
     },
     {
       "source": "mogwai",
@@ -15603,7 +15713,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Slugmag (Aug 13, 2004); independently corroborated by Glide Magazine (2011): \"a few songs on the new record that are pretty blatantly influenced by Neu! and Harmonia.\""
+      "citation": "Slugmag (Aug 13, 2004); independently corroborated by Glide Magazine (2011): \"a few songs on the new record that are pretty blatantly influenced by Neu! and Harmonia.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "mogwai",
@@ -15611,7 +15722,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Stuart Braithwaite, The Line of Best Fit, Andrew Hannah, \"From Young Team to Atomic: Stuart Braithwaite on twenty years of Mogwai\" (Apr 11, 2016)."
+      "citation": "Stuart Braithwaite, The Line of Best Fit, Andrew Hannah, \"From Young Team to Atomic: Stuart Braithwaite on twenty years of Mogwai\" (Apr 11, 2016).",
+      "sourceTier": "first-person"
     },
     {
       "source": "mogwai",
@@ -15619,7 +15731,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Glide Magazine (2011): early Mogwai songs \"sounded like God Machine or Joy Division or Slint\" -- upgraded from a weaker SPIN 1999 critic comparison found in the initial audit pass."
+      "citation": "Glide Magazine (2011): early Mogwai songs \"sounded like God Machine or Joy Division or Slint.\"",
+      "sourceTier": "critic"
     },
     {
       "source": "bark-psychosis",
@@ -15627,7 +15740,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Audrie's Diary zine, 1994, Graham Sutton interview (per Wikipedia citation): \"Other early influences included Sonic Youth, Talk Talk, Wire, Butthole Surfers, Big Black, Swans and Joy Division.\""
+      "citation": "Audrie's Diary zine, 1994, Graham Sutton interview (per Wikipedia citation): \"Other early influences included Sonic Youth, Talk Talk, Wire, Butthole Surfers, Big Black, Swans and Joy Division.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "bark-psychosis",
@@ -15635,7 +15749,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Audrie's Diary zine, 1994, same Graham Sutton quote as bark-psychosis -> sonic-youth."
+      "citation": "Audrie's Diary zine, 1994, Graham Sutton interview (per Wikipedia citation): \"Other early influences included Sonic Youth, Talk Talk, Wire, Butthole Surfers, Big Black, Swans and Joy Division.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "bark-psychosis",
@@ -15643,7 +15758,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Audrie's Diary zine, 1994, same Graham Sutton quote as bark-psychosis -> sonic-youth."
+      "citation": "Audrie's Diary zine, 1994, Graham Sutton interview (per Wikipedia citation): \"Other early influences included Sonic Youth, Talk Talk, Wire, Butthole Surfers, Big Black, Swans and Joy Division.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "bark-psychosis",
@@ -15651,7 +15767,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Audrie's Diary zine, 1994, same Graham Sutton quote as bark-psychosis -> sonic-youth."
+      "citation": "Audrie's Diary zine, 1994, Graham Sutton interview (per Wikipedia citation): \"Other early influences included Sonic Youth, Talk Talk, Wire, Butthole Surfers, Big Black, Swans and Joy Division.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "bark-psychosis",
@@ -15659,7 +15776,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Audrie's Diary zine, 1994, same Graham Sutton quote as bark-psychosis -> sonic-youth."
+      "citation": "Audrie's Diary zine, 1994, Graham Sutton interview (per Wikipedia citation): \"Other early influences included Sonic Youth, Talk Talk, Wire, Butthole Surfers, Big Black, Swans and Joy Division.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "bark-psychosis",
@@ -15667,7 +15785,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Audrie's Diary zine, 1994, same Graham Sutton quote as bark-psychosis -> sonic-youth."
+      "citation": "Audrie's Diary zine, 1994, Graham Sutton interview (per Wikipedia citation): \"Other early influences included Sonic Youth, Talk Talk, Wire, Butthole Surfers, Big Black, Swans and Joy Division.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "mono",
@@ -15675,7 +15794,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Terrascope.co.uk, \"MONO interview\" (Apr 10, 2006), cited in Wikipedia: \"their main influences were... Sonic Youth and... My Bloody Valentine when making Under the Pipal Tree and One Step More and You Die.\""
+      "citation": "Terrascope.co.uk, \"MONO interview\" (Apr 10, 2006), cited in Wikipedia: \"their main influences were... Sonic Youth and... My Bloody Valentine when making Under the Pipal Tree and One Step More and You Die.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "mono",
@@ -15683,7 +15803,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Terrascope.co.uk (Apr 10, 2006), same source as mono -> sonic-youth."
+      "citation": "Terrascope.co.uk, \"MONO interview\" (Apr 10, 2006), cited in Wikipedia: \"their main influences were... Sonic Youth and... My Bloody Valentine when making Under the Pipal Tree and One Step More and You Die.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "explosions-in-the-sky",
@@ -15691,7 +15812,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Epigram Q&A (2023): \"it gave us a lot of inspiration to see bands like Mogwai and Tortoise making really cool music that had no vocals.\""
+      "citation": "Epigram Q&A (2023): \"it gave us a lot of inspiration to see bands like Mogwai and Tortoise making really cool music that had no vocals.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "explosions-in-the-sky",
@@ -15699,7 +15821,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Epigram Q&A (2023), same quote as explosions-in-the-sky -> mogwai."
+      "citation": "Epigram Q&A (2023): \"it gave us a lot of inspiration to see bands like Mogwai and Tortoise making really cool music that had no vocals.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "explosions-in-the-sky",
@@ -15707,7 +15830,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.7,
-      "citation": "Clash Music interview: Explosions in the Sky name the five-band post-rock lineage (Mogwai / Godspeed You! Black Emperor / Explosions in the Sky / Sigur Ros / Mono)."
+      "citation": "Clash Music interview: Explosions in the Sky name the five-band post-rock lineage (Mogwai / Godspeed You! Black Emperor / Explosions in the Sky / Sigur Ros / Mono).",
+      "sourceTier": "first-person"
     },
     {
       "source": "do-make-say-think",
@@ -15724,7 +15848,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Michael Gira, Pitchfork interview republished at younggodrecords.com (May 19, 2014): asked about influences, named \"Nina Simone, James Brown, Fela Kuti, Can, and Led Zeppelin.\""
+      "citation": "Michael Gira, Pitchfork interview republished at younggodrecords.com (May 19, 2014): asked about influences, named \"Nina Simone, James Brown, Fela Kuti, Can, and Led Zeppelin.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "swans",
@@ -15732,7 +15857,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "\"SWANS: Where Does a Body End?\" (YouTube, Sept 9, 2023): Michael Gira named Suicide as an influence."
+      "citation": "\"SWANS: Where Does a Body End?\" (YouTube, Sept 9, 2023): Michael Gira named Suicide as an influence.",
+      "sourceTier": "first-person"
     },
     {
       "source": "swans",
@@ -15749,7 +15875,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Branca played in Chatham's Guitar Trio 1977-79, \"very important in the development of his compositional voice\" (Wikipedia, citing Kyle Gann's totalist-school scholarship)."
+      "citation": "Branca played in Chatham's Guitar Trio 1977-79, \"very important in the development of his compositional voice\" (Wikipedia, citing Kyle Gann's totalist-school scholarship).",
+      "sourceTier": "reported"
     },
     {
       "source": "sonic-youth",
@@ -15766,7 +15893,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Alexis Taylor, self-cited. Pitchfork, Evan Minsker, \"This Heat to Reissue Discography\" (Nov 18, 2015)."
+      "citation": "Alexis Taylor, self-cited. Pitchfork, Evan Minsker, \"This Heat to Reissue Discography\" (Nov 18, 2015).",
+      "sourceTier": "first-person"
     },
     {
       "source": "caribou",
@@ -15774,7 +15902,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Dan Snaith, self-cited, Pitchfork, Evan Minsker (Nov 18, 2015), same source as hot-chip -> this-heat."
+      "citation": "Alexis Taylor, self-cited. Pitchfork, Evan Minsker, \"This Heat to Reissue Discography\" (Nov 18, 2015). Dan Snaith, self-cited, Pitchfork, Evan Minsker (Nov 18, 2015).",
+      "sourceTier": "first-person"
     },
     {
       "source": "big-black",
@@ -15791,7 +15920,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "AllMusic bio, Fred Thomas -- a single shared critic-attributed citation rather than an individual quote, flagged weaker-tier."
+      "citation": "AllMusic bio, Fred Thomas -- a single shared critic-attributed citation rather than an individual quote, flagged weaker-tier.",
+      "sourceTier": "critic"
     },
     {
       "source": "radiohead",
@@ -15799,7 +15929,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "AllMusic bio, Fred Thomas, same source as sonic-youth -> this-heat -- critic-attributed, weaker-tier."
+      "citation": "AllMusic bio, Fred Thomas -- a single shared critic-attributed citation rather than an individual quote, flagged weaker-tier. AllMusic bio, Fred Thomas -- critic-attributed, weaker-tier.",
+      "sourceTier": "critic"
     },
     {
       "source": "swans",
@@ -15807,7 +15938,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "AllMusic bio, Fred Thomas, same source as sonic-youth -> this-heat -- critic-attributed, weaker-tier."
+      "citation": "AllMusic bio, Fred Thomas -- a single shared critic-attributed citation rather than an individual quote, flagged weaker-tier. AllMusic bio, Fred Thomas -- critic-attributed, weaker-tier.",
+      "sourceTier": "critic"
     },
     {
       "source": "stereolab",
@@ -15815,7 +15947,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "AllMusic bio, Fred Thomas, same source as sonic-youth -> this-heat -- critic-attributed, weaker-tier."
+      "citation": "AllMusic bio, Fred Thomas -- a single shared critic-attributed citation rather than an individual quote, flagged weaker-tier. AllMusic bio, Fred Thomas -- critic-attributed, weaker-tier.",
+      "sourceTier": "critic"
     },
     {
       "source": "sonic-youth",
@@ -15823,7 +15956,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Sonic Youth's own Wikipedia bio names its \"major influences\" as including, verbatim, \"the Velvet Underground, the Stooges, MC5, Glenn Branca, Rhys Chatham, Ornette Coleman...\""
+      "citation": "Sonic Youth's own Wikipedia bio names its \"major influences\" as including, verbatim, \"the Velvet Underground, the Stooges, MC5, Glenn Branca, Rhys Chatham, Ornette Coleman...\"",
+      "sourceTier": "reported"
     },
     {
       "source": "teenage-jesus-and-the-jerks",
@@ -15831,7 +15965,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Wikipedia: Lydia Lunch \"was spurred to start a band after seeing one of Mars' earlier performances.\""
+      "citation": "Wikipedia: Lydia Lunch \"was spurred to start a band after seeing one of Mars' earlier performances.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "sonic-youth",
@@ -15884,7 +16019,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Band took its name directly from DNA's song \"Blonde Redhead\" (A Taste of DNA EP, 1981) -- a direct, well-documented factual naming."
+      "citation": "Band took its name directly from DNA's song \"Blonde Redhead\" (A Taste of DNA EP, 1981) -- a direct, well-documented factual naming.",
+      "sourceTier": "reported"
     },
     {
       "source": "blonde-redhead",
@@ -15892,7 +16028,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Kazu Makino has cited Sonic Youth as a key inspiration"
+      "citation": "Kazu Makino has cited Sonic Youth as a key inspiration",
+      "sourceTier": "first-person"
     },
     {
       "source": "blonde-redhead",
@@ -15900,7 +16037,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.7,
-      "citation": "Kazu Makino cites My Bloody Valentine alongside Sonic Youth as a key inspiration."
+      "citation": "Kazu Makino cites My Bloody Valentine alongside Sonic Youth as a key inspiration.",
+      "sourceTier": "first-person"
     },
     {
       "source": "anna-von-hausswolff",
@@ -15962,7 +16100,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "FLOOD Magazine, \"The Poetry of Motion: Dirty Three on 30 Years of Love Changes Everything\" (June 26, 2024): Warren Ellis \"begins rattling off some of Dirty Three's initial influences in Elvin Jones, Rahsaan Roland Kirk, and the 'wild liberation' of The Velvet Underground.\""
+      "citation": "FLOOD Magazine, \"The Poetry of Motion: Dirty Three on 30 Years of Love Changes Everything\" (June 26, 2024): Warren Ellis \"begins rattling off some of Dirty Three's initial influences in Elvin Jones, Rahsaan Roland Kirk, and the 'wild liberation' of The Velvet Underground.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "dirty-three",
@@ -16132,7 +16271,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "AllMusic: krautrock (Can specifically) named as a defining influence on Tortoise."
+      "citation": "AllMusic: krautrock (Can specifically) named as a defining influence on Tortoise.",
+      "sourceTier": "critic"
     },
     {
       "source": "tortoise",
@@ -16149,7 +16289,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.7,
-      "citation": "AllMusic: ambient and British-electronica influence, Brian Eno specifically named."
+      "citation": "AllMusic: ambient and British-electronica influence, Brian Eno specifically named.",
+      "sourceTier": "critic"
     },
     {
       "source": "american-football",
@@ -16220,7 +16361,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same Tape Op #98 Tim Gane quote as stereolab -> neu. (Upgrades a previously null citation on a pre-existing edge.)",
+      "citation": "Tim Gane, Tape Op #98: \"in the early and mid-'80s he was a big fan of krautrock music -- like Faust, Neu! and Can.\" Corroborated by ele-king: early records \"infused with a gushing enthusiasm for Neu!'s motorik rhythms.\" (Upgrades a previously null citation on a pre-existing edge.) (Upgrades a previously null citation on a pre-existing edge.)",
       "sourceTier": "first-person"
     },
     {
@@ -16310,7 +16451,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same Trakin exchange.",
+      "citation": "Roy Trakin asked Kurt Cobain about Iggy and the Stooges, the Velvet Underground and Lou Reed; Cobain affirmed all of it and called it some of his favourite music.",
       "sourceTier": "first-person"
     },
     {
@@ -16327,9 +16468,8 @@
       "target": "swans",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.5,
-      "citation": "NPR \"50 Artists Who Inspired Kurt Cobain\" list.",
-      "sourceTier": "critic"
+      "confidence": 0.45,
+      "citation": null
     },
     {
       "source": "nirvana",
@@ -16337,8 +16477,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "NPR list.",
-      "sourceTier": "critic"
+      "citation": null
     },
     {
       "source": "nirvana",
@@ -16346,8 +16485,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "NPR list.",
-      "sourceTier": "critic"
+      "citation": null
     },
     {
       "source": "modest-mouse",
@@ -16364,7 +16502,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same retrospective as modest-mouse -> sebadoh.",
+      "citation": "A music-directory retrospective asserts Sebadoh's lo-fi approach influenced Modest Mouse, Elliott Smith, the Microphones/Mount Eerie, and Car Seat Headrest.",
       "sourceTier": "critic"
     },
     {
@@ -16373,7 +16511,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same retrospective as modest-mouse -> sebadoh.",
+      "citation": "A music-directory retrospective asserts Sebadoh's lo-fi approach influenced Modest Mouse, Elliott Smith, the Microphones/Mount Eerie, and Car Seat Headrest.",
       "sourceTier": "critic"
     },
     {
@@ -16409,7 +16547,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same Grove Atlantic publisher copy as radiohead -> guided-by-voices.",
+      "citation": "Grove Atlantic's publisher copy for the authorised GBV biography: P.J. Harvey, Radiohead, R.E.M., the Strokes and U2 have cited Pollard as an influence. Publisher marketing copy, not a primary interview.",
       "sourceTier": "critic"
     },
     {
@@ -16490,7 +16628,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same Treble sentence as women -> sonic-youth.",
+      "citation": "Treble: Public Strain is \"more Sonic Youth or Wire, or perhaps a mutant offspring of The Zombies' gorgeous melodies and This Heat's menacing post-punk.\"",
       "sourceTier": "critic"
     },
     {
@@ -16517,7 +16655,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same radio-show writeup as women -> velvet-underground.",
+      "citation": "A radio-show writeup lists comparisons to Caribou, the Velvet Underground, Deerhoof and Abe Vigoda.",
       "sourceTier": "critic"
     },
     {
@@ -16535,7 +16673,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same Baltimore Sun quote as superchunk -> new-order.",
+      "citation": "Baltimore Sun: McCaughan on why certain '80s records still resonate, working from \"Temptation\" and \"Bizarre Love Triangle\" and then \"other '80s influences like Cocteau Twins, Echo and the Bunnymen, or The Cure.\" (Attribution caveat: from press around McCaughan's 2015 solo album Non-Believers, attributed here to Superchunk per the task's own note.)",
       "sourceTier": "first-person"
     },
     {
@@ -16544,7 +16682,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same Baltimore Sun quote as superchunk -> new-order.",
+      "citation": "Baltimore Sun: McCaughan on why certain '80s records still resonate, working from \"Temptation\" and \"Bizarre Love Triangle\" and then \"other '80s influences like Cocteau Twins, Echo and the Bunnymen, or The Cure.\" (Attribution caveat: from press around McCaughan's 2015 solo album Non-Believers, attributed here to Superchunk per the task's own note.)",
       "sourceTier": "first-person"
     },
     {
@@ -16580,7 +16718,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Same Grantland list as parquet-courts -> television.",
+      "citation": "Grantland 2014 deconstructs the sound: the Velvets' urban grime, Television's spazzy solos, the Fall's rigid repetition, Pavement's ironic detachment, GBV's brevity, Sonic Youth's candy-coated noisiness.",
       "sourceTier": "critic"
     },
     {
@@ -16598,7 +16736,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same American Songwriter quote as spoon -> wire.",
+      "citation": "American Songwriter 2021, Britt Daniel: starting out he was very much into bands like Wire and Talking Heads, shooting for that kind of lyric; still plays those Wire records.",
       "sourceTier": "first-person"
     },
     {
@@ -16652,7 +16790,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same The Scenestar quote as the-national -> nick-cave-and-the-bad-seeds.",
+      "citation": "The Scenestar 2007: the bands he first fell in love with were the Smiths, Violent Femmes, Tom Waits and Nick Cave. Corroborated by Q at Reading 2011 and a 2023 talk on Cave as an inspiration.",
       "sourceTier": "first-person"
     },
     {
@@ -16697,7 +16835,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same INDY Week exchange as destroyer -> new-order.",
+      "citation": "INDY Week: the interviewer proposes Prefab Sprout, Thomas Dolby and Gary Numan for ken; Bejar redirects to something more basic -- New Order, the Cure, Echo & the Bunnymen.",
       "sourceTier": "first-person"
     },
     {
@@ -16733,7 +16871,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same AllMusic sentence as the-walkmen -> joy-division.",
+      "citation": "AllMusic's band biography names their influences as a diverse set including the Pogues, Joy Division, Bruce Springsteen, Bjork, U2 and New Order. No first-person corroboration found.",
       "sourceTier": "critic"
     },
     {
@@ -16796,7 +16934,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Stereogum: OTC's experimentalism audible in bigger bands including Radiohead, the Flaming Lips, Stereolab and the Shins. (Collective-level Grammy/E6 framing also applies -- see the-shins -> neutral-milk-hotel.)",
+      "citation": "Stereogum: OTC's experimentalism audible in bigger bands including Radiohead, the Flaming Lips, Stereolab and the Shins. (Collective.)",
       "sourceTier": "critic"
     },
     {
@@ -16814,7 +16952,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same Montana Kaimin quote as the-shins -> the-cure.",
+      "citation": "Montana Kaimin 2017, Mercer on what still shapes the records: bands he loved in high school -- Echo and the Bunnymen, the Cure, the Smiths.",
       "sourceTier": "first-person"
     },
     {
@@ -16823,7 +16961,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Grammy.com \"Inside Elephant 6\" statement: the collective \"has inspired acts like Arcade Fire, the Shins, and Tame Impala.\" Collective-level, double-count caution noted against the-shins -> olivia-tremor-control.",
+      "citation": "Grammy.com's \"Inside Elephant 6\" feature, describing the collective rather than this band alone: it \"has inspired acts like Arcade Fire, the Shins, and Tame Impala.\"",
       "sourceTier": "critic"
     },
     {
@@ -16841,7 +16979,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Same Grammy/E6 collective-level statement as the-shins -> neutral-milk-hotel.",
+      "citation": "Grammy.com's \"Inside Elephant 6\" feature, describing the collective rather than this band alone: it \"has inspired acts like Arcade Fire, the Shins, and Tame Impala.\"",
       "sourceTier": "critic"
     },
     {
@@ -16886,7 +17024,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same retrospective as bon-iver -> neutral-milk-hotel.",
+      "citation": "Music-directory retrospective naming Bon Iver, Sufjan Stevens and Phoebe Bridgers among its citers.",
       "sourceTier": "critic"
     },
     {
@@ -16895,7 +17033,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same retrospective as bon-iver -> neutral-milk-hotel.",
+      "citation": "Music-directory retrospective naming Bon Iver, Sufjan Stevens and Phoebe Bridgers among its citers.",
       "sourceTier": "critic"
     },
     {
@@ -16913,7 +17051,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same DCist list, naming Iggy Pop. Per the task's frontman-to-band-node ruling, Iggy Pop -> the-stooges.",
+      "citation": "A DCist list of the band's influences names Iggy Pop; recorded here against the Stooges, since that is the band he fronted.",
       "sourceTier": "first-person"
     },
     {
@@ -16922,7 +17060,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same DCist list, naming Lou Reed. Per the frontman-to-band-node ruling, Lou Reed -> velvet-underground.",
+      "citation": "The same DCist list of the band's influences names Lou Reed; recorded here against the Velvet Underground, since that is the band he fronted.",
       "sourceTier": "first-person"
     },
     {
@@ -16931,7 +17069,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same DCist list.",
+      "citation": "The same DCist list of the band's influences names Leonard Cohen.",
       "sourceTier": "first-person"
     },
     {
@@ -16985,7 +17123,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same Weirdo Music Forever quote as the-flaming-lips -> sonic-youth.",
+      "citation": "Weirdo Music Forever, Coyne: they were very inspired by American punk rock like Sonic Youth, Black Flag, Minutemen and the Replacements -- bands they'd go and see.",
       "sourceTier": "first-person"
     },
     {
@@ -17014,42 +17152,6 @@
       "confidence": 0.85,
       "citation": "AllMusic: Congratulations contains a song dedicated to two of their heroes, Dan Treacy of Television Personalities and Brian Eno. Apple Music and BrooklynVegan both describe the tracklist as a love letter to their influences; there is literally a song called \"Brian Eno.\"",
       "sourceTier": "first-person"
-    },
-    {
-      "source": "mgmt",
-      "target": "david-bowie",
-      "type": "influence",
-      "status": "verified",
-      "confidence": 0.65,
-      "citation": "The Student Playlist on Oracular Spectacular: in love with the bombastic end of 1970s rock -- Bowie, Marc Bolan, Fleetwood Mac -- alongside acid rock, psychedelia and garage pop.",
-      "sourceTier": "critic"
-    },
-    {
-      "source": "mgmt",
-      "target": "new-order",
-      "type": "influence",
-      "status": "verified",
-      "confidence": 0.65,
-      "citation": "The Student Playlist on Congratulations: the Anglo-European synth pop of New Order, Daft Punk and the Human League had informed Oracular Spectacular.",
-      "sourceTier": "critic"
-    },
-    {
-      "source": "mgmt",
-      "target": "the-human-league",
-      "type": "influence",
-      "status": "verified",
-      "confidence": 0.65,
-      "citation": "Same Student Playlist sentence as mgmt -> new-order.",
-      "sourceTier": "critic"
-    },
-    {
-      "source": "mgmt",
-      "target": "the-flaming-lips",
-      "type": "influence",
-      "status": "verified",
-      "confidence": 0.65,
-      "citation": "The Student Playlist lists them among Oracular's influences; Time Out describes Congratulations as Flaming Lips-style psych odes. Caveat: Dave Fridmann produced both Oracular Spectacular and is the Flaming Lips' longtime producer -- the resemblance may be partly a shared-producer effect, not pure influence.",
-      "sourceTier": "critic"
     },
     {
       "source": "grizzly-bear",
@@ -17093,7 +17195,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same Georgia Straight quote as st-vincent -> sonic-youth.",
+      "citation": "Georgia Straight 2024: over the years Clark has listed Sonic Youth, Kate Bush, Jimi Hendrix and Siouxsie and the Banshees as invaluable influences.",
       "sourceTier": "first-person"
     },
     {
@@ -17192,7 +17294,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same LSQ podcast quote as vampire-weekend -> radiohead.",
+      "citation": "LSQ podcast 2024, Koenig: his tastes shifted from 50s/60s oldies-radio pop into discovering Scott Walker, Neil Young, 90s hip-hop and early-aughts Radiohead.",
       "sourceTier": "first-person"
     },
     {
@@ -17228,7 +17330,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.65,
-      "citation": "Same Wikipedia Slowcore quote as galaxie-500 -> big-star.",
+      "citation": "Wikipedia Slowcore: formative influences named as VU, Modern Lovers, Big Star, Spacemen 3.",
       "sourceTier": "critic"
     },
     {
@@ -17273,7 +17375,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same AV Club quote as beach-house -> galaxie-500.",
+      "citation": "AV Club: On Fire cast a wide shadow over Beach House, Deerhunter, Pains of Being Pure at Heart, Broken Social Scene.",
       "sourceTier": "critic"
     },
     {
@@ -17282,7 +17384,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same Montana Kaimin 2017 quote as the-shins -> the-cure / -> the-smiths: \"bands he loved in high school -- Echo and the Bunnymen, the Cure, the Smiths.\"",
+      "citation": "Montana Kaimin 2017, Mercer on what still shapes the records: bands he loved in high school -- Echo and the Bunnymen, the Cure, the Smiths. > the-smiths: \"bands he loved in high school -- Echo and the Bunnymen, the Cure, the Smiths.\"",
       "sourceTier": "first-person"
     },
     {
@@ -17291,7 +17393,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same INDY Week quote as destroyer -> new-order / -> the-cure: Bejar names New Order, the Cure, Echo & the Bunnymen.",
+      "citation": "INDY Week: asked whether ken drew on Prefab Sprout, Thomas Dolby and Gary Numan, Dan Bejar redirects to something more basic -- New Order, the Cure, and Echo & the Bunnymen.",
       "sourceTier": "first-person"
     },
     {
@@ -17309,7 +17411,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same Baltimore Sun quote as superchunk -> new-order / -> cocteau-twins / -> the-cure: \"other '80s influences like Cocteau Twins, Echo and the Bunnymen, or The Cure.\"",
+      "citation": "Baltimore Sun: Mac McCaughan on why certain '80s records still resonate, working from \"Temptation\" and \"Bizarre Love Triangle\" toward \"other '80s influences like Cocteau Twins, Echo and the Bunnymen, or The Cure.\" Said in press around his 2015 solo album Non-Believers rather than about Superchunk directly.",
       "sourceTier": "first-person"
     },
     {
@@ -17326,139 +17428,85 @@
       "target": "brian-eno",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.5,
-      "citation": "LOW, critic (Student Playlist Influenced-by list, same excluded-artefact class as the MGMT list -- written at low confidence per instruction, not excluded)."
+      "confidence": 0.4,
+      "citation": null
     },
     {
       "source": "animal-collective",
       "target": "can",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.5,
-      "citation": "Student Playlist Influenced-by list.",
-      "sourceTier": "critic"
+      "confidence": 0.7,
+      "citation": "Simon Reynolds, The Wire (2005), on the band's formative listening: \"The four started to discover psychedelic rock bands like Can and Silver Apples.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "animal-collective",
-      "target": "neu",
+      "target": "silver-apples",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.5,
-      "citation": "Student Playlist Influenced-by list.",
-      "sourceTier": "critic"
+      "confidence": 0.7,
+      "citation": "Simon Reynolds, The Wire (2005), same sentence as the band's Can discovery: \"The four started to discover psychedelic rock bands like Can and Silver Apples.\"",
+      "sourceTier": "reported"
     },
     {
       "source": "animal-collective",
-      "target": "kraftwerk",
+      "target": "pavement",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.5,
-      "citation": "Student Playlist Influenced-by list.",
-      "sourceTier": "critic"
+      "confidence": 0.75,
+      "citation": "Wikipedia's Animal Collective page, on how the band began: Weitz and Portner \"started playing music together at the age of fifteen because of their shared love of the band Pavement.\"",
+      "sourceTier": "reported"
     },
     {
-      "source": "animal-collective",
+      "source": "mgmt",
       "target": "talking-heads",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.5,
-      "citation": "Student Playlist Influenced-by list.",
-      "sourceTier": "critic"
+      "confidence": 0.85,
+      "citation": "Andrew VanWyngarden to Larry Fitzmaurice, Vice (18 Feb 2018), naming Talking Heads and OMD as artists \"definitely in [their] blood.\"",
+      "sourceTier": "first-person"
     },
     {
-      "source": "animal-collective",
-      "target": "my-bloody-valentine",
+      "source": "mgmt",
+      "target": "omd",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.5,
-      "citation": "Student Playlist Influenced-by list.",
-      "sourceTier": "critic"
-    },
-    {
-      "source": "animal-collective",
-      "target": "bjork",
-      "type": "influence",
-      "status": "verified",
-      "confidence": 0.5,
-      "citation": "Student Playlist Influenced-by list.",
-      "sourceTier": "critic"
-    },
-    {
-      "source": "animal-collective",
-      "target": "the-flaming-lips",
-      "type": "influence",
-      "status": "verified",
-      "confidence": 0.5,
-      "citation": "Student Playlist Influenced-by list.",
-      "sourceTier": "critic"
+      "confidence": 0.85,
+      "citation": "Andrew VanWyngarden to Larry Fitzmaurice, Vice (18 Feb 2018), same quote naming Talking Heads and OMD as \"definitely in [their] blood.\"",
+      "sourceTier": "first-person"
     },
     {
       "source": "animal-collective",
       "target": "radiohead",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.5,
-      "citation": "LOW, critic (Student Playlist Influenced-by list) -- chronology checked and passes: Radiohead's formative work (The Bends 1995, OK Computer 1997) predates Animal Collective's formation and debut (~2000) by several years, unlike the dropped Burial edge. Flagged contemporary-adjacent regardless, given the shared source's known contemporary-mixing problem."
-    },
-    {
-      "source": "mgmt",
-      "target": "animal-collective",
-      "type": "influence",
-      "status": "verified",
-      "confidence": 0.5,
-      "citation": "(Student Playlist Influenced list). Restores the edge dropped in Operation 2 for want of this source.",
-      "sourceTier": "critic"
-    },
-    {
-      "source": "vampire-weekend",
-      "target": "animal-collective",
-      "type": "influence",
-      "status": "verified",
-      "confidence": 0.5,
-      "citation": "(Student Playlist Influenced list). Restores the edge dropped in Operation 2.",
-      "sourceTier": "critic"
+      "confidence": 0.4,
+      "citation": null
     },
     {
       "source": "grizzly-bear",
       "target": "animal-collective",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.5,
-      "citation": "LOW, critic (Student Playlist Influenced list). Restores the edge dropped in Operation 2 -- rescues Grizzly Bear from the 1-edge floor (Talk Talk only) up to 2."
-    },
-    {
-      "source": "car-seat-headrest",
-      "target": "animal-collective",
-      "type": "influence",
-      "status": "verified",
-      "confidence": 0.5,
-      "citation": "(Student Playlist Influenced list). Restores the edge dropped in Operation 2; verified no duplicate existed in seed-data before adding.",
-      "sourceTier": "critic"
-    },
-    {
-      "source": "tame-impala",
-      "target": "animal-collective",
-      "type": "influence",
-      "status": "verified",
-      "confidence": 0.5,
-      "citation": "(Student Playlist Influenced list). Restores the edge dropped in Operation 2.",
-      "sourceTier": "critic"
+      "confidence": 0.4,
+      "citation": null
     },
     {
       "source": "deerhunter",
       "target": "animal-collective",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.5,
-      "citation": "LOW, critic (Student Playlist Influenced list) -- bridge into region-one."
+      "confidence": 0.4,
+      "citation": null
     },
     {
       "source": "mac-demarco",
       "target": "animal-collective",
       "type": "influence",
       "status": "verified",
-      "confidence": 0.5,
-      "citation": "LOW, critic (Student Playlist Influenced list) -- bridge into folk-confessional."
+      "confidence": 0.4,
+      "citation": null
     },
     {
       "source": "olivia-tremor-control",
@@ -17466,7 +17514,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Restored per the realm-6 follow-up instruction referencing the Elephant 6 scene documentation in realm6-handoff.md; no specific quote was provided alongside the restore instruction, so this is flagged at the lowest confidence tier rather than treated as solid.",
+      "citation": "Documented Elephant 6 scene overlap rather than a stated influence -- no first-person source has been found for this one.",
       "sourceTier": "critic"
     },
     {
@@ -17664,7 +17712,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Same Stop Smiling quote as rites-of-spring -> the-fall: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"",
+      "citation": "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\" Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"",
       "sourceTier": "first-person"
     },
     {
@@ -17718,7 +17766,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Same Vish Khanna podcast (Oct 8, 2015) as drive-like-jehu -> slint: stated influences include \"Mission of Burma, the Gories, Bastro, Slint, Sonic Youth, the Wipers, and krautrock bands such as Neu!\"",
+      "citation": "Vish Khanna podcast (Oct 8, 2015): stated influences include \"Mission of Burma, the Gories, Bastro, Slint, Sonic Youth, the Wipers, and krautrock bands such as Neu!\" Stated influences include \"Mission of Burma, the Gories, Bastro, Slint, Sonic Youth, the Wipers, and krautrock bands such as Neu!\"",
       "sourceTier": "first-person"
     },
     {
@@ -17790,7 +17838,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Same Wrenn interview as airiel -> cocteau-twins.",
+      "citation": "Same interview -- Wrenn describes getting into the Cocteau Twins, Lush, My Bloody Valentine, Ride and \"all those great British bands\" as Airiel's formative listening.",
       "sourceTier": "first-person"
     },
     {
@@ -17799,7 +17847,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Same Wrenn interview as airiel -> cocteau-twins.",
+      "citation": "Same interview -- Wrenn describes getting into the Cocteau Twins, Lush, My Bloody Valentine, Ride and \"all those great British bands\" as Airiel's formative listening.",
       "sourceTier": "first-person"
     },
     {
@@ -17835,7 +17883,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same NME quote as beabadoobee -> pavement.",
+      "citation": "NME: \"My influencers are Sonic Youth, Pavement -- this shit that totally shaped me. They shaped the way I dress, how I speak, act and just everything I am.\"",
       "sourceTier": "first-person"
     },
     {
@@ -18114,7 +18162,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same band-profile quote as sleater-kinney -> sonic-youth: Sleater-Kinney have named their influences as Bikini Kill, Mecca Normal, Bratmobile, Throwing Muses and Sonic Youth.",
+      "citation": "Band profile: Sleater-Kinney have named their influences as Bikini Kill, Mecca Normal, Bratmobile, Throwing Muses and Sonic Youth. Sleater-Kinney have named their influences as Bikini Kill, Mecca Normal, Bratmobile, Throwing Muses and Sonic Youth.",
       "sourceTier": "first-person"
     },
     {
@@ -18132,7 +18180,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same PopMatters sentence as bikini-kill -> x-ray-spex.",
+      "citation": "PopMatters: Siouxsie and the Banshees, the Slits and X-Ray Spex \"all boasted singers that introduced new tones and techniques\" and had \"an even greater influence on later Riot Grrrl successors.\"",
       "sourceTier": "critic"
     },
     {
@@ -18141,7 +18189,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same band-profile quote as sleater-kinney -> sonic-youth: Sleater-Kinney have named their influences as Bikini Kill, Mecca Normal, Bratmobile, Throwing Muses and Sonic Youth.",
+      "citation": "Band profile: Sleater-Kinney have named their influences as Bikini Kill, Mecca Normal, Bratmobile, Throwing Muses and Sonic Youth. Sleater-Kinney have named their influences as Bikini Kill, Mecca Normal, Bratmobile, Throwing Muses and Sonic Youth.",
       "sourceTier": "first-person"
     },
     {
@@ -18195,7 +18243,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same Rolling Stone piece as 2814 -> steve-roach.",
+      "citation": "Rolling Stone's Christopher R. Weingarten wrote that Birth of a New Day's production was shaped on David Russo's side by musicians including Steve Roach, Vangelis, Burial and Sigur Ros.",
       "sourceTier": "critic"
     },
     {
@@ -18204,7 +18252,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same Rolling Stone piece as 2814 -> steve-roach.",
+      "citation": "Rolling Stone's Christopher R. Weingarten wrote that Birth of a New Day's production was shaped on David Russo's side by musicians including Steve Roach, Vangelis, Burial and Sigur Ros.",
       "sourceTier": "critic"
     },
     {
@@ -18267,7 +18315,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.6,
-      "citation": "Same Time 'n' Place coverage as kero-kero-bonito -> my-bloody-valentine.",
+      "citation": "Coverage of Time 'n' Place reports the album's suburban-guitar-band direction was influenced by acts including My Bloody Valentine, CSS, Lush and Sweet Trip.",
       "sourceTier": "reported"
     },
     {
@@ -18276,7 +18324,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.6,
-      "citation": "Same Time 'n' Place coverage as kero-kero-bonito -> my-bloody-valentine.",
+      "citation": "Coverage of Time 'n' Place reports the album's suburban-guitar-band direction was influenced by acts including My Bloody Valentine, CSS, Lush and Sweet Trip.",
       "sourceTier": "reported"
     },
     {
@@ -18294,7 +18342,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.55,
-      "citation": "Same Civilisation II coverage as kero-kero-bonito -> caroline-polachek, naming Bjork directly among the early art-pop ambassadors cited as inspiration.",
+      "citation": "Coverage of the Civilisation II EP described it as inspired by early art-pop ambassadors Kate Bush, David Byrne, Bjork and Ryuichi Sakamoto alongside modern peers Grimes and Caroline Polachek. Naming Bjork directly among the early art-pop ambassadors cited as inspiration.",
       "sourceTier": "reported"
     },
     {
@@ -18303,7 +18351,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.55,
-      "citation": "Same Civilisation II coverage as kero-kero-bonito -> caroline-polachek, naming Grimes as a modern-peer inspiration.",
+      "citation": "Coverage of the Civilisation II EP described it as inspired by early art-pop ambassadors Kate Bush, David Byrne, Bjork and Ryuichi Sakamoto alongside modern peers Grimes and Caroline Polachek.",
       "sourceTier": "reported"
     },
     {
@@ -18438,7 +18486,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.6,
-      "citation": "Red Bull Music Academy's profile reports that at 15, auditioning for a talent agency, Sheena listed her tastes as including Bjork, the UK girl group Eternal, Marvin Gaye and the New York freestyle singer Lisette Melendez.",
+      "citation": "Red Bull Music Academy's profile reports that at 15, auditioning for a talent agency, Sheena listed Bjork among her tastes.",
       "sourceTier": "reported"
     },
     {
@@ -18501,7 +18549,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.8,
-      "citation": "Same Sun 13 quote as xiu-xiu -> cocteau-twins.",
+      "citation": "Jamie Stewart, Sun 13 (2024): \"They were really into the '80s... 4AD records like Bauhaus, This Mortal Coil, Cocteau Twins. The Wolfgang Press was another huge one for me.\"",
       "sourceTier": "first-person"
     },
     {
@@ -18555,7 +18603,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same Michigan Daily citation as mid-air-thief -> animal-collective.",
+      "citation": "The Michigan Daily: \"Influences from all over pop up in this album; from Animal Collective to Cocteau Twins to Real Estate and Grizzly Bear.\"",
       "sourceTier": "critic"
     },
     {
@@ -18564,7 +18612,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same Michigan Daily citation as mid-air-thief -> animal-collective.",
+      "citation": "The Michigan Daily: \"Influences from all over pop up in this album; from Animal Collective to Cocteau Twins to Real Estate and Grizzly Bear.\"",
       "sourceTier": "critic"
     },
     {
@@ -18600,7 +18648,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.55,
-      "citation": "Same Break Yr Legs quote as candy-claws -> the-knife.",
+      "citation": "Ryan Hoover, Break Yr Legs: \"I was actually reading through your blog and you got me really into The Knife and I've been listening to lots of Boards of Canada, so that might come off in our future work.\"",
       "sourceTier": "first-person"
     },
     {
@@ -18618,7 +18666,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.6,
-      "citation": "Same Vice citation as the-marias -> radiohead.",
+      "citation": "The band also namechecks D'Angelo, Radiohead and Tame Impala as contemporary influences. (Vice, 2018)",
       "sourceTier": "reported"
     },
     {
@@ -18816,7 +18864,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same Gigwise quote as editors -> the-chameleons, naming Echo and the Bunnymen alongside Joy Division and the Chameleons.",
+      "citation": "Tom Smith, Gigwise: \"we're dark and moody so yeah we build on the sound of the likes of Joy Division, Echo and the Bunnymen and The Chameleons... Obviously we were too young when these bands came out, so it's only more recently that we discovered them.\" Naming Echo and the Bunnymen alongside Joy Division and the Chameleons.",
       "sourceTier": "first-person"
     },
     {
@@ -18906,7 +18954,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same Heavy Vegetable \"Radio\" lyric as pinback -> slint -- Crow's prior band, same songwriter, provenance noted.",
+      "citation": "Rob Crow's own 1995 lyrics for Heavy Vegetable's \"Radio\" (quoted in a Quietus interview): \"They don't play Slint on the radio / They don't play Sentridoh / They don't play Zappa / They don't play Beefheart / They don't play Can / They don't play The Residents / They don't even play Renaldo and the Loaf / the Velvet Underground... Sometimes they will play Devo.\" Crow's prior band, same songwriter, provenance noted.",
       "sourceTier": "first-person"
     },
     {
@@ -18915,7 +18963,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same Heavy Vegetable \"Radio\" lyric as pinback -> slint.",
+      "citation": "Rob Crow's own 1995 lyrics for Heavy Vegetable's \"Radio\" (quoted in a Quietus interview): \"They don't play Slint on the radio / They don't play Sentridoh / They don't play Zappa / They don't play Beefheart / They don't play Can / They don't play The Residents / They don't even play Renaldo and the Loaf / the Velvet Underground... Sometimes they will play Devo.\"",
       "sourceTier": "first-person"
     },
     {
@@ -18951,7 +18999,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.7,
-      "citation": "Same SPIN \"My Favorite Things\" quote as broken-social-scene -> talk-talk.",
+      "citation": "SPIN's \"My Favorite Things,\" Kevin Drew: \"Laughing Stock by Talk Talk and Whatever You Love, You Are by the Dirty Three. These two records are tied for the most authentic human emotion ever captured on an album. Both will come with me to the next life.\"",
       "sourceTier": "first-person"
     },
     {
@@ -18960,7 +19008,8 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Band took its song title \"Ibi Dreams of Pavement (A Better Day)\" directly from Pavement's name -- a direct, well-documented naming, the same convention as blonde-redhead -> dna."
+      "citation": "Band took its name directly from DNA's song \"Blonde Redhead\" (A Taste of DNA EP, 1981) -- a direct, well-documented factual naming. Band took its song title \"Ibi Dreams of Pavement (A Better Day)\" directly from Pavement's name -- a direct, well-documented naming, the.",
+      "sourceTier": "reported"
     },
     {
       "source": "descendents",
@@ -19004,7 +19053,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.6,
-      "citation": "Same Wikipedia Headlights citation as alex-g -> neil-young.",
+      "citation": "Wikipedia's Headlights article states the album \"draws influence from various artists, including Neil Young, Elliott Smith and Lucinda Williams.\"",
       "sourceTier": "reported"
     },
     {
@@ -19103,7 +19152,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.85,
-      "citation": "Same 303 Magazine quote as drive-by-truckers -> the-replacements, naming R.E.M. alongside the Replacements as big influences on Adam's House Cat.",
+      "citation": "303 Magazine (2025), Patterson Hood: \"Adam's House Cat was our serious band. I'm sure The Replacements and R.E.M. were big influences at the time. That's what we were really into then in the late 80's.\" Corroborated by Willamette Week on the Adam's House Cat reissue and by Hood in Grammy.com: \"we were doing our post-punk, Replacements-y kind of thing.\" Naming R.E.M. alongside the Replacements as big influences on Adam's House Cat.",
       "sourceTier": "first-person"
     },
     {
@@ -19130,7 +19179,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.5,
-      "citation": "Same Premier Guitar quote as mj-lenderman -> neil-young: Kate Koenig writes that as a songwriter he \"draws influence from Neil Young, Jason Molina, Patterson Hood and Mike Cooley (Drive-By Truckers), and David Berman and Will Oldham.\"",
+      "citation": "Premier Guitar's Kate Koenig writes that as a songwriter Lenderman \"draws influence from Neil Young, Jason Molina, Patterson Hood and Mike Cooley, and David Berman and Will Oldham\" -- the journalist's framing, not independently corroborated as a direct Lenderman quote for Young specifically. Kate Koenig writes that as a songwriter he \"draws influence from Neil Young, Jason Molina, Patterson Hood and Mike Cooley (Drive-By Truckers), and David Berman and Will Oldham.\"",
       "sourceTier": "critic"
     },
     {
@@ -19148,7 +19197,7 @@
       "type": "influence",
       "status": "verified",
       "confidence": 0.75,
-      "citation": "Affidavit: among the records that became her beacons in high school was Everybody Knows This Is Nowhere by Neil Young and Crazy Horse (1969); plus the same Rolling Stone quote as lucinda-williams -> bob-dylan.",
+      "citation": "WFUV (2021), on Highway 61 Revisited: she studied his \"use of biblical stories, biblical references\" and says she was \"influenced a lot by some of his songs where he does that,\" adding \"I loved the combination of the electric with the folk.\" Corroborated by Rolling Stone (2018): after a label executive told her none of her songs had bridges, \"I got out my Bob Dylan and Neil Young albums.\" Affidavit: among the records that became her beacons in high school was Everybody Knows This Is Nowhere by Neil Young and Crazy Horse (1969); plus the.",
       "sourceTier": "reported"
     },
     {
