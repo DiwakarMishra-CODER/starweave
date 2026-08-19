@@ -2,13 +2,15 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Artist, Genre, Realm, Scene } from '@/data/types';
+import { PATH_FINDER_ENABLED } from '@/lib/flags';
 import {
+  resolveNodeColor,
   REALMS, REALM_LABELS, REALM_COLORS,
   GENRE_COLORS, DEFAULT_GENRE_COLOR,
   SCENE_COLORS, DEFAULT_SCENE_COLOR,
 } from '@/lib/colors';
 
-type Tab = 'realms' | 'genres' | 'scenes';
+type Tab = 'realms' | 'genres' | 'scenes' | 'path';
 
 interface Props {
   activeRealm: Realm | null;
@@ -21,6 +23,12 @@ interface Props {
   activeSceneId: string | null;
   onSelectScene: (id: string) => void;
   onClear: () => void;
+  // Both ends of a path search. Fires with (fromId, toId) once both are picked;
+  // GraphView owns the search itself so the result can be shown in the wide
+  // panel rather than crammed into this fixed-230px one.
+  onFindPath: (fromId: string, toId: string) => void;
+  pathFromId: string | null;
+  pathToId: string | null;
   // Fired when an outside click closes the panel — lets the caller
   // suppress whatever click-through side effect (e.g. the graph's own
   // background-click deselect) would otherwise also fire from that same
@@ -40,12 +48,19 @@ export default function GraphControls({
   artists, genres, activeGenreId, onSelectGenre,
   scenes, activeSceneId, onSelectScene,
   onClear,
+  onFindPath,
+  pathFromId,
+  pathToId,
   onOutsideClick,
   initialOpen,
 }: Props) {
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState<Tab>('realms');
   const [genreQuery, setGenreQuery] = useState('');
+  // Which of the two path fields is being typed into, and its query. One query
+  // at a time because only one list can be open in a 230px panel anyway.
+  const [pathField, setPathField] = useState<'from' | 'to'>('from');
+  const [pathQuery, setPathQuery] = useState('');
   const containerRef = useRef<HTMLDivElement>(null);
 
   const realmCounts = useMemo(() => {
@@ -68,6 +83,22 @@ export default function GraphControls({
       .map(g => ({ id: g.id, label: g.name, count: genreCounts.get(g.id) ?? 0 }))
       .sort((a, b) => a.label.localeCompare(b.label)),
     [genres, genreCounts],
+  );
+
+  const artistOptions = useMemo(
+    () => [...artists].sort((a, b) => a.name.localeCompare(b.name)),
+    [artists],
+  );
+
+  const filteredArtistOptions = useMemo(() => {
+    const q = pathQuery.trim().toLowerCase();
+    if (!q) return artistOptions;
+    return artistOptions.filter(a => a.name.toLowerCase().includes(q));
+  }, [artistOptions, pathQuery]);
+
+  const artistNameById = useMemo(
+    () => Object.fromEntries(artists.map(a => [a.id, a.name])),
+    [artists],
   );
 
   const filteredGenreOptions = genreQuery.trim()
@@ -164,6 +195,17 @@ export default function GraphControls({
             >
               Scenes
             </button>
+            {PATH_FINDER_ENABLED && (
+              <button
+                type="button"
+                role="tab"
+                aria-selected={tab === 'path'}
+                className={`graph-controls__tab${tab === 'path' ? ' graph-controls__tab--active' : ''}`}
+                onClick={() => setTab('path')}
+              >
+                Path
+              </button>
+            )}
           </div>
 
           {tab === 'realms' && (
@@ -230,6 +272,86 @@ export default function GraphControls({
                       <span className="graph-controls__option-count">{g.count}</span>
                       {checked && <span className="graph-controls__check-mark" aria-hidden>✓</span>}
                     </label>
+                  );
+                })}
+              </div>
+            </>
+          )}
+
+          {PATH_FINDER_ENABLED && tab === 'path' && (
+            <>
+              {/* Two ends, one visible list. The panel is a fixed 230px so a
+                  second simultaneous dropdown would not fit; tapping a field
+                  switches which one the list is filling. */}
+              <div className="graph-controls__path-ends">
+                <button
+                  type="button"
+                  className={`graph-controls__path-end${pathField === 'from' ? ' graph-controls__path-end--active' : ''}`}
+                  onClick={() => { setPathField('from'); setPathQuery(''); }}
+                  aria-pressed={pathField === 'from'}
+                >
+                  <span className="graph-controls__path-end-label">From</span>
+                  <span className="graph-controls__path-end-value">
+                    {pathFromId ? artistNameById[pathFromId] : 'Pick an artist'}
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  className={`graph-controls__path-end${pathField === 'to' ? ' graph-controls__path-end--active' : ''}`}
+                  onClick={() => { setPathField('to'); setPathQuery(''); }}
+                  aria-pressed={pathField === 'to'}
+                >
+                  <span className="graph-controls__path-end-label">To</span>
+                  <span className="graph-controls__path-end-value">
+                    {pathToId ? artistNameById[pathToId] : 'Pick an artist'}
+                  </span>
+                </button>
+              </div>
+
+              <input
+                type="search"
+                className="graph-controls__search"
+                placeholder={pathField === 'from' ? 'Search for a starting artist…' : 'Search for a destination…'}
+                value={pathQuery}
+                onChange={e => setPathQuery(e.target.value)}
+                aria-label={pathField === 'from' ? 'Search starting artist' : 'Search destination artist'}
+              />
+
+              <div className="graph-controls__options graph-controls__options--scroll" role="listbox" aria-label="Artists">
+                {filteredArtistOptions.length === 0 && (
+                  <p className="graph-controls__empty">No matches</p>
+                )}
+                {filteredArtistOptions.map(a => {
+                  const chosen = pathField === 'from' ? pathFromId === a.id : pathToId === a.id;
+                  // The other end, so the same artist can't be picked twice.
+                  const takenByOtherEnd = pathField === 'from' ? pathToId === a.id : pathFromId === a.id;
+                  return (
+                    <button
+                      key={a.id}
+                      type="button"
+                      role="option"
+                      aria-selected={chosen}
+                      disabled={takenByOtherEnd}
+                      className={`graph-controls__check${chosen ? ' graph-controls__check--active' : ''}`}
+                      onClick={() => {
+                        const nextFrom = pathField === 'from' ? a.id : pathFromId;
+                        const nextTo   = pathField === 'to'   ? a.id : pathToId;
+                        // Advance to the empty field so two taps complete a
+                        // search, rather than making the user aim at it.
+                        if (pathField === 'from' && !pathToId) { setPathField('to'); setPathQuery(''); }
+                        else if (pathField === 'to' && !pathFromId) { setPathField('from'); setPathQuery(''); }
+                        if (nextFrom && nextTo && nextFrom !== nextTo) onFindPath(nextFrom, nextTo);
+                        else onFindPath(nextFrom ?? '', nextTo ?? '');
+                      }}
+                    >
+                      <span
+                        className="graph-controls__swatch"
+                        style={{ background: resolveNodeColor(a) }}
+                        aria-hidden
+                      />
+                      <span className="graph-controls__option-label">{a.name}</span>
+                      {chosen && <span className="graph-controls__check-mark" aria-hidden>✓</span>}
+                    </button>
                   );
                 })}
               </div>

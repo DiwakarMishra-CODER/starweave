@@ -115,7 +115,21 @@ function getActiveCluster(
   realmMemberIds: string[] | null,
   edges: Edge[],
   pinnedHubId?: string | null,
+  highlightPath?: string[] | null,
 ): { ids: string[]; key: string; spreadFactor: number } {
+  // A found path is checked before everything else because it is the only
+  // cluster the user asked for by naming both ends. Its nodes are typically
+  // spread across several realms already, so it takes REALM_SPREAD_FACTOR --
+  // the true no-op -- and is framed where it lies rather than pushed further
+  // apart. Path mode and click-focus are mutually exclusive in GraphView, so
+  // this branch and the selectedId branch below never both apply.
+  if (highlightPath && highlightPath.length > 0) {
+    return {
+      ids: [...highlightPath],
+      key: `path:${highlightPath.join(',')}`,
+      spreadFactor: REALM_SPREAD_FACTOR,
+    };
+  }
   if (selectedId) {
     return { ids: [selectedId, ...getNeighbors(selectedId, edges)], key: `artist:${selectedId}`, spreadFactor: SPREAD_FACTOR };
   }
@@ -1857,8 +1871,8 @@ export default function ForceGraphCanvas({
 
   // The single set of ids to spread + frame right now — see getActiveCluster.
   const { ids: activeClusterIds, key: activeClusterKey, spreadFactor: activeClusterSpreadFactor } = useMemo(
-    () => getActiveCluster(selectedId, highlightSetIds, realmMemberIds, graphData.edges, highlightSetPinnedId),
-    [selectedId, highlightSetIds, realmMemberIds, graphData.edges, highlightSetPinnedId],
+    () => getActiveCluster(selectedId, highlightSetIds, realmMemberIds, graphData.edges, highlightSetPinnedId, highlightPath),
+    [selectedId, highlightSetIds, realmMemberIds, graphData.edges, highlightSetPinnedId, highlightPath],
   );
 
   // ── Spotlight spread ─────────────────────────────────────────────────────────
@@ -2944,21 +2958,40 @@ export default function ForceGraphCanvas({
       ctx.save();
 
       if (isPathEdge) {
-        // Chromatic aberration for path-finding mode
-        const offsets = [
-          { dx: -1, color: `rgba(255, 30, 90, ${(0.9 * edgeFade * evidenceMult).toFixed(3)})` },
-          { dx:  0, color: `rgba(242, 168, 196, ${(0.9 * edgeFade * evidenceMult).toFixed(3)})` },
-          { dx:  1, color: `rgba(0, 200, 255, ${(0.9 * edgeFade * evidenceMult).toFixed(3)})` },
-        ];
-        for (const { dx, color } of offsets) {
-          ctx.beginPath();
-          ctx.moveTo(sx + dx, sy);
-          ctx.lineTo(tx + dx, ty);
-          ctx.strokeStyle = color;
-          ctx.lineWidth = dx === 0 ? 2.5 : 1.5;
-          ctx.setLineDash([]);
-          ctx.stroke();
-        }
+        // Each hop takes the colour of the artist being credited as the
+        // influence — the same rule the focus branch just below uses ("their
+        // world glows in their colour"), so a path crossing realms shifts
+        // colour as it travels and reads as part of this graph rather than as
+        // an effect laid over it.
+        //
+        // Replaces a hardcoded red/pink/cyan chromatic-aberration split that
+        // predated the path finder being wired up, and so had never actually
+        // been seen on screen. It belonged to no other part of the app.
+        //
+        // Two passes, wide-and-faint under narrow-and-bright, for the glow.
+        // Same technique as the core "galaxy arm" threads and for the same
+        // reason: ctx.shadowBlur forces an offscreen blur per stroke and is
+        // banned from this draw loop.
+        const hopColor = resolveNodeColor(tgtNode as GraphNode);
+        const hopAlpha = 0.95 * edgeFade * evidenceMult;
+
+        ctx.beginPath();
+        ctx.moveTo(sx, sy);
+        ctx.lineTo(tx, ty);
+        ctx.strokeStyle = hopColor;
+        ctx.globalAlpha = hopAlpha * 0.28;
+        ctx.lineWidth = 6;
+        ctx.setLineDash([]);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(sx, sy);
+        ctx.lineTo(tx, ty);
+        ctx.strokeStyle = hopColor;
+        ctx.globalAlpha = hopAlpha;
+        ctx.lineWidth = 2.2;
+        ctx.stroke();
+        ctx.globalAlpha = 1;
       } else if (isFocusEdge && focusedNode) {
         // Focused artist's own layer color — their world glows in their color.
         // Fades up from the idle faint baseline rather than snapping on, via

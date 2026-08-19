@@ -5,10 +5,12 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import type { GraphData, Realm, EvidenceFilter } from '@/data/types';
 import { edgePassesEvidenceFilter } from '@/data/types';
+import { findConnectionPath, resolvePathHops } from '@/lib/graph-utils';
 import GraphControls from './GraphControls';
 import ArtistSearch from './ArtistSearch';
 import ArtistPanel from './ArtistPanel';
 import EvidenceFilterControl from './EvidenceFilter';
+import PathPanel from './PathPanel';
 import NebulaBackground from './NebulaBackground';
 import GraphOnboarding from './GraphOnboarding';
 
@@ -59,6 +61,11 @@ export default function GraphView({ graphData }: Props) {
   // everywhere highlightSetIds itself changes or clears, so a stale pin from
   // a previous set never leaks into a new one.
   const [highlightSetPinnedId, setHighlightSetPinnedId] = useState<string | null>(null);
+  // Both ends of a path search. Owned here rather than in GraphControls so the
+  // one resolved result can drive the canvas highlight and the result panel
+  // together; the picker just reports which artists were chosen.
+  const [pathFromId, setPathFromId] = useState<string | null>(null);
+  const [pathToId, setPathToId] = useState<string | null>(null);
   // Single-select: at most one realm filtered at a time. null = no filter,
   // everything shown.
   const [activeRealm, setActiveRealm] = useState<Realm | null>(null);
@@ -141,6 +148,8 @@ export default function GraphView({ graphData }: Props) {
       setSelectedId(artistParam);
       setHighlightSetIds(null);
       setHighlightSetPinnedId(null);
+      setPathFromId(null);
+      setPathToId(null);
       setActiveGenreId(null);
       setActiveSceneId(null);
       return;
@@ -168,6 +177,8 @@ export default function GraphView({ graphData }: Props) {
         setSelectedId(null);
         setHighlightSetIds(ids);
         setHighlightSetPinnedId(null);
+        setPathFromId(null);
+        setPathToId(null);
         setActiveGenreId(genreParam);
         setActiveSceneId(null);
         return;
@@ -183,6 +194,8 @@ export default function GraphView({ graphData }: Props) {
         setSelectedId(null);
         setHighlightSetIds(ids);
         setHighlightSetPinnedId(null);
+        setPathFromId(null);
+        setPathToId(null);
         setActiveGenreId(null);
         setActiveSceneId(sceneParam);
         return;
@@ -194,6 +207,15 @@ export default function GraphView({ graphData }: Props) {
     setHighlightSetPinnedId(null);
     setActiveGenreId(null);
     setActiveSceneId(null);
+    // NOTE: this fallback deliberately does NOT clear the path. Every other
+    // mode here is derived from the URL, so "the URL names nothing" correctly
+    // means "show nothing". A path is not in the URL, and handleFindPath
+    // resets the address bar to '/' on purpose (see the note there), which
+    // fires this effect -- so clearing the path here wiped it in the same tick
+    // it was created and the feature never rendered at all. The branches above
+    // still clear it, because navigating to an artist, genre or scene really
+    // should exit path mode.
+    //
     // activeGenreId/activeSceneId are read by the two early bails above, so
     // they belong here — a genuine navigation to a DIFFERENT genre/scene still
     // falls through and re-applies everything.
@@ -209,7 +231,20 @@ export default function GraphView({ graphData }: Props) {
     'first-person': graphData.edges.filter(e => edgePassesEvidenceFilter(e, 'first-person')).length,
   }), [graphData.edges]);
 
-  const panelArtistId = selectedId ?? highlightSetPinnedId;
+  // Resolved once here so the canvas highlight and the result panel can never
+  // disagree about what the path is. Undirected on purpose -- see the note
+  // above findConnectionPath in lib/graph-utils.ts.
+  const { pathIds, pathHops } = useMemo(() => {
+    if (!pathFromId || !pathToId || pathFromId === pathToId) {
+      return { pathIds: null as string[] | null, pathHops: null };
+    }
+    const ids = findConnectionPath(pathFromId, pathToId, graphData.edges);
+    return { pathIds: ids, pathHops: ids ? resolvePathHops(ids, graphData.edges) : null };
+  }, [pathFromId, pathToId, graphData.edges]);
+
+  // A path search takes over the panel slot; the two are mutually exclusive by
+  // construction, since picking either end clears selectedId above.
+  const panelArtistId = pathIds ? null : (selectedId ?? highlightSetPinnedId);
   const selectedArtist = panelArtistId
     ? (graphData.artists.find(a => a.id === panelArtistId) ?? null)
     : null;
@@ -222,6 +257,35 @@ export default function GraphView({ graphData }: Props) {
   // "where's the camera pointed" axis between them — selecting a realm
   // exits the other two, and clears the URL's own artist/genre/scene param
   // so a refresh can't resurrect a different answer than what's on screen.
+  // Fires as each end is picked, so the panel can fill in as soon as both are
+  // known. Empty strings mean "not chosen yet" -- the picker sends both ends
+  // every time rather than tracking which one changed.
+  const handleFindPath = useCallback((fromId: string, toId: string) => {
+    setPathFromId(fromId || null);
+    setPathToId(toId || null);
+    if (fromId || toId) {
+      setSelectedId(null);
+      setHighlightSetIds(null);
+      setHighlightSetPinnedId(null);
+      setActiveRealm(null);
+      setActiveGenreId(null);
+      setActiveSceneId(null);
+      // Clearing the URL is load-bearing, not tidiness. activeGenreId is a
+      // dependency of the URL-sync effect above, so nulling it re-fires that
+      // effect; with ?genre= still in the address bar its early bail no longer
+      // matches (param vs null), so it falls straight through, re-applies the
+      // genre set AND clears both path ends -- the path would vanish in the
+      // same tick it was created. handleSelectRealm/Genre/Scene each do this
+      // for the same reason.
+      window.history.replaceState(null, '', '/');
+    }
+  }, []);
+
+  const handleClosePath = useCallback(() => {
+    setPathFromId(null);
+    setPathToId(null);
+  }, []);
+
   const handleSelectRealm = useCallback((realm: Realm) => {
     if (activeRealm === realm) {
       setActiveRealm(null);
@@ -231,6 +295,8 @@ export default function GraphView({ graphData }: Props) {
     setSelectedId(null);
     setHighlightSetIds(null);
     setHighlightSetPinnedId(null);
+    setPathFromId(null);
+    setPathToId(null);
     setActiveGenreId(null);
     setActiveSceneId(null);
     window.history.replaceState(null, '', '/');
@@ -246,6 +312,8 @@ export default function GraphView({ graphData }: Props) {
       setActiveGenreId(null);
       setHighlightSetIds(null);
       setHighlightSetPinnedId(null);
+      setPathFromId(null);
+      setPathToId(null);
       window.history.replaceState(null, '', '/');
       return;
     }
@@ -255,6 +323,8 @@ export default function GraphView({ graphData }: Props) {
     setActiveRealm(null);
     setActiveSceneId(null);
     setHighlightSetPinnedId(null);
+    setPathFromId(null);
+    setPathToId(null);
     setHighlightSetIds(ids);
     setActiveGenreId(genreId);
     window.history.replaceState(null, '', `/?genre=${genreId}`);
@@ -265,6 +335,8 @@ export default function GraphView({ graphData }: Props) {
       setActiveSceneId(null);
       setHighlightSetIds(null);
       setHighlightSetPinnedId(null);
+      setPathFromId(null);
+      setPathToId(null);
       window.history.replaceState(null, '', '/');
       return;
     }
@@ -275,6 +347,8 @@ export default function GraphView({ graphData }: Props) {
     setActiveRealm(null);
     setActiveGenreId(null);
     setHighlightSetPinnedId(null);
+    setPathFromId(null);
+    setPathToId(null);
     setHighlightSetIds(ids);
     setActiveSceneId(sceneId);
     window.history.replaceState(null, '', `/?scene=${sceneId}`);
@@ -305,6 +379,8 @@ export default function GraphView({ graphData }: Props) {
       setSelectedId(artistId);
       setHighlightSetIds(null);
       setHighlightSetPinnedId(null);
+      setPathFromId(null);
+      setPathToId(null);
       setActiveRealm(null);
       setActiveGenreId(null);
       setActiveSceneId(null);
@@ -325,6 +401,8 @@ export default function GraphView({ graphData }: Props) {
     setSelectedId(id);
     setHighlightSetIds(null);
     setHighlightSetPinnedId(null);
+    setPathFromId(null);
+    setPathToId(null);
     setActiveRealm(null);
     setActiveGenreId(null);
     setActiveSceneId(null);
@@ -339,6 +417,8 @@ export default function GraphView({ graphData }: Props) {
     setSelectedId(null);
     setHighlightSetIds(null);
     setHighlightSetPinnedId(null);
+    setPathFromId(null);
+    setPathToId(null);
     setActiveRealm(null);
     setActiveGenreId(null);
     setActiveSceneId(null);
@@ -353,6 +433,8 @@ export default function GraphView({ graphData }: Props) {
       handleBackgroundClick();
     } else {
       setHighlightSetPinnedId(null);
+      setPathFromId(null);
+      setPathToId(null);
     }
   }, [selectedId, handleBackgroundClick]);
 
@@ -371,6 +453,9 @@ export default function GraphView({ graphData }: Props) {
         activeSceneId={activeSceneId}
         onSelectScene={handleSelectScene}
         onClear={handleBackgroundClick}
+        onFindPath={handleFindPath}
+        pathFromId={pathFromId}
+        pathToId={pathToId}
         onOutsideClick={() => { suppressBackgroundClickRef.current = true; }}
         initialOpen={controlsAutoOpen}
       />
@@ -381,7 +466,7 @@ export default function GraphView({ graphData }: Props) {
         <ForceGraphCanvas
           graphData={graphData}
           activeRealm={activeRealm}
-          highlightPath={null}
+          highlightPath={pathIds}
           selectedId={selectedId}
           highlightSetIds={highlightSetIds}
           highlightSetPinnedId={highlightSetPinnedId}
@@ -397,6 +482,15 @@ export default function GraphView({ graphData }: Props) {
         value={evidenceFilter}
         onChange={setEvidenceFilter}
         counts={evidenceCounts}
+      />
+
+      <PathPanel
+        fromId={pathFromId}
+        toId={pathToId}
+        graphData={graphData}
+        hops={pathHops}
+        onClose={handleClosePath}
+        onSelectArtist={handleSelectArtist}
       />
 
       <ArtistPanel

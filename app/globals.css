@@ -4569,104 +4569,49 @@ h3 { font-size: 1.1rem; }
 
 
 /* ── Evidence filter ──────────────────────────────────────────────
-   A collapsible bar, bottom-left: the only corner of the canvas with no
-   permanent chrome ("Jump to…" top-left, search top-right, onboarding
-   bottom-centre, panel right). Collapsed it is a single line carrying the
-   live edge count; expanded it adds the two modes and a line of explanation.
-   Sits above the mobile bottom sheet rather than under it — see the
-   narrow-layout rule at the end of this block. */
+   Bottom-left: the only corner of the canvas with no permanent chrome
+   ("Jump to…" top-left, search top-right, onboarding bottom-centre, panel
+   right). Two rows with one lit, matching .graph-controls__check in the
+   Jump-to panel — same job, same visual language. Sits above the mobile
+   bottom sheet rather than under it; see the narrow-layout rule below. */
 .evidence-filter {
   position: absolute;
   bottom: 1.25rem;
   left: 1.25rem;
   z-index: 20;
+  width: 216px;
+  padding: 0.55rem 0.6rem 0.5rem;
   background: rgba(14, 11, 26, 0.82);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--color-border);
-  border-radius: 999px;
-  overflow: hidden;
-  transition: border-radius var(--transition);
-}
-
-.evidence-filter--open {
   border-radius: var(--radius);
 }
 
-/* The whole header is the toggle, so the count and the control never come
-   apart — collapsed, this row is the entire component. */
-.evidence-filter__head {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  width: 100%;
-  padding: 0.42rem 0.75rem;
-  text-align: left;
-}
-
-.evidence-filter__title {
+.evidence-filter__eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  letter-spacing: 0.12em;
+  font-size: 0.5rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-muted);
+  padding: 0 0.1rem 0.35rem;
 }
 
-/* The count carries the argument, so it gets the weight — watching this fall
-   from 1,041 to 544 is the entire reason the control exists. */
-.evidence-filter__count {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  color: var(--color-muted);
-  margin-right: auto;
-}
-
-.evidence-filter__count strong {
-  color: var(--color-root);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-}
-
-/* Collapsed, a bare count doesn't say which mode produced it. Only shown
-   when a filter is actually narrowing something. */
-.evidence-filter__badge {
-  font-family: var(--font-body);
-  font-size: 0.625rem;
-  color: var(--color-text);
-  padding: 0.08rem 0.4rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--color-root) 18%, transparent);
-  white-space: nowrap;
-}
-
-.evidence-filter__chevron {
-  font-size: 0.9rem;
-  line-height: 0.6;
-  color: var(--color-muted);
-  transition: transform var(--transition);
-}
-
-.evidence-filter--open .evidence-filter__chevron {
-  transform: rotate(180deg);
-}
-
-.evidence-filter__body {
-  padding: 0 0.75rem 0.6rem;
-}
-
-/* Side by side rather than stacked — two options read as a switch, which is
-   what this is, and it keeps the expanded state bar-shaped. */
 .evidence-filter__options {
   display: flex;
-  gap: 3px;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .evidence-filter__option {
-  padding: 0.3rem 0.6rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.35rem 0.45rem;
   border-radius: 5px;
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  white-space: nowrap;
+  text-align: left;
   color: var(--color-muted);
   transition: background var(--transition), color var(--transition);
 }
@@ -4676,15 +4621,33 @@ h3 { font-size: 1.1rem; }
   color: var(--color-text);
 }
 
+/* The lit row has to be unmistakable at a glance — that it reads as a choice
+   at all is the entire point of this control. */
 .evidence-filter__option--active {
   background: color-mix(in srgb, var(--color-root) 16%, transparent);
   color: var(--color-text);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-root) 34%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-root) 36%, transparent);
 }
 
-.evidence-filter__hint {
-  margin-top: 0.4rem;
-  max-width: 280px;
+.evidence-filter__option-label {
+  font-size: 0.75rem;
+}
+
+/* Tabular so 1,041 and 544 line up under one another and read as a pair. */
+.evidence-filter__option-count {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.evidence-filter__option--active .evidence-filter__option-count {
+  color: var(--color-root);
+  font-weight: 600;
+}
+
+.evidence-filter__note {
+  padding: 0.4rem 0.1rem 0;
   font-size: 0.625rem;
   line-height: 1.35;
   color: var(--color-muted);
@@ -4693,26 +4656,291 @@ h3 { font-size: 1.1rem; }
 
 /* Narrow layouts: the artist panel becomes a bottom sheet (--peek-h, see the
    sheet block above), so this has to sit clear of it rather than behind it.
-   Lifted unconditionally rather than only while a node is selected — a
-   control that jumps position on selection is worse than one sitting a little
-   high when nothing is open. */
+   Lifted unconditionally rather than only while a node is selected — a control
+   that jumps position on selection is worse than one sitting a little high
+   when nothing is open. */
 @media (max-width: 600px) {
   .evidence-filter {
     left: 0.75rem;
     right: 0.75rem;
+    width: auto;
     bottom: calc(104px + env(safe-area-inset-bottom, 0px) + 0.6rem);
+  }
+
+  .evidence-filter__options {
+    flex-direction: row;
   }
 
   .evidence-filter__option {
     flex: 1;
-    text-align: center;
-    font-size: 0.65rem;
-    padding: 0.35rem 0.2rem;
+  }
+}
+
+/* ── Path picker (Jump to… > Path tab) ────────────────────────────
+   Two ends, one shared list. The panel is a fixed 230px, so a second
+   simultaneous dropdown would not fit — tapping an end switches which one the
+   list below is filling. */
+.graph-controls__path-ends {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 0.5rem;
+}
+
+.graph-controls__path-end {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  width: 100%;
+  padding: 0.35rem 0.5rem;
+  border-radius: 5px;
+  background: var(--color-surface);
+  text-align: left;
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+.graph-controls__path-end:hover {
+  background: var(--color-surface-hover);
+}
+
+.graph-controls__path-end--active {
+  background: color-mix(in srgb, var(--color-root) 14%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-root) 32%, transparent);
+}
+
+.graph-controls__path-end-label {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.graph-controls__path-end-value {
+  font-size: 0.75rem;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* ── Path result panel ────────────────────────────────────────────
+   Shares the artist panel's slot and geometry — the two are mutually
+   exclusive by construction (picking either end of a path clears selectedId),
+   so they can never both want it. Inherits the narrow-layout bottom sheet
+   from the .artist-panel rules by matching its own box. */
+.path-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--panel-width);
+  background: linear-gradient(
+    to right,
+    transparent 0px,
+    rgba(10, 8, 20, 0.95) 28px,
+    rgba(10, 8, 20, 0.97) 100%
+  );
+  box-shadow: -56px 0 70px -35px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  z-index: 30;
+  overflow: hidden;
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 280ms ease;
+}
+
+.path-panel--open {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.path-panel__inner {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1.1rem 1.2rem 3rem;
+}
+
+.path-panel__close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.8rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  color: var(--color-text);
+  font-size: 0.75rem;
+  z-index: 1;
+}
+
+.path-panel__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.path-panel__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0.2rem 0 0.5rem;
+  padding-right: 1.5rem;
+}
+
+/* The verdict is the answer to the question the user actually asked, so it
+   carries display weight rather than sitting in the body face. */
+.path-panel__verdict {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: var(--color-root);
+  margin-bottom: 1.1rem;
+}
+
+.path-panel__verdict strong {
+  font-weight: 600;
+  font-style: normal;
+}
+
+.path-panel__verdict--none {
+  color: var(--color-muted);
+  font-style: normal;
+  font-size: 0.85rem;
+}
+
+.path-panel__chain {
+  list-style: none;
+  border-left: 1px solid var(--color-border);
+  padding-left: 0.9rem;
+  margin-left: 0.35rem;
+}
+
+.path-hop {
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.path-hop__direction {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding: 0.5rem 0 0.35rem;
+}
+
+.path-hop__arrow {
+  font-size: 0.8rem;
+  line-height: 1;
+  color: var(--color-root);
+}
+
+.path-hop__artist {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: left;
+  transition: color var(--transition);
+}
+
+.path-hop__artist:hover {
+  color: var(--hop-color, var(--color-root));
+}
+
+/* Sits on the chain's own rule, so each artist reads as a stop on the line. */
+.path-hop__dot {
+  position: absolute;
+  left: calc(-0.9rem - 4px);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--hop-color, var(--color-root));
+  box-shadow: 0 0 10px color-mix(in srgb, var(--hop-color, var(--color-root)) 60%, transparent);
+}
+
+.path-hop__citation {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--color-muted);
+  border-left: 2px solid var(--color-border);
+  padding-left: 0.6rem;
+}
+
+.path-hop__citation--weak {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.path-hop__tier {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.path-panel__count {
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--color-muted);
+}
+
+/* Narrow layouts: same bottom sheet the artist panel uses. Always expanded --
+   a peek bar makes sense for an artist you can identify from a photo and a
+   name, but a path is a list and there is nothing useful to peek at. */
+@media (max-width: 600px) {
+  .path-panel {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 62dvh;
+    border-top-left-radius: var(--radius-lg);
+    border-top-right-radius: var(--radius-lg);
+    border-top: 1px solid var(--color-border);
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 8, 20, 0.96) 0,
+      rgba(10, 8, 20, 0.98) 100%
+    );
+    box-shadow: 0 -40px 60px -30px rgba(0, 0, 0, 0.65);
+    transform: translateY(100%);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
-  /* Two labels plus a sentence is more than a phone's width can carry, and
-     the active option already names the mode. */
-  .evidence-filter__hint {
-    display: none;
+  .path-panel--open {
+    transform: translateY(0);
   }
+}
+
+/* Count beside a section heading — muted and lighter than the title it
+   follows, so it reads as an annotation rather than part of the name. */
+.artist-page__section-count {
+  font-family: var(--font-mono);
+  font-size: 0.6em;
+  font-weight: 400;
+  color: var(--color-muted);
+  letter-spacing: 0.02em;
 }
