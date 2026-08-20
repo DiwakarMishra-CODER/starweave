@@ -196,26 +196,24 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
               hero so it reads as the sheet's header in both states — when
               expanded it stays put and its chevron flips to collapse. */}
           {isNarrowLayout && (
-            <div className="panel-peek">
-              <button
-                className="panel-peek__handle"
-                onClick={() => setExpanded(v => !v)}
-                aria-expanded={expanded}
-                aria-label={expanded ? 'Collapse artist details' : 'Expand artist details'}
-              >
-                <span className="panel-peek__grip" aria-hidden />
-              </button>
-
-              {/* The panel's usual close button lives inside .panel-hero,
-                  which is hidden while collapsed — without this the sheet
-                  could only be dismissed by tapping bare canvas. */}
-              <button
-                className="panel-peek__close"
-                onClick={onClose}
-                aria-label="Close artist panel"
-              >
-                ✕
-              </button>
+            // The whole bar toggles, not just the grip and the chevron. Those
+            // two were the only handlers, so tapping the photo or the name --
+            // which is what everyone tries -- did nothing at all. The three
+            // controls that mean something else stop the event below.
+            <div
+              className="panel-peek"
+              onClick={() => setExpanded(v => !v)}
+              role="button"
+              tabIndex={0}
+              aria-expanded={expanded}
+              aria-label={expanded ? 'Collapse artist details' : 'Expand artist details'}
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setExpanded(v => !v); }
+              }}
+            >
+              <span className="panel-peek__handle" aria-hidden>
+                <span className="panel-peek__grip" />
+              </span>
 
               <div className="panel-peek__row">
                 {artist.imageUrl && (
@@ -243,7 +241,7 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                 {artist.previewUrl && (
                   <button
                     className={`panel-peek__play${audio.playing ? ' panel-peek__play--playing' : ''}`}
-                    onClick={audio.toggle}
+                    onClick={e => { e.stopPropagation(); audio.toggle(); }}
                     aria-label={audio.playing ? 'Pause preview' : 'Play preview'}
                   >
                     {audio.playing ? (
@@ -259,13 +257,16 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                   </button>
                 )}
 
+                {/* The panel's usual close lives in .panel-hero, hidden while
+                    collapsed. Inline here rather than absolutely positioned:
+                    floating it top-right put it on top of row 1, so it and the
+                    expand control sat stacked in the same corner. */}
                 <button
-                  className="panel-peek__chevron"
-                  onClick={() => setExpanded(v => !v)}
-                  aria-expanded={expanded}
-                  aria-label={expanded ? 'Collapse artist details' : 'Expand artist details'}
+                  className="panel-peek__close"
+                  onClick={e => { e.stopPropagation(); onClose(); }}
+                  aria-label="Close artist panel"
                 >
-                  <span aria-hidden>⌄</span>
+                  ✕
                 </button>
               </div>
 
@@ -286,9 +287,14 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                     {connectionCount} {connectionCount === 1 ? 'connection' : 'connections'}
                   </span>
                 </span>
-                <Link href={`/artist/${artist.id}`} className="panel-peek__full">
-                  Full page <span aria-hidden>→</span>
-                </Link>
+                {/* Words, not a chevron. A bare glyph was reported twice as
+                    "I don't know what it does" -- an icon cannot say "there is
+                    more of this below". The full-artist-page link lives in the
+                    expanded sheet, one tap further in. */}
+                <span className="panel-peek__more">
+                  {expanded ? 'Less' : 'Details'}
+                  <span className="panel-peek__more-chev" aria-hidden>⌄</span>
+                </span>
               </div>
             </div>
           )}

@@ -4311,21 +4311,49 @@ h3 { font-size: 1.1rem; }
     width: calc(100vw - 2.5rem);
   }
 
-  /* Collapsed, the input is a full-size invisible tap target sitting under
-     the icon — the box has to stay tappable to be openable at all, so the
-     text is hidden rather than the field. */
+  /* Collapsed, the input covers the WHOLE box rather than sharing a flex row
+     with the magnifier. It used to sit beside it, and since the icon is
+     pointer-events:none and eats 23px of a 38px box, the only tappable strip
+     left was 13px wide -- which is why the control read as impossible to hit
+     rather than merely small. Absolute here, so the icon layers on top and the
+     entire 38px is a target. */
+  .artist-search:not(:focus-within) .artist-search__input-wrap {
+    position: relative;
+  }
+
   .artist-search:not(:focus-within) .artist-search__input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
     color: transparent;
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .artist-search:not(:focus-within) .artist-search__icon {
+    position: relative;
+    z-index: 1;
   }
 
   .artist-search:not(:focus-within) .artist-search__input::placeholder {
     color: transparent;
   }
 
-  .artist-search__icon {
-    margin-left: 0.55rem;
+  /* Collapsed, the magnifier was left-aligned inside a 38px pill with dead
+     space to its right, which is why the control read as an empty box rather
+     than a button. Centred, and the pill made square so it reads as one. */
+  .artist-search:not(:focus-within) .artist-search__input-wrap {
+    justify-content: center;
+    border-radius: 50%;
+    aspect-ratio: 1;
+  }
+
+  .artist-search:not(:focus-within) .artist-search__icon {
+    margin: 0;
+  }
+
+  .artist-search:focus-within .artist-search__icon {
+    margin-left: 0.6rem;
     margin-right: 0.1rem;
   }
 
@@ -4449,23 +4477,30 @@ h3 { font-size: 1.1rem; }
   padding: 0.6rem 0 0.45rem;
 }
 
+/* Inline in row 1, not absolutely positioned. Floating it at top-right put a
+   30px button across the first 14px of the row, so it and the expand control
+   ended up stacked in the same corner -- the visual clutter that got reported.
+   Same 32px footprint as the play button it sits beside. */
 .panel-peek__close {
-  position: absolute;
-  top: 0.3rem;
-  right: 0.5rem;
-  width: 30px;
-  height: 30px;
-  font-size: 0.8rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  font-size: 0.75rem;
   line-height: 1;
   color: var(--color-muted);
 }
 
 .panel-peek__grip {
   display: block;
-  width: 36px;
-  height: 4px;
+  width: 44px;
+  height: 5px;
   border-radius: 999px;
-  background: rgba(237, 234, 247, 0.28);
+  background: rgba(237, 234, 247, 0.45);
 }
 
 .panel-peek__row {
@@ -4530,17 +4565,32 @@ h3 { font-size: 1.1rem; }
   box-shadow: 0 0 14px color-mix(in srgb, var(--layer-color, var(--color-post-punk)) 45%, transparent);
 }
 
-.panel-peek__chevron {
-  flex-shrink: 0;
-  width: 30px;
-  height: 30px;
-  font-size: 1.1rem;
-  line-height: 1;
-  color: var(--color-muted);
+/* Same weight as the play button beside it. As a bare muted glyph it read as
+   decoration, so nothing on the collapsed bar said it did anything when tapped
+   -- which is exactly what was reported. The whole bar is the toggle now; this
+   is the sign that says so. */
+/* The expand affordance, in words. "Details" says what the bar does; a chevron
+   alone was reported twice as unreadable. Right-aligned in the sub-row so it
+   reads as the end of the collapsed summary. */
+.panel-peek__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--layer-color, var(--color-post-punk));
+  white-space: nowrap;
+}
+
+.panel-peek__more-chev {
+  font-size: 0.8rem;
+  line-height: 0.6;
   transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.artist-panel--expanded .panel-peek__chevron {
+.artist-panel--expanded .panel-peek__more-chev {
   transform: rotate(180deg);
 }
 
@@ -4681,12 +4731,26 @@ h3 { font-size: 1.1rem; }
    Lifted unconditionally rather than only while a node is selected — a control
    that jumps position on selection is worse than one sitting a little high
    when nothing is open. */
+/* Phone: one compact row, nothing else. The desktop version is a titled block
+   with an explanatory note, which is 102px of a 798px canvas -- 13% of the
+   screen spent explaining an effect the reader cannot actually see at this
+   zoom, where a passing edge draws at 0.012 alpha and a failing one at 0.0014.
+   The counts on the two chips carry the point on their own. */
 @media (max-width: 600px) {
+  /* A corner control, as on desktop -- not a bar across the screen. It was
+     left+right pinned, taking 342px of a 390px width for a secondary feature. */
   .evidence-filter {
     left: 0.75rem;
-    right: 0.75rem;
+    right: auto;
     width: auto;
+    max-width: calc(100vw - 1.5rem);
+    padding: 0.3rem 0.35rem;
     bottom: calc(104px + env(safe-area-inset-bottom, 0px) + 0.6rem);
+  }
+
+  .evidence-filter__eyebrow,
+  .evidence-filter__note {
+    display: none;
   }
 
   .evidence-filter__options {
@@ -4695,6 +4759,40 @@ h3 { font-size: 1.1rem; }
 
   .evidence-filter__option {
     flex: 1;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.2rem;
+  }
+
+  /* nowrap: the second label was wrapping to two lines, which grew the box and
+     made a two-chip control read as a broken paragraph. */
+  .evidence-filter__option-label {
+    font-size: 0.6875rem;
+    white-space: nowrap;
+  }
+
+  .evidence-filter__option-count {
+    font-size: 0.625rem;
+  }
+
+  /* Stand down entirely while the onboarding card is up. Two floating boxes
+     stacked at the bottom of a 390px screen overlapped by 36px, which is most
+     of what made the first visit read as a mess. The card is one-time; the
+     filter is there forever after. */
+  .graph-container:has([data-onboarding-open]) .evidence-filter {
+    display: none;
+  }
+
+  /* The panel was a fixed 230px with no mobile rule at all -- a desktop box
+     pasted onto a phone. It no longer opens itself here (see initialOpen in
+     GraphView), but it still has to fit when the user opens it. */
+  .graph-controls {
+    right: 1.25rem;
+  }
+
+  .graph-controls__panel {
+    width: auto;
+    max-width: min(100%, 320px);
   }
 }
 

@@ -1,6 +1,7 @@
 'use client';
 
 import type { EvidenceFilter } from '@/data/types';
+import { useNarrowLayout } from '@/lib/use-media-query';
 
 interface Props {
   value: EvidenceFilter;
@@ -22,12 +23,17 @@ interface Props {
 // their own words · 1,041 edges", which named the axis but never the thing:
 // "edges" is graph vocabulary to someone who came here for music, and neither
 // mode said what picking it would do.
-const MODES: { value: EvidenceFilter; label: string }[] = [
-  { value: 'all', label: 'All influences' },
-  { value: 'first-person', label: 'Said by the artist' },
+// Short forms on a phone. The full pair plus their counts runs ~272px of a
+// 390px screen -- 70% of the width for a secondary control, and the second one
+// wrapped to two lines. The counts sit right beside them, so "All" and
+// "Artist's own" stay unambiguous in context.
+const MODES: { value: EvidenceFilter; label: string; short: string }[] = [
+  { value: 'all', label: 'All influences', short: 'All' },
+  { value: 'first-person', label: 'Said by the artist', short: "Artist's own" },
 ];
 
 export default function EvidenceFilterControl({ value, onChange, counts }: Props) {
+  const isNarrowLayout = useNarrowLayout();
   // Derived, never typed: the caption can't drift from the data behind it.
   const fromOthers = counts.all - counts['first-person'];
 
@@ -47,7 +53,9 @@ export default function EvidenceFilterControl({ value, onChange, counts }: Props
               className={`evidence-filter__option${active ? ' evidence-filter__option--active' : ''}`}
               onClick={() => onChange(mode.value)}
             >
-              <span className="evidence-filter__option-label">{mode.label}</span>
+              <span className="evidence-filter__option-label">
+                {isNarrowLayout ? mode.short : mode.label}
+              </span>
               <span className="evidence-filter__option-count">{counts[mode.value].toLocaleString()}</span>
             </button>
           );

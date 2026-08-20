@@ -5,6 +5,7 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import type { GraphData, Realm, EvidenceFilter } from '@/data/types';
 import { edgePassesEvidenceFilter } from '@/data/types';
+import { useNarrowLayout } from '@/lib/use-media-query';
 import { findConnectionPath, resolvePathHops } from '@/lib/graph-utils';
 import GraphControls from './GraphControls';
 import ArtistSearch from './ArtistSearch';
@@ -82,6 +83,7 @@ export default function GraphView({ graphData }: Props) {
   // never on a timer. Starts false (not visible) so there's no flash before
   // the effect below has had a chance to read localStorage; flips true only
   // if this browser has never dismissed it.
+  const isNarrowLayout = useNarrowLayout();
   const [onboardingOpen, setOnboardingOpen] = useState(false);
   // Same first-visit signal as the hint above, deliberately sharing one key:
   // the "Jump to…" control is a collapsed button a first-timer has no reason
@@ -457,7 +459,11 @@ export default function GraphView({ graphData }: Props) {
         pathFromId={pathFromId}
         pathToId={pathToId}
         onOutsideClick={() => { suppressBackgroundClickRef.current = true; }}
-        initialOpen={controlsAutoOpen}
+        // Desktop only. On a phone this panel is 250px tall inside a 798px
+        // canvas -- a third of the screen, opened before the visitor has seen
+        // the graph at all. The onboarding card's last row names this control,
+        // which is what that row is for.
+        initialOpen={controlsAutoOpen && !isNarrowLayout}
       />
       <ArtistSearch artists={graphData.artists} genres={graphData.genres} edges={graphData.edges} onSelectArtist={handleSelectArtist} />
 
