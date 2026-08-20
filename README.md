@@ -6,7 +6,7 @@
 
 In mainstream music, legacy is measured in sales. In underground music it is measured in descendants: the Velvet Underground's first album famously sold almost nothing, and nearly everyone who bought a copy started a band. Starweave is an attempt to make that claim *checkable* - to render influence as a graph where 887 of its 1,041 edges carry a real, named source you can go and read, and the rest say plainly why they don't.
 
-![The full constellation, all seven realms, with the evidence filter](docs/images/hero-constellation.jpg)
+![The full constellation: six named realms orbiting a core, with the evidence filter bottom-left](docs/images/hero-constellation.jpg)
 
 ---
 

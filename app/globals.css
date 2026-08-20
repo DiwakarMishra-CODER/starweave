@@ -24,7 +24,7 @@
   --font-body: var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), 'Courier New', monospace;
 
-  --nav-height: 52px;
+  --nav-height: 46px;
   --panel-width: 380px;
   --radius: 8px;
   --radius-lg: 14px;
@@ -246,6 +246,13 @@ h3 { font-size: 1.1rem; }
   font-family: var(--font-display);
   color: var(--color-text);
   display: inline-block;
+  /* The inline-block line box otherwise carries the display face's full
+     descender room, which sits below the glyphs -- so "Starweave" rendered
+     high in the nav with a gap underneath it, and align-items:center could not
+     help because the box itself was taller than the letters. Safe to set flat:
+     this component is used in exactly one place (the nav wordmark) and that
+     word has no descenders. */
+  line-height: 1;
 }
 
 .chroma-title--sm {

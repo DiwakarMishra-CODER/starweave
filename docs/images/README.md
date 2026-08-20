@@ -6,7 +6,7 @@ gitignored — they are ~63MB and have no business in git history.
 
 | File | Page | What it shows |
 |---|---|---|
-| `hero-constellation.jpg` | `/` | Whole graph at cloud zoom, all seven realms, evidence filter visible |
+| `hero-constellation.jpg` | `/` | Whole graph at cloud zoom. Realm names must be showing (they fade out above zoom 2.5) and the evidence filter must be in frame bottom-left |
 | `detail-zoom.jpg` | `/` | Zoomed in — photos, names and realm colours resolved |
 | `focus-panel.jpg` | `/` | My Bloody Valentine focused, panel open, **source quote expanded** |
 | `genres-timeline.jpg` | `/genres` | Shoegaze hovered, ancestor chain lit back to garage rock |
@@ -24,12 +24,17 @@ sips -Z 1800 -s format jpeg -s formatOptions 92 "<source>.png" --out <name>.jpg
 macOS screenshot filenames contain a narrow no-break space (U+202F) before "PM",
 so a literal path copied from `ls` will fail — match them with a glob instead.
 
-## Known nit
+## Known nits
 
 A browser extension badge (the dark "N" circle, bottom-left) sits over the last
-line of the evidence filter in `hero-constellation.jpg`, `detail-zoom.jpg` and
-`focus-panel.jpg`. Harmless, but if you ever retake these, disable extensions or
-use a clean Chrome profile first.
+line of the evidence filter in `detail-zoom.jpg` and `focus-panel.jpg`. The hero
+was retaken without it; the other two still have it. Use a clean Chrome profile
+if you redo them.
+
+`hero-constellation.jpg` was captured just before the nav bar went from 52px to
+46px, so its nav is a few pixels taller than the live site. Invisible at a
+glance and not worth a retake on its own -- fold it in whenever the hero is
+next redone.
 
 ## Still worth adding: a demo video
 
