@@ -1026,8 +1026,14 @@ h3 { font-size: 1.1rem; }
     color-mix(in srgb, var(--layer-color, var(--color-post-punk)) 10%, rgba(10, 8, 20, 0.97)) 100%
   );
   box-shadow: -56px 0 70px -35px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
+  /* No backdrop-filter, deliberately. This panel sits over a canvas that
+     repaints every single frame (autoPauseRedraw={false}), so a blur here made
+     the compositor re-rasterise a full-height blurred backdrop 60x a second --
+     and it bought nothing, because the panel's own background is 95-97% opaque
+     from 28px inward. The only place it was ever visible was that 28px
+     transparent-to-opaque strip at the left edge. Suspected cause of the cursor
+     flickering between arrow and I-beam over the panel; certainly a cost with
+     no matching benefit. */
   z-index: 30;
   display: flex;
   flex-direction: column;
@@ -4760,8 +4766,8 @@ h3 { font-size: 1.1rem; }
     rgba(10, 8, 20, 0.97) 100%
   );
   box-shadow: -56px 0 70px -35px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
+  /* Same reasoning as .artist-panel above — opaque background, always-repainting
+     canvas behind it, nothing to blur. */
   z-index: 30;
   overflow: hidden;
   transform: translateX(100%);
