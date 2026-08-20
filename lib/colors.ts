@@ -292,7 +292,12 @@ export const REALM_LABELS: Record<Realm, string> = {
   'region-one': 'Punk to Shoegaze',
   'american-underground': 'American Underground',
   electronic: 'Electronic',
-  'folk-confessional': 'Folk Confessional',
+  // "Folk Confessional" read as a single genre name, and no such genre exists.
+  // Ampersand rather than "Folk to Confessional" (the arc form region-one uses)
+  // and rather than plain "Folk": only 27 of the 50 members are folk in any
+  // sense -- confessional is the largest lineage at 16, and the 7 slowcore
+  // artists (Codeine, Low, Duster) are not folk at all.
+  'folk-confessional': 'Folk & Confessional',
   'emo-posthardcore': 'Emo & Post-Hardcore',
   'post-rock-drone-noise': 'Post-Rock, Drone & Noise',
 };

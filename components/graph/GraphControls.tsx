@@ -12,6 +12,12 @@ import {
 
 type Tab = 'realms' | 'genres' | 'scenes' | 'path';
 
+// A genre bigger than this highlights so much of the graph that the highlight
+// stops meaning anything -- see genreOptions below. 35 sits in the real gap in
+// the data, between Folk (39) and Art pop (32).
+const BROAD_GENRE_MEMBER_COUNT = 35;
+const BROAD_GENRE_PENALTY = 0.5;
+
 interface Props {
   activeRealm: Realm | null;
   onSelectRealm: (realm: Realm) => void;
@@ -78,10 +84,28 @@ export default function GraphControls({
     return counts;
   }, [artists]);
 
+  // Biggest first, alphabetical to break ties -- A-Z put alt-country (6 artists)
+  // above art-pop (32) and buried every genre worth jumping to below the fold
+  // of a scrolling list. This is a "take me somewhere" menu, so the entries that
+  // actually change the view belong at the top, and the counts are already on
+  // screen beside each row so the ordering explains itself.
+  //
+  // With one correction: the very broadest genres are demoted. Electronic (61),
+  // Indie rock (51) and Folk (39) led the list and are the three worst things to
+  // jump to -- each lights up a fifth of the graph, so the highlight stops
+  // distinguishing anything. Two of them are not even sounds: Electronic and
+  // Folk are the only genres in the vocabulary with no `emerged` date, because
+  // they are containers (see the Genre notes in data/types.ts). Weighting rather
+  // than bucketing keeps the list looking sorted -- they slide to roughly 2nd,
+  // 4th and 9th instead of jumping to the bottom where nobody would find them.
   const genreOptions = useMemo(
     () => [...genres]
-      .map(g => ({ id: g.id, label: g.name, count: genreCounts.get(g.id) ?? 0 }))
-      .sort((a, b) => a.label.localeCompare(b.label)),
+      .map(g => {
+        const count = genreCounts.get(g.id) ?? 0;
+        const broad = count > BROAD_GENRE_MEMBER_COUNT;
+        return { id: g.id, label: g.name, count, weight: broad ? count * BROAD_GENRE_PENALTY : count };
+      })
+      .sort((a, b) => b.weight - a.weight || a.label.localeCompare(b.label)),
     [genres, genreCounts],
   );
 
@@ -105,10 +129,11 @@ export default function GraphControls({
     ? genreOptions.filter(g => g.label.toLowerCase().includes(genreQuery.trim().toLowerCase()))
     : genreOptions;
 
+  // Same ordering as genres above, for the same reason.
   const sceneOptions = useMemo(
     () => [...scenes]
       .map(s => ({ id: s.id, label: s.name, count: s.memberIds.length }))
-      .sort((a, b) => a.label.localeCompare(b.label)),
+      .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label)),
     [scenes],
   );
 
