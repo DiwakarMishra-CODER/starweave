@@ -1467,6 +1467,12 @@ export default function ForceGraphCanvas({
   // current zoom to fade arrows the same way drawLink fades edge lines, but
   // that accessor is a plain per-link callback with no globalScale argument.
   const currentGlobalScaleRef = useRef(1);
+  // Whether the camera is far enough out that nodes are anonymous dots. Drives
+  // the zoom hint below. Mirrored in a ref so the per-frame render callback can
+  // compare without reading state, and setState only fires when the threshold is
+  // actually crossed -- never once per frame.
+  const atCloudZoomRef = useRef(true);
+  const [atCloudZoom, setAtCloudZoom] = useState(true);
   // Null until ResizeObserver fires — ForceGraph2D is not rendered before then,
   // which prevents the hardcoded-default → real-size bounce that resets d3-zoom
   // and jams nodes at the canvas origin on every navigation-back.
@@ -3251,6 +3257,15 @@ export default function ForceGraphCanvas({
     // reads this every frame regardless of focus/zoom state (see its own gate).
     currentGlobalScaleRef.current = globalScale;
 
+    // Threshold crossing only. FADE_ZOOM_OUT is exactly where every node is
+    // still a featureless point, so the hint is shown when it is literally
+    // true and retracted the moment it stops being.
+    const nowCloud = globalScale <= FADE_ZOOM_OUT;
+    if (nowCloud !== atCloudZoomRef.current) {
+      atCloudZoomRef.current = nowCloud;
+      setAtCloudZoom(nowCloud);
+    }
+
     // Reset the label-placement queues exactly once per frame, here — the
     // one hook guaranteed to fire once per render pass before any node is
     // drawn. Previously this reset lived inside drawNode itself, guarded by
@@ -3761,6 +3776,24 @@ export default function ForceGraphCanvas({
         onPointerEnter={() => setPointerOverCanvas(true)}
         onPointerLeave={() => setPointerOverCanvas(false)}
       >
+        {/* Zoom hint. Deliberately tied to camera state rather than to a
+            first-visit flag: it is a statement about what you are currently
+            looking at, not a tutorial. So it appears on every visit, and that
+            is not nagging -- it is only ever on screen while it is true, and
+            the act it asks for is the act that dismisses it. Hidden while
+            anything is focused (you are already somewhere) and, via CSS, while
+            the onboarding card is up, since that card already names the
+            gesture. */}
+        {atCloudZoom && selectedId === null && highlightSetMemberSet.size === 0 && (
+          <p className="zoom-hint">
+            <svg className="zoom-hint__icon" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden>
+              <circle cx="5.6" cy="5.6" r="4.1" stroke="currentColor" strokeWidth="1.3" />
+              <path d="M8.7 8.7 L11.6 11.6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+              <path d="M3.9 5.6h3.4M5.6 3.9v3.4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+            </svg>
+            Zoom in here
+          </p>
+        )}
         <ForceGraph2D
           ref={graphRef}
           graphData={stableData}

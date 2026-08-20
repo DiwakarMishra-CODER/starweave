@@ -5064,3 +5064,101 @@ h3 { font-size: 1.1rem; }
   color: var(--color-muted);
   letter-spacing: 0.02em;
 }
+
+/* ── Zoom hint ────────────────────────────────────────────────────
+   Shown while the camera is far enough out that every artist is an anonymous
+   point (globalScale <= FADE_ZOOM_OUT, see ForceGraph). Not a first-visit card:
+   it describes the current view, so it earns its place on every visit and
+   retracts the moment the thing it asks for has happened.
+
+   Bottom-centre, the same slot the onboarding card uses -- they are never on
+   screen together (see the :has rule below), and it is the one region with no
+   constellation under it at cloud zoom.
+
+   Deliberately built from the same parts as the "Jump to..." pill: same float
+   surface, same border token, same mono uppercase. It is a hint, not a
+   different species of object, and an earlier two-line version with an
+   explanatory second line read as a tooltip bolted onto the canvas. */
+.zoom-hint {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: var(--surface-float);
+  border: 1px solid var(--color-border-float);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  white-space: nowrap;
+  pointer-events: none;
+  animation: zoom-hint-in 420ms ease-out;
+}
+
+/* An upward cue above the pill. The hint sits at the bottom and the
+   constellation is above it, so "here" needs a direction -- but the arrow
+   cannot carry "zoom" on its own, which is what the magnifier keeps. It drifts
+   up and fades on a loop: the same read as a swipe-up indicator, and it points
+   at the thing rather than just decorating the pill. */
+.zoom-hint::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.35rem);
+  width: 9px;
+  height: 9px;
+  border-left: 1.6px solid var(--color-root);
+  border-top: 1.6px solid var(--color-root);
+  border-radius: 1px;
+  transform: translateX(-50%) rotate(45deg);
+  animation: zoom-hint-arrow 2.4s ease-in-out infinite;
+}
+
+@keyframes zoom-hint-arrow {
+  0%   { opacity: 0;    transform: translate(-50%, 4px) rotate(45deg); }
+  35%  { opacity: 0.85; transform: translate(-50%, 0)   rotate(45deg); }
+  100% { opacity: 0;    transform: translate(-50%, -6px) rotate(45deg); }
+}
+
+/* The gold pulls the eye to the one thing the hint is about. */
+.zoom-hint__icon {
+  flex-shrink: 0;
+  color: var(--color-root);
+}
+
+/* Both live bottom-centre and the card already names the gesture, so the hint
+   stands down rather than stacking behind it. Same mechanism the evidence
+   filter uses for the same collision. */
+.graph-container:has([data-onboarding-open]) .zoom-hint {
+  display: none;
+}
+
+@keyframes zoom-hint-in {
+  from { opacity: 0; transform: translate(-50%, 6px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zoom-hint,
+  .zoom-hint::before { animation: none; }
+  .zoom-hint::before { opacity: 0.85; }
+}
+
+/* Sits above the evidence filter, which is already lifted clear of the peek
+   sheet on a phone. */
+@media (max-width: 600px) {
+  .zoom-hint {
+    bottom: calc(104px + env(safe-area-inset-bottom, 0px) + 3.2rem);
+    font-size: 0.625rem;
+    padding: 0.4rem 0.7rem;
+  }
+}
