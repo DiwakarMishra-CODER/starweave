@@ -306,6 +306,25 @@ export const REALM_LABELS: Record<Realm, string> = {
 // filter — each reuses that realm's own DEFAULT_*_COLOR (the same mid-tone
 // shade a lineage-less/unrecognized node in that realm already falls back
 // to), so the swatch always matches what most of that realm's nodes render.
+// Phone-sized realm names. The full labels total 1,004px of text on a 390px
+// screen -- 2.6x the width -- so once they are clamped into the viewport they
+// pile on top of each other; "Post-Rock, Drone & Noise" alone is 57% of the
+// screen. These are drawn instead below NARROW_LABEL_MAX_WIDTH in ForceGraph,
+// and bring the widest label down to 24%.
+//
+// Detail is deliberately traded away: on a phone the label's job is orientation
+// -- which corner of the sky am I looking at -- not description. Desktop keeps
+// the full names.
+export const REALM_LABELS_SHORT: Record<Realm, string> = {
+  core: 'Core',
+  'region-one': 'Shoegaze',
+  'american-underground': 'US Underground',
+  electronic: 'Electronic',
+  'folk-confessional': 'Folk',
+  'emo-posthardcore': 'Emo',
+  'post-rock-drone-noise': 'Post-Rock',
+};
+
 export const REALM_COLORS: Record<Realm, string> = {
   core: CORE_COLOR,
   'region-one': REGION_ONE_COLOR,

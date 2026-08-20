@@ -5,7 +5,7 @@ import ForceGraph2D from 'react-force-graph-2d';
 import { forceSimulation, forceLink, forceManyBody, forceCenter, forceX, forceY } from 'd3-force-3d';
 import type { Artist, Edge, EvidenceFilter, GraphData, Layer, Realm } from '@/data/types';
 import { edgePassesEvidenceFilter } from '@/data/types';
-import { resolveNodeColor, resolveNodeGlow, resolveEdgeTint, REALM_COLORS, REALM_LABELS } from '@/lib/colors';
+import { resolveNodeColor, resolveNodeGlow, resolveEdgeTint, REALM_COLORS, REALM_LABELS, REALM_LABELS_SHORT } from '@/lib/colors';
 import { getNeighbors, pathEdgeKeys } from '@/lib/graph-utils';
 import { useCoarsePointer } from '@/lib/use-media-query';
 
@@ -671,6 +671,15 @@ function computeDenseCoreIds(nodes: { id: string; x?: number; y?: number }[]): S
 // reduced from the library-typical 60 so the dense core fills more of the
 // viewport instead of floating in a wide empty margin.
 const ZOOM_FIT_PADDING = 40;
+// Narrow canvases need more. The phone fit is width-constrained (its zoom comes
+// from the width, not the height), so at 40 there is no horizontal room left
+// outside the leftmost and rightmost clusters -- and the realm-label clamp then
+// pulls those labels back INSIDE the cluster they name. Measured against a
+// replica of the settled layout at 390x798: ELECTRONIC cleared the nearest node
+// by 13 world units at 40 and by 35 at 55, matching every other label. Past 55
+// the clearance stops improving and the graph just shrinks, so this is the knee,
+// not a guess.
+const ZOOM_FIT_PADDING_NARROW = 55;
 
 // The library's own zoomToFit() centers on the dense-core bounding box's own
 // center ((minX+maxX)/2, (minY+maxY)/2) — not on graph-origin (0,0), which is
@@ -701,9 +710,10 @@ function computeOverviewZoom(
   const bbW = maxX - minX;
   const bbH = maxY - minY;
   if (bbW <= 0 || bbH <= 0) return null;
+  const pad = canvasWidth < NARROW_VIEWPORT_WIDTH ? ZOOM_FIT_PADDING_NARROW : ZOOM_FIT_PADDING;
   return Math.min(
-    (canvasWidth - ZOOM_FIT_PADDING * 2) / bbW,
-    (canvasHeight - ZOOM_FIT_PADDING * 2) / bbH,
+    (canvasWidth - pad * 2) / bbW,
+    (canvasHeight - pad * 2) / bbH,
   );
 }
 
@@ -921,6 +931,11 @@ const ANCHOR_COUNT = 12;
 // zoom: their opacity is the exact inverse of the cloud/detail crossfade, so
 // one arrives as the other leaves and the two never compete.
 const REALM_LABEL_SCREEN_PX = 15;   // constant on screen, so zooming doesn't inflate them
+// Below this canvas width the labels switch to the short set (REALM_LABELS_SHORT)
+// at the smaller size. Matches the 600px breakpoint the rest of the mobile
+// layout uses -- see NARROW_LAYOUT_QUERY in lib/use-media-query.ts.
+const NARROW_LABEL_MAX_WIDTH = 600;
+const REALM_LABEL_SCREEN_PX_NARROW = 11;
 const REALM_LABEL_MAX_ALPHA = 0.44; // ambient, never competing with the nodes themselves
 // How far out along a realm's own outward axis the label sits: clear of the
 // FURTHEST node in that realm, plus a gap. A percentile was tried first (0.9)
@@ -932,6 +947,15 @@ const REALM_LABEL_MAX_ALPHA = 0.44; // ambient, never competing with the nodes t
 const REALM_LABEL_GAP = 34;
 // Clear space (CSS px) between a realm label and any UI control it had to dodge.
 const REALM_LABEL_CHROME_GAP = 12;
+// World units a realm label must keep clear of the nearest node. When the frame
+// is too narrow to fit a label outside its own cluster, the viewport clamp drags
+// it back on top of that cluster -- measured at 6-13u across every viewport from
+// 600 to 1100px wide, against 34-35u on a roomy desktop. The escape below walks
+// such a label vertically instead: the constellation is much wider than tall
+// (645 x 394 world units), so there is vertical room exactly when there is no
+// horizontal room.
+const REALM_LABEL_MIN_NODE_CLEARANCE = 26;
+const REALM_LABEL_ESCAPE_STEP = 6;
 
 
 // ── Crisp colored dot at cloud zoom — EVERY node, not just anchors. A
@@ -1697,7 +1721,7 @@ export default function ForceGraphCanvas({
     // post-rock 22), so a single fixed offset would sit inside one cluster and
     // far outside another.
     const homes = computeRealmHomePositions(stableData.nodes);
-    const labels: { text: string; color: string; x: number; y: number }[] = [];
+    const labels: { text: string; shortText: string; color: string; x: number; y: number }[] = [];
 
     for (const [realm, home] of homes) {
       if (realm === 'core' || !(realm in REALM_LABELS)) continue;
@@ -1715,6 +1739,7 @@ export default function ForceGraphCanvas({
 
       labels.push({
         text: REALM_LABELS[realm as keyof typeof REALM_LABELS].toUpperCase(),
+        shortText: REALM_LABELS_SHORT[realm as keyof typeof REALM_LABELS_SHORT].toUpperCase(),
         color: REALM_COLORS[realm as keyof typeof REALM_COLORS],
         x: ux * dist,
         y: uy * dist,
@@ -3355,12 +3380,6 @@ export default function ForceGraphCanvas({
       ctx.save();
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      // Same literal stack the artist labels use below. next/font mangles the
-      // generated family name (__Fraunces_xxxx), so the display face cannot be
-      // named reliably from canvas -- and uppercase sans reads as map chrome
-      // here anyway, which is what these are.
-      ctx.font = `600 ${REALM_LABEL_SCREEN_PX / globalScale}px Inter, sans-serif`;
-
       // Clamp each label into the visible frame. Sitting clear of a cluster and
       // staying on screen are in genuine tension here: replicating the settled
       // layout offline showed the constellation reaching y=218 inside a frame
@@ -3371,11 +3390,40 @@ export default function ForceGraphCanvas({
       // the realm it names, so a clamped label reads as hugging its own cluster
       // rather than as drifting.
       const tf = ctx.getTransform();
+
+      // Short names at a smaller size on a phone -- see REALM_LABELS_SHORT.
+      // Derived from the real canvas width in CSS pixels (device pixels divided
+      // by the device pixel ratio, which is what tf.a/globalScale gives) rather
+      // than from a media query, so the text can never disagree with the
+      // geometry it is about to be measured against.
+      //
+      // Font stack is the literal one the artist labels use below: next/font
+      // mangles the generated family name (__Fraunces_xxxx) so the display face
+      // cannot be named reliably from canvas, and uppercase sans reads as map
+      // chrome here anyway, which is what these are.
+      const dprForLabels = globalScale > 0 && tf.a > 0 ? tf.a / globalScale : 1;
+      const narrowLabels = ctx.canvas.width / dprForLabels < NARROW_LABEL_MAX_WIDTH;
+      const labelPx = narrowLabels ? REALM_LABEL_SCREEN_PX_NARROW : REALM_LABEL_SCREEN_PX;
+      ctx.font = `600 ${labelPx / globalScale}px Inter, sans-serif`;
+
       const halfW = tf.a > 0 ? (ctx.canvas.width / 2) / tf.a : Infinity;
       const halfH = tf.d > 0 ? (ctx.canvas.height / 2) / tf.d : Infinity;
       const cxWorld = tf.a > 0 ? (ctx.canvas.width / 2 - tf.e) / tf.a : 0;
       const cyWorld = tf.d > 0 ? (ctx.canvas.height / 2 - tf.f) / tf.d : 0;
-      const marginY = (REALM_LABEL_SCREEN_PX / globalScale);
+      const marginY = (labelPx / globalScale);
+
+      // Squared clearance test against every node, so the escape below can ask
+      // "is this spot free" without a sqrt per candidate.
+      const minClearSq = REALM_LABEL_MIN_NODE_CLEARANCE * REALM_LABEL_MIN_NODE_CLEARANCE;
+      const isClearOfNodes = (px: number, py: number): boolean => {
+        for (const n of stableData.nodes) {
+          if (n.x === undefined || n.y === undefined) continue;
+          const dx = n.x - px;
+          const dy = n.y - py;
+          if (dx * dx + dy * dy < minClearSq) return false;
+        }
+        return true;
+      };
 
       // The canvas is not the only thing on screen: "Jump to..." sits top-left,
       // the artist search top-right, the evidence filter bottom-left, all
@@ -3394,7 +3442,8 @@ export default function ForceGraphCanvas({
       ];
 
       for (const label of realmLabels) {
-        const halfTextW = ctx.measureText(label.text).width / 2 + marginY * 0.5;
+        const text = narrowLabels ? label.shortText : label.text;
+        const halfTextW = ctx.measureText(text).width / 2 + marginY * 0.5;
         const minX = cxWorld - halfW + halfTextW;
         const maxX = cxWorld + halfW - halfTextW;
         const minY = cyWorld - halfH + marginY;
@@ -3427,9 +3476,22 @@ export default function ForceGraphCanvas({
           if (tf.d > 0) ly = (targetScreenY - tf.f) / tf.d;
         }
 
+        // If the frame was too tight to keep this label outside its cluster,
+        // the clamp above has just put it on top of one. Walk it away from the
+        // graph's centre until it is clear -- vertically, because that is the
+        // axis with room whenever the horizontal one has none.
+        if (!isClearOfNodes(lx, ly)) {
+          const away = label.y >= 0 ? 1 : -1;
+          for (let step = REALM_LABEL_ESCAPE_STEP; step < 400; step += REALM_LABEL_ESCAPE_STEP) {
+            const candidate = ly + away * step;
+            if (Math.abs(candidate - cyWorld) > halfH - marginY) break; // would leave the frame
+            if (isClearOfNodes(lx, candidate)) { ly = candidate; break; }
+          }
+        }
+
         ctx.globalAlpha = realmLabelAlpha;
         ctx.fillStyle = label.color;
-        ctx.fillText(label.text, lx, ly);
+        ctx.fillText(text, lx, ly);
       }
       ctx.restore();
     }
@@ -3562,10 +3624,11 @@ export default function ForceGraphCanvas({
       ctx.fillStyle = textColor;
       ctx.fillText(name, lx, ly);
     }
-    // realmLabels is memoised on stableData.nodes, which never changes identity
-    // after mount, so this dep can't actually re-create the callback -- it is
-    // here so the closure can't silently go stale if that ever stops being true.
-  }, [realmLabels, selectedId, highlightSetMemberSet, pathSet]);
+    // realmLabels is memoised on stableData.nodes, and stableData itself never
+    // changes identity after mount -- so neither dep can actually re-create this
+    // callback. They are listed so the closure can't silently go stale if that
+    // ever stops being true.
+  }, [realmLabels, stableData.nodes, selectedId, highlightSetMemberSet, pathSet]);
 
   // ── Pointer hit-area ─────────────────────────────────────────────────────
   // Paints the invisible picking layer used by the library for hover/click detection.
