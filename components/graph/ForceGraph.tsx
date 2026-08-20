@@ -5,15 +5,17 @@ import ForceGraph2D from 'react-force-graph-2d';
 import { forceSimulation, forceLink, forceManyBody, forceCenter, forceX, forceY } from 'd3-force-3d';
 import type { Artist, Edge, EvidenceFilter, GraphData, Layer, Realm } from '@/data/types';
 import { edgePassesEvidenceFilter } from '@/data/types';
-import { resolveNodeColor, resolveNodeGlow, resolveEdgeTint } from '@/lib/colors';
+import { resolveNodeColor, resolveNodeGlow, resolveEdgeTint, REALM_COLORS, REALM_LABELS } from '@/lib/colors';
 import { getNeighbors, pathEdgeKeys } from '@/lib/graph-utils';
 import { useCoarsePointer } from '@/lib/use-media-query';
 
 // Dev-only zoom readout (tuning instrument for the zoom-based cloud/detail
-// reveal work) — flip to false to remove the on-screen number without
-// deleting the plumbing. Reads globalScale that onRenderFramePost already
-// receives every frame; no new camera/zoom system.
-const SHOW_ZOOM_READOUT = true;
+// reveal work) — flip to true to put the on-screen number back while tuning
+// FADE_ZOOM_OUT/FADE_ZOOM_IN or the realm-label handover. Reads globalScale
+// that onRenderFramePost already receives every frame; no new camera/zoom
+// system. Off by default: it is a tuning instrument, and it was showing to
+// visitors in the bottom-left corner of the live site.
+const SHOW_ZOOM_READOUT = false;
 
 // AABB overlap test for label collision avoidance [x, y, w, h]
 function rectsOverlap(
@@ -911,6 +913,27 @@ const FADE_HUB_BIAS_STRENGTH = 0.15;
 // once in a useMemo (see topAnchorIds near stableData), not per-frame.
 const ANCHOR_COUNT = 12;
 
+// ── Realm names at cloud zoom ────────────────────────────────────────────────
+// Pulled out, the graph is 293 anonymous coloured dots and nothing says what
+// the regions are -- the realms are its whole organising idea and they were
+// invisible until you had already learned them. These sit over each realm like
+// constellation names on a star map, and hand over to the artist names as you
+// zoom: their opacity is the exact inverse of the cloud/detail crossfade, so
+// one arrives as the other leaves and the two never compete.
+const REALM_LABEL_SCREEN_PX = 15;   // constant on screen, so zooming doesn't inflate them
+const REALM_LABEL_MAX_ALPHA = 0.44; // ambient, never competing with the nodes themselves
+// How far out along a realm's own outward axis the label sits: clear of the
+// FURTHEST node in that realm, plus a gap. A percentile was tried first (0.9)
+// and measured against a replica of the settled layout -- it put region-one's
+// label two units INSIDE its own outermost node, because these clusters are
+// elongated along exactly the axis being projected onto, so the top decile is
+// nearly the max. The gap also has to cover half a line of text, since the
+// labels are horizontal while four of the six push out diagonally.
+const REALM_LABEL_GAP = 34;
+// Clear space (CSS px) between a realm label and any UI control it had to dodge.
+const REALM_LABEL_CHROME_GAP = 12;
+
+
 // ── Crisp colored dot at cloud zoom — EVERY node, not just anchors. A
 // modest solid-colored core + a tight soft glow halo (both cached sprites —
 // see the perf report), crossfading against the existing bloom-haze/fill/
@@ -945,6 +968,16 @@ const CLOUD_DOT_GLOW_INTENSITY = 0.18; // halo peak alpha — kept low: additive
 // Only hubs/anchors get the soft bloom halo — everyone else is a bare
 // point, per the reference (most stars are just points; a few bloom).
 const CLOUD_DOT_HALO_MIN_SCORE = ALWAYS_LABEL_THRESHOLD;
+
+// Hover lift at cloud zoom. Deliberately small: the first version of this
+// routed hover through isInFocusCluster, which meant the 2.8x/1.9x focus size
+// multipliers and the full-detail render path, and the result read as big
+// bright discs rather than as a highlight. These multiply the cloud DOT only,
+// so a hovered node stays the same kind of object it already was.
+const HOVER_CLOUD_BRIGHTNESS_MULT = 1.9;
+const HOVER_NEIGHBOR_CLOUD_BRIGHTNESS_MULT = 1.45;
+const HOVER_CLOUD_SIZE_MULT = 1.35;
+const HOVER_NEIGHBOR_CLOUD_SIZE_MULT = 1.15;
 
 // ── Glow sprite cache (perf) ────────────────────────────────────────────────
 // Before this, every radial-glow draw (nebula, bloom haze, star halo) built
@@ -1644,6 +1677,51 @@ export default function ForceGraphCanvas({
     /* eslint-enable react-hooks/purity */
     return stars;
   }, [stableData.nodes, isCoarsePointer]);
+
+  // Where each realm's name sits — the same home points the layout forces and
+  // the dust starfield already use, so a label always lands over the cluster it
+  // names. 'core' is excluded: it is five nodes pinned at the origin and
+  // already the brightest thing on screen, so a label there would sit directly
+  // on the Velvet Underground.
+  const realmLabels = useMemo(() => {
+    // Placed on the OUTER rim of each cluster, not at its home point. The home
+    // point is the centre of the bloom -- exactly where the nodes are -- so a
+    // label there sat on top of the artists it was naming. Every realm sits on
+    // an ellipse around the origin, so "outward" is simply the direction from
+    // the origin through that home point, and pushing along it lands the label
+    // in the empty space outside the constellation.
+    //
+    // The push distance is measured from the settled node positions rather than
+    // assumed: project every node of the realm onto its own outward axis and
+    // clear the furthest one. Sizes differ a lot (region-one has 71 members,
+    // post-rock 22), so a single fixed offset would sit inside one cluster and
+    // far outside another.
+    const homes = computeRealmHomePositions(stableData.nodes);
+    const labels: { text: string; color: string; x: number; y: number }[] = [];
+
+    for (const [realm, home] of homes) {
+      if (realm === 'core' || !(realm in REALM_LABELS)) continue;
+      const len = Math.hypot(home.x, home.y);
+      if (len < 1) continue; // origin-anchored realm has no outward direction
+      const ux = home.x / len;
+      const uy = home.y / len;
+
+      let rim = len;
+      for (const n of stableData.nodes) {
+        if (n.realm !== realm || n.x === undefined || n.y === undefined) continue;
+        rim = Math.max(rim, n.x * ux + n.y * uy);
+      }
+      const dist = rim + REALM_LABEL_GAP;
+
+      labels.push({
+        text: REALM_LABELS[realm as keyof typeof REALM_LABELS].toUpperCase(),
+        color: REALM_COLORS[realm as keyof typeof REALM_COLORS],
+        x: ux * dist,
+        y: uy * dist,
+      });
+    }
+    return labels;
+  }, [stableData.nodes]);
 
   // ── Initial fit — runs once BOTH dimensions and onEngineStop have fired ──────
   // dimensions comes from a ResizeObserver, whose first callback(s) during a
@@ -2392,6 +2470,16 @@ export default function ForceGraphCanvas({
       // instead of reading as a wall of full-size, merely-faded-alpha
       // circles.
       const isInFocusCluster = (selectedId !== null && (isFocused || isNeighbor)) || isSetMember;
+      // Hover is deliberately NOT part of isInFocusCluster, and putting it
+      // there was a mistake worth naming: that flag drives the 2.8x/1.9x size
+      // multipliers, the full-detail size path, AND wantsPhoto -- so hovering
+      // at cloud zoom ballooned the node and its neighbours into big bright
+      // discs and started loading photographs. Hover's cloud-zoom treatment is
+      // its own thing: a modest brightness and size lift on the dot itself
+      // (see hoverCloudBoost in the cloud-dot block below), the node's name
+      // (labelAlpha further down), and its edges (edgeFade in drawLink). The
+      // point is to show the SHAPE of a connection at a distance, not to
+      // simulate clicking.
 
       // Animated alpha for dimmed nodes (reads live from ref — smooth without re-renders)
       // Zoom fade (P2, overview only). isInFocusCluster forces this to 1 —
@@ -2621,7 +2709,19 @@ export default function ForceGraphCanvas({
         // floor (faint), hubs climb toward the ceiling (bright), instead of
         // every node reading at the same flat brightness.
         const scoreBrightness = Math.min(1, CLOUD_DOT_MIN_BRIGHTNESS_FRACTION + Math.sqrt(score) * CLOUD_DOT_BRIGHTNESS_GROWTH);
-        const dotBrightness = CLOUD_DOT_BRIGHTNESS * scoreBrightness * cloudDotFade * dimFactor;
+        // Hover lift, applied to the DOT rather than by promoting the node into
+        // the focus-cluster path. Enough to pick the hovered node and its
+        // neighbours out of the field while everything around them dims, and
+        // nowhere near enough to read as a different kind of object. The
+        // hovered node itself leads its neighbours, same relative order the
+        // focus tiers use.
+        const hoverCloudBoost = isHovered ? HOVER_CLOUD_BRIGHTNESS_MULT
+          : isHoverNeighbor ? HOVER_NEIGHBOR_CLOUD_BRIGHTNESS_MULT
+          : 1;
+        const dotBrightness = Math.min(
+          1,
+          CLOUD_DOT_BRIGHTNESS * scoreBrightness * cloudDotFade * dimFactor * hoverCloudBoost,
+        );
 
         // Skip the sprite stamps entirely below a visibility floor — same
         // pattern as the bloom-haze block's `alpha > 0.01` gate above (a
@@ -2643,7 +2743,8 @@ export default function ForceGraphCanvas({
           // Flat min/max range, independent of baseR (see CLOUD_DOT_MIN_R's
           // comment above) — a tiny sharp point for most nodes, only growing
           // modestly for real hubs, never a big circle.
-          const dotCoreR = Math.min(CLOUD_DOT_MAX_R, CLOUD_DOT_MIN_R + Math.sqrt(score) * CLOUD_DOT_HUB_GROWTH);
+          const dotCoreR = Math.min(CLOUD_DOT_MAX_R, CLOUD_DOT_MIN_R + Math.sqrt(score) * CLOUD_DOT_HUB_GROWTH)
+            * (isHovered ? HOVER_CLOUD_SIZE_MULT : isHoverNeighbor ? HOVER_NEIGHBOR_CLOUD_SIZE_MULT : 1);
           // Isolates the legitimate fade/dim behavior (zoom crossfade, focus-
           // mode dimming) from dotBrightness's OWN ceiling (CLOUD_DOT_BRIGHTNESS
           // × scoreBrightness, both deliberately conservative for the shared
@@ -2857,9 +2958,18 @@ export default function ForceGraphCanvas({
         // than the rare overlap, so those keep the old accept-overlap
         // fallback regardless of this flag.
         const forced = alwaysLabel && !isFocused && !isNeighbor && !isHovered && !isInPath && !isSetMember;
+        // Hovered nodes and their neighbours get their names at ANY zoom.
+        // photoOpacity is 0 through cloud zoom by design (it is the photo
+        // gate, and hover must not pull photos in -- see zoomFade above), but
+        // a hovered node with lit edges and no name tells you a shape without
+        // telling you whose it is. dimFactor still applies, so this brightens
+        // the hover cluster without lifting the dimmed background with it.
+        const labelAlpha = (isHovered || isHoverNeighbor)
+          ? Math.max(photoOpacity, dimFactor)
+          : photoOpacity;
         labelQueueRef.current.push({
           name: n.name, nx: n.x, ny: n.y, er,
-          fontSize, bright, alpha: photoOpacity,
+          fontSize, bright, alpha: labelAlpha,
           score, forced,
           radialFromX: useRadial ? focusedNode!.x : undefined,
           radialFromY: useRadial ? focusedNode!.y : undefined,
@@ -2943,7 +3053,12 @@ export default function ForceGraphCanvas({
       // broad isFocusModeActive (focus OR set), not just node-focus, because
       // it only ever reaches the branches that render an edge we WANT lit.
       const isFocusModeActive = selectedId !== null || highlightSetMemberSet.size > 0;
-      const edgeFade = isFocusModeActive ? 1 : computeZoomFade(globalScale, 0);
+      // Hover joins focus/set here, so a hovered node's edges survive cloud
+      // zoom instead of being multiplied to nothing. isHoverEdge below already
+      // carries the selectedId/set-mode gating, so this only ever fires when
+      // hover is genuinely the active highlight.
+      const isHoverActive = hoveredId !== null && selectedId === null && highlightSetMemberSet.size === 0;
+      const edgeFade = (isFocusModeActive || isHoverActive) ? 1 : computeZoomFade(globalScale, 0);
       // Separate fade for the two BACKGROUND branches below (idle, core-edge)
       // — these render the ghost web, not anything highlighted, so they
       // should never inherit the "stay solid" override just because a
@@ -3221,6 +3336,104 @@ export default function ForceGraphCanvas({
       zoomReadoutRef.current.textContent = `zoom ${globalScale.toFixed(2)}`;
     }
 
+    // Realm names first, underneath everything else this pass draws. Opacity is
+    // the inverse of the cloud/detail crossfade, so they are fully present on
+    // the view people land at and gone by the time faces resolve. Drawn before
+    // the early return below, which would otherwise skip them on any frame with
+    // no artist label queued.
+    // Hidden the moment anything is focused. Realm names orient someone looking
+    // at the whole graph; once a specific artist or set is the subject, they are
+    // six pieces of unrelated text sitting around the thing being looked at.
+    // Matches isFocusModeActive in drawNode/drawLink -- click-focus or a
+    // genre/scene set, not hover, which is transient and leaves the overview
+    // intact.
+    const focusActive = selectedId !== null || highlightSetMemberSet.size > 0 || pathSet.size > 0;
+    const realmLabelAlpha = focusActive
+      ? 0
+      : (1 - computeZoomFade(globalScale, 0)) * REALM_LABEL_MAX_ALPHA;
+    if (realmLabelAlpha > 0.01) {
+      ctx.save();
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      // Same literal stack the artist labels use below. next/font mangles the
+      // generated family name (__Fraunces_xxxx), so the display face cannot be
+      // named reliably from canvas -- and uppercase sans reads as map chrome
+      // here anyway, which is what these are.
+      ctx.font = `600 ${REALM_LABEL_SCREEN_PX / globalScale}px Inter, sans-serif`;
+
+      // Clamp each label into the visible frame. Sitting clear of a cluster and
+      // staying on screen are in genuine tension here: replicating the settled
+      // layout offline showed the constellation reaching y=218 inside a frame
+      // that is only +/-219 at the fitted zoom, so the diagonal realms have
+      // essentially no room outside themselves. Rather than pick one and lose
+      // the other, the label is placed outside its cluster and then pulled back
+      // toward the origin only as far as the edge requires -- which is toward
+      // the realm it names, so a clamped label reads as hugging its own cluster
+      // rather than as drifting.
+      const tf = ctx.getTransform();
+      const halfW = tf.a > 0 ? (ctx.canvas.width / 2) / tf.a : Infinity;
+      const halfH = tf.d > 0 ? (ctx.canvas.height / 2) / tf.d : Infinity;
+      const cxWorld = tf.a > 0 ? (ctx.canvas.width / 2 - tf.e) / tf.a : 0;
+      const cyWorld = tf.d > 0 ? (ctx.canvas.height / 2 - tf.f) / tf.d : 0;
+      const marginY = (REALM_LABEL_SCREEN_PX / globalScale);
+
+      // The canvas is not the only thing on screen: "Jump to..." sits top-left,
+      // the artist search top-right, the evidence filter bottom-left, all
+      // floating over it. Clamping to the canvas edge alone put EMO &
+      // POST-HARDCORE straight through the search box. These are the same
+      // positions and sizes those three carry in globals.css, in CSS pixels,
+      // deliberately generous -- a label stopping slightly short of a control
+      // costs nothing, one crossing it is unreadable.
+      const dpr = globalScale > 0 ? tf.a / globalScale : 1;
+      const cw = ctx.canvas.width;
+      const ch = ctx.canvas.height;
+      const reserved: { x0: number; y0: number; x1: number; y1: number }[] = [
+        { x0: 0, y0: 0, x1: 175 * dpr, y1: 58 * dpr },                    // Jump to...
+        { x0: cw - 330 * dpr, y0: 0, x1: cw, y1: 62 * dpr },              // Find artist
+        { x0: 0, y0: ch - 108 * dpr, x1: 250 * dpr, y1: ch },             // Evidence filter
+      ];
+
+      for (const label of realmLabels) {
+        const halfTextW = ctx.measureText(label.text).width / 2 + marginY * 0.5;
+        const minX = cxWorld - halfW + halfTextW;
+        const maxX = cxWorld + halfW - halfTextW;
+        const minY = cyWorld - halfH + marginY;
+        const maxY = cyWorld + halfH - marginY;
+        // Only ever pulls inward; a label already inside the frame is untouched.
+        const lx = maxX > minX ? Math.min(Math.max(label.x, minX), maxX) : label.x;
+        let ly = maxY > minY ? Math.min(Math.max(label.y, minY), maxY) : label.y;
+
+        // Dodge the chrome vertically, by the smallest move that clears it.
+        // Vertically because these labels sit on the graph's outer rim, where
+        // sliding sideways would drag them along the arc and away from the
+        // cluster they name, while a small vertical nudge keeps them pointing
+        // at it.
+        const halfTextH = marginY * 0.75;
+        for (const rect of reserved) {
+          const bx0 = (lx - halfTextW) * tf.a + tf.e;
+          const bx1 = (lx + halfTextW) * tf.a + tf.e;
+          const by0 = (ly - halfTextH) * tf.d + tf.f;
+          const by1 = (ly + halfTextH) * tf.d + tf.f;
+          if (bx1 < rect.x0 || bx0 > rect.x1 || by1 < rect.y0 || by0 > rect.y1) continue;
+          // Push away from whichever edge of the screen the control is pinned to.
+          const pushDown = rect.y0 <= 1;
+          // Plus a gap: pushing to exactly the control's edge leaves the label
+          // visually kissing it, which reads as a collision even though it is
+          // technically clear.
+          const gap = REALM_LABEL_CHROME_GAP * dpr;
+          const targetScreenY = pushDown
+            ? rect.y1 + halfTextH * tf.d + gap
+            : rect.y0 - halfTextH * tf.d - gap;
+          if (tf.d > 0) ly = (targetScreenY - tf.f) / tf.d;
+        }
+
+        ctx.globalAlpha = realmLabelAlpha;
+        ctx.fillStyle = label.color;
+        ctx.fillText(label.text, lx, ly);
+      }
+      ctx.restore();
+    }
+
     const candidates = labelQueueRef.current;
     if (!candidates.length) return;
 
@@ -3349,7 +3562,10 @@ export default function ForceGraphCanvas({
       ctx.fillStyle = textColor;
       ctx.fillText(name, lx, ly);
     }
-  }, []);
+    // realmLabels is memoised on stableData.nodes, which never changes identity
+    // after mount, so this dep can't actually re-create the callback -- it is
+    // here so the closure can't silently go stale if that ever stops being true.
+  }, [realmLabels, selectedId, highlightSetMemberSet, pathSet]);
 
   // ── Pointer hit-area ─────────────────────────────────────────────────────
   // Paints the invisible picking layer used by the library for hover/click detection.
