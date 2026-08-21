@@ -1,10 +1,10 @@
 # Starweave
 
-**An interactive map of who influenced whom in indie music - 293 artists, 1,041 sourced influence relationships, rooted at the Velvet Underground.**
+**An interactive map of who influenced whom in indie music - 293 artists, 1,034 sourced influence relationships, rooted at the Velvet Underground.**
 
 **[starweaves.vercel.app](https://starweaves.vercel.app/)**
 
-In mainstream music, legacy is measured in sales. In underground music it is measured in descendants: the Velvet Underground's first album famously sold almost nothing, and nearly everyone who bought a copy started a band. Starweave is an attempt to make that claim *checkable* - to render influence as a graph where 887 of its 1,041 edges carry a real, named source you can go and read, and the rest say plainly why they don't.
+In mainstream music, legacy is measured in sales. In underground music it is measured in descendants: the Velvet Underground's first album famously sold almost nothing, and nearly everyone who bought a copy started a band. Starweave is an attempt to make that claim *checkable* - to render influence as a graph where 898 of its 1,034 edges carry a real, named source you can go and read, and the rest say plainly why they don't.
 
 ![The full constellation: six named realms orbiting a core, with the evidence filter bottom-left](docs/images/hero-constellation.jpg)
 
@@ -31,7 +31,7 @@ Starweave is not a music-discovery app with a graph bolted on. The graph *is* th
 
 Three things make it more than a D3 demo:
 
-1. **The data is hand-curated and cited.** 887 of 1,041 edges carry a named source; 544 are first-person, the artist themselves saying it on the record. Not scraped, not inferred from co-listening. The 132 edges nobody has stated on the record are marked `unsourceable` rather than quietly dropped or quietly asserted.
+1. **The data is hand-curated and cited.** 898 of 1,034 edges carry a named source; 555 are first-person, the artist themselves saying it on the record. Not scraped, not inferred from co-listening. The 136 edges nobody has stated on the record are marked `unsourceable` rather than quietly dropped or quietly asserted.
 2. **It refuses to guess.** A claim with no findable source is either marked as unsourced or not written at all. 26 recorded artist *denials* are stored separately so a future pass cannot "rediscover" a myth the artist has already rejected.
 3. **It is one persistent canvas.** The force simulation never unmounts. Navigating from the graph to an artist page to a genre timeline and back preserves camera, selection and physics state.
 
@@ -42,8 +42,8 @@ Three things make it more than a D3 demo:
 | | |
 |---|---|
 | Artists | **293** |
-| Influence edges | **1,041** |
-| Recorded artist denials | 26 |
+| Influence edges | **1,034** |
+| Recorded artist denials | 29 |
 | Genres (hierarchical) | 53 |
 | Scenes | 14 |
 | Bios / photos / album write-ups | 293 / 293 / 293 |
@@ -52,11 +52,11 @@ Three things make it more than a D3 demo:
 
 | Tier | Count | Meaning |
 |---|---|---|
-| First-person | **544 (52%)** | The artist said it themselves |
+| First-person | **555 (54%)** | The artist said it themselves |
 | Reported | 218 | A publication states it, no direct quote |
 | Critic | 125 | A critic's analysis or comparison |
-| Unsourceable | 132 | Real and undisputed, but nobody has said it on the record |
-| Unchecked | 22 | Inherited, not yet verified |
+| Unsourceable | 136 | Real and undisputed, but nobody has said it on the record |
+| Unchecked | 0 | Every inherited edge has now been checked |
 
 **Seven realms**, laid out on an ellipse around a shared core:
 
@@ -84,15 +84,15 @@ connection the artist didn't state themselves, with a live count:
 
 | Mode | Edges | |
 |---|---|---|
-| **Everything** | 1,041 | Every documented influence, however it was sourced |
-| **In their own words** | 544 | Only where the artist said it themselves, on the record |
+| **Everything** | 1,034 | Every documented influence, however it was sourced |
+| **In their own words** | 555 | Only where the artist said it themselves, on the record |
 
 Failing edges are **ghosted, never removed**. The constellation's shape is the
 thing being looked at, and deleting half its threads would read as a rendering
-fault rather than as an argument about sourcing. Watching 1,041 fall to 544
+fault rather than as an argument about sourcing. Watching 1,034 fall to 555
 while the structure still holds is the most honest thing the project does.
 
-Deliberately binary. A middle "has a citation" tier (887 edges) was built and
+Deliberately binary. A middle "has a citation" tier (898 edges) was built and
 then cut: that distinction already appears per-edge in the artist panel, where
 a cited row offers its quote and an unsourceable one says so plainly. Repeating
 it as a graph-wide mode duplicated a row-level detail while diluting the only
