@@ -129,7 +129,12 @@ function getActiveCluster(
     return {
       ids: [...highlightPath],
       key: `path:${highlightPath.join(',')}`,
-      spreadFactor: REALM_SPREAD_FACTOR,
+      // Solved from the real positions rather than fixed. The original comment
+      // here reasoned that a path's nodes "are typically spread across several
+      // realms already" and so needed no spread -- true for a cross-realm
+      // route, false for one that stays inside a single realm, where the
+      // members settle almost touching and their lit-up photos collide.
+      spreadFactor: PATH_SPREAD_ADAPTIVE,
     };
   }
   if (selectedId) {
@@ -822,6 +827,91 @@ const SPREAD_FACTOR = 2.6;     // click-focus spotlight-spread outward scale —
 const SET_SPREAD_FACTOR = 1.6; // genre/scene set spread scale — a set clusters tightly by realm positioning already, so it needs less outward push than a focus cluster to stop members overlapping; tune here if sets still pile up or still land too wide
 const REALM_SPREAD_FACTOR = 1; // realm selection: a true no-op (target = original position) — see getActiveCluster's comment for why realm members shouldn't be spread at all
 
+// Path spread is the one factor that cannot be a constant, because a path's
+// natural extent varies by an order of magnitude: a route across realms already
+// spans half the ellipse, while jockstrap -> cocteau-twins -> slowdive ->
+// new-order sits entirely inside region-one with its members almost touching.
+// One number cannot serve both -- 1 leaves the tight case overlapping, and
+// anything above 1 pointlessly inflates the wide case (and drops its zoom).
+//
+// This sentinel means "solve it from the actual positions", resolved in
+// computeSpreadTargetsForCluster where natural coordinates are guaranteed.
+const PATH_SPREAD_ADAPTIVE = -1;
+// Ceiling on that solve, so a pathological pair sitting nearly on top of each
+// other cannot blow the frame apart.
+const PATH_SPREAD_MAX = 3.6;
+// Clear space wanted between two path members' drawn edges, in graph units.
+const PATH_NODE_GAP = 6;
+// Graph-space extent a path is grown toward when it is smaller than this.
+//
+// Separating the members is not on its own enough to make a path readable.
+// A route inside one realm spans ~60 units, and the camera cannot compensate
+// because fitZoom is capped at MAX_ZOOM -- so it framed a correctly-spaced
+// chain inside a box that was mostly CAMERA_PADDING, and the whole path read
+// as a short line in the middle of an empty screen. Growing the chain toward a
+// target extent lets the frame be filled at a zoom the cap allows.
+//
+// Sized against the desktop clear area (canvas width minus the panel and the
+// left-hand controls, ~860px) at a comfortable zoom: 180 * ~2.9 fills roughly
+// 60% of it. Wide paths are already past this and are left alone.
+const PATH_TARGET_EXTENT = 180;
+
+// What a path member actually draws, matching drawNode: base radius scaled by
+// its end/hop multiplier, clamped into the photo range (every path member gets
+// a photo -- see wantsPhoto), plus the ring that wraps it.
+//
+// This exists because the layout's own collision force reserves space using
+// restingNodeRadius, which knows nothing about path multipliers and treats any
+// node below ALWAYS_LABEL_THRESHOLD as a bare dot. Both assumptions break for a
+// path: new-order reserved 13.8 units and draws 19.2 as an endpoint, and
+// jockstrap (influenceScore 0) reserved 6.5 and draws a 10.5 photo. Nodes that
+// settled exactly touching therefore overlap once a path lights them up.
+function pathDrawnRadius(score: number, isEnd: boolean): number {
+  const baseR = 3.5 + Math.sqrt(score) * 2.2;
+  const r = baseR * (isEnd ? PATH_END_SIZE_MULT : PATH_HOP_SIZE_MULT);
+  return Math.min(Math.max(r, PHOTO_MIN_R), PHOTO_MAX_R) + RING_WIDTH;
+}
+
+// The smallest uniform scale that separates every pair of path members.
+//
+// Scaling positions while radii stay fixed in graph units is what buys the
+// room: the camera refits to the larger bounding box, so on-screen positions
+// land in the same place while every radius shrinks by 1/factor. That is the
+// same mechanism SPREAD_FACTOR uses for click-focus, applied only as hard as
+// this particular path needs.
+function computeAdaptivePathFactor(
+  cluster: { id: string; x?: number; y?: number; influenceScore?: number }[],
+  endIds: Set<string>,
+): number {
+  let factor = 1;
+  for (let i = 0; i < cluster.length; i++) {
+    const a = cluster[i];
+    if (a.x === undefined || a.y === undefined) continue;
+    const ra = pathDrawnRadius(a.influenceScore ?? 0, endIds.has(a.id));
+    for (let j = i + 1; j < cluster.length; j++) {
+      const b = cluster[j];
+      if (b.x === undefined || b.y === undefined) continue;
+      const dist = Math.hypot(b.x - a.x, b.y - a.y);
+      if (dist < 0.01) continue; // coincident: scaling cannot separate these
+      const needed = ra + pathDrawnRadius(b.influenceScore ?? 0, endIds.has(b.id)) + PATH_NODE_GAP;
+      if (needed > dist * factor) factor = needed / dist;
+    }
+  }
+
+  // Then grow it toward a frame-filling size, if it is smaller. Separation
+  // alone leaves a tight path correctly spaced but tiny, since MAX_ZOOM stops
+  // the camera from closing the rest of the distance.
+  const positioned = cluster.filter(n => n.x !== undefined && n.y !== undefined);
+  if (positioned.length >= 2) {
+    const xs = positioned.map(n => n.x!);
+    const ys = positioned.map(n => n.y!);
+    const extent = Math.max(Math.max(...xs) - Math.min(...xs), Math.max(...ys) - Math.min(...ys));
+    if (extent > 0.01) factor = Math.max(factor, PATH_TARGET_EXTENT / extent);
+  }
+
+  return Math.min(factor, PATH_SPREAD_MAX);
+}
+
 // Per-realm camera zoom, overriding the bounding-box fit in
 // computeCameraTargetForCluster. That fit frames every member of the realm,
 // so the biggest rosters (region-one at 71 nodes, american-underground at 55)
@@ -1002,6 +1092,13 @@ const HOVER_CLOUD_BRIGHTNESS_MULT = 1.9;
 const HOVER_NEIGHBOR_CLOUD_BRIGHTNESS_MULT = 1.45;
 const HOVER_CLOUD_SIZE_MULT = 1.35;
 const HOVER_NEIGHBOR_CLOUD_SIZE_MULT = 1.15;
+
+// Node radius along a found path. The two ends are the artists the user named;
+// everything between them is the route the search chose, so the ends carry more
+// weight. Both multipliers are used in drawNode AND paintNodePointerArea --
+// hit-testing has to stay in step with what is drawn.
+const PATH_END_SIZE_MULT = 1.9;
+const PATH_HOP_SIZE_MULT = 1.25;
 
 // ── Glow sprite cache (perf) ────────────────────────────────────────────────
 // Before this, every radial-glow draw (nebula, bloom haze, star halo) built
@@ -2018,6 +2115,17 @@ export default function ForceGraphCanvas({
     );
     if (clusterNodes.length < 2) return new Map();
 
+    // Resolved here, and only here, because this is the one place holding
+    // natural (pre-spread) coordinates for certain: applySpreadForCluster
+    // restores saved positions before calling in, and animateClusterIntoView
+    // reads them before it has written any target.
+    const resolvedFactor = factor === PATH_SPREAD_ADAPTIVE
+      ? computeAdaptivePathFactor(
+          clusterNodes,
+          new Set([clusterIds[0], clusterIds[clusterIds.length - 1]]),
+        )
+      : factor;
+
     const ax = anchor.x;
     const ay = anchor.y;
 
@@ -2025,7 +2133,7 @@ export default function ForceGraphCanvas({
     for (const n of clusterNodes) {
       const dx = n.x! - ax;
       const dy = n.y! - ay;
-      targets.set(n.id, { x: ax + dx * factor, y: ay + dy * factor });
+      targets.set(n.id, { x: ax + dx * resolvedFactor, y: ay + dy * resolvedFactor });
     }
     return targets;
   }, [stableData.nodes]);
@@ -2420,6 +2528,13 @@ export default function ForceGraphCanvas({
 
   // ── Derived sets ────────────────────────────────────────────────────────────
   const pathSet = useMemo(() => new Set<string>(highlightPath ?? []), [highlightPath]);
+  // The two artists the user actually named. Every node on a path drew at one
+  // flat size before, so the ends -- the only part of the route anyone chose --
+  // were indistinguishable from the artists it happened to travel through.
+  const pathEndSet = useMemo(() => {
+    if (!highlightPath || highlightPath.length === 0) return new Set<string>();
+    return new Set<string>([highlightPath[0], highlightPath[highlightPath.length - 1]]);
+  }, [highlightPath]);
   const pathEdges = useMemo(
     () => (highlightPath ? pathEdgeKeys(highlightPath) : new Set<string>()),
     [highlightPath],
@@ -2478,6 +2593,7 @@ export default function ForceGraphCanvas({
       const isHovered   = n.id === hoveredId && selectedId === null && !isSetModeActive;
       const isHoverNeighbor = hoveredId !== null && selectedId === null && !isSetModeActive && neighborSet.has(n.id);
       const isInPath    = pathSet.has(n.id);
+      const isPathEnd   = pathEndSet.has(n.id);
       const hasHighlight =
         selectedId !== null || hoveredId !== null || pathSet.size > 0 || highlightSetMemberSet.size > 0;
 
@@ -2501,6 +2617,19 @@ export default function ForceGraphCanvas({
       // instead of reading as a wall of full-size, merely-faded-alpha
       // circles.
       const isInFocusCluster = (selectedId !== null && (isFocused || isNeighbor)) || isSetMember;
+      // Path members render at full detail regardless of how far out the camera
+      // is. This is a SEPARATE flag from isInFocusCluster on purpose: that one
+      // also drives the 2.8x/1.9x size multipliers, and a path has its own
+      // (smaller) end/hop multipliers just below.
+      //
+      // Without this a path was effectively invisible. A route across realms --
+      // folk-confessional to region-one to post-rock, say -- forces the camera
+      // to fit a bounding box spanning most of the ellipse, which lands at
+      // cloud zoom, where zoomFade goes to 0 and every node on the route
+      // collapses to a faint point with no photo and no label. Same shape as
+      // the set-mode bug fixed earlier: the per-MODE flag is the wrong gate,
+      // the per-NODE one is right.
+      const isFullDetail = isInFocusCluster || isInPath;
       // Hover is deliberately NOT part of isInFocusCluster, and putting it
       // there was a mistake worth naming: that flag drives the 2.8x/1.9x size
       // multipliers, the full-detail size path, AND wantsPhoto -- so hovering
@@ -2519,7 +2648,7 @@ export default function ForceGraphCanvas({
       // regardless of camera distance. Everything else follows the real
       // curve. See computeZoomFade/FADE_ZOOM_OUT/FADE_ZOOM_IN/FADE_HUB_BIAS_STRENGTH.
       const isFocusModeActive = selectedId !== null || highlightSetMemberSet.size > 0;
-      const zoomFade = isInFocusCluster ? 1 : computeZoomFade(globalScale, score);
+      const zoomFade = isFullDetail ? 1 : computeZoomFade(globalScale, score);
       // One of the ~ANCHOR_COUNT highest-influenceScore nodes globally —
       // gates LABELS only now (see the label logic further down), not the
       // dot itself. Computed once in topAnchorIds (useMemo, alongside
@@ -2533,13 +2662,23 @@ export default function ForceGraphCanvas({
       // so a node is never fully invisible in between — this is what makes
       // "dots resolve into full detailed nodes" a continuous crossfade
       // rather than a gap.
-      const cloudDotFade = isInFocusCluster ? 0 : 1 - zoomFade;
+      const cloudDotFade = isFullDetail ? 0 : 1 - zoomFade;
       const dimFactor = isDimmed ? dimLevelRef.current : 1.0;
       // Photo/label fade — its own unbiased curve/threshold (see
       // PHOTO_LABEL_FADE_OUT_ZOOM/computePhotoLabelFade above), NOT zoomFade
       // — reaches exactly 0 at/below that threshold (photo dissolves fully;
       // labels show NONE, not a floored remnant).
-      const photoLabelFade = isFocusModeActive ? 1 : computePhotoLabelFade(globalScale);
+      // isInPath, not isFullDetail: isFocusModeActive is a per-MODE flag that
+      // lifts every node (background ones are held back by dimFactor instead),
+      // and swapping in a per-node flag here would change focus mode's own
+      // behaviour. Path members need lifting individually -- everything else
+      // during a path search should stay a cloud dot.
+      //
+      // This was the third place the same per-mode gate excluded path mode,
+      // and the one that showed as "no images": a cross-realm route frames at
+      // roughly zoom 1.7, where computePhotoLabelFade returns 0, so every face
+      // on the path was drawn at zero opacity.
+      const photoLabelFade = (isFocusModeActive || isInPath) ? 1 : computePhotoLabelFade(globalScale);
       const photoOpacity = dimFactor * photoLabelFade;
       // Base (detail-style) dot/glow alpha — reaches exactly 0 at
       // FADE_ZOOM_OUT, the exact complement of cloudDotFade above: at cloud
@@ -2552,7 +2691,7 @@ export default function ForceGraphCanvas({
       // alpha) was already 0.3-0.5 at cloud zoom while its drawn radius
       // stayed full-size, reading as a big, semi-transparent disc instead of
       // a small point resolving smoothly into the full node as you zoom in.
-      const overviewSizeShrink = isInFocusCluster ? 1 : zoomFade;
+      const overviewSizeShrink = isFullDetail ? 1 : zoomFade;
 
       // ── Size ──
       // In focus mode, both the selected node and its neighbors scale up so
@@ -2562,7 +2701,7 @@ export default function ForceGraphCanvas({
       const r = isInFocusCluster
         ? (isFocused ? baseR * 2.8 : baseR * 1.9)
         : isHovered  ? baseR * 1.5
-        : isInPath   ? baseR * 1.25
+        : isInPath   ? baseR * (isPathEnd ? PATH_END_SIZE_MULT : PATH_HOP_SIZE_MULT)
         : baseR;
 
       const color = resolveNodeColor(n);
@@ -2597,8 +2736,11 @@ export default function ForceGraphCanvas({
       // ── Photo eligibility ─────────────────────────────────────────────────
       // Resting state: hub nodes (score ≥ threshold) always show photo.
       // Focus mode: every cluster node shows photo; dimmed non-cluster nodes stay dots.
+      // Path members are included too: a route is a claim about specific
+      // artists, and it read as a line through anonymous dots wherever it
+      // missed the handful of hubs that clear the threshold on their own.
       const wantsPhoto =
-        (score >= ALWAYS_LABEL_THRESHOLD || isInFocusCluster)
+        (score >= ALWAYS_LABEL_THRESHOLD || isFullDetail)
         && !!n.imageUrl;
       if (wantsPhoto && n.imageUrl && !imgCache.has(n.imageUrl)) {
         // Kick off lazy load — canvas will pick it up on the next frame it's ready
@@ -2616,6 +2758,14 @@ export default function ForceGraphCanvas({
       // In focus mode, raise the size caps so faces are large and recognizable.
       // Genre mode: intermediate caps — faces are recognizable but smaller than focus.
       // Resting state keeps the original caps (hubs don't overwhelm the layout).
+      // Deliberately isInFocusCluster, NOT isFullDetail. The raised 14/48 caps
+      // are affordable in focus and set mode because both spread their cluster
+      // apart first (SPREAD_FACTOR 2.6 / SET_SPREAD_FACTOR 1.6). A path is not
+      // spread at all -- REALM_SPREAD_FACTOR, a true no-op -- so its members
+      // sit at natural positions, and a route that stays inside one realm puts
+      // four 48-unit faces where four small dots used to fit. The resting caps
+      // are the ones tuned for exactly this: hub photos coexisting at
+      // unspread positions without colliding.
       const minPhotoR = isInFocusCluster ? 14 : PHOTO_MIN_R;
       const maxPhotoR = isInFocusCluster ? 48 : PHOTO_MAX_R;
       const erPhoto = Math.min(Math.max(r, minPhotoR), maxPhotoR);
@@ -3013,7 +3163,7 @@ export default function ForceGraphCanvas({
 
       ctx.restore();
     },
-    [selectedId, hoveredId, pathSet, neighborSet, focusedNode, highlightSetMemberSet, topAnchorIds],
+    [selectedId, hoveredId, pathSet, pathEndSet, neighborSet, focusedNode, highlightSetMemberSet, topAnchorIds],
   );
 
   // ── Edge drawing ────────────────────────────────────────────────────────────
@@ -3089,7 +3239,14 @@ export default function ForceGraphCanvas({
       // carries the selectedId/set-mode gating, so this only ever fires when
       // hover is genuinely the active highlight.
       const isHoverActive = hoveredId !== null && selectedId === null && highlightSetMemberSet.size === 0;
-      const edgeFade = (isFocusModeActive || isHoverActive) ? 1 : computeZoomFade(globalScale, 0);
+      // Path mode joins them for the same reason hover did. A path leaves
+      // selectedId null by construction and has no highlight set, so it fell
+      // through to the zoom curve -- and a route across realms forces the
+      // camera far enough out that computeZoomFade returns ~0, multiplying
+      // every hop's stroke to nothing. The panel would show a four-step path
+      // while the canvas showed an empty sky.
+      const isPathActive = pathSet.size > 0;
+      const edgeFade = (isFocusModeActive || isHoverActive || isPathActive) ? 1 : computeZoomFade(globalScale, 0);
       // Separate fade for the two BACKGROUND branches below (idle, core-edge)
       // — these render the ghost web, not anything highlighted, so they
       // should never inherit the "stay solid" override just because a
@@ -3119,7 +3276,13 @@ export default function ForceGraphCanvas({
         // reason: ctx.shadowBlur forces an offscreen blur per stroke and is
         // banned from this draw loop.
         const hopColor = resolveNodeColor(tgtNode as GraphNode);
-        const hopAlpha = 0.95 * edgeFade * evidenceMult;
+        // Deliberately NOT multiplied by evidenceMult. findBestSourcedPath does
+        // not take the evidence filter as an input, so with "Said by the artist"
+        // on, a hop the search knowingly included could fade to almost nothing
+        // and leave the route looking broken at exactly the step worth seeing.
+        // The connector in the panel reports the tier instead -- that is where
+        // a weak hop should be visible, not by disappearing here.
+        const hopAlpha = 0.95 * edgeFade;
 
         ctx.beginPath();
         ctx.moveTo(sx, sy);
@@ -3246,7 +3409,7 @@ export default function ForceGraphCanvas({
 
       ctx.restore();
     },
-    [selectedId, hoveredId, pathEdges, focusedNode, highlightSetMemberSet, evidenceFilter],
+    [selectedId, hoveredId, pathSet, pathEdges, focusedNode, highlightSetMemberSet, evidenceFilter],
   );
 
   // ── Realm cloud (electronic only, overview only) ────────────────────────
@@ -3665,16 +3828,22 @@ export default function ForceGraphCanvas({
       const isSetModeActive     = highlightSetMemberSet.size > 0;
       const isHovered           = n.id === hoveredId && selectedId === null && !isSetModeActive;
       const isInPath            = pathSet.has(n.id);
+      const isPathEnd           = pathEndSet.has(n.id);
       const isSetMember         = highlightSetMemberSet.has(n.id);
       const isInFocusCluster    = (selectedId !== null && (isFocused || isNeighbor)) || isSetMember;
 
       const r = isInFocusCluster
         ? (isFocused ? baseR * 2.8 : baseR * 1.9)
         : isHovered  ? baseR * 1.5
-        : isInPath   ? baseR * 1.25
+        : isInPath   ? baseR * (isPathEnd ? PATH_END_SIZE_MULT : PATH_HOP_SIZE_MULT)
         : baseR;
 
-      const wantsPhoto = (score >= ALWAYS_LABEL_THRESHOLD || isInFocusCluster) && !!n.imageUrl;
+      // Path members get faces too. wantsPhoto keyed off isInFocusCluster
+      // alone, which excludes them, so a route only showed a face where it
+      // happened to pass through one of the graph's biggest hubs.
+      const wantsPhoto = (score >= ALWAYS_LABEL_THRESHOLD || isInFocusCluster || isInPath) && !!n.imageUrl;
+      // Mirrors drawNode's caps exactly -- see the note there for why a path
+      // takes the resting pair rather than the raised focus pair.
       const minPhotoR  = isInFocusCluster ? 14 : PHOTO_MIN_R;
       const maxPhotoR  = isInFocusCluster ? 48 : PHOTO_MAX_R;
       let er = wantsPhoto ? Math.min(Math.max(r, minPhotoR), maxPhotoR) : r;
@@ -3706,7 +3875,7 @@ export default function ForceGraphCanvas({
       ctx.fillStyle = color;
       ctx.fill();
     },
-    [selectedId, hoveredId, neighborSet, pathSet, highlightSetMemberSet, isCoarsePointer],
+    [selectedId, hoveredId, neighborSet, pathSet, pathEndSet, highlightSetMemberSet, isCoarsePointer],
   );
 
   // Kept in sync with the library unconditionally, even while the pointer is

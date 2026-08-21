@@ -29,8 +29,9 @@ export const TEXT_COLOR = '#EDEAF7';
 export const TEXT_MUTED = '#9B96B8';
 export const EDGE_VERIFIED = 'rgba(237, 234, 247, 0.28)';
 export const EDGE_SUGGESTED = 'rgba(155, 150, 184, 0.13)';
-export const EDGE_PATH = '#F2A8C4';
-export const EDGE_HOVER = 'rgba(242, 168, 196, 0.65)';
+// EDGE_PATH / EDGE_HOVER removed: the canvas path branch draws each hop in the
+// colour of the artist being credited (resolveNodeColor), so a flat pink for
+// every path edge no longer had a caller.
 
 export const LAYERS: Layer[] = ['root', 'post-punk', 'shoegaze-dreampop', 'indie-alt', 'outside'];
 

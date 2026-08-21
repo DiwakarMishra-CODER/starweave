@@ -6,13 +6,12 @@
 
 /**
  * Path finder — pick two artists, see how they connect, with the citation at
- * every hop. Complete, tested (see tests/lib/bfs.test.ts) and working; held
- * back from the UI only so it can be introduced on its own rather than
- * competing with everything else in the launch.
+ * every hop. Tested in tests/lib/bfs.test.ts.
  *
- * Flipping this to true is the entire release: it reveals the Path tab in
- * GraphControls, which is the only way to set the path state that drives
- * PathPanel and the canvas highlight. Everything downstream stays wired, so
- * nothing here is dead code.
+ * Now gates the whole PathFinder control in GraphView rather than two fragments
+ * inside GraphControls, which is where it lived while it was a fourth tab in
+ * "Jump to…". Turning it off hides the only way to set the path state that
+ * drives PathPanel and the canvas highlight; everything downstream stays wired,
+ * so nothing becomes dead code.
  */
-export const PATH_FINDER_ENABLED = false;
+export const PATH_FINDER_ENABLED = true;

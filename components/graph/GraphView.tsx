@@ -6,12 +6,14 @@ import dynamic from 'next/dynamic';
 import type { GraphData, Realm, EvidenceFilter } from '@/data/types';
 import { edgePassesEvidenceFilter } from '@/data/types';
 import { useNarrowLayout } from '@/lib/use-media-query';
-import { findConnectionPath, resolvePathHops } from '@/lib/graph-utils';
+import { findBestSourcedPath, resolvePathHops } from '@/lib/graph-utils';
+import { PATH_FINDER_ENABLED } from '@/lib/flags';
 import GraphControls from './GraphControls';
 import ArtistSearch from './ArtistSearch';
 import ArtistPanel from './ArtistPanel';
 import EvidenceFilterControl from './EvidenceFilter';
 import PathPanel from './PathPanel';
+import PathFinder from './PathFinder';
 import NebulaBackground from './NebulaBackground';
 import GraphOnboarding from './GraphOnboarding';
 
@@ -240,7 +242,10 @@ export default function GraphView({ graphData }: Props) {
     if (!pathFromId || !pathToId || pathFromId === pathToId) {
       return { pathIds: null as string[] | null, pathHops: null };
     }
-    const ids = findConnectionPath(pathFromId, pathToId, graphData.edges);
+    // Best-sourced, not shortest. See findBestSourcedPath -- fewest-hops routes
+    // carried a weak link 70% of the time, which is the one thing this graph
+    // cannot afford to hand someone who clicks to check it.
+    const ids = findBestSourcedPath(pathFromId, pathToId, graphData.edges);
     return { pathIds: ids, pathHops: ids ? resolvePathHops(ids, graphData.edges) : null };
   }, [pathFromId, pathToId, graphData.edges]);
 
@@ -455,9 +460,6 @@ export default function GraphView({ graphData }: Props) {
         activeSceneId={activeSceneId}
         onSelectScene={handleSelectScene}
         onClear={handleBackgroundClick}
-        onFindPath={handleFindPath}
-        pathFromId={pathFromId}
-        pathToId={pathToId}
         onOutsideClick={() => { suppressBackgroundClickRef.current = true; }}
         // Desktop only. On a phone this panel is 250px tall inside a 798px
         // canvas -- a third of the screen, opened before the visitor has seen
@@ -465,6 +467,20 @@ export default function GraphView({ graphData }: Props) {
         // which is what that row is for.
         initialOpen={controlsAutoOpen && !isNarrowLayout}
       />
+
+      {/* Its own control rather than a fourth tab inside "Jump to..." -- that
+          menu's three tabs all navigate, and this asks the graph a question.
+          Gated by the same flag, which now controls one component instead of
+          two fragments inside another one. */}
+      {PATH_FINDER_ENABLED && (
+        <PathFinder
+          artists={graphData.artists}
+          onFindPath={handleFindPath}
+          pathFromId={pathFromId}
+          pathToId={pathToId}
+          onOutsideClick={() => { suppressBackgroundClickRef.current = true; }}
+        />
+      )}
       <ArtistSearch artists={graphData.artists} genres={graphData.genres} edges={graphData.edges} onSelectArtist={handleSelectArtist} />
 
       {/* z-index: 1 keeps the canvas above the nebula (z-index: 0) */}
@@ -496,7 +512,6 @@ export default function GraphView({ graphData }: Props) {
         graphData={graphData}
         hops={pathHops}
         onClose={handleClosePath}
-        onSelectArtist={handleSelectArtist}
       />
 
       <ArtistPanel

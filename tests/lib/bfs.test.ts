@@ -2,7 +2,9 @@ import { describe, it, expect } from 'vitest';
 import {
   buildAdjacencyList,
   findShortestPath,
+  findBestSourcedPath,
   findConnectionPath,
+  hopCost,
   findMeetingPoint,
   getNeighbors,
   isDirectDescent,
@@ -193,5 +195,72 @@ describe('isDirectDescent / findMeetingPoint', () => {
 
   it('treats an empty hop list as not descent', () => {
     expect(isDirectDescent([])).toBe(false);
+  });
+});
+
+// ── Best-sourced paths ───────────────────────────────────────────────────────
+// Why this exists rather than just using the shortest path: see the note above
+// findBestSourcedPath in lib/graph-utils.ts.
+
+describe('hopCost', () => {
+  it('prices a first-person hop far below an unsourced one', () => {
+    const firstPerson = { citation: 'x', citationStatus: undefined, sourceTier: 'first-person' } as const;
+    const unchecked = { citation: undefined, citationStatus: undefined, sourceTier: undefined } as const;
+    expect(hopCost(firstPerson)).toBeLessThan(hopCost(unchecked) / 5);
+  });
+
+  it('orders the tiers first-person < reported < critic', () => {
+    const at = (t: 'first-person' | 'reported' | 'critic') =>
+      hopCost({ citation: 'x', citationStatus: undefined, sourceTier: t });
+    expect(at('first-person')).toBeLessThan(at('reported'));
+    expect(at('reported')).toBeLessThan(at('critic'));
+  });
+
+  it('prices an unsourceable edge as weak even though it carries a tier', () => {
+    const unsourceable = { citation: undefined, citationStatus: 'unsourceable', sourceTier: 'reported' } as const;
+    const cited = { citation: 'x', citationStatus: undefined, sourceTier: 'reported' } as const;
+    expect(hopCost(unsourceable)).toBeGreaterThan(hopCost(cited));
+  });
+});
+
+describe('findBestSourcedPath', () => {
+  it('avoids an unsourced hop the shortest path walks straight through', () => {
+    // Fewest hops goes via Nico, whose edge nobody stated on the record.
+    const shortest = findConnectionPath('velvet-underground', 'big-thief', graphData.edges)!;
+    const best = findBestSourcedPath('velvet-underground', 'big-thief', graphData.edges)!;
+    expect(shortest).toContain('nico');
+    expect(best).not.toContain('nico');
+
+    // and every hop of the route it picked instead is the artist's own words
+    for (const hop of resolvePathHops(best, graphData.edges)!) {
+      expect(hop.edge.sourceTier).toBe('first-person');
+    }
+  });
+
+  it('returns a real, resolvable chain between its endpoints', () => {
+    const path = findBestSourcedPath('turnstile', 'alvvays', graphData.edges);
+    expect(path).not.toBeNull();
+    expect(path![0]).toBe('turnstile');
+    expect(path![path!.length - 1]).toBe('alvvays');
+    expect(resolvePathHops(path!, graphData.edges)).not.toBeNull();
+  });
+
+  it('never costs more than the shortest path does, by its own measure', () => {
+    const ids = graphData.artists.map(a => a.id);
+    const total = (p: string[]) =>
+      resolvePathHops(p, graphData.edges)!.reduce((sum, h) => sum + hopCost(h.edge), 0);
+    for (let i = 0; i < ids.length; i += 37) {
+      for (let j = 5; j < ids.length; j += 53) {
+        if (ids[i] === ids[j]) continue;
+        const shortest = findConnectionPath(ids[i], ids[j], graphData.edges);
+        const best = findBestSourcedPath(ids[i], ids[j], graphData.edges);
+        expect(best).not.toBeNull();
+        expect(total(best!)).toBeLessThanOrEqual(total(shortest!) + 1e-9);
+      }
+    }
+  });
+
+  it('returns a single-element path for the same node', () => {
+    expect(findBestSourcedPath('slowdive', 'slowdive', graphData.edges)).toEqual(['slowdive']);
   });
 });
