@@ -191,6 +191,14 @@ const artists: Artist[] = [
     classicAlbums: [ca('nowhere', 'Nowhere', 1990, "Ride's debut stands apart from most shoegaze by virtue of its rhythmic aggression — the drums mixed higher and hitting harder than on any MBV or Slowdive record, giving songs like 'Vapour Trail' and 'Polar Bear' a physical impact that the genre's hazy textures often softened away. 'Vapour Trail' became the definitive statement, its overlapping vocal harmonies and chiming guitar layers producing a sweetness that was entirely Ride's own. Nowhere holds up as the most exhilarating entry point into the scene.")] },
   { id: 'lush', name: 'Lush', layer: 'shoegaze-dreampop', genres: ['shoegaze', 'dream-pop', 'indie-pop'], scope: V1, country: 'UK', activeFrom: 1987, signatureSong: 'Sweetness and Light',
     classicAlbums: [ca('spooky', 'Spooky', 1992, "Produced by Robin Guthrie of the Cocteau Twins, Spooky is Lush at their most directly dreamy — Guthrie's guitar processing blurring the edges of Miki Berenyi and Emma Anderson's dual vocals while the rhythm section keeps the songs moving forward rather than dissolving into pure texture. Berenyi and Anderson's harmonies — both singing lead simultaneously in different registers — give the album a duality that no other shoegaze record matched. The Guthrie connection situates it sonically between 4AD's existing dream-pop aesthetic and the grungier shoegaze emerging from Creation Records.")] },
+  // RULING (Aug 2026): Broadcast STAYS in region-one, closing the open
+  // Stereolab/Broadcast placement question. Stereolab was the clear case and
+  // has already moved to electronic/krautrock -- its seven outgoing edges are
+  // almost all krautrock. Broadcast is not that case: it has only two outgoing
+  // edges (velvet-underground and stereolab), its own genres are dream-pop and
+  // art-rock, and its five incoming edges come from across four realms. Moving
+  // a node on two outgoing edges, one of which just points at the node that
+  // moved, would be following Stereolab by association rather than evidence.
   { id: 'broadcast', name: 'Broadcast', layer: 'shoegaze-dreampop', genres: ['dream-pop', 'art-rock'], scope: V1, country: 'UK', activeFrom: 1995, signatureSong: 'Come On Let\'s Go',
     classicAlbums: [ca('tender-buttons', 'Tender Buttons', 2005, "With Tender Buttons, Broadcast shed their rhythm section entirely — just Trish Keenan and James Cargill, using synthesisers, drum machines, and tape loops to construct an electronic landscape that sounds less like pop music than library music recorded by aliens. 'Tears in the Typing Pool' achieves something remarkable: a song with a hook, built entirely from synthesiser tones and drum machine patterns that nonetheless carries the emotional weight of a personal lyric. The album distilled Broadcast's entire aesthetic into its essential components and influenced the wave of UK electronic music that followed, from Ghost Box Records to Panda Bear's studio approach.")] },
   { id: 'beach-house', name: 'Beach House', layer: 'shoegaze-dreampop', genres: ['dream-pop', 'indie-pop'], scope: V1, country: 'US', activeFrom: 2004, signatureSong: 'Space Song',
@@ -1735,6 +1743,18 @@ const edges: Edge[] = [
   inf("radiohead", "can", 0.7, 'verified', "Wikipedia/Can: \"Radiohead cited Can as an influence on their albums Kid A (2000) and Amnesiac (2001)... Inspired by Can, they constructed their own studio and worked by recording jams and editing the recordings.\" Corroborated separately by widely-reported remarks from Thom Yorke naming Can among the key ingredients of Kid A.", undefined, 'reported'),
   inf("the-jesus-and-mary-chain", "can", 0.6, 'verified', "Wikipedia/Can: \"In the 1980s, Can were referenced by British new wave acts such as Pete Shelley, Gary Numan, Ultravox, The Jesus and Mary Chain and Primal Scream.\"", undefined, 'reported'),
   inf("gary-numan", "can", 0.6, 'verified', "Wikipedia/Can: \"In the 1980s, Can were referenced by British new wave acts such as Pete Shelley, Gary Numan, Ultravox, The Jesus and Mary Chain and Primal Scream.\"", undefined, 'reported'),
+  // RULING (Aug 2026), and it REVERSES the premise this decision was parked on.
+  // CLAUDE.md recorded that Numan "explicitly disputes this exact framing
+  // (crediting Ultravox instead)" and suggested a rejectedEdges entry. He does
+  // not dispute it -- he credits BOTH, in the same sentence. Written, with the
+  // qualification kept in the citation because he is dismissive of Kraftwerk's
+  // approach even while affirming the debt. Ultravox is not a graph node, so
+  // no second edge follows.
+  inf("gary-numan", "kraftwerk", 0.75, 'verified', "Gary Numan to the Manchester Evening News (December 1979): \"Of course I've learned from Kraftwerk and Ultravox. But I've added all sorts of textures. I find Kraftwerk very staccato and basic. I've given it a richer feel.\"", undefined, 'first-person'),
+  // hot-chip -> kraftwerk NOT written, closing that open decision. The only
+  // evidence is a remix credit -- an explicitly excluded relationship type --
+  // plus an unattributed claim. Nothing has changed since; do not re-propose
+  // without a first-person statement from the band.
   // joy-division -> can: see the stronger first-person Peter Hook citation earlier in this file
   // (this Wikipedia/Can group citation was a weaker duplicate of the same edge).
   // RULING (Wikipedia citation audit): this edge rests on personnel overlap,
@@ -1914,7 +1934,20 @@ const edges: Edge[] = [
   // anything the influence runs the other way. Flagged as a deletion/reversal
   // candidate -- not acted on here, because a collaboration is not evidence
   // for an influence in either direction.
-  inf("harold-budd", "cocteau-twins", 0.5, 'verified', null, 'unsourceable'),
+  // harold-budd -> cocteau-twins DELETED (Aug 2026 ruling). The edge only ever
+  // rested on The Moon and the Melodies, a co-recorded collaboration, and the
+  // direction was backwards: Budd's ambient work predates the Cocteau Twins
+  // entirely, it was Guthrie and Raymonde who approached HIM, and the record
+  // was guided by Budd's own improvisational principles. The reverse edge is
+  // NOT written either -- seeking someone out to collaborate is not a stated
+  // influence claim, and the project's rule cuts both ways.
+  //
+  // This leaves harold-budd on a single unsourceable edge (-> brian-eno, which
+  // is itself only a production credit). Flagged: Budd is a node whose entire
+  // edge set was non-influence, and he is a candidate either for real upstream
+  // research or for removal under the no-orphans principle. Not acted on here,
+  // because deleting a written node with content is a bigger call than fixing
+  // a bad edge.
   inf("harold-budd", "brian-eno", 0.6, 'verified', null, 'unsourceable'),
 
   // ── Folk & Confessional realm edges ──────────────────────────────────
@@ -3141,6 +3174,14 @@ const edges: Edge[] = [
   inf('big-thief', 'neil-young', 0.70, 'verified', "Adrianne Lenker discussed Neil Young's career breadth admiringly in her interview with The Ringer, distinct from the earlier-formed formative-listening list she gave Stereogum.", undefined, 'first-person'),
   inf('jeff-buckley', 'bad-brains', 0.70, 'verified', "Jeff Buckley named Bad Brains directly in his own self-written press biography.", undefined, 'first-person'),
   inf('wednesday', 'wilco', 0.60, 'verified', "Xandy Chelmis, Wednesday's pedal steel player, discussed the steel parts on Wilco's Yankee Hotel Foxtrot in an interview with Rutgers Radio in January 2026 -- his own influence as a sideman rather than the band's principal songwriter.", undefined, 'first-person'),
+  // Wilco's FIRST outgoing edge -- both its existing edges are incoming, which
+  // the CLAUDE.md note on this ("would take Wilco from 1 edge to 2") had wrong.
+  // The claim belongs to Nels Cline, Wilco's lead guitarist, not Tweedy, and
+  // the citation says so: a member's stated formative influence, with a
+  // concrete mechanism (the riff carried into a Wilco song live). Tweedy's own
+  // Television connection is a cover played as a Verlaine tribute, which the
+  // cover-derived rule excludes, so it deliberately does not carry this edge.
+  inf('wilco', 'television', 0.7, 'verified', "Nels Cline, Wilco's lead guitarist, chose Television's \"Marquee Moon\" for Guitar Player's five-guitar-riffs-that-changed-my-life feature (2017): \"'Marquee Moon' is, to me, one of the most iconic, beautiful guitar arrangements in rock 'n' roll -- in music.\" He describes it as his re-embrace of the rock band as a form, and has folded the riff into live performances of Wilco's \"Handshake Drugs.\"", undefined, 'first-person'),
   inf('wednesday', 'songs-ohia', 0.60, 'verified', "In the same Rutgers Radio interview, Chelmis named Jason Molina's steel-laced Songs: Ohia records, pointing to Mike Brenner's pedal steel work on them specifically.", undefined, 'first-person'),
   inf('wednesday', 'the-shins', 0.55, 'verified', "The same Rutgers Radio interview has Chelmis naming a Shins song with a steel part he loved in high school.", undefined, 'first-person'),
   inf('wire', 'david-bowie', 0.70, 'verified', "Billboard's account of the Savage/Duff liner-note essays for Wire's reissues describes what the band was listening to at the time, and Rolling Stone has written about Berlin-era David Bowie's heavy influence on Wire's third album, 154.", undefined, 'reported'),

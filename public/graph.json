@@ -93,7 +93,7 @@
       ],
       "bio": "Television arrived in New York's Bowery in 1974 and proceeded to do something nobody had attempted: marry the intellectual urgency of the Velvet Underground to jazz-influenced extended guitar dialogues, on songs that ran eight minutes without anyone noticing. Tom Verlaine and Richard Lloyd developed an interlocking guitar language that owed more to Coltrane than to Chuck Berry — long, melodic, asymmetric lines that crossed and answered each other like two people finishing each other's sentences.\n\nMarquee Moon (1977) is one of the most fully-realized debut albums in rock history. The title track alone — eleven minutes of ratcheting tension, false resolutions, and a guitar solo that keeps turning a corner and opening into larger space — established the template for ambitious indie guitar music. Television were never quite post-punk (too clean, too joyful in their virtuosity) and never quite punk (too patient, too respectful of craft). They occupied a space of their own that many subsequent guitar acts spent decades trying to articulate.",
       "realm": "region-one",
-      "influenceScore": 9,
+      "influenceScore": 10,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/fd9b3e06ab40a83f82fe208361943822/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/e7/f9/36/e7f936cc-4902-6d36-856d-f757e00b43af/mzaf_15216285374598129354.plus.aac.p.m4a",
       "previewTrack": "Marquee Moon",
@@ -257,7 +257,7 @@
       ],
       "bio": "Kraftwerk formed in Düsseldorf in 1970 around Ralf Hütter and Florian Schneider, emerging from the same fertile West German avant-garde scene that produced Can and Neu! — though Kraftwerk's early, more exploratory records gave little indication of where the group was headed. Autobahn (1974), with its twenty-two-minute title track compressed into a hit single, was the turning point: an all-electronic sound built to evoke the experience of driving, and the first sign that a fully synthetic pop music was possible.\n\nTrans-Europe Express (1977), The Man-Machine (1978), and Computer World (1981) refined that vision into something austere, funny, and totally controlled — Hütter and Schneider presenting themselves as interchangeable components in their own machine, performing behind mannequins built in their likeness. The group's insistence that the synthesizer, the vocoder, and the drum machine were not novelties but a complete musical language reshaped synth-pop, techno, electro, and hip-hop; Afrika Bambaataa's \"Planet Rock\" lifted Trans-Europe Express wholesale, and it is difficult to find a strand of electronic music since that doesn't run back through this one band.",
       "realm": "core",
-      "influenceScore": 23,
+      "influenceScore": 24,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/12e1b0bf93eae2b9b1c3ad7dc6a0fcd4/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/43/b2/b0/43b2b010-156f-b321-30ab-48a5aff07d02/mzaf_3115365669483405076.plus.aac.p.m4a",
       "previewTrack": "Trans-Europe Express",
@@ -752,7 +752,7 @@
       ],
       "bio": "Elizabeth Fraser's voice is the most singular instrument in the Cocteau Twins' sonic world, and the Cocteau Twins' sonic world is itself extraordinary: dense, reverb-saturated, Robin Guthrie's guitars processed to the point of abstraction, Simon Raymonde's bass more felt than heard, and over all of it Fraser inventing a language that was not quite any language but carried the emotional weight of all of them. They began in 1979 in Grangemouth, Scotland, as a sparse post-punk unit, and became, over a decade of records, one of the most completely realized sonic environments in British music.\n\nHeaven or Las Vegas (1990) is the record that crystallized everything: production dense enough to be physically immersive, songs that function as emotional weather rather than narrative, Fraser's vocals — on \"Cherry-Coloured Funk,\" on \"Iceblink Luck\" — so intensely characterized that you don't need to understand the words to know exactly what is meant. The Cocteau Twins never explained themselves and resisted categorization at every stage. Their influence runs through every band in the dream-pop and shoegaze canons, less through specific techniques than through their insistence that emotional immersion was a legitimate artistic aim.",
       "realm": "region-one",
-      "influenceScore": 25,
+      "influenceScore": 24,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/3bdd3587258a3bf73502ff6c65c295ec/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/46/03/91/460391bc-4154-31ed-7a6d-3e8e5c36dd64/mzaf_4069160857181811263.plus.aac.p.m4a",
       "previewTrack": "Cherry-Coloured Funk",
@@ -12544,6 +12544,15 @@
       "sourceTier": "reported"
     },
     {
+      "source": "gary-numan",
+      "target": "kraftwerk",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.75,
+      "citation": "Gary Numan to the Manchester Evening News (December 1979): \"Of course I've learned from Kraftwerk and Ultravox. But I've added all sorts of textures. I find Kraftwerk very staccato and basic. I've given it a richer feel.\"",
+      "sourceTier": "first-person"
+    },
+    {
       "source": "neu",
       "target": "kraftwerk",
       "type": "influence",
@@ -13550,15 +13559,6 @@
       "confidence": 0.65,
       "citation": "Depeche Mode Wikipedia: Gore \"was a fan of glam, early Human League and Sparks\"; separately, Vince Clarke's early influences \"included Sparks, Paul Simon, and OMD.\"",
       "sourceTier": "reported"
-    },
-    {
-      "source": "harold-budd",
-      "target": "cocteau-twins",
-      "type": "influence",
-      "status": "verified",
-      "confidence": 0.5,
-      "citation": null,
-      "citationStatus": "unsourceable"
     },
     {
       "source": "harold-budd",
@@ -19588,6 +19588,15 @@
       "status": "verified",
       "confidence": 0.6,
       "citation": "Xandy Chelmis, Wednesday's pedal steel player, discussed the steel parts on Wilco's Yankee Hotel Foxtrot in an interview with Rutgers Radio in January 2026 -- his own influence as a sideman rather than the band's principal songwriter.",
+      "sourceTier": "first-person"
+    },
+    {
+      "source": "wilco",
+      "target": "television",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.7,
+      "citation": "Nels Cline, Wilco's lead guitarist, chose Television's \"Marquee Moon\" for Guitar Player's five-guitar-riffs-that-changed-my-life feature (2017): \"'Marquee Moon' is, to me, one of the most iconic, beautiful guitar arrangements in rock 'n' roll -- in music.\" He describes it as his re-embrace of the rock band as a form, and has folded the riff into live performances of Wilco's \"Handshake Drugs.\"",
       "sourceTier": "first-person"
     },
     {
