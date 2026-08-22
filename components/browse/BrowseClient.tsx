@@ -5,6 +5,7 @@ import type { Artist, Edge, Genre, Scene } from '@/data/types';
 import ArtistCard from '@/components/artist/ArtistCard';
 import FilterDropdown, { type FilterOption } from '@/components/browse/FilterDropdown';
 import SortDropdown, { type SortOption } from '@/components/browse/SortDropdown';
+import { compareNames } from '@/lib/sort';
 
 type SortBy = 'influence' | 'alpha' | 'year';
 type DropdownKey = 'genre' | 'scene' | 'era' | 'sort';
@@ -97,14 +98,14 @@ export default function BrowseClient({ artists, genres, scenes, edges }: Props) 
     }
     return [...genres]
       .map(g => ({ id: g.id, label: g.name, count: counts.get(g.id) ?? 0 }))
-      .sort((a, b) => a.label.localeCompare(b.label));
+      .sort((a, b) => compareNames(a.label, b.label));
   }, [artists, genres]);
 
   const sceneOptions: FilterOption[] = useMemo(
     () =>
       [...scenes]
         .map(s => ({ id: s.id, label: s.name, count: s.memberIds.length }))
-        .sort((a, b) => a.label.localeCompare(b.label)),
+        .sort((a, b) => compareNames(a.label, b.label)),
     [scenes]
   );
 
@@ -156,7 +157,7 @@ export default function BrowseClient({ artists, genres, scenes, edges }: Props) 
       result = result.filter(a => selectedEras.has(eraIdOf(a.activeFrom)));
     }
     return [...result].sort((a, b) => {
-      if (sortBy === 'alpha') return a.name.localeCompare(b.name);
+      if (sortBy === 'alpha') return compareNames(a.name, b.name);
       if (sortBy === 'year') return (a.activeFrom ?? 9999) - (b.activeFrom ?? 9999);
       return (b.influenceScore ?? 0) - (a.influenceScore ?? 0);
     });

@@ -3,6 +3,7 @@
 import { useMemo, useState, useRef, useEffect } from 'react';
 import type { Artist, Edge, Genre } from '@/data/types';
 import { resolveNodeColor } from '@/lib/colors';
+import { compareNames } from '@/lib/sort';
 
 interface Props {
   artists: Artist[];
@@ -68,7 +69,7 @@ export default function ArtistSearch({ artists, genres, edges, onSelectArtist }:
   const containerRef        = useRef<HTMLDivElement>(null);
 
   const genreNames = Object.fromEntries(genres.map(g => [g.id, g.name]));
-  const sorted = [...artists].sort((a, b) => a.name.localeCompare(b.name));
+  const sorted = [...artists].sort((a, b) => compareNames(a.name, b.name));
   const q      = query.trim().toLowerCase();
   const matches = q ? sorted.filter(a => a.name.toLowerCase().includes(q)) : [];
 
@@ -89,7 +90,7 @@ export default function ArtistSearch({ artists, genres, edges, onSelectArtist }:
     }
     return [...artists].sort((a, b) => {
       const diff = (edgeCount.get(b.id) ?? 0) - (edgeCount.get(a.id) ?? 0);
-      return diff !== 0 ? diff : a.name.localeCompare(b.name);
+      return diff !== 0 ? diff : compareNames(a.name, b.name);
     });
   }, [artists, edges]);
 

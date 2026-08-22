@@ -4,6 +4,7 @@ import { loadGraphData } from '@/lib/graph-data';
 import { buildGenreTimeline } from '@/lib/genre-timeline';
 import GenreTimeline from '@/components/genres/GenreTimeline';
 import ArtistBackground from '@/components/artist/ArtistBackground';
+import { compareNames } from '@/lib/sort';
 
 export const metadata: Metadata = {
   title: 'Genres — Starweave',
@@ -20,7 +21,7 @@ export default function GenresIndexPage() {
   }
   const azList = graphData.genres
     .slice()
-    .sort((a, b) => a.name.localeCompare(b.name));
+    .sort((a, b) => compareNames(a.name, b.name));
 
   return (
     <div className="genres-overlay">

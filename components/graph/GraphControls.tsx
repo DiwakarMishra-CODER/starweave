@@ -7,6 +7,7 @@ import {
   GENRE_COLORS, DEFAULT_GENRE_COLOR,
   SCENE_COLORS, DEFAULT_SCENE_COLOR,
 } from '@/lib/colors';
+import { compareNames } from '@/lib/sort';
 
 type Tab = 'realms' | 'genres' | 'scenes';
 
@@ -90,7 +91,7 @@ export default function GraphControls({
         const broad = count > BROAD_GENRE_MEMBER_COUNT;
         return { id: g.id, label: g.name, count, weight: broad ? count * BROAD_GENRE_PENALTY : count };
       })
-      .sort((a, b) => b.weight - a.weight || a.label.localeCompare(b.label)),
+      .sort((a, b) => b.weight - a.weight || compareNames(a.label, b.label)),
     [genres, genreCounts],
   );
 
@@ -102,7 +103,7 @@ export default function GraphControls({
   const sceneOptions = useMemo(
     () => [...scenes]
       .map(s => ({ id: s.id, label: s.name, count: s.memberIds.length }))
-      .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label)),
+      .sort((a, b) => b.count - a.count || compareNames(a.label, b.label)),
     [scenes],
   );
 

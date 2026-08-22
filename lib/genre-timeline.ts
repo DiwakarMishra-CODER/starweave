@@ -1,4 +1,5 @@
 import type { GraphData } from '@/data/types';
+import { compareNames } from './sort';
 
 // Builds the layout model for the genre-index "poster map" — a subway-style
 // diagram positioning every dated genre by when it emerged (x, ordinal rank
@@ -135,7 +136,7 @@ export function buildGenreTimeline(graphData: GraphData): GenreTimelineLayout {
   const dated = genres.filter(g => g.emerged !== undefined);
   const datedIds = new Set(dated.map(g => g.id));
 
-  const sorted = dated.slice().sort((a, b) => a.emerged! - b.emerged! || a.name.localeCompare(b.name));
+  const sorted = dated.slice().sort((a, b) => a.emerged! - b.emerged! || compareNames(a.name, b.name));
   const rankOf = new Map<string, number>();
   sorted.forEach((g, i) => rankOf.set(g.id, i));
   const rankCount = sorted.length;

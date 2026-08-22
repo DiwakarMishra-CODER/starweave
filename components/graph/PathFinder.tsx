@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Artist } from '@/data/types';
 import { resolveNodeColor } from '@/lib/colors';
 import { useNarrowLayout } from '@/lib/use-media-query';
+import { compareNames } from '@/lib/sort';
 
 const PATH_ENDS = ['from', 'to'] as const;
 
@@ -69,7 +70,7 @@ export default function PathFinder({
   const isNarrowLayout = useNarrowLayout();
 
   const artistOptions = useMemo(
-    () => [...artists].sort((a, b) => a.name.localeCompare(b.name)),
+    () => [...artists].sort((a, b) => compareNames(a.name, b.name)),
     [artists],
   );
 
