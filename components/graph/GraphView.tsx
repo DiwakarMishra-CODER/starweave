@@ -478,7 +478,24 @@ export default function GraphView({ graphData }: Props) {
           onFindPath={handleFindPath}
           pathFromId={pathFromId}
           pathToId={pathToId}
-          onOutsideClick={() => { suppressBackgroundClickRef.current = true; }}
+          // With a path on screen, an outside click resets here and now rather
+          // than waiting for the canvas to receive it. The picker closes on
+          // POINTERDOWN, so the later click event often lands on a different
+          // element than the one under the cursor when the gesture began and
+          // never reaches the canvas at all -- which is why clearing a path
+          // took two or three clicks instead of one. Doing the reset in this
+          // handler makes it exactly one, and the suppress flag then swallows
+          // the trailing click so it cannot fire a second time.
+          //
+          // With no path up this stays the plain suppression the Jump to...
+          // menu uses, where a dismissing click should not also deselect.
+          // Order is load-bearing: handleBackgroundClick CONSUMES the suppress
+          // flag and returns early if it is already set, so the reset has to
+          // run first and the flag be raised after it.
+          onOutsideClick={() => {
+            if (pathFromId !== null || pathToId !== null) handleBackgroundClick();
+            suppressBackgroundClickRef.current = true;
+          }}
         />
       )}
       <ArtistSearch artists={graphData.artists} genres={graphData.genres} edges={graphData.edges} onSelectArtist={handleSelectArtist} />

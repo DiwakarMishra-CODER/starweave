@@ -17,12 +17,35 @@
 // numeric: true so "100 gecs" precedes "2814" rather than sorting as the
 // strings "1..." and "2..." would coincidentally also do -- it matters for any
 // future name where the digits run to different lengths (e.g. "2814" vs "99").
-// sensitivity: 'variant' keeps case and accents significant at the lowest
-// level, which leaves lowercase-styled names (toe, yeule) in their alphabetical
-// position instead of exiling them to the end.
-const nameCollator = new Intl.Collator('en', { numeric: true, sensitivity: 'variant' });
+//
+// ignorePunctuation: true so a name's punctuation does not decide its place.
+// Without it "A.G. Cook" sorts ahead of "Adrianne Lenker", because the period
+// outranks every letter -- which puts Cook first in the whole roster and
+// separates him from where anyone would look for him. Ignoring punctuation
+// collates him as "AG Cook", i.e. after "Ad...", which is where a reader
+// scanning for him would actually check.
+//
+// Sensitivity is left at its 'variant' default, so case still matters at the
+// lowest level and lowercase-styled names (toe, yeule) keep their alphabetical
+// position instead of being exiled to the end.
+const nameCollator = new Intl.Collator('en', { numeric: true, ignorePunctuation: true });
+
+// Names that do not start with a letter sort to the END, not the start.
+// Default collation puts "!!!", "...And You Will Know Us by the Trail of Dead",
+// "100 gecs" and "2814" -- the only four in the roster -- above every A-name,
+// so the first thing anyone scanning an alphabetical picker sees is four
+// entries that are not alphabetised at all. Someone hunting for an artist
+// reads A-Z; the punctuation and number cases are the tail, not the header.
+//
+// This has to stay a separate step rather than lean on the collator: with
+// ignorePunctuation on, "!!!" collates as an empty string and would sort to
+// the very front, which is the opposite of what is wanted.
+function initialBucket(name: string): number {
+  return /^\p{L}/u.test(name.trim()) ? 0 : 1;
+}
 
 /** Locale-stable comparison for display names. Use instead of localeCompare. */
 export function compareNames(a: string, b: string): number {
-  return nameCollator.compare(a, b);
+  const bucketDiff = initialBucket(a) - initialBucket(b);
+  return bucketDiff !== 0 ? bucketDiff : nameCollator.compare(a, b);
 }
