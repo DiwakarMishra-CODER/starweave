@@ -1939,6 +1939,13 @@ const edges: Edge[] = [
   inf('nick-drake', 'bert-jansch', 0.75, 'verified', "Record Collector wrote that Nick Drake was fascinated with Bert Jansch's guitar playing; Totally Guitar dates his interest to 1965, describing him as influenced by the folk movement and artists including Jansch, Bob Dylan and Jackson C. Frank; Acoustic Guitar documents his home recordings including Jansch's \"Strolling Down the Highway.\"", undefined, 'reported'),
   inf('sufjan-stevens', 'nick-drake', 0.80, 'verified', "The same Uncut account names Nick Drake among the artists Lowell Brams introduced Sufjan Stevens to that summer; Stevens later covered Drake's \"Pink Moon\" for a 2021 single.", undefined, 'first-person'),
   inf('adrianne-lenker', 'nick-drake', 0.45, 'verified', null, 'unsourceable'),
+  // Thin-node pass (Aug 2026): Lenker was at 1 edge. These three come from one
+  // quote and are CAREER-SHAPE influences, not sonic ones -- the citation has
+  // to say so, same handling as nirvana -> neil-young (0.55), which rests on
+  // the identical distinction. Scored to match that precedent.
+  inf('adrianne-lenker', 'joni-mitchell', 0.55, 'verified', "Adrianne Lenker to The Ringer (2019): \"I really admire Joni Mitchell, Neil Young, Leonard Cohen -- how they have such a breadth of material throughout the years, into old age.\" She is describing a career approach rather than a sound: \"They seemed to follow their own thread of curiosity and creativity, even through some weird phases when people were like, 'I don't know what they're doing.'\"", undefined, 'first-person'),
+  inf('adrianne-lenker', 'neil-young', 0.55, 'verified', "Adrianne Lenker to The Ringer (2019): \"I really admire Joni Mitchell, Neil Young, Leonard Cohen -- how they have such a breadth of material throughout the years, into old age.\" She is describing a career approach rather than a sound: \"They seemed to follow their own thread of curiosity and creativity, even through some weird phases when people were like, 'I don't know what they're doing.'\"", undefined, 'first-person'),
+  inf('adrianne-lenker', 'leonard-cohen', 0.55, 'verified', "Adrianne Lenker to The Ringer (2019): \"I really admire Joni Mitchell, Neil Young, Leonard Cohen -- how they have such a breadth of material throughout the years, into old age.\" She is describing a career approach rather than a sound: \"They seemed to follow their own thread of curiosity and creativity, even through some weird phases when people were like, 'I don't know what they're doing.'\"", undefined, 'first-person'),
   inf('nick-drake', 'bob-dylan', 0.75, 'verified', "Acoustic Guitar documents Nick Drake's home recordings as including Bob Dylan's \"Tomorrow Is a Long Time.\"", undefined, 'reported'),
   inf('nick-cave-and-the-bad-seeds', 'leonard-cohen', 0.85, 'verified', "Red Hand Files, issue #16: Cohen's \"Avalanche\" ranks first on Nick Cave's own list of ten favorite pieces of music by other artists.", undefined, 'first-person'),
   inf('fontaines-dc', 'leonard-cohen', 0.5, 'verified', null, 'unsourceable'),
@@ -2725,6 +2732,13 @@ const edges: Edge[] = [
 
   // -- beabadoobee --
   inf('beabadoobee', 'pavement', 0.85, 'verified', "NME: \"My influencers are Sonic Youth, Pavement -- this shit that totally shaped me. They shaped the way I dress, how I speak, act and just everything I am.\"", undefined, 'first-person'),
+  // Thin-node pass (Aug 2026): the artist names in the source are the
+  // interviewer's enumeration, but she endorses the whole list in her own
+  // words, which is what carries the edge. 0.8 rather than 0.85 because the
+  // list is not hers. Of the four named, only Dinosaur Jr is a graph node that
+  // did not already have an edge (Sonic Youth is written above; Smashing
+  // Pumpkins and Stephen Malkmus are not nodes).
+  inf('beabadoobee', 'dinosaur-jr', 0.8, 'verified', "The Boar (Nov 2020) lists Dinosaur Jr, Sonic Youth, the Smashing Pumpkins and Stephen Malkmus as the main influences on Fake It Flowers, and beabadoobee confirms them directly: \"All of these massively inspired me in making Fake It Flowers, both sonically and in certain ways that I would incorporate into lyric writing.\"", undefined, 'first-person'),
   inf('beabadoobee', 'sonic-youth', 0.85, 'verified', "NME: \"My influencers are Sonic Youth, Pavement -- this shit that totally shaped me. They shaped the way I dress, how I speak, act and just everything I am.\"", undefined, 'first-person'),
   inf('beabadoobee', 'elliott-smith', 0.85, 'verified', "She has named Elliott Smith among her first big influences, tattooed \"XO\" (his fourth album's title) on her arm, and has said she took the chords from his song \"Bled White\" directly for her own song \"Take a Bite.\"", undefined, 'first-person'),
 
@@ -3198,6 +3212,35 @@ const edges: Edge[] = [
   inf('have-a-nice-life', 'kraftwerk', 0.65, 'verified', "The same Wikipedia sourced influence list for Have a Nice Life names Kraftwerk alongside New Order, My Bloody Valentine, Joy Division and Swans.", undefined, 'reported'),
   inf('have-a-nice-life', 'dead-kennedys', 0.65, 'verified', "Steel for Brains reported that Tim Macuga said the default music of his youth was Dead Kennedys, Descendents and Operation Ivy.", undefined, 'reported'),
   inf('have-a-nice-life', 'descendents', 0.65, 'verified', "The same Steel for Brains account of Tim Macuga's youth names Descendents alongside Dead Kennedys and Operation Ivy.", undefined, 'reported'),
+
+  // ── Thin-node pass (Aug 2026) — searched and found NOTHING writable ──
+  // Recorded so the next pass does not spend budget re-walking these. The
+  // pattern across all five: these nodes are thin because their documented
+  // influences point OFF-roster, not because nobody looked. Same class of
+  // answer as the settled-not-unchecked nodes in
+  // directional-edge-pass-CONSOLIDATED.md §5.
+  //   - camera-obscura: the only claim that surfaces ("grew up on the Velvet
+  //     Underground, the Pastels and Yo La Tengo") is the KNOWN GROKIPEDIA
+  //     FABRICATION already documented in CLAUDE.md, re-encountered here and
+  //     discarded again. Campbell's real named influences -- Fleetwood Mac
+  //     ("my favorite band"), Tammy Wynette, Patsy Cline, Johnny Cash, Dolly
+  //     Parton, ELO, Roxy Music -- are all off-roster.
+  //   - silversun-pickups: actively DEFLECTS the comparison it would be
+  //     written on ("People compare shit to things all the time and if that's
+  //     us, right on"); on MBV he offers only "I really liked them at one
+  //     point," and Smashing Pumpkins is not a node. Their one existing
+  //     -> my-bloody-valentine edge already covers the best available claim.
+  //   - 100-gecs: influences are John Zorn, Cannibal Corpse, Skrillex, 3OH!3,
+  //     Lil Wayne, brokeNCYDE and PC Music -- none on the roster, and the top
+  //     search hit is TV Tropes, an excluded source.
+  //   - idles -> radiohead: Talbot's NPR All Songs Considered guest-DJ episode
+  //     (14 May 2019) features Radiohead's "The National Anthem," but it is a
+  //     PODCAST with no transcript published, so no quotable statement could
+  //     be reached. A real lead, still unresolved -- needs the audio.
+  //   - beabadoobee -> lush: reported as writable earlier in the session and
+  //     that was too generous. On re-reading the page, Lush and Veruca Salt
+  //     are named in the context of the live-show experience she wants to give
+  //     audiences, not as influences on the music. Held.
 
   // ── Four-node pass (Aug 2026) ────────────────────────────────────────
 

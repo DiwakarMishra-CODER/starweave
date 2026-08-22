@@ -1415,7 +1415,7 @@
         }
       ],
       "bio": "J Mascis has one of the most distinctive sensibilities in rock: melodic instincts that are genuinely affecting — the kind of simple, direct hooks that seem to have been waiting to exist — delivered through walls of guitar so loud that they constitute their own genre. You're Living All Over Me (1987) and Bug (1988) are two of the most fully realized records in American independent music, built on the productive gap between Mascis's hushed, exhausted vocal and the physical assault of the guitars behind it.\n\nMascis's guitar solos, which go on for as long as they need to, have been called self-indulgent by critics who have apparently never asked whether self-indulgence might be the point. His relationship with Lou Barlow — bassist on the early records, fired in 1989, eventually reconciled — generated as much heat and complexity as the music. The reunion lineup, which made Farm (2009) and Give a Glimpse of What Yer Not (2016), found both the strengths and the limits of what the Dinosaur Jr. model can be.",
-      "influenceScore": 6,
+      "influenceScore": 7,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/1708f50e7786fa6c681313fb35bb0a8d/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/6b/b8/62/6bb8625f-ce3c-6469-377f-c9633dd83b2f/mzaf_15196045924922004.plus.aac.p.m4a",
       "previewTrack": "Little Fury Things",
@@ -3555,7 +3555,7 @@
           "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/d8/5a/08/d85a084b-2295-680e-871f-226daa83de5c/196873434049.jpg/600x600bb.jpg"
         }
       ],
-      "influenceScore": 9,
+      "influenceScore": 10,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/ec4be2cfa69b7ecf8d7c0cf799c0fbeb/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/13/12/6d/13126d08-fad7-2896-c5c8-1ec039718db4/mzaf_5406071501697087536.plus.aac.p.m4a",
       "previewTrack": "Suzanne",
@@ -3651,7 +3651,7 @@
           "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/00/a2/43/00a24363-cf69-bfd2-a26a-a042d57ab141/075992719926.jpg/600x600bb.jpg"
         }
       ],
-      "influenceScore": 10,
+      "influenceScore": 11,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/c712ae5487e9eee83a1c6db2a230a8bc/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/bc/8e/e6/bc8ee6e2-9fb8-75a1-bdf9-37f97a009fef/mzaf_1734596607807807485.plus.aac.p.m4a",
       "previewTrack": "A Case of You",
@@ -3715,7 +3715,7 @@
           "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/88/9f/0a/889f0afc-ca89-5968-ef83-ab07f7184eb6/093624924753.jpg/600x600bb.jpg"
         }
       ],
-      "influenceScore": 25,
+      "influenceScore": 26,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/bdcc1dcee778e55db22c7d0ab011f964/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f8/7a/8d/f87a8d65-e804-2530-be75-66a5c49539c1/mzaf_2822679759160215635.plus.aac.p.m4a",
       "previewTrack": "Heart of Gold",
@@ -13660,6 +13660,33 @@
       "citationStatus": "unsourceable"
     },
     {
+      "source": "adrianne-lenker",
+      "target": "joni-mitchell",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": "Adrianne Lenker to The Ringer (2019): \"I really admire Joni Mitchell, Neil Young, Leonard Cohen -- how they have such a breadth of material throughout the years, into old age.\" She is describing a career approach rather than a sound: \"They seemed to follow their own thread of curiosity and creativity, even through some weird phases when people were like, 'I don't know what they're doing.'\"",
+      "sourceTier": "first-person"
+    },
+    {
+      "source": "adrianne-lenker",
+      "target": "neil-young",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": "Adrianne Lenker to The Ringer (2019): \"I really admire Joni Mitchell, Neil Young, Leonard Cohen -- how they have such a breadth of material throughout the years, into old age.\" She is describing a career approach rather than a sound: \"They seemed to follow their own thread of curiosity and creativity, even through some weird phases when people were like, 'I don't know what they're doing.'\"",
+      "sourceTier": "first-person"
+    },
+    {
+      "source": "adrianne-lenker",
+      "target": "leonard-cohen",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.55,
+      "citation": "Adrianne Lenker to The Ringer (2019): \"I really admire Joni Mitchell, Neil Young, Leonard Cohen -- how they have such a breadth of material throughout the years, into old age.\" She is describing a career approach rather than a sound: \"They seemed to follow their own thread of curiosity and creativity, even through some weird phases when people were like, 'I don't know what they're doing.'\"",
+      "sourceTier": "first-person"
+    },
+    {
       "source": "nick-drake",
       "target": "bob-dylan",
       "type": "influence",
@@ -17977,6 +18004,15 @@
       "status": "verified",
       "confidence": 0.85,
       "citation": "NME: \"My influencers are Sonic Youth, Pavement -- this shit that totally shaped me. They shaped the way I dress, how I speak, act and just everything I am.\"",
+      "sourceTier": "first-person"
+    },
+    {
+      "source": "beabadoobee",
+      "target": "dinosaur-jr",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.8,
+      "citation": "The Boar (Nov 2020) lists Dinosaur Jr, Sonic Youth, the Smashing Pumpkins and Stephen Malkmus as the main influences on Fake It Flowers, and beabadoobee confirms them directly: \"All of these massively inspired me in making Fake It Flowers, both sonically and in certain ways that I would incorporate into lyric writing.\"",
       "sourceTier": "first-person"
     },
     {
