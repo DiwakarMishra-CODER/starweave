@@ -9714,6 +9714,9 @@
       "id": "post-punk",
       "name": "Post-punk",
       "parent": "punk",
+      "alsoFrom": [
+        "proto-punk"
+      ],
       "emerged": 1978,
       "emergedBasis": "Wire's Chairs Missing; Public Image Ltd"
     },
@@ -9741,9 +9744,6 @@
       "id": "jangle-pop",
       "name": "Jangle pop",
       "parent": "power-pop",
-      "alsoFrom": [
-        "indie-pop"
-      ],
       "emerged": 1983,
       "emergedBasis": "R.E.M.'s Murmur and the Smiths"
     },
@@ -9793,6 +9793,11 @@
       "id": "alt-rock",
       "name": "Alternative rock",
       "parent": "noise-rock",
+      "alsoFrom": [
+        "jangle-pop",
+        "hardcore-punk",
+        "proto-punk"
+      ],
       "emerged": 1987,
       "emergedBasis": "The American college-radio wave before Nevermind"
     },
@@ -9845,9 +9850,6 @@
       "id": "emo",
       "name": "Emo",
       "parent": "post-hardcore",
-      "alsoFrom": [
-        "punk"
-      ],
       "emerged": 1994,
       "emergedBasis": "Sunny Day Real Estate, Diary"
     },
@@ -9945,7 +9947,6 @@
       "name": "Lo-fi",
       "parent": "indie-rock",
       "alsoFrom": [
-        "alt-rock",
         "singer-songwriter"
       ],
       "emerged": 1992,
@@ -9992,7 +9993,10 @@
     {
       "id": "britpop",
       "name": "Britpop",
-      "parent": "indie-rock",
+      "parent": "jangle-pop",
+      "alsoFrom": [
+        "indie-rock"
+      ],
       "emerged": 1994,
       "emergedBasis": "Blur's Parklife and Oasis' Definitely Maybe"
     },
@@ -10025,6 +10029,9 @@
       "id": "freak-folk",
       "name": "Freak folk",
       "parent": "singer-songwriter",
+      "alsoFrom": [
+        "psychedelic-pop"
+      ],
       "emerged": 2003,
       "emergedBasis": "Devendra Banhart and Joanna Newsom"
     },
@@ -10039,13 +10046,19 @@
       "id": "riot-grrrl",
       "name": "Riot grrrl",
       "parent": "punk",
+      "alsoFrom": [
+        "hardcore-punk"
+      ],
       "emerged": 1991,
       "emergedBasis": "Bikini Kill and the Olympia scene"
     },
     {
       "id": "ambient",
       "name": "Ambient",
-      "parent": "krautrock",
+      "parent": "minimalism",
+      "alsoFrom": [
+        "krautrock"
+      ],
       "emerged": 1978,
       "emergedBasis": "Brian Eno, Music for Airports"
     },
@@ -10101,6 +10114,9 @@
       "id": "alt-country",
       "name": "Alt-country",
       "parent": "singer-songwriter",
+      "alsoFrom": [
+        "punk"
+      ],
       "emerged": 1990,
       "emergedBasis": "Uncle Tupelo, No Depression"
     },
@@ -10142,6 +10158,9 @@
       "id": "noise-pop",
       "name": "Noise pop",
       "parent": "noise-rock",
+      "alsoFrom": [
+        "psychedelic-pop"
+      ],
       "emerged": 1985,
       "emergedBasis": "The Jesus and Mary Chain, Psychocandy"
     },

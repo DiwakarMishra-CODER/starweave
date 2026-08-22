@@ -39,6 +39,23 @@ export default function GenresIndexPage() {
             calendar time, so a crowded few years (like 1978–85) get the room eleven genres actually
             need instead of the sliver a linear year scale would give it.
           </p>
+
+          {/* Sits in the reading column under the deck, not off in a corner of
+              the hint row where an earlier outlined pill read as chrome bolted
+              onto a poster — and, being at the far right of a muted caption
+              line, went unnoticed anyway. Here it follows title → deck → link
+              in natural reading order, and gold makes it the only coloured
+              text above the diagram, which is what earns the glance. The A-Z
+              list is the other route into a genre page and it starts below the
+              fold, so without a cue up here nobody suspects it exists. Count
+              derived, never hardcoded — /scenes shipped one that went stale. */}
+          <a href="#all-genres" className="genres-page__jump">
+            {/* Label closed on its own line — see the JSX newline-trimming
+                note on the A-Z heading below. Leaving it as a bare text node
+                before the arrow span silently ate the space in "53 genres". */}
+            <span>Browse all {graphData.genres.length} genres A&ndash;Z</span>
+            <span className="genres-page__jump-arrow" aria-hidden>&darr;</span>
+          </a>
         </header>
 
         {/* Own line, not folded into the deck above — testers weren't
@@ -55,8 +72,16 @@ export default function GenresIndexPage() {
           plotH={layout.plotH}
         />
 
-        <section className="genres-az" aria-label="All genres, alphabetically">
-          <h2 className="genres-az__heading">All genres, A–Z</h2>
+        <section className="genres-az" id="all-genres" aria-label="All genres, alphabetically">
+          {/* Title wrapped in its own span rather than left as a bare text
+              node. JSX trims BOTH ends of a text chunk containing a newline,
+              so `All {n} genres` split across a line before the subhead span
+              rendered as "All 53genres" — the space silently vanished. Keeping
+              each text run closed on its own line avoids it. */}
+          <h2 className="genres-az__heading">
+            <span>All {graphData.genres.length} genres, A&ndash;Z</span>
+            <span className="genres-az__subhead">every genre page, including the {graphData.genres.length - layout.rankCount} undated ones the timeline can&rsquo;t place</span>
+          </h2>
           <ul className="genres-az__list" role="list">
             {azList.map(g => (
               <li key={g.id}>

@@ -3905,6 +3905,55 @@ h3 { font-size: 1.1rem; }
   margin-bottom: 0.35rem;
 }
 
+/* No border, no fill, no pill — this page is a poster and a control drawn on
+   top of one reads as an intrusion. Visibility comes from colour and the
+   display face instead, on its own line in the reading column.
+
+   TEAL SPECIFICALLY, and not by taste: the timeline spends every other colour
+   in the design system on this page. Gold is the garage-rock branch (the
+   biggest one), magenta is art-rock, rose is psychedelic-pop, olive is
+   singer-songwriter, grey is minimalism, and indigo is both the
+   DEFAULT_ROOT_COLOR fallback and the page's own ambient background. Any of
+   those makes the link read as attached to a lineage rather than as an
+   action. --color-indie-alt is the one LAYER_COLORS value left unspoken for,
+   so it can only mean "interactive" here. Contrast is 10.4:1 against
+   --color-bg, rising to 13:1 on hover — note gold was actually *brighter* at
+   12:1, so the problem was never contrast, it was collision. */
+.genres-page__jump {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-indie-alt);
+  text-decoration: none;
+  /* Underline offset via border rather than text-decoration so it can sit
+     lower and animate independently of the arrow. */
+  border-bottom: 1px solid color-mix(in srgb, var(--color-indie-alt) 35%, transparent);
+  padding-bottom: 1px;
+  transition: border-color 140ms ease, color 140ms ease;
+}
+
+.genres-page__jump:hover,
+.genres-page__jump:focus-visible {
+  color: #8ee3d6;
+  border-bottom-color: color-mix(in srgb, var(--color-indie-alt) 80%, transparent);
+}
+
+/* Nudges down on hover — the one motion cue that says "further down the page"
+   rather than "opens something new". */
+.genres-page__jump-arrow {
+  font-size: 0.875rem;
+  transition: transform 160ms ease;
+}
+
+.genres-page__jump:hover .genres-page__jump-arrow,
+.genres-page__jump:focus-visible .genres-page__jump-arrow {
+  transform: translateY(2px);
+}
+
 /* Deliberately NOT inside the scaled SVG viewBox — this stays at real CSS
    pixel sizes no matter how far the diagram itself has scaled down at a
    narrower viewport, so hovering a genre is always fully readable even
@@ -3957,9 +4006,16 @@ h3 { font-size: 1.1rem; }
   color: var(--tooltip-cta-color, #8891f2);
 }
 
+/* Border deliberately stronger than the 0.08 hairline it replaced. This
+   section starts below the fold, so most visitors first meet it as a sliver
+   at the bottom of the viewport — at 0.08 that sliver read as the page simply
+   ending. It now reads as an edge with something behind it, which is what
+   makes anyone scroll. scroll-margin-top keeps the heading off the very top
+   edge when the jump link lands here. */
 .genres-az {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  padding-top: 0.9rem;
+  scroll-margin-top: 1.25rem;
 }
 
 .genres-az__heading {
@@ -3967,6 +4023,18 @@ h3 { font-size: 1.1rem; }
   font-size: 1.125rem;
   font-weight: 700;
   margin-bottom: 1rem;
+}
+
+/* Its own line under the heading, at body scale — says what the list offers
+   that the diagram cannot, which is the undated genres with no year to
+   position them by. */
+.genres-az__subhead {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--color-muted);
 }
 
 /* Multi-column, deliberately NOT grid. A grid with the default row flow fills

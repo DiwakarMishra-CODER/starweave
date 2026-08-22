@@ -81,7 +81,23 @@ export interface Genre {
   id: string;            // slug, e.g. 'shoegaze'
   name: string;          // display, e.g. 'Shoegaze'
   parent: string | null; // primary parent genre slug — drives layout/position in the tree
-  alsoFrom?: string[];    // secondary parents — real influence, drawn on top of the tree, never affects layout position. A genre never repeats its own `parent` here (that would be redundant, not additive).
+  // Secondary parents — real influence, drawn on top of the tree, never
+  // affects layout position. A genre never repeats its own DIRECT `parent`
+  // here (that would be pure duplication, and is checked).
+  //
+  // REDUNDANCY IS DELIBERATELY ALLOWED, and this is a settled ruling (Aug
+  // 2026) — do not "clean up" a secondary link just because the same genre is
+  // already reachable up the primary chain. A dashed line to a grandparent
+  // asserts a DIRECT debt rather than an inherited one, which the solid chain
+  // cannot express: hardcore-punk lists proto-punk because Black Flag drew on
+  // the Stooges themselves, not merely on what punk passed down, and post-punk
+  // lists it because PiL and Joy Division owed the Velvet Underground more
+  // directly than they owed the Ramones. There are currently 8 such links.
+  //
+  // The three checks that DO hold, and should be re-run after any edit: no
+  // secondary parent postdates its child, no cycles, and no genre lists its
+  // own direct parent.
+  alsoFrom?: string[];
   emerged?: number;       // year the genre emerged — undefined for pure containers (electronic, folk, indie, underground)
   emergedBasis?: string;  // what that year refers to (an album, a term being coined, a scene forming) — emergence dates are contested, so a bare year is unsupportable; same discipline as the edge citation field
 }
