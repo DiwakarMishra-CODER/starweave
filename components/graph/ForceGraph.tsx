@@ -3,7 +3,7 @@
 import { useRef, useEffect, useMemo, useCallback, useState } from 'react';
 import ForceGraph2D from 'react-force-graph-2d';
 import { forceSimulation, forceLink, forceManyBody, forceCenter, forceX, forceY } from 'd3-force-3d';
-import type { Artist, Edge, EvidenceFilter, GraphData, Layer, Realm } from '@/data/types';
+import type { Artist, Edge, EvidenceFilter, GraphData, Realm } from '@/data/types';
 import { edgePassesEvidenceFilter } from '@/data/types';
 import { resolveNodeColor, resolveNodeGlow, resolveEdgeTint, REALM_COLORS, REALM_LABELS, REALM_LABELS_SHORT } from '@/lib/colors';
 import { getNeighbors, pathEdgeKeys } from '@/lib/graph-utils';
@@ -999,6 +999,20 @@ function computeMinScrollZoom(
 // Fully invisible at/below FADE_ZOOM_OUT, for every node, hubs included.
 const FADE_ZOOM_OUT = 2.5;
 const FADE_ZOOM_IN = 3.5;
+// Where the zoom hint's own click lands. Comfortably past FADE_ZOOM_IN so the
+// gesture it was asking for has visibly happened -- photographs and names
+// resolved, not a halfway state still mid-crossfade. Inside SCROLL_MAX_ZOOM,
+// so it needs no unclamping of the scroll bounds.
+const ZOOM_HINT_TARGET_ZOOM = 4.2;
+// Arrowhead sizes, in world units. Paths run larger because a route is framed
+// to fit its whole span rather than one tight cluster.
+const ARROW_SIZE_PATH = 11;
+const ARROW_SIZE_HIGHLIGHT = 9;
+// How far the live zoom may drift from ZOOM_HINT_TARGET_ZOOM and still count as
+// "the camera is where the hint put it". Past this the user has zoomed
+// themselves, and a background click must not yank that away -- background
+// click undoes camera moves the APP made, never ones the user made.
+const HINT_ZOOM_DRIFT_TOLERANCE = 0.4;
 // Shifts each node's fade-START point (not its zero point) down from
 // FADE_ZOOM_IN by this many zoom-units per sqrt(influenceScore) — so a hub
 // holds full opacity over a wider range while zooming out, then fades over a
@@ -1078,10 +1092,94 @@ const CLOUD_DOT_BRIGHTNESS = 0.7;  // peak core alpha ceiling — actual per-nod
 const CLOUD_DOT_MIN_BRIGHTNESS_FRACTION = 0.35; // faintest (score 0) nodes still read at this fraction of CLOUD_DOT_BRIGHTNESS
 const CLOUD_DOT_BRIGHTNESS_GROWTH = 0.12;        // × sqrt(score) added on top of the floor above, capped at 1
 const CLOUD_DOT_GLOW_TIGHTNESS = 1.6; // halo radius × core radius — modest, well short of the detail dot's wide bloom haze (2.8–4×)
-const CLOUD_DOT_GLOW_INTENSITY = 0.18; // halo peak alpha — kept low: additive glow across many hubs adds up fast even at a modest per-node value
+// Halo peak alpha. Raised from 0.18 after measuring what it actually rendered:
+// multiplied through dotBrightness it put a score-0 node's halo at alpha 0.044
+// -- 11/255 on screen, against VU's 179/255. Sixteen times fainter than the one
+// node people said was glowing, which is exactly what "they're still just dots"
+// was describing. Widening the radius could never fix that; the alpha was the
+// wrong dimension.
+const CLOUD_DOT_GLOW_INTENSITY = 0.42;
+// Floor on the halo's score term ONLY -- deliberately not applied to the core
+// dot, whose own score curve (CLOUD_DOT_MIN_BRIGHTNESS_FRACTION) is what makes
+// "few bright, many faint" read. Lifting that would flatten the hierarchy; this
+// lifts only the light around the dot, so a low-score node has something
+// visible without becoming as loud as a hub.
+// ── Halo size/brightness curves, deliberately its own, not the core dot's ──
+// Both of these existed only as a reuse of the core dot's numbers, and both
+// collapsed the hierarchy at the view people actually look at:
+//
+// SIZE was dotCoreR * CLOUD_DOT_GLOW_TIGHTNESS, and dotCoreR is capped at
+// CLOUD_DOT_MAX_R (3.2). That put the LARGEST possible halo at 5.12px --
+// below the 7px screen floor -- so at zoom 1.0 every node in the graph drew
+// an identical 7px halo. The floor meant to rescue small nodes flattened
+// everyone instead.
+//
+// BRIGHTNESS reused scoreBrightness, which saturates at 1.0 by score 30. The
+// top 11 nodes (Sonic Youth at 32 through VU at 56) were therefore all exactly
+// as bright as each other. Reported as "the big ones seem constant" -- correct,
+// they were.
+//
+// The growth rate below is set so alpha saturates just past VU's 56, meaning
+// nothing in the current graph clamps; re-check if a node ever exceeds it.
+const CLOUD_DOT_HALO_BASE_R = 4.0;        // world units at score 0
+const CLOUD_DOT_HALO_GROWTH_R = 0.9;      // × sqrt(score) — gives a 2.7× span from smallest to VU
+const CLOUD_DOT_HALO_MIN_BRIGHTNESS = 0.5;
+const CLOUD_DOT_HALO_GROWTH_A = 0.065;    // × sqrt(score)
 // Only hubs/anchors get the soft bloom halo — everyone else is a bare
 // point, per the reference (most stars are just points; a few bloom).
-const CLOUD_DOT_HALO_MIN_SCORE = ALWAYS_LABEL_THRESHOLD;
+// Every node gets a halo now, not just the 68 scoring >= 5. The old threshold
+// left 77% of the graph as bare sharp points -- correct as "few bright, many
+// faint" in principle, but in practice most of the constellation had no light
+// in it at all. Score still drives how bright and how wide, via dotBrightness
+// and the core radius, so the hierarchy survives; the floor below is what stops
+// the bottom of that range collapsing to nothing.
+const CLOUD_DOT_HALO_MIN_SCORE = 0;
+
+// Minimum ON-SCREEN halo radius, in CSS pixels, divided by globalScale at the
+// call site. Same pattern (and same reason) as VU_MIN_HALO_SCREEN_R above: the
+// halo is a WORLD-space size, so at the deep zoom-out where the whole graph
+// fits, the canvas transform scales it toward sub-pixel and no world-space
+// multiplier can rescue it.
+//
+// It must stay BELOW the smallest computed halo at normal zoom, or it stops
+// being a floor and becomes a flattener -- at 7 it exceeded every node's halo
+// and drew all 293 identically. Sized against CLOUD_DOT_HALO_BASE_R (4.0), so
+// it only engages below zoom 1.0.
+const CLOUD_DOT_MIN_HALO_SCREEN_R = 4; // lowered from 7 once that floor was measured to exceed every node's computed halo and flatten the whole range
+
+// ── Per-node breathing ──────────────────────────────────────────────────────
+// VU has pulsed since it was made the graph's sun; nothing else did, so every
+// other node read as inert. Two things make this safe to apply to all 293 now:
+//
+// 1. PHASE. A shared clock would strobe -- 293 nodes brightening in unison is
+//    a screen flash, not a living field. Each node's phase AND period come
+//    from a hash of its id, so they drift against each other permanently and
+//    deterministically (no Math.random: it would resample every frame and
+//    turn a slow breath into white noise).
+// 2. COST. An earlier star-twinkle attempt caused a real lag regression
+//    because it rebuilt a CanvasGradient per node per frame. This one only
+//    modulates the alpha and radius handed to stampGlowSprite -- both are
+//    drawImage arguments, so a pulsing sprite costs exactly what a still one
+//    does. The thing that made twinkle expensive no longer applies.
+const NODE_PULSE_DEPTH = 0.18;          // ±18% -- still under VU's 0.22, which should stay the most alive thing on screen. Only perceptible now that the base alpha it modulates is visible: at the old 0.044 this swung a node by 1.8/255.
+const NODE_PULSE_PERIOD_MIN_MS = 3400;
+const NODE_PULSE_PERIOD_SPREAD_MS = 2800;
+
+// FNV-1a, cached: this runs per node per frame, and the input never changes.
+const nodePhaseCache = new Map<string, number>();
+function nodePhase(id: string): number {
+  let cached = nodePhaseCache.get(id);
+  if (cached === undefined) {
+    let h = 2166136261;
+    for (let i = 0; i < id.length; i++) {
+      h ^= id.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    cached = ((h >>> 0) % 10000) / 10000;
+    nodePhaseCache.set(id, cached);
+  }
+  return cached;
+}
 
 // Hover lift at cloud zoom. Deliberately small: the first version of this
 // routed hover through isInFocusCluster, which meant the 2.8x/1.9x focus size
@@ -1116,6 +1214,25 @@ const PATH_HOP_SIZE_MULT = 1.25;
 // into a handful of cached bitmaps stamped via drawImage (one of the
 // cheapest canvas operations) — same visual result, a fraction of the cost.
 const GLOW_SPRITE_REFERENCE_RADIUS = 64; // px — reference bitmap size; drawImage scales it to each node's actual radius, so this only needs to be "big enough to look smooth," not exact
+
+// ── Resting bloom haze (the glow on an ordinary, un-focused node) ───────────
+// Three tunables, shared by getBloomHazeSprite (which bakes the gradient's
+// SHAPE from them) and drawNode's resting branch (which sizes and brightens
+// the stamp). They must stay together: innerFraction is derived from
+// BLOOM_RADIUS_MULT, so changing the multiplier in one place alone would draw
+// a gradient whose solid core no longer matches the node under it.
+//
+// BLOOM_MIN_RADIUS is the one that actually makes low-influence nodes read as
+// glowing. Glow radius is nodeRadius * mult, and node radius is
+// 3.5 + sqrt(influenceScore) * 2.2 -- so a node with 0 citations got a ~10px
+// halo around a 3.5px dot, a 6px ring nobody could see, while Velvet
+// Underground (56 citations) got 149px. The floor decouples the halo from the
+// citation count for small nodes without touching the big ones, which are
+// already well past it.
+const BLOOM_RADIUS_MULT = 3.4;   // was 2.8
+const BLOOM_INNER_ALPHA = 0.30;  // was 0.22
+const BLOOM_MID_ALPHA = 0.095;   // was 0.07 — scaled with INNER so the falloff shape is unchanged, just brighter
+const BLOOM_MIN_RADIUS = 26;     // graph units; only binds below ~7.6 node radius (roughly the bottom half of the graph)
 
 function buildGlowSprite(build: (grad: CanvasGradient) => void, innerFraction = 0): HTMLCanvasElement {
   const refR = GLOW_SPRITE_REFERENCE_RADIUS;
@@ -1204,16 +1321,61 @@ function getBloomHazeSprite(glowColor: string, isCoreNode: boolean): HTMLCanvasE
   const key = `${glowColor}|${isCoreNode ? 'core' : 'std'}`;
   let sprite = bloomHazeSpriteCache.get(key);
   if (!sprite) {
-    const bloomMult = 2.8 * (isCoreNode ? CORE_GLOW_RADIUS_MULT : 1);
+    const bloomMult = BLOOM_RADIUS_MULT * (isCoreNode ? CORE_GLOW_RADIUS_MULT : 1);
     const innerFraction = 0.5 / bloomMult; // matches the original createRadialGradient(..., er*0.5, ..., bloomR) ratio
     sprite = buildGlowSprite(grad => {
+      // Baked at peak alpha 1.0 and stamped through globalAlpha, so only the
+      // RATIO between the stops matters here, not their absolute values.
       grad.addColorStop(0,   glowColor.replace('0.7)', '1)'));
-      grad.addColorStop(0.5, glowColor.replace('0.7)', `${(0.07 / 0.22).toFixed(4)})`));
+      grad.addColorStop(0.5, glowColor.replace('0.7)', `${(BLOOM_MID_ALPHA / BLOOM_INNER_ALPHA).toFixed(4)})`));
       grad.addColorStop(1,   glowColor.replace('0.7)', '0)'));
     }, innerFraction);
     bloomHazeSpriteCache.set(key, sprite);
   }
   return sprite;
+}
+
+// ── Directional arrowhead ───────────────────────────────────────────────────
+// Drawn by hand rather than through the library's linkDirectionalArrow* props,
+// for one reason: those always point source -> target, and this graph's edges
+// store source = the INFLUENCED artist and target = the INFLUENCE (see Edge in
+// data/types.ts). Rendering them natively therefore pointed every arrow
+// BACKWARD through time -- toward the older artist -- so the graph read as if
+// all 56 of Velvet Underground's descendants were things VU pointed at, rather
+// than artists VU reached. It also inverts the project's own thesis, and the
+// path panel's own wording ("went on to influence").
+//
+// So the head is placed pointing target -> source: from the artist who shaped
+// the sound to the one who inherited it, forward in time.
+//
+// `at` is the fraction along the line to sit at, matching the relPos the
+// library props used (0.5 = midpoint, clear of the node photographs).
+function drawInfluenceArrow(
+  ctx: CanvasRenderingContext2D,
+  sx: number, sy: number, tx: number, ty: number,
+  color: string, size: number, alpha: number, at = 0.5,
+): void {
+  // Deliberately reversed from the edge's stored direction — see above.
+  const dx = sx - tx;
+  const dy = sy - ty;
+  const len = Math.hypot(dx, dy);
+  if (len < 0.01) return;
+  const ux = dx / len;
+  const uy = dy / len;
+  const px = tx + dx * at;
+  const py = ty + dy * at;
+  const half = size * 0.42;
+
+  ctx.save();
+  ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.moveTo(px + ux * size * 0.5, py + uy * size * 0.5);
+  ctx.lineTo(px - ux * size * 0.5 - uy * half, py - uy * size * 0.5 + ux * half);
+  ctx.lineTo(px - ux * size * 0.5 + uy * half, py - uy * size * 0.5 - ux * half);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
 }
 
 function computeZoomFade(globalScale: number, influenceScore: number): number {
@@ -1564,6 +1726,13 @@ export default function ForceGraphCanvas({
   // current zoom to fade arrows the same way drawLink fades edge lines, but
   // that accessor is a plain per-link callback with no globalScale argument.
   const currentGlobalScaleRef = useRef(1);
+  // Non-null while the camera is sitting where the zoom hint put it, holding the
+  // zoom it moved to. Lets a background click undo the hint -- otherwise the one
+  // person the hint exists for (someone who does not know the zoom gesture) gets
+  // zoomed in and has no way back, since pinch-out is exactly as unobvious as
+  // pinch-in was. Cleared the moment any real cluster focus takes over, and
+  // ignored if the live scale has drifted (see HINT_ZOOM_DRIFT_TOLERANCE).
+  const hintZoomRef = useRef<number | null>(null);
   // Whether the camera is far enough out that nodes are anonymous dots. Drives
   // the zoom hint below. Mirrored in a ref so the per-frame render callback can
   // compare without reading state, and setState only fires when the threshold is
@@ -2295,6 +2464,9 @@ export default function ForceGraphCanvas({
 
     const wasActive = prevClusterActiveRef.current;
     prevClusterActiveRef.current = clusterIds.length > 0;
+    // Any real cluster focus supersedes the hint's move — from here the normal
+    // deselect path owns getting the camera back.
+    if (clusterIds.length > 0) hintZoomRef.current = null;
 
     const duration = prefersReducedMotionRef.current ? 0 : CAMERA_MS;
 
@@ -2820,6 +2992,10 @@ export default function ForceGraphCanvas({
           // (instead of flat gold) plus the breathing pulseMult computed
           // above are what make it read as a hotter, alive center rather
           // than just a bigger core node.
+          // Its own literals, deliberately NOT BLOOM_RADIUS_MULT. VU already
+          // dominates the frame; raising the resting glow for the other 292
+          // nodes is meant to close that gap, and routing VU through the same
+          // constant would have moved it up in lockstep and closed nothing.
           const baseBloomMult  = (isFocused ? 4.0 : isHovered ? 3.5 : 2.8) * CORE_GLOW_RADIUS_MULT * VU_GLOW_RADIUS_MULT;
           const baseInnerAlpha = (isFocused ? 0.30 : 0.22) * CORE_GLOW_INTENSITY * VU_GLOW_INTENSITY;
           const baseMidAlpha   = 0.07 * CORE_GLOW_INTENSITY * VU_GLOW_INTENSITY;
@@ -2841,9 +3017,12 @@ export default function ForceGraphCanvas({
           // comment/the perf report) — isFocused/isHovered fall through to
           // the original inline gradient below, which is at most 1-2 nodes
           // at a time and not worth caching.
-          const bloomMult = 2.8 * (isCore ? CORE_GLOW_RADIUS_MULT : 1);
-          const bloomR = erOverview * bloomMult;
-          const innerAlpha = 0.22 * (isCore ? CORE_GLOW_INTENSITY : 1);
+          const bloomMult = BLOOM_RADIUS_MULT * (isCore ? CORE_GLOW_RADIUS_MULT : 1);
+          // Floored so a low-citation node still gets a visible halo rather
+          // than a few pixels hugging its own edge. Not applied to the VU or
+          // focus/hover branches -- those are already far past it.
+          const bloomR = Math.max(erOverview * bloomMult, BLOOM_MIN_RADIUS);
+          const innerAlpha = BLOOM_INNER_ALPHA * (isCore ? CORE_GLOW_INTENSITY : 1);
           stampGlowSprite(ctx, getBloomHazeSprite(glow, isCore), n.x, n.y, bloomR, Math.min(innerAlpha, 1) * alpha);
           ctx.globalAlpha = alpha; // restore — stampGlowSprite set it to the combined peak value above
         } else {
@@ -2978,11 +3157,30 @@ export default function ForceGraphCanvas({
             ctx.fillStyle = vuGrad;
             ctx.fill();
           } else if (score >= CLOUD_DOT_HALO_MIN_SCORE || isAnchor) {
-            // Soft bloom halo reserved for hubs/anchors — most nodes are a bare
-            // sharp point, matching the reference's "few bright, many faint".
-            const haloR = dotCoreR * CLOUD_DOT_GLOW_TIGHTNESS;
+            // Every node, breathing on its own schedule. The floor is what
+            // makes this visible at all: dotCoreR * 1.6 is ~2 WORLD units for
+            // a typical node, and the zoom transform takes that under a pixel
+            // at the constellation view. Same screen-space escape VU uses.
+            const pulse = 1 + Math.sin(
+              (performance.now() / (NODE_PULSE_PERIOD_MIN_MS + nodePhase(n.id) * NODE_PULSE_PERIOD_SPREAD_MS)
+                + nodePhase(n.id)) * Math.PI * 2,
+            ) * NODE_PULSE_DEPTH;
+            const haloR = Math.max(
+              CLOUD_DOT_HALO_BASE_R + Math.sqrt(score) * CLOUD_DOT_HALO_GROWTH_R,
+              CLOUD_DOT_MIN_HALO_SCREEN_R / globalScale,
+            ) * pulse;
+            // Built from its own floored score term rather than from
+            // dotBrightness, so raising the halo cannot wash out the core's
+            // faint/bright hierarchy. Still carries cloudDotFade/dimFactor/hover
+            // so every legitimate fade and dim behaves exactly as before.
+            const haloAlpha = Math.min(
+              1,
+              CLOUD_DOT_GLOW_INTENSITY
+                * Math.min(1, CLOUD_DOT_HALO_MIN_BRIGHTNESS + Math.sqrt(score) * CLOUD_DOT_HALO_GROWTH_A)
+                * cloudDotFade * dimFactor * hoverCloudBoost * pulse,
+            );
             // Halo stays additive — that's what makes it read as glowing light.
-            stampGlowSprite(ctx, get2StopGlowSprite(glow), n.x, n.y, haloR, CLOUD_DOT_GLOW_INTENSITY * dotBrightness);
+            stampGlowSprite(ctx, get2StopGlowSprite(glow), n.x, n.y, haloR, haloAlpha);
           }
           // Core switches to normal blending — additive was stacking with the
           // halo above AND the nebula glow underneath, which for any node
@@ -3301,6 +3499,12 @@ export default function ForceGraphCanvas({
         ctx.lineWidth = 2.2;
         ctx.stroke();
         ctx.globalAlpha = 1;
+        // Slightly larger than the focus/hover heads: a route is framed at
+        // whatever zoom fits its whole span, often further out than a focus
+        // cluster sits. No zoom fade, for the same reason the line above has
+        // none -- hiding the direction exactly when the whole path is on
+        // screen would defeat the point.
+        drawInfluenceArrow(ctx, sx, sy, tx, ty, hopColor, ARROW_SIZE_PATH, hopAlpha);
       } else if (isFocusEdge && focusedNode) {
         // Focused artist's own layer color — their world glows in their color.
         // Fades up from the idle faint baseline rather than snapping on, via
@@ -3309,10 +3513,15 @@ export default function ForceGraphCanvas({
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
         ctx.strokeStyle = resolveNodeColor(focusedNode);
-        ctx.globalAlpha = ((EDGE_IDLE_ALPHA + (0.82 - EDGE_IDLE_ALPHA) * glow) * edgeFade) * evidenceMult;
+        const focusEdgeAlpha = ((EDGE_IDLE_ALPHA + (0.82 - EDGE_IDLE_ALPHA) * glow) * edgeFade) * evidenceMult;
+        ctx.globalAlpha = focusEdgeAlpha;
         ctx.lineWidth = EDGE_IDLE_WIDTH + (2 - EDGE_IDLE_WIDTH) * glow;
         ctx.setLineDash([]);
         ctx.stroke();
+        ctx.globalAlpha = 1;
+        // Rides the same glow fade-up as the line, so the head appears with the
+        // edge rather than snapping in ahead of it.
+        drawInfluenceArrow(ctx, sx, sy, tx, ty, resolveNodeColor(focusedNode), ARROW_SIZE_HIGHLIGHT, focusEdgeAlpha);
       } else if (isHoverEdge) {
         // Brightened tint on hover (no aberration), same fade-up as focus edges.
         const alpha = (EDGE_IDLE_ALPHA + (0.75 - EDGE_IDLE_ALPHA) * glow) * edgeFade * evidenceMult;
@@ -3323,15 +3532,18 @@ export default function ForceGraphCanvas({
         ctx.lineWidth = EDGE_IDLE_WIDTH + (1.6 - EDGE_IDLE_WIDTH) * glow;
         ctx.setLineDash([]);
         ctx.stroke();
+        drawInfluenceArrow(ctx, sx, sy, tx, ty, resolveNodeColor(tgtNode as GraphNode), ARROW_SIZE_HIGHLIGHT, alpha);
       } else if (isSetEdge) {
         // Brightened tint for set-mode — no single "hero" layer color to use,
         // so this is just a brighter version of the edge's own normal tint.
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
-        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${(0.7 * edgeFade * evidenceMult).toFixed(3)})`);
+        const setEdgeAlpha = 0.7 * edgeFade * evidenceMult;
+        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${setEdgeAlpha.toFixed(3)})`);
         ctx.lineWidth = 1.6;
         ctx.stroke();
+        drawInfluenceArrow(ctx, sx, sy, tx, ty, resolveNodeColor(tgtNode as GraphNode), ARROW_SIZE_HIGHLIGHT, setEdgeAlpha);
       } else if (isCoreEdge && ghostEdgeFade < 1) {
         // `edgeFade < 1` makes cloud-zoom-only a STRUCTURAL gate, not just a
         // formula that happens to converge with idle at edgeFade===1 (the
@@ -3415,6 +3627,50 @@ export default function ForceGraphCanvas({
   // ── Realm cloud (electronic only, overview only) ────────────────────────
   // Fires before links/nodes are painted (see the CLOUD_* constants above),
   // so everything drawn here sits fully behind them.
+  // The zoom hint asks for a gesture some people will not make -- trackpad
+  // pinch is unobvious, and on a phone the hint is the only thing naming it at
+  // all. Clicking it performs the gesture instead of describing it, landing on
+  // the core: the five artists everything else descends from, and the one place
+  // where zooming in immediately shows what the detail view is for.
+  //
+  // A plain camera move, deliberately NOT the realm-selection path. Selecting
+  // the core realm would also filter the graph to it and dim everything else;
+  // this should reveal the view, not narrow it, so no highlight state changes.
+  const handleZoomToCore = useCallback(() => {
+    const fg = graphRef.current;
+    if (!fg) return;
+    const coreNodes = stableData.nodes.filter(
+      n => n.realm === 'core' && n.x !== undefined && n.y !== undefined,
+    );
+    if (coreNodes.length === 0) return;
+    const cx = coreNodes.reduce((sum, n) => sum + n.x!, 0) / coreNodes.length;
+    const cy = coreNodes.reduce((sum, n) => sum + n.y!, 0) / coreNodes.length;
+    fg.centerAt(cx, cy, CAMERA_MS);
+    fg.zoom(ZOOM_HINT_TARGET_ZOOM, CAMERA_MS);
+    hintZoomRef.current = ZOOM_HINT_TARGET_ZOOM;
+  }, [stableData.nodes]);
+
+  // Background click, wrapped so the hint's own camera move can be undone here
+  // before the parent's handler runs. The parent clears selection/set/path
+  // state; this adds "and put the camera back, but only if we are the ones who
+  // moved it."
+  const handleBackgroundClickWithCameraReset = useCallback(() => {
+    const hinted = hintZoomRef.current;
+    if (hinted !== null) {
+      hintZoomRef.current = null;
+      if (Math.abs(currentGlobalScaleRef.current - hinted) < HINT_ZOOM_DRIFT_TOLERANCE) {
+        // applyCameraFocusForCluster's zoom-out branch is gated on a cluster
+        // having been active, which is exactly the state a hint move does NOT
+        // create (it deliberately sets no cluster, so it reveals the view
+        // rather than filtering it). Setting the flag borrows that same
+        // refit rather than duplicating its dense-core zoom maths here.
+        prevClusterActiveRef.current = true;
+        applyCameraFocusForCluster([]);
+      }
+    }
+    onBackgroundClick();
+  }, [onBackgroundClick, applyCameraFocusForCluster]);
+
   const handleRenderFramePre = useCallback((ctx: CanvasRenderingContext2D, globalScale: number) => {
     // Unconditional, before any early return below — linkDirectionalArrowColor
     // reads this every frame regardless of focus/zoom state (see its own gate).
@@ -3954,14 +4210,19 @@ export default function ForceGraphCanvas({
             the onboarding card is up, since that card already names the
             gesture. */}
         {atCloudZoom && selectedId === null && highlightSetMemberSet.size === 0 && (
-          <p className="zoom-hint">
+          <button
+            type="button"
+            className="zoom-hint"
+            onClick={handleZoomToCore}
+            aria-label="Zoom in to the core of the graph"
+          >
             <svg className="zoom-hint__icon" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden>
               <circle cx="5.6" cy="5.6" r="4.1" stroke="currentColor" strokeWidth="1.3" />
               <path d="M8.7 8.7 L11.6 11.6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
               <path d="M3.9 5.6h3.4M5.6 3.9v3.4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
             </svg>
             Zoom in here
-          </p>
+          </button>
         )}
         <ForceGraph2D
           ref={graphRef}
@@ -4000,67 +4261,9 @@ export default function ForceGraphCanvas({
           linkCanvasObjectMode={() => 'replace'}
           onRenderFramePre={handleRenderFramePre}
           onRenderFramePost={handleRenderFramePost}
-          linkDirectionalArrowLength={(link: object) => {
-            const l = link as GraphLink;
-            const srcId = typeof l.source === 'object' ? (l.source as GraphNode).id : l.source as string;
-            const tgtId = typeof l.target === 'object' ? (l.target as GraphNode).id : l.target as string;
-            // Arrows only on focused/hovered/set-highlighted edges — direction
-            // matters there. Plain resting edges (the general web, including
-            // path-find mode) get no arrowhead at all: just a line. The
-            // hover clause is suppressed while a genre/scene set is active
-            // (same reasoning as drawLink's isHoverEdge) — otherwise
-            // hovering a node outside the set draws an arrowhead on one of
-            // its real, unrelated edges.
-            const isSetModeActive = highlightSetMemberSet.size > 0;
-            const isHighlightedEdge =
-              (selectedId !== null && (srcId === selectedId || tgtId === selectedId)) ||
-              (hoveredId !== null && selectedId === null && !isSetModeActive && (srcId === hoveredId || tgtId === hoveredId)) ||
-              (highlightSetMemberSet.size > 0 && (highlightSetMemberSet.has(srcId) && highlightSetMemberSet.has(tgtId)));
-            return isHighlightedEdge ? 9 : 0;
-          }}
-          linkDirectionalArrowRelPos={(link: object) => {
-            const l = link as GraphLink;
-            const srcId = typeof l.source === 'object' ? (l.source as GraphNode).id : l.source as string;
-            const tgtId = typeof l.target === 'object' ? (l.target as GraphNode).id : l.target as string;
-            // Focus/hover/set edges: midpoint keeps the arrow in open space,
-            // away from node images. Same hover-suppression-during-set-mode
-            // reasoning as linkDirectionalArrowLength above.
-            const isSetModeActive = highlightSetMemberSet.size > 0;
-            const isHighlightedEdge =
-              (selectedId !== null && (srcId === selectedId || tgtId === selectedId)) ||
-              (hoveredId !== null && selectedId === null && !isSetModeActive && (srcId === hoveredId || tgtId === hoveredId)) ||
-              (highlightSetMemberSet.size > 0 && (highlightSetMemberSet.has(srcId) && highlightSetMemberSet.has(tgtId)));
-            return isHighlightedEdge ? 0.5 : 0.85;
-          }}
-          linkDirectionalArrowColor={(link: object) => {
-            const l = link as GraphLink;
-            const srcId = typeof l.source === 'object' ? (l.source as GraphNode).id : l.source as string;
-            const tgtId = typeof l.target === 'object' ? (l.target as GraphNode).id : l.target as string;
-            // Focus edges: bright layer color so arrows are legible at a glance
-            if (selectedId !== null && (srcId === selectedId || tgtId === selectedId) && focusedNode) {
-              return resolveNodeColor(focusedNode);
-            }
-            const srcNodeForTint = typeof l.source === 'object'
-              ? (l.source as GraphNode)
-              : ({ layer: 'outside' as Layer } as GraphNode);
-            const baseColor = resolveEdgeTint(srcNodeForTint);
-            // Set edges: no single "hero" layer color, so brighten the normal
-            // tint instead. Both endpoints must be set members — see drawLink's
-            // isSetEdge comment for why this isn't "either endpoint."
-            const isSetEdge = highlightSetMemberSet.size > 0 &&
-              (highlightSetMemberSet.has(srcId) && highlightSetMemberSet.has(tgtId));
-            // Same zoom fade as drawLink's edge lines (this accessor has no
-            // globalScale argument, so it reads the live value tracked in
-            // handleRenderFramePre) — without this, arrowheads stayed fully
-            // opaque at FADE_ZOOM_OUT while the lines under them faded out.
-            const isFocusModeActive = selectedId !== null || highlightSetMemberSet.size > 0;
-            const edgeFade = isFocusModeActive ? 1 : computeZoomFade(currentGlobalScaleRef.current, 0);
-            const alpha = (isSetEdge ? 0.85 : parseFloat(baseColor.match(/[\d.]+(?=\)$)/)?.[0] ?? '1')) * edgeFade;
-            return baseColor.replace(/[\d.]+\)$/, `${alpha.toFixed(3)})`);
-          }}
           onNodeHover={handleNodeHover}
           onNodeClick={handleNodeClick}
-          onBackgroundClick={onBackgroundClick}
+          onBackgroundClick={handleBackgroundClickWithCameraReset}
           onEngineStop={handleEngineStop}
           // Dragging is OFF on purpose. This layout is authored, not emergent:
           // presettleLayout solves it over PRESETTLE_TICKS before the canvas

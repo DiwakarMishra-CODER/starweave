@@ -3969,10 +3969,25 @@ h3 { font-size: 1.1rem; }
   margin-bottom: 1rem;
 }
 
+/* Multi-column, deliberately NOT grid. A grid with the default row flow fills
+   ACROSS -- Alt-country, Alternative rock, Ambient, Art pop all land on row 1 --
+   so the list is alphabetical in DOM order but reads as scrambled, because an
+   A-Z index is scanned DOWN a column and doing that here skipped through the
+   alphabet four entries at a time. Multi-column flows top-to-bottom and wraps,
+   so column 1 runs A->F and column 2 continues from where it left off. */
 .genres-az__list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 0.25rem 1rem;
+  columns: 200px;
+  column-gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Keeps a name and its count from being split across a column boundary. */
+.genres-az__list > li {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin-bottom: 0.25rem;
 }
 
 .genres-az__item {
@@ -5853,8 +5868,26 @@ h3 { font-size: 1.1rem; }
   text-transform: uppercase;
   color: var(--color-text);
   white-space: nowrap;
-  pointer-events: none;
+  /* Interactive now: clicking it performs the gesture it describes, zooming to
+     the core. It was pointer-events:none as a pure caption -- which left the
+     one control naming the graph's least discoverable gesture unable to
+     perform it. */
+  cursor: pointer;
   animation: zoom-hint-in 420ms ease-out;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.zoom-hint:hover,
+.zoom-hint:focus-visible {
+  background: color-mix(in srgb, var(--color-root) 16%, var(--surface-float));
+  border-color: color-mix(in srgb, var(--color-root) 55%, transparent);
+  outline: none;
+}
+
+/* Nudges toward the constellation on press -- the same direction the arrow
+   above it is already pointing, so the click reads as following it. */
+.zoom-hint:active {
+  transform: translateX(-50%) translateY(1px);
 }
 
 /* An upward cue above the pill. The hint sits at the bottom and the
