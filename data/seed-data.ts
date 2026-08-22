@@ -161,7 +161,7 @@ const artists: Artist[] = [
     classicAlbums: [ca('entertainment', 'Entertainment!', 1979, "Gang of Four's debut is both a musical manifesto and a Marxist textbook — the funk rhythms stripped of all decorative excess, the lyrics annotating the commodity relationships inside everyday desire with a precision no other rock band has matched. Hugo Burnham's drums and Dave Allen's bass lock together like machine components while Andy Gill's guitar attacks in sharp, percussive stabs; 'Damaged Goods' is the most concentrated expression of this, four minutes of controlled aggression set to a jagged riff. Its tension — between dancing and thinking, pleasure and critique — has never been resolved because the band deliberately refused to resolve it.")] },
   { id: 'nick-cave-and-the-bad-seeds', name: 'Nick Cave & The Bad Seeds', layer: 'post-punk', genres: ['post-punk', 'art-rock'], scope: V1, country: 'AU', activeFrom: 1983, signatureSong: 'Into My Arms',
     classicAlbums: [ca('let-love-in', 'Let Love In', 1994, "'Red Right Hand' opens with a churning organ figure that became one of rock's most recognizable riffs — menacing, hypnotic, and definitively Cave. The album marks the mature form of the Bad Seeds' sound: dark cabaret arrangements of obsession and violence, held together by Cave's baritone and Mick Harvey's precise orchestrations. It is the pivot in Cave's catalog, darker and more confrontational than what came before and the direct foundation for the literary murder-ballad phase that followed.")] },
-  { id: 'wire', name: 'Wire', layer: 'post-punk', genres: ['post-punk', 'art-rock'], scope: V1, country: 'UK', activeFrom: 1976, signatureSong: 'Three Girl Rhumba',
+  { id: 'wire', name: 'Wire', layer: 'post-punk', genres: ['punk', 'post-punk', 'art-rock'], scope: V1, country: 'UK', activeFrom: 1976, signatureSong: 'Three Girl Rhumba',
     classicAlbums: [ca('pink-flag', 'Pink Flag', 1977, "Twenty-one songs in thirty-five minutes, most of them stripped to a single riff or idea and cut off before they can repeat themselves — art-school minimalism disguised as a punk record. The band treated the album itself as a structural experiment, alternating full-throttle blasts with brief, dissonant fragments that function more like connective tissue than songs. 'Three Girl Rhumba' later resurfaced, note for note, as Elastica's 'Connection.' Its severity and economy became a direct blueprint for both American hardcore and the more cerebral wing of post-punk.")] },
   { id: 'the-birthday-party', name: 'The Birthday Party', layer: 'post-punk', genres: ['post-punk', 'goth'], scope: V1, country: 'AU', activeFrom: 1976, signatureSong: 'Release the Bats',
     classicAlbums: [ca('junkyard', 'Junkyard', 1982, "A feral, blues-damaged racket built around Rowland S. Howard's serrated slide guitar and a young Nick Cave's unhinged howl, more chaotic and more violent than anything the goth scene it partly spawned would attempt. Recorded amid the band's own disintegration, it channels that collapse directly into the performances — nothing here sounds rehearsed or safe. 'Release the Bats' turned camp horror-movie imagery into a genuine art-punk anthem, its title becoming shorthand for an entire aesthetic. The band split within a year of its release, leaving Junkyard as their most extreme and complete statement.")] },
@@ -271,7 +271,7 @@ const artists: Artist[] = [
   // ── Outside root (summoned by edges, not hand-added to a genre) ──
   { id: 'david-bowie', name: 'David Bowie', layer: 'outside', genres: ['art-rock', 'art-pop', 'electronic'], scope: V1, country: 'UK', activeFrom: 1969, signatureSong: 'Heroes',
     classicAlbums: [ca('ziggy-stardust', 'The Rise and Fall of Ziggy Stardust and the Spiders from Mars', 1972, "Mick Ronson's guitar — simultaneously orchestral (his string arrangements for 'Lady Stardust') and viscerally physical (the opening riff of 'Hang On to Yourself') — gives the album a range that Bowie's theatrical concept required but couldn't guarantee. 'Starman' is the moment that changed British pop culture: Bowie's Top of the Pops performance in June 1972 functions as a before/after marker for an entire generation's sense of what rock music could do or be. The concept — rock star as extraterrestrial — created the precedent for every subsequent pop persona, from Prince to Lady Gaga.")] },
-  { id: 'brian-eno', name: 'Brian Eno', layer: 'outside', genres: ['ambient', 'art-pop', 'electronic'], scope: ['underground'], realm: 'core', lineage: 'ambient-drone', country: 'GB', activeFrom: 1971, signatureSong: 'An Ending (Ascent)',
+  { id: 'brian-eno', name: 'Brian Eno', layer: 'outside', genres: ['ambient', 'art-pop', 'electronic'], scope: ['underground'], realm: 'core', country: 'GB', activeFrom: 1971, signatureSong: 'An Ending (Ascent)',
     bio: "Brian Eno is less a musician than a way of thinking about music, and few figures cast a longer shadow across everything Starweave maps. He arrived as the synthesizer-and-\"treatments\" provocateur in Roxy Music, then walked out after two albums to become something stranger and more consequential: the person who reframed the recording studio as an instrument and the producer as a composer. On Another Green World he entered the studio with nothing written, using his Oblique Strategies cards to build a record that turned from art-rock songcraft toward the minimalist instrumentals that would define ambient music — a genre he named and largely invented across Discreet Music and Music for Airports. As a producer he pushed Bowie, Talking Heads, Devo, and U2 out of their comfort zones. Nearly every artist here who values texture over technique, atmosphere over aggression, is drinking from a well Eno dug.",
     classicAlbums: [ca('another-green-world', 'Another Green World', 1975, "The hinge point of Eno's career: the record where he turned from the art-rock songcraft of his Roxy Music years toward the ambient minimalism he'd spend decades defining. Recorded with no material written in advance, it used the studio itself as the instrument — tape loops, treated guitars, Oblique Strategies prompts — to build sound that felt composed and improvised at once. It's the blueprint for nearly everything atmospheric that follows: the use of electronic texture to paint emotion and landscape, and the permission to let mood outweigh structure.")] },
   // ── Island two — electronic lineage (merged from data/island-two-data.ts) ──
@@ -782,7 +782,7 @@ const artists: Artist[] = [
     classicAlbums: [ca('goodbye-enemy-airship', 'Goodbye Enemy Airship the Landlord Is Dead', 2000, "Goodbye Enemy Airship the Landlord Is Dead builds its songs through shifting movements rather than any single build-and-release arc, horns and layered guitars trading the melodic lead as the compositions evolve. \"Classic Noodlanding\" moves through several distinct sections without ever feeling like separate songs stitched together, each part growing naturally out of the last. The denser, more populated arrangements set the band apart from the more austere, guitar-only post-rock of the same era. It's an album that rewards following its structure as much as its texture.")] },
 
   // -- no-wave --
-  { id: 'swans', name: 'Swans', layer: 'outside', genres: ['no-wave', 'noise-rock', 'industrial'], scope: ['underground'], activeFrom: 1982, realm: 'post-rock-drone-noise', lineage: 'no-wave',
+  { id: 'swans', name: 'Swans', layer: 'outside', genres: ['post-rock', 'no-wave', 'noise-rock', 'industrial'], scope: ['underground'], activeFrom: 1982, realm: 'post-rock-drone-noise', lineage: 'no-wave',
     signatureSong: 'Helpless Child',
     bio: "Swans formed in New York in 1982 out of the city's no wave scene, led from the start by Michael Gira and initially built around a sound of punishing repetition and volume — a wall of distorted guitar and pounding, mechanical drums that pushed physical extremity as far as a rock band could take it. Over the following decade the band's sound expanded considerably, incorporating found sound, drone, and increasingly the vocals of Jarboe, who joined as a full collaborator and co-writer, moving the band toward something more expansive and unsettling rather than simply loud.\n\nGira disbanded Swans in 1997 and spent the following decade recording primarily as Angels of Light, a quieter, largely acoustic project that continued his songwriting in a folk-adjacent register far removed from Swans' earlier extremity, before reviving the Swans name in 2010 with a new lineup and picking back up the band's exploration of volume, repetition, and duration on an even larger scale. Across both names, Gira's insistence on pursuing whatever direction the material demanded — however alienating or exhausting to make — has remained the connective thread.",
     classicAlbums: [ca('soundtracks-for-the-blind', 'Soundtracks for the Blind', 1996, "Soundtracks for the Blind is a sprawling, two-and-a-half-hour assemblage of songs, drones, spoken-word samples, and found sound, less a conventional album than an environment to be submerged in. \"Helpless Child\" rides a slow, menacing pulse while Michael Gira's vocal delivers something between a lullaby and a threat, Jarboe's presence throughout the record pulling the band's sound toward the eerie and the ritualistic rather than simply the loud. The album's scale and its refusal to resolve into anything comforting make it one of the most demanding records in the band's catalog. It marked the end of Swans' original run and stands as the fullest statement of everything the band had become since its no-wave beginnings.")] },
@@ -1363,7 +1363,7 @@ const edges: Edge[] = [
   inf('nico', 'velvet-underground', 0.9, 'verified', null, 'unsourceable'),
   inf('talking-heads', 'velvet-underground', 0.85, 'verified', "Byrne, in a 2013 Lou Reed tribute: Reed and the Velvet Underground were \"a big influence on myself and Talking Heads... a big reason I moved to New York.\"", undefined, 'first-person'),
   inf('talking-heads', 'the-stooges', 0.75, 'verified', "Desert Island Discs, BBC 2018: Byrne picks the Stooges' \"I Wanna Be Your Dog,\" saying the band came \"from somewhere you didn't know existed.\"", undefined, 'first-person'),
-  inf('talking-heads', 'ramones', 0.70, 'verified', "Same Desert Island Discs programme: Byrne recounts Johnny Ramone letting Talking Heads open for the Ramones at CBGB -- \"Sure, they're gonna suck, so no problem.\"", undefined, 'first-person'),
+  inf('talking-heads', 'ramones', 0.70, 'verified', "Byrne on BBC Desert Island Discs, recounting Johnny Ramone letting Talking Heads open for the Ramones at CBGB -- \"Sure, they're gonna suck, so no problem.\"", undefined, 'first-person'),
   inf('talking-heads', 'david-bowie', 0.70, 'verified', "Pitchfork: Bowie and the Velvet Underground \"provided his next steps\" for Byrne after the Byrds.", undefined, 'reported'),
 
   // post-punk -> roots / Bowie
@@ -1424,7 +1424,7 @@ const edges: Edge[] = [
   inf('parannoul', 'my-bloody-valentine', 0.8, 'verified', null, 'unsourceable'),
   inf('parannoul', 'fishmans', 0.7, 'verified', null, 'unsourceable'),
   inf('parannoul', 'sweet-trip', 0.85, 'verified', "Jellybones: \"as I became influenced by Takagi Masakatsu, Sufjan Stevens, and Sweet Trip, I wanted to put all my favorite things into one album.\"", undefined, 'first-person'),
-  inf('parannoul', 'sufjan-stevens', 0.85, 'verified', "Same Jellybones quote naming Takagi Masakatsu, Sufjan Stevens and Sweet Trip.", undefined, 'first-person'),
+  inf('parannoul', 'sufjan-stevens', 0.85, 'verified', "Jellybones: \"as I became influenced by Takagi Masakatsu, Sufjan Stevens, and Sweet Trip, I wanted to put all my favorite things into one album.\"", undefined, 'first-person'),
 
   // indie / alt bridge
   inf('pixies', 'velvet-underground', 0.70, 'verified', "Joey Santiago's earliest influences included the Velvet Underground.", undefined, 'reported'),
@@ -1434,7 +1434,7 @@ const edges: Edge[] = [
   inf('dinosaur-jr', 'husker-du', 0.85, 'verified', "J Mascis: \"our ambition was to tour like they did and sign to SST Records.\"", undefined, 'first-person'),
   inf('dinosaur-jr', 'sonic-youth', 0.70, 'verified', "Michael Azerrad describes Dinosaur Jr. coming off tour with \"their heroes, Sonic Youth,\" nearly in tears.", undefined, 'reported'),
   inf('dinosaur-jr', 'minutemen', 0.80, 'verified', "MOJO oral history, May 2021: J Mascis: \"We loved the Minutemen, Hüsker Dü and the Meat Puppets, and our ambition was to tour like they did and sign to SST Records.\"", undefined, 'first-person'),
-  inf('dinosaur-jr', 'neil-young', 0.80, 'verified', "Same MOJO oral history: Lou Barlow: \"J loved The Zombies and Neil Young.\"", undefined, 'first-person'),
+  inf('dinosaur-jr', 'neil-young', 0.80, 'verified', "MOJO's oral history of the band, Lou Barlow: \"J loved The Zombies and Neil Young.\"", undefined, 'first-person'),
   inf('husker-du', 'velvet-underground', 0.45, 'ai-suggested', null, 'unsourceable'),
   inf('the-replacements', 'big-star', 0.85, 'verified', "The song \"Alex Chilton\": \"I never travel far without a little Big Star.\"", undefined, 'first-person'),
   inf('the-replacements', 'ramones', 0.60, 'verified', "Paul Westerberg picked \"Judy Is a Punk\" in a 2004 radio interview -- a favorites-tier pick, not a stated influence claim.", undefined, 'first-person'),
@@ -1525,7 +1525,7 @@ const edges: Edge[] = [
   inf('nick-cave-and-the-bad-seeds', 'david-bowie', 0.85, 'verified', "Nick Cave told the German magazine Spex in 2013 that David Bowie was his idol, and that he owned all of Bowie's early albums along with the three Berlin records.", undefined, 'first-person'),
   inf('the-jesus-and-mary-chain', 'siouxsie-and-the-banshees', 0.65, 'verified', "Jim Reid on BBC Radio 6 Music (4 Mar 2012), naming a liking for Pink Floyd, Siouxsie and the Banshees, the Monkees and Muddy Waters -- stated as taste, separately from the band's cited early influences.", undefined, 'reported'),
   inf('the-jesus-and-mary-chain', 'the-birthday-party', 0.70, 'verified', "Rolling Stone: \"The bands that didn't make us want to puke back then were the likes of the Birthday Party or Echo and the Bunnymen.\"", undefined, 'first-person'),
-  inf('the-jesus-and-mary-chain', 'echo-and-the-bunnymen', 0.70, 'verified', "Same Rolling Stone quote naming the Birthday Party and Echo and the Bunnymen.", undefined, 'first-person'),
+  inf('the-jesus-and-mary-chain', 'echo-and-the-bunnymen', 0.70, 'verified', "Rolling Stone: \"The bands that didn't make us want to puke back then were the likes of the Birthday Party or Echo and the Bunnymen.\"", undefined, 'first-person'),
   inf('the-jesus-and-mary-chain', 'kraftwerk', 0.65, 'verified', "LA Times: their sound is where \"the Shangri-Las, the Velvet Underground, the Beach Boys, Kraftwerk and the Stooges harmoniously converged.\"", undefined, 'critic'),
   inf('cocteau-twins', 'joy-division', 0.65, 'verified', "Bill Prince, \"New 2 U: Cocteau Twins,\" Sounds (11 Sept 1982), describing the band as \"mixing strong Siouxsie and the Banshees and Joy Division influences\" -- a contemporary reviewer's reading rather than the band's own account.", undefined, 'critic'),
 
@@ -1604,8 +1604,8 @@ const edges: Edge[] = [
   inf('wolf-alice', 'siouxsie-and-the-banshees', 0.65, 'verified', "The Guardian's Wolf Alice webchat (11 Sept 2018), where the band name a liking for the Vines, the Beatles, the Band, Siouxsie and the Banshees, Blur and Courtney Love. Stated as taste rather than as influence.", undefined, 'reported'),
   inf('wolf-alice', 'blur', 0.65, 'verified', "The Guardian's Wolf Alice webchat (11 Sept 2018), same answer naming Siouxsie and the Banshees, Blur and Courtney Love among the band's likes. Stated as taste rather than as influence.", undefined, 'reported'),
   inf('sweet-trip', 'slowdive', 0.80, 'verified', "Sonemic interview, Dec 2020 -- Roberto Burgos and Valerie Cooper listing their own influences: Aphex Twin, My Bloody Valentine, Slowdive, Sonic Youth.", undefined, 'first-person'),
-  inf('sweet-trip', 'sonic-youth', 0.80, 'verified', "Same Sonemic interview, Dec 2020, listing their own influences.", undefined, 'first-person'),
-  inf('sweet-trip', 'aphex-twin', 0.80, 'verified', "Same Sonemic interview, Dec 2020, listing their own influences.", undefined, 'first-person'),
+  inf('sweet-trip', 'sonic-youth', 0.80, 'verified', "Sonemic interview, Dec 2020 -- Roberto Burgos and Valerie Cooper listing their own influences: Aphex Twin, My Bloody Valentine, Slowdive, Sonic Youth.", undefined, 'first-person'),
+  inf('sweet-trip', 'aphex-twin', 0.80, 'verified', "Sonemic interview, Dec 2020 -- Roberto Burgos and Valerie Cooper listing their own influences: Aphex Twin, My Bloody Valentine, Slowdive, Sonic Youth.", undefined, 'first-person'),
   inf('sweet-trip', 'broadcast', 0.65, 'verified', "Jesse Taconelli, \"Sonemic Interview: Sweet Trip\" (20 Dec 2020), in which Roberto Burgos and Valerie Cooper list their own inspirations: Aphex Twin, My Bloody Valentine, Slowdive, Sonic Youth, Broadcast, Cocteau Twins, Pale Saints and others.", undefined, 'first-person'),
 
   // ── Indie / alt-rock bridge ──
@@ -1613,9 +1613,9 @@ const edges: Edge[] = [
   inf('pixies', 'rem', 0.65, 'verified', "Black Francis to Scott Pelley, The Guardian (2022), calling R.E.M. \"hugely influential\" on his songwriting in the period before Come On Pilgrim.", undefined, 'first-person'),
   inf('pixies', 'david-bowie', 0.70, 'verified', "Music Museum of New England: Joey Santiago says his earliest influences were the Velvet Underground, Les Paul, Wes Montgomery and David Bowie.", undefined, 'reported'),
   inf('pixies', 'violent-femmes', 0.70, 'verified', "Music Museum of New England: Black Francis and Santiago \"together soaked up albums by Violent Femmes, Talking Heads, Hüsker Dü, The Jesus & Mary Chain, Black Flag\" and others while watching films like Eraserhead.", undefined, 'reported'),
-  inf('pixies', 'talking-heads', 0.70, 'verified', "Same Music Museum of New England account of Francis and Santiago's shared listening.", undefined, 'reported'),
-  inf('pixies', 'the-jesus-and-mary-chain', 0.70, 'verified', "Same Music Museum of New England account of Francis and Santiago's shared listening.", undefined, 'reported'),
-  inf('pixies', 'black-flag', 0.70, 'verified', "Same Music Museum of New England account of Francis and Santiago's shared listening.", undefined, 'reported'),
+  inf('pixies', 'talking-heads', 0.70, 'verified', "The Music Museum of New England's account of Black Francis and Joey Santiago's shared listening, which names Talking Heads.", undefined, 'reported'),
+  inf('pixies', 'the-jesus-and-mary-chain', 0.70, 'verified', "The Music Museum of New England's account of Black Francis and Joey Santiago's shared listening, which names the Jesus and Mary Chain.", undefined, 'reported'),
+  inf('pixies', 'black-flag', 0.70, 'verified', "The Music Museum of New England's account of Black Francis and Joey Santiago's shared listening, which names Black Flag.", undefined, 'reported'),
   inf('pixies', 'gang-of-four', 0.65, 'verified', "Ben Sisario, Doolittle (33 1/3 series, 2006), p.128, on Kim Deal's listening: the artists she took in included XTC, Gang of Four and Elvis Costello.", undefined, 'reported'),
   inf('sonic-youth', 'minor-threat', 0.65, 'verified', "Michael Azerrad, Our Band Could Be Your Life (2001), p.273: after seeing Minor Threat play in May 1982, Thurston Moore called them \"the greatest live band I have ever seen.\" Praise for them as a live act, alongside the band's broader turn toward hardcore.", undefined, 'first-person'),
   inf('dinosaur-jr', 'the-replacements', 0.65, 'verified', "Michael Azerrad, Our Band Could Be Your Life (2001), p.350, on what the band moved toward after high school: slower but still aggressive music -- Black Sabbath, the Replacements and Neil Young.", undefined, 'reported'),
@@ -1718,7 +1718,7 @@ const edges: Edge[] = [
   inf("autechre", "kraftwerk", 0.8, 'verified', "Sean Booth, Index Magazine: \"When I was first getting spun out by music, it was things like K-Rob, Kraftwerk's 'Tour de France'... and stuff like Jonzun Crew.\"", undefined, 'first-person'),
   inf("autechre", "boards-of-canada", 0.6, 'verified', "A 1996 copy of BoC's Twoism reached Sean Booth, who championed the duo to Skam Records; Booth supplied a numbers-station recording used on BoC's \"Gyroscope\"; BoC recorded an unreleased cover of Autechre's \"Cichli.\"", undefined, 'reported'),
   inf("boards-of-canada", "my-bloody-valentine", 0.75, 'verified', "Pitchfork interview (2005): \"even if we don't sound like them, there's a connection in terms of the approach to music.\"", undefined, 'first-person'),
-  inf("boards-of-canada", "autechre", 0.6, 'verified', "Same documented history: a 1996 copy of BoC's Twoism reached Sean Booth, who championed the duo to Skam Records; Booth supplied a numbers-station recording for BoC's \"Gyroscope\"; BoC recorded an unreleased cover of Autechre's \"Cichli.\"", undefined, 'reported'),
+  inf("boards-of-canada", "autechre", 0.6, 'verified', "A 1996 copy of Boards of Canada's Twoism reached Sean Booth, who championed the duo to Skam Records; Booth supplied a numbers-station recording for \"Gyroscope,\" and Boards of Canada recorded an unreleased cover of Autechre's \"Cichli.\"", undefined, 'reported'),
   inf("squarepusher", "aphex-twin", 0.85, 'verified', "Tom Jenkinson, Furious.com interview, asked if he'd learned from Aphex Twin: \"Absolutely. He's one of my major influences, I'd say. Harmonically yes but also in his approach and his attitude.\"", undefined, 'first-person'),
   inf("aphex-twin", "can", 0.55, 'verified', "Simon Reynolds (1993): Richard D. James had \"recently explored avant-classical and left-field rock artists including Cage, Stockhausen, Eno, Steve Reich, Terry Riley, and Can.\"", undefined, 'critic'),
   inf("oneohtrix-point-never", "my-bloody-valentine", 0.85, 'verified', "Daniel Lopatin, RBMA Daily (2011): \"I don't think that there is a record that I've listened to more often... [Loveless] has like a really big effect on me musically... every time I start recording a new record, I listen to Loveless.\" Reiterated in The Quietus's Baker's Dozen (2018), naming it his favorite record of all time.", undefined, 'first-person'),
@@ -1727,70 +1727,70 @@ const edges: Edge[] = [
   inf("talking-heads", "brian-eno", 0.7, 'verified', "Eno produced Talking Heads' Remain in Light (1980), his third and final production with the band, and introduced them to Fela Kuti's influence during sessions (Wikipedia/Far Out Magazine).", undefined, 'reported'),
   inf("slowdive", "brian-eno", 0.65, 'verified', "Slowdive contacted Eno (Neil Halstead \"a big fan\") to produce Souvlaki; he declined to produce but recorded synth on \"Sing\" and \"Here She Comes\" (Wikipedia/Souvlaki reissue press; KEXP's 2018 Rachel Goswell retrospective).", undefined, 'reported'),
   inf("tim-hecker", "ride", 0.8, 'verified', "Tim Hecker, RBMA lecture: \"I was faking driver's license IDs so I could get into clubs to see bands like Ride or My Bloody Valentine play,\" describing his teenage years in Vancouver.", undefined, 'first-person'),
-  inf("tim-hecker", "my-bloody-valentine", 0.8, 'verified', "Same RBMA quote as the Ride edge; corroborated by The Dowsers' \"Tim Hecker: Influences\" profile.", undefined, 'first-person'),
+  inf("tim-hecker", "my-bloody-valentine", 0.8, 'verified', "Tim Hecker, RBMA lecture: \"I was faking driver's license IDs so I could get into clubs to see bands like Ride or My Bloody Valentine play,\" describing his teenage years in Vancouver; corroborated by The Dowsers' \"Tim Hecker: Influences\" profile.", undefined, 'first-person'),
   inf("tim-hecker", "brian-eno", 0.4, 'verified', "The Dowsers describes Hecker's early work as fusing \"the dry, pulsating rhythms of techno with the bare minimalism of Brian Eno\" (journalistic characterization, not a first-person quote); Hecker has also spoken (Spin, 2019) about deliberately positioning his music against Eno's own definition of ambient.", undefined, 'critic'),
   inf("stars-of-the-lid", "brian-eno", 0.6, 'verified', "Far Out Magazine lists Brian Eno among primary influences alongside Talk Talk and Arvo Pärt; corroborated by \"Stars of the Lid's Brian McBride in his own words\" (In Sheeps Clothing), describing the duo connecting via Kranky Records with \"a community... inspired by the work of Eno, Jon Hassell...\"", undefined, 'reported'),
   inf("grouper", "this-mortal-coil", 0.75, 'verified', "Liz Harris named It'll End in Tears among her five favorite albums of all time (Digital in Berlin interview).", undefined, 'first-person'),
-  inf("grouper", "siouxsie-and-the-banshees", 0.75, 'verified', "Same Digital in Berlin interview: Liz Harris names Juju among her five favorite albums of all time.", undefined, 'first-person'),
+  inf("grouper", "siouxsie-and-the-banshees", 0.75, 'verified', "Digital in Berlin interview: Liz Harris names Juju among her five favourite albums of all time.", undefined, 'first-person'),
   inf("lcd-soundsystem", "can", 0.85, 'verified', "James Murphy, RBMA lecture: \"When I found Can I was in heaven 'cause they were just like, 'Here's this for 30 minutes.'\"", undefined, 'first-person'),
   inf("lcd-soundsystem", "gang-of-four", 0.8, 'verified', "James Murphy, same RBMA lecture: \"later on I got into like Gang Of Four and stuff like that.\"", undefined, 'first-person'),
   inf("lcd-soundsystem", "david-bowie", 0.75, 'verified', "Murphy to Rolling Stone, cited \"the B-52's, the Fall, Yes, David Bowie and Can\" (via LCD Soundsystem Wikipedia).", undefined, 'first-person'),
   inf("lcd-soundsystem", "talking-heads", 0.7, 'verified', "Grammy.com: \"Their influences -- ESG, Loose Joints, David Bowie, Talking Heads, CAN, Daft Punk, Kraftwerk.\"", undefined, 'reported'),
-  inf("lcd-soundsystem", "kraftwerk", 0.7, 'verified', "Same Grammy.com list; Far Out Magazine notes direct sonic homages (\"Get Innocuous!\" nods to \"The Robots\").", undefined, 'reported'),
+  inf("lcd-soundsystem", "kraftwerk", 0.7, 'verified', "Grammy.com's list of Murphy's touchstones; Far Out Magazine notes direct sonic homages (\"Get Innocuous!\" nods to \"The Robots\").", undefined, 'reported'),
   inf("lcd-soundsystem", "the-smiths", 0.65, 'verified', "Wikipedia (James Murphy page): named \"OMD, Bronski Beat and the Smiths as childhood favorites.\"", undefined, 'reported'),
   inf("lcd-soundsystem", "omd", 0.65, 'verified', "Wikipedia (James Murphy page), same source: named \"OMD, Bronski Beat and the Smiths as childhood favorites.\"", undefined, 'reported'),
   inf("hot-chip", "omd", 0.65, 'verified', "Wikipedia, cited to The Guardian: the band has paid \"homage\" to OMD.", undefined, 'reported'),
   inf("hot-chip", "four-tet", 0.4, 'verified', "Multiple pieces on London's Elliott School describe Joe Goddard and Alexis Taylor meeting schoolmate Kieran Hebden (Four Tet) there in the early '90s and finding a mentor in him; the primary source article (Public Pressure magazine) could not be directly re-fetched.", undefined, 'critic'),
   inf("the-postal-service", "kraftwerk", 0.85, 'verified', "Ben Gibbard, SPIN (Aug 2024): \"I grew up a huge Depeche Mode fan, a huge Kraftwerk fan... New Order.\"", undefined, 'first-person'),
-  inf("the-postal-service", "new-order", 0.8, 'verified', "Same SPIN quote from Ben Gibbard, naming New Order alongside Kraftwerk and Depeche Mode.", undefined, 'first-person'),
-  inf("the-postal-service", "depeche-mode", 0.8, 'verified', "Same SPIN quote from Ben Gibbard; corroborated by Jimmy Tamborello (XLR8R \"Rewind\"), whose side project Figurine's aesthetic came from \"love for bands like Kraftwerk and Depeche Mode.\"", undefined, 'first-person'),
+  inf("the-postal-service", "new-order", 0.8, 'verified', "SPIN, Ben Gibbard naming New Order alongside Kraftwerk and Depeche Mode.", undefined, 'first-person'),
+  inf("the-postal-service", "depeche-mode", 0.8, 'verified', "SPIN, Ben Gibbard naming Depeche Mode alongside Kraftwerk and New Order; corroborated by Jimmy Tamborello (XLR8R \"Rewind\"), whose side project Figurine's aesthetic came from \"love for bands like Kraftwerk and Depeche Mode.\"", undefined, 'first-person'),
   inf("the-postal-service", "the-human-league", 0.65, 'verified', "Wikipedia (Give Up album page): \"Nothing Better\" was \"directly inspired by the Human League's 'Don't You Want Me.'\"", undefined, 'reported'),
   inf("four-tet", "aphex-twin", 0.55, 'verified', "Kieran Hebden (2011 interview, Medium/MJ O'Neill) calls Aphex Twin's \"Windowlicker\" \"truly experimental and truly kind of natural and human at the same time\"; corroborated by his 1999 Aphex Twin remix (Warp compilation), widely described as his career breakout.", undefined, 'reported'),
   inf("caribou", "boards-of-canada", 0.8, 'verified', "Dan Snaith, RBMA Daily (\"Caribou on Singing, Love, and Vangelis,\" 2014): \"The first record that I made as Manitoba... was trying to sound like late '90s, early '00s Warp. It was influenced by Boards of Canada and Aphex Twin.\"", undefined, 'first-person'),
-  inf("caribou", "aphex-twin", 0.8, 'verified', "Same RBMA Daily quote from Dan Snaith, naming Aphex Twin alongside Boards of Canada.", undefined, 'first-person'),
+  inf("caribou", "aphex-twin", 0.8, 'verified', "RBMA Daily, Dan Snaith naming Aphex Twin alongside Boards of Canada.", undefined, 'first-person'),
   inf("the-rapture", "gang-of-four", 0.65, 'verified', "Wikipedia (\"House of Jealous Lovers\"): the song \"follows British predecessors such as Gang of Four, Public Image Ltd, and Happy Mondays\"; corroborated by Rolling Stone Australia's retrospective (\"ornery Gang of Four-style guitar slashing\") and the band covering \"Damaged Goods\" live.", undefined, 'reported'),
   inf("the-rapture", "joy-division", 0.6, 'verified', "Wikipedia, citing Stylus Magazine's review: \"nobody's been able to pull this off so well since Joy Division.\"", undefined, 'critic'),
   inf("chk-chk-chk", "depeche-mode", 0.6, 'verified', "Wikipedia: \"Offer has cited Depeche Mode and Orchestral Manoeuvres in the Dark (OMD) as influences.\"", undefined, 'reported'),
   inf("chk-chk-chk", "omd", 0.6, 'verified', "Wikipedia, same citation: \"Offer has cited Depeche Mode and Orchestral Manoeuvres in the Dark (OMD) as influences.\"", undefined, 'reported'),
   inf("portishead", "massive-attack", 0.8, 'verified', "Geoff Barrow's own account (Mojo, 1999) of working as tape-op on Massive Attack's Blue Lines sessions in 1991; Massive Attack gave him spare studio time to develop his own ideas, directly leading to Portishead's formation. Corroborated by Far Out Magazine and Paste's Dummy at 30 retrospective.", undefined, 'first-person'),
   inf("portishead", "joy-division", 0.65, 'verified', "Dave Simpson, The Guardian (2008): the band were \"haunted by the angry post-punk of Joy Division and Siouxsie and the Banshees.\"", undefined, 'reported'),
-  inf("portishead", "siouxsie-and-the-banshees", 0.65, 'verified', "Same Guardian (2008) citation as the Joy Division edge.", undefined, 'reported'),
+  inf("portishead", "siouxsie-and-the-banshees", 0.65, 'verified', "Dave Simpson, The Guardian (2008): the band were \"haunted by the angry post-punk of Joy Division and Siouxsie and the Banshees.\"", undefined, 'reported'),
   inf("tricky", "massive-attack", 0.8, 'verified', "Tricky joined The Wild Bunch sound system in the mid-1980s, which evolved into Massive Attack by 1987; he rapped on Blue Lines (1991) and Protection (1994) before going solo -- a formative apprenticeship, widely documented (Wikipedia; corroborated by NME's Maxinquaye retrospective).", undefined, 'first-person'),
   inf("tricky", "siouxsie-and-the-banshees", 0.65, 'verified', "Toby Manning, The Quietus (\"The Vanishing Twin: Tricky's Nearly God Turns 30\"): Siouxsie and the Banshees' \"Tattoo\" is \"proto trip hop\" that \"helped Tricky to shape his style\"; he covered it as the opening track of Nearly God (1996).", undefined, 'reported'),
   inf("sophie", "depeche-mode", 0.75, 'verified', "SOPHIE, The Face (2017), singled out \"Just Can't Get Enough\" (1981) as formative: it \"established one part of the sound of the decade that followed,\" calling it \"an amazing achievement.\"", undefined, 'first-person'),
   inf("sophie", "aphex-twin", 0.6, 'verified', "Morning Star's review of a Meltdown-era live set described her as \"borrowing equally from the jarring beats of Warp acts like Aphex Twin and Autechre to the mellifluous harmonies of a Madonna vocal.\"", undefined, 'critic'),
-  inf("sophie", "autechre", 0.6, 'verified', "Same Morning Star review as the Aphex Twin edge.", undefined, 'critic'),
+  inf("sophie", "autechre", 0.6, 'verified', "Morning Star's review of a Meltdown-era live set described her as \"borrowing equally from the jarring beats of Warp acts like Aphex Twin and Autechre to the mellifluous harmonies of a Madonna vocal.\"", undefined, 'critic'),
   inf("a-g-cook", "sophie", 0.75, 'verified', "A.G. Cook, Line of Best Fit (2024, around Britpop): \"I actually see her fingerprints as much on 'Silver Thread Golden Needle' and a lot of the instrumental tracks as I do on something like 'Without.'\"", undefined, 'first-person'),
   inf("charli-xcx", "sophie", 0.85, 'verified', "2025 BRIT Awards Best Dance Act speech (widely reported, incl. NME): \"And of course, someone who none of us would be up here without: SOPHIE.\"", undefined, 'first-person'),
-  inf("charli-xcx", "arca", 0.75, 'verified', "Same 2025 BRIT Awards speech: \"Shout out to Justice, Daft Punk, Sebastian, Honey Dijon, Robyn, Arca, M.I.A., Autechre, Aphex Twin.\" (single-source, all four Charli edges trace to this one speech)", undefined, 'first-person'),
-  inf("charli-xcx", "autechre", 0.75, 'verified', "Same 2025 BRIT Awards speech (single-source, all four Charli edges trace to this one speech).", undefined, 'first-person'),
-  inf("charli-xcx", "aphex-twin", 0.75, 'verified', "Same 2025 BRIT Awards speech (single-source, all four Charli edges trace to this one speech).", undefined, 'first-person'),
+  inf("charli-xcx", "arca", 0.75, 'verified', "Charli XCX's 2025 BRIT Awards speech: \"Shout out to Justice, Daft Punk, Sebastian, Honey Dijon, Robyn, Arca, M.I.A., Autechre, Aphex Twin.\"", undefined, 'first-person'),
+  inf("charli-xcx", "autechre", 0.75, 'verified', "Charli XCX's 2025 BRIT Awards speech, naming Autechre: \"Shout out to Justice, Daft Punk, Sebastian, Honey Dijon, Robyn, Arca, M.I.A., Autechre, Aphex Twin.\"", undefined, 'first-person'),
+  inf("charli-xcx", "aphex-twin", 0.75, 'verified', "Charli XCX's 2025 BRIT Awards speech, naming Aphex Twin: \"Shout out to Justice, Daft Punk, Sebastian, Honey Dijon, Robyn, Arca, M.I.A., Autechre, Aphex Twin.\"", undefined, 'first-person'),
   inf("arca", "aphex-twin", 0.8, 'verified', "FADER's \"Arca Finds Xen\" (2014): her teenage project Nuuro consisted of \"glitchy, Aphex Twin-inspired beat compositions\"; GRAMMY.com quote: \"I have a brother seven years older... He had a lot of Aphex Twin, Squarepusher.\"", undefined, 'first-person'),
-  inf("arca", "squarepusher", 0.75, 'verified', "Same GRAMMY.com quote as the Aphex Twin edge: \"I have a brother seven years older... He had a lot of Aphex Twin, Squarepusher.\"", undefined, 'first-person'),
-  inf("arca", "autechre", 0.75, 'verified', "Same FADER 2014 piece: \"Aided partly by his older brother's CD collection, he went through a series of musical obsessions... Aaliyah, Autechre, Nine Inch Nails, Marilyn Manson.\"", undefined, 'first-person'),
+  inf("arca", "squarepusher", 0.75, 'verified', "GRAMMY.com, Arca on her teenage listening: \"I have a brother seven years older... He had a lot of Aphex Twin, Squarepusher.\"", undefined, 'first-person'),
+  inf("arca", "autechre", 0.75, 'verified', "FADER (2014): \"Aided partly by his older brother's CD collection, he went through a series of musical obsessions... Aaliyah, Autechre, Nine Inch Nails, Marilyn Manson.\"", undefined, 'first-person'),
   inf("caroline-polachek", "david-bowie", 0.75, 'verified', "Into The Gloss (2016): \"I can't help but think of David Bowie -- I love the photos of him doing his own makeup because it's clear how much vision he had.\"", undefined, 'first-person'),
   inf("caroline-polachek", "cocteau-twins", 0.8, 'verified', "Interview magazine (2019) named her dream collaborator as \"early '90s Cocteau Twins\"; FADER (Oct 2019) has her describing Elizabeth Fraser at length: \"Cocteau Twins to me feels like a whole kind of storm cloud, but at the end of the day, they're human beings.\"", undefined, 'first-person'),
   inf("underscores", "jane-remover", 0.75, 'verified', "NME profile (on U): \"she reels off Jane Remover, 2hollis and Osamason as equally inspiring as Brandy, Britney Spears and Justin Timberlake while making 'U'.\"", undefined, 'first-person'),
   // underscores -> 100-gecs: see the cleaner, better-sourced Wikipedia citation elsewhere in this
   // file (this entry's own citation had leaked unresolved sourcing notes rather than reader-facing text).
   inf("jane-remover", "my-bloody-valentine", 0.55, 'verified', "Pitchfork's review of Census Designated (Kieran Press-Reynolds) compared her shift toward \"a blend of shoegaze and bedroom pop\" directly to My Bloody Valentine and Slowdive.", undefined, 'critic'),
-  inf("jane-remover", "slowdive", 0.55, 'verified', "Same Pitchfork review as the My Bloody Valentine edge.", undefined, 'critic'),
-  inf("jane-remover", "yeule", 0.5, 'verified', "Same Pitchfork review of Census Designated.", undefined, 'critic'),
+  inf("jane-remover", "slowdive", 0.55, 'verified', "Pitchfork's review of Census Designated (Kieran Press-Reynolds) compared her shift toward \"a blend of shoegaze and bedroom pop\" directly to My Bloody Valentine and Slowdive.", undefined, 'critic'),
+  inf("jane-remover", "yeule", 0.5, 'verified', "Pitchfork's review of Census Designated (Kieran Press-Reynolds).", undefined, 'critic'),
   inf("jane-remover", "porter-robinson", 0.55, 'verified', "Stereogum (Ian Cohen), introducing a Q&A on her debut Frailty: her songs are \"rooted just enough in familiar formats -- the saturated, EDM-adjacent ultrapop of Porter Robinson; SoundCloud rap's glitchy, bitcrushed production; the cleansing catharsis of emo.\"", undefined, 'critic'),
   inf("oklou", "arca", 0.7, 'verified', "I-D magazine interview (around Galore): Oklou called Arca \"the REAL star of current experimental music.\"", undefined, 'first-person'),
   inf("ninajirachi", "porter-robinson", 0.8, 'verified', "MusicTech interview: she has a tattoo of his logo, and describes \"the emotion I was drawn to [early on]... the contrast of the emotion and gorgeous chord progressions with the really, like, disgusting sound design.\" Bandcamp Daily profile adds that seeing his production at Second Sky festival \"gave her a vision for making big music.\"", undefined, 'first-person'),
-  inf("ninajirachi", "sophie", 0.75, 'verified', "Same MusicTech piece, invoking \"another of her musical heroes, SOPHIE, who manipulated technology to bold and thrilling effect.\"", undefined, 'first-person'),
+  inf("ninajirachi", "sophie", 0.75, 'verified', "MusicTech, invoking \"another of her musical heroes, SOPHIE, who manipulated technology to bold and thrilling effect.\"", undefined, 'first-person'),
   inf("yeule", "aphex-twin", 0.75, 'verified', "FLOOD Magazine (Oct 2023, on softscars): names Aphex Twin and Suzanne Ciani as inspirations: \"They're not doing music by the book, they're doing it by the feeling.\"", undefined, 'first-person'),
   inf("yeule", "pixies", 0.6, 'verified', "DIY Magazine (Sept 2023): \"Oh we should totally do some Pixies shit, or Smashing Pumpkins!\"", undefined, 'reported'),
-  inf("yeule", "radiohead", 0.6, 'verified', "Same DIY Magazine interview, Radiohead named in the same cluster of '90s/2000s references.", undefined, 'reported'),
+  inf("yeule", "radiohead", 0.6, 'verified', "DIY Magazine (Sept 2023), naming Radiohead among a cluster of '90s and 2000s reference points.", undefined, 'reported'),
   inf("porter-robinson", "aphex-twin", 0.8, 'verified', "FADER (2018, on Virtual Self): described trying to recreate \"what electronic music sounded like when I was 12 years old, just typing the word 'techno' into Limewire and downloading horribly mislabeled songs by Aphex Twin and other artists.\"", undefined, 'first-person'),
   inf("porter-robinson", "boards-of-canada", 0.45, 'verified', "Spin's Garrett Kamps, reviewing Worlds, \"identified melodic similarities with Boards of Canada.\"", undefined, 'critic'),
   // caroline-polachek -> bjork, underscores -> imogen-heap, and caroline-polachek -> imogen-heap:
   // see the cited/unsourceable versions of these same edges elsewhere in this file (these were
   // uncited placeholder stubs for the same three pairs).
   inf("radiohead", "faust", 0.65, 'verified', "Wikipedia/Faust: \"cited as an influence by Radiohead, Swell Maps, Throbbing Gristle, Cabaret Voltaire, Stereolab, Simple Minds, Sonic Youth, Mark E. Smith, Nurse with Wound and Madlib.\"", undefined, 'reported'),
-  inf("sonic-youth", "faust", 0.6, 'verified', "Same Wikipedia/Faust sentence as the Radiohead edge.", undefined, 'reported'),
-  inf("cabaret-voltaire", "faust", 0.6, 'verified', "Same Wikipedia/Faust sentence as the Radiohead edge.", undefined, 'reported'),
+  inf("sonic-youth", "faust", 0.6, 'verified', "Wikipedia's Faust page lists the band as \"cited as an influence by Radiohead, Swell Maps, Throbbing Gristle, Cabaret Voltaire, Stereolab, Simple Minds, Sonic Youth, Mark E. Smith, Nurse with Wound and Madlib.\"", undefined, 'reported'),
+  inf("cabaret-voltaire", "faust", 0.6, 'verified', "Wikipedia's Faust page lists the band as \"cited as an influence by Radiohead, Swell Maps, Throbbing Gristle, Cabaret Voltaire, Stereolab, Simple Minds, Sonic Youth, Mark E. Smith, Nurse with Wound and Madlib.\"", undefined, 'reported'),
   // new-order -> sparks: see the stronger, already-cited version of this edge earlier in this file
   // (a named Peter Hook quote naming Sparks alongside Kraftwerk and Moroder on "Blue Monday").
   inf("depeche-mode", "sparks", 0.65, 'verified', "Depeche Mode Wikipedia: Gore \"was a fan of glam, early Human League and Sparks\"; separately, Vince Clarke's early influences \"included Sparks, Paul Simon, and OMD.\"", undefined, 'reported'),
@@ -1842,7 +1842,7 @@ const edges: Edge[] = [
   inf('bright-eyes', 'joni-mitchell', 0.85, 'verified', "The same Life of the Record podcast names Joni Mitchell; Mel Magazine reported in October 2020 that Conor Oberst said the record deliberately went for a 1970s folk sound \"like Jackson Browne, Joni Mitchell or Neil Young,\" recorded to tape.", undefined, 'first-person'),
   inf('bjork', 'joni-mitchell', 0.85, 'verified', "Björk's own site: \"I was around fourteen, fifteen and I knew it by heart.\"", undefined, 'first-person'),
   inf('bjork', 'nico', 0.75, 'verified', "Far Out, on Björk's own published list of favorite albums, which includes Nico alongside Kate Bush and Joni Mitchell.", undefined, 'first-person'),
-  inf('bjork', 'aphex-twin', 0.75, 'verified', "Same Far Out account of Björk's own published favorites list, which includes Aphex Twin.", undefined, 'first-person'),
+  inf('bjork', 'aphex-twin', 0.75, 'verified', "Far Out's account of Bjork's own published favourites list, which includes Aphex Twin.", undefined, 'first-person'),
   inf('david-bowie', 'joni-mitchell', 0.5, 'verified', null, 'unsourceable'),
   inf('phoebe-bridgers', 'bright-eyes', 0.85, 'verified', "Billboard reported that Bright Eyes's I'm Wide Awake, It's Morning influenced Phoebe Bridgers's song \"Graceland Too.\"", undefined, 'first-person'),
   inf('the-smiths', 'bert-jansch', 0.75, 'verified', "Guitar Player wrote on Johnny Marr's folk stylings, listing Bert Jansch first among his named guitarist influences.", undefined, 'reported'),
@@ -1943,9 +1943,9 @@ const edges: Edge[] = [
   // her first two albums, which is personnel, not influence.
   inf('cat-power', 'velvet-underground', 0.85, 'verified', "Chan Marshall, CityBeat: \"I think the Velvet Underground in general was a huge influence on me.\"", undefined, 'first-person'),
   inf('cat-power', 'the-replacements', 0.85, 'verified', "CityBeat: Marshall saw the Replacements in high school and watched Paul Westerberg come out alone at the end to sing \"Answering Machine,\" throwing his guitar off his body and running -- \"It impacted me so much.\" She later covered the song on Covers.", undefined, 'first-person'),
-  inf('cat-power', 'nico', 0.75, 'verified', "Same CityBeat interview: Marshall on Nico breaking the mold as a female icon -- \"That European classical way of singing... is very influential.\"", undefined, 'first-person'),
+  inf('cat-power', 'nico', 0.75, 'verified', "CityBeat interview: Marshall on Nico breaking the mould as a female icon -- \"That European classical way of singing... is very influential.\"", undefined, 'first-person'),
   inf('cat-power', 'siouxsie-and-the-banshees', 0.65, 'verified', "AllMusic's prose bio: in her teens Marshall listened to Siouxsie and the Cure.", undefined, 'reported'),
-  inf('cat-power', 'the-cure', 0.65, 'verified', "Same AllMusic prose bio, on her teenage listening to Siouxsie and the Cure.", undefined, 'reported'),
+  inf('cat-power', 'the-cure', 0.65, 'verified', "AllMusic's prose biography, on her teenage listening to Siouxsie and the Cure.", undefined, 'reported'),
 
   // -- slowcore --
   inf('red-house-painters', 'this-mortal-coil', 0.5, 'verified', null, 'unsourceable'),
@@ -2174,10 +2174,10 @@ const edges: Edge[] = [
   inf('sonic-youth', 'rhys-chatham', 0.85, 'verified', "Sonic Youth's own Wikipedia bio names its \"major influences\" as including, verbatim, \"the Velvet Underground, the Stooges, MC5, Glenn Branca, Rhys Chatham, Ornette Coleman...\"", undefined, 'reported'),
   inf('teenage-jesus-and-the-jerks', 'mars', 0.75, 'verified', "Wikipedia: Lydia Lunch \"was spurred to start a band after seeing one of Mars' earlier performances.\"", undefined, 'reported'),
   inf('sonic-youth', 'new-york-dolls', 0.75, 'verified', "Red Bull Music Academy's account of Thurston Moore's teenage trips from Connecticut to New York in the mid-70s names the New York Dolls and the Dictators as the must-see bands of that scene.", undefined, 'reported'),
-  inf('sonic-youth', 'teenage-jesus-and-the-jerks', 0.75, 'verified', "Same RBMA account of Moore's early New York years, naming the young no-wave groups Teenage Jesus and the Jerks, James Chance and the Contortions, Mars and DNA.", undefined, 'reported'),
-  inf('sonic-youth', 'james-chance-and-the-contortions', 0.75, 'verified', "Same RBMA account of Moore's early New York years, naming James Chance and the Contortions alongside Teenage Jesus and the Jerks, Mars and DNA.", undefined, 'reported'),
+  inf('sonic-youth', 'teenage-jesus-and-the-jerks', 0.75, 'verified', "RBMA's account of Thurston Moore's early New York years, naming the young no-wave groups Teenage Jesus and the Jerks, James Chance and the Contortions, Mars and DNA.", undefined, 'reported'),
+  inf('sonic-youth', 'james-chance-and-the-contortions', 0.75, 'verified', "RBMA's account of Thurston Moore's early New York years, naming James Chance and the Contortions alongside Teenage Jesus and the Jerks, Mars and DNA.", undefined, 'reported'),
   inf('sonic-youth', 'mars', 0.75, 'verified', "Red Bull Music Academy's account of Thurston Moore's early New York years names Mars among the no-wave groups that shaped Sonic Youth's sound, alongside Teenage Jesus and the Jerks, James Chance and the Contortions and DNA.", undefined, 'reported'),
-  inf('sonic-youth', 'dna', 0.75, 'verified', "Same RBMA account of Moore's early New York years, naming DNA alongside Teenage Jesus and the Jerks, James Chance and the Contortions and Mars.", undefined, 'reported'),
+  inf('sonic-youth', 'dna', 0.75, 'verified', "RBMA's account of Thurston Moore's early New York years, naming DNA alongside Teenage Jesus and the Jerks, James Chance and the Contortions and Mars.", undefined, 'reported'),
   inf('blonde-redhead', 'dna', 0.85, 'verified', "Band took its name directly from DNA's song \"Blonde Redhead\" (A Taste of DNA EP, 1981) -- a direct, well-documented factual naming.", undefined, 'reported'),
   inf('blonde-redhead', 'sonic-youth', 0.75, 'verified', "Kazu Makino has cited Sonic Youth as a key inspiration", undefined, 'first-person'),
   inf('blonde-redhead', 'my-bloody-valentine', 0.7, 'verified', "Kazu Makino cites My Bloody Valentine alongside Sonic Youth as a key inspiration.", undefined, 'first-person'),
@@ -2236,9 +2236,9 @@ const edges: Edge[] = [
   // citation string itself so it stays auditable, per instruction.
 
   // -- stereolab (EXISTING region-one node -- one new edge + citation upgrades on 3 existing null-citation edges, no new node, no realm change) --
-  inf('stereolab', 'neu', 0.85, 'verified', "Tim Gane, Tape Op #98: \"in the early and mid-'80s he was a big fan of krautrock music -- like Faust, Neu! and Can.\" Corroborated by ele-king: early records \"infused with a gushing enthusiasm for Neu!'s motorik rhythms.\" (Upgrades a previously null citation on a pre-existing edge.)", undefined, 'first-person'),
-  inf('stereolab', 'can', 0.85, 'verified', "Tim Gane, Tape Op #98: \"in the early and mid-'80s he was a big fan of krautrock music -- like Faust, Neu! and Can.\" Corroborated by ele-king: early records \"infused with a gushing enthusiasm for Neu!'s motorik rhythms.\" (Upgrades a previously null citation on a pre-existing edge.) (Upgrades a previously null citation on a pre-existing edge.)", undefined, 'first-person'),
-  inf('stereolab', 'faust', 0.85, 'verified', "Same Tape Op #98 quote; also Electronic Sound dates the epiphany precisely to a 1980 Sounds review of a Faust reissue, which he says \"knocked him out.\" (Upgrades a previously null citation on a pre-existing edge.)", undefined, 'first-person'),
+  inf('stereolab', 'neu', 0.85, 'verified', "Tim Gane, Tape Op #98: \"in the early and mid-'80s he was a big fan of krautrock music -- like Faust, Neu! and Can.\" Corroborated by ele-king: early records \"infused with a gushing enthusiasm for Neu!'s motorik rhythms.\"", undefined, 'first-person'),
+  inf('stereolab', 'can', 0.85, 'verified', "Tim Gane, Tape Op #98: \"in the early and mid-'80s he was a big fan of krautrock music -- like Faust, Neu! and Can.\" Corroborated by ele-king: early records \"infused with a gushing enthusiasm for Neu!'s motorik rhythms.\"", undefined, 'first-person'),
+  inf('stereolab', 'faust', 0.85, 'verified', "Tape Op #98; Electronic Sound dates the epiphany precisely to a 1980 Sounds review of a Faust reissue, which Tim Gane says \"knocked him out.\"", undefined, 'first-person'),
   inf('stereolab', 'cabaret-voltaire', 0.85, 'verified', "Electronic Sound, Tim Gane: on why the Faust review landed, \"he was a big fan of bands like Cabaret Voltaire, so his ears had already been opened to bolder, more experimental electronic music.\" New edge.", undefined, 'first-person'),
   inf('mount-eerie', 'stereolab', 0.85, 'verified', "In \"Microphones in 2020,\" Phil Elverum describes seeing Stereolab play \"one chord for fifteen minutes\" in Bellingham, Washington -- \"something in me shifted\" and \"I brought home belief that I could create eternity.\"", undefined, 'first-person'),
   // Explicitly NOT written, per verification: stereolab -> kraftwerk (verified
@@ -2252,8 +2252,8 @@ const edges: Edge[] = [
   inf('nirvana', 'pixies', 0.85, 'verified', "Rolling Stone 1994: Cobain says he was aiming at the ultimate pop song and was \"basically trying to rip off the Pixies,\" and admits it outright.", undefined, 'first-person'),
   inf('nirvana', 'sonic-youth', 0.85, 'verified', "Live Nirvana archive, Apr 1992: asked who he'd put on a bill, names Mudhoney, Sonic Youth, Pixies or Breeders, Shonen Knife, Jesus Lizard, Melvins. Also NPR's \"50 Artists Who Inspired Kurt Cobain.\"", undefined, 'first-person'),
   inf('nirvana', 'dinosaur-jr', 0.85, 'verified', "1992 interview: lists bands he likes -- Breeders, Pixies, R.E.M., Jesus Lizard, Urge Overkill, Beat Happening, Dinosaur Jr, Flipper.", undefined, 'first-person'),
-  inf('nirvana', 'rem', 0.85, 'verified', "Same 1992 list. NPR adds Stipe was set to collaborate with him.", undefined, 'first-person'),
-  inf('nirvana', 'the-jesus-lizard', 0.85, 'verified', "Same list; also the Apr 1992 festival answer.", undefined, 'first-person'),
+  inf('nirvana', 'rem', 0.85, 'verified', "A 1992 interview in which Cobain lists the bands he likes: the Breeders, Pixies, R.E.M., the Jesus Lizard, Urge Overkill, Beat Happening, Dinosaur Jr and Flipper.", undefined, 'first-person'),
+  inf('nirvana', 'the-jesus-lizard', 0.85, 'verified', "The same 1992 interview listing the bands Cobain likes -- the Breeders, Pixies, R.E.M., the Jesus Lizard, Urge Overkill, Beat Happening, Dinosaur Jr and Flipper -- and, in the Live Nirvana archive for April 1992, his answer about who he would put on a bill.", undefined, 'first-person'),
   inf('nirvana', 'velvet-underground', 0.85, 'verified', "Roy Trakin asked about Iggy/Stooges/Velvets/Lou Reed; Cobain affirmed and called it some of his favourite music.", undefined, 'first-person'),
   inf('nirvana', 'the-stooges', 0.85, 'verified', "Roy Trakin asked Kurt Cobain about Iggy and the Stooges, the Velvet Underground and Lou Reed; Cobain affirmed all of it and called it some of his favourite music.", undefined, 'first-person'),
   inf('nirvana', 'black-flag', 0.85, 'verified', "Interview 1991: sold off his hard-rock records and got into MDC and Black Flag.", undefined, 'first-person'),
@@ -2304,9 +2304,9 @@ const edges: Edge[] = [
   // guided-by-voices -> rem, resolved in favor of the Far Out/Spin sourcing
   // (GBV formed 1983 already jangle-plus-fake-English-accent; Spin ties the
   // later shift to the R.E.M. tour) absent a primary source for the reverse.
-  inf('japanese-breakfast', 'wilco', 0.5, 'verified', "Realm-6 research notes cite Wilco's Summerteeth as the connection; not independently re-verified this pass, flagged per the task's carry-over convention.", undefined, 'critic'),
+  inf('japanese-breakfast', 'wilco', 0.5, 'verified', null, 'unsourceable'),
   inf('sleater-kinney', 'sonic-youth', 0.85, 'verified', "Band profile: Sleater-Kinney have named their influences as Bikini Kill, Mecca Normal, Bratmobile, Throwing Muses and Sonic Youth.", undefined, 'first-person'),
-  inf('sleater-kinney', 'liz-phair', 0.5, 'verified', "CARRY-OVER from an earlier pass, previously dropped for a missing target; liz-phair now exists as a node. Original citation not re-verified this pass.", undefined, 'critic'),
+  inf('sleater-kinney', 'liz-phair', 0.5, 'verified', null, 'unsourceable'),
   inf('violent-femmes', 'velvet-underground', 0.65, 'verified', "UDiscover: Gano's teenage discovery of bands like the Ramones and the Velvet Underground; Please Kill Me names the Velvets among the band's influences and calls Reed's influence on Gano's songwriting clear; a Gano biography traces garage-band covers moving through to Lou Reed and VU songs by 1979.", undefined, 'critic'),
   inf('violent-femmes', 'brian-eno', 0.5, 'verified', "A Gano biography (wiki-scraper tier) lists Eno among what Gano's older NYC-based siblings exposed him to, alongside VU, Lou Reed, Patti Smith, Jonathan Richman, the B-52's.", undefined, 'critic'),
   inf('the-national', 'violent-femmes', 0.85, 'verified', "The Scenestar 2007, Berninger: the bands he first fell in love with were the Smiths, Violent Femmes, Tom Waits and Nick Cave.", undefined, 'first-person'),
@@ -2356,14 +2356,14 @@ const edges: Edge[] = [
   inf('destroyer', 'new-order', 0.85, 'verified', "INDY Week: the interviewer proposes Prefab Sprout, Thomas Dolby and Gary Numan for ken; Bejar redirects to something more basic -- New Order, the Cure, Echo & the Bunnymen.", undefined, 'first-person'),
   inf('destroyer', 'the-cure', 0.85, 'verified', "INDY Week: the interviewer proposes Prefab Sprout, Thomas Dolby and Gary Numan for ken; Bejar redirects to something more basic -- New Order, the Cure, Echo & the Bunnymen.", undefined, 'first-person'),
   inf('destroyer', 'david-bowie', 0.85, 'verified', "Uncut 2015: classic rock got him singing in a band in 1997, and Bowie's \"Where Are We Now?\" sparked revisiting the early-70s records pivotal to him. Read as early-70s glam Bowie, not Berlin-era -- Bejar explicitly says he didn't listen to Station to Station or the Berlin albums while making Kaputt.", undefined, 'first-person'),
-  inf('japanese-breakfast', 'destroyer', 0.5, 'verified', "Realm-6 research notes cite Kaputt's saxophone as the connection; not independently re-verified this pass.", undefined, 'critic'),
+  inf('japanese-breakfast', 'destroyer', 0.5, 'verified', null, 'unsourceable'),
   // destroyer -> gary-numan explicitly REJECTED: came from the interviewer's
   // question, not Bejar's answer, which replaced that list with New Order/
   // the Cure/Echo & the Bunnymen. Interviewer suggestions are not artist
   // statements, per the task's non-influence rules.
   inf('the-walkmen', 'joy-division', 0.5, 'verified', "AllMusic's band biography names their influences as a diverse set including the Pogues, Joy Division, Bruce Springsteen, Bjork, U2 and New Order. No first-person corroboration found.", undefined, 'critic'),
   inf('the-walkmen', 'new-order', 0.5, 'verified', "AllMusic's band biography names their influences as a diverse set including the Pogues, Joy Division, Bruce Springsteen, Bjork, U2 and New Order. No first-person corroboration found.", undefined, 'critic'),
-  inf('the-walkmen', 'bjork', 0.5, 'verified', "Same AllMusic sentence; the only route this node has into the electronic realm.", undefined, 'critic'),
+  inf('the-walkmen', 'bjork', 0.5, 'verified', "AllMusic's band biography names their influences as a diverse set including the Pogues, Joy Division, Bruce Springsteen, Bjork, U2 and New Order.", undefined, 'critic'),
   inf('the-white-stripes', 'the-stooges', 0.85, 'verified', "Rolling Stone, \"Blues Genes: 15 of Jack White's Biggest Influences\": Iggy Pop a key idol for White, who anoints the Stooges' Fun House the greatest rock and roll record ever made.", undefined, 'first-person'),
   inf('the-white-stripes', 'bob-dylan', 0.65, 'verified', "Louder: White's path to the blues ran through study of the Gun Club, Captain Beefheart, Bob Dylan and Led Zeppelin.", undefined, 'critic'),
   inf('pulp', 'leonard-cohen', 0.85, 'verified', "Washington Post names Scott Walker and Leonard Cohen as Cocker's chief influences; Hot Press recounts Cohen personally advising Cocker on exploring \"sacred mechanics\"; NPR frames the advice as followed across his career.", undefined, 'first-person'),
@@ -2392,10 +2392,10 @@ const edges: Edge[] = [
   // of-montreal -> patti-smith DROPPED: patti-smith is not a graph node --
   // logged despite being a real DCist-listed name.
   inf('the-flaming-lips', 'husker-du', 0.85, 'verified', "Coyne 2013: not many of the bands around them appealed -- Husker Du and Black Flag were the bands that really influenced them in the early days.", undefined, 'first-person'),
-  inf('the-flaming-lips', 'black-flag', 0.85, 'verified', "Same Coyne 2013 quote; also in the Weirdo Music Forever list.", undefined, 'first-person'),
+  inf('the-flaming-lips', 'black-flag', 0.85, 'verified', "Wayne Coyne (2013): not many of the bands around them appealed -- Husker Du and Black Flag were the ones that really influenced them in the early days; Black Flag appears again in the Weirdo Music Forever list.", undefined, 'first-person'),
   inf('the-flaming-lips', 'sonic-youth', 0.85, 'verified', "Weirdo Music Forever, Coyne: they were very inspired by American punk rock like Sonic Youth, Black Flag, Minutemen and the Replacements -- bands they'd go and see.", undefined, 'first-person'),
   inf('the-flaming-lips', 'minutemen', 0.85, 'verified', "Weirdo Music Forever, Coyne: they were very inspired by American punk rock like Sonic Youth, Black Flag, Minutemen and the Replacements -- bands they'd go and see.", undefined, 'first-person'),
-  inf('the-flaming-lips', 'the-replacements', 0.85, 'verified', "Same Weirdo Music Forever quote.", undefined, 'first-person'),
+  inf('the-flaming-lips', 'the-replacements', 0.85, 'verified', "Weirdo Music Forever, Wayne Coyne: they were very inspired by American punk rock like Sonic Youth, Black Flag, Minutemen and the Replacements -- bands they would go and see.", undefined, 'first-person'),
   inf('the-flaming-lips', 'yo-la-tengo', 0.85, 'verified', "Quietus Baker's Dozen: Coyne's 13 favourite albums include the Beatles, Led Zeppelin, Yo La Tengo, Miles Davis and the Wizard of Oz soundtrack.", undefined, 'first-person'),
   // the-flaming-lips -> olivia-tremor-control and animal-collective ->
   // the-flaming-lips DROPPED: both bare "PRE-EXISTING" tags with no detail
@@ -2417,7 +2417,7 @@ const edges: Edge[] = [
   inf('st-vincent', 'sonic-youth', 0.85, 'verified', "Georgia Straight 2024: over the years Clark has listed Sonic Youth, Kate Bush, Jimi Hendrix and Siouxsie and the Banshees as invaluable influences.", undefined, 'first-person'),
   inf('st-vincent', 'siouxsie-and-the-banshees', 0.85, 'verified', "Georgia Straight 2024: over the years Clark has listed Sonic Youth, Kate Bush, Jimi Hendrix and Siouxsie and the Banshees as invaluable influences.", undefined, 'first-person'),
   inf('st-vincent', 'nirvana', 0.85, 'verified', "Guitar Player (syndicated twice): a Berklee grad inspired to learn electric guitar by grunge acts like Nirvana and Soundgarden.", undefined, 'first-person'),
-  inf('st-vincent', 'liz-phair', 0.5, 'verified', "CARRY-OVER, not re-verified this pass; liz-phair now exists as a node.", undefined, 'critic'),
+  inf('st-vincent', 'liz-phair', 0.5, 'verified', null, 'unsourceable'),
   // st-vincent -> the-breeders DROPPED: the-breeders is HELD, not written --
   // logged. st-vincent -> kate-bush is CONTESTED, not a clean edge -- see the
   // rejectedEdges schema proposal in the closing report; not written as a
@@ -2426,8 +2426,8 @@ const edges: Edge[] = [
   // with David Byrne, live performance with Sufjan Stevens, Swans
   // collaboration -- all collaboration, not influence).
   inf('arcade-fire', 'talking-heads', 0.85, 'verified', "Maclean's 2013, Win Butler: New Order and Bowie and Talking Heads are all primal influences for many of them. NME's \"Roots Of\" independently traces Talking Heads' \"This Must Be The Place\" into \"Wake Up.\"", undefined, 'first-person'),
-  inf('arcade-fire', 'new-order', 0.85, 'verified', "Same Maclean's quote; he arrives at it via hearing the Rapture's \"House of Jealous Lovers\" and noticing it wasn't worlds away from their own \"Headlights Look Like Diamonds.\"", undefined, 'first-person'),
-  inf('arcade-fire', 'david-bowie', 0.85, 'verified', "Same Maclean's quote; NME traces Bowie's \"Queen Bitch\" into the early songs; Butler tells Zane Lowe/Billboard 2022 that Bowie shaped \"Age of Anxiety II,\" borrowing Bowie's own \"plastic soul\" term.", undefined, 'first-person'),
+  inf('arcade-fire', 'new-order', 0.85, 'verified', "Maclean's: Butler arrives at New Order via hearing the Rapture's \"House of Jealous Lovers\" and noticing it was not worlds away from their own \"Headlights Look Like Diamonds.\"", undefined, 'first-person'),
+  inf('arcade-fire', 'david-bowie', 0.85, 'verified', "Maclean's; NME traces Bowie's \"Queen Bitch\" into the early songs; Butler told Zane Lowe and Billboard in 2022 that Bowie shaped \"Age of Anxiety II,\" borrowing Bowie's own \"plastic soul\" term.", undefined, 'first-person'),
   // arcade-fire -> yeah-yeah-yeahs, -> the-clash REJECTED (praise/fandom, a
   // career-lesson anecdote, not influence); -> neil-young/joni-mitchell/
   // leonard-cohen REJECTED (NME's own nationality generalization about
@@ -2550,19 +2550,23 @@ const edges: Edge[] = [
   inf('pavement', 'echo-and-the-bunnymen', 0.70, 'verified', "The AV Club describes an ethos \"learned from their own heroes, including R.E.M., Sonic Youth, and Echo & the Bunnymen\"; Pavement also covered \"The Killing Moon.\"", undefined, 'reported'),
   inf('lcd-soundsystem', 'the-fall', 0.85, 'verified', "James Murphy has called the Fall his Beatles, and in a 2005 interview singled out why: \"the guitars are as ego-less as the bass. And that's a rare fucking thing.\"", undefined, 'first-person'),
   inf('rites-of-spring', 'the-fall', 0.75, 'verified', "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"", undefined, 'first-person'),
-  // black-country-new-road -> the-fall NOT written: Tyler Hyde named the
-  // Fall in a Quietus "Baker's Dozen" favourites list, but the article
-  // 403'd on a direct-fetch retry (permitted once, per instruction) both in
-  // the original research pass and again this pass -- only the aggregated
-  // album list is visible, not her explanatory quote. Left out rather than
-  // guessed at; retry again once the page is reachable.
+  // Tyler Hyde's Quietus "Baker's Dozen" (God Tier), finally read in full --
+  // the page 403'd on every direct-fetch attempt across three passes, so these
+  // were held rather than guessed at. All three are Hyde speaking, not the band
+  // as a whole; same member-level caveat as animal-collective -> brian-eno.
+  //
+  // Frank Ocean's Blond is on the same list and is deliberately NOT an edge:
+  // Hyde explicitly rules it out as an influence -- "it's not even
+  // inspirational... it's not making me strive to do anything because I'm not
+  // capable of that. You can't look at everything and think, 'How can I do
+  // that? What can I take from that?'" Admiration, stated as such.
 
   // -- The Chameleons --
   inf('the-chameleons', 'buzzcocks', 0.75, 'verified', "Among Manchester bands, Mark Burgess has said the Buzzcocks had a definitive impact on him.", undefined, 'first-person'),
 
   // -- The Sound --
   inf('the-sound', 'can', 0.6, 'verified', "Adrian Borland's own account of what shaped him as a teenager runs through Iggy Pop and the Stooges, David Bowie, Patti Smith, Can and Kraftwerk.", undefined, 'reported'),
-  inf('the-sound', 'kraftwerk', 0.6, 'verified', "Same account -- Can and Kraftwerk named alongside Bowie, Patti Smith and the Stooges as what Borland was listening to before the Sound existed.", undefined, 'reported'),
+  inf('the-sound', 'kraftwerk', 0.6, 'verified', "Adrian Borland's own account of what shaped him as a teenager -- Iggy Pop and the Stooges, David Bowie, Patti Smith, Can and Kraftwerk -- the acts he was listening to before the Sound existed.", undefined, 'reported'),
   inf('the-sound', 'joy-division', 0.65, 'verified', "Borland recorded \"Silent Air\" as a tribute to Ian Curtis, and by his own admission Joy Division had an important influence on his own work.", undefined, 'reported'),
   inf('the-sound', 'david-bowie', 0.6, 'verified', "Bowie is named, alongside Patti Smith and the Stooges, among the artists whose records shaped Borland before he formed the Sound.", undefined, 'reported'),
 
@@ -2581,16 +2585,16 @@ const edges: Edge[] = [
 
   // -- The Cranberries --
   inf('the-cranberries', 'the-smiths', 0.6, 'verified', "Wikipedia's Dolores O'Riordan page states that by age sixteen, the Smiths, the Cure, R.E.M. and Depeche Mode had become her primary musical influences.", undefined, 'reported'),
-  inf('the-cranberries', 'the-cure', 0.6, 'verified', "Same Wikipedia passage -- the Cure named alongside the Smiths, R.E.M. and Depeche Mode as her primary influences.", undefined, 'reported'),
-  inf('the-cranberries', 'rem', 0.6, 'verified', "Same Wikipedia passage -- R.E.M. named alongside the Smiths, the Cure and Depeche Mode.", undefined, 'reported'),
-  inf('the-cranberries', 'depeche-mode', 0.6, 'verified', "Same Wikipedia passage -- Depeche Mode named alongside the Smiths, the Cure and R.E.M.", undefined, 'reported'),
+  inf('the-cranberries', 'the-cure', 0.6, 'verified', "Wikipedia's page on the band names the Cure alongside the Smiths, R.E.M. and Depeche Mode as Dolores O'Riordan's primary influences.", undefined, 'reported'),
+  inf('the-cranberries', 'rem', 0.6, 'verified', "Wikipedia's page on the band names R.E.M. alongside the Smiths, the Cure and Depeche Mode as Dolores O'Riordan's primary influences.", undefined, 'reported'),
+  inf('the-cranberries', 'depeche-mode', 0.6, 'verified', "Wikipedia's page on the band names Depeche Mode alongside the Smiths, the Cure and R.E.M. as Dolores O'Riordan's primary influences.", undefined, 'reported'),
   inf('the-cranberries', 'siouxsie-and-the-banshees', 0.6, 'verified', "O'Riordan named Sinead O'Connor and Siouxsie Sioux among the singers whose vocal effects -- including yodeling -- shaped her own technique.", undefined, 'reported'),
 
   // -- Airiel --
   inf('airiel', 'my-bloody-valentine', 0.85, 'verified', "Jeremy Wrenn: \"My Bloody Valentine was definitely something that I was listening to when Airiel started.\" Asked whether the comparison was lazy or an honest influence, he said, \"to be perfectly honest, it's both.\"", undefined, 'first-person'),
-  inf('airiel', 'cocteau-twins', 0.75, 'verified', "Same interview -- Wrenn describes getting into the Cocteau Twins, Lush, My Bloody Valentine, Ride and \"all those great British bands\" as Airiel's formative listening.", undefined, 'first-person'),
-  inf('airiel', 'lush', 0.75, 'verified', "Same interview -- Wrenn describes getting into the Cocteau Twins, Lush, My Bloody Valentine, Ride and \"all those great British bands\" as Airiel's formative listening.", undefined, 'first-person'),
-  inf('airiel', 'ride', 0.75, 'verified', "Same interview -- Wrenn describes getting into the Cocteau Twins, Lush, My Bloody Valentine, Ride and \"all those great British bands\" as Airiel's formative listening.", undefined, 'first-person'),
+  inf('airiel', 'cocteau-twins', 0.75, 'verified', "Jeremy Wrenn describes getting into the Cocteau Twins, Lush, My Bloody Valentine, Ride and \"all those great British bands\" as Airiel's formative listening.", undefined, 'first-person'),
+  inf('airiel', 'lush', 0.75, 'verified', "Jeremy Wrenn describes getting into the Cocteau Twins, Lush, My Bloody Valentine, Ride and \"all those great British bands\" as Airiel's formative listening.", undefined, 'first-person'),
+  inf('airiel', 'ride', 0.75, 'verified', "Jeremy Wrenn describes getting into the Cocteau Twins, Lush, My Bloody Valentine, Ride and \"all those great British bands\" as Airiel's formative listening.", undefined, 'first-person'),
   // ozean DROPPED (2026 content pass): too obscure to carry content per
   // human call. All 5 ozean edges removed with the node -- see
   // region-one-audit-DRAFT.md for the original sourcing if reconsidered.
@@ -2616,7 +2620,7 @@ const edges: Edge[] = [
   inf('vampire-weekend', 'belle-and-sebastian', 0.85, 'verified', "On the LSQ podcast, Ezra Koenig called Belle and Sebastian a \"mega favourite.\"", undefined, 'first-person'),
   inf('belle-and-sebastian', 'velvet-underground', 0.85, 'verified', "In a 2014 interview, Stuart Murdoch said Belle and Sebastian's sound was a combination of post-punk and embracing the beauty of the '60s and '70s: the Velvets, the Monkees, the Byrds, Love.", undefined, 'first-person'),
   inf('belle-and-sebastian', 'cocteau-twins', 0.5, 'verified', "Denver Westword reported that during his years housebound with chronic fatigue, Murdoch mostly listened to '60s and '70s records and only occasionally to contemporaries like Felt, Cocteau Twins and the Sundays, calling it \"pretty gentle music for being lost when you didn't have much energy.\"", undefined, 'reported'),
-  inf('belle-and-sebastian', 'the-sundays', 0.5, 'verified', "Same Denver Westword account of Murdoch's illness-era listening, alongside Felt and Cocteau Twins.", undefined, 'reported'),
+  inf('belle-and-sebastian', 'the-sundays', 0.5, 'verified', "Denver Westword's account of Stuart Murdoch's illness-era listening, alongside Felt and the Cocteau Twins.", undefined, 'reported'),
 
   // -- Camera Obscura --
   inf('alvvays', 'camera-obscura', 0.65, 'verified', "Asked by KEXP what appeals to her as a songwriter about Camera Obscura, Molly Rankin said Tracyanne Campbell is \"so good at longing and poetry and being endearing without being annoying,\" with a voice that's \"so unique and pure.\" In a separate SPIN interview, Rankin called Camera Obscura's polish \"a really nice reference\" next to Alvvays' sparser, tape-hiss sound.", undefined, 'first-person'),
@@ -2630,7 +2634,7 @@ const edges: Edge[] = [
 
   // -- Prefab Sprout --
   inf('prefab-sprout', 'bob-dylan', 0.85, 'verified', "Uncut's 2009 \"My Life In Music\" feature: Paddy McAloon named Dylan's \"Lay Lady Lay\" as his first record purchase, at 13, prizing \"the gorgeousness of the record and the finger-breaking possibilities... for a 13-year-old learning barre chords.\" He also singled out \"Sad-Eyed Lady of the Lowlands\" for being grateful it ran 11 minutes rather than three and a half.", undefined, 'first-person'),
-  inf('prefab-sprout', 'david-bowie', 0.85, 'verified', "Same Uncut feature: McAloon called Bowie's Station to Station the LP that sounds mysterious to him -- \"It sounds like Bowie's mid-way between two things and I like that. The music is mysterious -- chilly and passionate at the same time.\"", undefined, 'first-person'),
+  inf('prefab-sprout', 'david-bowie', 0.85, 'verified', "Uncut: McAloon called Bowie's Station to Station the LP that sounds mysterious to him -- \"It sounds like Bowie's mid-way between two things and I like that. The music is mysterious -- chilly and passionate at the same time.\"", undefined, 'first-person'),
   // destroyer -> prefab-sprout NOT written: already correctly recorded as a
   // non-edge in rejectedEdges (destroyer -> gary-numan entry below) --
   // Prefab Sprout was an interviewer's suggestion Bejar redirected away
@@ -2638,20 +2642,23 @@ const edges: Edge[] = [
 
   // -- black midi --
   inf('black-midi', 'godspeed-you-black-emperor', 0.85, 'verified', "Geordie Greep told Rolling Stone their early sound was \"a droney, Godspeed, Swans, Boredoms thing.\"", undefined, 'first-person'),
-  inf('black-midi', 'swans', 0.85, 'verified', "Same Rolling Stone quote naming Godspeed You! Black Emperor, Swans and Boredoms as touchstones for their early sound.", undefined, 'first-person'),
+  inf('black-midi', 'swans', 0.85, 'verified', "Rolling Stone, naming Godspeed You! Black Emperor, Swans and Boredoms as touchstones for their early sound.", undefined, 'first-person'),
   inf('black-midi', 'talking-heads', 0.85, 'verified', "Cameron Picton told FLOOD Magazine: \"We used to say Talking Heads, Deerhoof, and Danny Brown were our three main reference points.\"", undefined, 'first-person'),
 
   // -- Black Country, New Road --
   inf('black-country-new-road', 'arcade-fire', 0.85, 'verified', "Drummer Charlie Wayne told Dork: \"We did invite that. We knew we wanted to do something which was not dissimilar to Arcade Fire, but most people just thought we were joking. Having a touchpoint is important.\"", undefined, 'first-person'),
   inf('black-country-new-road', 'american-football', 0.6, 'verified', "Saxophonist Lewis Evans told the Line of Best Fit: \"Everyone [in the band] appreciates American Football, a bit of Godspeed You! Black Emperor, all the classics you know?\"", undefined, 'first-person'),
-  inf('black-country-new-road', 'godspeed-you-black-emperor', 0.5, 'verified', "Same Line of Best Fit quote, qualified: \"I don't know much about them but I love the way they sound.\"", undefined, 'first-person'),
-  inf('black-country-new-road', 'slint', 0.55, 'verified', "Same interview, Evans on the constant Slint comparisons: \"We like Slint, but we'd be on more common ground with post-rock I think.\"", undefined, 'first-person'),
+  inf('black-country-new-road', 'godspeed-you-black-emperor', 0.5, 'verified', "Saxophonist Lewis Evans to the Line of Best Fit, qualified: \"I don't know much about them but I love the way they sound.\"", undefined, 'first-person'),
+  inf('black-country-new-road', 'velvet-underground', 0.85, 'verified', "Tyler Hyde, in The Quietus's Baker's Dozen: \"Everyone will say this, but they've informed so much of what I do musically, from songs that I would write when I was a kid to the way that I would make a record now.\" She picks the 1969 self-titled album, and credits it with encouraging people who are not classically trained to play at all.", undefined, 'first-person'),
+  inf('black-country-new-road', 'can', 0.8, 'verified', "Tyler Hyde, in The Quietus's Baker's Dozen, picking Monster Movie: she came to Can through her father around the same time as the Fall, worked backwards from Ege Bamyasi and Tago Mago, and says the record \"in four songs, has everything that I love about krautrock.\"", undefined, 'first-person'),
+  inf('black-country-new-road', 'the-fall', 0.8, 'verified', "Tyler Hyde, in The Quietus's Baker's Dozen, on Fall Heads Roll: \"The Fall really heavily informed the first band that I was in, to the point where I sometimes felt like we were a bit of a pastiche.\" Of the way 'Midnight In Aspen' drops out and returns, she adds: \"I'm definitely gonna steal that.\"", undefined, 'first-person'),
+  inf('black-country-new-road', 'slint', 0.55, 'verified', "Lewis Evans to the Line of Best Fit, on the constant Slint comparisons: \"We like Slint, but we'd be on more common ground with post-rock I think.\"", undefined, 'first-person'),
 
   // -- Squid --
   inf('squid', 'neu', 0.85, 'verified', "Guitarist Louis Borlase told Loud And Quiet that Neu! \"was rubbing off on us a lot, especially with Ollie's style of drumming\" -- the motorik, monotonous beat began to define the sound.", undefined, 'first-person'),
   inf('squid', 'stereolab', 0.65, 'verified', "Borlase praised Stereolab's Tim Gane: \"I think he's just one of the best guitar players in that he's managed to kind of make that band's music so memorable and unique for them.\"", undefined, 'first-person'),
   inf('squid', 'tortoise', 0.5, 'verified', "Naming Tortoise's Millions Now Living Will Never Die among five albums he'd listen to forever, Borlase said it \"has this cool electronic sound, without vocals, and it kind of challenged a lot of the boundaries that they had at the time.\"", undefined, 'first-person'),
-  inf('squid', 'burial', 0.55, 'verified', "Same interview -- Borlase named Burial's Untrue as \"my first real introduction to electronic music.\"", undefined, 'first-person'),
+  inf('squid', 'burial', 0.55, 'verified', "Guitarist Louis Borlase told Loud And Quiet that Burial's Untrue was \"my first real introduction to electronic music.\"", undefined, 'first-person'),
 
   // -- Jockstrap --
   inf('jockstrap', 'cocteau-twins', 0.85, 'verified', "Asked by NME to name their influences, Taylor Skye and Georgia Ellery jointly answered: \"Skrillex, Madonna and Cocteau Twins.\"", undefined, 'first-person'),
@@ -2661,7 +2668,7 @@ const edges: Edge[] = [
   // Quietus; a working source was found -- Interview Magazine, 2013,
   // Jonathan Higgs, first-person)
   inf('everything-everything', 'radiohead', 0.85, 'verified', "Jonathan Higgs told Interview Magazine the band shares \"a shared passion for stuff like Radiohead, The Beatles, Aphex Twin, Kraftwerk, King Crimson, Dr Dre\"; separately, drummer Michael Spearman told NME that Kid A was a massive album for them because they were the right age when it came out, and Radiohead have always loomed large as an influence on the band.", undefined, 'first-person'),
-  inf('everything-everything', 'aphex-twin', 0.85, 'verified', "Same Interview Magazine quote from Jonathan Higgs naming Aphex Twin alongside Radiohead and Kraftwerk; guitarist Alex Robertshaw separately told MusicTech in 2024 he's \"always been a fan of early Aphex.\"", undefined, 'first-person'),
+  inf('everything-everything', 'aphex-twin', 0.85, 'verified', "Interview Magazine, Jonathan Higgs naming Aphex Twin alongside Radiohead and Kraftwerk; guitarist Alex Robertshaw separately told MusicTech in 2024 he has \"always been a fan of early Aphex.\"", undefined, 'first-person'),
   inf('everything-everything', 'kraftwerk', 0.85, 'verified', "Jonathan Higgs told Interview Magazine the band shares \"a shared passion for stuff like Radiohead, The Beatles, Aphex Twin, Kraftwerk, King Crimson, Dr Dre.\"", undefined, 'first-person'),
   // Off-map, not encoded: The Beatles, King Crimson, Dr Dre (same quote).
   // NOT mined from TV Tropes' Everything Everything "Influences" list --
@@ -2818,8 +2825,8 @@ const edges: Edge[] = [
 
   // -- MJ Lenderman --
   inf('mj-lenderman', 'silver-jews', 0.85, 'verified', "In a WUVT/The Woove interview with Michael Haddad, Lenderman said Silver Jews is a band he loves \"so lyrically\" that it's been \"really helpful,\" calling himself a student of songwriters like David Berman.", undefined, 'first-person'),
-  inf('mj-lenderman', 'songs-ohia', 0.8, 'verified', "Same WUVT/The Woove interview: describing his earlier material, Lenderman said \"it was very derivative of Magnolia Electric Co. and Jason Molina and Palace Music,\" before deliberately moving away from that sound.", undefined, 'first-person'),
-  inf('mj-lenderman', 'bonnie-prince-billy', 0.75, 'verified', "Same WUVT/The Woove interview -- the \"Palace Music\" Lenderman names as a formative influence on his earlier sound is Will Oldham's early-career moniker, predating the Bonnie \"Prince\" Billy name.", undefined, 'first-person'),
+  inf('mj-lenderman', 'songs-ohia', 0.8, 'verified', "WUVT/The Woove interview: describing his earlier material, Lenderman said \"it was very derivative of Magnolia Electric Co. and Jason Molina and Palace Music,\" before deliberately moving away from that sound.", undefined, 'first-person'),
+  inf('mj-lenderman', 'bonnie-prince-billy', 0.75, 'verified', "WUVT/The Woove interview -- the \"Palace Music\" Lenderman names as a formative influence on his earlier sound is Will Oldham's early-career moniker, predating the Bonnie \"Prince\" Billy name.", undefined, 'first-person'),
   inf('mj-lenderman', 'neil-young', 0.5, 'verified', "Premier Guitar's Kate Koenig writes that as a songwriter Lenderman \"draws influence from Neil Young, Jason Molina, Patterson Hood and Mike Cooley, and David Berman and Will Oldham\" -- the journalist's framing, not independently corroborated as a direct Lenderman quote for Young specifically.", undefined, 'critic'),
 
   // -- Wednesday --
@@ -2848,8 +2855,8 @@ const edges: Edge[] = [
   // -- Perfume Genius --
   inf('perfume-genius', 'xiu-xiu', 0.85, 'verified', "The Fader (2021): \"there's some music like Xiu Xiu, who I love, where their songs are so intense and visceral and over the top.\"", undefined, 'first-person'),
   inf('perfume-genius', 'stars-of-the-lid', 0.7, 'verified', "The Quietus's Baker's Dozen: on And Their Refinement of the Decline, Mike Hadreas said he listened to it before writing his first album and credits it with unlocking his creative process, describing it as a \"calming wash\" he could use in a \"lucid dreaming kind of way.\"", undefined, 'first-person'),
-  inf('perfume-genius', 'low', 0.7, 'verified', "Same Quietus Baker's Dozen: on Things We Lost in the Fire, Hadreas praises its \"hymnal quality,\" calling it \"really minimal but full at the same time.\"", undefined, 'first-person'),
-  inf('perfume-genius', 'liz-phair', 0.75, 'verified', "Same Quietus Baker's Dozen: on Exile in Guyville, Hadreas said \"this album changed music for me when I was about 12... hearing someone sing about it without apology and with power was just really helpful.\"", undefined, 'first-person'),
+  inf('perfume-genius', 'low', 0.7, 'verified', "The Quietus's Baker's Dozen: on Things We Lost in the Fire, Hadreas praises its \"hymnal quality,\" calling it \"really minimal but full at the same time.\"", undefined, 'first-person'),
+  inf('perfume-genius', 'liz-phair', 0.75, 'verified', "The Quietus's Baker's Dozen: on Exile in Guyville, Hadreas said \"this album changed music for me when I was about 12... hearing someone sing about it without apology and with power was just really helpful.\"", undefined, 'first-person'),
   // perfume-genius -> talk-talk NOT written, logged as a new rejectedEdges
   // entry below -- Hadreas says in the same Quietus feature he'd never heard
   // Talk Talk until fans compared his third album to them.
@@ -2881,7 +2888,7 @@ const edges: Edge[] = [
   // -- Pinback --
   inf('pinback', 'minutemen', 0.6, 'verified', "Wikipedia's Minutemen legacy section documents Pinback sampling drummer George Hurley's actual playing from Minutemen recordings on their 1999 self-titled debut, a documented and deliberate use rather than a personnel or production relationship.", undefined, 'reported'),
   inf('pinback', 'modest-mouse', 0.5, 'verified', "Pitchfork's October 1999 review of Pinback's self-titled debut, by Andrew Goldman, wrote that \"Pinback may be ready to join the ranks of emotionally confused super-songwriters alongside Modest Mouse, Sunny Day Real Estate, and the Sea and Cake.\"", undefined, 'critic'),
-  inf('pinback', 'sunny-day-real-estate', 0.5, 'verified', "Same October 1999 Pitchfork review, grouping Pinback with Sunny Day Real Estate, Modest Mouse, and the Sea and Cake as fellow \"emotionally confused super-songwriters.\"", undefined, 'critic'),
+  inf('pinback', 'sunny-day-real-estate', 0.5, 'verified', "Pitchfork's October 1999 review, grouping Pinback with Sunny Day Real Estate, Modest Mouse and the Sea and Cake as fellow \"emotionally confused super-songwriters.\"", undefined, 'critic'),
   inf('pinback', 'slint', 0.85, 'verified', "Rob Crow's own 1995 lyrics for Heavy Vegetable's \"Radio\" (quoted in a Quietus interview): \"They don't play Slint on the radio / They don't play Sentridoh / They don't play Zappa / They don't play Beefheart / They don't play Can / They don't play The Residents / They don't even play Renaldo and the Loaf / the Velvet Underground... Sometimes they will play Devo.\"", undefined, 'first-person'),
   inf('pinback', 'can', 0.85, 'verified', "Rob Crow's own 1995 lyrics for Heavy Vegetable's \"Radio\" (quoted in a Quietus interview): \"They don't play Slint on the radio / They don't play Sentridoh / They don't play Zappa / They don't play Beefheart / They don't play Can / They don't play The Residents / They don't even play Renaldo and the Loaf / the Velvet Underground... Sometimes they will play Devo.\" Crow's prior band, same songwriter, provenance noted.", undefined, 'first-person'),
   inf('pinback', 'velvet-underground', 0.85, 'verified', "Rob Crow's own 1995 lyrics for Heavy Vegetable's \"Radio\" (quoted in a Quietus interview): \"They don't play Slint on the radio / They don't play Sentridoh / They don't play Zappa / They don't play Beefheart / They don't play Can / They don't play The Residents / They don't even play Renaldo and the Loaf / the Velvet Underground... Sometimes they will play Devo.\"", undefined, 'first-person'),
