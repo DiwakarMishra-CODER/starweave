@@ -133,16 +133,33 @@ function titleMatches(ours: string, theirs: string): boolean {
 // safer than trusting the search ranking.
 const artistIdCache = new Map<string, number | null>();
 
+// Some artists' catalogues are published on iTunes under a DIFFERENT artist
+// name than the one we display, so the exact-name match below can never find
+// them and the artist reads as "not digitised" when their whole catalogue is
+// actually present. Natural Snow Buildings is the confirmed case: everything
+// -- The Dance of the Moon and the Sun, The Winter Ray, 30+ other releases --
+// is on iTunes under "NSB Archive", the duo's own reissue imprint.
+//
+// Keyed by normKey(our display name) -> the name iTunes publishes under. Only
+// add an entry after confirming the target artistId really is the same act;
+// note "NSB ARCHIVE" (Hip-Hop/Rap) and "NSB Archives" are different accounts,
+// exactly the collision class that the nb_fan ranking fix exists for.
+const ITUNES_ARTIST_ALIAS: Record<string, string> = {
+  [normKey('Natural Snow Buildings')]: 'NSB Archive',
+};
+
 async function resolveItunesArtistId(artistName: string): Promise<number | null> {
   const key = normKey(artistName);
   if (artistIdCache.has(key)) return artistIdCache.get(key)!;
+  const searchName = ITUNES_ARTIST_ALIAS[key] ?? artistName;
+  const matchKey = normKey(searchName);
   let id: number | null = null;
   try {
-    const url = `https://itunes.apple.com/search?term=${encodeURIComponent(artistName)}&entity=musicArtist&limit=5`;
+    const url = `https://itunes.apple.com/search?term=${encodeURIComponent(searchName)}&entity=musicArtist&limit=5`;
     const res = await fetchItunesWithBackoff(url);
     if (res?.ok) {
       const data = await res.json() as { results: Array<{ artistName: string; artistId: number }> };
-      id = data.results.find(r => normKey(r.artistName) === key)?.artistId ?? null;
+      id = data.results.find(r => normKey(r.artistName) === matchKey)?.artistId ?? null;
     }
   } catch { /* leave null */ }
   artistIdCache.set(key, id);
