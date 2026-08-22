@@ -703,7 +703,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         blurb:
           "The London and Manchester scene — three chords and a confrontation, equal parts " +
           "art-school irony and working-class fury.",
-        artistIds: ['the-clash', 'buzzcocks', 'x-ray-spex', 'sex-pistols'],
+        artistIds: ['the-clash', 'buzzcocks', 'wire', 'x-ray-spex', 'sex-pistols'],
       },
       {
         title: 'The first wave, US',
@@ -759,7 +759,17 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // records rather than curating this page on its own terms). Brand New
     // and La Dispute reserved for emo's own definingAlbums instead. Cut for
     // space: unwound, nomeansno, the-dismemberment-plan.
-    definingAlbums: ['fugazi', 'big-black', 'at-the-drive-in', 'slint', 'drive-like-jehu', 'the-jesus-lizard', 'refused', 'trail-of-dead'],
+    definingAlbums: [
+      'fugazi',
+      'big-black',
+      'at-the-drive-in',
+      'slint',
+      'drive-like-jehu',
+      'the-jesus-lizard',
+      'refused',
+      'trail-of-dead',
+      'rites-of-spring',
+    ],
     sections: [
       {
         title: 'The Dischord wing',
@@ -768,7 +778,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "hardcore's discipline and slowed it into something more dub-influenced and " +
           "controlled, while The Dismemberment Plan pushed the same scene toward something " +
           "quirkier and more danceable.",
-        artistIds: ['fugazi', 'minor-threat', 'the-dismemberment-plan'],
+        artistIds: ['rites-of-spring', 'fugazi', 'minor-threat', 'the-dismemberment-plan'],
       },
       {
         title: 'Noise and math-rock crossover',
@@ -1101,7 +1111,18 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // new-road (all real, but post-rock is a secondary ingredient for each,
     // not their primary identity). Cut for space: mono, do-make-say-think,
     // dirty-three.
-    definingAlbums: ['talk-talk', 'this-heat', 'bark-psychosis', 'godspeed-you-black-emperor', 'mogwai', 'sigur-ros', 'explosions-in-the-sky', 'tortoise'],
+    definingAlbums: [
+      'talk-talk',
+      'this-heat',
+      'bark-psychosis',
+      'godspeed-you-black-emperor',
+      'mogwai',
+      'sigur-ros',
+      'explosions-in-the-sky',
+      'tortoise',
+      'swans',
+      'slint',
+    ],
     sections: [
       {
         title: 'The originators, 1979–1994',
@@ -1109,7 +1130,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "This Heat's 1981 Deceit predates the genre by a decade; Talk Talk's Laughing Stock " +
           "and Bark Psychosis's Hex — the album that gave the genre its name — did the actual " +
           "founding a decade later.",
-        artistIds: ['this-heat', 'talk-talk', 'bark-psychosis'],
+        artistIds: ['this-heat', 'talk-talk', 'bark-psychosis', 'slint'],
       },
       {
         title: 'Crescendo and widescreen post-rock',
@@ -1131,8 +1152,8 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         title: 'Where post-rock blurs',
         blurb:
           "Artists for whom post-rock is one real ingredient rather than a home genre — " +
-          "space-rock, math-rock, and chamber-pop all get fuller tellings on their own pages.",
-        artistIds: ['spiritualized', 'toe', 'black-country-new-road'],
+          "space-rock, no-wave, math-rock, and chamber-pop all get fuller tellings on their own pages.",
+        artistIds: ['swans', 'spiritualized', 'toe', 'black-country-new-road'],
       },
     ],
   },
@@ -1925,7 +1946,13 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Normalization pass: cut from 6 to 4 — The Mountain Goats and Kurt Vile
     // dropped, keeping Silver Jews as the pre-genre-name anchor alongside
     // the three most influential 2000s–2020s records.
-    definingAlbums: ['silver-jews', 'bon-iver', 'big-thief', 'phoebe-bridgers'],
+    definingAlbums: [
+      'silver-jews',
+      'bon-iver',
+      'big-thief',
+      'phoebe-bridgers',
+      'sufjan-stevens',
+    ],
     sections: [
       {
         title: 'Pre-genre roots',
@@ -1939,7 +1966,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         blurb:
           "The generation that grew up with the genre already named — five distinct, individual " +
           "answers to the same basic promise of folk songwriting inside indie rock's dynamic range.",
-        artistIds: ['bon-iver', 'kurt-vile', 'big-thief', 'phoebe-bridgers', 'waxahatchee'],
+        artistIds: ['bon-iver', 'kurt-vile', 'big-thief', 'phoebe-bridgers', 'waxahatchee', 'sufjan-stevens'],
       },
     ],
   },
@@ -1992,6 +2019,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       'bright-eyes',
       'wednesday',
       'mj-lenderman',
+      'silver-jews',
     ],
     sections: [
       {
@@ -1999,7 +2027,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         blurb:
           "The genre's first two decades — Southern rock's literate wing meeting indie rock's " +
           "confessional intensity, all working under the same No Depression banner.",
-        artistIds: ['lucinda-williams', 'drive-by-truckers', 'bright-eyes', 'angel-olsen'],
+        artistIds: ['lucinda-williams', 'drive-by-truckers', 'songs-ohia', 'bright-eyes', 'angel-olsen', 'silver-jews'],
       },
       {
         title: 'The North Carolina revival',
@@ -2043,6 +2071,8 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       'codeine',
       'low',
       'red-house-painters',
+      'galaxie-500',
+      'duster',
     ],
     sections: [
       {
@@ -2051,7 +2081,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "A small, coherent scene rather than a genre with real internal factions — Codeine and " +
           "Low set the template in 1990, Red House Painters gave it strings, and Cat Power and " +
           "Mount Eerie carried the same patience into the following two decades.",
-        artistIds: ['codeine', 'low', 'red-house-painters', 'cat-power', 'mount-eerie'],
+        artistIds: ['codeine', 'low', 'red-house-painters', 'cat-power', 'mount-eerie', 'galaxie-500', 'duster'],
       },
     ],
   },
@@ -2084,7 +2114,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Only 4 artists carry this tag, so 4 is the correct, non-padded count —
     // not a cap being undershot. All four albums are genuinely bedroom-pop-
     // defining.
-    definingAlbums: ['clairo', 'snail-mail', 'beabadoobee', 'alex-g'],
+    definingAlbums: ['clairo', 'beabadoobee', 'alex-g'],
     sections: [
       {
         title: 'The streaming-era bedroom scene',
@@ -2092,7 +2122,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "A small, tightly contemporary group rather than a genre with real internal history — " +
           "three of the four also carry the older indie-pop tag; Alex G leans closer to lo-fi's " +
           "rougher home-recording tradition instead.",
-        artistIds: ['clairo', 'snail-mail', 'beabadoobee', 'alex-g'],
+        artistIds: ['clairo', 'beabadoobee', 'alex-g'],
       },
     ],
   },
@@ -2262,7 +2292,11 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // would just be leaning on the same cover twice, so This Heat appears
     // as a section member only. The remaining four are each artist's own
     // clearest industrial-defining record.
-    definingAlbums: ['suicide', 'cabaret-voltaire', 'swans', 'coil'],
+    definingAlbums: [
+      'suicide',
+      'cabaret-voltaire',
+      'coil',
+    ],
     sections: [
       {
         title: 'The founding wave, 1975–1981',
@@ -2498,7 +2532,14 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // dropped, keeping Silver Apples and Animal Collective as the
     // originator/major-figure pair alongside Jockstrap and Xiu Xiu as the
     // most substantial of the 21st-century generation.
-    definingAlbums: ['silver-apples', 'animal-collective', 'jockstrap', 'xiu-xiu'],
+    definingAlbums: [
+      'silver-apples',
+      'animal-collective',
+      'jockstrap',
+      'xiu-xiu',
+      'stereolab',
+      'olivia-tremor-control',
+    ],
     sections: [
       {
         title: 'Studio-as-instrument originators',
@@ -2506,7 +2547,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Silver Apples built the template decades before the genre had a name; Xiu Xiu, " +
           "Animal Collective, and Julia Holter each found their own way to wrap genuinely " +
           "strange production around real melody.",
-        artistIds: ['silver-apples', 'xiu-xiu', 'animal-collective', 'julia-holter'],
+        artistIds: ['silver-apples', 'xiu-xiu', 'animal-collective', 'julia-holter', 'stereolab', 'olivia-tremor-control'],
       },
       {
         title: 'The 21st-century pop-collage generation',
@@ -2760,6 +2801,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       'wednesday',
       'waxahatchee',
       'mitski',
+      'snail-mail',
     ],
     sections: [
       {
@@ -2839,6 +2881,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           'mj-lenderman',
           'wednesday',
           'waxahatchee',
+          'snail-mail',
         ],
       },
     ],
@@ -3632,8 +3675,6 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           'angel-olsen',
           'weyes-blood',
           'ethel-cain',
-          'snail-mail',
-          'clairo',
           'cat-power',
           'grouper',
         ],
