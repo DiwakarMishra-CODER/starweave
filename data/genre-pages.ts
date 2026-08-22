@@ -258,6 +258,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       'talking-heads',
       'new-order',
       'the-birthday-party',
+      'the-cure',
     ],
     sections: [
       {
@@ -450,7 +451,13 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // drone-ambient records. This does undo 2814's earlier addition (it had
     // been the grid's only vaporwave representative) — vaporwave now has
     // its own dedicated page instead, which is the more honest home for it.
-    definingAlbums: ['brian-eno', 'harold-budd', 'tim-hecker', 'stars-of-the-lid'],
+    definingAlbums: [
+      'brian-eno',
+      'harold-budd',
+      'tim-hecker',
+      'stars-of-the-lid',
+      'grouper',
+    ],
     sections: [
       {
         title: 'Founding minimalism',
@@ -682,7 +689,14 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // the old note this replaced); Buzzcocks dropped from the grid to make
     // room, though Buzzcocks stays tagged and still appears in the UK
     // section below.
-    definingAlbums: ['sex-pistols', 'ramones', 'the-clash', 'patti-smith'],
+    definingAlbums: [
+      'sex-pistols',
+      'ramones',
+      'the-clash',
+      'patti-smith',
+      'fugazi',
+      'wire',
+    ],
     sections: [
       {
         title: 'The first wave, UK',
@@ -1426,7 +1440,13 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // dropped, keeping the two 1979 co-originators plus the two records
     // (LCD Soundsystem, The Rapture) most directly credited with the DFA
     // revival.
-    definingAlbums: ['gang-of-four', 'james-chance-and-the-contortions', 'lcd-soundsystem', 'the-rapture'],
+    definingAlbums: [
+      'gang-of-four',
+      'james-chance-and-the-contortions',
+      'lcd-soundsystem',
+      'the-rapture',
+      'chk-chk-chk',
+    ],
     sections: [
       {
         title: 'The 1979 originators',
@@ -1581,7 +1601,13 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // The Modern Lovers dropped, keeping the two actual co-founders (Velvet
     // Underground, The Stooges) plus Patti Smith and Ramones marking the
     // handoff into punk proper.
-    definingAlbums: ['velvet-underground', 'the-stooges', 'patti-smith', 'ramones'],
+    definingAlbums: [
+      'velvet-underground',
+      'the-stooges',
+      'patti-smith',
+      'ramones',
+      'new-york-dolls',
+    ],
     sections: [
       {
         title: "New York's art-damaged wing",
@@ -1640,7 +1666,13 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // that's where the fuller telling of their record belongs. MC5 excluded
     // for having no classicAlbum on file (see proto-punk's own note on the
     // same gap).
-    definingAlbums: ['the-strokes', 'the-white-stripes', 'king-gizzard-and-the-lizard-wizard', 'the-modern-lovers'],
+    definingAlbums: [
+      'the-strokes',
+      'the-white-stripes',
+      'king-gizzard-and-the-lizard-wizard',
+      'the-modern-lovers',
+      'the-stooges',
+    ],
     sections: [
       {
         title: 'The 1960s originators',
@@ -1947,7 +1979,20 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // representation (both remain full section members; Rat Saw God simply
     // isn't in the top 4 by pure canonical weight against the genre's
     // 1990s–2010s Americana generation).
-    definingAlbums: ['lucinda-williams', 'drive-by-truckers', 'angel-olsen', 'bright-eyes'],
+    // Repetition across pages is explicitly allowed -- see the policy note on the
+    // folk page. Songs: Ohia's Magnolia Electric Co. is close to the definitive
+    // alt-country record in this roster and was missing because the artist was
+    // not even tagged alt-country (now fixed in seed-data.ts); Lenderman and
+    // Wednesday were tagged, had albums, and were simply never picked.
+    definingAlbums: [
+      'lucinda-williams',
+      'drive-by-truckers',
+      'songs-ohia',
+      'angel-olsen',
+      'bright-eyes',
+      'wednesday',
+      'mj-lenderman',
+    ],
     sections: [
       {
         title: 'The Americana generation',
@@ -1994,7 +2039,11 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // making it the least central of the five even though it's a real
     // pick. The other four are the genre's founders plus its main baroque
     // and drone-leaning extensions.
-    definingAlbums: ['codeine', 'low', 'red-house-painters', 'mount-eerie'],
+    definingAlbums: [
+      'codeine',
+      'low',
+      'red-house-painters',
+    ],
     sections: [
       {
         title: "Slowcore's core lineage",
@@ -2271,11 +2320,8 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       'tim-hecker',
       'stars-of-the-lid',
       'grouper',
-      'mount-eerie',
       'low',
-      'have-a-nice-life',
       'anna-von-hausswolff',
-      'spiritualized',
     ],
     sections: [
       {
@@ -2510,7 +2556,19 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // same batch), which needed them more. Cut for space, real candidates:
     // fishmans, geese, black-midi, black-country-new-road, squid,
     // everything-everything.
-    definingAlbums: ['velvet-underground', 'nico', 'television', 'nick-cave-and-the-bad-seeds', 'broadcast', 'radiohead', 'jeff-buckley', 'tom-waits'],
+    definingAlbums: [
+      'velvet-underground',
+      'nico',
+      'television',
+      'nick-cave-and-the-bad-seeds',
+      'broadcast',
+      'radiohead',
+      'jeff-buckley',
+      'tom-waits',
+      'david-bowie',
+      'can',
+      'talking-heads',
+    ],
     sections: [
       {
         title: 'The founding wave, 1967–1980',
@@ -2601,7 +2659,10 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       'beck',
       'the-strokes',
       'the-white-stripes',
-      'silversun-pickups',
+      'sonic-youth',
+      'pixies',
+      'rem',
+      'radiohead',
     ],
     sections: [
       {
@@ -3283,7 +3344,6 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       'magdalena-bay',
       'four-tet',
       'caribou',
-      'chk-chk-chk',
       'oneohtrix-point-never',
       'steve-roach',
       'imogen-heap',
@@ -3291,6 +3351,9 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       'porter-robinson',
       'charli-xcx',
       'kero-kero-bonito',
+      'kraftwerk',
+      'brian-eno',
+      'aphex-twin',
     ],
     sections: [
       {
@@ -3457,7 +3520,17 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // of the roster's less individually-famous names (Karen Dalton, Roy Harper, Songs: Ohia)
     // rather than the artists most readers would expect on a folk "greatest hits" list. Vashti
     // Bunyan is the one otherwise-clean, unclaimed candidate cut for space.
+    //
+    // POLICY CHANGE: that no-repeat rule is now relaxed for canonical cases.
+    // It optimised for variety across all 53 pages, but nobody reads 53 pages
+    // -- each one is read standalone, and a reader landing here has no idea
+    // Blue is printed on singer-songwriter. The comment above already
+    // predicted the failure ("rather than the artists most readers would
+    // expect"), and Joni Mitchell absent from the folk page is exactly it.
+    // Repeat an album where it genuinely belongs on both pages; keep the rule
+    // as a tiebreaker for artists whose album fits several pages equally.
     definingAlbums: [
+      'joni-mitchell',
       'bert-jansch',
       'roy-harper',
       'karen-dalton',
@@ -3470,6 +3543,9 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       'sharon-van-etten',
       'ethel-cain',
       'cat-power',
+      'neil-young',
+      'nick-drake',
+      'leonard-cohen',
     ],
     sections: [
       {

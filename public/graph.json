@@ -1909,6 +1909,7 @@
       "layer": "indie-alt",
       "genres": [
         "krautrock",
+        "experimental-pop",
         "art-pop",
         "indie-rock"
       ],
@@ -3917,6 +3918,7 @@
       "name": "Sufjan Stevens",
       "layer": "outside",
       "genres": [
+        "indie-folk",
         "chamber-pop",
         "folk"
       ],
@@ -4399,9 +4401,8 @@
       "name": "Snail Mail",
       "layer": "outside",
       "genres": [
-        "bedroom-pop",
-        "indie-pop",
-        "folk"
+        "indie-rock",
+        "indie-pop"
       ],
       "scope": [
         "underground"
@@ -4467,8 +4468,7 @@
       "layer": "outside",
       "genres": [
         "bedroom-pop",
-        "indie-pop",
-        "folk"
+        "indie-pop"
       ],
       "scope": [
         "underground"
@@ -4623,7 +4623,7 @@
     },
     {
       "id": "mount-eerie",
-      "name": "Mount Eerie",
+      "name": "The Microphones / Mount Eerie",
       "layer": "outside",
       "genres": [
         "slowcore",
@@ -4643,15 +4643,15 @@
           "title": "The Glow Pt. 2",
           "year": 2001,
           "isClassic": true,
-          "classicReason": "The Glow Pt. 2 moves without warning between hushed, barely-there acoustic passages and sudden walls of distorted, overwhelming noise, the shifts arriving with no buildup at all. \"I Want Wind to Blow\" sits at the quieter end of that range, a plainspoken, almost childlike melody carried by acoustic guitar and Elverum's close-mic'd voice. Elsewhere the record erupts into feedback and drums recorded to sound like they're collapsing the room. It's a record built on extremes of scale, treating silence and noise as equally important instruments.",
-          "imageUrl": null
+          "classicReason": "Released as The Microphones, two years before Elverum took the Mount Eerie name, The Glow Pt. 2 moves without warning between hushed, barely-there acoustic passages and sudden walls of distorted, overwhelming noise, the shifts arriving with no buildup at all. \"I Want Wind to Blow\" sits at the quieter end of that range, a plainspoken, almost childlike melody carried by acoustic guitar and Elverum's close-mic'd voice. Elsewhere the record erupts into feedback and drums recorded to sound like they're collapsing the room. It's a record built on extremes of scale, treating silence and noise as equally important instruments.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/f2/3c/f2/mzi.hmtltvkh.jpg/600x600bb.jpg"
         }
       ],
       "influenceScore": 0,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/94aec73ce07fe78f6bbb3139f6717144/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/43/08/d2/4308d26c-6670-3ec4-4195-83524fc463db/mzaf_4645528971415407973.plus.aac.p.m4a",
+      "previewTrack": "I Want Wind To Blow",
+      "previewAlbum": "The Glow, Pt. 2"
     },
     {
       "id": "low",
@@ -4723,6 +4723,7 @@
       "name": "Silver Jews",
       "layer": "outside",
       "genres": [
+        "alt-country",
         "indie-folk",
         "folk"
       ],
@@ -5009,6 +5010,7 @@
       "name": "Rites of Spring",
       "layer": "outside",
       "genres": [
+        "post-hardcore",
         "hardcore-punk",
         "emo"
       ],
@@ -5041,6 +5043,7 @@
       "name": "Slint",
       "layer": "outside",
       "genres": [
+        "post-rock",
         "post-hardcore",
         "math-rock"
       ],
@@ -5458,8 +5461,9 @@
       "name": "Duster",
       "layer": "outside",
       "genres": [
-        "midwest-emo",
-        "indie-rock"
+        "slowcore",
+        "indie-rock",
+        "midwest-emo"
       ],
       "scope": [
         "underground"
@@ -5522,16 +5526,16 @@
       "name": "Hum",
       "layer": "outside",
       "genres": [
-        "shoegaze",
         "alt-rock",
+        "shoegaze",
         "indie-rock"
       ],
       "scope": [
         "underground"
       ],
       "activeFrom": 1989,
-      "realm": "emo-posthardcore",
-      "lineage": "midwest-emo",
+      "realm": "american-underground",
+      "lineage": "noise-alt",
       "signatureSong": "Stars",
       "bio": "Hum formed in Champaign, Illinois in 1989, led by guitarist and vocalist Matt Talbott, developing a sound that layered heavily processed, downtuned guitars with melodic, almost dreamy vocal lines — a combination that placed the band at the intersection of shoegaze, space rock, and the heavier alternative rock of the era without fitting comfortably into any single one of those categories.\n\nYou'd Prefer an Astronaut (1995) brought the band its widest recognition, its dense wall of guitar and Talbott's detached, melodic delivery finding an audience on rock radio and television that few of their underground peers reached. Hum's sound — massive, textured guitar tones paired with an almost shoegaze-like sense of atmosphere — proved durably influential on later heavy alternative and post-shoegaze bands even as the group itself moved in and out of activity over the following decades, releasing only sporadically while its reputation continued to grow among musicians who cited them directly.",
       "classicAlbums": [
@@ -7190,6 +7194,7 @@
       "name": "Olivia Tremor Control",
       "layer": "outside",
       "genres": [
+        "experimental-pop",
         "psychedelic-pop",
         "lo-fi"
       ],
@@ -7414,6 +7419,7 @@
       "name": "Galaxie 500",
       "layer": "outside",
       "genres": [
+        "slowcore",
         "dream-pop",
         "indie-rock"
       ],
@@ -7942,12 +7948,12 @@
       "bio": "beabadoobee, born Beatrice Laus in the Philippines and raised in London, began releasing hushed, lo-fi bedroom-pop songs while still a teenager, catching wider attention when one of her earliest tracks was later sampled on a global streaming hit. Signed to Dirty Hit, the label behind the 1975, she moved quickly from four-track intimacy toward a fuller, guitar-driven sound steeped in 1990s alternative rock and shoegaze.\n\nBeatopia, her second album, arrived in 2022, named after an imaginary world she'd invented as a child and abandoned as she got older before reclaiming it as the record's organizing idea. She has continued expanding her sound since, including a 2026 standalone single made with the Marías that pushed further into dream-pop atmosphere outside the album cycle entirely. Her catalog now reads as a fairly rapid education in public, each release audibly further from where the last one left off.",
       "classicAlbums": [
         {
-          "id": "beatopia",
-          "title": "Beatopia",
-          "year": 2022,
+          "id": "fake-it-flowers",
+          "title": "Fake It Flowers",
+          "year": 2020,
           "isClassic": true,
-          "classicReason": "Beatopia takes its title from an imaginary world beabadoobee invented as a child, and the record moves through nearly as many moods as that premise implies, folk-tinged interludes giving way to full-band 90s alt-rock without ever losing the thread. \"All I Did Was Dream of You\" isn't part of the album itself, but the same restless, shoegaze-leaning sensibility that defines Beatopia's fuller songs runs straight through it. Tracks like \"10:36\" and \"Talk to Me\" show her moving comfortably between hushed verses and distorted, wall-of-sound choruses. It's the record where her early bedroom-pop intimacy first met a genuinely widescreen sound.",
-          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/39/cb/28/39cb28c2-f48d-5e69-1469-592a7ac1dd11/192641938047_Cover.jpg/600x600bb.jpg"
+          "classicReason": "Fake It Flowers is where beabadoobee traded the bedroom recordings that made her name for a full band and a wall of 90s guitar, and it is the record most people mean when they name her. \"Care\" opens it with a fuzzed-out hook and a shrug of a chorus that owes as much to Veruca Salt as to anything from her own decade. \"Sorry\" and \"Together\" show the range underneath the distortion, moving from near-whispered verses into choruses that arrive at full volume. The self-consciously retro sound drew comparisons she later resisted, but it gave her early intimacy a scale it had not had before.",
+          "imageUrl": "https://coverartarchive.org/release/e4672270-a1ce-4f54-bb7b-866a87cc4b3a/27527467286-500.jpg"
         }
       ],
       "influenceScore": 0,
@@ -8407,12 +8413,12 @@
       "bio": "Coil formed in London in 1982 around John Balance and Peter Christopherson, both veterans of the industrial and esoteric-music underground, building a sound that fused tape manipulation, ritual atmosphere and unsettling electronics into something closer to occult ceremony than conventional song. Christopherson had come from the design collective Hipgnosis and the industrial pioneers Throbbing Gristle, and that background shaped Coil's fascination with transgressive imagery and highly controlled studio craft in equal measure.\n\nThe duo moved between labels and collaborators across two decades, releasing records that ranged from harsh noise to genuinely beautiful, almost pastoral ambient music, often within the same album. The Ape of Naples, released in 2005, arrived after Balance's death the previous year, assembled from unfinished sessions the surviving members completed as a memorial. Christopherson continued using the Coil name for occasional projects before his own death in 2010, closing out one of underground electronic music's most singular and hardest-to-categorize catalogs.",
       "classicAlbums": [
         {
-          "id": "the-ape-of-naples",
-          "title": "The Ape of Naples",
-          "year": 2005,
+          "id": "horse-rotorvator",
+          "title": "Horse Rotorvator",
+          "year": 1986,
           "isClassic": true,
-          "classicReason": "The Ape of Naples was completed after John Balance's death in 2004, built from sessions the band had already been working on and finished by the surviving members as a memorial rather than a fresh start. \"Fire of the Mind\" carries that weight directly, its slow-building electronics and half-whispered vocal treating grief as something to be processed in real time rather than smoothed over. The album moves between passages of genuine beauty and moments of real dread without ever settling into one register for long. It stands as both a proper farewell and one of the most emotionally direct records in a catalog usually more interested in ritual and provocation.",
-          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/9f/0f/06/9f0f060a-30b2-ee7b-6ecc-4b7df45fc158/cover.jpg/600x600bb.jpg"
+          "classicReason": "Horse Rotorvator builds its dread out of real instruments as often as machines -- brass, strings and bone-dry percussion arranged with a formality that makes the horror feel ceremonial rather than chaotic. \"Ostia (The Death of Pasolini)\" sets the murder of the Italian director to a slow, almost stately arrangement, John Balance singing it as elegy instead of shock. The record's industrial machinery is audible throughout but subordinated to composition, which is what separated Coil from the scene they came out of. It is the album that most fully realised their idea of industrial music as ritual, and the one critics reach for when the genre's canon is drawn up.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8c/1b/d7/8c1bd7ee-c1be-81b1-8c74-2680fbf97724/coil-horserotovator.jpg/600x600bb.jpg"
         }
       ],
       "influenceScore": 0,
@@ -9258,6 +9264,7 @@
       "name": "Songs: Ohia",
       "layer": "outside",
       "genres": [
+        "alt-country",
         "lo-fi",
         "folk"
       ],
