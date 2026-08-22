@@ -9742,8 +9742,7 @@
       "name": "Jangle pop",
       "parent": "power-pop",
       "alsoFrom": [
-        "indie-pop",
-        "proto-punk"
+        "indie-pop"
       ],
       "emerged": 1983,
       "emergedBasis": "R.E.M.'s Murmur and the Smiths"
@@ -9885,6 +9884,10 @@
       "id": "no-wave",
       "name": "No wave",
       "parent": "post-punk",
+      "alsoFrom": [
+        "minimalism",
+        "industrial"
+      ],
       "emerged": 1978,
       "emergedBasis": "The No New York compilation"
     },
@@ -9903,6 +9906,9 @@
       "id": "darkwave",
       "name": "Darkwave",
       "parent": "goth",
+      "alsoFrom": [
+        "industrial"
+      ],
       "emerged": 1985,
       "emergedBasis": "European goth crossed with electronics"
     },
@@ -9918,8 +9924,7 @@
       "name": "Industrial",
       "parent": "krautrock",
       "alsoFrom": [
-        "art-rock",
-        "proto-punk"
+        "art-rock"
       ],
       "emerged": 1975,
       "emergedBasis": "Throbbing Gristle form in Hull"
@@ -9950,6 +9955,9 @@
       "id": "folk-punk",
       "name": "Folk punk",
       "parent": "singer-songwriter",
+      "alsoFrom": [
+        "punk"
+      ],
       "emerged": 1985,
       "emergedBasis": "Violent Femmes-descended acoustic punk"
     },
@@ -9969,7 +9977,6 @@
       "name": "Art pop",
       "parent": "art-rock",
       "alsoFrom": [
-        "singer-songwriter",
         "post-punk"
       ],
       "emerged": 1979,
@@ -10047,7 +10054,6 @@
       "name": "Synth-pop",
       "parent": "krautrock",
       "alsoFrom": [
-        "industrial",
         "post-punk"
       ],
       "emerged": 1978,
@@ -10144,8 +10150,7 @@
       "name": "Indie pop",
       "parent": "post-punk",
       "alsoFrom": [
-        "jangle-pop",
-        "singer-songwriter"
+        "jangle-pop"
       ],
       "emerged": 1983,
       "emergedBasis": "The Smiths; Postcard Records had laid the ground"

@@ -45,7 +45,7 @@ export default function GenresIndexPage() {
             reading that far into a five-line paragraph to find "click any
             dot to open that genre." This sits where the eye lands on
             reaching the diagram instead. */}
-        <p className="genre-timeline__hint">Hover to trace a lineage · click to open a genre</p>
+        <p className="genre-timeline__hint">Solid lines are a genre&rsquo;s main lineage; dashed arrows point from a secondary source to what it fed · hover to trace a lineage · click to open a genre</p>
 
         <GenreTimeline
           nodes={layout.nodes}

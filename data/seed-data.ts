@@ -60,7 +60,7 @@ const genres: Genre[] = [
   { id: 'post-punk', name: 'Post-punk', parent: 'punk', emerged: 1978, emergedBasis: "Wire's Chairs Missing; Public Image Ltd" },
   { id: 'goth', name: 'Gothic rock', parent: 'post-punk', alsoFrom: ['art-rock'], emerged: 1979, emergedBasis: "Bauhaus, \"Bela Lugosi's Dead\"" },
   { id: 'dance-punk', name: 'Dance-punk', parent: 'post-punk', alsoFrom: ['krautrock'], emerged: 1979, emergedBasis: "Gang of Four, Entertainment!" },
-  { id: 'jangle-pop', name: 'Jangle pop', parent: 'power-pop', alsoFrom: ['indie-pop', 'proto-punk'], emerged: 1983, emergedBasis: "R.E.M.'s Murmur and the Smiths" },
+  { id: 'jangle-pop', name: 'Jangle pop', parent: 'power-pop', alsoFrom: ['indie-pop'], emerged: 1983, emergedBasis: "R.E.M.'s Murmur and the Smiths" },
   { id: 'power-pop', name: 'Power pop', parent: 'psychedelic-pop', emerged: 1972, emergedBasis: "Big Star, #1 Record" },
   { id: 'shoegaze', name: 'Shoegaze', parent: 'dream-pop', alsoFrom: ['noise-pop', 'goth'], emerged: 1988, emergedBasis: "My Bloody Valentine, Isn't Anything" },
   { id: 'dream-pop', name: 'Dream pop', parent: 'post-punk', alsoFrom: ['art-rock', 'art-pop', 'goth'], emerged: 1984, emergedBasis: "Cocteau Twins, Treasure" },
@@ -76,19 +76,19 @@ const genres: Genre[] = [
   { id: 'midwest-emo', name: 'Midwest emo', parent: 'emo', emerged: 1997, emergedBasis: "Cap'n Jazz and American Football" },
   { id: 'math-rock', name: 'Math rock', parent: 'post-hardcore', alsoFrom: ['art-rock'], emerged: 1994, emergedBasis: "Drive Like Jehu, Yank Crime" },
   { id: 'post-rock', name: 'Post-rock', parent: 'krautrock', alsoFrom: ['art-rock', 'noise-rock', 'post-punk'], emerged: 1991, emergedBasis: "Talk Talk's Laughing Stock and Slint's Spiderland; Simon Reynolds coined the term in 1994" },
-  { id: 'no-wave', name: 'No wave', parent: 'post-punk', emerged: 1978, emergedBasis: "The No New York compilation" },
+  { id: 'no-wave', name: 'No wave', parent: 'post-punk', alsoFrom: ['minimalism', 'industrial'], emerged: 1978, emergedBasis: "The No New York compilation" },
   { id: 'drone', name: 'Drone', parent: 'ambient', alsoFrom: ['minimalism', 'noise-rock'], emerged: 1990, emergedBasis: "The Stars of the Lid generation of long-form drone" },
-  { id: 'darkwave', name: 'Darkwave', parent: 'goth', emerged: 1985, emergedBasis: "European goth crossed with electronics" },
+  { id: 'darkwave', name: 'Darkwave', parent: 'goth', alsoFrom: ['industrial'], emerged: 1985, emergedBasis: "European goth crossed with electronics" },
   // Proposed this pass as a child of no-wave (Branca/Chatham, 1978->1979) —
   // held, not applied: minimalism emerged 1964, predating no-wave (1978) by
   // 14 years. See the file-level comment above. Remains a root.
   { id: 'minimalism', name: 'Minimalism', parent: null, emerged: 1964, emergedBasis: "Terry Riley, In C" },
-  { id: 'industrial', name: 'Industrial', parent: 'krautrock', alsoFrom: ['art-rock', 'proto-punk'], emerged: 1975, emergedBasis: "Throbbing Gristle form in Hull" },
+  { id: 'industrial', name: 'Industrial', parent: 'krautrock', alsoFrom: ['art-rock'], emerged: 1975, emergedBasis: "Throbbing Gristle form in Hull" },
   { id: 'grunge', name: 'Grunge', parent: 'alt-rock', alsoFrom: ['noise-rock', 'hardcore-punk'], emerged: 1989, emergedBasis: "Sub Pop; Nirvana's Bleach" },
   { id: 'lo-fi', name: 'Lo-fi', parent: 'indie-rock', alsoFrom: ['alt-rock', 'singer-songwriter'], emerged: 1992, emergedBasis: "Sebadoh, Guided by Voices and Pavement" },
-  { id: 'folk-punk', name: 'Folk punk', parent: 'singer-songwriter', emerged: 1985, emergedBasis: "Violent Femmes-descended acoustic punk" },
+  { id: 'folk-punk', name: 'Folk punk', parent: 'singer-songwriter', alsoFrom: ['punk'], emerged: 1985, emergedBasis: "Violent Femmes-descended acoustic punk" },
   { id: 'chamber-pop', name: 'Chamber pop', parent: 'indie-rock', alsoFrom: ['singer-songwriter', 'art-rock'], emerged: 1996, emergedBasis: "Belle and Sebastian; later Sufjan Stevens" },
-  { id: 'art-pop', name: 'Art pop', parent: 'art-rock', alsoFrom: ['singer-songwriter', 'post-punk'], emerged: 1979, emergedBasis: "Kate Bush and Talking Heads" },
+  { id: 'art-pop', name: 'Art pop', parent: 'art-rock', alsoFrom: ['post-punk'], emerged: 1979, emergedBasis: "Kate Bush and Talking Heads" },
   { id: 'garage-rock', name: 'Garage rock', parent: null, emerged: 1963, emergedBasis: "The Kingsmen, \"Louie Louie\"" },
   { id: 'britpop', name: 'Britpop', parent: 'indie-rock', emerged: 1994, emergedBasis: "Blur's Parklife and Oasis' Definitely Maybe" },
   { id: 'psychedelic-pop', name: 'Psychedelic pop', parent: null, emerged: 1966, emergedBasis: "The Beach Boys and Beatles turn psychedelic" },
@@ -100,7 +100,7 @@ const genres: Genre[] = [
   { id: 'punk', name: 'Punk', parent: 'proto-punk', emerged: 1976, emergedBasis: "Ramones' debut; the Sex Pistols' first gigs" },
   { id: 'riot-grrrl', name: 'Riot grrrl', parent: 'punk', emerged: 1991, emergedBasis: "Bikini Kill and the Olympia scene" },
   { id: 'ambient', name: 'Ambient', parent: 'krautrock', emerged: 1978, emergedBasis: "Brian Eno, Music for Airports" },
-  { id: 'synth-pop', name: 'Synth-pop', parent: 'krautrock', alsoFrom: ['industrial', 'post-punk'], emerged: 1978, emergedBasis: "The Human League and Gary Numan" },
+  { id: 'synth-pop', name: 'Synth-pop', parent: 'krautrock', alsoFrom: ['post-punk'], emerged: 1978, emergedBasis: "The Human League and Gary Numan" },
   { id: 'hyperpop', name: 'Hyperpop', parent: 'idm', emerged: 2013, emergedBasis: "PC Music founded" },
   // Not in the edge analysis at any threshold — kept anyway, see Phase 1d.
   { id: 'trip-hop', name: 'Trip-hop', parent: 'ambient', emerged: 1991, emergedBasis: "Massive Attack, Blue Lines" },
@@ -115,7 +115,7 @@ const genres: Genre[] = [
   { id: 'singer-songwriter', name: 'Singer-songwriter', parent: null, emerged: 1967, emergedBasis: "Leonard Cohen, Joni Mitchell, Nick Drake" },
   { id: 'indie-folk', name: 'Indie folk', parent: 'singer-songwriter', emerged: 2004, emergedBasis: "Sufjan Stevens and Iron & Wine" },
   { id: 'noise-pop', name: 'Noise pop', parent: 'noise-rock', emerged: 1985, emergedBasis: "The Jesus and Mary Chain, Psychocandy" },
-  { id: 'indie-pop', name: 'Indie pop', parent: 'post-punk', alsoFrom: ['jangle-pop', 'singer-songwriter'], emerged: 1983, emergedBasis: "The Smiths; Postcard Records had laid the ground" },
+  { id: 'indie-pop', name: 'Indie pop', parent: 'post-punk', alsoFrom: ['jangle-pop'], emerged: 1983, emergedBasis: "The Smiths; Postcard Records had laid the ground" },
 ];
 
 const V1: Artist['scope'] = ['shoegaze-dreampop-v1', 'indie'];

@@ -254,18 +254,61 @@ export default function GenreTimeline({ nodes, rankCount, yearMarks, viewH, plot
           const ny = dx / dist;
           const cx = midX + nx * offset;
           const cy = midY + ny * offset;
+          // The path is drawn ANCESTOR -> DESCENDANT (to -> from), the
+          // opposite of how alsoFromIds reads, so that influence flows along
+          // the direction of travel and the chevron below can sit on it
+          // without contradicting itself. A quadratic curve with an unchanged
+          // control point is symmetric, so swapping the endpoints traces the
+          // identical arc -- the geometry is untouched, only its parametrisation.
+          const lineOpacity = dimmedByChain ? 0.06 : isActivePair ? 0.65 : 0.28;
+          // Direction cue. Without one, a genre sitting mid-chain (art-pop
+          // takes a secondary line IN from singer-songwriter and gives one OUT
+          // to dream-pop) reads as "connected to two unrelated things", which
+          // is exactly how this diagram was misread. Chevron rather than an SVG
+          // <marker>: markerUnits="strokeWidth" would scale it off a 1.1px
+          // dashed stroke to near-invisibility, and per-line colour would need
+          // one marker def per root colour.
+          const t = 0.62;
+          const mt = 1 - t;
+          // Point on the quadratic at t, and its tangent (derivative).
+          const px = mt * mt * to.x + 2 * mt * t * cx + t * t * from.x;
+          const py = mt * mt * to.y + 2 * mt * t * cy + t * t * from.y;
+          const tx = 2 * mt * (cx - to.x) + 2 * t * (from.x - cx);
+          const ty = 2 * mt * (cy - to.y) + 2 * t * (from.y - cy);
+          const tLen = Math.hypot(tx, ty) || 1;
+          const ux = tx / tLen;
+          const uy = ty / tLen;
+          const back = isActivePair ? 6.2 : 4.6;
+          const wing = isActivePair ? 3.6 : 2.7;
+          const chevron =
+            `M ${(px - ux * back + -uy * wing).toFixed(2)} ${(py - uy * back + ux * wing).toFixed(2)}` +
+            ` L ${px.toFixed(2)} ${py.toFixed(2)}` +
+            ` L ${(px - ux * back - -uy * wing).toFixed(2)} ${(py - uy * back - ux * wing).toFixed(2)}`;
           return (
-            <path
-              key={`also-${key}`}
-              d={`M ${from.x} ${from.y} Q ${cx} ${cy} ${to.x} ${to.y}`}
-              fill="none"
-              stroke={from.color}
-              strokeWidth={isActivePair ? SECONDARY_STROKE_ACTIVE : SECONDARY_STROKE_RESTING}
-              strokeDasharray="3 3"
-              strokeLinecap="round"
-              opacity={dimmedByChain ? 0.06 : isActivePair ? 0.65 : 0.28}
-              style={{ transition: 'opacity 160ms ease, stroke-width 160ms ease' }}
-            />
+            <g key={`also-${key}`}>
+              <path
+                d={`M ${to.x} ${to.y} Q ${cx} ${cy} ${from.x} ${from.y}`}
+                fill="none"
+                stroke={from.color}
+                strokeWidth={isActivePair ? SECONDARY_STROKE_ACTIVE : SECONDARY_STROKE_RESTING}
+                strokeDasharray="3 3"
+                strokeLinecap="round"
+                opacity={lineOpacity}
+                style={{ transition: 'opacity 160ms ease, stroke-width 160ms ease' }}
+              />
+              {/* Solid, undashed, and slightly more opaque than its line, so
+                  the arrowhead reads as a head rather than as one more dash. */}
+              <path
+                d={chevron}
+                fill="none"
+                stroke={from.color}
+                strokeWidth={isActivePair ? 1.9 : 1.25}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                opacity={dimmedByChain ? 0.08 : isActivePair ? 0.9 : 0.45}
+                style={{ transition: 'opacity 160ms ease, stroke-width 160ms ease' }}
+              />
+            </g>
           );
         })}
 
