@@ -2681,11 +2681,11 @@
       "classicAlbums": [
         {
           "id": "aia-alien-observer",
-          "title": "AIA: Alien Observer",
+          "title": "A I A: Alien Observer",
           "year": 2011,
           "isClassic": true,
-          "classicReason": "AIA: Alien Observer buries Liz Harris's voice and guitar so deep in reverb and tape hiss that the songs function more as weather than as narrative — melody is present throughout, but it arrives filtered through so much haze that it registers as mood before it registers as tune. The title track sets the pattern immediately, a slow, layered wash where individual chords blur into each other rather than resolving cleanly. The tracks around it favor repetition and duration over conventional song structure, asking the listener to sit inside the sound rather than follow it. It's one of the more fully immersive records in the drone-adjacent end of the dream-pop and ambient continuum Grouper works between.",
-          "imageUrl": null
+          "classicReason": "A I A: Alien Observer buries Liz Harris's voice and guitar so deep in reverb and tape hiss that the songs function more as weather than as narrative — melody is present throughout, but it arrives filtered through so much haze that it registers as mood before it registers as tune. The title track sets the pattern immediately, a slow, layered wash where individual chords blur into each other rather than resolving cleanly. The tracks around it favor repetition and duration over conventional song structure, asking the listener to sit inside the sound rather than follow it. It's one of the more fully immersive records in the drone-adjacent end of the dream-pop and ambient continuum Grouper works between.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/c1/b4/57/c1b45775-4552-c8dd-83bc-c1207f623170/mzi.josqdrrl.jpg/600x600bb.jpg"
         }
       ],
       "influenceScore": 2,
@@ -3103,7 +3103,7 @@
           "year": 2020,
           "isClassic": true,
           "classicReason": "7G is less a conventional album than a demonstration of range, a sprawling, multi-disc release moving between glitchy pop, ambient interludes, and straightforwardly pretty songwriting without settling into any single mode for long. \"Oh Yeah\" is one of the record's more accessible moments, a bright, hooky pop song that still carries the slightly uncanny, over-processed quality running through Cook's production generally. Elsewhere the record swings into much stranger territory, treating its own scale as license to try nearly everything at once. It's a useful map of A.G. Cook's actual range, released at a moment when most listeners only knew him through his work for other artists.",
-          "imageUrl": null
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/90/1a/3c/901a3c35-f13d-26a9-e563-e61944a318bd/05054526001398_Cover.jpg/600x600bb.jpg"
         }
       ],
       "influenceScore": 0,
@@ -3135,14 +3135,14 @@
           "year": 2019,
           "isClassic": true,
           "classicReason": "1000 gecs crams half a dozen genres into songs that rarely last past the two-minute mark, distortion pushed so far past comfortable levels that it becomes the point rather than a flaw. \"money machine\" is the clearest entry point, Laura Les's pitch-shifted vocal riding a beat that swings between ska guitar, dubstep bass drops, and pop-punk shout-along energy without any of it feeling like a transition. \"stupid horse\" and \"745 sticky\" show the same instinct for genre collision applied even more aggressively. The album's sheer density and refusal to resolve into one sound became a genuine reference point for hyperpop as it moved from internet niche to a term major labels started using.",
-          "imageUrl": null
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/e0/15/71/e015718f-826f-3968-2d1c-e766cf30947f/075679826060.jpg/600x600bb.jpg"
         }
       ],
       "influenceScore": 1,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/15b18bcb7d7b975350ad3013680157ec/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/07/09/ef/0709ef82-9c32-9f77-ee95-df43c32ab92c/mzaf_7827850772499171841.plus.aac.p.m4a",
+      "previewTrack": "money machine",
+      "previewAlbum": "1000 gecs"
     },
     {
       "id": "charli-xcx",
@@ -3300,9 +3300,9 @@
       ],
       "influenceScore": 1,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/ebd6b5e5a0b0f178163005de1869767b/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/83/89/47/838947d6-d89b-75da-47db-4962223ea90c/mzaf_3729081078717424503.plus.aac.p.m4a",
+      "previewTrack": "Dancing with your eyes closed",
+      "previewAlbum": "Revengeseekerz"
     },
     {
       "id": "oklou",
@@ -3363,7 +3363,7 @@
           "imageUrl": "https://coverartarchive.org/release/fc8bf81b-babb-47fe-99fc-841c1abfeb7c/43329505221-500.jpg"
         }
       ],
-      "influenceScore": 0,
+      "influenceScore": 1,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/c4dc2676b8b1aa0c679d614deb66bcdf/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/2d/cb/5d/2dcb5d7d-9827-87f6-0d10-d7a8594c677f/mzaf_13223693110374767797.plus.aac.p.m4a",
       "previewTrack": "iPod Touch",
@@ -3383,7 +3383,7 @@
       "activeFrom": 2012,
       "realm": "electronic",
       "lineage": "hyperpop-pcmusic",
-      "signatureSong": "daisies",
+      "signatureSong": "dazies",
       "bio": "yeule is the recording name of Nat Ćmiel, a musician who grew up between Singapore and the UK and built an early following through hazy, glitch-inflected electronic pop released via SoundCloud and small labels in the late 2010s. Their music has consistently blurred the line between digital fragility and genuine emotional rawness, often built around themes of dissociation, identity, and online existence.\n\nGlitch Princess (2022) brought that sound to a wider audience, and softscars (2023) pushed further toward guitar-based, shoegaze-inflected production, a shift Ćmiel has connected in interviews to a renewed interest in '90s alternative rock alongside their electronic influences. yeule's work moves fluidly between ambient, pop, and noisier guitar textures without treating any single genre as a fixed home base, and they have continued to build a devoted, terminally online fanbase that has followed the music's shifts as closely as any single genre label. Ćmiel has also spoken about virtual identity and online avatars as a recurring theme across their work, treating the digital and the physical self as equally real rather than as opposites.",
       "classicAlbums": [
         {
@@ -3397,9 +3397,9 @@
       ],
       "influenceScore": 1,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/1bb1a85b29060eeb4a0e6c9994d5e0a0/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/00/91/5d/00915de4-a7e9-3704-990a-048ca51a67b3/mzaf_7250814614318612231.plus.aac.p.m4a",
+      "previewTrack": "dazies",
+      "previewAlbum": "softscars"
     },
     {
       "id": "porter-robinson",
@@ -4230,9 +4230,9 @@
       ],
       "influenceScore": 1,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/95f0e0a39d7dd9eda8239c96d054527a/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f9/b8/59/f9b859dc-1c06-b90a-3c4a-826310b6c98b/mzaf_14017863719091862115.plus.aac.p.m4a",
+      "previewTrack": "First Love/Late Spring",
+      "previewAlbum": "Bury Me At Makeout Creek"
     },
     {
       "id": "phoebe-bridgers",
@@ -4549,14 +4549,14 @@
           "year": 1993,
           "isClassic": true,
           "classicReason": "Conceived as a song-by-song answer to the Rolling Stones' Exile on Main St., Exile in Guyville keeps the same eighteen-track scale while flipping the perspective toward a blunt, specifically female account of sex and disappointment. \"Fuck and Run\" states its subject as plainly as the title suggests, Phair's flat, unadorned voice refusing any sense of shame or performance around it. \"Divorce Song\" does something similar with the end of a relationship, treating small logistical details as the real site of heartbreak. Its directness was unusual enough on release that it's still cited as a turning point for how candidly women in indie rock could write about desire.",
-          "imageUrl": null
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/f0/96/e6/f096e697-a41a-2ec3-e48e-754b4f85aada/744861111450.png/600x600bb.jpg"
         }
       ],
       "influenceScore": 10,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/cc270ab32dcada6a15fdb2416debab6a/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/ff/89/96/ff89966e-387a-fa56-d14f-d6d67fb17151/mzaf_15897941274586219896.plus.aac.p.m4a",
+      "previewTrack": "F**k and Run (2018 Remaster)",
+      "previewAlbum": "Exile In Guyville (2018 Remaster)"
     },
     {
       "id": "cat-power",
@@ -4608,11 +4608,11 @@
       "classicAlbums": [
         {
           "id": "rollercoaster",
-          "title": "Rollercoaster",
+          "title": "Red House Painters I",
           "year": 1993,
           "isClassic": true,
-          "classicReason": "Rollercoaster stretches out at a pace few rock records of its era attempted, several songs running well past six minutes on the strength of patience alone rather than any buildup toward a climax. \"Katy Song\" moves at a near-stationary tempo, Kozelek's voice sitting just above a murmur over slowly shifting guitar chords, the melody taking its time to reveal itself. \"Have You Forgotten\" shows the same unhurried approach applied to something closer to a lament. It's a record that helped define what would later be called slowcore — extended, spacious, and almost entirely unconcerned with momentum.",
-          "imageUrl": null
+          "classicReason": "The self-titled 1993 debut, universally known as Rollercoaster for its cover, stretches out at a pace few rock records of its era attempted, several songs running well past six minutes on the strength of patience alone rather than any buildup toward a climax. \"Katy Song\" moves at a near-stationary tempo, Kozelek's voice sitting just above a murmur over slowly shifting guitar chords, the melody taking its time to reveal itself. \"Have You Forgotten\" shows the same unhurried approach applied to something closer to a lament. It's a record that helped define what would later be called slowcore — extended, spacious, and almost entirely unconcerned with momentum.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/db/31/d5/db31d53d-8352-5aa2-3b90-743a8a58b0b0/5014436300882.png/600x600bb.jpg"
         }
       ],
       "influenceScore": 1,
@@ -4876,9 +4876,9 @@
       ],
       "influenceScore": 6,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/5286ddb815ee0f1650d4ed00d1e83f4a/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview124/v4/d8/68/ab/d868ab97-546a-d1c8-5d91-6ac296254a0a/mzaf_12662163878567951995.plus.aac.p.m4a",
+      "previewTrack": "History Lesson",
+      "previewAlbum": "Post-Mersh, Vol. 1"
     },
     {
       "id": "black-flag",
@@ -5323,9 +5323,9 @@
       ],
       "influenceScore": 4,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/878827afe3957ace98d3bad7f5083ca7/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/c7/5d/69/c75d6935-8776-b032-8a17-a34ac047e17f/mzaf_13736160081081451898.plus.aac.p.m4a",
+      "previewTrack": "Kerosene",
+      "previewAlbum": "Atomizer (Remastered)"
     },
     {
       "id": "toe",
@@ -5346,11 +5346,11 @@
       "classicAlbums": [
         {
           "id": "the-book-about-my-idle-plot-on-a-vast-plain",
-          "title": "The Book About My Idle Plot on a Vast Plain",
+          "title": "The Book About My Idle Plot on a Vague Anxiety",
           "year": 2005,
           "isClassic": true,
-          "classicReason": "The Book About My Idle Plot on a Vast Plain builds entirely instrumental songs out of interlocking, technically demanding guitar lines that never feel merely cerebral. \"Goodbye\" pairs a rippling, melodic guitar figure with busy, propulsive drumming, the two constantly trading momentum without ever losing the song's emotional pull. Where much of instrumental math rock prizes complexity for its own sake, toe keep every part in service of an actual melody. It's an album that made the genre's technicality feel warm rather than academic.",
-          "imageUrl": null
+          "classicReason": "The Book About My Idle Plot on a Vague Anxiety builds entirely instrumental songs out of interlocking, technically demanding guitar lines that never feel merely cerebral. \"Goodbye\" pairs a rippling, melodic guitar figure with busy, propulsive drumming, the two constantly trading momentum without ever losing the song's emotional pull. Where much of instrumental math rock prizes complexity for its own sake, toe keep every part in service of an actual melody. It's an album that made the genre's technicality feel warm rather than academic.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/20/91/3d/20913d33-3544-2496-fb5b-1cfaa0487fa6/4538182201770.png/600x600bb.jpg"
         }
       ],
       "influenceScore": 0,
@@ -5484,7 +5484,7 @@
         }
       ],
       "influenceScore": 2,
-      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/1b427d31e44c7819d791e94341f3f7ba/250x250-000000-80-0-0.jpg",
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/0275f0031c33d31f87d6eb98efd99e40/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/42/36/96/42369643-9f29-4892-c667-ee543a40f6a7/mzaf_13031833301279653512.plus.aac.p.m4a",
       "previewTrack": "Inside Out",
       "previewAlbum": "Stratosphere"
@@ -6601,7 +6601,7 @@
           "year": 2002,
           "isClassic": true,
           "classicReason": "Yankee Hotel Foxtrot wraps plainspoken, melodic songs in layers of static, tape noise, and disjointed studio effects that never quite let the listener settle. \"Jesus, Etc.\" is the clearest example of the balance, its gentle string-and-guitar arrangement carrying lyrics about uncertainty and loss without ever tipping into melodrama. The album's experimental production was contentious enough that the band's label rejected it before release, a decision that only sharpened its eventual reception elsewhere. It remains the record that turned Wilco from a well-regarded alt-country act into something considerably harder to categorize.",
-          "imageUrl": null
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/79/1d/3c/791d3cfe-d1b0-67a9-acbd-559fd83b3401/075597966961.jpg/600x600bb.jpg"
         }
       ],
       "influenceScore": 2,
@@ -6832,9 +6832,9 @@
       ],
       "influenceScore": 0,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/22b3661ef2ee02489d77a80f1cb633e3/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/47/fe/5c/47fe5c86-ca7f-f373-4ca5-119a4a32f248/mzaf_10572137679335071180.plus.aac.p.m4a",
+      "previewTrack": "Beach Life-In-Death",
+      "previewAlbum": "Beach Life-In-Death - EP"
     },
     {
       "id": "the-national",
@@ -7085,7 +7085,7 @@
           "year": 2007,
           "isClassic": true,
           "classicReason": "Hissing Fauna, Are You the Destroyer? channels a period of real personal crisis into bright, danceable electro-pop, the mismatch between the music's exuberance and the lyrics' darkness never fully resolving. \"Gronlandic Edit\" rides a buoyant synth hook under lyrics about depression and self-erasure, the tension between the two giving the song a genuine unease beneath its catchiness. Kevin Barnes's shift toward electronic production marked one of several dramatic reinventions across his catalog. It remains the album most responsible for widening of Montreal's audience beyond the Elephant 6 underground that produced him.",
-          "imageUrl": null
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/9b/5c/f7/mzi.nficlyij.jpg/600x600bb.jpg"
         }
       ],
       "influenceScore": 0,
@@ -7347,9 +7347,9 @@
       ],
       "influenceScore": 1,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/879015e713cc6ad6ffaeec154c027505/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/83/5a/2b/835a2b42-cfad-2bd0-117b-8150f6f0cb30/mzaf_733122625819472017.plus.aac.p.m4a",
+      "previewTrack": "The Less I Know the Better",
+      "previewAlbum": "Currents"
     },
     {
       "id": "king-gizzard-and-the-lizard-wizard",
@@ -7665,7 +7665,7 @@
           "year": 1982,
           "isClassic": true,
           "classicReason": "Hex Enduction Hour opens with two drum kits hammering in tandem, a decision that turns the whole record into something closer to ritual than rock music. \"The Classical\" sets the tone immediately, Mark E. Smith's sneering, half-buried vocal riding a repetitive, motorik groove that refuses any conventional verse-chorus shape. The production is deliberately harsh, recorded partly in a cold Hitchin theatre and partly in Reykjavik, and the record never smooths out its own abrasiveness. It stands as the fullest statement of the Fall's belief that repetition and hostility could themselves be a kind of songcraft.",
-          "imageUrl": null
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/8b/f0/58/8bf0581e-bce7-e36b-ab76-5f0fb64f21dc/190374778770.jpg/600x600bb.jpg"
         }
       ],
       "influenceScore": 6,
@@ -8159,9 +8159,9 @@
       ],
       "influenceScore": 0,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/4e8c9cfd6661f19fe73980a147da5822/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/e6/61/26/e66126e3-4422-2b58-2de7-e822274fb164/mzaf_4248898334202044363.plus.aac.p.m4a",
+      "previewTrack": "Sugar/Tzu",
+      "previewAlbum": "Hellfire"
     },
     {
       "id": "black-country-new-road",
@@ -8385,14 +8385,14 @@
           "year": 1993,
           "isClassic": true,
           "classicReason": "Pottymouth runs its songs fast and loose, Allison Wolfe's yelped, conversational vocal riding deliberately scrappy garage-pop arrangements that never aim for polish. \"Cool Schmool\" carries the album's wit at its sharpest, turning teenage social anxiety into something genuinely funny without losing its bite. The whole record sounds like it was recorded in a single excited take, an urgency that studio refinement would only have dulled. It stands as one of riot grrrl's clearest full-length statements, as much a document of a scene's ethos as a collection of songs.",
-          "imageUrl": null
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/83/93/87/83938771-0e24-6497-3e97-05ad166fb680/759656065726.jpg/600x600bb.jpg"
         }
       ],
       "influenceScore": 2,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/8c2b94a7832c9542bf59f230aef41f93/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/d9/5a/b5/d95ab538-20db-ebd0-be68-5db95df5ea37/mzaf_11944277002812746935.plus.aac.p.m4a",
+      "previewTrack": "Cool Schmool (Remastered)",
+      "previewAlbum": "Pottymouth (Remastered Version)"
     },
     {
       "id": "coil",
@@ -8423,7 +8423,7 @@
         }
       ],
       "influenceScore": 0,
-      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/743bdadf9bca47848326f1ce90b8641f/250x250-000000-80-0-0.jpg",
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/fe12315a5615a6b10fccd6d22ee4d6bb/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/af/72/95/af729537-4453-2b5f-688a-d8b7de80f7b8/mzaf_16225036087961257329.plus.aac.p.m4a",
       "previewTrack": "Fire of the Mind",
       "previewAlbum": "The Ape of Naples"
@@ -8518,14 +8518,14 @@
           "year": 2026,
           "isClassic": true,
           "classicReason": "Worst Girl in America leans back into the sound of Slayyyter's own adolescence, trading some of her most recent records' polish for something rawer and more personal. \"Beat Up Chanels\" carries that shift clearly, its hook built from the same turn-of-the-millennium pop instincts that first drew her to music, delivered with more bite than nostalgia. She has described the record as a last-ditch effort at making something she could be genuinely proud of, and that stakes-raising shows in the writing throughout. It became her highest-charting release, suggesting the more personal approach paid off commercially as well as artistically.",
-          "imageUrl": null
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/e7/41/d8/e741d8f3-f8db-d401-5d93-fdfd69d8f17e/196873835891.jpg/600x600bb.jpg"
         }
       ],
       "influenceScore": 0,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/8f57c870d83e676aaecbbad6aec08acc/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4e/60/aa/4e60aab6-ffb7-b319-1b12-1be05eb56832/mzaf_6344798636293333887.plus.aac.p.m4a",
+      "previewTrack": "BEAT UP CHANEL$",
+      "previewAlbum": "WOR$T GIRL IN AMERICA"
     },
     {
       "id": "kero-kero-bonito",
@@ -8690,9 +8690,9 @@
       ],
       "influenceScore": 0,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/bf719e96b43f7ddcc50ea2330b1452bc/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/5d/e3/d3/5de3d30c-89e7-9586-fb02-b4aee1ed677a/mzaf_8601142887561379104.plus.aac.p.m4a",
+      "previewTrack": "Two Weeks",
+      "previewAlbum": "LP1"
     },
     {
       "id": "sheena-ringo",
@@ -8723,9 +8723,9 @@
       ],
       "influenceScore": 1,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/9f1e3e5a2b69166224d11cd9a4b184f8/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/f5/9a/ac/f59aaca1-c190-38a0-6d1a-cc32b2a64c24/mzaf_5961229579638378306.plus.aac.p.m4a",
+      "previewTrack": "Honnou - Instinct",
+      "previewAlbum": "The Best 3 Sheena Ringo - Single"
     },
     {
       "id": "grimes",
@@ -9223,9 +9223,9 @@
       ],
       "influenceScore": 2,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/b5770aaef316910eba959334888b07e0/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/34/21/e1/3421e1b4-04c5-7646-dc2f-b37c34828fa9/mzaf_16071112075389051796.plus.aac.p.m4a",
+      "previewTrack": "Touch Me I'm Sick",
+      "previewAlbum": "Superfuzz Bigmuff (Deluxe Edition)"
     },
     {
       "id": "tom-waits",
@@ -9391,9 +9391,9 @@
       ],
       "influenceScore": 0,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/cec61e995f795ba6d3309a5cc48235ab/250x250-000000-80-0-0.jpg",
-      "previewUrl": null,
-      "previewTrack": null,
-      "previewAlbum": null
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f0/3d/cc/f03dccd2-3e75-ea9a-a315-e0822f948ecd/mzaf_10801373534506060729.plus.aac.p.m4a",
+      "previewTrack": "Anthems For A Seventeen Year-Old Girl",
+      "previewAlbum": "You Forgot It In People"
     },
     {
       "id": "drive-by-truckers",
@@ -13315,6 +13315,15 @@
       "status": "verified",
       "confidence": 0.7,
       "citation": "I-D magazine interview (around Galore): Oklou called Arca \"the REAL star of current experimental music.\"",
+      "sourceTier": "first-person"
+    },
+    {
+      "source": "porter-robinson",
+      "target": "ninajirachi",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.85,
+      "citation": "Robinson, in a triple j interview with Ninajirachi, on two things he took from her into his own studio practice: her approach to lyrics -- \"she would just kind of like come up with stuff and not overthink it and go for it and sell it really. And I've been trying to carry that with me in the studio\" -- and her \"glitch generation\" technique of recording long files of experimental sound to draw on, which he says \"led to so many breakthroughs.\"",
       "sourceTier": "first-person"
     },
     {

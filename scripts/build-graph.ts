@@ -71,6 +71,108 @@ async function fetchWithTimeout(url: string, opts: RequestInit = {}, timeoutMs =
 let itunesBlockedUntil = 0;
 let itunesConsecutiveBlocks = 0;
 
+// ── Title/name matching ─────────────────────────────────────────────────────
+// Comparisons must survive the ways a store writes a title differently from
+// the way this repo does. Two problems, found by auditing all 28 artists that
+// were missing a cover or a preview:
+//
+//   1. STYLISATION. Slayyyter renders every S as a dollar sign, so
+//      "WOR$T GIRL IN AMERICA" never contains "worst girl i" and the album read
+//      as absent when it was right there. Same class: "OLD FLING$", "$T. LOSER".
+//   2. EDITION SUFFIXES. The store's copy is frequently the reissue --
+//      "Exile In Guyville (2018 Remaster)", "Atomizer (Remastered)",
+//      "Hex Enduction Hour (Expanded Deluxe Edition)", "Superfuzz Bigmuff
+//      (Deluxe Edition)". Ours is the plain title, and a strict compare misses.
+function normKey(s: string): string {
+  return s
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/\$/g, 's')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+/** Drops a trailing "(2018 Remaster)" / "(Deluxe Edition)" style qualifier. */
+function stripEdition(title: string): string {
+  return title.replace(/\s*[([][^)\]]*(remaster|deluxe|edition|expanded|reissue|anniversary|version|mono|stereo)[^)\]]*[)\]]\s*$/i, '').trim();
+}
+
+// Stores censor profanity in track titles: Liz Phair's "Fuck and Run" is sold
+// as "F**k and Run". The asterisks survive normKey as gaps, so no prefix test
+// can match. Treating the censored string as a SUBSEQUENCE of ours does:
+// "f k and run" fits inside "fuck and run" in order, while an unrelated title
+// will not. Only used when one side actually contains an asterisk, so it
+// cannot loosen ordinary comparisons.
+function isSubsequence(needle: string, hay: string): boolean {
+  let i = 0;
+  for (const ch of hay) if (ch === needle[i]) i++;
+  return i === needle.length;
+}
+
+/** True when a store title is our title, allowing stylisation and edition suffixes. */
+function titleMatches(ours: string, theirs: string): boolean {
+  const a = normKey(stripEdition(ours));
+  const b = normKey(stripEdition(theirs));
+  if (!a || !b) return false;
+  if (a === b || b.startsWith(a) || a.startsWith(b)) return true;
+  if (/\*/.test(ours) || /\*/.test(theirs)) {
+    const censored = /\*/.test(theirs) ? b : a;
+    const full     = /\*/.test(theirs) ? a : b;
+    return isSubsequence(censored.replace(/ /g, ''), full.replace(/ /g, ''));
+  }
+  return false;
+}
+
+// Resolve an artist to their iTunes artistId, then read their catalogue
+// directly. This is the fallback for the case that defeated the plain search:
+// "Liz Phair Exile in Guyville" as a search TERM returns zero results, while
+// the same album is plainly present in her catalogue under an artistId lookup.
+// Keyword search also returns confident wrong answers -- searching Wilco's
+// "Yankee Hotel Foxtrot" returns three cover-version acts and no Wilco -- so
+// resolving the artist first and filtering locally is both more complete and
+// safer than trusting the search ranking.
+const artistIdCache = new Map<string, number | null>();
+
+async function resolveItunesArtistId(artistName: string): Promise<number | null> {
+  const key = normKey(artistName);
+  if (artistIdCache.has(key)) return artistIdCache.get(key)!;
+  let id: number | null = null;
+  try {
+    const url = `https://itunes.apple.com/search?term=${encodeURIComponent(artistName)}&entity=musicArtist&limit=5`;
+    const res = await fetchItunesWithBackoff(url);
+    if (res?.ok) {
+      const data = await res.json() as { results: Array<{ artistName: string; artistId: number }> };
+      id = data.results.find(r => normKey(r.artistName) === key)?.artistId ?? null;
+    }
+  } catch { /* leave null */ }
+  artistIdCache.set(key, id);
+  return id;
+}
+
+type CatalogueTrack = {
+  wrapperType: string; trackName?: string; collectionName?: string;
+  previewUrl?: string; artworkUrl100?: string; artistName?: string;
+};
+
+const catalogueCache = new Map<number, CatalogueTrack[]>();
+
+async function fetchItunesCatalogue(artistId: number): Promise<CatalogueTrack[]> {
+  const hit = catalogueCache.get(artistId);
+  if (hit) return hit;
+  let tracks: CatalogueTrack[] = [];
+  try {
+    const url = `https://itunes.apple.com/lookup?id=${artistId}&entity=song&limit=200`;
+    const res = await fetchItunesWithBackoff(url);
+    if (res?.ok) {
+      const data = await res.json() as { results: CatalogueTrack[] };
+      tracks = (data.results || []).filter(r => r.wrapperType === 'track');
+    }
+  } catch { /* leave empty */ }
+  catalogueCache.set(artistId, tracks);
+  return tracks;
+}
+
+
 async function fetchItunesWithBackoff(url: string): Promise<Response | null> {
   const wait = itunesBlockedUntil - Date.now();
   if (wait > 0) await new Promise(r => setTimeout(r, wait));
@@ -109,18 +211,26 @@ async function fetchItunesWithBackoff(url: string): Promise<Response | null> {
 async function fetchDeezerImage(name: string): Promise<string | null> {
   try {
     const res = await fetchWithTimeout(
-      `https://api.deezer.com/search/artist?q=${encodeURIComponent(name)}&limit=3`,
+      `https://api.deezer.com/search/artist?q=${encodeURIComponent(name)}&limit=10`,
     );
     if (!res.ok) return null;
     const data = await res.json() as {
-      data: Array<{ name: string; picture_medium: string }>;
+      data: Array<{ name: string; picture_medium: string; nb_fan?: number }>;
     };
     // d41d8cd98f00b204e9800998ecf8427e is MD5("") — Deezer's "no image" placeholder
     const withImage = data.data.filter(
       a => !a.picture_medium.includes('d41d8cd98f00b204e9800998ecf8427e'),
     );
+    // Among artists sharing the name EXACTLY, take the one with the most fans.
+    // Taking the first match instead let Deezer's own ranking decide, and it
+    // picks wrong on common words: "Duster" returned a 6.5k-fan act ahead of
+    // the 28k-fan slowcore band, and "Coil" returned a 25-fan account ahead of
+    // the real 9.8k one. Both shipped visibly wrong photographs. Fan count is
+    // a blunt signal but a reliable one for "the artist people mean", and the
+    // limit is 10 rather than 3 so the real one is in the candidate set at all.
+    const exact = withImage.filter(a => a.name.toLowerCase() === name.toLowerCase());
     const artist =
-      withImage.find(a => a.name.toLowerCase() === name.toLowerCase()) ??
+      exact.sort((x, y) => (y.nb_fan ?? 0) - (x.nb_fan ?? 0))[0] ??
       withImage[0];
     return artist?.picture_medium ?? null;
   } catch {
@@ -248,7 +358,10 @@ async function fetchItunesAlbumCover(artistName: string, albumTitle: string): Pr
         .replace(/^(the|a|an)\s+/i, '').split(/[\s&,+]/)[0].toLowerCase();
       const match = data.results.find(r =>
         r.artworkUrl100 &&
-        r.collectionName.toLowerCase().includes(titleKey.slice(0, 12)) &&
+        // titleMatches handles stylisation ($ for S) and edition suffixes; the
+        // old substring test on the first 12 chars failed both.
+        (titleMatches(albumTitle, r.collectionName) ||
+          r.collectionName.toLowerCase().includes(titleKey.slice(0, 12))) &&
         r.artistName.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().includes(artistKey)
       );
       return match?.artworkUrl100?.replace('100x100bb', '600x600bb') ?? null;
@@ -262,7 +375,19 @@ async function fetchItunesAlbumCover(artistName: string, albumTitle: string): Pr
   if (result) return result;
   // Retry with just the album title in case artist name pollutes results
   await new Promise(r => setTimeout(r, 100));
-  return tryFetch(albumTitle);
+  const byTitle = await tryFetch(albumTitle);
+  if (byTitle) return byTitle;
+
+  // Last resort: read the artist's catalogue directly. Keyword search can miss
+  // an album that is plainly present (Liz Phair's Exile in Guyville returns
+  // zero results as a search term) -- see resolveItunesArtistId's comment.
+  const artistId = await resolveItunesArtistId(artistName);
+  if (artistId === null) return null;
+  const tracks = await fetchItunesCatalogue(artistId);
+  const hit = tracks.find(t =>
+    t.artworkUrl100 && t.collectionName && titleMatches(albumTitle, t.collectionName),
+  );
+  return hit?.artworkUrl100?.replace('100x100bb', '600x600bb') ?? null;
 }
 
 interface AlbumFetchEntry {
@@ -390,7 +515,25 @@ async function fetchItunesPreview(artistName: string, songTitle: string): Promis
   const result = await tryFetch(`${artistName} ${songTitle}`);
   if (result) return result;
   await new Promise(r => setTimeout(r, 100));
-  return tryFetch(songTitle);
+  const byTitle = await tryFetch(songTitle);
+  if (byTitle) return byTitle;
+
+  // Same catalogue fallback as the cover fetcher. Recovers stylised titles the
+  // keyword search cannot reach -- Slayyyter's "BEAT UP CHANEL$" against our
+  // "Beat Up Chanels" -- and reissue-only pressings.
+  const artistId = await resolveItunesArtistId(artistName);
+  if (artistId === null) return null;
+  const tracks = await fetchItunesCatalogue(artistId);
+  const hit = tracks.find(t =>
+    t.previewUrl && t.trackName && titleMatches(songTitle, t.trackName) &&
+    !isUnwanted(t as { trackName: string; collectionName: string; artistName: string; previewUrl?: string }),
+  );
+  if (!hit?.previewUrl || !hit.trackName) return null;
+  return {
+    previewUrl:   hit.previewUrl,
+    previewTrack: cleanTitle(hit.trackName),
+    previewAlbum: cleanTitle(hit.collectionName ?? ''),
+  };
 }
 
 // Some signature songs genuinely aren't on iTunes or Deezer under any
