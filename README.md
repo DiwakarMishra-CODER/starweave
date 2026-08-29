@@ -1,10 +1,10 @@
 # Starweave
 
-**An interactive map of who influenced whom in indie music - 293 artists, 1,034 sourced influence relationships, rooted at the Velvet Underground.**
+**An interactive map of who influenced whom in indie music - 297 artists, 1,053 sourced influence relationships, rooted at the Velvet Underground.**
 
 **[starweaves.vercel.app](https://starweaves.vercel.app/)**
 
-In mainstream music, legacy is measured in sales. In underground music it is measured in descendants: the Velvet Underground's first album famously sold almost nothing, and nearly everyone who bought a copy started a band. Starweave is an attempt to make that claim *checkable* - to render influence as a graph where 898 of its 1,034 edges carry a real, named source you can go and read, and the rest say plainly why they don't.
+In mainstream music, legacy is measured in sales. In underground music it is measured in descendants: the Velvet Underground's first album famously sold almost nothing, and nearly everyone who bought a copy started a band. Starweave is an attempt to make that claim *checkable* - to render influence as a graph where 908 of its 1,053 edges carry a real, named source you can go and read, and the rest say plainly why they don't.
 
 ![The full constellation: six named realms orbiting a core, with the evidence filter bottom-left](docs/images/hero-constellation.jpg)
 
@@ -31,8 +31,8 @@ Starweave is not a music-discovery app with a graph bolted on. The graph *is* th
 
 Three things make it more than a D3 demo:
 
-1. **The data is hand-curated and cited.** 898 of 1,034 edges carry a named source; 555 are first-person, the artist themselves saying it on the record. Not scraped, not inferred from co-listening. The 136 edges nobody has stated on the record are marked `unsourceable` rather than quietly dropped or quietly asserted.
-2. **It refuses to guess.** A claim with no findable source is either marked as unsourced or not written at all. 26 recorded artist *denials* are stored separately so a future pass cannot "rediscover" a myth the artist has already rejected.
+1. **The data is hand-curated and cited.** 908 of 1,053 edges carry a named source; 562 are first-person, the artist themselves saying it on the record. Not scraped, not inferred from co-listening. The 145 edges nobody has stated on the record are marked `unsourceable` rather than quietly dropped or quietly asserted.
+2. **It refuses to guess.** A claim with no findable source is either marked as unsourced or not written at all. 30 recorded artist *denials* are stored separately so a future pass cannot "rediscover" a myth the artist has already rejected.
 3. **It is one persistent canvas.** The force simulation never unmounts. Navigating from the graph to an artist page to a genre timeline and back preserves camera, selection and physics state.
 
 ---
@@ -41,36 +41,36 @@ Three things make it more than a D3 demo:
 
 | | |
 |---|---|
-| Artists | **293** |
-| Influence edges | **1,034** |
-| Recorded artist denials | 29 |
+| Artists | **297** |
+| Influence edges | **1,053** |
+| Recorded artist denials | 30 |
 | Genres (hierarchical) | 53 |
 | Scenes | 14 |
-| Bios / photos / album write-ups | 293 / 293 / 293 |
+| Bios / photos / album write-ups | 297 / 297 / 297 |
 
 **Edge sourcing quality** - the number this project actually lives or dies on:
 
 | Tier | Count | Meaning |
 |---|---|---|
-| First-person | **555 (54%)** | The artist said it themselves |
-| Reported | 218 | A publication states it, no direct quote |
-| Critic | 125 | A critic's analysis or comparison |
-| Unsourceable | 136 | Real and undisputed, but nobody has said it on the record |
+| First-person | **562 (53%)** | The artist said it themselves |
+| Reported | 224 | A publication states it, no direct quote |
+| Critic | 122 | A critic's analysis or comparison |
+| Unsourceable | 145 | Real and undisputed, but nobody has said it on the record |
 | Unchecked | 0 | Every inherited edge has now been checked |
 
 **Seven realms**, laid out on an ellipse around a shared core:
 
 | Realm | Artists | |
 |---|---|---|
-| `region-one` | 71 | British post-punk → shoegaze → dream-pop, plus the modern UK/Windmill bands |
+| `region-one` | 72 | British post-punk → shoegaze → dream-pop, plus the modern UK/Windmill bands |
 | `electronic` | 59 | Krautrock, synth-pop, IDM, ambient, trip-hop, hyperpop |
-| `american-underground` | 55 | Noise-alt, college rock, indie rock, psych |
+| `american-underground` | 58 | Noise-alt, college rock, indie rock, psych |
 | `folk-confessional` | 50 | Folk roots, freak-folk, confessional, slowcore |
-| `emo-posthardcore` | 31 | Hardcore roots, post-hardcore, midwest emo, math rock |
-| `post-rock-drone-noise` | 22 | Post-rock, no-wave, drone |
+| `emo-posthardcore` | 30 | Hardcore roots, post-hardcore, midwest emo, math rock |
+| `post-rock-drone-noise` | 23 | Post-rock, no-wave, drone |
 | `core` | 5 | Velvet Underground, Kraftwerk, Can, Neu!, Brian Eno |
 
-Most-connected nodes: Velvet Underground (56), Sonic Youth (48), My Bloody Valentine (39), Cocteau Twins (31), Siouxsie & The Banshees (30).
+Most-connected nodes: Velvet Underground (58), My Bloody Valentine (32), Sonic Youth (32), Neil Young (26), David Bowie (25).
 
 ---
 
@@ -84,15 +84,15 @@ connection the artist didn't state themselves, with a live count:
 
 | Mode | Edges | |
 |---|---|---|
-| **Everything** | 1,034 | Every documented influence, however it was sourced |
-| **In their own words** | 555 | Only where the artist said it themselves, on the record |
+| **Everything** | 1,053 | Every documented influence, however it was sourced |
+| **In their own words** | 562 | Only where the artist said it themselves, on the record |
 
 Failing edges are **ghosted, never removed**. The constellation's shape is the
 thing being looked at, and deleting half its threads would read as a rendering
-fault rather than as an argument about sourcing. Watching 1,034 fall to 555
+fault rather than as an argument about sourcing. Watching 1,053 fall to 562
 while the structure still holds is the most honest thing the project does.
 
-Deliberately binary. A middle "has a citation" tier (898 edges) was built and
+Deliberately binary. A middle "has a citation" tier (908 edges) was built and
 then cut: that distinction already appears per-edge in the artist panel, where
 a cited row offers its quote and an unsourceable one says so plainly. Repeating
 it as a graph-wide mode duplicated a row-level detail while diluting the only
@@ -115,6 +115,10 @@ Below: My Bloody Valentine and its descendants, with the Ramones citation expand
 ### Genre and scene highlighting
 
 A parallel highlight system to click-focus: pick a genre or scene and its members light up across the whole constellation, showing how a tag scatters across realms rather than clustering neatly. Clicking a member re-centres within the set instead of dropping out of it.
+
+### The path finder picks evidence over hop count
+
+Pick two artists and the panel doesn't just find *a* path between them - fewest hops between 1,758 sampled pairs walked through a weak or unsourced link 70% of the time, which undercuts a graph whose whole claim is that its edges are checkable. Instead each hop is priced by how much trust it costs to cross (a first-person quote costs a tenth of an unchecked inheritance), and a Dijkstra search over that weighting finds the cheapest, not the shortest, route - dropping the weak-link rate to 11% for about one extra hop on average. The panel shows every hop's citation inline, names whether the route is a direct line of descent or two artists meeting partway, and flags when it turns direction more than once so it never implies a false single meeting point.
 
 ### Two purpose-built timelines
 
@@ -267,10 +271,10 @@ npm run dev           # localhost:3000
 
 ## Testing
 
-23 tests across 3 files, run on every push via GitHub Actions (`.github/workflows/ci.yml`):
+44 tests across 3 files, run on every push via GitHub Actions (`.github/workflows/ci.yml`):
 
 - **Build validator** - dangling edge endpoints must fail the build
-- **BFS path-finding** - the shortest-path traversal between any two artists
+- **Path-finding** - the fewest-hops BFS traversal, the undirected connection search that falls back to it, and the citation-weighted Dijkstra search the path finder actually uses, including a check that it never costs more than the shortest path by its own measure
 - **Component rendering**
 
 ---
