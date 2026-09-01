@@ -245,6 +245,8 @@ lib/                  colours, layout maths, graph utils, media-query hooks
 data/                 seed-data (source of truth), types, genre page copy
 scripts/              build-graph pipeline
 tests/                vitest - BFS, build validator, components
+research/             per-realm sourcing notes - raw research behind every citation
+docs/HISTORY.md       full build changelog, every pass, session by session
 ```
 
 `components/graph/ForceGraph.tsx` is ~3,500 lines and heavily commented. The comments explain *why* a constant has its value and what broke last time, which matters more than what the code does.

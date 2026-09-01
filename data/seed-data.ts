@@ -21,7 +21,7 @@ import { BIOS } from './bios';
 // Genre hierarchy pass 3 (2026) — real interconnection, not a clean lie.
 // `parent` is primary (drives layout); `alsoFrom` is secondary (drawn, never
 // affects position) — see data/types.ts. Both were checked against the
-// graph's own edges (genre-influence-flow-report.md at the repo root),
+// graph's own edges (research/genre-influence-flow-report.md),
 // corrected for indie-rock/alt-rock/etc.'s sheer artist-count advantage by
 // using density (edges / source-artists x target-artists), not raw counts.
 //
@@ -417,7 +417,7 @@ const artists: Artist[] = [
     classicAlbums: [ca("speak-for-yourself", "Speak for Yourself", 2005, "Speak for Yourself was written, performed, and largely produced by Imogen Heap alone, a level of self-sufficiency that shows in how tightly the album's vocal and electronic elements are integrated. \"Hide and Seek\" is the clear anchor, built almost entirely from Heap's own voice run through a vocoder and layered into dense, hymn-like harmonies with no conventional instrumentation underneath it. \"Goodnight and Go\" and \"Headlock\" show a more straightforward, if still meticulously produced, pop-songwriting side. The album's mix of technical ambition and genuine emotional directness gave \"Hide and Seek\" a second life years later, reaching listeners who had no idea where the song actually came from.")] },
 
   // ── Folk & Confessional realm ────────────────────────────────────────
-  // Sourced via folk-audit-DRAFT.md / folk-audit-FINAL.md (this repo root) —
+  // Sourced via research/folk-audit-DRAFT.md / research/folk-audit-FINAL.md —
   // a 3-layer human-reviewed influence audit, same process as island-two.
   // Bios/classicAlbums/signatureSong written in a follow-up content pass;
   // classic album (title + year) and signature song are locked/approved
@@ -568,7 +568,7 @@ const artists: Artist[] = [
     classicAlbums: [ca('the-sunset-tree', 'The Sunset Tree', 2005, "The Sunset Tree was Darnielle's first album recorded in a proper studio, and he used the clearer sound to tell a directly autobiographical story about his difficult childhood with unusual candor. \"This Year\" turns a specific, dread-filled adolescent memory into an anthem, its repeated refrain — \"I am gonna make it through this year if it kills me\" — landing as both a survival strategy and a genuine declaration of hope. \"Dance Music\" pairs a bright, upbeat arrangement with a scene of real domestic conflict, the mismatch entirely deliberate. It's a record that turns unflinching honesty about a difficult childhood into something that reads as triumphant rather than merely bleak.")] },
 
   // ── Emo & Post-Hardcore realm ─────────────────────────────────────────
-  // Sourced via emo-audit-DRAFT.md (this repo root) — same 3-layer
+  // Sourced via research/emo-audit-DRAFT.md — same 3-layer
   // human-reviewed audit process as island-two and the folk realm.
   // fugazi/minor-threat above were MOVED here from region-one (realm/
   // lineage fields added directly on their existing literals) — their
@@ -688,13 +688,13 @@ const artists: Artist[] = [
   // already folk-confessional/slowcore. Placed there for consistency rather
   // than invented into the emo realm just because of where it was found;
   // also independently already load-bearing there (low → codeine, sourced
-  // in folk-audit-FINAL.md, only now actually implemented as a node).
+  // in research/folk-audit-FINAL.md, only now actually implemented as a node).
   { id: 'codeine', name: 'Codeine', layer: 'outside', genres: ['slowcore'], scope: ['underground'], activeFrom: 1989, realm: 'folk-confessional', lineage: 'slowcore', signatureSong: 'D',
     bio: "Codeine formed in New York City around 1989, playing a stripped-down, deliberately unhurried version of indie rock that helped define what would come to be called slowcore: minimal arrangements, tempos slowed almost to a stop, and a sense of weight built through restraint rather than volume. Where much of the underground rock of the era prized speed and noise, Codeine's music sat in near-silence, each note given room to decay before the next arrived.\n\nFrigid Stars LP (1990) established that aesthetic fully formed, and though the band released only a small handful of records before disbanding in the mid-1990s, their patient, minimal approach proved durably influential — audible in a wide range of later bands, from other explicitly slowcore acts to the more hushed corners of midwest emo and indie rock, who found in Codeine's deliberate pacing a template for turning quietness itself into a compositional tool.",
     classicAlbums: [ca('frigid-stars-lp', 'Frigid Stars LP', 1990, "Frigid Stars LP moves at a pace that turns near-silence into its own kind of tension, each guitar note given space to fully decay before the next one arrives. \"D\" builds almost nothing by conventional standards — a slow chord change, a hushed vocal — yet the accumulated weight of that restraint hits harder than most louder records manage. The album helped define what would later be labeled slowcore, a genre built on exactly this kind of patience. Decades on, its influence turns up in bands who never play anything resembling hardcore, yet trace their hushed pacing directly back here.")] },
 
   // ── Post-Rock, Drone & Noise realm ────────────────────────────────────
-  // Sourced from postrock-audit-DRAFT.md (repo root, Layer 1) plus reviewer
+  // Sourced from research/postrock-audit-DRAFT.md (Layer 1) plus reviewer
   // rescue citations (Layer 2 verdict) — same 3-layer human-reviewed process
   // as folk/emo. No bios/classicAlbums/signatureSong authored here — structure
   // + edges + citations + realm treatment only, per this pass's explicit scope.
@@ -1032,7 +1032,7 @@ const artists: Artist[] = [
   // 25 of the 27 originally-scoped artists, plus 2 summons (Bikini Kill,
   // Bratmobile). Structure/edges only, per the three-layer process -- bios,
   // albums and signature songs are a separate later pass. Geordie Greep and
-  // Die Spitz were researched but DROPPED (see region-one-audit-DRAFT.md):
+  // Die Spitz were researched but DROPPED (see research/region-one-audit-DRAFT.md):
   // Greep at 1 edge plus an unresolved same-person question against
   // black-midi; Die Spitz misfiled into this roster by the realm map despite
   // being an unrelated Austin, TX band with only outward-pointing edges.
@@ -1166,7 +1166,7 @@ const artists: Artist[] = [
   // 14 of the 21 originally-scoped artists. Structure/edges only -- bios,
   // albums and signature songs are a separate later pass. Clarence Clarity,
   // Dean Blunt, Lamp and honeydip DROPPED (0 edges, "no orphans" rule, see
-  // electronic-audit-DRAFT.md -- three flagged as language-barrier or
+  // research/electronic-audit-DRAFT.md -- three flagged as language-barrier or
   // media-shy-subject gaps rather than confirmed absence). Beth Gibbons NOT
   // written as a separate node -- merged into the existing portishead node,
   // see the pending-content note near BIOS below. Candy Claws and The
@@ -1232,7 +1232,7 @@ const artists: Artist[] = [
 
   // -- placement-corrected from the electronic roster (human ruling): both
   // artists' real edges point region-one/american-underground, not
-  // electronic -- see electronic-audit-DRAFT.md --
+  // electronic -- see research/electronic-audit-DRAFT.md --
   { id: 'candy-claws', name: 'Candy Claws', layer: 'outside', genres: ['shoegaze', 'dream-pop', 'neo-psychedelia'], scope: ['underground'], country: 'US', activeFrom: 2007, realm: 'region-one',
     signatureSong: "Pangaea Girls",
     bio: "Candy Claws formed around Fort Collins, Colorado in the mid-2000s under the direction of Ryan Hoover, building a hazy, richly layered take on shoegaze and dream-pop steeped in the sound of My Bloody Valentine and, by Hoover's own account, the more obscure Starflyer 59. The band's records lean heavily on dense guitar textures and reverb-soaked production, favoring atmosphere and repetition over conventional song structure.\n\nCeres & Calypso in the Deep Time, their third album, arrived in 2013, built loosely around themes of deep geological time and the natural world. The band has released only sporadically since, sustained by a small but devoted following built almost entirely through word of mouth rather than wider commercial attention. Candy Claws' catalog remains a minor but genuinely distinctive entry within American shoegaze, more cited by fellow musicians than widely known outside the genre's smaller circles.",
@@ -1346,7 +1346,7 @@ const artists: Artist[] = [
   // ── Four-node pass (Aug 2026) — STRUCTURE AND EDGES ONLY ─────────────
   // bio/classicAlbums deliberately omitted per the three-layer rule; content
   // is a separate later pass. Research lives in
-  // kelela-breeders-nsb-audit-DRAFT.md (Breeders, Natural Snow Buildings) and
+  // research/kelela-breeders-nsb-audit-DRAFT.md (Breeders, Natural Snow Buildings) and
   // in CLAUDE.md's R&B-pass notes (Blood Orange).
   //
   // Blood Orange sits in region-one, not electronic: Dev Hynes is
@@ -1951,7 +1951,7 @@ const edges: Edge[] = [
   inf("harold-budd", "brian-eno", 0.6, 'verified', null, 'unsourceable'),
 
   // ── Folk & Confessional realm edges ──────────────────────────────────
-  // Sourced via folk-audit-DRAFT.md / folk-audit-FINAL.md. A handful of
+  // Sourced via research/folk-audit-DRAFT.md / research/folk-audit-FINAL.md. A handful of
   // audit-proposed edges were dropped here because their target isn't a
   // node in this write (not enough independent sourcing to promote them
   // yet): mac-demarco→jonathan-richman, low→codeine, mount-eerie→beat-
@@ -1995,7 +1995,7 @@ const edges: Edge[] = [
   // since she's this realm's hub (in-degree from Sharon Van Etten, Angel
   // Olsen, Mitski, Snail Mail, Japanese Breakfast, Fiona Apple, Phoebe
   // Bridgers all pointing at her unsourced outgoing edges). See
-  // folk-confessional-DEFINITIVE-HANDOVER.md.
+  // research/folk-confessional-DEFINITIVE-HANDOVER.md.
   inf('bright-eyes', 'townes-van-zandt', 0.85, 'verified', "Conor Oberst said on the Life of the Record podcast, marking I'm Wide Awake, It's Morning's 20th anniversary, that the record aimed for a purist 1970s folk approach heavily influenced by Jackson Browne, Joni Mitchell, Gram Parsons and Townes Van Zandt; on his own Pitchfork list of influences he called Van Zandt \"the deep, dark part that I carry around.\"", undefined, 'first-person'),
   inf('grouper', 'townes-van-zandt', 0.5, 'verified', null, 'unsourceable'),
   inf('townes-van-zandt', 'bob-dylan', 0.75, 'verified', "Encyclopedia.com writes that Townes Van Zandt took up guitar at fifteen after being drawn in by blues records and early Bob Dylan, and FolkWorld has cited Dylan as a major influence on him.", undefined, 'reported'),
@@ -2129,7 +2129,7 @@ const edges: Edge[] = [
   inf('the-mountain-goats', 'joy-division', 0.80, 'verified', "The same Goths band statement names Joy Division; bandmate Peter Hughes told No Depression, quoted in the Oklahoma Gazette, that John Darnielle was largely influenced by Joy Division and New Order in his youth.", undefined, 'first-person'),
 
   // ── Emo & Post-Hardcore realm ─────────────────────────────────────────
-  // Sourced from emo-audit-DRAFT.md (repo root). Every edge below carries a
+  // Sourced from research/emo-audit-DRAFT.md. Every edge below carries a
   // real, populated citation — a new requirement for this realm's edges,
   // not retrofitted onto region-one/electronic/folk-confessional's.
   // fugazi/minor-threat below are NEW edges only — their 5 pre-existing
@@ -2286,7 +2286,7 @@ const edges: Edge[] = [
   inf('get-up-kids', 'the-jesus-lizard', 0.5, 'verified', null, 'unsourceable'),
 
   // ── Post-Rock, Drone & Noise realm ────────────────────────────────────
-  // Sourced from postrock-audit-DRAFT.md (Layer 1) + reviewer-supplied rescue
+  // Sourced from research/postrock-audit-DRAFT.md (Layer 1) + reviewer-supplied rescue
   // citations (Layer 2 verdict, do-not-re-search). Citations populated on
   // every edge, same convention as the emo realm.
 
@@ -2682,7 +2682,7 @@ const edges: Edge[] = [
   // simultaneity-trap edge, not an omission to fix.
 
   // ── Region One extension: edges (2026 research pass) ────────
-  // See region-one-audit-DRAFT.md for full sourcing detail. Several edges
+  // See research/region-one-audit-DRAFT.md for full sourcing detail. Several edges
   // below were already sitting in this file, sourced against a target that
   // didn't exist yet -- writing them now needed no new research, just the
   // new nodes above.
@@ -2757,7 +2757,7 @@ const edges: Edge[] = [
   inf('airiel', 'ride', 0.75, 'verified', "Jeremy Wrenn describes getting into the Cocteau Twins, Lush, My Bloody Valentine, Ride and \"all those great British bands\" as Airiel's formative listening.", undefined, 'first-person'),
   // ozean DROPPED (2026 content pass): too obscure to carry content per
   // human call. All 5 ozean edges removed with the node -- see
-  // region-one-audit-DRAFT.md for the original sourcing if reconsidered.
+  // research/region-one-audit-DRAFT.md for the original sourcing if reconsidered.
 
   // -- Panchiko --
   inf('panchiko', 'radiohead', 0.75, 'verified', "Owain Davies cites Radiohead as one of Panchiko's biggest influences (Bandcamp Daily); Wikipedia's page on the D>E>A>T>H>M>E>T>A>L EP independently notes the record \"has inspirations from Radiohead and Joy Division.\"", undefined, 'first-person'),
@@ -2870,7 +2870,7 @@ const edges: Edge[] = [
   // scope-guarded out, not proposed as a node either.
 
   // ── Electronic extension: edges (2026 research pass) ────────
-  // See electronic-audit-DRAFT.md for full sourcing detail.
+  // See research/electronic-audit-DRAFT.md for full sourcing detail.
 
   // -- Coil --
   inf('coil', 'can', 0.85, 'verified', "Peter Christopherson traced Coil's early musical interests back to Stockhausen, Captain Beefheart, Can and Amon Duul, in a 1998 Wire magazine interview.", undefined, 'first-person'),
@@ -2978,7 +2978,7 @@ const edges: Edge[] = [
 
   // -- Held, not written (0 edges, "no orphans" rule): clarence-clarity,
   // dean-blunt, lamp, honeydip. Lamp and honeydip flagged as language-
-  // barrier gaps, not confirmed absence -- see electronic-audit-DRAFT.md.
+  // barrier gaps, not confirmed absence -- see research/electronic-audit-DRAFT.md.
   // Beth Gibbons NOT written as a separate node -- see the pending-content
   // note near BIOS below for the Portishead-bio merge instruction.
 
@@ -3144,7 +3144,7 @@ const edges: Edge[] = [
   // three unsourced sidebar entries despite all three being graph nodes.
 
   // -- Directional edge pass (31 Jul 2026): 49 new edges + 3 new nodes
-  // (mc5, sex-pistols, mary-timony). See directional-edge-pass-CONSOLIDATED.md
+  // (mc5, sex-pistols, mary-timony). See research/directional-edge-pass-CONSOLIDATED.md
   // for the full research. the-stooges -> mc5, bad-brains -> mc5,
   // wire -> sex-pistols and the-fall -> sex-pistols were all held rather
   // than written -- named as likely connections in the research file but
@@ -3211,7 +3211,7 @@ const edges: Edge[] = [
 
   // -- Folk-confessional verification pass (31 Jul 2026): verification
   // bycatch and one correction to the researcher's own error, per
-  // folk-confessional-DEFINITIVE-HANDOVER.md §2b/§2c. Of the doc's nominal
+  // research/folk-confessional-DEFINITIVE-HANDOVER.md §2b/§2c. Of the doc's nominal
   // 27 bycatch edges, only these 15 carried a named source in the handover
   // -- the rest of §2c (Bon Iver -> Tom Waits/John Prine, Mitski -> St.
   // Vincent, Julia Holter -> Joni Mitchell, Snail Mail -> Joni Mitchell,
@@ -3240,7 +3240,7 @@ const edges: Edge[] = [
 
   // -- Folk-confessional per-edge citation correction (31 Jul 2026): brand
   // new edges that didn't exist at all when the handover's bare-pair gap
-  // was first found. See folk-confessional-DEFINITIVE-HANDOVER.md and the
+  // was first found. See research/folk-confessional-DEFINITIVE-HANDOVER.md and the
   // per-edge citation follow-up that supplied real source text for these. --
   inf('mitski', 'st-vincent', 0.70, 'verified', "Far Out reported that in her early days Mitski looked up to innovators including St. Vincent.", undefined, 'reported'),
   inf('snail-mail', 'joni-mitchell', 0.75, 'verified', "Lindsey Jordan named Joni Mitchell in the same 2016 9:30 Club interview in which she named Grouper, Broadcast and Liz Phair as artists she was listening to while writing Habit.", undefined, 'first-person'),
@@ -3259,7 +3259,7 @@ const edges: Edge[] = [
   // pattern across all five: these nodes are thin because their documented
   // influences point OFF-roster, not because nobody looked. Same class of
   // answer as the settled-not-unchecked nodes in
-  // directional-edge-pass-CONSOLIDATED.md §5.
+  // research/directional-edge-pass-CONSOLIDATED.md §5.
   //   - camera-obscura: the only claim that surfaces ("grew up on the Velvet
   //     Underground, the Pastels and Yo La Tengo") is the KNOWN GROKIPEDIA
   //     FABRICATION already documented in CLAUDE.md, re-encountered here and
@@ -3336,7 +3336,7 @@ const edges: Edge[] = [
 ];
 
 // Recorded artist denials of a commonly-assumed influence — see
-// realm6-audit-DRAFT.md §6/§10. Without storing these, a future research
+// research/realm6-audit-DRAFT.md §6/§10. Without storing these, a future research
 // pass re-proposes and "confirms" the same false edges off the same critic
 // comparisons. `kate-bush` isn't a graph node, so the st-vincent row is
 // recorded for its own sake rather than to suppress a real edge. The
@@ -3500,7 +3500,7 @@ const rejectedEdges: RejectedEdge[] = [
     strength: 'clean',
     citation: "Berninger calls Arcade Fire \"hugely influential to aspiring musicians\" with a direct connection to people's hearts -- a compliment about their reach, not a stated influence on The National; also chronologically awkward.",
   },
-  // -- region-one extension (2026 research pass), see region-one-audit-DRAFT.md --
+  // -- region-one extension (2026 research pass), see research/region-one-audit-DRAFT.md --
   {
     source: 'interpol',
     target: 'the-chameleons',
