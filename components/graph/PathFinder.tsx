@@ -90,10 +90,15 @@ export default function PathFinder({
   useEffect(() => {
     if (!open) return;
     function onPointerDown(e: PointerEvent) {
-      if (!containerRef.current?.contains(e.target as Node)) {
-        setOpen(false);
-        onOutsideClick?.();
-      }
+      const target = e.target as Node;
+      if (containerRef.current?.contains(target)) return;
+      // The result drawer (PathPanel) is a sibling, not a child of this
+      // picker -- a click inside it (e.g. "Read source") is otherwise
+      // indistinguishable from a real outside click and was wrongly
+      // resetting the whole path.
+      if (target instanceof HTMLElement && target.closest('.path-panel')) return;
+      setOpen(false);
+      onOutsideClick?.();
     }
     document.addEventListener('pointerdown', onPointerDown);
     return () => document.removeEventListener('pointerdown', onPointerDown);

@@ -120,9 +120,15 @@ A parallel highlight system to click-focus: pick a genre or scene and its member
 
 Pick two artists and the panel doesn't just find *a* path between them - fewest hops between 1,758 sampled pairs walked through a weak or unsourced link 70% of the time, which undercuts a graph whose whole claim is that its edges are checkable. Instead each hop is priced by how much trust it costs to cross (a first-person quote costs a tenth of an unchecked inheritance), and a Dijkstra search over that weighting finds the cheapest, not the shortest, route - dropping the weak-link rate to 11% for about one extra hop on average. The panel shows every hop's citation inline, names whether the route is a direct line of descent or two artists meeting partway, and flags when it turns direction more than once so it never implies a false single meeting point.
 
+Below: Cocteau Twins to Geese - two bands 38 years and a continent apart - don't connect directly. The search finds where their two lines of descent actually meet: the Velvet Underground, reached from Cocteau Twins through Robin Guthrie's own account of hearing the Ramones, and reached from Geese through their own 2024 interview naming the Velvet Underground as an influence. Every hop is a quote, not a guess.
+
+![The path finder connecting Cocteau Twins to Geese through the Velvet Underground, with sources expanded](docs/images/path-finder.jpg)
+
 ### Two purpose-built timelines
 
 `/genres` is a subway map of 51 dated genres positioned by emergence rank and lineage, with hover-to-trace-ancestry. `/scenes` places 14 scenes on a **density-weighted** time axis - years where more was happening get more width, so 1976-2000 occupies 70% of the axis instead of 41%.
+
+One row per genre doesn't scale: garage rock's own descendants - punk, post-punk, no-wave, shoegaze, grunge and more - span 26 of the 51 dated genres by themselves. Instead, heavy-path decomposition keeps each branch's biggest descendant flowing straight through its parent's row (a metro line staying on its own corridor), while every smaller branch forks into a new one. Those branch-rows are then packed with greedy interval coloring - the same algorithm behind LeetCode's Meeting Rooms problem - so a row is handed to the next unrelated genre the instant its current occupant's timeline has ended, checked against real label width rather than just the dot so text never overlaps. Garage rock's 26 genres land in 5 rows instead of 26.
 
 ![The genre timeline, tracing shoegaze back to garage rock](docs/images/genres-timeline.jpg)
 

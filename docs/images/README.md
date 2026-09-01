@@ -1,7 +1,7 @@
 # README screenshots
 
-Seven images, referenced from the root `README.md`. All exported at 1800px wide,
-JPEG q92 (~2.5MB total). Full-resolution originals are in `_originals/`, which is
+Eight images, referenced from the root `README.md`. All exported at 1800px wide,
+JPEG q92 (~3MB total). Full-resolution originals are in `_originals/`, which is
 gitignored — they are ~63MB and have no business in git history.
 
 | File | Page | What it shows |
@@ -11,6 +11,7 @@ gitignored — they are ~63MB and have no business in git history.
 | `focus-panel.jpg` | `/` | My Bloody Valentine focused, panel open, **source quote expanded** |
 | `genres-timeline.jpg` | `/genres` | Shoegaze hovered, ancestor chain lit back to garage rock |
 | `scenes-timeline.jpg` | `/scenes` | All 14 scenes, density-weighted axis |
+| `path-finder.jpg` | `/` | Cocteau Twins to Geese, best-sourced path through the Velvet Underground, sources expanded |
 | `artist-page.jpg` | `/artist/cocteau-twins` | Hero, audio preview, bio |
 | `browse.jpg` | `/browse` | Artist grid, sorted by influence |
 
