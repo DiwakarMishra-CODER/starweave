@@ -449,55 +449,64 @@ export default function GraphView({ graphData }: Props) {
     <div className="graph-container">
       <NebulaBackground />
       <GraphOnboarding open={onboardingOpen} onDismiss={dismissOnboarding} />
-      <GraphControls
-        activeRealm={activeRealm}
-        onSelectRealm={handleSelectRealm}
-        artists={graphData.artists}
-        genres={graphData.genres}
-        activeGenreId={activeGenreId}
-        onSelectGenre={handleSelectGenre}
-        scenes={graphData.scenes}
-        activeSceneId={activeSceneId}
-        onSelectScene={handleSelectScene}
-        onClear={handleBackgroundClick}
-        onOutsideClick={() => { suppressBackgroundClickRef.current = true; }}
-        // Desktop only. On a phone this panel is 250px tall inside a 798px
-        // canvas -- a third of the screen, opened before the visitor has seen
-        // the graph at all. The onboarding card's last row names this control,
-        // which is what that row is for.
-        initialOpen={controlsAutoOpen && !isNarrowLayout}
-      />
-
-      {/* Its own control rather than a fourth tab inside "Jump to..." -- that
-          menu's three tabs all navigate, and this asks the graph a question.
-          Gated by the same flag, which now controls one component instead of
-          two fragments inside another one. */}
-      {PATH_FINDER_ENABLED && (
-        <PathFinder
+      {/* Shared column so "Connect two artists" stacks under the REAL height
+          of "Jump to..." -- including its panel when open -- instead of each
+          control anchoring itself independently. PathFinder used to sit at a
+          hardcoded `top: calc(1rem + 34px)`, which only ever matched the
+          toggle button's own height: opening the Jump to panel grew
+          GraphControls downward while PathFinder stayed put, so the open
+          panel's tab row rendered right underneath the Connect button. */}
+      <div className="graph-top-controls">
+        <GraphControls
+          activeRealm={activeRealm}
+          onSelectRealm={handleSelectRealm}
           artists={graphData.artists}
-          onFindPath={handleFindPath}
-          pathFromId={pathFromId}
-          pathToId={pathToId}
-          // With a path on screen, an outside click resets here and now rather
-          // than waiting for the canvas to receive it. The picker closes on
-          // POINTERDOWN, so the later click event often lands on a different
-          // element than the one under the cursor when the gesture began and
-          // never reaches the canvas at all -- which is why clearing a path
-          // took two or three clicks instead of one. Doing the reset in this
-          // handler makes it exactly one, and the suppress flag then swallows
-          // the trailing click so it cannot fire a second time.
-          //
-          // With no path up this stays the plain suppression the Jump to...
-          // menu uses, where a dismissing click should not also deselect.
-          // Order is load-bearing: handleBackgroundClick CONSUMES the suppress
-          // flag and returns early if it is already set, so the reset has to
-          // run first and the flag be raised after it.
-          onOutsideClick={() => {
-            if (pathFromId !== null || pathToId !== null) handleBackgroundClick();
-            suppressBackgroundClickRef.current = true;
-          }}
+          genres={graphData.genres}
+          activeGenreId={activeGenreId}
+          onSelectGenre={handleSelectGenre}
+          scenes={graphData.scenes}
+          activeSceneId={activeSceneId}
+          onSelectScene={handleSelectScene}
+          onClear={handleBackgroundClick}
+          onOutsideClick={() => { suppressBackgroundClickRef.current = true; }}
+          // Desktop only. On a phone this panel is 250px tall inside a 798px
+          // canvas -- a third of the screen, opened before the visitor has seen
+          // the graph at all. The onboarding card's last row names this control,
+          // which is what that row is for.
+          initialOpen={controlsAutoOpen && !isNarrowLayout}
         />
-      )}
+
+        {/* Its own control rather than a fourth tab inside "Jump to..." -- that
+            menu's three tabs all navigate, and this asks the graph a question.
+            Gated by the same flag, which now controls one component instead of
+            two fragments inside another one. */}
+        {PATH_FINDER_ENABLED && (
+          <PathFinder
+            artists={graphData.artists}
+            onFindPath={handleFindPath}
+            pathFromId={pathFromId}
+            pathToId={pathToId}
+            // With a path on screen, an outside click resets here and now rather
+            // than waiting for the canvas to receive it. The picker closes on
+            // POINTERDOWN, so the later click event often lands on a different
+            // element than the one under the cursor when the gesture began and
+            // never reaches the canvas at all -- which is why clearing a path
+            // took two or three clicks instead of one. Doing the reset in this
+            // handler makes it exactly one, and the suppress flag then swallows
+            // the trailing click so it cannot fire a second time.
+            //
+            // With no path up this stays the plain suppression the Jump to...
+            // menu uses, where a dismissing click should not also deselect.
+            // Order is load-bearing: handleBackgroundClick CONSUMES the suppress
+            // flag and returns early if it is already set, so the reset has to
+            // run first and the flag be raised after it.
+            onOutsideClick={() => {
+              if (pathFromId !== null || pathToId !== null) handleBackgroundClick();
+              suppressBackgroundClickRef.current = true;
+            }}
+          />
+        )}
+      </div>
       <ArtistSearch artists={graphData.artists} genres={graphData.genres} edges={graphData.edges} onSelectArtist={handleSelectArtist} />
 
       {/* z-index: 1 keeps the canvas above the nebula (z-index: 0) */}

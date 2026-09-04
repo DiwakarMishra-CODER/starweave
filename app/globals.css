@@ -513,12 +513,21 @@ h3 { font-size: 1.1rem; }
 }
 
 /* ── Graph controls ───────────────────────────────────────────── */
-.graph-controls {
+/* Anchors both "Jump to…" and "Connect two artists" as one stacked column,
+   so the second control's position always reflects the first one's real
+   rendered height -- including its panel when open -- rather than each
+   control guessing the other's height via a hardcoded offset. */
+.graph-top-controls {
   position: absolute;
   top: 1rem;
   left: 1.25rem;
   z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
 }
+
 
 .graph-controls__toggle {
   display: flex;
@@ -4874,14 +4883,15 @@ h3 { font-size: 1.1rem; }
     display: none;
   }
 
-  /* The panel was a fixed 230px with no mobile rule at all -- a desktop box
-     pasted onto a phone. It no longer opens itself here (see initialOpen in
-     GraphView), but it still has to fit when the user opens it. */
-  .graph-controls {
+  /* The panels were a fixed 230px with no mobile rule at all -- a desktop box
+     pasted onto a phone. Neither opens itself here (see initialOpen in
+     GraphView), but they still have to fit when the user opens one by hand. */
+  .graph-top-controls {
     right: 1.25rem;
   }
 
-  .graph-controls__panel {
+  .graph-controls__panel,
+  .path-finder__panel {
     width: auto;
     max-width: min(100%, 320px);
   }
@@ -4896,13 +4906,6 @@ h3 { font-size: 1.1rem; }
    options buried the one feature that shows what the citation data is for.
    Labelled as the question, not the mechanism, for the same reason the evidence
    filter stopped saying "edges". */
-.path-finder {
-  position: absolute;
-  top: calc(1rem + 34px);
-  left: 1.25rem;
-  z-index: 20;
-}
-
 .path-finder__toggle {
   display: flex;
   align-items: center;
