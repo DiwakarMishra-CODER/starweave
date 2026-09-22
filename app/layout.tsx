@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import { Fraunces, Inter, IBM_Plex_Mono } from 'next/font/google';
 import TopNav from '@/components/layout/TopNav';
 import './globals.css';
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <TopNav />
         {children}
+        <Analytics />
       </body>
     </html>
   );

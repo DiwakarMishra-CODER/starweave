@@ -3,11 +3,12 @@
 import { useState, useCallback, useEffect, useMemo, useRef } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
-import type { GraphData, Realm, EvidenceFilter } from '@/data/types';
+import type { Realm, EvidenceFilter } from '@/data/types';
 import { edgePassesEvidenceFilter } from '@/data/types';
 import { useNarrowLayout } from '@/lib/use-media-query';
 import { findBestSourcedPath, resolvePathHops } from '@/lib/graph-utils';
 import { PATH_FINDER_ENABLED } from '@/lib/flags';
+import { useGraphData } from './GraphDataProvider';
 import GraphControls from './GraphControls';
 import ArtistSearch from './ArtistSearch';
 import ArtistPanel from './ArtistPanel';
@@ -28,11 +29,15 @@ const ForceGraphCanvas = dynamic(() => import('./ForceGraph'), {
   ),
 });
 
-interface Props {
-  graphData: GraphData;
-}
-
-export default function GraphView({ graphData }: Props) {
+export default function GraphView() {
+  // Loaded client-side via GraphDataProvider (app/(graph)/layout.tsx) rather
+  // than passed as a prop -- see that file's comment for why. Null until the
+  // fetch resolves; every read below is guarded accordingly, and the heavy
+  // children at the bottom of this component's JSX don't mount at all until
+  // it's real (see the {graphData && (...)} block -- ForceGraph.tsx's own
+  // stableData memo has an empty dependency array, so it must never mount
+  // with placeholder data and be handed the real thing later).
+  const { data: graphData } = useGraphData();
   const router = useRouter();
   const pathname = usePathname();
   // True on every content route in the (graph) group — the graph stays
@@ -143,6 +148,9 @@ export default function GraphView({ graphData }: Props) {
   // so itself — this effect doesn't need to duplicate that.
   const searchParams = useSearchParams();
   useEffect(() => {
+    // Nothing to synchronize until the graph has loaded -- see GraphDataProvider.
+    if (!graphData) return;
+
     const artistParam = searchParams.get('artist');
     const genreParam  = searchParams.get('genre');
     const sceneParam  = searchParams.get('scene');
@@ -223,17 +231,20 @@ export default function GraphView({ graphData }: Props) {
     // activeGenreId/activeSceneId are read by the two early bails above, so
     // they belong here — a genuine navigation to a DIFFERENT genre/scene still
     // falls through and re-applies everything.
-  }, [searchParams, graphData.artists, graphData.scenes, activeGenreId, activeSceneId]);
+  }, [searchParams, graphData, activeGenreId, activeSceneId]);
 
   // The artist shown in the slide-over panel — either the fully-focused
   // node, or (while browsing within a set) the pinned set member. The two
   // are mutually exclusive in practice: highlightSetPinnedId is only ever
   // set while selectedId is null (see handleSetMemberClick).
   // Counted once here rather than per render of the control.
-  const evidenceCounts = useMemo(() => ({
-    all: graphData.edges.length,
-    'first-person': graphData.edges.filter(e => edgePassesEvidenceFilter(e, 'first-person')).length,
-  }), [graphData.edges]);
+  const evidenceCounts = useMemo(() => {
+    const edges = graphData?.edges ?? [];
+    return {
+      all: edges.length,
+      'first-person': edges.filter(e => edgePassesEvidenceFilter(e, 'first-person')).length,
+    };
+  }, [graphData]);
 
   // Resolved once here so the canvas highlight and the result panel can never
   // disagree about what the path is. Undirected on purpose -- see the note
@@ -245,15 +256,16 @@ export default function GraphView({ graphData }: Props) {
     // Best-sourced, not shortest. See findBestSourcedPath -- fewest-hops routes
     // carried a weak link 70% of the time, which is the one thing this graph
     // cannot afford to hand someone who clicks to check it.
-    const ids = findBestSourcedPath(pathFromId, pathToId, graphData.edges);
-    return { pathIds: ids, pathHops: ids ? resolvePathHops(ids, graphData.edges) : null };
-  }, [pathFromId, pathToId, graphData.edges]);
+    const edges = graphData?.edges ?? [];
+    const ids = findBestSourcedPath(pathFromId, pathToId, edges);
+    return { pathIds: ids, pathHops: ids ? resolvePathHops(ids, edges) : null };
+  }, [pathFromId, pathToId, graphData]);
 
   // A path search takes over the panel slot; the two are mutually exclusive by
   // construction, since picking either end clears selectedId above.
   const panelArtistId = pathIds ? null : (selectedId ?? highlightSetPinnedId);
   const selectedArtist = panelArtistId
-    ? (graphData.artists.find(a => a.id === panelArtistId) ?? null)
+    ? (graphData?.artists.find(a => a.id === panelArtistId) ?? null)
     : null;
 
   // Pure camera shortcut: clicking a realm pans/zooms there; clicking the
@@ -324,7 +336,7 @@ export default function GraphView({ graphData }: Props) {
       window.history.replaceState(null, '', '/');
       return;
     }
-    const ids = graphData.artists.filter(a => a.genres.includes(genreId)).map(a => a.id);
+    const ids = (graphData?.artists ?? []).filter(a => a.genres.includes(genreId)).map(a => a.id);
     if (ids.length === 0) return; // defensive — every real genre has at least one tagged artist
     setSelectedId(null);
     setActiveRealm(null);
@@ -335,7 +347,7 @@ export default function GraphView({ graphData }: Props) {
     setHighlightSetIds(ids);
     setActiveGenreId(genreId);
     window.history.replaceState(null, '', `/?genre=${genreId}`);
-  }, [activeGenreId, graphData.artists]);
+  }, [activeGenreId, graphData]);
 
   const handleSelectScene = useCallback((sceneId: string) => {
     if (activeSceneId === sceneId) {
@@ -347,8 +359,8 @@ export default function GraphView({ graphData }: Props) {
       window.history.replaceState(null, '', '/');
       return;
     }
-    const scene = graphData.scenes.find(s => s.id === sceneId);
-    const ids = scene ? scene.memberIds.filter(id => graphData.artists.some(a => a.id === id)) : [];
+    const scene = graphData?.scenes.find(s => s.id === sceneId);
+    const ids = scene ? scene.memberIds.filter(id => graphData?.artists.some(a => a.id === id)) : [];
     if (ids.length === 0) return;
     setSelectedId(null);
     setActiveRealm(null);
@@ -359,7 +371,7 @@ export default function GraphView({ graphData }: Props) {
     setHighlightSetIds(ids);
     setActiveSceneId(sceneId);
     window.history.replaceState(null, '', `/?scene=${sceneId}`);
-  }, [activeSceneId, graphData.artists, graphData.scenes]);
+  }, [activeSceneId, graphData]);
 
   // Set by GraphControls' onOutsideClick right before the click that closed
   // the "Jump to" panel also lands on the canvas underneath it — that click
@@ -448,6 +460,15 @@ export default function GraphView({ graphData }: Props) {
   return (
     <div className="graph-container">
       <NebulaBackground />
+      {/* Nothing below mounts until the graph has actually loaded (see
+          GraphDataProvider) -- most load-bearingly, ForceGraphCanvas: its
+          stableData memo (ForceGraph.tsx) has an empty dependency array, so
+          it must never mount with placeholder data and be handed the real
+          thing afterward. NebulaBackground above is what's visible during
+          this gap, which is normally sub-second since graph.json is a
+          same-origin static asset. */}
+      {graphData && (
+      <>
       <GraphOnboarding open={onboardingOpen} onDismiss={dismissOnboarding} />
       {/* Shared column so "Connect two artists" stacks under the REAL height
           of "Jump to..." -- including its panel when open -- instead of each
@@ -546,6 +567,8 @@ export default function GraphView({ graphData }: Props) {
         onClose={handlePanelClose}
         onSelectArtist={handleSelectArtist}
       />
+      </>
+      )}
     </div>
   );
 }

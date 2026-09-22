@@ -2,8 +2,14 @@ import Link from 'next/link';
 import type { Artist } from '@/data/types';
 import { resolveNodeColor } from '@/lib/colors';
 
+// Only what this card actually renders (plus what resolveNodeColor needs) --
+// browse/page.tsx passes a slimmed-down artist list, not the full Artist
+// record with its bio/classicAlbums/etc, so the prop type only asks for
+// what's used. A full Artist object satisfies this structurally too.
+type CardArtist = Pick<Artist, 'id' | 'name' | 'imageUrl' | 'genres' | 'layer' | 'realm' | 'lineage'>;
+
 interface Props {
-  artist: Artist;
+  artist: CardArtist;
   genreNames: Record<string, string>;
   /**
    * Counted by the caller once over the whole edge set, not derived from

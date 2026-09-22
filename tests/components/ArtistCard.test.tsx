@@ -48,7 +48,7 @@ describe('ArtistCard', () => {
   // A third of the graph (96 artists, Alvvays among them) has in-degree 0 and
   // used to render no count at all despite having stated influences.
   it('still shows a count for an artist nobody cites yet', () => {
-    render(<ArtistCard artist={{ ...baseArtist, influenceScore: 0 }} genreNames={genreNames} roots={10} descendants={0} />);
+    render(<ArtistCard artist={baseArtist} genreNames={genreNames} roots={10} descendants={0} />);
     expect(screen.getByText('10 roots')).toBeInTheDocument();
   });
 

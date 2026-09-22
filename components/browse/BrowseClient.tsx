@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import type { Artist, Edge, Genre, Scene } from '@/data/types';
+import type { Artist, Genre, Scene } from '@/data/types';
 import ArtistCard from '@/components/artist/ArtistCard';
 import FilterDropdown, { type FilterOption } from '@/components/browse/FilterDropdown';
 import SortDropdown, { type SortOption } from '@/components/browse/SortDropdown';
@@ -17,11 +17,23 @@ const SORT_OPTIONS: SortOption[] = [
   { id: 'year', label: 'Year / Era' },
 ];
 
+// Slimmed projections of the full data model -- browse/page.tsx computes
+// these server-side from the full graph so this client bundle (and the RSC
+// payload that ships it) never carries bios, album write-ups, citations, or
+// full genre/scene prose it has no use for. See that file for the mapping.
+export type BrowseArtist = Pick<
+  Artist,
+  'id' | 'name' | 'imageUrl' | 'genres' | 'activeFrom' | 'influenceScore' | 'layer' | 'realm' | 'lineage'
+>;
+export type BrowseGenre = Pick<Genre, 'id' | 'name'>;
+export type BrowseScene = Pick<Scene, 'id' | 'name' | 'memberIds'>;
+export type ConnectionCounts = Record<string, { roots: number; descendants: number }>;
+
 interface Props {
-  artists: Artist[];
-  genres: Genre[];
-  scenes: Scene[];
-  edges: Edge[];
+  artists: BrowseArtist[];
+  genres: BrowseGenre[];
+  scenes: BrowseScene[];
+  connectionCounts: ConnectionCounts;
 }
 
 interface EraBucket {
@@ -61,25 +73,17 @@ function toggleId(prev: Set<string>, id: string): Set<string> {
   return next;
 }
 
-export default function BrowseClient({ artists, genres, scenes, edges }: Props) {
-  // One pass over the edge set for the whole grid, rather than each card
-  // filtering 1,041 edges for itself. Roots = who shaped them (outgoing),
-  // descendants = who they shaped (incoming) -- the same split the artist
-  // pages label with those words.
-  const connectionCounts = useMemo(() => {
-    const counts = new Map<string, { roots: number; descendants: number }>();
-    const bump = (id: string, key: 'roots' | 'descendants') => {
-      const cur = counts.get(id) ?? { roots: 0, descendants: 0 };
-      cur[key] += 1;
-      counts.set(id, cur);
-    };
-    for (const e of edges) {
-      if (e.type !== 'influence') continue;
-      bump(e.source, 'roots');
-      bump(e.target, 'descendants');
-    }
-    return counts;
-  }, [edges]);
+export default function BrowseClient({ artists, genres, scenes, connectionCounts: connectionCountsProp }: Props) {
+  // Computed server-side in browse/page.tsx (one pass over the full edge set)
+  // rather than here, so the client never receives the 1,053-edge array just
+  // to derive per-artist counts from it. Rebuilt as a Map so the lookups
+  // below (`.get(artist.id)`) didn't need to change. Roots = who shaped them
+  // (outgoing), descendants = who they shaped (incoming) -- the same split
+  // the artist pages label with those words.
+  const connectionCounts = useMemo(
+    () => new Map(Object.entries(connectionCountsProp)),
+    [connectionCountsProp]
+  );
 
   const [query, setQuery] = useState('');
   const [selectedGenres, setSelectedGenres] = useState<Set<string>>(new Set());
