@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { graphData } from '../data/seed-data';
-import type { Artist, Album, GraphData } from '../data/types';
+import type { Artist, Album, GraphData, ImageCredit } from '../data/types';
 import { validateEdges, computeInfluenceScores } from './pipeline';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -283,6 +283,122 @@ async function fetchDeezerAlbumCover(artistName: string, albumTitle: string): Pr
   return tryDeezer(albumTitle);
 }
 
+// ── Artist photo overrides ───────────────────────────────────────────────────
+// From a contact-sheet audit of all 297 photos (Oct 2026), which found 38 the
+// name search above can't get right on its own:
+//
+//   deezer — the real artist, pinned by Deezer id. Most of these were a
+//            same-name stranger left in the cache by an older, first-match
+//            version of fetchDeezerImage ("Low" was a Dutch rapper, "Mogwai" a
+//            Spanish religious print, "Wilco" a Dutch singer, "Spoon" a
+//            compilation); the rest were cached links Deezer had since
+//            re-hashed, which now redirect to its grey placeholder (Joy
+//            Division, Can, The Rapture…).
+//   url    — an Apple Music artist image (mzstatic, stored at 250 like the
+//            Deezer ones), where Deezer only has album art or a logo.
+//   file   — a freely licensed Wikimedia Commons photo, served from
+//            public/photos/ (Wikimedia's own 960px rendition, pixels
+//            unaltered) because hotlinking its thumbnails gets rate-limited.
+//            The licence asks for the credit, which the pages show.
+//   cover  — no photo of the band anywhere usable; their own record's cover
+//            stands in, as artwork already does for Burial or Parannoul.
+//
+// Left alone on purpose: faceless acts whose artwork IS their public face
+// (2814, Burial, Parannoul, Panchiko, death's dynamic shroud, Mid-Air
+// Thief), and bands that use their logo as their image on every platform
+// (Radiohead, The Cure, Boards of Canada).
+type PhotoOverride =
+  | { deezer: number }
+  | { url: string }
+  | { file: string; credit: ImageCredit }
+  | { cover: true };
+
+const APPLE = 'https://is1-ssl.mzstatic.com/image/thumb';
+const ARTIST_PHOTO: Record<string, PhotoOverride> = {
+  // same-name strangers and stale links
+  'arca':                { deezer: 54453 },
+  'beck':                { deezer: 408 },
+  'broken-social-scene': { deezer: 2020 },
+  'can':                 { deezer: 2344 },
+  'destroyer':           { deezer: 75819 },
+  'geese':               { deezer: 137555232 },
+  'grouper':             { deezer: 402944 },
+  'joy-division':        { deezer: 1249 },
+  'low':                 { deezer: 4377 },
+  'mogwai':              { deezer: 1207 },
+  'mono':                { deezer: 3075 },
+  'sophie':              { deezer: 6478881 },
+  'spoon':               { deezer: 1280 },
+  'st-vincent':          { deezer: 14630 },
+  'suicide':             { deezer: 4132 },
+  'the-rapture':         { deezer: 1363 },
+  'wednesday':           { deezer: 87096062 },
+  'wilco':               { deezer: 1700 },
+
+  // Apple Music artist images
+  'cap-n-jazz':         { url: `${APPLE}/AMCArtistImages221/v4/8b/4e/f4/8b4ef4e4-39ba-e461-a548-3497d25e68b0/ami-identity-1b8798748045596bb52b6eaa1703301c-2025-11-12T18-42-10.079Z_cropped.png/250x250cc.jpg` },
+  'dead-kennedys':      { url: `${APPLE}/AMCArtistImages221/v4/4c/50/a9/4c50a9e9-355c-05f0-c1c4-5d9697f531ff/ami-identity-8ab127697c7b33b8d398e6f637a3ec1e-2025-03-27T21-36-21.544Z_cropped.png/250x250cc.jpg` },
+  'descendents':        { url: `${APPLE}/Features115/v4/a7/fd/f8/a7fdf886-b64f-be32-7828-4204047a6f7e/mzl.iynpkclc.jpg/250x250cc.jpg` },
+  'faust':              { url: `${APPLE}/Features115/v4/d3/b4/72/d3b472f5-ab27-e08a-a413-27626d73307b/mzl.dfqfspsd.jpg/250x250cc.jpg` },
+  'japanese-breakfast': { url: `${APPLE}/AMCArtistImages221/v4/14/f7/4f/14f74f28-c482-c66b-13f5-c4c36f46f2b2/ami-identity-1133256b8c91515ecb37bfe679d3c1ba-2025-01-06T16-15-25.746Z_cropped.png/250x250cc.jpg` },
+  'mars':               { url: `${APPLE}/Music/60/08/11/mzi.qjgqqkiu.tif/250x250cc.jpg` },
+  'rites-of-spring':    { url: `${APPLE}/Features124/v4/68/df/d8/68dfd8a6-1752-daae-43a9-369892e1295e/mzl.jypxszwr.jpg/250x250cc.jpg` },
+  'songs-ohia':         { url: `${APPLE}/Features125/v4/9d/fa/ad/9dfaadad-63f0-d8f2-8f7a-1a15a4e61051/pr_source.png/250x250cc.jpg` },
+  'swans':              { url: `${APPLE}/Features221/v4/d8/04/1f/d8041f00-1f3b-3826-8d8c-e4021dcd85c6/mzl.tonhmqcz.jpg/250x250cc.jpg` },
+
+  // Wikimedia Commons
+  'ariel-pink': { file: '/photos/ariel-pink.jpg', credit: { author: 'Dustin Drew', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Ariel_Pink%27s_Haunted_Graffiti,_FYF_2010_(4975726091).jpg' } },
+  'bonnie-prince-billy': { file: '/photos/bonnie-prince-billy.jpg', credit: { author: 'Neff Conner', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Bonnie-Prince-Billy-060609_(614bw)_(3606166772)_(cropped).jpg' } },
+  'bratmobile': { file: '/photos/bratmobile.jpg', credit: { author: 'Greg Neate', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Bratmobile.jpg' } },
+  'christie-front-drive': { file: '/photos/christie-front-drive.jpg', credit: { author: 'denverkid', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Christie_Front_Drive.jpg' } },
+  'godspeed-you-black-emperor': { file: '/photos/godspeed-you-black-emperor.jpg', credit: { author: 'Grywnn', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Godspeed_You!_Black_Emperor_@_Roadburn_Festival_2018-04-21_003.jpg' } },
+  'james-chance-and-the-contortions': { file: '/photos/james-chance-and-the-contortions.jpg', credit: { author: 'Braunov', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:James_White_1981_2.jpg' } },
+  'porter-robinson': { file: '/photos/porter-robinson.jpg', credit: { author: 'Chan4est', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Porter_Robinson_SMILE!_-D_listening_party_(cropped).png' } },
+  'turnstile': { file: '/photos/turnstile.jpg', credit: { author: 'S. Bollmann', license: 'Attribution', url: 'https://commons.wikimedia.org/wiki/File:Turnstile_Full_Force_2019_02.jpg' } },
+  'underscores': { file: '/photos/underscores.jpg', credit: { author: 'jwx8', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Underscores_in_Los_Angeles,_15_April_2026_(cropped).jpg' } },
+
+  // the band's own record stands in
+  'dna':       { cover: true },
+  'far-apart': { cover: true },
+};
+
+async function fetchDeezerImageById(id: number): Promise<string | null> {
+  try {
+    const res = await fetchWithTimeout(`https://api.deezer.com/artist/${id}`);
+    if (!res.ok) return null;
+    const data = await res.json() as { picture_medium?: string };
+    return data.picture_medium ?? null;
+  } catch {
+    return null;
+  }
+}
+
+// A cached Deezer link can die without the artist changing: Deezer re-hashes
+// a picture when the artist uploads a new one, and the old URL then 302s to
+// its grey placeholder. Joy Division shipped like that, unnoticed, because
+// the cache only re-fetches on a rename. A HEAD per cached photo (in small
+// parallel batches) catches it every build for the cost of a few seconds.
+async function isImageAlive(url: string): Promise<boolean> {
+  if (!url.startsWith('http')) return true; // our own public/ files
+  try {
+    const res = await fetchWithTimeout(url, { method: 'HEAD', redirect: 'manual' });
+    return res.status === 200;
+  } catch {
+    return true; // a timeout says nothing about the link; don't churn on it
+  }
+}
+
+async function findDeadImages(artists: Artist[]): Promise<Set<string>> {
+  const dead = new Set<string>();
+  const BATCH = 12;
+  for (let i = 0; i < artists.length; i += BATCH) {
+    const batch = artists.slice(i, i + BATCH);
+    const alive = await Promise.all(batch.map(a => isImageAlive(a.imageUrl!)));
+    batch.forEach((a, j) => { if (!alive[j]) dead.add(a.id); });
+  }
+  return dead;
+}
+
 async function enrichDeezerImages(
   artists: Artist[],
 ): Promise<Map<string, string | null>> {
@@ -290,6 +406,14 @@ async function enrichDeezerImages(
   console.log(`  Fetching Deezer artist images (with name-variant fallback)…`);
   let hits = 0;
   for (const artist of artists) {
+    const pinned = ARTIST_PHOTO[artist.id];
+    if (pinned && 'deezer' in pinned) {
+      const imageUrl = await fetchDeezerImageById(pinned.deezer);
+      result.set(artist.id, imageUrl);
+      if (imageUrl) hits++;
+      await new Promise(r => setTimeout(r, 80));
+      continue;
+    }
     let imageUrl = await fetchDeezerImage(artist.name);
     if (!imageUrl) {
       for (const variant of nameVariants(artist.name)) {
@@ -412,6 +536,25 @@ interface AlbumFetchEntry {
   artistName: string;
   album: Album;
 }
+
+// ── Album cover overrides ────────────────────────────────────────────────────
+// Keyed `${artistId}::${albumId}`. From the same Oct 2026 audit: two covers
+// the search got wrong (a Cover Art Archive scan of Punisher's barcode
+// sticker, a photo of Bury Me at Makeout Creek's vinyl disc) and six it never
+// found. Those six were thought undigitised; they weren't — No New York, Buy,
+// A Taste of DNA and 2814's record all sit on the Cover Art Archive under
+// their release group, and Shōso Strip is in Apple's Japanese store.
+const CAA = 'https://coverartarchive.org/release';
+const ALBUM_COVER: Record<string, string> = {
+  'phoebe-bridgers::punisher':                 `${APPLE}/Music115/v4/39/91/4f/39914f60-e9aa-4ae9-3962-44b0a5e5d570/656605150062.jpg/600x600bb.jpg`,
+  'mitski::bury-me-at-makeout-creek':          `${APPLE}/Music211/v4/bf/11/65/bf116592-f8eb-fbed-4255-f43b4b09e651/37052.jpg/600x600bb.jpg`,
+  'sheena-ringo::shoso-strip':                 `${APPLE}/Music125/v4/17/d2/81/17d281fc-298d-f5c3-b69c-f557a423850d/00602567661245.rgb.jpg/600x600bb.jpg`,
+  'mars::no-new-york-mars':                    `${CAA}/127e8422-5111-4ebb-beea-8c916fbcf225/11433840498-500.jpg`,
+  'teenage-jesus-and-the-jerks::no-new-york':  `${CAA}/127e8422-5111-4ebb-beea-8c916fbcf225/11433840498-500.jpg`,
+  'james-chance-and-the-contortions::buy':     `${CAA}/398cb433-376c-4ce4-8884-01c555021d4a/17936278882-500.jpg`,
+  'dna::a-taste-of-dna':                       `${CAA}/9dc553dd-2807-4aac-84d7-ee5b11528823/46213543258-500.jpg`,
+  '2814::birth-of-a-new-day':                  `${CAA}/ffb1c808-7e37-4415-9449-9cd839545dfb/22277033080-500.jpg`,
+};
 
 async function enrichAlbumCovers(
   albums: AlbumFetchEntry[],
@@ -653,7 +796,14 @@ async function main() {
     console.log('⚡ --force / FORCE_REFETCH=1 set — ignoring cache, re-fetching everything');
   }
 
+  // Pinned Deezer ids are re-read every build (a handful of calls) so they
+  // can't go stale; url/file/cover overrides need no fetch at all.
+  const photoOverride = (a: Artist) => ARTIST_PHOTO[a.id];
+  const isPinnedDeezer = (a: Artist) => { const o = photoOverride(a); return !!o && 'deezer' in o; };
   const needsImageFetch = (a: Artist) => {
+    const o = photoOverride(a);
+    if (o && !('deezer' in o)) return false;
+    if (o) return true;
     const old = oldArtistById.get(a.id);
     return !old || old.name !== a.name;
   };
@@ -665,13 +815,21 @@ async function main() {
     (a.classicAlbums ?? []).map(al => ({ artistId: a.id, artistName: a.name, album: al })),
   );
   const needsAlbumFetch = ({ artistId, artistName, album }: AlbumFetchEntry) => {
+    if (ALBUM_COVER[`${artistId}::${album.id}`]) return false;
     const old = oldArtistById.get(artistId);
     if (!old || old.name !== artistName) return true;
     const oldAlbum = (old.classicAlbums ?? []).find(x => x.id === album.id);
     return !oldAlbum || oldAlbum.title !== album.title;
   };
 
-  const imageFetchTargets = graphData.artists.filter(needsImageFetch);
+  const cachedPhotos = graphData.artists.filter(a =>
+    !needsImageFetch(a) && !photoOverride(a) && oldArtistById.get(a.id)?.imageUrl,
+  ).map(a => ({ ...a, imageUrl: oldArtistById.get(a.id)!.imageUrl }));
+  const deadPhotos = await findDeadImages(cachedPhotos);
+  if (deadPhotos.size > 0) {
+    console.log(`  ${deadPhotos.size} cached photo link(s) dead, re-fetching: ${[...deadPhotos].join(', ')}`);
+  }
+  const imageFetchTargets = graphData.artists.filter(a => needsImageFetch(a) || deadPhotos.has(a.id));
   const previewFetchTargets = graphData.artists.filter(needsPreviewFetch);
   const albumFetchTargets = allAlbumEntries.filter(needsAlbumFetch);
   console.log(
@@ -696,6 +854,11 @@ async function main() {
   for (const a of graphData.artists) {
     imageMap.set(a.id, freshImageMap.has(a.id) ? freshImageMap.get(a.id) ?? null : oldArtistById.get(a.id)?.imageUrl ?? null);
   }
+  // A pinned Deezer id that came back empty (network blip) keeps last
+  // build's picture rather than dropping to no photo.
+  for (const a of graphData.artists) {
+    if (isPinnedDeezer(a) && !imageMap.get(a.id)) imageMap.set(a.id, oldArtistById.get(a.id)?.imageUrl ?? null);
+  }
   const previewMap = new Map<string, ItunesPreview | null>();
   for (const a of graphData.artists) {
     if (freshPreviewMap.has(a.id)) {
@@ -710,7 +873,9 @@ async function main() {
   const albumCoverMap = new Map<string, string | null>();
   for (const { artistId, album } of allAlbumEntries) {
     const key = `${artistId}::${album.id}`;
-    if (freshAlbumCoverMap.has(key)) {
+    if (ALBUM_COVER[key]) {
+      albumCoverMap.set(key, ALBUM_COVER[key]);
+    } else if (freshAlbumCoverMap.has(key)) {
       albumCoverMap.set(key, freshAlbumCoverMap.get(key) ?? null);
     } else {
       const oldAlbum = oldArtistById.get(artistId)?.classicAlbums?.find(x => x.id === album.id);
@@ -718,10 +883,24 @@ async function main() {
     }
   }
 
+  // url/file/cover overrides resolve last: `cover` needs the album covers.
+  // imageCredit stays undefined (so JSON.stringify leaves it out) for every
+  // photo that doesn't need one.
+  const photoFor = (a: Artist): { imageUrl: string | null; imageCredit?: ImageCredit } => {
+    const o = photoOverride(a);
+    if (o && 'url' in o) return { imageUrl: o.url };
+    if (o && 'file' in o) return { imageUrl: o.file, imageCredit: o.credit };
+    if (o && 'cover' in o) {
+      const first = a.classicAlbums?.[0];
+      return { imageUrl: first ? albumCoverMap.get(`${a.id}::${first.id}`) ?? null : null };
+    }
+    return { imageUrl: imageMap.get(a.id) ?? null };
+  };
+
   const enrichedArtists = graphData.artists.map(a => ({
     ...a,
     influenceScore: scores.get(a.id) ?? 0,
-    imageUrl:       imageMap.get(a.id)         ?? null,
+    ...photoFor(a),
     previewUrl:     previewMap.get(a.id)?.previewUrl   ?? null,
     previewTrack:   previewMap.get(a.id)?.previewTrack ?? null,
     previewAlbum:   previewMap.get(a.id)?.previewAlbum ?? null,

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Artist, Album } from '@/data/types';
+import { sizedImageUrl, imageSrcSet } from '@/lib/image-url';
 
 interface AlbumGridItem {
   artist: Artist;
@@ -32,7 +33,9 @@ export default function AlbumGrid({ heading, items }: Props) {
                   {album.imageUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
-                      src={album.imageUrl}
+                      src={sizedImageUrl(album.imageUrl, 600)}
+                      srcSet={imageSrcSet(album.imageUrl, [300, 600])}
+                      sizes="(max-width: 600px) 45vw, 190px"
                       alt={`${album.title} cover`}
                       className="genre-album-card__cover"
                       width={150}

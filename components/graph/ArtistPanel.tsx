@@ -6,6 +6,8 @@ import type { Artist, Edge, GraphData } from '@/data/types';
 import { resolveCitationStatus, compareEdgesByEvidence } from '@/data/types';
 import { resolveNodeColor, resolveNodeLabel } from '@/lib/colors';
 import { countryName } from '@/lib/format';
+import { sizedImageUrl, imageSrcSet } from '@/lib/image-url';
+import PhotoCredit from '@/components/ui/PhotoCredit';
 import SpotifyEmbed from '@/components/artist/SpotifyEmbed';
 import DeezerPreview from '@/components/artist/DeezerPreview';
 import ArtistBackground from '@/components/artist/ArtistBackground';
@@ -305,11 +307,14 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
               <>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={artist.imageUrl}
+                  src={sizedImageUrl(artist.imageUrl, 500)}
+                  srcSet={imageSrcSet(artist.imageUrl)}
+                  sizes="(max-width: 600px) 100vw, 380px"
                   alt={artist.name}
                   className="panel-hero__img"
                 />
                 <div className="panel-hero__gradient" />
+                <PhotoCredit credit={artist.imageCredit} className="photo-credit--panel" />
               </>
             ) : (
               <div className="panel-hero__color-wash" />

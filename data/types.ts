@@ -146,6 +146,14 @@ export interface Album {
   imageUrl?: string | null;   // album cover art — enriched at build time
 }
 
+// Who took a freely licensed photo, and on what terms. CC BY / BY-SA require
+// the photographer's name, the licence and a link wherever the photo appears.
+export interface ImageCredit {
+  author: string;   // as the file's description page names them
+  license: string;  // short name, e.g. "CC BY-SA 4.0"
+  url: string;      // the file's description page
+}
+
 export interface Artist {
   id: string;            // stable slug — the key for everything
   name: string;          // display name
@@ -173,7 +181,8 @@ export interface Artist {
   lineage?: Lineage;
 
   // ENRICHED AT BUILD TIME by scripts/build-graph.ts — do not author by hand.
-  imageUrl?: string | null;    // Deezer artist photo (250×250)
+  imageUrl?: string | null;    // artist photo at 250px — Deezer, or a hand-picked ARTIST_PHOTO override; resize with lib/image-url
+  imageCredit?: ImageCredit | null; // only when the photo's licence asks for a credit (Wikimedia Commons)
   previewUrl?: string | null;  // iTunes 30s AAC preview URL
   previewTrack?: string | null; // track title shown in the audio player
   previewAlbum?: string | null; // album title shown below the track name

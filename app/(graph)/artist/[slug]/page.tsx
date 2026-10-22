@@ -11,6 +11,8 @@ import ArtistBackground from '@/components/artist/ArtistBackground';
 import BackButton from '@/components/ui/BackButton';
 import StreamingLinks from '@/components/ui/StreamingLinks';
 import InfluenceGrid from '@/components/artist/InfluenceGrid';
+import { sizedImageUrl, imageSrcSet } from '@/lib/image-url';
+import PhotoCredit from '@/components/ui/PhotoCredit';
 import type { Artist, Edge } from '@/data/types';
 
 interface Props {
@@ -76,12 +78,15 @@ export default async function ArtistPage({ params }: Props) {
             <div className="artist-page__photo-wrap">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={artist.imageUrl}
+                src={sizedImageUrl(artist.imageUrl, 500)}
+                srcSet={imageSrcSet(artist.imageUrl)}
+                sizes="240px"
                 alt={artist.name}
                 className="artist-page__photo"
                 width={240}
                 height={240}
               />
+              <PhotoCredit credit={artist.imageCredit} />
             </div>
           )}
 
@@ -164,7 +169,9 @@ export default async function ArtistPage({ params }: Props) {
                   {album.imageUrl ? (
                     /* eslint-disable-next-line @next/next/no-img-element */
                     <img
-                      src={album.imageUrl}
+                      src={sizedImageUrl(album.imageUrl, 600)}
+                      srcSet={imageSrcSet(album.imageUrl, [300, 600, 1200])}
+                      sizes="(max-width: 600px) 92vw, 280px"
                       alt={`${album.title} cover`}
                       className="album-card-visual__cover"
                       width={280}

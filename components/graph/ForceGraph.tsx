@@ -278,6 +278,10 @@ function drawRoundedRect(
 // Threshold of 5 → exactly the top 5 hubs, no others.
 const ALWAYS_LABEL_THRESHOLD = 5;
 
+// How far down a portrait photo the node's square crop sits: 0 = top edge,
+// 0.5 = centred. Matches `object-position: 50% 25%` on the pages' photos.
+const PHOTO_FOCUS_Y = 0.25;
+
 // ── Collision force ──────────────────────────────────────────────────────────
 // True resting (non-focused/non-hovered) outer radius of a node — base circle
 // per drawNode's baseR/PHOTO_MIN_R/PHOTO_MAX_R clamp, PLUS RING_WIDTH for any
@@ -3230,8 +3234,17 @@ export default function ForceGraphCanvas({
         ctx.beginPath();
         ctx.arc(n.x, n.y, Math.max(er, 1), 0, Math.PI * 2);
         ctx.clip();
+        // Square source region, so a non-square photo is cropped rather than
+        // squashed. Nearly every photo is a square Deezer/Apple crop and this
+        // is the whole image; the hand-picked Commons photos (see
+        // ARTIST_PHOTO in scripts/build-graph.ts) aren't. A portrait keeps
+        // its upper part, where the face is — same bias as the CSS
+        // object-position on the pages' photos.
+        const iw = photoImg!.naturalWidth, ih = photoImg!.naturalHeight;
+        const side = Math.min(iw, ih);
         ctx.drawImage(
           photoImg!,
+          (iw - side) / 2, (ih - side) * PHOTO_FOCUS_Y, side, side,
           n.x - er, n.y - er,
           er * 2,   er * 2,
         );

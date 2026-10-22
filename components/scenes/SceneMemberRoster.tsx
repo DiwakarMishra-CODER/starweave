@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Artist } from '@/data/types';
+import { sizedImageUrl, imageSrcSet } from '@/lib/image-url';
 
 interface Props {
   members: Array<{ artist: Artist; role: string }>;
@@ -17,7 +18,14 @@ export default function SceneMemberRoster({ members }: Props) {
           <div className="scene-roster__photo">
             {artist.imageUrl ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={artist.imageUrl} alt="" width={160} height={160} />
+              <img
+                src={sizedImageUrl(artist.imageUrl, 500)}
+                srcSet={imageSrcSet(artist.imageUrl, [250, 500])}
+                sizes="200px"
+                alt=""
+                width={160}
+                height={160}
+              />
             ) : (
               <span className="scene-roster__initial">{artist.name.charAt(0)}</span>
             )}

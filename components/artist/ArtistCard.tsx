@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Artist } from '@/data/types';
 import { resolveNodeColor } from '@/lib/colors';
+import { sizedImageUrl, imageSrcSet } from '@/lib/image-url';
 
 // Only what this card actually renders (plus what resolveNodeColor needs) --
 // browse/page.tsx passes a slimmed-down artist list, not the full Artist
@@ -44,7 +45,9 @@ export default function ArtistCard({ artist, genreNames, roots, descendants }: P
         {artist.imageUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={artist.imageUrl}
+            src={sizedImageUrl(artist.imageUrl, 500)}
+            srcSet={imageSrcSet(artist.imageUrl)}
+            sizes="(max-width: 600px) 92vw, 220px"
             alt={artist.name}
             className="artist-card__photo"
             loading="lazy"
