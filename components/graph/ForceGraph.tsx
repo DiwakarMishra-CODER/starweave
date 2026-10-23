@@ -607,6 +607,8 @@ const INTRO_CAPTION_ROOM = 200;
 const INTRO_CAPTION_ROOM_NARROW = 220; // a phone's words wrap to more lines
 // …and along the top, for its Sound and Skip buttons (.intro__controls).
 const INTRO_CONTROLS_ROOM = 56;
+// Kept clear at the top of a phone's frame for the map's stacked controls.
+const PHONE_CONTROLS_ROOM = 96;
 const FAMILY_ROW_MAX = 9;        // artists per row before a new row starts
 const FAMILY_ROW_MAX_NARROW = 5; // on a portrait phone, which has height to spare and no width
 const FAMILY_NARROW_MAX_PX = 600; // canvas width below which rows go narrow
@@ -1684,7 +1686,9 @@ export default function ForceGraphCanvas({
   // handleRenderFramePre (see its own comment for why that's the reset
   // point rather than a timing heuristic inside drawNode).
   const labelQueueRef  = useRef<LabelCandidate[]>([]);
-  const nodeCirclesRef = useRef<Array<{ x: number; y: number; r: number }>>([]);
+  // `backdrop`: a star dimmed behind an open family — too faint to be worth
+  // a family member's name giving way to it.
+  const nodeCirclesRef = useRef<Array<{ x: number; y: number; r: number; backdrop: boolean }>>([]);
   // Saves original cluster positions so they can be restored on deselect.
   const savedPositionsRef = useRef<Map<string, { x: number; y: number }> | null>(null);
   // Set (to the active cluster's key) when spread/camera-focus can't run yet
@@ -2889,8 +2893,12 @@ export default function ForceGraphCanvas({
         ? Math.max(canvasW - TOUCH_EDGE_MARGIN * 2, 200)
         : Math.max(canvasW - panelW - leftW, 200);
       const bottomH = isSheetLayout || introPlaying ? sheetH : 0;
-      // A phone's family runs taller, up to where its group name sits.
-      const topH = !introPlaying ? 0 : canvasW < FAMILY_NARROW_MAX_PX ? INTRO_CONTROLS_ROOM + 20 : INTRO_CONTROLS_ROOM;
+      // A phone's family runs taller, up to where its group name sits. On a
+      // phone the map's own Jump to / Connect buttons stack top-left over the
+      // canvas, so a family is framed below them there too.
+      const topH = introPlaying
+        ? (canvasW < FAMILY_NARROW_MAX_PX ? INTRO_CONTROLS_ROOM + 20 : INTRO_CONTROLS_ROOM)
+        : isSheetLayout ? PHONE_CONTROLS_ROOM : 0;
       const availH = Math.max(canvasH - bottomH - topH, 200);
 
       const fitZoom = Math.max(Math.min(availW / bbW, availH / bbH, MAX_ZOOM), 0.5);
@@ -3846,7 +3854,7 @@ export default function ForceGraphCanvas({
 
       // Register every node's circle so onRenderFramePost can avoid ALL photos
       // when placing labels — including nodes drawn after a label was queued.
-      nodeCirclesRef.current.push({ x: n.x, y: n.y, r: er + 2 });
+      nodeCirclesRef.current.push({ x: n.x, y: n.y, r: er + 2, backdrop: selectedId !== null && !isFocused && !isNeighbor });
 
       ctx.restore();
     },
@@ -4654,7 +4662,9 @@ export default function ForceGraphCanvas({
             textW + padH * 2,      textH + padV * 2,
           ];
           const clearOfLabels = !labelRects.some(r2 => rectsOverlap(rect, r2));
-          const clearOfNodes  = !circles.some(c => rectOverlapsCircle(rect, c.x, c.y, c.r));
+          // A family member's name only gives way to what's really there:
+          // the family, not the dimmed stars it was laid out over.
+          const clearOfNodes  = !circles.some(c => (!yields || !c.backdrop) && rectOverlapsCircle(rect, c.x, c.y, c.r));
           if (clearOfLabels && clearOfNodes) {
             labelRects.push(rect);
             lx = cx;

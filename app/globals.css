@@ -7184,3 +7184,951 @@ html[data-story='off'] .intro {
     animation: none !important;
   }
 }
+
+/* ── Artist panel: a page from a fan zine (components/graph/ArtistPanel) ──
+   Photocopied paper, black ink, and one spot colour: the artist's realm
+   colour, deepened where it carries type so it reads on paper. The panel
+   sets --spot itself (readableInk in lib/colors.ts) so every realm's ink
+   clears 4.5:1 on the paper; the value here is only a fallback. */
+.zine-panel {
+  --paper: #f2ede0;
+  --ink: #1c1724;
+  --spot: color-mix(in oklab, var(--layer-color, #c06a3a) 72%, #2a1638);
+  --highlight: color-mix(in srgb, var(--layer-color, #e8c87a) 55%, transparent);
+  --tape: rgba(236, 226, 186, 0.78);
+}
+
+.artist-panel.zine-panel {
+  background-color: var(--paper);
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.08  0 0 0 0 0.12  0 0 0 0.22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    radial-gradient(ellipse at 15% 0%, rgba(255, 255, 255, 0.55), transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgba(120, 100, 70, 0.12), transparent 60%);
+  color: var(--ink);
+  box-shadow: -24px 0 60px rgba(0, 0, 0, 0.5);
+}
+
+/* The phone's peek bar stays dark: it's the handle, not the page. */
+.zine-panel .panel-peek {
+  background: rgba(14, 11, 26, 0.97);
+  color: var(--color-text);
+}
+
+.zine {
+  padding: 0.85rem 1.15rem 2.6rem;
+  color: var(--ink);
+}
+
+.zine__masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.45rem;
+  margin-bottom: 1.1rem;
+  border-bottom: 2px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.zine__close {
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: none;
+  border-radius: 50%;
+  background: var(--spot);
+  color: var(--paper);
+  font-size: 0.75rem;
+  cursor: pointer;
+  rotate: 8deg;
+  box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Their photo, cut out and taped on, printed in the spot colour: a grey
+   print multiplied over the ink, with a halftone screen over the top. */
+.zine__photo {
+  position: relative;
+  margin: 0.8rem 0.9rem 1.2rem;
+  rotate: -2deg;
+}
+
+.zine__print {
+  position: relative;
+  display: block;
+  /* The ink the grey print multiplies over; the white border is a shadow so
+     it stays out of the blend. */
+  background: color-mix(in srgb, var(--layer-color, #e8c87a) 75%, #fff);
+  box-shadow: 0 0 0 7px #fbf8f0, 0 6px 16px 7px rgba(0, 0, 0, 0.2);
+}
+
+.zine__print img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 50% 25%;
+  filter: grayscale(1) contrast(1.3) brightness(1.06);
+  mix-blend-mode: multiply;
+}
+
+.zine__print::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(28, 23, 36, 0.22) 0.9px, transparent 1.2px);
+  background-size: 4px 4px;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.zine__tape {
+  position: absolute;
+  z-index: 1;
+  width: 70px;
+  height: 22px;
+  background: var(--tape);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  clip-path: polygon(0 8%, 6% 0, 12% 10%, 18% 0, 24% 8%, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
+}
+
+.zine__tape--left { top: -9px; left: 10px; rotate: -9deg; }
+.zine__tape--right { top: -7px; right: 14px; rotate: 11deg; }
+
+.zine__photo .photo-credit--panel {
+  position: static;
+  display: block;
+  margin-top: 0.3rem;
+  text-align: right;
+  color: rgba(28, 23, 36, 0.6);
+}
+
+.zine__name {
+  margin: 0.3rem 0 0.5rem;
+  font-family: var(--font-inter);
+  font-weight: 900;
+  font-size: clamp(1.8rem, 2.4vw, 2.35rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* A highlighter swipe behind the name, in the spot colour. */
+.zine__highlight {
+  padding: 0 0.12em;
+  background-image: linear-gradient(transparent 52%, var(--highlight) 52%, var(--highlight) 94%, transparent 94%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.zine__typed {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.6;
+  color: rgba(28, 23, 36, 0.78);
+}
+
+.zine__genre {
+  color: var(--ink);
+  text-decoration: underline wavy var(--spot);
+  text-underline-offset: 3px;
+}
+
+/* Who they are, in plain reading type. */
+.zine__intro {
+  margin: 0.95rem 0 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.zine__fullpage {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.2rem;
+  padding: 0.45rem 0.9rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: #fffdf7;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 2px 3px 0 var(--ink);
+  transition: translate 120ms ease, box-shadow 120ms ease;
+}
+
+.zine__fullpage:hover {
+  translate: 0 -1px;
+  box-shadow: 2px 4px 0 var(--ink);
+}
+
+.zine__fullpage:active {
+  translate: 2px 3px;
+  box-shadow: 0 0 0 var(--ink);
+}
+
+.zine__fullpage:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* The whole songs, on the apps: named buttons, not bare icons. */
+.zine__apps {
+  margin-top: 0.85rem;
+}
+
+.zine__apps .streaming-links {
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  line-height: 1;
+}
+
+.zine__apps .streaming-links__label {
+  flex-basis: 100%;
+  margin: 0 0 0.1rem;
+  font-size: 0.62rem;
+  color: rgba(28, 23, 36, 0.72);
+}
+
+.zine__apps .streaming-links__btn {
+  gap: 0.4rem;
+  width: auto;
+  height: 34px;
+  padding: 0 0.8rem 0 0.6rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: #fffdf7;
+  box-shadow: 2px 2px 0 var(--ink);
+  text-decoration: none;
+  transition: translate 120ms ease, box-shadow 120ms ease;
+}
+
+.zine__apps .streaming-links__btn[data-platform="spotify"] { color: #158a3e; }
+.zine__apps .streaming-links__btn[data-platform="apple"] { color: #d6264b; }
+.zine__apps .streaming-links__btn[data-platform="youtube"] { color: #d40f0f; }
+
+.zine__apps .streaming-links__btn:hover {
+  background: #fff;
+  border-color: var(--ink);
+  box-shadow: 2px 3px 0 var(--ink);
+  translate: 0 -1px;
+}
+
+.zine__apps .streaming-links__btn:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.streaming-links__name {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: var(--ink);
+}
+
+/* Their own words: a torn cutting from an interview. */
+.zine__cutting {
+  margin: 1.2rem 0.25rem 0.4rem;
+  padding: 1rem 1rem 0.85rem;
+  background: #fffdf7;
+  rotate: 1deg;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.16);
+  clip-path: polygon(0 3%, 5% 0, 11% 4%, 17% 1%, 24% 4%, 31% 0, 39% 3%, 47% 1%, 55% 4%, 63% 0, 71% 3%, 79% 1%, 87% 4%, 94% 0, 100% 3%, 100% 97%, 94% 100%, 87% 96%, 79% 99%, 71% 97%, 63% 100%, 55% 96%, 47% 99%, 39% 97%, 31% 100%, 24% 96%, 17% 99%, 11% 96%, 5% 100%, 0 97%);
+}
+
+.zine__cutting blockquote {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.zine__cutting figcaption {
+  margin-top: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--spot);
+}
+
+.zine__marker {
+  margin: 1.35rem 0 0.55rem;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-weight: 400;
+  font-size: 1.15rem;
+  line-height: 1.2;
+  color: var(--spot);
+  rotate: -1.2deg;
+}
+
+.zine__marker--small {
+  display: block;
+  margin: 0 0 0.2rem;
+  font-size: 0.9rem;
+}
+
+/* The radio: a pocket transistor set in bright plastic (their realm's
+   colour), with an aerial, a backlit tuning window, a Play button for their
+   own song, a speaker that thumps with the music and a knob that turns. */
+.zine__radio .zine__marker {
+  margin-bottom: 1.1rem;
+}
+
+.radio {
+  --radio-body: color-mix(in oklab, var(--layer-color, #e8c87a) 82%, #fff);
+}
+
+.radio__body {
+  position: relative;
+  padding: 12px;
+  border: 2.5px solid var(--ink);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 40%, rgba(0, 0, 0, 0.1)),
+    var(--radio-body);
+  box-shadow: 4px 5px 0 var(--ink);
+  rotate: -0.7deg;
+}
+
+/* The aerial, pulled out and leaning. */
+.radio__body::before {
+  content: '';
+  position: absolute;
+  right: 30px;
+  bottom: calc(100% - 3px);
+  width: 9px;
+  height: 52px;
+  background:
+    radial-gradient(circle at 50% 4.5px, #e4e4e4 0 2.4px, var(--ink) 2.6px 4.2px, transparent 4.4px),
+    linear-gradient(90deg, transparent 2.5px, var(--ink) 2.5px 3.5px, #d2d2d2 3.5px 5.5px, var(--ink) 5.5px 6.5px, transparent 6.5px) 0 7px / 100% calc(100% - 7px) no-repeat;
+  transform-origin: 50% 100%;
+  rotate: 22deg;
+  pointer-events: none;
+}
+
+.radio__window {
+  position: relative;
+  height: 54px;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background:
+    radial-gradient(ellipse at 50% 120%, rgba(255, 170, 70, 0.35), transparent 70%),
+    linear-gradient(#2c2219, #17110c);
+  box-shadow: inset 0 6px 18px rgba(255, 170, 60, 0.18);
+  cursor: grab;
+  touch-action: none;
+  overflow: hidden;
+  transition: box-shadow 400ms ease;
+}
+
+/* The frequency marks. */
+.radio__window::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 7px;
+  height: 11px;
+  background: repeating-linear-gradient(90deg, rgba(255, 214, 150, 0.5) 0 1px, transparent 1px 8px);
+}
+
+.radio__window:active {
+  cursor: grabbing;
+}
+
+.radio--live .radio__window {
+  box-shadow: inset 0 6px 26px rgba(255, 180, 70, 0.42), 0 0 14px rgba(255, 150, 40, 0.3);
+}
+
+.radio__window:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.radio__station {
+  position: absolute;
+  top: 24px;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  border-radius: 50%;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.radio__station--parent { background: #f0c97a; color: #f0c97a; }
+.radio__station--child { background: #8fd0ff; color: #8fd0ff; }
+.radio__station--self { background: #fff8e8; color: #fff8e8; width: 9px; height: 9px; margin-left: -4.5px; top: 22.5px; }
+
+.radio__station--on {
+  transform: scale(1.7);
+  box-shadow: 0 0 10px currentColor;
+}
+
+/* ◀ ▶ beside Play: the next-song arrows everyone knows. */
+.radio__step {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  cursor: pointer;
+  transition: translate 120ms ease, box-shadow 120ms ease;
+}
+
+.radio__step:hover {
+  translate: 0 -1px;
+  box-shadow: 2px 3px 0 var(--ink);
+}
+
+.radio__step:active {
+  translate: 2px 2px;
+  box-shadow: 0 0 0 var(--ink);
+}
+
+.radio__step:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* The stations either side of the needle, by name. */
+.radio__near {
+  position: absolute;
+  bottom: 4px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgba(255, 236, 200, 0.6);
+  cursor: pointer;
+  transition: color 150ms ease;
+}
+
+.radio__near:hover {
+  color: #ffe2a8;
+}
+
+.radio__near--prev {
+  text-align: right;
+}
+
+/* Who's on, lit. --progress (set from RadioDial's loop) fills the line
+   along the bottom while the station has its turn. */
+.radio__display {
+  position: relative;
+  margin: 9px 0 0;
+  padding: 5px 10px 7px;
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: #1b1712;
+  color: #ffcf7a;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-shadow: 0 0 6px rgba(255, 180, 80, 0.55);
+}
+
+.radio__display strong {
+  font-weight: 700;
+}
+
+.radio__display--off {
+  color: rgba(255, 207, 122, 0.55);
+  text-shadow: none;
+}
+
+.radio__display::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: calc(var(--progress, 0) * 100%);
+  height: 2px;
+  background: #ff4b3a;
+}
+
+.radio__display-static {
+  letter-spacing: 0.15em;
+  opacity: 0.7;
+}
+
+.radio__needle {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  margin-left: -1px;
+  background: #ff4b3a;
+  box-shadow: 0 0 8px rgba(255, 75, 58, 0.85);
+  pointer-events: none;
+}
+
+.radio__front {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* Their own song. */
+.radio__play {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 15px 6px 6px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 2px 3px 0 var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: translate 120ms ease, box-shadow 120ms ease;
+}
+
+.radio__play:hover {
+  translate: 0 -1px;
+  box-shadow: 2px 4px 0 var(--ink);
+}
+
+.radio__play:active {
+  translate: 2px 3px;
+  box-shadow: 0 0 0 var(--ink);
+}
+
+.radio__play:focus-visible,
+.radio__knob:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.radio__play-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #e5372b;
+  color: #fff;
+}
+
+.radio__play--on .radio__play-icon {
+  background: var(--ink);
+}
+
+.radio__play-verb {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* The speaker, which thumps with whatever is playing (--thump, set from
+   RadioDial's loop). */
+.radio__grille {
+  flex: 1;
+  align-self: stretch;
+  min-height: 46px;
+  border-radius: 10px;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.28) 0 1.5px, transparent 1.9px) 1px 1px / 7px 7px,
+    radial-gradient(circle, rgba(0, 0, 0, 0.55) 0 1.5px, transparent 1.9px) 0 0 / 7px 7px,
+    rgba(0, 0, 0, 0.06);
+  box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.22);
+  scale: calc(1 + var(--thump, 0) * 0.05);
+}
+
+/* The tuning knob: ridged, with a red mark that turns as it tunes. */
+.radio__knob {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 2px 3px 0 var(--ink);
+  cursor: grab;
+  touch-action: none;
+}
+
+.radio__knob:active {
+  cursor: grabbing;
+}
+
+.radio__knob-grip {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #f4efe2 0 57%, transparent 58%),
+    repeating-conic-gradient(var(--ink) 0 6deg, #e6dfcb 6deg 20deg);
+}
+
+.radio__knob-grip::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  width: 3px;
+  height: 30%;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: #e5372b;
+}
+
+/* Before the radio's been touched, the knob gives a little turn to say it
+   turns. */
+.radio:not(.radio--live) .radio__knob-grip {
+  animation: knob-wiggle 2.4s ease-in-out 1s 2;
+}
+
+@keyframes knob-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(-16deg); }
+  45% { transform: rotate(16deg); }
+  65% { transform: rotate(-6deg); }
+}
+
+.radio__legend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: rgba(28, 23, 36, 0.68);
+}
+
+.radio__key {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.15rem 0.3rem;
+}
+
+.radio__key-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-left: 0.4rem;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px var(--ink);
+}
+
+.radio__key-dot--parent { background: #f0c97a; }
+.radio__key-dot--child { background: #8fd0ff; }
+
+.radio__readout {
+  min-height: 2.4em;
+  margin: 0.45rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.radio__on-air {
+  display: inline-block;
+  padding: 0.05rem 0.35rem;
+  border-radius: 2px;
+  background: #e5372b;
+  color: #fff;
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.radio__relation {
+  color: rgba(28, 23, 36, 0.68);
+}
+
+.radio__hint {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: rgba(28, 23, 36, 0.78);
+}
+
+.radio__static {
+  letter-spacing: 0.2em;
+  color: rgba(28, 23, 36, 0.68);
+}
+
+/* The record to start with, taped in. */
+.zine__album {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin: 1.4rem 0 0.4rem;
+}
+
+.zine__album-cover {
+  position: relative;
+  flex: none;
+  width: 96px;
+  height: 96px;
+  border: 4px solid #fffdf7;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+  rotate: 3deg;
+}
+
+.zine__album-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.zine__tape--small {
+  width: 46px;
+  height: 16px;
+  top: -9px;
+  left: 22px;
+  rotate: -5deg;
+}
+
+.zine__album-title {
+  display: block;
+  font-family: var(--font-inter);
+  font-weight: 800;
+  font-size: 0.98rem;
+  line-height: 1.2;
+}
+
+.zine__album-year {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: rgba(28, 23, 36, 0.6);
+}
+
+/* Who they learned from, who learned from them. */
+.zine__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.zine-row {
+  padding: 0.35rem 0;
+  border-bottom: 1px dashed rgba(28, 23, 36, 0.25);
+}
+
+.zine-row__line {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.zine-row__bullet {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px var(--ink);
+}
+
+.zine-row__name {
+  padding: 0;
+  background: none;
+  border: none;
+  font-family: var(--font-inter);
+  font-weight: 650;
+  font-size: 0.88rem;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.zine-row__name:hover,
+.zine-row__name:focus-visible {
+  background: var(--highlight);
+}
+
+.zine-row__year {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  white-space: nowrap;
+  color: rgba(28, 23, 36, 0.7);
+}
+
+/* Where we know it from: a small, plainly clickable tag. */
+.zine-row__stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.5rem;
+  background: #fffdf7;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.zine-row__stamp:hover,
+.zine-row__stamp[aria-expanded="true"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.zine-row__stamp:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.zine-row__stamp--none {
+  border-style: dashed;
+}
+
+.zine-row__note {
+  margin: 0.35rem 0 0.2rem 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: rgba(28, 23, 36, 0.82);
+}
+
+.zine__more {
+  margin-top: 0.45rem;
+  padding: 0;
+  background: none;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--spot);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.zine__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-top: 1.7rem;
+}
+
+.zine__sticker {
+  display: inline-block;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: var(--spot);
+  color: var(--paper);
+  font-family: var(--font-inter);
+  font-weight: 800;
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  rotate: -3deg;
+  box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* The entrance. The photo flying from the star onto the page: */
+.panel-flier {
+  position: fixed;
+  z-index: 80;
+  object-fit: cover;
+  object-position: 50% 25%;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+}
+
+/* …then the pieces paste in, one by one, a little askew, and settle… */
+.artist-panel--entering .zine > * {
+  animation: zine-paste 480ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.artist-panel--entering .zine > :nth-child(1) { animation-delay: 120ms; }
+.artist-panel--entering .zine > :nth-child(2) { animation-delay: 220ms; }
+.artist-panel--entering .zine > :nth-child(3) { animation-delay: 420ms; }
+.artist-panel--entering .zine > :nth-child(4) { animation-delay: 500ms; }
+.artist-panel--entering .zine > :nth-child(5) { animation-delay: 600ms; }
+.artist-panel--entering .zine > :nth-child(6) { animation-delay: 700ms; }
+.artist-panel--entering .zine > :nth-child(n + 7) { animation-delay: 780ms; }
+
+@keyframes zine-paste {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) rotate(-2deg) scale(1.03);
+  }
+}
+
+/* …the tape sticks down, and the highlighter swipes across the name. */
+.artist-panel--entering .zine__photo .zine__tape {
+  animation: zine-tape 360ms cubic-bezier(0.22, 1, 0.36, 1) 640ms backwards;
+}
+
+@keyframes zine-tape {
+  from {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
+
+.artist-panel--entering .zine__highlight {
+  animation: zine-swipe 520ms cubic-bezier(0.22, 1, 0.36, 1) 560ms backwards;
+}
+
+@keyframes zine-swipe {
+  from {
+    background-size: 0% 100%;
+  }
+}
+
+/* Hopping between artists while it's open: a quick crossfade. */
+.artist-panel__inner {
+  animation: panel-swap 240ms ease both;
+}
+
+@keyframes panel-swap {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .artist-panel__inner,
+  .artist-panel--entering .zine > *,
+  .artist-panel--entering .zine__tape,
+  .artist-panel--entering .zine__highlight,
+  .radio:not(.radio--live) .radio__knob-grip {
+    animation: none;
+  }
+}
+
+/* On a phone the sheet's own bar has the close; one is enough. */
+.artist-panel--peek .zine__close,
+.artist-panel--expanded .zine__close {
+  display: none;
+}

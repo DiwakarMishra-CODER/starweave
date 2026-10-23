@@ -6,9 +6,10 @@ import { storyControl, storyFrame } from '@/lib/story-store';
 import { connectAnalyser, readLevel } from '@/lib/use-audio-level';
 import type { RecordCard } from '@/lib/home-story';
 
-// "Hear where it came from": today's record played as an influence.
+// "Hear where it came from": an artist played as an influence — today's
+// record from its tag on the map, or any artist from the side panel.
 //
-// The record's family opens (a real selection, so its panel comes too) and
+// The artist's family opens (a real selection, so its panel comes too) and
 // the band that shaped it plays while a light travels down the line between
 // them into today's star. Then the record's own song comes in as the light
 // lands, and the star swells with it. For a record nobody came before (the
@@ -43,7 +44,12 @@ function previewAudio(url: string): HTMLAudioElement {
   return audio;
 }
 
-export function useListen(record: RecordCard): Listening {
+/** What playing an artist as an influence needs to know about them. */
+export type ListenRecord = Pick<RecordCard, 'id' | 'name' | 'previewUrl' | 'previewTrack' | 'why'>;
+
+/** `select`: open the artist's family first — off where it's already open
+ *  (the side panel). */
+export function useListen(record: ListenRecord, { select = true }: { select?: boolean } = {}): Listening {
   const router = useRouter();
   const [now, setNow] = useState<Listening['now']>(null);
   const stopRef = useRef<() => void>(() => {});
@@ -58,9 +64,11 @@ export function useListen(record: RecordCard): Listening {
     connectAnalyser(first);
     if (second) connectAnalyser(second);
 
-    // Pressed before the opening was over: end it the way a skip would.
-    storyControl.finish?.();
-    router.push(`/?artist=${encodeURIComponent(record.id)}`, { scroll: false });
+    if (select) {
+      // Pressed before the opening was over: end it the way a skip would.
+      storyControl.finish?.();
+      router.push(`/?artist=${encodeURIComponent(record.id)}`, { scroll: false });
+    }
 
     first.volume = 0;
     void first.play().catch(() => {});
@@ -112,7 +120,7 @@ export function useListen(record: RecordCard): Listening {
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
-  }, [record, router]);
+  }, [record, router, select]);
 
   const stop = useCallback(() => stopRef.current(), []);
   useEffect(() => () => stopRef.current(), []);

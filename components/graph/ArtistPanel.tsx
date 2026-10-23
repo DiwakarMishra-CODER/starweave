@@ -1,18 +1,41 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import type { Artist, Edge, GraphData } from '@/data/types';
 import { resolveCitationStatus, compareEdgesByEvidence } from '@/data/types';
-import { resolveNodeColor, resolveNodeLabel } from '@/lib/colors';
+import { readableInk, resolveNodeColor, resolveNodeLabel } from '@/lib/colors';
 import { countryName } from '@/lib/format';
-import { sizedImageUrl, imageSrcSet } from '@/lib/image-url';
+import { sizedImageUrl } from '@/lib/image-url';
 import PhotoCredit from '@/components/ui/PhotoCredit';
-import SpotifyEmbed from '@/components/artist/SpotifyEmbed';
-import DeezerPreview from '@/components/artist/DeezerPreview';
-import ArtistBackground from '@/components/artist/ArtistBackground';
+import StreamingLinks from '@/components/ui/StreamingLinks';
+import RadioDial from '@/components/panel/RadioDial';
 import { useNarrowLayout } from '@/lib/use-media-query';
 import { useAudioPreview } from '@/lib/use-audio-preview';
+import { whyFor } from '@/lib/home-story';
+import { storyCamera } from '@/lib/story-store';
+
+// The artist panel is a page from a cut-and-paste fan zine: their photo taped
+// on, their name with a highlighter swipe behind it, who they are in a couple
+// of sentences, a pocket radio that plays their song and tunes through their
+// musical family (RadioDial) with buttons out to the streaming apps, their own
+// words on a torn cutting, the record to start with, and who inspired them and
+// who they inspired. Printed in one spot colour, their realm's, on
+// photocopied paper.
+//
+// The look must never get in the way of using it: the full page, the songs
+// and the sources are all plain, labelled, obviously clickable, and the spot
+// ink is deepened wherever it has to carry text (readableInk).
+//
+// The entrance: when the panel opens on a star, that star's photo lifts off
+// the map where it was clicked and flies onto the page, then the tape sticks,
+// the highlighter swipes and the pieces land one by one. Only when the panel
+// opens — hopping between artists while it's open is a quick crossfade, so it
+// never gets in the way.
+const FLIGHT_MS = 620;
+const ENTER_MS = 1300; // the pieces' stagger, start to last
+const FLIGHT_START_PX = 44; // the photo's size as it leaves the map
+const PAPER = '#f2ede0';     // the page (--paper in globals.css), for readableInk
 
 interface Props {
   artist: Artist | null;
@@ -31,12 +54,12 @@ function truncateBio(bio: string, maxSentences: number): { text: string; truncat
   return { text: sentences.slice(0, maxSentences).join('').trim(), truncated: true };
 }
 
-// One row in either the Influences or Influenced-by list. `other` is
-// whichever end of the edge isn't the panel's current artist (the
-// influence, for Influences; the disciple, for Influenced-by) — the
-// citation itself belongs to the edge either way, so the same row/toggle/
-// note logic applies regardless of which direction the list is reading.
-function InfluenceEdgeRow({
+// One name in either list. `other` is whichever end of the edge isn't the
+// panel's artist (the influence, for "Who inspired them"; the one they
+// inspired, for "Who they inspired") — the citation belongs to the edge either way. Cited
+// and unsourceable rows carry a small stamp that opens the source; 'unchecked'
+// has nothing to open, so no stamp.
+function FamilyRow({
   edge,
   other,
   isExpanded,
@@ -50,47 +73,36 @@ function InfluenceEdgeRow({
   onSelectArtist: (id: string) => void;
 }) {
   const status = resolveCitationStatus(edge);
-  // Both cited and unsourceable rows collapse behind the same toggle now —
-  // only 'unchecked' (nobody's looked) gets no button at all, since there's
-  // nothing on either side of a click for it to reveal. Cited and
-  // unsourceable get differently-labeled, differently-colored buttons (see
-  // .panel-influence-cite--unsourceable) so the state is legible without
-  // clicking, but the same collapsed-by-default shape either way — a row
-  // with real evidence and a row with none now take up the same amount of
-  // space until you ask.
   const hasToggle = status === 'cited' || status === 'unsourceable';
   return (
-    <li className="panel-influence-item">
-      <div className="panel-influence-row">
-        <span
-          className="panel-edge-dot"
-          style={{ background: resolveNodeColor(other) }}
-          aria-hidden
-        />
-        <button className="panel-edge-link" onClick={() => onSelectArtist(other.id)}>
+    <li className="zine-row">
+      <div className="zine-row__line">
+        <span className="zine-row__bullet" style={{ background: resolveNodeColor(other) }} aria-hidden />
+        <button className="zine-row__name" onClick={() => onSelectArtist(other.id)}>
           {other.name}
         </button>
+        {other.activeFrom && <span className="zine-row__year">since {other.activeFrom}</span>}
         {hasToggle && (
           <button
-            className={`panel-influence-cite${status === 'unsourceable' ? ' panel-influence-cite--unsourceable' : ''}${isExpanded ? ' panel-influence-cite--open' : ''}`}
+            className={`zine-row__stamp${status === 'unsourceable' ? ' zine-row__stamp--none' : ''}`}
             onClick={onToggleCitation}
             aria-expanded={isExpanded}
             aria-label={`${isExpanded ? 'Hide' : 'Show'} source for ${other.name}`}
           >
+            <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden>
+              <circle cx="5" cy="5" r="4.3" fill="none" stroke="currentColor" strokeWidth="1.2" />
+              <rect x="4.4" y="4.2" width="1.2" height="3.3" rx="0.6" fill="currentColor" />
+              <circle cx="5" cy="2.8" r="0.7" fill="currentColor" />
+            </svg>
             {status === 'cited' ? 'Source' : 'No source'}
-            <span className="panel-influence-cite__chevron" aria-hidden>⌄</span>
           </button>
         )}
       </div>
       {isExpanded && status === 'unsourceable' && (
-        <p className="panel-influence-note panel-influence-note--unsourceable">
-          Widely accepted, unsourced.
-        </p>
+        <p className="zine-row__note">Widely accepted, unsourced.</p>
       )}
       {isExpanded && status === 'cited' && edge.citation && (
-        <p className="panel-influence-note panel-influence-note--citation">
-          {edge.citation}
-        </p>
+        <p className="zine-row__note">{edge.citation}</p>
       )}
     </li>
   );
@@ -106,44 +118,90 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
   // window with the sheet's stylesheet and none of its markup.
   const isNarrowLayout = useNarrowLayout();
   const [expanded, setExpanded] = useState(false);
-  // The panel's <audio> is owned here rather than inside DeezerPreview, so the
-  // peek bar's play button and the expanded player's own controls drive one
-  // element. See lib/use-audio-preview.
-  const audio = useAudioPreview();
+  // The peek bar's play button: their own song, on the panel's one <audio>
+  // (see lib/use-audio-preview). The radio dial has its own and the two
+  // never play at once.
+  const { audioRef, audioProps, playing, toggle, stop: stopAudio } = useAudioPreview();
   const artistMap = Object.fromEntries(graphData.artists.map(a => [a.id, a]));
-  const genreMap = Object.fromEntries(graphData.genres.map(g => [g.id, g.name]));
 
-  // Which cited-influence rows have their source quote expanded. Keyed by
-  // edge.target (unique within one artist's influences list). Reset on
-  // artist change so switching artists never leaves a stale row expanded.
+  // Their own words about who shaped them (or, for an artist nobody came
+  // before, someone they shaped on them) — the same rule as today's record.
+  const why = useMemo(() => (artist ? whyFor(graphData, artist.id) : null), [graphData, artist]);
+
+  // The entrance (see FLIGHT_MS above).
+  const asideRef = useRef<HTMLElement>(null);
+  const photoRef = useRef<HTMLImageElement>(null);
+  const peekAvatarRef = useRef<HTMLImageElement>(null);
+  const shownIdRef = useRef<string | null>(null);
+  const [entering, setEntering] = useState(false);
+  useEffect(() => {
+    const was = shownIdRef.current;
+    shownIdRef.current = artist?.id ?? null;
+    if (!artist || was !== null) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: the panel just opened, which is a moment, not derived state
+    setEntering(true);
+    const done = window.setTimeout(() => setEntering(false), ENTER_MS);
+    const from = storyCamera.nodeScreen?.(artist.id);
+    const target = isNarrowLayout ? peekAvatarRef.current : photoRef.current;
+    const panel = asideRef.current;
+    if (!from || !target || !panel || !artist.imageUrl) return () => window.clearTimeout(done);
+    // Where the target will be once the panel has slid in: its rect now,
+    // less however far the slide still has to go. Its tilt comes along too.
+    const slide = new DOMMatrixReadOnly(getComputedStyle(panel).transform);
+    const end = target.getBoundingClientRect();
+    const endLeft = end.left - slide.m41;
+    const endTop = end.top - slide.m42;
+    const flier = document.createElement('img');
+    flier.src = sizedImageUrl(artist.imageUrl, 500);
+    flier.alt = '';
+    flier.className = 'panel-flier';
+    document.body.appendChild(flier);
+    target.style.opacity = '0';
+    const half = FLIGHT_START_PX / 2;
+    const flight = flier.animate([
+      { left: `${from.x - half}px`, top: `${from.y - half}px`, width: `${FLIGHT_START_PX}px`, height: `${FLIGHT_START_PX}px`, borderRadius: '50%' },
+      { left: `${endLeft}px`, top: `${endTop}px`, width: `${end.width}px`, height: `${end.height}px`, borderRadius: isNarrowLayout ? '50%' : '2px' },
+    ], { duration: FLIGHT_MS, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'forwards' });
+    flight.onfinish = () => {
+      target.style.opacity = '';
+      flier.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 160 }).onfinish = () => flier.remove();
+    };
+    return () => {
+      window.clearTimeout(done);
+      flight.cancel();
+      flier.remove();
+      target.style.opacity = '';
+    };
+    // isNarrowLayout is read at the moment of opening, deliberately.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [artist?.id]);
+
+  // Which rows have their source open. Keyed by edge. Reset on artist change
+  // so switching artists never leaves a stale row open.
   const [expandedCitations, setExpandedCitations] = useState<Set<string>>(new Set());
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: resetting UI state keyed to the artist prop's identity, not deriving render output
     setExpandedCitations(new Set());
   }, [artist?.id]);
 
-  // How many "Influenced by" rows are currently shown — starts at INFLUENCED_BY_PAGE_SIZE,
-  // grows by the same amount each time "+N more" is clicked, so a hub like Velvet
-  // Underground (56 entries) reveals in comfortable chunks instead of one giant dump.
-  // Reset on artist change so switching artists always starts collapsed again.
-  const INFLUENCED_BY_PAGE_SIZE = 6;
-  const [influencedByShown, setInfluencedByShown] = useState(INFLUENCED_BY_PAGE_SIZE);
+  // How many "Who they inspired" rows are shown — grows in pages, so a hub like
+  // the Velvet Underground (56 of them) reveals in comfortable chunks.
+  const FOLLOWERS_PAGE_SIZE = 6;
+  const [followersShown, setFollowersShown] = useState(FOLLOWERS_PAGE_SIZE);
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: resetting UI state keyed to the artist prop's identity, not deriving render output
-    setInfluencedByShown(INFLUENCED_BY_PAGE_SIZE);
+    setFollowersShown(FOLLOWERS_PAGE_SIZE);
   }, [artist?.id]);
   // Collapse back to the peek bar whenever the selected artist changes, so
   // tapping through the graph never strands the user in reading mode with the
-  // canvas covered. Same artist-keyed reset pattern as the two effects above.
+  // canvas covered.
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: resetting UI state keyed to the artist prop's identity, not deriving render output
     setExpanded(false);
   }, [artist?.id]);
 
-  // DeezerPreview used to stop playback via a key={artist.id} remount; now
-  // that the element outlives that component, stopping is explicit or one
-  // artist's preview plays on over the next one's.
-  const stopAudio = audio.stop;
+  // A new artist stops whatever was playing.
   useEffect(() => {
     stopAudio();
   }, [artist?.id, stopAudio]);
@@ -156,51 +214,38 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
       return next;
     });
 
-  // Sorted so sourced connections lead — see compareEdgesByEvidence. Without
-  // it these render in seed-data declaration order, which regularly put an
-  // unsourced row at the top of the list.
+  // Sourced connections first — see compareEdgesByEvidence.
   const influences: Edge[] = artist
     ? graphData.edges.filter(e => e.source === artist.id && e.type === 'influence').sort(compareEdgesByEvidence)
     : [];
   const influencedBy: Edge[] = artist
     ? graphData.edges.filter(e => e.target === artist.id && e.type === 'influence').sort(compareEdgesByEvidence)
     : [];
-
-  // One number rather than the roots/descendants split: the peek bar has one
-  // line to spend and the song title now shares it, and "16 connections" is
-  // the figure that reads as substance at a glance — the direction breakdown
-  // is a click away in the expanded sheet, where both lists are labelled.
   const connectionCount = influences.length + influencedBy.length;
+  const genreMap = Object.fromEntries(graphData.genres.map(g => [g.id, g.name]));
 
   const color = artist ? resolveNodeColor(artist) : undefined;
   const bioPreview = artist?.bio ? truncateBio(artist.bio, 2) : null;
+  const album = artist?.classicAlbums?.[0];
 
   return (
     <aside
-      className={`artist-panel${open ? ' artist-panel--open' : ''}${
+      ref={asideRef}
+      className={`artist-panel zine-panel${open ? ' artist-panel--open' : ''}${entering ? ' artist-panel--entering' : ''}${
         isNarrowLayout ? (expanded ? ' artist-panel--expanded' : ' artist-panel--peek') : ''
       }`}
-      style={color ? ({ '--layer-color': color } as React.CSSProperties) : undefined}
+      style={color ? ({ '--layer-color': color, '--spot': readableInk(color, PAPER) } as React.CSSProperties) : undefined}
       aria-label="Artist details"
       aria-hidden={!open}
     >
       {artist && (
         <>
-          {/* Subtle atmospheric tint, in the artist's own layer color — same
-              engine as the artist/genre/scene pages, tuned low and "calm"
-              (no drifting orbs/particles) since this is a reading surface —
-              the panel should stay clean and legible behind the text. */}
-          {color && <ArtistBackground layerColor={color} boost={0.4} scoped calm />}
-
           {/* ── Peek bar (narrow layouts) ──────────────────────────
               The sheet's collapsed face: enough to know who you tapped and
-              to hear them, without covering the graph. Rendered above the
-              hero so it reads as the sheet's header in both states — when
-              expanded it stays put and its chevron flips to collapse. */}
+              to hear them, without covering the graph. */}
           {isNarrowLayout && (
-            // The whole bar toggles, not just the grip and the chevron. Those
-            // two were the only handlers, so tapping the photo or the name --
-            // which is what everyone tries -- did nothing at all. The three
+            // The whole bar toggles, not just the grip and the chevron —
+            // tapping the photo or the name is what everyone tries. The
             // controls that mean something else stop the event below.
             <div
               className="panel-peek"
@@ -221,6 +266,7 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                 {artist.imageUrl && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
+                    ref={peekAvatarRef}
                     src={artist.imageUrl}
                     alt=""
                     aria-hidden
@@ -237,16 +283,13 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                   </span>
                 </span>
 
-                {/* Same <audio> the expanded player controls — one element,
-                    two transports. Absent for the handful of artists with no
-                    preview, matching DeezerPreview's own previewUrl guard. */}
                 {artist.previewUrl && (
                   <button
-                    className={`panel-peek__play${audio.playing ? ' panel-peek__play--playing' : ''}`}
-                    onClick={e => { e.stopPropagation(); audio.toggle(); }}
-                    aria-label={audio.playing ? 'Pause preview' : 'Play preview'}
+                    className={`panel-peek__play${playing ? ' panel-peek__play--playing' : ''}`}
+                    onClick={e => { e.stopPropagation(); toggle(); }}
+                    aria-label={playing ? 'Pause preview' : 'Play preview'}
                   >
-                    {audio.playing ? (
+                    {playing ? (
                       <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor" aria-hidden>
                         <rect x="2" y="1.5" width="3.5" height="10" rx="1" />
                         <rect x="7.5" y="1.5" width="3.5" height="10" rx="1" />
@@ -259,10 +302,6 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                   </button>
                 )}
 
-                {/* The panel's usual close lives in .panel-hero, hidden while
-                    collapsed. Inline here rather than absolutely positioned:
-                    floating it top-right put it on top of row 1, so it and the
-                    expand control sat stacked in the same corner. */}
                 <button
                   className="panel-peek__close"
                   onClick={e => { e.stopPropagation(); onClose(); }}
@@ -274,11 +313,6 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
 
               <div className="panel-peek__row panel-peek__row--sub">
                 <span className="panel-peek__sub">
-                  {/* previewTrack, not signatureSong — this names what the
-                      play button to its right will actually sound, and it is
-                      populated for exactly the 273 artists that have a
-                      previewUrl, so it is never absent while that button is
-                      showing. */}
                   {artist.previewTrack && (
                     <>
                       <span className="panel-peek__song">{artist.previewTrack}</span>
@@ -289,10 +323,6 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                     {connectionCount} {connectionCount === 1 ? 'connection' : 'connections'}
                   </span>
                 </span>
-                {/* Words, not a chevron. A bare glyph was reported twice as
-                    "I don't know what it does" -- an icon cannot say "there is
-                    more of this below". The full-artist-page link lives in the
-                    expanded sheet, one tap further in. */}
                 <span className="panel-peek__more">
                   {expanded ? 'Less' : 'Details'}
                   <span className="panel-peek__more-chev" aria-hidden>⌄</span>
@@ -301,202 +331,157 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
             </div>
           )}
 
-          {/* ── Hero image ─────────────────────────────────────── */}
-          <div className={`panel-hero${!artist.imageUrl ? ' panel-hero--no-image' : ''}`}>
-            {artist.imageUrl ? (
-              <>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={sizedImageUrl(artist.imageUrl, 500)}
-                  srcSet={imageSrcSet(artist.imageUrl)}
-                  sizes="(max-width: 600px) 100vw, 380px"
-                  alt={artist.name}
-                  className="panel-hero__img"
-                />
-                <div className="panel-hero__gradient" />
+          {/* The peek bar's song, on the panel's own audio element. */}
+          {artist.previewUrl && (
+            <audio ref={audioRef} src={artist.previewUrl} preload="none" {...audioProps} />
+          )}
+
+          {/* ── The zine page ───────────────────────────────────── */}
+          {/* Keyed by artist, so hopping between artists crossfades. */}
+          <div key={artist.id} className="artist-panel__inner zine">
+            <header className="zine__masthead">
+              <span>
+                {[artist.activeFrom && `Since ${artist.activeFrom}`, artist.country && countryName(artist.country)]
+                  .filter(Boolean)
+                  .join(' · ')}
+              </span>
+              <button className="zine__close" onClick={onClose} aria-label="Close artist panel">✕</button>
+            </header>
+
+            {/* Their photo, cut out and taped on, printed in the spot colour. */}
+            {artist.imageUrl && (
+              <figure className="zine__photo">
+                <span className="zine__print">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img ref={photoRef} src={sizedImageUrl(artist.imageUrl, 500)} alt={artist.name} />
+                </span>
+                <span className="zine__tape zine__tape--left" aria-hidden />
+                <span className="zine__tape zine__tape--right" aria-hidden />
                 <PhotoCredit credit={artist.imageCredit} className="photo-credit--panel" />
-              </>
-            ) : (
-              <div className="panel-hero__color-wash" />
+              </figure>
             )}
-            <button
-              className="panel-hero__close"
-              onClick={onClose}
-              aria-label="Close artist panel"
-            >
-              ✕
-            </button>
-          </div>
 
-          {/* ── Scrollable content ─────────────────────────────── */}
-          <div className="artist-panel__inner">
+            <h2 className="zine__name">
+              <span className="zine__highlight">{artist.name}</span>
+            </h2>
+            <p className="zine__typed">
+              {artist.genres.map((g, i) => (
+                <span key={g}>
+                  {i > 0 && ' · '}
+                  <Link href={`/genre/${g}`} className="zine__genre">{genreMap[g] ?? g}</Link>
+                </span>
+              ))}
+            </p>
 
-            {/* Name / meta */}
-            <div className="panel-artist-meta">
-              <div className="panel-layer-badge">
-                <span
-                  className="panel-layer-dot"
-                  style={{ background: color }}
-                  aria-hidden
-                />
-                {resolveNodeLabel(artist)}
-                {artist.activeFrom && (
-                  <span style={{ opacity: 0.6 }}>· est. {artist.activeFrom}</span>
-                )}
-              </div>
+            {/* Who they are, first, then the way to everything else. */}
+            {bioPreview && <p className="zine__intro">{bioPreview.text}</p>}
+            <Link href={`/artist/${artist.id}`} className="zine__fullpage">
+              Full artist page <span aria-hidden>→</span>
+            </Link>
 
-              <h2 className="panel-artist-name">{artist.name}</h2>
-
-              <div className="panel-tags">
-                {artist.genres.map(g => (
-                  <Link key={g} href={`/genre/${g}`} className="panel-tag genre-tag-chip">
-                    {genreMap[g] ?? g}
-                    <span className="genre-tag-chip__arrow" aria-hidden>→</span>
-                  </Link>
-                ))}
-                {artist.country && (
-                  <span className="panel-tag">{countryName(artist.country)}</span>
-                )}
-              </div>
-
-              <Link href={`/artist/${artist.id}`} className="panel-full-link">
-                Full artist page
-                <span className="panel-full-link__arrow" aria-hidden>→</span>
-              </Link>
-            </div>
-
-            {/* Audio preview — key ensures a full remount on artist change so
-                playing/progress state never bleeds across artists. Its own
-                song-level "Listen on" links (via streamingQuery) are the only
-                Listen-on set in this panel — a quick-peek shows one, not two. */}
-            <DeezerPreview
-              controller={audio}
-              previewUrl={artist.previewUrl}
-              previewTrack={artist.previewTrack}
-              previewAlbum={artist.previewAlbum}
-              streamingQuery={artist.signatureSong ? `${artist.name} ${artist.signatureSong}` : undefined}
-              compact
-            />
-
-            {/* Spotify embed (secondary) */}
-            <SpotifyEmbed spotifyId={artist.spotifyId} type="artist" compact />
-
-            {/* Bio — truncated teaser; the full artist page has the complete text */}
-            {bioPreview && (
-              <>
-                <div className="panel-divider" />
-                <div className="panel-section">
-                  <p className="panel-section-title">About</p>
-                  <p className={`panel-bio${bioPreview.truncated ? ' panel-bio--truncated' : ''}`}>
-                    {bioPreview.text}
-                  </p>
-                  {bioPreview.truncated && (
-                    <Link href={`/artist/${artist.id}`} className="panel-bio-more">
-                      Read full bio →
-                    </Link>
-                  )}
+            {/* Their song, and their musical family, on a pocket radio; the
+                whole songs on the apps. */}
+            <section className="zine__radio">
+              <h3 className="zine__marker">Listen</h3>
+              <RadioDial
+                artist={artist}
+                data={graphData}
+                silenced={playing}
+                onSound={stopAudio}
+              />
+              {artist.signatureSong && (
+                <div className="zine__apps">
+                  <StreamingLinks query={`${artist.name} ${artist.signatureSong}`} label="Full songs on" named />
                 </div>
-              </>
+              )}
+            </section>
+
+            {/* Their own words, on a torn cutting. */}
+            {why && (
+              <figure className="zine__cutting">
+                <blockquote>“{why.quote.replace(/[,;:]$/, '…').replace(/!$/, '')}”</blockquote>
+                <figcaption>— {why.speaker} on {why.direction === 'parent' ? why.other.name : artist.name}</figcaption>
+              </figure>
             )}
 
-            {/* Major album(s) */}
-            {artist.classicAlbums && artist.classicAlbums.length > 0 && (
-              <>
-                <div className="panel-divider" />
-                <div className="panel-section">
-                  <p className="panel-section-title">
-                    {artist.classicAlbums.length === 1 ? 'Major album' : 'Major albums'}
-                  </p>
-                  {artist.classicAlbums.map(album => (
-                    <div key={album.id} style={{ marginBottom: '0.5rem' }}>
-                      <p style={{ fontSize: '0.85rem', fontWeight: 600, lineHeight: 1.3 }}>
-                        {album.title}
-                        {album.year && (
-                          <span style={{ fontWeight: 400, color: 'var(--color-muted)', marginLeft: '0.4rem', fontFamily: 'var(--font-mono)', fontSize: '0.72rem' }}>
-                            {album.year}
-                          </span>
-                        )}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </>
+            {/* The record to start with, taped in with a scribbled caption. */}
+            {album && (
+              <figure className="zine__album">
+                {album.imageUrl && (
+                  <span className="zine__album-cover">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={sizedImageUrl(album.imageUrl, 300)} alt="" />
+                    <span className="zine__tape zine__tape--small" aria-hidden />
+                  </span>
+                )}
+                <figcaption>
+                  <span className="zine__marker zine__marker--small">the one to start with</span>
+                  <span className="zine__album-title">{album.title}</span>
+                  {album.year && <span className="zine__album-year">{album.year}</span>}
+                </figcaption>
+              </figure>
             )}
 
-            {/* Influences — carries citation state (see resolveCitationStatus
-                in data/types.ts). 'unchecked' renders identically to before
-                (dot + name, nothing else) — silence, not a "not yet
-                checked" flag. 'cited' gets a Source toggle that expands the
-                quote inline. 'unsourceable' gets a persistent note, since
-                there's no quote text to hide behind a click — it's a
-                finding, not a gap. */}
             {influences.length > 0 && (
-              <>
-                <div className="panel-divider" />
-                <div className="panel-section">
-                  <p className="panel-section-title">Roots ({influences.length})</p>
-                  <ul className="panel-edge-list">
-                    {influences.map(edge => {
-                      const target = artistMap[edge.target];
-                      if (!target) return null;
-                      const key = `${edge.source}->${edge.target}`;
-                      return (
-                        <InfluenceEdgeRow
-                          key={key}
-                          edge={edge}
-                          other={target}
-                          isExpanded={expandedCitations.has(key)}
-                          onToggleCitation={() => toggleCitation(key)}
-                          onSelectArtist={onSelectArtist}
-                        />
-                      );
-                    })}
-                  </ul>
-                </div>
-              </>
+              <section className="zine__family">
+                <h3 className="zine__marker">Who inspired them</h3>
+                <ul className="zine__list">
+                  {influences.map(edge => {
+                    const target = artistMap[edge.target];
+                    if (!target) return null;
+                    const key = `${edge.source}->${edge.target}`;
+                    return (
+                      <FamilyRow
+                        key={key}
+                        edge={edge}
+                        other={target}
+                        isExpanded={expandedCitations.has(key)}
+                        onToggleCitation={() => toggleCitation(key)}
+                        onSelectArtist={onSelectArtist}
+                      />
+                    );
+                  })}
+                </ul>
+              </section>
             )}
 
-            {/* Influenced by */}
             {influencedBy.length > 0 && (
-              <>
-                <div className="panel-divider" />
-                <div className="panel-section">
-                  <p className="panel-section-title">
-                    Descendants ({influencedBy.length})
-                  </p>
-                  <ul className="panel-edge-list">
-                    {influencedBy.slice(0, influencedByShown).map(edge => {
-                      const source = artistMap[edge.source];
-                      if (!source) return null;
-                      const key = `${edge.source}->${edge.target}`;
-                      return (
-                        <InfluenceEdgeRow
-                          key={key}
-                          edge={edge}
-                          other={source}
-                          isExpanded={expandedCitations.has(key)}
-                          onToggleCitation={() => toggleCitation(key)}
-                          onSelectArtist={onSelectArtist}
-                        />
-                      );
-                    })}
-                    {influencedBy.length > influencedByShown && (
-                      <li>
-                        <button
-                          type="button"
-                          className="panel-edge-more"
-                          onClick={() => setInfluencedByShown(n => n + INFLUENCED_BY_PAGE_SIZE)}
-                        >
-                          +{influencedBy.length - influencedByShown} more
-                          <span className="panel-edge-more__chevron" aria-hidden>⌄</span>
-                        </button>
-                      </li>
-                    )}
-                  </ul>
-                </div>
-              </>
+              <section className="zine__family">
+                <h3 className="zine__marker">Who they inspired</h3>
+                <ul className="zine__list">
+                  {influencedBy.slice(0, followersShown).map(edge => {
+                    const source = artistMap[edge.source];
+                    if (!source) return null;
+                    const key = `${edge.source}->${edge.target}`;
+                    return (
+                      <FamilyRow
+                        key={key}
+                        edge={edge}
+                        other={source}
+                        isExpanded={expandedCitations.has(key)}
+                        onToggleCitation={() => toggleCitation(key)}
+                        onSelectArtist={onSelectArtist}
+                      />
+                    );
+                  })}
+                </ul>
+                {influencedBy.length > followersShown && (
+                  <button
+                    type="button"
+                    className="zine__more"
+                    onClick={() => setFollowersShown(n => n + FOLLOWERS_PAGE_SIZE)}
+                  >
+                    +{influencedBy.length - followersShown} more
+                  </button>
+                )}
+              </section>
             )}
 
+            <footer className="zine__footer">
+              <Link href={`/artist/${artist.id}`} className="zine__sticker">
+                Full artist page →
+              </Link>
+            </footer>
           </div>
         </>
       )}

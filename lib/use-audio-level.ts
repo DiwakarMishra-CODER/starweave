@@ -76,6 +76,44 @@ export function startCrackle(volume = 0.35): (() => void) | null {
   };
 }
 
+/** Radio static between stations: noise with the odd pop, band-passed to
+ *  sit where a radio's hiss does, its loudness set from moment to moment.
+ *  Needs the context the play gesture made (see connectAnalyser). */
+export interface RadioStatic {
+  /** 0..1: how far off a station the dial is. */
+  set: (level: number) => void;
+  stop: () => void;
+}
+
+export function startStatic(): RadioStatic | null {
+  const ctx = context;
+  if (!ctx) return null;
+  const rate = ctx.sampleRate;
+  const buffer = ctx.createBuffer(1, rate, rate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < data.length; i++) {
+    data[i] = (Math.random() * 2 - 1) * 0.5 + (Math.random() < 0.0015 ? (Math.random() * 2 - 1) * 0.9 : 0);
+  }
+  const source = ctx.createBufferSource();
+  source.buffer = buffer;
+  source.loop = true;
+  const band = ctx.createBiquadFilter();
+  band.type = 'bandpass';
+  band.frequency.value = 1800;
+  band.Q.value = 0.7;
+  const gain = ctx.createGain();
+  gain.gain.value = 0;
+  source.connect(band).connect(gain).connect(ctx.destination);
+  source.start();
+  return {
+    set: level => gain.gain.setTargetAtTime(Math.max(0, Math.min(1, level)) * 0.22, ctx.currentTime, 0.04),
+    stop: () => {
+      gain.gain.setTargetAtTime(0, ctx.currentTime, 0.05);
+      source.stop(ctx.currentTime + 0.3);
+    },
+  };
+}
+
 /** One reading of an element's loudness, 0..1 — for a caller running its own
  *  animation loop. 0 if the element was never connected. */
 export function readLevel(audio: HTMLAudioElement | null): number {
