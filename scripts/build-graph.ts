@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { graphData } from '../data/seed-data';
 import type { Artist, Album, GraphData, ImageCredit } from '../data/types';
 import { validateEdges, computeInfluenceScores } from './pipeline';
+import { presettleLayout, type LayoutNode, type LayoutLink } from '../lib/graph-layout';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -289,24 +290,25 @@ async function fetchDeezerAlbumCover(artistName: string, albumTitle: string): Pr
 //
 //   deezer — the real artist, pinned by Deezer id. Most of these were a
 //            same-name stranger left in the cache by an older, first-match
-//            version of fetchDeezerImage ("Low" was a Dutch rapper, "Mogwai" a
-//            Spanish religious print, "Wilco" a Dutch singer, "Spoon" a
-//            compilation); the rest were cached links Deezer had since
+//            version of fetchDeezerImage ("Low" was a Dutch rapper, "Wilco" a
+//            Dutch singer, "Spoon" a compilation); the rest were cached links Deezer had since
 //            re-hashed, which now redirect to its grey placeholder (Joy
 //            Division, Can, The Rapture…).
 //   url    — an Apple Music artist image (mzstatic, stored at 250 like the
 //            Deezer ones), where Deezer only has album art or a logo.
 //   file   — a freely licensed Wikimedia Commons photo, served from
-//            public/photos/ (Wikimedia's own 960px rendition, pixels
-//            unaltered) because hotlinking its thumbnails gets rate-limited.
+//            public/photos/ (Wikimedia's own 960px rendition, or the
+//            original where that is smaller; never cropped) because
+//            hotlinking its thumbnails gets rate-limited.
 //            The licence asks for the credit, which the pages show.
 //   cover  — no photo of the band anywhere usable; their own record's cover
 //            stands in, as artwork already does for Burial or Parannoul.
 //
 // Left alone on purpose: faceless acts whose artwork IS their public face
-// (2814, Burial, Parannoul, Panchiko, death's dynamic shroud, Mid-Air
-// Thief), and bands that use their logo as their image on every platform
-// (Radiohead, The Cure, Boards of Canada).
+// (2814, Burial, Boards of Canada, Mid-Air Thief). Parannoul, Panchiko,
+// death's dynamic shroud, Candy Claws and Women keep their platform image
+// only because Commons has nothing usable of them (Oct 2026): distant stage
+// shots, or a wide frame whose square crop misses both people.
 type PhotoOverride =
   | { deezer: number }
   | { url: string }
@@ -325,7 +327,6 @@ const ARTIST_PHOTO: Record<string, PhotoOverride> = {
   'grouper':             { deezer: 402944 },
   'joy-division':        { deezer: 1249 },
   'low':                 { deezer: 4377 },
-  'mogwai':              { deezer: 1207 },
   'mono':                { deezer: 3075 },
   'sophie':              { deezer: 6478881 },
   'spoon':               { deezer: 1280 },
@@ -348,17 +349,25 @@ const ARTIST_PHOTO: Record<string, PhotoOverride> = {
 
   // Wikimedia Commons
   'ariel-pink': { file: '/photos/ariel-pink.jpg', credit: { author: 'Dustin Drew', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Ariel_Pink%27s_Haunted_Graffiti,_FYF_2010_(4975726091).jpg' } },
+  'bon-iver': { file: '/photos/bon-iver.jpg', credit: { author: 'Simon.Appelblad', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Bon_Iver_3.jpg' } },
   'bonnie-prince-billy': { file: '/photos/bonnie-prince-billy.jpg', credit: { author: 'Neff Conner', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Bonnie-Prince-Billy-060609_(614bw)_(3606166772)_(cropped).jpg' } },
   'bratmobile': { file: '/photos/bratmobile.jpg', credit: { author: 'Greg Neate', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Bratmobile.jpg' } },
   'christie-front-drive': { file: '/photos/christie-front-drive.jpg', credit: { author: 'denverkid', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Christie_Front_Drive.jpg' } },
+  // Arto Lindsay alone, decades on: no photo of DNA as a band is free to use
+  'dna': { file: '/photos/dna.jpg', credit: { author: 'Kaethe17', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Arto-lindsay-2026.jpg' } },
   'godspeed-you-black-emperor': { file: '/photos/godspeed-you-black-emperor.jpg', credit: { author: 'Grywnn', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Godspeed_You!_Black_Emperor_@_Roadburn_Festival_2018-04-21_003.jpg' } },
   'james-chance-and-the-contortions': { file: '/photos/james-chance-and-the-contortions.jpg', credit: { author: 'Braunov', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:James_White_1981_2.jpg' } },
+  'mogwai': { file: '/photos/mogwai.jpg', credit: { author: 'S. Bollmann', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Mogwai_Melt!_2015_04.jpg' } },
   'porter-robinson': { file: '/photos/porter-robinson.jpg', credit: { author: 'Chan4est', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Porter_Robinson_SMILE!_-D_listening_party_(cropped).png' } },
+  'radiohead': { file: '/photos/radiohead.jpg', credit: { author: 'Raph_PH', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Radiohead_-_The_O2_-_Monday_24th_November_2025.jpg' } },
+  'squid': { file: '/photos/squid.jpg', credit: { author: 'Paul Hudson from United Kingdom', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Squid_at_the_Wide_Awake_Festival_(51427598430).jpg' } },
+  'the-cure': { file: '/photos/the-cure.jpg', credit: { author: 'Raph_PH', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:CureTroxy011124_(35_of_139)_(54115038895).jpg' } },
+  // Charles Hayward alone, in 2007: no photo of This Heat as a band is free to use
+  'this-heat': { file: '/photos/this-heat.jpg', credit: { author: 'roomtemperature.org / Fergus Kelly', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:CharlesHayward_May2007.jpg' } },
   'turnstile': { file: '/photos/turnstile.jpg', credit: { author: 'S. Bollmann', license: 'Attribution', url: 'https://commons.wikimedia.org/wiki/File:Turnstile_Full_Force_2019_02.jpg' } },
   'underscores': { file: '/photos/underscores.jpg', credit: { author: 'jwx8', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Underscores_in_Los_Angeles,_15_April_2026_(cropped).jpg' } },
 
   // the band's own record stands in
-  'dna':       { cover: true },
   'far-apart': { cover: true },
 };
 
@@ -910,8 +919,25 @@ async function main() {
     })),
   }));
 
+  // Settle the map's layout once, here, instead of in every visitor's browser
+  // (it used to cost ~0.5s of frozen main thread on every cold load). Same
+  // function, same inputs in the same order as the canvas would use, so the
+  // positions are the ones the browser would have computed; rounded to 0.01
+  // of a graph unit, which no zoom level can show.
+  const layoutNodes: LayoutNode[] = enrichedArtists.map(a => ({ id: a.id, realm: a.realm, influenceScore: a.influenceScore }));
+  const layoutLinks: LayoutLink[] = graphData.edges.map(e => ({ ...e }));
+  presettleLayout(layoutNodes, layoutLinks);
+  const settled = new Map(layoutNodes.map(n => [n.id, n]));
+  const round = (v: number | undefined) => (v === undefined ? undefined : Math.round(v * 100) / 100);
+  const positionedArtists = enrichedArtists.map(a => ({
+    ...a,
+    x: round(settled.get(a.id)?.x),
+    y: round(settled.get(a.id)?.y),
+  }));
+  console.log(`✓ Settled the layout (${layoutNodes.length} positions)`);
+
   const output: GraphData = {
-    artists: enrichedArtists,
+    artists: positionedArtists,
     genres:  graphData.genres,
     scenes:  graphData.scenes,
     edges:   graphData.edges,

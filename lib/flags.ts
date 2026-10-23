@@ -15,3 +15,14 @@
  * so nothing becomes dead code.
  */
 export const PATH_FINDER_ENABLED = true;
+
+/**
+ * The opening's first beat on a first visit (components/home/Intro.tsx): the
+ * Velvet Underground's banana sleeve, the vinyl sliding out of it, copies
+ * handed on to the artists it shaped, and Brian Eno's line about it.
+ *
+ * Off: a test viewer found it confusing ahead of the spinning record, which
+ * is already a record, so the opening went back to starting on the record.
+ * Kept whole behind this switch rather than deleted, to try again later.
+ */
+export const OPENING_VU_BEAT = false;

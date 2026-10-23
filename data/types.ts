@@ -192,6 +192,10 @@ export interface Artist {
   // influence). Drives node SIZE and the "classic / important" ranking.
   // Computing this instead of hand-labelling is the defensible, graph-first move.
   influenceScore?: number;
+  // Where the artist sits on the map, settled once at build time by
+  // lib/graph-layout.ts's presettleLayout, so the browser draws straight away.
+  x?: number;
+  y?: number;
 }
 
 export interface GraphData {

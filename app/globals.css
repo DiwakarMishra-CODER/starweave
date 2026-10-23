@@ -6069,3 +6069,1118 @@ h3 { font-size: 1.1rem; }
     padding: 0.4rem 0.7rem;
   }
 }
+
+/* ── Home: the opening ("the record becomes the map") ─────────────
+   components/home/Intro.tsx. A transparent layer over the live canvas: the
+   record and the atlas are drawn by ForceGraph; this holds the words, the
+   year that rides beside the needle, and the black the page opens on. */
+
+/* Set before first paint by the script in app/layout.tsx for links that
+   should open on the map. */
+html[data-story='off'] .intro {
+  display: none;
+}
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  padding-top: var(--nav-height);
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: hidden;
+}
+
+/* The black the page opens on. Lifts as soon as the record starts playing,
+   so the canvas underneath is never seen before it's ready. */
+.intro__veil {
+  position: absolute;
+  inset: var(--nav-height) 0 0;
+  background: #07050e;
+  transition: opacity 600ms ease;
+}
+
+.intro:not(.intro--label) .intro__veil,
+.intro--label.intro--ready .intro__veil {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The label: the Velvet Underground, at the centre of the record —
+   shown on the black while the graph is still arriving, then handed to the
+   canvas, which draws the same point in the same place. */
+.intro__label {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--nav-height) + (100% - var(--nav-height)) / 2);
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  transform: translate(-50%, -0.35rem);
+  pointer-events: none;
+  transition: opacity 500ms ease 200ms;
+}
+
+.intro__label-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-root);
+  box-shadow: 0 0 18px 6px rgba(232, 200, 122, 0.55);
+  animation: intro-label-in 450ms ease-out backwards;
+}
+
+.intro__label-name {
+  margin-top: 0.9rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(237, 234, 247, 0.7);
+  animation: intro-label-in 450ms ease-out 120ms backwards;
+}
+
+.intro:not(.intro--root) .intro__label {
+  opacity: 0;
+}
+
+/* The first beat: the Velvet Underground's first record — its sleeve and
+   the vinyl that slides out of it. Intro places, sizes, fades and turns
+   them every frame; nothing here animates on its own. The vinyl's grooves
+   and sheen are plain gradients on two layers: the grooves and label turn,
+   the sheen (light on the record, not on the record) stays put. */
+.intro__beat {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.intro__sleeve,
+.intro__vinyl {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.intro__sleeve {
+  z-index: 2;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.intro__vinyl {
+  z-index: 1;
+  border-radius: 50%;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+}
+
+.intro__vinyl-spin {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 3px),
+    radial-gradient(circle at 50% 50%, #18161f 0 62%, #0d0c12 63% 97%, #1f1d27 98% 100%);
+}
+
+.intro__vinyl-label {
+  position: absolute;
+  left: 32%;
+  top: 32%;
+  width: 36%;
+  height: 36%;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px #0d0c12;
+}
+
+/* The spindle hole. */
+.intro__vinyl::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 3.5%;
+  height: 3.5%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: #07050e;
+}
+
+.intro__vinyl-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 30deg,
+    transparent 0deg,
+    rgba(255, 255, 255, 0.1) 25deg,
+    transparent 55deg,
+    transparent 190deg,
+    rgba(255, 255, 255, 0.07) 215deg,
+    transparent 245deg
+  );
+  pointer-events: none;
+}
+
+/* How many the record has reached so far, under it (placed per frame). */
+.intro__tally {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  justify-items: start;
+  gap: 0.1rem;
+  opacity: 0;
+  pointer-events: none;
+  text-shadow: 0 1px 14px rgba(7, 5, 14, 0.95);
+}
+
+.intro__tally-count {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: #f0c97a;
+}
+
+.intro__tally-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(237, 234, 247, 0.7);
+}
+
+/* The Velvet Underground's name, riding beside their star as the closing
+   wave leaves it (positioned per frame by Intro). */
+.intro__root-tag {
+  position: absolute;
+  left: 0;
+  top: 0;
+  translate: -50% 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #f0c97a;
+  text-shadow: 0 1px 12px rgba(7, 5, 14, 0.95);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.intro--wave .intro__root-tag {
+  animation: intro-root-tag 2600ms ease 500ms both;
+}
+
+@keyframes intro-root-tag {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* The year and the artist under the needle, riding just outside it
+   (positioned per frame by Intro). */
+.intro__counter {
+  position: absolute;
+  left: 0;
+  top: 0;
+  translate: 0.4rem -50%;
+  display: grid;
+  gap: 0.1rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.intro--groove .intro__counter {
+  opacity: 1;
+}
+
+.intro__counter-year {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #fff4d6;
+  text-shadow: 0 0 18px rgba(255, 228, 160, 0.55);
+}
+
+.intro__counter-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  color: rgba(237, 234, 247, 0.78);
+  text-shadow: 0 1px 12px rgba(7, 5, 14, 0.9);
+}
+
+/* The picture receding while words are up (opacity set by Intro), so the
+   eye goes to the words rather than staying on the motion. */
+.intro__dim {
+  position: absolute;
+  inset: var(--nav-height) 0 0;
+  z-index: 3;
+  background: #07050e;
+  pointer-events: none;
+  transition: opacity 600ms ease;
+}
+
+/* A dark floor under the words, once the record has become the map and
+   the words move to the bottom of the screen. */
+.intro__scrim {
+  position: absolute;
+  inset: auto 0 0;
+  height: 32%;
+  background: linear-gradient(to top, rgba(7, 5, 14, 0.88), rgba(7, 5, 14, 0));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+
+.intro--mapped .intro__scrim,
+.intro--family .intro__scrim,
+.intro--named .intro__scrim,
+.intro--quote .intro__scrim,
+.intro--in .intro__scrim,
+.intro--out .intro__scrim,
+.intro--wave .intro__scrim,
+.intro--lit .intro__scrim,
+.intro--gather .intro__scrim,
+.intro--today .intro__scrim {
+  opacity: 1;
+}
+
+/* One line at a time, bottom centre. Its words land one by one; the small
+   line follows the last of them (--n is the word count). */
+.intro__caption {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: clamp(1.5rem, 6vh, 3.25rem);
+  translate: -50% 0;
+  width: min(42rem, calc(100% - 2rem));
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 350ms ease;
+}
+
+/* While the first record is on screen, the words sit right under it rather
+   than at the foot of the page, so the eye doesn't travel between the two
+   (Intro sets --near-top). */
+.intro--near .intro__caption {
+  top: var(--near-top);
+  bottom: auto;
+}
+
+/* A step with no words of its own: the last ones fade rather than cut. */
+.intro__caption--out {
+  opacity: 0;
+}
+
+.intro__caption p {
+  margin: 0;
+}
+
+.intro__caption-eyebrow {
+  margin-bottom: 0.45rem !important;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(232, 200, 122, 0.9);
+  animation: intro-fade-in 500ms ease backwards;
+}
+
+.intro__caption-big {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 3vw, 2.1rem);
+  line-height: 1.2;
+  color: #fff8e8;
+  text-shadow: 0 0 28px rgba(232, 200, 122, 0.25), 0 2px 20px rgba(7, 5, 14, 0.95);
+}
+
+.intro__word {
+  display: inline-block;
+  white-space: pre;
+  animation: intro-word-in 520ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: calc(var(--i) * 45ms);
+}
+
+.intro__caption-small {
+  margin-top: 0.5rem !important;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: rgba(237, 234, 247, 0.82);
+  text-shadow: 0 2px 16px rgba(7, 5, 14, 0.95);
+  animation: intro-fade-in 600ms ease backwards;
+  animation-delay: calc(var(--n, 0) * 45ms + 250ms);
+}
+
+/* A hairline under the nav, filling as the opening plays (set by Intro). */
+.intro__progress {
+  position: absolute;
+  top: var(--nav-height);
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 2px;
+  background: rgba(232, 200, 122, 0.55);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.intro__controls {
+  position: absolute;
+  z-index: 5;
+  top: calc(var(--nav-height) + 1rem);
+  right: 1.25rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.intro__button {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.8rem;
+  background: var(--surface-float);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-float);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.intro__button:hover {
+  background: rgba(14, 11, 26, 0.95);
+}
+
+.intro__button[aria-pressed='true'] {
+  border-color: rgba(232, 200, 122, 0.55);
+}
+
+.intro__icon {
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 600px) {
+  .intro__caption {
+    bottom: 1.25rem;
+  }
+
+  .intro__caption-big {
+    font-size: 1.3rem;
+  }
+
+  .intro__caption-small {
+    font-size: 0.95rem;
+  }
+}
+
+@keyframes intro-word-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.45em);
+    filter: blur(4px);
+  }
+}
+
+@keyframes intro-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes intro-label-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro__label-dot,
+  .intro__label-name {
+    animation: none;
+  }
+
+  .intro__word,
+  .intro__caption-eyebrow,
+  .intro__caption-small {
+    animation: none;
+  }
+}
+
+/* "How it works", in the map's top-left column, replays the full opening. */
+.graph-replay {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  background: var(--surface-float);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-float);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.graph-replay:hover {
+  background: rgba(14, 11, 26, 0.95);
+}
+
+/* ── Home: today's record on the map (components/home/TodayStar) ── */
+
+/* The tag beside today's star (the star itself turns as a little record on
+   the canvas). Positioned per frame by TodayStar; sits above the opening's
+   overlay so it can be pressed before the opening hands over. */
+.today-tag {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 56;
+  width: min(250px, calc(100vw - 24px));
+  padding: 0.8rem 0.9rem 0.85rem;
+  background: rgba(14, 11, 26, 0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(232, 200, 122, 0.28);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45), 0 0 30px rgba(232, 200, 122, 0.08);
+  visibility: hidden;
+  animation: today-tag-in 600ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.today-tag__close {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.4rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.today-tag__close:hover {
+  color: var(--color-text);
+}
+
+.today-tag__eyebrow {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(232, 200, 122, 0.9);
+}
+
+.today-tag__name {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: #fff8e8;
+  text-decoration: none;
+}
+
+.today-tag__name:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.today-tag__why {
+  margin: 0.5rem 0 0;
+}
+
+.today-tag__why blockquote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: rgba(237, 234, 247, 0.88);
+}
+
+.today-tag__why figcaption {
+  margin-top: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.today-tag__play {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.7rem;
+  padding: 0.45rem 0.8rem 0.45rem 0.65rem;
+  background: rgba(232, 200, 122, 0.14);
+  border: 1px solid rgba(232, 200, 122, 0.5);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff4d6;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.today-tag__play:hover {
+  background: rgba(232, 200, 122, 0.26);
+}
+
+.today-tag__play svg {
+  width: 12px;
+  height: 12px;
+}
+
+@keyframes today-tag-in {
+  from {
+    opacity: 0;
+    translate: 0 6px;
+  }
+}
+
+/* While today's record plays: who's on, and stop. Top centre, clear of the
+   side panel and the bottom sheet. */
+.now-playing {
+  position: fixed;
+  top: calc(var(--nav-height) + 0.75rem);
+  left: 50%;
+  translate: -50% 0;
+  z-index: 56;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: calc(100vw - 24px);
+  padding: 0.4rem 0.45rem 0.4rem 0.8rem;
+  background: rgba(14, 11, 26, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(232, 200, 122, 0.35);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  color: var(--color-text);
+  animation: today-tag-in 400ms ease backwards;
+}
+
+.now-playing__text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.now-playing__text span {
+  color: var(--color-muted);
+}
+
+.now-playing__bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.now-playing__bars i {
+  width: 3px;
+  height: 100%;
+  background: #f0c97a;
+  border-radius: 1px;
+  transform-origin: bottom;
+  animation: now-playing-bar 900ms ease-in-out infinite alternate;
+}
+
+.now-playing__bars i:nth-child(2) {
+  animation-delay: -300ms;
+}
+
+.now-playing__bars i:nth-child(3) {
+  animation-delay: -600ms;
+}
+
+.now-playing__stop {
+  display: grid;
+  place-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--color-border-float);
+  border-radius: 50%;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.now-playing__stop svg {
+  width: 12px;
+  height: 12px;
+}
+
+@keyframes now-playing-bar {
+  from {
+    transform: scaleY(0.3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .today-tag,
+  .now-playing,
+  .now-playing__bars i {
+    animation: none;
+  }
+}
+
+/* ── How it works (components/tour/Tour) ───────────────────────────── */
+
+/* Sits over the map without taking it: only its own buttons take clicks, so
+   the visitor zooms and taps the real map underneath. Its words reuse the
+   opening's caption styles. */
+.tour {
+  position: fixed;
+  inset: 0;
+  z-index: 48;
+  padding-top: var(--nav-height);
+  pointer-events: none;
+}
+
+.tour button,
+.tour input,
+.tour-pick {
+  pointer-events: auto;
+}
+
+/* The tour's words run longer than the opening's (a step's source), so
+   they're set a size down, over a dark floor. */
+.tour__caption .intro__caption-big {
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+}
+
+.tour__caption .intro__caption-small {
+  max-width: 38rem;
+  margin-inline: auto;
+  font-size: clamp(0.9rem, 1.3vw, 1.02rem);
+}
+
+.tour__scrim {
+  position: absolute;
+  inset: auto 0 0;
+  height: 30%;
+  /* A pool behind the words, not a band across the screen. */
+  background: radial-gradient(ellipse 50% 85% at 50% 100%, rgba(7, 5, 14, 0.9) 30%, rgba(7, 5, 14, 0) 72%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+.tour__scrim--on {
+  opacity: 1;
+}
+
+/* Up top, when what the words are about sits low on the screen. */
+.tour__caption--top {
+  top: calc(var(--nav-height) + 4.5rem);
+  bottom: auto;
+}
+
+/* The words for the step the camera is still arriving at wait for it. */
+.tour__caption--late {
+  animation: intro-fade-in 500ms ease 900ms backwards;
+}
+
+/* Whose music to follow. */
+.tour-pick {
+  position: absolute;
+  inset: var(--nav-height) 0 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(7, 5, 14, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  overflow-y: auto;
+}
+
+.tour-pick__card {
+  position: relative;
+  width: min(44rem, 100%);
+  padding: 1.6rem 1.5rem 1.2rem;
+  background: rgba(14, 11, 26, 0.92);
+  border: 1px solid rgba(232, 200, 122, 0.25);
+  border-radius: 14px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  text-align: center;
+  animation: today-tag-in 500ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.tour-pick__close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.7rem;
+  width: 2rem;
+  height: 2rem;
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.tour-pick__title {
+  margin: 0;
+  padding: 0 1.5rem; /* clear of the × */
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: #fff8e8;
+}
+
+.tour-pick__lede {
+  margin: 0.3rem 0 1.2rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: rgba(237, 234, 247, 0.75);
+}
+
+.tour-pick__faces {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tour-pick__face {
+  position: relative;
+}
+
+.tour-pick__choose {
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.4rem 0.2rem;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.tour-pick__choose:hover,
+.tour-pick__choose:focus-visible {
+  background: rgba(232, 200, 122, 0.08);
+  border-color: rgba(232, 200, 122, 0.35);
+}
+
+.tour-pick__choose img {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 25%;
+  box-shadow: 0 0 0 2px rgba(232, 200, 122, 0.25);
+}
+
+.tour-pick__name {
+  margin-top: 0.3rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+
+.tour-pick__song {
+  font-size: 0.74rem;
+  font-style: italic;
+  color: var(--color-muted);
+}
+
+.tour-pick__play {
+  position: absolute;
+  top: 0.4rem;
+  left: calc(50% + 22px);
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  background: #e8c87a;
+  border: none;
+  border-radius: 50%;
+  color: #120f1d;
+  font-size: 0.7rem;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.tour-pick__more {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 1.3rem;
+  flex-wrap: wrap;
+}
+
+.tour-pick__for-me {
+  padding: 0.55rem 1rem;
+  background: rgba(232, 200, 122, 0.14);
+  border: 1px solid rgba(232, 200, 122, 0.55);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff4d6;
+  cursor: pointer;
+}
+
+.tour-pick__search {
+  position: relative;
+}
+
+.tour-pick__search input {
+  width: 13rem;
+  padding: 0.55rem 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border-float);
+  border-radius: 999px;
+  color: var(--color-text);
+  font-size: 0.85rem;
+}
+
+.tour-pick__matches {
+  position: absolute;
+  top: calc(100% + 0.3rem);
+  left: 0;
+  right: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 0.3rem;
+  list-style: none;
+  background: rgba(14, 11, 26, 0.98);
+  border: 1px solid var(--color-border-float);
+  border-radius: 10px;
+  text-align: left;
+}
+
+.tour-pick__matches button {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.tour-pick__matches button:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tour-pick__replay {
+  margin-top: 1.1rem;
+  background: none;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .tour-pick__faces {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tour-pick__card {
+    padding: 1.3rem 1rem 1rem;
+  }
+}
+
+/* The ghost of the gesture, beside the star it's about (placed per frame).
+   Fingers on a touch screen, a mouse wheel otherwise. */
+.tour-hint {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.tour-hint__finger,
+.tour-hint__mouse,
+.tour-hint__tap {
+  position: absolute;
+}
+
+.tour-hint__finger {
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  background: rgba(255, 248, 232, 0.85);
+  box-shadow: 0 0 14px rgba(232, 200, 122, 0.6);
+}
+
+.tour-hint--in .tour-hint__finger--a { animation: tour-spread-a 1.6s ease-in-out infinite; }
+.tour-hint--in .tour-hint__finger--b { animation: tour-spread-b 1.6s ease-in-out infinite; }
+.tour-hint--out .tour-hint__finger--a { animation: tour-spread-a 1.6s ease-in-out infinite reverse; }
+.tour-hint--out .tour-hint__finger--b { animation: tour-spread-b 1.6s ease-in-out infinite reverse; }
+
+@keyframes tour-spread-a {
+  0%, 15% { transform: translate(28px, 28px); }
+  70%, 100% { transform: translate(8px, 8px); }
+}
+
+@keyframes tour-spread-b {
+  0%, 15% { transform: translate(44px, 44px); }
+  70%, 100% { transform: translate(70px, 70px); }
+}
+
+.tour-hint__mouse {
+  left: 30px;
+  top: 26px;
+  width: 22px;
+  height: 34px;
+  border: 2px solid rgba(255, 248, 232, 0.85);
+  border-radius: 11px;
+  box-shadow: 0 0 14px rgba(232, 200, 122, 0.5);
+}
+
+.tour-hint__wheel {
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  width: 3px;
+  height: 7px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: rgba(255, 248, 232, 0.9);
+}
+
+.tour-hint--in .tour-hint__wheel { animation: tour-wheel-up 1.2s ease-in-out infinite; }
+.tour-hint--out .tour-hint__wheel { animation: tour-wheel-down 1.2s ease-in-out infinite; }
+
+@keyframes tour-wheel-up {
+  0% { transform: translateY(8px); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(-2px); opacity: 0; }
+}
+
+@keyframes tour-wheel-down {
+  0% { transform: translateY(-2px); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(8px); opacity: 0; }
+}
+
+.tour-hint--touch .tour-hint__mouse,
+.tour-hint:not(.tour-hint--touch) .tour-hint__finger {
+  display: none;
+}
+
+/* Tap: a fingertip pressing beside the ringed star. */
+.tour-hint__tap {
+  left: 14px;
+  top: 14px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 248, 232, 0.85);
+  box-shadow: 0 0 14px rgba(232, 200, 122, 0.6);
+  animation: tour-tap 1.4s ease-in-out infinite;
+}
+
+@keyframes tour-tap {
+  0%, 100% { transform: translate(14px, 14px) scale(1); opacity: 0.9; }
+  45% { transform: translate(0, 0) scale(0.8); opacity: 1; }
+  60% { transform: translate(0, 0) scale(0.8); opacity: 0.6; }
+}
+
+/* The one map control the tour points at, near the end. */
+.tour-glow {
+  outline: 2px solid rgba(232, 200, 122, 0.85) !important;
+  outline-offset: 4px;
+  border-radius: var(--radius);
+  animation: tour-glow 1.2s ease-in-out infinite;
+}
+
+@keyframes tour-glow {
+  50% { box-shadow: 0 0 26px 4px rgba(232, 200, 122, 0.45); }
+}
+
+/* Where the road ended: that artist's record, turning above the words. */
+.tour-disc {
+  position: absolute;
+  left: 50%;
+  bottom: calc(clamp(1.5rem, 6vh, 3.25rem) + 6.5rem);
+  width: 76px;
+  height: 76px;
+  translate: -50% 0;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 3px),
+    radial-gradient(circle at 50% 50%, #18161f 0 62%, #0d0c12 63% 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(232, 200, 122, 0.25);
+  animation: tour-spin 1.8s linear infinite, intro-fade-in 500ms ease backwards;
+}
+
+@keyframes tour-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.tour-disc img {
+  position: absolute;
+  inset: 30%;
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tour-hint *,
+  .tour-glow,
+  .tour-disc {
+    animation: none !important;
+  }
+}

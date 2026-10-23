@@ -8,6 +8,8 @@ import { edgePassesEvidenceFilter } from '@/data/types';
 import { useNarrowLayout } from '@/lib/use-media-query';
 import { findBestSourcedPath, resolvePathHops } from '@/lib/graph-utils';
 import { PATH_FINDER_ENABLED } from '@/lib/flags';
+import { useStory, setStoryMode, setMapBusy } from '@/lib/story-store';
+import Tour from '@/components/tour/Tour';
 import { useGraphData } from './GraphDataProvider';
 import GraphControls from './GraphControls';
 import ArtistSearch from './ArtistSearch';
@@ -54,11 +56,25 @@ export default function GraphView() {
   // with the old page still on screen and no feedback. Third time this exact
   // bug appeared (see the /genre, /scene and /browse moves before it): moving
   // a page into the group and adding it here are two halves of one fix.
+  // The home page's story covers the canvas the same way, except while one
+  // of its tracks is using the live graph (canvasLive). See lib/story-store.ts.
+  const story = useStory();
+  const storyUp = pathname === '/' && story.mode === 'story';
   const isBackgrounded =
     pathname.startsWith('/artist/') || pathname.startsWith('/genre/') || pathname === '/genres' ||
     pathname.startsWith('/scene/') || pathname === '/scenes' || pathname.startsWith('/browse') ||
-    pathname === '/about';
+    pathname === '/about' || (storyUp && !story.canvasLive);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  // "How it works" (components/tour/Tour.tsx): whether it's running, and
+  // which of the map's own UI it wants on screen at the moment.
+  const [tourOn, setTourOn] = useState(false);
+  const [tourPanel, setTourPanel] = useState(false);
+  const [tourChrome, setTourChrome] = useState(true);
+  const endTour = useCallback(() => {
+    setTourOn(false);
+    setTourPanel(false);
+    setTourChrome(true);
+  }, []);
   // A genre's or scene's member artist ids, from ?genre=/?scene= — highlighted
   // as a cluster in the graph. Mutually exclusive with selectedId: setting one
   // always clears the other (enforced at every call site below).
@@ -98,7 +114,10 @@ export default function GraphView() {
   // been dismissed (which is what writes the key), neither auto-appears again.
   const [controlsAutoOpen, setControlsAutoOpen] = useState(false);
 
+  // Waits for the map: under the story there is nothing to explain yet, and
+  // the "Jump to…" panel would open behind it.
   useEffect(() => {
+    if (storyUp) return;
     let seen = true;
     try {
       seen = localStorage.getItem(ONBOARDING_STORAGE_KEY) === '1';
@@ -113,7 +132,27 @@ export default function GraphView() {
       setControlsAutoOpen(true);
       /* eslint-enable react-hooks/set-state-in-effect */
     }
-  }, []);
+  }, [storyUp]);
+
+  // Leaving `/` mid-story (a link in the story, the nav) means the story is
+  // done: coming back — Back, or the Graph link — lands on the map.
+  useEffect(() => {
+    if (pathname !== '/' && story.mode === 'story') setStoryMode('map');
+  }, [pathname, story.mode]);
+
+  // …and leaving it mid-tour ends the tour, so coming back doesn't land in
+  // the middle of it.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: the route changed under the tour
+    if (pathname !== '/') endTour();
+  }, [pathname, endTour]);
+
+  // Today's record steps aside the moment the visitor picks anything.
+  const hasOwnSelection =
+    selectedId !== null || highlightSetIds !== null || pathFromId !== null || pathToId !== null || activeRealm !== null;
+  useEffect(() => {
+    setMapBusy(hasOwnSelection || tourOn);
+  }, [hasOwnSelection, tourOn]);
 
   // Only persisted when the user actually dismisses it (click × or click a
   // node) — not the moment it's shown — so reloading without interacting
@@ -393,6 +432,9 @@ export default function GraphView() {
     // This click consumed the suppress flag (see suppressBackgroundClickRef).
     suppressBackgroundClickRef.current = false;
     if (selectedId === artistId) {
+      // Mid-tour, a second tap on the star it asked for isn't a request to
+      // leave for that artist's page.
+      if (tourOn) return;
       router.push(`/artist/${artistId}`);
     } else {
       setSelectedId(artistId);
@@ -405,7 +447,7 @@ export default function GraphView() {
       setActiveSceneId(null);
       window.history.replaceState(null, '', `/?artist=${artistId}`);
     }
-  }, [selectedId, router, onboardingOpen, dismissOnboarding]);
+  }, [selectedId, router, onboardingOpen, dismissOnboarding, tourOn]);
 
   // Clicking a member of the active genre/scene set re-centers the set on
   // that member instead of exiting to a full single-artist focus — the set
@@ -469,7 +511,12 @@ export default function GraphView() {
           same-origin static asset. */}
       {graphData && (
       <>
-      <GraphOnboarding open={onboardingOpen} onDismiss={dismissOnboarding} />
+      {/* The map's own UI waits for the map. ForceGraphCanvas below stays
+          mounted throughout: its first render runs the layout presettle, and
+          that stall belongs under the story's opening, not at the handover. */}
+      {!storyUp && (!tourOn || tourChrome) && (
+      <>
+      <GraphOnboarding open={onboardingOpen && !tourOn} onDismiss={dismissOnboarding} />
       {/* Shared column so "Connect two artists" stacks under the REAL height
           of "Jump to..." -- including its panel when open -- instead of each
           control anchoring itself independently. PathFinder used to sit at a
@@ -527,8 +574,17 @@ export default function GraphView() {
             }}
           />
         )}
+
+        {/* Only over the plain map: the opening needs the whole map to itself. */}
+        {pathname === '/' && !hasOwnSelection && (
+          <button type="button" className="graph-replay" onClick={() => { setTourChrome(false); setTourOn(true); }}>
+            <span aria-hidden>▶</span> <span>How it works</span>
+          </button>
+        )}
       </div>
       <ArtistSearch artists={graphData.artists} genres={graphData.genres} edges={graphData.edges} onSelectArtist={handleSelectArtist} />
+      </>
+      )}
 
       {/* z-index: 1 keeps the canvas above the nebula (z-index: 0) */}
       <div style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%' }}>
@@ -536,37 +592,63 @@ export default function GraphView() {
           graphData={graphData}
           activeRealm={activeRealm}
           highlightPath={pathIds}
-          selectedId={selectedId}
+          // The opening shows a family through the same focus view (see
+          // storyFocus), without the side panel a real selection opens.
+          selectedId={selectedId ?? (storyUp ? story.storyFocus : null)}
           highlightSetIds={highlightSetIds}
           highlightSetPinnedId={highlightSetPinnedId}
           onNodeClick={handleNodeClick}
           onSetMemberClick={handleSetMemberClick}
           onBackgroundClick={handleBackgroundClick}
           isBackgrounded={isBackgrounded}
+          // The opening and the tour both frame the canvas without the side
+          // panel, and keep room for their words along the bottom.
+          introPlaying={storyUp || (tourOn && !tourPanel)}
           evidenceFilter={evidenceFilter}
         />
       </div>
 
-      <EvidenceFilterControl
-        value={evidenceFilter}
-        onChange={setEvidenceFilter}
-        counts={evidenceCounts}
-      />
+      {!storyUp && (
+      <>
+      {(!tourOn || tourChrome) && (
+        <EvidenceFilterControl
+          value={evidenceFilter}
+          onChange={setEvidenceFilter}
+          counts={evidenceCounts}
+        />
+      )}
 
-      <PathPanel
+      {/* The tour runs Connect two itself and shows the thread on the map;
+          the panel's list would only crowd it. */}
+      {!tourOn && <PathPanel
         fromId={pathFromId}
         toId={pathToId}
         graphData={graphData}
         hops={pathHops}
         onClose={handleClosePath}
-      />
+      />}
 
       <ArtistPanel
-        artist={selectedArtist}
+        artist={tourOn && !tourPanel ? null : selectedArtist}
         graphData={graphData}
         onClose={handlePanelClose}
         onSelectArtist={handleSelectArtist}
       />
+      </>
+      )}
+
+      {tourOn && pathname === '/' && (
+        <Tour
+          data={graphData}
+          selectedId={selectedId}
+          onSelect={handleSelectArtist}
+          onClear={handleBackgroundClick}
+          onPanel={setTourPanel}
+          onChrome={setTourChrome}
+          onFindPath={handleFindPath}
+          onEnd={endTour}
+        />
+      )}
       </>
       )}
     </div>

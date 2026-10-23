@@ -1,6 +1,6 @@
 // d3-force-3d ships no type declarations. This covers only the handful of
-// exports Starweave actually uses (the off-screen graph pre-settle in
-// components/graph/ForceGraph.tsx) — not a full port of the package's API.
+// exports Starweave actually uses (the graph layout pre-settle in
+// lib/graph-layout.ts) — not a full port of the package's API.
 declare module 'd3-force-3d' {
   export interface SimulationNodeDatum {
     index?: number;

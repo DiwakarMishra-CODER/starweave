@@ -2,12 +2,24 @@
 
 import { useRef, useEffect, useMemo, useCallback, useState } from 'react';
 import ForceGraph2D from 'react-force-graph-2d';
-import { forceSimulation, forceLink, forceManyBody, forceCenter, forceX, forceY } from 'd3-force-3d';
+import { forceX, forceY } from 'd3-force-3d';
+import {
+  ALWAYS_LABEL_THRESHOLD, COLLIDE_PADDING, PHOTO_MAX_R, PHOTO_MIN_R, REALM_RADIUS_X, REALM_RADIUS_Y, RING_WIDTH,
+  chargeStrength, computeRealmHomePositions, createCollideForce, linkStrength,
+  makeRealmHomeX, makeRealmHomeY, presettleLayout, realmPullStrengthX, realmPullStrengthY,
+} from '@/lib/graph-layout';
 import type { Artist, Edge, EvidenceFilter, GraphData, Realm } from '@/data/types';
 import { edgePassesEvidenceFilter } from '@/data/types';
 import { resolveNodeColor, resolveNodeGlow, resolveEdgeTint, REALM_COLORS, REALM_LABELS, REALM_LABELS_SHORT } from '@/lib/colors';
 import { getNeighbors, pathEdgeKeys } from '@/lib/graph-utils';
 import { useCoarsePointer } from '@/lib/use-media-query';
+import { storyFrame, storyCamera } from '@/lib/story-store';
+import {
+  FAMILY_CHILD_COLOR, FAMILY_CHILDREN_PAUSE_MS, FAMILY_DRAW_DELAY_MS, FAMILY_DRAW_MS, FAMILY_DRAW_STAGGER_MS,
+  FAMILY_DRAW_STAGGER_FAST_MS,
+  FAMILY_PARENT_COLOR, familyOf,
+} from '@/lib/family';
+import { buildGroove, groovePoint, LABEL_ID, RIM_SHARE } from '@/lib/intro-groove';
 
 // Dev-only zoom readout (tuning instrument for the zoom-based cloud/detail
 // reveal work) — flip to true to put the on-screen number back while tuning
@@ -138,7 +150,7 @@ function getActiveCluster(
     };
   }
   if (selectedId) {
-    return { ids: [selectedId, ...getNeighbors(selectedId, edges)], key: `artist:${selectedId}`, spreadFactor: SPREAD_FACTOR };
+    return { ids: [selectedId, ...getNeighbors(selectedId, edges)], key: `artist:${selectedId}`, spreadFactor: FAMILY_LAYOUT };
   }
   if (highlightSetIds && highlightSetIds.length > 0) {
     const hubId = pinnedHubId && highlightSetIds.includes(pinnedHubId)
@@ -163,10 +175,8 @@ function getActiveCluster(
 // Values: 'loading' | HTMLImageElement (ready) | null (failed/no image)
 const imgCache = new Map<string, HTMLImageElement | 'loading' | null>();
 
-// Photo rendering constants
-const RING_WIDTH   = 2.5;   // colored ring that wraps the photo
-const PHOTO_MIN_R  = 9;     // min canvas radius for a recognizable face
-const PHOTO_MAX_R  = 22;    // cap so large hubs don't overwhelm layout
+// Photo rendering constants (RING_WIDTH, PHOTO_MIN_R, PHOTO_MAX_R) live in
+// lib/graph-layout.ts: a node's collision footprint depends on them.
 
 // ── Click-focus readability floor ────────────────────────────────────────────
 // Additive on top of the existing focus/neighbor size-up below (baseR * 2.8 /
@@ -273,245 +283,87 @@ function drawRoundedRect(
 // Edge['status'] in data/types.ts, still recorded in the data but no longer
 // distinguished visually.
 
-// Always-on label threshold: nodes with influenceScore >= this get permanent labels.
-// Scores: VU=20, MBV=9, CT=8, Television=5, SY=5, JAMC=4, Slowdive=4, Bowie=4…
-// Threshold of 5 → exactly the top 5 hubs, no others.
-const ALWAYS_LABEL_THRESHOLD = 5;
+// ALWAYS_LABEL_THRESHOLD (nodes at or above it always show a photo and a
+// label) lives in lib/graph-layout.ts, with the collision radius that uses it.
 
 // How far down a portrait photo the node's square crop sits: 0 = top edge,
 // 0.5 = centred. Matches `object-position: 50% 25%` on the pages' photos.
 const PHOTO_FOCUS_Y = 0.25;
 
-// ── Collision force ──────────────────────────────────────────────────────────
-// True resting (non-focused/non-hovered) outer radius of a node — base circle
-// per drawNode's baseR/PHOTO_MIN_R/PHOTO_MAX_R clamp, PLUS RING_WIDTH for any
-// node that shows a photo at rest (score >= ALWAYS_LABEL_THRESHOLD): drawNode
-// draws a hairline ring right at the photo edge, but paintNodePointerArea
-// below already treats `er + RING_WIDTH` as that node's real circular
-// footprint (its own comment: "the entire node — photo, ring, glow"). The
-// previous version of this force used bare `er`, undercounting hub/photo
-// nodes' true footprint by RING_WIDTH on each side.
-function restingNodeRadius(score: number): number {
-  const baseR = 3.5 + Math.sqrt(score) * 2.2;
-  const hasPhoto = score >= ALWAYS_LABEL_THRESHOLD;
-  const clamped = hasPhoto ? Math.min(Math.max(baseR, PHOTO_MIN_R), PHOTO_MAX_R) : baseR;
-  return hasPhoto ? clamped + RING_WIDTH : clamped;
+// ── The opening's record (components/home/Intro.tsx, lib/intro-groove.ts) ──
+// Stars leave the record oldest first: the newest star starts its flight
+// this far (a share of the whole morph) after the oldest.
+const INTRO_MORPH_STAGGER = 0.35;
+// How far along the groove (0..1) a star takes to light fully once the
+// needle reaches it, and how long its spark lasts.
+const INTRO_IGNITE_SPAN = 0.012;
+const INTRO_SPARK_SPAN = 0.03;
+// Screen-pixel sizes, divided by the zoom where they're drawn.
+const INTRO_NEEDLE_GLOW_PX = 40;
+const INTRO_SPARK_GLOW_PX = 22;
+const INTRO_LABEL_GLOW_PX = 70;
+// The first visit's opening beat: a copy of the Velvet Underground's record
+// flies out to each artist who learned from them and lights them. First
+// three handoffs, one at a time, to bands most people know — slow, big and
+// named, so the passing on can be followed — then everyone else in one wave.
+// Times are shares of the beat (storyFrame.sparks).
+const VU_HANDOFFS = ['talking-heads', 'joy-division', 'sonic-youth'];
+const VU_HANDOFF_LEAVE = [0, 0.22, 0.44];
+const VU_HANDOFF_FLIGHT = 0.17;
+const VU_WAVE_FROM = 0.66; // the first of the wave leaves
+const VU_WAVE_TO = 0.8;    // the last leaves — landed and settled before the count rests
+const VU_WAVE_FLIGHT = 0.12;
+const VU_LAND_FLARE = 0.05; // a star's flare as its copy lands
+// Screen pixels: a copy's radius as it leaves, and its landing flare.
+const VU_HANDOFF_COPY_PX = 11;
+const VU_WAVE_COPY_PX = 6;
+const VU_HANDOFF_FLARE_PX = 26;
+const VU_WAVE_FLARE_PX = 12;
+const VU_SPARK_GLOW_PX = 16;
+// Vinyl dust turning in the light round the label: where each speck sits
+// (a share of DUST_RADIUS_PX out), how it turns and twinkles. Fixed, so the
+// dust is the same on every visit.
+const DUST_RADIUS_PX = 150;
+const DUST_SPECKS = (() => {
+  let seed = 7;
+  const rand = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  return Array.from({ length: 46 }, () => ({
+    angle: rand() * Math.PI * 2,
+    r: 0.18 + 0.82 * Math.sqrt(rand()),
+    turn: (rand() - 0.5) * 0.0005,
+    phase: rand() * Math.PI * 2,
+    size: 0.6 + rand() * 1.1,
+  }));
+})();
+// Today's record on the map: a little disc under its star, turning at 33⅓.
+const TODAY_DISC_PX = 22;
+const TODAY_RAD_PER_MS = (Math.PI * 2 * (100 / 3)) / 60000;
+const TODAY_EASE = 0.08; // per frame, toward storyFrame.todayTarget
+// The first visit's last beat: sparks from across the map into today's star.
+const GATHER_SPARKS = 30;
+const GATHER_FLIGHT = 0.5; // each spark's share of the beat
+
+function clamp01(v: number): number {
+  return v < 0 ? 0 : v > 1 ? 1 : v;
 }
 
-// Padding on top of the touching-radius so nodes get a clearly visible gap,
-// not just a non-touching one.
-const COLLIDE_PADDING = 3;
-
-type CollideNode = { x?: number; y?: number; vx?: number; vy?: number; influenceScore?: number };
-
-// Minimal hand-rolled d3-force-compatible collision force (function + optional
-// .initialize(nodes)) — avoids importing d3-force-3d, which ships no type
-// declarations. O(n²) per iteration is trivial at this graph's node count.
-//
-// Deliberately does NOT scale the correction by the simulation's `alpha`
-// (unlike the charge/link forces above). d3-force's real forceCollide never
-// scales by alpha either — collision is a positional constraint, not a
-// physical force, and its whole job is to keep fully resolving overlaps even
-// late in the simulation when alpha has decayed near zero. The previous
-// version of this force multiplied the correction by `alpha`, so once the
-// simulation cooled down the push became too weak to finish separating the
-// biggest (hub/photo) node pairs — exactly the nodes that need the most
-// total displacement to stop overlapping — leaving them visibly overlapping
-// once the simulation settled and ticking stopped.
-//
-// Runs COLLIDE_ITERATIONS resolution passes per external tick, correcting
-// position directly (not just velocity). One velocity-only pass per tick
-// converges fine for a handful of scattered overlaps, but a realm cluster
-// (e.g. ~57 region-one nodes all pulled toward the same home point at the
-// weaker REALM_CHARGE repulsion) is dense enough that some pairs — reported:
-// Mazzy Star / Modest Mouse — never fully separated within the fixed
-// PRESETTLE_TICKS budget: velocity added late in the simulation gets
-// multiplied by velocityDecay and only partially applied to position by the
-// next external tick's own integration step. Direct position correction
-// resolves each pass's overlap immediately, so multiple passes per tick
-// converge far faster than waiting on more external ticks would.
-const COLLIDE_ITERATIONS = 3;
-
-function createCollideForce(padding: number) {
-  let nodes: CollideNode[] = [];
-  function resolveOnce() {
-    for (let i = 0; i < nodes.length; i++) {
-      const a = nodes[i];
-      if (a.x === undefined || a.y === undefined) continue;
-      const ra = restingNodeRadius(a.influenceScore ?? 0) + padding;
-      for (let j = i + 1; j < nodes.length; j++) {
-        const b = nodes[j];
-        if (b.x === undefined || b.y === undefined) continue;
-        const rb = restingNodeRadius(b.influenceScore ?? 0) + padding;
-        let dx = b.x - a.x;
-        let dy = b.y - a.y;
-        let dist = Math.sqrt(dx * dx + dy * dy);
-        const minDist = ra + rb;
-        if (dist >= minDist) continue;
-        if (dist === 0) {
-          dx = (Math.random() - 0.5) * 0.01;
-          dy = (Math.random() - 0.5) * 0.01;
-          dist = Math.sqrt(dx * dx + dy * dy);
-        }
-        const push = ((minDist - dist) / dist) * 0.5;
-        const ox = dx * push;
-        const oy = dy * push;
-        // Immediate position correction — the hard constraint itself —
-        // plus a matching velocity nudge so the next external tick's other
-        // forces (link/charge) don't re-integrate from a stale vx/vy and
-        // undo it.
-        a.x -= ox; a.y -= oy;
-        b.x += ox; b.y += oy;
-        a.vx = (a.vx ?? 0) - ox;
-        a.vy = (a.vy ?? 0) - oy;
-        b.vx = (b.vx ?? 0) + ox;
-        b.vy = (b.vy ?? 0) + oy;
-      }
-    }
-  }
-  function force() {
-    for (let iter = 0; iter < COLLIDE_ITERATIONS; iter++) resolveOnce();
-  }
-  force.initialize = (ns: CollideNode[]) => { nodes = ns; };
-  return force;
+// "How it works" lights the realms (storyFrame.realms, 0..1): one at a time
+// through the first REALM_SOLO_SHARE of it, each world's stars glowing in its
+// colour while the rest of the map dims back, then all of them together.
+const REALM_SOLO_SHARE = 0.72;
+function realmLitAt(order: string[], realm: string | undefined, r: number): number {
+  if (r < 0 || !realm) return 0;
+  const i = order.indexOf(realm);
+  if (i < 0) return 0;
+  if (r >= REALM_SOLO_SHARE) return clamp01(((r - REALM_SOLO_SHARE) / (1 - REALM_SOLO_SHARE)) * 2);
+  const pos = (r / REALM_SOLO_SHARE) * order.length;
+  return clamp01(1 - Math.abs(pos - (i + 0.5)) * 1.4);
 }
+// How far a star outside the lit world dims back while the worlds take turns.
+const REALM_SOLO_DIM = 0.4;
 
-// ── Off-screen pre-settle ─────────────────────────────────────────────────────
-// Runs the exact charge/link/center/collide configuration the live force-config
-// effect below registers — charge -40, link distance 75/strength 0.25, center
-// 0.04, our collide force at COLLIDE_PADDING — on a throwaway d3-force
-// simulation, entirely in memory, before ForceGraph2D ever mounts. Mutates
-// `nodes`/`links` in place (x/y/vx/vy, and link.source/target from raw id
-// strings into node object references — the same resolution d3-force's own
-// forceLink does, and safe for the live simulation to redo: it no-ops on a
-// link whose source/target is already an object, see d3-force-3d's link.js).
-//
-// This is what actually kills the multi-second visible settle: nodes used to
-// arrive at a spiral/scattered start and animate into place over ~300
-// real-time animation frames (one tick per rendered frame). Ticking that
-// same 300-tick budget synchronously, with nothing on screen to paint yet,
-// takes well under a second — the graph simply appears already-settled on
-// its first frame.
-//
-// d3-force-3d ships no type declarations (see types/d3-force-3d.d.ts) —
-// the same reason createCollideForce above is hand-rolled rather than using
-// the library's own forceCollide.
-const PRESETTLE_TICKS = 300;
-
-// ── Realm separation (tunable — rough first pass, not final tuning) ─────────
-// Pulls realm-tagged nodes toward a "home" position so each realm reads as
-// a loosely separated cluster instead of one hairball. A node with no
-// `realm` at all — every real region-one Artist on the plain graph, and any
-// node a caller doesn't explicitly tag — gets exactly 0 strength from BOTH
-// the x- and y-force below (see realmPullStrengthX/Y), so it contributes
-// nothing for them: only the existing charge/link/center/collide forces
-// above apply, unchanged from before this force existed.
-//
-// RADIAL LAYOUT — core sits at dead center; every non-core realm is placed
-// evenly around it on an ellipse. Data-driven: computeRealmHomePositions
-// below derives the list of non-core realms actually present in the node
-// set (not a hardcoded name list) and spaces them evenly by index, so
-// adding a 3rd/4th realm later needs no formula change here — it just
-// re-spaces automatically.
-//
-// TUNING KNOBS — every value governing the ellipse size/rotation and how
-// hard each realm is pulled toward its point on it lives here, together.
-// Kept small enough that zoomToFit's dense-core fit (see DENSE_CORE_
-// PERCENTILE below) still lands at or above SCROLL_MIN_ZOOM (now 1.6, was
-// 2.5 — raised as the realm count grew from 3 to 6 spread positions; see the
-// SCROLL_MIN_ZOOM comment below) — the user can't scroll out any further
-// than that floor, so if the ellipse is wider than what fits at that zoom,
-// the realms spill off-screen with no way to compensate. First-pass values
-// (420/260) were too wide; these are a more conservative starting point at
-// the same ~1.6:1 aspect ratio.
-// Raised from 230/145 — with six realms at even 60° spacing (see
-// REALM_ANGLE_DEG below), the tightest neighbor chord was still visually
-// tight even after evening the angles out. This bump needs SCROLL_MIN_ZOOM
-// re-checked empirically against the wider ellipse — do not assume the
-// existing 1.6 floor still fits without looking.
-const REALM_RADIUS_X = 260; // ellipse semi-axis, horizontal — wider than tall to fill a landscape viewport
-const REALM_RADIUS_Y = 165; // ellipse semi-axis, vertical
-const REALM_ANGLE_OFFSET = 0; // degrees — rotates the whole arrangement; spin to a pleasing orientation by eye
-const CORE_PULL_STRENGTH = 1.2;       // core-only horizontal pull toward center — core must be the most strongly-positioned thing in the graph so it wins against its own heavy edges into region-one, rather than getting dragged into that mass
-const CORE_PULL_STRENGTH_Y = 1.2;     // core-only vertical pull toward center — same strength as CORE_PULL_STRENGTH (core's target is the origin on both axes, so this being separate is harmless, not load-bearing)
-// The Velvet Underground specifically (not "core" generally) gets an even
-// stronger pull to the same (0,0) origin — every core node targets that
-// point, so without this they jostle for it via collision rather than any
-// one of them owning it. VU is the one artist the whole graph is framed
-// around ("rooted at The Velvet Underground"), and it's already the
-// biggest, most heavily-linked node in the graph (influenceScore 56, next
-// highest is 32), so in practice it barely moves anyway — this just makes
-// that already-almost-true position exact rather than incidental. Twice
-// CORE_PULL_STRENGTH is enough to decisively win against Kraftwerk/Can/
-// Neu!/Eno's own pull to the same point, so they settle just outside VU
-// instead of contesting it.
-const VU_PULL_STRENGTH = CORE_PULL_STRENGTH * 2;
-// One strength for BOTH axes on every non-core realm — deliberately
-// isotropic. The old linear layout could get away with a weaker Y pull
-// (every realm shared Y=0, so Y was just a vertical-compacting force, not a
-// real separating axis) but a true ellipse needs equal pull on both axes:
-// a realm placed near the top/bottom of the ellipse is mostly a Y-offset
-// from center, one near the sides is mostly an X-offset, and an asymmetric
-// strength would under-pull whichever axis matters more for a given realm's
-// angle — settling some realms closer to center than others by accident of
-// angle rather than by design.
-const REALM_PULL_STRENGTH = 0.6;
-const REALM_CHARGE = -22;             // charge (repulsion) for any realm-tagged node — weaker than the graph's normal -40 so each realm's bloom can pull tighter without its own internal repulsion fighting that pull. Realm-less nodes (every real region-one Artist on the plain graph) keep exactly -40 — see chargeStrength below.
-
-// Fixed compass-style angle (degrees) per known realm — a named, tunable
-// arrangement rather than pure auto-spacing, so adding a realm can't shift
-// the existing ones. 0 = right/+X, 90 = below/+Y (canvas Y increases
-// downward), 180 = left/-X, 270 = above/-Y. Any realm NOT listed here (a
-// future addition without a config update) falls back to even auto-spacing
-// among just the unlisted realms in computeRealmHomePositions below —
-// preserves the original "never breaks on an unknown realm" behavior.
-// Evened to exact 60° spacing (was 0/45/112.5/180/247.5/315 — a 45° pinch
-// around electronic on one side). Same order/adjacency as before, just
-// uniformly spread: every neighbor pair is now equidistant, widening the
-// tightest chord (previously the 45° electronic<->folk / emo<->electronic
-// gaps) by about a third. Unlike a REALM_RADIUS bump, this has no coupling
-// to SCROLL_MIN_ZOOM — the ellipse's overall extent is unchanged, only the
-// angular distribution around it.
-const REALM_ANGLE_DEG: Record<string, number> = {
-  electronic: 0,                    // right
-  'folk-confessional': 60,          // bottom-right
-  'american-underground': 120,      // bottom-left
-  'region-one': 180,                // left
-  'post-rock-drone-noise': 240,     // upper-left
-  'emo-posthardcore': 300,          // upper-right
-};
-
-// Scans the actual node set for distinct non-core realms present (not a
-// hardcoded name list — REALM_ANGLE_DEG above only fixes the ANGLE for the
-// realms named in it; the scan itself still works for any realm), sorts
-// them for a deterministic order regardless of array/insertion order, then
-// places each at its REALM_ANGLE_DEG angle (or auto-spaces the leftovers).
-// core always maps to the origin. Called once per layout pass (presettle,
-// and once in the live-sim force-config effect) — not per node.
-function computeRealmHomePositions(nodes: { realm?: string }[]): Map<string, { x: number; y: number }> {
-  const nonCoreRealms = Array.from(
-    new Set(nodes.map(n => n.realm).filter((r): r is string => !!r && r !== 'core')),
-  ).sort();
-
-  const positions = new Map<string, { x: number; y: number }>();
-  positions.set('core', { x: 0, y: 0 });
-
-  // Realms without a fixed REALM_ANGLE_DEG entry auto-space evenly among
-  // themselves (not among the full realm count) so they never collide with
-  // a named realm's angle.
-  const unlisted = nonCoreRealms.filter(r => !(r in REALM_ANGLE_DEG));
-  nonCoreRealms.forEach(realm => {
-    const namedAngleDeg = REALM_ANGLE_DEG[realm];
-    const angleDeg = namedAngleDeg !== undefined
-      ? namedAngleDeg
-      : (unlisted.indexOf(realm) * 360) / unlisted.length;
-    const angle = ((REALM_ANGLE_OFFSET + angleDeg) * Math.PI) / 180;
-    positions.set(realm, {
-      x: REALM_RADIUS_X * Math.cos(angle),
-      y: REALM_RADIUS_Y * Math.sin(angle),
-    });
-  });
-  return positions;
+function easeInOutCubic(t: number): number {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
 
 // Core glow — realm === 'core' nodes only (drawNode below). Both multipliers
@@ -562,96 +414,6 @@ const VU_MIN_HALO_SCREEN_R = 34;
 // already-tiny alpha (~0.13) to a still-faint ~0.2, indistinguishable from
 // an ordinary anchor's own halo.
 const VU_HALO_ALPHA = 0.7;
-
-// Link strength: within-realm edges keep the graph's original strength;
-// cross-realm ("bridge") edges are weakened so each realm can clump into
-// its own bloom while bridges stretch thin across the gaps between them.
-// core↔region-one bridges are weakened even further than a general bridge
-// (LINK_STRENGTH_CORE_BRIDGE) — core nodes (Kraftwerk, Eno, VU) carry heavy
-// edges into the dense region-one cluster that were dragging the core
-// off-center even against a strong central pull; this is the actual fix for
-// that drag, not just a stronger pull fighting it. Any edge touching a
-// realm-less node — every edge in region-one's plain graph, where neither
-// endpoint is ever tagged — falls through to LINK_STRENGTH_WITHIN, i.e.
-// exactly the original 0.25, unchanged.
-const LINK_STRENGTH_WITHIN = 0.25;                      // unchanged from the original single global value
-const LINK_STRENGTH_BRIDGE = LINK_STRENGTH_WITHIN / 3;      // general cross-realm weakening — roughly one-third of within
-const LINK_STRENGTH_CORE_BRIDGE = LINK_STRENGTH_BRIDGE / 4; // core↔region-one specifically — even weaker than the general bridge
-
-function edgeRealms(
-  link: { source: { realm?: string } | string; target: { realm?: string } | string },
-): [string | undefined, string | undefined] {
-  const srcRealm = typeof link.source === 'object' ? link.source.realm : undefined;
-  const tgtRealm = typeof link.target === 'object' ? link.target.realm : undefined;
-  return [srcRealm, tgtRealm];
-}
-
-function linkStrength(link: { source: { realm?: string } | string; target: { realm?: string } | string }): number {
-  const [srcRealm, tgtRealm] = edgeRealms(link);
-  if (!srcRealm || !tgtRealm) return LINK_STRENGTH_WITHIN; // realm-less endpoint(s) — keeps today's strength
-  if (srcRealm === tgtRealm) return LINK_STRENGTH_WITHIN;  // within-realm — full strength
-  if ((srcRealm === 'core' && tgtRealm === 'region-one') || (srcRealm === 'region-one' && tgtRealm === 'core')) {
-    return LINK_STRENGTH_CORE_BRIDGE;
-  }
-  return LINK_STRENGTH_BRIDGE; // any other cross-realm pair (electronic↔region-one, electronic↔core)
-}
-
-// Factories, not plain functions — each closes over a homePositions map
-// computed once per layout pass by computeRealmHomePositions (the map
-// depends on which realms are actually present in that pass's node set).
-function makeRealmHomeX(homePositions: Map<string, { x: number; y: number }>) {
-  return (node: { realm?: string }): number => {
-    if (!node.realm) return 0; // unused — realmPullStrengthX returns 0 for this case, so this never moves the node
-    return homePositions.get(node.realm)?.x ?? 0;
-  };
-}
-
-function makeRealmHomeY(homePositions: Map<string, { x: number; y: number }>) {
-  return (node: { realm?: string }): number => {
-    if (!node.realm) return 0; // unused — realmPullStrengthY returns 0 for this case, so this never moves the node
-    return homePositions.get(node.realm)?.y ?? 0;
-  };
-}
-
-function realmPullStrengthX(node: { id: string; realm?: string }): number {
-  if (node.id === 'velvet-underground') return VU_PULL_STRENGTH;
-  if (node.realm === 'core') return CORE_PULL_STRENGTH;
-  if (node.realm) return REALM_PULL_STRENGTH; // any non-core realm — data-driven, no per-realm branch needed
-  return 0;
-}
-
-function realmPullStrengthY(node: { id: string; realm?: string }): number {
-  if (node.id === 'velvet-underground') return VU_PULL_STRENGTH;
-  if (node.realm === 'core') return CORE_PULL_STRENGTH_Y;
-  if (node.realm) return REALM_PULL_STRENGTH; // isotropic — see REALM_PULL_STRENGTH's comment above
-  return 0;
-}
-
-function chargeStrength(node: { realm?: string }): number {
-  // Data-driven, matching realmPullStrengthX/Y above — ANY realm-tagged node
-  // gets the weaker charge, not an enumerated list of known realm names.
-  // The enumerated version silently gave a newly-added realm (folk-
-  // confessional) the default -40 instead of REALM_CHARGE, nearly doubling
-  // its nodes' mutual repulsion relative to region-one/electronic and
-  // fighting its own realm-home pull — the direct cause of it failing to
-  // cluster into a tight, separate cloud.
-  return node.realm ? REALM_CHARGE : -40; // realm-less node (the plain region-one graph) keeps exactly -40, unchanged
-}
-
-function presettleLayout(nodes: GraphNode[], links: GraphLink[]): void {
-  const sim = forceSimulation(nodes, 2);
-  sim.stop(); // d3-force schedules its own auto-tick timer on creation — must
-              // stop it before it ever fires; we drive ticking manually below.
-  sim.force('link', forceLink<GraphNode, GraphLink>(links).id(n => n.id).distance(75).strength(linkStrength));
-  sim.force('charge', forceManyBody<GraphNode>().strength(chargeStrength));
-  sim.force('center', forceCenter().strength(0.04));
-  sim.force('collide', createCollideForce(COLLIDE_PADDING));
-  const realmHomePositions = computeRealmHomePositions(nodes);
-  sim.force('realmX', forceX<GraphNode>(makeRealmHomeX(realmHomePositions)).strength(realmPullStrengthX));
-  sim.force('realmY', forceY<GraphNode>(makeRealmHomeY(realmHomePositions)).strength(realmPullStrengthY));
-  sim.velocityDecay(0.38);
-  for (let i = 0; i < PRESETTLE_TICKS; i++) sim.tick();
-}
 
 // ── Dense-core zoom filter ───────────────────────────────────────────────────
 // At low charge, a handful of sparsely-linked artists settle noticeably
@@ -830,6 +592,80 @@ const CAMERA_MS = 600;     // transition duration (ms)
 const SPREAD_FACTOR = 2.6;     // click-focus spotlight-spread outward scale — a focused node's neighbors are scattered across realms and need real separation to stop photos overlapping
 const SET_SPREAD_FACTOR = 1.6; // genre/scene set spread scale — a set clusters tightly by realm positioning already, so it needs less outward push than a focus cluster to stop members overlapping; tune here if sets still pile up or still land too wide
 const REALM_SPREAD_FACTOR = 1; // realm selection: a true no-op (target = original position) — see getActiveCluster's comment for why realm members shouldn't be spread at all
+
+// ── Family view (single-artist focus) ────────────────────────────────────────
+// A clicked artist isn't spread radially any more: their musical parents (the
+// artists they learned from) line up in rows above them, their musical
+// children (the artists who learned from them) in rows below, each row oldest
+// to newest, left to right. It reads like a family tree, which anyone can read
+// without knowing the music — the direction of every line is visible from
+// where its ends sit. Sentinel, resolved in computeSpreadTargetsForCluster.
+const FAMILY_LAYOUT = -2;
+// Screen pixels kept clear along the bottom while the home page's opening
+// frames a family: its words sit there (.intro__caption).
+const INTRO_CAPTION_ROOM = 200;
+const INTRO_CAPTION_ROOM_NARROW = 220; // a phone's words wrap to more lines
+// …and along the top, for its Sound and Skip buttons (.intro__controls).
+const INTRO_CONTROLS_ROOM = 56;
+const FAMILY_ROW_MAX = 9;        // artists per row before a new row starts
+const FAMILY_ROW_MAX_NARROW = 5; // on a portrait phone, which has height to spare and no width
+const FAMILY_NARROW_MAX_PX = 600; // canvas width below which rows go narrow
+// The smallest photo a phone's family is spaced for, graph units. A phone
+// frames a family at a low zoom, where NEIGHBOR_MIN_SCREEN_R draws photos
+// bigger than their graph size — spaced for that size, they overlapped.
+const FAMILY_NARROW_MIN_R = 26;
+const FAMILY_SIDE_GAP = 18;      // between two photos in a row, graph units
+const FAMILY_LABEL_ROOM = 34;    // under each row, for the names drawn beneath photos
+const FAMILY_CENTER_GAP = 42;    // between the artist and the nearest row
+const FAMILY_ARC = 0.14;         // how far a row's ends bend toward the artist, as a share of its half-width
+// Every other artist in a row sits a little further out, so neighbours'
+// names land at two heights instead of running into each other. A share of
+// the row's largest photo radius.
+const FAMILY_STAGGER = 0.9;
+// Extra room the camera keeps above a family, graph units, for MUSICAL
+// PARENTS over the top row's names.
+const FAMILY_TOP_ROOM = 38;
+// Its colours, the drawing-in timings and who counts as which are shared with
+// the home page's opening, in lib/family.ts.
+
+// A focused artist's photo radius and a neighbour's, before zoom dampening —
+// the same base sizes drawNode uses (see the size block there).
+function familyRadius(score: number, focused: boolean, minR = 14): number {
+  const baseR = 3.5 + Math.sqrt(score) * 2.2;
+  return Math.min(Math.max(baseR * (focused ? 2.8 : 1.9), minR), 48);
+}
+
+function computeFamilyTargets(
+  center: { x: number; y: number; influenceScore?: number },
+  parents: { id: string; influenceScore?: number }[],
+  children: { id: string; influenceScore?: number }[],
+  rowMax: number,
+  minR?: number,
+): Map<string, { x: number; y: number }> {
+  const targets = new Map<string, { x: number; y: number }>();
+  const centerR = familyRadius(center.influenceScore ?? 0, true);
+  const place = (items: { id: string; influenceScore?: number }[], dir: -1 | 1) => {
+    if (items.length === 0) return;
+    const maxR = Math.max(...items.map(n => familyRadius(n.influenceScore ?? 0, false, minR)));
+    const step = maxR * 2 + FAMILY_SIDE_GAP;
+    const stagger = maxR * FAMILY_STAGGER;
+    const rowGap = maxR * 2 + FAMILY_LABEL_ROOM + stagger;
+    const first = centerR + maxR + FAMILY_CENTER_GAP + (dir === 1 ? FAMILY_LABEL_ROOM : 0);
+    for (let r = 0; r * rowMax < items.length; r++) {
+      const row = items.slice(r * rowMax, (r + 1) * rowMax);
+      const half = ((row.length - 1) * step) / 2;
+      const y = center.y + dir * (first + r * rowGap);
+      row.forEach((n, i) => {
+        const x = center.x - half + i * step;
+        const t = half > 0 ? (x - center.x) / half : 0;
+        targets.set(n.id, { x, y: y - dir * FAMILY_ARC * half * t * t + (i % 2 ? dir * stagger : 0) });
+      });
+    }
+  };
+  place(parents, -1);
+  place(children, 1);
+  return targets;
+}
 
 // Path spread is the one factor that cannot be a constant, because a path's
 // natural extent varies by an order of magnitude: a route across realms already
@@ -1666,6 +1502,10 @@ interface Props {
   // backgrounded) so every existing caller is unaffected if it doesn't
   // pass this prop.
   isBackgrounded?: boolean;
+  // True while the home page's opening plays over the canvas
+  // (components/home/Intro.tsx) — hides the canvas's own on-screen controls.
+  // The opening itself reaches the canvas through storyFrame, not props.
+  introPlaying?: boolean;
 }
 
 interface GraphNode extends Artist {
@@ -1702,6 +1542,7 @@ interface LabelCandidate {
   alpha: number;
   score: number;        // influenceScore — breaks ties when two forced labels collide (see forced below)
   forced: boolean;      // alwaysLabel tier (hub/anchor) — persistent regardless of hover/focus; see the demotion logic in onRenderFramePost
+  yields: boolean;      // a family member's name: gives way when crowded (see onRenderFramePost)
   radialFromX?: number; // focus node x — set for neighbors to push label radially
   radialFromY?: number;
 }
@@ -1718,6 +1559,7 @@ export default function ForceGraphCanvas({
   onBackgroundClick,
   evidenceFilter,
   isBackgrounded = false,
+  introPlaying = false,
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const graphRef = useRef<any>(null);
@@ -1903,7 +1745,10 @@ export default function ForceGraphCanvas({
     () => {
       const nodes = graphData.artists.map(a => ({ ...a })) as GraphNode[];
       const links = graphData.edges.map(e => ({ ...e })) as GraphLink[];
-      presettleLayout(nodes, links);
+      // Positions normally arrive settled from the build (scripts/build-graph.ts
+      // runs the same presettleLayout). Solving here is the fallback for data
+      // built without them — it costs ~0.5s of main thread on load.
+      if (nodes.some(n => n.x === undefined || n.y === undefined)) presettleLayout(nodes, links);
       return { nodes, links };
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -1919,6 +1764,532 @@ export default function ForceGraphCanvas({
     );
     return new Set(ranked.slice(0, ANCHOR_COUNT).map(n => n.id));
   }, [stableData.nodes]);
+
+  // ── The opening's record ────────────────────────────────────────────────────
+  // While storyFrame.intro is on (components/home/Intro.tsx), the opening owns
+  // every star's position: each frame places it on the spinning groove and
+  // morphs it toward its place in the atlas. The same direct x/y writes the
+  // focus spread uses — the simulation is stopped, so nothing fights them.
+  // The atlas positions are snapshotted when the opening starts and written
+  // back exactly when it ends, so the map afterwards is the presettled layout,
+  // untouched.
+  const grooveF = useMemo(
+    () => new Map(buildGroove(stableData.nodes).map(slot => [slot.id, slot.f])),
+    [stableData.nodes],
+  );
+  // The artists who learned from the Velvet Underground, each with when its
+  // copy of the record leaves and lands (shares of the opening's first beat,
+  // storyFrame.sparks) and whether it's one of the named handoffs.
+  const vuFlights = useMemo(() => {
+    const ids = [...new Set(graphData.edges
+      .filter(e => e.type === 'influence' && e.target === LABEL_ID)
+      .map(e => e.source))]
+      .filter(id => grooveF.has(id));
+    const handoffs = VU_HANDOFFS.filter(id => ids.includes(id));
+    const rest = ids.filter(id => !handoffs.includes(id)).sort((a, b) => grooveF.get(a)! - grooveF.get(b)!);
+    const flights = new Map<string, { leave: number; land: number; handoff: boolean }>();
+    handoffs.forEach((id, i) => {
+      flights.set(id, { leave: VU_HANDOFF_LEAVE[i], land: VU_HANDOFF_LEAVE[i] + VU_HANDOFF_FLIGHT, handoff: true });
+    });
+    rest.forEach((id, i) => {
+      const leave = VU_WAVE_FROM + (rest.length > 1 ? i / (rest.length - 1) : 0) * (VU_WAVE_TO - VU_WAVE_FROM);
+      flights.set(id, { leave, land: leave + VU_WAVE_FLIGHT, handoff: false });
+    });
+    return flights;
+  }, [graphData.edges, grooveF]);
+  // Where the closing gather's sparks start: stars spread across the map.
+  const gatherFrom = useMemo(() => {
+    const ids = stableData.nodes.map(n => n.id).sort();
+    const step = Math.max(1, Math.floor(ids.length / GATHER_SPARKS));
+    return ids.filter((_, i) => i % step === 0).slice(0, GATHER_SPARKS);
+  }, [stableData.nodes]);
+  // The realms in the order their names sit round the map (see realmLabels).
+  const realmOrder = useMemo(
+    () => [...computeRealmHomePositions(stableData.nodes).keys()].filter(r => r !== 'core' && r in REALM_LABELS),
+    [stableData.nodes],
+  );
+  const todayAlphaRef = useRef(0);
+  const introHomesRef = useRef<Map<string, { x: number; y: number }> | null>(null);
+  const introRimRef = useRef(0);
+  // The node objects the opening moves (the same ones stableData holds),
+  // reached through a ref: the per-frame position writes happen outside
+  // render, which is what the React Compiler lint needs to see.
+  const introNodesRef = useRef<Map<string, GraphNode>>(new Map());
+  useEffect(() => {
+    introNodesRef.current = new Map(stableData.nodes.map(n => [n.id, n]));
+  }, [stableData.nodes]);
+
+  // Lets the story's captions sit beside a star (see storyCamera).
+  useEffect(() => {
+    storyCamera.nodeScreen = (id: string) => {
+      const n = introNodesRef.current.get(id);
+      const fg = graphRef.current;
+      const box = containerRef.current?.getBoundingClientRect();
+      if (!n || n.x === undefined || n.y === undefined || !fg || !box) return null;
+      const p = fg.graph2ScreenCoords(n.x, n.y);
+      return { x: box.left + p.x, y: box.top + p.y };
+    };
+    storyCamera.drift = (id, amount, zoom, ms) => {
+      const fg = graphRef.current;
+      // Where the star is headed, if the opening is still moving it.
+      const n = introNodesRef.current.get(id);
+      const to = introHomesRef.current?.get(id) ?? (n?.x !== undefined && n.y !== undefined ? { x: n.x, y: n.y } : null);
+      if (!fg || !to) return;
+      const from: { x: number; y: number } = fg.centerAt();
+      const k: number = fg.zoom();
+      fg.centerAt(from.x + (to.x - from.x) * amount, from.y + (to.y - from.y) * amount, ms);
+      // Never past the overview into the close-up crossfade: the move is
+      // toward one star on the map, not into it.
+      fg.zoom(Math.min(k * zoom, FADE_ZOOM_OUT * 0.95), ms);
+    };
+    // The opening leans in on its first beat and back out, round the
+    // centre, never into the close-up crossfade.
+    storyCamera.zoomOn = (id, k, ms) => {
+      const fg = graphRef.current;
+      const n = introNodesRef.current.get(id);
+      if (!fg || n?.x === undefined || n.y === undefined) return;
+      fg.centerAt(n.x, n.y, ms);
+      fg.zoom(k, ms);
+    };
+    storyCamera.zoom = (k, ms) => {
+      const fg = graphRef.current;
+      if (!fg) return 0;
+      if (k !== undefined) fg.zoom(Math.min(k, FADE_ZOOM_OUT * 0.95), ms ?? 0);
+      return fg.zoom();
+    };
+    return () => { storyCamera.nodeScreen = null; storyCamera.drift = null; storyCamera.zoom = null; storyCamera.zoomOn = null; };
+  }, []);
+
+  // Has the needle reached this star yet? The label is lit from the start.
+  // Or has its copy of the Velvet Underground's record landed (see vuFlights)?
+  const isRevealed = useCallback((id: string): boolean => {
+    if (!storyFrame.intro || id === LABEL_ID) return true;
+    const f = grooveF.get(id);
+    if (f === undefined || f <= storyFrame.reveal) return true;
+    const flight = vuFlights.get(id);
+    return flight !== undefined && storyFrame.sparks >= flight.land;
+  }, [grooveF, vuFlights]);
+
+  // 0..1: how lit a star is during the opening (1 for everything otherwise).
+  const introFade = useCallback((id: string): number => {
+    if (!storyFrame.intro || id === LABEL_ID) return 1;
+    const f = grooveF.get(id);
+    if (f === undefined) return 1;
+    const lit = clamp01((storyFrame.reveal - f) / INTRO_IGNITE_SPAN);
+    const flight = vuFlights.get(id);
+    return flight === undefined || storyFrame.sparks < 0 ? lit : Math.max(lit, clamp01((storyFrame.sparks - flight.land) / VU_LAND_FLARE));
+  }, [grooveF, vuFlights]);
+
+  // Library-level filters, so an unlit star is neither drawn nor hit-tested,
+  // and a line exists only once both of its ends do.
+  const nodeVisibility = useCallback((node: object) => isRevealed((node as GraphNode).id), [isRevealed]);
+  const linkVisibility = useCallback((link: object) => {
+    const l = link as GraphLink;
+    const src = typeof l.source === 'object' ? l.source.id : l.source;
+    const tgt = typeof l.target === 'object' ? l.target.id : l.target;
+    return isRevealed(src) && isRevealed(tgt);
+  }, [isRevealed]);
+
+  // Returns true while the opening is placing stars.
+  const applyIntroLayout = useCallback((): boolean => {
+    if (!storyFrame.intro) {
+      const homes = introHomesRef.current;
+      if (homes) {
+        // Once, at the end of the opening — except for stars a focus view
+        // has placed since (the opening dives into a family the moment the
+        // record lets go, which can land before this frame does).
+        const placed = savedPositionsRef.current;
+        for (const [id, h] of homes) {
+          if (placed?.has(id)) continue;
+          const n = introNodesRef.current.get(id);
+          if (n) { n.x = h.x; n.y = h.y; }
+        }
+        introHomesRef.current = null;
+      }
+      return false;
+    }
+    if (!introHomesRef.current) {
+      const homes = new Map<string, { x: number; y: number }>();
+      for (const n of introNodesRef.current.values()) {
+        if (n.x !== undefined && n.y !== undefined) homes.set(n.id, { x: n.x, y: n.y });
+      }
+      introHomesRef.current = homes;
+      const zoom = graphRef.current?.zoom?.() ?? 1;
+      const w = containerRef.current?.offsetWidth ?? 800;
+      const h = containerRef.current?.offsetHeight ?? 600;
+      introRimRef.current = (RIM_SHARE * Math.min(w, h)) / zoom;
+    }
+    const homes = introHomesRef.current;
+    const rim = introRimRef.current;
+    const morph = storyFrame.morph;
+    for (const [id, home] of homes) {
+      const n = introNodesRef.current.get(id);
+      if (!n) continue;
+      const f = grooveF.get(id);
+      const onRecord = f === undefined ? { x: 0, y: 0 } : groovePoint(f, rim, storyFrame.spin);
+      const t = easeInOutCubic(
+        f === undefined ? morph : clamp01((morph - INTRO_MORPH_STAGGER * f) / (1 - INTRO_MORPH_STAGGER)),
+      );
+      n.x = onRecord.x + (home.x - onRecord.x) * t;
+      n.y = onRecord.y + (home.y - onRecord.y) * t;
+    }
+    return true;
+  }, [grooveF]);
+
+  // The record's own marks, under the stars: the groove, the needle's light,
+  // a spark where each star lights, a glow on the label. All fade out as the
+  // record becomes the atlas. Glows are the shared cached sprites — nothing
+  // here builds a gradient per frame.
+  const drawIntroRecord = useCallback((ctx: CanvasRenderingContext2D, globalScale: number) => {
+    const px = 1 / globalScale;
+
+    const dust = storyFrame.dust;
+    // A return visit's record shrinks into today's star rather than fading.
+    const collapse = storyFrame.collapse;
+    const fade = collapse >= 0 ? 1 - 0.5 * collapse : 1 - storyFrame.morph;
+    if (fade <= 0.01) return;
+    const rim = introRimRef.current;
+    const spin = storyFrame.spin;
+    const reveal = storyFrame.reveal;
+
+    ctx.save();
+    let k = 1;
+    if (collapse > 0) {
+      const t = easeInOutCubic(collapse);
+      const today = storyFrame.todayId ? introNodesRef.current.get(storyFrame.todayId) : undefined;
+      k = 1 + ((TODAY_DISC_PX * px) / rim - 1) * t;
+      ctx.translate((today?.x ?? 0) * t, (today?.y ?? 0) * t);
+      ctx.scale(k, k);
+    }
+    // The groove: faint where the needle hasn't been, brighter where it has.
+    ctx.lineWidth = px / k;
+    ctx.strokeStyle = 'rgb(237, 234, 247)';
+    const STEPS = 420;
+    for (const [from, to, alpha] of [[0, reveal, 0.16], [reveal, 1, 0.06]] as const) {
+      if (to <= from) continue;
+      ctx.globalAlpha = alpha * fade;
+      ctx.beginPath();
+      const n = Math.max(2, Math.ceil(STEPS * (to - from)));
+      for (let i = 0; i <= n; i++) {
+        const p = groovePoint(from + ((to - from) * i) / n, rim, spin);
+        if (i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y);
+      }
+      ctx.stroke();
+    }
+    // Light adds: the glows below brighten what they overlap, never cover it.
+    ctx.globalCompositeOperation = 'lighter';
+    // The label's glow, brighter while the dust is in its light.
+    drawCoreNodeGlow(ctx, 0, 0, INTRO_LABEL_GLOW_PX * px * (1 + 0.4 * dust), (0.55 + 0.3 * dust) * fade);
+    ctx.restore();
+
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    // A spark where each star has just lit.
+    for (const n of stableData.nodes) {
+      const f = grooveF.get(n.id);
+      if (f === undefined || n.x === undefined || n.y === undefined) continue;
+      const age = reveal - f;
+      if (age < 0 || age > INTRO_SPARK_SPAN) continue;
+      drawNodeGlow(ctx, n.x, n.y, INTRO_SPARK_GLOW_PX * px, resolveNodeGlow(n), 0.9 * (1 - age / INTRO_SPARK_SPAN) * fade);
+    }
+
+    // The needle: a point of light the record turns under, while it plays.
+    // Always at NEEDLE_ANGLE on screen — the spin is set to keep it there
+    // (see spinForNeedle in lib/intro-groove.ts).
+    if (reveal > 0 && reveal < 1) {
+      const needleR = groovePoint(reveal, rim, spin);
+      // The 2-stop sprite wants an rgba(…, 0.7) colour: it swaps the 0.7 for
+      // its centre and edge stops (see get2StopGlowSprite).
+      drawNodeGlow(ctx, needleR.x, needleR.y, INTRO_NEEDLE_GLOW_PX * px, 'rgba(255, 236, 190, 0.7)', fade);
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.globalAlpha = fade;
+      ctx.fillStyle = '#fffaf0';
+      ctx.beginPath();
+      ctx.arc(needleR.x, needleR.y, 3 * px, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }, [stableData.nodes, grooveF]);
+
+  // The opening's first beat (first visit only), drawn over the stars —
+  // under them, the map's backdrop would wash it out: dust turning in the
+  // light round the label, with the odd crackle, and a copy of the record
+  // flying out to each artist who learned from it.
+  const drawVuBeat = useCallback((ctx: CanvasRenderingContext2D, globalScale: number) => {
+    if (!storyFrame.intro) return;
+    const px = 1 / globalScale;
+    const dust = storyFrame.dust;
+    if (dust > 0.01) {
+      const now = performance.now();
+      ctx.save();
+      ctx.fillStyle = '#fff4dc';
+      for (const d of DUST_SPECKS) {
+        const angle = d.angle + now * d.turn;
+        const r = d.r * DUST_RADIUS_PX * px;
+        ctx.globalAlpha = dust * 0.7 * (0.35 + 0.65 * Math.abs(Math.sin(now * 0.0015 + d.phase)));
+        ctx.beginPath();
+        ctx.arc(Math.cos(angle) * r, Math.sin(angle) * r, d.size * px, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalCompositeOperation = 'lighter';
+      if (Math.random() < 0.3) {
+        const angle = Math.random() * Math.PI * 2;
+        const r = Math.random() * DUST_RADIUS_PX * 0.6 * px;
+        drawNodeGlow(ctx, Math.cos(angle) * r, Math.sin(angle) * r, 9 * px, 'rgba(255, 236, 190, 0.7)', dust * 0.8);
+      }
+      ctx.restore();
+    }
+    const sparks = storyFrame.sparks;
+    if (sparks < 0) return;
+    const now = performance.now();
+    let landed = 0;
+    ctx.save();
+    for (const [id, flight] of vuFlights) {
+      const n = introNodesRef.current.get(id);
+      if (!n || n.x === undefined || n.y === undefined) continue;
+      const u = (sparks - flight.leave) / (flight.land - flight.leave);
+      if (u >= 1) landed++;
+      if (u > 0 && u < 1) {
+        // A copy of the record: out from under the one in the middle on a
+        // gentle curve, slowing and shrinking as it arrives.
+        const e = easeInOutCubic(u);
+        const bow = 0.18 * Math.sin(Math.PI * u);
+        const x = n.x * e - n.y * bow;
+        const y = n.y * e + n.x * bow;
+        const r = (flight.handoff ? VU_HANDOFF_COPY_PX : VU_WAVE_COPY_PX) * (1 - 0.4 * u) * px;
+        if (flight.handoff) {
+          // A faint trail back to where it came from, so the eye can follow.
+          ctx.globalAlpha = 0.3 * (1 - u * 0.5);
+          ctx.strokeStyle = '#e8c87a';
+          ctx.lineWidth = 1.2 * px;
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.lineTo(x, y);
+          ctx.stroke();
+        }
+        ctx.globalCompositeOperation = 'lighter';
+        drawNodeGlow(ctx, x, y, r * 3, 'rgba(255, 236, 190, 0.7)', 0.45);
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = '#0d0b14';
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(237, 234, 247, 0.3)';
+        ctx.lineWidth = 0.8 * px;
+        ctx.beginPath();
+        ctx.arc(x, y, r * 0.68, 0, Math.PI * 2);
+        ctx.stroke();
+        // The glint that shows it turning.
+        const spin = now * 0.012 + flight.leave * 40;
+        ctx.strokeStyle = 'rgba(255, 250, 235, 0.85)';
+        ctx.lineWidth = px;
+        ctx.beginPath();
+        ctx.arc(x, y, r * 0.86, spin, spin + 0.9);
+        ctx.stroke();
+        ctx.fillStyle = '#e8c87a';
+        ctx.beginPath();
+        ctx.arc(x, y, r * 0.3, 0, Math.PI * 2);
+        ctx.fill();
+      } else if (u >= 1 && sparks - flight.land < VU_LAND_FLARE) {
+        // The artist it reached flares as it lights.
+        ctx.globalCompositeOperation = 'lighter';
+        const flarePx = flight.handoff ? VU_HANDOFF_FLARE_PX : VU_WAVE_FLARE_PX;
+        drawNodeGlow(ctx, n.x, n.y, flarePx * px, resolveNodeGlow(n), 0.9 * (1 - (sparks - flight.land) / VU_LAND_FLARE));
+        ctx.globalCompositeOperation = 'source-over';
+      }
+    }
+    ctx.restore();
+    storyFrame.vuLanded = landed;
+
+    // The handoffs' names and years as they land; they leave with the dust.
+    ctx.save();
+    ctx.font = `500 ${13 * px}px Inter, system-ui, sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    // Below each star, pushed further down past any name already placed —
+    // neighbouring years sit side by side on the record.
+    const placed: { x: number; y: number; w: number; h: number }[] = [];
+    for (const [id, flight] of vuFlights) {
+      if (!flight.handoff) continue;
+      const n = introNodesRef.current.get(id);
+      const alpha = clamp01((sparks - flight.land) / 0.04) * dust;
+      if (!n || n.x === undefined || n.y === undefined || alpha <= 0.01) continue;
+      const text = n.activeFrom ? `${n.name} · ${n.activeFrom}` : n.name;
+      const w = ctx.measureText(text).width + LABEL_CHIP_PAD_X * 2 * px;
+      const h = 13 * px + LABEL_CHIP_PAD_Y * 2 * px;
+      let y = n.y + 18 * px;
+      const clash = () => placed.some(r => Math.abs(r.x - n.x!) < (r.w + w) / 2 && Math.abs(r.y - y) < (r.h + h) / 2 + 2 * px);
+      for (let tries = 0; tries < 6 && clash(); tries++) y += h + 4 * px;
+      placed.push({ x: n.x, y, w, h });
+      ctx.globalAlpha = alpha * LABEL_CHIP_MAX_ALPHA;
+      ctx.fillStyle = 'rgb(14, 11, 26)';
+      drawRoundedRect(ctx, n.x - w / 2, y - h / 2, w, h, LABEL_CHIP_RADIUS * px);
+      ctx.fill();
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = '#fff4dc';
+      ctx.fillText(text, n.x, y);
+    }
+    ctx.restore();
+  }, [vuFlights]);
+
+  // The story's marks on the finished map, drawn over the stars:
+  //   - the pulse the closing wave starts with, out of the Velvet Underground
+  //   - light from across the map gathering into today's star
+  //   - today's star as a little record, turning, swelling with its song
+  const drawStoryMarks = useCallback((ctx: CanvasRenderingContext2D, globalScale: number) => {
+    const px = 1 / globalScale;
+    const wave = storyFrame.wave;
+    if (wave >= 0 && wave < 0.4) {
+      const vu = introNodesRef.current.get(LABEL_ID);
+      if (vu?.x !== undefined && vu.y !== undefined) {
+        ctx.save();
+        ctx.strokeStyle = FAMILY_PARENT_COLOR;
+        ctx.lineWidth = 2 * px;
+        for (const lag of [0, 0.1]) {
+          const p = (wave - lag) / 0.28;
+          if (p <= 0 || p >= 1) continue;
+          ctx.globalAlpha = 0.8 * (1 - p);
+          ctx.beginPath();
+          ctx.arc(vu.x, vu.y, (12 + p * 260) * px, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+    }
+
+    // "How it works": the road walked so far, a line to follow, a star to
+    // find or tap.
+    const nodeAt = (nid: string) => {
+      const m = introNodesRef.current.get(nid);
+      return m?.x !== undefined && m.y !== undefined ? { x: m.x, y: m.y } : null;
+    };
+    const t = performance.now();
+    const route = storyFrame.route;
+    if (route && route.length > 1) {
+      const points = route.map(nodeAt).filter((q): q is { x: number; y: number } => q !== null);
+      ctx.save();
+      ctx.strokeStyle = FAMILY_PARENT_COLOR;
+      ctx.lineWidth = 2.4 * px;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.globalAlpha = 0.85;
+      ctx.beginPath();
+      points.forEach((q, i) => (i === 0 ? ctx.moveTo(q.x, q.y) : ctx.lineTo(q.x, q.y)));
+      ctx.stroke();
+      ctx.globalCompositeOperation = 'lighter';
+      for (const q of points) drawNodeGlow(ctx, q.x, q.y, 24 * px, 'rgba(255, 236, 190, 0.7)', 0.6);
+      ctx.restore();
+    }
+    const line = storyFrame.pulseLine;
+    const a = line && nodeAt(line.from);
+    const b = line && nodeAt(line.to);
+    if (a && b) {
+      const beat = 0.5 + 0.5 * Math.sin(t * 0.006);
+      ctx.save();
+      ctx.strokeStyle = FAMILY_PARENT_COLOR;
+      ctx.lineWidth = (3 + 2.5 * beat) * px;
+      ctx.lineCap = 'round';
+      ctx.globalAlpha = 0.45 + 0.5 * beat;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+    for (const pulseId of storyFrame.pulse) {
+      const pulse = nodeAt(pulseId);
+      if (!pulse) continue;
+      ctx.save();
+      ctx.strokeStyle = FAMILY_PARENT_COLOR;
+      ctx.lineWidth = 2 * px;
+      for (const lag of [0, 0.5]) {
+        const p = ((t / 1400) + lag) % 1;
+        ctx.globalAlpha = 0.9 * (1 - p);
+        ctx.beginPath();
+        ctx.arc(pulse.x, pulse.y, (14 + 36 * p) * px, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    // The realms lighting: every star of the lit world glows in its colour.
+    if (storyFrame.realms >= 0) {
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter';
+      for (const n of stableData.nodes) {
+        if (n.x === undefined || n.y === undefined) continue;
+        const lit = realmLitAt(realmOrder, n.realm, storyFrame.realms);
+        if (lit > 0.02) drawNodeGlow(ctx, n.x, n.y, (10 + 8 * lit) * px, resolveNodeGlow(n), 0.6 * lit);
+      }
+      ctx.restore();
+    }
+
+    todayAlphaRef.current += (storyFrame.todayTarget - todayAlphaRef.current) * TODAY_EASE;
+    const alpha = todayAlphaRef.current;
+    const id = storyFrame.todayId;
+    const n = id ? introNodesRef.current.get(id) : undefined;
+    if (!id || !n || n.x === undefined || n.y === undefined) return;
+
+    const gather = storyFrame.gather;
+    if (gather > 0 && gather < 1) {
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter';
+      gatherFrom.forEach((fromId, i) => {
+        const from = introNodesRef.current.get(fromId);
+        if (!from || from.x === undefined || from.y === undefined) return;
+        const start = (i / gatherFrom.length) * (1 - GATHER_FLIGHT);
+        const u = (gather - start) / GATHER_FLIGHT;
+        if (u <= 0 || u >= 1) return;
+        const e = u * u; // speeding up as it nears
+        drawNodeGlow(ctx, from.x + (n.x! - from.x) * e, from.y + (n.y! - from.y) * e, VU_SPARK_GLOW_PX * px, 'rgba(255, 236, 190, 0.7)', 0.85);
+      });
+      ctx.restore();
+    }
+
+    if (alpha < 0.01 || !isRevealed(id)) return;
+    const level = storyFrame.level;
+    const score = n.influenceScore ?? 0;
+    // A ring round the star, the star itself its label: wider than whatever
+    // the star draws, so it's never covered.
+    const starPx = (id === selectedId ? familyRadius(score, true) : 3.5 + Math.sqrt(score) * 2.2) * globalScale;
+    const inner = Math.max(starPx * 1.08, 7) * px;
+    const r = Math.max(TODAY_DISC_PX, starPx * 1.6) * px * (1 + level * 0.12);
+    const spin = performance.now() * TODAY_RAD_PER_MS;
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    drawNodeGlow(ctx, n.x, n.y, r * 2.4, resolveNodeGlow(n), alpha * (0.3 + level * 0.6));
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = 'rgba(12, 9, 22, 0.9)';
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+    ctx.arc(n.x, n.y, inner, 0, Math.PI * 2, true);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(237, 234, 247, 0.2)';
+    ctx.lineWidth = px;
+    for (const f of [0.3, 0.55, 0.8]) {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, inner + (r - inner) * f, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+    // The sheen that shows it turning.
+    ctx.strokeStyle = 'rgba(255, 248, 230, 0.6)';
+    ctx.lineWidth = 1.6 * px;
+    ctx.lineCap = 'round';
+    for (const off of [0, Math.PI]) {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, inner + (r - inner) * 0.6, spin + off, spin + off + 0.6);
+      ctx.stroke();
+    }
+    ctx.strokeStyle = resolveNodeColor(n);
+    ctx.globalAlpha = alpha * 0.75;
+    ctx.lineWidth = 1.4 * px;
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.restore();
+  }, [gatherFrom, isRevealed, selectedId, stableData.nodes, realmOrder]);
 
   // ── Decorative dust starfield (see DUST_STAR_* above) ───────────────────────
   // Generated once from the same realm home positions the real layout
@@ -1997,7 +2368,7 @@ export default function ForceGraphCanvas({
     // post-rock 22), so a single fixed offset would sit inside one cluster and
     // far outside another.
     const homes = computeRealmHomePositions(stableData.nodes);
-    const labels: { text: string; shortText: string; color: string; x: number; y: number }[] = [];
+    const labels: { realm: string; text: string; shortText: string; color: string; x: number; y: number }[] = [];
 
     for (const [realm, home] of homes) {
       if (realm === 'core' || !(realm in REALM_LABELS)) continue;
@@ -2014,6 +2385,7 @@ export default function ForceGraphCanvas({
       const dist = rim + REALM_LABEL_GAP;
 
       labels.push({
+        realm,
         text: REALM_LABELS[realm as keyof typeof REALM_LABELS].toUpperCase(),
         shortText: REALM_LABELS_SHORT[realm as keyof typeof REALM_LABELS_SHORT].toUpperCase(),
         color: REALM_COLORS[realm as keyof typeof REALM_COLORS],
@@ -2044,6 +2416,35 @@ export default function ForceGraphCanvas({
   // pendingSpreadKeyRef/pendingCameraKeyRef + onEngineStop retry below, so framing is guaranteed
   // to happen either way.
   const hasPreselectedCluster = !!selectedId || !!(highlightSetIds && highlightSetIds.length > 0);
+  // The resting overview: the whole constellation, centred on the origin.
+  // The zoom snaps unless `zoomDur` is given.
+  const frameOverview = useCallback((dur: number, zoomDur = 0) => {
+    const fg = graphRef.current;
+    if (!fg) return;
+    const canvasW = containerRef.current?.offsetWidth  ?? 800;
+    const canvasH = containerRef.current?.offsetHeight ?? 600;
+    // Desktop frames the densest 90% and lets the outermost nodes sit just
+    // off-screen — there's room to pan to them and the tighter crop reads
+    // better. A phone has no such room: cropping 10% of a constellation
+    // that's already only a few hundred pixels wide means whole realm edges
+    // are simply gone on arrival, with nothing on screen suggesting they
+    // exist. Below NARROW_VIEWPORT_WIDTH, fit everything.
+    const coreIds = canvasW < NARROW_VIEWPORT_WIDTH
+      ? null
+      : computeDenseCoreIds(stableData.nodes);
+    const targetZoom = computeOverviewZoom(stableData.nodes, coreIds, canvasW, canvasH);
+    if (targetZoom !== null) {
+      // Instant zoom + animated pan, not the library's own zoomToFit (which
+      // would animate both AND center on the dense-core bbox's own center —
+      // see computeOverviewZoom's comment for why that's not graph-origin).
+      fg.zoom(targetZoom, zoomDur);
+      fg.centerAt(0, 0, dur);
+    }
+    // stableData is a stable reference (see its own useMemo below) — reading
+    // it here doesn't need to be a dep.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const tryInitialFit = useCallback(() => {
     if (didInitialFitRef.current) return;
     if (!dimensionsSettledRef.current || !engineStoppedOnceRef.current) return;
@@ -2053,33 +2454,25 @@ export default function ForceGraphCanvas({
       return;
     }
     didInitialFitRef.current = true;
-    const dur = prefersReducedMotionRef.current ? 0 : 600;
-    const fg = graphRef.current;
-    if (fg) {
-      const canvasW = containerRef.current?.offsetWidth  ?? 800;
-      const canvasH = containerRef.current?.offsetHeight ?? 600;
-      // Desktop frames the densest 90% and lets the outermost nodes sit just
-      // off-screen — there's room to pan to them and the tighter crop reads
-      // better. A phone has no such room: cropping 10% of a constellation
-      // that's already only a few hundred pixels wide means whole realm edges
-      // are simply gone on arrival, with nothing on screen suggesting they
-      // exist. Below NARROW_VIEWPORT_WIDTH, fit everything.
-      const coreIds = canvasW < NARROW_VIEWPORT_WIDTH
-        ? null
-        : computeDenseCoreIds(stableData.nodes);
-      const targetZoom = computeOverviewZoom(stableData.nodes, coreIds, canvasW, canvasH);
-      if (targetZoom !== null) {
-        // Instant zoom + animated pan, not the library's own zoomToFit (which
-        // would animate both AND center on the dense-core bbox's own center —
-        // see computeOverviewZoom's comment for why that's not graph-origin).
-        fg.zoom(targetZoom, 0);
-        fg.centerAt(0, 0, dur);
-      }
-    }
-    // stableData is a stable reference (see its own useMemo below) — reading
-    // it here doesn't need to be a dep.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasPreselectedCluster]);
+    frameOverview(prefersReducedMotionRef.current ? 0 : 600);
+    // The opening (components/home/Intro.tsx) waits for this framing: its
+    // record is sized to it.
+    storyFrame.graphReady = true;
+  }, [hasPreselectedCluster, frameOverview]);
+
+  useEffect(() => {
+    storyCamera.overview = (ms: number) => frameOverview(ms, ms);
+    return () => { storyCamera.overview = null; };
+  }, [frameOverview]);
+
+  // "How it works" replays the opening over a map the visitor may have
+  // panned and zoomed anywhere (lib/story-store's requestFullIntro clears
+  // graphReady). The record is sized to the overview, so go back to it first.
+  useEffect(() => {
+    if (!introPlaying || storyFrame.graphReady || !didInitialFitRef.current) return;
+    frameOverview(0);
+    storyFrame.graphReady = true;
+  }, [introPlaying, frameOverview]);
 
   // Re-derive the resting zoom floor whenever the canvas size changes (mount,
   // resize, phone rotation). Declared BEFORE the settle-timer effect below on
@@ -2248,6 +2641,54 @@ export default function ForceGraphCanvas({
     [stableData.nodes, activeRealm],
   );
 
+  // The focused artist's family (see FAMILY_LAYOUT, lib/family.ts), each side
+  // oldest first.
+  const family = useMemo(() => {
+    if (!selectedId) return null;
+    const year = new Map(stableData.nodes.map(n => [n.id, n.activeFrom ?? 9999]));
+    const byYear = (a: string, b: string) => (year.get(a)! - year.get(b)!) || a.localeCompare(b);
+    const { parents, children } = familyOf(graphData.edges, selectedId);
+    const p = parents.sort(byYear);
+    const c = children.sort(byYear);
+    // When each line starts drawing, after the camera has arrived: parents
+    // first, then a beat, then children.
+    const delay = new Map<string, number>();
+    const stagger = introPlaying ? FAMILY_DRAW_STAGGER_FAST_MS : FAMILY_DRAW_STAGGER_MS;
+    p.forEach((id, i) => delay.set(id, i * stagger));
+    c.forEach((id, i) => delay.set(id, p.length * stagger + FAMILY_CHILDREN_PAUSE_MS + i * stagger));
+    // When the children's lines start, for MUSICAL CHILDREN's arrival.
+    return { parents: p, children: c, delay, childrenAt: p.length * stagger + FAMILY_CHILDREN_PAUSE_MS };
+  }, [selectedId, graphData.edges, stableData.nodes, introPlaying]);
+  // How many steps each artist sits from the Velvet Underground, ignoring
+  // direction — the closing wave of the opening (storyFrame.wave) lights each
+  // line when it reaches the nearer of its two ends.
+  const waveDepth = useMemo(() => {
+    const adj = new Map<string, string[]>();
+    for (const e of graphData.edges) {
+      if (e.type !== 'influence') continue;
+      (adj.get(e.source) ?? adj.set(e.source, []).get(e.source)!).push(e.target);
+      (adj.get(e.target) ?? adj.set(e.target, []).get(e.target)!).push(e.source);
+    }
+    const depth = new Map<string, number>([[LABEL_ID, 0]]);
+    let frontier = [LABEL_ID];
+    while (frontier.length) {
+      const next: string[] = [];
+      for (const id of frontier) {
+        for (const n of adj.get(id) ?? []) {
+          if (!depth.has(n)) { depth.set(n, depth.get(id)! + 1); next.push(n); }
+        }
+      }
+      frontier = next;
+    }
+    return { depth, max: Math.max(...depth.values()) };
+  }, [graphData.edges]);
+
+  // When the focus began — the clock for the lines drawing in.
+  const familyStartRef = useRef(0);
+  useEffect(() => {
+    familyStartRef.current = performance.now() + FAMILY_DRAW_DELAY_MS;
+  }, [selectedId]);
+
   // The single set of ids to spread + frame right now — see getActiveCluster.
   const { ids: activeClusterIds, key: activeClusterKey, spreadFactor: activeClusterSpreadFactor } = useMemo(
     () => getActiveCluster(selectedId, highlightSetIds, realmMemberIds, graphData.edges, highlightSetPinnedId, highlightPath),
@@ -2282,6 +2723,21 @@ export default function ForceGraphCanvas({
     const anchor = stableData.nodes.find(n => n.id === clusterIds[0]);
     if (anchor?.x === undefined || anchor?.y === undefined) return null;
 
+    // A single artist: the family view.
+    if (factor === FAMILY_LAYOUT) {
+      if (!family) return new Map();
+      const narrow = (containerRef.current?.offsetWidth ?? 800) < FAMILY_NARROW_MAX_PX;
+      const node = (id: string) => stableData.nodes.find(n => n.id === id);
+      const present = (ids: string[]) => ids.map(node).filter((n): n is GraphNode => !!n);
+      return computeFamilyTargets(
+        { x: anchor.x, y: anchor.y, influenceScore: anchor.influenceScore },
+        present(family.parents),
+        present(family.children),
+        narrow ? FAMILY_ROW_MAX_NARROW : FAMILY_ROW_MAX,
+        narrow ? FAMILY_NARROW_MIN_R : undefined,
+      );
+    }
+
     const idSet = new Set(clusterIds);
     const clusterNodes = stableData.nodes.filter(
       n => idSet.has(n.id) && n.x !== undefined && n.y !== undefined,
@@ -2309,7 +2765,7 @@ export default function ForceGraphCanvas({
       targets.set(n.id, { x: ax + dx * resolvedFactor, y: ay + dy * resolvedFactor });
     }
     return targets;
-  }, [stableData.nodes]);
+  }, [stableData.nodes, family]);
 
   // Moves the cluster's nodes outward so the camera frames the already-spread
   // positions. Restores originals on deselect (or when switching clusters).
@@ -2401,7 +2857,7 @@ export default function ForceGraphCanvas({
       const ys = positions.map(p => p.y);
       const minX = Math.min(...xs) - CAMERA_PADDING;
       const maxX = Math.max(...xs) + CAMERA_PADDING;
-      const minY = Math.min(...ys) - CAMERA_PADDING;
+      const minY = Math.min(...ys) - CAMERA_PADDING - (activeClusterSpreadFactor === FAMILY_LAYOUT ? FAMILY_TOP_ROOM : 0);
       const maxY = Math.max(...ys) + CAMERA_PADDING;
 
       const bbW = maxX - minX;
@@ -2422,12 +2878,20 @@ export default function ForceGraphCanvas({
       // input device: a narrow laptop window gets the same bottom sheet a
       // phone does. Keyed to the same breakpoint the CSS uses.
       const isSheetLayout = canvasW < SHEET_MAX_CANVAS_WIDTH;
+      // The home page's opening shows a family with no panel, sheet or side
+      // controls on screen — only its words along the bottom, which the
+      // family is framed above (the same shift as the sheet's).
+      const panelW = introPlaying ? 0 : PANEL_WIDTH;
+      const leftW = introPlaying ? 0 : LEFT_UI_WIDTH;
+      const sheetH = !introPlaying ? SHEET_PEEK_HEIGHT
+        : canvasW < FAMILY_NARROW_MAX_PX ? INTRO_CAPTION_ROOM_NARROW : INTRO_CAPTION_ROOM;
       const availW = isSheetLayout
         ? Math.max(canvasW - TOUCH_EDGE_MARGIN * 2, 200)
-        : Math.max(canvasW - PANEL_WIDTH - LEFT_UI_WIDTH, 200);
-      const availH = isSheetLayout
-        ? Math.max(canvasH - SHEET_PEEK_HEIGHT, 200)
-        : Math.max(canvasH, 200);
+        : Math.max(canvasW - panelW - leftW, 200);
+      const bottomH = isSheetLayout || introPlaying ? sheetH : 0;
+      // A phone's family runs taller, up to where its group name sits.
+      const topH = !introPlaying ? 0 : canvasW < FAMILY_NARROW_MAX_PX ? INTRO_CONTROLS_ROOM + 20 : INTRO_CONTROLS_ROOM;
+      const availH = Math.max(canvasH - bottomH - topH, 200);
 
       const fitZoom = Math.max(Math.min(availW / bbW, availH / bbH, MAX_ZOOM), 0.5);
       // activeRealm is non-null only when a realm IS the active cluster —
@@ -2449,14 +2913,12 @@ export default function ForceGraphCanvas({
       // screen, into the strip above the sheet.
       const camX = isSheetLayout
         ? centerGX
-        : centerGX + (PANEL_WIDTH - LEFT_UI_WIDTH) / (2 * targetZoom);
-      const camY = isSheetLayout
-        ? centerGY + SHEET_PEEK_HEIGHT / (2 * targetZoom)
-        : centerGY;
+        : centerGX + (panelW - leftW) / (2 * targetZoom);
+      const camY = centerGY + (bottomH - topH) / (2 * targetZoom);
 
       return { targetZoom, camX, camY };
     },
-    [stableData.nodes, activeRealm],
+    [stableData.nodes, activeRealm, introPlaying, activeClusterSpreadFactor],
   );
 
   // Returns true once handled; false when the cluster's primary node hasn't
@@ -2839,7 +3301,13 @@ export default function ForceGraphCanvas({
       // "dots resolve into full detailed nodes" a continuous crossfade
       // rather than a gap.
       const cloudDotFade = isFullDetail ? 0 : 1 - zoomFade;
-      const dimFactor = isDimmed ? dimLevelRef.current : 1.0;
+      // introFade: a star the opening's needle hasn't reached yet stays dark
+      // (1 whenever the opening isn't playing).
+      // While the realms take turns lighting, the others dim back.
+      const realmSolo = storyFrame.realms >= 0 && storyFrame.realms < REALM_SOLO_SHARE
+        ? REALM_SOLO_DIM + (1 - REALM_SOLO_DIM) * realmLitAt(realmOrder, n.realm, storyFrame.realms)
+        : 1;
+      const dimFactor = (isDimmed ? dimLevelRef.current : 1.0) * introFade(n.id) * realmSolo;
       // Photo/label fade — its own unbiased curve/threshold (see
       // PHOTO_LABEL_FADE_OUT_ZOOM/computePhotoLabelFade above), NOT zoomFade
       // — reaches exactly 0 at/below that threshold (photo dissolves fully;
@@ -3350,19 +3818,27 @@ export default function ForceGraphCanvas({
         // than the rare overlap, so those keep the old accept-overlap
         // fallback regardless of this flag.
         const forced = alwaysLabel && !isFocused && !isNeighbor && !isHovered && !isInPath && !isSetMember;
+        // A family member's name, in a family big enough that names crowd
+        // (the Velvet Underground's is 58 strong): it gives way to a better-
+        // known neighbour rather than piling on top of it. Never the star
+        // under the pointer, nor the one the tour is pointing at.
+        const yields = isNeighbor && !isFocused && !isInPath && !isSetMember
+          && n.id !== hoveredId && !storyFrame.pulse.includes(n.id);
         // Hovered nodes and their neighbours get their names at ANY zoom.
         // photoOpacity is 0 through cloud zoom by design (it is the photo
         // gate, and hover must not pull photos in -- see zoomFade above), but
         // a hovered node with lit edges and no name tells you a shape without
         // telling you whose it is. dimFactor still applies, so this brightens
         // the hover cluster without lifting the dimmed background with it.
-        const labelAlpha = (isHovered || isHoverNeighbor)
+        // Names wait for the atlas: on the spinning record they'd only smear.
+        const introLabelFade = storyFrame.intro ? storyFrame.morph * storyFrame.morph : 1;
+        const labelAlpha = ((isHovered || isHoverNeighbor)
           ? Math.max(photoOpacity, dimFactor)
-          : photoOpacity;
+          : photoOpacity) * introLabelFade;
         labelQueueRef.current.push({
           name: n.name, nx: n.x, ny: n.y, er,
           fontSize, bright, alpha: labelAlpha,
-          score, forced,
+          score, forced, yields,
           radialFromX: useRadial ? focusedNode!.x : undefined,
           radialFromY: useRadial ? focusedNode!.y : undefined,
         });
@@ -3374,7 +3850,7 @@ export default function ForceGraphCanvas({
 
       ctx.restore();
     },
-    [selectedId, hoveredId, pathSet, pathEndSet, neighborSet, focusedNode, highlightSetMemberSet, topAnchorIds],
+    [selectedId, hoveredId, pathSet, pathEndSet, neighborSet, focusedNode, highlightSetMemberSet, topAnchorIds, introFade, realmOrder],
   );
 
   // ── Edge drawing ────────────────────────────────────────────────────────────
@@ -3519,22 +3995,55 @@ export default function ForceGraphCanvas({
         // screen would defeat the point.
         drawInfluenceArrow(ctx, sx, sy, tx, ty, hopColor, ARROW_SIZE_PATH, hopAlpha);
       } else if (isFocusEdge && focusedNode) {
-        // Focused artist's own layer color — their world glows in their color.
-        // Fades up from the idle faint baseline rather than snapping on, via
-        // edgeGlowLevelRef (fast, ~150ms — see EDGE_GLOW_MS).
-        ctx.beginPath();
-        ctx.moveTo(sx, sy);
-        ctx.lineTo(tx, ty);
-        ctx.strokeStyle = resolveNodeColor(focusedNode);
+        // The family view's lines (see FAMILY_LAYOUT): warm to a musical
+        // parent, cool to a musical child. Each draws itself in from the
+        // influence's end (the edge's target) toward the artist it shaped,
+        // after its turn in the family's order, so the direction of every line
+        // is shown rather than stated. Still fades up from the idle baseline
+        // via edgeGlowLevelRef, as before.
+        const toParent = srcNode !== null && srcNode.id === selectedId;
+        const other = toParent ? tgtNode : srcNode;
+        const tint = toParent ? FAMILY_PARENT_COLOR : FAMILY_CHILD_COLOR;
+        const start = familyStartRef.current + (other ? family?.delay.get(other.id) ?? 0 : 0);
+        const drawn = prefersReducedMotionRef.current ? 1 : clamp01((performance.now() - start) / FAMILY_DRAW_MS);
         const focusEdgeAlpha = ((EDGE_IDLE_ALPHA + (0.82 - EDGE_IDLE_ALPHA) * glow) * edgeFade) * evidenceMult;
-        ctx.globalAlpha = focusEdgeAlpha;
-        ctx.lineWidth = EDGE_IDLE_WIDTH + (2 - EDGE_IDLE_WIDTH) * glow;
-        ctx.setLineDash([]);
-        ctx.stroke();
-        ctx.globalAlpha = 1;
-        // Rides the same glow fade-up as the line, so the head appears with the
-        // edge rather than snapping in ahead of it.
-        drawInfluenceArrow(ctx, sx, sy, tx, ty, resolveNodeColor(focusedNode), ARROW_SIZE_HIGHLIGHT, focusEdgeAlpha);
+        if (drawn > 0) {
+          ctx.beginPath();
+          ctx.moveTo(tx, ty);
+          ctx.lineTo(tx + (sx - tx) * drawn, ty + (sy - ty) * drawn);
+          ctx.strokeStyle = tint;
+          ctx.globalAlpha = focusEdgeAlpha;
+          ctx.lineWidth = EDGE_IDLE_WIDTH + (2 - EDGE_IDLE_WIDTH) * glow;
+          ctx.setLineDash([]);
+          ctx.stroke();
+          ctx.globalAlpha = 1;
+        }
+        // The arrowhead lands once the line has finished drawing.
+        if (drawn >= 1) drawInfluenceArrow(ctx, sx, sy, tx, ty, tint, ARROW_SIZE_HIGHLIGHT, focusEdgeAlpha);
+
+        // The opening's music travelling this line (storyFrame.flow): a bright
+        // head with a short trail, out of the influence (target) into the
+        // artist it shaped (source). A playing song swells it.
+        const flow = storyFrame.flow;
+        if (flow && tgtNode && srcNode && tgtNode.id === flow.from && (flow.to === null || srcNode.id === flow.to) && flow.t > 0 && flow.t < 1) {
+          const head = flow.t;
+          const tail = Math.max(0, head - 0.22);
+          const hx = tx + (sx - tx) * head;
+          const hy = ty + (sy - ty) * head;
+          const swell = 1 + storyFrame.level * 1.2;
+          ctx.beginPath();
+          ctx.moveTo(tx + (sx - tx) * tail, ty + (sy - ty) * tail);
+          ctx.lineTo(hx, hy);
+          ctx.strokeStyle = '#fff4d6';
+          ctx.globalAlpha = 0.9;
+          ctx.lineWidth = 3.2 * swell;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+          ctx.globalCompositeOperation = 'lighter';
+          drawNodeGlow(ctx, hx, hy, (30 * swell) / globalScale, 'rgba(255, 236, 190, 0.7)', 1);
+          ctx.globalCompositeOperation = 'source-over';
+          ctx.globalAlpha = 1;
+        }
       } else if (isHoverEdge) {
         // Brightened tint on hover (no aberration), same fade-up as focus edges.
         const alpha = (EDGE_IDLE_ALPHA + (0.75 - EDGE_IDLE_ALPHA) * glow) * edgeFade * evidenceMult;
@@ -3632,9 +4141,31 @@ export default function ForceGraphCanvas({
         ctx.stroke();
       }
 
+
+      // The opening's closing wave (storyFrame.wave): every line lights as it
+      // reaches it, spreading outward from the Velvet Underground, then
+      // settles to a glow — "every artist has a family like this".
+      if (storyFrame.wave >= 0 && srcNode && tgtNode) {
+        const d = Math.min(waveDepth.depth.get(srcNode.id) ?? waveDepth.max, waveDepth.depth.get(tgtNode.id) ?? waveDepth.max);
+        const age = storyFrame.wave * (waveDepth.max + 1.5) - d;
+        // Past 1 the wave is being handed back: every line fades together.
+        const handBack = storyFrame.wave > 1 ? Math.max(0, 2 - storyFrame.wave) : 1;
+        if (age > 0 && handBack > 0) {
+          const a = (age < 0.6 ? age / 0.6 : Math.max(0.28, 1 - (age - 0.6) * 0.35)) * handBack;
+          ctx.beginPath();
+          ctx.moveTo(sx, sy);
+          ctx.lineTo(tx, ty);
+          ctx.strokeStyle = resolveNodeColor(tgtNode as GraphNode);
+          ctx.globalAlpha = 0.55 * a;
+          ctx.lineWidth = 1.1;
+          ctx.setLineDash([]);
+          ctx.stroke();
+          ctx.globalAlpha = 1;
+        }
+      }
       ctx.restore();
     },
-    [selectedId, hoveredId, pathSet, pathEdges, focusedNode, highlightSetMemberSet, evidenceFilter],
+    [selectedId, hoveredId, pathSet, pathEdges, focusedNode, family, waveDepth, highlightSetMemberSet, evidenceFilter],
   );
 
   // ── Realm cloud (electronic only, overview only) ────────────────────────
@@ -3667,7 +4198,42 @@ export default function ForceGraphCanvas({
   // before the parent's handler runs. The parent clears selection/set/path
   // state; this adds "and put the camera back, but only if we are the ones who
   // moved it."
-  const handleBackgroundClickWithCameraReset = useCallback(() => {
+  // The star under a click, by its real current position and the same hit
+  // area paintNodePointerArea paints (measured by letting it draw into a
+  // stand-in context). The library's own hit test reads a hidden canvas that
+  // can still hold stars where they were before a focus view moved them, so
+  // a click on a family member could land as a click on empty space, or on
+  // whichever star used to sit there — every click is checked here instead.
+  // Reached through a ref: the painter is declared further down.
+  const pointerAreaRef = useRef<((node: object, color: string, ctx: CanvasRenderingContext2D, globalScale: number) => void) | null>(null);
+  const starUnder = useCallback((event: MouseEvent | undefined): GraphNode | null => {
+    const fg = graphRef.current;
+    const box = containerRef.current?.getBoundingClientRect();
+    const paint = pointerAreaRef.current;
+    if (!event || !fg || !box || !paint) return null;
+    const at: { x: number; y: number } = fg.screen2GraphCoords(event.clientX - box.left, event.clientY - box.top);
+    const scale = currentGlobalScaleRef.current || 1;
+    const probe = { r: 0, fillStyle: '', beginPath() {}, fill() {}, arc(_x: number, _y: number, r: number) { this.r = r; } };
+    let best: GraphNode | null = null;
+    let bestD = Infinity;
+    for (const n of stableData.nodes) {
+      if (n.x === undefined || n.y === undefined || !isRevealed(n.id)) continue;
+      const d = Math.hypot(n.x - at.x, n.y - at.y);
+      if (d >= bestD) continue;
+      probe.r = 0;
+      paint(n, '', probe as unknown as CanvasRenderingContext2D, scale);
+      if (d <= probe.r) { best = n; bestD = d; }
+    }
+    return best;
+  }, [stableData.nodes, isRevealed]);
+
+  const handleBackgroundClickWithCameraReset = useCallback((event?: MouseEvent) => {
+    const star = starUnder(event);
+    if (star) {
+      if (highlightSetMemberSet.has(star.id) && onSetMemberClick) onSetMemberClick(star.id);
+      else onNodeClick(star.id);
+      return;
+    }
     const hinted = hintZoomRef.current;
     if (hinted !== null) {
       hintZoomRef.current = null;
@@ -3682,7 +4248,7 @@ export default function ForceGraphCanvas({
       }
     }
     onBackgroundClick();
-  }, [onBackgroundClick, applyCameraFocusForCluster]);
+  }, [onBackgroundClick, applyCameraFocusForCluster, starUnder, highlightSetMemberSet, onSetMemberClick, onNodeClick]);
 
   const handleRenderFramePre = useCallback((ctx: CanvasRenderingContext2D, globalScale: number) => {
     // Unconditional, before any early return below — linkDirectionalArrowColor
@@ -3718,6 +4284,10 @@ export default function ForceGraphCanvas({
     labelQueueRef.current  = [];
     nodeCirclesRef.current = [];
 
+    // The opening places every star before anything below reads a position.
+    const introOn = applyIntroLayout();
+    if (introOn) drawIntroRecord(ctx, globalScale);
+
     const isFocusModeActive = selectedId !== null || highlightSetMemberSet.size > 0;
     if (isFocusModeActive) return; // focus nodes stay solid — no clouds, per the two-mode split
 
@@ -3748,6 +4318,7 @@ export default function ForceGraphCanvas({
     const cloudBackdropFade = cloudFade * CLOUD_BACKDROP_INTENSITY;
     for (const n of stableData.nodes) {
       if (n.x === undefined || n.y === undefined) continue;
+      if (introOn && !isRevealed(n.id)) continue;
       if (n.realm === 'core') {
         drawCoreNodeGlow(ctx, n.x, n.y, CORE_NODE_GLOW_RADIUS, CORE_NODE_GLOW_PEAK_ALPHA * cloudBackdropFade);
       } else if (n.realm === 'region-one') {
@@ -3785,7 +4356,10 @@ export default function ForceGraphCanvas({
     // (that one rebuilt a CanvasGradient per star per frame; this is just an
     // alpha multiplier on the same plain fill already happening here).
     ctx.save();
-    const dustFade = cloudFade; // fades out on zoom-in alongside everything else at cloud zoom
+    // Fades out on zoom-in alongside everything else at cloud zoom. The dust
+    // is scattered round the realms' places in the atlas, so during the
+    // opening it waits for the atlas to arrive.
+    const dustFade = cloudFade * (introOn ? storyFrame.morph : 1);
     const twinkleNow = performance.now();
     for (const star of dustStars) {
       const twinkle = DUST_STAR_TWINKLE_FLOOR
@@ -3797,7 +4371,7 @@ export default function ForceGraphCanvas({
       ctx.fill();
     }
     ctx.restore();
-  }, [stableData.nodes, dustStars, selectedId, highlightSetMemberSet]);
+  }, [stableData.nodes, dustStars, selectedId, highlightSetMemberSet, applyIntroLayout, drawIntroRecord, isRevealed]);
 
   // ── Deferred label placement + rendering ─────────────────────────────────
   // Called after every node has been drawn — nodeCirclesRef holds ALL circles.
@@ -3806,6 +4380,53 @@ export default function ForceGraphCanvas({
   const handleRenderFramePost = useCallback((ctx: CanvasRenderingContext2D, globalScale: number) => {
     if (SHOW_ZOOM_READOUT && zoomReadoutRef.current) {
       zoomReadoutRef.current.textContent = `zoom ${globalScale.toFixed(2)}`;
+    }
+
+    // Over the map's own backdrop, which would wash them out underneath.
+    drawVuBeat(ctx, globalScale);
+    drawStoryMarks(ctx, globalScale);
+
+    // The family view's two group names (see FAMILY_LAYOUT): MUSICAL PARENTS
+    // over the top row, MUSICAL CHILDREN under the bottom one, in their lines'
+    // colours, arriving once the lines have drawn. Two words each, on the
+    // thing they name — the view itself does the explaining.
+    if (selectedId && family) {
+      const since = performance.now() - familyStartRef.current;
+      const groups: [string[], string, string, -1 | 1, number][] = [
+        [family.parents, 'Musical parents', FAMILY_PARENT_COLOR, -1, 0],
+        [family.children, 'Musical children', FAMILY_CHILD_COLOR, 1, family.childrenAt],
+      ];
+      for (const [ids, text, color, dir, delay] of groups) {
+        if (ids.length === 0) continue;
+        const alpha = prefersReducedMotionRef.current ? 1 : clamp01((since - delay - 150) / 400);
+        if (alpha <= 0) continue;
+        let edgeY = dir === -1 ? Infinity : -Infinity;
+        let minX = Infinity;
+        let maxX = -Infinity;
+        let maxR = 0;
+        for (const id of ids) {
+          const n = introNodesRef.current.get(id);
+          if (!n || n.x === undefined || n.y === undefined) continue;
+          edgeY = dir === -1 ? Math.min(edgeY, n.y) : Math.max(edgeY, n.y);
+          minX = Math.min(minX, n.x);
+          maxX = Math.max(maxX, n.x);
+          maxR = Math.max(maxR, familyRadius(n.influenceScore ?? 0, false));
+        }
+        if (!Number.isFinite(edgeY)) continue;
+        const px = 1 / globalScale;
+        // Clear of the names on either side: a top-row name can be pushed
+        // above its photo when the row below crowds it.
+        const y = dir === -1 ? edgeY - maxR - 56 * px : edgeY + maxR + 62 * px;
+        ctx.save();
+        ctx.globalAlpha = alpha;
+        ctx.font = `500 ${11 * px}px 'IBM Plex Mono', monospace`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        if ('letterSpacing' in ctx) (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing = `${2.4 * px}px`;
+        ctx.fillStyle = color;
+        ctx.fillText(`${text.toUpperCase()} · ${ids.length}`, (minX + maxX) / 2, y);
+        ctx.restore();
+      }
     }
 
     // Realm names first, underneath everything else this pass draws. Opacity is
@@ -3822,8 +4443,11 @@ export default function ForceGraphCanvas({
     const focusActive = selectedId !== null || highlightSetMemberSet.size > 0 || pathSet.size > 0;
     const realmLabelAlpha = focusActive
       ? 0
-      : (1 - computeZoomFade(globalScale, 0)) * REALM_LABEL_MAX_ALPHA;
-    if (realmLabelAlpha > 0.01) {
+      : (1 - computeZoomFade(globalScale, 0)) * REALM_LABEL_MAX_ALPHA
+        * (storyFrame.intro ? storyFrame.morph : 1); // the realms arrive with the atlas
+    // "How it works" lights the realms' names one at a time (storyFrame.realms).
+    const realmBloom = storyFrame.realms;
+    if (realmLabelAlpha > 0.01 || realmBloom >= 0) {
       ctx.save();
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
@@ -3888,7 +4512,7 @@ export default function ForceGraphCanvas({
         { x0: 0, y0: ch - 108 * dpr, x1: 250 * dpr, y1: ch },             // Evidence filter
       ];
 
-      for (const label of realmLabels) {
+      realmLabels.forEach(label => {
         const text = narrowLabels ? label.shortText : label.text;
         const halfTextW = ctx.measureText(text).width / 2 + marginY * 0.5;
         const minX = cxWorld - halfW + halfTextW;
@@ -3936,10 +4560,19 @@ export default function ForceGraphCanvas({
           }
         }
 
-        ctx.globalAlpha = realmLabelAlpha;
+        const lit = realmLitAt(realmOrder, label.realm, realmBloom);
+        if (lit > 0.02) {
+          ctx.globalCompositeOperation = 'lighter';
+          const glowRgba = label.color.startsWith('#')
+            ? `rgba(${parseInt(label.color.slice(1, 3), 16)}, ${parseInt(label.color.slice(3, 5), 16)}, ${parseInt(label.color.slice(5, 7), 16)}, 0.7)`
+            : 'rgba(255, 236, 190, 0.7)';
+          drawNodeGlow(ctx, lx, ly, 70 / globalScale, glowRgba, 0.6 * lit);
+          ctx.globalCompositeOperation = 'source-over';
+        }
+        ctx.globalAlpha = Math.max(realmLabelAlpha, lit);
         ctx.fillStyle = label.color;
         ctx.fillText(text, lx, ly);
-      }
+      });
       ctx.restore();
     }
 
@@ -3963,7 +4596,7 @@ export default function ForceGraphCanvas({
       (a, b) => Number(b.forced) - Number(a.forced) || b.score - a.score,
     );
 
-    for (const { name, nx, ny, er, fontSize, bright, alpha, forced, radialFromX, radialFromY } of orderedCandidates) {
+    for (const { name, nx, ny, er, fontSize, bright, alpha, forced, yields, radialFromX, radialFromY } of orderedCandidates) {
       // Fully invisible at cloud zoom (photoOpacity floors to exactly 0 —
       // see drawNode) but was still running measureText/collision-avoidance/
       // shadowBlur/fillText for nothing every frame. Skip entirely — a
@@ -4032,6 +4665,10 @@ export default function ForceGraphCanvas({
         }
       }
       if (!placed) {
+        // A crowded family member's name gives way the same way: candidates
+        // run best-known first, so whoever already took the spot outranks it.
+        // Hovering its star brings it back.
+        if (yields) continue;
         if (forced) {
           // Demote: this forced label couldn't find a clear spot near its
           // node — since forced candidates are processed highest-score
@@ -4075,7 +4712,7 @@ export default function ForceGraphCanvas({
     // changes identity after mount -- so neither dep can actually re-create this
     // callback. They are listed so the closure can't silently go stale if that
     // ever stops being true.
-  }, [realmLabels, stableData.nodes, selectedId, highlightSetMemberSet, pathSet]);
+  }, [realmLabels, realmOrder, stableData.nodes, selectedId, highlightSetMemberSet, pathSet, family, drawVuBeat, drawStoryMarks]);
 
   // ── Pointer hit-area ─────────────────────────────────────────────────────
   // Paints the invisible picking layer used by the library for hover/click detection.
@@ -4146,6 +4783,7 @@ export default function ForceGraphCanvas({
     },
     [selectedId, hoveredId, neighborSet, pathSet, pathEndSet, highlightSetMemberSet, isCoarsePointer],
   );
+  useEffect(() => { pointerAreaRef.current = paintNodePointerArea; }, [paintNodePointerArea]);
 
   // Kept in sync with the library unconditionally, even while the pointer is
   // off-canvas — the suppression lives in the derived hoveredId above. Doing
@@ -4160,8 +4798,12 @@ export default function ForceGraphCanvas({
   }, []);
 
   const handleNodeClick = useCallback(
-    (node: object) => {
-      const n = node as GraphNode;
+    (node: object, event?: MouseEvent) => {
+      // The star actually under the pointer, by where it's drawn now. The
+      // library's own answer can be a different star entirely just after a
+      // focus view has moved things (see starUnder) — clicking Talking Heads
+      // in Arcade Fire's family selected Julee Cruise.
+      const n = starUnder(event) ?? (node as GraphNode);
       // Clicking a member of the active genre/scene set should re-center
       // the set on that member, not exit to a full single-artist focus
       // (which would pull in every real connection, most of them outside
@@ -4173,7 +4815,7 @@ export default function ForceGraphCanvas({
         onNodeClick(n.id);
       }
     },
-    [onNodeClick, onSetMemberClick, highlightSetMemberSet],
+    [onNodeClick, onSetMemberClick, highlightSetMemberSet, starUnder],
   );
 
   return (
@@ -4222,7 +4864,7 @@ export default function ForceGraphCanvas({
             anything is focused (you are already somewhere) and, via CSS, while
             the onboarding card is up, since that card already names the
             gesture. */}
-        {atCloudZoom && selectedId === null && highlightSetMemberSet.size === 0 && (
+        {atCloudZoom && !introPlaying && selectedId === null && highlightSetMemberSet.size === 0 && pathSet.size === 0 && (
           <button
             type="button"
             className="zoom-hint"
@@ -4272,6 +4914,8 @@ export default function ForceGraphCanvas({
           nodePointerAreaPaint={paintNodePointerArea}
           linkCanvasObject={drawLink}
           linkCanvasObjectMode={() => 'replace'}
+          nodeVisibility={nodeVisibility}
+          linkVisibility={linkVisibility}
           onRenderFramePre={handleRenderFramePre}
           onRenderFramePost={handleRenderFramePost}
           onNodeHover={handleNodeHover}
