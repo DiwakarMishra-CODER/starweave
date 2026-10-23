@@ -14,10 +14,9 @@ import { useGraphData } from './GraphDataProvider';
 import GraphControls from './GraphControls';
 import ArtistSearch from './ArtistSearch';
 import ArtistPanel from './ArtistPanel';
-import EvidenceFilterControl from './EvidenceFilter';
+import LightingDesk from './LightingDesk';
 import PathPanel from './PathPanel';
 import PathFinder from './PathFinder';
-import NebulaBackground from './NebulaBackground';
 import GraphOnboarding from './GraphOnboarding';
 
 const ONBOARDING_STORAGE_KEY = 'starweave:onboarding-seen';
@@ -501,12 +500,11 @@ export default function GraphView() {
 
   return (
     <div className="graph-container">
-      <NebulaBackground />
       {/* Nothing below mounts until the graph has actually loaded (see
           GraphDataProvider) -- most load-bearingly, ForceGraphCanvas: its
           stableData memo (ForceGraph.tsx) has an empty dependency array, so
           it must never mount with placeholder data and be handed the real
-          thing afterward. NebulaBackground above is what's visible during
+          thing afterward. The page's flat background is what's visible during
           this gap, which is normally sub-second since graph.json is a
           same-origin static asset. */}
       {graphData && (
@@ -554,6 +552,7 @@ export default function GraphView() {
             onFindPath={handleFindPath}
             pathFromId={pathFromId}
             pathToId={pathToId}
+            pathStops={pathIds && pathIds.length > 1 ? pathIds.length - 1 : null}
             // With a path on screen, an outside click resets here and now rather
             // than waiting for the canvas to receive it. The picker closes on
             // POINTERDOWN, so the later click event often lands on a different
@@ -611,9 +610,9 @@ export default function GraphView() {
       {!storyUp && (
       <>
       {(!tourOn || tourChrome) && (
-        <EvidenceFilterControl
-          value={evidenceFilter}
-          onChange={setEvidenceFilter}
+        <LightingDesk
+          evidence={evidenceFilter}
+          onEvidence={setEvidenceFilter}
           counts={evidenceCounts}
         />
       )}

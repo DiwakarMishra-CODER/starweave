@@ -109,6 +109,7 @@ export default function RadioDial({ artist, data, silenced, onSound }: Props) {
     }
     const station = tuned === null ? null : stations[tuned];
     storyFrame.pulse = station && station.role !== 'self' ? [station.id] : [];
+    storyFrame.playing = station?.id ?? null;
   }, [stations]);
 
   // Where the needle is: which station is in, how much static, what plays.
@@ -166,6 +167,7 @@ export default function RadioDial({ artist, data, silenced, onSound }: Props) {
     storyFrame.pulse = [];
     storyFrame.flow = null;
     storyFrame.level = 0;
+    storyFrame.playing = null;
   }, []);
 
   // While the radio's on: the light, the speaker, the display's progress

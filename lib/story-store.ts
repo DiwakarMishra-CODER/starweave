@@ -51,8 +51,33 @@ function initialMode(): StoryMode {
   return 'story';
 }
 
+// Today's record is shown once a day on this device: the first visit of the
+// day plays the opening and puts up its ticket; reloads that day go straight
+// to the map with the ticket closed. A new day brings a new record anyway.
+const TODAY_SEEN_KEY = 'starweave:today-seen';
+function localDay(): string {
+  const d = new Date();
+  return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+}
+/** Whether today's record has already been shown on this device today. */
+export function todaySeen(): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    return localStorage.getItem(TODAY_SEEN_KEY) === localDay();
+  } catch {
+    return false; // storage blocked: every load is the first of the day
+  }
+}
+export function markTodaySeen(): void {
+  try {
+    localStorage.setItem(TODAY_SEEN_KEY, localDay());
+  } catch {
+    // Storage blocked: it shows again next time, which is fine.
+  }
+}
+
 let snapshot: StorySnapshot = {
-  mode: initialMode(), canvasLive: false, todayOpen: true, todayShown: false, mapBusy: false, storyFocus: null,
+  mode: initialMode(), canvasLive: false, todayOpen: !todaySeen(), todayShown: false, mapBusy: false, storyFocus: null,
 };
 const SERVER_SNAPSHOT: StorySnapshot = {
   mode: 'story', canvasLive: false, todayOpen: true, todayShown: false, mapBusy: false, storyFocus: null,
@@ -177,7 +202,30 @@ export const storyFrame = {
   todayId: null as string | null,
   /** Whether it's spinning (1) or not (0). ForceGraph eases toward it. */
   todayTarget: 0,
+  // The room's light (lib/room-lights.ts), drawn by ForceGraph:
+  /** The realms' lamps coming on one after another, 0..1. 1 when the map is
+   *  at rest; the opening switches them on as the record becomes the map. */
+  lamps: 1,
+  /** Whose song is playing right now (the radio, or today's record), for
+   *  the map to move with it; `level` is how loud. Null when nothing is. */
+  playing: null as string | null,
+  /** "Play the road" (Connect two): light travelling along the road from
+   *  one stop to the next, `t` 0..1. Null when nothing travels. */
+  roadFlow: null as { from: string; to: string; t: number } | null,
+  /** A realm being hovered in "Jump to…": its stars come up and the rest
+   *  dim back, so you see what picking it will do. Null when none. */
+  realmPreview: null as string | null,
+  /** The lighting desk's level for each realm, 0.1..1 (missing = 1). */
+  realmLevel: {} as Record<string, number>,
+  /** The lighting desk's size in css px (bottom-left), for the realms'
+   *  names to keep clear of. Null when it isn't on screen. */
+  deskBox: null as { w: number; h: number } | null,
 };
+
+/** Light up a realm on the map while it's hovered in "Jump to…" (null: none). */
+export function setRealmPreview(realm: string | null): void {
+  storyFrame.realmPreview = realm;
+}
 
 // Filled in by ForceGraph while it's mounted, so the opening's words can sit
 // beside a star: where artist `id` is on screen, in viewport pixels.

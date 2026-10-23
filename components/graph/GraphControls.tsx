@@ -8,6 +8,7 @@ import {
   SCENE_COLORS, DEFAULT_SCENE_COLOR,
 } from '@/lib/colors';
 import { compareNames } from '@/lib/sort';
+import { setRealmPreview } from '@/lib/story-store';
 
 type Tab = 'realms' | 'genres' | 'scenes';
 
@@ -102,7 +103,13 @@ export default function GraphControls({
   // Same ordering as genres above, for the same reason.
   const sceneOptions = useMemo(
     () => [...scenes]
-      .map(s => ({ id: s.id, label: s.name, count: s.memberIds.length }))
+      .map(s => ({
+        id: s.id,
+        label: s.name,
+        count: s.memberIds.length,
+        // Like a gig listing: where, and when ("1974–77", "2016–now").
+        meta: `${s.city} · ${s.yearStart}–${s.yearEnd === undefined ? 'now' : Math.floor(s.yearEnd / 100) === Math.floor(s.yearStart / 100) ? String(s.yearEnd).slice(2) : s.yearEnd}`,
+      }))
       .sort((a, b) => b.count - a.count || compareNames(a.label, b.label)),
     [scenes],
   );
@@ -131,6 +138,14 @@ export default function GraphControls({
     // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: the caller derives this from localStorage, which can't be read during render
     if (initialOpen) setOpen(true);
   }, [initialOpen]);
+
+  // A realm hovered here lights up on the map; nothing stays lit once the
+  // panel closes or goes away.
+  useEffect(() => {
+    if (!open) setRealmPreview(null);
+  }, [open]);
+  useEffect(() => () => setRealmPreview(null), []);
+  const preview = setRealmPreview;
 
   useEffect(() => {
     if (!open) return;
@@ -199,7 +214,12 @@ export default function GraphControls({
                 return (
                   <label
                     key={realm}
-                    className={`graph-controls__check${checked ? ' graph-controls__check--active' : ''}`}
+                    className={`graph-controls__check graph-controls__check--realm${checked ? ' graph-controls__check--active' : ''}`}
+                    style={{ '--opt-color': REALM_COLORS[realm] } as React.CSSProperties}
+                    onMouseEnter={() => preview(realm)}
+                    onMouseLeave={() => preview(null)}
+                    onFocus={() => preview(realm)}
+                    onBlur={() => preview(null)}
                   >
                     <input
                       type="checkbox"
@@ -209,9 +229,9 @@ export default function GraphControls({
                       onChange={() => onSelectRealm(realm)}
                       className="sr-only"
                     />
-                    <span className="graph-controls__swatch" style={{ background: REALM_COLORS[realm] }} aria-hidden />
-                    <span className="graph-controls__option-label">{REALM_LABELS[realm]}</span>
-                    <span className="graph-controls__option-count">{realmCounts.get(realm) ?? 0}</span>
+                    <span className="graph-controls__swatch graph-controls__swatch--lamp" style={{ background: REALM_COLORS[realm] }} aria-hidden />
+                    <span className="graph-controls__option-label graph-controls__option-label--hand">{REALM_LABELS[realm]}</span>
+                    <span className="graph-controls__option-count">{realmCounts.get(realm) ?? 0} artists</span>
                     {checked && <span className="graph-controls__check-mark" aria-hidden>✓</span>}
                   </label>
                 );
@@ -238,6 +258,7 @@ export default function GraphControls({
                     <label
                       key={g.id}
                       className={`graph-controls__check${checked ? ' graph-controls__check--active' : ''}`}
+                      style={{ '--opt-color': GENRE_COLORS[g.id] ?? DEFAULT_GENRE_COLOR } as React.CSSProperties}
                     >
                       <input
                         type="checkbox"
@@ -271,6 +292,7 @@ export default function GraphControls({
                   <label
                     key={s.id}
                     className={`graph-controls__check${checked ? ' graph-controls__check--active' : ''}`}
+                    style={{ '--opt-color': SCENE_COLORS[s.id] ?? DEFAULT_SCENE_COLOR } as React.CSSProperties}
                   >
                     <input
                       type="checkbox"
@@ -285,7 +307,10 @@ export default function GraphControls({
                       style={{ background: SCENE_COLORS[s.id] ?? DEFAULT_SCENE_COLOR }}
                       aria-hidden
                     />
-                    <span className="graph-controls__option-label">{s.label}</span>
+                    <span className="graph-controls__option-label graph-controls__option-label--listing">
+                      <strong>{s.label}</strong>
+                      <span className="graph-controls__option-meta">{s.meta}</span>
+                    </span>
                     <span className="graph-controls__option-count">{s.count}</span>
                     {checked && <span className="graph-controls__check-mark" aria-hidden>✓</span>}
                   </label>

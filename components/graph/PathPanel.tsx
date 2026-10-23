@@ -1,11 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import type { Artist, GraphData } from '@/data/types';
 import { resolveCitationStatus } from '@/data/types';
-import { resolveNodeColor, REALM_LABELS_SHORT, resolveNodeLabel } from '@/lib/colors';
+import { readableInk, resolveNodeColor } from '@/lib/colors';
+import { countryName } from '@/lib/format';
 import { useNarrowLayout } from '@/lib/use-media-query';
+import { useRoadPlayer } from './useRoadPlayer';
 import {
   countDirectionTurns,
   findMeetingPoint,
@@ -36,80 +38,89 @@ interface Props {
 //
 // Only the cited tiers appear. An unsourceable hop's toggle already says
 // "No source", so a chip beside it saying "unsourced" is the same fact twice.
+// The panel is a tour itinerary on a sheet of paper, like the zine artist
+// panel and the tour pass Connect two opens with: "The road from A to B",
+// each artist a stop like tour dates on a gig poster, a dotted road with a
+// little van between stops saying which way the influence ran, with the
+// source behind it, and "Play the road" to hear each stop in turn while the
+// map lights the way (useRoadPlayer).
+const PAPER = '#f2ede0'; // the sheet (--paper in globals.css), for readableInk
+
 const TIER_WORD: Partial<Record<HopEvidence, string>> = {
   'first-person': 'First-person',
   reported: 'Reported',
   critic: 'Critic',
 };
 
-function artistMeta(artist: Artist): string {
-  // Same shape the artist panel's peek bar uses, with the short realm name so
-  // "Post-Rock, Drone & Noise" cannot push the year onto a second line.
-  const realm = artist.realm ? REALM_LABELS_SHORT[artist.realm] : resolveNodeLabel(artist);
-  return artist.activeFrom ? `${realm} · ${artist.activeFrom}` : realm;
+// Where and since when — only what the data holds: a country, not a city.
+function stopMeta(artist: Artist): string {
+  return [artist.country && countryName(artist.country), artist.activeFrom && `since ${artist.activeFrom}`]
+    .filter(Boolean)
+    .join(' · ');
 }
 
-function Avatar({ artist }: { artist: Artist }) {
-  const color = resolveNodeColor(artist);
-  return (
-    <span className="path-node__avatar" style={{ '--hop-color': color } as React.CSSProperties}>
-      {artist.imageUrl ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={artist.imageUrl} alt="" width={44} height={44} loading="lazy" />
-      ) : (
-        <span className="path-node__initial">{artist.name.charAt(0)}</span>
-      )}
-    </span>
-  );
-}
-
-// One artist on the thread. `role` drives the origin/destination treatment —
-// before this existed, .path-hop--start was rendered but had no CSS at all, so
-// the two ends looked identical to everything between them.
-function PathNode({
+function Stop({
   artist,
-  role,
   index,
+  onAir,
+  onPlayFrom,
 }: {
   artist: Artist;
-  role: 'start' | 'middle' | 'end';
   index: number;
+  onAir: boolean;
+  onPlayFrom: (index: number) => void;
 }) {
+  const color = resolveNodeColor(artist);
   return (
-    <li className={`path-node path-node--${role}`}>
-      <Avatar artist={artist} />
-      <span className="path-node__body">
-        <span className="path-node__name">{artist.name}</span>
-        <span className="path-node__meta">{artistMeta(artist)}</span>
-      </span>
-      {/* A link, not a button. Opening an artist used to call back into
-          GraphView's handleSelectArtist, which nulls both path ends -- the
-          panel's most inviting control destroyed the thing it was showing. */}
-      <Link
-        href={`/artist/${artist.id}`}
-        className="path-node__open"
-        aria-label={`Open ${artist.name}`}
-        style={{ '--hop-color': resolveNodeColor(artist) } as React.CSSProperties}
+    <li
+      className={`road-stop${onAir ? ' road-stop--on' : ''}`}
+      style={{ '--stop-color': color } as React.CSSProperties}
+    >
+      {/* Tap the photo to play the road from this stop. */}
+      <button
+        type="button"
+        className="road-stop__photo"
+        onClick={() => onPlayFrom(index)}
+        aria-label={`Play the road from ${artist.name}`}
       >
+        {artist.imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={artist.imageUrl} alt="" width={52} height={52} loading="lazy" />
+        ) : (
+          <span className="road-stop__initial">{artist.name.charAt(0)}</span>
+        )}
+        <span className="road-stop__tape" aria-hidden />
+        <span className="road-stop__play" aria-hidden>
+          <svg width="12" height="12" viewBox="0 0 13 13" fill="currentColor">
+            <path d="M3 1.8 11 6.5 3 11.2V1.8z" />
+          </svg>
+        </span>
+      </button>
+      <span className="road-stop__body">
+        <span className="road-stop__label">
+          Stop {index + 1}
+          {onAir && <span className="road-stop__onair">On air</span>}
+        </span>
+        <span className="road-stop__name">{artist.name}</span>
+        <span className="road-stop__meta">{stopMeta(artist)}</span>
+        {/* How far through its turn it is (--road-progress, set by useRoadPlayer). */}
+        {onAir && <span className="road-stop__progress" aria-hidden />}
+      </span>
+      {/* A link, not a button: opening an artist through GraphView's select
+          handler would clear both ends of the road being shown. */}
+      <Link href={`/artist/${artist.id}`} className="road-stop__open" aria-label={`Open ${artist.name}`}>
         <span aria-hidden>&rarr;</span>
       </Link>
-      <span className="path-node__ordinal" aria-hidden>{index + 1}</span>
     </li>
   );
 }
 
-// The segment between two artists. Its line style is the evidence: solid and
-// bright for a first-person hop, dashed for a critic's comparison, faint dots
-// for an unsourced one. That is the whole best-sourced-route argument made
-// visible instead of stated in a caption nobody reaches.
-function PathLink({
+function Segment({
   hop,
-  color,
   isOpen,
   onToggle,
 }: {
   hop: PathHop;
-  color: string;
   isOpen: boolean;
   onToggle: () => void;
 }) {
@@ -117,53 +128,38 @@ function PathLink({
   const status = resolveCitationStatus(hop.edge);
   const inherits = hop.direction === 'influenced-by';
   const hasToggle = status === 'cited' || status === 'unsourceable';
-
   return (
-    <li
-      className={`path-link path-link--${tier}`}
-      style={{ '--hop-color': color } as React.CSSProperties}
-    >
-      <span className="path-link__rail" aria-hidden />
-
-      <div className="path-link__body">
-        <p className="path-link__direction">
-          <span className="path-link__arrow" aria-hidden>{inherits ? '↑' : '↓'}</span>
+    <li className={`road-seg road-seg--${tier}`}>
+      <span className="road-seg__road" aria-hidden>
+        <span className="road-seg__van" />
+      </span>
+      <div className="road-seg__body">
+        <p className="road-seg__note">
           {inherits ? 'was influenced by' : 'went on to influence'}
         </p>
-
-        {/* The evidence controls, grouped on their own row -- the tier says who
-            is speaking in the source, so it belongs with the source toggle and
-            not appended to the sentence above. */}
         {hasToggle && (
-          <div className="path-link__evidence">
+          <div className="road-seg__evidence">
             <button
               type="button"
-              className={`path-link__cite${status === 'unsourceable' ? ' path-link__cite--unsourceable' : ''}${isOpen ? ' path-link__cite--open' : ''}`}
+              className={`zine-row__stamp${status === 'unsourceable' ? ' zine-row__stamp--none' : ''}`}
               onClick={onToggle}
               aria-expanded={isOpen}
             >
-              {/* Same quote glyph the artist pages use on their own sources
-                  toggle -- it reads as "there is a quotation behind this"
-                  faster than the word does, and separates this from the flat
-                  tier label sitting next to it. */}
-              <svg className="path-link__cite-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden>
-                <path d="M7 8h4v4c0 2.2-1.8 4-4 4v-2c1.1 0 2-.9 2-2H7V8z" fill="currentColor" />
-                <path d="M15 8h4v4c0 2.2-1.8 4-4 4v-2c1.1 0 2-.9 2-2h-2V8z" fill="currentColor" />
+              <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden>
+                <circle cx="5" cy="5" r="4.3" fill="none" stroke="currentColor" strokeWidth="1.2" />
+                <rect x="4.4" y="4.2" width="1.2" height="3.3" rx="0.6" fill="currentColor" />
+                <circle cx="5" cy="2.8" r="0.7" fill="currentColor" />
               </svg>
-              {status === 'cited' ? (isOpen ? 'Hide source' : 'Read source') : 'No source'}
-              <span className="path-link__cite-chevron" aria-hidden>&#8964;</span>
+              {status === 'cited' ? (isOpen ? 'Hide source' : 'Source') : 'No source'}
             </button>
-            {TIER_WORD[tier] && <span className="path-link__tier">{TIER_WORD[tier]}</span>}
+            {TIER_WORD[tier] && <span className="road-seg__tier">{TIER_WORD[tier]}</span>}
           </div>
         )}
-
         {isOpen && status === 'cited' && hop.edge.citation && (
-          <p className="path-link__note path-link__note--citation">{hop.edge.citation}</p>
+          <p className="road-seg__slip">{hop.edge.citation}</p>
         )}
         {isOpen && status === 'unsourceable' && (
-          <p className="path-link__note path-link__note--unsourceable">
-            Widely accepted, unsourced.
-          </p>
+          <p className="road-seg__slip">Widely accepted, unsourced.</p>
         )}
       </div>
     </li>
@@ -221,16 +217,46 @@ export default function PathPanel({ fromId, toId, graphData, hops, onClose }: Pr
   const meetingId = hops && turns === 1 ? findMeetingPoint(hops) : null;
   const meeting = meetingId ? artistMap[meetingId] : null;
 
+  // The stops, in order along the road. Keyed to the road itself, so the
+  // player starts over (and the old one stops) when the road changes.
+  const stops = useMemo(() => {
+    if (!hops || hops.length === 0) return [] as Artist[];
+    const byId = new Map(graphData.artists.map(a => [a.id, a]));
+    return [hops[0].from, ...hops.map(h => h.to)].map(id => byId.get(id)).filter((a): a is Artist => !!a);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- pathKey is the road's identity
+  }, [pathKey, graphData.artists]);
+  // Destructured: the result carries a ref, which render mustn't read through.
+  const { at: roadAt, play: playRoad, stop: stopRoad, next: nextRoad, prev: prevRoad, progressRef } = useRoadPlayer(stops);
+  const roadPlaying = roadAt !== null;
+  // Closing the panel stops the music.
+  useEffect(() => {
+    if (!open) stopRoad();
+  }, [open, stopRoad]);
+  const toggleRoad = () => (roadPlaying ? stopRoad() : playRoad());
+  const step = (dir: 'prev' | 'next') => (
+    <button
+      type="button"
+      className="radio__step"
+      onClick={dir === 'prev' ? prevRoad : nextRoad}
+      aria-label={dir === 'prev' ? 'Previous stop' : 'Next stop'}
+    >
+      <svg width="11" height="11" viewBox="0 0 11 11" fill="currentColor" aria-hidden>
+        <path d={dir === 'prev' ? 'M8.5 1.2v8.6L1.5 5.5z' : 'M2.5 1.2v8.6l7-4.3z'} />
+      </svg>
+    </button>
+  );
+  const tint = resolveNodeColor(to ?? from ?? graphData.artists[0]);
+
   return (
     <aside
-      className={`path-panel${open ? ' path-panel--open' : ''}${
+      className={`path-panel zine-panel${open ? ' path-panel--open' : ''}${
         isNarrowLayout ? (expanded ? ' path-panel--expanded' : ' path-panel--peek') : ''
       }`}
       aria-label="Path between artists"
       aria-hidden={!open}
       // Tinted to the destination, the way every other panel belongs to its
       // subject. Falls back to the origin so an unresolved path is not colourless.
-      style={{ '--layer-color': resolveNodeColor(to ?? from ?? graphData.artists[0]) } as React.CSSProperties}
+      style={{ '--layer-color': tint, '--spot': readableInk(tint, PAPER) } as React.CSSProperties}
     >
       {/* ── Peek bar (narrow layouts) ──────────────────────────
           The sheet's collapsed face, and the state the camera frames against.
@@ -278,6 +304,24 @@ export default function PathPanel({ fromId, toId, graphData, hops, onClose }: Pr
                   : 'No connection found'}
               </span>
             </span>
+            {hops && (
+              <button
+                type="button"
+                className={`panel-peek__play${roadPlaying ? ' panel-peek__play--playing' : ''}`}
+                onClick={e => { e.stopPropagation(); toggleRoad(); }}
+                aria-label={roadPlaying ? 'Stop playing the road' : 'Play the road'}
+              >
+                {roadPlaying ? (
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden>
+                    <rect x="1.5" y="1.5" width="9" height="9" rx="1.2" />
+                  </svg>
+                ) : (
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor" aria-hidden>
+                    <path d="M3 1.8 11 6.5 3 11.2V1.8z" />
+                  </svg>
+                )}
+              </button>
+            )}
             <button
               className="path-peek__close"
               onClick={e => { e.stopPropagation(); onClose(); }}
@@ -294,74 +338,82 @@ export default function PathPanel({ fromId, toId, graphData, hops, onClose }: Pr
       )}
 
       {open && (
-        <div className="path-panel__inner">
-          <button className="path-panel__close" onClick={onClose} aria-label="Close path">
-            Close
-          </button>
+        <div className="path-panel__inner road">
+          <header className="road__masthead">
+            <span className="road__mark">The road</span>
+            <button className="zine__close road__close" onClick={onClose} aria-label="Close path">&#10005;</button>
+          </header>
 
-          <p className="path-panel__eyebrow">Path</p>
-          <h2 className="path-panel__title">
-            {from!.name} <span aria-hidden>&rarr;</span> {to!.name}
+          <h2 className="road__title">
+            <span className="road__title-word">from</span> {from!.name}{' '}
+            <span className="road__title-word">to</span> {to!.name}
           </h2>
 
           {!hops && (
-            <p className="path-panel__verdict path-panel__verdict--none">
-              No connection between these two in the graph yet.
-            </p>
+            <p className="road__none">No road between these two in the graph yet.</p>
           )}
 
           {hops && (
             <>
-              {/* Shown only when there is something true to say. The old third
-                  branch, "They are connected.", never fired once across 522
-                  sampled pairs and restated the panel's own existence anyway. */}
+              {/* Shown only when there is something true to say: a straight
+                  line of descent, or the one place the road turns. */}
               {(direct || meeting) && (
-                <p className="path-panel__verdict">
-                  {direct
-                    ? 'A direct line of descent.'
-                    : <>They meet at <strong>{meeting!.name}</strong>.</>}
+                <p className="road__verdict">
+                  {direct ? 'A direct line of descent.' : <>They meet at {meeting!.name}.</>}
                 </p>
               )}
 
-              {/* No route-level evidence summary. It said the same thing on 77%
-                  of paths, and every hop already carries its own tier -- in the
-                  connector's line style and in the chip beside it -- so the
-                  weak step in a route is still visible exactly where it is. */}
+              {/* Play / Stop, with back and on beside it while the road plays —
+                  the same buttons, in the same places, as the radio's. */}
+              <div className="road__controls">
+              {roadPlaying && step('prev')}
+              <button
+                type="button"
+                className={`radio__play road__play${roadPlaying ? ' radio__play--on' : ''}`}
+                onClick={toggleRoad}
+                aria-label={roadPlaying ? 'Stop playing the road' : 'Play the road: a few seconds of each stop, in order'}
+              >
+                <span className="radio__play-icon" aria-hidden>
+                  {roadPlaying ? (
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                      <rect x="1.5" y="1.5" width="9" height="9" rx="1.2" />
+                    </svg>
+                  ) : (
+                    <svg width="14" height="14" viewBox="0 0 13 13" fill="currentColor">
+                      <path d="M3 1.8 11 6.5 3 11.2V1.8z" />
+                    </svg>
+                  )}
+                </span>
+                <span className="radio__play-verb">{roadPlaying ? 'Stop' : 'Play the road'}</span>
+              </button>
+              {roadPlaying && step('next')}
+              </div>
 
-              {/* Nodes and connectors alternate as siblings in one list, so the
-                  rail down the left is a single continuous run rather than
-                  something re-drawn per group. Ordinals are passed explicitly
-                  rather than taken from list position, since only half these
-                  items are artists. */}
-              <ol className="path-chain">
-                {hops.map((hop, i) => {
-                  const node = artistMap[hop.from];
-                  const nextArtist = artistMap[hop.to];
-                  if (!node || !nextArtist) return null;
-                  const key = `${hop.from}->${hop.to}`;
+              <ol className="road__stops" ref={progressRef}>
+                {stops.map((artist, i) => {
+                  const hop = hops[i];
+                  const key = hop ? `${hop.from}->${hop.to}` : `end-${artist.id}`;
                   return (
                     <Fragment key={key}>
-                      <PathNode artist={node} role={i === 0 ? 'start' : 'middle'} index={i} />
-                      <PathLink
-                        hop={hop}
-                        color={resolveNodeColor(nextArtist)}
-                        isOpen={openCites.has(key)}
-                        onToggle={() => toggleCite(key)}
-                      />
+                      <Stop artist={artist} index={i} onAir={roadAt === i} onPlayFrom={playRoad} />
+                      {hop && (
+                        <Segment hop={hop} isOpen={openCites.has(key)} onToggle={() => toggleCite(key)} />
+                      )}
                     </Fragment>
                   );
                 })}
-                <PathNode artist={to!} role="end" index={hops.length} />
               </ol>
 
-              {/* Names what kind of answer this is. The route shown is the
-                  best-documented one, not the shortest -- see
-                  findBestSourcedPath. Without saying so, someone who counts the
-                  hops and finds a shorter route on the canvas would reasonably
-                  conclude the search was broken. */}
-              <p className="path-panel__count">
-                {hops.length} {hops.length === 1 ? 'step' : 'steps'} &middot; the best-sourced route, not the shortest
-              </p>
+              {/* What kind of answer this is: the best-documented road, not
+                  the shortest (see findBestSourcedPath). Without saying so,
+                  someone who finds a shorter route on the map would conclude
+                  the search was broken. */}
+              <footer className="road__foot">
+                <p className="road__steps">
+                  Connected in {hops.length} {hops.length === 1 ? 'step' : 'steps'}
+                </p>
+                <p className="road__fine">the best-sourced route, not the shortest</p>
+              </footer>
             </>
           )}
         </div>

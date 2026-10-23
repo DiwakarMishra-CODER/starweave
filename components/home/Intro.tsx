@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useGraphData } from '@/components/graph/GraphDataProvider';
 import {
   storyCamera, storyControl, storyFrame, setCanvasLive, setStoryMode, setStoryFocus, setTodayOpen,
-  setTodayShown, takeFullIntroRequest,
+  setTodayShown, takeFullIntroRequest, todaySeen,
 } from '@/lib/story-store';
 import {
   buildGroove, grooveSlotAt, spinForNeedle, GROOVE_INNER, GROOVE_TURNS, LABEL_ID, NEEDLE_ANGLE, RIM_SHARE,
@@ -70,7 +70,8 @@ type Phase =
 
 // Step lengths, ms, for the steps with motion; a step with words lasts as
 // long as its words take to read (readMs), so those are 0 here.
-const LABEL_MS = 150; // the label alone, a beat before anything moves
+const LABEL_MS = 700; // the label alone, a beat before anything moves
+const BULB_OFF_MS = 450; // the room's bare bulb clicks off, inside that beat
 // The first record's steps (behind OPENING_VU_BEAT, lib/flags.ts).
 const VU_STEPS: [Phase, number][] = [
   ['vu', 0],         // the sleeve, still: its title
@@ -208,6 +209,7 @@ export default function Intro({ record, artistCount, years }: Props) {
   const soundRef = useRef(false);
   const crackleRef = useRef<(() => void) | null>(null);
   const phaseRef = useRef<Phase>('label');
+  const bulbRef = useRef<HTMLDivElement>(null);
   // Skip and the sound button reach the clock through these; the effect
   // below fills them in once it knows which version is playing.
   const finishRef = useRef<() => void>(() => {});
@@ -256,6 +258,9 @@ export default function Intro({ record, artistCount, years }: Props) {
 
     // Lets go of the stars and settles the frame the canvas reads; hands
     // over the map with today's record on it.
+    // Whether today's record had been shown before this visit began (the tag
+    // marks itself seen as soon as it goes up, partway through the opening).
+    const seenBefore = todaySeen();
     const finish = () => {
       if (finished) return;
       finished = true;
@@ -270,6 +275,7 @@ export default function Intro({ record, artistCount, years }: Props) {
       storyFrame.dust = 0;
       storyFrame.collapse = -1;
       storyFrame.gather = -1;
+      storyFrame.lamps = 1;
       storyControl.finish = null;
       // Skipped while the camera leaned in: back to the overview.
       if (leanFrom) storyCamera.zoom?.(leanFrom, 400);
@@ -280,7 +286,8 @@ export default function Intro({ record, artistCount, years }: Props) {
         // Storage blocked: the full opening plays again next time.
       }
       setStoryMode('map');
-      setTodayOpen(true);
+      // Today's ticket goes up once a day (see todaySeen).
+      setTodayOpen(!seenBefore);
     };
     finishRef.current = finish;
     storyControl.finish = finish;
@@ -298,6 +305,8 @@ export default function Intro({ record, artistCount, years }: Props) {
       finish();
       return;
     }
+    // The room before the show: the bare bulb is on, the lamps are off.
+    storyFrame.lamps = 0;
 
     // The run of steps, with when each starts. The family's own step is as
     // long as its lines take to draw (faster in the opening, see lib/family);
@@ -355,11 +364,14 @@ export default function Intro({ record, artistCount, years }: Props) {
         storyFrame.morph = 0;
         storyFrame.spin = spinForNeedle(0);
         storyFrame.sparks = beat ? 0 : -1;
-        storyFrame.collapse = chosen === 'short' ? 0 : -1;
+        // A return visit's record shrinks into today's star — unless today's
+        // record has already been shown today; then it just becomes the map.
+        storyFrame.collapse = chosen === 'short' && !seenBefore ? 0 : -1;
       }
 
       const t = now - start;
       if (t >= total) { finish(); return; }
+      if (t >= BULB_OFF_MS) bulbRef.current?.classList.add('intro__bulb--off');
       if (progressRef.current) progressRef.current.style.transform = `scaleX(${(t / total).toFixed(4)})`;
       let p: Phase = 'label';
       for (const [step] of steps) if (t >= startOf.get(step)!) p = step;
@@ -399,12 +411,14 @@ export default function Intro({ record, artistCount, years }: Props) {
         storyFrame.spin = g < 1 ? spinForNeedle(reveal) : spinForNeedle(1) + omega * coastMs * (c - (c * c) / 2);
         const m = clamp01(into('morph'));
         storyFrame.morph = m;
+        // As the record becomes the map, the realms' lamps come on in turn.
+        storyFrame.lamps = m;
         if (beat) {
           storyFrame.dust = 1 - clamp01(since('groove') / DUST_OUT_MS);
           storyFrame.sparks = 1;
           placeBeat(-1);
         }
-        if (chosen === 'short' && m > 0) {
+        if (chosen === 'short' && !seenBefore && m > 0) {
           // A return visit's record shrinks into today's star, and the
           // camera goes with it.
           storyFrame.collapse = m;
@@ -426,6 +440,7 @@ export default function Intro({ record, artistCount, years }: Props) {
         storyFrame.intro = false;
         storyFrame.reveal = 1;
         storyFrame.morph = 1;
+        storyFrame.lamps = 1;
         storyFrame.sparks = -1;
         storyFrame.dust = 0;
         setStoryFocus(DEMO.artist);
@@ -575,8 +590,12 @@ export default function Intro({ record, artistCount, years }: Props) {
       window.removeEventListener('keydown', onKey);
       stopSound();
       if (storyControl.finish === finish) storyControl.finish = null;
-      // Leaving mid-opening (a nav link): don't leave a family on screen.
-      if (!finished) setStoryFocus(null);
+      // Leaving mid-opening (a nav link): don't leave a family on screen,
+      // or the room dark.
+      if (!finished) {
+        setStoryFocus(null);
+        storyFrame.lamps = 1;
+      }
     };
   }, [slots, nameOf, record.id, demo]);
 
@@ -618,6 +637,12 @@ export default function Intro({ record, artistCount, years }: Props) {
       </p>
 
       <div className="intro__veil" aria-hidden />
+      {/* The room before the show: a bare bulb on a cord, lit while the map
+          arrives, clicked off as the record starts. */}
+      <div ref={bulbRef} className="intro__bulb" aria-hidden>
+        <span className="intro__bulb-cord" />
+        <span className="intro__bulb-glass" />
+      </div>
       <div className="intro__scrim" aria-hidden />
       <div className="intro__label" aria-hidden>
         <span className="intro__label-dot" />

@@ -16,6 +16,8 @@ interface Props {
   onFindPath: (fromId: string, toId: string) => void;
   pathFromId: string | null;
   pathToId: string | null;
+  /** Steps on the road found between the two, when there is one. */
+  pathStops?: number | null;
   // Fired when an outside click closes the panel — lets the caller suppress the
   // graph's own background-click deselect, which would otherwise also fire from
   // that same click when its only intent was to close this.
@@ -57,6 +59,7 @@ export default function PathFinder({
   onFindPath,
   pathFromId,
   pathToId,
+  pathStops = null,
   onOutsideClick,
 }: Props) {
   const [open, setOpen] = useState(false);
@@ -96,7 +99,10 @@ export default function PathFinder({
       // picker -- a click inside it (e.g. "Read source") is otherwise
       // indistinguishable from a real outside click and was wrongly
       // resetting the whole path.
-      if (target instanceof HTMLElement && target.closest('.path-panel')) return;
+      // Element, not HTMLElement: a click on an icon inside the result panel
+      // lands on an <svg>/<path>, which is not an HTMLElement, and used to be
+      // taken for a click outside — clearing the road being played.
+      if (target instanceof Element && target.closest('.path-panel')) return;
       setOpen(false);
       onOutsideClick?.();
     }
@@ -141,6 +147,7 @@ export default function PathFinder({
                   ].filter(Boolean).join(' ')}
                   style={artist ? ({ '--end-color': resolveNodeColor(artist) } as React.CSSProperties) : undefined}
                 >
+                  <span className="graph-controls__path-label" aria-hidden>{end === 'from' ? 'From' : 'To'}</span>
                   <span className="graph-controls__path-dot" aria-hidden />
                   {artist
                     ? <ArtistThumb artist={artist} className="graph-controls__path-avatar" />
@@ -237,6 +244,12 @@ export default function PathFinder({
               </div>
             );
           })}
+
+          {pathStops !== null && pathStops > 0 && (
+            <p className="graph-controls__path-stops">
+              Connected in {pathStops} {pathStops === 1 ? 'step' : 'steps'}
+            </p>
+          )}
 
           {pathFromId && pathToId && (
             <button

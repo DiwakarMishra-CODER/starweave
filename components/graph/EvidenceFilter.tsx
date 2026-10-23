@@ -8,6 +8,8 @@ interface Props {
   onChange: (next: EvidenceFilter) => void;
   /** Connection count surviving each mode, computed once by the caller. */
   counts: Record<EvidenceFilter, number>;
+  /** One slim row: short labels, no title or note (the lighting desk, closed). */
+  compact?: boolean;
 }
 
 // The graph's whole argument is that its connections are checkable. This is how
@@ -32,14 +34,20 @@ const MODES: { value: EvidenceFilter; label: string; short: string }[] = [
   { value: 'first-person', label: 'Said by the artist', short: "Artist's own" },
 ];
 
-export default function EvidenceFilterControl({ value, onChange, counts }: Props) {
+export default function EvidenceFilterControl({ value, onChange, counts, compact = false }: Props) {
   const isNarrowLayout = useNarrowLayout();
+  const short = isNarrowLayout || compact;
   // Derived, never typed: the caption can't drift from the data behind it.
   const fromOthers = counts.all - counts['first-person'];
 
   return (
-    <div className="evidence-filter" role="radiogroup" aria-label="Which influences to show">
-      <p className="evidence-filter__eyebrow">Show</p>
+    <div
+      className={`evidence-filter${compact ? ' evidence-filter--compact' : ''}`}
+      role="radiogroup"
+      aria-label="Which influences to show"
+      title={compact ? `Show all influences, or only what the artists said themselves. The other ${fromOthers.toLocaleString()} come from critics and press.` : undefined}
+    >
+      {!compact && <p className="evidence-filter__eyebrow">Show</p>}
 
       <div className="evidence-filter__options">
         {MODES.map(mode => {
@@ -54,7 +62,7 @@ export default function EvidenceFilterControl({ value, onChange, counts }: Props
               onClick={() => onChange(mode.value)}
             >
               <span className="evidence-filter__option-label">
-                {isNarrowLayout ? mode.short : mode.label}
+                {short ? mode.short : mode.label}
               </span>
               <span className="evidence-filter__option-count">{counts[mode.value].toLocaleString()}</span>
             </button>
@@ -64,9 +72,11 @@ export default function EvidenceFilterControl({ value, onChange, counts }: Props
 
       {/* Teaches the distinction once, so the two numbers above mean something
           rather than reading as trivia. */}
-      <p className="evidence-filter__note">
-        The other {fromOthers.toLocaleString()} come from critics and press.
-      </p>
+      {!compact && (
+        <p className="evidence-filter__note">
+          The other {fromOthers.toLocaleString()} come from critics and press.
+        </p>
+      )}
     </div>
   );
 }

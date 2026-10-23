@@ -14,6 +14,7 @@ import { resolveNodeColor, resolveNodeGlow, resolveEdgeTint, REALM_COLORS, REALM
 import { getNeighbors, pathEdgeKeys } from '@/lib/graph-utils';
 import { useCoarsePointer } from '@/lib/use-media-query';
 import { storyFrame, storyCamera } from '@/lib/story-store';
+import { lampOn } from '@/lib/room-lights';
 import {
   FAMILY_CHILD_COLOR, FAMILY_CHILDREN_PAUSE_MS, FAMILY_DRAW_DELAY_MS, FAMILY_DRAW_MS, FAMILY_DRAW_STAGGER_MS,
   FAMILY_DRAW_STAGGER_FAST_MS,
@@ -362,6 +363,18 @@ function realmLitAt(order: string[], realm: string | undefined, r: number): numb
 // How far a star outside the lit world dims back while the worlds take turns.
 const REALM_SOLO_DIM = 0.4;
 
+// A realm's level on the lighting desk (components/graph/LightingDesk.tsx),
+// 1 when it hasn't been touched. While a realm is hovered in "Jump to…"
+// (storyFrame.realmPreview), it comes up and the others dim back.
+const REALM_PREVIEW_REST = 0.18;
+function deskLevelOf(realm: string | undefined): number {
+  if (!realm) return 1;
+  const level = storyFrame.realmLevel[realm] ?? 1;
+  const preview = storyFrame.realmPreview;
+  if (!preview) return level;
+  return realm === preview ? 1 : Math.min(level, REALM_PREVIEW_REST);
+}
+
 function easeInOutCubic(t: number): number {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
@@ -526,17 +539,7 @@ const EDGE_IDLE_WIDTH = 0.6;
 // new threshold — the node-side equivalent of this floor pattern was
 // removed when drawNode moved to the anchors-only redesign (see ANCHOR_COUNT),
 // but edges still use it: it's what keeps these threads visible at cloud zoom.
-const CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM = 0.015; // opacity — barely-there wispy filament, not a bright line
-// Lowered from 6 (was tuned for three realm clouds; with six now, ~95
-// core-touching edges glow simultaneously and the blur bloom was
-// compounding into the reported "petals" look around the core). Deliberately
-// a bare, easy-to-retune constant rather than derived from anything else —
-// expect to want a value between 3 and 6 depending on how this reads with
-// six realms; nudge here only, no other formula depends on it.
-const CORE_EDGE_THREAD_GLOW_BLUR = 3; // now a WIDTH delta in px, not a shadowBlur radius — see the core-edge branch in drawLink for why the blur was removed
-// How faint the wide underlay stroke is relative to the thread itself. Low
-// enough that the pair reads as one soft filament rather than two lines.
-const CORE_EDGE_THREAD_GLOW_ALPHA_FRACTION = 0.45;
+const CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM = 0.07; // opacity — a crisp, faint hairline from the root (crisp pass: was 0.015 plus a glow underlay)
 
 // Every other edge (within-realm, and cross-realm bridges that don't touch
 // core) still fades all the way to 0 above — reads as bare scattered dots
@@ -549,7 +552,7 @@ const CORE_EDGE_THREAD_GLOW_ALPHA_FRACTION = 0.45;
 // zones (post 60°-spacing + glow-blur fixes), this idle web was still dense
 // enough to fill the visual gaps between clusters and read as one continuous
 // mass rather than separated clouds.
-const IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM = 0.02;
+const IDLE_EDGE_ALPHA_AT_CLOUD_ZOOM = 0.03;
 // Fast, subtle fade for edges lighting up/down on focus or hover — separate
 // from TRANSITION_MS (node dimming) so edges pop quicker without touching
 // that existing timing.
@@ -882,7 +885,27 @@ const REALM_LABEL_SCREEN_PX = 15;   // constant on screen, so zooming doesn't in
 // layout uses -- see NARROW_LAYOUT_QUERY in lib/use-media-query.ts.
 const NARROW_LABEL_MAX_WIDTH = 600;
 const REALM_LABEL_SCREEN_PX_NARROW = 11;
-const REALM_LABEL_MAX_ALPHA = 0.44; // ambient, never competing with the nodes themselves
+const REALM_LABEL_MAX_ALPHA = 0.85; // hand-lettered on the wall: readable (≥4.5:1 on the dusk room), still below the bulbs
+const REALM_LABEL_MARKER_SCALE = 1.15; // the marker face runs small for its size
+
+// The realms' names are hand-lettered, in the panel's marker face. The canvas
+// can't use the CSS variable, and next/font renames the family, so read the
+// real family name off the page once.
+let markerFamily: string | null = null;
+function markerFontFamily(): string {
+  if (markerFamily === null && typeof document !== 'undefined') {
+    markerFamily = getComputedStyle(document.documentElement).getPropertyValue('--font-marker').trim() || 'cursive';
+  }
+  return markerFamily ?? 'cursive';
+}
+
+// A colour chalked on the dusk wall: most of the way to cream, so every
+// realm's name reads on the room.
+function wallInk(hex: string): string {
+  const c = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
+  const cream = [243, 227, 200];
+  return '#' + c.map((v, i) => Math.round(v * 0.4 + cream[i] * 0.6).toString(16).padStart(2, '0')).join('');
+}
 // How far out along a realm's own outward axis the label sits: clear of the
 // FURTHEST node in that realm, plus a gap. A percentile was tried first (0.9)
 // and measured against a replica of the settled layout -- it put region-one's
@@ -930,8 +953,8 @@ const REALM_LABEL_ESCAPE_STEP = 6;
 const CLOUD_DOT_MIN_R = 1.3;       // world units — point size for a typical/low-score node
 const CLOUD_DOT_MAX_R = 3.2;       // world units — cap on even the biggest hub's point
 const CLOUD_DOT_HUB_GROWTH = 0.28; // × sqrt(score) added on top of CLOUD_DOT_MIN_R, capped at CLOUD_DOT_MAX_R
-const CLOUD_DOT_BRIGHTNESS = 0.7;  // peak core alpha ceiling — actual per-node alpha is also scaled by score just below
-const CLOUD_DOT_MIN_BRIGHTNESS_FRACTION = 0.35; // faintest (score 0) nodes still read at this fraction of CLOUD_DOT_BRIGHTNESS
+const CLOUD_DOT_BRIGHTNESS = 0.9;  // peak core alpha ceiling — actual per-node alpha is also scaled by score just below
+const CLOUD_DOT_MIN_BRIGHTNESS_FRACTION = 0.5; // faintest (score 0) nodes still read at this fraction of CLOUD_DOT_BRIGHTNESS
 const CLOUD_DOT_BRIGHTNESS_GROWTH = 0.12;        // × sqrt(score) added on top of the floor above, capped at 1
 const CLOUD_DOT_GLOW_TIGHTNESS = 1.6; // halo radius × core radius — modest, well short of the detail dot's wide bloom haze (2.8–4×)
 // Halo peak alpha. Raised from 0.18 after measuring what it actually rendered:
@@ -940,7 +963,7 @@ const CLOUD_DOT_GLOW_TIGHTNESS = 1.6; // halo radius × core radius — modest, 
 // node people said was glowing, which is exactly what "they're still just dots"
 // was describing. Widening the radius could never fix that; the alpha was the
 // wrong dimension.
-const CLOUD_DOT_GLOW_INTENSITY = 0.42;
+const CLOUD_DOT_GLOW_INTENSITY = 0.6;
 // Floor on the halo's score term ONLY -- deliberately not applied to the core
 // dot, whose own score curve (CLOUD_DOT_MIN_BRIGHTNESS_FRACTION) is what makes
 // "few bright, many faint" read. Lifting that would flatten the hierarchy; this
@@ -963,8 +986,8 @@ const CLOUD_DOT_GLOW_INTENSITY = 0.42;
 //
 // The growth rate below is set so alpha saturates just past VU's 56, meaning
 // nothing in the current graph clamps; re-check if a node ever exceeds it.
-const CLOUD_DOT_HALO_BASE_R = 4.0;        // world units at score 0
-const CLOUD_DOT_HALO_GROWTH_R = 0.9;      // × sqrt(score) — gives a 2.7× span from smallest to VU
+const CLOUD_DOT_HALO_BASE_R = 5.5;        // world units at score 0 — wide reach, but the sprite's steep falloff keeps the light near the bulb
+const CLOUD_DOT_HALO_GROWTH_R = 1.2;      // × sqrt(score) — hubs throw more light
 const CLOUD_DOT_HALO_MIN_BRIGHTNESS = 0.5;
 const CLOUD_DOT_HALO_GROWTH_A = 0.065;    // × sqrt(score)
 // Only hubs/anchors get the soft bloom halo — everyone else is a bare
@@ -975,6 +998,9 @@ const CLOUD_DOT_HALO_GROWTH_A = 0.065;    // × sqrt(score)
 // in it at all. Score still drives how bright and how wide, via dotBrightness
 // and the core radius, so the hierarchy survives; the floor below is what stops
 // the bottom of that range collapsing to nothing.
+// Every star glows like a light again, but with a steep falloff
+// (getLightGlowSprite), so 297 of them don't sum into haze the way the old
+// even falloff did.
 const CLOUD_DOT_HALO_MIN_SCORE = 0;
 
 // Minimum ON-SCREEN halo radius, in CSS pixels, divided by globalScale at the
@@ -987,7 +1013,7 @@ const CLOUD_DOT_HALO_MIN_SCORE = 0;
 // being a floor and becomes a flattener -- at 7 it exceeded every node's halo
 // and drew all 293 identically. Sized against CLOUD_DOT_HALO_BASE_R (4.0), so
 // it only engages below zoom 1.0.
-const CLOUD_DOT_MIN_HALO_SCREEN_R = 4; // lowered from 7 once that floor was measured to exceed every node's computed halo and flatten the whole range
+const CLOUD_DOT_MIN_HALO_SCREEN_R = 8; // raised for the light glow (was 4); // lowered from 7 once that floor was measured to exceed every node's computed halo and flatten the whole range
 
 // ── Per-node breathing ──────────────────────────────────────────────────────
 // VU has pulsed since it was made the graph's sun; nothing else did, so every
@@ -1003,7 +1029,7 @@ const CLOUD_DOT_MIN_HALO_SCREEN_R = 4; // lowered from 7 once that floor was mea
 //    modulates the alpha and radius handed to stampGlowSprite -- both are
 //    drawImage arguments, so a pulsing sprite costs exactly what a still one
 //    does. The thing that made twinkle expensive no longer applies.
-const NODE_PULSE_DEPTH = 0.18;          // ±18% -- still under VU's 0.22, which should stay the most alive thing on screen. Only perceptible now that the base alpha it modulates is visible: at the old 0.044 this swung a node by 1.8/255.
+const NODE_PULSE_DEPTH = 0;   // calm at rest (was ±0.18); motion is kept for moments that mean something          // ±18% -- still under VU's 0.22, which should stay the most alive thing on screen. Only perceptible now that the base alpha it modulates is visible: at the old 0.044 this swung a node by 1.8/255.
 const NODE_PULSE_PERIOD_MIN_MS = 3400;
 const NODE_PULSE_PERIOD_SPREAD_MS = 2800;
 
@@ -1071,9 +1097,9 @@ const GLOW_SPRITE_REFERENCE_RADIUS = 64; // px — reference bitmap size; drawIm
 // Underground (56 citations) got 149px. The floor decouples the halo from the
 // citation count for small nodes without touching the big ones, which are
 // already well past it.
-const BLOOM_RADIUS_MULT = 3.4;   // was 2.8
-const BLOOM_INNER_ALPHA = 0.30;  // was 0.22
-const BLOOM_MID_ALPHA = 0.095;   // was 0.07 — scaled with INNER so the falloff shape is unchanged, just brighter
+const BLOOM_RADIUS_MULT = 2.4;   // was 3.4 — tighter, crisper
+const BLOOM_INNER_ALPHA = 0.2;   // was 0.30
+const BLOOM_MID_ALPHA = 0.063;   // scaled with INNER so the falloff shape is unchanged
 const BLOOM_MIN_RADIUS = 26;     // graph units; only binds below ~7.6 node radius (roughly the bottom half of the graph)
 
 function buildGlowSprite(build: (grad: CanvasGradient) => void, innerFraction = 0): HTMLCanvasElement {
@@ -1123,24 +1149,46 @@ function get2StopGlowSprite(glowColor: string): HTMLCanvasElement {
   return sprite;
 }
 
-// Solid opaque-color circle — the star's bright core (see drawNode below).
-// Even cheaper than a gradient sprite: no stops, just a fill.
-const solidCircleSpriteCache = new Map<string, HTMLCanvasElement>();
-function getSolidCircleSprite(hexColor: string): HTMLCanvasElement {
-  const sprite = solidCircleSpriteCache.get(hexColor);
+// A light's glow round a bulb: strong right at the bulb and falling off
+// fast, so it reads as light, not haze (a slow, even falloff is what blurs).
+const lightGlowSpriteCache = new Map<string, HTMLCanvasElement>();
+function getLightGlowSprite(glowColor: string): HTMLCanvasElement {
+  let sprite = lightGlowSpriteCache.get(glowColor);
+  if (!sprite) {
+    const at = (a: number) => glowColor.replace('0.7)', `${a})`);
+    sprite = buildGlowSprite(grad => {
+      grad.addColorStop(0, at(1));
+      grad.addColorStop(0.12, at(0.75));
+      grad.addColorStop(0.3, at(0.28));
+      grad.addColorStop(0.6, at(0.07));
+      grad.addColorStop(1, at(0));
+    });
+    lightGlowSpriteCache.set(glowColor, sprite);
+  }
+  return sprite;
+}
+
+// A lit bulb, crisp: a flat disc of the artist's own colour with a small
+// cream centre, two hard-edged circles and no gradient, so it stays sharp
+// at the tiny size the zoomed-out map draws it. Built once per colour.
+const bulbSpriteCache = new Map<string, HTMLCanvasElement>();
+function getBulbSprite(hexColor: string): HTMLCanvasElement {
+  let sprite = bulbSpriteCache.get(hexColor);
   if (!sprite) {
     const refR = GLOW_SPRITE_REFERENCE_RADIUS;
-    const size = refR * 2;
-    const canvas = document.createElement('canvas');
-    canvas.width = size;
-    canvas.height = size;
-    const octx = canvas.getContext('2d')!;
+    sprite = document.createElement('canvas');
+    sprite.width = refR * 2;
+    sprite.height = refR * 2;
+    const octx = sprite.getContext('2d')!;
+    octx.fillStyle = hexColor;
     octx.beginPath();
     octx.arc(refR, refR, refR, 0, Math.PI * 2);
-    octx.fillStyle = hexColor;
     octx.fill();
-    solidCircleSpriteCache.set(hexColor, canvas);
-    return canvas;
+    octx.fillStyle = '#fff4dc';
+    octx.beginPath();
+    octx.arc(refR, refR, refR * 0.36, 0, Math.PI * 2);
+    octx.fill();
+    bulbSpriteCache.set(hexColor, sprite);
   }
   return sprite;
 }
@@ -1264,7 +1312,7 @@ function computePhotoLabelFade(globalScale: number): number {
 // depth/region-identity, not competing for attention. One multiplier
 // applied to every realm's peak alpha (region-one/electronic/core alike) at
 // the point of use below, rather than hand-editing three separate constants.
-const CLOUD_BACKDROP_INTENSITY = 0.08;
+const CLOUD_BACKDROP_INTENSITY = 0.03; // a hint of each realm's colour, not a fog
 
 // ── Near-black background wash (cloud zoom only) ────────────────────────────
 // The page behind the (transparent) canvas has its own lighter radial
@@ -1275,8 +1323,24 @@ const CLOUD_BACKDROP_INTENSITY = 0.08;
 // covers the full canvas regardless of current pan/zoom), faded by the same
 // cloudFade as everything else so it recedes back to the normal page
 // background by FADE_ZOOM_IN — detail zoom/focus never see this at all.
-const OVERVIEW_BG_WASH_COLOR = '6, 5, 14'; // near-black deep navy, r/g/b only — alpha appended at draw time
+const OVERVIEW_BG_WASH_COLOR = '26, 21, 32'; // one flat deep ink, r/g/b only — alpha appended at draw time
 const OVERVIEW_BG_WASH_MAX_ALPHA = 0.92;
+
+// ── The realms' light ───────────────────────────────────────────────────────
+// Each realm's light scales that realm's own glow: it comes on in turn in the
+// opening (lampOn, lib/room-lights.ts), flares when the tour lights it, dims
+// on the lighting desk and swells with the music. Kept crisp and calm: no
+// pools, cones or flicker — soft layers stacked up read as blur. Each star
+// is a lit bulb, sharp (getBulbSprite); the lines are hairlines.
+const LAMP_TOUR_FLARE = 1.5;         // a realm's lamp when the tour lights it
+const LAMP_TOUR_REST = 0.45;         // the others meanwhile
+const LISTEN_LAMP_SWELL = 1.4;       // a playing realm's lamp at full volume, over its rest
+const LISTEN_EDGE_ALPHA = 0.7;       // the playing artist's lines at full volume
+const LISTEN_GLOW_PX = 34;           // the playing star's swell at full volume, css px
+// The resting web and the Velvet Underground's strands: straight, crisp
+// hairlines in one muted tint (the realm colour lives in the stars).
+const WIRE_RGB = '205, 194, 214';
+const WIRE_STRAND_RGB = '236, 222, 200';
 
 // ── Decorative dust starfield (cloud zoom only) ─────────────────────────────
 // ~106 real artist nodes can't fill a "hundreds of tiny stars" starfield on
@@ -1296,22 +1360,20 @@ const DUST_STAR_COUNT_TOUCH = 150;
 const DUST_STAR_MIN_R = 0.4;             // world units
 const DUST_STAR_MAX_R = 1.3;             // world units
 const DUST_STAR_MIN_ALPHA = 0.06;
-const DUST_STAR_MAX_ALPHA = 0.55;
+const DUST_STAR_MAX_ALPHA = 0.32;
 const DUST_STAR_TINT_FRACTION = 0.12;    // fraction of stars given a faint realm tint instead of pale white
 const DUST_STAR_CLUSTER_SPREAD = 1.6;    // × realm ellipse radius — how far dust scatters from its realm's home position
-const DUST_STAR_PALE_COLOR = '#F4F2FF';  // most stars — pale white/lavender, not realm-colored
+const DUST_STAR_PALE_COLOR = '#F3DFC0';  // most motes — warm dust caught in the light, not realm-colored
 const DUST_STAR_ELECTRONIC_TINT = '#C77DD1'; // representative electronic tint for the rare tinted dust star (krautrock hex from LINEAGE_COLORS)
 const DUST_STAR_FOLK_TINT = '#8CAA52'; // representative folk tint for the rare tinted dust star (freak-folk hex from FOLK_LINEAGE_COLORS)
 const DUST_STAR_EMO_TINT = '#B02E2E'; // representative emo tint for the rare tinted dust star (post-hardcore hex from EMO_LINEAGE_COLORS)
 const DUST_STAR_POSTROCK_TINT = '#6B3FA0'; // representative post-rock tint for the rare tinted dust star (post-rock hex from POSTROCK_LINEAGE_COLORS)
 const DUST_STAR_AMERICAN_UNDERGROUND_TINT = '#B85C2E'; // representative american-underground tint for the rare tinted dust star (college-rock hex from AMERICAN_UNDERGROUND_LINEAGE_COLORS)
-// Twinkle: alpha oscillates between TWINKLE_FLOOR and 1× a star's own base
-// alpha — never fully dark, so it reads as a shimmer, not a blink. Distinct
-// min/max period per star (not one shared period) is what keeps 450 stars
-// from breathing in visible lockstep — see DustStar's own comment.
-const DUST_STAR_TWINKLE_FLOOR = 0.15;
-const DUST_STAR_TWINKLE_PERIOD_MIN_MS = 1100;
-const DUST_STAR_TWINKLE_PERIOD_MAX_MS = 2800;
+// Each star still carries a twinkle period and phase (see DustStar), but the
+// sheet is drawn still now — calm at rest.
+const DUST_STAR_TWINKLE_PERIOD_MIN_MS = 2200;
+const DUST_STAR_TWINKLE_PERIOD_MAX_MS = 5200;
+
 
 interface DustStar {
   x: number;
@@ -2127,7 +2189,7 @@ export default function ForceGraphCanvas({
       for (let tries = 0; tries < 6 && clash(); tries++) y += h + 4 * px;
       placed.push({ x: n.x, y, w, h });
       ctx.globalAlpha = alpha * LABEL_CHIP_MAX_ALPHA;
-      ctx.fillStyle = 'rgb(14, 11, 26)';
+      ctx.fillStyle = 'rgb(31, 22, 32)';
       drawRoundedRect(ctx, n.x - w / 2, y - h / 2, w, h, LABEL_CHIP_RADIUS * px);
       ctx.fill();
       ctx.globalAlpha = alpha;
@@ -2214,6 +2276,16 @@ export default function ForceGraphCanvas({
         ctx.arc(pulse.x, pulse.y, (14 + 36 * p) * px, 0, Math.PI * 2);
         ctx.stroke();
       }
+      ctx.restore();
+    }
+
+    // The sky listens: whoever's playing swells with the song.
+    const playing = storyFrame.playing ? nodeAt(storyFrame.playing) : null;
+    const playingNode = storyFrame.playing ? introNodesRef.current.get(storyFrame.playing) : undefined;
+    if (playing && playingNode && storyFrame.level > 0.02) {
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter';
+      drawNodeGlow(ctx, playing.x, playing.y, (14 + LISTEN_GLOW_PX * storyFrame.level) * px, resolveNodeGlow(playingNode), 0.25 + 0.55 * storyFrame.level);
       ctx.restore();
     }
 
@@ -2390,9 +2462,11 @@ export default function ForceGraphCanvas({
 
       labels.push({
         realm,
-        text: REALM_LABELS[realm as keyof typeof REALM_LABELS].toUpperCase(),
-        shortText: REALM_LABELS_SHORT[realm as keyof typeof REALM_LABELS_SHORT].toUpperCase(),
-        color: REALM_COLORS[realm as keyof typeof REALM_COLORS],
+        text: REALM_LABELS[realm as keyof typeof REALM_LABELS],
+        shortText: REALM_LABELS_SHORT[realm as keyof typeof REALM_LABELS_SHORT],
+        // Written on the wall: the realm's colour, chalked toward cream so it
+        // reads on the dusk room.
+        color: wallInk(REALM_COLORS[realm as keyof typeof REALM_COLORS]),
         x: ux * dist,
         y: uy * dist,
       });
@@ -3315,7 +3389,12 @@ export default function ForceGraphCanvas({
       const realmSolo = storyFrame.realms >= 0 && storyFrame.realms < REALM_SOLO_SHARE
         ? REALM_SOLO_DIM + (1 - REALM_SOLO_DIM) * realmLitAt(realmOrder, n.realm, storyFrame.realms)
         : 1;
-      const dimFactor = (isDimmed ? dimLevelRef.current : 1.0) * introFade(n.id) * realmSolo;
+      // The lighting desk: a realm pulled down dims back, on the overview
+      // only (a family or a path shows across realms whatever the desk says).
+      const desk = selectedId === null && highlightSetMemberSet.size === 0 && pathSet.size === 0
+        ? deskLevelOf(n.realm)
+        : 1;
+      const dimFactor = (isDimmed ? dimLevelRef.current : 1.0) * introFade(n.id) * realmSolo * desk;
       // Photo/label fade — its own unbiased curve/threshold (see
       // PHOTO_LABEL_FADE_OUT_ZOOM/computePhotoLabelFade above), NOT zoomFade
       // — reaches exactly 0 at/below that threshold (photo dissolves fully;
@@ -3483,7 +3562,7 @@ export default function ForceGraphCanvas({
           const innerAlpha = Math.min(baseInnerAlpha * pulseMult, 1);
           const midAlpha = Math.min(baseMidAlpha, 1);
           const grad = ctx.createRadialGradient(n.x, n.y, erOverview * 0.15, n.x, n.y, bloomR);
-          grad.addColorStop(0,    `rgba(255, 250, 235, ${innerAlpha})`);
+          grad.addColorStop(0,    `rgba(255, 236, 200, ${innerAlpha})`);
           grad.addColorStop(0.3,  glow.replace('0.7)', `${innerAlpha})`));
           grad.addColorStop(0.6,  glow.replace('0.7)', `${midAlpha})`));
           grad.addColorStop(1,    glow.replace('0.7)', '0)'));
@@ -3619,7 +3698,7 @@ export default function ForceGraphCanvas({
             ) * pulseMult;
             const vuHaloAlpha = Math.min(VU_HALO_ALPHA * fadeAndDim * pulseMult, 1);
             const vuGrad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, vuHaloR);
-            vuGrad.addColorStop(0,    `rgba(255, 250, 235, ${vuHaloAlpha})`);
+            vuGrad.addColorStop(0,    `rgba(255, 236, 200, ${vuHaloAlpha})`);
             vuGrad.addColorStop(0.35, glow.replace('0.7)', `${vuHaloAlpha})`));
             vuGrad.addColorStop(1,    glow.replace('0.7)', '0)'));
             // ctx.globalAlpha is still whatever the "Outer bloom haze" block
@@ -3660,7 +3739,7 @@ export default function ForceGraphCanvas({
                 * cloudDotFade * dimFactor * hoverCloudBoost * pulse,
             );
             // Halo stays additive — that's what makes it read as glowing light.
-            stampGlowSprite(ctx, get2StopGlowSprite(glow), n.x, n.y, haloR, haloAlpha);
+            stampGlowSprite(ctx, getLightGlowSprite(glow), n.x, n.y, haloR, haloAlpha);
           }
           // Core switches to normal blending — additive was stacking with the
           // halo above AND the nebula glow underneath, which for any node
@@ -3677,7 +3756,7 @@ export default function ForceGraphCanvas({
           // VU should read as solid, saturated gold, not 70%-see-through.
           const coreR = vuSpecialActive ? Math.max(dotCoreR * 1.4, VU_MIN_CORE_SCREEN_R / globalScale) : dotCoreR;
           const coreAlpha = vuSpecialActive ? Math.min(fadeAndDim, 1) : dotBrightness;
-          stampGlowSprite(ctx, getSolidCircleSprite(color), n.x, n.y, coreR, coreAlpha);
+          stampGlowSprite(ctx, getBulbSprite(color), n.x, n.y, coreR, coreAlpha);
 
           ctx.restore();
         }
@@ -4002,6 +4081,29 @@ export default function ForceGraphCanvas({
         // none -- hiding the direction exactly when the whole path is on
         // screen would defeat the point.
         drawInfluenceArrow(ctx, sx, sy, tx, ty, hopColor, ARROW_SIZE_PATH, hopAlpha);
+
+        // "Play the road": light travelling along the road to the next stop,
+        // in the road's own direction whichever way this line's influence ran.
+        const road = storyFrame.roadFlow;
+        if (road && road.t > 0 && road.t < 1 && ((srcId === road.from && tgtId === road.to) || (srcId === road.to && tgtId === road.from))) {
+          const [ax, ay, bx, by] = srcId === road.from ? [sx, sy, tx, ty] : [tx, ty, sx, sy];
+          const head = road.t;
+          const tail = Math.max(0, head - 0.22);
+          const hx = ax + (bx - ax) * head;
+          const hy = ay + (by - ay) * head;
+          ctx.beginPath();
+          ctx.moveTo(ax + (bx - ax) * tail, ay + (by - ay) * tail);
+          ctx.lineTo(hx, hy);
+          ctx.strokeStyle = '#fff4d6';
+          ctx.globalAlpha = 0.95;
+          ctx.lineWidth = 3.4;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+          ctx.globalCompositeOperation = 'lighter';
+          drawNodeGlow(ctx, hx, hy, 30 / globalScale, 'rgba(255, 236, 190, 0.7)', 1);
+          ctx.globalCompositeOperation = 'source-over';
+          ctx.globalAlpha = 1;
+        }
       } else if (isFocusEdge && focusedNode) {
         // The family view's lines (see FAMILY_LAYOUT): warm to a musical
         // parent, cool to a musical child. Each draws itself in from the
@@ -4100,32 +4202,14 @@ export default function ForceGraphCanvas({
         // idle look every other edge gets by FADE_ZOOM_IN, contradicting
         // the "looks identical to any other idle edge" comment just above.
         const coreEdgeAlpha = (CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM + (EDGE_IDLE_ALPHA - CORE_EDGE_THREAD_ALPHA_AT_CLOUD_ZOOM) * ghostEdgeFade) * evidenceMult;
-        // The glow is a wide, fainter underlay stroke — NOT ctx.shadowBlur.
-        //
-        // shadowBlur is the most expensive primitive in Canvas 2D (it forces
-        // an offscreen blur pass per draw), and this branch runs for all 126
-        // core-touching edges on every frame at cloud zoom AND throughout
-        // genre/scene set mode, where ghostEdgeFade is 0 so the blur ran at
-        // full strength. That was the whole reason set mode felt like ~20fps
-        // while click-focus felt like 60: click-focus sets ghostEdgeFade to 1
-        // and skips this branch entirely, so it never paid the cost.
-        //
-        // Two plain strokes cost essentially nothing and read the same at
-        // these alphas — the thread tops out at 0.015 opacity, so the blur
-        // was buying a barely-perceptible softening at an enormous price.
-        // CORE_EDGE_THREAD_GLOW_BLUR is reused as the width delta so the
-        // existing tuning constant still means "how soft is this filament."
-        // Do not reintroduce shadowBlur here.
-        const glowSpread = CORE_EDGE_THREAD_GLOW_BLUR * (1 - ghostEdgeFade);
+        // One plain stroke. Never ctx.shadowBlur here: it forces an offscreen
+        // blur per draw, runs for every core-touching edge each frame, and
+        // once made set mode feel like ~20fps.
+        // Crisp, no underlay: glows stacked up read as blur.
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
-        if (glowSpread > 0) {
-          ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${(coreEdgeAlpha * CORE_EDGE_THREAD_GLOW_ALPHA_FRACTION).toFixed(4)})`);
-          ctx.lineWidth = EDGE_IDLE_WIDTH + glowSpread;
-          ctx.stroke();
-        }
-        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${coreEdgeAlpha.toFixed(3)})`);
+        ctx.strokeStyle = `rgba(${WIRE_STRAND_RGB}, ${coreEdgeAlpha.toFixed(3)})`;
         ctx.lineWidth = EDGE_IDLE_WIDTH;
         ctx.stroke();
       } else {
@@ -4144,11 +4228,28 @@ export default function ForceGraphCanvas({
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
-        ctx.strokeStyle = edgeColor.replace(/[\d.]+\)$/, `${idleEdgeAlpha.toFixed(3)})`);
+        ctx.strokeStyle = `rgba(${WIRE_RGB}, ${idleEdgeAlpha.toFixed(3)})`;
         ctx.lineWidth = EDGE_IDLE_WIDTH;
         ctx.stroke();
       }
 
+
+      // The sky listens: whoever's playing, their lines pulse with the song.
+      const playingId = storyFrame.playing;
+      // With a road on screen, only the road's own lines move with the music.
+      if (playingId && (srcId === playingId || tgtId === playingId) && storyFrame.level > 0.02
+          && (pathSet.size === 0 || isPathEdge)) {
+        const pulse = storyFrame.level;
+        ctx.beginPath();
+        ctx.moveTo(sx, sy);
+        ctx.lineTo(tx, ty);
+        ctx.strokeStyle = '#fff1d0';
+        ctx.globalAlpha = LISTEN_EDGE_ALPHA * pulse * Math.max(edgeFade, 0.35);
+        ctx.lineWidth = (1 + 2.2 * pulse) / globalScale;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
 
       // The opening's closing wave (storyFrame.wave): every line lights as it
       // reaches it, spreading outward from the Velvet Underground, then
@@ -4296,6 +4397,9 @@ export default function ForceGraphCanvas({
     const introOn = applyIntroLayout();
     if (introOn) drawIntroRecord(ctx, globalScale);
 
+    const now = performance.now();
+    const steady = prefersReducedMotionRef.current;
+
     const isFocusModeActive = selectedId !== null || highlightSetMemberSet.size > 0;
     if (isFocusModeActive) return; // focus nodes stay solid — no clouds, per the two-mode split
 
@@ -4317,37 +4421,62 @@ export default function ForceGraphCanvas({
     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.restore();
 
+    // ── The realms' lamps ──
+    // How far each realm's light is up: switching on in turn in the opening,
+    // the tour lighting one realm at a time, the lighting desk, the music.
+    const lampOrder = ['core', ...realmOrder];
+    const lampLevel = new Map<string, number>();
+    lampOrder.forEach((realm, i) => {
+      const on = lampOn(storyFrame.lamps, i, lampOrder.length, now, steady);
+      const lit = realmLitAt(realmOrder, realm, storyFrame.realms);
+      const tour = storyFrame.realms < 0 ? 1 : lit > 0 ? 1 + (LAMP_TOUR_FLARE - 1) * lit : LAMP_TOUR_REST;
+      lampLevel.set(realm, on * tour * deskLevelOf(realm));
+    });
+    // The sky listens: the realm of whoever's playing breathes with the song.
+    const playingRealm = storyFrame.playing ? introNodesRef.current.get(storyFrame.playing)?.realm : undefined;
+    if (playingRealm && lampLevel.has(playingRealm)) {
+      lampLevel.set(playingRealm, lampLevel.get(playingRealm)! * (1 + LISTEN_LAMP_SWELL * storyFrame.level));
+    }
     // One shared additive context for every realm-tagged node's individual
     // glow — order between realms doesn't matter ('lighter' is commutative),
     // so core/region-one/electronic can all draw into the same save/restore.
     ctx.save();
     ctx.globalCompositeOperation = 'lighter'; // additive — overlapping glow brightens and merges, never washes out
 
+    // Each realm's light scales its own glow: during the record it keeps its
+    // look, and hands over as the record becomes the map.
+    const lampOf = (realm: string | undefined) => {
+      const l = realm ? lampLevel.get(realm) ?? 1 : 1;
+      return introOn ? 1 + (l - 1) * storyFrame.morph : l;
+    };
     const cloudBackdropFade = cloudFade * CLOUD_BACKDROP_INTENSITY;
     for (const n of stableData.nodes) {
       if (n.x === undefined || n.y === undefined) continue;
       if (introOn && !isRevealed(n.id)) continue;
+      const lamp = lampOf(n.realm);
+      if (lamp <= 0.01) continue;
+      const cloudBackdropFadeLit = cloudBackdropFade * lamp;
       if (n.realm === 'core') {
-        drawCoreNodeGlow(ctx, n.x, n.y, CORE_NODE_GLOW_RADIUS, CORE_NODE_GLOW_PEAK_ALPHA * cloudBackdropFade);
+        drawCoreNodeGlow(ctx, n.x, n.y, CORE_NODE_GLOW_RADIUS, CORE_NODE_GLOW_PEAK_ALPHA * cloudBackdropFadeLit);
       } else if (n.realm === 'region-one') {
-        drawNodeGlow(ctx, n.x, n.y, REGION_ONE_NODE_GLOW_RADIUS, REGION_ONE_CLOUD_GLOW, REGION_ONE_NODE_GLOW_PEAK_ALPHA * cloudBackdropFade);
+        drawNodeGlow(ctx, n.x, n.y, REGION_ONE_NODE_GLOW_RADIUS, REGION_ONE_CLOUD_GLOW, REGION_ONE_NODE_GLOW_PEAK_ALPHA * cloudBackdropFadeLit);
       } else if (n.realm === 'electronic') {
         // Each node's own real lineage color — same source the old ghost
         // hubs used, now applied to every electronic node, not just the
         // top few by influenceScore.
-        drawNodeGlow(ctx, n.x, n.y, ELECTRONIC_NODE_GLOW_RADIUS, resolveNodeGlow(n), ELECTRONIC_NODE_GLOW_PEAK_ALPHA * cloudBackdropFade);
+        drawNodeGlow(ctx, n.x, n.y, ELECTRONIC_NODE_GLOW_RADIUS, resolveNodeGlow(n), ELECTRONIC_NODE_GLOW_PEAK_ALPHA * cloudBackdropFadeLit);
       } else if (n.realm === 'folk-confessional') {
         // Same per-node-own-lineage-color pattern as electronic above.
-        drawNodeGlow(ctx, n.x, n.y, FOLK_NODE_GLOW_RADIUS, resolveNodeGlow(n), FOLK_NODE_GLOW_PEAK_ALPHA * cloudBackdropFade);
+        drawNodeGlow(ctx, n.x, n.y, FOLK_NODE_GLOW_RADIUS, resolveNodeGlow(n), FOLK_NODE_GLOW_PEAK_ALPHA * cloudBackdropFadeLit);
       } else if (n.realm === 'emo-posthardcore') {
         // Same per-node-own-lineage-color pattern as electronic/folk above.
-        drawNodeGlow(ctx, n.x, n.y, EMO_NODE_GLOW_RADIUS, resolveNodeGlow(n), EMO_NODE_GLOW_PEAK_ALPHA * cloudBackdropFade);
+        drawNodeGlow(ctx, n.x, n.y, EMO_NODE_GLOW_RADIUS, resolveNodeGlow(n), EMO_NODE_GLOW_PEAK_ALPHA * cloudBackdropFadeLit);
       } else if (n.realm === 'post-rock-drone-noise') {
         // Same per-node-own-lineage-color pattern as electronic/folk/emo above.
-        drawNodeGlow(ctx, n.x, n.y, POSTROCK_NODE_GLOW_RADIUS, resolveNodeGlow(n), POSTROCK_NODE_GLOW_PEAK_ALPHA * cloudBackdropFade);
+        drawNodeGlow(ctx, n.x, n.y, POSTROCK_NODE_GLOW_RADIUS, resolveNodeGlow(n), POSTROCK_NODE_GLOW_PEAK_ALPHA * cloudBackdropFadeLit);
       } else if (n.realm === 'american-underground') {
         // Same per-node-own-lineage-color pattern as electronic/folk/emo/post-rock above.
-        drawNodeGlow(ctx, n.x, n.y, AMERICAN_UNDERGROUND_NODE_GLOW_RADIUS, resolveNodeGlow(n), AMERICAN_UNDERGROUND_NODE_GLOW_PEAK_ALPHA * cloudBackdropFade);
+        drawNodeGlow(ctx, n.x, n.y, AMERICAN_UNDERGROUND_NODE_GLOW_RADIUS, resolveNodeGlow(n), AMERICAN_UNDERGROUND_NODE_GLOW_PEAK_ALPHA * cloudBackdropFadeLit);
       }
     }
 
@@ -4368,18 +4497,16 @@ export default function ForceGraphCanvas({
     // is scattered round the realms' places in the atlas, so during the
     // opening it waits for the atlas to arrive.
     const dustFade = cloudFade * (introOn ? storyFrame.morph : 1);
-    const twinkleNow = performance.now();
     for (const star of dustStars) {
-      const twinkle = DUST_STAR_TWINKLE_FLOOR
-        + (1 - DUST_STAR_TWINKLE_FLOOR) * (0.5 + 0.5 * Math.sin(twinkleNow / star.twinklePeriodMs * Math.PI * 2 + star.twinklePhase));
-      ctx.globalAlpha = star.alpha * dustFade * twinkle;
+      // Still: a calm sheet, not a shimmer.
+      ctx.globalAlpha = star.alpha * dustFade;
       ctx.beginPath();
       ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
       ctx.fillStyle = star.color;
       ctx.fill();
     }
     ctx.restore();
-  }, [stableData.nodes, dustStars, selectedId, highlightSetMemberSet, applyIntroLayout, drawIntroRecord, isRevealed]);
+  }, [stableData.nodes, dustStars, selectedId, highlightSetMemberSet, applyIntroLayout, drawIntroRecord, isRevealed, realmOrder]);
 
   // ── Deferred label placement + rendering ─────────────────────────────────
   // Called after every node has been drawn — nodeCirclesRef holds ALL circles.
@@ -4476,14 +4603,12 @@ export default function ForceGraphCanvas({
       // than from a media query, so the text can never disagree with the
       // geometry it is about to be measured against.
       //
-      // Font stack is the literal one the artist labels use below: next/font
-      // mangles the generated family name (__Fraunces_xxxx) so the display face
-      // cannot be named reliably from canvas, and uppercase sans reads as map
-      // chrome here anyway, which is what these are.
+      // Hand-lettered on the wall, in the panel's marker face; its real family
+      // name is read off the page (markerFontFamily), since next/font renames it.
       const dprForLabels = globalScale > 0 && tf.a > 0 ? tf.a / globalScale : 1;
       const narrowLabels = ctx.canvas.width / dprForLabels < NARROW_LABEL_MAX_WIDTH;
       const labelPx = narrowLabels ? REALM_LABEL_SCREEN_PX_NARROW : REALM_LABEL_SCREEN_PX;
-      ctx.font = `600 ${labelPx / globalScale}px Inter, sans-serif`;
+      ctx.font = `${(labelPx * REALM_LABEL_MARKER_SCALE) / globalScale}px ${markerFontFamily()}`;
 
       const halfW = tf.a > 0 ? (ctx.canvas.width / 2) / tf.a : Infinity;
       const halfH = tf.d > 0 ? (ctx.canvas.height / 2) / tf.d : Infinity;
@@ -4517,7 +4642,13 @@ export default function ForceGraphCanvas({
       const reserved: { x0: number; y0: number; x1: number; y1: number }[] = [
         { x0: 0, y0: 0, x1: 175 * dpr, y1: 58 * dpr },                    // Jump to...
         { x0: cw - 330 * dpr, y0: 0, x1: cw, y1: 62 * dpr },              // Find artist
-        { x0: 0, y0: ch - 108 * dpr, x1: 250 * dpr, y1: ch },             // Evidence filter
+        // The lighting desk (with the evidence switch), at its real size.
+        {
+          x0: 0,
+          y0: ch - ((storyFrame.deskBox?.h ?? 78) + 30) * dpr,
+          x1: ((storyFrame.deskBox?.w ?? 220) + 30) * dpr,
+          y1: ch,
+        },
       ];
 
       realmLabels.forEach(label => {
@@ -4577,7 +4708,7 @@ export default function ForceGraphCanvas({
           drawNodeGlow(ctx, lx, ly, 70 / globalScale, glowRgba, 0.6 * lit);
           ctx.globalCompositeOperation = 'source-over';
         }
-        ctx.globalAlpha = Math.max(realmLabelAlpha, lit);
+        ctx.globalAlpha = Math.max(realmLabelAlpha * deskLevelOf(label.realm), lit);
         ctx.fillStyle = label.color;
         ctx.fillText(text, lx, ly);
       });
@@ -4700,13 +4831,13 @@ export default function ForceGraphCanvas({
       // rect placement already computed for collision avoidance, so the
       // chip always exactly matches what the search reasoned about.
       const textColor = bright
-        ? `rgba(237,234,247,${(alpha * 0.92).toFixed(3)})`
-        : `rgba(237,234,247,${(alpha * 0.6).toFixed(3)})`;
+        ? `rgba(246,236,220,${(alpha * 0.92).toFixed(3)})`
+        : `rgba(246,236,220,${(alpha * 0.6).toFixed(3)})`;
 
       // Scaled by alpha, not fixed — otherwise the chip stays at full
       // strength even once the glyph itself has faded to invisible, leaving
       // a dark smudge where a "no labels" cloud-zoom label used to be.
-      ctx.fillStyle = `rgba(10, 8, 22, ${(alpha * LABEL_CHIP_MAX_ALPHA).toFixed(3)})`;
+      ctx.fillStyle = `rgba(31, 22, 32, ${(alpha * LABEL_CHIP_MAX_ALPHA).toFixed(3)})`;
       drawRoundedRect(
         ctx,
         lx - textW / 2 - padH, ly - textH / 2 - padV,

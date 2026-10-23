@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { setTodayOpen, storyCamera } from '@/lib/story-store';
+import { markTodaySeen, setTodayOpen, storyCamera } from '@/lib/story-store';
 
 // Closing it lets go of the camera's lean toward it, back to the whole map.
 const close = () => {
@@ -21,6 +21,9 @@ const MARGIN_PX = 12; // kept clear of the screen's edges
 
 export default function TodayStar({ record, onListen }: { record: RecordCard; onListen: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
+
+  // Once it's been up, it's been seen for today.
+  useEffect(() => { markTodaySeen(); }, []);
 
   useEffect(() => {
     let raf = 0;
@@ -63,6 +66,10 @@ export default function TodayStar({ record, onListen }: { record: RecordCard; on
 
   return (
     <div ref={ref} className="today-tag" role="group" aria-label={`Today's record: ${record.name}`}>
+      {/* A ticket for today: the stub carries the date. */}
+      <span className="today-tag__stub" aria-hidden suppressHydrationWarning>
+        {new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
+      </span>
       <button type="button" className="today-tag__close" onClick={close} aria-label="Hide today's record">
         ×
       </button>

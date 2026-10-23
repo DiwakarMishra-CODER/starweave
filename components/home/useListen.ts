@@ -72,6 +72,7 @@ export function useListen(record: ListenRecord, { select = true }: { select?: bo
 
     first.volume = 0;
     void first.play().catch(() => {});
+    storyFrame.playing = fromParent ? fromParent.other.id : record.id;
     setNow(fromParent
       ? { name: fromParent.other.name, track: fromParent.other.previewTrack }
       : { name: record.name, track: record.previewTrack });
@@ -85,6 +86,7 @@ export function useListen(record: ListenRecord, { select = true }: { select?: bo
       second?.pause();
       storyFrame.flow = null;
       storyFrame.level = 0;
+      storyFrame.playing = null;
       setNow(null);
       stopRef.current = () => {};
     };
@@ -101,6 +103,7 @@ export function useListen(record: ListenRecord, { select = true }: { select?: bo
         second.volume = 0;
         void second.play().catch(() => {});
         playing = second;
+        storyFrame.playing = record.id;
         setNow({ name: record.name, track: record.previewTrack });
       }
       if (playing.volume < VOLUME) playing.volume = Math.min(VOLUME, playing.volume + FADE_STEP);

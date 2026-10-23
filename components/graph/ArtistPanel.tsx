@@ -16,11 +16,11 @@ import { whyFor } from '@/lib/home-story';
 import { storyCamera } from '@/lib/story-store';
 
 // The artist panel is a page from a cut-and-paste fan zine: their photo taped
-// on, their name with a highlighter swipe behind it, who they are in a couple
-// of sentences, a pocket radio that plays their song and tunes through their
-// musical family (RadioDial) with buttons out to the streaming apps, their own
-// words on a torn cutting, the record to start with, and who inspired them and
-// who they inspired. Printed in one spot colour, their realm's, on
+// on, their name with a highlighter swipe behind it, then straight away a
+// pocket radio that plays their song and tunes through their musical family
+// (RadioDial) with buttons out to the streaming apps, who they are in one
+// sentence and the way to their full page, their own words on a torn cutting,
+// the record to start with, and who inspired them and who they inspired. Printed in one spot colour, their realm's, on
 // photocopied paper.
 //
 // The look must never get in the way of using it: the full page, the songs
@@ -44,14 +44,30 @@ interface Props {
   onSelectArtist: (id: string) => void;
 }
 
-// The panel is a quick peek, not the full read — keep only the first couple
-// of sentences so there's a reason to visit the full artist page.
-function truncateBio(bio: string, maxSentences: number): { text: string; truncated: boolean } {
-  const sentences = bio.match(/[^.!?]+[.!?]+(?:\s+|$)/g);
-  if (!sentences || sentences.length <= maxSentences) {
-    return { text: bio.trim(), truncated: false };
+// The panel is a quick peek, not the full read: one sentence, and never so
+// long that it pushes the player out of view. The full page has the rest.
+const BIO_MAX_CHARS = 170;
+
+// Where the first sentence ends: a full stop (or ! or ?) followed by a space
+// and a capital, not just any full stop — "U.S. state", "A.G. Cook" or
+// "St. Vincent" would otherwise end it after a letter or two.
+const SENTENCE_END = /[.!?]["”’)]?\s+(?=["“(]?[A-Z0-9])/g;
+const NOT_AN_END = /^(?:[A-Z]|Mr|Mrs|Ms|Dr|St|Jr|Sr|vs|Vol|No)$/;
+function firstSentence(text: string): string {
+  SENTENCE_END.lastIndex = 0;
+  let m: RegExpExecArray | null;
+  while ((m = SENTENCE_END.exec(text))) {
+    const word = text.slice(0, m.index).split(/\s+/).pop() ?? '';
+    // Initials ("A.G.", "U.S.") and short titles ("St.") don't end a sentence.
+    if (!word.includes('.') && !NOT_AN_END.test(word)) return text.slice(0, m.index + m[0].trimEnd().length);
   }
-  return { text: sentences.slice(0, maxSentences).join('').trim(), truncated: true };
+  return text;
+}
+function shortBio(bio: string): string {
+  const first = firstSentence(bio.trim());
+  if (first.length <= BIO_MAX_CHARS) return first;
+  const cut = first.slice(0, BIO_MAX_CHARS);
+  return `${cut.slice(0, cut.lastIndexOf(' ')).replace(/[,;:—–-]+$/, '')}…`;
 }
 
 // One name in either list. `other` is whichever end of the edge isn't the
@@ -225,7 +241,7 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
   const genreMap = Object.fromEntries(graphData.genres.map(g => [g.id, g.name]));
 
   const color = artist ? resolveNodeColor(artist) : undefined;
-  const bioPreview = artist?.bio ? truncateBio(artist.bio, 2) : null;
+  const bioPreview = artist?.bio ? shortBio(artist.bio) : null;
   const album = artist?.classicAlbums?.[0];
 
   return (
@@ -373,14 +389,8 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
               ))}
             </p>
 
-            {/* Who they are, first, then the way to everything else. */}
-            {bioPreview && <p className="zine__intro">{bioPreview.text}</p>}
-            <Link href={`/artist/${artist.id}`} className="zine__fullpage">
-              Full artist page <span aria-hidden>→</span>
-            </Link>
-
-            {/* Their song, and their musical family, on a pocket radio; the
-                whole songs on the apps. */}
+            {/* Their song first, up front: the pocket radio, and the whole
+                songs on the apps. */}
             <section className="zine__radio">
               <h3 className="zine__marker">Listen</h3>
               <RadioDial
@@ -395,6 +405,12 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                 </div>
               )}
             </section>
+
+            {/* Who they are, in a sentence, and the way to the rest. */}
+            {bioPreview && <p className="zine__intro">{bioPreview}</p>}
+            <Link href={`/artist/${artist.id}`} className="zine__fullpage">
+              Full artist page <span aria-hidden>→</span>
+            </Link>
 
             {/* Their own words, on a torn cutting. */}
             {why && (
