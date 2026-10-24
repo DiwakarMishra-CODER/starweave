@@ -963,7 +963,7 @@ const CLOUD_DOT_GLOW_TIGHTNESS = 1.6; // halo radius × core radius — modest, 
 // node people said was glowing, which is exactly what "they're still just dots"
 // was describing. Widening the radius could never fix that; the alpha was the
 // wrong dimension.
-const CLOUD_DOT_GLOW_INTENSITY = 0.6;
+const CLOUD_DOT_GLOW_INTENSITY = 0.72; // 0.6 -> 0.72 when the owner asked for the stars to glow a bit more
 // Floor on the halo's score term ONLY -- deliberately not applied to the core
 // dot, whose own score curve (CLOUD_DOT_MIN_BRIGHTNESS_FRACTION) is what makes
 // "few bright, many faint" read. Lifting that would flatten the hierarchy; this
@@ -1029,9 +1029,67 @@ const CLOUD_DOT_MIN_HALO_SCREEN_R = 8; // raised for the light glow (was 4); // 
 //    modulates the alpha and radius handed to stampGlowSprite -- both are
 //    drawImage arguments, so a pulsing sprite costs exactly what a still one
 //    does. The thing that made twinkle expensive no longer applies.
-const NODE_PULSE_DEPTH = 0;   // calm at rest (was ±0.18); motion is kept for moments that mean something          // ±18% -- still under VU's 0.22, which should stay the most alive thing on screen. Only perceptible now that the base alpha it modulates is visible: at the old 0.044 this swung a node by 1.8/255.
+//
+// Fairy lights: each star's glow swells and dims on its own clock, like a
+// string of old bulbs. Back on (it was 0 for a calm-at-rest pass) because the
+// owner wants the map to feel alive -- and big enough to actually be seen.
+// The glow's brightness swings the most, its size a little, the bulb itself
+// a little: a flicker of light, not stars changing size.
+const NODE_PULSE_DEPTH = 0.5;          // the glow's brightness, ±50%
+const NODE_PULSE_RADIUS_DEPTH = 0.28;  // the glow's size, ±28% -- the breath
+const NODE_PULSE_BULB_DEPTH = 0.3;     // the bulb's brightness, ±30%
 const NODE_PULSE_PERIOD_MIN_MS = 3400;
 const NODE_PULSE_PERIOD_SPREAD_MS = 2800;
+
+// ── The Velvet Underground's heartbeat ──────────────────────────────────────
+// Every second breath of VU's pulse, light leaves it and runs down the
+// influence lines one generation at a time: the artists it shaped light up,
+// then the artists THEY shaped, and so on (4 generations reach 238 of 297
+// artists). The wave follows the real family tree, not distance on the map.
+// It launches on the peak of VU's own breath, so the two read as one beat.
+// Each star flares quickly and fades slowly, like a bulb on a dimmer.
+// Overview only, and it rests while a family, set, road, the opening or the
+// tour is on screen (see the ambient level in handleRenderFramePre). When the
+// map comes back to rest -- first load, or a family closing -- the clock
+// restarts so the first wave leaves straight away instead of whenever the
+// cycle happens to come round: people shouldn't have to wait to see it.
+const HEARTBEAT_PERIOD_MS = VU_PULSE_PERIOD_MS * 2;
+const HEARTBEAT_WAKE_DELAY_MS = 350;   // first wave, this long after the map is at rest
+const HEARTBEAT_HOP_MS = 650;          // one generation to the next
+const HEARTBEAT_RISE_MS = 200;
+const HEARTBEAT_FADE_MS = 1600;
+const HEARTBEAT_DOT_SIZE_LIFT = 0.75;  // the bulb grows by up to 75%...
+const HEARTBEAT_HALO_SIZE_LIFT = 1.3;  // ...its glow by up to 130%...
+const HEARTBEAT_HALO_ALPHA = 1;        // ...and the glow climbs toward full
+const HEARTBEAT_VU_LIFT = 0.65;        // VU's own flare as each wave leaves
+const HEARTBEAT_SPARK_ALPHA = 1;       // the light running down a line
+const HEARTBEAT_SPARK_WIDTH_PX = 2;    // screen pixels
+const HEARTBEAT_SPARK_TAIL = 0.4;      // tail length, as a share of the line
+// How long the heartbeat and fairy lights take to come back (or rest) when a
+// family closes (or opens) -- so they ease rather than pop.
+const AMBIENT_EASE_MS = 600;
+// The wave holds while someone is pointing around the map (it ran through
+// their hover highlights), and leaves again once the pointer has been still
+// this long. The first wave after the map comes to rest always plays in full
+// -- it's the moment that shows the map is alive. The fairy lights never hold.
+const HEARTBEAT_STILL_MS = 2000;
+const HEARTBEAT_HOLD_FADE_MS = 400;
+const HEARTBEAT_FIRST_WAVE_MS = HEARTBEAT_HOP_MS * 4 + HEARTBEAT_RISE_MS + HEARTBEAT_FADE_MS; // 4 generations
+
+// Where the heartbeat is, 0..HEARTBEAT_PERIOD_MS; 0 is the moment a wave
+// leaves VU. `origin` is when the map last came to rest (ambientRef).
+function heartbeatClock(now: number, origin: number): number {
+  return (((now - origin) % HEARTBEAT_PERIOD_MS) + HEARTBEAT_PERIOD_MS) % HEARTBEAT_PERIOD_MS;
+}
+
+// How lit a star `depth` generations from VU is right now, 0..1.
+function heartbeatAt(clock: number, depth: number): number {
+  const t = clock - depth * HEARTBEAT_HOP_MS;
+  if (t <= 0) return 0;
+  if (t < HEARTBEAT_RISE_MS) return t / HEARTBEAT_RISE_MS;
+  const f = 1 - (t - HEARTBEAT_RISE_MS) / HEARTBEAT_FADE_MS;
+  return f > 0 ? f * f : 0;
+}
 
 // FNV-1a, cached: this runs per node per frame, and the input never changes.
 const nodePhaseCache = new Map<string, number>();
@@ -2761,6 +2819,40 @@ export default function ForceGraphCanvas({
     return { depth, max: Math.max(...depth.values()) };
   }, [graphData.edges]);
 
+  // Generations downstream of VU for the heartbeat: unlike waveDepth this
+  // only follows influence the way it ran (an edge's target shaped its
+  // source), so the light reaches artists VU shaped, never VU's own sources.
+  // Artists it can't reach have no entry and just keep their fairy lights.
+  const heartbeatDepth = useMemo(() => {
+    const shaped = new Map<string, string[]>();
+    for (const e of graphData.edges) {
+      if (e.type !== 'influence') continue;
+      (shaped.get(e.target) ?? shaped.set(e.target, []).get(e.target)!).push(e.source);
+    }
+    const depth = new Map<string, number>([[LABEL_ID, 0]]);
+    let frontier = [LABEL_ID];
+    while (frontier.length) {
+      const next: string[] = [];
+      for (const id of frontier) {
+        for (const n of shaped.get(id) ?? []) {
+          if (!depth.has(n)) { depth.set(n, depth.get(id)! + 1); next.push(n); }
+        }
+      }
+      frontier = next;
+    }
+    return depth;
+  }, [graphData.edges]);
+
+  // How far the heartbeat and fairy lights are up (0..1), and the heartbeat's
+  // clock -- both set once per frame in handleRenderFramePre, read by every
+  // drawNode/drawLink call that frame.
+  // `wave` is the heartbeat's own level on top (0 while it holds for the
+  // pointer), `firstUntil` when the first wave since waking ends, `held`
+  // whether it is holding now.
+  const ambientRef = useRef({ level: 0, clock: 0, at: 0, origin: 0, wave: 1, firstUntil: 0, held: false });
+  // When the pointer last moved or scrolled over the map (HEARTBEAT_STILL_MS).
+  const lastPointerRef = useRef(0);
+
   // When the focus began — the clock for the lines drawing in.
   const familyStartRef = useRef(0);
   useEffect(() => {
@@ -3447,8 +3539,10 @@ export default function ForceGraphCanvas({
       // already repaints every frame regardless of physics state
       // (autoPauseRedraw={false}), so there's no risk of it going stale.
       const isVU = n.id === 'velvet-underground';
+      // Peaks at the heartbeat's origin, so every second breath is the one a
+      // wave leaves on (see HEARTBEAT_*).
       const pulseMult = isVU
-        ? 1 + Math.sin((performance.now() % VU_PULSE_PERIOD_MS) / VU_PULSE_PERIOD_MS * Math.PI * 2) * VU_PULSE_DEPTH
+        ? 1 + Math.cos((performance.now() - ambientRef.current.origin) / VU_PULSE_PERIOD_MS * Math.PI * 2) * VU_PULSE_DEPTH
         : 1;
       // The special treatment is for the far, constellation-scale view where
       // VU reads as "the sun of the graph" — reported as distracting once
@@ -3637,9 +3731,29 @@ export default function ForceGraphCanvas({
         const hoverCloudBoost = isHovered ? HOVER_CLOUD_BRIGHTNESS_MULT
           : isHoverNeighbor ? HOVER_NEIGHBOR_CLOUD_BRIGHTNESS_MULT
           : 1;
-        const dotBrightness = Math.min(
+        // Fairy lights (twinkle, -1..1) and VU's heartbeat (beat, 0..1) --
+        // see NODE_PULSE_* and HEARTBEAT_* above. Both are 0 while the
+        // ambient level rests.
+        const ambient = ambientRef.current;
+        const twinkle = ambient.level * Math.sin(
+          (performance.now() / (NODE_PULSE_PERIOD_MIN_MS + nodePhase(n.id) * NODE_PULSE_PERIOD_SPREAD_MS)
+            + nodePhase(n.id)) * Math.PI * 2,
+        );
+        const beatDepth = heartbeatDepth.get(n.id);
+        const beat = beatDepth === undefined || ambient.level === 0
+          ? 0
+          : ambient.level * ambient.wave * heartbeatAt(ambient.clock, beatDepth);
+        // The beat lifts a star toward full brightness rather than
+        // multiplying it, so a faint star flares as visibly as a hub. Still
+        // carries cloudDotFade/dimFactor, so the desk and zoom hold it back.
+        const restBrightness = Math.min(
           1,
-          CLOUD_DOT_BRIGHTNESS * scoreBrightness * cloudDotFade * dimFactor * hoverCloudBoost,
+          CLOUD_DOT_BRIGHTNESS * scoreBrightness * cloudDotFade * dimFactor * hoverCloudBoost
+            * (1 + twinkle * NODE_PULSE_BULB_DEPTH),
+        );
+        const dotBrightness = Math.max(
+          restBrightness,
+          restBrightness + (cloudDotFade * dimFactor - restBrightness) * beat,
         );
 
         // Skip the sprite stamps entirely below a visibility floor — same
@@ -3663,7 +3777,8 @@ export default function ForceGraphCanvas({
           // comment above) — a tiny sharp point for most nodes, only growing
           // modestly for real hubs, never a big circle.
           const dotCoreR = Math.min(CLOUD_DOT_MAX_R, CLOUD_DOT_MIN_R + Math.sqrt(score) * CLOUD_DOT_HUB_GROWTH)
-            * (isHovered ? HOVER_CLOUD_SIZE_MULT : isHoverNeighbor ? HOVER_NEIGHBOR_CLOUD_SIZE_MULT : 1);
+            * (isHovered ? HOVER_CLOUD_SIZE_MULT : isHoverNeighbor ? HOVER_NEIGHBOR_CLOUD_SIZE_MULT : 1)
+            * (1 + HEARTBEAT_DOT_SIZE_LIFT * beat);
           // Isolates the legitimate fade/dim behavior (zoom crossfade, focus-
           // mode dimming) from dotBrightness's OWN ceiling (CLOUD_DOT_BRIGHTNESS
           // × scoreBrightness, both deliberately conservative for the shared
@@ -3692,11 +3807,12 @@ export default function ForceGraphCanvas({
             // by the floor, which is exactly why it looked static when
             // zoomed out. Applying it to the maxed result instead means the
             // breathing is always visible, whichever term is winning.
+            // beat: VU flares as each heartbeat wave leaves it.
             const vuHaloR = Math.max(
               dotCoreR * CLOUD_DOT_GLOW_TIGHTNESS * VU_GLOW_RADIUS_MULT,
               VU_MIN_HALO_SCREEN_R / globalScale,
-            ) * pulseMult;
-            const vuHaloAlpha = Math.min(VU_HALO_ALPHA * fadeAndDim * pulseMult, 1);
+            ) * pulseMult * (1 + HEARTBEAT_VU_LIFT * beat);
+            const vuHaloAlpha = Math.min(VU_HALO_ALPHA * fadeAndDim * pulseMult * (1 + HEARTBEAT_VU_LIFT * beat), 1);
             const vuGrad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, vuHaloR);
             vuGrad.addColorStop(0,    `rgba(255, 236, 200, ${vuHaloAlpha})`);
             vuGrad.addColorStop(0.35, glow.replace('0.7)', `${vuHaloAlpha})`));
@@ -3716,27 +3832,28 @@ export default function ForceGraphCanvas({
             ctx.fillStyle = vuGrad;
             ctx.fill();
           } else if (score >= CLOUD_DOT_HALO_MIN_SCORE || isAnchor) {
-            // Every node, breathing on its own schedule. The floor is what
-            // makes this visible at all: dotCoreR * 1.6 is ~2 WORLD units for
-            // a typical node, and the zoom transform takes that under a pixel
-            // at the constellation view. Same screen-space escape VU uses.
-            const pulse = 1 + Math.sin(
-              (performance.now() / (NODE_PULSE_PERIOD_MIN_MS + nodePhase(n.id) * NODE_PULSE_PERIOD_SPREAD_MS)
-                + nodePhase(n.id)) * Math.PI * 2,
-            ) * NODE_PULSE_DEPTH;
+            // Every node, breathing on its own schedule (twinkle, above). The
+            // floor is what makes this visible at all: dotCoreR * 1.6 is ~2
+            // WORLD units for a typical node, and the zoom transform takes
+            // that under a pixel at the constellation view. Same screen-space
+            // escape VU uses.
             const haloR = Math.max(
               CLOUD_DOT_HALO_BASE_R + Math.sqrt(score) * CLOUD_DOT_HALO_GROWTH_R,
               CLOUD_DOT_MIN_HALO_SCREEN_R / globalScale,
-            ) * pulse;
+            ) * (1 + twinkle * NODE_PULSE_RADIUS_DEPTH) * (1 + HEARTBEAT_HALO_SIZE_LIFT * beat);
             // Built from its own floored score term rather than from
             // dotBrightness, so raising the halo cannot wash out the core's
             // faint/bright hierarchy. Still carries cloudDotFade/dimFactor/hover
             // so every legitimate fade and dim behaves exactly as before.
-            const haloAlpha = Math.min(
+            const restHaloAlpha = Math.min(
               1,
               CLOUD_DOT_GLOW_INTENSITY
                 * Math.min(1, CLOUD_DOT_HALO_MIN_BRIGHTNESS + Math.sqrt(score) * CLOUD_DOT_HALO_GROWTH_A)
-                * cloudDotFade * dimFactor * hoverCloudBoost * pulse,
+                * cloudDotFade * dimFactor * hoverCloudBoost * (1 + twinkle * NODE_PULSE_DEPTH),
+            );
+            const haloAlpha = Math.max(
+              restHaloAlpha,
+              restHaloAlpha + (Math.min(1, HEARTBEAT_HALO_ALPHA * cloudDotFade * dimFactor) - restHaloAlpha) * beat,
             );
             // Halo stays additive — that's what makes it read as glowing light.
             stampGlowSprite(ctx, getLightGlowSprite(glow), n.x, n.y, haloR, haloAlpha);
@@ -3937,7 +4054,7 @@ export default function ForceGraphCanvas({
 
       ctx.restore();
     },
-    [selectedId, hoveredId, pathSet, pathEndSet, neighborSet, focusedNode, highlightSetMemberSet, topAnchorIds, introFade, realmOrder],
+    [selectedId, hoveredId, pathSet, pathEndSet, neighborSet, focusedNode, highlightSetMemberSet, topAnchorIds, introFade, realmOrder, heartbeatDepth],
   );
 
   // ── Edge drawing ────────────────────────────────────────────────────────────
@@ -4251,6 +4368,48 @@ export default function ForceGraphCanvas({
         ctx.globalAlpha = 1;
       }
 
+      // VU's heartbeat (HEARTBEAT_* above): a spark runs down each line from
+      // the influence (target) to the artist it shaped (source), only on lines
+      // that step exactly one generation out, timed to land as that artist
+      // lights. A bright warm head and a tail in the influence's colour --
+      // two plain strokes, no gradient, since this runs on many lines a frame.
+      // Fades with the zoom like the cloud dots, and gives way to a hovered
+      // star's own lines.
+      const ambient = ambientRef.current;
+      const sparkFrom = ambient.level > 0 ? heartbeatDepth.get(tgtId) : undefined;
+      if (sparkFrom !== undefined && heartbeatDepth.get(srcId) === sparkFrom + 1) {
+        const p = (ambient.clock - sparkFrom * HEARTBEAT_HOP_MS) / HEARTBEAT_HOP_MS;
+        if (p > 0 && p < 1 + HEARTBEAT_SPARK_TAIL) {
+          const head = Math.min(p, 1);
+          const tail = Math.max(0, p - HEARTBEAT_SPARK_TAIL);
+          const arriving = p > 1 ? 1 - (p - 1) / HEARTBEAT_SPARK_TAIL : 1;
+          const a = HEARTBEAT_SPARK_ALPHA * ambient.level * ambient.wave * arriving * (1 - ghostEdgeFade) * evidenceMult
+            * Math.min(deskLevelOf((srcNode as GraphNode).realm), deskLevelOf((tgtNode as GraphNode).realm))
+            * (isHoverActive && !isHoverEdge ? 0.3 : 1);
+          if (a > 0.01) {
+            const dx = sx - tx;
+            const dy = sy - ty;
+            ctx.lineCap = 'round';
+            ctx.setLineDash([]);
+            ctx.beginPath();
+            ctx.moveTo(tx + dx * tail, ty + dy * tail);
+            ctx.lineTo(tx + dx * head, ty + dy * head);
+            ctx.strokeStyle = resolveNodeColor(tgtNode as GraphNode);
+            ctx.globalAlpha = a * 0.6;
+            ctx.lineWidth = HEARTBEAT_SPARK_WIDTH_PX / globalScale;
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(tx + dx * Math.max(tail, head - 0.08), ty + dy * Math.max(tail, head - 0.08));
+            ctx.lineTo(tx + dx * head, ty + dy * head);
+            ctx.strokeStyle = '#fff1d0';
+            ctx.globalAlpha = a;
+            ctx.lineWidth = (HEARTBEAT_SPARK_WIDTH_PX * 1.4) / globalScale;
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+          }
+        }
+      }
+
       // The opening's closing wave (storyFrame.wave): every line lights as it
       // reaches it, spreading outward from the Velvet Underground, then
       // settles to a glow — "every artist has a family like this".
@@ -4274,7 +4433,7 @@ export default function ForceGraphCanvas({
       }
       ctx.restore();
     },
-    [selectedId, hoveredId, pathSet, pathEdges, focusedNode, family, waveDepth, highlightSetMemberSet, evidenceFilter],
+    [selectedId, hoveredId, pathSet, pathEdges, focusedNode, family, waveDepth, heartbeatDepth, highlightSetMemberSet, evidenceFilter],
   );
 
   // ── Realm cloud (electronic only, overview only) ────────────────────────
@@ -4393,6 +4552,48 @@ export default function ForceGraphCanvas({
     labelQueueRef.current  = [];
     nodeCirclesRef.current = [];
 
+    // The heartbeat and fairy lights (HEARTBEAT_*, NODE_PULSE_*): up on the
+    // overview at rest, eased down while anything else is telling a story
+    // -- a family, a set, a road, the opening, the tour -- and off entirely
+    // for anyone who asked their device for less motion. Set here, before
+    // any early return below, so it keeps easing whatever is on screen.
+    {
+      const frameNow = performance.now();
+      const amb = ambientRef.current;
+      const resting = !storyFrame.intro && selectedId === null && highlightSetMemberSet.size === 0
+        && pathSet.size === 0 && storyFrame.wave < 0 && storyFrame.gather < 0 && storyFrame.collapse < 0
+        && storyFrame.realms < 0 && storyFrame.route === null && storyFrame.pulse.length === 0;
+      // Coming back to rest from fully off: restart the clock so the first
+      // wave leaves straight away.
+      if (resting && amb.level === 0 && !prefersReducedMotionRef.current) {
+        amb.origin = frameNow + HEARTBEAT_WAKE_DELAY_MS;
+        amb.firstUntil = amb.origin + HEARTBEAT_FIRST_WAVE_MS;
+        amb.wave = 1;
+        amb.held = false;
+      }
+      const dt = amb.at ? frameNow - amb.at : 0;
+      amb.level = prefersReducedMotionRef.current ? 0
+        : resting ? Math.min(1, amb.level + dt / AMBIENT_EASE_MS) : Math.max(0, amb.level - dt / AMBIENT_EASE_MS);
+      amb.at = frameNow;
+      // Hold the wave while the pointer is moving over the map. When it goes
+      // still, the next wave leaves on the next peak of VU's breath -- shifting
+      // the clock by whole breaths keeps VU's own pulse smooth.
+      const pointing = frameNow > amb.firstUntil && frameNow - lastPointerRef.current < HEARTBEAT_STILL_MS;
+      if (pointing) {
+        amb.held = true;
+      } else if (amb.held) {
+        amb.held = false;
+        const breaths = Math.ceil((frameNow + HEARTBEAT_WAKE_DELAY_MS - amb.origin) / VU_PULSE_PERIOD_MS);
+        amb.origin += Math.max(0, breaths) * VU_PULSE_PERIOD_MS;
+      }
+      amb.wave = pointing
+        ? Math.max(0, amb.wave - dt / HEARTBEAT_HOLD_FADE_MS)
+        : Math.min(1, amb.wave + dt / HEARTBEAT_HOLD_FADE_MS);
+      // Before the clock's origin nothing has left VU yet (-1 lights nothing;
+      // wrapping instead would replay the end of an old wave).
+      amb.clock = frameNow < amb.origin ? -1 : heartbeatClock(frameNow, amb.origin);
+    }
+
     // The opening places every star before anything below reads a position.
     const introOn = applyIntroLayout();
     if (introOn) drawIntroRecord(ctx, globalScale);
@@ -4506,7 +4707,7 @@ export default function ForceGraphCanvas({
       ctx.fill();
     }
     ctx.restore();
-  }, [stableData.nodes, dustStars, selectedId, highlightSetMemberSet, applyIntroLayout, drawIntroRecord, isRevealed, realmOrder]);
+  }, [stableData.nodes, dustStars, selectedId, highlightSetMemberSet, pathSet, applyIntroLayout, drawIntroRecord, isRevealed, realmOrder]);
 
   // ── Deferred label placement + rendering ─────────────────────────────────
   // Called after every node has been drawn — nodeCirclesRef holds ALL circles.
@@ -4959,8 +5160,18 @@ export default function ForceGraphCanvas({
     [onNodeClick, onSetMemberClick, highlightSetMemberSet, starUnder],
   );
 
+  // Someone pointing around the map holds the heartbeat (HEARTBEAT_STILL_MS).
+  const markPointer = useCallback(() => {
+    lastPointerRef.current = performance.now();
+  }, []);
+
   return (
-    <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
+    <div
+      ref={containerRef}
+      style={{ width: '100%', height: '100%' }}
+      onPointerMove={markPointer}
+      onWheel={markPointer}
+    >
       {SHOW_ZOOM_READOUT && (
         <div
           ref={zoomReadoutRef}
