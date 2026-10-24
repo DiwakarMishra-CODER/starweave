@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Artist } from '@/data/types';
 import { storyFrame } from '@/lib/story-store';
 import { connectAnalyser, readLevel } from '@/lib/use-audio-level';
+import { useAudioFocus } from '@/lib/audio-focus';
 
 // "Play the road": a few seconds of each stop on a Connect two road, in
 // order, from the first artist to the last (or from any stop, and skipping
@@ -16,7 +17,7 @@ import { connectAnalyser, readLevel } from '@/lib/use-audio-level';
 // stop on air is goes to --road-progress on `progressRef`'s element, for the
 // line under it — set directly each frame, never through React.
 
-const STOP_MS = 8000;   // each stop's turn
+const STOP_MS = 8000;   // each stop's turn (the default; see `stopMs`)
 const SKIP_MS = 1400;   // a stop with no song: just long enough to see it
 const TRAVEL_MS = 1200; // the light crossing to the next stop, at the end of a turn
 const FADE_MS = 600;
@@ -24,35 +25,57 @@ const VOLUME = 0.8;
 
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 
-export interface RoadPlayer {
+/** Anything with a song to play: an artist, or a face in the artist page's family photo. */
+type Stop = Pick<Artist, 'id' | 'previewUrl'>;
+
+export interface RoadPlayer<E extends HTMLElement = HTMLOListElement> {
   /** Which stop is on air, or null when the road isn't playing. */
   at: number | null;
-  /** Play from a stop (the first, by default). */
-  play: (from?: number) => void;
+  /** On air but held (pause). */
+  paused: boolean;
+  /** Play from a stop (the first, by default); `stopMs` sets each stop's
+   *  turn for this run (the artist page's pocket player plays whole previews). */
+  play: (from?: number, opts?: { stopMs?: number }) => void;
+  pause: () => void;
+  resume: () => void;
   stop: () => void;
   next: () => void;
   prev: () => void;
   /** Attach to the element that holds the stops: it gets --road-progress. */
-  progressRef: React.RefObject<HTMLOListElement | null>;
+  progressRef: React.RefObject<E | null>;
 }
 
 interface Live {
   begin: (index: number) => void;
   end: () => void;
   index: () => number;
+  setTurn: (ms: number) => void;
+  pause: () => void;
+  resume: () => void;
 }
 
-export function useRoadPlayer(stops: Artist[]): RoadPlayer {
+export function useRoadPlayer<E extends HTMLElement = HTMLOListElement>(
+  stops: Stop[],
+  { stopMs = STOP_MS }: { stopMs?: number } = {},
+): RoadPlayer<E> {
   const [at, setAt] = useState<number | null>(null);
-  const progressRef = useRef<HTMLOListElement>(null);
+  const [paused, setPaused] = useState(false);
+  const progressRef = useRef<E>(null);
   const liveRef = useRef<Live | null>(null);
+  // One sound at a time across the site: anything else starting stops the road.
+  const claim = useAudioFocus(() => liveRef.current?.end());
 
-  const start = useCallback((from: number) => {
+  const start = useCallback((from: number, turnMs?: number) => {
     if (stops.length === 0) return;
     const target = Math.min(stops.length - 1, Math.max(0, from));
     // Already playing: just move along the road.
-    if (liveRef.current) { liveRef.current.begin(target); return; }
+    if (liveRef.current) {
+      liveRef.current.setTurn(turnMs ?? stopMs);
+      liveRef.current.begin(target);
+      return;
+    }
 
+    claim();
     const audio = new Audio();
     // Before the source, so the analyser can hear it (see lib/use-audio-level).
     audio.crossOrigin = 'anonymous';
@@ -64,11 +87,19 @@ export function useRoadPlayer(stops: Artist[]): RoadPlayer {
     let i = 0;
     let startedAt = 0;
     let raf = 0;
+    let runMs = turnMs ?? stopMs;
+    let pausedAt = 0;
 
     const begin = (index: number) => {
       i = index;
       startedAt = performance.now();
       setAt(index);
+      // Moving on from a held stop plays again.
+      if (pausedAt) {
+        pausedAt = 0;
+        setPaused(false);
+        raf = requestAnimationFrame(tick);
+      }
       const here = stops[index];
       storyFrame.pulse = [here.id];
       storyFrame.playing = here.id;
@@ -92,12 +123,31 @@ export function useRoadPlayer(stops: Artist[]): RoadPlayer {
       storyFrame.roadFlow = null;
       progressRef.current?.style.setProperty('--road-progress', '0');
       setAt(null);
+      setPaused(false);
       liveRef.current = null;
+    };
+
+    // Hold where it is: the clock stops with the song, and picks up again.
+    const pause = () => {
+      if (pausedAt) return;
+      pausedAt = performance.now();
+      cancelAnimationFrame(raf);
+      audio.pause();
+      storyFrame.level = 0;
+      setPaused(true);
+    };
+    const resume = () => {
+      if (!pausedAt) return;
+      startedAt += performance.now() - pausedAt;
+      pausedAt = 0;
+      if (stops[i].previewUrl) void audio.play().catch(() => {});
+      raf = requestAnimationFrame(tick);
+      setPaused(false);
     };
 
     const tick = (now: number) => {
       const here = stops[i];
-      const turn = here.previewUrl ? STOP_MS : SKIP_MS;
+      const turn = here.previewUrl ? runMs : SKIP_MS;
       const t = now - startedAt;
       const last = i === stops.length - 1;
       // Fade in, and out before the light sets off for the next stop.
@@ -117,13 +167,15 @@ export function useRoadPlayer(stops: Artist[]): RoadPlayer {
       raf = requestAnimationFrame(tick);
     };
 
-    liveRef.current = { begin, end, index: () => i };
+    liveRef.current = { begin, end, index: () => i, setTurn: ms => { runMs = ms; }, pause, resume };
     begin(target);
     raf = requestAnimationFrame(tick);
-  }, [stops]);
+  }, [stops, stopMs, claim]);
 
-  const play = useCallback((from = 0) => start(from), [start]);
+  const play = useCallback((from = 0, opts?: { stopMs?: number }) => start(from, opts?.stopMs), [start]);
   const stop = useCallback(() => liveRef.current?.end(), []);
+  const pause = useCallback(() => liveRef.current?.pause(), []);
+  const resume = useCallback(() => { claim(); liveRef.current?.resume(); }, [claim]);
   // Skipping on from the last stop ends the road; back from the first
   // starts it over.
   const next = useCallback(() => {
@@ -141,5 +193,5 @@ export function useRoadPlayer(stops: Artist[]): RoadPlayer {
   // A different road, or the panel going away, stops the music.
   useEffect(() => () => liveRef.current?.end(), [stops]);
 
-  return { at, play, stop, next, prev, progressRef };
+  return { at, paused, play, pause, resume, stop, next, prev, progressRef };
 }

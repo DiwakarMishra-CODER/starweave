@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { storyControl, storyFrame } from '@/lib/story-store';
 import { connectAnalyser, readLevel } from '@/lib/use-audio-level';
+import { useAudioFocus } from '@/lib/audio-focus';
 import type { RecordCard } from '@/lib/home-story';
 
 // "Hear where it came from": an artist played as an influence — today's
@@ -54,8 +55,12 @@ export function useListen(record: ListenRecord, { select = true }: { select?: bo
   const [now, setNow] = useState<Listening['now']>(null);
   const stopRef = useRef<() => void>(() => {});
 
+  // One sound at a time across the site: anything else starting stops this.
+  const claim = useAudioFocus(() => stopRef.current());
+
   const start = useCallback(() => {
     stopRef.current();
+    claim();
     const why = record.why;
     const fromParent = why?.direction === 'parent' && why.other.previewUrl ? why : null;
     const first = previewAudio(fromParent ? fromParent.other.previewUrl! : record.previewUrl);
@@ -123,7 +128,7 @@ export function useListen(record: ListenRecord, { select = true }: { select?: bo
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
-  }, [record, router, select]);
+  }, [record, router, select, claim]);
 
   const stop = useCallback(() => stopRef.current(), []);
   useEffect(() => () => stopRef.current(), []);

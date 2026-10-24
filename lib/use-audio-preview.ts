@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState, useCallback, type RefObject } from 'react';
+import { useAudioFocus } from './audio-focus';
 
 // Ownership of a 30s preview's <audio> element and its transport state,
 // extracted from DeezerPreview so more than one control can drive the same
@@ -49,16 +50,6 @@ export function useAudioPreview(): AudioPreviewController {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(30);
 
-  const toggle = useCallback(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    if (audio.paused) {
-      audio.play().catch(() => {});
-    } else {
-      audio.pause();
-    }
-  }, []);
-
   const stop = useCallback(() => {
     const audio = audioRef.current;
     if (audio) {
@@ -69,6 +60,20 @@ export function useAudioPreview(): AudioPreviewController {
     setProgress(0);
     setCurrentTime(0);
   }, []);
+
+  // One sound at a time across the site: anything else starting stops this.
+  const claim = useAudioFocus(stop);
+
+  const toggle = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audio.paused) {
+      claim();
+      audio.play().catch(() => {});
+    } else {
+      audio.pause();
+    }
+  }, [claim]);
 
   const seek = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const audio = audioRef.current;

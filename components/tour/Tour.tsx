@@ -8,6 +8,7 @@ import { findBestSourcedPath } from '@/lib/graph-utils';
 import { familyDrawMs, familyOf, FAMILY_DRAW_STAGGER_FAST_MS } from '@/lib/family';
 import { sizedImageUrl } from '@/lib/image-url';
 import { useCoarsePointer } from '@/lib/use-media-query';
+import { useAudioFocus } from '@/lib/audio-focus';
 
 // "How it works": a visitor picks an artist and walks their music back, one
 // influence at a time, to the Velvet Underground — and learns the map by
@@ -455,6 +456,8 @@ function Picker({ data, onChoose, onClose }: { data: GraphData; onChoose: (id: s
     setPlaying(null);
   }, []);
   useEffect(() => stop, [stop]);
+  // One sound at a time across the site: anything else starting stops this.
+  const claim = useAudioFocus(stop);
 
   const preview = (id: string, url: string | null | undefined) => {
     if (!url) return;
@@ -464,6 +467,7 @@ function Picker({ data, onChoose, onClose }: { data: GraphData; onChoose: (id: s
     if (!audio) return;
     audio.src = url;
     audio.volume = 0.8;
+    claim();
     void audio.play().catch(() => {});
     setPlaying(id);
     timerRef.current = window.setTimeout(stop, PREVIEW_MS);

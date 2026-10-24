@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { Artist, GraphData } from '@/data/types';
 import { familyOf } from '@/lib/family';
 import { storyFrame } from '@/lib/story-store';
+import { claimAudio, onAudioClaimed } from '@/lib/audio-focus';
 import { connectAnalyser, readLevel, startStatic, type RadioStatic } from '@/lib/use-audio-level';
 
 // A pocket radio that plays the artist's song and tunes through their musical
@@ -92,6 +93,10 @@ export default function RadioDial({ artist, data, silenced, onSound }: Props) {
   const settleRef = useRef(0);
   const loopRef = useRef(0);
 
+  // One sound at a time across the site: the radio claims the audio when a
+  // station comes in, and anything else starting switches it off (below).
+  const [owner] = useState(() => Symbol('radio'));
+
   const setTuned = useCallback((tuned: number | null) => {
     if (tuned === tunedRef.current) return;
     tunedRef.current = tuned;
@@ -104,13 +109,14 @@ export default function RadioDial({ artist, data, silenced, onSound }: Props) {
       } else {
         if (audio.src !== stations[tuned].url) audio.src = stations[tuned].url;
         audio.currentTime = 0;
+        claimAudio(owner);
         void audio.play().catch(() => {});
       }
     }
     const station = tuned === null ? null : stations[tuned];
     storyFrame.pulse = station && station.role !== 'self' ? [station.id] : [];
     storyFrame.playing = station?.id ?? null;
-  }, [stations]);
+  }, [stations, owner]);
 
   // Where the needle is: which station is in, how much static, what plays.
   // `passing`: the needle is only on its way somewhere (a long swing), so
@@ -169,6 +175,8 @@ export default function RadioDial({ artist, data, silenced, onSound }: Props) {
     storyFrame.level = 0;
     storyFrame.playing = null;
   }, []);
+
+  useEffect(() => onAudioClaimed(owner, switchOff), [owner, switchOff]);
 
   // While the radio's on: the light, the speaker, the display's progress
   // line, and moving on to the next station when this one's had its turn.

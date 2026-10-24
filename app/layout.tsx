@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/next';
-import { Fraunces, Inter, IBM_Plex_Mono, Permanent_Marker } from 'next/font/google';
+import { Anton, Fraunces, Inter, IBM_Plex_Mono, Permanent_Marker } from 'next/font/google';
 import TopNav from '@/components/layout/TopNav';
 import './globals.css';
 
@@ -32,6 +32,15 @@ const permanentMarker = Permanent_Marker({
   display: 'swap',
 });
 
+// A condensed poster face for names on the artist page: the scene flyer, the
+// sleeve notes, the record's label.
+const anton = Anton({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-poster',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: 'Starweave — indie influence graph',
   description:
@@ -42,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} ${ibmPlexMono.variable} ${permanentMarker.variable}`}
+      className={`${fraunces.variable} ${inter.variable} ${ibmPlexMono.variable} ${permanentMarker.variable} ${anton.variable}`}
       // The pre-paint script below may set data-story before React hydrates.
       suppressHydrationWarning
     >

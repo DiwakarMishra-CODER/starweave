@@ -12,6 +12,7 @@ import {
 } from '@/lib/intro-groove';
 import { familyDrawMs, familyOf, FAMILY_DRAW_STAGGER_FAST_MS } from '@/lib/family';
 import { connectAnalyser, readLevel, startCrackle } from '@/lib/use-audio-level';
+import { useAudioFocus } from '@/lib/audio-focus';
 import { pullQuote, whyFor, type RecordCard } from '@/lib/home-story';
 import { sizedImageUrl } from '@/lib/image-url';
 import { OPENING_VU_BEAT } from '@/lib/flags';
@@ -599,12 +600,22 @@ export default function Intro({ record, artistCount, years }: Props) {
     };
   }, [slots, nameOf, record.id, demo]);
 
+  // One sound at a time across the site: anything else starting turns the
+  // opening's sound off.
+  const claim = useAudioFocus(() => {
+    if (!soundRef.current) return;
+    soundRef.current = false;
+    setSoundOn(false);
+    syncSoundRef.current();
+  });
+
   const toggleSound = () => {
     const on = !soundRef.current;
     soundRef.current = on;
     setSoundOn(on);
     // Inside the click, so the browser lets the audio start.
     if (on) {
+      claim();
       connectAnalyser(inAudioRef.current);
       connectAnalyser(outAudioRef.current);
     }

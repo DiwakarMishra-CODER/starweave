@@ -534,3 +534,42 @@ export function readableInk(color: string, background: string, min = 4.6): strin
   }
   return DEEPEN_TOWARD;
 }
+
+// The ink for an artist's riso print behind their page
+// (components/artist/RisoPrint): their colour with its lightness moved, in
+// OKLab, until it stands between `min` and `max` against the page's dark --
+// so every realm colour prints at the same strength, dark or near-white.
+export function risoInk(color: string, background: string, min = 3, max = 5): string {
+  const [L0, a, b] = rgbToOklab(hexToRgb(color));
+  const bg = luminance(hexToRgb(background));
+  const ratio = (L: number) => {
+    const l = luminance(oklabToRgb([L, a, b]));
+    return (Math.max(l, bg) + 0.05) / (Math.min(l, bg) + 0.05);
+  };
+  let L = L0;
+  const step = ratio(L) < min ? 0.01 : ratio(L) > max ? -0.01 : 0;
+  while (step !== 0 && L > 0 && L < 1) {
+    L += step;
+    const r = ratio(L);
+    if (r >= min && r <= max) break;
+  }
+  return '#' + oklabToRgb([L, a, b]).map(c => Math.round(c * 255).toString(16).padStart(2, '0')).join('');
+}
+
+// A poster's paper in an artist's colour: the colour lightened toward cream,
+// in OKLab, just far enough that dark ink on it reads at `min` contrast. The
+// artist page's family photo stands against this (components/artist/FamilyPhoto).
+const POSTER_CREAM = '#f6efe0';
+export function posterTint(color: string, ink = '#1c1724', min = 7): string {
+  const from = rgbToOklab(hexToRgb(color));
+  const to = rgbToOklab(hexToRgb(POSTER_CREAM));
+  const inkL = luminance(hexToRgb(ink));
+  for (let t = 0; t <= 1; t += 0.02) {
+    const rgb = oklabToRgb(from.map((v, i) => v * (1 - t) + to[i] * t) as [number, number, number]);
+    const l = luminance(rgb);
+    if ((Math.max(l, inkL) + 0.05) / (Math.min(l, inkL) + 0.05) >= min) {
+      return '#' + rgb.map(c => Math.round(c * 255).toString(16).padStart(2, '0')).join('');
+    }
+  }
+  return POSTER_CREAM;
+}
