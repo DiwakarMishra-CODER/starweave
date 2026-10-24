@@ -1,5 +1,6 @@
 import type { Artist, Edge, Genre, GraphData, RejectedEdge, Scene, SourceTier } from './types';
 import { BIOS } from './bios';
+import { COUNTRY } from './countries';
 
 // ─────────────────────────────────────────────────────────────
 // SEED DATA — v1 "shoegaze / dream-pop, rooted at the Velvet Underground"
@@ -279,7 +280,7 @@ const artists: Artist[] = [
   // ── Outside root (summoned by edges, not hand-added to a genre) ──
   { id: 'david-bowie', name: 'David Bowie', layer: 'outside', genres: ['art-rock', 'art-pop', 'electronic'], scope: V1, country: 'UK', activeFrom: 1969, signatureSong: 'Heroes',
     classicAlbums: [ca('ziggy-stardust', 'The Rise and Fall of Ziggy Stardust and the Spiders from Mars', 1972, "Mick Ronson's guitar — simultaneously orchestral (his string arrangements for 'Lady Stardust') and viscerally physical (the opening riff of 'Hang On to Yourself') — gives the album a range that Bowie's theatrical concept required but couldn't guarantee. 'Starman' is the moment that changed British pop culture: Bowie's Top of the Pops performance in June 1972 functions as a before/after marker for an entire generation's sense of what rock music could do or be. The concept — rock star as extraterrestrial — created the precedent for every subsequent pop persona, from Prince to Lady Gaga.")] },
-  { id: 'brian-eno', name: 'Brian Eno', layer: 'outside', genres: ['ambient', 'art-pop', 'electronic'], scope: ['underground'], realm: 'core', country: 'GB', activeFrom: 1971, signatureSong: 'An Ending (Ascent)',
+  { id: 'brian-eno', name: 'Brian Eno', layer: 'outside', genres: ['ambient', 'art-pop', 'electronic'], scope: ['underground'], realm: 'core', country: 'UK', activeFrom: 1971, signatureSong: 'An Ending (Ascent)',
     bio: "Brian Eno is less a musician than a way of thinking about music, and few figures cast a longer shadow across everything Starweave maps. He arrived as the synthesizer-and-\"treatments\" provocateur in Roxy Music, then walked out after two albums to become something stranger and more consequential: the person who reframed the recording studio as an instrument and the producer as a composer. On Another Green World he entered the studio with nothing written, using his Oblique Strategies cards to build a record that turned from art-rock songcraft toward the minimalist instrumentals that would define ambient music — a genre he named and largely invented across Discreet Music and Music for Airports. As a producer he pushed Bowie, Talking Heads, Devo, and U2 out of their comfort zones. Nearly every artist here who values texture over technique, atmosphere over aggression, is drinking from a well Eno dug.",
     classicAlbums: [ca('another-green-world', 'Another Green World', 1975, "The hinge point of Eno's career: the record where he turned from the art-rock songcraft of his Roxy Music years toward the ambient minimalism he'd spend decades defining. Recorded with no material written in advance, it used the studio itself as the instrument — tape loops, treated guitars, Oblique Strategies prompts — to build sound that felt composed and improvised at once. It's the blueprint for nearly everything atmospheric that follows: the use of electronic texture to paint emotion and landscape, and the permission to let mood outweigh structure.")] },
   // ── Island two — electronic lineage (merged from data/island-two-data.ts) ──
@@ -3572,10 +3573,13 @@ const rejectedEdges: RejectedEdge[] = [
 // brian-eno. This backfills all 61 without hand-editing every literal.
 const CORE_IDS = new Set(['velvet-underground', 'kraftwerk', 'can', 'neu', 'brian-eno']);
 
+// country backfill: data/countries.ts holds where each act formed for the
+// literals that don't say, the same way realm is backfilled just below.
 const artistsWithBios = artists.map(a => ({
   ...a,
   bio: BIOS[a.id] ?? a.bio,
   realm: a.realm ?? (CORE_IDS.has(a.id) ? 'core' : 'region-one'),
+  country: a.country ?? COUNTRY[a.id],
 }));
 
 // Scenes are a time + place, not a sound — see data/types.ts. Every scene
