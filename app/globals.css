@@ -13351,9 +13351,11 @@ html[data-story='off'] .intro {
   outline-offset: 2px;
 }
 
-/* Play the family: the face on air steps forward, everyone else waits. */
-.family-photo--playing .face:not(.face--on-air) .face__photo,
-.family-photo--playing .family-photo__self:not(.family-photo__self--on-air) .family-photo__portrait img {
+/* Play the family: while a family member's song sounds, their face steps
+   forward and everyone else waits in grey (FamilyPhoto's `spotlight`: not
+   while paused, not for the artist's own song). */
+.family-photo--spotlight .face:not(.face--on-air) .face__photo,
+.family-photo--spotlight .family-photo__self:not(.family-photo__self--on-air) .family-photo__portrait img {
   filter: grayscale(0.65) brightness(0.85);
 }
 
@@ -13395,6 +13397,129 @@ html[data-story='off'] .intro {
     opacity: 1;
     filter: none;
   }
+}
+
+/* The photo being taken (FamilyPhoto, the first time an artist's page opens
+   in a visit): the family walks in and squeezes into the rows (Web
+   Animations), the row labels write on, the name stamps on, the pocket
+   player is set down and its cable plugged in; then a viewfinder's corners
+   close in round the group and lock, and colour floods into the faces,
+   which walked in faded; "Tap any face" pops up last. No flash of light:
+   nothing changes brightness suddenly (photosensitive epilepsy). Waiting for
+   the browser, the family stands out of frame. Only under no-preference:
+   with reduced motion nothing is ever hidden. */
+.family-photo__print {
+  position: relative;
+}
+
+.family-photo__finder {
+  position: absolute;
+  inset: 26px 26px 12px;
+  z-index: 6;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.family-photo__finder i {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border: 0 solid var(--ink);
+}
+
+.family-photo__finder i:nth-child(1) { top: 0; left: 0; border-top-width: 3px; border-left-width: 3px; --dx: -1; --dy: -1; }
+.family-photo__finder i:nth-child(2) { top: 0; right: 0; border-top-width: 3px; border-right-width: 3px; --dx: 1; --dy: -1; }
+.family-photo__finder i:nth-child(3) { bottom: 0; left: 0; border-bottom-width: 3px; border-left-width: 3px; --dx: -1; --dy: 1; }
+.family-photo__finder i:nth-child(4) { bottom: 0; right: 0; border-bottom-width: 3px; border-right-width: 3px; --dx: 1; --dy: 1; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .family-photo[data-arrive='pending'] :is(.family-photo__faces > li:not(:has(.face--came-from)), .family-photo__name, .family-photo__row-label, .family-photo__hint, .pocket--docked) {
+    opacity: 0;
+  }
+
+  /* They walk in from outside the frame, so the frame cuts them off. */
+  .family-photo[data-arrive='run'] .family-photo__backdrop {
+    overflow: clip;
+  }
+
+  /* The faces walk in faded, like an unprocessed print, and colour floods
+     in once the viewfinder locks; after that they don't develop again. */
+  .family-photo[data-arrive='run'] .face__photo img {
+    animation: fp-tone 1100ms ease-out both;
+    animation-delay: var(--shutter-at, 1500ms);
+  }
+
+  .family-photo[data-arrive='taken'] .face__photo img {
+    animation: none;
+  }
+
+  .family-photo[data-arrive='run'] .family-photo__finder {
+    animation: fp-finder 1250ms ease-out both;
+    animation-delay: calc(var(--shutter-at, 1500ms) - 450ms);
+  }
+
+  .family-photo[data-arrive='run'] .family-photo__finder i {
+    animation: fp-corner 560ms cubic-bezier(0.2, 0.8, 0.3, 1) both;
+    animation-delay: calc(var(--shutter-at, 1500ms) - 450ms);
+  }
+
+  .family-photo[data-arrive='run'] .family-photo__row--back .family-photo__row-label { animation: lb-write 380ms ease-out 80ms both; }
+  .family-photo[data-arrive='run'] .family-photo__row--front .family-photo__row-label { animation: lb-write 380ms ease-out 320ms both; }
+  .family-photo[data-arrive='run'] .family-photo__name { animation: fp-stamp 440ms cubic-bezier(0.3, 1.5, 0.5, 1) 140ms both; }
+  .family-photo[data-arrive='run'] .family-photo__when { animation: sc-rise 420ms ease-out 380ms both; }
+  .family-photo[data-arrive='run'] .family-photo__genres { animation: sc-rise 420ms ease-out 440ms both; }
+  .family-photo[data-arrive='run'] .family-photo__intro { animation: sc-rise 420ms ease-out 500ms both; }
+  .family-photo[data-arrive='run'] .family-photo__apps { animation: sc-rise 420ms ease-out 560ms both; }
+  .family-photo[data-arrive='run'] .family-photo__map { animation: sc-rise 420ms ease-out 620ms both; }
+  .family-photo[data-arrive='run'] .pocket--docked { animation: fp-set-down 640ms cubic-bezier(0.2, 0.9, 0.3, 1.08) 520ms both; }
+
+  .family-photo[data-arrive='run'] .pocket--docked .pocket__cable path {
+    stroke-dasharray: 170;
+    animation: fp-cable 520ms ease-out 1000ms both;
+  }
+
+  .family-photo[data-arrive='run'] .family-photo__hint {
+    animation: sc-pop 380ms cubic-bezier(0.3, 1.6, 0.5, 1) both;
+    animation-delay: calc(var(--shutter-at, 1500ms) + 500ms);
+  }
+}
+
+@keyframes fp-stamp {
+  0% { opacity: 0; transform: scale(1.7); }
+  55% { opacity: 1; }
+  78% { transform: scale(0.97); }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes fp-tone {
+  from { filter: sepia(0.75) saturate(0.35) contrast(0.92) brightness(1.06); }
+  to { filter: none; }
+}
+
+@keyframes fp-finder {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  72% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* The corners close in from outside, then lock with a small snap. */
+@keyframes fp-corner {
+  0% { transform: translate(calc(var(--dx) * 44px), calc(var(--dy) * 44px)); }
+  70% { transform: none; }
+  84% { transform: translate(calc(var(--dx) * -5px), calc(var(--dy) * -5px)); }
+  100% { transform: none; }
+}
+
+@keyframes fp-set-down {
+  0% { opacity: 0; transform: translate(90px, -26px); }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes fp-cable {
+  from { stroke-dashoffset: 170; }
+  to { stroke-dashoffset: 0; }
 }
 
 /* Why they're in the photo. */

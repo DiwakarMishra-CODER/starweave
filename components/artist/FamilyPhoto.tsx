@@ -31,7 +31,18 @@ import type { Artist } from '@/data/types';
 //   song, the one on air bumps on its beats, and the photo's light swells
 //   with it (--energy, --beat: lib/music-motion).
 // - A face's card has a crossfader (Crossfader) between them and the artist.
-// - The faces develop like a print as the page arrives, back row first.
+// - The first time an artist's page opens in a visit, the photo is taken:
+//   their family walks in from the sides and squeezes into the rows -- who
+//   shaped them dropping into the back row, who they shaped coming up into
+//   the front, the strongest (nearest the middle) first, each one bobbing as
+//   it walks and jostling into its place -- while the name stamps on and the
+//   pocket player is set down and plugged in; then a viewfinder's corners
+//   close in round the group and lock, and colour floods into the faces,
+//   which walked in faded like an unprocessed print. (It was a camera flash
+//   once: a full-frame flash of light can set off photosensitive epilepsy,
+//   so nothing here changes brightness suddenly.) Any click, key, scroll or tap ends it;
+//   none of it under reduced motion. Later visits that visit just develop
+//   the faces like a print, back row first, as before.
 // - Each photo carries a view-transition name, so going to a face's page
 //   flies that face into the middle of their own photo.
 
@@ -59,6 +70,15 @@ const FAMILY_STOP_MS = 6000; // each face's turn in Play the family
 const FACE_PX = { said: 96, reported: 78, other: 64 } as const;
 const PROOF_WORDS = { said: 'said it themselves', reported: 'reported', other: 'a critic, or widely accepted' } as const;
 const DEVELOP_STEP_MS = 50;  // between one face developing and the next
+// The photo being taken, in ms from the page opening (CSS keys the name,
+// labels, player and hint to the same run).
+const WALK_AT = 260;         // the first of the family sets off (clear of the page's start-up work)
+const WALK_STEP_MS = 42;     // and each after them, strongest first
+const WALK_SPREAD_MS = 650;  // however big the family, all set off within this
+const WALK_MS = 760;
+const PHOTO_WAIT_MS = 400;   // the longest the family waits for its photos
+const SHUTTER_GAP_MS = 120;  // everyone in place, then the viewfinder locks
+const DEVELOP_MS = 1100;     // colour floods in (CSS fp-tone; the finder runs 450ms before)
 const THREAD_DRAW_MS = 420;
 const THREAD_DOT_MS = 900;
 
@@ -80,6 +100,10 @@ type Open = { kind: 'member'; side: 'back' | 'front'; id: string } | { kind: 'de
 // have just flown into this photo (the view transition), so it arrives
 // developed rather than going pale and developing again.
 let lastArtistId: string | null = null;
+// Whose photo has been taken this visit: they get the quick version after.
+// Marked when the run ends, not on mount -- React's development mode mounts
+// twice, and the second mount would find it already taken.
+const photographed = new Set<string>();
 
 export default function FamilyPhoto({ artist, intro, genres, country, portrait }: Props) {
   const uid = useId();
@@ -96,6 +120,11 @@ export default function FamilyPhoto({ artist, intro, genres, country, portrait }
   const threadRef = useRef<SVGPathElement>(null);
   const dotRef = useRef<HTMLSpanElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const finderRef = useRef<HTMLSpanElement>(null);
+  // The photo being taken: waiting (the server's render, family out of
+  // frame), running, taken (colour flooded in, so the faces don't
+  // develop again), or done (no photo this time: the faces develop as usual).
+  const [arrive, setArrive] = useState<'pending' | 'run' | 'taken' | 'done'>('pending');
 
   // On a phone, open each strip scrolled to its middle, where the strongest stand.
   useEffect(() => {
@@ -144,6 +173,11 @@ export default function FamilyPhoto({ artist, intro, genres, country, portrait }
   // The page listens (lib/music-motion): --energy and --beat on the photo
   // while music plays; the faces dance only to their own family's music.
   const live = playing && !paused;
+  // Someone in the family is sounding: they step forward and the rest wait
+  // in grey. Not while paused (the players only pause, so a grey that held
+  // through a pause never went away), and not for the artist's own song (it
+  // greyed the whole family around them).
+  const spotlight = live && onAir !== null && onAir.id !== artist.id;
   useEffect(() => {
     const el = photoRef.current;
     return el ? moveWithMusic(el) : undefined;
@@ -170,6 +204,91 @@ export default function FamilyPhoto({ artist, intro, genres, country, portrait }
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [open]);
+
+  // Whether this is the first time this visit: only known here (reduced
+  // motion too), before the first paint, so nothing shows in place first.
+  // A first time waits (briefly) for the family's photos to be decoded, so
+  // none pops in or stalls the walk halfway; cached ones are ready at once.
+  useLayoutEffect(() => {
+    if (photographed.has(artist.id) || reducedMotion()) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- the visit and reduced motion are only known in the browser; the family waits out of frame until then
+      setArrive('done');
+      return;
+    }
+    let live = true;
+    const imgs = [...(backdropRef.current?.querySelectorAll<HTMLImageElement>('.face__photo img') ?? [])];
+    const ready = Promise.all(imgs.map(img => img.decode().catch(() => {})));
+    const waited = new Promise(resolve => setTimeout(resolve, PHOTO_WAIT_MS));
+    void Promise.race([ready, waited]).then(() => { if (live) setArrive('run'); });
+    return () => { live = false; };
+  }, [artist.id]);
+
+  // The family walks in and squeezes into the rows, then the shutter. Each face
+  // starts just outside the photo on its own side and walks to its place in
+  // a few bobbing steps, overshooting a touch and squashing as it squeezes
+  // in. On a phone (rows are strips you swipe) they simply come up into place.
+  useLayoutEffect(() => {
+    const box = backdropRef.current, photo = photoRef.current;
+    if (arrive !== 'run' || !box || !photo) return;
+    const b = box.getBoundingClientRect();
+    const midX = b.left + b.width / 2;
+    const rows = (['back', 'front'] as const).map(side => ({
+      side,
+      faces: [...box.querySelectorAll<HTMLElement>(`.family-photo__row--${side} .family-photo__faces > li`)]
+        .filter(li => !li.querySelector('.face--came-from'))
+        .map(li => ({ li, r: li.getBoundingClientRect() }))
+        .sort((p, q) => Math.abs(p.r.left + p.r.width / 2 - midX) - Math.abs(q.r.left + q.r.width / 2 - midX)),
+    }));
+    const count = rows[0].faces.length + rows[1].faces.length;
+    const step = count > 1 ? Math.min(WALK_STEP_MS, WALK_SPREAD_MS / (count - 1)) : 0;
+    const anims: Animation[] = [];
+    let n = 0;
+    for (const { side, faces } of rows) {
+      for (const { li, r } of faces) {
+        const fromLeft = r.left + r.width / 2 < midX;
+        const dx = narrow ? 0 : fromLeft ? b.left - r.right - 24 : b.right - r.left + 24;
+        const dy = side === 'back' ? -44 : 44;
+        const at = WALK_AT + n * step;
+        // Three smooth motions layered on one face: the glide to its place
+        // (easing out, a touch past it and back), a soft bob for the steps
+        // while it travels, and a squash as it squeezes in. Separate curves,
+        // so it never changes direction in a jerk.
+        anims.push(li.animate(
+          [{ transform: `translate(${dx}px, ${dy}px)`, opacity: 0 }, { offset: 0.15, opacity: 1 }, { transform: 'none', opacity: 1 }],
+          { duration: WALK_MS, delay: at, easing: 'cubic-bezier(0.22, 0.75, 0.3, 1.06)', fill: 'backwards' },
+        ));
+        if (!narrow) {
+          anims.push(li.animate(
+            [{ transform: 'translateY(0)' }, { transform: 'translateY(-8px)' }, { transform: 'translateY(0)' }],
+            { duration: WALK_MS * 0.24, delay: at, iterations: 3, easing: 'ease-in-out', composite: 'add' },
+          ));
+        }
+        anims.push(li.animate(
+          [{ transform: 'scale(1)' }, { transform: 'scale(1.07, 0.93)' }, { transform: 'scale(1)' }],
+          { duration: 280, delay: at + WALK_MS * 0.72, easing: 'ease-in-out', composite: 'add' },
+        ));
+        n++;
+      }
+    }
+    // Everyone in place: the viewfinder locks and colour floods in (CSS,
+    // timed from --shutter-at).
+    const shutterAt = (count ? WALK_AT + (count - 1) * step + WALK_MS : 420) + SHUTTER_GAP_MS;
+    photo.style.setProperty('--shutter-at', `${shutterAt}ms`);
+
+    const end = () => {
+      anims.forEach(a => a.finish());
+      photographed.add(artist.id);
+      setArrive('taken');
+    };
+    const timer = setTimeout(end, shutterAt + DEVELOP_MS);
+    const events = ['pointerdown', 'keydown', 'wheel', 'touchstart'] as const;
+    events.forEach(e => window.addEventListener(e, end, { capture: true, passive: true }));
+    return () => {
+      clearTimeout(timer);
+      events.forEach(e => window.removeEventListener(e, end, { capture: true }));
+      anims.forEach(a => a.cancel());
+    };
+  }, [arrive, narrow, artist.id]);
 
   // The card sits under the face it's about, its notch pointing at it, and
   // comes into view when someone opens it (not while the family plays, or
@@ -379,8 +498,9 @@ export default function FamilyPhoto({ artist, intro, genres, country, portrait }
   const openDenial: Denial | null = shown?.kind === 'denial' ? denials.find(d => d.id === shown.id) ?? null : null;
 
   return (
-    <section ref={photoRef} className={`family-photo${playing ? ' family-photo--playing' : ''}${live ? ' family-photo--live' : ''}`} aria-labelledby={`${uid}-name`}>
+    <section ref={photoRef} className={`family-photo${spotlight ? ' family-photo--spotlight' : ''}${live ? ' family-photo--live' : ''}`} data-arrive={arrive} aria-labelledby={`${uid}-name`}>
       <div className="family-photo__print">
+        <span ref={finderRef} className="family-photo__finder" aria-hidden><i /><i /><i /><i /></span>
         <div className="family-photo__backdrop" ref={backdropRef}>
           <svg className="family-thread" aria-hidden>
             <path ref={threadRef} />
