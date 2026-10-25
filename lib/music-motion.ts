@@ -3,8 +3,9 @@ import { storyFrame } from './story-store';
 // How the artist page moves with the music: one smooth reading of whatever
 // is playing (storyFrame.level, set by every player), shared by everything
 // that moves, as two CSS variables:
-// - --energy: a slow envelope of the song's loudness, 0..1 -- breathing,
-//   never the frame-to-frame jitter of the raw level;
+// - --energy: a slow envelope of the song's loudness, 0..1, against the
+//   song's own quiet and loud parts (so a loud record and a hushed one both
+//   breathe) -- never the frame-to-frame jitter of the raw level;
 // - --beat: a pulse on each sudden rise (a kick, a snare, a chord coming
 //   in) -- swelling in over a few frames and falling away over a third of a
 //   second, never a jump in a single frame (which reads as a glitch).
@@ -19,9 +20,20 @@ const BEAT_GAP_MS = 240;   // no two beats closer than this
 const KICK_DECAY = 0.9;    // the kick behind each beat, per frame
 const BEAT_UP = 0.4;       // the pulse rising to the kick...
 const BEAT_DOWN = 0.12;    // ...and falling away
+// Everything is read against the song itself, not against silence: a loud,
+// compressed master (most records since the 2000s) sits near the top of the
+// level the whole time, which pinned the swell at full and left the beat no
+// headroom to jump -- measured on Ethel Cain's "American Teenager", above
+// half level 90% of the time. So:
+const RANGE_GRAB = 0.3;     // the song's floor and ceiling follow a new low/high quickly...
+const RANGE_RELAX = 0.004;  // ...and drift back toward the present over ~4s, so they follow its sections
+const MIN_RANGE = 0.08;     // a near-flat stretch still breathes a little, not wildly
+const MEAN_RATE = 0.05;     // the recent average a beat has to clear...
+const BEAT_SIGMA = 1.0;     // ...by this many of its usual wobbles (measured: ~1.5 beats/s on loud records, ~2 on softer ones)
+const MIN_JUMP = 0.025;     // and by at least this much, so hiss isn't a beat
 
 export interface MusicReading {
-  /** The slow swell of the song's loudness, 0..1. */
+  /** The slow swell of the song's loudness, 0..1, against its own quiet and loud parts. */
   energy: number;
   /** The pulse after each beat, 0..1: up over a few frames, down over a third of a second. */
   beat: number;
@@ -36,17 +48,38 @@ export interface MusicReading {
  */
 export function musicReader() {
   let fast = 0;
+  let prevFast = 0;
+  let lo = 0;
+  let hi = 0;
+  let mean = 0;
+  let wobble = 0; // the recent variance around the mean
   let energy = 0;
   let kick = 0;
   let beat = 0;
   let lastBeat = -Infinity;
+  let started = false;
   return {
     step(level: number, now: number): MusicReading {
       fast += (level - fast) * 0.5;
-      energy += (level - energy) * (level > energy ? ENERGY_UP : ENERGY_DOWN);
-      // A beat: the quick reading jumps well above the slow one. It sets off
-      // a kick, which the pulse follows smoothly up and back down.
-      const onset = fast > energy * 1.22 + 0.04 && now - lastBeat > BEAT_GAP_MS;
+      if (!started && level > 0) {
+        started = true;
+        lo = hi = mean = fast;
+      }
+      // The song's own range: where its quiet and its loud are right now.
+      lo += (fast - lo) * (fast < lo ? RANGE_GRAB : RANGE_RELAX);
+      hi += (fast - hi) * (fast > hi ? RANGE_GRAB : RANGE_RELAX);
+      const relative = Math.min(1, Math.max(0, (fast - lo) / Math.max(MIN_RANGE, hi - lo)));
+      energy += (relative - energy) * (relative > energy ? ENERGY_UP : ENERGY_DOWN);
+
+      // A beat: the quick reading rising clear of its own recent average, by
+      // more than it usually wobbles -- relative, so it works at any loudness.
+      const jump = fast - mean;
+      mean += jump * MEAN_RATE;
+      wobble += (jump * jump - wobble) * MEAN_RATE;
+      const onset = fast > prevFast
+        && jump > Math.max(MIN_JUMP, BEAT_SIGMA * Math.sqrt(wobble))
+        && now - lastBeat > BEAT_GAP_MS;
+      prevFast = fast;
       if (onset) {
         kick = 1;
         lastBeat = now;
@@ -58,7 +91,11 @@ export function musicReader() {
     },
     /** At rest: nothing left of the last song. */
     still: () => energy < 0.004 && beat < 0.01 && kick < 0.01,
-    reset() { fast = energy = kick = beat = 0; },
+    reset() {
+      fast = prevFast = lo = hi = mean = wobble = energy = kick = beat = 0;
+      lastBeat = -Infinity;
+      started = false;
+    },
   };
 }
 

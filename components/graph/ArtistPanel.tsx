@@ -328,6 +328,16 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                   </button>
                 )}
 
+                {/* Their full page, from the first thing the sheet shows. */}
+                <Link
+                  href={`/artist/${artist.id}`}
+                  className="panel-peek__pass"
+                  onClick={e => e.stopPropagation()}
+                  onKeyDown={e => e.stopPropagation()}
+                >
+                  Full story <span aria-hidden>&rarr;</span>
+                </Link>
+
                 <button
                   className="panel-peek__close"
                   onClick={e => { e.stopPropagation(); onClose(); }}
@@ -374,21 +384,32 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
               <button className="zine__close" onClick={onClose} aria-label="Close artist panel">✕</button>
             </header>
 
-            {/* Their photo, cut out and taped on, printed in the spot colour. */}
-            {artist.imageUrl && (
-              <figure className="zine__photo">
-                <span className="zine__print">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img ref={photoRef} src={sizedImageUrl(artist.imageUrl, 500)} alt={artist.name} />
-                </span>
-                <span className="zine__tape zine__tape--left" aria-hidden />
-                <span className="zine__tape zine__tape--right" aria-hidden />
-                <PhotoCredit credit={artist.imageCredit} className="photo-credit--panel" />
-              </figure>
-            )}
+            {/* Their photo, cut out and taped on, printed in the spot colour --
+                with a backstage pass clipped to its corner: their full page,
+                in the first thing the panel shows. The pass sits beside the
+                tilted photo, not in it, so its words stay upright. */}
+            <div className="zine__photo-wrap">
+              {artist.imageUrl && (
+                <figure className="zine__photo">
+                  <span className="zine__print">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img ref={photoRef} src={sizedImageUrl(artist.imageUrl, 500)} alt={artist.name} />
+                  </span>
+                  <span className="zine__tape zine__tape--left" aria-hidden />
+                  <span className="zine__tape zine__tape--right" aria-hidden />
+                  <PhotoCredit credit={artist.imageCredit} className="photo-credit--panel" />
+                </figure>
+              )}
+              <Link href={`/artist/${artist.id}`} className={`zine__pass${artist.imageUrl ? '' : ' zine__pass--alone'}`}>
+                <span className="zine__pass-band">All access</span>
+                <span className="zine__pass-text">Their full story <span aria-hidden>&rarr;</span></span>
+              </Link>
+            </div>
 
             <h2 className="zine__name">
-              <span className="zine__highlight">{artist.name}</span>
+              <Link href={`/artist/${artist.id}`} className="zine__name-link">
+                <span className="zine__highlight">{artist.name}</span>
+              </Link>
             </h2>
             <p className="zine__typed">
               {artist.genres.map((g, i) => (
@@ -416,10 +437,11 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
               )}
             </section>
 
-            {/* Who they are, in a sentence, and the way to the rest. */}
+            {/* Who they are, in a sentence, and the way to the rest (the pass
+                on the photo is the same link, for the first glance). */}
             {bioPreview && <p className="zine__intro">{bioPreview}</p>}
             <Link href={`/artist/${artist.id}`} className="zine__fullpage">
-              Full artist page <span aria-hidden>→</span>
+              Full artist page <span aria-hidden>&rarr;</span>
             </Link>
 
             {/* Their own words, on a torn cutting. */}
