@@ -96,19 +96,3 @@ export default function TodayStar({ record, onListen }: { record: RecordCard; on
     </div>
   );
 }
-
-// While it plays: who's on, and a way to stop.
-export function NowPlaying({ now, onStop }: { now: { name: string; track: string | null }; onStop: () => void }) {
-  return (
-    <div className="now-playing" role="status">
-      <span className="now-playing__bars" aria-hidden><i /><i /><i /></span>
-      <span className="now-playing__text">
-        <strong>{now.name}</strong>
-        {now.track && <span> · {now.track}</span>}
-      </span>
-      <button type="button" className="now-playing__stop" onClick={onStop} aria-label="Stop">
-        <svg viewBox="0 0 16 16" aria-hidden><rect x="4" y="4" width="8" height="8" rx="1" fill="currentColor" /></svg>
-      </button>
-    </div>
-  );
-}

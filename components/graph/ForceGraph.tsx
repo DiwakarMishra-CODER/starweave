@@ -13,6 +13,7 @@ import { edgePassesEvidenceFilter } from '@/data/types';
 import { resolveNodeColor, resolveNodeGlow, resolveEdgeTint, REALM_COLORS, REALM_LABELS, REALM_LABELS_SHORT } from '@/lib/colors';
 import { getNeighbors, pathEdgeKeys } from '@/lib/graph-utils';
 import { useCoarsePointer } from '@/lib/use-media-query';
+import { musicReader } from '@/lib/music-motion';
 import { storyFrame, storyCamera } from '@/lib/story-store';
 import { lampOn } from '@/lib/room-lights';
 import {
@@ -247,6 +248,56 @@ function computeZoomSizeMult(globalScale: number, reference: number = ZOOM_SIZE_
 const LABEL_BUMP_MAX_STEPS = 3;
 const LABEL_BUMP_STRIDE_MULT = 1.1; // × textH per step
 
+// ── Pin badges (detail zoom) ──────────────────────────────────────────────────
+// Zoomed in, every artist is a band pin badge: the photo inside a printed rim
+// in the realm's colour, a thin metal edge, a hard little shadow instead of a
+// soft glow, and a glossy shine that faces the pointer -- move the mouse and
+// the light slides across every badge at once, like tilting a jacket full of
+// pins under a lamp. Crossing into detail zoom pins them on: a press and
+// settle, rippling out from the middle of the screen. All weighted by the
+// star's own zoomFade, so the cloud view is untouched.
+const BADGE_RIM = 0.15;              // the rim, as a share of the badge's radius
+const BADGE_SHADOW_PX = 2.2;         // the hard shadow's offset, screen px
+const BADGE_SHINE_FALLOFF_PX = 420;  // how far the pointer's light reaches, screen px
+const PIN_ON_AT = 0.55;              // zoomFade at which a badge is pinned on...
+const PIN_OFF_AT = 0.3;              // ...and below which it can be pinned again
+const PIN_RIPPLE_MS_PER_PX = 0.8;    // the ripple out from the middle of the screen
+const PIN_RIPPLE_MAX_MS = 520;
+const PIN_MS = 420;                  // the press and settle
+
+const CLICK_PIN_MS = 280;            // a clicked badge's press and spring back
+const CLICK_RING_MS = 520;           // the ring that snaps out from it
+// Clicking a badge drops a push-pin into it: it starts falling as the camera
+// arrives at the family and lands just after it settles (CAMERA_MS), so the
+// landing -- the badge pressing in, the ring snapping out -- happens on a
+// still screen, where it can be seen. The pin stays while that artist is
+// the one picked.
+const PIN_DROP_AT_MS = 380;
+const PIN_DROP_MS = 260;
+const PIN_FALL_PX = 90;              // how far above it starts, screen px
+const PIN_BOUNCE_MS = 160;
+
+// A clicked badge: pressed quickly into the jacket, then springing back with
+// a touch of overshoot (an ease-out-back).
+function clickPress(t: number): number {
+  if (t <= 0 || t >= CLICK_PIN_MS) return 1;
+  const u = t / CLICK_PIN_MS;
+  if (u < 0.3) return 1 - 0.16 * (u / 0.3);
+  const v = (u - 0.3) / 0.7 - 1;
+  const c1 = 2.2;
+  return 0.84 + 0.16 * (1 + (c1 + 1) * v ** 3 + c1 * v ** 2);
+}
+
+// A badge being pinned on: held just above the jacket, pressed in, settling flat.
+function pinPress(t: number): number {
+  if (t <= 0) return 0;
+  if (t >= PIN_MS) return 1;
+  const u = t / PIN_MS;
+  if (u < 0.4) return 1.3 - 0.42 * (u / 0.4);
+  const v = (u - 0.4) / 0.6;
+  return 0.88 + 0.12 * (1 - (1 - v) ** 3);
+}
+
 // ── Label chip (dark rounded pill behind label text) ────────────────────────
 // Replaces the old shadow-halo (three stacked fillText calls at decreasing
 // shadowBlur) — a soft glow reads fine against plain background but not
@@ -316,9 +367,9 @@ const VU_WAVE_TO = 0.8;    // the last leaves — landed and settled before the 
 const VU_WAVE_FLIGHT = 0.12;
 const VU_LAND_FLARE = 0.05; // a star's flare as its copy lands
 // Screen pixels: a copy's radius as it leaves, and its landing flare.
-const VU_HANDOFF_COPY_PX = 11;
+const VU_HANDOFF_COPY_PX = 15;
 const VU_WAVE_COPY_PX = 6;
-const VU_HANDOFF_FLARE_PX = 26;
+const VU_HANDOFF_FLARE_PX = 34;
 const VU_WAVE_FLARE_PX = 12;
 const VU_SPARK_GLOW_PX = 16;
 // Vinyl dust turning in the light round the label: where each speck sits
@@ -337,7 +388,8 @@ const DUST_SPECKS = (() => {
   }));
 })();
 // Today's record on the map: a little disc under its star, turning at 33⅓.
-const TODAY_DISC_PX = 22;
+const TODAY_DISC_PX = 15;  // the little record's radius at least, on screen...
+const TODAY_DISC_HUG = 1.45; // ...or this many times the star as drawn, whichever's bigger
 const TODAY_RAD_PER_MS = (Math.PI * 2 * (100 / 3)) / 60000;
 const TODAY_EASE = 0.08; // per frame, toward storyFrame.todayTarget
 // The first visit's last beat: sparks from across the map into today's star.
@@ -891,13 +943,18 @@ const REALM_LABEL_MARKER_SCALE = 1.15; // the marker face runs small for its siz
 // The realms' names are hand-lettered, in the panel's marker face. The canvas
 // can't use the CSS variable, and next/font renames the family, so read the
 // real family name off the page once.
-let markerFamily: string | null = null;
-function markerFontFamily(): string {
-  if (markerFamily === null && typeof document !== 'undefined') {
-    markerFamily = getComputedStyle(document.documentElement).getPropertyValue('--font-marker').trim() || 'cursive';
+const pageFamilies = new Map<string, string>();
+function pageFontFamily(variable: string, fallback: string): string {
+  let family = pageFamilies.get(variable);
+  if (family === undefined && typeof document !== 'undefined') {
+    family = getComputedStyle(document.documentElement).getPropertyValue(variable).trim() || fallback;
+    pageFamilies.set(variable, family);
   }
-  return markerFamily ?? 'cursive';
+  return family ?? fallback;
 }
+const markerFontFamily = () => pageFontFamily('--font-marker', 'cursive');
+// The paper tags' names, in the site's display serif.
+const displayFontFamily = () => pageFontFamily('--font-fraunces', 'Georgia');
 
 // A colour chalked on the dusk wall: most of the way to cream, so every
 // realm's name reads on the room.
@@ -1055,6 +1112,11 @@ const NODE_PULSE_PERIOD_SPREAD_MS = 2800;
 // cycle happens to come round: people shouldn't have to wait to see it.
 const HEARTBEAT_PERIOD_MS = VU_PULSE_PERIOD_MS * 2;
 const HEARTBEAT_WAKE_DELAY_MS = 350;   // first wave, this long after the map is at rest
+// ...but when the opening has just handed over the map, a moment of calm
+// first, and a slower ease in: a wave straight after the opening's own last
+// move read as a flicker on top of it.
+const HEARTBEAT_AFTER_OPENING_MS = 2600;
+const AMBIENT_EASE_AFTER_OPENING_MS = 1500;
 const HEARTBEAT_HOP_MS = 650;          // one generation to the next
 const HEARTBEAT_RISE_MS = 200;
 const HEARTBEAT_FADE_MS = 1600;
@@ -1395,6 +1457,10 @@ const LAMP_TOUR_REST = 0.45;         // the others meanwhile
 const LISTEN_LAMP_SWELL = 1.4;       // a playing realm's lamp at full volume, over its rest
 const LISTEN_EDGE_ALPHA = 0.7;       // the playing artist's lines at full volume
 const LISTEN_GLOW_PX = 34;           // the playing star's swell at full volume, css px
+// On each beat a point of light runs along the playing artist's lines the way
+// the influence went: this long to cross, with a tail this share of the line.
+const LISTEN_PULSE_MS = 900;
+const LISTEN_PULSE_TAIL = 0.16;
 // The resting web and the Velvet Underground's strands: straight, crisp
 // hairlines in one muted tint (the realm colour lives in the stars).
 const WIRE_RGB = '205, 194, 214';
@@ -1932,6 +1998,23 @@ export default function ForceGraphCanvas({
     () => [...computeRealmHomePositions(stableData.nodes).keys()].filter(r => r !== 'core' && r in REALM_LABELS),
     [stableData.nodes],
   );
+  // How big today's star was drawn this frame, graph units (drawNode notes
+  // it; reset each frame), so its record can hug it.
+  const todayStarRef = useRef(0);
+  // The pointer, for the badges' shine: on screen (from the container's
+  // pointer events) and in graph units (worked out once a frame), plus the
+  // middle of the screen in graph units, which the pin-on ripple starts from.
+  // And when each badge was pinned on (BADGE_* / PIN_* above).
+  const pointerRef = useRef<{ x: number; y: number } | null>(null);
+  const pointerGraphRef = useRef<{ x: number; y: number } | null>(null);
+  const screenMiddleRef = useRef<{ x: number; y: number } | null>(null);
+  const pinRef = useRef(new Map<string, number>());
+  // The badge last clicked, and when: it presses in and a ring snaps out.
+  const clickPinRef = useRef<{ id: string; at: number } | null>(null);
+  // The map's own reading of whatever plays (lib/music-motion): the smooth
+  // swell, the beat pulse, and when each recent beat landed, for the light
+  // that runs along the playing artist's lines.
+  const listenRef = useRef({ reader: musicReader(), energy: 0, beat: 0, beats: [] as number[], playing: null as string | null });
   const todayAlphaRef = useRef(0);
   const introHomesRef = useRef<Map<string, { x: number; y: number }> | null>(null);
   const introRimRef = useRef(0);
@@ -2228,7 +2311,7 @@ export default function ForceGraphCanvas({
 
     // The handoffs' names and years as they land; they leave with the dust.
     ctx.save();
-    ctx.font = `500 ${13 * px}px Inter, system-ui, sans-serif`;
+    ctx.font = `600 ${16 * px}px Inter, system-ui, sans-serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     // Below each star, pushed further down past any name already placed —
@@ -2241,8 +2324,8 @@ export default function ForceGraphCanvas({
       if (!n || n.x === undefined || n.y === undefined || alpha <= 0.01) continue;
       const text = n.activeFrom ? `${n.name} · ${n.activeFrom}` : n.name;
       const w = ctx.measureText(text).width + LABEL_CHIP_PAD_X * 2 * px;
-      const h = 13 * px + LABEL_CHIP_PAD_Y * 2 * px;
-      let y = n.y + 18 * px;
+      const h = 16 * px + LABEL_CHIP_PAD_Y * 2 * px;
+      let y = n.y + 22 * px;
       const clash = () => placed.some(r => Math.abs(r.x - n.x!) < (r.w + w) / 2 && Math.abs(r.y - y) < (r.h + h) / 2 + 2 * px);
       for (let tries = 0; tries < 6 && clash(); tries++) y += h + 4 * px;
       placed.push({ x: n.x, y, w, h });
@@ -2340,10 +2423,13 @@ export default function ForceGraphCanvas({
     // The sky listens: whoever's playing swells with the song.
     const playing = storyFrame.playing ? nodeAt(storyFrame.playing) : null;
     const playingNode = storyFrame.playing ? introNodesRef.current.get(storyFrame.playing) : undefined;
-    if (playing && playingNode && storyFrame.level > 0.02) {
+    const listen = listenRef.current;
+    if (playing && playingNode && (listen.energy > 0.01 || listen.beat > 0.01)) {
+      // The smooth swell and the beat, not the raw loudness (which flickered).
+      const swell = 0.6 * listen.energy + 0.4 * listen.beat;
       ctx.save();
       ctx.globalCompositeOperation = 'lighter';
-      drawNodeGlow(ctx, playing.x, playing.y, (14 + LISTEN_GLOW_PX * storyFrame.level) * px, resolveNodeGlow(playingNode), 0.25 + 0.55 * storyFrame.level);
+      drawNodeGlow(ctx, playing.x, playing.y, (14 + LISTEN_GLOW_PX * swell) * px, resolveNodeGlow(playingNode), 0.25 + 0.4 * listen.energy + 0.3 * listen.beat);
       ctx.restore();
     }
 
@@ -2384,18 +2470,33 @@ export default function ForceGraphCanvas({
     if (alpha < 0.01 || !isRevealed(id)) return;
     const level = storyFrame.level;
     const score = n.influenceScore ?? 0;
-    // A ring round the star, the star itself its label: wider than whatever
-    // the star draws, so it's never covered.
-    const starPx = (id === selectedId ? familyRadius(score, true) : 3.5 + Math.sqrt(score) * 2.2) * globalScale;
-    const inner = Math.max(starPx * 1.08, 7) * px;
-    const r = Math.max(TODAY_DISC_PX, starPx * 1.6) * px * (1 + level * 0.12);
+    // In a family view the star is a photo, and the record rings it. On the
+    // map it's a dot, so the record is drawn whole: a label in their colour
+    // right up to the middle and the star a bright spindle on top -- no gap
+    // between star and record, which read as a hole in a black ring.
+    const familyView = id === selectedId;
+    let r: number;
+    let inner: number;
+    if (familyView) {
+      const starPx = familyRadius(score, true) * globalScale;
+      r = Math.max(TODAY_DISC_PX, starPx * 1.6) * px * (1 + level * 0.12);
+      inner = Math.max(starPx * 1.08, 7) * px;
+    } else {
+      // Sized from the star as it was actually drawn this frame (a small
+      // bulb zoomed out, a disc zoomed in): the star is the label, the
+      // grooves start at its edge, a real record's proportions at least.
+      const starPx = todayStarRef.current * globalScale;
+      const rPx = Math.max(TODAY_DISC_PX, starPx * TODAY_DISC_HUG);
+      r = rPx * px * (1 + level * 0.12);
+      inner = Math.max(starPx, rPx * 0.36) * px;
+    }
     const spin = performance.now() * TODAY_RAD_PER_MS;
     ctx.save();
     ctx.globalCompositeOperation = 'lighter';
     drawNodeGlow(ctx, n.x, n.y, r * 2.4, resolveNodeGlow(n), alpha * (0.3 + level * 0.6));
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = alpha;
-    ctx.fillStyle = 'rgba(12, 9, 22, 0.9)';
+    ctx.fillStyle = 'rgba(12, 9, 22, 0.94)';
     ctx.beginPath();
     ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
     ctx.arc(n.x, n.y, inner, 0, Math.PI * 2, true);
@@ -2406,6 +2507,17 @@ export default function ForceGraphCanvas({
       ctx.beginPath();
       ctx.arc(n.x, n.y, inner + (r - inner) * f, 0, Math.PI * 2);
       ctx.stroke();
+    }
+    if (!familyView) {
+      // The label, in their colour, and the spindle.
+      ctx.fillStyle = resolveNodeColor(n);
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, inner, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#fff8e8';
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, Math.max(1.6 * px, inner * 0.24), 0, Math.PI * 2);
+      ctx.fill();
     }
     // The sheen that shows it turning.
     ctx.strokeStyle = 'rgba(255, 248, 230, 0.6)';
@@ -2849,7 +2961,7 @@ export default function ForceGraphCanvas({
   // `wave` is the heartbeat's own level on top (0 while it holds for the
   // pointer), `firstUntil` when the first wave since waking ends, `held`
   // whether it is holding now.
-  const ambientRef = useRef({ level: 0, clock: 0, at: 0, origin: 0, wave: 1, firstUntil: 0, held: false });
+  const ambientRef = useRef({ level: 0, clock: 0, at: 0, origin: 0, wave: 1, firstUntil: 0, held: false, introAt: -Infinity });
   // When the pointer last moved or scrolled over the map (HEARTBEAT_STILL_MS).
   const lastPointerRef = useRef(0);
 
@@ -3631,11 +3743,47 @@ export default function ForceGraphCanvas({
       ctx.save();
       ctx.globalAlpha = alpha;
 
+      // How far into detail this star is (0 a cloud dot, 1 a badge), and its
+      // pin-on press as it crosses in (see BADGE_* / PIN_* above).
+      const badge = zoomFade;
+      const motion = !prefersReducedMotionRef.current;
+      const nowMs = performance.now();
+      let press = 1;
+      if (!isFullDetail && motion) {
+        const pins = pinRef.current;
+        if (zoomFade >= PIN_ON_AT && !pins.has(n.id)) {
+          const mid = screenMiddleRef.current;
+          const d = mid ? Math.hypot(n.x - mid.x, n.y - mid.y) * globalScale : 0;
+          pins.set(n.id, nowMs + Math.min(PIN_RIPPLE_MAX_MS, d * PIN_RIPPLE_MS_PER_PX));
+        } else if (zoomFade < PIN_OFF_AT && pins.has(n.id)) {
+          pins.delete(n.id);
+        }
+        const pinnedAt = pins.get(n.id);
+        if (pinnedAt !== undefined) press = pinPress(nowMs - pinnedAt);
+      }
+      // Clicked: a push-pin drops in (drawn further down); as it lands the
+      // badge is pressed into the jacket, its shadow tucking under, then
+      // springs back, and a ring snaps out. `clicked` counts from the landing.
+      const clickedAt = clickPinRef.current?.id === n.id ? clickPinRef.current.at : null;
+      const sinceClick = clickedAt === null ? Infinity : nowMs - clickedAt;
+      const sinceLanding = sinceClick - (PIN_DROP_AT_MS + PIN_DROP_MS);
+      const clicked = motion && clickedAt !== null && sinceLanding >= 0 ? sinceLanding : -1;
+      const clickScale = clicked >= 0 ? clickPress(clicked) : 1;
+      const tucked = clickScale < 1 ? (1 - clickScale) / 0.16 : 0;
+      press *= clickScale;
+      if (press !== 1) {
+        ctx.translate(n.x, n.y);
+        ctx.scale(press, press);
+        ctx.translate(-n.x, -n.y);
+      }
+
       // ── Outer bloom haze ──
       // alpha > 0.01 skips this entirely for the ~94 non-anchor nodes at
       // cloud zoom (alpha is now unfloored — see above — so it's genuinely
       // ~0 there): no sprite-stamp for something that would be invisible.
-      if (!isDimmed && alpha > 0.01) {
+      // A badge has a hard shadow, not a haze: the haze fades out as it comes in.
+      if (!isDimmed && alpha > 0.01 && badge < 0.98) {
+        ctx.globalAlpha = alpha * (1 - badge);
         if (vuSpecialActive) {
           // Velvet Underground's own dedicated glow (see VU_GLOW_RADIUS_MULT
           // above) — always a fresh gradient, never the shared cached
@@ -3676,8 +3824,7 @@ export default function ForceGraphCanvas({
           // focus/hover branches -- those are already far past it.
           const bloomR = Math.max(erOverview * bloomMult, BLOOM_MIN_RADIUS);
           const innerAlpha = BLOOM_INNER_ALPHA * (isCore ? CORE_GLOW_INTENSITY : 1);
-          stampGlowSprite(ctx, getBloomHazeSprite(glow, isCore), n.x, n.y, bloomR, Math.min(innerAlpha, 1) * alpha);
-          ctx.globalAlpha = alpha; // restore — stampGlowSprite set it to the combined peak value above
+          stampGlowSprite(ctx, getBloomHazeSprite(glow, isCore), n.x, n.y, bloomR, Math.min(innerAlpha, 1) * alpha * (1 - badge));
         } else {
           const bloomMult = (isFocused ? 4.0 : 3.5) * (isCore ? CORE_GLOW_RADIUS_MULT : 1);
           const bloomR = erOverview * bloomMult;
@@ -3692,6 +3839,18 @@ export default function ForceGraphCanvas({
           ctx.fillStyle = grad;
           ctx.fill();
         }
+        ctx.globalAlpha = alpha;
+      }
+
+      // ── The badge's hard shadow ──
+      if (badge > 0.02) {
+        const off = (BADGE_SHADOW_PX / globalScale) * (1 - 0.75 * tucked);
+        ctx.globalAlpha = alpha * badge;
+        ctx.fillStyle = 'rgba(6, 4, 12, 0.6)';
+        ctx.beginPath();
+        ctx.arc(n.x + off, n.y + off * 1.3, erOverview, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = alpha;
       }
 
       // ── Core shadow glow ──
@@ -3699,7 +3858,8 @@ export default function ForceGraphCanvas({
                      : isHovered ? 22
                      : isInPath  ? 16
                      : score >= ALWAYS_LABEL_THRESHOLD ? 14
-                     : 10) * (isCore ? CORE_GLOW_RADIUS_MULT : 1) * (vuSpecialActive ? VU_GLOW_RADIUS_MULT * pulseMult : 1) * overviewSizeShrink;
+                     : 10) * (isCore ? CORE_GLOW_RADIUS_MULT : 1) * (vuSpecialActive ? VU_GLOW_RADIUS_MULT * pulseMult : 1) * overviewSizeShrink
+                     * (1 - badge);
       ctx.shadowColor = glow;
 
       // ── Node fill (becomes the colored ring when a photo is overlaid) ──
@@ -3708,6 +3868,8 @@ export default function ForceGraphCanvas({
       ctx.fillStyle = color;
       ctx.fill();
       ctx.shadowBlur = 0;
+      // Today's record is drawn round its star as the star is drawn this frame.
+      if (n.id === storyFrame.todayId && alpha > 0.25) todayStarRef.current = Math.max(todayStarRef.current, erOverview);
 
       // ── Crisp cloud-zoom dot (every node — see CLOUD_DOT_* above) ───────────
       // A modest solid-colored core + a tight soft halo, crossfading against
@@ -3872,6 +4034,7 @@ export default function ForceGraphCanvas({
           // strength opacity instead of dotBrightness's own 0.7 ceiling —
           // VU should read as solid, saturated gold, not 70%-see-through.
           const coreR = vuSpecialActive ? Math.max(dotCoreR * 1.4, VU_MIN_CORE_SCREEN_R / globalScale) : dotCoreR;
+          if (n.id === storyFrame.todayId) todayStarRef.current = Math.max(todayStarRef.current, coreR);
           const coreAlpha = vuSpecialActive ? Math.min(fadeAndDim, 1) : dotBrightness;
           stampGlowSprite(ctx, getBulbSprite(color), n.x, n.y, coreR, coreAlpha);
 
@@ -3902,9 +4065,11 @@ export default function ForceGraphCanvas({
         // Photo fills the full node circle — the colored fill behind it is
         // the source of the core shadowBlur glow drawn above; the photo
         // covers it cleanly, leaving only the outward glow halo visible.
+        // Inside the badge's printed rim (the colour fill drawn above).
+        const photoR = Math.max(er * (1 - BADGE_RIM * badge), 1);
         ctx.save();
         ctx.beginPath();
-        ctx.arc(n.x, n.y, Math.max(er, 1), 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, photoR, 0, Math.PI * 2);
         ctx.clip();
         // Square source region, so a non-square photo is cropped rather than
         // squashed. Nearly every photo is a square Deezer/Apple crop and this
@@ -3917,8 +4082,8 @@ export default function ForceGraphCanvas({
         ctx.drawImage(
           photoImg!,
           (iw - side) / 2, (ih - side) * PHOTO_FOCUS_Y, side, side,
-          n.x - er, n.y - er,
-          er * 2,   er * 2,
+          n.x - photoR, n.y - photoR,
+          photoR * 2,   photoR * 2,
         );
         ctx.restore(); // removes clip path
 
@@ -3927,7 +4092,8 @@ export default function ForceGraphCanvas({
         // snapped alpha above) — a thin ring easing in reads nothing like a
         // whole tinted photo, so there's no reason to give up its smoother
         // appearance too.
-        ctx.globalAlpha = photoOpacity;
+        // A badge has its own edge (below); this glowing ring gives way to it.
+        ctx.globalAlpha = photoOpacity * (1 - badge);
         ctx.shadowColor = color;
         ctx.shadowBlur  = isFocused ? 14 : isHovered ? 11 : 8;
         ctx.beginPath();
@@ -3964,14 +4130,121 @@ export default function ForceGraphCanvas({
         }
 
         // ── Specular highlight (dots only — skip for photos) ──
-        if (!isDimmed) {
+        // A badge's shine (below) takes over from it.
+        if (!isDimmed && badge < 0.98) {
+          ctx.globalAlpha = alpha * (1 - badge);
           ctx.beginPath();
           ctx.arc(n.x - er * 0.28, n.y - er * 0.28, er * 0.32, 0, Math.PI * 2);
           ctx.fillStyle = 'rgba(255, 255, 255, 0.28)';
           ctx.fill();
+          ctx.globalAlpha = alpha;
         }
       }
       ctx.shadowBlur = 0;
+
+      // ── The badge: a thin metal edge, and a shine facing the pointer ──
+      if (badge > 0.02) {
+        const ba = alpha * badge;
+        const rb = showPhoto ? er : erOverview;
+        const edge = Math.max(rb * 0.05, 0.9 / globalScale);
+        ctx.globalAlpha = ba * 0.85;
+        ctx.strokeStyle = '#f3e8d6';
+        ctx.lineWidth = edge;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, Math.max(rb - edge / 2, 0.1), 0, Math.PI * 2);
+        ctx.stroke();
+        // The pointer is the lamp: the shine sits on the side facing it,
+        // brighter the nearer it is. With no pointer, light from the top left.
+        const lamp = pointerGraphRef.current;
+        let toward = -2.36;
+        let near = 0.2;
+        if (lamp) {
+          toward = Math.atan2(lamp.y - n.y, lamp.x - n.x);
+          near = Math.exp(-(Math.hypot(lamp.x - n.x, lamp.y - n.y) * globalScale) / BADGE_SHINE_FALLOFF_PX);
+        }
+        ctx.globalAlpha = ba * (0.18 + 0.5 * near);
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineCap = 'round';
+        ctx.lineWidth = rb * 0.13;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, rb * 0.72, toward - 0.5, toward + 0.5);
+        ctx.stroke();
+        ctx.globalAlpha = ba * (0.3 + 0.6 * near);
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(n.x + Math.cos(toward) * rb * 0.72, n.y + Math.sin(toward) * rb * 0.72, rb * 0.075, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = alpha;
+      }
+
+      // ── The push-pin: in the badge of whoever's picked (dropped in when
+      // clicked), its needle into the top left of the rim ──
+      const pinned = isFocused || (clickedAt !== null && isSetMember);
+      if (pinned && badge > 0.5 && (!motion || clickedAt === null || sinceClick >= PIN_DROP_AT_MS)) {
+        const rb = showPhoto ? er : erOverview;
+        const a = (-2 * Math.PI) / 3;
+        const tipX = n.x + Math.cos(a) * rb * 0.8;
+        const tipY = n.y + Math.sin(a) * rb * 0.8;
+        const len = Math.max(rb * 0.34, 10 / globalScale);
+        const headR = Math.max(rb * 0.2, 7 / globalScale);
+        // Falling in (gravity: slow then fast), then a little bounce.
+        let lift = 0;
+        let fade = 1;
+        if (motion && clickedAt !== null) {
+          if (sinceLanding < 0) {
+            const u = clamp01((sinceClick - PIN_DROP_AT_MS) / PIN_DROP_MS);
+            lift = (1 - u * u) * PIN_FALL_PX / globalScale;
+            fade = clamp01(u / 0.3);
+          } else if (sinceLanding < PIN_BOUNCE_MS) {
+            lift = Math.sin((sinceLanding / PIN_BOUNCE_MS) * Math.PI) * 5 / globalScale;
+          }
+        }
+        const headX = tipX + Math.cos(a) * len * 0.55;
+        const headY = tipY - len * 0.95 - lift;
+        ctx.globalAlpha = fade * dimFactor;
+        // Its shadow on the badge, only once it's in.
+        if (lift < 1 / globalScale) {
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+          ctx.beginPath();
+          ctx.ellipse(headX + 3 / globalScale, tipY - len * 0.35, headR * 0.95, headR * 0.6, 0, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        // The needle.
+        ctx.strokeStyle = '#d6d0c4';
+        ctx.lineWidth = Math.max(headR * 0.22, 1.1 / globalScale);
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(headX, headY);
+        ctx.lineTo(tipX, tipY - lift);
+        ctx.stroke();
+        // The head: red, a darker rim, a glint.
+        ctx.fillStyle = '#d0312d';
+        ctx.beginPath();
+        ctx.arc(headX, headY, headR, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#7a1712';
+        ctx.lineWidth = Math.max(headR * 0.14, 0.8 / globalScale);
+        ctx.stroke();
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.beginPath();
+        ctx.arc(headX - headR * 0.35, headY - headR * 0.35, headR * 0.28, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = alpha;
+      }
+
+      // ── The click's ring: snapping out from the badge, thinning as it goes ──
+      if (clicked >= 0 && clicked < CLICK_RING_MS) {
+        const u = clicked / CLICK_RING_MS;
+        const rb = showPhoto ? er : erOverview;
+        const out = 1 - (1 - u) ** 3;
+        ctx.globalAlpha = (1 - u) ** 2 * 0.85 * dimFactor;
+        ctx.strokeStyle = '#f3e8d6';
+        ctx.lineWidth = (2.4 * (1 - u) + 0.6) / globalScale;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, rb + (6 + 22 * out) / globalScale, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.globalAlpha = alpha;
+      }
 
       // ── Label logic (three tiers) ────────────────────────────────────────────
       // Tier 1 — hub landmarks (score ≥ threshold, OR one of the anchors
@@ -4257,7 +4530,7 @@ export default function ForceGraphCanvas({
           const tail = Math.max(0, head - 0.22);
           const hx = tx + (sx - tx) * head;
           const hy = ty + (sy - ty) * head;
-          const swell = 1 + storyFrame.level * 1.2;
+          const swell = 1 + listenRef.current.energy * 1.2;
           ctx.beginPath();
           ctx.moveTo(tx + (sx - tx) * tail, ty + (sy - ty) * tail);
           ctx.lineTo(hx, hy);
@@ -4351,20 +4624,44 @@ export default function ForceGraphCanvas({
       }
 
 
-      // The sky listens: whoever's playing, their lines pulse with the song.
-      const playingId = storyFrame.playing;
+      // The sky listens: whoever's playing, their lines hold a steady light
+      // that swells only slowly with the song, and on each beat a point of
+      // light runs along each one the way the influence went -- in from who
+      // shaped them, out to who they shaped. (Following the raw loudness
+      // frame by frame made the lines strobe, which read as a glitch.)
       // With a road on screen, only the road's own lines move with the music.
-      if (playingId && (srcId === playingId || tgtId === playingId) && storyFrame.level > 0.02
-          && (pathSet.size === 0 || isPathEdge)) {
-        const pulse = storyFrame.level;
+      const playingId = storyFrame.playing;
+      if (playingId && (srcId === playingId || tgtId === playingId) && (pathSet.size === 0 || isPathEdge)) {
+        const L = listenRef.current;
+        const fadeIn = Math.max(edgeFade, 0.35);
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(tx, ty);
         ctx.strokeStyle = '#fff1d0';
-        ctx.globalAlpha = LISTEN_EDGE_ALPHA * pulse * Math.max(edgeFade, 0.35);
-        ctx.lineWidth = (1 + 2.2 * pulse) / globalScale;
+        ctx.globalAlpha = LISTEN_EDGE_ALPHA * (0.35 + 0.4 * L.energy) * fadeIn;
+        ctx.lineWidth = (1.2 + 0.8 * L.energy) / globalScale;
         ctx.lineCap = 'round';
         ctx.stroke();
+        const nowMs = performance.now();
+        for (const b of L.beats) {
+          const u = (nowMs - b) / LISTEN_PULSE_MS;
+          if (u <= 0 || u >= 1) continue;
+          const head = 1 - (1 - u) * (1 - u); // quick out, easing in to land
+          const tail = Math.max(0, head - LISTEN_PULSE_TAIL);
+          const hx = tx + (sx - tx) * head;
+          const hy = ty + (sy - ty) * head;
+          ctx.globalAlpha = (1 - u * u) * fadeIn;
+          ctx.strokeStyle = '#ffe3a8';
+          ctx.lineWidth = 2 / globalScale;
+          ctx.beginPath();
+          ctx.moveTo(tx + (sx - tx) * tail, ty + (sy - ty) * tail);
+          ctx.lineTo(hx, hy);
+          ctx.stroke();
+          ctx.fillStyle = '#fffaf0';
+          ctx.beginPath();
+          ctx.arc(hx, hy, 2.4 / globalScale, 0, Math.PI * 2);
+          ctx.fill();
+        }
         ctx.globalAlpha = 1;
       }
 
@@ -4498,6 +4795,7 @@ export default function ForceGraphCanvas({
   const handleBackgroundClickWithCameraReset = useCallback((event?: MouseEvent) => {
     const star = starUnder(event);
     if (star) {
+      clickPinRef.current = { id: star.id, at: performance.now() };
       if (highlightSetMemberSet.has(star.id) && onSetMemberClick) onSetMemberClick(star.id);
       else onNodeClick(star.id);
       return;
@@ -4519,6 +4817,24 @@ export default function ForceGraphCanvas({
   }, [onBackgroundClick, applyCameraFocusForCluster, starUnder, highlightSetMemberSet, onSetMemberClick, onNodeClick]);
 
   const handleRenderFramePre = useCallback((ctx: CanvasRenderingContext2D, globalScale: number) => {
+    todayStarRef.current = 0; // drawNode notes it again for this frame
+    {
+      const fg = graphRef.current;
+      const box = containerRef.current;
+      const p = pointerRef.current;
+      pointerGraphRef.current = fg && p ? fg.screen2GraphCoords(p.x, p.y) : null;
+      screenMiddleRef.current = fg && box ? fg.screen2GraphCoords(box.clientWidth / 2, box.clientHeight / 2) : null;
+    }
+    {
+      const now = performance.now();
+      const L = listenRef.current;
+      const reading = L.reader.step(storyFrame.playing ? storyFrame.level : 0, now);
+      L.energy = reading.energy;
+      L.beat = reading.beat;
+      if (storyFrame.playing !== L.playing) { L.playing = storyFrame.playing; L.beats = []; }
+      if (reading.onset && storyFrame.playing) L.beats.push(now);
+      if (L.beats.length && now - L.beats[0] > LISTEN_PULSE_MS) L.beats = L.beats.filter(b => now - b < LISTEN_PULSE_MS);
+    }
     // Unconditional, before any early return below — linkDirectionalArrowColor
     // reads this every frame regardless of focus/zoom state (see its own gate).
     currentGlobalScaleRef.current = globalScale;
@@ -4560,20 +4876,24 @@ export default function ForceGraphCanvas({
     {
       const frameNow = performance.now();
       const amb = ambientRef.current;
-      const resting = !storyFrame.intro && selectedId === null && highlightSetMemberSet.size === 0
+      const resting = !storyFrame.intro && !storyFrame.tour && selectedId === null && highlightSetMemberSet.size === 0
         && pathSet.size === 0 && storyFrame.wave < 0 && storyFrame.gather < 0 && storyFrame.collapse < 0
         && storyFrame.realms < 0 && storyFrame.route === null && storyFrame.pulse.length === 0;
       // Coming back to rest from fully off: restart the clock so the first
-      // wave leaves straight away.
+      // wave leaves straight away -- or, just after the opening, after a
+      // moment of calm.
+      if (storyFrame.intro) amb.introAt = frameNow;
+      const afterOpening = frameNow - amb.introAt < HEARTBEAT_AFTER_OPENING_MS + AMBIENT_EASE_AFTER_OPENING_MS;
       if (resting && amb.level === 0 && !prefersReducedMotionRef.current) {
-        amb.origin = frameNow + HEARTBEAT_WAKE_DELAY_MS;
+        amb.origin = frameNow + (afterOpening ? HEARTBEAT_AFTER_OPENING_MS : HEARTBEAT_WAKE_DELAY_MS);
         amb.firstUntil = amb.origin + HEARTBEAT_FIRST_WAVE_MS;
         amb.wave = 1;
         amb.held = false;
       }
       const dt = amb.at ? frameNow - amb.at : 0;
+      const easeMs = afterOpening ? AMBIENT_EASE_AFTER_OPENING_MS : AMBIENT_EASE_MS;
       amb.level = prefersReducedMotionRef.current ? 0
-        : resting ? Math.min(1, amb.level + dt / AMBIENT_EASE_MS) : Math.max(0, amb.level - dt / AMBIENT_EASE_MS);
+        : resting ? Math.min(1, amb.level + dt / easeMs) : Math.max(0, amb.level - dt / AMBIENT_EASE_MS);
       amb.at = frameNow;
       // Hold the wave while the pointer is moving over the map. When it goes
       // still, the next wave leaves on the next peak of VU's breath -- shifting
@@ -4636,7 +4956,7 @@ export default function ForceGraphCanvas({
     // The sky listens: the realm of whoever's playing breathes with the song.
     const playingRealm = storyFrame.playing ? introNodesRef.current.get(storyFrame.playing)?.realm : undefined;
     if (playingRealm && lampLevel.has(playingRealm)) {
-      lampLevel.set(playingRealm, lampLevel.get(playingRealm)! * (1 + LISTEN_LAMP_SWELL * storyFrame.level));
+      lampLevel.set(playingRealm, lampLevel.get(playingRealm)! * (1 + LISTEN_LAMP_SWELL * listenRef.current.energy));
     }
     // One shared additive context for every realm-tagged node's individual
     // glow — order between realms doesn't matter ('lighter' is commutative),
@@ -4942,7 +5262,7 @@ export default function ForceGraphCanvas({
       // shadowBlur/fillText for nothing every frame. Skip entirely — a
       // label this faint contributes zero visible pixels either way.
       if (alpha < 0.01) continue;
-      ctx.font = `${fontSize}px Inter, sans-serif`;
+      ctx.font = `600 ${fontSize}px ${displayFontFamily()}, Georgia, serif`;
       const textW = ctx.measureText(name).width;
       const textH = fontSize;
       const padH  = LABEL_CHIP_PAD_X;
@@ -5028,26 +5348,29 @@ export default function ForceGraphCanvas({
         ]);
       }
 
-      // Dark rounded chip behind the text (see LABEL_CHIP_* above) — same
-      // rect placement already computed for collision avoidance, so the
-      // chip always exactly matches what the search reasoned about.
-      const textColor = bright
-        ? `rgba(246,236,220,${(alpha * 0.92).toFixed(3)})`
-        : `rgba(246,236,220,${(alpha * 0.6).toFixed(3)})`;
-
-      // Scaled by alpha, not fixed — otherwise the chip stays at full
-      // strength even once the glyph itself has faded to invisible, leaving
-      // a dark smudge where a "no labels" cloud-zoom label used to be.
-      ctx.fillStyle = `rgba(31, 22, 32, ${(alpha * LABEL_CHIP_MAX_ALPHA).toFixed(3)})`;
-      drawRoundedRect(
-        ctx,
-        lx - textW / 2 - padH, ly - textH / 2 - padV,
-        textW + padH * 2,      textH + padV * 2,
-        LABEL_CHIP_RADIUS,
-      );
+      // A paper tag behind the text, like the map's buttons: aged paper, an
+      // ink edge, a hard shadow, the name in ink -- same rect placement
+      // already computed for collision avoidance, so the tag always exactly
+      // matches what the search reasoned about. Everything is scaled by
+      // alpha, so a fading label leaves no ghost of its tag.
+      const tagX = lx - textW / 2 - padH;
+      const tagY = ly - textH / 2 - padV;
+      const tagW = textW + padH * 2;
+      const tagH = textH + padV * 2;
+      const drop = fontSize * 0.14;
+      ctx.fillStyle = `rgba(0, 0, 0, ${(alpha * 0.45).toFixed(3)})`;
+      drawRoundedRect(ctx, tagX + drop, tagY + drop, tagW, tagH, LABEL_CHIP_RADIUS);
       ctx.fill();
+      ctx.fillStyle = `rgba(236, 226, 205, ${(alpha * 0.97).toFixed(3)})`;
+      drawRoundedRect(ctx, tagX, tagY, tagW, tagH, LABEL_CHIP_RADIUS);
+      ctx.fill();
+      ctx.strokeStyle = `rgba(28, 23, 36, ${(alpha * 0.85).toFixed(3)})`;
+      ctx.lineWidth = fontSize * 0.07;
+      ctx.stroke();
 
-      ctx.fillStyle = textColor;
+      ctx.fillStyle = bright
+        ? `rgba(28, 23, 36, ${alpha.toFixed(3)})`
+        : `rgba(28, 23, 36, ${(alpha * 0.78).toFixed(3)})`;
       ctx.fillText(name, lx, ly);
     }
     // realmLabels is memoised on stableData.nodes, and stableData itself never
@@ -5146,6 +5469,7 @@ export default function ForceGraphCanvas({
       // focus view has moved things (see starUnder) — clicking Talking Heads
       // in Arcade Fire's family selected Julee Cruise.
       const n = starUnder(event) ?? (node as GraphNode);
+      clickPinRef.current = { id: n.id, at: performance.now() };
       // Clicking a member of the active genre/scene set should re-center
       // the set on that member, not exit to a full single-artist focus
       // (which would pull in every real connection, most of them outside
@@ -5160,9 +5484,12 @@ export default function ForceGraphCanvas({
     [onNodeClick, onSetMemberClick, highlightSetMemberSet, starUnder],
   );
 
-  // Someone pointing around the map holds the heartbeat (HEARTBEAT_STILL_MS).
-  const markPointer = useCallback(() => {
+  // Someone pointing around the map holds the heartbeat (HEARTBEAT_STILL_MS),
+  // and is the lamp the badges' shine faces.
+  const markPointer = useCallback((e: React.PointerEvent | React.WheelEvent) => {
     lastPointerRef.current = performance.now();
+    const box = containerRef.current?.getBoundingClientRect();
+    if (box) pointerRef.current = { x: e.clientX - box.left, y: e.clientY - box.top };
   }, []);
 
   return (
@@ -5171,6 +5498,7 @@ export default function ForceGraphCanvas({
       style={{ width: '100%', height: '100%' }}
       onPointerMove={markPointer}
       onWheel={markPointer}
+      onPointerLeave={() => { pointerRef.current = null; }}
     >
       {SHOW_ZOOM_READOUT && (
         <div

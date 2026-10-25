@@ -28,7 +28,7 @@ interface Props {
   lit: string;
 }
 
-interface Tone {
+export interface Tone {
   w: number;
   h: number;
   /** Brightness 0..1 per sample, levelled so every photo has a full range. */
@@ -43,7 +43,8 @@ const DOT = 0.42; // a dot's largest radius at rest, as a share of the spacing
 const LIT_GROW = 1.8; // the lit print's dots, against the resting ones
 const TAU = Math.PI * 2;
 
-function readTone(img: HTMLImageElement): Tone | null {
+/** A photo's light, sampled and levelled (also used by the /genres cover). */
+export function readTone(img: HTMLImageElement): Tone | null {
   const w = TONE_W;
   const h = Math.max(1, Math.round((TONE_W * img.naturalHeight) / img.naturalWidth));
   const c = document.createElement('canvas');

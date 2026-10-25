@@ -1,4 +1,4 @@
-import type { Artist, GraphData, Realm } from '@/data/types';
+import type { Artist, Edge, GraphData, Realm } from '@/data/types';
 import { REALMS, REALM_LABELS } from './colors';
 import { buildPortrait } from './family-portrait';
 import { SONG_MS, type Queue, type Track } from './player';
@@ -77,6 +77,50 @@ export function artistThenFamily(data: GraphData, id: string): Queue | null {
     title: `${artist.name}, then their family`,
     tracks: [artist, ...family].map(toTrack),
     stopMs: SONG_MS,
+  };
+}
+
+const TIER_RANK: Record<string, number> = { 'first-person': 0, reported: 1, critic: 2 };
+const bySource = (a: Edge, b: Edge) =>
+  (TIER_RANK[a.sourceTier ?? ''] ?? 3) - (TIER_RANK[b.sourceTier ?? ''] ?? 3) || (b.confidence ?? 0) - (a.confidence ?? 0);
+
+/**
+ * Today's record as a road through its family (the home page's "Hear where
+ * it came from"): the influence it's quoted on, briefly, then the record
+ * itself, then three it shaped -- their best-sourced links, the one quoted
+ * on it first. Linked, so the map lights each line as the music crosses it,
+ * and offering their whole family after.
+ */
+export function todaysRoad(
+  data: GraphData,
+  record: { id: string; why: { direction: 'parent' | 'child'; other: { id: string } } | null },
+): Queue | null {
+  const byId = new Map(data.artists.map(a => [a.id, a]));
+  const artist = byId.get(record.id);
+  if (!artist) return null;
+  const from = record.why?.direction === 'parent' ? byId.get(record.why.other.id) : undefined;
+  const quotedChild = record.why?.direction === 'child' ? record.why.other.id : null;
+  const shaped = data.edges
+    .filter(e => e.type === 'influence' && e.target === record.id && e.source !== from?.id && byId.get(e.source)?.previewUrl)
+    .sort((a, b) => (a.source === quotedChild ? -1 : b.source === quotedChild ? 1 : bySource(a, b)))
+    .slice(0, 3)
+    .map(e => byId.get(e.source)!);
+  const tracks: Track[] = [
+    // Notes short enough for one line of the folded player's screen.
+    ...(from?.previewUrl ? [{ ...toTrack(from), note: 'Came from', ms: 12000 }] : []),
+    { ...toTrack(artist), note: "Today's record" },
+    ...shaped.map(a => ({ ...toTrack(a), note: 'Led to', ms: 15000 })),
+  ];
+  const family = artistThenFamily(data, record.id);
+  return {
+    id: `today:${record.id}`,
+    title: `Today's record: ${artist.name}`,
+    tracks,
+    stopMs: SONG_MS,
+    flows: true,
+    after: family && family.tracks.length > 1
+      ? { label: `Keep going: ${artist.name}'s family`, queue: { ...family, id: `family-of:${record.id}`, title: `${artist.name}'s family`, tracks: family.tracks.slice(1) } }
+      : undefined,
   };
 }
 

@@ -117,9 +117,9 @@ export function resolveSceneTimelineScenes(graphData: GraphData): SceneTimelineS
 // crowded quarter-century ~41% of the width and handed the rest to two
 // near-empty margins.
 //
-// Same principle the /genres timeline already uses (see lib/genre-timeline.ts,
-// where x is ordinal rank among dated genres rather than a year scale), but it
-// cannot be borrowed directly: a genre is a point, a scene is an interval, so
+// Same principle the old /genres timeline used (x was ordinal rank among
+// dated genres rather than a year scale), but it could not be borrowed
+// directly: a genre is a point, a scene is an interval, so
 // this needs a continuous monotonic year -> position mapping that both ends of
 // a bar can be pushed through, not a rank lookup.
 //

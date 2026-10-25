@@ -13,15 +13,6 @@ import { storyFrame } from './story-store';
 // two numbers on a couple of elements. Checked four times a second while
 // nothing plays; with reduced motion, nothing is written at all.
 
-const targets = new Set<HTMLElement>();
-let raf = 0;
-let timer = 0;
-let fast = 0;
-let energy = 0;
-let kick = 0;
-let beat = 0;
-let lastBeat = 0;
-
 const ENERGY_UP = 0.1;    // how quickly the swell follows the song up...
 const ENERGY_DOWN = 0.03;  // ...and lets go of it
 const BEAT_GAP_MS = 240;   // no two beats closer than this
@@ -29,9 +20,58 @@ const KICK_DECAY = 0.9;    // the kick behind each beat, per frame
 const BEAT_UP = 0.4;       // the pulse rising to the kick...
 const BEAT_DOWN = 0.12;    // ...and falling away
 
+export interface MusicReading {
+  /** The slow swell of the song's loudness, 0..1. */
+  energy: number;
+  /** The pulse after each beat, 0..1: up over a few frames, down over a third of a second. */
+  beat: number;
+  /** A beat landed this frame. */
+  onset: boolean;
+}
+
+/**
+ * The reading itself, one per thing that reads it (this page's loop; the
+ * map, which reads it in its own frame -- see ForceGraph's "sky listens"):
+ * feed it the raw level (storyFrame.level) once a frame.
+ */
+export function musicReader() {
+  let fast = 0;
+  let energy = 0;
+  let kick = 0;
+  let beat = 0;
+  let lastBeat = -Infinity;
+  return {
+    step(level: number, now: number): MusicReading {
+      fast += (level - fast) * 0.5;
+      energy += (level - energy) * (level > energy ? ENERGY_UP : ENERGY_DOWN);
+      // A beat: the quick reading jumps well above the slow one. It sets off
+      // a kick, which the pulse follows smoothly up and back down.
+      const onset = fast > energy * 1.22 + 0.04 && now - lastBeat > BEAT_GAP_MS;
+      if (onset) {
+        kick = 1;
+        lastBeat = now;
+      } else {
+        kick *= KICK_DECAY;
+      }
+      beat += (kick - beat) * (kick > beat ? BEAT_UP : BEAT_DOWN);
+      return { energy, beat: Math.min(1, beat * 1.4), onset };
+    },
+    /** At rest: nothing left of the last song. */
+    still: () => energy < 0.004 && beat < 0.01 && kick < 0.01,
+    reset() { fast = energy = kick = beat = 0; },
+  };
+}
+
+const targets = new Set<HTMLElement>();
+const reader = musicReader();
+let raf = 0;
+let timer = 0;
+let energy = 0;
+let beat = 0;
+
 function write() {
   const e = energy.toFixed(3);
-  const b = Math.min(1, beat * 1.4).toFixed(3);
+  const b = beat.toFixed(3);
   targets.forEach(el => {
     el.style.setProperty('--energy', e);
     el.style.setProperty('--beat', b);
@@ -39,21 +79,11 @@ function write() {
 }
 
 function frame(now: number) {
-  const level = storyFrame.playing ? storyFrame.level : 0;
-  fast += (level - fast) * 0.5;
-  energy += (level - energy) * (level > energy ? ENERGY_UP : ENERGY_DOWN);
-  // A beat: the quick reading jumps well above the slow one. It sets off a
-  // kick, which the pulse follows smoothly up and back down.
-  if (fast > energy * 1.22 + 0.04 && now - lastBeat > BEAT_GAP_MS) {
-    kick = 1;
-    lastBeat = now;
-  } else {
-    kick *= KICK_DECAY;
-  }
-  beat += (kick - beat) * (kick > beat ? BEAT_UP : BEAT_DOWN);
+  ({ energy, beat } = reader.step(storyFrame.playing ? storyFrame.level : 0, now));
   write();
-  if (!storyFrame.playing && energy < 0.004 && beat < 0.01 && kick < 0.01) {
-    fast = energy = beat = kick = 0;
+  if (!storyFrame.playing && reader.still()) {
+    reader.reset();
+    energy = beat = 0;
     write();
     raf = 0;
     listen();

@@ -6,8 +6,8 @@ export interface GenreLineage {
   children: Genre[];
 }
 
-// Pure `parent`-chain walk — no year/rank logic (that's lib/genre-timeline.ts's
-// job for the /genres poster). Used for the small per-genre-page lineage strip,
+// Pure `parent`-chain walk — no year/row logic (that's lib/genre-session.ts's
+// job for the /genres track sheet). Used for the small per-genre-page lineage strip,
 // which only needs "what's directly above and below this genre in the tree."
 export function getGenreLineage(genres: Genre[], genreId: string): GenreLineage | null {
   const byId = new Map(genres.map(g => [g.id, g]));

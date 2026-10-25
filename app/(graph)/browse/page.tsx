@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { loadGraphData } from '@/lib/graph-data';
 import BrowseClient, { type ConnectionCounts } from '@/components/browse/BrowseClient';
 import ArtistBackground from '@/components/artist/ArtistBackground';
+import SiteFooter from '@/components/layout/SiteFooter';
 
 export const metadata: Metadata = {
   title: 'Browse — Starweave',
@@ -66,6 +67,7 @@ export default function BrowsePage() {
 
         <BrowseClient artists={artists} genres={genres} scenes={scenes} connectionCounts={connectionCounts} />
       </div>
+      <SiteFooter />
     </div>
   );
 }

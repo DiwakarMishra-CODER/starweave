@@ -35,7 +35,9 @@ export default function FloatingPlayer() {
   const story = useMemo(() => (data ? wholeStory(data.artists) : null), [data]);
   const current = onAir(s);
   const live = current !== null && !s.paused;
-  const offer = s.context ?? (story ? { queue: story, start: 0 } : null);
+  // What play starts when nothing is on: a "keep going" offer if there is
+  // one, else this page's family, else the whole story.
+  const offer = (s.offer && { queue: s.offer.queue, start: 0 }) ?? s.context ?? (story ? { queue: story, start: 0 } : null);
   const shown = current ?? (offer ? offer.queue.tracks[offer.start] : null);
   const color = (shown && colorOf.get(shown.id)) ?? '#e8c87a';
   // The artist page's docked player stands in for this one -- unless the
@@ -72,13 +74,14 @@ export default function FloatingPlayer() {
   };
   const open = () => player.setOpen(true);
 
-  const status = !current ? 'Ready' : s.paused ? 'Paused' : 'Playing';
+  // What the song is doing here when it says ("Where it came from"), else the state.
+  const status = !current ? 'Ready' : s.paused ? 'Paused' : current.note ?? 'Playing';
   const song = shown ? (shown.previewTrack ?? (shown.previewUrl ? 'A song' : 'No song')) : '';
 
   return (
     <div
       ref={rootRef}
-      className={`player-float${pathname === '/' ? ' player-float--map' : ''}${current ? '' : ' player-float--idle'}${live ? ' player-float--live' : ''}${s.heard ? '' : ' player-float--fresh'}`}
+      className={`player-float${pathname === '/' ? ' player-float--map' : ''}${current || s.offer ? '' : ' player-float--idle'}${live ? ' player-float--live' : ''}${s.heard ? '' : ' player-float--fresh'}`}
       style={{ '--layer-color': color } as React.CSSProperties}
       hidden={hidden}
     >
@@ -91,7 +94,18 @@ export default function FloatingPlayer() {
         </div>
       ) : (
         <>
-          {!s.browsed && story && (
+          {s.offer && !current && (
+            <div className="player-float__offer">
+              <button type="button" className="player-float__offer-go" onClick={() => player.play(s.offer!.queue, 0)}>
+                <PlayIcon className="player-float__offer-icon" />
+                {s.offer.label}
+              </button>
+              <button type="button" className="player-float__offer-no" onClick={() => player.dismissOffer()} aria-label="No thanks">
+                ×
+              </button>
+            </div>
+          )}
+          {!s.browsed && !s.offer && story && (
             <p className="player-float__note">
               <span><b>Menu</b>: all {story.tracks.length} songs</span>
               <svg className="player-float__note-arrow" viewBox="0 0 40 24" aria-hidden>

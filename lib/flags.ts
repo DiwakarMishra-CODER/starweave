@@ -21,8 +21,10 @@ export const PATH_FINDER_ENABLED = true;
  * Velvet Underground's banana sleeve, the vinyl sliding out of it, copies
  * handed on to the artists it shaped, and Brian Eno's line about it.
  *
- * Off: a test viewer found it confusing ahead of the spinning record, which
- * is already a record, so the opening went back to starting on the record.
- * Kept whole behind this switch rather than deleted, to try again later.
+ * Was off for a while: a test viewer found two records in a row confusing.
+ * Back on (Oct 2026) as one record -- the banana vinyl stays at the centre
+ * and becomes the label of the record every artist is pressed into -- with
+ * the cover named in plain words for anyone who doesn't know it, and the
+ * three handoffs big and named.
  */
-export const OPENING_VU_BEAT = false;
+export const OPENING_VU_BEAT = true;

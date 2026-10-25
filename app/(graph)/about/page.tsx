@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { LAYER_COLORS, REALMS, REALM_COLORS, REALM_LABELS } from '@/lib/colors';
 import { loadGraphData } from '@/lib/graph-data';
 import ArtistBackground from '@/components/artist/ArtistBackground';
+import SiteFooter from '@/components/layout/SiteFooter';
 
 export const metadata: Metadata = {
   title: 'About - Starweave',
@@ -246,6 +247,7 @@ export default function AboutPage() {
           </a>
         </section>
       </article>
+      <SiteFooter />
     </div>
   );
 }

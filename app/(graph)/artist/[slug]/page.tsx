@@ -8,6 +8,7 @@ import BackButton from '@/components/ui/BackButton';
 import FamilyPhoto from '@/components/artist/FamilyPhoto';
 import RecordSleeve from '@/components/artist/RecordSleeve';
 import RisoPrint from '@/components/artist/RisoPrint';
+import SiteFooter from '@/components/layout/SiteFooter';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -107,6 +108,7 @@ export default async function ArtistPage({ params }: Props) {
           } : null}
         />
       </div>
+      <SiteFooter />
     </div>
   );
 }

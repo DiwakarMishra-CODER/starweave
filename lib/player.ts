@@ -24,6 +24,10 @@ export interface Track {
   previewUrl: string | null;
   previewTrack: string | null;
   activeFrom: number | null;
+  /** What this song is doing here ("Where it came from"), on the player's screen. */
+  note?: string;
+  /** Its own turn, instead of the queue's. */
+  ms?: number;
 }
 
 export interface Queue {
@@ -33,6 +37,11 @@ export interface Queue {
   tracks: Track[];
   /** Each track's turn: a whole preview, or a few seconds when sampling. */
   stopMs: number;
+  /** Consecutive tracks are linked on the map: as the music moves from one
+   *  to the next, light runs along the line between them (storyFrame.flow). */
+  flows?: boolean;
+  /** Offered when it has played to the end ("Keep going: …"). */
+  after?: { label: string; queue: Queue };
 }
 
 export interface PlayerState {
@@ -51,18 +60,22 @@ export interface PlayerState {
   docked: boolean;
   /** What this page offers first, and where in it to start: an artist page's family. */
   context: { queue: Queue; start: number } | null;
+  /** What to play next, offered when a queue that has one ends. */
+  offer: { label: string; queue: Queue } | null;
 }
 
 export const SONG_MS = 30000; // a whole preview
 const SKIP_MS = 1400;         // a track with no song: just long enough to see it
 const FADE_MS = 600;
+const FLOW_DELAY_MS = 300;    // a linked queue's light leaves this long into a track...
+const FLOW_MS = 1500;         // ...and takes this long to cross the line
 const VOLUME = 0.8;
 const OWNER = Symbol('player');
 
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 
 const INITIAL: PlayerState = {
-  queue: null, at: null, paused: false, heard: false, open: false, browsed: false, docked: false, context: null,
+  queue: null, at: null, paused: false, heard: false, open: false, browsed: false, docked: false, context: null, offer: null,
 };
 let state = INITIAL;
 const listeners = new Set<() => void>();
@@ -85,6 +98,7 @@ export const onAir = (s: PlayerState): Track | null => (s.queue && s.at !== null
 // ── The engine ──
 let audio: HTMLAudioElement | null = null;
 let raf = 0;
+let flowFrom: string | null = null;
 let startedAt = 0;
 let pausedAt = 0;
 // Elements that show how far through its turn the track on air is
@@ -110,7 +124,8 @@ function begin(index: number) {
   const track = queue.tracks[index];
   startedAt = performance.now();
   pausedAt = 0;
-  set({ at: index, paused: false, heard: true });
+  flowFrom = queue.flows && index > 0 ? queue.tracks[index - 1].id : null;
+  set({ at: index, paused: false, heard: true, offer: null });
   storyFrame.pulse = [track.id];
   storyFrame.playing = track.id;
   const a = sound();
@@ -129,19 +144,26 @@ function begin(index: number) {
 function advance() {
   const { queue, at } = state;
   if (!queue || at === null) return;
-  if (at >= queue.tracks.length - 1) player.stop();
-  else begin(at + 1);
+  if (at < queue.tracks.length - 1) { begin(at + 1); return; }
+  player.stop();
+  if (queue.after) set({ offer: queue.after });
 }
 
 function tick(now: number) {
   const { queue, at } = state;
   if (!queue || at === null) return;
   const track = queue.tracks[at];
-  const turn = track.previewUrl ? queue.stopMs : SKIP_MS;
+  const turn = track.previewUrl ? track.ms ?? queue.stopMs : SKIP_MS;
   const t = now - startedAt;
   if (track.previewUrl && audio) audio.volume = VOLUME * clamp01(Math.min(t / FADE_MS, (turn - t) / FADE_MS));
   storyFrame.level = readLevel(audio);
   showProgress(clamp01(t / turn));
+  // Light along the line from the last song's artist to this one's.
+  if (flowFrom) {
+    const f = (t - FLOW_DELAY_MS) / FLOW_MS;
+    storyFrame.flow = f > 0 && f < 1 ? { from: flowFrom, to: track.id, t: f } : null;
+    if (f >= 1) flowFrom = null;
+  }
   if (t >= turn) { advance(); return; }
   raf = requestAnimationFrame(tick);
 }
@@ -183,11 +205,17 @@ export const player = {
   stop() {
     cancelAnimationFrame(raf);
     audio?.pause();
+    if (flowFrom) storyFrame.flow = null;
+    flowFrom = null;
     storyFrame.pulse = [];
     storyFrame.playing = null;
     storyFrame.level = 0;
     showProgress(0);
     set({ at: null, paused: false });
+  },
+  /** Let the "keep going" offer go. */
+  dismissOffer() {
+    if (state.offer) set({ offer: null });
   },
   setOpen(open: boolean) {
     if (open !== state.open) set(open ? { open, browsed: true } : { open });

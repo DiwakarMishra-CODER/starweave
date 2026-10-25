@@ -11,6 +11,7 @@ import ArtistCircleGrid from '@/components/artist/ArtistCircleGrid';
 import AlbumGrid from '@/components/artist/AlbumGrid';
 import IgniteGraphButton from '@/components/artist/IgniteGraphButton';
 import GenreLineageStrip from '@/components/artist/GenreLineageStrip';
+import SiteFooter from '@/components/layout/SiteFooter';
 
 interface Props {
   params: Promise<{ genre: string }>;
@@ -143,6 +144,7 @@ export default async function GenrePage({ params }: Props) {
 
         <IgniteGraphButton href={graphHref} label={graphLabel} secondary />
       </div>
+      <SiteFooter />
     </div>
   );
 }

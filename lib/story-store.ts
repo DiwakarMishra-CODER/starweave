@@ -159,6 +159,9 @@ export const storyFrame = {
   graphReady: false,
   /** True while the opening owns the stars' positions. */
   intro: false,
+  /** True while How it works is running (components/tour/Tour.tsx): the
+   *  map's heartbeat and fairy lights rest for the whole of it. */
+  tour: false,
   /** How far the needle has travelled along the groove, 0..1. Stars further
    *  along aren't lit yet. */
   reveal: 1,
@@ -254,6 +257,7 @@ export const storyControl: { finish: (() => void) | null } = { finish: null };
 
 export function resetStoryFrame() {
   storyFrame.intro = false;
+  storyFrame.tour = false;
   storyFrame.reveal = 1;
   storyFrame.morph = 1;
   storyFrame.level = 0;

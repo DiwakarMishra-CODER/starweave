@@ -69,9 +69,9 @@ export default function PlayerDevice({ variant, children }: Props) {
   const current = elsewhere ? null : onAirNow;
   const playing = current !== null;
   const live = playing && !s.paused;
-  // What play starts when nothing is on: this page's family at the artist,
-  // else the whole story from the start.
-  const offer = s.context ?? (story ? { queue: story, start: 0 } : null);
+  // What play starts when nothing is on: a "keep going" offer if there is
+  // one, else this page's family at the artist, else the whole story.
+  const offer = (s.offer && { queue: s.offer.queue, start: 0 }) ?? s.context ?? (story ? { queue: story, start: 0 } : null);
   // Before anything plays, ⏮ ⏭ step through what's on offer, and play
   // plays whoever is on the screen (kept per list, so a new page starts
   // at its own artist).
@@ -226,7 +226,7 @@ export default function PlayerDevice({ variant, children }: Props) {
   };
 
   const title =
-    screen.kind === 'now' ? (!playing ? null : s.paused ? 'Paused' : s.queue!.title)
+    screen.kind === 'now' ? (!playing ? null : s.paused ? 'Paused' : current?.note ?? s.queue!.title)
     : screen.kind === 'menu' ? 'Music'
     : screen.kind === 'stations' ? 'Stations'
     : screen.kind === 'search' ? 'Search'

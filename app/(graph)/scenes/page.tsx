@@ -3,6 +3,7 @@ import { loadGraphData } from '@/lib/graph-data';
 import { resolveSceneTimelineScenes, computeAxis } from '@/lib/scenes-timeline';
 import ScenesTimeline from '@/components/scenes/ScenesTimeline';
 import ArtistBackground from '@/components/artist/ArtistBackground';
+import SiteFooter from '@/components/layout/SiteFooter';
 
 // Derived, not hand-written. Both the count and the axis range used to be
 // spelled out here ("Twelve … 1976 to 2020") and both silently went stale the
@@ -44,6 +45,7 @@ export default function ScenesIndexPage() {
 
         <ScenesTimeline scenes={scenes} />
       </div>
+      <SiteFooter />
     </div>
   );
 }

@@ -61,7 +61,7 @@ type Variant = 'full' | 'short';
 type Phase =
   | 'label'
   // the first record (first visit)
-  | 'vu' | 'eno' | 'vinyl' | 'passing' | 'landed' | 'into'
+  | 'vu' | 'eno' | 'vinyl' | 'passing'
   // every artist on one record, then the map
   | 'groove' | 'coast' | 'record' | 'morph' | 'mapped'
   // one family
@@ -72,15 +72,12 @@ type Phase =
 // Step lengths, ms, for the steps with motion; a step with words lasts as
 // long as its words take to read (readMs), so those are 0 here.
 const LABEL_MS = 700; // the label alone, a beat before anything moves
-const BULB_OFF_MS = 450; // the room's bare bulb clicks off, inside that beat
 // The first record's steps (behind OPENING_VU_BEAT, lib/flags.ts).
 const VU_STEPS: [Phase, number][] = [
   ['vu', 0],         // the sleeve, still: its title
   ['eno', 0],        // the sleeve, still: what that record did — read first, then watched
   ['vinyl', 1400],   // the vinyl slides out, spins, takes the middle
   ['passing', 4600], // three handoffs, then everyone else
-  ['landed', 800],   // the count comes to rest
-  ['into', 600],     // the vinyl shrinks into the gold star
 ];
 const FULL: [Phase, number][] = [
   ...(OPENING_VU_BEAT ? VU_STEPS : []),
@@ -114,14 +111,17 @@ const READ_MIN_MS = 1800;
 // The first record's moves: the sleeve fades in at the start of 'vu'; in
 // 'vinyl' the vinyl slides out of it, then takes the middle as the sleeve
 // steps away; through 'passing' its copies are handed on (ForceGraph
-// schedules each one — see vuFlights); in 'into' it shrinks away.
+// schedules each one — see vuFlights) as it settles to the size of the big
+// record's label. It never leaves: the record every artist is then pressed
+// into is this one, with it turning at the centre, so the visitor follows
+// one record, not two. It fades only as the record becomes the map.
 const SLEEVE_IN_MS = 600;
 const SLIDE_MS = 900;
 const CENTRE_MS = 500;
 const WAVE_AT = 0.66; // a share of the handoffs: when the wave starts, as ForceGraph's VU_WAVE_FROM
 // The camera leans in for the handoffs, so the copies are big enough to
 // follow, and back out for the wave.
-const LEAN_IN = 1.3;
+const LEAN_IN = 1.6;
 const LEAN_MS = 900;
 const VINYL_RPM_DEG_PER_MS = 0.2; // 33⅓
 const DUST_IN_MS = 500;
@@ -198,8 +198,6 @@ export default function Intro({ record, artistCount, years }: Props) {
   const counterRef = useRef<HTMLDivElement>(null);
   const yearRef = useRef<HTMLSpanElement>(null);
   const nameRef = useRef<HTMLSpanElement>(null);
-  const tallyRef = useRef<HTMLDivElement>(null);
-  const tallyCountRef = useRef<HTMLSpanElement>(null);
   const rootTagRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
   const sleeveRef = useRef<HTMLImageElement>(null);
@@ -210,7 +208,6 @@ export default function Intro({ record, artistCount, years }: Props) {
   const soundRef = useRef(false);
   const crackleRef = useRef<(() => void) | null>(null);
   const phaseRef = useRef<Phase>('label');
-  const bulbRef = useRef<HTMLDivElement>(null);
   // Skip and the sound button reach the clock through these; the effect
   // below fills them in once it knows which version is playing.
   const finishRef = useRef<() => void>(() => {});
@@ -231,7 +228,7 @@ export default function Intro({ record, artistCount, years }: Props) {
     const syncSound = () => {
       const p = phaseRef.current;
       const crackle = soundRef.current
-        && (p === 'label' || p === 'vu' || p === 'vinyl' || p === 'passing' || p === 'eno' || p === 'into' || p === 'groove');
+        && (p === 'label' || p === 'vu' || p === 'vinyl' || p === 'passing' || p === 'eno' || p === 'groove');
       if (crackle && !crackleRef.current) crackleRef.current = startCrackle();
       if (!crackle && crackleRef.current) { crackleRef.current(); crackleRef.current = null; }
       const want = !soundRef.current ? null
@@ -306,7 +303,7 @@ export default function Intro({ record, artistCount, years }: Props) {
       finish();
       return;
     }
-    // The room before the show: the bare bulb is on, the lamps are off.
+    // The room before the show: the lamps are off.
     storyFrame.lamps = 0;
 
     // The run of steps, with when each starts. The family's own step is as
@@ -330,9 +327,14 @@ export default function Intro({ record, artistCount, years }: Props) {
       centreAt: startOf.get('vinyl')! + SLIDE_MS,
       passAt: startOf.get('passing')!,
       passEnd: startOf.get('passing')! + lengthOf.get('passing')!,
-      intoAt: startOf.get('into')!,
-      intoMs: lengthOf.get('into')!,
+      grooveAt: startOf.get('groove')!,
+      morphAt: startOf.get('morph')!,
+      morphMs: lengthOf.get('morph')!,
     } : null;
+    // The vinyl's turn so far, so it carries on smoothly when the big record
+    // takes over its spin (see placeBeat).
+    let vinylDeg = 0;
+    let spinOffset: number | null = null;
 
     const mountedAt = performance.now();
     let start = 0;
@@ -372,7 +374,6 @@ export default function Intro({ record, artistCount, years }: Props) {
 
       const t = now - start;
       if (t >= total) { finish(); return; }
-      if (t >= BULB_OFF_MS) bulbRef.current?.classList.add('intro__bulb--off');
       if (progressRef.current) progressRef.current.style.transform = `scaleX(${(t / total).toFixed(4)})`;
       let p: Phase = 'label';
       for (const [step] of steps) if (t >= startOf.get(step)!) p = step;
@@ -417,7 +418,7 @@ export default function Intro({ record, artistCount, years }: Props) {
         if (beat) {
           storyFrame.dust = 1 - clamp01(since('groove') / DUST_OUT_MS);
           storyFrame.sparks = 1;
-          placeBeat(-1);
+          placeBeat(t);
         }
         if (chosen === 'short' && !seenBefore && m > 0) {
           // A return visit's record shrinks into today's star, and the
@@ -502,7 +503,6 @@ export default function Intro({ record, artistCount, years }: Props) {
       if (t < 0 || !beat) {
         sleeve.style.opacity = '0';
         vinyl.style.opacity = '0';
-        if (tallyRef.current) tallyRef.current.style.opacity = '0';
         return;
       }
       const { cx, cy } = f;
@@ -511,11 +511,15 @@ export default function Intro({ record, artistCount, years }: Props) {
       const shown = ease((t - beat.sleeveAt) / SLEEVE_IN_MS);
       const slide = ease((t - beat.slideAt) / SLIDE_MS);
       const centre = ease((t - beat.centreAt) / CENTRE_MS);
-      const gone = ease((t - beat.intoAt) / beat.intoMs);
-      // It gives way as its copies leave, so the stars they reach — many of
-      // them close to the middle — stay in view.
+      // It gives way as its copies leave, settling to the size of the big
+      // record's label (inside where the groove starts), so the stars they
+      // reach stay in view -- and it's already the label the groove winds
+      // out from when every artist is pressed in.
       const give = ease((t - beat.passAt + 400) / 800);
-      const scale = (1 - 0.68 * give) * (1 - 0.85 * gone);
+      const labelDisc = 2 * GROOVE_INNER * f.rim * 0.9;
+      const scale = 1 - (1 - Math.min(1, labelDisc / disc)) * give;
+      // It fades only as the record becomes the map.
+      const gone = clamp01((t - beat.morphAt) / (beat.morphMs * 0.3));
       // Sleeve and vinyl start left of centre so that, half out, the pair is
       // centred; then the sleeve steps away and the vinyl takes the middle.
       const sleeveX = cx - 0.25 * size - 0.45 * size * centre;
@@ -529,22 +533,20 @@ export default function Intro({ record, artistCount, years }: Props) {
       vinyl.style.height = `${disc}px`;
       vinyl.style.opacity = String(shown * (1 - gone));
       vinyl.style.transform = `translate(${(vinylX - disc / 2).toFixed(1)}px, ${(cy - disc / 2).toFixed(1)}px) scale(${scale.toFixed(3)})`;
-      // Up to speed as it slides out, then a steady 33⅓.
-      const spinUp = 700;
-      const s = Math.max(0, t - beat.slideAt);
-      const deg = s < spinUp ? (VINYL_RPM_DEG_PER_MS * s * s) / (2 * spinUp) : (VINYL_RPM_DEG_PER_MS * spinUp) / 2 + VINYL_RPM_DEG_PER_MS * (s - spinUp);
-      if (vinylSpinRef.current) vinylSpinRef.current.style.transform = `rotate(${deg.toFixed(1)}deg)`;
-
-      // How many it has reached so far, beside it — clear of the handoffs'
-      // names, which land below and to the left of the middle.
-      const tally = tallyRef.current;
-      const count = tallyCountRef.current;
-      if (tally && count) {
-        const n = storyFrame.vuLanded;
-        if (count.textContent !== String(n)) count.textContent = String(n);
-        tally.style.opacity = String(n > 0 ? 1 - gone : 0);
-        tally.style.transform = `translate(${(cx + (disc / 2) * scale + 22).toFixed(1)}px, ${(cy - 18).toFixed(1)}px)`;
+      // Up to speed as it slides out, then a steady 33⅓ -- until the big
+      // record starts turning, when it turns with it, from where it was.
+      let deg: number;
+      if (t < beat.grooveAt) {
+        const spinUp = 700;
+        const s = Math.max(0, t - beat.slideAt);
+        deg = s < spinUp ? (VINYL_RPM_DEG_PER_MS * s * s) / (2 * spinUp) : (VINYL_RPM_DEG_PER_MS * spinUp) / 2 + VINYL_RPM_DEG_PER_MS * (s - spinUp);
+        vinylDeg = deg;
+      } else {
+        const recordDeg = (storyFrame.spin * 180) / Math.PI;
+        spinOffset ??= vinylDeg - recordDeg;
+        deg = recordDeg + spinOffset;
       }
+      if (vinylSpinRef.current) vinylSpinRef.current.style.transform = `rotate(${deg.toFixed(1)}deg)`;
 
       // The words, under the sleeve.
       f.overlay.style.setProperty('--near-top', `${(cy + size / 2 + 28).toFixed(0)}px`);
@@ -634,7 +636,7 @@ export default function Intro({ record, artistCount, years }: Props) {
   return (
     <div
       ref={overlayRef}
-      className={`intro intro--${phase}${showLabel ? ' intro--root' : ''}${near ? ' intro--near' : ''}`}
+      className={`intro intro--${phase}${variant === 'short' ? ' intro--short' : ''}${showLabel ? ' intro--root' : ''}${near ? ' intro--near' : ''}`}
       role="region"
       aria-label="Starweave, an introduction"
     >
@@ -648,12 +650,6 @@ export default function Intro({ record, artistCount, years }: Props) {
       </p>
 
       <div className="intro__veil" aria-hidden />
-      {/* The room before the show: a bare bulb on a cord, lit while the map
-          arrives, clicked off as the record starts. */}
-      <div ref={bulbRef} className="intro__bulb" aria-hidden>
-        <span className="intro__bulb-cord" />
-        <span className="intro__bulb-glass" />
-      </div>
       <div className="intro__scrim" aria-hidden />
       <div className="intro__label" aria-hidden>
         <span className="intro__label-dot" />
@@ -676,10 +672,6 @@ export default function Intro({ record, artistCount, years }: Props) {
               <img className="intro__vinyl-label" src={sizedImageUrl(demo.album.cover, 300)} alt="" />
             </div>
             <span className="intro__vinyl-sheen" />
-          </div>
-          <div ref={tallyRef} className="intro__tally">
-            <span ref={tallyCountRef} className="intro__tally-count">0</span>
-            <span className="intro__tally-label">learned from it</span>
           </div>
         </div>
       )}
@@ -769,8 +761,9 @@ function captionFor(phase: Phase, variant: Variant | null, demo: Demo | null): C
     case 'vu':
       // The setup for Eno's line, so "those 30,000 copies" points back at
       // something: the figure he gives in the same interview.
+      // Said plainly for anyone who doesn't know the cover: whose, and what.
       return demo.album
-        ? { big: `${demo.album.title}${demo.album.year ? `, ${demo.album.year}` : ''}.`, small: 'It sold just 30,000 copies in its first five years.' }
+        ? { big: `The Velvet Underground's first album${demo.album.year ? `, ${demo.album.year}` : ''}.`, small: 'Hardly anyone bought it: 30,000 copies in five years.' }
         : null;
     case 'eno':
       // His words exactly, without the closing "!": said plainly, it lands.

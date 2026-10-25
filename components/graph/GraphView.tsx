@@ -271,6 +271,17 @@ export default function GraphView() {
     // falls through and re-applies everything.
   }, [searchParams, graphData, activeGenreId, activeSceneId]);
 
+  // "How it works" from a link (the footer's track list): /?tour starts the
+  // same tour as the map's button, once the map's own opening has finished,
+  // and drops the parameter so a reload doesn't start it again.
+  useEffect(() => {
+    if (pathname !== '/' || !searchParams.has('tour') || storyUp || !graphData) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: a link asked for the tour
+    setTourChrome(false);
+    setTourOn(true);
+    router.replace('/', { scroll: false });
+  }, [pathname, searchParams, storyUp, graphData, router]);
+
   // The artist shown in the slide-over panel — either the fully-focused
   // node, or (while browsing within a set) the pinned set member. The two
   // are mutually exclusive in practice: highlightSetPinnedId is only ever

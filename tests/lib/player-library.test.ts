@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import type { GraphData } from '@/data/types';
-import { artistThenFamily, searchArtists, shuffled, station, stations, wholeStory } from '@/lib/player-library';
+import { artistThenFamily, searchArtists, shuffled, station, stations, todaysRoad, wholeStory } from '@/lib/player-library';
 
 const data = JSON.parse(readFileSync(resolve(__dirname, '../../public/graph.json'), 'utf-8')) as GraphData;
 const withSong = data.artists.filter(a => a.previewUrl);
@@ -58,5 +58,30 @@ describe('searchArtists', () => {
     const found = searchArtists(data.artists, 'velvet');
     expect(found[0].id).toBe('velvet-underground');
     expect(searchArtists(data.artists, '   ')).toEqual([]);
+  });
+});
+
+describe('todaysRoad', () => {
+  it('plays where it came from, the record, then up to three it shaped, linked', () => {
+    const q = todaysRoad(data, { id: 'my-bloody-valentine', why: { direction: 'parent', other: { id: 'sonic-youth' } } })!;
+    expect(q.tracks[0]).toMatchObject({ id: 'sonic-youth', note: 'Came from' });
+    expect(q.tracks[1]).toMatchObject({ id: 'my-bloody-valentine', note: "Today's record" });
+    const shaped = q.tracks.slice(2);
+    expect(shaped.length).toBeGreaterThan(0);
+    expect(shaped.length).toBeLessThanOrEqual(3);
+    for (const t of shaped) {
+      expect(data.edges.some(e => e.type === 'influence' && e.source === t.id && e.target === 'my-bloody-valentine')).toBe(true);
+    }
+    const ids = q.tracks.map(t => t.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(q.flows).toBe(true);
+    expect(q.after?.queue.tracks.some(t => t.id === 'my-bloody-valentine')).toBe(false);
+  });
+
+  it('puts the one quoted on the record first among those it shaped', () => {
+    const child = data.edges.find(e => e.type === 'influence' && e.target === 'velvet-underground' && data.artists.find(a => a.id === e.source)?.previewUrl)!.source;
+    const q = todaysRoad(data, { id: 'velvet-underground', why: { direction: 'child', other: { id: child } } })!;
+    expect(q.tracks[0].id).toBe('velvet-underground');
+    expect(q.tracks[1].id).toBe(child);
   });
 });

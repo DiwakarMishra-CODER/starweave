@@ -3773,266 +3773,1290 @@ h3 { font-size: 1.1rem; }
   background: rgba(155, 150, 184, 0.35);
 }
 
-/* ── Genre index / timeline poster map ───────────────────────── */
+/* ── Genres: the gatefold, the city at night ────────────────────────
+   Fifty years of sound as a city at night, the inside spread of a gatefold
+   sleeve (components/genres/GenreSession.tsx and Gatefold.tsx, layout in
+   lib/genre-session.ts). Each family's roads under a street sign, each genre
+   a lit sign on its road, overpasses where one grew out of another road, the
+   skyline and a rooftop sign along the top, the years on a lit ticker. Crisp
+   light only, the map's "less fog, more ink": no haze, no blur, no grain,
+   and no tilt on anything with text. */
 .genres-overlay {
   position: fixed;
   inset: 0;
   z-index: 50;
   overflow-y: auto;
+  overflow-x: hidden;
   padding-top: var(--nav-height);
-  background: var(--color-bg);
+  background: #1a1520;
+  --night: #17121d;
+  --road: #272130;
+  --vfd: #ffb547;
+  --cream: #efe3cb;
 }
 
 .genres-page {
   position: relative;
   z-index: 3;
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 1.5rem 1.5rem 4rem;
+  padding: 0.7rem 1rem 4rem;
 }
 
-.genres-page__header {
-  /* Was 1rem — the top row of nodes (Garage rock, Punk, Post-punk) read as
-     colliding with the header text at some viewport widths. Widened
-     defensively alongside PAD_TOP (lib/genre-timeline.ts) and the SVG's own
-     overflow clipping below, since the exact mechanism (tight margin vs.
-     glow bleed past the viewBox edge) wasn't fully isolated — this
-     combination removes the risk either way. */
-  margin-bottom: 2rem;
+/* The spread zooms down to fit a window that's a little too narrow, and
+   past that keeps its size and scrolls sideways (the frame), the family
+   heads staying put, so names are never smaller than readable. */
+.gsession__frame--scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
 }
 
-.genres-page__title {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3.5vw, 2rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.4rem;
-}
-
-.genres-page__deck {
-  max-width: 760px;
-  font-size: 0.8125rem;
-  color: var(--color-muted);
-  line-height: 1.55;
-}
-
-/* The diagram wants to own most of the viewport on first load ("no scroll" —
-   see CLAUDE.md's genre-timeline entry) — the SVG itself scales its own
-   height with width via viewBox, so this wrapper doesn't force a fixed px
-   height; it just keeps the diagram from stretching past a sane max-width. */
-.genre-timeline {
+/* Today's issue: the cover of a music paper (MagazineCover.tsx) over the
+   city, which is its pull-out centrefold; Issue.tsx runs the opening. Until
+   it opens, only the poster's centre panel -- the cover's width -- exists
+   behind the cover; opening, the cover swings over on its spine and the
+   poster unfolds, left panel then right. */
+.gsession {
   position: relative;
-  width: 100%;
-  max-width: 1400px;
-  /* Bottom margin tightened (was 1.5rem) together with .genres-az's own
-     padding-top below, so more of the A-Z list's second row clears the
-     fold — the diagram itself (AXIS_H/PAD_TOP in lib/genre-timeline.ts)
-     is untouched. */
-  margin: 0 auto 0.5rem;
+  perspective: 2600px;
 }
 
-.genre-timeline__svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  /* Explicit, not relying on the browser default for an outermost <svg> —
-     a node's glow filter region extends well past its own radius (see
-     genre-node-glow in GenreTimeline.tsx), and row-0 sits close enough to
-     the top edge that an unclipped glow could bleed above the viewBox and
-     into the header block sitting right above this element. */
-  overflow: hidden;
+.gsession__sheet {
+  position: relative;
+  margin: 0;
 }
 
-/* ── Timelines on a phone: scroll, don't shrink ──────────────────
-   Both diagrams are drawn into a fixed-width coordinate space and scaled to
-   fit by their viewBox, so a narrow viewport shrinks the LABELS along with
-   everything else — at 390px the genre labels land near 2px, which is not a
-   readability annoyance but an unreadable page. Pinning the SVG to its real
-   drawing width and scrolling the container sideways keeps every label at
-   the size it was designed at, and a swipeable timeline is a natural phone
-   gesture besides. The tooltip is position:fixed off clientX/clientY, so it
-   is unaffected by the scroll offset. */
+.gsession__inside {
+  position: absolute;
+  inset: 0;
+  background: var(--night);
+  color: var(--cream);
+  border: 1.5px solid #0b080e;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 5px 0 rgba(0, 0, 0, 0.45);
+}
+
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  .gsession__sheet:not([data-opened]) .gsession__inside {
+    clip-path: inset(0 calc(50% - 215px));
+  }
+
+  .gsession__sheet[data-issue='opening'] .gsession__inside {
+    animation: gmag-unfold 1.3s cubic-bezier(0.45, 0.05, 0.3, 1) both;
+  }
+}
+
+@keyframes gmag-unfold {
+  0%, 42% { clip-path: inset(0 calc(50% - 215px)); }
+  70% { clip-path: inset(0 calc(50% - 215px) 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+/* On a phone the city waits, hidden, under the cover. */
 @media (max-width: 900px) {
-  .genre-timeline {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-  }
-
-  .genre-timeline__svg {
-    width: var(--genre-timeline-view-w, 1400px);
-    max-width: none;
+  .gsession__sheet:not([data-opened]),
+  .gsession:has(.gmag[data-stage='dark']) .gsession__intro-phone,
+  .gsession:has(.gmag[data-stage='lit']) .gsession__intro-phone,
+  .gsession:has(.gmag[data-stage='counting']) .gsession__intro-phone {
+    visibility: hidden;
   }
 }
 
-/* Small, quiet instruction sitting where the eye lands on reaching the
-   diagram — "click any dot to open that genre" lived only inside the intro
-   paragraph before, and testers weren't reading that far into a five-line
-   block. This is deliberately its own short line, not folded back into the
-   deck. */
-/* Matches .genres-page__deck's size/weight/family deliberately — mono at
-   0.6875rem read as caption chrome (an axis label, not a sentence someone
-   wrote) and the eye skipped it. A tight margin-bottom (vs. the header's own
-   2rem above it) is what makes it read as belonging to the diagram rather
-   than floating equidistant between two blocks. */
-.genre-timeline__hint {
-  font-size: 0.8125rem;
-  color: var(--color-muted);
-  line-height: 1.5;
-  margin-bottom: 0.35rem;
+/* The poster's folds, where its panels meet. */
+.gsession__inside::before,
+.gsession__inside::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.05);
+  pointer-events: none;
 }
 
-/* No border, no fill, no pill — this page is a poster and a control drawn on
-   top of one reads as an intrusion. Visibility comes from colour and the
-   display face instead, on its own line in the reading column.
+.gsession__inside::before { left: calc(50% - 215px); }
+.gsession__inside::after { left: calc(50% + 215px); }
 
-   TEAL SPECIFICALLY, and not by taste: the timeline spends every other colour
-   in the design system on this page. Gold is the garage-rock branch (the
-   biggest one), magenta is art-rock, rose is psychedelic-pop, olive is
-   singer-songwriter, grey is minimalism, and indigo is both the
-   DEFAULT_ROOT_COLOR fallback and the page's own ambient background. Any of
-   those makes the link read as attached to a lineage rather than as an
-   action. --color-indie-alt is the one LAYER_COLORS value left unspoken for,
-   so it can only mean "interactive" here. Contrast is 10.4:1 against
-   --color-bg, rising to 13:1 on hover — note gold was actually *brighter* at
-   12:1, so the problem was never contrast, it was collision. */
-.genres-page__jump {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.85rem;
+/* The cover: set like a print on cream stock -- the dateline, the
+   masthead over a double rule, the cover star as a two-drum risograph
+   (CoverPrint.tsx) with registration marks, a red flash, the story below in
+   condensed caps with an italic standfirst, the small print and a barcode
+   along the foot. Margins of 22px all round; one red, and the story's own
+   colour as the spot. Crisp: no glow, no grain, no tilt on text. */
+.gmag {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 50%;
+  padding: 0;
+  overflow: hidden;
+  background: #efe6d1;
+  color: #1c1724;
+  border: 1px solid #0b080e;
+  border-radius: 2px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 7px 9px 0 rgba(0, 0, 0, 0.5);
+  text-align: left;
+  cursor: pointer;
+  transform: translateX(-50%);
+  transform-origin: left center;
+  backface-visibility: hidden;
+  transition: transform 1.2s cubic-bezier(0.5, 0.05, 0.3, 1);
+  --red: #a8261e;
+}
+
+.gmag[data-stage='opening'] {
+  transform: translateX(-50%) rotateY(-180deg);
+}
+
+.gmag:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .gmag {
+    zoom: 0.76;
+  }
+}
+
+.gmag > * {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+}
+
+.gmag__dateline {
+  top: 16px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.gmag__mast {
+  top: 26px;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 80px;
+  line-height: 1;
+  letter-spacing: 0.035em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.gmag__rule {
+  top: 110px;
+  height: 6px;
+  border-top: 3px solid #1c1724;
+  border-bottom: 1px solid #1c1724;
+}
+
+.gmag__photo {
+  top: 128px;
+  height: 320px;
+  overflow: visible;
+}
+
+.gprint,
+.gprint__drum {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.gprint__drum {
+  display: block;
+  mix-blend-mode: multiply;
+}
+
+/* The drums print in turn once the cover's lit: colour, then black. */
+.gprint__drum--color,
+.gprint__drum--black {
+  opacity: 0;
+  transition: opacity 0.2s steps(2, end);
+}
+
+.gmag:not([data-stage='dark']) .gprint--ready .gprint__drum--color {
+  opacity: 1;
+}
+
+.gmag:not([data-stage='dark']) .gprint--ready .gprint__drum--black {
+  opacity: 1;
+  transition-delay: 0.22s;
+}
+
+.gprint__drum--beat {
+  opacity: 0;
+}
+
+/* Registration marks at the print's corners. */
+.gmag__reg {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background:
+    linear-gradient(#1c1724, #1c1724) 50% 0 / 1px 100% no-repeat,
+    linear-gradient(#1c1724, #1c1724) 0 50% / 100% 1px no-repeat;
+}
+
+.gmag__reg::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid #1c1724;
+  border-radius: 50%;
+}
+
+.gmag__reg--tl { top: -16px; left: -16px; }
+.gmag__reg--tr { top: -16px; right: -16px; }
+.gmag__reg--bl { bottom: -16px; left: -16px; }
+.gmag__reg--br { bottom: -16px; right: -16px; }
+
+/* The count-in: one huge numeral at a time knocked out of the photo --
+   the cream paper showing through the ink, a print trick, so it reads on
+   any photo however dark -- with the photo's dots pumping on each beat. */
+.gmag__count {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.gmag__n {
+  grid-area: 1 / 1;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 250px;
+  line-height: 1;
+  color: #efe6d1;
+  -webkit-text-stroke: 2px #1c1724;
+  opacity: 0;
+}
+
+.gmag__flash {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 78px;
+  height: 78px;
+  display: grid;
+  place-items: center;
+  padding-top: 2px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 0 2px #efe6d1, 0 0 0 3px var(--red);
+  color: #f6ecd6;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 11.5px;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.gmag__credit {
+  top: 459px;
+  font-family: var(--font-mono);
+  font-size: 7.5px;
+  letter-spacing: 0.08em;
+  text-align: right;
+  text-transform: uppercase;
+  color: rgba(28, 23, 36, 0.78);
+}
+
+.gmag__story {
+  top: 456px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gmag__kicker {
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.gmag__headline {
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 30px;
+  line-height: 0.98;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+
+.gmag__standfirst {
+  max-width: 380px;
   font-family: var(--font-display);
-  font-size: 0.9375rem;
+  font-size: 12.5px;
+  font-style: italic;
+  line-height: 1.35;
+  color: #2a2230;
+}
+
+.gmag__foot {
+  bottom: 16px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 7px;
+  border-top: 1px solid #1c1724;
+}
+
+.gmag__facts {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.gmag__barcode {
+  flex-shrink: 0;
+  padding: 2px 3px 0;
+  background: #fff;
+  box-sizing: content-box;
+}
+
+.gmag__barcode rect { fill: #1c1724; }
+
+.gmag__barcode text {
+  font-family: var(--font-mono);
+  font-size: 5.5px;
+  fill: #1c1724;
+}
+
+/* Dark until the visitor's issue is known, then the lights come on. */
+.gmag__shade {
+  inset: 0;
+  left: 0;
+  right: 0;
+  background: #0b080e;
+  opacity: 0.9;
+  pointer-events: none;
+  transition: opacity 0.38s steps(3, end);
+}
+
+.gmag:not([data-stage='dark']) .gmag__shade {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gmag[data-stage='counting'] .gmag__n {
+    animation: gmag-stamp 0.44s ease-out both;
+  }
+
+  .gmag[data-stage='counting'] .gmag__n2 { animation-delay: 0.44s; }
+  .gmag[data-stage='counting'] .gmag__n3 { animation-delay: 0.88s; }
+  .gmag[data-stage='counting'] .gmag__n4 { animation: gmag-stamp-last 0.6s ease-out 1.32s both; }
+
+  .gmag[data-stage='opening'] .gmag__n4 { opacity: 0.85; }
+
+  .gmag[data-stage='counting'] .gprint__drum--beat {
+    animation: gmag-pump 0.44s ease-out 4;
+  }
+}
+
+@keyframes gmag-stamp {
+  0% { opacity: 0; transform: scale(1.18); }
+  14% { opacity: 0.9; transform: scale(1); }
+  70% { opacity: 0.9; }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+@keyframes gmag-stamp-last {
+  0% { opacity: 0; transform: scale(1.22); }
+  16%, 100% { opacity: 0.85; transform: scale(1); }
+}
+
+@keyframes gmag-pump {
+  0% { opacity: 0.85; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gmag {
+    display: none;
+  }
+}
+
+/* While the cover story plays, a red banner carries its headline in the
+   billboard's place; the billboard (the key) waits, then flickers on. */
+.gsession-banner {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.7rem;
+  max-width: 820px;
+  margin: 0;
+  padding: 7px 14px 8px;
+  background: #a8261e;
+  color: #fff6e6;
+  border: 2.5px solid #0b080e;
+  border-radius: 3px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.55);
+}
+
+.gsession__intro .gsession-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.gsession-banner__tag {
+  padding: 1px 6px;
+  background: #fff6e6;
+  color: #a8261e;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.gsession-banner__headline {
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.gsession-banner__road {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: rgba(255, 246, 230, 0.9);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gsession-banner {
+    animation: gsession-banner-in 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+  }
+}
+
+@keyframes gsession-banner-in {
+  from { opacity: 0; transform: translateX(-16px); }
+}
+
+.gsession:not([data-key-on]) .gsession-board {
+  visibility: hidden;
+}
+
+.gsession__intro-phone .gsession-banner {
+  margin-bottom: 0.6rem;
+}
+
+/* The story's road runs its light twice, so it can't be missed. */
+.gsession[data-story] .gsession__link .gsession__run {
+  animation-iteration-count: 2;
+}
+
+/* The city along the top of the centrefold. */
+.gsession__star { fill: #f3ead6; opacity: 0.75; }
+.gsession__moon { fill: #efe2c0; }
+.gsession__building { fill: #0a080d; }
+.gsession__window { fill: #ffcf7a; opacity: 0.85; }
+.gsession__tower line { stroke: #0a080d; stroke-width: 1.2; }
+.gsession__tower rect,
+.gsession__tower path { fill: #0a080d; }
+
+.gsession__ink {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+
+/* The rooftop sign holding the title: an enamel sign like the genres' --
+   a dark plate inside a cream keyline, big cream condensed letters. (It had
+   a ring of bulbs once; they crowded the lettering until it couldn't be
+   read.) */
+.gsession__rooftop {
+  position: absolute;
+  z-index: 2;
+  top: 4px;
+  left: 12px;
+}
+
+.gsession-sign {
+  margin: 0;
+  padding: 6px 14px 5px;
+  background: #120d16;
+  border: 1.5px solid #0b080e;
+  border-radius: 4px;
+  box-shadow:
+    inset 0 0 0 2px #120d16,
+    inset 0 0 0 3px #e4d8bf,
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 3px 0 rgba(0, 0, 0, 0.5);
+  color: #f1e5cc;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 1.42rem;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.gsession__post {
+  stroke: #3a3342;
+  stroke-width: 2;
+}
+
+.gsession__intro {
+  position: absolute;
+  z-index: 2;
+  top: 4px;
+  margin: 0;
+}
+
+.gsession__intro-phone {
+  display: none;
+  margin: 0 0 0.8rem;
+}
+
+.gsession__intro-phone .gsession-key {
+  flex-wrap: wrap;
+  row-gap: 0.4rem;
+}
+
+@media (max-width: 900px) {
+  .gsession__intro-phone {
+    display: block;
+  }
+
+  .gsession__intro {
+    display: none;
+  }
+}
+
+.gsession__az {
+  font-family: var(--font-display);
   font-weight: 600;
   color: var(--color-indie-alt);
   text-decoration: none;
-  /* Underline offset via border rather than text-decoration so it can sit
-     lower and animate independently of the arrow. */
-  border-bottom: 1px solid color-mix(in srgb, var(--color-indie-alt) 35%, transparent);
-  padding-bottom: 1px;
-  transition: border-color 140ms ease, color 140ms ease;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-indie-alt) 45%, transparent);
+  white-space: nowrap;
 }
 
-.genres-page__jump:hover,
-.genres-page__jump:focus-visible {
+.gsession__az:hover,
+.gsession__az:focus-visible {
   color: #8ee3d6;
-  border-bottom-color: color-mix(in srgb, var(--color-indie-alt) 80%, transparent);
 }
 
-/* Nudges down on hover — the one motion cue that says "further down the page"
-   rather than "opens something new". */
-.genres-page__jump-arrow {
-  font-size: 0.875rem;
-  transition: transform 160ms ease;
+/* The roads: asphalt with a dashed centre line. */
+.gsession__road rect {
+  fill: var(--road);
+  stroke: rgba(0, 0, 0, 0.5);
+  stroke-width: 1;
 }
 
-.genres-page__jump:hover .genres-page__jump-arrow,
-.genres-page__jump:focus-visible .genres-page__jump-arrow {
-  transform: translateY(2px);
+.gsession__road line {
+  stroke: rgba(255, 214, 120, 0.3);
+  stroke-width: 1.2;
+  stroke-dasharray: 7 7;
 }
 
-/* Deliberately NOT inside the scaled SVG viewBox — this stays at real CSS
-   pixel sizes no matter how far the diagram itself has scaled down at a
-   narrower viewport, so hovering a genre is always fully readable even
-   when the diagram's own inline labels have shrunk below comfort. */
-.genre-timeline__tooltip {
-  position: fixed;
-  z-index: 200;
+.gsession__bar {
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 1;
+  stroke-dasharray: 4 5;
+}
+
+.gsession__tick {
+  stroke: color-mix(in srgb, var(--vfd) 55%, transparent);
+  stroke-width: 1;
+}
+
+.gsession__tick.is-lit {
+  stroke: #ffe1a0;
+  stroke-width: 1.6;
+}
+
+/* From the pointed-at genre's year on the ticker down to it. */
+.gsession__year-drop {
+  stroke: color-mix(in srgb, var(--vfd) 80%, transparent);
+  stroke-width: 1.2;
+  stroke-dasharray: 2 3;
+}
+
+/* Roads lit on ahead and overpasses: a dark edge and the family's colour;
+   the road carries a shine, the overpass a dark core so it reads as two
+   rails, ending in an arrow into the sign it grew into. */
+.gsession__link path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.gsession__link .gsession__cord-edge {
+  stroke: #0b080e;
+}
+
+.gsession__link .gsession__cord-shine {
+  stroke: rgba(255, 255, 255, 0.4);
+}
+
+.gsession__rail-core {
+  fill: none;
+  stroke: var(--night);
+}
+
+.gsession__link .gsession__arrow {
+  stroke-width: 1.8;
+}
+
+.gsession__link {
+  opacity: 0.88;
+  transition: opacity 180ms ease;
+}
+
+.gsession__sheet--focus .gsession__link {
+  opacity: 0.13;
+}
+
+.gsession__sheet--focus .gsession__link.is-lit {
+  opacity: 1;
+}
+
+/* The solo: a light runs down the lit road, founder first, once... */
+.gsession__link .gsession__run {
+  stroke: #fffaf0;
+  stroke-width: 3;
+  stroke-dasharray: 0.45 1.2;
+  stroke-dashoffset: 0.45;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gsession__link .gsession__run {
+    animation: gsession-run 0.55s linear both;
+  }
+}
+
+@keyframes gsession-run {
+  0% { stroke-dashoffset: 0.45; opacity: 1; }
+  85% { opacity: 1; }
+  100% { stroke-dashoffset: -1; opacity: 0; }
+}
+
+/* ...and each sign on the road flashes as the light reaches it. */
+.gsession__clip::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 2.5px #fff;
+  opacity: 0;
   pointer-events: none;
-  max-width: 260px;
-  padding: 0.6rem 0.75rem;
-  background: rgba(20, 16, 34, 0.94);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-.genre-timeline__tooltip-name {
-  font-family: var(--font-display);
-  font-size: 0.9375rem;
-  font-weight: 700;
-  margin-bottom: 0.2rem;
+@media (prefers-reduced-motion: no-preference) {
+  .gsession__clip.is-lineage::after,
+  .gsession__clip.is-active::after {
+    animation: gsession-kick 0.5s ease-out var(--kick, 0s) both;
+  }
 }
 
-.genre-timeline__tooltip-meta {
-  font-size: 0.75rem;
-  color: var(--color-muted);
-  line-height: 1.4;
-  margin-bottom: 0.2rem;
+@keyframes gsession-kick {
+  0% { opacity: 0; }
+  25% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
-.genre-timeline__tooltip-count {
+/* "Also borrowed from": dotted, only for the sign you're on. */
+.gsession__borrow path {
+  fill: none;
+  stroke: rgba(255, 246, 225, 0.85);
+  stroke-width: 1.8;
+  stroke-dasharray: 1.5 4.5;
+  stroke-linecap: round;
+}
+
+.gsession__borrow .gsession__borrow-head {
+  stroke-dasharray: none;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+/* The family heads, under the sky, sticky when the spread scrolls
+   sideways under them. */
+.gsession__heads {
+  position: sticky;
+  left: 0;
+  z-index: 4;
+  background: var(--night);
+  border-right: 1px solid rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.gsession__heads-title {
+  position: absolute;
+  top: 13px;
+  left: 10px;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(239, 227, 203, 0.72);
 }
 
-/* The line that turns this from a data-viz readout into a visible link —
-   set off by a rule so it reads as a distinct action, not just the last
-   fact in the list. Color comes from the hovered node's own root-branch
-   color (passed as --tooltip-cta-color), tying the CTA to the same visual
-   language as the diagram rather than a generic accent. */
-.genre-timeline__tooltip-cta {
-  margin-top: 0.45rem;
-  padding-top: 0.4rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  font-family: var(--font-display);
-  font-size: 0.8125rem;
-  font-weight: 600;
+.gsession__family {
+  position: absolute;
+  left: 6px;
+  right: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding: 3px 0 0 6px;
+  border-left: 3px solid var(--glow);
+}
+
+/* A street sign in the family's colour: an enamel plate with a white
+   keyline. */
+.gsession__street {
+  max-width: 100%;
+  padding: 3px 6px 2px;
+  background: var(--glow);
+  border: 1px solid #0b080e;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1.5px var(--glow), inset 0 0 0 2.5px rgba(255, 255, 255, 0.85);
+  color: #1a1420;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 0.74rem;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.gsession__family-size {
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  color: rgba(239, 227, 203, 0.72);
+}
+
+/* The years: a lit ticker under the skyline, big amber digits -- the
+   honest readout of the squeezed time axis. */
+.gsession__display {
+  position: absolute;
+  top: calc(var(--sky) + 3px);
+  height: 31px;
+  background: #0c090f;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.gsession__decade,
+.gsession__year {
+  position: absolute;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  color: var(--vfd);
+  text-shadow: 0 0 3px color-mix(in srgb, var(--vfd) 45%, transparent);
+}
+
+.gsession__decade {
+  top: calc(var(--sky) + 4px);
+  padding-left: 4px;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: color-mix(in srgb, var(--vfd) 80%, #000);
+}
+
+.gsession__year {
+  top: calc(var(--sky) + 14px);
+  padding: 0 2px;
+  transform: translateX(-50%);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: opacity 160ms ease, color 160ms ease;
+}
+
+/* A genre pointed at lights its road's years, even ones normally hidden
+   for space; a lit year sits on the glass over any neighbour. */
+.gsession__year.is-lit {
+  z-index: 1;
+  background: #0c090f;
+  color: #fff0c8;
+  text-shadow: 0 0 4px color-mix(in srgb, var(--vfd) 80%, transparent);
+}
+
+.gsession__year.is-quiet {
+  opacity: 0.45;
+}
+
+/* A genre: a night-city enamel sign. At rest it's quiet -- a deep plate
+   tinted with its family's colour, a fine keyline in that colour, cream
+   condensed lettering (sized to the real width of its letters in
+   lib/genre-session.ts, so a name never runs out of its sign), a hairline of
+   light along its top edge like enamel catching a street lamp. When its road
+   lights up -- a genre pointed at, or the cover story -- the signs on that
+   road switch on to full colour with dark lettering, like real signs lighting
+   in sequence; the lighting up is the moment, not everything shouting at
+   once. A family's founder has a double keyline. */
+.gsession__clip {
+  --plate: color-mix(in srgb, var(--glow) 22%, #15111b);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 8px 0 9px;
+  overflow: hidden;
+  background: var(--plate);
+  border: 1.5px solid var(--glow);
+  border-radius: 3px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 2px 0 rgba(0, 0, 0, 0.6);
+  /* A softer cream than paper-white, mixed case and a touch of tracking,
+     drawn with greyscale smoothing: light letters on a dark plate otherwise
+     bleed into each other at this size. */
+  color: #e4d8bf;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.02;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: pointer;
+  transition: translate 120ms ease, box-shadow 160ms ease, background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.gsession__clip--founder {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 0 0 2px var(--plate),
+    inset 0 0 0 3px var(--glow),
+    0 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+.gsession__clip-line {
+  white-space: nowrap;
+}
+
+.gsession__clip:hover {
+  --plate: color-mix(in srgb, var(--glow) 34%, #15111b);
+  translate: 0 -1px;
+}
+
+/* Switched on: its road is lit. */
+.gsession__clip.is-lineage,
+.gsession__clip.is-active {
+  background: color-mix(in srgb, var(--glow) 92%, #fff);
+  border-color: color-mix(in srgb, var(--glow) 45%, #000);
+  color: #1a1420;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 0 0 1px color-mix(in srgb, var(--glow) 45%, transparent),
+    0 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+.gsession__clip.is-active {
+  translate: 0 -1px;
+  background: #fff;
+  box-shadow: 0 0 0 2px var(--glow), 0 3px 0 rgba(0, 0, 0, 0.6);
+}
+
+.gsession__clip:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* Quiet while another sign has its solo: plate and keyline dim, but the
+   name stays readable (WCAG AA on the night). */
+.gsession__clip.is-faded {
+  --plate: #17121d;
+  background: var(--plate);
+  border-color: color-mix(in srgb, var(--glow) 32%, #17121d);
+  box-shadow: none;
+  color: rgba(239, 227, 203, 0.72);
+}
+
+/* At the far end of a dotted "borrowed from" line: half lit. */
+.gsession__clip.is-touched {
+  --plate: color-mix(in srgb, var(--glow) 40%, #15111b);
+  background: var(--plate);
+  color: #fff8ea;
+}
+
+/* The lights come on: once the sleeve opens, a playhead runs across the
+   ticker and each sign lights as it passes. `backwards` holds each one dark
+   until its turn without pinning it afterwards (hover still moves it). */
+.gsession__playhead {
+  position: absolute;
+  top: calc(var(--sky) + 3px);
+  bottom: 4px;
+  width: 2px;
+  margin-left: -1px;
+  background: #ff4a3d;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gsession__playhead::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -4px;
+  border: 5px solid transparent;
+  border-top: 7px solid #ff4a3d;
+  border-bottom: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gsession__sheet[data-opened] .gsession__playhead {
+    animation: gsession-playhead 1.5s linear 0.9s both;
+  }
+
+  .gsession__sheet[data-opened] .gsession__clip {
+    animation: gsession-clip-on 260ms steps(2, end) backwards;
+    animation-delay: calc(0.9s + var(--t) * 1.5s);
+  }
+
+  .gsession__sheet[data-opened] .gsession__link {
+    animation: gsession-link-in 360ms ease-out backwards;
+    animation-delay: calc(0.9s + var(--t) * 1.5s);
+  }
+}
+
+@keyframes gsession-playhead {
+  0% { opacity: 0; transform: translateX(0); }
+  6% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(var(--run)); }
+}
+
+@keyframes gsession-clip-on {
+  from {
+    background: #0f0c13;
+    border-color: #2a2431;
+    color: rgba(239, 227, 203, 0.4);
+    box-shadow: none;
+  }
+}
+
+@keyframes gsession-link-in {
+  from { opacity: 0; }
+}
+
+/* The note beside a sign. */
+.gsession-note {
+  position: absolute;
+  z-index: 5;
+  padding: 0.7rem 0.8rem 0.75rem;
+  background: #120e16;
+  color: var(--cream);
+  border: 1px solid #000;
+  border-top: 4px solid var(--glow);
+  border-radius: 5px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 0 rgba(0, 0, 0, 0.5);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.gsession-note__stamp {
+  margin: -0.15rem 0 0.45rem;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #fff8ea;
+}
+
+.gsession-note__stamp span {
+  display: inline-block;
+  margin-right: 4px;
+  padding: 1px 5px;
+  background: #c4362b;
+  color: #fff;
+}
+
+.gsession-note__name {
+  margin-bottom: 0.3rem;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--glow);
+}
+
+.gsession-note__when {
+  margin-bottom: 0.4rem;
   font-style: italic;
-  color: var(--tooltip-cta-color, #8891f2);
+  color: rgba(239, 227, 203, 0.9);
 }
 
-/* Border deliberately stronger than the 0.08 hairline it replaced. This
-   section starts below the fold, so most visitors first meet it as a sliver
-   at the bottom of the viewport — at 0.08 that sliver read as the page simply
-   ending. It now reads as an edge with something behind it, which is what
-   makes anyone scroll. scroll-margin-top keeps the heading off the very top
-   edge when the jump link lands here. */
+.gsession-note__year {
+  margin-right: 0.2rem;
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-weight: 600;
+  color: var(--vfd);
+}
+
+.gsession-note__rel {
+  margin-bottom: 0.2rem;
+}
+
+.gsession-note__rel b {
+  font-weight: 650;
+  color: #fff8ea;
+}
+
+.gsession-note__count {
+  margin: 0.4rem 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: rgba(239, 227, 203, 0.72);
+}
+
+.gsession-note__open {
+  display: inline-block;
+  font-weight: 700;
+  color: #fff8ea;
+  text-decoration: none;
+  border-bottom: 2px solid var(--glow);
+}
+
+.gsession-note__open:hover,
+.gsession-note__open:focus-visible {
+  background: color-mix(in srgb, var(--glow) 22%, transparent);
+}
+
+/* How to read it: a lit billboard on the skyline beside the title (on a
+   phone, above the city) -- the one bright panel in the night, so the eye
+   finds it. A cream face in a dark frame, lamps along its bottom edge. Once
+   the city's lights are up its lamps stutter on like a fluorescent tube,
+   then each mark in the key gets a highlighter swipe in turn, left to right.
+   Crisp: no glow, no tilt. */
+.gsession-board {
+  position: relative;
+  display: inline-block;
+  padding: 4px 12px 5px;
+  background: #f1e6c9;
+  color: #1c1724;
+  border: 2.5px solid #0b080e;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 #fff8e6, 0 2px 0 rgba(0, 0, 0, 0.55);
+}
+
+.gsession-board__lamps {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: -7px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.gsession-board__lamps i {
+  display: block;
+  width: 12px;
+  height: 5px;
+  background: #2b2531;
+  border: 1px solid #0b080e;
+  border-radius: 1px 1px 3px 3px;
+  box-shadow: inset 0 1px 0 #ffe7a8;
+}
+
+.gsession-key {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem 0.85rem;
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.gsession-key__label {
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 0.84rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #b3261e;
+}
+
+.gsession-key__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 2px;
+  border-radius: 2px;
+  background: linear-gradient(#ffe066, #ffe066) no-repeat 0 55% / 0% 70%;
+}
+
+.gsession-key__item > :first-child {
+  flex-shrink: 0;
+}
+
+.gsession-key__clip {
+  position: relative;
+  padding: 2px 6px 1px;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  color: #e4d8bf;
+  -webkit-font-smoothing: antialiased;
+  background: color-mix(in srgb, #E8C87A 22%, #15111b);
+  border: 1.5px solid #E8C87A;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.gsession-key__edge {
+  fill: none;
+  stroke: #0b080e;
+  stroke-linecap: round;
+}
+
+.gsession-key__pencil {
+  fill: none;
+  stroke: rgba(28, 23, 36, 0.85);
+  stroke-width: 1.8;
+  stroke-dasharray: 1.5 4.5;
+  stroke-linecap: round;
+}
+
+.gsession-key__do {
+  margin: 3px 0 0;
+  font-size: 0.76rem;
+  line-height: 1.35;
+  color: #2a2230;
+}
+
+.gsession-board .gsession__az {
+  color: #0d665b;
+  border-bottom-color: color-mix(in srgb, #0d665b 55%, transparent);
+}
+
+.gsession-board .gsession__az:hover,
+.gsession-board .gsession__az:focus-visible {
+  color: #08453d;
+}
+
+/* Its lamps stutter on once the cover story's done (or straight away on a
+   quick visit), then the highlighter walks the key. */
+@media (prefers-reduced-motion: no-preference) {
+  .gsession[data-key-on] .gsession-board {
+    animation: gsession-board-on 0.9s linear 0.15s backwards;
+  }
+
+  .gsession[data-key-on] .gsession-board__lamps i {
+    animation: gsession-lamp-on 0.9s linear 0.15s backwards;
+  }
+
+  .gsession[data-key-on] .gsession-key__item {
+    animation: gsession-swipe 1.5s ease-out calc(1.15s + var(--i) * 0.4s) both;
+  }
+}
+
+@keyframes gsession-board-on {
+  0% { background: #4a4336; color: rgba(28, 23, 36, 0.35); }
+  18% { background: #f1e6c9; color: #1c1724; }
+  30% { background: #4a4336; color: rgba(28, 23, 36, 0.35); }
+  44% { background: #f1e6c9; color: #1c1724; }
+  52% { background: #6a6150; color: rgba(28, 23, 36, 0.6); }
+  64%, 100% { background: #f1e6c9; color: #1c1724; }
+}
+
+@keyframes gsession-lamp-on {
+  0%, 17% { box-shadow: none; }
+  18%, 29% { box-shadow: inset 0 1px 0 #ffe7a8; }
+  30%, 43% { box-shadow: none; }
+  44%, 100% { box-shadow: inset 0 1px 0 #ffe7a8; }
+}
+
+@keyframes gsession-swipe {
+  0% { background-size: 0% 70%; }
+  30% { background-size: 100% 70%; }
+  70% { background-size: 100% 70%; opacity: 1; }
+  100% { background-size: 100% 0%; }
+}
+
+/* The index: every genre A-Z, including the few with no year to place in
+   the city, as the track listing on a tape box's J-card, its spine down the
+   left. Multi-column, not grid, so it reads down each column the way an
+   index is scanned. */
 .genres-az {
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
-  padding-top: 0.9rem;
+  position: relative;
+  margin-top: 1.4rem;
+  padding: 1rem 1.2rem 1.2rem 2.4rem;
+  background: #efe6cf;
+  color: #1c1724;
+  border: 1.5px solid #0b080e;
+  border-radius: 4px;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.45);
   scroll-margin-top: 1.25rem;
 }
 
-.genres-az__heading {
-  font-family: var(--font-display);
-  font-size: 1.125rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+.genres-az::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1.2rem;
+  background: #c4362b;
+  border-radius: 3px 0 0 3px;
 }
 
-/* Its own line under the heading, at body scale — says what the list offers
-   that the diagram cannot, which is the undated genres with no year to
-   position them by. */
+.genres-az__heading {
+  margin-bottom: 0.9rem;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
 .genres-az__subhead {
   display: block;
-  margin-top: 0.2rem;
+  margin-top: 0.25rem;
   font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: 400;
-  color: var(--color-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(28, 23, 36, 0.8);
 }
 
-/* Multi-column, deliberately NOT grid. A grid with the default row flow fills
-   ACROSS -- Alt-country, Alternative rock, Ambient, Art pop all land on row 1 --
-   so the list is alphabetical in DOM order but reads as scrambled, because an
-   A-Z index is scanned DOWN a column and doing that here skipped through the
-   alphabet four entries at a time. Multi-column flows top-to-bottom and wraps,
-   so column 1 runs A->F and column 2 continues from where it left off. */
 .genres-az__list {
   columns: 200px;
-  column-gap: 1rem;
-  list-style: none;
+  column-gap: 1.5rem;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
-/* Keeps a name and its count from being split across a column boundary. */
 .genres-az__list > li {
   break-inside: avoid;
   -webkit-column-break-inside: avoid;
-  margin-bottom: 0.25rem;
+  border-bottom: 1px dashed rgba(28, 23, 36, 0.25);
 }
 
 .genres-az__item {
@@ -4040,15 +5064,16 @@ h3 { font-size: 1.1rem; }
   align-items: baseline;
   justify-content: space-between;
   gap: 0.5rem;
-  padding: 0.35rem 0.4rem;
-  border-radius: 6px;
-  color: var(--color-text);
+  padding: 0.4rem 0.3rem;
+  color: #1c1724;
+  font-size: 0.84rem;
+  font-weight: 550;
   text-decoration: none;
-  font-size: 0.8125rem;
 }
 
-.genres-az__item:hover {
-  background: rgba(255, 255, 255, 0.06);
+.genres-az__item:hover,
+.genres-az__item:focus-visible {
+  background: rgba(28, 23, 36, 0.08);
 }
 
 .genres-az__name {
@@ -4058,10 +5083,10 @@ h3 { font-size: 1.1rem; }
 }
 
 .genres-az__count {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  color: var(--color-muted);
   flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: rgba(28, 23, 36, 0.8);
 }
 
 /* ── Scenes index / regional timeline ────────────────────────── */
@@ -4136,8 +5161,8 @@ h3 { font-size: 1.1rem; }
   min-height: 0;
 }
 
-/* Matches .genre-timeline__tooltip-cta's role on the other timeline — see the
-   phone-scroll note above .genre-timeline's own media query. */
+/* The tooltip's call to action, set off by a rule so it reads as an action
+   rather than the last fact in the list. */
 .scenes-timeline__tooltip-cta {
   margin-top: 0.45rem;
   padding-top: 0.4rem;
@@ -6303,71 +7328,6 @@ html[data-story='off'] .intro {
   pointer-events: none;
 }
 
-/* The room before the show: a bare bulb on a cord over the dark, lighting
-   it dimly, swinging a little, then clicked off as the record starts — a
-   moment's glow left in the filament. Goes with the veil. */
-.intro__bulb {
-  position: absolute;
-  top: var(--nav-height);
-  left: 50%;
-  width: 0;
-  height: 0;
-  transform-origin: 0 0;
-  animation: bulb-swing 3.2s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-.intro__bulb::before {
-  content: '';
-  position: absolute;
-  left: -48vmax;
-  top: calc(-48vmax + 72px);
-  width: 96vmax;
-  height: 96vmax;
-  background: radial-gradient(circle, rgba(255, 200, 140, 0.2), rgba(255, 190, 120, 0.06) 30%, transparent 62%);
-  transition: opacity 260ms ease-out;
-}
-
-.intro__bulb-cord {
-  position: absolute;
-  left: -0.75px;
-  top: 0;
-  width: 1.5px;
-  height: 64px;
-  background: rgba(225, 210, 190, 0.45);
-}
-
-.intro__bulb-glass {
-  position: absolute;
-  left: -7px;
-  top: 62px;
-  width: 14px;
-  height: 17px;
-  border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%;
-  background: radial-gradient(circle at 45% 60%, #fffaf0, #ffd9a0 60%, #f2b46a);
-  box-shadow: 0 0 18px 6px rgba(255, 210, 150, 0.55), 0 0 60px 20px rgba(255, 190, 120, 0.25);
-  transition: background 260ms ease-out, box-shadow 260ms ease-out;
-}
-
-.intro__bulb--off::before {
-  opacity: 0;
-}
-
-.intro__bulb--off .intro__bulb-glass {
-  background: radial-gradient(circle at 45% 60%, #5a4a3a, #2e2620 70%);
-  box-shadow: 0 0 6px 1px rgba(255, 170, 90, 0.08);
-}
-
-.intro:not(.intro--label) .intro__bulb {
-  opacity: 0;
-  transition: opacity 600ms ease;
-}
-
-@keyframes bulb-swing {
-  from { rotate: -2.5deg; }
-  to { rotate: 2.5deg; }
-}
-
 /* The label: the Velvet Underground, at the centre of the record —
    shown on the black while the graph is still arriving, then handed to the
    canvas, which draws the same point in the same place. */
@@ -6487,34 +7447,6 @@ html[data-story='off'] .intro {
   pointer-events: none;
 }
 
-/* How many the record has reached so far, under it (placed per frame). */
-.intro__tally {
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: grid;
-  justify-items: start;
-  gap: 0.1rem;
-  opacity: 0;
-  pointer-events: none;
-  text-shadow: 0 1px 14px rgba(7, 5, 14, 0.95);
-}
-
-.intro__tally-count {
-  font-family: var(--font-mono);
-  font-size: 1.35rem;
-  font-weight: 500;
-  color: #f0c97a;
-}
-
-.intro__tally-label {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(237, 234, 247, 0.7);
-}
-
 /* The Velvet Underground's name, riding beside their star as the closing
    wave leaves it (positioned per frame by Intro). */
 .intro__root-tag {
@@ -6614,6 +7546,12 @@ html[data-story='off'] .intro {
 .intro--gather .intro__scrim,
 .intro--today .intro__scrim {
   opacity: 1;
+}
+
+/* The short opening (a return visit) has no words, so no floor under them:
+   it only darkened the bottom of the map as the opening ended. */
+.intro.intro--short .intro__scrim {
+  opacity: 0;
 }
 
 /* One line at a time, bottom centre. Its words land one by one; the small
@@ -7542,90 +8480,8 @@ html[data-story='off'] .intro {
   }
 }
 
-/* While today's record plays: who's on, and stop. Top centre, clear of the
-   side panel and the bottom sheet. */
-.now-playing {
-  position: fixed;
-  top: calc(var(--nav-height) + 0.75rem);
-  left: 50%;
-  translate: -50% 0;
-  z-index: 56;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  max-width: calc(100vw - 24px);
-  padding: 0.4rem 0.45rem 0.4rem 0.8rem;
-  background: rgba(14, 11, 26, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(232, 200, 122, 0.35);
-  border-radius: 999px;
-  font-size: 0.82rem;
-  color: var(--color-text);
-  animation: today-tag-in 400ms ease backwards;
-}
-
-.now-playing__text {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.now-playing__text span {
-  color: var(--color-muted);
-}
-
-.now-playing__bars {
-  display: inline-flex;
-  align-items: flex-end;
-  gap: 2px;
-  height: 12px;
-}
-
-.now-playing__bars i {
-  width: 3px;
-  height: 100%;
-  background: #f0c97a;
-  border-radius: 1px;
-  transform-origin: bottom;
-  animation: now-playing-bar 900ms ease-in-out infinite alternate;
-}
-
-.now-playing__bars i:nth-child(2) {
-  animation-delay: -300ms;
-}
-
-.now-playing__bars i:nth-child(3) {
-  animation-delay: -600ms;
-}
-
-.now-playing__stop {
-  display: grid;
-  place-items: center;
-  width: 1.8rem;
-  height: 1.8rem;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--color-border-float);
-  border-radius: 50%;
-  color: var(--color-text);
-  cursor: pointer;
-}
-
-.now-playing__stop svg {
-  width: 12px;
-  height: 12px;
-}
-
-@keyframes now-playing-bar {
-  from {
-    transform: scaleY(0.3);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .today-tag,
-  .now-playing,
-  .now-playing__bars i {
+  .today-tag {
     animation: none;
   }
 }
@@ -7687,7 +8543,9 @@ html[data-story='off'] .intro {
   animation: intro-fade-in 500ms ease 900ms backwards;
 }
 
-/* Whose music to follow. */
+/* Whose music to follow: a sheet of the map's aged paper (see "Paper
+   sheets"), the eight faces as taped polaroids, the same dark play button
+   as the pocket player, a highlighter in the artist's colour on hover. */
 .tour-pick {
   position: absolute;
   inset: var(--nav-height) 0 0;
@@ -7695,57 +8553,65 @@ html[data-story='off'] .intro {
   display: grid;
   place-items: center;
   padding: 1rem;
-  background: rgba(7, 5, 14, 0.72);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(26, 21, 32, 0.7);
   overflow-y: auto;
 }
 
 .tour-pick__card {
+  --sheet: #e2d7c3;
+  --ink: #1c1724;
+  --paper: #fffdf7;
   position: relative;
-  width: min(44rem, 100%);
+  width: min(46rem, 100%);
   padding: 1.6rem 1.5rem 1.2rem;
-  background: rgba(14, 11, 26, 0.92);
-  border: 1px solid rgba(232, 200, 122, 0.25);
-  border-radius: 14px;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: var(--sheet);
+  box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.45);
+  color: var(--ink);
   text-align: center;
   animation: today-tag-in 500ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
 .tour-pick__close {
   position: absolute;
-  top: 0.6rem;
-  right: 0.7rem;
+  top: 0.55rem;
+  right: 0.65rem;
   width: 2rem;
   height: 2rem;
-  background: none;
   border: none;
-  color: var(--color-muted);
-  font-size: 1.3rem;
+  border-radius: 50%;
+  background: none;
+  color: var(--ink);
+  font-size: 1.35rem;
   cursor: pointer;
+}
+
+.tour-pick__close:hover {
+  background: rgba(28, 23, 36, 0.1);
 }
 
 .tour-pick__title {
   margin: 0;
   padding: 0 1.5rem; /* clear of the × */
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.4rem, 3vw, 1.9rem);
-  color: #fff8e8;
+  font-weight: 700;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  line-height: 1.15;
+  color: var(--ink);
 }
 
 .tour-pick__lede {
-  margin: 0.3rem 0 1.2rem;
-  font-family: var(--font-display);
-  font-style: italic;
-  color: rgba(237, 234, 247, 0.75);
+  margin: 0.25rem 0 1.3rem;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 1.15rem;
+  color: #b52a20;
 }
 
 .tour-pick__faces {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem 0.75rem;
+  gap: 1.3rem 0.9rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -7758,82 +8624,153 @@ html[data-story='off'] .intro {
 .tour-pick__choose {
   display: grid;
   justify-items: center;
-  gap: 0.25rem;
+  gap: 0.15rem;
   width: 100%;
-  padding: 0.4rem 0.2rem;
+  padding: 0.3rem 0.2rem 0.4rem;
+  border: none;
+  border-radius: 4px;
   background: none;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  color: var(--color-text);
+  color: var(--ink);
   cursor: pointer;
-  transition: border-color var(--transition), background var(--transition);
 }
 
-.tour-pick__choose:hover,
-.tour-pick__choose:focus-visible {
-  background: rgba(232, 200, 122, 0.08);
-  border-color: rgba(232, 200, 122, 0.35);
+/* The polaroid: white border, a strip of tape, lifting a little on hover. */
+.tour-pick__photo {
+  position: relative;
+  display: block;
+  width: 96px;
+  height: 96px;
+  padding: 5px 5px 14px;
+  box-sizing: content-box;
+  background: var(--paper);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+  transition: translate 160ms ease, box-shadow 160ms ease;
 }
 
-.tour-pick__choose img {
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
+.tour-pick__photo::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 46px;
+  height: 14px;
+  translate: -50% 0;
+  rotate: -3deg;
+  background: rgba(236, 226, 186, 0.85);
+}
+
+.tour-pick__photo img {
+  display: block;
+  width: 96px;
+  height: 96px;
   object-fit: cover;
   object-position: 50% 25%;
-  box-shadow: 0 0 0 2px rgba(232, 200, 122, 0.25);
+}
+
+.tour-pick__choose:hover .tour-pick__photo,
+.tour-pick__choose:focus-visible .tour-pick__photo {
+  translate: 0 -3px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tour-pick__choose:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 
 .tour-pick__name {
-  margin-top: 0.3rem;
+  margin-top: 0.45rem;
+  padding: 0 4px;
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.98rem;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.15;
+}
+
+/* The highlighter, in the artist's own colour. */
+.tour-pick__choose:hover .tour-pick__name,
+.tour-pick__choose:focus-visible .tour-pick__name {
+  background: linear-gradient(
+    transparent 14%,
+    color-mix(in srgb, var(--row-color, #d9b468) 45%, transparent) 14% 86%,
+    transparent 86%
+  );
 }
 
 .tour-pick__song {
-  font-size: 0.74rem;
-  font-style: italic;
-  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: rgba(28, 23, 36, 0.75);
 }
 
+/* The pocket player's play button, on the polaroid's corner. */
 .tour-pick__play {
   position: absolute;
-  top: 0.4rem;
-  left: calc(50% + 22px);
-  width: 28px;
-  height: 28px;
+  top: calc(0.3rem + 96px - 14px);
+  left: calc(50% + 34px);
   display: grid;
   place-items: center;
-  background: #e8c87a;
-  border: none;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--sheet);
   border-radius: 50%;
-  color: #120f1d;
-  font-size: 0.7rem;
+  background: var(--ink);
+  color: color-mix(in srgb, var(--row-color, #e8c87a) 45%, #f6f1e4);
+  box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.35);
   cursor: pointer;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.tour-pick__play:hover {
+  background: color-mix(in srgb, var(--row-color, #e8c87a) 30%, var(--ink));
+}
+
+.tour-pick__play:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.tour-pick__play-icon {
+  width: 14px;
+  height: 14px;
 }
 
 .tour-pick__more {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.6rem;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 1.3rem;
-  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1.5px dashed rgba(28, 23, 36, 0.3);
 }
 
 .tour-pick__for-me {
   padding: 0.55rem 1rem;
-  background: rgba(232, 200, 122, 0.14);
-  border: 1px solid rgba(232, 200, 122, 0.55);
+  border: 1.5px solid var(--ink);
   border-radius: 999px;
+  background: #f3e8d6;
+  box-shadow: 2px 2px 0 var(--ink);
   font-family: var(--font-mono);
   font-size: 0.72rem;
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #fff4d6;
+  color: var(--ink);
   cursor: pointer;
+}
+
+.tour-pick__for-me:hover {
+  translate: 0 -1px;
+  box-shadow: 2px 3px 0 var(--ink);
+}
+
+.tour-pick__for-me:focus-visible,
+.tour-pick__search input:focus-visible,
+.tour-pick__matches button:focus-visible,
+.tour-pick__replay:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 
 .tour-pick__search {
@@ -7841,54 +8778,62 @@ html[data-story='off'] .intro {
 }
 
 .tour-pick__search input {
-  width: 13rem;
-  padding: 0.55rem 0.8rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--color-border-float);
+  width: 14rem;
+  padding: 0.55rem 0.85rem;
+  border: 1.5px solid var(--ink);
   border-radius: 999px;
-  color: var(--color-text);
-  font-size: 0.85rem;
+  background: #f3e8d6;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.tour-pick__search input::placeholder {
+  color: rgba(28, 23, 36, 0.6);
 }
 
 .tour-pick__matches {
   position: absolute;
-  top: calc(100% + 0.3rem);
+  top: calc(100% + 0.35rem);
   left: 0;
   right: 0;
   z-index: 1;
   margin: 0;
   padding: 0.3rem;
   list-style: none;
-  background: rgba(14, 11, 26, 0.98);
-  border: 1px solid var(--color-border-float);
-  border-radius: 10px;
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  background: #f3e8d6;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
   text-align: left;
 }
 
 .tour-pick__matches button {
   width: 100%;
   padding: 0.4rem 0.6rem;
-  background: none;
   border: none;
-  border-radius: 6px;
-  color: var(--color-text);
+  border-radius: 3px;
+  background: none;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 600;
   text-align: left;
   cursor: pointer;
 }
 
 .tour-pick__matches button:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: linear-gradient(transparent 14%, rgba(217, 180, 104, 0.45) 14% 86%, transparent 86%);
 }
 
 .tour-pick__replay {
   margin-top: 1.1rem;
-  background: none;
   border: none;
+  background: none;
   font-family: var(--font-mono);
   font-size: 0.66rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-muted);
+  color: rgba(28, 23, 36, 0.75);
   text-decoration: underline;
   text-underline-offset: 3px;
   cursor: pointer;
@@ -10768,6 +11713,62 @@ html[data-story='off'] .intro {
   animation: pocket-ripple 2.2s ease-out infinite;
 }
 
+/* When a run that has one ends (today's record): what to play next. */
+.player-float__offer {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0 0 44px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+  box-shadow: 3px 3px 0 var(--ink);
+  animation: offer-in 420ms cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+@keyframes offer-in {
+  from {
+    opacity: 0;
+    translate: 12px 0;
+  }
+}
+
+.player-float__offer-go {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 4px 7px 12px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.player-float__offer-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.player-float__offer-no {
+  padding: 4px 10px 4px 4px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.player-float__offer-go:focus-visible,
+.player-float__offer-no:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 999px;
+}
+
 /* Until it's been opened: a paper note pointing at MENU. */
 .player-float__note {
   position: relative;
@@ -10877,12 +11878,111 @@ html[data-story='off'] .intro {
   height: 12px;
 }
 
-/* Room at the end of every page for the player to sit over. */
-.artist-overlay,
-.genre-overlay,
-.scenes-overlay,
-.browse-overlay {
-  padding-bottom: 190px;
+/* How it works (components/tour/Tour.tsx): the player stays out of sight
+   during the tour, then arrives at the end in a spotlight -- a hop, rings
+   pulsing out from it, and a hand-lettered note pointing at it. */
+body:has(.tour) .player-float:not(.tour-shown) {
+  visibility: hidden;
+}
+
+/* One note at a time: the tour's, not the usual "Menu" tag. */
+.player-float.tour-spotlight .player-float__note {
+  display: none;
+}
+
+.player-float.tour-spotlight .player-float__mini {
+  animation: spotlight-arrive 760ms cubic-bezier(0.2, 1.5, 0.4, 1) both;
+}
+
+@keyframes spotlight-arrive {
+  from {
+    opacity: 0;
+    translate: 0 40px;
+    scale: 0.7;
+  }
+}
+
+.player-float.tour-spotlight .player-float__mini::before,
+.player-float.tour-spotlight .player-float__mini::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 3px solid #f3e8d6;
+  border-radius: 24px;
+  pointer-events: none;
+  animation: spotlight-ring 1.8s ease-out 500ms infinite;
+}
+
+.player-float.tour-spotlight .player-float__mini::after {
+  animation-delay: 1.4s;
+}
+
+@keyframes spotlight-ring {
+  from {
+    opacity: 0.9;
+    scale: 1;
+  }
+
+  to {
+    opacity: 0;
+    scale: 1.35;
+  }
+}
+
+.tour-music-note {
+  position: fixed;
+  right: 40px;
+  bottom: 318px;
+  z-index: 71;
+  margin: 0;
+  padding: 6px 12px;
+  border: 2px solid #1c1724;
+  border-radius: 8px;
+  background: #f3e8d6;
+  box-shadow: 3px 3px 0 #1c1724;
+  color: #1c1724;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 1.15rem;
+  animation: spotlight-note 520ms cubic-bezier(0.2, 1.4, 0.4, 1) 450ms both;
+}
+
+/* The arrow, hanging from the note down to the player. */
+.tour-music-note__arrow {
+  position: absolute;
+  top: calc(100% + 2px);
+  right: 22px;
+  width: 38px;
+  height: 46px;
+  fill: none;
+  stroke: #f3e8d6;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes spotlight-note {
+  from {
+    opacity: 0;
+    scale: 0.6;
+    translate: 0 12px;
+  }
+}
+
+@media (max-width: 700px) {
+  .tour-music-note {
+    right: 24px;
+    bottom: 150px;
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .player-float.tour-spotlight .player-float__mini,
+  .player-float.tour-spotlight .player-float__mini::before,
+  .player-float.tour-spotlight .player-float__mini::after,
+  .tour-music-note {
+    animation: none;
+  }
 }
 
 /* Hear the link (components/artist/Crossfader): a DJ crossfader between a
@@ -11866,9 +12966,26 @@ a.flyer__act:focus-visible {
     translate: 0 4px;
   }
 
-  /* On the map a side panel fills a phone; it has its own radio. */
+  /* On the map a side panel fills a phone, so the player keeps out of its
+     way: up top, and only while it has something playing. */
   .graph-page:has(.artist-panel--open, .path-panel--open) ~ .player-float--map {
-    display: none;
+    top: calc(var(--nav-height) + 8px);
+    bottom: auto;
+    align-items: flex-start;
+  }
+
+  .player-float {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .player-float__panel {
+    align-self: flex-end;
+  }
+
+  .player-float__offer {
+    justify-content: space-between;
+    margin: 0;
   }
 
   .xfade__deck {
@@ -11961,5 +13078,183 @@ a.flyer__act:focus-visible {
   .face,
   .family-photo__portrait {
     transition: none;
+  }
+}
+
+/* ── The site footer: the back of a record sleeve ────────────────────
+   On every content page, not the map (components/layout/SiteFooter.tsx): a
+   full-width band at the very bottom of the page -- a red rule and a
+   perforated fold along its top, credits, sources and the track list in
+   three columns on the page's grid, then the small print. It carries the
+   room the pocket player needs at the end of a page (which used to be bare
+   padding under every page): its columns stay left of the player on a
+   laptop, and on a phone it runs on under the player's bar. */
+.site-foot {
+  position: relative;
+  z-index: 3;
+  margin-top: 5rem;
+  background: #110d15;
+  border-top: 3px solid #a8261e;
+  color: #ede2c9;
+}
+
+.site-foot::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, rgba(237, 226, 201, 0.28) 0 6px, transparent 6px 12px);
+}
+
+.site-foot__inner {
+  width: min(1080px, calc(100% - 2.5rem));
+  margin: 0 auto;
+  padding: 2.4rem 0 2rem;
+}
+
+@media (min-width: 901px) {
+  .site-foot__inner {
+    width: min(1080px, calc(100% - 340px));
+  }
+}
+
+@media (max-width: 900px) {
+  .site-foot__inner {
+    padding-bottom: 140px;
+  }
+}
+
+.site-foot__card {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr 0.9fr;
+  gap: 1.6rem 2.6rem;
+}
+
+.site-foot__head {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f0796b;
+}
+
+.site-foot__lead {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.site-foot__lead b {
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-weight: 400;
+  font-size: 1.12rem;
+  letter-spacing: 0.02em;
+  color: #fff3d9;
+}
+
+.site-foot__small {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  line-height: 1.65;
+  letter-spacing: 0.02em;
+  color: rgba(237, 226, 201, 0.78);
+}
+
+.site-foot__links {
+  margin: 0 0 0.6rem;
+  font-size: 0.86rem;
+}
+
+.site-foot a {
+  color: #ede2c9;
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(240, 121, 107, 0.7);
+  transition: color 120ms ease, border-color 120ms ease;
+}
+
+.site-foot a:hover,
+.site-foot a:focus-visible {
+  color: #fff;
+  border-bottom-color: #f0796b;
+}
+
+.site-foot__lead a {
+  font-weight: 600;
+}
+
+.site-foot__tracks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-foot__tracks li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px dashed rgba(237, 226, 201, 0.18);
+  font-size: 0.9rem;
+}
+
+.site-foot__tracks li:last-child {
+  border-bottom: 0;
+}
+
+.site-foot__no {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: rgba(237, 226, 201, 0.6);
+}
+
+.site-foot__tracks a {
+  border-bottom: 0;
+}
+
+.site-foot__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.4rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(237, 226, 201, 0.22);
+  font-size: 0.82rem;
+}
+
+.site-foot__report {
+  font-weight: 600;
+}
+
+.site-foot__copy {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: rgba(237, 226, 201, 0.72);
+}
+
+.site-foot__barcode {
+  flex-shrink: 0;
+  padding: 2px 3px 0;
+  background: #fff;
+}
+
+.site-foot__barcode rect {
+  fill: #1c1724;
+}
+
+@media (max-width: 760px) {
+  .site-foot__card {
+    grid-template-columns: 1fr;
+  }
+
+  .site-foot__copy {
+    margin-left: 0;
   }
 }

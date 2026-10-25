@@ -9,12 +9,15 @@ import { familyDrawMs, familyOf, FAMILY_DRAW_STAGGER_FAST_MS } from '@/lib/famil
 import { sizedImageUrl } from '@/lib/image-url';
 import { useCoarsePointer } from '@/lib/use-media-query';
 import { useAudioFocus } from '@/lib/audio-focus';
+import { resolveNodeColor } from '@/lib/colors';
+import { PlayIcon, StopIcon } from '@/components/player/icons';
 
 // "How it works": a visitor picks an artist and walks their music back, one
 // influence at a time, to the Velvet Underground — and learns the map by
 // using it on the way. Zooming in to find them, tapping a star, reading a
 // family, following a line, the side panel, zooming back out to see the
-// realms, then a look at the tools.
+// realms, then a look at the tools -- and last, the music player in the
+// corner, which holds every song on the map.
 //
 // Show, don't tell: each step is one plain instruction while the visitor
 // acts, or one line while the picture holds still. The map itself points
@@ -41,6 +44,7 @@ type Step =
   | 'ask'      // still: how do you get from their artist to one from another world?
   | 'connect'  // Connect two, running by itself: the answer, one artist at a time
   | 'linked'   // …how many steps, and the button that does it
+  | 'music'    // every song on the map is in the player in the corner
   | 'done';    // your turn
 
 interface Props {
@@ -89,6 +93,7 @@ export default function Tour({ data, selectedId, onSelect, onClear, onPanel, onC
   const endedRef = useRef(false);
 
   const byId = useMemo(() => new Map(data.artists.map(a => [a.id, a])), [data]);
+  const songCount = useMemo(() => data.artists.filter(a => a.previewUrl).length, [data]);
   const name = useCallback((id: string | null | undefined) => (id ? byId.get(id)?.name ?? id : ''), [byId]);
 
   const end = useCallback(() => {
@@ -100,6 +105,8 @@ export default function Tour({ data, selectedId, onSelect, onClear, onPanel, onC
     storyFrame.realms = -1;
     storyFrame.flow = null;
     document.querySelectorAll('.tour-glow').forEach(el => el.classList.remove('tour-glow'));
+    document.querySelector('.player-float')?.classList.remove('tour-spotlight', 'tour-shown');
+    storyFrame.tour = false;
     onPanel(true);
     onChrome(true);
     onEnd();
@@ -111,6 +118,13 @@ export default function Tour({ data, selectedId, onSelect, onClear, onPanel, onC
     return () => window.removeEventListener('keydown', onKey);
   }, [end]);
 
+  // The map's heartbeat rests for the whole tour, not just while a step
+  // has something lit (ForceGraph's ambient level reads storyFrame.tour).
+  useEffect(() => {
+    storyFrame.tour = true;
+    return () => { storyFrame.tour = false; };
+  }, []);
+
   // Leaving mid-tour (a nav link): tidy up after it. GraphView ends the tour
   // itself when the visitor leaves the map.
   useEffect(() => () => {
@@ -120,6 +134,7 @@ export default function Tour({ data, selectedId, onSelect, onClear, onPanel, onC
     storyFrame.realms = -1;
     storyFrame.flow = null;
     document.querySelectorAll('.tour-glow').forEach(el => el.classList.remove('tour-glow'));
+    document.querySelector('.player-float')?.classList.remove('tour-spotlight', 'tour-shown');
   }, []);
 
   // The map's own controls come back for the last word, where the one that
@@ -270,7 +285,7 @@ export default function Tour({ data, selectedId, onSelect, onClear, onPanel, onC
         case 'worlds':
           // All six still glowing while the words are read.
           storyFrame.realms = 1;
-          if (t > readMs(captionFor('worlds')?.big)) { storyFrame.realms = -1; return go(finale ? 'ask' : 'done'); }
+          if (t > readMs(captionFor('worlds')?.big)) { storyFrame.realms = -1; return go(finale ? 'ask' : 'music'); }
           break;
         case 'ask':
           // The question first, on a still map: both ends ringed, far apart.
@@ -279,7 +294,7 @@ export default function Tour({ data, selectedId, onSelect, onClear, onPanel, onC
         case 'connect': {
           // Connect two, run by itself: their artist to someone from another
           // world, and a thread of light reaching one more artist at a time.
-          if (!finale) return go('done');
+          if (!finale) return go('music');
           if (!started2) { started2 = true; onFindPath(finale[0], finale[finale.length - 1]); }
           const reached = Math.min(finale.length, 1 + Math.floor(Math.max(0, t - 900) / HOP_MS));
           storyFrame.route = finale.slice(0, reached);
@@ -296,6 +311,17 @@ export default function Tour({ data, selectedId, onSelect, onClear, onPanel, onC
             storyFrame.route = null;
             document.querySelectorAll('.tour-glow').forEach(el => el.classList.remove('tour-glow'));
             onClear();
+            return go('music');
+          }
+          break;
+        }
+        case 'music': {
+          // The player in the corner -- out of sight for the rest of the
+          // tour -- arrives in the spotlight while the words name it.
+          const player = document.querySelector('.player-float');
+          if (player && !player.classList.contains('tour-spotlight')) player.classList.add('tour-shown', 'tour-spotlight');
+          if (t > readMs(captionFor('music')?.big, captionFor('music')?.small) + 1200) {
+            player?.classList.remove('tour-spotlight');
             return go('done');
           }
           break;
@@ -355,6 +381,8 @@ export default function Tour({ data, selectedId, onSelect, onClear, onPanel, onC
         return finale
           ? { big: `Connected in ${finale.length - 1} steps.`, small: 'Connect two artists finds the road between any two.' }
           : null;
+      case 'music':
+        return { big: 'And every song is in your pocket.', small: `The player in the corner holds all ${songCount}, oldest first, and keeps playing as you explore. Press Menu.` };
       case 'done':
         return { big: 'Your turn.' };
       default:
@@ -388,6 +416,15 @@ export default function Tour({ data, selectedId, onSelect, onClear, onPanel, onC
             </>
           )}
         </div>
+      )}
+
+      {step === 'music' && (
+        <p className="tour-music-note" aria-hidden>
+          Every song, right here
+          <svg className="tour-music-note__arrow" viewBox="0 0 38 46">
+            <path d="M6 3 C22 6 30 20 26 42 M18 35 L26 43 L33 34" />
+          </svg>
+        </p>
       )}
 
       {step === 'arrive' && rootCover && (
@@ -483,10 +520,13 @@ function Picker({ data, onChoose, onClose }: { data: GraphData; onChoose: (id: s
         <p className="tour-pick__lede">Pick one.</p>
         <ul className="tour-pick__faces" role="list">
           {picks.map(a => a && (
-            <li key={a.id} className="tour-pick__face">
+            <li key={a.id} className="tour-pick__face" style={{ '--row-color': resolveNodeColor(a) } as React.CSSProperties}>
               <button type="button" className="tour-pick__choose" onClick={() => pick(a.id)}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={sizedImageUrl(a.imageUrl!, 160)} alt="" />
+                {/* A taped polaroid, like the stops on a road. */}
+                <span className="tour-pick__photo">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={sizedImageUrl(a.imageUrl!, 250)} alt="" />
+                </span>
                 <span className="tour-pick__name">{a.name}</span>
                 {a.previewTrack && <span className="tour-pick__song">{a.previewTrack}</span>}
               </button>
@@ -498,7 +538,7 @@ function Picker({ data, onChoose, onClose }: { data: GraphData; onChoose: (id: s
                   aria-pressed={playing === a.id}
                   onClick={() => preview(a.id, a.previewUrl)}
                 >
-                  {playing === a.id ? '■' : '▶'}
+                  {playing === a.id ? <StopIcon className="tour-pick__play-icon" /> : <PlayIcon className="tour-pick__play-icon" />}
                 </button>
               )}
             </li>

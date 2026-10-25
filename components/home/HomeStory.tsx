@@ -1,12 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { storyFrame, useStory } from '@/lib/story-store';
+import { useRouter } from 'next/navigation';
+import { storyControl, storyFrame, useStory } from '@/lib/story-store';
 import { useGraphData } from '@/components/graph/GraphDataProvider';
 import { dayNumber, isSunday, pickRecordId, recordCard, type RecordCard } from '@/lib/home-story';
+import { player, usePlayer } from '@/lib/player';
+import { todaysRoad } from '@/lib/player-library';
 import Intro from './Intro';
-import TodayStar, { NowPlaying } from './TodayStar';
-import { useListen } from './useListen';
+import TodayStar from './TodayStar';
 
 interface Props {
   initial: RecordCard;
@@ -22,8 +24,21 @@ interface Props {
 export default function HomeStory({ initial, artistCount, years }: Props) {
   const { mode, todayOpen, todayShown, mapBusy } = useStory();
   const record = useTodaysRecord(initial);
-  const listen = useListen(record);
-  const playing = listen.now !== null;
+  const { data } = useGraphData();
+  const router = useRouter();
+  // Today's record plays through the site's player (lib/player), as a road
+  // through its family -- where it came from, the record, what it started --
+  // with the map lighting each line as the music crosses it.
+  const now = usePlayer();
+  const playing = now.at !== null && now.queue?.id === `today:${record.id}`;
+  const listen = () => {
+    const road = data && todaysRoad(data, record);
+    if (!road) return;
+    // Pressed before the opening was over: end it the way a skip would.
+    storyControl.finish?.();
+    router.push(`/?artist=${encodeURIComponent(record.id)}`, { scroll: false });
+    player.play(road, 0);
+  };
   const tagUp = todayOpen && !mapBusy && !playing && (mode === 'map' || todayShown);
 
   // The canvas draws today's star as a turning record while its tag is up
@@ -41,8 +56,7 @@ export default function HomeStory({ initial, artistCount, years }: Props) {
       <h1 id="home-title" className="sr-only">Starweave: a map of who influenced whom in indie music</h1>
       {/* Each mounts fresh when it opens, so a replay starts clean. */}
       {mode === 'story' && <Intro record={record} artistCount={artistCount} years={years} />}
-      {tagUp && <TodayStar record={record} onListen={listen.start} />}
-      {listen.now && <NowPlaying now={listen.now} onStop={listen.stop} />}
+      {tagUp && <TodayStar record={record} onListen={listen} />}
     </section>
   );
 }

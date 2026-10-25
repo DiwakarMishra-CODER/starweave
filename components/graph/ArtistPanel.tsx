@@ -150,24 +150,34 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
   const peekAvatarRef = useRef<HTMLImageElement>(null);
   const shownIdRef = useRef<string | null>(null);
   const [entering, setEntering] = useState(false);
+  // Opening slides the panel in and flies the star's photo into it; hopping
+  // to another artist while it's open flies the new one's photo in too, from
+  // wherever their star is on screen (if it's on screen at all).
   useEffect(() => {
     const was = shownIdRef.current;
     shownIdRef.current = artist?.id ?? null;
-    if (!artist || was !== null) return;
+    if (!artist || was === artist.id) return;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: the panel just opened, which is a moment, not derived state
-    setEntering(true);
-    const done = window.setTimeout(() => setEntering(false), ENTER_MS);
+    const opening = was === null;
+    let done = 0;
+    if (opening) {
+      setEntering(true);
+      done = window.setTimeout(() => setEntering(false), ENTER_MS);
+    }
     const from = storyCamera.nodeScreen?.(artist.id);
     const target = isNarrowLayout ? peekAvatarRef.current : photoRef.current;
     const panel = asideRef.current;
-    if (!from || !target || !panel || !artist.imageUrl) return () => window.clearTimeout(done);
+    const onScreen = from && from.x >= 0 && from.y >= 0 && from.x <= window.innerWidth && from.y <= window.innerHeight;
+    if (!from || !onScreen || !target || !panel || !artist.imageUrl) return () => window.clearTimeout(done);
     // Where the target will be once the panel has slid in: its rect now,
     // less however far the slide still has to go. Its tilt comes along too.
     const slide = new DOMMatrixReadOnly(getComputedStyle(panel).transform);
     const end = target.getBoundingClientRect();
     const endLeft = end.left - slide.m41;
     const endTop = end.top - slide.m42;
+    // Hopping from further down the panel: the photo is scrolled away, so
+    // there's nowhere to land.
+    if (endTop + end.height < 0 || endTop > window.innerHeight) return () => window.clearTimeout(done);
     const flier = document.createElement('img');
     flier.src = sizedImageUrl(artist.imageUrl, 500);
     flier.alt = '';

@@ -6,6 +6,7 @@ import ArtistBackground from '@/components/artist/ArtistBackground';
 import BackButton from '@/components/ui/BackButton';
 import SceneMemberRoster from '@/components/scenes/SceneMemberRoster';
 import IgniteGraphButton from '@/components/artist/IgniteGraphButton';
+import SiteFooter from '@/components/layout/SiteFooter';
 
 interface Props {
   params: Promise<{ scene: string }>;
@@ -101,6 +102,7 @@ export default async function ScenePage({ params }: Props) {
 
         <IgniteGraphButton href={graphHref} label={graphLabel} secondary />
       </div>
+      <SiteFooter />
     </div>
   );
 }
