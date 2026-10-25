@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, ViewTransition, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
   FRAME_GAP, HISTORY_ID, LABEL_H, LEADER, PLAY_GAP, PLAY_W, RULER_H, TOP_REBATE,
@@ -11,7 +11,9 @@ import { sizedImageUrl } from '@/lib/image-url';
 import { onAir, player, usePlayer } from '@/lib/player';
 import { storyFrame } from '@/lib/story-store';
 import { musicReader } from '@/lib/music-motion';
+import { justLeft, noteArrival } from '@/lib/scene-arrival';
 import PhotoCredit from '@/components/ui/PhotoCredit';
+import { BLUE, RED, arrowPath, greaseLoop, starPath, type Pt } from '@/components/scenes/pencil';
 
 // The scenes as contact sheets on a lightbox (layout: lib/scenes-lightbox).
 // Each strip is a link to its scene. Point at a frame and a grease-pencil
@@ -69,56 +71,6 @@ const RUN_EASE = 'cubic-bezier(0.45, 0.05, 0.2, 1)';
 const FLY_EASE = 'cubic-bezier(0.3, 1.22, 0.5, 1)';
 const CARD_W = 268;
 const SPAN_GAP = 8; // between the play button and the scene's line
-const RED = '#cf3a26';  // grease pencil: who a band shaped
-const BLUE = '#3b5b9e'; // and who shaped it
-
-interface Pt { x: number; y: number }
-
-// A pencil arrow between two frames, bowed upward, stopping short of both.
-function arrowPath(a: Pt, b: Pt): { d: string; head: string } {
-  const dx = b.x - a.x, dy = b.y - a.y;
-  const len = Math.hypot(dx, dy) || 1;
-  const ux = dx / len, uy = dy / len;
-  const s = { x: a.x + ux * Math.min(22, len / 3), y: a.y + uy * Math.min(22, len / 3) };
-  const e = { x: b.x - ux * Math.min(26, len / 3), y: b.y - uy * Math.min(26, len / 3) };
-  let nx = -uy, ny = ux;
-  if (ny > 0) { nx = -nx; ny = -ny; }
-  const bow = Math.min(70, len * 0.2);
-  const m = { x: (s.x + e.x) / 2 + nx * bow, y: (s.y + e.y) / 2 + ny * bow };
-  const tl = Math.hypot(e.x - m.x, e.y - m.y) || 1;
-  const tx = (e.x - m.x) / tl, ty = (e.y - m.y) / tl;
-  const head = [
-    `${e.x.toFixed(1)},${e.y.toFixed(1)}`,
-    `${(e.x - tx * 8 - ty * 4.5).toFixed(1)},${(e.y - ty * 8 + tx * 4.5).toFixed(1)}`,
-    `${(e.x - tx * 8 + ty * 4.5).toFixed(1)},${(e.y - ty * 8 - tx * 4.5).toFixed(1)}`,
-  ].join(' ');
-  return { d: `M${s.x.toFixed(1)} ${s.y.toFixed(1)} Q${m.x.toFixed(1)} ${m.y.toFixed(1)} ${e.x.toFixed(1)} ${e.y.toFixed(1)}`, head };
-}
-
-// One stroke round a frame that overshoots where it started, like a hand
-// with a grease pencil.
-function greaseLoop(w: number, h: number): string {
-  const steps = 48;
-  const pts: string[] = [];
-  for (let k = 0; k <= steps; k++) {
-    const t = -2.3 + (k / steps) * (Math.PI * 2 + 0.6);
-    const grow = 1 + 0.07 * (k / steps);
-    pts.push(`${(w / 2 + Math.cos(t) * (w / 2) * grow).toFixed(1)} ${(h / 2 + Math.sin(t) * (h / 2) * grow).toFixed(1)}`);
-  }
-  return `M${pts.join(' L')}`;
-}
-
-// A five-point star in one stroke, the way a photographer marks their pick.
-function starPath(size: number): string {
-  const c = size / 2, R = size / 2 - 1, r = R * 0.45;
-  const pts: string[] = [];
-  for (let k = 0; k <= 10; k++) {
-    const a = -Math.PI / 2 + (k * Math.PI) / 5;
-    const rad = k % 2 === 0 ? R : r;
-    pts.push(`${(c + Math.cos(a) * rad).toFixed(1)} ${(c + Math.sin(a) * rad).toFixed(1)}`);
-  }
-  return `M${pts.join(' L')}`;
-}
 
 const STAR = 13;
 
@@ -138,7 +90,12 @@ export default function Lightbox({ layout }: { layout: Layout }) {
   const pitch = frameW + FRAME_GAP;
   const frameRef = useRef<HTMLDivElement>(null);
   const [fit, setFit] = useState({ zoom: 1, scroll: false, phone: false });
-  const [stage, setStage] = useState<Stage>('off');
+  // Back from a scene's page a moment ago: its faces fly home into their
+  // slots (they share names with that page's frames), so the sheet starts
+  // with that strip already in place and only the rest fly in from the reel.
+  // Never on a first load: nothing has been left yet, so server and browser agree.
+  const [home] = useState(() => justLeft());
+  const [stage, setStage] = useState<Stage>(() => (home ? 'return' : 'off'));
   const [active, setActive] = useState<Active | null>(null);
   const touch = useRef(false);
   const sheetRef = useRef<HTMLDivElement>(null);
@@ -239,11 +196,11 @@ export default function Lightbox({ layout }: { layout: Layout }) {
       setStage('on');
       return markLeft;
     }
-    const back = leftAt > 0;
+    const back = leftAt > 0 || home !== null;
     setStage(back ? 'return' : 'opening');
     const t = setTimeout(() => setStage('on'), back ? RETURN_MS : OPENING_MS);
     return () => { clearTimeout(t); markLeft(); };
-  }, []);
+  }, [home]);
 
   // The reel: each strip's whole journey as one animation -- run in with the
   // reel, hold while the lights come on, fly to its place. Set up before the
@@ -265,13 +222,14 @@ export default function Lightbox({ layout }: { layout: Layout }) {
     if (stage !== 'return') return;
     const anims = strips.map((s, i) => {
       const el = stripRefs.current[i];
+      if (s.id === home) return undefined;
       return el?.animate([
         { transform: `translate(${reel.to + reel.at[i] - s.left}px, ${reel.y - s.top}px) scale(${REEL_SCALE})`, easing: FLY_EASE },
         { transform: 'translate(0px, 0px) scale(1)' },
       ], { duration: REEL_FLY, delay: i * RETURN_STAGGER, fill: 'backwards' });
     });
     return () => anims.forEach(a => a?.cancel());
-  }, [stage, strips, reel]);
+  }, [stage, strips, reel, home]);
 
   useLayoutEffect(() => {
     if (stage !== 'opening') return;
@@ -467,13 +425,17 @@ export default function Lightbox({ layout }: { layout: Layout }) {
                   if (e.pointerType === 'mouse' && isOn && !active?.pinned) setActive(null);
                 }}
                 onClick={e => {
-                  if (!touch.current) return;
-                  const f = frameOf(e.target, s) ?? 0;
-                  // First tap on a frame shows it; a second tap on the same one opens the scene.
-                  if (!(isOn && active?.pinned && active.frame === f)) {
-                    e.preventDefault();
-                    setActive({ id: s.id, frame: f, pinned: true });
+                  if (touch.current) {
+                    const f = frameOf(e.target, s) ?? 0;
+                    // First tap on a frame shows it; a second tap on the same one opens the scene.
+                    if (!(isOn && active?.pinned && active.frame === f)) {
+                      e.preventDefault();
+                      setActive({ id: s.id, frame: f, pinned: true });
+                      return;
+                    }
                   }
+                  // Going: the scene's page lets these faces fly up into its strip.
+                  noteArrival({ kind: 'lightbox', scene: s.id });
                 }}
                 onFocus={() => { if (!isOn) setActive({ id: s.id, frame: 0, pinned: false }); }}
                 onBlur={() => { if (isOn && !active?.pinned) setActive(null); }}
@@ -497,10 +459,14 @@ export default function Lightbox({ layout }: { layout: Layout }) {
                         data-on={(isOn && shown?.frame === k) || undefined}
                         data-air={(airing && airId === m.id) || undefined}
                       >
-                        {m.imageUrl
-                          // eslint-disable-next-line @next/next/no-img-element
-                          ? <img src={sizedImageUrl(m.imageUrl, 120)} alt="" draggable={false} decoding="async" />
-                          : <span className="lightbox__initials">{m.name.replace(/^The /, '').slice(0, 2)}</span>}
+                        {/* Each face shares its name with its frame on the scene's
+                            page (and the artist's portrait), so it flies between them. */}
+                        <ViewTransition name={`portrait-${m.id}`} share="morph" default="none">
+                          {m.imageUrl
+                            // eslint-disable-next-line @next/next/no-img-element
+                            ? <img src={sizedImageUrl(m.imageUrl, 120)} alt="" draggable={false} decoding="async" />
+                            : <span className="lightbox__initials">{m.name.replace(/^The /, '').slice(0, 2)}</span>}
+                        </ViewTransition>
                         {m.id === s.starId && (
                           <svg className="lightbox__star" width={STAR} height={STAR} aria-hidden>
                             <path d={starPath(STAR)} />

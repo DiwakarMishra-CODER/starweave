@@ -1,11 +1,13 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { loadGraphData } from '@/lib/graph-data';
-import { SCENE_COLORS, DEFAULT_SCENE_COLOR } from '@/lib/colors';
-import ArtistBackground from '@/components/artist/ArtistBackground';
-import BackButton from '@/components/ui/BackButton';
-import SceneMemberRoster from '@/components/scenes/SceneMemberRoster';
-import IgniteGraphButton from '@/components/artist/IgniteGraphButton';
+import { resolveScenePage } from '@/lib/scene-page';
+import SceneTable from '@/components/scenes/SceneTable';
+import RoomToRoom from '@/components/scenes/RoomToRoom';
+import SceneCircle from '@/components/scenes/SceneCircle';
+import SceneStep from '@/components/scenes/SceneStep';
+import Reveal from '@/components/scenes/Reveal';
 import SiteFooter from '@/components/layout/SiteFooter';
 
 interface Props {
@@ -25,82 +27,74 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: `${s.name} — Starweave`, description: s.blurb };
 }
 
-// Scene pages are deliberately short — 3-7 artists, a few years, one room —
-// see CLAUDE.md's 2026 scene-page pass. Four parts only: place and time
-// (the physical circumstances a genre page can never give you), the members
-// (large photos, one line on their role IN THIS SCENE), what came out of it
-// (2-3 sentences), and the graph CTA. No defining albums (genre pages own
-// that), no lineage strip (scenes don't descend from each other), no
-// sub-sections (a 4-artist scene doesn't subdivide).
+// A scene's page: its strip lifted off the lightbox (/scenes) and laid under
+// the loupe, then the room itself, the links to other rooms, and everyone
+// on the map who learned from it or taught it. Scenes are a minor axis (two
+// to seven bands, a few years, one room), so the page stays short. The data
+// is lib/scene-page.ts; the moves are described in SceneTable.
 export default async function ScenePage({ params }: Props) {
-  const { scene } = await params;
-  const data = loadGraphData();
-  const sceneData = data.scenes.find(s => s.id === scene);
-  if (!sceneData) notFound();
-
-  const sceneColor = SCENE_COLORS[scene] ?? DEFAULT_SCENE_COLOR;
-  const artistById = new Map(data.artists.map(a => [a.id, a]));
-
-  const members = sceneData.memberRoles
-    .map(({ artistId, role }) => {
-      const artist = artistById.get(artistId);
-      return artist ? { artist, role } : null;
-    })
-    .filter((m): m is { artist: NonNullable<typeof m>['artist']; role: string } => m !== null);
-
-  // "See the scene in the graph" highlights every member artist as a cluster.
-  const graphHref = `/?scene=${scene}`;
-  const graphLabel = `See the ${sceneData.name} constellation ignite`;
+  const { scene: id } = await params;
+  const page = resolveScenePage(loadGraphData(), id);
+  if (!page) notFound();
+  const { scene } = page;
+  const from = { start: scene.yearStart, end: scene.yearEnd, open: scene.isOpenEnded };
 
   return (
-    <div
-      className="genre-overlay"
-      style={{ '--genre-color': sceneColor, '--layer-color': sceneColor } as React.CSSProperties}
-    >
-      <ArtistBackground layerColor={sceneColor} boost={1.1} className="scene-bg" />
-      <div className="artist-bg-scrim" aria-hidden />
-      <BackButton />
+    <div className="scenes-overlay scene-overlay" style={{ '--ink': scene.ink, '--color': scene.color } as React.CSSProperties}>
+      <div className="scene-page">
+        <SceneTable
+          scene={scene}
+          place={page.place}
+          bands={page.bands}
+          frameW={page.frameW}
+          frameH={page.frameH}
+          filmW={page.filmW}
+          prev={page.prev}
+          next={page.next}
+          queue={page.queue}
+        />
 
-      {/* Hero + Place and time — 700px reading width, same as a genre page's
-          opening beat. Scene pages stay short: no lineage strip (scenes
-          don't descend from each other), no defining albums (genre pages
-          own that). */}
-      <article className="genre-page">
-        <header className="genre-page__header">
-          <p className="genre-page__super">Scene</p>
-          <h1 className="genre-page__title">{sceneData.name}</h1>
-          <div className="scene-page__stamp">
-            <span className="scene-page__stamp-place">{sceneData.place}</span>
-            <span className="scene-page__stamp-sep" aria-hidden>·</span>
-            <span className="scene-page__stamp-era">{sceneData.era}</span>
+        <Reveal className="scene-room" aria-labelledby="scene-room-title">
+          <h2 id="scene-room-title" className="scene-section__title">The room</h2>
+          <div className="scene-room__cards" data-count={page.placeAndTime.length}>
+            {page.placeAndTime.map((p, i) => (
+              <div key={i} className="room-card" style={{ '--i': i } as React.CSSProperties}>
+                <span className="room-card__tape room-card__tape--l" aria-hidden />
+                <span className="room-card__tape room-card__tape--r" aria-hidden />
+                {i === 0 && <p className="room-card__title">{page.place} &middot; {scene.era}</p>}
+                <p className="room-card__text">{p}</p>
+              </div>
+            ))}
           </div>
-          <p className="genre-page__deck">{sceneData.blurb}</p>
-          <IgniteGraphButton href={graphHref} label={graphLabel} />
-        </header>
+        </Reveal>
 
-        <section className="genre-page__section">
-          <h2>Place and time</h2>
-          {sceneData.placeAndTime.map((p, i) => <p key={i}>{p}</p>)}
-        </section>
-      </article>
+        <Reveal className="rooms" aria-labelledby="rooms-title">
+          <h2 id="rooms-title" className="scene-section__title">Room to room</h2>
+          <p className="rooms__summary">{page.linkSummary}</p>
+          <p className="rooms__key">
+            <span className="rooms__key-out">Red: who a band here shaped</span>
+            <span className="rooms__key-in">Blue: who a band here learned from</span>
+            <span className="rooms__key-how">Point at a band to see only its links; click a scene to go there.</span>
+          </p>
+          <RoomToRoom sheet={page.sheet} sceneId={scene.id} links={page.links} />
+        </Reveal>
 
-      {/* Who was there — large photos, 900px so 3-7 members get real room to
-          breathe instead of a cramped small grid. */}
-      <div className="genre-page genre-page--lower">
-        <section className="genre-page__section">
-          <h2>Who was there</h2>
-          <SceneMemberRoster members={members} />
-        </section>
-      </div>
+        <Reveal className="scene-after" aria-labelledby="scene-after-title">
+          <h2 id="scene-after-title" className="scene-section__title">What came out of it</h2>
+          <p className="scene-after__text">{page.legacy}</p>
+          <SceneCircle
+            learnedFrom={page.learnedFrom}
+            passedTo={page.passedTo}
+            learnedFromEmpty={page.learnedFromEmpty}
+            passedToEmpty={page.passedToEmpty}
+          />
+        </Reveal>
 
-      {/* What came out of it + CTA — back to the narrow reading column. */}
-      <div className="genre-page genre-page--lower scene-page--epilogue">
-        <section className="genre-page__section">
-          <h2>What came out of it</h2>
-          <p>{sceneData.legacy}</p>
-        </section>
-
-        <IgniteGraphButton href={graphHref} label={graphLabel} secondary />
+        <Reveal as="nav" className="scene-end" aria-label="More scenes">
+          {page.prev ? <SceneStep step={page.prev} dir="prev" from={from} big /> : <span />}
+          <Link href={`/?scene=${scene.id}`} className="scene-end__map">See this scene on the map &rarr;</Link>
+          {page.next ? <SceneStep step={page.next} dir="next" from={from} big /> : <span />}
+        </Reveal>
       </div>
       <SiteFooter />
     </div>

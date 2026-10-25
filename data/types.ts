@@ -112,12 +112,12 @@ export interface SceneMemberRole {
   // This member's specific role IN THIS SCENE — one line, not a generic bio
   // snippet. Keep it roughly 120-230 characters, the range every existing
   // scene sits in. This is a layout constraint, not just a style preference:
-  // SceneMemberRoster renders these into a CSS grid (.scene-roster), where
-  // every card in a row takes the height of the tallest card in that row, so
-  // one oversized role leaves visible dead space under all of its neighbours.
-  // A 449-character role broke the DC Hardcore roster exactly this way once.
-  // If there is more to say, it belongs in placeAndTime (a paragraph array)
-  // or legacy, not here.
+  // the scene page (components/scenes/SceneTable) writes each role under its
+  // band's frame, a column as narrow as the frame (160-190px), and the whole
+  // strip has to fit the first screen. One oversized role makes the table
+  // taller and shrinks every frame to fit. (A 449-character role once broke
+  // the old DC Hardcore roster the same way.) If there is more to say, it
+  // belongs in placeAndTime (a paragraph array) or legacy, not here.
   role: string;
 }
 

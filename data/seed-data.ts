@@ -3762,7 +3762,7 @@ const scenes: Scene[] = [
       { artistId: 'patti-smith', role: "Came to the stage from poetry rather than from bands, and her 1975 residency with Television is what turned a bar with a booking policy into a scene people travelled to see." },
       { artistId: 'talking-heads', role: "Art-school outsiders who played their first proper gig here in 1975; David Byrne has recounted Johnny Ramone handing them an opening slot with the endorsement \"Sure, they're gonna suck, so no problem.\"" },
     ],
-    legacy: "Almost nothing connects these four musically, and that is the point: the graph records the Ramones' own drummer separating his CBGB peers from his actual influences, so no influence edges run between most of them. What they shared was a room and a rule, and each left it in a different direction — the Ramones into punk, Television into art rock, Smith into poetry-as-performance, Talking Heads into art-pop and eventually Remain in Light. The scene's descendants are enormous and almost entirely separate from one another.",
+    legacy: "Almost nothing connects these four musically, and that is the point: the Ramones' own drummer drew a line between his CBGB peers and the bands that actually influenced him, so on the map no line of influence joins most of them. What they shared was a room and a rule, and each left it in a different direction — the Ramones into punk, Television into art rock, Smith into poetry-as-performance, Talking Heads into art-pop and eventually Remain in Light. The scene's descendants are enormous and almost entirely separate from one another.",
     memberIds: ['ramones', 'television', 'patti-smith', 'talking-heads'],
   },
   {
@@ -3779,11 +3779,11 @@ const scenes: Scene[] = [
       "The closest thing to a shared room was Conny Plank's studio on a farm outside Cologne. Plank engineered every Neu! recording and Kraftwerk's first four albums, and the scene's window closes where his involvement does: Autobahn (1974) was the last Kraftwerk record he worked on, after which the band moved into its own Kling Klang studio and out of everyone else's orbit.",
     ],
     memberRoles: [
-      { artistId: 'kraftwerk', role: "Started as one more long-form Düsseldorf experiment and left as something else entirely; Autobahn (1974) both ends this scene and begins the lineage most of the graph's electronic side descends from." },
+      { artistId: 'kraftwerk', role: "Started as one more long-form Düsseldorf experiment and left as something else entirely; Autobahn (1974) both ends this scene and begins the lineage most of the map's electronic side descends from." },
       { artistId: 'neu', role: "Formed by two musicians who had just left Kraftwerk — the scene's one hard personnel link — and built the motorik beat that Dinger described as a way of removing everything decorative from rock drumming." },
       { artistId: 'can', role: "The Cologne end of the corridor and the oldest of the three, working from a conservatoire background rather than a rock one, with a rhythm section precise enough to make improvisation sound composed." },
     ],
-    legacy: "Everything downstream of this corridor arrived by a different route than the bands intended: Neu!'s motorik became the default rhythm of post-punk and indie, Can's rhythm section became a permanent reference for anyone building songs out of repetition, and Kraftwerk's machines were picked up first by Detroit techno and the Bronx rather than by anyone in Europe. All three are core nodes in this graph, and the electronic realm is essentially their descendants.",
+    legacy: "Everything downstream of this corridor arrived by a different route than the bands intended: Neu!'s motorik became the default rhythm of post-punk and indie, Can's rhythm section became a permanent reference for anyone building songs out of repetition, and Kraftwerk's machines were picked up first by Detroit techno and the Bronx rather than by anyone in Europe. All three sit at the centre of this map, and nearly all of its electronic side descends from them.",
     memberIds: ['kraftwerk', 'neu', 'can'],
   },
   {
