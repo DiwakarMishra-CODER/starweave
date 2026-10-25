@@ -448,9 +448,12 @@ export const SCENE_COLORS: Record<string, string> = {
                             //        already taken, so this splits the sst/elephant-6 gap and
                             //        sits ~15° from each. Solved to the same target as the
                             //        rest (luminance 0.403, 8.39:1 on #0e0b1a).
+  detroit:       '#E09982', // 15°  — warm red-orange, splitting dc-hardcore/sst, solved to the
+                            //        same target (8.37:1 on #0e0b1a)
   'elephant-6':  '#AFAF2C', // 60°  — olive-yellow
   seattle:       '#76BC2F', // 90°  — grass green
-  glasgow:       '#31C331', // 120° — green
+  'lower-east-side':
+                 '#31C331', // 120° — green (the slot Glasgow held until it was removed)
   windmill:      '#30C178', // 150° — spring green-teal, closest match to its own prior teal identity
   manchester:    '#2FBCBC', // 180° — cyan-teal
   'no-wave':     '#7DAEDF', // 210° — steel blue — was the illegible #3B1F5C; this is the fix

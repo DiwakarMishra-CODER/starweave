@@ -1,14 +1,13 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { loadGraphData } from '@/lib/graph-data';
-import { resolveSceneTimelineScenes, computeAxis } from '@/lib/scenes-timeline';
-import ScenesTimeline from '@/components/scenes/ScenesTimeline';
-import ArtistBackground from '@/components/artist/ArtistBackground';
+import { resolveScenes, buildLightbox, historyQueue } from '@/lib/scenes-lightbox';
+import Lightbox from '@/components/scenes/Lightbox';
+import PlayHistory from '@/components/scenes/PlayHistory';
 import SiteFooter from '@/components/layout/SiteFooter';
 
-// Derived, not hand-written. Both the count and the axis range used to be
-// spelled out here ("Twelve … 1976 to 2020") and both silently went stale the
-// moment a scene was added or removed — the axis in particular is computed
-// from the scenes' own year range, so adding one early scene moves it.
+// The count and the first year are read from the data, never written out:
+// both went stale by hand before, every time a scene was added.
 const COUNT_WORDS = [
   'Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine',
   'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen',
@@ -18,32 +17,56 @@ const spellCount = (n: number) => COUNT_WORDS[n] ?? String(n);
 
 export const metadata: Metadata = {
   title: 'Scenes — Starweave',
-  description: 'Real-world music scenes in the Starweave influence graph, placed on a shared timeline.',
+  description: 'The places where the music happened: every scene on the map as a strip of film on a lightbox, as long as it lasted, one frame per band.',
 };
 
 export default function ScenesIndexPage() {
-  const graphData = loadGraphData();
-  const scenes = resolveSceneTimelineScenes(graphData);
-  const { axisStart, axisEnd } = computeAxis(scenes);
+  const scenes = resolveScenes(loadGraphData());
+  const layout = buildLightbox(scenes);
 
   return (
     <div className="scenes-overlay">
-      {/* Canvas and scrim are siblings of scenes-page, not children — same
-          stacking pattern as the genres/browse/genre/artist pages. */}
-      <ArtistBackground layerColor="#8891F2" />
-      <div className="artist-bg-scrim" aria-hidden />
-
-      <div className="scenes-page">
-        <header className="scenes-page__header">
-          <h1 className="scenes-page__title">Scenes</h1>
-          <p className="scenes-page__deck">
-            {spellCount(scenes.length)} real times and places on one shared axis, {axisStart} to{' '}
-            {axisEnd} — bar height by how many artists were part of each. Hover a bar for the full
-            roster, click to open it.
+      <div className="scenes-page" role="region" aria-labelledby="scenes-title">
+        <header className="scenes-head">
+          <h1 id="scenes-title" className="scenes-head__title">Scenes</h1>
+          <p className="scenes-head__key">
+            <span>{spellCount(scenes.length)} scenes: the places where the music happened, {layout.axisStart} to now.</span>
+            {/* The how-to-read lives on the key card taped to the sheet; only
+                if there's no room for it does it go up here instead. */}
+            {!layout.keySpot && (
+              <>
+                {' '}<span>Each strip of film is one scene, one frame per band; the pencil line beside its name runs as long as it lasted.</span>{' '}
+                <span>Point at a frame for a closer look; click to open the scene.</span>
+              </>
+            )}
           </p>
+          <PlayHistory history={historyQueue(scenes)} />
         </header>
 
-        <ScenesTimeline scenes={scenes} />
+        <Lightbox layout={layout} />
+
+        <section className="scenes-log" aria-labelledby="scenes-log-title">
+          <h2 id="scenes-log-title" className="scenes-log__title">The log</h2>
+          <ol className="scenes-log__list">
+            {scenes.map(s => (
+              <li key={s.id} className="scenes-log__item">
+                <span className="scenes-log__when">{s.era}</span>
+                <span>
+                  <Link
+                    href={`/scene/${s.id}`}
+                    className="scenes-log__name"
+                    style={{ '--row-color': s.color } as React.CSSProperties}
+                  >
+                    {s.name}
+                  </Link>
+                </span>
+                <span className="scenes-log__who">
+                  <span>{s.city}</span> &middot; <span>{s.members.map(m => m.name).join(', ')}</span>
+                </span>
+              </li>
+            ))}
+          </ol>
+        </section>
       </div>
       <SiteFooter />
     </div>

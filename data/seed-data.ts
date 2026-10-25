@@ -3787,8 +3787,8 @@ const scenes: Scene[] = [
     memberIds: ['kraftwerk', 'neu', 'can'],
   },
   {
-    // Two members, deliberately the shortest page alongside Glasgow — thin
-    // but real should read as complete, not padded out to match the others.
+    // Two members, deliberately the shortest page — thin but real should
+    // read as complete, not padded out to match the others.
     // Dylan and Dalton have no influence edge between them in either
     // direction and this scene does not assert one: it records that they
     // were in the same room, which is what a Scene is for.
@@ -3898,24 +3898,68 @@ const scenes: Scene[] = [
     memberIds: ['nirvana', 'mudhoney', 'sunny-day-real-estate'],
   },
   {
-    id: 'glasgow',
-    name: 'Glasgow',
-    era: '1996–2010',
-    place: 'Glasgow',
-    city: 'Glasgow',
-    yearStart: 1996,
-    yearEnd: 2010,
-    blurb: "A twee, literate indie-pop scene centered on Belle and Sebastian, whose early lineup and sound directly shaped scene-mates like Camera Obscura. Thin at two members, but real — the bios explicitly cross-reference each other.",
+    // Researched Oct 2026. The best single source is the Fifth Estate's own
+    // report of the signing (#63, 3–16 Oct 1968). Starts at the Grande's
+    // opening night (the MC5 on the first bill), not the Stooges' arrival in
+    // 1968; ends in 1969, when Elektra dropped the MC5, the band left
+    // Sinclair's politics and Sinclair went to prison -- the Grande ran to
+    // 1972, but that is the venue, not the scene (the CBGB rule). The MC5's
+    // advance is $20,000 in Danny Fields's account and $15,000 in Mojo's, so
+    // only the Stooges' $5,000 (Fields and Ron Asheton agree) is stated.
+    id: 'detroit',
+    name: 'Detroit–Ann Arbor',
+    era: '1966–1969',
+    place: 'Detroit and Ann Arbor, Michigan',
+    city: 'Detroit–Ann Arbor',
+    yearStart: 1966,
+    yearEnd: 1969,
+    blurb: "A Detroit ballroom and an Ann Arbor commune, where the MC5 were the house band and the Stooges were their little brothers, until one record-label trip in 1968 signed them both.",
     placeAndTime: [
-      "Belle and Sebastian formed in Glasgow in 1996, a full generation after Alan Horne's Postcard Records had already established a Glaswegian tradition of literate, melodic, unglamorous indie-pop through Orange Juice and Aztec Camera in the early 1980s. Camera Obscura formed the same year, out of a scene overlapping closely enough with Belle and Sebastian's that Stuart Murdoch produced some of Camera Obscura's earliest recordings himself — the one concrete link between the two acts on this list.",
+      "The Grande Ballroom opened in Detroit on 7 October 1966, to about sixty people, with the MC5 on the bill, and the band became its anchor, playing there at least once a week. Their manager, John Sinclair, ran Trans-Love Energies, a commune that moved in May 1968 to a big house at 1510 Hill Street in Ann Arbor. For a while the Stooges counted as a Trans-Love band too; they lived across town in their own band house on Packard Road, the Fun House their second album is named after. Sinclair recommended them to the Grande's owner, Russ Gibb, and they first played there in January 1968, on a bill headed by John Mayall.",
+      "The two bands met their record label on the same weekend. In September 1968 Elektra's Danny Fields flew in to hear the MC5, at the Grande and at a benefit in Ann Arbor's Union Ballroom where the Stooges were playing too; Fields has said Wayne Kramer told him that if he liked the MC5 he'd like their little brother band. Elektra signed both on 26 September, the Stooges for $5,000 as the small half of what Fields called a package deal. The room came apart within a year: Elektra dropped the MC5 in April 1969, the band left Sinclair's politics that June, and in July, days after both bands played a benefit for him at the Grande, Sinclair went to prison.",
     ],
     memberRoles: [
-      { artistId: 'belle-and-sebastian', role: "Arrived first and set the template — Stuart Murdoch's hushed, home-recorded songwriting gave the wider scene its defining sound before Camera Obscura had released anything." },
-      { artistId: 'camera-obscura', role: "Formed the same year out of an overlapping circle; Murdoch produced some of the band's earliest recordings before Tracyanne Campbell established her own songwriting voice." },
+      { artistId: 'mc5', role: "The Grande's house band from its opening night, managed by John Sinclair, and the band that recorded its debut, Kick Out the Jams, live in that room over two nights in October 1968." },
+      { artistId: 'the-stooges', role: "The MC5's little brother band, who opened for them and reached Elektra on Wayne Kramer's tip; their band house on Packard Road, the Fun House, gave their second album its name." },
     ],
-    legacy: "Two bands, one direct production credit between them — a short list by design, not by omission. What survived past this scene's own decade is a specifically Glaswegian version of indie-pop, literate and unglamorous, that both acts carried further than Postcard's original run ever reached.",
-    memberIds: ['belle-and-sebastian', 'camera-obscura'],
+    legacy: "The Rock and Roll Hall of Fame calls the Stooges \"punk before punk existed\" and credits the MC5 with creating its template, and the Ramones named the MC5 first among their influences. The Stooges' first album was produced by John Cale of the Velvet Underground; on this map the bands that name the Stooges run from the Ramones and Joy Division to Black Flag.",
+    memberIds: ['mc5', 'the-stooges'],
   },
+  {
+    // Researched Oct 2026. Starts with the Strokes' first gig and the
+    // Rapture's Brownies show that brought them to James Murphy (both
+    // 1999); ends when Luna Lounge closed on Ludlow Street in June 2005.
+    // LCD Soundsystem is here as Murphy and DFA: the band's first show was in
+    // London, in November 2002. Left out: the Walkmen (their room was their
+    // own Harlem studio, and they said critics attached them to a New York
+    // scene they never wanted any part of), and Vampire Weekend and MGMT
+    // (a later wave, formed at college in 2005-06 and in Connecticut).
+    id: 'lower-east-side',
+    name: 'Lower East Side',
+    era: '1999–2005',
+    place: 'Lower East Side and East Village, New York',
+    city: 'New York',
+    yearStart: 1999,
+    yearEnd: 2005,
+    blurb: "A handful of small bars around Ludlow Street and an East Village dance label, where guitar bands and DJs shared the same rooms just before the world came looking.",
+    placeAndTime: [
+      "The rooms were small and a few streets apart: the Mercury Lounge on Houston Street, Luna Lounge on Ludlow, Brownies on Avenue A. The Strokes played their first gig in 1999 and spent 2000 on residencies at the Mercury Lounge and the Bowery Ballroom; the Mercury's junior booker, Ryan Gentles, booked them that August and left the club to become their manager. The Yeah Yeah Yeahs played their first show at the Mercury Lounge in September 2000, opening for the White Stripes with their drummer on Meg White's kit, and Interpol found their footing at Brownies and at Luna Lounge, whose co-owner Rob Sacher booked them.",
+      "A few blocks away the other half of the scene ran on records. James Murphy and Tim Goldsworthy's DFA made records in their Plantain studio on West 13th Street, and Murphy DJ'd at Plant Bar in the East Village; he first saw the Rapture at a gig at Brownies in 1999, and DFA found them places to live and jobs at Plant Bar. Sharing rooms didn't make them a gang: Paul Banks has said the Strokes were hanging out in exactly the same places he was, and he didn't know any of them. In 2003 a compilation put the Strokes, the Yeah Yeah Yeahs, Interpol, the Rapture and LCD Soundsystem on one record and called it Yes New York, after No New York. Luna Lounge closed in June 2005.",
+    ],
+    memberRoles: [
+      { artistId: 'the-strokes', role: "Played their first gig in 1999 and spent 2000 on Mercury Lounge residencies, taking the club's booker with them as their manager; the first of these bands to break, with Is This It in 2001." },
+      { artistId: 'yeah-yeah-yeahs', role: "Debuted at the Mercury Lounge in September 2000, opening for the White Stripes, and became a Brownies favourite; by Paul Banks's account, Nick Zinner knew people in Interpol and was part of a scene." },
+      { artistId: 'interpol', role: "Learned to play live at Brownies and Luna Lounge, booked by Rob Sacher; Paul Banks says the Strokes were hanging out in exactly the same places he was, and he didn't know any of them." },
+      { artistId: 'the-rapture', role: "Came east from San Francisco by way of Seattle, were spotted by James Murphy at Brownies, and made \"House of Jealous Lovers\" with DFA in 2002, the single that put this scene's guitars on the dance floor." },
+      { artistId: 'lcd-soundsystem', role: "Here as James Murphy before it was a band: DFA's producer and Plant Bar DJ, who made \"Losing My Edge\" in the Plantain studio. LCD Soundsystem played its first show as a band in London, in November 2002." },
+    ],
+    legacy: "NME named Is This It the album of the decade in 2009, and its short songs and two guitars became the default shape of a guitar band for years afterwards. \"House of Jealous Lovers\" started a run of New York dance-punk that LCD Soundsystem carried furthest, all the way to a farewell at Madison Square Garden in 2011.",
+    memberIds: ['the-strokes', 'yeah-yeah-yeahs', 'interpol', 'the-rapture', 'lcd-soundsystem'],
+  },
+  // `glasgow` (Belle and Sebastian, Camera Obscura, 1996–2010) was removed in
+  // Oct 2026: two acts over fourteen years, and its own text named a producer
+  // credit as "the one concrete link between the two acts". That is not a
+  // shared room. Both bands stay on the map.
 ];
 
 export const graphData: GraphData = { artists: artistsWithBios, genres, scenes, edges, rejectedEdges };

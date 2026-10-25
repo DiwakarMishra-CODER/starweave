@@ -2144,69 +2144,739 @@ h3 { font-size: 1.1rem; }
   border-top: 1px solid var(--color-border);
 }
 
-/* ── Browse page ──────────────────────────────────────────────── */
-/* Full-viewport overlay — same pattern as .artist-overlay/.genre-overlay
-   (the persistent graph stays mounted underneath, in the (graph) route
-   group, so this must be fully opaque or the canvas would show through). */
+/* ── Browse: "the lineup, in faces" (components/browse) ─────────────────
+   Every artist on the map as one festival bill on a poster: warm paper,
+   faces printed one-ink in their realm's colour (full colour when lit),
+   names in the condensed poster face. The billing is how many artists on
+   the map name them as an influence. Crisp: no grain, nothing tilted. */
 .browse-overlay {
   position: fixed;
   inset: 0;
   z-index: 50;
   overflow-y: auto;
+  overflow-x: hidden;
   padding-top: var(--nav-height);
-  background: var(--color-bg);
+  background: #1a1520;
+  --paper: #efe3cb;
+  --paper-ink: #241c17;
+  --lit-red: #c4321f;
+  --lit-blue: #2f55a8;
 }
 
 .browse-page {
   position: relative;
   z-index: 3;
-  max-width: 1100px;
+  max-width: 1440px;
   margin: 0 auto;
-  /* nav-height is already accounted for by .browse-overlay's padding-top above */
-  padding: 2.5rem 1.5rem 4rem;
+  padding: 1.25rem 1.25rem 3rem;
 }
 
-.browse-page__header {
-  margin-bottom: 2rem;
-}
-
-.browse-page__title {
-  font-family: var(--font-display);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  margin-bottom: 0.4rem;
-}
-
-.browse-page__subtitle {
-  font-size: 0.875rem;
-  color: var(--color-muted);
-}
-
-.browse-search {
+.lineup-poster {
   position: relative;
-  margin-bottom: 1.25rem;
+  padding: 2rem 2rem 2.6rem;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--paper-ink);
+  box-shadow: 0 0 0 1px rgba(239, 227, 203, 0.2), 0 24px 60px rgba(0, 0, 0, 0.45);
 }
 
-.browse-search__input {
+.lineup-poster__head {
+  text-align: center;
+  margin-bottom: 1.4rem;
+}
+
+.lineup-poster__presents {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #5a4a3c;
+}
+
+.lineup-poster__title {
+  margin: 0.3rem 0 0.4rem;
+  font-family: var(--font-poster);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--paper-ink);
+}
+
+.lineup-poster__dates {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: #5a4a3c;
+}
+
+/* The controls: a ticket-stub row on the paper. */
+.lineup-controls {
+  display: grid;
+  gap: 0.7rem;
+  padding: 0.9rem 0 1rem;
+  border-top: 2px solid var(--paper-ink);
+  border-bottom: 1px solid rgba(36, 28, 23, 0.25);
+}
+
+.lineup-search {
   width: 100%;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  color: var(--color-text);
-  font-family: var(--font-body);
-  font-size: 0.9rem;
   padding: 0.65rem 0.9rem;
-  transition: border-color var(--transition);
+  border: 1.5px solid var(--paper-ink);
+  border-radius: 6px;
+  background: #fbf8f0;
+  color: var(--paper-ink);
+  font-size: 0.95rem;
 }
 
-.browse-search__input::placeholder {
-  color: var(--color-muted);
+.lineup-search::placeholder {
+  color: #6b5b4c;
 }
 
-.browse-search__input:focus {
+.lineup-search:focus {
+  outline: 2px solid var(--lit-red);
+  outline-offset: 2px;
+}
+
+.lineup-controls__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.lineup-controls .browse-dropdown__button {
+  background: #fbf8f0;
+  border: 1.5px solid var(--paper-ink);
+  border-radius: 999px;
+  color: var(--paper-ink);
+}
+
+.lineup-controls .browse-dropdown__button:hover,
+.lineup-controls .browse-dropdown__button--active {
+  background: var(--paper-ink);
+  color: var(--paper);
+}
+
+.lineup-controls .browse-dropdown__panel {
+  background: #fbf8f0;
+  border: 1.5px solid var(--paper-ink);
+  color: var(--paper-ink);
+  box-shadow: 0 12px 28px rgba(36, 28, 23, 0.25);
+}
+
+.lineup-controls .browse-dropdown__option,
+.lineup-controls .browse-dropdown__option-label {
+  color: var(--paper-ink);
+}
+
+.lineup-controls .browse-dropdown__option:hover,
+.lineup-controls .browse-dropdown__option--selected {
+  background: rgba(36, 28, 23, 0.08);
+}
+
+.lineup-controls .browse-dropdown__option-count,
+.lineup-controls .browse-dropdown__count {
+  color: #5a4a3c;
+}
+
+.lineup-controls .browse-dropdown__search {
+  background: #fff;
+  border-color: rgba(36, 28, 23, 0.35);
+  color: var(--paper-ink);
+}
+
+.lineup-surprise {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.42rem 0.95rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--lit-red);
+  color: #fff8ec;
+  font-family: var(--font-poster);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 2px 0 rgba(36, 28, 23, 0.35);
+  transition: transform 120ms ease, filter 120ms ease;
+}
+
+.lineup-surprise:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.lineup-surprise:focus-visible {
+  outline: 2px solid var(--paper-ink);
+  outline-offset: 3px;
+}
+
+.lineup-count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #5a4a3c;
+}
+
+.lineup-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.lineup-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.3rem 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: var(--paper-ink);
+  color: var(--paper);
+  font-size: 0.8rem;
+}
+
+.lineup-chip__kind {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  opacity: 0.8;
+}
+
+.lineup-chip button {
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(239, 227, 203, 0.18);
+  color: var(--paper);
+  cursor: pointer;
+}
+
+.lineup-chips__clear {
+  border: 0;
+  background: none;
+  color: var(--paper-ink);
+  font-size: 0.8rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* The caption, stuck to the top while the bill scrolls: the key at rest,
+   what a lit face means when one is lit. */
+.lineup-caption {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  margin: 0 -2rem 0.4rem;
+  padding: 0.55rem 2rem;
+  background: rgba(239, 227, 203, 0.96);
+  border-bottom: 1px solid rgba(36, 28, 23, 0.2);
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--paper-ink);
+  text-align: center;
+}
+
+.lineup-caption__key {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0.9rem;
+  margin-top: 0.15rem;
+}
+
+.lineup-caption__realm {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+}
+
+.lineup-caption__realm i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(36, 28, 23, 0.35);
+}
+
+.lineup-caption__red { color: var(--lit-red); font-weight: 600; }
+.lineup-caption__blue { color: var(--lit-blue); font-weight: 600; }
+
+.lineup-caption__open {
+  color: var(--paper-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* The strip: a face's family brought to wherever you are on the page. */
+.lineup-caption {
+  min-height: 74px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lineup-peek {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem 1.1rem;
+  text-align: left;
+}
+
+.lineup-peek__who {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.lineup-peek__who strong {
+  font-family: var(--font-poster);
+  font-weight: 400;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+}
+
+.lineup-peek__who span {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #5a4a3c;
+}
+
+.lineup-peek__group {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.lineup-peek__label {
+  margin-right: 0.15rem;
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lineup-peek__label--by { color: var(--lit-blue); }
+.lineup-peek__label--shaped { color: var(--lit-red); }
+
+.lineup-peek__face {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #d9ccb2;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ring);
+  transition: transform 120ms ease;
+}
+
+.lineup-peek__face[data-ring='by'] { --ring: var(--lit-blue); }
+.lineup-peek__face[data-ring='shaped'] { --ring: var(--lit-red); }
+
+.lineup-peek__face:hover,
+.lineup-peek__face:focus-visible {
+  transform: translateY(-2px) scale(1.12);
   outline: none;
-  border-color: var(--color-shoegaze);
+}
+
+.lineup-peek__face img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lineup-peek__face span {
+  font-family: var(--font-poster);
+  font-size: 0.8rem;
+}
+
+.lineup-peek__more,
+.lineup-peek__none {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: #5a4a3c;
+}
+
+.lineup-peek__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.lineup-peek__bill,
+.lineup-billbar__back,
+.lineup-star__open,
+.lineup-star__play,
+.lineup-star__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.38rem 0.85rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--paper-ink);
+  color: var(--paper);
+  font-family: var(--font-poster);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.lineup-peek__bill:hover,
+.lineup-billbar__back:hover,
+.lineup-star__open:hover,
+.lineup-star__back:hover {
+  background: #000;
+}
+
+.lineup-star__play {
+  background: var(--lit-red);
+  color: #fff8ec;
+}
+
+.lineup-star__back {
+  background: transparent;
+  color: var(--paper-ink);
+  box-shadow: inset 0 0 0 1.5px var(--paper-ink);
+}
+
+.lineup-peek__open {
+  color: var(--paper-ink);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.lineup-billbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem 1rem;
+}
+
+.lineup-billbar p {
+  margin: 0;
+}
+
+/* Someone's own bill: their family around them, the rest folded small. */
+.lineup[data-how='bill'] .lineup-tier__heading {
+  font-size: 0.85rem;
+}
+
+.lineup-tier[data-kind='by'] .lineup-tier__heading { color: var(--lit-blue); }
+.lineup-tier[data-kind='shaped'] .lineup-tier__heading { color: var(--lit-red); }
+
+.lineup-star {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem 2rem;
+}
+
+.lineup-star .lineup-tier__faces {
+  flex: none;
+}
+
+.lineup-star__text {
+  max-width: 26rem;
+  text-align: left;
+}
+
+.lineup-star__counts {
+  display: grid;
+  gap: 0.2rem;
+  margin: 0 0 0.9rem;
+  font-size: 0.95rem;
+}
+
+.lineup-star__counts span:last-child {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #5a4a3c;
+}
+
+.lineup-star__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.lineup-tier[data-kind='rest'] .lineup-tier__faces {
+  gap: 0.3rem;
+}
+
+.lineup-tier[data-kind='rest'] .lineup-face {
+  width: var(--size);
+}
+
+.lineup-tier[data-kind='rest'] .lineup-face__name {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.lineup-tier[data-kind='rest'] .lineup-face[data-state='dim'] .lineup-face__photo {
+  opacity: 0.45;
+}
+
+.lineup-tier[data-kind='rest'] .lineup-face__link:hover .lineup-face__photo,
+.lineup-tier[data-kind='rest'] .lineup-face__link:focus-visible .lineup-face__photo {
+  opacity: 1;
+}
+
+/* The bill. */
+.lineup-tier {
+  margin-top: 1.3rem;
+  text-align: center;
+}
+
+.lineup-tier__heading {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0 0 0.9rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #4a3d30;
+}
+
+.lineup-tier__heading::before,
+.lineup-tier__heading::after {
+  content: '';
+  flex: 1;
+  border-top: 1px solid rgba(36, 28, 23, 0.35);
+}
+
+.lineup[data-how='az'] .lineup-tier__heading,
+.lineup[data-how='year'] .lineup-tier__heading {
+  font-family: var(--font-poster);
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  color: var(--paper-ink);
+}
+
+.lineup-tier__note {
+  margin: -0.4rem 0 0.9rem;
+  font-size: 0.85rem;
+  color: #5a4a3c;
+}
+
+.lineup-tier__faces {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lineup-tier[data-tier='headliners'] .lineup-tier__faces {
+  gap: 1.1rem 1.1rem;
+}
+
+.lineup-face {
+  position: relative;
+  width: max(calc(var(--size) + 14px), 84px);
+}
+
+.lineup-face__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  color: var(--ink);
+  border-radius: 6px;
+  outline-offset: 4px;
+}
+
+.lineup-face__link:focus-visible {
+  outline: 2px solid var(--paper-ink);
+}
+
+/* One ink on the paper: the photo in grey, multiplied over its realm's
+   colour. Lit, it's the photo itself. */
+.lineup-face__photo {
+  position: relative;
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--tint);
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 200ms ease;
+}
+
+.lineup-face__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.12) brightness(1.06);
+  mix-blend-mode: multiply;
+  transition: filter 200ms ease;
+}
+
+.lineup-face__initials {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-poster);
+  font-size: calc(var(--size) * 0.3);
+  color: var(--paper-ink);
+}
+
+.lineup-face__name {
+  max-width: 100%;
+  font-family: var(--font-poster);
+  font-size: var(--name-size);
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+  overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Lit: the face pointed at, the ones it shaped (red) and the ones that
+   shaped it (blue), in full colour; everything else steps back. Dimmed
+   names keep AA contrast on the paper. */
+.lineup-face[data-state='focus'] .lineup-face__photo,
+.lineup-face[data-state='shaped'] .lineup-face__photo,
+.lineup-face[data-state='by'] .lineup-face__photo {
+  background: #000;
+}
+
+.lineup-face[data-state='focus'] img,
+.lineup-face[data-state='shaped'] img,
+.lineup-face[data-state='by'] img {
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+.lineup-face[data-state='focus'] .lineup-face__photo {
+  transform: scale(1.06);
+  box-shadow: 0 0 0 3px var(--paper), 0 0 0 6px var(--paper-ink), 0 8px 20px rgba(36, 28, 23, 0.3);
+}
+
+.lineup-face[data-state='shaped'] .lineup-face__photo {
+  box-shadow: 0 0 0 3px var(--paper), 0 0 0 6px var(--lit-red);
+}
+
+.lineup-face[data-state='by'] .lineup-face__photo {
+  box-shadow: 0 0 0 3px var(--paper), 0 0 0 6px var(--lit-blue);
+}
+
+.lineup-face[data-state='shaped'] .lineup-face__name { color: var(--lit-red); }
+.lineup-face[data-state='by'] .lineup-face__name { color: var(--lit-blue); }
+
+.lineup-face[data-state='dim'] .lineup-face__photo {
+  opacity: 0.22;
+}
+
+.lineup-face[data-state='dim'] .lineup-face__name {
+  color: #6b5b4c; /* 5.2:1 on the paper: dimmed, still readable */
+}
+
+/* The opening: the bill prints top-down, the headliners stamping in. */
+.lineup[data-stage='off'] .lineup-face,
+.lineup[data-stage='off'] .lineup-tier__heading {
+  opacity: 0;
+}
+
+.lineup[data-stage='print'] .lineup-tier__heading {
+  animation: lineup-fade 260ms ease-out both;
+  animation-delay: calc(var(--o) * 170ms);
+}
+
+.lineup[data-stage='print'] .lineup-face {
+  animation: lineup-print 420ms cubic-bezier(0.2, 0.9, 0.3, 1.15) both;
+  animation-delay: calc(var(--o) * 170ms + 80ms);
+}
+
+.lineup[data-stage='print'] [data-tier='headliners'] .lineup-face {
+  animation-name: lineup-stamp;
+}
+
+@keyframes lineup-fade {
+  from { opacity: 0; }
+}
+
+@keyframes lineup-print {
+  from { opacity: 0; transform: translateY(10px); }
+}
+
+@keyframes lineup-stamp {
+  from { opacity: 0; transform: scale(1.35); }
+  60% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lineup *,
+  .lineup-surprise {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .browse-page {
+    padding: 0.6rem 0.6rem 2rem;
+  }
+
+  .lineup-poster {
+    padding: 1.4rem 0.9rem 2rem;
+  }
+
+  /* Still pinned to the top: the site's player owns the bottom of a phone. */
+  .lineup-caption {
+    margin: 0 -0.9rem 0.4rem;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8rem;
+    text-align: left;
+  }
+
+  .lineup-caption__key {
+    display: none;
+  }
+
+  .lineup-face {
+    --size-phone: calc(var(--size) * 0.7);
+    width: max(calc(var(--size-phone) + 14px), 84px);
+  }
+
+  .lineup-face__photo {
+    width: var(--size-phone);
+    height: var(--size-phone);
+  }
+
+  .lineup-count {
+    margin-left: 0;
+  }
 }
 
 /* ── Browse filter dropdowns (genre / scene / era / sort) ────────
@@ -2387,94 +3057,11 @@ h3 { font-size: 1.1rem; }
   text-align: center;
 }
 
-/* ── Active filter chips ─────────────────────────────────────── */
-.browse-active-filters {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 1.25rem;
-}
-
-.browse-active-chip {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.78rem;
-  padding: 0.3rem 0.4rem 0.3rem 0.7rem;
-  border-radius: 20px;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-text);
-}
-
-.browse-active-chip__kind {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-}
-
-.browse-active-chip__remove {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: transparent;
-  border: none;
-  color: var(--color-muted);
-  cursor: pointer;
-  flex-shrink: 0;
-  font-size: 0.85rem;
-  line-height: 1;
-  transition: background var(--transition), color var(--transition);
-}
-
-.browse-active-chip__remove:hover {
-  background: rgba(255, 255, 255, 0.14);
-  color: var(--color-text);
-}
-
-.browse-clear-all {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.3rem 0.5rem;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color var(--transition);
-}
-
-.browse-clear-all:hover {
-  color: var(--color-text);
-}
-
-.browse-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.browse-count {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.04em;
-  color: var(--color-muted);
-}
-
 /* ── Narrow widths: stack the control row so panels never overflow
      the viewport horizontally regardless of which button they hang off ── */
 @media (max-width: 640px) {
-  .browse-dropdown-row {
+  .browse-dropdown-row,
+  .lineup-controls__row {
     flex-direction: column;
     align-items: stretch;
   }
@@ -2494,127 +3081,6 @@ h3 { font-size: 1.1rem; }
     width: auto;
     max-width: none;
   }
-}
-
-.artist-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-  gap: 0.75rem;
-}
-
-/* ── Artist card — photo-first visual layout ─────────────────── */
-.artist-card {
-  display: flex;
-  flex-direction: column;
-  background: rgba(14, 11, 26, 0.88);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition:
-    background var(--transition),
-    border-color var(--transition),
-    box-shadow var(--transition),
-    transform var(--transition);
-}
-
-.artist-card:hover {
-  background: rgba(20, 16, 36, 0.94);
-  border-color: color-mix(in srgb, var(--layer-color, #8891F2) 55%, transparent);
-  box-shadow: 0 4px 24px color-mix(in srgb, var(--layer-color, #8891F2) 18%, transparent);
-  transform: translateY(-2px);
-}
-
-.artist-card__photo-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.04);
-  flex-shrink: 0;
-}
-
-.artist-card__photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 18%;
-  display: block;
-  transition: transform 420ms ease;
-}
-
-.artist-card:hover .artist-card__photo {
-  transform: scale(1.05);
-}
-
-.artist-card__photo-fallback {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: rgba(14, 11, 26, 0.75);
-}
-
-.artist-card__photo-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 45%,
-    rgba(14, 11, 26, 0.65) 100%
-  );
-}
-
-.artist-card__info {
-  padding: 0.7rem 0.85rem 0.8rem;
-}
-
-.artist-card__name-row {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 0.2rem;
-  min-width: 0;
-}
-
-.artist-card__layer-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.artist-card__name {
-  font-family: var(--font-display);
-  font-size: 0.93rem;
-  font-weight: 600;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 0;
-}
-
-.artist-card__genres {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-  margin-bottom: 0.2rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.artist-card__score {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  color: var(--color-muted);
-  opacity: 0.65;
 }
 
 /* ── Genre story page ─────────────────────────────────────────── */
@@ -5089,288 +5555,1180 @@ h3 { font-size: 1.1rem; }
   color: rgba(28, 23, 36, 0.8);
 }
 
-/* ── Scenes index / regional timeline ────────────────────────── */
+/* ── Scenes: contact sheets on a lightbox (components/scenes/Lightbox) ──
+   A warm, lit panel, never white glare, with each scene a strip of slide
+   film on it: sprocket holes the light shows through, frames of the
+   bands, the city and years printed along the film's edge, and the
+   scene's name written above in grease pencil. Crisp throughout: no haze,
+   nothing tilted. */
 .scenes-overlay {
   position: fixed;
   inset: 0;
   z-index: 50;
   overflow-y: auto;
+  overflow-x: hidden;
   padding-top: var(--nav-height);
-  background: var(--color-bg);
-  display: flex;
-  flex-direction: column;
+  background: #1a1520;
+  --lb-light: #efe5cf;
+  --lb-film: #1b1511;
+  --lb-cream: #efe3cb;
 }
 
-/* Flex column filling the full viewport height (minus the nav bar) —
-   .scenes-timeline below stretches to fill whatever's left after the
-   header, so the diagram uses the whole window instead of stopping at a
-   fixed compact height and leaving empty background below it on any
-   viewport taller than the original 1400x750 design target. */
 .scenes-page {
   position: relative;
   z-index: 3;
-  max-width: 1400px;
-  width: 100%;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 1.25rem 1.5rem 1.5rem;
+  padding: 1rem 1.25rem 2.5rem;
+}
+
+.scenes-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  max-width: var(--sheet-w, none);
+  margin: 0 auto 1.1rem;
+}
+
+.scenes-head__title {
+  font-family: var(--font-poster);
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--lb-cream);
+}
+
+/* Play the history: the page's headline control, a big amber pill with a
+   record for a button; while a room or the history plays it becomes the
+   transport (what's on air, pause, stop) and the record turns. */
+.scenes-history {
+  margin-left: auto;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 6px 16px 6px 7px;
+  border: 0;
+  border-radius: 999px;
+  background: #ffb547;
+  color: #1b1511;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px #1a1520, 0 0 0 3px rgba(255, 181, 71, 0.45), 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 140ms ease, filter 140ms ease;
+}
+
+button.scenes-history:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
+button.scenes-history:focus-visible {
+  outline: 2px solid #ffb547;
+  outline-offset: 4px;
+}
+
+.scenes-history--on {
+  cursor: default;
+  padding-right: 8px;
+  background: #241c17;
+  color: var(--lb-cream);
+  box-shadow: 0 0 0 2px #1a1520, 0 0 0 3px rgba(255, 181, 71, 0.6), 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* A record: grooves, a label, and the play mark on the label. */
+.scenes-history__disc {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #ffb547 0 6px, #1b1511 6.5px 7.5px, transparent 8px),
+    repeating-radial-gradient(circle, #1b1511 0 1.5px, #2c241e 1.5px 3px);
+  color: #1b1511;
+}
+
+.scenes-history__disc svg {
+  fill: currentColor;
+  margin-left: 1px;
+}
+
+.scenes-history__disc--spin {
+  background:
+    radial-gradient(circle, #ffb547 0 6px, #1b1511 6.5px 7.5px, transparent 8px),
+    conic-gradient(from 0deg, rgba(255, 255, 255, 0.14), transparent 25%, rgba(255, 255, 255, 0.1) 50%, transparent 75%),
+    repeating-radial-gradient(circle, #1b1511 0 1.5px, #2c241e 1.5px 3px);
+  animation: scenes-spin 1.8s linear infinite;
+}
+
+.scenes-history__disc--spin[data-paused] {
+  animation-play-state: paused;
+}
+
+@keyframes scenes-spin {
+  to { transform: rotate(360deg); }
+}
+
+.scenes-history__words {
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
-  min-height: 0;
+  min-width: 0;
 }
 
-.scenes-page__header {
-  flex: 0 0 auto;
-  margin-bottom: 0.6rem;
+.scenes-history__label {
+  font-family: var(--font-poster);
+  font-size: 16px;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.scenes-page__title {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3.5vw, 2rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.3rem;
+.scenes-history__sub {
+  font-size: 11.5px;
+  line-height: 1.3;
+  white-space: nowrap;
+  opacity: 0.85;
 }
 
-.scenes-page__deck {
-  max-width: 760px;
-  font-size: 0.8125rem;
-  color: var(--color-muted);
-  line-height: 1.5;
+.scenes-history--on .scenes-history__label {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  max-width: 14rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.scenes-timeline {
-  position: relative;
-  width: 100%;
-  margin: 1rem 0 0.5rem;
-  flex: 1 1 auto;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
+.scenes-history__btn {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #ffb547;
+  color: #1b1511;
+  cursor: pointer;
 }
 
-/* Height comes from the flex parent, not an intrinsic value — the
-   component reads the actual rendered height via ResizeObserver and scales
-   bar heights/gaps/faces to fill exactly that much room (see
-   ScenesTimeline.tsx). Absolutely-positioned children (ticks, rows) never
-   feed back into this element's own size, so there's no layout circularity. */
-.scenes-timeline__plot {
-  position: relative;
-  width: 100%;
-  flex: 1 1 auto;
-  min-height: 0;
+.scenes-history__btn svg {
+  fill: currentColor;
 }
 
-/* The tooltip's call to action, set off by a rule so it reads as an action
-   rather than the last fact in the list. */
-.scenes-timeline__tooltip-cta {
-  margin-top: 0.45rem;
-  padding-top: 0.4rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  font-family: var(--font-display);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  font-style: italic;
-  color: var(--scene-color, #8891f2);
+.scenes-history__btn:hover {
+  filter: brightness(1.1);
 }
 
-/* Same shrink-vs-scroll problem as /genres, different mechanism: this plot
-   sizes itself from a ResizeObserver on its own box, so giving it a
-   min-width is enough — it measures the wider box and lays every bar out
-   against that. min-height keeps 14 rows from being solved down to hairlines
-   in a phone's vertical space; .scenes-overlay already scrolls vertically. */
-@media (max-width: 900px) {
-  .scenes-timeline {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-  }
+.scenes-history__btn:focus-visible {
+  outline: 2px solid #ffb547;
+  outline-offset: 2px;
+}
 
-  .scenes-timeline__plot {
-    min-width: 860px;
-    min-height: 620px;
+@media (prefers-reduced-motion: reduce) {
+  .scenes-history__disc--spin { animation: none; }
+}
+
+@media (max-width: 700px) {
+  .scenes-history {
+    margin-left: 0;
+    width: 100%;
   }
 }
 
-.scenes-timeline__axis {
+.scenes-head__key {
+  max-width: 62rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: rgba(239, 227, 203, 0.82);
+}
+
+.lightbox-frame {
+  width: 100%;
+}
+
+.lightbox-frame--scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+}
+
+.lightbox {
+  position: relative;
+  margin: 0 auto;
+  border-radius: 10px;
+  /* The glass: a fine printed grid, every fifth line a little firmer. */
+  background:
+    linear-gradient(rgba(110, 86, 50, 0.1) 1px, transparent 1px) -1px -1px / 120px 120px,
+    linear-gradient(90deg, rgba(110, 86, 50, 0.1) 1px, transparent 1px) -1px -1px / 120px 120px,
+    linear-gradient(rgba(110, 86, 50, 0.055) 1px, transparent 1px) -1px -1px / 24px 24px,
+    linear-gradient(90deg, rgba(110, 86, 50, 0.055) 1px, transparent 1px) -1px -1px / 24px 24px,
+    var(--lb-light);
+  /* The case: a dark bezel, the panel's edge, and the bezel's shadow on the
+     glass, so it reads as lit glass set into a box rather than paper. */
+  box-shadow:
+    inset 0 3px 6px rgba(43, 30, 12, 0.22),
+    inset 0 0 0 1px rgba(43, 30, 12, 0.18),
+    0 0 0 7px #2b241d,
+    0 0 0 8px rgba(239, 227, 203, 0.12),
+    0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* The dark the tubes switch on through (opacity 1 = off). */
+.lightbox__light {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 0;
+  border-radius: inherit;
+  background: #2b241d;
+  opacity: 0;
   pointer-events: none;
 }
 
-.scenes-timeline__tick {
+.lightbox__name {
   position: absolute;
-  top: 0;
-  transform: translateX(-50%);
-}
-
-.scenes-timeline__tick:first-child {
-  transform: translateX(0);
-}
-
-.scenes-timeline__tick:last-child {
-  transform: translateX(-100%);
-}
-
-.scenes-timeline__tick-label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  color: rgba(155, 150, 184, 0.65);
-  white-space: nowrap;
-  margin-bottom: 0.25rem;
-}
-
-.scenes-timeline__tick-line {
-  position: absolute;
-  left: 0;
-  width: 1px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
-}
-
-.scenes-timeline__row {
-  position: absolute;
-  left: 0;
-  right: 0;
+  left: var(--x);
+  top: var(--y);
   z-index: 2;
-}
-
-/* Scene name always comes first — "London" alone can't tell 4AD and
-   Creation apart, but "4AD · London" always can. Eponymous scenes
-   (Manchester, Bristol, Seattle, Glasgow) skip the redundant repeat — see
-   sceneLabelText() in lib/scenes-timeline.ts. Labels always sit outside the
-   bar now (never inside competing with faces) and are their own <Link>,
-   sized/positioned entirely via inline style (left/transform) since the
-   flip-to-avoid-clipping logic depends on measured plot width. */
-.scenes-timeline__label {
-  position: absolute;
+  font-family: var(--font-marker);
+  font-size: 14px;
+  line-height: 19px;
   white-space: nowrap;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: -0.01em;
-  color: var(--color-text);
-  text-decoration: none;
-  transition: opacity 0.2s ease, color 0.2s ease;
+  pointer-events: none;
 }
 
-.scenes-timeline__label--dimmed {
-  opacity: 0.28;
-}
-
-.scenes-timeline__label--hovered {
-  color: var(--scene-color);
-}
-
-/* Hit area is the bar/label only — NOT the row. A row can be far wider than
-   its bar (packed rows especially span most of the axis), so hover/dim must
-   never trigger from the empty space around a bar; only .scenes-timeline__bar
-   and .scenes-timeline__label carry the mouse handlers and the dim/hover
-   classes below. */
-.scenes-timeline__bar {
+.lightbox__strip {
   position: absolute;
-  display: block;
-  border-radius: 999px;
-  min-width: 40px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+  left: var(--x);
+  top: var(--y);
+  z-index: 1;
+  width: var(--w);
+  height: var(--strip-h);
+  display: flex;
+  flex-direction: column;
+  background: var(--lb-film);
+  border-radius: 2px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25), 0 3px 8px rgba(43, 30, 12, 0.18);
   text-decoration: none;
+  overflow: hidden;
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+/* Masking tape holding each strip's far end down: a little see-through,
+   so the film shows under it. No text on it, so it may sit at an angle. */
+.lightbox__tape {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  z-index: 3;
+  width: 30px;
+  height: 13px;
+  background: rgba(236, 222, 176, 0.78);
+  box-shadow: 0 1px 1px rgba(43, 30, 12, 0.18);
+  transform: rotate(7deg);
+  pointer-events: none;
+}
+
+/* The photographer's pick: a red grease-pencil star on the frame of the
+   band most named as an influence. */
+.lightbox__star {
   overflow: visible;
 }
 
-.scenes-timeline__bar--dimmed {
-  opacity: 0.28;
-  filter: saturate(0.5);
+.lightbox__star path {
+  fill: #e5402a;
+  stroke: #1b1511;
+  stroke-width: 1;
+  stroke-linejoin: round;
+  paint-order: stroke;
 }
 
-.scenes-timeline__bar--hovered {
-  transform: scale(1.03);
-  z-index: 20;
-}
-
-.scenes-timeline__faces {
+.lightbox__frame .lightbox__star {
   position: absolute;
-  top: 0;
-  left: 14px;
-  right: 0;
-  bottom: 0;
-  display: block;
+  top: 2px;
+  right: 2px;
 }
 
-.scenes-timeline__face {
+/* The key: an index card taped to the glass in the empty corner. */
+.lightbox__key {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  left: var(--x);
+  top: var(--y);
+  z-index: 2;
+  padding: 12px 18px 12px 16px;
+  border-radius: 2px;
+  background: #fbf8f0;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), 0 4px 12px rgba(43, 30, 12, 0.18);
+  color: #2a2420;
+}
+
+.lightbox__key-tape {
+  position: absolute;
+  top: -7px;
+  width: 44px;
+  height: 15px;
+  background: rgba(236, 222, 176, 0.78);
+  box-shadow: 0 1px 1px rgba(43, 30, 12, 0.15);
+}
+
+.lightbox__key-tape--l { left: -10px; transform: rotate(-9deg); }
+.lightbox__key-tape--r { right: -10px; transform: rotate(8deg); }
+
+.lightbox__key-title {
+  font-family: var(--font-marker);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0 -18px 0 -16px;
+  padding: 0 18px 6px 16px;
+  border-bottom: 1px solid rgba(206, 58, 48, 0.55); /* an index card's red top rule */
+  color: #2a2420;
+}
+
+.lightbox__key-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Each line of the key sits on one of the card's blue rules. */
+.lightbox__key-list li {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  align-items: center;
+  gap: 10px;
+  min-height: 34px;
+  padding: 1px 0;
+  border-bottom: 1px solid rgba(70, 118, 186, 0.28);
+  font-size: 12.5px;
+  line-height: 1.3;
+}
+
+.lightbox__key-red { color: #b8321f; font-weight: 600; }
+.lightbox__key-blue { color: #3b5b9e; font-weight: 600; }
+
+.lightbox__key-mark--arrows path {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.lightbox__key-play {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid var(--color-bg);
-  background: var(--color-bg);
+  background: #5c4a7d;
+  fill: #fbf8f0;
+  padding-left: 1px;
 }
 
-.scenes-timeline__face img {
+.lightbox__key-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* A two-frame scrap of film. */
+.lightbox__key-mark--film {
+  gap: 3px;
+  width: 42px;
+  height: 26px;
+  padding: 6px 4px 4px;
+  border-radius: 1px;
+  background:
+    linear-gradient(90deg, var(--lb-light) 0 3px, transparent 3px) 2px 1.5px / 7px 3px repeat-x,
+    var(--lb-film);
+}
+
+.lightbox__key-mark--film i {
+  flex: 1;
+  align-self: stretch;
+  background: linear-gradient(160deg, #7d6b58, #3a2f26);
+}
+
+.lightbox__key-mark--line {
+  position: relative;
+  width: 40px;
+  height: 0;
+  border-top: 2px solid #5c4a7d;
+  justify-self: center;
+}
+
+.lightbox__key-mark--line::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -6px;
+  width: 2px;
+  height: 10px;
+  background: #5c4a7d;
+  border-radius: 1px;
+}
+
+.lightbox__key-mark--circle i {
+  display: block;
+  width: 16px;
+  height: 20px;
+  background: linear-gradient(160deg, #7d6b58, #3a2f26);
+  box-shadow: 0 0 0 4px #fbf8f0, 0 0 0 6px #5c4a7d;
+  border-radius: 1px;
+}
+
+/* Play the room: a filled sticker after each name, in the scene's ink --
+   it has to read as a button at a glance. While its room is loaded it
+   turns dark with the scene's ring, and a stop button joins it. */
+.lightbox__playwrap {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 19px;
+}
+
+.lightbox__playwrap:hover,
+.lightbox__playwrap:focus-within {
+  z-index: 6;
+}
+
+.lightbox__play {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  height: 20px;
+  min-width: 20px;
+  padding: 0 0 0 7px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--ink);
+  color: #fbf8f0;
+  font-family: var(--font-poster);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25), 0 2px 6px rgba(43, 30, 12, 0.28);
+  transition: transform 120ms ease, filter 120ms ease;
+}
+
+.lightbox__play svg,
+.lightbox__stop svg {
+  flex: none;
+  fill: currentColor;
+}
+
+.lightbox__play svg {
+  margin-left: -0.5px;
+}
+
+/* The label stays tucked away at rest, so the button costs the name row
+   only its own width (the frames' size depends on that row), and slides
+   out over the pencil line when pointed at, focused, or playing. */
+.lightbox__play-label {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: max-width 180ms ease, padding 180ms ease;
+}
+
+.lightbox__play:hover .lightbox__play-label,
+.lightbox__play:focus-visible .lightbox__play-label,
+.lightbox__play[data-on] .lightbox__play-label {
+  max-width: 120px;
+  padding: 0 8px 0 5px;
+}
+
+.lightbox__play:hover {
+  filter: brightness(1.15);
+}
+
+.lightbox__play[data-on] {
+  background: #1b1511;
+  color: #ffd896;
+  box-shadow: 0 0 0 2px var(--ink), 0 2px 6px rgba(43, 30, 12, 0.3);
+}
+
+.lightbox__stop {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #1b1511;
+  color: #fbf8f0;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+.lightbox__play:focus-visible,
+.lightbox__stop:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* A room playing: the rest of the glass dims a touch, and the strip on air
+   glows warm with the song's swell and beats (--energy, --beat, set each
+   frame from lib/music-motion while it plays). */
+.lightbox__light {
+  transition: opacity 400ms ease;
+}
+
+.lightbox[data-stage='on'][data-playing] .lightbox__light {
+  opacity: 0.1;
+}
+
+.lightbox__strip[data-playing] {
+  z-index: 3;
+  box-shadow:
+    0 0 0 2px rgba(255, 214, 150, calc(0.45 + var(--beat, 0) * 0.45)),
+    0 0 calc(10px + var(--energy, 0) * 26px) rgba(255, 186, 102, calc(0.28 + var(--energy, 0) * 0.45));
+}
+
+.lightbox__frame[data-air] {
+  outline: 2px solid #ffd896;
+  outline-offset: -2px;
+  filter: brightness(calc(1 + var(--beat, 0) * 0.22));
+}
+
+/* Room to room: pencil arrows to the bands a band shaped in other rooms
+   (red) and from the ones that shaped it (blue), each target ringed. */
+.lightbox__threads {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 4;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.lightbox__thread {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: lb-draw 420ms ease-out forwards;
+  animation-delay: calc(var(--n) * 50ms);
+}
+
+.lightbox__thread-head,
+.lightbox__thread-ring {
+  opacity: 0;
+  animation: lb-show 160ms ease-out forwards;
+  animation-delay: calc(var(--n) * 50ms + 380ms);
+}
+
+.lightbox__thread-head {
+  fill: currentColor;
+}
+
+.lightbox__thread-ring {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+@keyframes lb-show {
+  to { opacity: 1; }
+}
+
+/* How long the scene lasted: a grease-pencil line from its name to the
+   year it ended, with a short upright at the end. A scene still going
+   runs its line off the edge of the panel instead. */
+.lightbox__span {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  z-index: 2;
+  width: var(--w);
+  height: 0;
+  border-top: 2px solid currentColor;
+  border-radius: 1px;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.lightbox__span::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -6px;
+  width: 2px;
+  height: 10px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+.lightbox__span[data-open-ended]::after {
+  display: none;
+}
+
+.lightbox__strip[data-active] {
+  z-index: 3;
+  transform: translateY(-1px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25), 0 8px 18px rgba(43, 30, 12, 0.3);
+}
+
+.lightbox__strip:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* Sprocket holes: the light showing through. */
+.lightbox__holes {
+  flex: 0 0 8px;
+  background: linear-gradient(90deg, var(--lb-light) 0 4px, transparent 4px) 3px 2px / 9px 4px repeat-x;
+}
+
+.lightbox__frames {
+  flex: 0 0 var(--frame-h);
+  display: flex;
+  gap: 3px;
+  padding: 0 5px;
+  overflow: hidden;
+}
+
+.lightbox__frame {
+  position: relative;
+  flex: 0 0 var(--frame-w);
+  height: var(--frame-h);
+  overflow: hidden;
+  border-radius: 1px;
+  background: #0d0a08;
+}
+
+.lightbox__frame img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 25%; /* faces sit high in a photo: keep them when cropping */
+  user-select: none;
 }
 
-.scenes-timeline__face-initial {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.lightbox__initials {
+  display: grid;
+  place-items: center;
   width: 100%;
   height: 100%;
-  font-family: var(--font-display);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  color: rgba(14, 11, 26, 0.85);
-  background: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-poster);
+  font-size: 15px;
+  color: rgba(239, 227, 203, 0.7);
 }
 
-/* Rendered once at .scenes-timeline__plot's own top level now, not nested
-   inside a per-row div — every row shares the same z-index and is its own
-   stacking context (position:absolute + z-index creates one), so a nested
-   z-index:30 tooltip could never outrank a DIFFERENT row's content, only
-   siblings within its own row. That's what let another scene's label read
-   through this one's tooltip. Background is fully opaque now too (was
-   rgba(...,0.96) — visually close to solid but not quite, and not the
-   actual cause of the bleed-through, which was the stacking bug above). */
-.scenes-timeline__tooltip {
+.lightbox__edge {
+  flex: 0 0 13px;
+  padding: 0 5px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  line-height: 13px;
+  color: #e2a14a;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.lightbox__ruler {
   position: absolute;
-  z-index: 30;
-  max-width: 280px;
-  padding: 0.6rem 0.75rem;
-  background: #14101f;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  left: 0;
+  right: 0;
+  height: 36px;
+  border-bottom: 1px solid rgba(43, 36, 29, 0.28);
   pointer-events: none;
 }
 
-.scenes-timeline__tooltip-name {
-  font-family: var(--font-display);
-  font-size: 0.875rem;
-  font-weight: 700;
-  margin-bottom: 0.15rem;
+.lightbox__tick {
+  position: absolute;
+  bottom: 0;
+  width: 1px;
+  height: 4px;
+  background: rgba(43, 33, 24, 0.45);
 }
 
-.scenes-timeline__tooltip-meta {
+.lightbox__tick--label {
+  height: 8px;
+  background: rgba(43, 33, 24, 0.7);
+}
+
+.lightbox__tick--label span {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  transform: translateX(-50%);
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  color: var(--color-muted);
-  margin-bottom: 0.35rem;
+  font-size: 10px;
+  color: #4a3d30;
 }
 
-.scenes-timeline__tooltip-members {
-  font-size: 0.75rem;
-  line-height: 1.5;
-  color: var(--color-text);
+/* A pointed-at scene: its start and end lit on the ruler, dashed down to it. */
+.lightbox__drop {
+  position: absolute;
+  z-index: 0;
+  width: 0;
+  border-left: 1.5px dashed currentColor;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.lightbox__lit {
+  position: absolute;
+  z-index: 4;
+  transform: translate(-50%, 13px);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  line-height: 15px;
+  color: #fff;
+  pointer-events: none;
+}
+
+.lightbox__circle {
+  position: absolute;
+  z-index: 4;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.lightbox__circle path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: lb-draw 260ms ease-out forwards;
+}
+
+@keyframes lb-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* The loupe and the scene's details, on a dark card like the film. */
+.lightbox__card {
+  position: absolute;
+  z-index: 5;
+  width: 268px;
+  min-height: 140px;
+  padding: 11px 12px 10px 110px;
+  border-radius: 8px;
+  background: #1c1612;
+  color: var(--lb-cream);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.lightbox__card[data-pinned] {
+  pointer-events: auto;
+}
+
+.lightbox__loupe {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  width: 86px;
+  height: 86px;
+  margin-top: -43px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #0d0a08;
+  box-shadow: 0 0 0 3px #2c241d, 0 0 0 5px #8a7a62, 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox__loupe img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lightbox__card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.lightbox__card-band {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lightbox__card-threads {
+  font-size: 10.5px;
+  line-height: 1.3;
+}
+
+.lightbox__card-star {
+  font-size: 10.5px;
+  line-height: 1.3;
+  color: #ff8a6e;
+}
+
+.lightbox__card-scene {
+  font-family: var(--font-marker);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.lightbox__card-when {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: rgba(239, 227, 203, 0.78);
+}
+
+.lightbox__card-with {
+  margin-top: 2px;
+  font-size: 11.5px;
+  line-height: 1.3;
+  color: rgba(239, 227, 203, 0.8);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lightbox__card-open {
+  margin-top: auto;
+  font-size: 11.5px;
+  color: #ffb547;
+}
+
+a.lightbox__card-open {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.photo-credit--lightbox {
+  position: absolute;
+  right: 8px;
+  bottom: 4px;
+  font-size: 9px;
+  color: rgba(239, 227, 203, 0.7);
+}
+
+/* The opening, "the reel" (times match Lightbox.tsx): the strips run in as
+   one film over the dark glass (moved by the Web Animations API), the big
+   year counter above them; at 1.8s the tubes flicker on and the counter
+   gives way to the ruler; from 2s the strips fly to their places, 40ms
+   apart, landing from ~2.6s; then names, tape, play buttons, stars, lines
+   and the key card, each in year order. Rendered with the light off so
+   nothing visibly swaps when it starts. */
+.lightbox[data-stage='off'] .lightbox__light {
+  opacity: 1;
+}
+
+.lightbox[data-stage='off'] .lightbox__strip,
+.lightbox[data-stage='off'] .lightbox__name,
+.lightbox[data-stage='off'] .lightbox__span,
+.lightbox[data-stage='off'] .lightbox__tape,
+.lightbox[data-stage='off'] .lightbox__playwrap,
+.lightbox[data-stage='off'] .lightbox__key,
+.lightbox[data-stage='off'] .lightbox__ruler {
+  opacity: 0;
+}
+
+/* The reel runs across the glass, never past the case. */
+.lightbox[data-stage='opening'] {
+  overflow: hidden;
+}
+
+.lightbox__counter {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  text-align: center;
+  font-family: var(--font-poster);
+  font-size: 84px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  font-variant-numeric: tabular-nums;
+  color: #efe3cb;
+  pointer-events: none;
+  animation: lb-counter 420ms ease-in 1850ms both;
+}
+
+@keyframes lb-counter {
+  to { opacity: 0; transform: translateY(-40px) scale(0.6); }
+}
+
+.lightbox[data-stage='opening'] .lightbox__light {
+  animation: lb-tubes 460ms steps(1, end) 1800ms both;
+}
+
+.lightbox[data-stage='opening'] .lightbox__ruler {
+  animation: lb-fade 300ms ease-out 2000ms both;
+}
+
+.lightbox[data-stage='opening'] .lightbox__name {
+  animation: lb-write 300ms ease-out both;
+  animation-delay: calc(2600ms + var(--i) * 40ms);
+}
+
+.lightbox[data-stage='opening'] .lightbox__tape {
+  animation: lb-fade 160ms ease-out both;
+  animation-delay: calc(2620ms + var(--i) * 40ms);
+}
+
+.lightbox[data-stage='opening'] .lightbox__playwrap {
+  animation: lb-fade 200ms ease-out both;
+  animation-delay: calc(2700ms + var(--i) * 40ms);
+}
+
+/* The stars pop onto their frames once the strip has landed. */
+.lightbox[data-stage='opening'] .lightbox__frame .lightbox__star {
+  animation: lb-pop 320ms cubic-bezier(0.3, 1.6, 0.5, 1) both;
+  animation-delay: calc(2750ms + var(--i) * 40ms);
+}
+
+@keyframes lb-pop {
+  from { opacity: 0; transform: scale(2.4) rotate(-40deg); }
+}
+
+.lightbox[data-stage='opening'] .lightbox__span {
+  animation: lb-write 420ms ease-in-out both;
+  animation-delay: calc(2850ms + var(--i) * 40ms);
+}
+
+.lightbox[data-stage='opening'] .lightbox__key {
+  animation: lb-lay 360ms cubic-bezier(0.2, 0.8, 0.3, 1) 2900ms both;
+}
+
+/* The quick return (coming back in the same visit): the light's already
+   on and the strips fly in from where the reel stopped, 30ms apart; the
+   marks follow within about a second. */
+.lightbox[data-stage='return'] {
+  overflow: hidden;
+}
+
+.lightbox[data-stage='return'] .lightbox__name {
+  animation: lb-write 260ms ease-out both;
+  animation-delay: calc(450ms + var(--i) * 30ms);
+}
+
+.lightbox[data-stage='return'] .lightbox__tape {
+  animation: lb-fade 140ms ease-out both;
+  animation-delay: calc(460ms + var(--i) * 30ms);
+}
+
+.lightbox[data-stage='return'] .lightbox__playwrap {
+  animation: lb-fade 180ms ease-out both;
+  animation-delay: calc(500ms + var(--i) * 30ms);
+}
+
+.lightbox[data-stage='return'] .lightbox__frame .lightbox__star {
+  animation: lb-pop 300ms cubic-bezier(0.3, 1.6, 0.5, 1) both;
+  animation-delay: calc(520ms + var(--i) * 30ms);
+}
+
+.lightbox[data-stage='return'] .lightbox__span {
+  animation: lb-write 360ms ease-in-out both;
+  animation-delay: calc(560ms + var(--i) * 30ms);
+}
+
+.lightbox[data-stage='return'] .lightbox__key {
+  animation: lb-lay 300ms cubic-bezier(0.2, 0.8, 0.3, 1) 600ms both;
+}
+
+/* Then each Play sticker gives one small pulse, in turn, so the eye learns
+   the rooms play. */
+.lightbox[data-stage='opening'] .lightbox__play {
+  animation: lb-wink 360ms ease-out both;
+  animation-delay: calc(3100ms + var(--i) * 40ms);
+}
+
+@keyframes lb-wink {
+  0%, 100% { transform: none; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25), 0 2px 6px rgba(43, 30, 12, 0.28); }
+  45% { transform: scale(1.16); box-shadow: 0 0 0 3px rgba(255, 216, 150, 0.9), 0 2px 6px rgba(43, 30, 12, 0.28); }
+}
+
+@keyframes lb-tubes {
+  0% { opacity: 1; }
+  25% { opacity: 0.45; }
+  45% { opacity: 0.9; }
+  70% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes lb-fade {
+  from { opacity: 0; }
+}
+
+@keyframes lb-lay {
+  from { opacity: 0; transform: translateY(-16px); }
+}
+
+@keyframes lb-write {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox *,
+  .lightbox__circle path {
+    animation: none !important;
+    transition: none !important;
+  }
+  .lightbox__circle path,
+  .lightbox__thread {
+    stroke-dashoffset: 0;
+  }
+  .lightbox__thread-head,
+  .lightbox__thread-ring {
+    opacity: 1;
+  }
+}
+
+/* A phone: a plain contact sheet, one strip per row in date order. */
+@media (max-width: 700px) {
+  .scenes-page {
+    padding: 0.5rem 0.9rem 2rem;
+  }
+
+  .lightbox[data-phone] {
+    width: auto !important;
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 6px 12px 16px;
+    --frame-w: 40px !important;
+    --frame-h: 52px !important;
+    --strip-h: 73px !important;
+  }
+
+  .lightbox[data-phone] .lightbox__name {
+    position: relative;
+    left: auto;
+    top: auto;
+    margin-top: 10px;
+    line-height: 22px;
+  }
+
+  .lightbox[data-phone] .lightbox__strip {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .lightbox[data-phone] .lightbox__key {
+    position: relative;
+    left: auto;
+    top: auto;
+    order: -1;
+    width: 100% !important;
+    height: auto !important;
+    margin: 12px 0 6px;
+  }
+
+  .lightbox[data-phone] .lightbox__playwrap {
+    position: relative;
+    left: auto;
+    top: auto;
+    margin: -21px 0 3px calc(var(--name-w) + 8px);
+  }
+
+  .lightbox[data-phone] .lightbox__span,
+  .lightbox[data-phone] .lightbox__key-span,
+  .lightbox[data-phone] .lightbox__key-threads,
+  .lightbox[data-phone] .lightbox__tape,
+  .lightbox[data-phone] .lightbox__ruler {
+    display: none;
+  }
+
+  .lightbox[data-phone] .lightbox__frame[data-on] {
+    outline: 2px solid #ffb547;
+    outline-offset: -2px;
+  }
+
+  .lightbox[data-phone] .lightbox__card {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: auto;
+    z-index: 60;
+    pointer-events: auto;
+  }
+}
+
+/* The log: every scene in date order, in plain words. */
+.scenes-log {
+  max-width: 60rem;
+  margin: 1.3rem auto 0;
+}
+
+.scenes-log__title {
+  font-family: var(--font-poster);
+  font-weight: 400;
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  color: var(--lb-cream);
+  margin-bottom: 0.6rem;
+}
+
+.scenes-log__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(239, 227, 203, 0.14);
+}
+
+.scenes-log__item {
+  display: grid;
+  grid-template-columns: 7.5rem 12rem 1fr;
+  gap: 0.25rem 1rem;
+  align-items: baseline;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(239, 227, 203, 0.14);
+}
+
+.scenes-log__when {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: rgba(239, 227, 203, 0.75);
+}
+
+.scenes-log__name {
+  font-weight: 600;
+  color: var(--lb-cream);
+  text-decoration: none;
+  border-bottom: 2px solid var(--row-color);
+}
+
+.scenes-log__name:hover,
+.scenes-log__name:focus-visible {
+  color: #fff;
+}
+
+.scenes-log__who {
+  font-size: 0.86rem;
+  color: rgba(239, 227, 203, 0.8);
 }
 
 @media (max-width: 700px) {
-  .scenes-timeline__tick-label {
-    font-size: 0.625rem;
+  .scenes-log__item {
+    grid-template-columns: 1fr;
   }
 }
 

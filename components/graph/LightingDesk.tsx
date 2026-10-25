@@ -139,10 +139,10 @@ export default function LightingDesk({ evidence, onEvidence, counts }: Props) {
                   type="button"
                   className={`desk__solo${soloed ? ' desk__solo--on' : ''}`}
                   aria-pressed={soloed}
-                  aria-label={`Solo ${name}`}
+                  aria-label={`Show only ${name}`}
                   onClick={() => setSolo(soloed ? null : r)}
                 >
-                  Solo
+                  Only
                 </button>
               </div>
             );
