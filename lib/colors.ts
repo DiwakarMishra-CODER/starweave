@@ -461,7 +461,10 @@ export const SCENE_COLORS: Record<string, string> = {
   '4ad':         '#C09AE6', // 270° — lavender
   cbgb:          '#E28BE2', // 300° — magenta/orchid, inherited from the removed 'creation'
                             //        entry, so the wheel keeps its existing spacing
-  bristol:       '#E390BA', // 330° — dusty rose
+  'pc-music':    '#E38ECE', // 315° — hyperpop pink, splitting cbgb/bristol (~15° each), solved
+                            //        to the same target (8.35:1 on #0e0b1a). The hyperpop
+                            //        genre's own #FF6EC7 sits at ~323°, too close to bristol.
+  bristol:      '#E390BA', // 330° — dusty rose
   'greenwich-village':
                  '#E492A7', // 345° — rose-pink. Second gap-splitter (after dusseldorf's
                             //        45°): at 14 scenes the wheel no longer divides into

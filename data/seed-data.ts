@@ -3956,6 +3956,47 @@ const scenes: Scene[] = [
     legacy: "NME named Is This It the album of the decade in 2009, and its short songs and two guitars became the default shape of a guitar band for years afterwards. \"House of Jealous Lovers\" started a run of New York dance-punk that LCD Soundsystem carried furthest, all the way to a farewell at Madison Square Garden in 2011.",
     memberIds: ['the-strokes', 'yeah-yeah-yeahs', 'interpol', 'the-rapture', 'lcd-soundsystem'],
   },
+  {
+    // Researched Oct 2026. Main sources: Dazed, Selim Bulut, "The history of
+    // PC Music, the most exhilarating record label of the 2010s" (20 Dec
+    // 2019); Wikipedia's "Hey QT" page; DJ Mag and The Fader (June 2023) on
+    // the label ending new releases. Named for the label, unlike dc-hardcore:
+    // there the label left out the band that started the scene, but here
+    // "PC Music" is what the circle of friends itself was called, and it is
+    // how the scene is known. Charli XCX is in it although she was never on
+    // the label: the test for a scene is whether they worked together, and
+    // from 2016 the circle made her records (SOPHIE produced Vroom Vroom,
+    // Feb 2016; Pop 2, Dec 2017, was executive-produced by Cook with SOPHIE,
+    // easyFun and Lil Data among its producers -- Wikipedia's pages for both,
+    // the second quoting Pitchfork). She was first left out on the
+    // influence-link rule that collaboration isn't influence, which is the
+    // wrong rule for a scene; the owner rightly objected. So it ends with Pop
+    // 2 in 2017, not in 2023, when the label stopped releasing new music (the
+    // CBGB rule: the scene, not the institution). Three members because only
+    // they are on the map; Danny L Harle, Hannah Diamond, GFOTY, Kane West
+    // and the rest are not. Left out: Caroline Polachek (her tie runs through
+    // Danny L Harle, who is not on the map) and 100 gecs (American, never
+    // part of it).
+    id: 'pc-music',
+    name: 'PC Music',
+    era: '2013–2017',
+    place: 'London',
+    city: 'London',
+    yearStart: 2013,
+    yearEnd: 2017,
+    blurb: "A.G. Cook's label was really a circle of school and university friends, with SOPHIE alongside, putting out exaggerated, candy-bright pop almost every week, then making Charli XCX's records.",
+    placeAndTime: [
+      "A.G. Cook started PC Music in June 2013, around the time he graduated from Goldsmiths, and built it around people he already knew. Danny L Harle was an old school friend he met again at university; Gus Lobban, who recorded as Kane West, was a year below him at Goldsmiths; Polly-Louisa Salmon, who made records as GFOTY, was a school friend. Hannah Diamond, a former fashion and styling student who had co-founded LOGO Magazine, easyFun, Lil Data and felicita completed the circle. Caroline Polachek called it \"a collective of friends\" that \"clearly wasn't a label in the conventional sense.\" From 2014 to 2015 it put out new music almost every week.",
+      "It had rooms as well as release dates. On 24 January 2014 SOPHIE and Cook played the basement of Power Lunches in Dalston, and that April Hannah Diamond gave her first live show at the Edition Hotel in central London. SOPHIE never technically signed to the label, but she worked inside the circle: with Cook, the singer Harriet Pittard and Hayden Dunham she was part of QT, whose \"Hey QT\" came out on XL Recordings in August 2014. From 2016 the circle's biggest room was Charli XCX's records: SOPHIE produced her Vroom Vroom EP that February, Cook became her creative director late that year, and Pop 2 (December 2017), made with him, SOPHIE, easyFun and Lil Data, was recorded mostly in Alicia Keys' old New York studio, with other sessions in London.",
+    ],
+    memberRoles: [
+      { artistId: 'a-g-cook', role: "Started PC Music in June 2013 with school and Goldsmiths friends and ran it through the Columbia deal, then became Charli XCX's creative director in late 2016. He still hears SOPHIE's fingerprints on his later records." },
+      { artistId: 'sophie', role: "A close associate who never technically signed to PC Music: she played the Power Lunches basement with Cook in January 2014 and was part of QT with him, whose \"Hey QT\" came out on XL Recordings in August 2014." },
+      { artistId: 'charli-xcx', role: "Never on the label, but from 2016 the circle made her records: SOPHIE produced her Vroom Vroom EP, and Cook, her creative director, executive-produced Pop 2 (2017) with SOPHIE, easyFun and Lil Data." },
+    ],
+    legacy: "The sound later filed under hyperpop reached the wider world through Pop 2, which Pitchfork called \"the best full-length work of both Charli and PC Music's respective careers,\" and through SOPHIE, whom Charli named at the 2025 BRIT Awards as someone \"none of us would be up here without.\" PC Music itself put out new music until 2023 and has released only archival records since. On this map Slayyyter and Ninajirachi name SOPHIE as an influence, and Cook traces his own influences back to Kraftwerk.",
+    memberIds: ['a-g-cook', 'sophie', 'charli-xcx'],
+  },
   // `glasgow` (Belle and Sebastian, Camera Obscura, 1996–2010) was removed in
   // Oct 2026: two acts over fourteen years, and its own text named a producer
   // credit as "the one concrete link between the two acts". That is not a
