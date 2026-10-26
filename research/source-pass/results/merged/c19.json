@@ -1,0 +1,347 @@
+{
+  "agent": "c19",
+  "searches": 31,
+  "toolStatus": "WebSearch fine. read worked for Wikipedia raw, Quietus slides, Flood, NPR, Rolling Stone; pressreader (Guitar Techniques) unreadable.",
+  "entries": {
+    "bon-iver>fugazi": {
+      "verdict": "fixed",
+      "url": "https://www.uncut.co.uk/features/bon-iver-man-you-can-take-yourself-too-seriously-22493/",
+      "found": "When he started developing his own tastes, he was attracted to the energy of Primus and Fugazi. “I was a bit starstruck when I saw Ian MacKaye [of Minor Threat and Fugazi] at catering yesterday,” he reveals. “I was like ‘Oh shit, that guy’s my fucking hero.’”",
+      "citation": "Uncut (2013) reported that when Justin Vernon started developing his own tastes he was attracted to the energy of Primus and Fugazi; he called Ian MacKaye \"my fucking hero.\"",
+      "sourceTier": "reported",
+      "note": "Found via the footnote on Wikipedia's Fugazi article. Page prints no year in the text read (footnote says 24 May 2013).",
+      "checked": "2026-10-26"
+    },
+    "bon-iver>tom-waits": {
+      "verdict": "not-found",
+      "note": "PopMatters review of For Emma, Forever Ago (popmatters.com/bon-iver-for-emma-forever-ago-2496184847.html) read in full: no mention of Tom Waits. Searched PopMatters+Vernon+Waits and Vernon+Tom Waits+For Emma interview: no page. Citation looks unsupported.",
+      "checked": "2026-10-26"
+    },
+    "bright-eyes>the-replacements": {
+      "verdict": "fixed",
+      "url": "https://faroutmagazine.co.uk/how-the-replacements-shaped-conor-oberst/",
+      "found": "The Replacements’ 1985 song ‘Here Comes a Regular’. Oberst explained the selection by saying, “I had two older brothers: Matty, who’s no longer with us, and Justin. Matty was six and a half years older than me, and all his friends were fanatics about music. I’d sneak up to his room and steal his cassette tapes. All that came from him.”",
+      "citation": "Far Out reported that Conor Oberst named the Replacements' \"Here Comes a Regular\" among eight songs that mattered to him, saying his late older brother Matty's friends \"were fanatics about music\" and \"I'd sneak up to his room and steal his cassette tapes. All that came from him.\"",
+      "sourceTier": "reported",
+      "note": "Page also has Oberst: Replacements were his brother's favourite band and the brother showed him how to play the song when he was learning guitar. The 'record-shop encounter' in the old citation is Townes Van Zandt, not the Replacements. Page prints no Pitchfork year in the paragraphs read.",
+      "checked": "2026-10-26"
+    },
+    "fleet-foxes>bob-dylan": {
+      "verdict": "fixed",
+      "url": "https://missoula.com/music/article_b00fb51c-780f-596e-a9e3-985efcaa3523.html",
+      "found": "Pecknold said that he grew up listening to the music of his parents, who repeatedly played just about every lasting ‘60s band you would expect to find in the record anthologies of baby boomers: The Beach Boys, The Beatles, Simon and Garfunkel, The Band, The Zombies, Joni Mitchell, Bob Dylan, Crosby, Stills and Nash.",
+      "citation": "The Missoula Independent reported that Robin Pecknold said he grew up listening to his parents' records, which included the Beach Boys, the Beatles, Simon and Garfunkel, the Band, Joni Mitchell, Bob Dylan and Crosby, Stills and Nash.",
+      "sourceTier": "reported",
+      "note": "Guitar Techniques piece (pressreader.com/australia/guitar-techniques/20140221/282857958862562) can't be read; replaced with this page. Page prints no year.",
+      "checked": "2026-10-26"
+    },
+    "fleet-foxes>neil-young": {
+      "verdict": "fixed",
+      "url": "https://www.rollingstone.com/music/music-news/fleet-foxes-perfect-harmony-67923/",
+      "found": "“It had the best stereo system in the whole school,” says Skjelsct. “We’d sit around and blast Neil Young and Bob Dylan — and the teacher would always squeeze in some ELO and Yes.”",
+      "citation": "Rolling Stone's Fleet Foxes profile quotes bandmate Skyler Skjelset on he and Robin Pecknold at school: \"We'd sit around and blast Neil Young and Bob Dylan -- and the teacher would always squeeze in some ELO and Yes.\"",
+      "sourceTier": "reported",
+      "note": "Speaker is Skjelset, not Pecknold. Page's year not printed in the paragraph. Pressreader Guitar Techniques unreadable.",
+      "checked": "2026-10-26"
+    },
+    "minutemen>wire": {
+      "verdict": "fixed",
+      "url": "https://louderthanwar.com/mike-watt-on-brother-mike-shares-words-of-wisdom-about-punk-the-minutemen-the-stooges-and-much-more/",
+      "found": "These other bands (Wire and Pop Group) were making music that we were kind of inspired by and interested in, we didn’t want to copy or anything but we thought “if they can do that then we shouldn’t be afraid to try this wild stuff.",
+      "citation": "Mike Watt to Louder Than War (2014): \"There was a band in London too, Wire, who had that Pink Flag album... we were very influenced by these two bands from England\" (Wire and the Pop Group); \"making music that we were kind of inspired by and interested in.\"",
+      "sourceTier": "first-person",
+      "note": "Louder Than War page date (22 Apr 2014) from Wikipedia footnote; the page text read doesn't print it.",
+      "checked": "2026-10-26"
+    },
+    "phoebe-bridgers>elliott-smith": {
+      "verdict": "fixed",
+      "url": "https://www.npr.org/2020/04/16/834971727/phoebe-bridgers-elliott-smith-figure-8-20th-anniversary",
+      "found": "Though she represents a generation that did not get into Smith's music until after his death in October 2003, she's dug deep into the archives to become, in her words, an Elliott Smith nerd.",
+      "citation": "NPR (2020): Phoebe Bridgers \"only came to his work after his death\" and has \"listened to Elliott Smith's Figure 8 more times than she can count\"; she says of him, \"It's not just a look. It's my favorite music.\"",
+      "sourceTier": "first-person",
+      "note": "Quote 'It's my favorite music' is in the next paragraph (Bridgers speaking). Year 2020 is from the URL; page text prints Punisher out in June.",
+      "checked": "2026-10-26"
+    },
+    "geese>radiohead": {
+      "verdict": "fixed",
+      "url": "https://stereogum.com/2154600/geese-disco-interview/interviews/band-to-watch",
+      "found": "In Rainbows is collectively cited as a massive influence on the band, though Green remarks they were thinking about the string arrangements more than the guitars.",
+      "citation": "Stereogum's Band To Watch piece on Geese: In Rainbows \"is collectively cited as a massive influence on the band, though Green remarks they were thinking about the string arrangements more than the guitars.\"",
+      "sourceTier": "reported",
+      "note": "Speaker is Emily Green, not Cameron Winter. Strengthens nothing beyond reported.",
+      "checked": "2026-10-26"
+    },
+    "cabaret-voltaire>kraftwerk": {
+      "verdict": "fixed",
+      "url": "https://thequietus.com/interviews/bakers-dozen/richard-h-kirk-cabaret-voltaire-favourite-albums/4/",
+      "found": "I’d been listening to Kraftwerk ever since _Autobhan_ came out, discovering a lot of what they used to call the Krautrock bands. Their early stuff was probably more of an influence on Cabaret Voltaire than when they became fully automated, because prior to that they’d been using guitars and organs.",
+      "citation": "Richard H. Kirk to The Quietus (Baker's Dozen, 2016): \"I'd been listening to Kraftwerk ever since Autobahn came out... Their early stuff was probably more of an influence on Cabaret Voltaire than when they became fully automated.\"",
+      "sourceTier": "first-person",
+      "note": "Found by following Wikipedia's footnote. Year 2016 from the footnote, not printed in text read.",
+      "checked": "2026-10-26"
+    },
+    "cabaret-voltaire>velvet-underground": {
+      "verdict": "fixed",
+      "url": "https://thequietus.com/interviews/bakers-dozen/richard-h-kirk-cabaret-voltaire-favourite-albums/9/",
+      "found": "The lyrics and the album had a massive bearing on Cabaret Voltaire, but basically I was too young – in 1966 I was 10 – so obviously I didn’t get it at the time.",
+      "citation": "Richard H. Kirk to The Quietus (Baker's Dozen, 2016), on The Velvet Underground & Nico: \"The lyrics and the album had a massive bearing on Cabaret Voltaire.\"",
+      "sourceTier": "first-person",
+      "note": "White Light/White Heat 'blueprint' quote is on classicalbumsundays.com (not opened).",
+      "checked": "2026-10-26"
+    },
+    "cabaret-voltaire>can": {
+      "verdict": "fixed",
+      "url": "https://thequietus.com/interviews/bakers-dozen/richard-h-kirk-cabaret-voltaire-favourite-albums/14/",
+      "found": "Tangerine Dream weren’t as influential as, say, Can or Neu! on Cabaret Voltaire but the interesting stuff was that they were using sequencers, which was quite new at that time.",
+      "citation": "Richard H. Kirk to The Quietus (Baker's Dozen, 2016): \"Tangerine Dream weren't as influential as, say, Can or Neu! on Cabaret Voltaire.\"",
+      "sourceTier": "first-person",
+      "note": "Kirk's own words, said in passing; it presumes Can were an influence rather than elaborating.",
+      "checked": "2026-10-26"
+    },
+    "cabaret-voltaire>neu": {
+      "verdict": "fixed",
+      "url": "https://thequietus.com/interviews/bakers-dozen/richard-h-kirk-cabaret-voltaire-favourite-albums/14/",
+      "found": "Tangerine Dream weren’t as influential as, say, Can or Neu! on Cabaret Voltaire but the interesting stuff was that they were using sequencers, which was quite new at that time.",
+      "citation": "Richard H. Kirk to The Quietus (Baker's Dozen, 2016): \"Tangerine Dream weren't as influential as, say, Can or Neu! on Cabaret Voltaire.\"",
+      "sourceTier": "first-person",
+      "note": "Same slide as Can; in passing.",
+      "checked": "2026-10-26"
+    },
+    "cabaret-voltaire>faust": {
+      "verdict": "ok",
+      "url": "https://en.wikipedia.org/wiki/Faust_(band)",
+      "found": "They have been cited as an influence by Radiohead, Swell Maps, Throbbing Gristle, Cabaret Voltaire, Stereolab, Simple Minds, Sonic Youth, Mark E. Smith,[11]Nurse with Wound and Madlib.[12]",
+      "note": "Wikipedia only; the footnotes (Quietus Fall review, Guardian Petridis piece) were opened and neither names Cabaret Voltaire. Kirk's Baker's Dozen (all slides 2-14 checked for 4, 9, 14) has no Faust. Reported at best.",
+      "checked": "2026-10-26"
+    },
+    "have-a-nice-life>new-order": {
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/20080530043559/http://www.myspace.com/haveanicelife",
+      "found": "Influences My Bloody Valentine, Joy Division, New Order, Earth, Sunn, Xasthur, Lurker of Chalice, Nine Inch Nails, the periodic \"starving times\" of native Alaskans dependent on herds of migrant caribou, Swans, Sisters of Mercy, Kraftwerk, Nietzsche",
+      "citation": "Have A Nice Life's own MySpace profile (archived 2008) lists its influences: My Bloody Valentine, Joy Division, New Order, Earth, Sunn, Xasthur, Lurker of Chalice, Nine Inch Nails, Swans, Sisters of Mercy, Kraftwerk and Nietzsche.",
+      "sourceTier": "first-person",
+      "note": "Wikipedia's source for the list. The band's own profile; a bare list, no comment.",
+      "checked": "2026-10-26"
+    },
+    "have-a-nice-life>swans": {
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/20080530043559/http://www.myspace.com/haveanicelife",
+      "found": "Influences My Bloody Valentine, Joy Division, New Order, Earth, Sunn, Xasthur, Lurker of Chalice, Nine Inch Nails, the periodic \"starving times\" of native Alaskans dependent on herds of migrant caribou, Swans, Sisters of Mercy, Kraftwerk, Nietzsche",
+      "citation": "Have A Nice Life's own MySpace profile (archived 2008) lists its influences: My Bloody Valentine, Joy Division, New Order, Earth, Sunn, Xasthur, Lurker of Chalice, Nine Inch Nails, Swans, Sisters of Mercy, Kraftwerk and Nietzsche.",
+      "sourceTier": "first-person",
+      "note": "Same page.",
+      "checked": "2026-10-26"
+    },
+    "have-a-nice-life>kraftwerk": {
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/20080530043559/http://www.myspace.com/haveanicelife",
+      "found": "Influences My Bloody Valentine, Joy Division, New Order, Earth, Sunn, Xasthur, Lurker of Chalice, Nine Inch Nails, the periodic \"starving times\" of native Alaskans dependent on herds of migrant caribou, Swans, Sisters of Mercy, Kraftwerk, Nietzsche",
+      "citation": "Have A Nice Life's own MySpace profile (archived 2008) lists its influences: My Bloody Valentine, Joy Division, New Order, Earth, Sunn, Xasthur, Lurker of Chalice, Nine Inch Nails, Swans, Sisters of Mercy, Kraftwerk and Nietzsche.",
+      "sourceTier": "first-person",
+      "note": "Same page.",
+      "checked": "2026-10-26"
+    },
+    "have-a-nice-life>dead-kennedys": {
+      "verdict": "not-found",
+      "note": "Searched Steel for Brains + Macuga + Dead Kennedys/Descendents/Operation Ivy, and Macuga interview 'default' music growing up: no Steel for Brains page surfaced. Treble piece (treblezine.com/?p=96754) mentions Macuga sending youth crew hardcore, not opened for these bands.",
+      "checked": "2026-10-26"
+    },
+    "have-a-nice-life>descendents": {
+      "verdict": "not-found",
+      "note": "Same as dead-kennedys: Steel for Brains page not found in two searches.",
+      "checked": "2026-10-26"
+    },
+    "jeff-buckley>bob-dylan": {
+      "verdict": "fixed",
+      "url": "https://nodepression.org/jeff-buckleys-influences-and-inspirations/",
+      "found": "Buckley was always self-conscious about his lyrical ability, and he highly revered the poetry of Bob Dylan.",
+      "citation": "No Depression wrote that Jeff Buckley \"highly revered the poetry of Bob Dylan\" and covered several Dylan songs, including \"Mama You've Been on My Mind\" and \"Just Like a Woman.\"",
+      "sourceTier": "reported",
+      "note": "Riffology page was never searched up; No Depression's Buckley influences piece is a better page. No year printed.",
+      "checked": "2026-10-26"
+    },
+    "jeff-buckley>the-smiths": {
+      "verdict": "fixed",
+      "url": "https://nodepression.org/jeff-buckleys-influences-and-inspirations/",
+      "found": "The Buckley compilation So Real features a live version of The Smiths' “I Know It’s Over” and Jeff’s mother suggested, “Jeff was a huge Smiths’ fan. He thought Morrissey was a living legend, so this song was a very meaningful choice.’”",
+      "citation": "No Depression quotes Jeff Buckley's mother on his live version of \"I Know It's Over\": \"Jeff was a huge Smiths' fan. He thought Morrissey was a living legend.\"",
+      "sourceTier": "reported",
+      "note": "Speaker is Buckley's mother. The old Sin-e / You and I wording is not on this page.",
+      "checked": "2026-10-26"
+    },
+    "jeff-buckley>joni-mitchell": {
+      "verdict": "fixed",
+      "url": "https://americansongwriter.com/remembering-jeff-buckley-and-his-plethora-of-female-musical-influences/?nb=1",
+      "found": "Jeff Buckley’s influences came from unlikely places. According to the singer-songwriter, many of his inspirations were women. Among them were Joni Mitchell, Nina Simone, Billie Holiday, Patti Smith, and Siouxsie Sioux, according to the 2008 book Jeff Buckley: Mystery White Boy Blues.",
+      "citation": "American Songwriter reported that, according to the 2008 book Jeff Buckley: Mystery White Boy Blues, many of Buckley's inspirations were women, among them Joni Mitchell, Nina Simone, Billie Holiday, Patti Smith and Siouxsie Sioux.",
+      "sourceTier": "reported",
+      "note": "Secondhand via the book; no quote from Buckley.",
+      "checked": "2026-10-26"
+    },
+    "la-dispute>fugazi": {
+      "verdict": "fixed",
+      "url": "https://www.brooklynvegan.com/stream-la-disputes-fugazi-cover-from-the-upcoming-43-song-tribute-comp/",
+      "found": "“Every band on this list, despite the range of ages and genres, grew up, I’d imagine, in a similar small world, blanketed so thoroughly by their big shadow it was nearly impossible to consider anything in it without thinking also of them: what Fugazi did, what would Fugazi do, how does the Fugazi code of conduct translate to now and to us,” La Dispute says.",
+      "citation": "La Dispute, on covering Fugazi's \"Strangelight\" for the tribute Silence Is a Dangerous Sound, to BrooklynVegan: \"It's an influence much larger and deeper than just music or art... Fugazi was a band, and not just a band, but one of the absolute best to ever be one.\"",
+      "sourceTier": "first-person",
+      "note": "The next paragraph carries 'It’s an influence much larger and deeper than just music or art'. A cover is not itself the claim; the band's statement is. Page prints 'comes out October 1', no year in text read.",
+      "checked": "2026-10-26"
+    },
+    "mitski>jeff-buckley": {
+      "verdict": "fixed",
+      "url": "https://faroutmagazine.co.uk/the-artists-who-inspire-mitski/",
+      "found": "According to her interview with The New Yorker , the revelation that music could diverge from mainstream pop came in the form of Jeff Buckley, who introduced her to a different form of songwriting.",
+      "citation": "Far Out reported, citing Mitski's New Yorker interview, that the revelation that music could diverge from mainstream pop came in the form of Jeff Buckley, who introduced her to a different form of songwriting.",
+      "sourceTier": "reported",
+      "note": "New Yorker piece not opened.",
+      "checked": "2026-10-26"
+    },
+    "mitski>st-vincent": {
+      "verdict": "fixed",
+      "url": "https://faroutmagazine.co.uk/the-musicians-who-inspired-mitskis-boldness/",
+      "found": "In the early days, Mitski looked up to innovators like St Vincent, caught in the glimmer of the prospect of following her path just as she did and just as David Bowie and countless others did before her.",
+      "citation": "Far Out reported that in the early days Mitski \"looked up to innovators like St Vincent.\"",
+      "sourceTier": "reported",
+      "note": "Different Far Out page from the one the old citation implied (the-artists-who-inspire-mitski has no St Vincent).",
+      "checked": "2026-10-26"
+    },
+    "patti-smith>velvet-underground": {
+      "verdict": "fixed",
+      "url": "https://www.pbs.org/video/patti-smith-on-lou-reed-and-rock-and-roll-nzzxrj/",
+      "found": "On July 31, 1997, Patti Smith shared her thoughts on the 70s rock and roll scene and how Lou Reed of the Velvet Underground inspired her as a young girl in South Jersey.",
+      "citation": "PBS American Masters describes Patti Smith's 1997 interview as her thoughts on \"how Lou Reed of the Velvet Underground inspired her as a young girl in South Jersey.\"",
+      "sourceTier": "reported",
+      "note": "The 'allows me to work' and 'clipper ship' wording is not on this page (the video transcript may carry it; not text). Far Out's piece (faroutmagazine.co.uk/patti-smith-perfect-american-song/) quotes her: 'my whole relationship with the Velvet Underground was entirely visual'.",
+      "checked": "2026-10-26"
+    },
+    "underscores>100-gecs": {
+      "verdict": "fixed",
+      "url": "https://en.wikipedia.org/wiki/Underscores_(musician)",
+      "found": "Grey's early influences include Skrillex and 100 Gecs. Her musical style has encompassed genres such as hyperpop, pop-punk, dubstep, dance-pop, indie pop, folk, rock, and emo.",
+      "citation": "Wikipedia's Underscores article states that \"Grey's early influences include Skrillex and 100 Gecs\"; it adds that she idolized 100 Gecs' Laura Les in her upbringing.",
+      "sourceTier": "reported",
+      "note": "Wikipedia only; no footnote on that sentence (Rolling Stone and Atlantic footnotes opened, no 100 gecs line found in the text read). The Music AU feature (archived) also says 'quippy lyrics in the vein of 100 gecs' (a comparison).",
+      "checked": "2026-10-26"
+    },
+    "underscores>sufjan-stevens": {
+      "verdict": "fixed",
+      "url": "https://floodmagazine.com/144229/underscores-wallsocket-influences-playlist/",
+      "found": "Both of the States albums ( Illinois and Michigan ) from Sufjan were super inspirational from a conceptual standpoint.",
+      "citation": "underscores in her Wallsocket influences playlist for Flood Magazine (2023), on Sufjan Stevens' Illinois and Michigan: \"super inspirational from a conceptual standpoint. Since my last album, fishmonger, I've loved centering my music and visuals on a geographical location.\"",
+      "sourceTier": "first-person",
+      "note": "Her own notes on the playlist. Year 2023 from Wikipedia's footnote (21 Sept 2023).",
+      "checked": "2026-10-26"
+    },
+    "underscores>imogen-heap": {
+      "verdict": "fixed",
+      "url": "https://floodmagazine.com/144229/underscores-wallsocket-influences-playlist/",
+      "found": "Imogen Heap is my favorite lyricist, wholeheartedly.",
+      "citation": "underscores in her Wallsocket influences playlist for Flood Magazine (2023): \"Imogen Heap is my favorite lyricist, wholeheartedly... A lot of the lines on Wallsocket... are heavily inspired by her writing style.\"",
+      "sourceTier": "first-person",
+      "note": "Her own notes. The NME deflection in the old citation is not on this page.",
+      "checked": "2026-10-26"
+    },
+    "underscores>porter-robinson": {
+      "verdict": "ok",
+      "url": "https://web.archive.org/web/2024/https://themusic.com.au/features/a-journey-into-wallsocket-underscores-fake-haven-for-real-dreamers/HyqdMzI1NDc/05-08-24",
+      "found": "Roused by Porter Robinson and the aforementioned Skrillex, she started off making crunchy glitch-hop and brostep, before her coming of age led her scope to broaden with 808-laced beats à la Drake , effects-soaked vocals and quippy lyrics in the vein of 100 gecs , and an indie-pop shimmer pulled from the book of Imogen Heap .",
+      "note": "Live page would not open; Internet Archive copy read. The Music (AU), Ellie Robinson, 5 Aug 2024.",
+      "checked": "2026-10-26"
+    },
+    "underscores>beck": {
+      "verdict": "fixed",
+      "url": "https://floodmagazine.com/144229/underscores-wallsocket-influences-playlist/",
+      "found": "Revisiting Beck—especially Odelay and Guero —was a major part of writing this album, particularly the more slapstick parts of it.",
+      "citation": "underscores in her Wallsocket influences playlist for Flood Magazine (2023): \"Revisiting Beck -- especially Odelay and Guero -- was a major part of writing this album, particularly the more slapstick parts of it.\"",
+      "sourceTier": "first-person",
+      "note": "Her own notes, much better than the Countrytown line (not opened).",
+      "checked": "2026-10-26"
+    },
+    "wolf-alice>siouxsie-and-the-banshees": {
+      "verdict": "decide",
+      "url": "https://www.theguardian.com/music/live/2018/sep/07/wolf-alice-webchat-mercury-visions-of-a-life?page=with:block-5b97abf9e4b04751d53cdafe",
+      "found": "The Stones or the Beatles? The Clash or Siouxsie and the Banshees? Oasis or Blur? Amy Winehouse or PJ Harvey?",
+      "note": "Guardian webchat: a reader's this-or-that question; Joff picks 'Siouxsie and the Banshees'. A preference pick in a game, no influence on the band's music stated. Propose remove (or hold for a better source). Wikipedia's 'liked' list for Wolf Alice rests on this page and an Instagram reel.",
+      "checked": "2026-10-26"
+    },
+    "wolf-alice>blur": {
+      "verdict": "decide",
+      "url": "https://www.theguardian.com/music/live/2018/sep/07/wolf-alice-webchat-mercury-visions-of-a-life?page=with:block-5b97abf9e4b04751d53cdafe",
+      "found": "The Stones or the Beatles? The Clash or Siouxsie and the Banshees? Oasis or Blur? Amy Winehouse or PJ Harvey?",
+      "note": "Same webchat: Joel answers 'Blur' to an Oasis-or-Blur question. A preference pick, not influence. Propose remove.",
+      "checked": "2026-10-26"
+    },
+    "alex-g>modest-mouse": {
+      "verdict": "decide",
+      "url": "https://consequence.net/2015/10/ruining-alex-g/",
+      "found": "Giannascoli admits that some of these analogs work, especially Modest Mouse and Smith.",
+      "note": "Consequence (2015): critics mention Smith, Modest Mouse, Pavement; he admits the analogies work 'especially Modest Mouse and Smith', but the only influence he states is Elliott Smith's singing style (\"I’ve been really influenced by Elliott Smith’s singing style\"). Affirming a comparison is not stating an influence. Propose lower to a note or remove; keep alex-g>elliott-smith if on the map.",
+      "checked": "2026-10-26"
+    },
+    "alex-g>neil-young": {
+      "verdict": "fixed",
+      "url": "https://readdork.com/news/alex-g-headlights-afterlife",
+      "found": "'Headlights' continues to develop the musical mythology that has become synonymous with Alex G 's work, drawing influence from artists such as Neil Young, Elliott Smith, and Lucinda Williams.",
+      "citation": "Dork (2025) reported that Alex G's album Headlights is \"drawing influence from artists such as Neil Young, Elliott Smith, and Lucinda Williams.\"",
+      "sourceTier": "reported",
+      "note": "Dork is Wikipedia's footnote for it; likely label-press wording. About one album (2025), not his work overall.",
+      "checked": "2026-10-26"
+    },
+    "alex-g>lucinda-williams": {
+      "verdict": "fixed",
+      "url": "https://readdork.com/news/alex-g-headlights-afterlife",
+      "found": "'Headlights' continues to develop the musical mythology that has become synonymous with Alex G 's work, drawing influence from artists such as Neil Young, Elliott Smith, and Lucinda Williams.",
+      "citation": "Dork (2025) reported that Alex G's album Headlights is \"drawing influence from artists such as Neil Young, Elliott Smith, and Lucinda Williams.\"",
+      "sourceTier": "reported",
+      "note": "Same page. About one album (2025).",
+      "checked": "2026-10-26"
+    },
+    "autechre>boards-of-canada": {
+      "verdict": "decide",
+      "url": "https://en.wikipedia.org/wiki/Boards_of_Canada",
+      "note": "Wikipedia (BoC) says a copy of Twoism reached Sean Booth, who suggested the duo contact Skam; the rest of the old citation (Gyroscope numbers-station sample, unreleased Cichli cover) is on no page opened (two searches). That is Booth championing BoC, not BoC shaping Autechre, so the link as written (Autechre influenced by BoC) isn't supported. Propose remove, or flip direction only if a source says Autechre shaped BoC.",
+      "checked": "2026-10-26"
+    },
+    "blur>david-bowie": {
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/20220930003158/https://gigwise.com/blogs/99397/blur-pick-their-favourite-albums",
+      "found": "In the same list, he names Bobby Womak and David Bowie alongside Nigerian funk musician William Onyeabor's 'World Psychedelic Classics 5: Who is William Onyeabor?' as significant if disparate influences.",
+      "citation": "Gigwise reported that Damon Albarn named Bobby Womack and David Bowie, alongside William Onyeabor, as \"significant if disparate influences\"; of Womack he said he is \"one of the biggest inspirations of my musical life.\"",
+      "sourceTier": "reported",
+      "note": "Wikipedia's footnote (Gigwise, 31 Mar 2015); Internet Archive copy read. Wikipedia lists Bowie first; this page does not rank them.",
+      "checked": "2026-10-26"
+    },
+    "blur>pavement": {
+      "verdict": "print",
+      "print": "John Harris, Britpop!: Cool Britannia and the Spectacular Demise of English Rock (Da Capo, 2004), pp. 259-60",
+      "note": "Wikipedia's Blur article: Coxon, in a rejection of the Britpop aesthetic, 'made a point of listening to noisy American alternative rock bands such as Pavement' (footnote: Harris, 2004, pp. 259-60). Book text not online in what I opened. Dates fine (Pavement 1989, Blur's change of course 1996).",
+      "checked": "2026-10-26"
+    },
+    "drive-by-truckers>big-star": {
+      "verdict": "ok",
+      "url": "https://americana-uk.com/cant-live-with-it-cant-live-without-it-drive-by-truckers",
+      "found": "Hood has described this album as “alt-rock” influenced by their love for The Replacements, Big Star, Blue Oyster Cult and The Faces.",
+      "note": "Americana UK's reviewer reports Hood's description (which album isn't named in the paragraph).",
+      "checked": "2026-10-26"
+    },
+    "bright-eyes>leonard-cohen": {
+      "verdict": "decide",
+      "url": "https://strangeworldrecords.com.au/products/simon-joyner-pocket-moon-lp",
+      "found": "“Pound for pound Simon Joyner is my favorite lyricist of all time. He has shades of all the greats (Van Zandt, Cohen, Dylan) but exists in a space all his own … He truly is an American songwriting treasure.” — Conor Oberst",
+      "note": "BrooklynVegan page not found in one search; Oberst's blurb on a retailer page. It is Oberst praising Simon Joyner, saying Joyner has shades of Cohen: nothing says Cohen shaped Oberst. Propose remove (Oberst's Cohen influence needs a different source; Last.fm-style bios list it but that is not a source).",
+      "checked": "2026-10-26"
+    }
+  },
+  "candidates": [
+    {
+      "source": "fleet-foxes",
+      "target": "joni-mitchell",
+      "kind": "influence",
+      "speaker": "Robin Pecknold (reported by Missoula Independent)",
+      "sentence": "Pecknold said that he grew up listening to the music of his parents, who repeatedly played just about every lasting ‘60s band you would expect to find in the record anthologies of baby boomers: The Beach Boys, The Beatles, Simon and Garfunkel, The Band, The Zombies, Joni Mitchell, Bob Dylan, Crosby, Stills and Nash.",
+      "url": "https://missoula.com/music/article_b00fb51c-780f-596e-a9e3-985efcaa3523.html"
+    }
+  ],
+  "offMap": [],
+  "finished": true
+}

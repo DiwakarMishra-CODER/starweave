@@ -1,0 +1,26 @@
+{
+ "agent": "retry7",
+ "searches": 0,
+ "toolStatus": "owner's chat was refused mid-run; leads it opened were verified here with read",
+ "entries": {
+  "yo-la-tengo>big-star": {
+   "url": "https://www.premierguitar.com/artists/guitarists/yo-la-tengos-ira-kaplan-if-it-aint-broke",
+   "found": "Soon after that show, I found out how much of Alex's solo repertoire was from the three Big Star records. Two of them had been released, but _Third_ hadn't been issued yet. At that point, I started tracking down Big Star's music, getting copies of _#1 Record_ and _Radio City_, and then I snapped up _Third_ when it came out.",
+   "citation": "Ira Kaplan to Premier Guitar, asked how much bands like Big Star changed the way he thought about guitar: \"At that point, I started tracking down Big Star's music, getting copies of #1 Record and Radio City, and then I snapped up Third when it came out.\"",
+   "sourceTier": "first-person",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "note": "Lead from the owner's retry7 chat (stopped mid-run); opened and confirmed here."
+  },
+  "king-gizzard-and-the-lizard-wizard>kraftwerk": {
+   "url": "https://loudwire.com/king-gizzard-lizard-wizard-stu-mackenzie-explains-recording-two-versions-silver-cord-liberating-creatively/",
+   "found": "You mentioned Kraftwerk and Devo, that type of thing definitely has influenced Gizz a lot over the years and I think found its way into the sound of this record.",
+   "citation": "Stu Mackenzie to Loudwire, on The Silver Cord: \"You mentioned Kraftwerk and Devo, that type of thing definitely has influenced Gizz a lot over the years and I think found its way into the sound of this record.\"",
+   "sourceTier": "first-person",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "note": "Lead from the owner's retry7 chat (stopped mid-run); opened and confirmed here."
+  }
+ },
+ "finished": true
+}

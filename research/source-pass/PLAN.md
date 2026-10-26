@@ -105,9 +105,33 @@ was missed.
 2. **First-person (562),** most-connected artists first.
 3. **Reported (224), then critic (122).** Wikipedia ones mostly need no search.
 4. **The 145 `unsourceable`:** one try each to find a real source; otherwise
-   they stay, honestly marked.
+   they stay, honestly marked. Measured 26 Oct: none carries any citation
+   text; they're mostly old "obvious" links never sourced, many among the
+   map's most famous (the Smiths > Bowie, MBV > Cocteau Twins, the Sundays >
+   the Smiths), so expect a better hit rate than not-found retries. Some
+   are likely wrong (`nico>velvet-underground` is personnel: decide).
+   Owner's order (26 Oct):
+   1. Free first: Quietus Baker's Dozen picks that back them, and
+      Wikipedia footnotes opened with `read` (no searches).
+   2. Then search the ones visitors see most: links between well-known
+      artists (rank by both ends' in-degree) and today's-record artists.
+   3. Leave the obscure tail honestly marked `unsourceable`; don't spend a
+      search on each.
+   Checkers do these, not Claude chat (see session 3 lessons).
 5. **The decide list,** shown to the owner once: links that should go, change
    direction, or be recorded as a denial.
+6. **Readable for a visitor (owner said yes, 26 Oct; no searches).** Measured:
+   citations run a median ~230 characters (10% over 330, max 510), and many
+   name a speaker a visitor can't place ("Max Bassin to Still Listening").
+   - Clean-up over the ledger, rewriting only from what's recorded (quotes stay
+     verbatim, cut with `...`): say who the speaker is when they aren't the
+     band ("Max Bassin, Geese's drummer"), one claim from one page (drop
+     "He also names..." tails and unlinked second sources, e.g.
+     `nirvana>sonic-youth`'s *Journals*), aim for ~200 characters. Folds
+     into the `reworded` clean-up for unsourced links. Scan the rewrites
+     before merging; re-run `check`.
+   - A plain label beside "Source ↗" from `sourceTier`: "In their words" /
+     "Reported" / "A critic's view". Show the owner a mock-up before building.
 
 ## How long
 
@@ -145,6 +169,26 @@ Files in `research/source-pass/bakers-dozen/`; tool
   off-map `influence` picks go to `off-map.json`. Scan citations before
   merging, as with checkers.
 
+## After the pass: publish the dataset (owner said yes, 26 Oct) -- for the resume
+
+Once the decide list is settled (not before: unchecked claims shouldn't go
+out under the owner's name), about an hour:
+- Export `data/export/`: artists.csv (id, name, realm, genres, years),
+  influences.csv (source, target, tier, citation, source URL, the quoted
+  sentence), denials.csv, and a README on method (the rules, what counts as
+  influence, the verification pipeline). No photos or cover art (Deezer's and
+  Apple's); quotes kept short as now. CC BY 4.0 for the owner's own work.
+- Publish on Kaggle with a short notebook (most-cited artists, influence
+  chains, how many old citations held up), then Zenodo for a DOI. Optional:
+  first-person links to Wikidata as "influenced by" with references.
+- The resume line is the method, under the Starweave project, with the final
+  numbers filled in: "Built a source-verified dataset of ~1,000
+  music-influence claims: multi-agent LLM pipeline that checks each claim
+  against the original page, with automated re-verification of every quote;
+  corrected N% of legacy citations and flagged N% as unsupported. Published
+  on Kaggle (CC BY 4.0)." Keep the measured numbers as the pass goes
+  (fixed vs ok vs decide counts from `ledger.ts status`).
+
 ## Owner's optional list -- remind the owner only at the very end of the pass, or when they ask
 
 Optional, owner's call (26 Oct): don't raise these session by session; bring
@@ -161,7 +205,116 @@ the whole list up once at the end (or when the owner asks for it).
 - Whether to build the no-search Quietus Baker's Dozen sweep for the
   additions pass, and whether to add Boris (named by Wayne Coyne).
 
-## Progress (session 2, 26 Oct 2026) -- read this first in the next chat
+## Progress (session 4, 26 Oct 2026) -- read this first in the next chat
+
+**Where it stands: all 1,053 links worked.** Verdicts: 634 fixed, 75 ok,
+23 print, 152 decide, 160 not-found (84 of them old unsourceable links that
+stay honestly marked), 9 blocked. Searches: ~157 here (c21-c23, u1), 29 on
+the owner's chat (retry5, retry6); retry7 (15 not-founds from c21/c22) was
+handed to the owner's chat and not yet pasted back when this was written.
+
+**Done this session:**
+- Critic and the last reported links (c21-c23), the unsourceable phase (u1:
+  56 best-known, 36 searches; u2: 78, free routes only). Before u1/u2 the
+  owner screened the list: 5 sent straight to decide unsearched (Nico>VU,
+  Harold Budd>Eno, Dirty Three>Bad Seeds, Talking Heads>Eno, Mono>Explosions
+  in the Sky), cautions in the prompts for label/scene/soundalike pairs.
+- **The Quietus Baker's Dozen sweep is finished.** 89 dozens fetched (a 2012
+  layout with "# 2." and the pick in bold on the next line is now parsed);
+  three judges read the 281 on-map picks. 15 existing links got the artist's
+  own words (6 had no source; OMD x3, Slowdive>Siouxsie, Deerhunter>
+  Stereolab, B&S>Cocteau Twins lifted to first-person; Eno>VU off the decide
+  list; New Order>Sparks off print). 61 new links went to `candidates.json`
+  (foundBy `quietus-judge-n`, each with its citation). Off-map tally: 598
+  names, the Beatles first; the owner wants **no mainstream additions**
+  (no Beatles, jazz or classical minimalists) -- indie only.
+- `ledger.ts merge [names…]` now merges only the named results files (a bare
+  `merge` pulled in running checkers' partial files unreviewed).
+
+**Next:**
+1. retry7's chat was refused mid-run; its two good leads were verified and
+   merged (Yo La Tengo>Big Star, King Gizzard>Kraftwerk). Its other 13 stay
+   not-found (Snail Mail>Duster's only lead is "I really like Duster right
+   now", Spin Dec 2018: current listening, not influence).
+2. `check` ran: 784 found + 18 via archive, 7 owner-pasted, 9 missing, 2
+   unreachable (check-report.json). Re-open the 11 (Candy Claws Tumblr,
+   two PressReader, Alvvays>Pavement on Wikipedia, philnel.com, the Clash
+   archive, premierrockforum, Las Vegas Sun x2).
+2b. **Owner's order (26 Oct): sweep first, then drop.** Fetch more no-search
+   influence series to find new links and rescue not-found/decide ones:
+   Pitchfork's 5-10-15-20 (sitemap.xml opens with curl but covers only ~5
+   years: 22 features; list older ones via the Internet Archive), Spin's
+   "Records That Changed My Life" (Cloudflare wall: archive copies), Fender
+   "Under the Influence", Stereogum interviews. Judge like the Quietus. Then
+   drop what's still unsourced (owner leans to keeping only sourced links;
+   dropping not-found alone orphans 5 artists, dropping decide too orphans 22).
+3. **The decide list (152), shown to the owner once** (Order step 5), then
+   step 6 (readability clean-up + tier label, mock-up first).
+4. Owner's flagged roster questions for the decide pass: Silversun Pickups
+   and Editors (thin, mainstream); Charli XCX, Imogen Heap, Porter Robinson
+   (hyperpop lineage, keep likely); Sheena Ringo stays (art rock), needs her
+   own words on influences (Japanese interviews) in the additions pass.
+5. CLAUDE.md's "search tool fabricated a quote" example (Matt Pryor, "My
+   guitar is attempting to channel Drive Like Jehu") is wrong: the 2011
+   Alternative Press track-by-track carries it (archive 20110128074729).
+   Correct it with the owner's OK.
+
+## Progress (session 3, 26 Oct 2026)
+
+**Where it stands:** first-person 494/494 and today's-record 68/68 done;
+reported 209/224; critic 15/122; unsourceable 0/145. Verdicts: 539 fixed,
+67 ok, 86 decide, 20 print, 66 not-found, 8 blocked. `ledger.ts status` is
+live. Searches: 115 here (c15-c20), 63 on the owner's Claude chat (retry3,
+retry4, chat6).
+
+**Next session, in order** (owner's plan: a fresh chat, three checkers in
+parallel, ~55 searches each):
+1. `status`. If `research/source-pass/bakers-dozen/fetch.log` doesn't end in
+   `done`: first `ps aux | grep bakers-dozen` (session 3's re-fetch may still
+   be running; two fetches would both write `picks.json`), and only if none
+   is running, re-run `bakers-dozen.ts fetch` (it was re-fetching 50 dozens whose
+   slides failed while the checkers shared the proxy; pages are cached).
+   Check `failed.json`; a dozen with failed slides can be dropped from
+   `picks.json` and fetched again.
+2. Quietus judging (no searches; can run beside the checkers):
+   `bakers-dozen.ts sort 3`, then three Sonnet judges (medium) on
+   `judge-1..3.json` per `bakers-dozen/JUDGE.md`. **Only picks of artists on
+   the map are judged** (owner, 26 Oct); off-map picks are only counted, in
+   `off-map-tally.json`, and the top ~30 names can be judged later on their
+   own (~100 picks). Then by hand: `new` influence picks to
+   `candidates.json`; `existing` ones become ledger entries when the link is
+   missing, not-found, decide, **or below first-person** (owner, 26 Oct:
+   lift reported/critic/unsourceable links to the artist's words for free).
+   Brix Smith Start's dozen (the Fall) uses an old layout; `fetch` now
+   counts its slides from `/2/` ("Page 1 of 13").
+3. Checkers on `critic` (107 left, incl. the 17 chat6 never started), the
+   last ~15 `reported`, then the famous `unsourceable` ones (step 4 of Order).
+4. Then `check` (re-opens every page this session added; not run yet).
+
+**Session 3 lessons:**
+- **`merge` takes unfinished results files too** (it merges whatever's
+  there). Review a checker's file before merging: move it out of
+  `results/` into the scratchpad, read the rewrites, then copy it back
+  and merge. A stopped checker's partial file: set `finished: true`, merge,
+  then trim its batch to the merged keys (or the rest stay "taken").
+- What the review caught: years a checker guessed (2024, 2009, 2016 not on
+  the page), a second page's sentence folded into a citation, a quote about
+  which bands to tour with read as influence (Pavement/Ibold), a quote cut
+  so the link's artist fell out (Brand New "Possibly the Stone Roses"),
+  bare favourites and "discovered later" kept as influence (Rites of Spring).
+- `print` entries need a `print` field (author, title, year, page) or the
+  merge refuses them.
+- **Claude chat is good for not-found retries** (retry3 13/32 with my
+  archive opens, retry4 11/29) **and bad for fresh critic links**: chat6 did
+  15 of 32 over four replies (huge page fetches), quoting only short
+  fragments. Use checkers for fresh links. Chat can't open web.archive.org
+  URLs; its packs now say to hand those back as `blocked` with the archive
+  URL, and `read` opens them here at no search cost (Brand New, The
+  National, Blonde Redhead's Pitchfork original all came back that way).
+- Unsourceable links carry no citation text at all; many are the map's
+  most famous lines (see Order step 4).
+
+## Progress (session 2, 26 Oct 2026)
 
 **Where it stands:** first-person 472 / 494 worked, all 68 today's-record
 links done; reported, critic, unsourceable not started. Verdicts: 343 fixed,

@@ -1,0 +1,663 @@
+{
+ "agent": "judge-3",
+ "finished": true,
+ "entries": [
+  {
+   "speaker": "anna-von-hausswolff",
+   "target": "nico",
+   "artist": "Nico",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/anna-von-hausswolff-favourite-albums-interview/8/",
+   "verdict": "influence",
+   "found": "Nico is probably one of the most influential songwriters for me, when it comes to vocal delivery.",
+   "citation": "Anna von Hausswolff, choosing Nico's Desertshore for The Quietus's Baker's Dozen: \"Nico is probably one of the most influential songwriters for me, when it comes to vocal delivery.\" She also calls Nico \"one of my most important role models\"."
+  },
+  {
+   "speaker": "omd",
+   "target": "david-bowie",
+   "artist": "David Bowie",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/andy-mccluskey-omd-orchestral-manoeuvres-in-the-dark-favourite-albums/3/",
+   "verdict": "influence",
+   "found": "I thought: “Actually, you’re right. It must’ve been a more subconscious influence!” So there you go, unbeknownst to me, Bowie influenced my singing style!",
+   "citation": "Andy McCluskey of OMD, choosing David Bowie's \"Heroes\" for The Quietus's Baker's Dozen, said of how Bowie sings: \"It must've been a more subconscious influence! ... unbeknownst to me, Bowie influenced my singing style!\""
+  },
+  {
+   "speaker": "omd",
+   "target": "kraftwerk",
+   "artist": "Kraftwerk",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/andy-mccluskey-omd-orchestral-manoeuvres-in-the-dark-favourite-albums/5/",
+   "verdict": "influence",
+   "found": "They were the three greatest albums of any triptych – to my mind – those three albums completely changed the whole fucking world. They certainly changed mine.",
+   "citation": "Andy McCluskey of OMD, choosing Kraftwerk's Radio-Activity for The Quietus's Baker's Dozen, said of Autobahn, Radio-Activity and Trans-Europe Express: \"those three albums completely changed the whole fucking world. They certainly changed mine.\""
+  },
+  {
+   "speaker": "omd",
+   "target": "the-blue-nile",
+   "artist": "The Blue Nile",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/andy-mccluskey-omd-orchestral-manoeuvres-in-the-dark-favourite-albums/7/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "omd",
+   "target": "joy-division",
+   "artist": "Joy Division",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/andy-mccluskey-omd-orchestral-manoeuvres-in-the-dark-favourite-albums/10/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "omd",
+   "target": "brian-eno",
+   "artist": "Brian Eno",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/andy-mccluskey-omd-orchestral-manoeuvres-in-the-dark-favourite-albums/12/",
+   "verdict": "influence",
+   "found": "I remember one of our great mantras was something Brian Eno had said, “If you’ve got a collection of rubbish instruments, then you’re the only person who has got those rubbish instruments, so that’s your sound. Celebrate it.”",
+   "citation": "Andy McCluskey of OMD, choosing Brian Eno's Taking Tiger Mountain (By Strategy) for The Quietus's Baker's Dozen, said that when the band started with no money and no synthesizers, \"one of our great mantras was something Brian Eno had said, 'If you've got a collection of rubbish instruments, then you're the only person who has got those rubbish instruments, so that's your sound. Celebrate it.'\""
+  },
+  {
+   "speaker": "omd",
+   "target": "kraftwerk",
+   "artist": "Kraftwerk",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/andy-mccluskey-omd-orchestral-manoeuvres-in-the-dark-favourite-albums/14/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "caribou",
+   "target": "silver-apples",
+   "artist": "Silver Apples",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/caribou-dan-snaith-favourite-albums-interview/4/",
+   "verdict": "influence",
+   "found": "People who know my albums from ten years ago will have heard me trying to rip off Silver Apples.",
+   "citation": "Dan Snaith of Caribou, choosing Silver Apples' debut for The Quietus's Baker's Dozen: \"People who know my albums from ten years ago will have heard me trying to rip off Silver Apples.\""
+  },
+  {
+   "speaker": "caribou",
+   "target": "neutral-milk-hotel",
+   "artist": "Neutral Milk Hotel",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/caribou-dan-snaith-favourite-albums-interview/6/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "wire",
+   "target": "brian-eno",
+   "artist": "Brian Eno",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/colin-newman-interview-favourite-albums-wire-immersion/3/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "wire",
+   "target": "joni-mitchell",
+   "artist": "Joni Mitchell",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/colin-newman-interview-favourite-albums-wire-immersion/7/",
+   "verdict": "favourite",
+   "note": "Formative-life talk, nothing about own music."
+  },
+  {
+   "speaker": "wire",
+   "target": "neil-young",
+   "artist": "Neil Young",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/colin-newman-interview-favourite-albums-wire-immersion/9/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "blood-orange",
+   "target": "the-smiths",
+   "artist": "The Smiths",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/dev-hynes-blood-orange-favourite-albums-essex-honey/3/",
+   "verdict": "influence",
+   "found": "Every bassline I’ve ever written, I’m trying to sound like Andy.",
+   "citation": "Dev Hynes of Blood Orange, choosing The Smiths' Meat Is Murder for The Quietus's Baker's Dozen, on bassist Andy Rourke: \"Every bassline I've ever written, I'm trying to sound like Andy.\""
+  },
+  {
+   "speaker": "blood-orange",
+   "target": "beach-house",
+   "artist": "Beach House",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/dev-hynes-blood-orange-favourite-albums-essex-honey/6/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "blood-orange",
+   "target": "new-order",
+   "artist": "New Order",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/dev-hynes-blood-orange-favourite-albums-essex-honey/8/",
+   "verdict": "influence",
+   "found": "New Order are a band I really love, and they’ve been quite influential on my work as Blood Orange.",
+   "citation": "Dev Hynes of Blood Orange, choosing New Order's Brotherhood for The Quietus's Baker's Dozen: \"New Order are a band I really love, and they've been quite influential on my work as Blood Orange.\""
+  },
+  {
+   "speaker": "blood-orange",
+   "target": "prefab-sprout",
+   "artist": "Prefab Sprout",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/dev-hynes-blood-orange-favourite-albums-essex-honey/9/",
+   "verdict": "influence",
+   "found": "That tension, that sense of wanting to break out while still rooted in the familiar, is something that has stayed with me and influenced the way I think about song construction and emotional texture in my own work.",
+   "citation": "Dev Hynes of Blood Orange, choosing Prefab Sprout's Steve McQueen for The Quietus's Baker's Dozen, said its sense of wanting to break out while still rooted in the familiar \"has stayed with me and influenced the way I think about song construction and emotional texture in my own work.\""
+  },
+  {
+   "speaker": "radiohead",
+   "target": "talk-talk",
+   "artist": "Talk Talk",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/ed-o-brien-radiohead-interview-favourite-music/4/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "japanese-breakfast",
+   "target": "elliott-smith",
+   "artist": "Elliott Smith",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/japanese-breakfast-bakers-dozen-favourite-albums/4/",
+   "verdict": "influence",
+   "found": "When I started playing guitar, it was important for me to learn how to do finger-picking style because of those Elliott Smith records.",
+   "citation": "Michelle Zauner of Japanese Breakfast, choosing Elliott Smith's XO for The Quietus's Baker's Dozen: \"When I started playing guitar, it was important for me to learn how to do finger-picking style because of those Elliott Smith records.\""
+  },
+  {
+   "speaker": "japanese-breakfast",
+   "target": "yeah-yeah-yeahs",
+   "artist": "Yeah Yeah Yeahs",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/japanese-breakfast-bakers-dozen-favourite-albums/6/",
+   "verdict": "influence",
+   "found": "It’s part of why I became a musician, getting to see Karen O.",
+   "citation": "Michelle Zauner of Japanese Breakfast, choosing Yeah Yeah Yeahs' Fever To Tell for The Quietus's Baker's Dozen: \"It's part of why I became a musician, getting to see Karen O.\" She adds that the album had a \"huge influence\" on her."
+  },
+  {
+   "speaker": "japanese-breakfast",
+   "target": "joanna-newsom",
+   "artist": "Joanna Newsom",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/japanese-breakfast-bakers-dozen-favourite-albums/8/",
+   "verdict": "influence",
+   "found": "Musicians like her and Kimya Dawson had these very singular voices that were great for me. I loved their songwriting and the character in it and sort of gave me the courage to be a singer without sounding like Aretha Franklin or something.",
+   "citation": "Michelle Zauner of Japanese Breakfast, choosing Joanna Newsom's Ys for The Quietus's Baker's Dozen, said Newsom's songwriting \"sort of gave me the courage to be a singer without sounding like Aretha Franklin or something.\""
+  },
+  {
+   "speaker": "japanese-breakfast",
+   "target": "sufjan-stevens",
+   "artist": "Sufjan Stevens",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/japanese-breakfast-bakers-dozen-favourite-albums/9/",
+   "verdict": "influence",
+   "found": "My other big influence on [For Melancholy Brunettes (& Sad Women)] was Sufjan Stevens’ Carrie & Lowell.",
+   "citation": "Michelle Zauner of Japanese Breakfast, choosing Sufjan Stevens' Carrie & Lowell for The Quietus's Baker's Dozen: \"My other big influence on [For Melancholy Brunettes (& Sad Women)] was Sufjan Stevens' Carrie & Lowell.\""
+  },
+  {
+   "speaker": "japanese-breakfast",
+   "target": "wilco",
+   "artist": "Wilco",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/japanese-breakfast-bakers-dozen-favourite-albums/11/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "japanese-breakfast",
+   "target": "mitski",
+   "artist": "Mitski",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/japanese-breakfast-bakers-dozen-favourite-albums/12/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "japanese-breakfast",
+   "target": "the-cranberries",
+   "artist": "The Cranberries",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/japanese-breakfast-bakers-dozen-favourite-albums/13/",
+   "verdict": "favourite",
+   "note": "'Huge influence on my life', teenage years; nothing about her music."
+  },
+  {
+   "speaker": "julia-holter",
+   "target": "joni-mitchell",
+   "artist": "Joni Mitchell",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/julia-holter-favourite-albums-interview/2/",
+   "verdict": "favourite",
+   "note": "Borderline: listened to Joni 'so much' at 15; no tie to her own music."
+  },
+  {
+   "speaker": "julia-holter",
+   "target": "joanna-newsom",
+   "artist": "Joanna Newsom",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/julia-holter-favourite-albums-interview/3/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "julia-holter",
+   "target": "ariel-pink",
+   "artist": "Ariel Pink",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/julia-holter-favourite-albums-interview/7/",
+   "verdict": "influence",
+   "found": "I had started recording and I found myself really interested in his passion for building characters in songs.",
+   "citation": "Julia Holter, choosing Ariel Pink's Scared Famous for The Quietus's Baker's Dozen: \"I had started recording and I found myself really interested in his passion for building characters in songs.\""
+  },
+  {
+   "speaker": "the-cure",
+   "target": "david-bowie",
+   "artist": "David Bowie",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/lol-tolhurst-the-cure-bakers-dozen-favourite-albums/3/",
+   "verdict": "influence",
+   "found": "So that informed a lot of what happened for Seventeen Seconds and Faith and Pornography because I was forever searching to find the Eventide harmonizer and get the right sound.",
+   "citation": "Lol Tolhurst of The Cure, choosing David Bowie's Low for The Quietus's Baker's Dozen: \"that informed a lot of what happened for Seventeen Seconds and Faith and Pornography because I was forever searching to find the Eventide harmonizer and get the right sound.\""
+  },
+  {
+   "speaker": "the-cure",
+   "target": "the-clash",
+   "artist": "The Clash",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/lol-tolhurst-the-cure-bakers-dozen-favourite-albums/4/",
+   "verdict": "influence",
+   "found": "I’ve actually got part of a chapter in my new book about how Joe Strummer started me on this path.",
+   "citation": "Lol Tolhurst of The Cure, choosing The Clash's debut for The Quietus's Baker's Dozen: \"I've actually got part of a chapter in my new book about how Joe Strummer started me on this path.\""
+  },
+  {
+   "speaker": "the-cure",
+   "target": "can",
+   "artist": "Can",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/lol-tolhurst-the-cure-bakers-dozen-favourite-albums/5/",
+   "verdict": "influence",
+   "found": "What I always thought of with the drums was once the rhythm’s there, there’s this whole space inside of it that you can listen to and focus on with the push and pull. That’s what I was always trying for.",
+   "citation": "Lol Tolhurst of The Cure, choosing Can's Tago Mago for The Quietus's Baker's Dozen, on Jaki Liebezeit's drumming: \"there's this whole space inside of it that you can listen to and focus on with the push and pull. That's what I was always trying for.\"",
+   "note": "Moderate: about drumming approach rather than the record itself; he also names Can alongside Cluster in his Low pick."
+  },
+  {
+   "speaker": "the-cure",
+   "target": "kraftwerk",
+   "artist": "Kraftwerk",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/lol-tolhurst-the-cure-bakers-dozen-favourite-albums/12/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "the-cure",
+   "target": "low",
+   "artist": "Low",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/lol-tolhurst-the-cure-bakers-dozen-favourite-albums/13/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "animal-collective",
+   "target": "aphex-twin",
+   "artist": "Aphex Twin",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/panda-bear-animal-collective-favourite-albums-interview/13/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "the-jesus-lizard",
+   "target": "the-birthday-party",
+   "artist": "The Birthday Party",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/music-horrible-david-yows-favourite-records/5/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "the-flaming-lips",
+   "target": "yo-la-tengo",
+   "artist": "Yo La Tengo",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/flaming-lips-wayne-coyne-interview-favourite-albums/5/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "the-flaming-lips",
+   "target": "lcd-soundsystem",
+   "artist": "LCD Soundsystem",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/flaming-lips-wayne-coyne-interview-favourite-albums/8/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "spiritualized",
+   "target": "can",
+   "artist": "Can",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/jason-pierce-spiritualized-bakers-dozen-favourite-albums/4/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "pixies",
+   "target": "television",
+   "artist": "Television",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/joey-santiago-pixies-favourite-albums/3/",
+   "verdict": "influence",
+   "found": "That probably seeped in to [his and Black Francis’ playing] on ‘Monkey Gone To Heaven’ through osmosis.",
+   "citation": "Joey Santiago of Pixies, choosing Television's Marquee Moon for The Quietus's Baker's Dozen, said its trading of rhythm and lead \"probably seeped in\" to his and Black Francis's playing on \"Monkey Gone To Heaven\" \"through osmosis\".",
+   "note": "Hedged ('probably', 'we didn't mean it'); Marquee Moon was heard after Pixies had started. Owner may prefer favourite."
+  },
+  {
+   "speaker": "pixies",
+   "target": "david-bowie",
+   "artist": "David Bowie",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/joey-santiago-pixies-favourite-albums/6/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "pixies",
+   "target": "velvet-underground",
+   "artist": "The Velvet Underground",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/joey-santiago-pixies-favourite-albums/9/",
+   "verdict": "influence",
+   "found": "And that became an influence on our song called ‘Ed Is Dead’ – another homage!",
+   "citation": "Joey Santiago of Pixies, choosing The Velvet Underground's Loaded for The Quietus's Baker's Dozen, said the rhythm guitar and soaring chorus of \"Rock & Roll\" \"became an influence on our song called 'Ed Is Dead' - another homage!\""
+  },
+  {
+   "speaker": "pixies",
+   "target": "neil-young",
+   "artist": "Neil Young",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/joey-santiago-pixies-favourite-albums/10/",
+   "verdict": "favourite",
+   "note": "Borderline: 'rescued me from my high school years', emotional, no tie to own music."
+  },
+  {
+   "speaker": "pixies",
+   "target": "neu",
+   "artist": "Neu!",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/joey-santiago-pixies-favourite-albums/12/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "the-human-league",
+   "target": "david-bowie",
+   "artist": "David Bowie",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/martyn-ware-human-league-heaven-17-bef-interview-favourite-albums/6/",
+   "verdict": "influence",
+   "found": "But to go, ‘no, not going to have any ‘proper’ songs, just a bit of chanting over some ambience’, it was such an inspiration for us.",
+   "citation": "Martyn Ware, a founder of The Human League,, choosing David Bowie's Low for The Quietus's Baker's Dozen: \"Bowie included this other stuff on Low in what was going to be a very, very successful commercial album. That gave permission to artists like us to experiment, the influence of that cannot be overestimated. That's been my M.O. since that day actually.\"",
+   "note": "found uses the 'such an inspiration for us' sentence; citation quotes the next paragraph (also in text). Page text is polluted with subscription furniture; speaker not named in text."
+  },
+  {
+   "speaker": "the-human-league",
+   "target": "massive-attack",
+   "artist": "Massive Attack",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/martyn-ware-human-league-heaven-17-bef-interview-favourite-albums/13/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "lush",
+   "target": "the-breeders",
+   "artist": "The Breeders",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/miki-berenyi-piroshka-lush-favourite-albums-bakers-dozen/7/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "lush",
+   "target": "the-fall",
+   "artist": "The Fall",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/miki-berenyi-piroshka-lush-favourite-albums-bakers-dozen/12/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "neu",
+   "target": "kraftwerk",
+   "artist": "Kraftwerk",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/michael-rother-interview-2019-neu-harmonia-favourite-albums/10/",
+   "verdict": "favourite",
+   "note": "Neu!'s speaker was a Kraftwerk member; this is about Kraftwerk's unreleased early albums, not influence."
+  },
+  {
+   "speaker": "neu",
+   "target": "brian-eno",
+   "artist": "Brian Eno",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/michael-rother-interview-2019-neu-harmonia-favourite-albums/11/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "silver-apples",
+   "target": "portishead",
+   "artist": "Portishead",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/simeon-coxe-silver-apples-favourite-albums/13/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "minutemen",
+   "target": "the-stooges",
+   "artist": "The Stooges",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/mike-watt-minutemen-the-missingmen-favourite-albums/2/",
+   "verdict": "influence",
+   "found": "When D’s mom makes us into a band and puts me on bass (I bought my first bass for $100), I had to learn bass from Fun House, Creedence and the brothers doing R&B, or like Trevor Bolder [of Bowie’s Spider From Mars and Uriah Heep], because you could really hear the bass on British rock & roll – most US rock & roll buried the bass in the mix.",
+   "citation": "Mike Watt of Minutemen, choosing The Stooges' Fun House for The Quietus's Baker's Dozen, said that when he was put on bass, \"I had to learn bass from Fun House, Creedence and the brothers doing R&B\", and that Fun House was \"a freak out moment for us\" and \"the lingua franca\" of their scene."
+  },
+  {
+   "speaker": "minutemen",
+   "target": "wire",
+   "artist": "Wire",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/mike-watt-minutemen-the-missingmen-favourite-albums/3/",
+   "verdict": "influence",
+   "found": "Now, we weren’t going to copy their words or their music, but what we did get from Pink Flag was the format. It was all about the format, you get me?",
+   "citation": "Mike Watt of Minutemen, choosing Wire's Pink Flag for The Quietus's Baker's Dozen: \"what we did get from Pink Flag was the format ... Man, it had such a profound effect on us: this idea of making little 'bits'.\""
+  },
+  {
+   "speaker": "tricky",
+   "target": "the-breeders",
+   "artist": "The Breeders",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/tricky-bakers-dozen-interview-favourite-songs-green-man/9/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "tricky",
+   "target": "blur",
+   "artist": "Blur",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/tricky-bakers-dozen-interview-favourite-songs-green-man/11/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "echo-and-the-bunnymen",
+   "target": "velvet-underground",
+   "artist": "The Velvet Underground",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/will-sergeant-echo-and-the-bunnymen-favourite-albums/2/",
+   "verdict": "favourite",
+   "note": "Borderline: 'blew my mind' at 15, 'This is where it started' - no explicit tie to making music."
+  },
+  {
+   "speaker": "echo-and-the-bunnymen",
+   "target": "television",
+   "artist": "Television",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/will-sergeant-echo-and-the-bunnymen-favourite-albums/6/",
+   "verdict": "influence",
+   "found": "I learnt all the wobbly guitar sounds you hear on the Bunnymen records from this. I’ve been living off that ever since, really.",
+   "citation": "Will Sergeant of Echo & the Bunnymen, choosing Television's Marquee Moon for The Quietus's Baker's Dozen: \"I learnt all the wobbly guitar sounds you hear on the Bunnymen records from this. I've been living off that ever since, really.\""
+  },
+  {
+   "speaker": "echo-and-the-bunnymen",
+   "target": "david-bowie",
+   "artist": "David Bowie",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/will-sergeant-echo-and-the-bunnymen-favourite-albums/10/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "echo-and-the-bunnymen",
+   "target": "brian-eno",
+   "artist": "Brian Eno",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/will-sergeant-echo-and-the-bunnymen-favourite-albums/12/",
+   "verdict": "influence",
+   "found": "And I thought, ‘right, I can kinda do that!’ And that’s when I started getting into recording, buying tape recorders and equipment, because I saw myself more as a creator than a guitarist.",
+   "citation": "Will Sergeant of Echo & the Bunnymen, choosing Brian Eno's Another Green World for The Quietus's Baker's Dozen, on watching Eno with Roxy Music: \"I thought, 'right, I can kinda do that!' And that's when I started getting into recording, buying tape recorders and equipment\"."
+  },
+  {
+   "speaker": "black-country-new-road",
+   "target": "the-fall",
+   "artist": "The Fall",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/god-tier-tyler-hyde-of-black-country-new-roads-favourite-albums/8/",
+   "verdict": "influence",
+   "found": "The Fall really heavily informed the first band that I was in, to the point where I sometimes felt like we were a bit of a pastiche.",
+   "citation": "Tyler Hyde of Black Country, New Road, choosing The Fall's Fall Heads Roll for The Quietus's Baker's Dozen: \"The Fall really heavily informed the first band that I was in, to the point where I sometimes felt like we were a bit of a pastiche.\"",
+   "note": "'The first band that I was in' may predate Black Country, New Road; check before using it for the band."
+  },
+  {
+   "speaker": "black-country-new-road",
+   "target": "can",
+   "artist": "Can",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/god-tier-tyler-hyde-of-black-country-new-roads-favourite-albums/9/",
+   "verdict": "favourite",
+   "note": "Fan in formative years but no explicit tie to own music (link already sourced)."
+  },
+  {
+   "speaker": "black-country-new-road",
+   "target": "velvet-underground",
+   "artist": "The Velvet Underground",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/god-tier-tyler-hyde-of-black-country-new-roads-favourite-albums/10/",
+   "verdict": "influence",
+   "found": "Everyone will say this, but they’ve informed so much of what I do musically, from songs that I would write when I was a kid to the way that I would make a record now.",
+   "citation": "Tyler Hyde of Black Country, New Road, choosing The Velvet Underground's self-titled album for The Quietus's Baker's Dozen: \"they've informed so much of what I do musically, from songs that I would write when I was a kid to the way that I would make a record now.\""
+  },
+  {
+   "speaker": "black-country-new-road",
+   "target": "chk-chk-chk",
+   "artist": "@",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/god-tier-tyler-hyde-of-black-country-new-roads-favourite-albums/14/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "the-smiths",
+   "target": "jeff-buckley",
+   "artist": "Jeff Buckley",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/morrissey-s-supreme-13-favourite-albums/3/",
+   "verdict": "favourite",
+   "note": "Not the Smiths' own words: a Quietus writer on Morrissey's picks."
+  },
+  {
+   "speaker": "the-smiths",
+   "target": "velvet-underground",
+   "artist": "The Velvet Underground",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/morrissey-s-supreme-13-favourite-albums/7/",
+   "verdict": "favourite",
+   "note": "Morrissey (solo) desert-island quote; admiration only."
+  },
+  {
+   "speaker": "the-smiths",
+   "target": "velvet-underground",
+   "artist": "The Velvet Underground",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/morrissey-s-supreme-13-favourite-albums/8/",
+   "verdict": "favourite",
+   "note": "Empty text."
+  },
+  {
+   "speaker": "the-smiths",
+   "target": "sparks",
+   "artist": "Sparks",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/morrissey-s-supreme-13-favourite-albums/9/",
+   "verdict": "favourite",
+   "note": "Morrissey liner-note: fan, not about his music."
+  },
+  {
+   "speaker": "the-smiths",
+   "target": "nico",
+   "artist": "Nico",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/morrissey-s-supreme-13-favourite-albums/11/",
+   "verdict": "favourite",
+   "note": "Morrissey liner-note: fan, not about his music."
+  },
+  {
+   "speaker": "the-smiths",
+   "target": "patti-smith",
+   "artist": "Patti Smith",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/morrissey-s-supreme-13-favourite-albums/12/",
+   "verdict": "favourite",
+   "note": "Writer's essay (Petra Davis), not Morrissey's words."
+  },
+  {
+   "speaker": "the-smiths",
+   "target": "ramones",
+   "artist": "Ramones",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/morrissey-s-supreme-13-favourite-albums/13/",
+   "verdict": "favourite",
+   "note": "Writer's essay (Ben Graham), not Morrissey's words."
+  },
+  {
+   "speaker": "the-smiths",
+   "target": "new-york-dolls",
+   "artist": "New York Dolls",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/morrissey-s-supreme-13-favourite-albums/14/",
+   "verdict": "favourite",
+   "note": "Writer's essay (John Robb), not Morrissey's words."
+  },
+  {
+   "speaker": "swans",
+   "target": "tricky",
+   "artist": "Tricky",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/jarboe-interview-favourite-music/14/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "low",
+   "target": "the-clash",
+   "artist": "The Clash",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/low-alan-sparhawk-bakers-dozen-favourite-albums/3/",
+   "verdict": "influence",
+   "found": "I remember learning the chords to that song on the guitar, and that was the big lightning bolt going on.",
+   "citation": "Alan Sparhawk of Low, choosing The Clash's Combat Rock for The Quietus's Baker's Dozen, on learning \"Should I Stay Or Should I Go?\": \"I remember learning the chords to that song on the guitar, and that was the big lightning bolt going on.\""
+  },
+  {
+   "speaker": "low",
+   "target": "the-cure",
+   "artist": "The Cure",
+   "kind": "existing",
+   "url": "https://thequietus.com/interviews/bakers-dozen/low-alan-sparhawk-bakers-dozen-favourite-albums/5/",
+   "verdict": "influence",
+   "found": "It was definitely an early subconscious template for whatever Low was when we started.",
+   "citation": "Alan Sparhawk of Low, choosing The Cure's Faith for The Quietus's Baker's Dozen: \"It was definitely an early subconscious template for whatever Low was when we started.\""
+  },
+  {
+   "speaker": "low",
+   "target": "neutral-milk-hotel",
+   "artist": "Neutral Milk Hotel",
+   "kind": "new",
+   "url": "https://thequietus.com/interviews/bakers-dozen/low-alan-sparhawk-bakers-dozen-favourite-albums/10/",
+   "verdict": "favourite"
+  }
+ ]
+}

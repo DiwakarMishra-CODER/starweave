@@ -1,0 +1,247 @@
+{
+ "agent": "c23",
+ "searches": 50,
+ "toolStatus": "WebSearch worked but often returned summaries without the target page (two searches sometimes run per call, count approximate); no budget message. Opened direct: rollingstone, grammy, crack, faroutmagazine, michigandaily, cuindependent, pitchfork, providencephoenix, cherwell. Treble live 403/unopenable, Wayback 2012/2023 copies open. Guessed URLs for Pitchfork Magnolia, Grammy Inside Elephant 6 and AllMusic Walkmen bio failed.",
+ "entries": {
+  "2814>steve-roach": {
+   "url": "https://en.wikipedia.org/wiki/Birth_of_a_New_Day",
+   "found": "The album's production was influenced on Russo's side by musicians such as Steve Roach, Vangelis, Burial and Sigur Rós, and by Boards of Canada on Laurila's side.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "reported",
+   "citation": "Wikipedia's article on Birth of a New Day states that its production was influenced on David Russo's side by musicians such as Steve Roach, Vangelis, Burial and Sigur Rós, and on Luke Laurila's side by Boards of Canada.",
+   "note": "The Rolling Stone piece does not say this: Wikipedia says only that Weingarten recommended the record for fans of Boards of Canada, Oneohtrix Point Never and Kavinsky. The production sentence has no footnote, so reported at best. Rolling Stone page itself not located in two searches."
+  },
+  "2814>burial": {
+   "url": "https://en.wikipedia.org/wiki/Birth_of_a_New_Day",
+   "found": "The album's production was influenced on Russo's side by musicians such as Steve Roach, Vangelis, Burial and Sigur Rós, and by Boards of Canada on Laurila's side.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "reported",
+   "citation": "Wikipedia's article on Birth of a New Day states that its production was influenced on David Russo's side by musicians such as Steve Roach, Vangelis, Burial and Sigur Rós, and on Luke Laurila's side by Boards of Canada.",
+   "note": "Same unfootnoted Wikipedia sentence. Also Wikipedia's Hong Kong Express text says Russo felt Burial already explored British cityscapes and he was more influenced by Hong Kong."
+  },
+  "2814>sigur-ros": {
+   "url": "https://en.wikipedia.org/wiki/Birth_of_a_New_Day",
+   "found": "The album's production was influenced on Russo's side by musicians such as Steve Roach, Vangelis, Burial and Sigur Rós, and by Boards of Canada on Laurila's side.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "reported",
+   "citation": "Wikipedia's article on Birth of a New Day states that its production was influenced on David Russo's side by musicians such as Steve Roach, Vangelis, Burial and Sigur Rós, and on Luke Laurila's side by Boards of Canada.",
+   "note": "Same unfootnoted Wikipedia sentence."
+  },
+  "2814>boards-of-canada": {
+   "url": "https://en.wikipedia.org/wiki/Birth_of_a_New_Day",
+   "found": "The album's production was influenced on Russo's side by musicians such as Steve Roach, Vangelis, Burial and Sigur Rós, and by Boards of Canada on Laurila's side.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "reported",
+   "citation": "Wikipedia's article on Birth of a New Day states that its production was influenced on David Russo's side by musicians such as Steve Roach, Vangelis, Burial and Sigur Rós, and on Luke Laurila's side by Boards of Canada.",
+   "note": "Same unfootnoted Wikipedia sentence. The Rolling Stone piece only recommends the record for fans of Boards of Canada."
+  },
+  "broken-social-scene>galaxie-500": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Searched AV Club On Fire + band names; no AV Club page found. Read rockandrollglobe Galaxie 500 On Fire at 30 and Wikipedia Galaxie 500: no Broken Social Scene mention. Also a 'cast a shadow over' sentence is at most a resemblance claim; propose remove if the AV Club page cannot be produced."
+  },
+  "codeine>galaxie-500": {
+   "url": "https://web.archive.org/web/2016/https://www.treblezine.com/10-best-slowcore-albums",
+   "found": "While Galaxie 500 proved that rock music need not be loud, fast or climactic to be interesting, Codeine maintained a similar philosophy with regard to tempo, but nonetheless played loud and harsh when the song warranted it.",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Guitar-Muse page not found (two searches). The best page found, Treble's 10 Essential Slowcore Albums (2012), only says Codeine kept a similar philosophy about tempo: a comparison, not influence. Propose remove unless Guitar-Muse sentence is produced; Qobuz bio (not read) also says Codeine took inspiration from Galaxie 500 and the third Velvet Underground album."
+  },
+  "mid-air-thief>animal-collective": {
+   "url": "https://www.michigandaily.com/section/arts/sayan-ghosh-mid-air-thief",
+   "found": "Influences from all over pop up in this album; from Animal Collective to Cocteau Twins to Real Estate and Grizzly Bear.",
+   "checked": "2026-10-26",
+   "verdict": "ok",
+   "note": "Review of Crumbling by Sayan Ghosh (Oct 2018). A critic hearing influences, not the artist."
+  },
+  "mid-air-thief>cocteau-twins": {
+   "url": "https://www.michigandaily.com/section/arts/sayan-ghosh-mid-air-thief",
+   "found": "Influences from all over pop up in this album; from Animal Collective to Cocteau Twins to Real Estate and Grizzly Bear.",
+   "checked": "2026-10-26",
+   "verdict": "ok",
+   "note": "Same review; critic hearing influences."
+  },
+  "mid-air-thief>grizzly-bear": {
+   "url": "https://www.michigandaily.com/section/arts/sayan-ghosh-mid-air-thief",
+   "found": "Influences from all over pop up in this album; from Animal Collective to Cocteau Twins to Real Estate and Grizzly Bear.",
+   "checked": "2026-10-26",
+   "verdict": "ok",
+   "note": "Same review; critic hearing influences."
+  },
+  "beck>sonic-youth": {
+   "url": "https://www.rollingstone.com/music/music-album-reviews/one-foot-in-the-grave-reissue-252736",
+   "found": "Beck was a subversive folkie, inspired equally by Sonic Youth and Mississippi John Hurt.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "critic",
+   "citation": "Rolling Stone's review of the One Foot in the Grave reissue: before he was a midnight vulture, Beck \"was a subversive folkie, inspired equally by Sonic Youth and Mississippi John Hurt.\"",
+   "note": "Review of the One Foot in the Grave reissue; author not shown. The old citation named Mark Kemp via uDiscover, unverified."
+  },
+  "beck>nick-drake": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Two searches for the biography sentence and a Beck interview naming Nick Drake: nothing readable. Wikipedia Nick Drake page has no Beck paragraph via read. Search summaries say Beck covered Pink Moon songs (2005) and Sea Change had Drake-like strings, unverified."
+  },
+  "descendents>dead-kennedys": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia Descendents (rendered and raw) has no Dead Kennedys sentence; Rolling Stone 9th & Walnut interview and The Note feature have none either; one search on Descendents interviews found no Dead Kennedys mention (search summary said Stevenson named Ramones, Television, the Last). Propose remove unless an AllMusic prose sentence is produced."
+  },
+  "hot-chip>four-tet": {
+   "url": "https://cherwell.org/?p=24569",
+   "found": "He recalls how he and Kieran Hebden (a.k.a. Four Tet) would “introduce each other to new records” and “go and see shows all around London.”",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Cherwell interview with Joe Goddard: school friends who swapped records and went to shows; Hebden passed on their demos to Moshi Moshi. Mutual friendship and a favour, not one shaping the other; no 'mentor' wording on this page (the mentor line is from a Qobuz bio, not opened). Propose remove, or keep only if owner counts a friend's record recommendations as influence (then tier reported)."
+  },
+  "olivia-tremor-control>the-flaming-lips": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "No source for OTC drawing on the Flaming Lips found. Stereogum (Dusk at Cubist Castle legacy piece) says the reverse comparison: OTC's experimentalism can be heard in bigger bands like Radiohead, the Flaming Lips. Search summary of an Orlando Weekly review compares them (unread). Citation itself admits scene overlap. Propose remove."
+  },
+  "pulp>david-bowie": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Apple Music editorial page excluded by rule. One search for Jarvis Cocker on Bowie: NME page (read) says Bowie 'saved' him after the 1996 Brit Awards, which is not influence on Pulp's music. No Pulp-bio or Cocker interview line on Bowie as formative opened. Still open if owner wants a further search."
+  },
+  "songs-ohia>neil-young": {
+   "url": "https://providencephoenix.com/music/otr/documents/04603257.asp",
+   "found": "There’s always been a Youngian influence at work in his world-weary, weather-beaten songs — especially when he cranks the amps to 11.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "critic",
+   "citation": "The Providence Phoenix's review of Magnolia Electric Co.'s first studio album as a band: \"There's always been a Youngian influence at work in his world-weary, weather-beaten songs.\"",
+   "note": "Pitchfork Magnolia Electric Co. review not found (guessed URL 404; search found no Pitchfork page). PopMatters review of Magnolia Electric Co. only says 'Neil Young guitar sound': a comparison. Review author and date not shown on read output."
+  },
+  "spiritualized>talk-talk": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Music Musings page not located. Far Out piece on J. Spaceman's five albums has no Talk Talk. Wikipedia Spiritualized only has a footnote title 'Do Make Say Think Members on Tortoise, Spiritualized, Talk Talk Classics', which is not Pierce. No Pierce statement on Talk Talk found in one search."
+  },
+  "the-dismemberment-plan>fugazi": {
+   "url": "https://web.archive.org/web/2023/https://www.treblezine.com/reviews/2833-The_Dismemberment_Plan_Emergency___I.html",
+   "found": "Weaned on the D.C. post-hardcore scene, The D-Plan built their sound around a framework of abrasive punk rock a la Jawbox, Fugazi or Shudder To Think, while spiking it with Brainiac-style spazz-outs and a melodic sheen a la Built to Spill or Modest Mouse.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "critic",
+   "citation": "Jeff Terich in Treble's review of Emergency & I (2008): \"Weaned on the D.C. post-hardcore scene, The D-Plan built their sound around a framework of abrasive punk rock a la Jawbox, Fugazi or Shudder To Think.\"",
+   "note": "Treble's live page 403s; the Wayback copy opens (2012 and 2023). Borderline: 'a la' is a comparison, but 'weaned on the scene' says they grew out of it. Owner may prefer remove. The page url is the archive copy; live url is https://www.treblezine.com/reviews/2833-The_Dismemberment_Plan_Emergency___I.html. Author per a search summary, unverified on the page."
+  },
+  "the-marias>the-strokes": {
+   "url": "https://www.cuindependent.com/the-marias-members/",
+   "found": "His musical influences, spanning R&B, jazz, and indie rock, as well as Tame Impala, Radiohead, D’Angelo, and The Strokes, are evident in the dense yet transparent textures he creates in the studio.",
+   "checked": "2026-10-26",
+   "verdict": "ok",
+   "note": "Student paper (The CU Independent) states Josh Conway's influences; no quote from him. Could be tier reported rather than critic."
+  },
+  "tame-impala>neutral-milk-hotel": {
+   "url": "https://en.wikipedia.org/wiki/Elephant_6_Recording_Company",
+   "found": "The collective has influenced many indie rock bands, including Arcade Fire, Franz Ferdinand, and Tame Impala.",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Grammy.com 'Inside Elephant 6' not found (guessed URL 404; one search). Wikipedia says the collective (Elephant 6) influenced Tame Impala, with no footnote on the sentence, and it is about the collective, not Neutral Milk Hotel. Propose remove or lower to a collective-level note; Kevin Parker naming NMH would be needed."
+  },
+  "tim-hecker>brian-eno": {
+   "url": "https://splendidezine.com/features/hecker/",
+   "found": "Tim Hecker is the next Brian Eno (apologies to the continued semi-success of the current one).",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Splendid review/interview: a comparison ('the next Brian Eno', albums up there with Eno's Thursday Afternoon). The Dowsers page and Spin 2019 piece not opened. XLR8R profile says Hecker's work resembles Kevin Shields as much as Eno. Propose remove unless Hecker's own words on Eno are found."
+  },
+  "george-clanton>ariel-pink": {
+   "url": "https://pitchfork.com/reviews/albums/george-clanton-slide/",
+   "found": "Like Ariel Pink before him, Clanton throws himself into his music without any self-conscious concern for cool—and throws himself about in breathtakingly physical live shows that bring to mind a young John Maus.",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Pitchfork review of Slide (Miles Bowe, Sept 2018) quote is verbatim, but it compares attitude, not influence. Propose remove."
+  },
+  "the-last-dinner-party>siouxsie-and-the-banshees": {
+   "url": "https://en.wikipedia.org/wiki/The_Last_Dinner_Party",
+   "found": "The band have been compared to David Bowie, Fleetwood Mac,[41]Kate Bush,[16]Siouxsie and the Banshees, Sparks,[42]Roxy Music,[43]ABBA,[44]Queen,[45]Florence and the Machine[46] and Warpaint.[40] The band's members have cited Queen, St. Vincent,[47]Chappell Roan, and Lana Del Rey[48] as influences.",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Irish Times review not found (one search). Wikipedia lists Siouxsie among bands The Last Dinner Party are compared to; the members' own cited influences do not include her. Propose remove (or find a band interview naming Siouxsie)."
+  },
+  "christie-front-drive>drive-like-jehu": {
+   "url": "https://en.wikipedia.org/wiki/Christie_Front_Drive",
+   "found": "Bands such as Superchunk, Jawbreaker, Jawbox, Buffalo Tom, and Drive Like Jehu were cited as influences.",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia sentence has no footnote (raw wikitext checked); same unsourced bio claim as Last.fm/Sputnik. Propose remove, or keep at reported only if owner accepts an unfootnoted Wikipedia line."
+  },
+  "the-white-stripes>bob-dylan": {
+   "url": "https://faroutmagazine.co.uk/musician-jack-white-calls-a-father/",
+   "found": "“Oh, all the time, yeah,” he said, recalling the number of times that he has thought about Bob Dylan’s music whenever he’s been writing his own. “He’s a humongous influence on me.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "first-person",
+   "citation": "Jack White, asked whether Bob Dylan influenced his music, as reported by Far Out: \"He's a humongous influence on me. He's a father of mine, really; I look at him like that. He's a mentor, a father and always will be.\"",
+   "note": "The Louder page was not opened; Jack White's own words are on Far Out. Quote copied from the read output with curly apostrophes; the interview's date and outlet are not on the page."
+  },
+  "turnstile>bad-brains": {
+   "url": "https://en.wikipedia.org/wiki/Turnstile_(band)",
+   "found": "Turnstile cite their influences as Rage Against the Machine, Inside Out, Bad Brains, Breakdown, Madball and Sade.[50]",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "reported",
+   "citation": "Wikipedia, citing Zoe Camp's 2018 profile \"Turnstile Are the Real Thing\" (Yahoo News), says Turnstile cite Rage Against the Machine, Inside Out, Bad Brains, Breakdown, Madball and Sade as their influences.",
+   "note": "Yahoo piece not found by search (one search), so I rely on the Wikipedia sentence and its footnote 50. In a 2015 Vice/Noisey interview Yates names H.R. of Bad Brains as the ultimate definition of punk: https://www.vice.com/en/article/turnstile-interview"
+  },
+  "turnstile>minor-threat": {
+   "url": "https://crackmagazine.net/article/profiles/turnstile-interview/2",
+   "found": "Debut album Nonstop Feeling captured a freezeframe of the mid-2010s East Coast hardcore scene; their buzzsaw guitars still indebted to the straight sound of its torchbearing forefathers Fugazi, Minor Threat and Rites of Spring.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "critic",
+   "citation": "Crack Magazine's profile of Turnstile says the debut album Nonstop Feeling had \"buzzsaw guitars still indebted to the straight sound of its torchbearing forefathers Fugazi, Minor Threat and Rites of Spring.\"",
+   "note": "Grammy.com piece only lists Minor Threat among hardcore acts in scene context, not Turnstile-specific."
+  },
+  "turnstile>black-flag": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Vice/Noisey interview, Grammy.com, Crack, Wikipedia read: none names Black Flag as Turnstile's influence. Hypebeast page not located."
+  },
+  "bikini-kill>x-ray-spex": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "PopMatters article not found in three searches. The quoted sentence, as cited, is about the three bands' influence on 'later Riot Grrrl successors' in general; it doesn't name Bikini Kill. Search summaries (unread) say Tobi Vail has talked about hearing the Slits at 12-13. Needs a Bikini Kill member's own words; propose remove if none."
+  },
+  "bikini-kill>siouxsie-and-the-banshees": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "PopMatters article not found; the quoted sentence names no Bikini Kill member. No Bikini Kill member naming Siouxsie found in one search. Propose remove unless a first-person source appears."
+  },
+  "jeff-rosenstock>fugazi": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Noisey/Vice (Dan Ozzi 2014) page not located. Search summary of a Metro Times 2018 piece and a Consequence bio use 'the Fugazi of the internet age' about DIY ethics: a comparison about ethos, not Rosenstock saying he drew on Fugazi. Propose remove unless Rosenstock names Fugazi himself."
+  },
+  "the-rapture>joy-division": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Stylus review page not found. Wikipedia's House of Jealous Lovers cites Stylus for the line, and it is about that one song ('nobody's been able to pull this off so well since Joy Division'): a comparison. Propose remove."
+  },
+  "the-walkmen>joy-division": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "AllMusic biography not opened: guessed URL resolved to another artist; Wikipedia Walkmen page (read) has no Pogues/Joy Division influences sentence; one search found only Encyclopedia.com (U2, Pixies, Dylan, Tom Waits). Propose remove or re-check with the correct AllMusic URL from the owner."
+  },
+  "the-walkmen>new-order": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Same as the-walkmen>joy-division: AllMusic bio not opened."
+  },
+  "the-walkmen>bjork": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Same as the-walkmen>joy-division: AllMusic bio not opened."
+  }
+ },
+ "candidates": [],
+ "offMap": [],
+ "finished": true
+}

@@ -1,0 +1,524 @@
+{
+  "name": "c23",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "critic:2814",
+      "phase": "critic",
+      "speaker": "2814",
+      "links": [
+        {
+          "key": "2814>steve-roach",
+          "from": "2814",
+          "to": "Steve Roach",
+          "fromYear": 2014,
+          "toYear": 1981,
+          "citation": "Rolling Stone's Christopher R. Weingarten wrote that Birth of a New Day's production was shaped on David Russo's side by musicians including Steve Roach, Vangelis, Burial and Sigur Ros.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "2814>burial",
+          "from": "2814",
+          "to": "Burial",
+          "fromYear": 2014,
+          "toYear": 2005,
+          "citation": "Rolling Stone's Christopher R. Weingarten wrote that Birth of a New Day's production was shaped on David Russo's side by musicians including Steve Roach, Vangelis, Burial and Sigur Ros.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "2814>sigur-ros",
+          "from": "2814",
+          "to": "Sigur Rós",
+          "fromYear": 2014,
+          "toYear": 1994,
+          "citation": "Rolling Stone's Christopher R. Weingarten wrote that Birth of a New Day's production was shaped on David Russo's side by musicians including Steve Roach, Vangelis, Burial and Sigur Ros.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "2814>boards-of-canada",
+          "from": "2814",
+          "to": "Boards of Canada",
+          "fromYear": 2014,
+          "toYear": 1986,
+          "citation": "The same Rolling Stone piece credits Luke Laurila's side of Birth of a New Day to Boards of Canada.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:broken-social-scene",
+      "phase": "critic",
+      "speaker": "Broken Social Scene",
+      "links": [
+        {
+          "key": "broken-social-scene>galaxie-500",
+          "from": "Broken Social Scene",
+          "to": "Galaxie 500",
+          "fromYear": 1999,
+          "toYear": 1987,
+          "citation": "AV Club: On Fire cast a wide shadow over Beach House, Deerhunter, Pains of Being Pure at Heart, Broken Social Scene.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:codeine",
+      "phase": "critic",
+      "speaker": "Codeine",
+      "links": [
+        {
+          "key": "codeine>galaxie-500",
+          "from": "Codeine",
+          "to": "Galaxie 500",
+          "fromYear": 1989,
+          "toYear": 1987,
+          "citation": "Guitar-Muse describes Codeine as \"another Galaxie-influenced slowcore band.\"",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:mid-air-thief",
+      "phase": "critic",
+      "speaker": "Mid-Air Thief",
+      "links": [
+        {
+          "key": "mid-air-thief>animal-collective",
+          "from": "Mid-Air Thief",
+          "to": "Animal Collective",
+          "fromYear": 2014,
+          "toYear": 2003,
+          "citation": "The Michigan Daily: \"Influences from all over pop up in this album; from Animal Collective to Cocteau Twins to Real Estate and Grizzly Bear.\"",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "mid-air-thief>cocteau-twins",
+          "from": "Mid-Air Thief",
+          "to": "Cocteau Twins",
+          "fromYear": 2014,
+          "toYear": 1979,
+          "citation": "The Michigan Daily: \"Influences from all over pop up in this album; from Animal Collective to Cocteau Twins to Real Estate and Grizzly Bear.\"",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "mid-air-thief>grizzly-bear",
+          "from": "Mid-Air Thief",
+          "to": "Grizzly Bear",
+          "fromYear": 2014,
+          "toYear": 2002,
+          "citation": "The Michigan Daily: \"Influences from all over pop up in this album; from Animal Collective to Cocteau Twins to Real Estate and Grizzly Bear.\"",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:tame-impala",
+      "phase": "critic",
+      "speaker": "Tame Impala",
+      "links": [
+        {
+          "key": "tame-impala>neutral-milk-hotel",
+          "from": "Tame Impala",
+          "to": "Neutral Milk Hotel",
+          "fromYear": 2007,
+          "toYear": 1989,
+          "citation": "Grammy.com's \"Inside Elephant 6\" feature, describing the collective rather than this band alone: it \"has inspired acts like Arcade Fire, the Shins, and Tame Impala.\"",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "critic:beck",
+      "phase": "critic",
+      "speaker": "Beck",
+      "links": [
+        {
+          "key": "beck>sonic-youth",
+          "from": "Beck",
+          "to": "Sonic Youth",
+          "fromYear": 1988,
+          "toYear": 1981,
+          "citation": "Mark Kemp/Rolling Stone via uDiscover: \"before he was a midnight vulture, Beck was a subversive folkie inspired equally by Sonic Youth and Mississippi John Hurt.\" AllMusic prose: Stereopathetic Soulmanure \"hewed closer to the aural assault of art-minded bands like Sonic Youth.\" A biography: during his teens Beck discovered Sonic Youth, Pussy Galore and X.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        },
+        {
+          "key": "beck>nick-drake",
+          "from": "Beck",
+          "to": "Nick Drake",
+          "fromYear": 1988,
+          "toYear": 1968,
+          "citation": "A biography: from the late 1990s he merged his junkyard style with psychedelic rock, electronic music, tropicalia, and the music of Nick Drake and Serge Gainsbourg.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:bikini-kill",
+      "phase": "critic",
+      "speaker": "Bikini Kill",
+      "links": [
+        {
+          "key": "bikini-kill>x-ray-spex",
+          "from": "Bikini Kill",
+          "to": "X-Ray Spex",
+          "fromYear": 1990,
+          "toYear": 1976,
+          "citation": "PopMatters: Siouxsie and the Banshees, the Slits and X-Ray Spex \"all boasted singers that introduced new tones and techniques\" and had \"an even greater influence on later Riot Grrrl successors.\"",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "bikini-kill>siouxsie-and-the-banshees",
+          "from": "Bikini Kill",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 1990,
+          "toYear": 1976,
+          "citation": "PopMatters: Siouxsie and the Banshees, the Slits and X-Ray Spex \"all boasted singers that introduced new tones and techniques\" and had \"an even greater influence on later Riot Grrrl successors.\"",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:descendents",
+      "phase": "critic",
+      "speaker": "Descendents",
+      "links": [
+        {
+          "key": "descendents>dead-kennedys",
+          "from": "Descendents",
+          "to": "Dead Kennedys",
+          "fromYear": 1977,
+          "toYear": 1978,
+          "citation": "Wikipedia's Dead Kennedys page, via an AllMusic-sourced footnote rather than any member statement.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:hot-chip",
+      "phase": "critic",
+      "speaker": "Hot Chip",
+      "links": [
+        {
+          "key": "hot-chip>four-tet",
+          "from": "Hot Chip",
+          "to": "Four Tet",
+          "fromYear": 2000,
+          "toYear": 1998,
+          "citation": "Multiple pieces on London's Elliott School describe Joe Goddard and Alexis Taylor meeting schoolmate Kieran Hebden (Four Tet) there in the early '90s and finding a mentor in him; the primary source article (Public Pressure magazine) could not be directly re-fetched.",
+          "sourceTier": "critic",
+          "confidence": 0.4
+        }
+      ]
+    },
+    {
+      "id": "critic:jeff-rosenstock",
+      "phase": "critic",
+      "speaker": "Jeff Rosenstock",
+      "links": [
+        {
+          "key": "jeff-rosenstock>fugazi",
+          "from": "Jeff Rosenstock",
+          "to": "Fugazi",
+          "fromYear": 1995,
+          "toYear": 1986,
+          "citation": "Dan Ozzi, Noisey/Vice (Jan 20, 2014): described as \"the Fugazi for the internet age of punk\"; independently corroborated with the same framing by David Anthony, The A.V. Club (Aug 20, 2015). A critic comparison rather than a first.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "critic:olivia-tremor-control",
+      "phase": "critic",
+      "speaker": "Olivia Tremor Control",
+      "links": [
+        {
+          "key": "olivia-tremor-control>the-flaming-lips",
+          "from": "Olivia Tremor Control",
+          "to": "The Flaming Lips",
+          "fromYear": 1992,
+          "toYear": 1983,
+          "citation": "Documented Elephant 6 scene overlap rather than a stated influence -- no first-person source has been found for this one.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:pulp",
+      "phase": "critic",
+      "speaker": "Pulp",
+      "links": [
+        {
+          "key": "pulp>david-bowie",
+          "from": "Pulp",
+          "to": "David Bowie",
+          "fromYear": 1978,
+          "toYear": 1969,
+          "citation": "Apple Music's editorial \"Pulp: Influences\": inspirations run well beyond the Kinks, from ABBA's Swedish disco to the glam-rock strut of Bowie and T. Rex.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "critic:songs-ohia",
+      "phase": "critic",
+      "speaker": "Songs: Ohia",
+      "links": [
+        {
+          "key": "songs-ohia>neil-young",
+          "from": "Songs: Ohia",
+          "to": "Neil Young",
+          "fromYear": 1996,
+          "toYear": 1966,
+          "citation": "Pitchfork describes Magnolia Electric Co. as a direct, intentional continuation of Neil Young's mid-1970s Tonight's the Night/Zuma era.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "critic:spiritualized",
+      "phase": "critic",
+      "speaker": "Spiritualized",
+      "links": [
+        {
+          "key": "spiritualized>talk-talk",
+          "from": "Spiritualized",
+          "to": "Talk Talk",
+          "fromYear": 1990,
+          "toYear": 1981,
+          "citation": "Music Musings names Talk Talk as an influence on Spiritualized, a connection that recurs across critical writing on Talk Talk's Hex-era work.",
+          "sourceTier": "critic",
+          "confidence": 0.55
+        }
+      ]
+    },
+    {
+      "id": "critic:the-dismemberment-plan",
+      "phase": "critic",
+      "speaker": "The Dismemberment Plan",
+      "links": [
+        {
+          "key": "the-dismemberment-plan>fugazi",
+          "from": "The Dismemberment Plan",
+          "to": "Fugazi",
+          "fromYear": 1993,
+          "toYear": 1986,
+          "citation": "Treble review of Emergency & I draws the Fugazi lineage; snippet-only source, page 403'd on direct re-fetch attempt, flagged weaker-tier.",
+          "sourceTier": "critic",
+          "confidence": 0.55
+        }
+      ]
+    },
+    {
+      "id": "critic:the-marias",
+      "phase": "critic",
+      "speaker": "The Marías",
+      "links": [
+        {
+          "key": "the-marias>the-strokes",
+          "from": "The Marías",
+          "to": "The Strokes",
+          "fromYear": 2016,
+          "toYear": 1998,
+          "citation": "The CU Independent: \"His [Josh Conway's] musical influences, spanning R&B, jazz, and indie rock, as well as Tame Impala, Radiohead, D'Angelo, and The Strokes, are evident in the dense yet transparent textures he creates in the studio.\"",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:the-walkmen",
+      "phase": "critic",
+      "speaker": "The Walkmen",
+      "links": [
+        {
+          "key": "the-walkmen>joy-division",
+          "from": "The Walkmen",
+          "to": "Joy Division",
+          "fromYear": 2000,
+          "toYear": 1976,
+          "citation": "AllMusic's band biography names their influences as a diverse set including the Pogues, Joy Division, Bruce Springsteen, Bjork, U2 and New Order. No first-person corroboration found.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "the-walkmen>new-order",
+          "from": "The Walkmen",
+          "to": "New Order",
+          "fromYear": 2000,
+          "toYear": 1980,
+          "citation": "AllMusic's band biography names their influences as a diverse set including the Pogues, Joy Division, Bruce Springsteen, Bjork, U2 and New Order. No first-person corroboration found.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "the-walkmen>bjork",
+          "from": "The Walkmen",
+          "to": "Björk",
+          "fromYear": 2000,
+          "toYear": 1977,
+          "citation": "AllMusic's band biography names their influences as a diverse set including the Pogues, Joy Division, Bruce Springsteen, Bjork, U2 and New Order.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:tim-hecker",
+      "phase": "critic",
+      "speaker": "Tim Hecker",
+      "links": [
+        {
+          "key": "tim-hecker>brian-eno",
+          "from": "Tim Hecker",
+          "to": "Brian Eno",
+          "fromYear": 2000,
+          "toYear": 1971,
+          "citation": "The Dowsers describes Hecker's early work as fusing \"the dry, pulsating rhythms of techno with the bare minimalism of Brian Eno\" (journalistic characterization, not a first-person quote); Hecker has also spoken (Spin, 2019) about deliberately positioning his music against Eno's own definition of ambient.",
+          "sourceTier": "critic",
+          "confidence": 0.4
+        }
+      ]
+    },
+    {
+      "id": "critic:turnstile",
+      "phase": "critic",
+      "speaker": "Turnstile",
+      "links": [
+        {
+          "key": "turnstile>bad-brains",
+          "from": "Turnstile",
+          "to": "Bad Brains",
+          "fromYear": 2010,
+          "toYear": 1977,
+          "citation": "Wikipedia's citation of a 2018 Zoe Camp profile states Turnstile cite Bad Brains among their own influences; Grammy.com and Hypebeast separately frame Turnstile's Baltimore/DC scene lineage as descending directly from Bad Brains.",
+          "sourceTier": "critic",
+          "confidence": 0.6
+        },
+        {
+          "key": "turnstile>minor-threat",
+          "from": "Turnstile",
+          "to": "Minor Threat",
+          "fromYear": 2010,
+          "toYear": 1980,
+          "citation": "Grammy.com and Hypebeast both frame Turnstile's hardcore lineage as running through Minor Threat, in pieces specifically about the band rather than general genre history.",
+          "sourceTier": "critic",
+          "confidence": 0.55
+        },
+        {
+          "key": "turnstile>black-flag",
+          "from": "Turnstile",
+          "to": "Black Flag",
+          "fromYear": 2010,
+          "toYear": 1976,
+          "citation": "Hypebeast's hardcore-lineage piece places Turnstile downstream of Black Flag, though this framing is general hardcore history rather than a Turnstile-specific citation.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:george-clanton",
+      "phase": "critic",
+      "speaker": "George Clanton",
+      "links": [
+        {
+          "key": "george-clanton>ariel-pink",
+          "from": "George Clanton",
+          "to": "Ariel Pink",
+          "fromYear": 2010,
+          "toYear": 1996,
+          "citation": "Pitchfork's review of George Clanton's Slide (Miles Bowe, 2018): \"Like Ariel Pink before him, Clanton throws himself into his music without any self-conscious concern for cool -- and throws himself about in breathtakingly physical live shows that bring to mind a young John Maus.\"",
+          "sourceTier": "critic",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "critic:the-last-dinner-party",
+      "phase": "critic",
+      "speaker": "The Last Dinner Party",
+      "links": [
+        {
+          "key": "the-last-dinner-party>siouxsie-and-the-banshees",
+          "from": "The Last Dinner Party",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 2021,
+          "toYear": 1976,
+          "citation": "The Irish Times' review of Prelude to Ecstasy described the band as having \"borrowed from 1980s acts such as Kate Bush and Siouxsie and the Banshees.\"",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:the-rapture",
+      "phase": "critic",
+      "speaker": "The Rapture",
+      "links": [
+        {
+          "key": "the-rapture>joy-division",
+          "from": "The Rapture",
+          "to": "Joy Division",
+          "fromYear": 1998,
+          "toYear": 1976,
+          "citation": "Wikipedia, citing Stylus Magazine's review: \"nobody's been able to pull this off so well since Joy Division.\"",
+          "sourceTier": "critic",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "critic:the-white-stripes",
+      "phase": "critic",
+      "speaker": "The White Stripes",
+      "links": [
+        {
+          "key": "the-white-stripes>bob-dylan",
+          "from": "The White Stripes",
+          "to": "Bob Dylan",
+          "fromYear": 1997,
+          "toYear": 1961,
+          "citation": "Louder: White's path to the blues ran through study of the Gun Club, Captain Beefheart, Bob Dylan and Led Zeppelin.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "critic:christie-front-drive",
+      "phase": "critic",
+      "speaker": "Christie Front Drive",
+      "links": [
+        {
+          "key": "christie-front-drive>drive-like-jehu",
+          "from": "Christie Front Drive",
+          "to": "Drive Like Jehu",
+          "fromYear": 1993,
+          "toYear": 1990,
+          "citation": "A Sputnik Music / Last.fm bio, mirrored across both sites, naming Drive Like Jehu as an influence -- aggregator text with no named origin.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    }
+  ]
+}

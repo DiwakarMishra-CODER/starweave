@@ -1,0 +1,338 @@
+{
+ "agent": "c21",
+ "searches": 39,
+ "toolStatus": "WebSearch fine (one allowed_domains call on latimes.com was rejected, uncounted); thequietus.com opened via read (?p= form); Internet Archive copies opened via read (CHARTattack, AllMusic); rnz.co.nz and Time Out direct fine apart from RNZ; no search-budget message.",
+ "entries": {
+  "yo-la-tengo>big-star": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "searched Kaplan/Big Star/Stamey/CBGB twice; only Third tribute concerts (Rolling Stone 2011, Kaplan sang Chilton songs) and a testimonial in the Big Star documentary 'Nothing Can Hurt Me'; no page for the discovery anecdote. Rolling Stone page read: no discovery claim."
+  },
+  "bonnie-prince-billy>husker-du": {
+   "checked": "2026-10-26",
+   "verdict": "ok",
+   "url": "https://www.timeout.com/newyork/music/review-will-oldham-on-bonnie-prince-billy",
+   "found": "His musical education came not from musty Americana LPs, but from catching Big Black and H&uuml;sker D&uuml; shows, and tagging along when his childhood buddies (future members of Slint) toured with Glenn Danzig."
+  },
+  "bonnie-prince-billy>big-black": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://www.timeout.com/newyork/music/review-will-oldham-on-bonnie-prince-billy",
+   "found": "His musical education came not from musty Americana LPs, but from catching Big Black and H&uuml;sker D&uuml; shows, and tagging along when his childhood buddies (future members of Slint) toured with Glenn Danzig.",
+   "citation": "Time Out New York's review of Alan Licht's book Will Oldham on Bonnie \"Prince\" Billy says Oldham's musical education came from catching Big Black and Hüsker Dü shows.",
+   "sourceTier": "reported",
+   "note": "dropped the Full Stop sentence from the citation (not read here; it is about his brothers and Albini, not Oldham's own fandom)"
+  },
+  "yeule>pixies": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://diymag.com/interview/yeule-album-softscars-september-2023",
+   "found": "“Then we were listening to a lot of Avril Lavigne , the stuff that we grew up on with our iPods. Like, ‘Oh we should totally do some Pixies shit, or Smashing Pumpkins!’ We were listening to all this music that’s very sentimental to us, because we’re ‘90s kids.”",
+   "citation": "yeule to DIY (Sept 2023), on the music they grew up on: \"Oh we should totally do some Pixies shit, or Smashing Pumpkins!\"",
+   "sourceTier": "first-person",
+   "note": "yeule's own words in DIY interview (Sarah Jamieson, 25 Sept 2023); raised from reported"
+  },
+  "yeule>radiohead": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://diymag.com/interview/yeule-album-softscars-september-2023",
+   "found": "We have so many references from the ‘90s and ‘00s, like Radiohead , My Chemical Romance … Honestly, Gerard Way changed my fucking life,” they enthuse giddily.",
+   "citation": "yeule to DIY (Sept 2023): \"We have so many references from the '90s and '00s, like Radiohead, My Chemical Romance...\"",
+   "sourceTier": "first-person",
+   "note": "raised from reported; yeule's own words"
+  },
+  "descendents>the-stooges": {
+   "checked": "2026-10-26",
+   "verdict": "ok",
+   "url": "https://www.kcbd.com/2026/03/04/legendary-punk-rock-band-descendents-performing-lubbock-march-11/",
+   "found": "Stevenson says a combination of the past generation of rock like The Stooges and the Descendents’ contemporaries in the early Los Angeles punk scene were huge influences.",
+   "note": "reporter's paraphrase of Bill Stevenson; Austin Chronicle (descendents-11759181) has his own words naming the Stooges among the Ramones, Kinks, Seeds -- possible raise to first-person if owner wants, but speaker there is partly reported (He would tell you...)"
+  },
+  "hot-chip>omd": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://www.hifinews.com/content/rock-june-2026",
+   "found": "It’s 25 years since Alexis Taylor emerged with electronic pop combo Hot Chip, whose influences included Abba, Prince, OMD and Roxy Music.",
+   "citation": "Hi-Fi News (Mike Barnes, Rock, June 2026): Hot Chip's \"influences included Abba, Prince, OMD and Roxy Music.\"",
+   "sourceTier": "reported",
+   "note": "the old Wikipedia/Guardian 'homage' wording was not found on the Guardian page; Hi-Fi News is the footnote behind Wikipedia's sentence"
+  },
+  "townes-van-zandt>bob-dylan": {
+   "checked": "2026-10-26",
+   "verdict": "ok",
+   "url": "https://www.encyclopedia.com/education/news-wires-white-papers-and-books/van-zandt-townes",
+   "found": "Van Zandt began playing guitar at age 15, turned on by the blues and early records by folk great Bob Dylan ."
+  },
+  "king-gizzard-and-the-lizard-wizard>kraftwerk": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "two searches (Loudwire/Full Metal Jackie + Mackenzie; Mackenzie Kraftwerk); no Loudwire page found; Wikipedia pages for band and Mackenzie have no Kraftwerk mention. Tape Op blog only speculates."
+  },
+  "sheena-ringo>bjork": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://daily.redbullmusicacademy.com/2014/11/sheena-ringo-feature/",
+   "found": "On her application she listed her favorite artists as Björk, UK girl group Eternal, Marvin Gaye, and a little known New York freestyle singer named Lisette Melendez.",
+   "note": "page confirms it, but it is a bare favourites list on a talent-agency form at 15, with no word on shaping her music. Propose remove (or keep at reported if owner counts it)."
+  },
+  "steve-roach>brian-eno": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://reverb.com/news/steve-roach-interview",
+   "found": "As a teenager, I listened to a lot of the progressive electronic music of that time, and eventually worked at a small independent record store of that time where import records would come in every week. We'd tear open the boxes and out comes the first releases of Klaus Schulze albums, Tangerine Dream, the early Eno stuff.",
+   "citation": "Steve Roach to Reverb: \"As a teenager, I listened to a lot of the progressive electronic music of that time... out comes the first releases of Klaus Schulze albums, Tangerine Dream, the early Eno stuff... It lit me up.\"",
+   "sourceTier": "first-person",
+   "note": "Roach's own words; raised from reported; no year on the page read"
+  },
+  "teenage-jesus-and-the-jerks>mars": {
+   "checked": "2026-10-26",
+   "verdict": "print",
+   "url": "https://en.wikipedia.org/wiki/Teenage_Jesus_and_the_Jerks",
+   "note": "PRINT: Thurston Moore and Byron Coley, No Wave: Post-Punk. Underground. New York. 1976-1980 (2008), p. 13 -- the footnote behind Wikipedia's 'was spurred to start a band after seeing one of Mars' earlier performances'. Time Out Lydia Lunch interview read: no Mars passage; RNZ interview would not open.",
+   "print": "Thurston Moore and Byron Coley, No Wave: Post-Punk. Underground. New York. 1976-1980 (Abrams Image), 2008, p. 13",
+   "found": "She started to combine her poetry with acoustic guitar and was spurred to start a band after seeing one of Mars' earlier performances.",
+   "citation": "Wikipedia, citing Thurston Moore and Byron Coley's book No Wave (2008, p. 13), says Lydia Lunch was spurred to start a band after seeing one of Mars' earlier performances."
+  },
+  "the-rapture>gang-of-four": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://en.wikipedia.org/wiki/House_of_Jealous_Lovers",
+   "found": "The sound follows British predecessors such as Gang of Four, Public Image Ltd, and Happy Mondays.",
+   "note": "only critic comparison (Wikipedia on the song; Trouser Press: 'Mirror reveals Gang of Four and Cure influences', a resemblance). Band interviews opened (Village Voice, RANGE, anna horan) have no Gang of Four. Propose remove or keep as critic if owner accepts 'reveals influences'."
+  },
+  "tricky>massive-attack": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Tricky was a member of the Wild Bunch/Massive Attack circle and rapped on Blue Lines and Protection: personnel/collaboration, not influence. No page read stating he was influenced by them. Propose remove."
+  },
+  "tricky>siouxsie-and-the-banshees": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://thequietus.com/?p=268323",
+   "found": "The Banshees’ proto trip hop ‘Tattoo’ has no guitar-line, with such stripping away of pop instrumentation and frequencies indicating the parallels between post punk and contemporaneous hip hop.",
+   "note": "Quietus (Toby Manning) read in full: it describes Tricky covering 'Tattoo' and 'parallels' between post-punk and hip hop; it does NOT say it 'helped Tricky shape his style'. A cover is not an influence claim. Propose remove or lower, unless a Tricky quote is found."
+  },
+  "cocteau-twins>joy-division": {
+   "checked": "2026-10-26",
+   "verdict": "print",
+   "url": "https://en.wikipedia.org/wiki/Cocteau_Twins",
+   "note": "PRINT: Bill Prince, 'New 2 U: Cocteau Twins', Sounds, 11 September 1982 (print-only magazine, as Wikipedia's footnote gives it; no page number). It is a contemporary reviewer's reading ('mixing strong Siouxsie and the Banshees and Joy Division influences'), not the band's. Owner may prefer to keep at critic or look for a Guthrie/Fraser quote.",
+   "print": "Bill Prince, \"New 2 U: Cocteau Twins\", Sounds, 11 September 1982"
+  },
+  "radiohead>silver-apples": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://www.vice.com/en/article/silver-apples-has-been-making-edm-since-you-were-in-diapers-okay/",
+   "found": "Fast forward 40 years or so, and Silver Apples are considered pioneers of electronic music, as well as inspirations to the likes of Cluster, Portishead, Radiohead, and other bands with head in their name.",
+   "citation": "Vice (December 2013), introducing an interview with Silver Apples' Simeon Coxe: Silver Apples are \"considered pioneers of electronic music, as well as inspirations to the likes of Cluster, Portishead, Radiohead, and other bands with head in their name.\"",
+   "sourceTier": "reported",
+   "note": "the Vice page is the footnote behind Wikipedia's Radiohead mention; it states the inspiration as fact, no Radiohead quote"
+  },
+  "elliott-smith>sebadoh": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "one search (Sebadoh lo-fi influenced Modest Mouse/Elliott Smith/Microphones/CSH) gave aggregator and LLM-encyclopedia pages only; Wikipedia raw for Sebadoh, Elliott Smith, Modest Mouse (and Isaac Brock) has no Sebadoh claim in the right direction. Directory page not identified."
+  },
+  "modest-mouse>sebadoh": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "one search (Sebadoh lo-fi influenced Modest Mouse/Elliott Smith/Microphones/CSH) gave aggregator and LLM-encyclopedia pages only; Wikipedia raw for Sebadoh, Elliott Smith, Modest Mouse (and Isaac Brock) has no Sebadoh claim in the right direction. Directory page not identified."
+  },
+  "mogwai>bark-psychosis": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://spectrumculture.com/2020/06/09/rediscover-bark-psychosis-hex/",
+   "found": "As nebulous as post-rock may be, one can listen to several of its most prominent bands in the ‘00s—Sigur Rós, Explosions in the Sky, Mogwai—and hear elements of the sound that Bark Psychosis pioneered: a twinkling guitar riff, a velvety drone or string section, a sudden building or release of noisy tension.",
+   "note": "Spectrum Culture says you can 'hear elements of the sound' -- a resemblance, not learned-from. The Quietus (Wyndham Wallace, thequietus.com/?p=15990) says Bark Psychosis 'don't sound obviously like Mogwai... though each of those bands could, at times, be said to reflect Bark Psychosis' philosophy'. Propose remove, or keep as critic if owner reads 'pioneered' as precedence. Mogwai's debut (1995) is after Hex (1994)."
+  },
+  "sigur-ros>bark-psychosis": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://spectrumculture.com/2020/06/09/rediscover-bark-psychosis-hex/",
+   "found": "Opener “The Loom” begins with a repeated piano and strings before unfurling, beautifully, into something indicative of what Sigur Rós would create on their own post-rock landmark, Agætis byrjun .",
+   "note": "resemblance/foreshadowing only, no word that Sigur Ros drew on Bark Psychosis. Propose remove."
+  },
+  "american-football>drive-like-jehu": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://lifeoftherecord.com/american-football-notes",
+   "found": "And a big record for us freshman year was Yank Crime by Drive Like Jehu and I think Mike and I decided like, “This band mastered this style of music.",
+   "citation": "Steve Holmes to Life of the Record: \"a big record for us freshman year was Yank Crime by Drive Like Jehu and I think Mike and I decided like, 'This band mastered this style of music. Like nobody could rock harder than these guys...'\"",
+   "sourceTier": "first-person",
+   "note": "Holmes's own words; raised from critic"
+  },
+  "american-football>low": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://lifeoftherecord.com/american-football-notes",
+   "found": "Let's try to make a band that's slow and quiet and pretty because we were also into a lot of like Slowcore stuff and Shoegaze stuff and you know Codeine and Low and Red House Painters and the Smiths and so there was that other side that we were into very pretty music and we decided to make a band that was more inspired by that.",
+   "citation": "Steve Holmes to Life of the Record: \"we were also into a lot of like Slowcore stuff and Shoegaze stuff and you know Codeine and Low and Red House Painters and the Smiths... we decided to make a band that was more inspired by that.\"",
+   "sourceTier": "first-person",
+   "note": "Holmes's own words; raised from critic"
+  },
+  "american-football>tortoise": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://www.vice.com/da/article/never-meant-the-complete-oral-history-of-american-football/",
+   "found": "Tortoise and post-rock bands like Slint were an influence.",
+   "citation": "Steve Holmes in Vice's oral history of American Football: \"Tortoise and post-rock bands like Slint were an influence.\"",
+   "sourceTier": "first-person",
+   "note": "Holmes's own words; also Life of the Record: 'We discovered Tortoise and Sea and Cake our freshman year as well. And that was a huge influence'. Raised from critic."
+  },
+  "snail-mail>duster": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "searched Lindsey Jordan + Duster (Spin, Red Bull, Stereogum, Fender pieces name other bands, not Duster); AllMusic's Duster biography URL (guessed id) did not carry it; Wikipedia Duster page has no Snail Mail line (only Alex G show). Owner could open AllMusic's Duster biography in a browser to see the sentence."
+  },
+  "the-jesus-and-mary-chain>kraftwerk": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "two searches for the LA Times 'harmoniously converged' sentence; no page found (a 1992 LAT Hilburn review on a Usenet archive does not mention Kraftwerk); Wikipedia's JAMC page has no Kraftwerk. Even if found, 'converged' is a sound comparison. Propose remove unless the owner can supply the LAT page."
+  },
+  "unwound>sonic-youth": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://www.scaruffi.com/interv/unwound.html",
+   "found": "Well I like guitar music alot. Should I list my influences? Greg Ginn(black flag), Sonic Youth, Greg Sage(wipers), Jimi Hendrix, David Lester(mecca normal), Helios Creed(chrome), Tom Verlaine(televison), Toni Iommi(black sabbath) and more.",
+   "citation": "Unwound to Piero Scaruffi (1999), asked about their guitar influences: \"Should I list my influences? Greg Ginn(black flag), Sonic Youth, Greg Sage(wipers), Jimi Hendrix, David Lester(mecca normal), Helios Creed(chrome), Tom Verlaine(televison), Toni Iommi(black sabbath) and more.\"",
+   "sourceTier": "first-person",
+   "note": "the page prints 'An interview with Unwound' and does not name the speaker; Wikipedia attributes the answer to guitarist Justin Trosper. Raised from critic."
+  },
+  "unwound>television": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://www.scaruffi.com/interv/unwound.html",
+   "found": "Well I like guitar music alot. Should I list my influences? Greg Ginn(black flag), Sonic Youth, Greg Sage(wipers), Jimi Hendrix, David Lester(mecca normal), Helios Creed(chrome), Tom Verlaine(televison), Toni Iommi(black sabbath) and more.",
+   "citation": "Unwound to Piero Scaruffi (1999), asked about their guitar influences: \"Should I list my influences? ... Tom Verlaine(televison)...\" (Tom Verlaine of Television).",
+   "sourceTier": "first-person",
+   "note": "names Tom Verlaine, i.e. Television's guitarist, as an influence on his playing; speaker unnamed on page (Wikipedia: Trosper). Owner may prefer to keep at critic since it names the person not the band."
+  },
+  "unwound>can": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia lists Can among Unwound's influences with no footnote of its own; Scaruffi interview, Stereogum Sara Lund Turntable, Treble, Clrvynt and Midwest Action Trosper interviews all read: no Can. A Wikipedia mirror ties Can to the side project Replikants only."
+  },
+  "swans>this-heat": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia's This Heat page lists Swans among bands influenced, but its footnotes (AllMusic bio via Internet Archive 2020, The Quietus 2011 Deceit anniversary) both read: no Swans. One search for a Gira statement found none (Gira in Scene Point Blank 2014 says early influences from other groups, now 'ourself'; names CAN, early Kraftwerk, Popul Vuh elsewhere). Propose remove unless a source appears."
+  },
+  "stereolab>velvet-underground": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://faroutmagazine.co.uk/playlist-music-shaped-stereolab/",
+   "found": "When Stereolab debuted with Peng! in 1992, songs like ‘Peng! 33’ and the mesmeric ‘Super Falling Star’ made it pretty clear that Gane and Sadier are fond of the early avant-rock work of The Velvet Underground.",
+   "citation": "Far Out Magazine, in a piece on the music that shaped Stereolab: \"it made it pretty clear that Gane and Sadier are fond of the early avant-rock work of The Velvet Underground.\"",
+   "sourceTier": "reported",
+   "note": "the old Boston Globe 1997 / Rolling Stone 1997 print reviews were not opened (print, no page found); no Gane/Sadier quote about the Velvets found in Vice, Tape Op, Dallas Observer interviews read. Far Out is a writer's claim, so reported; if the owner wants first-person a Gane interview is still needed."
+  },
+  "brand-new>husker-du": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://web.archive.org/web/20091125082834/http://www.chartattack.com/features/76987/brand-new-explain-how-their-songs-become-noisy",
+   "found": "JL: Some of the bass sounds we just took directly from Jesus Lizard and Husker Du records.",
+   "citation": "Jesse Lacey to CHARTattack (Nov 2009): \"Some of the bass sounds we just took directly from Jesus Lizard and Husker Du records. You hear the strings rattling so much. We just kind of fell in love with that sound.\"",
+   "sourceTier": "first-person",
+   "note": "Wikipedia's 'Tierney's bass playing emulated' paraphrases this; the page names Jesse Lacey and Vinnie Accardi as the speakers and the 'JL' answer is Lacey. Page opened as an Internet Archive copy (CHARTattack is gone). Raised from critic."
+  },
+  "galaxie-500>big-star": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://pitchfork.com/features/lists-and-guides/the-30-best-dream-pop-albums/",
+   "found": "More often, it was the likes of 13th Floor Elevators, Big Star, Love, or Jonathan Richman on the turntable.",
+   "citation": "Dean Wareham in Pitchfork's \"The 30 Best Dream Pop Albums\" (2018), on 1987 when Galaxie 500 began: \"I was listening to a only a few current records that year... More often, it was the likes of 13th Floor Elevators, Big Star, Love, or Jonathan Richman on the turntable.\"",
+   "sourceTier": "first-person",
+   "note": "the 'I' is Dean Wareham: the page's intro to the list is headed 'By Dean Wareham' (Pitchfork is the footnote behind Wikipedia's Slowcore sentence). Raised from critic."
+  },
+  "fleet-foxes>neutral-milk-hotel": {
+   "checked": "2026-10-26",
+   "verdict": "ok",
+   "url": "https://www.ballstatedaily.com/article/2018/02/its-a-potato-20-years-later-how-in-the-aeroplane-over-the-sea-has-become-a-bizarre-culture-of-its-own",
+   "found": "It eventually caught the attention of those who would start bands like Arcade Fire, The Decemberists and Fleet Foxes, all of whom are indebted in some way or another to the sound of this album."
+  },
+  "bright-eyes>neutral-milk-hotel": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://pitchfork.com/features/article/6784-neutral-milk-hotels-in-the-aeroplane-over-the-sea/",
+   "found": "Aeroplane presented a new template for singer/songwriter music, one that allowed many disparate influences—a change that has impacted singer/songwriters from the then-nascent “emo” musicians (including Bright Eyes) to Ben Chasny, whose Six Organs project was just getting underway.",
+   "citation": "Mike McGonigal, Pitchfork (11 Feb 2008): \"Aeroplane presented a new template for singer/songwriter music... a change that has impacted singer/songwriters from the then-nascent 'emo' musicians (including Bright Eyes) to Ben Chasny.\"",
+   "sourceTier": "critic",
+   "note": "the old 'three independent retrospectives' wording is replaced by one page read; Stereogum's 20th-anniversary piece lists Decemberists, Okkervil River, Beirut, Arcade Fire but not Bright Eyes"
+  },
+  "sufjan-stevens>neutral-milk-hotel": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://cornellsun.com/2014/01/10/neutral-milk-hotel-is-almost-here-preview",
+   "found": "Its influence is undeniable: You can see strains of Neutral Milk Hotel in the inventive arrangements of Arcade Fire’s Funeral, the homemade intimacy of Bon Iver’s For Emma, Forever Ago and in Sufjan Stevens’s peculiar lyrical obsessions.",
+   "note": "Cornell Sun preview (2014): 'you can see strains of' -- a resemblance. The directory page behind the old citation was not identified; no Sufjan statement found (search). Propose remove, or keep as critic if the owner reads 'its influence is undeniable' as enough."
+  },
+  "bon-iver>neutral-milk-hotel": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://cornellsun.com/2014/01/10/neutral-milk-hotel-is-almost-here-preview",
+   "found": "Its influence is undeniable: You can see strains of Neutral Milk Hotel in the inventive arrangements of Arcade Fire’s Funeral, the homemade intimacy of Bon Iver’s For Emma, Forever Ago and in Sufjan Stevens’s peculiar lyrical obsessions.",
+   "note": "same Cornell Sun sentence, a resemblance to For Emma; no Justin Vernon statement found (search). Propose remove, or keep as critic."
+  },
+  "phoebe-bridgers>neutral-milk-hotel": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "one search for a Bridgers statement on Neutral Milk Hotel (Rolling Stone, Far Out, Line of Best Fit, Talkhouse results) found none; Wikipedia pages for Bridgers and NMH do not name her. The 'music-directory retrospective' was not identified. Propose remove."
+  },
+  "animal-collective>olivia-tremor-control": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://www.spinmagazine.com/2012/07/bill-doss-dead-age-40-olivia-tremor-control-member-and-elephant-6-co-founder/",
+   "found": "Both Olivia Tremor Control and Elephant 6’s update on ’60s-informed psychedelic pop became a touchstone of American indie rock during the 1990s and you can hear his influence in bands like Animal Collective, the Shins and Arcade Fire.",
+   "citation": "Spin's obituary for Olivia Tremor Control's Bill Doss (July 2012): Olivia Tremor Control \"became a touchstone of American indie rock during the 1990s and you can hear his influence in bands like Animal Collective, the Shins and Arcade Fire.\"",
+   "sourceTier": "critic",
+   "note": "the Stereogum 'probably no Animal Collective without the Olivias' sentence was not found (one exact-phrase search, none); Wikipedia for both bands has no such claim. Spin's line is the writer's reading ('hear his influence'), no Animal Collective quote."
+  },
+  "minutemen>dead-kennedys": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://en.wikipedia.org/wiki/Dead_Kennedys",
+   "found": "Dead Kennedys have influenced multiple acts such as System of a Down, Green Day, Faith No More, Rage Against the Machine, Sepultura, Descendents, Bad Religion, Slayer, X, Minutemen, The Hives, Saves the Day and Screeching Weasel among others.",
+   "note": "Wikipedia's only support is AllMusic's 'Similar Artists' panel (bare names, not a source); Wikipedia's Minutemen page does not mention Dead Kennedys; one search for a Watt/Boon statement found nothing. Propose remove."
+  },
+  "broadcast>stereolab": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://www.factmag.com/2015/02/19/essential-broadcast/",
+   "found": "At the time of their inception, Broadcast were often lazily compared to Stereolab, Portishead and the post-rock movement of the time.",
+   "note": "Fact (Mikey IQ Jones, 19 Feb 2015) calls the Stereolab link a lazy comparison and says Saint Etienne, Disco Inferno and Pram are the better peers; the Stereolab link otherwise is the Duophonic label/management (not influence). Propose remove."
+  },
+  "la-dispute>black-flag": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "http://badgerherald.com/artsetc/2011/10/03/in-staying-steady-la/",
+   "found": "Its A-side consisted of nothing but spoken word pieces, while its B-side covered the usual hard-and-fast punk that the band was known for.",
+   "note": "The Badger Herald review (Jacob Fricke, 3 Oct 2011) is about Black Flag's third album, Family Man (1984), not My War as the old citation says; it says La Dispute 'combined the two styles' but never uses the word influence; Wikipedia paraphrases it as an influence. Propose remove, or keep at critic with a corrected citation naming Family Man if the owner accepts it."
+  },
+  "sophie>aphex-twin": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Morning Star review (not opened; no URL found) is 'borrowing equally from the jarring beats of Warp acts like Aphex Twin and Autechre' = a critic's description. No SOPHIE statement or other page naming Aphex Twin found (MusicRadar interview with her brother Ben Long: no Aphex). Wikipedia: The Guardian likened her style to 'Aphex Twin had swallowed a 12-year-old girl's Spotify account' (comparison). Propose remove."
+  },
+  "sophie>autechre": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://www.musicradar.com/artists/she-thought-anything-could-be-pop-she-wanted-pop-to-be-pushed-to-its-extremes-sophies-brother-and-studio-engineer-talks-completing-her-final-album-and-the-legacy-she-left-behind",
+   "found": "“Sophie’s interest in Autechre came a little bit later. She was less into their &lsquo;90s stuff. It was very much Draft 7.30 or Untilted onwards, mid-’00s to now, that was really the Autechre discography that she loved.",
+   "citation": "Her brother and engineer Ben Long to MusicRadar: \"Sophie's interest in Autechre came a little bit later... It was very much Draft 7.30 or Untilted onwards, mid-'00s to now, that was really the Autechre discography that she loved.\"",
+   "sourceTier": "reported",
+   "note": "SOPHIE's brother, not SOPHIE; replaces the Morning Star comparison. Also Wikipedia/Pitchfork: she wanted 'NO remixes' of her music 'unless it's Autechre'. Same page names Prodigy, Pet Shop Boys, Orbital, Kraftwerk, Moby as her 90s listening (possible Kraftwerk candidate if not already on the map)."
+  },
+  "the-national>leonard-cohen": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://philnel.com/?p=2813",
+   "found": "In September 2011, Berninger told The Phoenix ’s Michael Christopher , “when I was in high school I became obsessed with Leonard Cohen and Tom Waits.”",
+   "citation": "Matt Berninger to The Phoenix (Sept 2011): \"when I was in high school I became obsessed with Leonard Cohen and Tom Waits.\"",
+   "sourceTier": "first-person",
+   "note": "quoted second-hand on a fan blog (philnel.com, 'Where Is My Mind?: The National's Influences'); the Phoenix original was not found (one search). Also The Skinny (2007): Berninger on Waits, Cave, Young, Dylan, Cohen as honest writers. The NPR/Far Out comparisons in the old citation were not read. Owner may accept the blog's attribution or ask for the Phoenix page."
+  }
+ },
+ "candidates": [],
+ "offMap": [],
+ "finished": true
+}

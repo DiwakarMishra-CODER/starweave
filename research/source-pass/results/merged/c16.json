@@ -1,0 +1,284 @@
+{
+  "agent": "c16",
+  "searches": 16,
+  "toolStatus": "WebSearch fine; read via r.jina.ai/direct fine so far",
+  "entries": {
+    "sonic-youth>rhys-chatham": {
+      "url": "https://joyzine.org/2021/11/17/interview-lee-ranaldo-on-new-release-in-virus-times-sonic-youth-sound-experiments-and-visual-art/",
+      "found": "So, from the very beginning of our career together, our times together, we were equally influenced by pop music and pop songs on one side and all this avant-garde music that was being created in New York back then. Glenn Branca and Rhys Chatham .",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Lee Ranaldo to Joyzine (2021): \"from the very beginning of our career together, our times together, we were equally influenced by pop music and pop songs on one side and all this avant-garde music that was being created in New York back then. Glenn Branca and Rhys Chatham.\"",
+      "checked": "2026-10-26"
+    },
+    "sonic-youth>teenage-jesus-and-the-jerks": {
+      "url": "https://daily.redbullmusicacademy.com/2015/01/thurston-moore-musical-education/",
+      "found": "It wasn’t until I started seeing these bands who were my age playing that I knew the world was mine, bands like Teenage Jesus and The Jerks and The Contortions and Mars and DNA.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Thurston Moore to Red Bull Music Academy Radio (2015): \"It wasn't until I started seeing these bands who were my age playing that I knew the world was mine, bands like Teenage Jesus and The Jerks and The Contortions and Mars and DNA.\"",
+      "checked": "2026-10-26"
+    },
+    "sonic-youth>james-chance-and-the-contortions": {
+      "url": "https://daily.redbullmusicacademy.com/2015/01/thurston-moore-musical-education/",
+      "found": "It wasn’t until I started seeing these bands who were my age playing that I knew the world was mine, bands like Teenage Jesus and The Jerks and The Contortions and Mars and DNA.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Thurston Moore to Red Bull Music Academy Radio (2015): \"It wasn't until I started seeing these bands who were my age playing that I knew the world was mine, bands like Teenage Jesus and The Jerks and The Contortions and Mars and DNA.\"",
+      "checked": "2026-10-26"
+    },
+    "sonic-youth>mars": {
+      "url": "https://daily.redbullmusicacademy.com/2015/01/thurston-moore-musical-education/",
+      "found": "It wasn’t until I started seeing these bands who were my age playing that I knew the world was mine, bands like Teenage Jesus and The Jerks and The Contortions and Mars and DNA.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Thurston Moore to Red Bull Music Academy Radio (2015): \"It wasn't until I started seeing these bands who were my age playing that I knew the world was mine, bands like Teenage Jesus and The Jerks and The Contortions and Mars and DNA.\"",
+      "checked": "2026-10-26"
+    },
+    "sonic-youth>dna": {
+      "url": "https://daily.redbullmusicacademy.com/2015/01/thurston-moore-musical-education/",
+      "found": "It wasn’t until I started seeing these bands who were my age playing that I knew the world was mine, bands like Teenage Jesus and The Jerks and The Contortions and Mars and DNA.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Thurston Moore to Red Bull Music Academy Radio (2015): \"It wasn't until I started seeing these bands who were my age playing that I knew the world was mine, bands like Teenage Jesus and The Jerks and The Contortions and Mars and DNA.\"",
+      "checked": "2026-10-26"
+    },
+    "sonic-youth>new-york-dolls": {
+      "url": "https://daily.redbullmusicacademy.com/2015/01/thurston-moore-musical-education/",
+      "found": "New York Dolls and The Dictators were the must-see bands, as well as young, upcoming no wave groups like Teenage Jesus And The Jerks , James Chance and The Contortions, Mars and DNA.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Red Bull Music Academy Daily (2015), introducing Thurston Moore's interview: as a teenager in Connecticut he made trips to New York in the mid-70s, where \"New York Dolls and The Dictators were the must-see bands.\" Moore himself says he found out about the Dolls and the Dictators through late-night college radio.",
+      "checked": "2026-10-26"
+    },
+    "my-bloody-valentine>joy-division": {
+      "verdict": "print",
+      "print": "Mike McGonigal, Loveless (33 1/3 series, Continuum, 2007), p. 21",
+      "note": "Wikipedia's My Bloody Valentine article cites it for 'originally influenced by post-punk acts such as the Birthday Party, the Cramps and Joy Division'; no online text found, not searched further.",
+      "checked": "2026-10-26"
+    },
+    "siouxsie-and-the-banshees>can": {
+      "url": "https://www.theguardian.com/music/2005/sep/24/popandrock.siouxsieandthebanshees",
+      "found": "we, perversely, saw ourselves as taking on the baton of glamorous art rock - Bowie and Roxy Music - while incorporating a love for Can, Kraftwerk and Neu.\"",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Steven Severin to Michael Bracewell, \"Her dark materials,\" The Guardian (24 Sept 2005): \"we, perversely, saw ourselves as taking on the baton of glamorous art rock - Bowie and Roxy Music - while incorporating a love for Can, Kraftwerk and Neu.\"",
+      "checked": "2026-10-26"
+    },
+    "siouxsie-and-the-banshees>neu": {
+      "url": "https://www.theguardian.com/music/2005/sep/24/popandrock.siouxsieandthebanshees",
+      "found": "we, perversely, saw ourselves as taking on the baton of glamorous art rock - Bowie and Roxy Music - while incorporating a love for Can, Kraftwerk and Neu.\"",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Steven Severin to Michael Bracewell, \"Her dark materials,\" The Guardian (24 Sept 2005): \"we, perversely, saw ourselves as taking on the baton of glamorous art rock - Bowie and Roxy Music - while incorporating a love for Can, Kraftwerk and Neu.\"",
+      "checked": "2026-10-26"
+    },
+    "siouxsie-and-the-banshees>velvet-underground": {
+      "url": "https://www.theguardian.com/music/2005/sep/24/popandrock.siouxsieandthebanshees",
+      "found": "Like their musical heroes the Velvet Underground and Roxy Music, Siouxsie And The Banshees had created a back catalogue and a mythology that was as much a burden as an achievement.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Michael Bracewell, \"Her dark materials,\" The Guardian (24 Sept 2005), calls the Velvet Underground and Roxy Music the band's \"musical heroes.\"",
+      "checked": "2026-10-26"
+    },
+    "david-bowie>kraftwerk": {
+      "url": "https://www.npr.org/2020/05/07/852081716/how-florian-schneider-and-kraftwerk-created-pops-future",
+      "found": "Bowie would credit Autobahn with redirecting his cultural focus away from America and R&B towards Europe and electronic music, ultimately causing him to move to Berlin, where he would make the most adventurous music of his life and produce two career-changing albums for Iggy Pop, The Idiot and Lust for Life .",
+      "verdict": "ok",
+      "checked": "2026-10-26"
+    },
+    "david-bowie>neu": {
+      "verdict": "print",
+      "print": "Thomas Jerome Seabrook, Bowie in Berlin: A New Career in a New Town (2008), pp. 82-88",
+      "note": "Wikipedia's Low article: 'Seabrook considers Neu! the biggest influence on Bowie's new musical direction' (footnote Seabrook 2008 pp.82-88); a critic's argument, so tier critic. The BBC History Extra piece it also cites does not mention Neu!. Wikipedia's Neu! page lists Bowie with no usable footnote.",
+      "checked": "2026-10-26"
+    },
+    "joy-division>david-bowie": {
+      "url": "https://www.theguardian.com/music/2007/aug/31/popandrock.joydivision",
+      "found": "The drama begins with the 17-year-old Curtis in his parents' Macclesfield flat, dreaming of David Bowie, Iggy Pop and Lou Reed, applying eyeliner and secretly smoking fags.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Paul Lester, The Guardian (31 Aug 2007), on the film Control: the story begins with the 17-year-old Ian Curtis \"dreaming of David Bowie, Iggy Pop and Lou Reed.\"",
+      "note": "Original citation's Savage 'Bowie-besotted' phrase not found (1 search, no hit). Guardian piece is a film review, so it describes the film's portrayal; kept at reported. Coordinator: dropped two sentences not on this page (Wikipedia's citing of it; the Warsaw name). The review describes the film's portrayal of Curtis; owner may want a stronger source.",
+      "checked": "2026-10-26"
+    },
+    "joy-division>neu": {
+      "url": "https://thequietus.com/interviews/bakers-dozen/joy-division-new-order-stephen-morris-interview-favourite-records/4/",
+      "found": "As a drummer, Klaus Dinger was important to me: [he taught me] how to make one riff last a lifetime! It’s a great riff though, don’t get me wrong. _Neu!_ was absolutely brilliant; it’s another record where the first time you buy it and put it on, you think ‘I’ve never heard anything like this before’.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Stephen Morris to The Quietus, Baker's Dozen (2010), on Neu!'s first album: \"As a drummer, Klaus Dinger was important to me: [he taught me] how to make one riff last a lifetime!... Neu! was absolutely brilliant; it's another record where the first time you buy it and put it on, you think 'I've never heard anything like this before'.\"",
+      "checked": "2026-10-26"
+    },
+    "joy-division>sex-pistols": {
+      "url": "https://www.manchestereveningnews.co.uk/whats-on/music-nightlife-news/sex-pistols-free-trade-manchester-11423565",
+      "found": "Bernard Sumner and his wife Sue arrived on their motorbike to meet pals Peter Hook and Terry Mason (Joy Division's future roadie) at the show. All of them felt the same way after it; they hadn't met Ian Curtis or drummer Stephen Morris at that point, but they knew the kind of band they wanted to form.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Manchester Evening News (3 June 2016): Bernard Sumner and Peter Hook were at the Sex Pistols' June 1976 Lesser Free Trade Hall show; \"All of them felt the same way after it; they hadn't met Ian Curtis or drummer Stephen Morris at that point, but they knew the kind of band they wanted to form.\"",
+      "note": "The 'Christ, I could do this' Iain Gray line was not on the page; dropped. Sumner's own 'destroyed the myth of being a pop star' quote is from Jon Savage, Mojo, July 1994 (print), could be added as first-person.",
+      "checked": "2026-10-26"
+    },
+    "fugazi>minor-threat": {
+      "verdict": "decide",
+      "url": "https://www.loudersound.com/features/ian-mackaye-on-minor-threat-fugazi-and-the-power-of-punk-rock",
+      "found": "all the shows we did kinda helped us get past the &lsquo;ex-Minor Threat’ thing and helped us become our own band: by the end of that tour it didn’t matter if people were writing &lsquo;ex-Minor Threat’ on the flyers against our wishes, we knew who the fuck we were.”",
+      "note": "The page (Louder, Paul Brannigan, 2014) is MacKaye on Minor Threat and Fugazi; his words are about Fugazi getting past the 'ex-Minor Threat' label. It is personnel continuity (MacKaye was in both), not influence, and the old citation itself says so. Propose remove.",
+      "checked": "2026-10-26"
+    },
+    "fugazi>the-jesus-lizard": {
+      "url": "https://web.archive.org/web/2016/http://www.touchandgorecords.com/mediaroom/jl/liners/TG443%20PURE%20LINER%20NOTES.doc",
+      "found": "The Jesus Lizard is my idea of a perfect band. A classic drum-bass-guitar trio playing a music aggressive enough to drive their front man to physical feats that alter reality and leave witnesses wondering weeks later what exactly happened.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Joe Lally of Fugazi, in the liner notes to Touch and Go's Jesus Lizard reissue Pure: \"The Jesus Lizard is my idea of a perfect band. A classic drum-bass-guitar trio playing a music aggressive enough to drive their front man to physical feats that alter reality and leave witnesses wondering weeks later what exactly happened.\"",
+      "note": "Original touchandgorecords.com .doc no longer opens directly; Internet Archive copy (2016) reads. Wikipedia's Jesus Lizard article cites this doc for Lally. Fandom of a bandmate, not the whole band.",
+      "checked": "2026-10-26"
+    },
+    "radiohead>talking-heads": {
+      "url": "https://faroutmagazine.co.uk/ultimate-radiohead-inspiration-playlist/",
+      "found": "“It was like a bomb going off in my head; I’d literally never heard anything like it,” said later of his love for Talking Heads’ 1980 masterpiece, Remain in Light . “Talking Heads did something with a studio that had never been done before. And even at a young age, I could see that.”",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Thom Yorke, quoted by Far Out Magazine, on Remain in Light: \"It was like a bomb going off in my head; I'd literally never heard anything like it... Talking Heads did something with a studio that had never been done before. And even at a young age, I could see that.\"",
+      "note": "Far Out gives no original outlet or date for the Yorke quote. Name-from-song fact is on Wikipedia's Radiohead page (Radio Head, True Stories 1986).",
+      "checked": "2026-10-26"
+    },
+    "radiohead>can": {
+      "verdict": "print",
+      "print": "David Cavanagh, \"I can see the monsters,\" Q, October 2000, pp. 96-104 (also Simon Reynolds, \"Walking on thin ice,\" The Wire, July 2001)",
+      "note": "Wikipedia's Can article cites these two for 'Radiohead cited Can as an influence on Kid A and Amnesiac'. Q is print; The Wire piece is behind Rock's Backpages login (archive copy shows only the login wall). 3 searches found no readable interview with Yorke/Greenwood/O'Brien naming Can; tier reported.",
+      "checked": "2026-10-26"
+    },
+    "radiohead>suicide": {
+      "url": "https://www.theguardian.com/music/2016/jul/17/suicide-frontman-and-electronic-music-pioneer-alan-vega-dies-aged-78",
+      "found": "Suicide’s aggressive synthesiser rock has been cited as an influence by bands such as Radiohead, U2, New Order and Depeche Mode, electronic acts such as Daft Punk and Aphex Twin, and Bruce Springsteen, who covered their song Dream Baby Dream on his 2014 album, High Hopes.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "The Guardian, \"Alan Vega, Suicide frontman and electronic music pioneer, dies aged 78\" (17 July 2016): \"Suicide's aggressive synthesiser rock has been cited as an influence by bands such as Radiohead, U2, New Order and Depeche Mode.\"",
+      "checked": "2026-10-26"
+    },
+    "radiohead>faust": {
+      "url": "https://www.theguardian.com/music/2021/oct/18/krautrock-legends-faust-naked-stoned-dogfood-german-beatles",
+      "found": "Faust’s music proved hugely influential, on post-punk and beyond: a list of their admirers would include everyone from Stereolab to Simple Minds, from rapper-producer Madlib – who sampled 1974’s The Sad Skinhead – to Radiohead, who paid homage with the title of 2007’s Faust Arp.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Alexis Petridis, The Guardian (18 Oct 2021): Faust's \"list of their admirers would include everyone from Stereolab to Simple Minds... to Radiohead, who paid homage with the title of 2007's Faust Arp.\"",
+      "checked": "2026-10-26"
+    },
+    "radiohead>jeff-buckley": {
+      "url": "https://consequence.net/2023/09/thom-yorke-embrace-his-voice-interview",
+      "found": "“When we were doing the second record [ The Bends ], I went to see Jeff Buckley before he died,” he went on. “Again, that was one of those, &lsquo;It’s OK to do that?’ And it reminded me of this vulnerable part of me that I was choosing to hide.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Thom Yorke, in an excerpt from Jason Thomas Gordon's The Singers Talk (via Consequence, 2023): \"When we were doing the second record [The Bends], I went to see Jeff Buckley before he died... that was one of those, 'It's OK to do that?' And it reminded me of this vulnerable part of me that I was choosing to hide.\"",
+      "note": "Leckie / Dougie Payne account not found on a readable page; Wikipedia's Jeff Buckley article cites Dalton, Vox Sept 1997 (print) for Yorke saying Buckley gave him confidence to sing in falsetto.",
+      "checked": "2026-10-26"
+    },
+    "radiohead>sigur-ros": {
+      "url": "https://www.jhunewsletter.com/article/2001/09/sigur-ros-icelandic-ingenuity-92752",
+      "found": "Although the Radiohead frontman gave his approval of Sigur Ros by citing them as a major influence on Kid A , the relationship between the two groups ends there, as it would seem unproductive to compare Sigur Ros to anything else out there today.",
+      "verdict": "ok",
+      "note": "Student newspaper (Sean Culkin, 20 Sept 2001), states it with no quote or link to Yorke's own words; Agaetis Byrjun 1999 precedes Kid A 2000 so dates work. Thin.",
+      "checked": "2026-10-26"
+    },
+    "can>velvet-underground": {
+      "url": "https://www.kqed.org/arts/13807595/a-good-way-to-master-the-future-an-interview-with-holger-czukay-1997",
+      "found": "The influence, for me, of Beatles and Velvet Underground was most important. The Velvet Underground especially.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Holger Czukay to Richie Unterberger (1997, published by KQED): \"The influence, for me, of Beatles and Velvet Underground was most important. The Velvet Underground especially. They had something achieved which others didn't achieve.\"",
+      "note": "The 'Father Cannot Yell' / 'European Son' detail (Wikipedia: 'the band have admitted...') is not on this page (searched 'Cannot'); dropped from the citation.",
+      "checked": "2026-10-26"
+    },
+    "pixies>velvet-underground": {
+      "url": "https://web.archive.org/web/20071211164456/http://www.filmscoremonthly.com/articles/2003/18_Jun---Joey_Santiago_Interview.asp",
+      "found": "He also had the Velvet Underground's Loaded on his turntable. I played it and learned the song \"Rock and Roll.\" It had this soaring guitar at the breaks, very simple, very effective. That hooked me.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Joey Santiago to Film Score Monthly (2003), on learning guitar: his brother \"had the Velvet Underground's Loaded on his turntable. I played it and learned the song 'Rock and Roll.' It had this soaring guitar at the breaks, very simple, very effective. That hooked me.\"",
+      "note": "Original page filmscoremonthly.com is dead; Internet Archive copy (Dec 2007) reads. The Music Museum of New England page (mmone.org/pixies/) also says Santiago's earliest influences were the Velvet Underground.",
+      "checked": "2026-10-26"
+    },
+    "pixies>david-bowie": {
+      "url": "https://www.mmone.org/pixies/",
+      "found": "Thompson cites Christian-rock pioneer Larry Norman, Buddy Holly, The Beatles and prog-rockers Emerson, Lake and Palmer as his earliest influences while Santiago says his were The Velvet Underground , Les Paul, Wes Montgomery and David Bowie (who once praised Pixies as “the psychotic Beatles”).",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "The Music Museum of New England's Pixies page: Santiago says his earliest influences \"were The Velvet Underground, Les Paul, Wes Montgomery and David Bowie.\"",
+      "note": "The page paraphrases Santiago with no quote or source; Santiago's own FSM 2003 interview (read) does not mention Bowie.",
+      "checked": "2026-10-26"
+    },
+    "pixies>violent-femmes": {
+      "url": "https://www.mmone.org/pixies/",
+      "found": "Santiago introduced Thompson to The Cars ’ music, which they say had an incalculable influence on Pixies, and together they soaked up albums by Violent Femmes, Talking Heads, Hüsker Dü, The Jesus & Mary Chain, Black Flag, Iggy Pop and Captain Beefheart while watching surrealistic films like 1977’s Eraserhead .",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "The Music Museum of New England's Pixies page says Black Francis and Joey Santiago \"together soaked up albums by Violent Femmes, Talking Heads, Hüsker Dü, The Jesus & Mary Chain, Black Flag, Iggy Pop and Captain Beefheart\" while watching films like Eraserhead.",
+      "checked": "2026-10-26"
+    },
+    "pixies>talking-heads": {
+      "url": "https://www.mmone.org/pixies/",
+      "found": "Santiago introduced Thompson to The Cars ’ music, which they say had an incalculable influence on Pixies, and together they soaked up albums by Violent Femmes, Talking Heads, Hüsker Dü, The Jesus & Mary Chain, Black Flag, Iggy Pop and Captain Beefheart while watching surrealistic films like 1977’s Eraserhead .",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "The Music Museum of New England's Pixies page says Black Francis and Joey Santiago \"together soaked up albums by Violent Femmes, Talking Heads, Hüsker Dü, The Jesus & Mary Chain, Black Flag, Iggy Pop and Captain Beefheart\" while watching films like Eraserhead.",
+      "checked": "2026-10-26"
+    },
+    "pixies>the-jesus-and-mary-chain": {
+      "url": "https://www.mmone.org/pixies/",
+      "found": "Santiago introduced Thompson to The Cars ’ music, which they say had an incalculable influence on Pixies, and together they soaked up albums by Violent Femmes, Talking Heads, Hüsker Dü, The Jesus & Mary Chain, Black Flag, Iggy Pop and Captain Beefheart while watching surrealistic films like 1977’s Eraserhead .",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "The Music Museum of New England's Pixies page says Black Francis and Joey Santiago \"together soaked up albums by Violent Femmes, Talking Heads, Hüsker Dü, The Jesus & Mary Chain, Black Flag, Iggy Pop and Captain Beefheart\" while watching films like Eraserhead.",
+      "checked": "2026-10-26"
+    },
+    "pixies>black-flag": {
+      "url": "https://www.mmone.org/pixies/",
+      "found": "Santiago introduced Thompson to The Cars ’ music, which they say had an incalculable influence on Pixies, and together they soaked up albums by Violent Femmes, Talking Heads, Hüsker Dü, The Jesus & Mary Chain, Black Flag, Iggy Pop and Captain Beefheart while watching surrealistic films like 1977’s Eraserhead .",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "The Music Museum of New England's Pixies page says Black Francis and Joey Santiago \"together soaked up albums by Violent Femmes, Talking Heads, Hüsker Dü, The Jesus & Mary Chain, Black Flag, Iggy Pop and Captain Beefheart\" while watching films like Eraserhead.",
+      "checked": "2026-10-26"
+    },
+    "pixies>gang-of-four": {
+      "verdict": "print",
+      "print": "Ben Sisario, Doolittle (33 1/3 series, Continuum, 2006), p. 128; Wikipedia's Pixies article cites it for 'Other artists Deal listened to included XTC, Gang of Four and Elvis Costello' (footnote 'Rogers 2009')",
+      "note": "No online text found (2 searches: Kim Deal's own words on Gang of Four don't turn up; a Guardian piece is about Kelley Deal). Wikipedia's footnote is Rogers 2009, not Sisario, so the exact page needs the book.",
+      "checked": "2026-10-26"
+    },
+    "slowdive>siouxsie-and-the-banshees": {
+      "url": "http://whenthesunhitsblog.blogspot.com/2014/08/wtsh-interviews-neil-halstead-simon.html",
+      "found": "And Rachel was like, “Well, how about Slowdive?” She was a big Siouxsie and the Banshees fan.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Neil Halstead to When the Sun Hits (1 Aug 2014), on how the band got its name from the Siouxsie and the Banshees single: \"And Rachel was like, 'Well, how about Slowdive?' She was a big Siouxsie and the Banshees fan.\"",
+      "note": "Halstead says Goswell was the fan ('I didn't know Siouxsie at the time'), so reported. The Simon Reynolds NYT 1991 piece (archive copy) does not mention the Cure or the Banshees; dropped.",
+      "checked": "2026-10-26"
+    },
+    "slowdive>brian-eno": {
+      "url": "https://www.ianwatsonuk.howdoesitfeel.co.uk/slowdivetwo.html",
+      "found": "Singer, guitarist and songwriter Neil Halstead was a big fan and Savill had a \"special affinity\" with Eno’s moonlanding album \"Apollo\", so they sent him a few CDs and asked if he’d be interested producing their next record.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Ian Watson's sleeve notes to Slowdive's Souvlaki reissue: Brian Eno's fans in the band were Neil Halstead, \"a big fan,\" and Christian Savill, who had a \"special affinity\" with Eno's Apollo; they sent him CDs and asked him to produce the next record. Eno declined to produce but collaborated on \"Sing\" and \"Here She Comes.\"",
+      "checked": "2026-10-26"
+    },
+    "slowdive>david-bowie": {
+      "verdict": "blocked",
+      "url": "https://pitchfork.com/tv/27-pitchfork-classic/1429-slowdive-souvlaki/",
+      "note": "Wikipedia's Souvlaki article (footnote 5) cites this Pitchfork.tv Classic video for 'Halstead: early songs were influenced by Joy Division and David Bowie's Berlin Trilogy'; the page is a video with no text (read finds no 'Bowie'). The Dec 1991 Berlin audio interview (YouTube c96YmrLSIaE, from 2:07) is cited by Wikipedia's Slowdive article for Halstead and Goswell naming Bowie, the Byrds, the Stones, Cocteau Twins, MBV and Psychocandy. Owner: listen to either and send the passage.",
+      "checked": "2026-10-26"
+    },
+    "sonic-youth>faust": {
+      "verdict": "decide",
+      "url": "https://www.vice.com/en/article/fausts-art-of-improvisation-to-thank-for-everything-you-love/",
+      "found": "it was Faust who served as the weirdo Dada-informed distant cousin more interested in improvisation and poetry, undoubtedly the muse unto which Sonic Youth owes royalties.",
+      "note": "Wikipedia's Faust article lists Sonic Youth among 'cited as an influence by', but its footnote (Petridis, Guardian 2021, read) only says Sonic Youth collaborated with ex-members of Faust and Faust toured with them in 1994; no influence claim. The only influence claim found is this Vice critic's aside that Faust is the muse Sonic Youth owes royalties to. Propose: lower to critic citing the Vice sentence (a critic's passing assertion, not a quote from the band), or remove. 2 searches; no Moore/Ranaldo/Gordon quote on Faust found.",
+      "checked": "2026-10-26"
+    }
+  },
+  "candidates": [],
+  "offMap": [],
+  "finished": true
+}

@@ -1,0 +1,327 @@
+{
+ "agent": "c17",
+ "searches": 15,
+ "toolStatus": "WebSearch fine (theguardian.com refused as a search domain, but read opens Guardian pages); read via r.jina.ai worked, one retry-free; allmusic.com, the Look In pages on sacreddm.net and their archive.org copies, and Google Books would not open; Quietus Swell Maps page opened.",
+ "entries": {
+  "depeche-mode>david-bowie": {
+   "verdict": "fixed",
+   "url": "https://edition.cnn.com/2012/06/07/showbiz/music/dave-gahan-depeche-mode",
+   "found": "I listened to David Bowie a lot when I was a teenager. The place that he seemed to be singing from is the place that I wanted to go to.",
+   "sourceTier": "first-person",
+   "citation": "Dave Gahan to CNN (2012): \"I listened to David Bowie a lot when I was a teenager. The place that he seemed to be singing from is the place that I wanted to go to.\"",
+   "checked": "2026-10-26"
+  },
+  "depeche-mode>the-clash": {
+   "verdict": "fixed",
+   "url": "https://edition.cnn.com/2012/06/07/showbiz/music/dave-gahan-depeche-mode",
+   "found": "The same thing happened when punk rock came along and I heard the Clash for the first time. I was 16 or 17 years old. It made me feel like I belonged to something.",
+   "sourceTier": "first-person",
+   "citation": "Dave Gahan to CNN (2012), on punk: \"I heard the Clash for the first time. I was 16 or 17 years old. It made me feel like I belonged to something.\"",
+   "checked": "2026-10-26"
+  },
+  "depeche-mode>velvet-underground": {
+   "verdict": "fixed",
+   "url": "http://www.releasemagazine.net/Spotlight/spotlightgore.htm",
+   "found": "On the record I do a cover of a Velvet Underground song, and I think for me they were one of the most important bands. I like their darkness but I also like the pop-side of the Velvet Underground.",
+   "sourceTier": "first-person",
+   "citation": "Martin Gore to Release Magazine (2003): \"I think for me they were one of the most important bands. I like their darkness but I also like the pop-side of the Velvet Underground.\"",
+   "checked": "2026-10-26"
+  },
+  "depeche-mode>suicide": {
+   "verdict": "fixed",
+   "url": "https://www.thejc.com/life/music/suicide-how-the-godfathers-of-punk-kept-the-faith-ndnrqeln",
+   "found": "You may not have heard of American duo Suicide, but you will have heard of the groups they influenced. Depeche Mode, New Order, Moby, Radiohead - almost every techno or industrial act, or rock band that uses synthesisers, has cited Suicide as an influence.",
+   "sourceTier": "reported",
+   "citation": "The Jewish Chronicle: \"Depeche Mode, New Order, Moby, Radiohead - almost every techno or industrial act, or rock band that uses synthesisers, has cited Suicide as an influence.\"",
+   "note": "The Guardian sentence in the old citation was not found on any page; Wikipedia's Depeche Mode article footnotes Gore to The Times via Nobahkt's book Suicide: No Compromise (2004) p.166 (not readable online).",
+   "checked": "2026-10-26"
+  },
+  "new-order>suicide": {
+   "verdict": "fixed",
+   "url": "https://www.vice.com/en/article/alan-vega-suicide-death/",
+   "found": "Acts such as New Order, Air, Daft Punk and Aphex Twin have all cited the group as a musical influence.",
+   "sourceTier": "reported",
+   "citation": "Vice (2016): \"Acts such as New Order, Air, Daft Punk and Aphex Twin have all cited the group as a musical influence.\"",
+   "checked": "2026-10-26"
+  },
+  "aphex-twin>suicide": {
+   "verdict": "fixed",
+   "url": "https://www.vice.com/en/article/alan-vega-suicide-death/",
+   "found": "Acts such as New Order, Air, Daft Punk and Aphex Twin have all cited the group as a musical influence.",
+   "sourceTier": "reported",
+   "citation": "Vice (2016): \"Acts such as New Order, Air, Daft Punk and Aphex Twin have all cited the group as a musical influence.\"",
+   "checked": "2026-10-26"
+  },
+  "new-order>david-bowie": {
+   "verdict": "fixed",
+   "url": "https://web.archive.org/web/20190902100252/https://www.rollingstone.com/music/music-features/inside-new-orders-first-album-without-founding-bassist-peter-hook-168274/",
+   "found": "Our earliest influences were Bowie and Iggy Pop and Kraftwerk and songwriters like Neil Young before that.",
+   "sourceTier": "first-person",
+   "citation": "Bernard Sumner to Rolling Stone (2015): \"Our earliest influences were Bowie and Iggy Pop and Kraftwerk and songwriters like Neil Young before that.\"",
+   "note": "live rollingstone.com URL did not print the Bowie paragraph via read; the archive copy did",
+   "checked": "2026-10-26"
+  },
+  "new-order>the-human-league": {
+   "verdict": "fixed",
+   "url": "https://www.electronicbeats.net/max-dax-interviews-bernard-sumner/",
+   "found": "The early Human League and OMD ’s first steps must not be forgotten either.",
+   "sourceTier": "first-person",
+   "citation": "Bernard Sumner to Electronic Beats (2012), on writing \"Blue Monday\": \"I had already done some gigs with Cabaret Voltaire as well. The early Human League and OMD's first steps must not be forgotten either.\"",
+   "checked": "2026-10-26"
+  },
+  "new-order>omd": {
+   "verdict": "fixed",
+   "url": "https://www.electronicbeats.net/max-dax-interviews-bernard-sumner/",
+   "found": "The early Human League and OMD ’s first steps must not be forgotten either.",
+   "sourceTier": "first-person",
+   "citation": "Bernard Sumner to Electronic Beats (2012), on writing \"Blue Monday\": \"I had already done some gigs with Cabaret Voltaire as well. The early Human League and OMD's first steps must not be forgotten either.\"",
+   "checked": "2026-10-26"
+  },
+  "new-order>sparks": {
+   "verdict": "print",
+   "print": "Peter Hook, Substance: Inside New Order, Simon & Schuster, 2007, p.85",
+   "note": "Wikipedia's New Order article states Hook said the 1982 shift to synthesizers was inspired by Kraftwerk, Moroder/Summer's \"I Feel Love\" and Sparks, footnoted to this page. Not readable online.",
+   "checked": "2026-10-26"
+  },
+  "depeche-mode>cabaret-voltaire": {
+   "verdict": "decide",
+   "url": "https://en.wikipedia.org/wiki/Depeche_Mode",
+   "note": "Wikipedia's only support is a favourites list (Look In magazine questionnaires, Dec 1981: Gahan and Gore) -- a favourites list with no comment; the Look In pages (sacreddm.net) are dead and their Internet Archive copies would not open. Propose remove (or keep only if the owner counts a named favourite band as a fan). Note Sumner of New Order, not Depeche, is the Cabaret Voltaire speaker.",
+   "checked": "2026-10-26"
+  },
+  "depeche-mode>siouxsie-and-the-banshees": {
+   "verdict": "fixed",
+   "url": "https://modefan.com/interview-andrew-fletcher/",
+   "found": "After that it was Siouxsie & the Banshees, the Cure, Kraftwerk even came into fashion, early Human League, even early OMD.",
+   "sourceTier": "first-person",
+   "citation": "Andrew Fletcher to Modefan (2011), on what he, Vince Clarke and Martin Gore listened to as teenagers after punk: \"After that it was Siouxsie & the Banshees, the Cure, Kraftwerk even came into fashion, early Human League, even early OMD.\"",
+   "checked": "2026-10-26"
+  },
+  "depeche-mode>talking-heads": {
+   "verdict": "decide",
+   "url": "https://en.wikipedia.org/wiki/Depeche_Mode",
+   "note": "Only a favourites list (Look In questionnaire, 1981, Gahan/Gore); page dead, archive copies would not open. Propose remove or hold.",
+   "checked": "2026-10-26"
+  },
+  "depeche-mode>sparks": {
+   "verdict": "decide",
+   "url": "https://en.wikipedia.org/wiki/Sparks_(band)",
+   "note": "Wikipedia's Sparks article says Gore (and Gahan) named Sparks among favourite bands, footnoted to Look In questionnaires (1981) which are dead and unarchived here; current Depeche Mode article no longer has the 'fan of glam, early Human League and Sparks' sentence or the Vince Clarke line. Favourites list only. Propose remove or hold.",
+   "checked": "2026-10-26"
+  },
+  "the-smiths>bert-jansch": {
+   "verdict": "fixed",
+   "url": "https://www.musicradar.com/news/johnny-marr-explains-his-three-biggest-guitar-influences",
+   "found": "For example, in my case, I didn't really do a lot of interviews in the early Smiths days but when I was asked about guitar playing, when I had to really nail it down it was Nile Rodgers , Bert Jansch and James Williamson from The Stooges.",
+   "sourceTier": "first-person",
+   "citation": "Johnny Marr to MusicRadar (2023), on who he named as his guitar influences in the early Smiths days: \"when I had to really nail it down it was Nile Rodgers, Bert Jansch and James Williamson from The Stooges.\"",
+   "checked": "2026-10-26"
+  },
+  "godspeed-you-black-emperor>black-flag": {
+   "verdict": "ok",
+   "url": "http://brainwashed.com/godspeed/wire2.html",
+   "found": "From groups like Black Flag and The Minutemen they've taken the whole work ethic, the 'serious as your life' drive that sent Henry Rollins and co across the States in the back of a van, rehearsing on their nights off and sleeping on floors.",
+   "note": "The Wire's May 2000 piece, mirrored on brainwashed.com. A member of the band is also quoted on the same page saying 'Black Flag is certainly part of it' (speaker not named in the passage read).",
+   "checked": "2026-10-26"
+  },
+  "godspeed-you-black-emperor>minutemen": {
+   "verdict": "ok",
+   "url": "http://brainwashed.com/godspeed/wire2.html",
+   "found": "From groups like Black Flag and The Minutemen they've taken the whole work ethic, the 'serious as your life' drive that sent Henry Rollins and co across the States in the back of a van, rehearsing on their nights off and sleeping on floors.",
+   "note": "The Wire, May 2000, mirrored on brainwashed.com.",
+   "checked": "2026-10-26"
+  },
+  "elliott-smith>fugazi": {
+   "verdict": "print",
+   "print": "Benjamin Nugent, Elliott Smith and the Big Nothing, Da Capo/Hachette, 2009, ch. on his Portland years (Google Books edition location PT134; page not shown)",
+   "note": "Wikipedia's Fugazi and Elliott Smith articles footnote the quote \"He was becoming really super-obsessed with Built to Spill and Fugazi, and I know he admired Ian [MacKaye, of Fugazi] and Doug [Martsch, of Built to Spill] like crazy.\" to this book; Google Books page would not print through read. Speaker is a friend of Smith's, so reported.",
+   "checked": "2026-10-26"
+  },
+  "elliott-smith>built-to-spill": {
+   "verdict": "print",
+   "print": "Benjamin Nugent, Elliott Smith and the Big Nothing, Da Capo/Hachette, 2009, ch. on his Portland years (Google Books edition location PT134; page not shown)",
+   "note": "Same quote as the Fugazi link, footnoted from Wikipedia's Elliott Smith article; Google Books page would not print through read.",
+   "checked": "2026-10-26"
+  },
+  "talking-heads>david-bowie": {
+   "verdict": "fixed",
+   "url": "https://ultimateclassicrock.com/byrds-david-byrne-folk-music/",
+   "found": "David Byrne recalled how the Byrds helped him begin the journey to finding his own voice in music after he began life listening to folk artists, and how David Bowie and the Velvet Underground provided his next steps.",
+   "sourceTier": "reported",
+   "citation": "Ultimate Classic Rock, reporting David Byrne's Pitchfork interview (2023): the Byrds helped Byrne move on from folk, and David Bowie and the Velvet Underground \"provided his next steps\".",
+   "note": "Pitchfork's own page was not located (search returned only write-ups). Far Out (faroutmagazine.co.uk/david-byrne-david-bowie-inspiration/) also quotes Byrne's Pitchfork words on Bowie: \"Bowie was on the radio a little bit, and he was a huge influence for a lot of people.\"",
+   "checked": "2026-10-26"
+  },
+  "black-flag>bad-brains": {
+   "verdict": "fixed",
+   "url": "https://faroutmagazine.co.uk/the-frontman-henry-rollins-called-the-greatest-america-ever-produced/",
+   "found": "“I grew up with Bad Brains and they were the first band I saw up close,” he stated. “I mean right in their faces. I saw them open for The Damned in ’79 and a week later at a party it changed my life.",
+   "sourceTier": "first-person",
+   "citation": "Henry Rollins, in a 1990 interview with Elsewhere Magazine (reported by Far Out): \"I grew up with Bad Brains and they were the first band I saw up close... I saw them open for The Damned in '79 and a week later at a party it changed my life.\"",
+   "note": "Speaker is Rollins, who joined Black Flag in 1981 (after Bad Brains had changed his life); Black Flag itself formed in 1976, a year before Bad Brains, so the owner may prefer to treat this as Rollins's influence rather than the band's.",
+   "checked": "2026-10-26"
+  },
+  "pavement>sonic-youth": {
+   "verdict": "fixed",
+   "url": "https://www.avclub.com/pavement-interview-30th-anniversary-reunion-tour-1849501992",
+   "found": "BN : It’s the only significant tour we’ve done opening. I was outvoted 4–1. I didn’t want to do it. On the tour, there were good things and bad things about it. You’ve got to understand that Pavement could’ve played venues close to that big on their own back then. But we all got along well, and were huge fans. EVOL and Sister changed my life, and “The World Looks Red” is my favorite Sonic Youth song.",
+   "sourceTier": "first-person",
+   "citation": "Bob Nastanovich to The A.V. Club (2022), on touring with Sonic Youth: \"we all got along well, and were huge fans. EVOL and Sister changed my life, and 'The World Looks Red' is my favorite Sonic Youth song.\" Mark Ibold added: \"we were sort of influenced by Sonic Youth in that respect.\"",
+   "checked": "2026-10-26"
+  },
+  "pavement>echo-and-the-bunnymen": {
+   "verdict": "fixed",
+   "url": "https://www.avclub.com/pavement-interview-30th-anniversary-reunion-tour-1849501992",
+   "found": "I mean, all the bands we really loved turned us onto great bands. R.E.M. turned me on to Mission of Burma, Wire, and Big Star. Even the Velvet Underground and Echo and the Bunnymen turned us onto Leonard Cohen and Television.",
+   "sourceTier": "first-person",
+   "citation": "Scott Kannberg to The A.V. Club (2022): \"all the bands we really loved turned us onto great bands. R.E.M. turned me on to Mission of Burma, Wire, and Big Star. Even the Velvet Underground and Echo and the Bunnymen turned us onto Leonard Cohen and Television.\"",
+   "note": "The AV Club's own framing: a generous ethos \"learned from their own heroes, including R.E.M., Sonic Youth, and Echo & the Bunnymen\". The Killing Moon cover is in Wikipedia (Major Leagues EP), not on this page.",
+   "checked": "2026-10-26"
+  },
+  "pavement>the-replacements": {
+   "verdict": "not-found",
+   "note": "The Quietus Swell Maps piece (thequietus.com/articles/30006-swell-maps-interview, the page Wikipedia footnotes) names Kannberg and Swell Maps but never mentions the Replacements, so the old citation is wrong on that page. Searched Kannberg+Replacements; only Bandsintown/AllAboutJazz copies of a claim of a 1992 interview where he 'preferred the Replacements to the Fall' (no primary page). Relix, Bandcamp Daily and Free Press Houston Kannberg interviews carry no Replacements mention. Kannberg->Swell Maps is real if Swell Maps is ever on the roster; Quietus text: 'namechecked by ... Pavement's Scott Kannberg'.",
+   "checked": "2026-10-26"
+  },
+  "pavement>pixies": {
+   "verdict": "decide",
+   "url": "https://en.wikipedia.org/wiki/Slay_Tracks",
+   "found": "The songs on the EP drew comparisons to the likes of R.E.M., Pixies, and Sonic Youth by Stephen Thomas Erlewine and Heather Phares of AllMusic",
+   "note": "Only a resemblance: AllMusic critics comparing Slay Tracks to the Pixies (allmusic.com pages would not open, nor archive copies). Malkmus's own stated influences on that record were Chrome, Swell Maps and The Fall. Propose remove (record no stated influence).",
+   "checked": "2026-10-26"
+  },
+  "rem>patti-smith": {
+   "verdict": "fixed",
+   "url": "https://en.wikipedia.org/wiki/R.E.M.",
+   "found": "The pair discovered that they shared similar tastes in music, particularly in punk rock and proto-punk artists like Patti Smith, Television, and the Velvet Underground.",
+   "sourceTier": "reported",
+   "citation": "Wikipedia's R.E.M. article: when Peter Buck met Michael Stipe at Wuxtry Records in Athens in January 1980, the two found they shared tastes in music, \"particularly in punk rock and proto-punk artists like Patti Smith, Television, and the Velvet Underground.\"",
+   "note": "Wikipedia footnotes this to a Winter 1983 Alternative America fanzine interview (Blake Gumprecht) on Rock's Backpages (rocksbackpages.com/Library/Article/rem-3), subscription only. The old citation's Hodgkinson/Sunday News 2017 piece was not found.",
+   "checked": "2026-10-26"
+  },
+  "rem>neil-young": {
+   "verdict": "ok",
+   "url": "https://www.stereogum.com/2476602/80-artists-pick-their-favorite-neil-young-song/interviews/80-for-80",
+   "found": "I never much listened to his music but I knew that Neil was a favorite of all the guys in my former band R.E.M. They revered him, especially Peter and Bertis, the band's manager. He was one of the main reasons we signed to Warner Bros. Records.",
+   "note": "Michael Stipe, Stereogum (Nov 2025); Stipe says the others revered Young and that he himself did not listen much, so reported tier stands.",
+   "checked": "2026-10-26"
+  },
+  "snail-mail>mary-timony": {
+   "verdict": "fixed",
+   "url": "https://pitchfork.com/features/rising/10027-snail-mails-lindsey-jordan-is-the-wisest-teenage-indie-rocker-we-know/",
+   "found": "“She’s definitely helped me learn to shred,” Jordan says, noting how Timony introduced her to Television ’s Marquee Moon —in lessons, they trade that band’s gleaming, coiled riffs.",
+   "sourceTier": "first-person",
+   "citation": "Lindsey Jordan to Pitchfork (2017), on her guitar teacher Mary Timony: \"She's definitely helped me learn to shred.\" Timony introduced her to Television's Marquee Moon in lessons.",
+   "note": "The Rolling Stone / Sheffield line and the 'Everybody wants to be her' quote were not checked; this Pitchfork profile carries Jordan's own words.",
+   "checked": "2026-10-26"
+  },
+  "the-jesus-and-mary-chain>can": {
+   "verdict": "print",
+   "print": "Rob Young and Irmin Schmidt, All Gates Open: The Story of Can, Faber, 2018, pp.86-87 (Wikipedia's footnote for \"referenced by ... The Jesus and Mary Chain\"); also John Robertson, The Jesus and Mary Chain: A Musical Biography, Omnibus, 1988, p.77 (the band covered Can's \"Mushroom\" live in the mid-1980s)",
+   "note": "Neither book is readable online. The claim is only that Can were 'referenced'/covered live; no stated influence was found (one search on Reid + Can found nothing). Owner may prefer to drop it.",
+   "checked": "2026-10-26"
+  },
+  "the-jesus-and-mary-chain>siouxsie-and-the-banshees": {
+   "verdict": "decide",
+   "url": "http://www.bbc.co.uk/programmes/b01cyrh9",
+   "found": "Jim Reid of The Jesus And Mary Chain plays some of his favourite records, including tracks by Pink Floyd, Siouxsie and The Banshees, The Monkees and Muddy Waters.",
+   "note": "A BBC Radio 6 Music playlist show: Reid choosing favourite records, with no comment on Siouxsie shaping the band's music. Bare favourites; propose remove (or hold until a statement turns up).",
+   "checked": "2026-10-26"
+  },
+  "dinosaur-jr>sonic-youth": {
+   "verdict": "fixed",
+   "url": "https://www.spinmagazine.com/2014/04/dinosaur-jr-oral-history-excerpt-sonic-youth-tour/",
+   "found": "I was in awe of Sonic Youth and could barely talk to them – even now I can barely talk to them.",
+   "sourceTier": "first-person",
+   "citation": "Lou Barlow in the oral history Dinosaur Jr. by Dinosaur Jr., excerpted by SPIN (2014): \"I was in awe of Sonic Youth and could barely talk to them\". J Mascis recalls of the drive home from their first tour together, listening to Sonic Youth's EVOL: \"I almost feel like crying. I think we're in love with Sonic Youth.\"",
+   "note": "Azerrad's 'their heroes, Sonic Youth' passage was not located online; the SPIN excerpt carries both members' own words.",
+   "checked": "2026-10-26"
+  },
+  "dinosaur-jr>the-replacements": {
+   "verdict": "print",
+   "print": "Michael Azerrad, Our Band Could Be Your Life, Little, Brown, 2001, p.350",
+   "note": "Citation as written (post-high-school music: Black Sabbath, the Replacements and Neil Young); the book is not readable online here (archive.org search returned no usable full text).",
+   "checked": "2026-10-26"
+  },
+  "omd>neu": {
+   "verdict": "fixed",
+   "url": "https://web.archive.org/web/20260225171731/https://www.thetimes.com/sunday-times-rich-list/profile/article/why-omd-are-embarrassed-to-be-back-rzvkkz8bt5c",
+   "found": "Velvet Underground, David Bowie, Neu, Roxy Music and Brian Eno were also influences.",
+   "sourceTier": "reported",
+   "citation": "Dominic Maxwell, \"Why OMD are embarrassed to be back,\" The Times (2010): after Kraftwerk, \"Velvet Underground, David Bowie, Neu, Roxy Music and Brian Eno were also influences.\"",
+   "note": "Footnote behind Wikipedia's OMD sentence; the live Times URL printed only part of the page, the Internet Archive copy carries the sentence.",
+   "checked": "2026-10-26"
+  },
+  "omd>velvet-underground": {
+   "verdict": "fixed",
+   "url": "https://web.archive.org/web/20260225171731/https://www.thetimes.com/sunday-times-rich-list/profile/article/why-omd-are-embarrassed-to-be-back-rzvkkz8bt5c",
+   "found": "Velvet Underground, David Bowie, Neu, Roxy Music and Brian Eno were also influences.",
+   "sourceTier": "reported",
+   "citation": "Dominic Maxwell, \"Why OMD are embarrassed to be back,\" The Times (2010): after Kraftwerk, \"Velvet Underground, David Bowie, Neu, Roxy Music and Brian Eno were also influences.\"",
+   "checked": "2026-10-26"
+  },
+  "omd>david-bowie": {
+   "verdict": "fixed",
+   "url": "https://web.archive.org/web/20260225171731/https://www.thetimes.com/sunday-times-rich-list/profile/article/why-omd-are-embarrassed-to-be-back-rzvkkz8bt5c",
+   "found": "Velvet Underground, David Bowie, Neu, Roxy Music and Brian Eno were also influences.",
+   "sourceTier": "reported",
+   "citation": "Dominic Maxwell, \"Why OMD are embarrassed to be back,\" The Times (2010): after Kraftwerk, \"Velvet Underground, David Bowie, Neu, Roxy Music and Brian Eno were also influences.\"",
+   "checked": "2026-10-26"
+  },
+  "omd>brian-eno": {
+   "verdict": "fixed",
+   "url": "https://web.archive.org/web/20260225171731/https://www.thetimes.com/sunday-times-rich-list/profile/article/why-omd-are-embarrassed-to-be-back-rzvkkz8bt5c",
+   "found": "Velvet Underground, David Bowie, Neu, Roxy Music and Brian Eno were also influences.",
+   "sourceTier": "reported",
+   "citation": "Dominic Maxwell, \"Why OMD are embarrassed to be back,\" The Times (2010): after Kraftwerk, \"Velvet Underground, David Bowie, Neu, Roxy Music and Brian Eno were also influences.\"",
+   "checked": "2026-10-26"
+  },
+  "omd>joy-division": {
+   "verdict": "fixed",
+   "url": "https://recordcollectormag.com/articles/omd",
+   "found": "Paul Humphreys: “We’d played with Joy Division and been entranced by their melancholy and darkness, and they really influenced the direction we went in with the second album, with songs like Stanlow and Statues.",
+   "sourceTier": "first-person",
+   "citation": "Paul Humphreys to Record Collector (2019), on Organisation (1980): \"We'd played with Joy Division and been entranced by their melancholy and darkness, and they really influenced the direction we went in with the second album, with songs like Stanlow and Statues.\"",
+   "checked": "2026-10-26"
+  },
+  "american-football>codeine": {
+   "verdict": "fixed",
+   "url": "https://www.vice.com/en/article/never-meant-the-complete-oral-history-of-american-football/",
+   "found": "Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.",
+   "sourceTier": "first-person",
+   "citation": "Steve Holmes in \"Never Meant: The Complete Oral History of American Football\" (Vice): \"Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.\"",
+   "checked": "2026-10-26"
+  },
+  "aphex-twin>kraftwerk": {
+   "verdict": "fixed",
+   "url": "https://www.theguardian.com/culture/2001/oct/05/artsfeatures3",
+   "found": "Whereas most white musicians these days are born of the blues and the Beatles, Aphex Twin's lineage is Stockhausen, John Cage, Kraftwerk, Brian Eno and the Detroit techno of Derrick May.",
+   "sourceTier": "reported",
+   "citation": "Paul Lester, \"Tank boy,\" The Guardian (5 Oct 2001): \"Aphex Twin's lineage is Stockhausen, John Cage, Kraftwerk, Brian Eno and the Detroit techno of Derrick May.\"",
+   "note": "This is the page Wikipedia's Kraftwerk article footnotes; the 'Computer World' claim is not on it.",
+   "checked": "2026-10-26"
+  }
+ },
+ "candidates": [],
+ "offMap": [
+  {
+   "name": "The Sea and Cake",
+   "namedBy": "american-football",
+   "sentence": "Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.",
+   "url": "https://www.vice.com/en/article/never-meant-the-complete-oral-history-of-american-football/"
+  },
+  {
+   "name": "Steve Reich",
+   "namedBy": "american-football",
+   "sentence": "Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.",
+   "url": "https://www.vice.com/en/article/never-meant-the-complete-oral-history-of-american-football/"
+  },
+  {
+   "name": "Weather Report",
+   "namedBy": "american-football",
+   "sentence": "Lamos brought in his love of 70s jazz fusion via Weather Report and Miles Davis.",
+   "url": "https://www.vice.com/en/article/never-meant-the-complete-oral-history-of-american-football/"
+  }
+ ],
+ "finished": true
+}

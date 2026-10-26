@@ -1,0 +1,504 @@
+{
+ "agent": "u2",
+ "searches": 0,
+ "toolStatus": "No WebSearch used. Wikipedia raw OK; ledger read opened most pages; thecourier.co.uk, qobuz video and rateyourmusic direct failed (archive copies used where possible); Wikipedia search API rate-limited.",
+ "entries": {
+  "vashti-bunyan>bob-dylan": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://web.archive.org/web/2020/https://www.thecourier.co.uk/fp/lifestyle/entertainment/music/rocktalk/779511/if-i-could-take-off-to-the-hills-now-i-probably-would-says-godmother-of-freak-folk-vashti-bunyan-ahead-of-rare-fife-gig/",
+   "found": "Vashti Bunyan was just 18 when she discovered the music of Bob Dylan in New York and decided to become a full-time musician.",
+   "citation": "The Courier (Fife) reported that Vashti Bunyan \"was just 18 when she discovered the music of Bob Dylan in New York and decided to become a full-time musician.\"",
+   "sourceTier": "reported",
+   "note": "Journalist states it (no Bunyan quote on the page); Wikipedia adds it was his Freewheelin album. Original courier URL is not openable by read; Internet Archive copy used."
+  },
+  "vashti-bunyan>incredible-string-band": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia: producer Joe Boyd introduced her to the Incredible String Band, Robin Williamson played on her album, and she later stayed in their Glen Row cottages. That is introduction, session work and lodging, not influence; no Bunyan statement of influence found. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Vashti_Bunyan"
+  },
+  "vashti-bunyan>neil-young": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing; Wikipedia article has no mention either way, her Baker's Dozen has no Neil Young pick. Neil Young's first solo album (1969) also post-dates her 1965 start; propose remove unless owner has a source."
+  },
+  "sharon-van-etten>cocteau-twins": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://www.interviewmagazine.com/music/sharon-van-etten-shows-molly-ringwald-her-resting-sad-face",
+   "found": "VAN ETTEN: Scott Walker, Cocteau Twins, Rowland Stuart Howard, Joy Division, Roy Orbison and Celine Dion. Very melodic and orchestral, but also percussive and angsty and intense.",
+   "citation": "Sharon Van Etten to Interview magazine, asked by Molly Ringwald about her musical influences: \"Scott Walker, Cocteau Twins, Rowland Stuart Howard, Joy Division, Roy Orbison and Celine Dion. Very melodic and orchestral, but also percussive and angsty and intense.\"",
+   "sourceTier": "first-person",
+   "note": "Ringwald's question just above it: \"What was some of the playlist of your musical influences?\" Page gives no date."
+  },
+  "sharon-van-etten>omd": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Only statement found: AfterEllen 2010, \"I listen to a lot of OMD, I'm into '80s music a lot\" (and Austin360 2016 lists OMD in a what-are-you-listening-to answer). That is current listening, not formation. Propose: remove unless the owner accepts listening as fandom.",
+   "url": "https://afterellen.com/people/81692-an-interview-with-sharon-van-etten/2",
+   "found": "SVE: Totally! I listen to a lot of OMD, I’m into ’80s music a lot. I have pop songs that I just write for myself but I’m like, “I could totally do this if I wanted to.” I’m into a lot of the new post-punk electronic stuff. I like a lot of different kind of stuff."
+  },
+  "sharon-van-etten>neil-young": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "sharon-van-etten>cat-power": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "sharon-van-etten>liz-phair": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "television>new-york-dolls": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia only has Television supporting the New York Dolls on a five-borough tour and a line that the Dolls were the catalyst for the scene Television belonged to (no Television statement). Support slot and scene, not influence. Propose: remove unless a Verlaine/Lloyd statement turns up.",
+   "url": "https://en.wikipedia.org/wiki/New_York_Dolls"
+  },
+  "red-house-painters>this-mortal-coil": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "No page ties Red House Painters to This Mortal Coil except the shared 4AD label (Wikipedia has no mention on either side). Label adjacency, which is exactly how critics inferred their influences before. Propose: remove."
+  },
+  "red-house-painters>cocteau-twins": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "No page ties Red House Painters to Cocteau Twins except the shared 4AD label (Wikipedia has no mention on either side). Propose: remove."
+  },
+  "julia-holter>neil-young": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "julia-holter>julee-cruise": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "julia-holter>nico": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia: The Guardian said her voice \"faintly recalls Siouxsie Sioux or Nico\" and Under the Radar compared her to Siouxsie meets Kate Bush: vocal resemblance only, no Holter statement. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Julia_Holter"
+  },
+  "julia-holter>siouxsie-and-the-banshees": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia: Guardian and Under the Radar compare her voice to Siouxsie Sioux: resemblance only, no Holter statement. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Julia_Holter"
+  },
+  "angel-olsen>cocteau-twins": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia: Pitchfork likened her album All Mirrors to acts such as the Cure, Cocteau Twins and Siouxsie and the Banshees: a comparison of sound, no Olsen statement. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Angel_Olsen"
+  },
+  "angel-olsen>the-cure": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia: Pitchfork likened her album All Mirrors to acts such as the Cure, Cocteau Twins and Siouxsie and the Banshees: a comparison of sound, no Olsen statement. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Angel_Olsen"
+  },
+  "angel-olsen>siouxsie-and-the-banshees": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia: Pitchfork likened her album All Mirrors to acts such as the Cure, Cocteau Twins and Siouxsie and the Banshees: a comparison of sound, no Olsen statement. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Angel_Olsen"
+  },
+  "angel-olsen>david-bowie": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "angel-olsen>cat-power": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "angel-olsen>liz-phair": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "ethel-cain>fiona-apple": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "ethel-cain>nick-cave-and-the-bad-seeds": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "ethel-cain>cocteau-twins": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "anna-von-hausswolff>swans": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia: she and her sister sang guest vocals on Swans' 2019 Leaving Meaning, and her music has \"odes to ... Swans\" (an association, per a reviewer). A guest spot is not influence; no Hausswolff statement found. Propose: remove unless a source turns up.",
+   "url": "https://en.wikipedia.org/wiki/Anna_von_Hausswolff"
+  },
+  "anna-von-hausswolff>siouxsie-and-the-banshees": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia: her vocals \"are compared to Kate Bush and A Kiss In The Dreamhouse-era Siouxsie Sioux\": resemblance only. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Anna_von_Hausswolff"
+  },
+  "dead-can-dance>cocteau-twins": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia only says the early album \"fit in with the ethereal wave style of label mates Cocteau Twins\": shared 4AD label and genre, not influence. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Dead_Can_Dance"
+  },
+  "tortoise>neu": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://www.billboard.com/articles/news/79057/neu-neu2-neu75",
+   "found": "The pioneering rhythms and sparse atmospherics of guitarist Michael Rother and drummer Klaus Dinger have been reflected in the works of David Bowie, the Sex Pistols, Sonic Youth, Stereolab, and Tortoise, among others.",
+   "citation": "Billboard's review of the Neu! reissues said Neu! \"has been credited with influencing everything from punk to electronica\", its rhythms and atmospherics \"reflected in the works of David Bowie, the Sex Pistols, Sonic Youth, Stereolab, and Tortoise, among others.\"",
+   "sourceTier": "critic",
+   "note": "A reviewer's claim, not a Tortoise quote (Wikipedia's Neu! article reads it as Tortoise \"cited Neu! as an influence\", which the page does not say). Page shows no date on the text read."
+  },
+  "the-stone-roses>the-smiths": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "http://news.bbc.co.uk/1/hi/entertainment/3005033.stm",
+   "found": "Marr's guitar style was a huge building block for more Manchester legends that followed The Smiths - The Stone Roses, with their guitarist John Squire acknowledging the debt he owed to Marr.",
+   "citation": "BBC News, \"The Smiths: the influential alliance\": \"Marr's guitar style was a huge building block for more Manchester legends that followed The Smiths - The Stone Roses, with their guitarist John Squire acknowledging the debt he owed to Marr.\"",
+   "sourceTier": "reported"
+  },
+  "the-stone-roses>the-jesus-and-mary-chain": {
+   "checked": "2026-10-26",
+   "verdict": "print",
+   "url": "https://en.wikipedia.org/wiki/The_Stone_Roses",
+   "found": "their repertoire expanded to include songs such as \"Sugar Spun Sister\", influenced by bands like the Jesus & Mary Chain and the indie-pop era Primal Scream",
+   "sourceTier": "reported",
+   "print": "John Robb, The Stone Roses and the Resurrection of British Pop (Random House), 2001, pp. 154-155",
+   "citation": "Wikipedia, citing John Robb's The Stone Roses and the Resurrection of British Pop (Random House, 2001, pp. 154-155): in 1986 the band's songs such as \"Sugar Spun Sister\" were \"influenced by bands like the Jesus & Mary Chain and the indie-pop era Primal Scream\".",
+   "note": "Page number from Wikipedia's footnote; book not seen. Wikipedia also lists the Jesus and Mary Chain among the band's influences with a separate footnote."
+  },
+  "sigur-ros>talk-talk": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "sigur-ros>brian-eno": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "kurt-vile>bob-dylan": {
+   "checked": "2026-10-26",
+   "verdict": "blocked",
+   "url": "https://www.qobuz.com/be-nl/info/videos/kurt-vile-my-biggest-influences-come-from-the-roots-of-rock-and-country",
+   "note": "Wikipedia: \"He cites songwriters Randy Newman, Bob Dylan, Neil Young, and Bruce Springsteen as influences\", footnoted to this Qobuz video (16 Nov 2018, \"My biggest influences come from the roots of Rock and Country\"). The page has no transcript, so the video must be watched for Vile naming Dylan. His Quietus Baker's Dozens only mention Dylan in passing (Randy Newman \"says it better than Bob Dylan\")."
+  },
+  "yeah-yeah-yeahs>pixies": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "idles>gang-of-four": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://soyoungmagazine.com/interview-idles/",
+   "found": "We wanted to be a post-punk band and our influences were clear as day (Joy Division, Gang of Four, Bauhaus etc.)",
+   "citation": "IDLES' Joe to So Young Magazine (2017), asked who influences the band: \"We started out wanting to sound like our heroes. We wanted to be a post-punk band and our influences were clear as day (Joy Division, Gang of Four, Bauhaus etc.)\"",
+   "sourceTier": "first-person",
+   "note": "Speaker is \"Joe\" (Joe Talbot) per the page; dated 05 Jun 2017."
+  },
+  "idles>joy-division": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://soyoungmagazine.com/interview-idles/",
+   "found": "We wanted to be a post-punk band and our influences were clear as day (Joy Division, Gang of Four, Bauhaus etc.)",
+   "citation": "IDLES' Joe to So Young Magazine (2017), asked who influences the band: \"We started out wanting to sound like our heroes. We wanted to be a post-punk band and our influences were clear as day (Joy Division, Gang of Four, Bauhaus etc.)\"",
+   "sourceTier": "first-person",
+   "note": "Speaker is \"Joe\" (Joe Talbot) per the page; dated 05 Jun 2017."
+  },
+  "mogwai>talk-talk": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing; Mogwai Baker's Dozen has no Talk Talk pick"
+  },
+  "st-vincent>liz-phair": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "the-strokes>television": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia: \"While critics noted the influence of CBGB stalwarts Television, Casablancas and bandmates said they had never heard the band, instead citing the Velvet Underground and the Doors as reference points\" (footnote: Rolling Stone, \"The Strokes of Genius\"). I opened the Rolling Stone page via the Internet Archive and it does not carry that sentence either way. Propose: remove, or record as a denial if the owner finds the source.",
+   "url": "https://en.wikipedia.org/wiki/The_Strokes"
+  },
+  "silver-jews>leonard-cohen": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "animal-collective>radiohead": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing; Animal Collective Baker's Dozen picks do not name Radiohead"
+  },
+  "mitski>cat-power": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "mitski>liz-phair": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "sleater-kinney>liz-phair": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Only link on Wikipedia is a 2026 co-headlining tour (touring, not influence); no Sleater-Kinney statement found. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Liz_Phair"
+  },
+  "interpol>television": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia: the sound \"draws comparisons to post-punk bands such as Joy Division, Television and the Chameleons\" (Q, 2007): resemblance only, and the owner's notes record Interpol denials of the obvious comparisons. Propose: remove or record as denial.",
+   "url": "https://en.wikipedia.org/wiki/Interpol_(band)"
+  },
+  "bon-iver>talk-talk": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "geese>television": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "geese>talking-heads": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "phoebe-bridgers>liz-phair": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "beach-house>mazzy-star": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "beach-house>slowdive": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "beach-house>broadcast": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "japanese-breakfast>bjork": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://pitchfork.com/features/profile/japanese-breakfast-interview-jubilee-crying-in-h-mart/",
+   "found": "“I was thinking about what musicians with long careers do with their third albums,” she says, pointing to Björk’s Homogenic and Wilco’s Summerteeth .",
+   "citation": "Michelle Zauner to Pitchfork, on making her third album Jubilee: \"I was thinking about what musicians with long careers do with their third albums,\" pointing to Björk's Homogenic and Wilco's Summerteeth.",
+   "sourceTier": "first-person",
+   "note": "Pitchfork, \"Japanese Breakfast Is Working the Pain Away\". Page text read has no date (Wikipedia gives March 2021). Same passage supports japanese-breakfast>wilco."
+  },
+  "japanese-breakfast>liz-phair": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "japanese-breakfast>wilco": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://pitchfork.com/features/profile/japanese-breakfast-interview-jubilee-crying-in-h-mart/",
+   "found": "“I was thinking about what musicians with long careers do with their third albums,” she says, pointing to Björk’s Homogenic and Wilco’s Summerteeth .",
+   "citation": "Michelle Zauner to Pitchfork, on making her third album Jubilee: \"I was thinking about what musicians with long careers do with their third albums,\" pointing to Björk's Homogenic and Wilco's Summerteeth.",
+   "sourceTier": "first-person",
+   "note": "Pitchfork also has her pointing to Wilco's Summerteeth as a model for her third album."
+  },
+  "japanese-breakfast>destroyer": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "adrianne-lenker>nick-drake": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "fontaines-dc>leonard-cohen": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "grouper>townes-van-zandt": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "joanna-newsom>roy-harper": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://bombmagazine.org/articles/2011/07/01/joanna-newsom-interviewed/",
+   "found": "There must have been a solid two years in particular when I didn’t listen to anything except Roy Harper. So of course you have influenced the way I write, especially in terms of how those expansive song lengths can be navigated and structured, and pushed and pulled between instrumentation and leanness.…",
+   "citation": "Joanna Newsom to Roy Harper in BOMB (2011): \"There must have been a solid two years in particular when I didn't listen to anything except Roy Harper. So of course you have influenced the way I write, especially in terms of how those expansive song lengths can be navigated and structured, and pushed and pulled between instrumentation and leanness.\"",
+   "sourceTier": "first-person",
+   "note": "Harper is the interviewer in this piece, but this passage is Newsom speaking to him. Her 2011 date is from the URL (2011/07/01)."
+  },
+  "alvvays>the-sundays": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing; Wikipedia has no mention on either side. Classic comparison, no influence statement found; propose remove unless a real one turns up."
+  },
+  "alvvays>slowdive": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing; Wikipedia has no mention on either side. Classic comparison, no influence statement found; propose remove unless a real one turns up."
+  },
+  "caroline-polachek>imogen-heap": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "get-up-kids>drive-like-jehu": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://web.archive.org/web/20110128074729/https://www.altpress.com/features/entry/track_by_track_the_get_up_kids",
+   "found": "The front half has an almost Latin feel, then it gets so quiet until the chaotic and tense outro. My guitar is attempting to channel Drive Like Jehu.",
+   "citation": "Matt Pryor of The Get Up Kids to Alternative Press (2011), on a song from There Are Rules: \"My guitar is attempting to channel Drive Like Jehu.\"",
+   "sourceTier": "first-person",
+   "note": "Real quote on the archived page (page dated January 28, 2011; Pryor named as the speaker). It is about one song on one album, so a thin first-person influence; owner may judge. NB: the project notes say this quote was fabricated by a search summary; the Internet Archive copy of the Alt Press page does carry it."
+  },
+  "get-up-kids>the-jesus-lizard": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://www.dallasobserver.com/music/my-first-show-the-get-up-kids-jim-suptic-got-a-black-eye-in-the-pit-of-a-helmet-the-jesus-lizard-and-therapy-show-when-he-was-15-7051777",
+   "found": "Given the fact that his high school band, Kingpin, was heavily influenced by Slint, The Jesus Lizard and bands on the Amphetamine Reptile label, it comes as no surprise what show he saw first with his own money.",
+   "citation": "The Dallas Observer reported that Get Up Kids guitarist Jim Suptic's high school band, Kingpin, \"was heavily influenced by Slint, The Jesus Lizard and bands on the Amphetamine Reptile label\"; The Jesus Lizard was on the bill of the first show he paid to see, at 15.",
+   "sourceTier": "reported",
+   "note": "Suptic's pre-Get Up Kids band, so it is Suptic personally rather than the band; owner may judge. Page gives no year in the text read."
+  },
+  "mono>mogwai": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "mono>godspeed-you-black-emperor": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "do-make-say-think>godspeed-you-black-emperor": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Nothing found. Wikipedia has no statement either way; the only links are the shared label (Constellation), the Canadian post-rock scene and formation a year apart, none of which is influence. Propose: remove."
+  },
+  "wolf-alice>my-bloody-valentine": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "wolf-alice>slowdive": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "wolf-alice>pixies": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing"
+  },
+  "deerhunter>my-bloody-valentine": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing; Bradford Cox's Baker's Dozen does not name them"
+  },
+  "deerhunter>sonic-youth": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia quotes a New York Times concert review (Ben Ratliff, 9 Dec 2008) naming \"Sonic Youth's noise breakdowns\" among Deerhunter's ingredients: a reviewer's resemblance list, not Deerhunter speaking. Cox's Baker's Dozen (slide 7) only says a lot of kids got into free jazz through Sonic Youth, while he got there through Stereolab. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Deerhunter"
+  },
+  "parannoul>slowdive": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing; also opened the Sonemic (RYM) and Sleep Like a Pillow interviews: neither names them. Only a Consequence of Sound comparison of the sound to Slowdive, Ride and MBV (via Wikipedia)."
+  },
+  "parannoul>my-bloody-valentine": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing; also opened the Sonemic (RYM) and Sleep Like a Pillow interviews: neither names them. Only a Consequence of Sound comparison of the sound to Slowdive, Ride and MBV (via Wikipedia)."
+  },
+  "parannoul>fishmans": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "free routes only (Wikipedia both sides, Quietus): nothing; also opened the Sonemic (RYM) and Sleep Like a Pillow interviews: neither names them. Only a Consequence of Sound comparison of the sound to Slowdive, Ride and MBV (via Wikipedia)."
+  },
+  "silversun-pickups>my-bloody-valentine": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia: first two albums \"are frequently compared to the styles of the Smashing Pumpkins and My Bloody Valentine\" (Rolling Stone review): a comparison, no band statement found. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Silversun_Pickups"
+  },
+  "sweet-trip>cocteau-twins": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://web.archive.org/web/2016/https://rateyourmusic.com/feature/sonemic-interview-sweet-trip/",
+   "found": "How to sing like a pro and make everyone fall in love with you or let you fall in love with all of them.",
+   "citation": "Valerie Cooper of Sweet Trip, in a Sonemic interview with Rate Your Music, choosing Cocteau Twins' Lorelei among the band's album inspirations: \"How to sing like a pro and make everyone fall in love with you or let you fall in love with all of them.\"",
+   "sourceTier": "first-person",
+   "note": "Page is \"Sweet Trip's album inspirations - Valerie\": the comment sits under the Lorelei (1985) entry. Published December 20th, 2020."
+  }
+ },
+ "candidates": [
+  {
+   "source": "get-up-kids",
+   "target": "slint",
+   "kind": "influence",
+   "speaker": "Dallas Observer (on Jim Suptic)",
+   "sentence": "Given the fact that his high school band, Kingpin, was heavily influenced by Slint, The Jesus Lizard and bands on the Amphetamine Reptile label, it comes as no surprise what show he saw first with his own money.",
+   "url": "https://www.dallasobserver.com/music/my-first-show-the-get-up-kids-jim-suptic-got-a-black-eye-in-the-pit-of-a-helmet-the-jesus-lizard-and-therapy-show-when-he-was-15-7051777"
+  }
+ ],
+ "offMap": [
+  {
+   "name": "Scott Walker",
+   "namedBy": "sharon-van-etten",
+   "sentence": "VAN ETTEN: Scott Walker, Cocteau Twins, Rowland Stuart Howard, Joy Division, Roy Orbison and Celine Dion.",
+   "url": "https://www.interviewmagazine.com/music/sharon-van-etten-shows-molly-ringwald-her-resting-sad-face"
+  },
+  {
+   "name": "Rowland S. Howard",
+   "namedBy": "sharon-van-etten",
+   "sentence": "VAN ETTEN: Scott Walker, Cocteau Twins, Rowland Stuart Howard, Joy Division, Roy Orbison and Celine Dion.",
+   "url": "https://www.interviewmagazine.com/music/sharon-van-etten-shows-molly-ringwald-her-resting-sad-face"
+  },
+  {
+   "name": "Bauhaus",
+   "namedBy": "idles",
+   "sentence": "We wanted to be a post-punk band and our influences were clear as day (Joy Division, Gang of Four, Bauhaus etc.)",
+   "url": "https://soyoungmagazine.com/interview-idles/"
+  },
+  {
+   "name": "Weatherday",
+   "namedBy": "parannoul",
+   "sentence": "Parannoul cited Weatherday's Come In (2019) as his main influence for the album",
+   "url": "https://en.wikipedia.org/wiki/To_See_the_Next_Part_of_the_Dream"
+  }
+ ],
+ "finished": true
+}

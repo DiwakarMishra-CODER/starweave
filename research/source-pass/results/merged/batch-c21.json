@@ -1,0 +1,715 @@
+{
+ "name": "c21",
+ "made": "2026-10-26",
+ "groups": [
+  {
+   "id": "reported:yo-la-tengo",
+   "phase": "reported",
+   "speaker": "Yo La Tengo",
+   "links": [
+    {
+     "key": "yo-la-tengo>big-star",
+     "from": "Yo La Tengo",
+     "to": "Big Star",
+     "fromYear": 1984,
+     "toYear": 1971,
+     "citation": "Ira Kaplan discovered Big Star via Chris Stamey and an Alex Chilton gig at CBGB.",
+     "sourceTier": "reported",
+     "confidence": 0.7
+    }
+   ]
+  },
+  {
+   "id": "reported:bonnie-prince-billy",
+   "phase": "reported",
+   "speaker": "Bonnie Prince Billy",
+   "links": [
+    {
+     "key": "bonnie-prince-billy>husker-du",
+     "from": "Bonnie Prince Billy",
+     "to": "Hüsker Dü",
+     "fromYear": 1993,
+     "toYear": 1979,
+     "citation": "Time Out's review of Alan Licht's biography of Will Oldham describes his musical education as coming from catching Hüsker Dü and Big Black shows.",
+     "sourceTier": "reported",
+     "confidence": 0.7
+    },
+    {
+     "key": "bonnie-prince-billy>big-black",
+     "from": "Bonnie Prince Billy",
+     "to": "Big Black",
+     "fromYear": 1993,
+     "toYear": 1981,
+     "citation": "Time Out's review of the Alan Licht biography frames Oldham's exposure to Big Black as musical education from attending their shows, but Full Stop's review of the same book describes his rise in Louisville as happening \"first and foremost as a fan,\" noting the connection also ran through his brothers Paul and Ned, who played in bands with Steve Albini while Oldham himself was doing theatre.",
+     "sourceTier": "reported",
+     "confidence": 0.6
+    }
+   ]
+  },
+  {
+   "id": "reported:yeule",
+   "phase": "reported",
+   "speaker": "yeule",
+   "links": [
+    {
+     "key": "yeule>pixies",
+     "from": "yeule",
+     "to": "Pixies",
+     "fromYear": 2012,
+     "toYear": 1986,
+     "citation": "DIY Magazine (Sept 2023): \"Oh we should totally do some Pixies shit, or Smashing Pumpkins!\"",
+     "sourceTier": "reported",
+     "confidence": 0.6
+    },
+    {
+     "key": "yeule>radiohead",
+     "from": "yeule",
+     "to": "Radiohead",
+     "fromYear": 2012,
+     "toYear": 1985,
+     "citation": "DIY Magazine (Sept 2023), naming Radiohead among a cluster of '90s and 2000s reference points.",
+     "sourceTier": "reported",
+     "confidence": 0.6
+    }
+   ]
+  },
+  {
+   "id": "reported:descendents",
+   "phase": "reported",
+   "speaker": "Descendents",
+   "links": [
+    {
+     "key": "descendents>the-stooges",
+     "from": "Descendents",
+     "to": "The Stooges",
+     "fromYear": 1977,
+     "toYear": 1967,
+     "citation": "KCBD's coverage of a 2026 Lubbock show reports that Bill Stevenson says a combination of the past generation of rock like the Stooges and the Descendents' own contemporaries in the early Los Angeles punk scene were huge influences -- reporter's paraphrase, not a direct quote.",
+     "sourceTier": "reported",
+     "confidence": 0.6
+    }
+   ]
+  },
+  {
+   "id": "reported:hot-chip",
+   "phase": "reported",
+   "speaker": "Hot Chip",
+   "links": [
+    {
+     "key": "hot-chip>omd",
+     "from": "Hot Chip",
+     "to": "Orchestral Manoeuvres in the Dark",
+     "fromYear": 2000,
+     "toYear": 1978,
+     "citation": "Wikipedia, cited to The Guardian: the band has paid \"homage\" to OMD.",
+     "sourceTier": "reported",
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "reported:townes-van-zandt",
+   "phase": "reported",
+   "speaker": "Townes Van Zandt",
+   "links": [
+    {
+     "key": "townes-van-zandt>bob-dylan",
+     "from": "Townes Van Zandt",
+     "to": "Bob Dylan",
+     "fromYear": 1965,
+     "toYear": 1961,
+     "citation": "Encyclopedia.com writes that Townes Van Zandt took up guitar at fifteen after being drawn in by blues records and early Bob Dylan, and FolkWorld has cited Dylan as a major influence on him.",
+     "sourceTier": "reported",
+     "confidence": 0.75
+    }
+   ]
+  },
+  {
+   "id": "reported:king-gizzard-and-the-lizard-wizard",
+   "phase": "reported",
+   "speaker": "King Gizzard and the Lizard Wizard",
+   "links": [
+    {
+     "key": "king-gizzard-and-the-lizard-wizard>kraftwerk",
+     "from": "King Gizzard and the Lizard Wizard",
+     "to": "Kraftwerk",
+     "fromYear": 2010,
+     "toYear": 1970,
+     "citation": "Loudwire/Full Metal Jackie: the host says \"You mentioned Kraftwerk and Devo... that type of thing definitely has influenced Gizz a lot over the years.\" Mackenzie raised the names; the host supplied the influence framing.",
+     "sourceTier": "reported",
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "reported:sheena-ringo",
+   "phase": "reported",
+   "speaker": "Sheena Ringo",
+   "links": [
+    {
+     "key": "sheena-ringo>bjork",
+     "from": "Sheena Ringo",
+     "to": "Björk",
+     "fromYear": 1998,
+     "toYear": 1977,
+     "citation": "Red Bull Music Academy's profile reports that at 15, auditioning for a talent agency, Sheena listed Bjork among her tastes.",
+     "sourceTier": "reported",
+     "confidence": 0.6
+    }
+   ]
+  },
+  {
+   "id": "reported:steve-roach",
+   "phase": "reported",
+   "speaker": "Steve Roach",
+   "links": [
+    {
+     "key": "steve-roach>brian-eno",
+     "from": "Steve Roach",
+     "to": "Brian Eno",
+     "fromYear": 1981,
+     "toYear": 1971,
+     "citation": "Roach's documented formative period describes him as a teenager greatly influenced by electronic music, particularly Klaus Schulze's Timewind and the work of Tangerine Dream and Brian Eno.",
+     "sourceTier": "reported",
+     "confidence": 0.55
+    }
+   ]
+  },
+  {
+   "id": "reported:teenage-jesus-and-the-jerks",
+   "phase": "reported",
+   "speaker": "Teenage Jesus and the Jerks",
+   "links": [
+    {
+     "key": "teenage-jesus-and-the-jerks>mars",
+     "from": "Teenage Jesus and the Jerks",
+     "to": "Mars",
+     "fromYear": 1976,
+     "toYear": 1975,
+     "citation": "Wikipedia: Lydia Lunch \"was spurred to start a band after seeing one of Mars' earlier performances.\"",
+     "sourceTier": "reported",
+     "confidence": 0.75
+    }
+   ]
+  },
+  {
+   "id": "reported:the-rapture",
+   "phase": "reported",
+   "speaker": "The Rapture",
+   "links": [
+    {
+     "key": "the-rapture>gang-of-four",
+     "from": "The Rapture",
+     "to": "Gang of Four",
+     "fromYear": 1998,
+     "toYear": 1976,
+     "citation": "Wikipedia (\"House of Jealous Lovers\"): the song \"follows British predecessors such as Gang of Four, Public Image Ltd, and Happy Mondays\"; corroborated by Rolling Stone Australia's retrospective (\"ornery Gang of Four-style guitar slashing\") and the band covering \"Damaged Goods\" live.",
+     "sourceTier": "reported",
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "reported:tricky",
+   "phase": "reported",
+   "speaker": "Tricky",
+   "links": [
+    {
+     "key": "tricky>massive-attack",
+     "from": "Tricky",
+     "to": "Massive Attack",
+     "fromYear": 1994,
+     "toYear": 1988,
+     "citation": "Tricky joined The Wild Bunch sound system in the mid-1980s, which evolved into Massive Attack by 1987; he rapped on Blue Lines (1991) and Protection (1994) before going solo -- a formative apprenticeship, widely documented (Wikipedia; corroborated by NME's Maxinquaye retrospective).",
+     "sourceTier": "reported",
+     "confidence": 0.8
+    },
+    {
+     "key": "tricky>siouxsie-and-the-banshees",
+     "from": "Tricky",
+     "to": "Siouxsie & The Banshees",
+     "fromYear": 1994,
+     "toYear": 1976,
+     "citation": "Toby Manning, The Quietus (\"The Vanishing Twin: Tricky's Nearly God Turns 30\"): Siouxsie and the Banshees' \"Tattoo\" is \"proto trip hop\" that \"helped Tricky to shape his style\"; he covered it as the opening track of Nearly God (1996).",
+     "sourceTier": "reported",
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "critic:cocteau-twins",
+   "phase": "critic",
+   "speaker": "Cocteau Twins",
+   "links": [
+    {
+     "key": "cocteau-twins>joy-division",
+     "from": "Cocteau Twins",
+     "to": "Joy Division",
+     "fromYear": 1979,
+     "toYear": 1976,
+     "citation": "Bill Prince, \"New 2 U: Cocteau Twins,\" Sounds (11 Sept 1982), describing the band as \"mixing strong Siouxsie and the Banshees and Joy Division influences\" -- a contemporary reviewer's reading rather than the band's own account.",
+     "sourceTier": "critic",
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "critic:radiohead",
+   "phase": "critic",
+   "speaker": "Radiohead",
+   "links": [
+    {
+     "key": "radiohead>silver-apples",
+     "from": "Radiohead",
+     "to": "Silver Apples",
+     "fromYear": 1985,
+     "toYear": 1967,
+     "citation": "Wikipedia/Silver Apples lists Radiohead among influenced artists in a general reference-work sentence; no direct quote found.",
+     "sourceTier": "critic",
+     "confidence": 0.4
+    }
+   ]
+  },
+  {
+   "id": "critic:elliott-smith",
+   "phase": "critic",
+   "speaker": "Elliott Smith",
+   "links": [
+    {
+     "key": "elliott-smith>sebadoh",
+     "from": "Elliott Smith",
+     "to": "Sebadoh",
+     "fromYear": 1994,
+     "toYear": 1986,
+     "citation": "A music-directory retrospective asserts Sebadoh's lo-fi approach influenced Modest Mouse, Elliott Smith, the Microphones/Mount Eerie, and Car Seat Headrest.",
+     "sourceTier": "critic",
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "critic:mogwai",
+   "phase": "critic",
+   "speaker": "Mogwai",
+   "links": [
+    {
+     "key": "mogwai>bark-psychosis",
+     "from": "Mogwai",
+     "to": "Bark Psychosis",
+     "fromYear": 1995,
+     "toYear": 1986,
+     "citation": "Spectrum Culture names Bark Psychosis as an influence on Mogwai's sound.",
+     "sourceTier": "critic",
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "critic:american-football",
+   "phase": "critic",
+   "speaker": "American Football",
+   "links": [
+    {
+     "key": "american-football>drive-like-jehu",
+     "from": "American Football",
+     "to": "Drive Like Jehu",
+     "fromYear": 1997,
+     "toYear": 1990,
+     "citation": "Crack Magazine, in the writer's own list of the band's touchstones rather than a quote from Steve Holmes.",
+     "sourceTier": "critic",
+     "confidence": 0.55
+    },
+    {
+     "key": "american-football>low",
+     "from": "American Football",
+     "to": "Low",
+     "fromYear": 1997,
+     "toYear": 1993,
+     "citation": "Crack Magazine -- journalist's list rather than a direct Holmes quote, flagged weaker-tier.",
+     "sourceTier": "critic",
+     "confidence": 0.55
+    },
+    {
+     "key": "american-football>tortoise",
+     "from": "American Football",
+     "to": "Tortoise",
+     "fromYear": 1997,
+     "toYear": 1990,
+     "citation": "The Daily Illini and Bandcamp Daily both trace American Football's instrumental post-rock leanings to the members' exposure to Tortoise's music in the Chicago scene where both bands were based.",
+     "sourceTier": "critic",
+     "confidence": 0.6
+    }
+   ]
+  },
+  {
+   "id": "critic:snail-mail",
+   "phase": "critic",
+   "speaker": "Snail Mail",
+   "links": [
+    {
+     "key": "snail-mail>duster",
+     "from": "Snail Mail",
+     "to": "Duster",
+     "fromYear": 2015,
+     "toYear": 1996,
+     "citation": "AllMusic's prose biography of Duster credits the band's patient, minimal approach as an influence on artists including Snail Mail and Alex G.",
+     "sourceTier": "critic",
+     "confidence": 0.6
+    }
+   ]
+  },
+  {
+   "id": "critic:the-jesus-and-mary-chain",
+   "phase": "critic",
+   "speaker": "The Jesus and Mary Chain",
+   "links": [
+    {
+     "key": "the-jesus-and-mary-chain>kraftwerk",
+     "from": "The Jesus and Mary Chain",
+     "to": "Kraftwerk",
+     "fromYear": 1983,
+     "toYear": 1970,
+     "citation": "LA Times: their sound is where \"the Shangri-Las, the Velvet Underground, the Beach Boys, Kraftwerk and the Stooges harmoniously converged.\"",
+     "sourceTier": "critic",
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "critic:unwound",
+   "phase": "critic",
+   "speaker": "Unwound",
+   "links": [
+    {
+     "key": "unwound>sonic-youth",
+     "from": "Unwound",
+     "to": "Sonic Youth",
+     "fromYear": 1991,
+     "toYear": 1981,
+     "citation": "Fred Thomas, AllMusic bio -- critic-sourced rather than a member quote.",
+     "sourceTier": "critic",
+     "confidence": 0.6
+    },
+    {
+     "key": "unwound>television",
+     "from": "Unwound",
+     "to": "Television",
+     "fromYear": 1991,
+     "toYear": 1973,
+     "citation": "Fred Thomas, AllMusic bio -- critic-sourced rather than a member quote. Fred Thomas, AllMusic bio -- critic-sourced and weaker-tier.",
+     "sourceTier": "critic",
+     "confidence": 0.5
+    },
+    {
+     "key": "unwound>can",
+     "from": "Unwound",
+     "to": "Can",
+     "fromYear": 1991,
+     "toYear": 1968,
+     "citation": "Fred Thomas, AllMusic bio -- critic-sourced rather than a member quote. Fred Thomas, AllMusic bio -- critic-sourced and weaker-tier.",
+     "sourceTier": "critic",
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "critic:swans",
+   "phase": "critic",
+   "speaker": "Swans",
+   "links": [
+    {
+     "key": "swans>this-heat",
+     "from": "Swans",
+     "to": "This Heat",
+     "fromYear": 1982,
+     "toYear": 1976,
+     "citation": "AllMusic bio, Fred Thomas -- a single shared critic-attributed citation rather than an individual quote, flagged weaker-tier. AllMusic bio, Fred Thomas -- critic-attributed, weaker-tier.",
+     "sourceTier": "critic",
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "critic:modest-mouse",
+   "phase": "critic",
+   "speaker": "Modest Mouse",
+   "links": [
+    {
+     "key": "modest-mouse>sebadoh",
+     "from": "Modest Mouse",
+     "to": "Sebadoh",
+     "fromYear": 1992,
+     "toYear": 1986,
+     "citation": "A music-directory retrospective asserts Sebadoh's lo-fi approach influenced Modest Mouse, Elliott Smith, the Microphones/Mount Eerie, and Car Seat Headrest.",
+     "sourceTier": "critic",
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "critic:stereolab",
+   "phase": "critic",
+   "speaker": "Stereolab",
+   "links": [
+    {
+     "key": "stereolab>velvet-underground",
+     "from": "Stereolab",
+     "to": "The Velvet Underground",
+     "fromYear": 1990,
+     "toYear": 1965,
+     "citation": "Jim Sullivan, The Boston Globe (5 Nov 1997), on a band \"often pegged as Velvet Underground-influenced retro-futurists\"; Barney Hoskyns in Rolling Stone (Oct 1997) similarly described Dots and Loops moving \"ever further away from the one-chord Velvets drone-mesh of its early days.\" Critics' framing throughout -- Tim Gane has spoken about Neu!, not the Velvet Underground.",
+     "sourceTier": "critic",
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "critic:brand-new",
+   "phase": "critic",
+   "speaker": "Brand New",
+   "links": [
+    {
+     "key": "brand-new>husker-du",
+     "from": "Brand New",
+     "to": "Hüsker Dü",
+     "fromYear": 2000,
+     "toYear": 1979,
+     "citation": "CHARTattack (Nov 25, 2009): \"Tierney's bass playing emulated Husker Du and The Jesus Lizard.\"",
+     "sourceTier": "critic",
+     "confidence": 0.75
+    }
+   ]
+  },
+  {
+   "id": "critic:galaxie-500",
+   "phase": "critic",
+   "speaker": "Galaxie 500",
+   "links": [
+    {
+     "key": "galaxie-500>big-star",
+     "from": "Galaxie 500",
+     "to": "Big Star",
+     "fromYear": 1987,
+     "toYear": 1971,
+     "citation": "Wikipedia Slowcore: formative influences named as VU, Modern Lovers, Big Star, Spacemen 3.",
+     "sourceTier": "critic",
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "critic:sufjan-stevens",
+   "phase": "critic",
+   "speaker": "Sufjan Stevens",
+   "links": [
+    {
+     "key": "sufjan-stevens>neutral-milk-hotel",
+     "from": "Sufjan Stevens",
+     "to": "Neutral Milk Hotel",
+     "fromYear": 2000,
+     "toYear": 1989,
+     "citation": "Music-directory retrospective naming Bon Iver, Sufjan Stevens and Phoebe Bridgers among its citers.",
+     "sourceTier": "critic",
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "critic:animal-collective",
+   "phase": "critic",
+   "speaker": "Animal Collective",
+   "links": [
+    {
+     "key": "animal-collective>olivia-tremor-control",
+     "from": "Animal Collective",
+     "to": "Olivia Tremor Control",
+     "fromYear": 2003,
+     "toYear": 1992,
+     "citation": "Stereogum has written that there is \"probably no Animal Collective without the Olivias clearing a path first\" -- a claim about causal precedence rather than mere sonic resemblance.",
+     "sourceTier": "critic",
+     "confidence": 0.55
+    }
+   ]
+  },
+  {
+   "id": "critic:bon-iver",
+   "phase": "critic",
+   "speaker": "Bon Iver",
+   "links": [
+    {
+     "key": "bon-iver>neutral-milk-hotel",
+     "from": "Bon Iver",
+     "to": "Neutral Milk Hotel",
+     "fromYear": 2007,
+     "toYear": 1989,
+     "citation": "Music-directory retrospective naming Bon Iver, Sufjan Stevens and Phoebe Bridgers among its citers.",
+     "sourceTier": "critic",
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "critic:bright-eyes",
+   "phase": "critic",
+   "speaker": "Bright Eyes",
+   "links": [
+    {
+     "key": "bright-eyes>neutral-milk-hotel",
+     "from": "Bright Eyes",
+     "to": "Neutral Milk Hotel",
+     "fromYear": 1995,
+     "toYear": 1989,
+     "citation": "Named as a citer in three independent retrospectives, each listing Arcade Fire, the Decemberists, Beirut and Bright Eyes together.",
+     "sourceTier": "critic",
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "critic:fleet-foxes",
+   "phase": "critic",
+   "speaker": "Fleet Foxes",
+   "links": [
+    {
+     "key": "fleet-foxes>neutral-milk-hotel",
+     "from": "Fleet Foxes",
+     "to": "Neutral Milk Hotel",
+     "fromYear": 2006,
+     "toYear": 1989,
+     "citation": "Ball State Daily's 20th-anniversary piece: the album caught the attention of those who would start bands like Arcade Fire, the Decemberists and Fleet Foxes, all indebted to its sound.",
+     "sourceTier": "critic",
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "critic:minutemen",
+   "phase": "critic",
+   "speaker": "Minutemen",
+   "links": [
+    {
+     "key": "minutemen>dead-kennedys",
+     "from": "Minutemen",
+     "to": "Dead Kennedys",
+     "fromYear": 1980,
+     "toYear": 1978,
+     "citation": "Wikipedia/Dead Kennedys \"Influence\" section, AllMusic-sourced \"Similar Artists\" listing rather than a member quote -- flagged weaker-tier.",
+     "sourceTier": "critic",
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "critic:phoebe-bridgers",
+   "phase": "critic",
+   "speaker": "Phoebe Bridgers",
+   "links": [
+    {
+     "key": "phoebe-bridgers>neutral-milk-hotel",
+     "from": "Phoebe Bridgers",
+     "to": "Neutral Milk Hotel",
+     "fromYear": 2014,
+     "toYear": 1989,
+     "citation": "Music-directory retrospective naming Bon Iver, Sufjan Stevens and Phoebe Bridgers among its citers.",
+     "sourceTier": "critic",
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "critic:sigur-ros",
+   "phase": "critic",
+   "speaker": "Sigur Rós",
+   "links": [
+    {
+     "key": "sigur-ros>bark-psychosis",
+     "from": "Sigur Rós",
+     "to": "Bark Psychosis",
+     "fromYear": 1994,
+     "toYear": 1986,
+     "citation": "Spectrum Culture names Bark Psychosis as an influence on Sigur Ros's sound.",
+     "sourceTier": "critic",
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "critic:broadcast",
+   "phase": "critic",
+   "speaker": "Broadcast",
+   "links": [
+    {
+     "key": "broadcast>stereolab",
+     "from": "Broadcast",
+     "to": "Stereolab",
+     "fromYear": 1995,
+     "toYear": 1990,
+     "citation": "Mikey Jones, \"The Essential... Broadcast,\" Fact Magazine (19 Feb 2015), where Stereolab appears as a comparison critics reached for in the band's early years rather than as an influence either member claimed.",
+     "sourceTier": "critic",
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "critic:la-dispute",
+   "phase": "critic",
+   "speaker": "La Dispute",
+   "links": [
+    {
+     "key": "la-dispute>black-flag",
+     "from": "La Dispute",
+     "to": "Black Flag",
+     "fromYear": 2004,
+     "toYear": 1976,
+     "citation": "Jacob Fricke, The Badger Herald: Black Flag's My War (spoken-word/hardcore split) \"acted as an influence on La Dispute's style\" -- critic-only framing.",
+     "sourceTier": "critic",
+     "confidence": 0.6
+    }
+   ]
+  },
+  {
+   "id": "critic:sophie",
+   "phase": "critic",
+   "speaker": "SOPHIE",
+   "links": [
+    {
+     "key": "sophie>aphex-twin",
+     "from": "SOPHIE",
+     "to": "Aphex Twin",
+     "fromYear": 2013,
+     "toYear": 1992,
+     "citation": "Morning Star's review of a Meltdown-era live set described her as \"borrowing equally from the jarring beats of Warp acts like Aphex Twin and Autechre to the mellifluous harmonies of a Madonna vocal.\"",
+     "sourceTier": "critic",
+     "confidence": 0.6
+    },
+    {
+     "key": "sophie>autechre",
+     "from": "SOPHIE",
+     "to": "Autechre",
+     "fromYear": 2013,
+     "toYear": 1987,
+     "citation": "Morning Star's review of a Meltdown-era live set described her as \"borrowing equally from the jarring beats of Warp acts like Aphex Twin and Autechre to the mellifluous harmonies of a Madonna vocal.\"",
+     "sourceTier": "critic",
+     "confidence": 0.6
+    }
+   ]
+  },
+  {
+   "id": "critic:the-national",
+   "phase": "critic",
+   "speaker": "The National",
+   "links": [
+    {
+     "key": "the-national>leonard-cohen",
+     "from": "The National",
+     "to": "Leonard Cohen",
+     "fromYear": 1999,
+     "toYear": 1967,
+     "citation": "NPR: melancholy rock in the spirit of Joy Division or Leonard Cohen; Far Out frames the literary sensibility as building on Dylan and Cohen.",
+     "sourceTier": "critic",
+     "confidence": 0.65
+    }
+   ]
+  }
+ ]
+}

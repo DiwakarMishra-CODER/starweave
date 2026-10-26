@@ -49,11 +49,21 @@ async function get(url: string): Promise<string | null> {
 // under it, up to the page's own navigation.
 function parse(text: string): { n: number | null; heading: string; body: string } | null {
   const lines = text.split('\n');
-  const at = lines.findIndex(l => /^#{1,3}\s*\d+\.\s/.test(l.trim()));
+  const at = lines.findIndex(l => /^#{1,3}\s*\d+\.(\s|$)/.test(l.trim()));
   if (at < 0) return null;
-  const heading = lines[at].replace(/^#+\s*/, '').replace(/[_*]/g, '').trim();
+  let heading = lines[at].replace(/^#+\s*/, '').replace(/[_*]/g, '').trim();
+  let rest = lines.slice(at + 1);
+  // Some dozens (Low's, Swans', 2012-13) print only "# 2." and open the
+  // next paragraph with the pick in bold: "**The Clash – _Combat Rock_** That was...".
+  if (/^\d+\.$/.test(heading)) {
+    const i = rest.findIndex(l => l.trim() && !/^!\[|^\[!\[/.test(l.trim()));
+    const m = rest[i]?.trim().match(/^\*\*(.+?)\*\*\s*(.*)$/);
+    if (!m) return null;
+    heading = `${heading} ${m[1].replace(/[_*]/g, '').trim()}`;
+    rest = [m[2], ...rest.slice(i + 1)];
+  }
   const body: string[] = [];
-  for (const l of lines.slice(at + 1)) {
+  for (const l of rest) {
     const s = l.trim();
     if (/^(Prev|Next|Next Selection|More on |More from )/.test(s)) break;
     if (!s || s === 'Advertisement' || /^!\[|^\[!\[/.test(s)) continue;
@@ -87,11 +97,17 @@ async function fetchAll() {
   const one = async (s: Speaker) => {
     const first = await get(s.url);
     if (!first) { failed.push(s.url); console.log(`✗ ${s.url}`); return; }
-    const slides = [...new Set([...first.matchAll(new RegExp(`${s.url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\d+)/`, 'g'))].map(m => Number(m[1])))].sort((a, b) => a - b);
+    let slides = [...new Set([...first.matchAll(new RegExp(`${s.url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\d+)/`, 'g'))].map(m => Number(m[1])))].sort((a, b) => a - b);
     const mine: Pick[] = [{ speaker: s.speaker, dozen: s.url, url: s.url, n: 0, heading: 'Introduction', text: intro(first) }];
     // A slideshow page lists its slides; one without slide links holds every
-    // pick on the page itself.
+    // pick on the page itself. An older layout (Brix Smith Start's, 2016)
+    // has neither on page 1, but its slides are there: /2/ says
+    // "Page 1 of 13".
     const own = parse(first);
+    if (!own && !slides.length) {
+      const total = Number((await get(`${s.url}2/`))?.match(/Page 1 of (\d+)/)?.[1]);
+      if (total) slides = Array.from({ length: total }, (_, i) => i + 2);
+    }
     if (own) mine.push({ speaker: s.speaker, dozen: s.url, url: s.url, n: own.n, heading: own.heading, text: own.body });
     for (const k of slides) {
       const url = `${s.url}${k}/`;
@@ -134,12 +150,31 @@ async function sortPicks(batches: number) {
   writeFileSync(resolve(DIR, 'sorted.json'), JSON.stringify(sorted, null, 1) + '\n');
   const count = (k: string) => sorted.filter(p => p.kind === k).length;
   console.log(`${sorted.length} picks: ${count('new')} new links on the map, ${count('existing')} for links already there, ${count('off-map')} off the map`);
-  // Judging batches: every on-map pick, plus off-map picks (only to tally who
-  // the artists themselves point to), split by speaker so a dozen stays whole.
-  const speakers = [...new Set(sorted.map(p => p.speaker + ' ' + p.dozen))];
+  // Off-map picks aren't judged (owner's call, 26 Oct: it would cost two thirds
+  // of the judging for a shortlist): they're tallied by how many artists on
+  // the map picked them, so the top of the list can be judged on its own later.
+  const offMap = new Map<string, { name: string; pickedBy: string[]; urls: string[] }>();
+  for (const p of sorted.filter(p => p.kind === 'off-map')) {
+    const k = norm(p.artist);
+    const t = offMap.get(k) ?? { name: p.artist, pickedBy: [], urls: [] };
+    if (!t.pickedBy.includes(p.speaker)) { t.pickedBy.push(p.speaker); t.urls.push(p.url); }
+    offMap.set(k, t);
+  }
+  const tally = [...offMap.values()].sort((a, b) => b.pickedBy.length - a.pickedBy.length);
+  writeFileSync(resolve(DIR, 'off-map-tally.json'), JSON.stringify(tally, null, 1) + '\n');
+  console.log(`off-map-tally.json: ${tally.length} artists, top: ${tally.slice(0, 8).map(t => `${t.name} (${t.pickedBy.length})`).join(', ')}`);
+  // Judging batches: every on-map pick, split by speaker so a dozen stays whole.
+  const onMap = sorted.filter(p => p.kind !== 'off-map');
+  const speakers = [...new Set(onMap.map(p => p.speaker + ' ' + p.dozen))];
   for (let b = 0; b < batches; b++) {
     const mine = speakers.filter((_, i) => i % batches === b);
-    const list = sorted.filter(p => mine.includes(p.speaker + ' ' + p.dozen));
+    // Older layouts carry the page's furniture under the pick; judges get
+    // only the words, with link markup reduced to its text.
+    const list = onMap.filter(p => mine.includes(p.speaker + ' ' + p.dozen)).map(p => ({
+      ...p,
+      text: p.text.split(/Selected in other Baker|Page \d+ of \d+|\nPrev|\nPreviousNext|## More on /)[0]
+        .replace(/\[\]\([^)]*\)/g, '').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/\n{3,}/g, '\n\n').trim(),
+    }));
     writeFileSync(resolve(DIR, `judge-${b + 1}.json`), JSON.stringify(list, null, 1) + '\n');
     console.log(`judge-${b + 1}.json: ${mine.length} dozens, ${list.length} picks`);
   }

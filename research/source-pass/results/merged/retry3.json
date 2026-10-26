@@ -1,0 +1,281 @@
+{
+  "agent": "retry3",
+  "searches": 23,
+  "toolStatus": "web_fetch only opens URLs that come back in search results. It refused every web.archive.org URL and the Scenestar typepad URL even when they appeared on a page I had opened, so the Internet Archive step (rule 10) could not actually be tried for the Brand New and National links. Search returns summaries only. The Under the Radar, Quietus, MOJO, BBC, Pitchfork, RBMA, NME, Mel, Perfect Sound Forever and Freq pages never surfaced. The Face page for SOPHIE was not opened; DMY's article quoting it was.",
+  "entries": {
+    "drive-like-jehu>slint": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Opened Vish Khanna's full August 2005 Froberg transcript (https://www.premierrockforum.com/viewtopic.php?t=36727). He names Wipers, Honor Role, Fugazi, Sonic Youth, Minor Threat and Government Issue, but not Slint. The 'Mission of Burma, the Gories, Bastro, Slint...' list matches no page I could open; only a 2006 Wikipedia mirror (wikipedia2006.classicistranieri.com) has a similar unsourced list. The Oct 2015 Kreative Kontrol audio is not transcribed anywhere I found."
+    },
+    "drive-like-jehu>sonic-youth": {
+      "url": "https://www.premierrockforum.com/viewtopic.php?t=36727",
+      "found": "And you know, listening to punk rock. Your Sonic Youth, your Minor Threat and Government Issue—whatever, all that stuff.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Rick Froberg to Vish Khanna (radio interview, August 2005; Khanna's transcript on the Premier Rock Forum), asked which influences he would cite: \"Your Sonic Youth, your Minor Threat and Government Issue—whatever, all that stuff.\"",
+      "sourceTier": "first-person",
+      "note": "The Sonic Youth mention is a loose gesture at punk generally, though it is the last part of his answer to 'are there particular influences you'd care to cite'. Reviewer may prefer 'decide'."
+    },
+    "drive-like-jehu>neu": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Neu! and Can appear only in the unsourced 2006 Wikipedia mirror text ('Krautrock bands Can and Neu!'). Not in Froberg's 2005 transcript. No first-person Neu! quote found."
+    },
+    "drive-like-jehu>wipers": {
+      "url": "https://www.premierrockforum.com/viewtopic.php?t=36727",
+      "found": "Well, if you’re talking about Drive Like Jehu, bands we’re always citing are The Wipers (http://www.zenorecords.com/) and, I think for that band especially, Honor Role who are a band from Richmond, Virginia in the 80s who we really liked.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Rick Froberg to Vish Khanna (radio interview, August 2005; Khanna's transcript on the Premier Rock Forum): \"Well, if you’re talking about Drive Like Jehu, bands we’re always citing are The Wipers\".",
+      "sourceTier": "first-person",
+      "note": "Replaces the 'Vish Khanna podcast (Oct 8, 2015)' citation. The page is a forum post by Khanna himself (user vish_Archive), who says the interview is from August 2005. It is a transcript, not an outlet page. The 2015 Kreative Kontrol audio was not checked."
+    },
+    "suicide>silver-apples": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Wikipedia's Suicide page (as mirrored on wikimili) has a sentence ending 'and the Mysterians, and Silver Apples', but its footnote is not visible and Vega is not shown saying it. Alan Vega pieces that came up (Dazed 2007 'in his own words', Iowa Downtown Pop Underground, SPIN obituary) say he was drawn to music by Iggy and the Stooges and do not mention Silver Apples. Only search extracts of those were seen. The quoted line 'Alan Vega of Suicide listed Silver Apples as one of his core inspirations' was not found in any source I could open."
+    },
+    "this-heat>faust": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Read the full Psychedelic Baby interview with Charles Hayward (https://www.psychedelicbabymag.com/2019/03/this-heat-interview-charles-hayward.html, Mar 2019). Faust is not mentioned. The Perfect Sound Forever and Freq 2014 pages never surfaced. The Quietus/Reynolds 2001 and Fact 2016 interviews were seen only as search extracts."
+    },
+    "boards-of-canada>incredible-string-band": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Pitchfork 2005 interview did not surface. No 'Jerry Goldsmith or The Incredible String Band' line found. An encyclopedia.com entry quotes Sandison on melody (Pop Is Dead) but names no ISB. Only search extracts seen."
+    },
+    "brand-new>fugazi": {
+      "url": "https://web.archive.org/web/20151012113752/http://drownedinsound.com/in_depth/4137854-i-like-talking-to-people---brand-news-jesse-lacey-chats-to-dis",
+      "found": "I think for a lot of this record we were listening to stuff that we listened to when we were younger. We were listening to Superchunk, Archers Of Loaf, Polvo, Modest Mouse, and even a lot of hardcore bands that we listened to when we were younger, like Fugazi.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Jesse Lacey to Drowned in Sound (2009), on making Daisy: \"I think for a lot of this record we were listening to stuff that we listened to when we were younger. We were listening to Superchunk, Archers Of Loaf, Polvo, Modest Mouse, and even a lot of hardcore bands that we listened to when we were younger, like Fugazi.\"",
+      "sourceTier": "first-person",
+      "note": "Coordinator opened the Internet Archive copy the chat could not (DiS, September 17th, 2009, Jesse Lacey)."
+    },
+    "brand-new>modest-mouse": {
+      "url": "https://web.archive.org/web/20151012113752/http://drownedinsound.com/in_depth/4137854-i-like-talking-to-people---brand-news-jesse-lacey-chats-to-dis",
+      "found": "I think for a lot of this record we were listening to stuff that we listened to when we were younger. We were listening to Superchunk, Archers Of Loaf, Polvo, Modest Mouse, and even a lot of hardcore bands that we listened to when we were younger, like Fugazi.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Jesse Lacey to Drowned in Sound (2009), on making Daisy: \"I think for a lot of this record we were listening to stuff that we listened to when we were younger. We were listening to Superchunk, Archers Of Loaf, Polvo, Modest Mouse, and even a lot of hardcore bands that we listened to when we were younger, like Fugazi.\"",
+      "sourceTier": "first-person",
+      "note": "Coordinator opened the Internet Archive copy the chat could not (DiS, September 17th, 2009, Jesse Lacey)."
+    },
+    "wednesday>my-bloody-valentine": {
+      "url": "https://www.elienis.com/karly-hartzman-wednesday-heavier-yep-definitely-regrets-interview/",
+      "found": "I remember him playing Sunny Day Real Estate, Cocteau Twins, My Bloody Valentine. And just opening that world for me and me immediately understanding that [music] more than the stuff I was kind of trying to fit into my sister's mold because I thought she was cool.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Karly Hartzman to Chasing Sundays (Eli Enis, Dec 29, 2025), on the childhood friend who introduced her to indie music: \"I remember him playing Sunny Day Real Estate, Cocteau Twins, My Bloody Valentine.\"",
+      "sourceTier": "first-person",
+      "note": "Replaces the MOJO (Aug 2023) citation, which never surfaced. In the same interview Hartzman says of her earlier band Diva Sweetly, 'I can't be in denial with how much I fuck with My Bloody Valentine over The Front Bottoms'. Stereogum's 'Band To Watch' (a writer's account) also says she wanted to make music that sounded like MBV; seen as a search extract only. The second half of the Chasing Sundays interview is paywalled and was not seen."
+    },
+    "bon-iver>bob-dylan": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "The Pitchfork 'subjective-songwriter kind of world' quote never surfaced. Found: Far Out Magazine (https://faroutmagazine.co.uk/justin-vernon-favourite-songwriters/) reports Vernon's tweet answer 'Prine. Indigo Girls. Dylan', a bare list. American Songwriter's 2011 piece says 'they worship Neil Young and Bob Dylan' about new-breed folkies in general, not Vernon quoted."
+    },
+    "bon-iver>john-prine": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Same as bon-iver>bob-dylan. Radio Milwaukee (https://radiomilwaukee.org/discover-music/5-oclock-shadow/bon-iver-takes-favorite-songwriter) calls Prine Vernon's 'favorite songwriter' in a cover blurb: a station's line, a bare favourite, seen only as a search extract."
+    },
+    "bright-eyes>joni-mitchell": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Mel Magazine (Oct 2020) piece did not surface. Apple Music's track-by-track Oberst notes for Down in the Weeds and a Mixdown 2023 interview came up, but neither shows Joni Mitchell or Neil Young as an Oberst influence on the record. Only search extracts seen."
+    },
+    "bright-eyes>neil-young": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Same as bright-eyes>joni-mitchell. The Mixdown snippet has Oberst saying he has met Neil Young, which is not influence."
+    },
+    "the-flaming-lips>sonic-youth": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Weirdo Music Forever line not found. Westword (https://www.westword.com/music/lips-service-5054009/) has Coyne saying the first incarnation was 'influenced by the early punk groups that played Oklahoma City' and names Black Flag, Meat Puppets, Die Kreuzen, not Sonic Youth. Grunge.com says Coyne was 'motivated by' Sonic Youth, Meat Puppets and Black Flag, citing The Independent; that is a secondary page and the Independent piece was not found. Only search extracts seen."
+    },
+    "black-country-new-road>american-football": {
+      "url": "https://www.thelineofbestfit.com/features/longread/black-country-new-road-poised-ready-stomp-on-your-face-interview",
+      "found": "Everyone [in the band] appreciates American Football, a bit of Godspeed You! Black Emperor, all the classics you know? I don't know much about them but I love the way they sound.",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "The Line of Best Fit, Maddy Smith, 16 Feb 2021. Evans is asked about Slint comparisons and answers 'We like Slint, but we'd be on more common ground with post-rock I think.' The quote is about the band's shared taste, and he adds that he doesn't know much about them. The citation is accurate; reviewer may judge the influence weak. Coordinator: Evans says everyone appreciates American Football but \"I don't know much about them but I love the way they sound\": liking, not shaping. Propose keep at reported/low confidence, or remove."
+    },
+    "geese>the-strokes": {
+      "url": "https://web.archive.org/web/2024/https://www.stilllisteningmagazine.com/interviews/jfttggti876itd2dg9r18uq00h9ez8",
+      "found": "I was a big Strokes fan when I was in middle school and high school. And you know, same with Interpol and the Yeah Yeah Yeahs and everything.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Max Bassin to Still Listening Magazine: \"I was a big Strokes fan when I was in middle school and high school.\"",
+      "sourceTier": "first-person",
+      "note": "Both lines in the old citation are Max Bassin (drummer), not Cameron Winter or 'Foster Bassin'. 'I grew up listening to that shit' is Max too, later in the same answer, and is not consecutive with the line above. The page prints its issue date as '31/06/2023', which is not a valid date, so the citation gives only the year. Coordinator: live URL now redirects to the magazine homepage; url is the 2024 archive copy. Issue/year dropped (not confirmed on the page)."
+    },
+    "la-dispute>refused": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "From The Garage (Dec 13, 2010) did not surface. The Phoenix New Times piece (phoenixnewtimes.com, 'Spoken Word and Post-Hardcore Rock Collide on La Dispute's Panorama') says 'you get echoes of ... the pent-up fury of Refused', which is a critic's comparison, not an influence statement. The OC Weekly and NPR interviews have Dreyer naming no Refused influence."
+    },
+    "la-dispute>at-the-drive-in": {
+      "url": "https://the-first-ever-podcast.libsyn.com/jordan-dreyer-theres-a-rawness-and-urgency-that-comes-with-not-knowing-any-better-its-very-pure",
+      "found": "Jordan and Brad’s shard love of Modest Mouse, At the Drive-In, and Glassjaw",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "The First Ever Podcast, episode 25 (Jan 6, 2021), host Jeremy Bolm's notes on his interview with Jordan Dreyer, which list \"Jordan and Brad’s shard love of Modest Mouse, At the Drive-In, and Glassjaw\" (Dreyer and bandmate Brad Vander Lugt).",
+      "sourceTier": "reported",
+      "note": "The quote is a clause from one long sentence in the episode notes; 'shard' is the page's typo. It is show-notes text summarising the audio, not Dreyer's own words. OC Weekly (Nov 9, 2011) separately has Dreyer saying the band came together to cover ATDI's 'Cosmonaut', which is a cover and not used."
+    },
+    "la-dispute>modest-mouse": {
+      "url": "https://the-first-ever-podcast.libsyn.com/jordan-dreyer-theres-a-rawness-and-urgency-that-comes-with-not-knowing-any-better-its-very-pure",
+      "found": "Jordan and Brad’s shard love of Modest Mouse, At the Drive-In, and Glassjaw",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "The First Ever Podcast, episode 25 (Jan 6, 2021), host Jeremy Bolm's notes on his interview with Jordan Dreyer, which list \"Jordan and Brad’s shard love of Modest Mouse, At the Drive-In, and Glassjaw\" (Dreyer and bandmate Brad Vander Lugt).",
+      "sourceTier": "reported",
+      "note": "Replaces the BBC Radio 1 'Under the Influence' citation, which never surfaced. Same caveats as la-dispute>at-the-drive-in."
+    },
+    "la-dispute>joanna-newsom": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "BBC Radio 1 'Under the Influence with La Dispute' did not surface in two searches. The only La Dispute pages that came up were the First Ever Podcast notes and venue blurbs. No Newsom mention."
+    },
+    "la-dispute>the-mountain-goats": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Same as la-dispute>joanna-newsom. No Mountain Goats mention found."
+    },
+    "sophie>depeche-mode": {
+      "url": "https://dmy.co/features/sophie-2",
+      "found": "In an interview with The Face from May last year, SOPHIE was talking about Depeche Mode’s 1981 track ‘Just Can’t Get Enough’, one of the inspirations behind the producer’s work.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "DMY (Felicity Martin, Feb 3, 2021), on SOPHIE's May 2020 interview with The Face: Depeche Mode's 'Just Can’t Get Enough' was \"one of the inspirations behind the producer’s work\", which SOPHIE called \"an amazing achievement\" that \"established one part of the sound of the decade that followed\".",
+      "sourceTier": "reported",
+      "note": "The year in the old citation (2017) is wrong; DMY dates the Face interview to May 2020. The 'inspirations' framing is DMY's; SOPHIE's own quoted words praise the record but do not themselves say it was formative. The Face original (https://theface.com/music/sophie-behind-the-boards-pop-scottish-producer, as linked by DMY) was not opened."
+    },
+    "the-national>violent-femmes": {
+      "url": "https://web.archive.org/web/2008/http://thescenestar.typepad.com/ss/2007/06/interview-matt-.html",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "found": "Matt: The band that I first really started falling in love with were The Smiths, Violent Femmes, Tom Waits, Nick Cave, but then, [for] the other guys, it’s a big motley selection of Simon & Garfunkel, Grateful Dead.",
+      "citation": "Matt Berninger to The Scenestar (2007), asked about his early inspirations: \"The band that I first really started falling in love with were The Smiths, Violent Femmes, Tom Waits, Nick Cave.\"",
+      "note": "Coordinator opened the Internet Archive copy (2008) of the Scenestar interview, June 2007 (date from the URL)."
+    },
+    "the-national>joy-division": {
+      "url": "https://web.archive.org/web/2008/http://thescenestar.typepad.com/ss/2007/06/interview-matt-.html",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "found": "Definitely Joy Division, I know Bryan our drummer, from a drumming perspective, that’s been a big influence on him.",
+      "citation": "Matt Berninger to The Scenestar (2007), on Ian Curtis comparisons: \"Definitely Joy Division, I know Bryan our drummer, from a drumming perspective, that's been a big influence on him.\"",
+      "note": "Coordinator opened the Internet Archive copy. Berninger puts the vocal comparison down to range; the influence he names is on drummer Bryan Devendorf."
+    },
+    "the-national>nirvana": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Q 2011 fan transcription not found. Philip Nel's page quotes Berninger saying the Strokes have influenced more bands 'than even the artists I mentioned [Waits, Cave, Nirvana, Smiths]' and links the source as the fan blog http://thenationalnews.wordpress.com/2011/09/23/matt-berninger-talks-about-his-musical-influences-the-nationals-new-album-the-strokes-arcade-fire-and-radiohead/. I could not open it. It is a secondary page, and the bracketed 'Nirvana' is Nel's insertion, so it is not evidence yet. Coordinator opened the fan blog via the Internet Archive: it only says he \"also talks about Nirvana\", not influence."
+    },
+    "underscores>jane-remover": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "NME profile on U did not surface in two searches. Results were NTS listings for Jane Remover's own shows."
+    },
+    "underscores>oklou": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "NME 2026 piece did not surface. The only linked material is the Harvest Sky collaboration on Oklou's Choke Enough (Wikipedia, Clash), which does not count. A TANK interview with Oklou lists underscores as someone Oklou follows, which is the wrong direction."
+    },
+    "arcade-fire>echo-and-the-bunnymen": {
+      "url": "https://www.spinmagazine.com/2008/11/echo-bunnymen-heaven-down-here/",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "found": "It’s why they were one of the best British bands of the last 30 years—certainly the most important group from Liverpool since the Beatles—but also the reason they imploded before fulfilling the promise of their astonishing first four albums, acknowledged influences on the likes of Coldplay and Arcade Fire.",
+      "citation": "Marc Spitz in SPIN (2008): the Bunnymen's \"astonishing first four albums\" are \"acknowledged influences on the likes of Coldplay and Arcade Fire.\"",
+      "note": "Coordinator opened SPIN. No Win Butler quote found; lowered to reported."
+    },
+    "blood-orange>massive-attack": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Hynes interviews and profiles that came up (Grammy.com Essex Honey, NPR Play It Forward, NPR Freetown Sound, Office Magazine 'Blood Relative', Wikipedia) do not name Massive Attack as a model. Office Magazine has the interviewer, not Hynes, calling Blood Orange 'more of an open group, or a collective'. Only search extracts of the Office and Grammy pages were read."
+    },
+    "caribou>boards-of-canada": {
+      "url": "https://xlr8r.com/features/rewind-caribou/",
+      "found": "In some ways, it was very much influenced by what Kieran was doing, Boards of Canada, and those kind of things, but also sampling off a lot of old records and things like that.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Dan Snaith to XLR8R (\"Rewind: Caribou,\" Sept 30, 2014), on his first Manitoba album Start Breaking My Heart (2001): \"In some ways, it was very much influenced by what Kieran was doing, Boards of Canada, and those kind of things, but also sampling off a lot of old records and things like that.\"",
+      "sourceTier": "first-person"
+    },
+    "caribou>aphex-twin": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "The RBMA Daily piece still did not surface. The XLR8R 'Rewind: Caribou' page (https://xlr8r.com/features/rewind-caribou/), which I opened in full, has Snaith naming Boards of Canada and Four Tet but not Aphex Twin. The Apple Music 'Caribou: Influences' blurb and the Wikipedia Start Breaking My Heart page only say the album was compared to Aphex Twin; those are not usable."
+    }
+  },
+  "candidates": [
+    {
+      "source": "caribou",
+      "target": "four-tet",
+      "kind": "influence",
+      "speaker": "Dan Snaith to XLR8R, 2014",
+      "sentence": "In some ways, it was very much influenced by what Kieran was doing, Boards of Canada, and those kind of things, but also sampling off a lot of old records and things like that.",
+      "url": "https://xlr8r.com/features/rewind-caribou/"
+    },
+    {
+      "source": "drive-like-jehu",
+      "target": "fugazi",
+      "kind": "influence",
+      "speaker": "Rick Froberg to Vish Khanna, 2005",
+      "sentence": "I’m sure we aped Fugazi, who we were big fans of.",
+      "url": "https://www.premierrockforum.com/viewtopic.php?t=36727"
+    },
+    {
+      "source": "wednesday",
+      "target": "cocteau-twins",
+      "kind": "influence",
+      "speaker": "Karly Hartzman to Chasing Sundays, 2025",
+      "sentence": "I remember him playing Sunny Day Real Estate, Cocteau Twins, My Bloody Valentine.",
+      "url": "https://www.elienis.com/karly-hartzman-wednesday-heavier-yep-definitely-regrets-interview/"
+    },
+    {
+      "source": "brand-new",
+      "target": "superchunk",
+      "kind": "influence",
+      "speaker": "Jesse Lacey to Drowned in Sound, 2009",
+      "sentence": "I think for a lot of this record we were listening to stuff that we listened to when we were younger. We were listening to Superchunk, Archers Of Loaf, Polvo, Modest Mouse, and even a lot of hardcore bands that we listened to when we were younger, like Fugazi.",
+      "url": "https://web.archive.org/web/20151012113752/http://drownedinsound.com/in_depth/4137854-i-like-talking-to-people---brand-news-jesse-lacey-chats-to-dis"
+    }
+  ],
+  "offMap": [
+    {
+      "name": "The Zombies",
+      "namedBy": "caribou",
+      "sentence": "I had been listening a lot to people like The Zombies, classic songwriting things.",
+      "url": "https://xlr8r.com/features/rewind-caribou/"
+    },
+    {
+      "name": "Aphrodite's Child",
+      "namedBy": "caribou",
+      "sentence": "I had been making music to sound like my first record, but I was more excited at that time by rare ’60s psychedelic rock, bands like Aphrodite’s Child and The Millenium with this big, cacophonous sound.",
+      "url": "https://xlr8r.com/features/rewind-caribou/"
+    },
+    {
+      "name": "Honor Role",
+      "namedBy": "drive-like-jehu",
+      "sentence": "They were just a good band in general and we liked them a lot and probably aped them quite a bit.",
+      "url": "https://www.premierrockforum.com/viewtopic.php?t=36727"
+    },
+    {
+      "name": "Swirlies",
+      "namedBy": "wednesday",
+      "sentence": "We're not going to make a straight-up hardcore record, but I think with every record I give myself more and more permission to sound more like my favorite bands, which are Swirlies and Unwound.",
+      "url": "https://www.elienis.com/karly-hartzman-wednesday-heavier-yep-definitely-regrets-interview/"
+    }
+  ],
+  "finished": true
+}

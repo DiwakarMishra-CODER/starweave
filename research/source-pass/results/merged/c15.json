@@ -1,0 +1,246 @@
+{
+ "agent": "c15",
+ "searches": 23,
+ "toolStatus": "WebSearch fine (23 used). undertheradarmag.com, pilerats.com and online.berklee.edu (Maintenance page) failed live but their web.archive.org copies opened via read. thequietus.com opened via r.jina.ai.",
+ "entries": {
+  "magdalena-bay>bjork": {
+   "url": "https://stereogum.com/2276873/magdalena-bay-on-how-flash-gordon-peter-gabriel-bjorks-dancer-in-the-dark-score-more-influenced-their-high-concept-new-album-imaginal-disk/interviews/under-the-influence",
+   "found": "LEWIN: We watched Dancer In The Dark , which was new for me. I'd never seen it before even though I was into Björk for a while. That's one of the things where we picked up on little elements, like the opener track to that film score is just this beautiful horn arrangement.",
+   "verdict": "fixed",
+   "citation": "Matthew Lewin to Stereogum (2024), on Imaginal Disk: \"We watched Dancer In The Dark, which was new for me... the opener track to that film score is just this beautiful horn arrangement... it really made us want to include more orchestral brass on this album, and there are a few songs on it that were pretty directly inspired by that.\" He adds it's \"probably not an overall songwriting influence. It's more just like little things here and there.\"",
+   "sourceTier": "first-person",
+   "note": "Weak: Lewin says brass arrangements on a few songs were directly inspired by the Dancer in the Dark score, and explicitly not an overall songwriting influence; he also says he was into Bjork for a while. Owner may want to lower or remove; confidence should be low.",
+   "checked": "2026-10-26"
+  },
+  "magdalena-bay>fiona-apple": {
+   "url": "https://web.archive.org/web/2021/https://www.undertheradarmag.com/interviews/self_portrait_magdalena_bay",
+   "found": "I discovered her through Matt and she became my main songwriting inspiration and influence when I was a teen. Don’t know if I would’ve dived into songwriting in the same way without her, she’s always been my north star.",
+   "verdict": "ok",
+   "note": "Under the Radar 'Self-Portrait' (Mica Tenenbaum's answer 4); live page not openable, archive copy 2021 opens.",
+   "checked": "2026-10-26"
+  },
+  "mary-timony>fugazi": {
+   "url": "https://www.rookiemag.com/2013/11/theme-song-ex-hex/",
+   "found": "I saw almost every single Fugazi show in D.C. from when they first started playing until I moved away to go to college. I guess that you could say they were my role models.",
+   "verdict": "fixed",
+   "citation": "Mary Timony to Rookie (2013): \"I saw almost every single Fugazi show in D.C. from when they first started playing until I moved away to go to college. I guess that you could say they were my role models.\"",
+   "sourceTier": "first-person",
+   "note": "Hairpin and Perfect Sound Forever not searched; Rookie carries it directly. American Songwriter also: 'I went to every Fugazi show I could when I was in high school' (https://americansongwriter.com/writer-week-mary-timony/).",
+   "checked": "2026-10-26"
+  },
+  "natural-snow-buildings>neil-young": {
+   "url": "https://www.ondarock.it/folk/naturalsnowbuildings.htm",
+   "found": "La lista potrebbe andare avanti per pagine e pagine (da Kath Bloom e Loren Mazzacane Connors a Tarentel, Neil Young, Six Organs Of Admittance, Charalambides, Alice Coltrane, Stars Of The Lid, le colonne sonore, musica da ogni parte del mondo)",
+   "verdict": "fixed",
+   "citation": "Natural Snow Buildings to OndaRock, asked about their influences: \"La lista potrebbe andare avanti per pagine e pagine (da Kath Bloom e Loren Mazzacane Connors a Tarentel, Neil Young, Six Organs Of Admittance, Charalambides, Alice Coltrane, Stars Of The Lid, le colonne sonore, musica da ogni parte del mondo)\" (the list of musicians who built their musical ethos; interview published in Italian).",
+   "sourceTier": "first-person",
+   "note": "OndaRock page is in Italian; the English citation was a translation. Answer to 'Avete (avuto) qualche particolare influenza'; it's a list of many musicians shaping their ethos, so a bare-ish list but framed as influences.",
+   "checked": "2026-10-26"
+  },
+  "natural-snow-buildings>stars-of-the-lid": {
+   "url": "https://www.ondarock.it/folk/naturalsnowbuildings.htm",
+   "found": "La lista potrebbe andare avanti per pagine e pagine (da Kath Bloom e Loren Mazzacane Connors a Tarentel, Neil Young, Six Organs Of Admittance, Charalambides, Alice Coltrane, Stars Of The Lid, le colonne sonore, musica da ogni parte del mondo)",
+   "verdict": "fixed",
+   "citation": "Natural Snow Buildings to OndaRock, asked about their influences: \"La lista potrebbe andare avanti per pagine e pagine (da Kath Bloom e Loren Mazzacane Connors a Tarentel, Neil Young, Six Organs Of Admittance, Charalambides, Alice Coltrane, Stars Of The Lid, le colonne sonore, musica da ogni parte del mondo)\" (the list of musicians who built their musical ethos; interview published in Italian).",
+   "sourceTier": "first-person",
+   "note": "OndaRock page is in Italian; the English citation was a translation. Answer to 'Avete (avuto) qualche particolare influenza'; it's a list of many musicians shaping their ethos, so a bare-ish list but framed as influences.",
+   "checked": "2026-10-26"
+  },
+  "oneohtrix-point-never>my-bloody-valentine": {
+   "url": "https://daily.redbullmusicacademy.com/2011/08/rescued-from-the-fire-16-oneohtrix-point-never",
+   "found": "‘Loveless’ is a much bigger influence – it’s my favorite record ever. Period. And every time I start recording a new record, I listen to ‘Loveless’.",
+   "verdict": "fixed",
+   "citation": "Daniel Lopatin to Red Bull Music Academy Daily (2011): \"I don’t think that there is a record that I’ve listened to more often, and come back to at so many junctures in my life than ‘Loveless’. It actually has like a really big effect on me musically... ‘Loveless’ is a much bigger influence – it’s my favorite record ever. Period. And every time I start recording a new record, I listen to ‘Loveless’.\"",
+   "sourceTier": "first-person",
+   "note": "Quietus 2018 Baker's Dozen reiteration not checked; dropped from citation.",
+   "checked": "2026-10-26"
+  },
+  "oneohtrix-point-never>broadcast": {
+   "url": "https://www.anothermag.com/design-living/15141/oneohtrix-point-never-again-album-daniel-lopatin-interview",
+   "found": "My first college band was obsessed with Broadcast and The Kinks and The Who and power-pop.",
+   "verdict": "fixed",
+   "citation": "Daniel Lopatin to AnOther Magazine (2023): \"My first college band was obsessed with Broadcast and The Kinks and The Who and power-pop.\"",
+   "sourceTier": "first-person",
+   "note": "The Skinny Garden of Delete interview (theskinny.co.uk/music/interviews/oneohtrix-point-never) opens but does not mention Broadcast, so the 'Skinny names Autechre, Broadcast, BoC' claim is unverified and dropped. Evidence is his college band's obsession, not his own solo shaping; moderate.",
+   "checked": "2026-10-26"
+  },
+  "panchiko>radiohead": {
+   "url": "https://daily.bandcamp.com/features/panchiko-deathmetal-interview",
+   "found": "(Owain cites Super Furry Animals and Radiohead as two of their biggest influences)",
+   "verdict": "fixed",
+   "citation": "Bandcamp Daily (Zoe Camp, 2020): Owain Davies cites Super Furry Animals and Radiohead as two of Panchiko's biggest influences.",
+   "sourceTier": "first-person",
+   "note": "Writer's report of Owain's words, no direct quote; kept first-person (directly reported). Wikipedia part of the old citation dropped.",
+   "checked": "2026-10-26"
+  },
+  "refused>fugazi": {
+   "url": "https://consequence.net/2015/06/refuseds-dennis-lyxzen-revisits-fugazis-red-medicine/",
+   "found": "When we were writing Songs to Fan the Flames of Discontent , that was one of the records we were listening to.",
+   "verdict": "fixed",
+   "citation": "Dennis Lyxzen to Consequence (2015), on Fugazi's Red Medicine: \"It's one of my favorites... When we were writing Songs to Fan the Flames of Discontent, that was one of the records we were listening to... it's awesome that we stole the photo collage idea from that record.\"",
+   "sourceTier": "first-person",
+   "note": "Found via Wikipedia's Red Medicine footnote. Note the interview is about Red Medicine (1995), after Refused formed (1991); fine for shaping Songs to Fan the Flames (1996).",
+   "checked": "2026-10-26"
+  },
+  "slayyyter>charli-xcx": {
+   "url": "https://www.rollingstone.com/music/music-features/slayyyter-interview-pop-charli-xcx-795008/",
+   "found": "“I always really respected Charli, just because she’s a great songwriter,” Slayyyter says. “I didn’t even know what topline songwriting was until I read an article of hers. I feel like all pop now is kind of inspired by her.”",
+   "verdict": "fixed",
+   "citation": "Slayyyter to Rolling Stone (2018): \"I always really respected Charli, just because she's a great songwriter. I didn't even know what topline songwriting was until I read an article of hers. I feel like all pop now is kind of inspired by her.\"",
+   "sourceTier": "first-person",
+   "note": "Read confirms. Fine as fandom/learning from Charli.",
+   "checked": "2026-10-26"
+  },
+  "slayyyter>sophie": {
+   "url": "https://web.archive.org/web/2021/https://pilerats.com/written/get-to-know/slayyyter-troubled-paradise-feature-interview/",
+   "found": "“SOPHIE changed my whole perception of pop music and my whole perception of what you can do with pop music,” she says. “That avant-garde maximalist-sounding pop is something I’ve always wanted to do, because I love when things aren’t cookie-cutter, and when things really push the boundaries.”",
+   "verdict": "fixed",
+   "citation": "Slayyyter to Pilerats (2020): \"SOPHIE changed my whole perception of pop music and my whole perception of what you can do with pop music. That avant-garde maximalist-sounding pop is something I've always wanted to do, because I love when things aren't cookie-cutter, and when things really push the boundaries.\"",
+   "sourceTier": "first-person",
+   "note": "Live pilerats.com URL (https://pilerats.com/written/get-to-know/slayyyter-troubled-paradise-feature-interview/) wouldn't open via read; archive copies 2020/2021/2023 do. The old 'crazy in the best way / originators' wording was not found; replaced with this quote.",
+   "checked": "2026-10-26"
+  },
+  "sneaker-pimps>massive-attack": {
+   "url": "https://www.sneakerpimpslegacy.com/hits-magazine-interview",
+   "found": "I can't deny that [Massive Attack's] \"Blue Lines\" is one of my favourite albums, a huge influence.",
+   "verdict": "ok",
+   "note": "HITS Magazine interview (Bruce Britt, 1997) as hosted on sneakerpimpslegacy.com; Howe speaking.",
+   "checked": "2026-10-26"
+  },
+  "sneaker-pimps>portishead": {
+   "url": "https://www.sneakerpimpslegacy.com/hits-magazine-interview",
+   "found": "The Portishead album was a huge influence as well.",
+   "verdict": "ok",
+   "note": "Same HITS interview, Howe speaking.",
+   "checked": "2026-10-26"
+  },
+  "squarepusher>aphex-twin": {
+   "url": "http://www.furious.com/perfect/squarepusher.html",
+   "found": "Absolutely. Yeah. Very much so. He's one of my major influences, I'd say. Harmonically yes but also in his approach and his attitude.",
+   "verdict": "fixed",
+   "citation": "Tom Jenkinson to Perfect Sound Forever (furious.com), asked \"Do you think you've learned something from his work?\" about Aphex Twin: \"Absolutely. Yeah. Very much so. He's one of my major influences, I'd say. Harmonically yes but also in his approach and his attitude.\"",
+   "sourceTier": "first-person",
+   "note": "The site is Perfect Sound Forever (Jason Gross interview, c.1999), hosted at furious.com; the old citation called it Furious.com. Quote verbatim; the 'asked if he'd learned from Aphex Twin' is the interviewer's question about 'his work'.",
+   "checked": "2026-10-26"
+  },
+  "the-blue-nile>talking-heads": {
+   "url": "https://www.popmatters.com/166769-at-the-source-of-the-blue-nile-an-interview-with-paul-buchanan-2495788345.html",
+   "found": "“The first time we heard Talking Heads, we were thinking, ‘I could do that.’ And I don’t mean that I could do that, because it’s difficult. But you could sort of figure out the chords. There weren’t any 12-minute solos. Or ridiculous hair,” he says.",
+   "verdict": "fixed",
+   "citation": "Paul Buchanan to PopMatters (2013): \"The first time we heard Talking Heads, we were thinking, 'I could do that.' And I don't mean that I could do that, because it's difficult. But you could sort of figure out the chords. There weren't any 12-minute solos. Or ridiculous hair.\"",
+   "sourceTier": "first-person",
+   "note": "Verbatim on page (Jennifer Kelly, 'At the Source of the Blue Nile'). Same passage names The Clash, The Pistols and Television as great things from punk.",
+   "checked": "2026-10-26"
+  },
+  "the-breeders>neil-young": {
+   "url": "https://www.popmatters.com/108149-feel-it-an-interview-with-kim-deal-2496055993.html",
+   "found": "Oh yeah. Absolutely. I was listening to a lot of Harvest last year, now that you mention it. Because my Volvo only has a cassette player, so I listened to that tape constantly. And I was listening to that a lot when I was writing Fate to Fatal .",
+   "verdict": "fixed",
+   "citation": "Kim Deal to PopMatters, asked \"Is Neil one of your idols?\": \"Oh yeah. Absolutely. I was listening to a lot of Harvest last year, now that you mention it. Because my Volvo only has a cassette player, so I listened to that tape constantly. And I was listening to that a lot when I was writing Fate to Fatal.\" Cheryl Deal then teased her about an early version of \"Pinnacle Hollow\": \"Oh, there you go. There's the Neil influence!\"",
+   "sourceTier": "first-person",
+   "note": "Stronger than the old caveat: she says Neil is an idol and a sister heard 'the Neil influence'. Year 2009 assumed from Fate to Fatal; page did not print a year in the excerpt I read.",
+   "checked": "2026-10-26"
+  },
+  "the-chameleons>buzzcocks": {
+   "url": "https://thequietus.com/?p=14938",
+   "found": "If there was any Manchester band that had a real definitive impact on me then it would’ve been Buzzcocks.",
+   "verdict": "fixed",
+   "citation": "Mark Burgess to The Quietus (2014): \"If there was any Manchester band that had a real definitive impact on me then it would've been Buzzcocks.\"",
+   "sourceTier": "first-person",
+   "note": "Page opened via read (r.jina.ai). Same paragraph: he saw Joy Division 5-6 times and A Certain Ratio 'but I wasn't influenced by it' (a mild denial for Joy Division, not recorded here). Year not shown in the text I read.",
+   "checked": "2026-10-26"
+  },
+  "the-last-dinner-party>david-bowie": {
+   "url": "https://guitar.com/features/interviews/the-last-dinner-party-interview-prelude-to-ecstasy",
+   "found": "“The music is very David Bowie and Queen -influenced,” says Emily, describing what to expect from the band’s upcoming 12-track album, Prelude To Ecstasy .",
+   "verdict": "fixed",
+   "citation": "Emily Roberts to Guitar.com, on Prelude to Ecstasy: \"The music is very David Bowie and Queen-influenced... It's very Florence and The Machine and euphoric.\" The writer adds the band share \"a shared love for David Bowie.\"",
+   "sourceTier": "first-person",
+   "note": "Verbatim apart from the page's spacing around the hyphen. Year 2024 from album timing; the article page text read did not print a date.",
+   "checked": "2026-10-26"
+  },
+  "the-white-stripes>the-stooges": {
+   "url": "https://www.rollingstone.com/music/news/stooges-reopen-house-20050623",
+   "found": "“I played the hell out of [that tape], like someone was gonna break in and take my tape deck while I was driving,” the White Stripes frontman writes in the Fun House (Deluxe Edition) liner notes.",
+   "verdict": "fixed",
+   "citation": "Jack White, in the liner notes to the Fun House deluxe edition (quoted by Rolling Stone, 2005): \"I played the hell out of [that tape], like someone was gonna break in and take my tape deck while I was driving... I remember screaming in my head, 'This is Detroit!' And that's what Fun House is to me, the very definition of Detroit rock & roll.\"",
+   "sourceTier": "first-person",
+   "note": "Original citation was only Rolling Stone's paraphrase (https://www.rollingstone.com/music/pictures/blues-genes-15-of-jack-whites-biggest-influences-20140529, also read and confirmed: 'Iggy Pop is a key idol for White, who anoints the Stooges' 1970 masterwork Fun House as \"the greatest rock & roll record ever made.\"'). The 2005 piece has his own words.",
+   "checked": "2026-10-26"
+  },
+  "toe>cap-n-jazz": {
+   "url": "https://toneglow.substack.com/p/tone-glow-177-toe",
+   "found": "So they were instrumental, and that was a big inspiration for me.",
+   "verdict": "decide",
+   "note": "Tone Glow 177 (Joshua Minsoo Kim, 2024), Yamazaki speaking. The preceding paragraph: 'There was the guitarist from Cap’n Jazz who plays for a band called Ghosts and Vodka .' [interviewer: 'Right, Victor Villareal.'] then 'So they were instrumental, and that was a big inspiration for me.' So the named inspiration is Ghosts and Vodka (Villarreal's instrumental band), not Cap'n Jazz itself. Same answer lists Texas Is the Reason, The Promise Ring, Cap’n Jazz as a late-90s scene whose 'guitar tone became cleaner' (a scene he belonged to, not stated as a personal influence). Propose: lower to a looser/reported or remove, or re-point the link to the off-map Ghosts and Vodka. Owner decides.",
+   "checked": "2026-10-26"
+  },
+  "trail-of-dead>unwound": {
+   "url": "https://www.musicradar.com/news/guitars/conrad-keely-10-albums-that-changed-my-fking-life-forever-633166",
+   "found": "\"Despite its obscurity outside cooler-than-thou ex-scenester circles from the '90's, this is a great album, and floored me to listen to when it came out. Hearing it for the first time I turned green with envy, yet at the same time I embraced the anger it vented - vented towards nothing in particular!",
+   "verdict": "fixed",
+   "citation": "Conrad Keely, choosing Unwound's Fake Train for MusicRadar's \"10 albums that changed my f**king life forever\": \"this is a great album, and floored me to listen to when it came out. Hearing it for the first time I turned green with envy.\"",
+   "sourceTier": "first-person",
+   "note": "Both pages read. The Jason Reece / Olympia / Beat Happening-Bikini Kill-Unwound claim was not found on any page I could open (not searched), so it is dropped from the citation; the Beat Happening half is for the twee pass anyway. Metropolis quote is the band ('ToD'), speaker not named in the passage; the Keely MusicRadar piece is solidly his. Metropolis URL: https://metropolisjapan.com/trail-of-dead-interview/. Found text is the MusicRadar paragraph's first two sentences (quotation mark leading is part of the page).",
+   "checked": "2026-10-26"
+  },
+  "ween>velvet-underground": {
+   "url": "https://web.archive.org/web/2021/https://online.berklee.edu/takenote/?p=10628",
+   "found": "Aaron’s dad didn’t have a lot of records either, but between the cool ones that I had and the cool ones he had, that’s kind of what Ween is. He had everything from Nina Simone to the first two Velvet Underground records, to Richie Havens’ Alarm Clock , to",
+   "verdict": "fixed",
+   "citation": "Dean Ween to Berklee Online's Take Note podcast (\"Dean Ween (Mickey Melchiondo) on the Guitarists That Shaped Him\"), on the record collections he and Aaron Freeman grew up between: \"Aaron's dad didn't have a lot of records either, but between the cool ones that I had and the cool ones he had, that's kind of what Ween is. He had everything from Nina Simone to the first two Velvet Underground records, to Richie Havens' Alarm Clock, to... I mean, everything, Beefheart... and so, those influences together...\"",
+   "sourceTier": "first-person",
+   "note": "Live Berklee site shows a Maintenance page; archive.org 2021 copy of https://online.berklee.edu/takenote/?p=10628 opens. The VU records were Aaron's dad's, which Dean calls 'those influences together'; moderate (a collection they grew up around rather than 'I loved the Velvets'). Keep or lower at owner's discretion.",
+   "checked": "2026-10-26"
+  }
+ },
+ "candidates": [
+  {
+   "source": "the-blue-nile",
+   "target": "television",
+   "kind": "influence",
+   "speaker": "Paul Buchanan",
+   "sentence": "But there were some great things. The Clash. The Pistols, the Talking Heads, and Television. I suppose we were at the right age as well.",
+   "url": "https://www.popmatters.com/166769-at-the-source-of-the-blue-nile-an-interview-with-paul-buchanan-2495788345.html"
+  },
+  {
+   "source": "the-blue-nile",
+   "target": "the-clash",
+   "kind": "influence",
+   "speaker": "Paul Buchanan",
+   "sentence": "But there were some great things. The Clash. The Pistols, the Talking Heads, and Television. I suppose we were at the right age as well.",
+   "url": "https://www.popmatters.com/166769-at-the-source-of-the-blue-nile-an-interview-with-paul-buchanan-2495788345.html"
+  },
+  {
+   "source": "mary-timony",
+   "target": "brian-eno",
+   "kind": "influence",
+   "speaker": "Mary Timony",
+   "sentence": "My brother was really into classic rock, so I learned about the Beatles and the Stones and Brian Eno from him.",
+   "url": "https://www.rookiemag.com/2013/11/theme-song-ex-hex/"
+  },
+  {
+   "source": "trail-of-dead",
+   "target": "sonic-youth",
+   "kind": "influence",
+   "speaker": "Trail of Dead (ToD) to Metropolis Japan, 2019",
+   "sentence": "ToD: At the time we were influenced bands who we knew like Unwound and Karp, but also bands like Sonic Youth.",
+   "url": "https://metropolisjapan.com/trail-of-dead-interview/"
+  }
+ ],
+ "offMap": [
+  {
+   "name": "Ghosts and Vodka",
+   "namedBy": "toe",
+   "sentence": "So they were instrumental, and that was a big inspiration for me.",
+   "url": "https://toneglow.substack.com/p/tone-glow-177-toe"
+  },
+  {
+   "name": "Queen",
+   "namedBy": "the-last-dinner-party",
+   "sentence": "“The music is very David Bowie and Queen -influenced,” says Emily, describing what to expect from the band’s upcoming 12-track album, Prelude To Ecstasy .",
+   "url": "https://guitar.com/features/interviews/the-last-dinner-party-interview-prelude-to-ecstasy"
+  }
+ ],
+ "finished": true
+}

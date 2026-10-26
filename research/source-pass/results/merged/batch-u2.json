@@ -1,0 +1,1080 @@
+{
+ "name": "u2",
+ "made": "2026-10-26",
+ "groups": [
+  {
+   "id": "unsourceable:wolf-alice",
+   "phase": "unsourceable",
+   "speaker": "Wolf Alice",
+   "links": [
+    {
+     "key": "wolf-alice>my-bloody-valentine",
+     "from": "Wolf Alice",
+     "to": "My Bloody Valentine",
+     "fromYear": 2010,
+     "toYear": 1983,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "wolf-alice>slowdive",
+     "from": "Wolf Alice",
+     "to": "Slowdive",
+     "fromYear": 2010,
+     "toYear": 1989,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.65
+    },
+    {
+     "key": "wolf-alice>pixies",
+     "from": "Wolf Alice",
+     "to": "Pixies",
+     "fromYear": 2010,
+     "toYear": 1986,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.45
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:deerhunter",
+   "phase": "unsourceable",
+   "speaker": "Deerhunter",
+   "links": [
+    {
+     "key": "deerhunter>my-bloody-valentine",
+     "from": "Deerhunter",
+     "to": "My Bloody Valentine",
+     "fromYear": 2001,
+     "toYear": 1983,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.8
+    },
+    {
+     "key": "deerhunter>sonic-youth",
+     "from": "Deerhunter",
+     "to": "Sonic Youth",
+     "fromYear": 2001,
+     "toYear": 1981,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.55
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:parannoul",
+   "phase": "unsourceable",
+   "speaker": "Parannoul",
+   "links": [
+    {
+     "key": "parannoul>slowdive",
+     "from": "Parannoul",
+     "to": "Slowdive",
+     "fromYear": 2017,
+     "toYear": 1989,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.85
+    },
+    {
+     "key": "parannoul>my-bloody-valentine",
+     "from": "Parannoul",
+     "to": "My Bloody Valentine",
+     "fromYear": 2017,
+     "toYear": 1983,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.8
+    },
+    {
+     "key": "parannoul>fishmans",
+     "from": "Parannoul",
+     "to": "Fishmans",
+     "fromYear": 2017,
+     "toYear": 1987,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.7
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:vashti-bunyan",
+   "phase": "unsourceable",
+   "speaker": "Vashti Bunyan",
+   "links": [
+    {
+     "key": "vashti-bunyan>incredible-string-band",
+     "from": "Vashti Bunyan",
+     "to": "Incredible String Band",
+     "fromYear": 1965,
+     "toYear": 1965,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "vashti-bunyan>bob-dylan",
+     "from": "Vashti Bunyan",
+     "to": "Bob Dylan",
+     "fromYear": 1965,
+     "toYear": 1961,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "vashti-bunyan>neil-young",
+     "from": "Vashti Bunyan",
+     "to": "Neil Young",
+     "fromYear": 1965,
+     "toYear": 1966,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:silversun-pickups",
+   "phase": "unsourceable",
+   "speaker": "Silversun Pickups",
+   "links": [
+    {
+     "key": "silversun-pickups>my-bloody-valentine",
+     "from": "Silversun Pickups",
+     "to": "My Bloody Valentine",
+     "fromYear": 2000,
+     "toYear": 1983,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.55
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:sweet-trip",
+   "phase": "unsourceable",
+   "speaker": "Sweet Trip",
+   "links": [
+    {
+     "key": "sweet-trip>cocteau-twins",
+     "from": "Sweet Trip",
+     "to": "Cocteau Twins",
+     "fromYear": 1998,
+     "toYear": 1979,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:sharon-van-etten",
+   "phase": "unsourceable",
+   "speaker": "Sharon Van Etten",
+   "links": [
+    {
+     "key": "sharon-van-etten>neil-young",
+     "from": "Sharon Van Etten",
+     "to": "Neil Young",
+     "fromYear": 2005,
+     "toYear": 1966,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "sharon-van-etten>cocteau-twins",
+     "from": "Sharon Van Etten",
+     "to": "Cocteau Twins",
+     "fromYear": 2005,
+     "toYear": 1979,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "sharon-van-etten>omd",
+     "from": "Sharon Van Etten",
+     "to": "Orchestral Manoeuvres in the Dark",
+     "fromYear": 2005,
+     "toYear": 1978,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "sharon-van-etten>cat-power",
+     "from": "Sharon Van Etten",
+     "to": "Cat Power",
+     "fromYear": 2005,
+     "toYear": 1992,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "sharon-van-etten>liz-phair",
+     "from": "Sharon Van Etten",
+     "to": "Liz Phair",
+     "fromYear": 2005,
+     "toYear": 1991,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:television",
+   "phase": "unsourceable",
+   "speaker": "Television",
+   "links": [
+    {
+     "key": "television>new-york-dolls",
+     "from": "Television",
+     "to": "New York Dolls",
+     "fromYear": 1973,
+     "toYear": 1971,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.55
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:red-house-painters",
+   "phase": "unsourceable",
+   "speaker": "Red House Painters",
+   "links": [
+    {
+     "key": "red-house-painters>this-mortal-coil",
+     "from": "Red House Painters",
+     "to": "This Mortal Coil",
+     "fromYear": 1988,
+     "toYear": 1983,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "red-house-painters>cocteau-twins",
+     "from": "Red House Painters",
+     "to": "Cocteau Twins",
+     "fromYear": 1988,
+     "toYear": 1979,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:julia-holter",
+   "phase": "unsourceable",
+   "speaker": "Julia Holter",
+   "links": [
+    {
+     "key": "julia-holter>neil-young",
+     "from": "Julia Holter",
+     "to": "Neil Young",
+     "fromYear": 2011,
+     "toYear": 1966,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "julia-holter>julee-cruise",
+     "from": "Julia Holter",
+     "to": "Julee Cruise",
+     "fromYear": 2011,
+     "toYear": 1989,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "julia-holter>nico",
+     "from": "Julia Holter",
+     "to": "Nico",
+     "fromYear": 2011,
+     "toYear": 1967,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "julia-holter>siouxsie-and-the-banshees",
+     "from": "Julia Holter",
+     "to": "Siouxsie & The Banshees",
+     "fromYear": 2011,
+     "toYear": 1976,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:angel-olsen",
+   "phase": "unsourceable",
+   "speaker": "Angel Olsen",
+   "links": [
+    {
+     "key": "angel-olsen>cocteau-twins",
+     "from": "Angel Olsen",
+     "to": "Cocteau Twins",
+     "fromYear": 2010,
+     "toYear": 1979,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "angel-olsen>the-cure",
+     "from": "Angel Olsen",
+     "to": "The Cure",
+     "fromYear": 2010,
+     "toYear": 1978,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "angel-olsen>siouxsie-and-the-banshees",
+     "from": "Angel Olsen",
+     "to": "Siouxsie & The Banshees",
+     "fromYear": 2010,
+     "toYear": 1976,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "angel-olsen>david-bowie",
+     "from": "Angel Olsen",
+     "to": "David Bowie",
+     "fromYear": 2010,
+     "toYear": 1969,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "angel-olsen>cat-power",
+     "from": "Angel Olsen",
+     "to": "Cat Power",
+     "fromYear": 2010,
+     "toYear": 1992,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "angel-olsen>liz-phair",
+     "from": "Angel Olsen",
+     "to": "Liz Phair",
+     "fromYear": 2010,
+     "toYear": 1991,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:ethel-cain",
+   "phase": "unsourceable",
+   "speaker": "Ethel Cain",
+   "links": [
+    {
+     "key": "ethel-cain>fiona-apple",
+     "from": "Ethel Cain",
+     "to": "Fiona Apple",
+     "fromYear": 2019,
+     "toYear": 1996,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "ethel-cain>nick-cave-and-the-bad-seeds",
+     "from": "Ethel Cain",
+     "to": "Nick Cave & The Bad Seeds",
+     "fromYear": 2019,
+     "toYear": 1983,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "ethel-cain>cocteau-twins",
+     "from": "Ethel Cain",
+     "to": "Cocteau Twins",
+     "fromYear": 2019,
+     "toYear": 1979,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:anna-von-hausswolff",
+   "phase": "unsourceable",
+   "speaker": "Anna von Hausswolff",
+   "links": [
+    {
+     "key": "anna-von-hausswolff>swans",
+     "from": "Anna von Hausswolff",
+     "to": "Swans",
+     "fromYear": 2010,
+     "toYear": 1982,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "anna-von-hausswolff>siouxsie-and-the-banshees",
+     "from": "Anna von Hausswolff",
+     "to": "Siouxsie & The Banshees",
+     "fromYear": 2010,
+     "toYear": 1976,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:dead-can-dance",
+   "phase": "unsourceable",
+   "speaker": "Dead Can Dance",
+   "links": [
+    {
+     "key": "dead-can-dance>cocteau-twins",
+     "from": "Dead Can Dance",
+     "to": "Cocteau Twins",
+     "fromYear": 1981,
+     "toYear": 1979,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:tortoise",
+   "phase": "unsourceable",
+   "speaker": "Tortoise",
+   "links": [
+    {
+     "key": "tortoise>neu",
+     "from": "Tortoise",
+     "to": "Neu!",
+     "fromYear": 1990,
+     "toYear": 1971,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:the-stone-roses",
+   "phase": "unsourceable",
+   "speaker": "The Stone Roses",
+   "links": [
+    {
+     "key": "the-stone-roses>the-jesus-and-mary-chain",
+     "from": "The Stone Roses",
+     "to": "The Jesus and Mary Chain",
+     "fromYear": 1983,
+     "toYear": 1983,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "the-stone-roses>the-smiths",
+     "from": "The Stone Roses",
+     "to": "The Smiths",
+     "fromYear": 1983,
+     "toYear": 1982,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.45
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:sigur-ros",
+   "phase": "unsourceable",
+   "speaker": "Sigur Rós",
+   "links": [
+    {
+     "key": "sigur-ros>talk-talk",
+     "from": "Sigur Rós",
+     "to": "Talk Talk",
+     "fromYear": 1994,
+     "toYear": 1981,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "sigur-ros>brian-eno",
+     "from": "Sigur Rós",
+     "to": "Brian Eno",
+     "fromYear": 1994,
+     "toYear": 1971,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:kurt-vile",
+   "phase": "unsourceable",
+   "speaker": "Kurt Vile",
+   "links": [
+    {
+     "key": "kurt-vile>bob-dylan",
+     "from": "Kurt Vile",
+     "to": "Bob Dylan",
+     "fromYear": 2003,
+     "toYear": 1961,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:yeah-yeah-yeahs",
+   "phase": "unsourceable",
+   "speaker": "Yeah Yeah Yeahs",
+   "links": [
+    {
+     "key": "yeah-yeah-yeahs>pixies",
+     "from": "Yeah Yeah Yeahs",
+     "to": "Pixies",
+     "fromYear": 2000,
+     "toYear": 1986,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.6
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:idles",
+   "phase": "unsourceable",
+   "speaker": "IDLES",
+   "links": [
+    {
+     "key": "idles>gang-of-four",
+     "from": "IDLES",
+     "to": "Gang of Four",
+     "fromYear": 2009,
+     "toYear": 1976,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "idles>joy-division",
+     "from": "IDLES",
+     "to": "Joy Division",
+     "fromYear": 2009,
+     "toYear": 1976,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:mogwai",
+   "phase": "unsourceable",
+   "speaker": "Mogwai",
+   "links": [
+    {
+     "key": "mogwai>talk-talk",
+     "from": "Mogwai",
+     "to": "Talk Talk",
+     "fromYear": 1995,
+     "toYear": 1981,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:st-vincent",
+   "phase": "unsourceable",
+   "speaker": "St. Vincent",
+   "links": [
+    {
+     "key": "st-vincent>liz-phair",
+     "from": "St. Vincent",
+     "to": "Liz Phair",
+     "fromYear": 2007,
+     "toYear": 1991,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:the-strokes",
+   "phase": "unsourceable",
+   "speaker": "The Strokes",
+   "links": [
+    {
+     "key": "the-strokes>television",
+     "from": "The Strokes",
+     "to": "Television",
+     "fromYear": 1998,
+     "toYear": 1973,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.75
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:silver-jews",
+   "phase": "unsourceable",
+   "speaker": "Silver Jews",
+   "links": [
+    {
+     "key": "silver-jews>leonard-cohen",
+     "from": "Silver Jews",
+     "to": "Leonard Cohen",
+     "fromYear": 1989,
+     "toYear": 1967,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.45
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:animal-collective",
+   "phase": "unsourceable",
+   "speaker": "Animal Collective",
+   "links": [
+    {
+     "key": "animal-collective>radiohead",
+     "from": "Animal Collective",
+     "to": "Radiohead",
+     "fromYear": 2003,
+     "toYear": 1985,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.4
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:mitski",
+   "phase": "unsourceable",
+   "speaker": "Mitski",
+   "links": [
+    {
+     "key": "mitski>cat-power",
+     "from": "Mitski",
+     "to": "Cat Power",
+     "fromYear": 2012,
+     "toYear": 1992,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "mitski>liz-phair",
+     "from": "Mitski",
+     "to": "Liz Phair",
+     "fromYear": 2012,
+     "toYear": 1991,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:sleater-kinney",
+   "phase": "unsourceable",
+   "speaker": "Sleater-Kinney",
+   "links": [
+    {
+     "key": "sleater-kinney>liz-phair",
+     "from": "Sleater-Kinney",
+     "to": "Liz Phair",
+     "fromYear": 1994,
+     "toYear": 1991,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:interpol",
+   "phase": "unsourceable",
+   "speaker": "Interpol",
+   "links": [
+    {
+     "key": "interpol>television",
+     "from": "Interpol",
+     "to": "Television",
+     "fromYear": 1997,
+     "toYear": 1973,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.55
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:bon-iver",
+   "phase": "unsourceable",
+   "speaker": "Bon Iver",
+   "links": [
+    {
+     "key": "bon-iver>talk-talk",
+     "from": "Bon Iver",
+     "to": "Talk Talk",
+     "fromYear": 2007,
+     "toYear": 1981,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:geese",
+   "phase": "unsourceable",
+   "speaker": "Geese",
+   "links": [
+    {
+     "key": "geese>television",
+     "from": "Geese",
+     "to": "Television",
+     "fromYear": 2017,
+     "toYear": 1973,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.55
+    },
+    {
+     "key": "geese>talking-heads",
+     "from": "Geese",
+     "to": "Talking Heads",
+     "fromYear": 2017,
+     "toYear": 1975,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:phoebe-bridgers",
+   "phase": "unsourceable",
+   "speaker": "Phoebe Bridgers",
+   "links": [
+    {
+     "key": "phoebe-bridgers>liz-phair",
+     "from": "Phoebe Bridgers",
+     "to": "Liz Phair",
+     "fromYear": 2014,
+     "toYear": 1991,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:beach-house",
+   "phase": "unsourceable",
+   "speaker": "Beach House",
+   "links": [
+    {
+     "key": "beach-house>mazzy-star",
+     "from": "Beach House",
+     "to": "Mazzy Star",
+     "fromYear": 2004,
+     "toYear": 1988,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "beach-house>slowdive",
+     "from": "Beach House",
+     "to": "Slowdive",
+     "fromYear": 2004,
+     "toYear": 1989,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.7
+    },
+    {
+     "key": "beach-house>broadcast",
+     "from": "Beach House",
+     "to": "Broadcast",
+     "fromYear": 2004,
+     "toYear": 1995,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.6
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:japanese-breakfast",
+   "phase": "unsourceable",
+   "speaker": "Japanese Breakfast",
+   "links": [
+    {
+     "key": "japanese-breakfast>bjork",
+     "from": "Japanese Breakfast",
+     "to": "Björk",
+     "fromYear": 2013,
+     "toYear": 1977,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "japanese-breakfast>liz-phair",
+     "from": "Japanese Breakfast",
+     "to": "Liz Phair",
+     "fromYear": 2013,
+     "toYear": 1991,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.45
+    },
+    {
+     "key": "japanese-breakfast>wilco",
+     "from": "Japanese Breakfast",
+     "to": "Wilco",
+     "fromYear": 2013,
+     "toYear": 1994,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "japanese-breakfast>destroyer",
+     "from": "Japanese Breakfast",
+     "to": "Destroyer",
+     "fromYear": 2013,
+     "toYear": 1995,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:adrianne-lenker",
+   "phase": "unsourceable",
+   "speaker": "Adrianne Lenker",
+   "links": [
+    {
+     "key": "adrianne-lenker>nick-drake",
+     "from": "Adrianne Lenker",
+     "to": "Nick Drake",
+     "fromYear": 2006,
+     "toYear": 1968,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.45
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:fontaines-dc",
+   "phase": "unsourceable",
+   "speaker": "Fontaines D.C.",
+   "links": [
+    {
+     "key": "fontaines-dc>leonard-cohen",
+     "from": "Fontaines D.C.",
+     "to": "Leonard Cohen",
+     "fromYear": 2017,
+     "toYear": 1967,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:grouper",
+   "phase": "unsourceable",
+   "speaker": "Grouper",
+   "links": [
+    {
+     "key": "grouper>townes-van-zandt",
+     "from": "Grouper",
+     "to": "Townes Van Zandt",
+     "fromYear": 2005,
+     "toYear": 1965,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:joanna-newsom",
+   "phase": "unsourceable",
+   "speaker": "Joanna Newsom",
+   "links": [
+    {
+     "key": "joanna-newsom>roy-harper",
+     "from": "Joanna Newsom",
+     "to": "Roy Harper",
+     "fromYear": 2002,
+     "toYear": 1964,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:alvvays",
+   "phase": "unsourceable",
+   "speaker": "Alvvays",
+   "links": [
+    {
+     "key": "alvvays>the-sundays",
+     "from": "Alvvays",
+     "to": "The Sundays",
+     "fromYear": 2011,
+     "toYear": 1987,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.7
+    },
+    {
+     "key": "alvvays>slowdive",
+     "from": "Alvvays",
+     "to": "Slowdive",
+     "fromYear": 2011,
+     "toYear": 1989,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.7
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:caroline-polachek",
+   "phase": "unsourceable",
+   "speaker": "Caroline Polachek",
+   "links": [
+    {
+     "key": "caroline-polachek>imogen-heap",
+     "from": "Caroline Polachek",
+     "to": "Imogen Heap",
+     "fromYear": 2013,
+     "toYear": 1998,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:get-up-kids",
+   "phase": "unsourceable",
+   "speaker": "The Get Up Kids",
+   "links": [
+    {
+     "key": "get-up-kids>drive-like-jehu",
+     "from": "The Get Up Kids",
+     "to": "Drive Like Jehu",
+     "fromYear": 1995,
+     "toYear": 1990,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "get-up-kids>the-jesus-lizard",
+     "from": "The Get Up Kids",
+     "to": "The Jesus Lizard",
+     "fromYear": 1995,
+     "toYear": 1987,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:mono",
+   "phase": "unsourceable",
+   "speaker": "Mono",
+   "links": [
+    {
+     "key": "mono>mogwai",
+     "from": "Mono",
+     "to": "Mogwai",
+     "fromYear": 1999,
+     "toYear": 1995,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "mono>godspeed-you-black-emperor",
+     "from": "Mono",
+     "to": "Godspeed You! Black Emperor",
+     "fromYear": 1999,
+     "toYear": 1994,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:do-make-say-think",
+   "phase": "unsourceable",
+   "speaker": "Do Make Say Think",
+   "links": [
+    {
+     "key": "do-make-say-think>godspeed-you-black-emperor",
+     "from": "Do Make Say Think",
+     "to": "Godspeed You! Black Emperor",
+     "fromYear": 1995,
+     "toYear": 1994,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,501 @@
+{
+  "name": "c17",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "reported:the-smiths",
+      "phase": "reported",
+      "speaker": "The Smiths",
+      "links": [
+        {
+          "key": "the-smiths>bert-jansch",
+          "from": "The Smiths",
+          "to": "Bert Jansch",
+          "fromYear": 1982,
+          "toYear": 1965,
+          "citation": "Guitar Player wrote on Johnny Marr's folk stylings, listing Bert Jansch first among his named guitarist influences.",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "reported:aphex-twin",
+      "phase": "reported",
+      "speaker": "Aphex Twin",
+      "links": [
+        {
+          "key": "aphex-twin>suicide",
+          "from": "Aphex Twin",
+          "to": "Suicide",
+          "fromYear": 1992,
+          "toYear": 1970,
+          "citation": "The Guardian: \"Suicide's aggressive synthesiser rock has been cited as an influence by bands such as Radiohead, U2, New Order, and Depeche Mode; electronic acts such as Daft Punk and Aphex Twin.\"",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "aphex-twin>kraftwerk",
+          "from": "Aphex Twin",
+          "to": "Kraftwerk",
+          "fromYear": 1992,
+          "toYear": 1970,
+          "citation": "Kraftwerk's Wikipedia page states Aphex Twin noted Kraftwerk as one of his biggest influences and cited Computer World as a very influential album on his music and sound.",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "reported:depeche-mode",
+      "phase": "reported",
+      "speaker": "Depeche Mode",
+      "links": [
+        {
+          "key": "depeche-mode>suicide",
+          "from": "Depeche Mode",
+          "to": "Suicide",
+          "fromYear": 1980,
+          "toYear": 1970,
+          "citation": "The Guardian: \"Suicide's aggressive synthesiser rock has been cited as an influence by bands such as Radiohead, U2, New Order, and Depeche Mode; electronic acts such as Daft Punk and Aphex Twin.\"",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "depeche-mode>david-bowie",
+          "from": "Depeche Mode",
+          "to": "David Bowie",
+          "fromYear": 1980,
+          "toYear": 1969,
+          "citation": "Depeche Mode Wikipedia bio: members \"cited David Bowie, the Clash, Roxy Music and Brian Eno, Elvis Presley, the Velvet Underground, Fad Gadget, Suicide, and the blues.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "depeche-mode>velvet-underground",
+          "from": "Depeche Mode",
+          "to": "The Velvet Underground",
+          "fromYear": 1980,
+          "toYear": 1965,
+          "citation": "Depeche Mode's Wikipedia biography records that members \"cited David Bowie, the Clash, Roxy Music and Brian Eno, Elvis Presley, the Velvet Underground, Fad Gadget, Suicide, and the blues.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "depeche-mode>cabaret-voltaire",
+          "from": "Depeche Mode",
+          "to": "Cabaret Voltaire",
+          "fromYear": 1980,
+          "toYear": 1973,
+          "citation": "Depeche Mode Wikipedia bio: \"Gahan's and Gore's favourite artists included Siouxsie and the Banshees, Sparks, Cabaret Voltaire, Talking Heads and Iggy Pop.\" A favourites list rather than a stated influence.",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        },
+        {
+          "key": "depeche-mode>siouxsie-and-the-banshees",
+          "from": "Depeche Mode",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 1980,
+          "toYear": 1976,
+          "citation": "Depeche Mode's Wikipedia biography: \"Gahan's and Gore's favourite artists included Siouxsie and the Banshees, Sparks, Cabaret Voltaire, Talking Heads and Iggy Pop.\" A favourites list rather than a stated influence.",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        },
+        {
+          "key": "depeche-mode>talking-heads",
+          "from": "Depeche Mode",
+          "to": "Talking Heads",
+          "fromYear": 1980,
+          "toYear": 1975,
+          "citation": "Depeche Mode's Wikipedia biography: \"Gahan's and Gore's favourite artists included Siouxsie and the Banshees, Sparks, Cabaret Voltaire, Talking Heads and Iggy Pop.\" A favourites list rather than a stated influence.",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        },
+        {
+          "key": "depeche-mode>sparks",
+          "from": "Depeche Mode",
+          "to": "Sparks",
+          "fromYear": 1980,
+          "toYear": 1968,
+          "citation": "Depeche Mode Wikipedia: Gore \"was a fan of glam, early Human League and Sparks\"; separately, Vince Clarke's early influences \"included Sparks, Paul Simon, and OMD.\"",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "depeche-mode>the-clash",
+          "from": "Depeche Mode",
+          "to": "The Clash",
+          "fromYear": 1980,
+          "toYear": 1976,
+          "citation": "Depeche Mode's Wikipedia bio states the band's members \"cited David Bowie, the Clash, Roxy Music and Brian Eno, Elvis Presley, the Velvet Underground, Fad Gadget, Suicide, and the blues.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "reported:elliott-smith",
+      "phase": "reported",
+      "speaker": "Elliott Smith",
+      "links": [
+        {
+          "key": "elliott-smith>fugazi",
+          "from": "Elliott Smith",
+          "to": "Fugazi",
+          "fromYear": 1994,
+          "toYear": 1986,
+          "citation": "Benjamin Nugent's biography Elliott Smith and the Big Nothing (2009), quoted on Wikipedia's Fugazi page, recounts a friend recalling Smith becoming \"really super-obsessed\" with Built to Spill and Fugazi, and admiring Ian MacKaye intensely.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "elliott-smith>built-to-spill",
+          "from": "Elliott Smith",
+          "to": "Built to Spill",
+          "fromYear": 1994,
+          "toYear": 1992,
+          "citation": "Benjamin Nugent's Elliott Smith and the Big Nothing (2009) recounts a friend recalling Smith becoming \"really super-obsessed\" with Built to Spill and Fugazi, and admiring Doug Martsch.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:godspeed-you-black-emperor",
+      "phase": "reported",
+      "speaker": "Godspeed You! Black Emperor",
+      "links": [
+        {
+          "key": "godspeed-you-black-emperor>black-flag",
+          "from": "Godspeed You! Black Emperor",
+          "to": "Black Flag",
+          "fromYear": 1994,
+          "toYear": 1976,
+          "citation": "The Wire, May 2000 (archived, brainwashed.com/godspeed/wire2.html): \"From groups like Black Flag and The Minutemen they've taken the whole work ethic, the 'serious as your life' drive that sent Henry Rollins and co across the States in the back of a van...\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "godspeed-you-black-emperor>minutemen",
+          "from": "Godspeed You! Black Emperor",
+          "to": "Minutemen",
+          "fromYear": 1994,
+          "toYear": 1980,
+          "citation": "The Wire, May 2000 (archived, brainwashed.com/godspeed/wire2.html): \"From groups like Black Flag and The Minutemen they've taken the whole work ethic, the 'serious as your life' drive that sent Henry Rollins and co across the States in the back of a van...\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "reported:talking-heads",
+      "phase": "reported",
+      "speaker": "Talking Heads",
+      "links": [
+        {
+          "key": "talking-heads>david-bowie",
+          "from": "Talking Heads",
+          "to": "David Bowie",
+          "fromYear": 1975,
+          "toYear": 1969,
+          "citation": "Pitchfork: Bowie and the Velvet Underground \"provided his next steps\" for Byrne after the Byrds.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:new-order",
+      "phase": "reported",
+      "speaker": "New Order",
+      "links": [
+        {
+          "key": "new-order>sparks",
+          "from": "New Order",
+          "to": "Sparks",
+          "fromYear": 1980,
+          "toYear": 1968,
+          "citation": "Peter Hook, via NME/Wikipedia, cited Kraftwerk, Giorgio Moroder and Sparks as influences on \"Blue Monday.\"",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "new-order>david-bowie",
+          "from": "New Order",
+          "to": "David Bowie",
+          "fromYear": 1980,
+          "toYear": 1969,
+          "citation": "Puja Patel, \"Inside New Order's First Album Without Founding Bassist Peter Hook,\" Rolling Stone (21 Jan 2015), listing Neil Young, David Bowie and Iggy Pop among the band's early influences.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "new-order>suicide",
+          "from": "New Order",
+          "to": "Suicide",
+          "fromYear": 1980,
+          "toYear": 1970,
+          "citation": "The Guardian: \"Suicide's aggressive synthesiser rock has been cited as an influence by bands such as Radiohead, U2, New Order, and Depeche Mode; electronic acts such as Daft Punk and Aphex Twin.\"",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "new-order>the-human-league",
+          "from": "New Order",
+          "to": "The Human League",
+          "fromYear": 1980,
+          "toYear": 1977,
+          "citation": "New Order Wikipedia: Bernard Sumner's songwriting shift \"was also influenced by English electronic groups such as Cabaret Voltaire, the Human League, and OMD.\"",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "new-order>omd",
+          "from": "New Order",
+          "to": "Orchestral Manoeuvres in the Dark",
+          "fromYear": 1980,
+          "toYear": 1978,
+          "citation": "New Order's Wikipedia biography, on Bernard Sumner's songwriting shift: it \"was also influenced by English electronic groups such as Cabaret Voltaire, the Human League, and OMD.\"",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:american-football",
+      "phase": "reported",
+      "speaker": "American Football",
+      "links": [
+        {
+          "key": "american-football>codeine",
+          "from": "American Football",
+          "to": "Codeine",
+          "fromYear": 1997,
+          "toYear": 1989,
+          "citation": "Named across American Football's and Duster's separate accounts of the slowcore records behind their sound, converging with the same Codeine lineage claim that Low's own influences rest on.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:black-flag",
+      "phase": "reported",
+      "speaker": "Black Flag",
+      "links": [
+        {
+          "key": "black-flag>bad-brains",
+          "from": "Black Flag",
+          "to": "Bad Brains",
+          "fromYear": 1976,
+          "toYear": 1977,
+          "citation": "Wikipedia/Henry Rollins -- sourced to Rollins's pre-Black-Flag biography, not a full-band statement, flagged weaker-tier.",
+          "sourceTier": "reported",
+          "confidence": 0.55
+        }
+      ]
+    },
+    {
+      "id": "reported:pavement",
+      "phase": "reported",
+      "speaker": "Pavement",
+      "links": [
+        {
+          "key": "pavement>sonic-youth",
+          "from": "Pavement",
+          "to": "Sonic Youth",
+          "fromYear": 1989,
+          "toYear": 1981,
+          "citation": "AllMusic's prose bio and the AV Club both describe Pavement absorbing the ethos of \"their own heroes,\" Sonic Youth; bassist Mark Ibold has discussed the same touring ethos.",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "pavement>the-replacements",
+          "from": "Pavement",
+          "to": "The Replacements",
+          "fromYear": 1989,
+          "toYear": 1979,
+          "citation": "The Quietus, \"Organised Chaos: Swell Maps Interviewed\" (24 May 2021), which records the Replacements and Swell Maps among the influences Scott Kannberg has cited.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "pavement>pixies",
+          "from": "Pavement",
+          "to": "Pixies",
+          "fromYear": 1989,
+          "toYear": 1986,
+          "citation": "AllMusic's prose bio: Slay Tracks \"demonstrated sonic debts to the Fall, R.E.M., the Pixies, and Sonic Youth.\"",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "pavement>echo-and-the-bunnymen",
+          "from": "Pavement",
+          "to": "Echo & the Bunnymen",
+          "fromYear": 1989,
+          "toYear": 1978,
+          "citation": "The AV Club describes an ethos \"learned from their own heroes, including R.E.M., Sonic Youth, and Echo & the Bunnymen\"; Pavement also covered \"The Killing Moon.\"",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:rem",
+      "phase": "reported",
+      "speaker": "R.E.M.",
+      "links": [
+        {
+          "key": "rem>patti-smith",
+          "from": "R.E.M.",
+          "to": "Patti Smith",
+          "fromYear": 1980,
+          "toYear": 1974,
+          "citation": "Will Hodgkinson, Sunday News 2017: the band formed after Buck, working in a record shop, \"was impressed by the Patti Smith and Velvet Underground albums that Stipe was buying.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "rem>neil-young",
+          "from": "R.E.M.",
+          "to": "Neil Young",
+          "fromYear": 1980,
+          "toYear": 1966,
+          "citation": "Stipe, in Stereogum's \"80 Artists Pick Their Favorite Neil Young Song\": he never listened to Young much himself, but Young was a favorite of all the guys in the band, \"especially Peter\" -- one of the main reasons they signed to Warner Bros.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:snail-mail",
+      "phase": "reported",
+      "speaker": "Snail Mail",
+      "links": [
+        {
+          "key": "snail-mail>mary-timony",
+          "from": "Snail Mail",
+          "to": "Mary Timony",
+          "fromYear": 2015,
+          "toYear": 1990,
+          "citation": "Rolling Stone's Rob Sheffield reported that Lindsey Jordan took guitar lessons from Mary Timony, calling her an \"indie-rock legend\" from bands including Helium and Ex Hex; Jordan herself said of her, \"Everybody wants to be her.\"",
+          "sourceTier": "reported",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "reported:the-jesus-and-mary-chain",
+      "phase": "reported",
+      "speaker": "The Jesus and Mary Chain",
+      "links": [
+        {
+          "key": "the-jesus-and-mary-chain>siouxsie-and-the-banshees",
+          "from": "The Jesus and Mary Chain",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 1983,
+          "toYear": 1976,
+          "citation": "Jim Reid on BBC Radio 6 Music (4 Mar 2012), naming a liking for Pink Floyd, Siouxsie and the Banshees, the Monkees and Muddy Waters -- stated as taste, separately from the band's cited early influences.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "the-jesus-and-mary-chain>can",
+          "from": "The Jesus and Mary Chain",
+          "to": "Can",
+          "fromYear": 1983,
+          "toYear": 1968,
+          "citation": "Wikipedia/Can: \"In the 1980s, Can were referenced by British new wave acts such as Pete Shelley, Gary Numan, Ultravox, The Jesus and Mary Chain and Primal Scream.\"",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "reported:dinosaur-jr",
+      "phase": "reported",
+      "speaker": "Dinosaur Jr.",
+      "links": [
+        {
+          "key": "dinosaur-jr>sonic-youth",
+          "from": "Dinosaur Jr.",
+          "to": "Sonic Youth",
+          "fromYear": 1984,
+          "toYear": 1981,
+          "citation": "Michael Azerrad describes Dinosaur Jr. coming off tour with \"their heroes, Sonic Youth,\" nearly in tears.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "dinosaur-jr>the-replacements",
+          "from": "Dinosaur Jr.",
+          "to": "The Replacements",
+          "fromYear": 1984,
+          "toYear": 1979,
+          "citation": "Michael Azerrad, Our Band Could Be Your Life (2001), p.350, on what the band moved toward after high school: slower but still aggressive music -- Black Sabbath, the Replacements and Neil Young.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:omd",
+      "phase": "reported",
+      "speaker": "Orchestral Manoeuvres in the Dark",
+      "links": [
+        {
+          "key": "omd>neu",
+          "from": "Orchestral Manoeuvres in the Dark",
+          "to": "Neu!",
+          "fromYear": 1978,
+          "toYear": 1971,
+          "citation": "OMD's Wikipedia biography lists Neu! among the band's formative influences, alongside the Velvet Underground, Roxy Music, Brian Eno and David Bowie. A bare list, with no mechanism stated.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "omd>velvet-underground",
+          "from": "Orchestral Manoeuvres in the Dark",
+          "to": "The Velvet Underground",
+          "fromYear": 1978,
+          "toYear": 1965,
+          "citation": "OMD's Wikipedia biography lists the Velvet Underground among the band's formative influences, alongside Neu!, Roxy Music, Brian Eno and David Bowie. A bare list, with no mechanism stated.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "omd>david-bowie",
+          "from": "Orchestral Manoeuvres in the Dark",
+          "to": "David Bowie",
+          "fromYear": 1978,
+          "toYear": 1969,
+          "citation": "OMD's Wikipedia biography lists David Bowie among the band's formative influences, alongside Neu!, the Velvet Underground, Roxy Music and Brian Eno. A bare list, with no mechanism stated.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "omd>brian-eno",
+          "from": "Orchestral Manoeuvres in the Dark",
+          "to": "Brian Eno",
+          "fromYear": 1978,
+          "toYear": 1971,
+          "citation": "OMD's Wikipedia biography lists Brian Eno among the band's formative influences, alongside Neu!, the Velvet Underground, Roxy Music and David Bowie. A bare list, with no mechanism stated.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "omd>joy-division",
+          "from": "Orchestral Manoeuvres in the Dark",
+          "to": "Joy Division",
+          "fromYear": 1978,
+          "toYear": 1976,
+          "citation": "OMD Wikipedia: drew inspiration from Factory labelmates Joy Division, particularly making Organisation (1980).",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    }
+  ]
+}

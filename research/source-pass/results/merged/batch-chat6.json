@@ -1,0 +1,240 @@
+{
+  "name": "chat6",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "critic:sonic-youth",
+      "phase": "critic",
+      "speaker": "Sonic Youth",
+      "links": [
+        {
+          "key": "sonic-youth>this-heat",
+          "from": "Sonic Youth",
+          "to": "This Heat",
+          "fromYear": 1981,
+          "toYear": 1976,
+          "citation": "AllMusic bio, Fred Thomas -- a single shared critic-attributed citation rather than an individual quote, flagged weaker-tier.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:radiohead",
+      "phase": "critic",
+      "speaker": "Radiohead",
+      "links": [
+        {
+          "key": "radiohead>this-heat",
+          "from": "Radiohead",
+          "to": "This Heat",
+          "fromYear": 1985,
+          "toYear": 1976,
+          "citation": "AllMusic bio, Fred Thomas -- a single shared critic-attributed citation rather than an individual quote, flagged weaker-tier. AllMusic bio, Fred Thomas -- critic-attributed, weaker-tier.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "radiohead>guided-by-voices",
+          "from": "Radiohead",
+          "to": "Guided by Voices",
+          "fromYear": 1985,
+          "toYear": 1983,
+          "citation": "Grove Atlantic's publisher copy for the authorised GBV biography: P.J. Harvey, Radiohead, R.E.M., the Strokes and U2 have cited Pollard as an influence. Publisher marketing copy, not a primary interview.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:aphex-twin",
+      "phase": "critic",
+      "speaker": "Aphex Twin",
+      "links": [
+        {
+          "key": "aphex-twin>can",
+          "from": "Aphex Twin",
+          "to": "Can",
+          "fromYear": 1992,
+          "toYear": 1968,
+          "citation": "Simon Reynolds (1993): Richard D. James had \"recently explored avant-classical and left-field rock artists including Cage, Stockhausen, Eno, Steve Reich, Terry Riley, and Can.\"",
+          "sourceTier": "critic",
+          "confidence": 0.55
+        }
+      ]
+    },
+    {
+      "id": "critic:mogwai",
+      "phase": "critic",
+      "speaker": "Mogwai",
+      "links": [
+        {
+          "key": "mogwai>slint",
+          "from": "Mogwai",
+          "to": "Slint",
+          "fromYear": 1995,
+          "toYear": 1986,
+          "citation": "Glide Magazine (2011): early Mogwai songs \"sounded like God Machine or Joy Division or Slint.\"",
+          "sourceTier": "critic",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "critic:snail-mail",
+      "phase": "critic",
+      "speaker": "Snail Mail",
+      "links": [
+        {
+          "key": "snail-mail>fiona-apple",
+          "from": "Snail Mail",
+          "to": "Fiona Apple",
+          "fromYear": 2015,
+          "toYear": 1996,
+          "citation": "The Forty-Five described Snail Mail's Lush as a throwback that \"worshipped at the altar of Liz Phair and Fiona Apple.\"",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:the-replacements",
+      "phase": "critic",
+      "speaker": "The Replacements",
+      "links": [
+        {
+          "key": "the-replacements>new-york-dolls",
+          "from": "The Replacements",
+          "to": "New York Dolls",
+          "fromYear": 1979,
+          "toYear": 1971,
+          "citation": "One anonymous blog is the only source found.",
+          "sourceTier": "critic",
+          "confidence": 0.55
+        }
+      ]
+    },
+    {
+      "id": "critic:modest-mouse",
+      "phase": "critic",
+      "speaker": "Modest Mouse",
+      "links": [
+        {
+          "key": "modest-mouse>built-to-spill",
+          "from": "Modest Mouse",
+          "to": "Built to Spill",
+          "fromYear": 1992,
+          "toYear": 1992,
+          "citation": "Mark Richardson, \"Built to Spill,\" Pitchfork (7 May 2006): Built to Spill's work \"has been said to have been an influence on alternative rock acts such as Modest Mouse and Death Cab for Cutie.\"",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "critic:stereolab",
+      "phase": "critic",
+      "speaker": "Stereolab",
+      "links": [
+        {
+          "key": "stereolab>this-heat",
+          "from": "Stereolab",
+          "to": "This Heat",
+          "fromYear": 1990,
+          "toYear": 1976,
+          "citation": "AllMusic bio, Fred Thomas -- a single shared critic-attributed citation rather than an individual quote, flagged weaker-tier. AllMusic bio, Fred Thomas -- critic-attributed, weaker-tier.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:low",
+      "phase": "critic",
+      "speaker": "Low",
+      "links": [
+        {
+          "key": "low>velvet-underground",
+          "from": "Low",
+          "to": "The Velvet Underground",
+          "fromYear": 1993,
+          "toYear": 1965,
+          "citation": "Stereogum wrote that Low's first two records were equally beholden to the hushed balladry of the Velvet Underground as to the elegiac drone of Joy Division; Zak Sally told MOJO that his and Alan Sparhawk's pre-Low band 12:38 used to play the Velvet Underground's \"Sister Ray\" far longer than anyone should.",
+          "sourceTier": "critic",
+          "confidence": 0.55
+        },
+        {
+          "key": "low>galaxie-500",
+          "from": "Low",
+          "to": "Galaxie 500",
+          "fromYear": 1993,
+          "toYear": 1987,
+          "citation": "Strongest edge this node has -- DiS Slowcore Week: cited as an influence by Low, specifically for paring down the Velvet Underground and the Modern Lovers.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "critic:this-heat",
+      "phase": "critic",
+      "speaker": "This Heat",
+      "links": [
+        {
+          "key": "this-heat>can",
+          "from": "This Heat",
+          "to": "Can",
+          "fromYear": 1976,
+          "toYear": 1968,
+          "citation": "Perfect Sound Forever's essay on This Heat argues for Can's influence on the band, though the claim is the writer's own analysis rather than a quote from Charles Hayward himself.",
+          "sourceTier": "critic",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "critic:brand-new",
+      "phase": "critic",
+      "speaker": "Brand New",
+      "links": [
+        {
+          "key": "brand-new>the-jesus-lizard",
+          "from": "Brand New",
+          "to": "The Jesus Lizard",
+          "fromYear": 2000,
+          "toYear": 1987,
+          "citation": "CHARTattack (Nov 25, 2009): \"Tierney's bass playing emulated Husker Du and The Jesus Lizard.\"",
+          "sourceTier": "critic",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "critic:galaxie-500",
+      "phase": "critic",
+      "speaker": "Galaxie 500",
+      "links": [
+        {
+          "key": "galaxie-500>velvet-underground",
+          "from": "Galaxie 500",
+          "to": "The Velvet Underground",
+          "fromYear": 1987,
+          "toYear": 1965,
+          "citation": "Wikipedia's Slowcore article, Drowned In Sound and Treble: the Velvets' third self-titled album as direct template. DiS calls VU their most immediate influence.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        },
+        {
+          "key": "galaxie-500>the-modern-lovers",
+          "from": "Galaxie 500",
+          "to": "The Modern Lovers",
+          "fromYear": 1987,
+          "toYear": 1970,
+          "citation": "Wikipedia Slowcore: formative influences named as VU, Modern Lovers, Big Star, Spacemen 3.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        }
+      ]
+    }
+  ]
+}

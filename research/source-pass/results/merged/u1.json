@@ -1,0 +1,345 @@
+{
+ "agent": "u1",
+ "searches": 36,
+ "toolStatus": "WebSearch fine, 36 of 50 used then stopped (diminishing returns); thequietus ?p= links open via read; nme.com only via archive.org 2020; undertheradar not tried",
+ "entries": {
+  "siouxsie-and-the-banshees>kraftwerk": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://www.theguardian.com/music/2005/sep/24/popandrock.siouxsieandthebanshees",
+   "found": "we, perversely, saw ourselves as taking on the baton of glamorous art rock - Bowie and Roxy Music - while incorporating a love for Can, Kraftwerk and Neu.\"",
+   "sourceTier": "first-person",
+   "citation": "Steven Severin to The Guardian (2005): \"we, perversely, saw ourselves as taking on the baton of glamorous art rock - Bowie and Roxy Music - while incorporating a love for Can, Kraftwerk and Neu.\""
+  },
+  "sonic-youth>the-stooges": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://www.latimes.com/archives/la-xpm-1985-01-04-ca-6695-story.html",
+   "found": "We’re more influenced by the Stooges, MC5 or the Velvet Underground than composers like John Cage or Harry Partch.",
+   "sourceTier": "first-person",
+   "citation": "Thurston Moore to the Los Angeles Times (1985): \"We're more influenced by the Stooges, MC5 or the Velvet Underground than composers like John Cage or Harry Partch.\""
+  },
+  "my-bloody-valentine>cocteau-twins": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://mixdownmag.com.au/features/gear-talks-an-interview-with-kevin-shields-of-my-bloody-valentine/",
+   "found": "We don't have a shared influence… this kind of Cocteau Twins, Jesus and Mary Chain thing, it’s garbage. You know, Psycho Candy would be the shared record. But everything The Jesus and Mary Chain did back then we were not doing. And Cocteau Twins, we were kind of going against all of that – operatic vocals, loads of effects on the guitars – I love the Cocteau Twins but I didn’t want to sound like them.",
+   "note": "Shields (Mixdown) disputes a shared Cocteau Twins influence and says he did not want to sound like them, though he loves them; Westword interview: 'I like the Cocteau Twins, though' but says he consciously avoided their effects. Only support for influence is a writer, DeRogatis (jimdero.com/News2008/MBVfeature.htm): 'Like the Cocteau Twins, one of their inspirations' (reported, single clause). Propose: remove, or keep at reported with DeRogatis and record Shields caveat."
+  },
+  "the-cure>joy-division": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://www.clashmusic.com/?p=406883",
+   "found": "I heard‘Unknown Pleasures’on the radio on John Peel, and they were just fantastic.",
+   "note": "Smith (Radio Urbana 2013) heard Unknown Pleasures on the radio and picked Joy Division to play with them in 1980, after The Cure formed (1978) and released Three Imaginary Boys (1979); admiration but not formative influence. Propose: remove."
+  },
+  "sonic-youth>wire": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://thequietus.com/?p=15191",
+   "found": "Their conversation took in the early influence Moore took from British bands, mentioning Wire, The Pop Group, The Raincoats and The Slits, calling their landmark 1979 debut _Cut_ \"an incredibly great experimental record\"",
+   "sourceTier": "reported",
+   "citation": "The Quietus reported Thurston Moore speaking at Liverpool Sound City (interviewed by Dave Haslam) about \"the early influence Moore took from British bands, mentioning Wire, The Pop Group, The Raincoats and The Slits\"."
+  },
+  "the-cure>velvet-underground": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia Cure article has no VU mention; 1 search (Smith + VU/Wire/Joy Division) found nothing tying Smith to VU."
+  },
+  "the-cure>wire": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Only Wire link found is A&R man Chris Parry's recollection (not Smith), per search summary, not opened; Wikipedia no mention."
+  },
+  "liz-phair>sonic-youth": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw has no mention; 1 search on Phair+VU/Big Star/SY returned only Exile/Stones interviews."
+  },
+  "liz-phair>velvet-underground": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://au.rollingstone.com/?p=25173",
+   "found": "“I found my inspiration for Soberish by delving into an early era of my music development, my art school years spent listening to Art Rock and New Wave music non-stop on my Walkman,” she said in a statement. “The English Beat, The Specials, Madness, R.E.M.’s Automatic for the People , Yazoo, the Psychedelic Furs, Talking Heads, Velvet Underground, Laurie Anderson, and the Cars.",
+   "sourceTier": "first-person",
+   "citation": "Liz Phair on the inspiration for Soberish, in a statement reported by Rolling Stone Australia: \"my art school years spent listening to Art Rock and New Wave music non-stop on my Walkman... Talking Heads, Velvet Underground, Laurie Anderson, and the Cars. The city came alive for me as a young person, the bands in my headphones lending me the courage to explore.\"",
+   "note": "VU is one name in a list she says she listened to non-stop in her formative art-school years; owner may judge thin. Page gives no year."
+  },
+  "liz-phair>big-star": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw has no mention; 1 search returned nothing."
+  },
+  "sonic-youth>television": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw no mention; 2 searches (Moore/Ranaldo + Television/Verlaine; Moore + Marquee Moon) found only Moore's 2023 tribute to Verlaine and no statement of influence."
+  },
+  "the-replacements>velvet-underground": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw no VU mention; 1 search (Westerberg + VU) found nothing; Westerberg Alan Paul interview has no Velvet mention."
+  },
+  "the-smiths>david-bowie": {
+   "checked": "2026-10-26",
+   "verdict": "print",
+   "url": "https://en.wikipedia.org/wiki/Morrissey",
+   "found": "He became a glam rock fan in the 1970s, enjoying the work of English artists like T. Rex , David Bowie and Roxy Music . [ 36 ]",
+   "sourceTier": "reported",
+   "citation": "Morrissey, the Smiths' singer, became a glam rock fan in the 1970s, enjoying the work of English artists such as T. Rex, David Bowie and Roxy Music (David Bret, Morrissey: Scandal and Passion, Robson Books, 2004, p. 15).",
+   "note": "print: Bret, David. Morrissey: Scandal and Passion. London: Robson Books, 2004, p. 15 (also Simpson, Saint Morrissey 2004 pp 64, 69; Goddard, Mozipedia 2010 p 10), per Wikipedia Morrissey footnotes. Marr (Quietus Rubber Rings slide 11) also says Bowie moulded the decade, but not as his own influence.",
+   "print": "David Bret, Morrissey: Scandal and Passion (Robson Books), 2004, p. 15"
+  },
+  "pavement>velvet-underground": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://web.archive.org/web/2020/https://www.nme.com/?p=1246130",
+   "found": "“‘Sister Ray’ is the ultimate song,” he said. “Maybe you can’t call it a song – the ultimate noise statement of all time: there’s never been a song like that and there never will be again. It is with me always.”",
+   "note": "Malkmus (to The Observer, via NME, Oct/Nov 2013, after Pavement had split) picks Sister Ray as a favourite song and praises Lou Reed; a favourites answer, not a statement of shaping Pavement. Only the archive.org copy opens. Propose: remove, or keep as reported fandom if the owner accepts it."
+  },
+  "husker-du>velvet-underground": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw no mention; 1 search (Mould + VU) found nothing; Believer interview has no 'Velvet'."
+  },
+  "swans>velvet-underground": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw no mention; 1 search: only Young God Clrvynt 2016 interview, a journalist's framing grouping Swans with VU as foundation bands (not Gira's influence)."
+  },
+  "nick-cave-and-the-bad-seeds>velvet-underground": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://whynow.co.uk/read/when-lou-reed-wept-after-meeting-nick-cave-in-a-los-angeles-studio",
+   "found": "admitting that it was Reed and the Velvet Underground that inspired him to become a musician, like many others. “He taught me that you can put the most sonically aggressive music and put it side by side with some of the most beautiful ballads that anyone has ever written,” Cave said.",
+   "sourceTier": "first-person",
+   "citation": "Nick Cave, in his Channel 4 tribute after Lou Reed's death (2013), as reported by Why Now: \"He taught me that you can put the most sonically aggressive music and put it side by side with some of the most beautiful ballads that anyone has ever written.\"",
+   "note": "Writer's paraphrase of Cave's Channel 4 remarks; Cave's own words quoted are about Lou Reed. Could not open the original Channel 4 clip."
+  },
+  "broadcast>velvet-underground": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw no mention; 1 search: only a Norman Records writer asking 'Would it be a stretch to say the Broadcast are the UK's answer to The Velvet Underground?' (comparison, not influence). Village Voice farewell piece has no Velvet mention. Keenan's cited bible is The United States of America."
+  },
+  "godspeed-you-black-emperor>velvet-underground": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw has no mention; one search for the whole group (Menuck/Pezzente influences) returned only band bios, no interview naming this artist. Likely a critic's soundalike list; propose remove unless owner has a source."
+  },
+  "godspeed-you-black-emperor>glenn-branca": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw has no mention; one search for the whole group (Menuck/Pezzente influences) returned only band bios, no interview naming this artist. Likely a critic's soundalike list; propose remove unless owner has a source."
+  },
+  "godspeed-you-black-emperor>swans": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw has no mention; one search for the whole group (Menuck/Pezzente influences) returned only band bios, no interview naming this artist. Likely a critic's soundalike list; propose remove unless owner has a source."
+  },
+  "godspeed-you-black-emperor>tortoise": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw has no mention; one search for the whole group (Menuck/Pezzente influences) returned only band bios, no interview naming this artist. Likely a critic's soundalike list; propose remove unless owner has a source."
+  },
+  "godspeed-you-black-emperor>talk-talk": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw has no mention; one search for the whole group (Menuck/Pezzente influences) returned only band bios, no interview naming this artist. Likely a critic's soundalike list; propose remove unless owner has a source."
+  },
+  "godspeed-you-black-emperor>my-bloody-valentine": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw has no mention; one search for the whole group (Menuck/Pezzente influences) returned only band bios, no interview naming this artist. Likely a critic's soundalike list; propose remove unless owner has a source."
+  },
+  "godspeed-you-black-emperor>slint": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw has no mention; one search for the whole group (Menuck/Pezzente influences) returned only band bios, no interview naming this artist. Likely a critic's soundalike list; propose remove unless owner has a source."
+  },
+  "godspeed-you-black-emperor>low": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw has no mention; one search for the whole group (Menuck/Pezzente influences) returned only band bios, no interview naming this artist. Likely a critic's soundalike list; propose remove unless owner has a source."
+  },
+  "godspeed-you-black-emperor>the-cure": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw has no mention; one search for the whole group (Menuck/Pezzente influences) returned only band bios, no interview naming this artist. Likely a critic's soundalike list; propose remove unless owner has a source."
+  },
+  "pixies>sonic-youth": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://www.wbur.org/news/2018/09/28/pixies-boston-rock-surfer-rosa-come-on-pilgrim",
+   "found": "“We’re one of the signposts, like Sonic Youth and Husker Du, whom we were influenced by.”",
+   "sourceTier": "first-person",
+   "citation": "Joey Santiago to WBUR (2018): \"We're one of the signposts, like Sonic Youth and Husker Du, whom we were influenced by.\""
+  },
+  "pixies>the-stooges": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw no mention; 1 search: only a Qobuz bio saying Black Francis's stage name was inspired by Iggy Pop (not opened, and about Iggy solo) and a music blog list (excluded). WBUR/Haslam/THR/Songfacts pages have no Stooges."
+  },
+  "radiohead>talk-talk": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://thequietus.com/interviews/bakers-dozen/ed-o-brien-radiohead-interview-favourite-music/4/",
+   "found": "I say that having liked Talk Talk before this, too.",
+   "sourceTier": "first-person",
+   "citation": "Ed O'Brien to The Quietus Baker's Dozen: \"I say that having liked Talk Talk before this, too. I remember the first album coming out at the same time as Duran Duran's Rio, and people comparing them, then hearing The Colour Of Spring. 'Life's What You Make It' was a big song when I was at sixth form.\"",
+   "note": "Ed O'Brien is a Radiohead member; fan since sixth form (before the band), picks Spirit Of Eden. Page gives no year."
+  },
+  "weyes-blood>velvet-underground": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://thequietus.com/interviews/bakers-dozen/weyes-blood-natalie-mering-bakers-dozen-favourite-albums/5/",
+   "found": "I think it was just being a fan of The Velvet Underground and wanting to check out his solo music.",
+   "sourceTier": "first-person",
+   "citation": "Weyes Blood (Natalie Mering) to The Quietus Baker's Dozen: \"I think it was just being a fan of The Velvet Underground and wanting to check out his solo music. I stayed with it because I felt like he had a similar thing that I had: a keen interest in classical music.\"",
+   "note": "Slide is about a Velvet Underground member's solo record (check which: page says 'his solo music'); she says she is a fan of VU. Thin: owner may prefer remove."
+  },
+  "mazzy-star>velvet-underground": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://thequietus.com/?p=3452",
+   "found": "He knew more about the Velvet Underground; I didn’t really know their music.",
+   "sourceTier": "reported",
+   "citation": "Hope Sandoval to The Quietus: \"He knew more about the Velvet Underground; I didn't really know their music... But when I started working with David, he turned me on to them.\" Her bandmate David Roback was the one who knew the Velvet Underground.",
+   "note": "Sandoval's words are about Roback (Mazzy Star's co-founder) being the VU fan, so reported tier for Mazzy Star, with her own later exposure. Page gives no year. Uncut (uncut.co.uk/?p=67963) also places Roback's earlier band Rain Parade among bands sharing VU sensibilities."
+  },
+  "mazzy-star>the-jesus-and-mary-chain": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://uncut.co.uk/?p=67963",
+   "found": "It was during a tour that they were doing with the Jesus And Mary Chain, so I got a call from David asking me if I would fly out to New York and finish the tour.",
+   "note": "Only link found is Sandoval joining Opal to finish a tour with JAMC (touring/collab), and later guest vocals with them. No pre-collaboration statement of influence found. Propose: remove."
+  },
+  "radiohead>my-bloody-valentine": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia not checked successfully; 1 search for Radiohead + MBV returned only Loveless pages, none with a Radiohead member speaking."
+  },
+  "radiohead>nick-drake": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "1 search (Yorke/O'Brien/Greenwood + Nick Drake) found nothing linking them."
+  },
+  "david-bowie>joni-mitchell": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "1 search found no Bowie statement naming Joni Mitchell as influence (only Dylan, Syd Barrett)."
+  },
+  "weyes-blood>this-mortal-coil": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "1 search found nothing linking Mering to This Mortal Coil."
+  },
+  "elliott-smith>bob-dylan": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://faroutmagazine.co.uk/elliott-smith-favourite-bob-dylan-album/",
+   "found": "“My father taught me to play ‘Don’t Think Twice, It’s All Right’ [from The Freewheelin’ Bob Dylan],” Smith recalled. “I love Dylan’s lyrics, but more than that, I love the fact that he loves writing lyrics.”",
+   "sourceTier": "first-person",
+   "citation": "Elliott Smith in an NME webchat (2000), as reported by Far Out: \"My father taught me to play 'Don't Think Twice, It's All Right'... I love Dylan's lyrics, but more than that, I love the fact that he loves writing lyrics.\"",
+   "note": "Far Out reports the 2000 NME webchat; original NME page not opened. Far Out also says Dylan was a dominating presence in his childhood."
+  },
+  "spiritualized>velvet-underground": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw no mention; 1 search: only Far Out writer's line (faroutmagazine.co.uk/j-spaceman-spiritualized-5-favourite-albums/) that Spacemen 3 were 'notably similar' to VU and 'Ode To Street Hassle' tribute to Lou Reed (critic comparison/tribute, no Pierce statement)."
+  },
+  "spiritualized>the-jesus-and-mary-chain": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw no mention; search showed only touring together (1992 Rollercoaster) and a writer calling them contemporaries; no statement. Propose remove if no source."
+  },
+  "fugazi>wire": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw has no mention; 1 search found only Rolling Stone line that Pink Flag inspired 'a clutch of Washington, D.C., hardcore acts' (does not name Fugazi) and Rollins covering a Wire song."
+  },
+  "fiona-apple>neil-young": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "1 search (shared with Phair) found nothing from Apple on Young (only 2025 headline about her covering Heart of Gold, not opened; a cover is not influence)."
+  },
+  "fiona-apple>liz-phair": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Only PopMatters line placing Phair in Apple's era, not an Apple statement."
+  },
+  "snail-mail>my-bloody-valentine": {
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "url": "https://www.fender.com/articles/artists/under-the-influence-snail-mails-lindsey-jordan-on-mbvs-bilinda-butcher",
+   "found": "\"Bilinda has always been really cool to me,\" Jordan said in Fender’s debut episode of _Under the Influence_. \"She’s a huge part of the band that created shoegaze. There’s not that much about her on the internet. She just has this mysterious aura, but she’s this huge figure in my songwriting and my life.\"",
+   "sourceTier": "first-person",
+   "citation": "Lindsey Jordan to Fender's Under the Influence series, on My Bloody Valentine's Bilinda Butcher: \"She's a huge part of the band that created shoegaze... she's this huge figure in my songwriting and my life.\"",
+   "note": "Page gives no year. Influence named is MBV's Bilinda Butcher specifically."
+  },
+  "sufjan-stevens>neil-young": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://www.portlandmercury.com/music/singing-in-the-storm-71113/",
+   "found": "“If I were to go after something, in terms of someone’s career, his would be it,” Stevens says. “He’s changed so much. He’s stayed active. He’s never been complacent. I admire him.”",
+   "note": "Sufjan Stevens to the Portland Mercury admires Neil Young's career ('If I were to go after something, in terms of someone's career, his would be it'), not his music shaping Stevens'. Propose remove, or keep as first-person fandom if a career model counts."
+  },
+  "snail-mail>elliott-smith": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "1 search: only a Tuned Up profile blurb listing biggest influences (secondary, no quote) and a student piece; no interview opened."
+  },
+  "snail-mail>cat-power": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Same: only an American University student feature crediting inspiration (secondary)."
+  },
+  "sufjan-stevens>elliott-smith": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "1 search: only an Uncut review comparison and a Shmoop list (excluded)."
+  },
+  "sufjan-stevens>joni-mitchell": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "1 search found nothing."
+  },
+  "sufjan-stevens>leonard-cohen": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "1 search found nothing."
+  },
+  "big-thief>my-bloody-valentine": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "1 search (Lenker/Meek + MBV) found no mention."
+  },
+  "rem>television": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "1 search: only a Qobuz bio (secondary) saying Marquee Moon was a massive influence on Stipe; no direct quote."
+  },
+  "rem>nick-drake": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Same search found nothing linking R.E.M. to Nick Drake."
+  },
+  "the-sundays>the-smiths": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "1 search: only critics' comparisons at debut (Melody Maker) and label adjacency; no statement from Wheeler/Gavurin."
+  },
+  "the-sundays>cocteau-twins": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Same: comparisons only."
+  },
+  "siouxsie-and-the-banshees>the-stooges": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Wikipedia raw only has Peter Hook (not Banshees) on the Stooges; Severin Guardian quote lists the Stooges as what other punks looked to (not the Banshees' own). 1 search found nothing."
+  }
+ },
+ "candidates": [],
+ "offMap": [],
+ "finished": true
+}

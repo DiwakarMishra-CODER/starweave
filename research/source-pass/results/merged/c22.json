@@ -1,0 +1,328 @@
+{
+ "agent": "c22",
+ "entries": {
+  "tortoise>can": {
+   "verdict": "fixed",
+   "url": "https://www.allmusic.com/artist/tortoise-mn0000180023/biography",
+   "found": "Though much of the album traded in restrained indie rock with jazz influences and a debt to prog rock, several tracks took a more slanted course, sounding like a reaction to England's ambient/techno scene filtered through the '70s experimentalism of Can and Faust.",
+   "citation": "AllMusic's biography of Tortoise says the band favored Krautrock over rock and roll influences, and that several tracks on their 1994 debut sounded like \"a reaction to England's ambient/techno scene filtered through the '70s experimentalism of Can and Faust.\"",
+   "sourceTier": "critic",
+   "checked": "2026-10-26"
+  },
+  "tortoise>brian-eno": {
+   "verdict": "decide",
+   "url": "https://www.allmusic.com/artist/tortoise-mn0000180023/biography",
+   "note": "AllMusic bio says they favored 'ambient music, and British electronica' but never names Brian Eno. Proposal: remove (or find a source naming Eno).",
+   "checked": "2026-10-26"
+  },
+  "violent-femmes>velvet-underground": {
+   "verdict": "fixed",
+   "url": "https://www.denverfolklore.com/module/news/10749/gordon-gano-interview",
+   "found": "“Somewhere along the line I heard The Velvet Underground and how that connects with Lou Reed and John Cale. I think we (the Violent Femmes) are in the ranks of who knows how many bands who sound so different, but their collective favorite and most inspiring band for them is the Velvet Underground.”",
+   "citation": "Gordon Gano to the Denver Folklore Center: \"Somewhere along the line I heard The Velvet Underground and how that connects with Lou Reed and John Cale. I think we (the Violent Femmes) are in the ranks of who knows how many bands who sound so different, but their collective favorite and most inspiring band for them is the Velvet Underground.\"",
+   "sourceTier": "first-person",
+   "checked": "2026-10-26"
+  },
+  "violent-femmes>brian-eno": {
+   "verdict": "fixed",
+   "url": "https://en.wikipedia.org/wiki/Gordon_Gano",
+   "found": "Older siblings from his parents' previous marriages living in the New York area exposed young Gano to such influences as The Velvet Underground, Lou Reed, Brian Eno, Patti Smith, Jonathan Richman, and The B-52's.",
+   "citation": "Wikipedia's article on Gordon Gano says his older siblings in the New York area exposed him to such influences as the Velvet Underground, Lou Reed, Brian Eno, Patti Smith, Jonathan Richman and the B-52's.",
+   "sourceTier": "reported",
+   "note": "No footnote behind the sentence; thin.",
+   "checked": "2026-10-26"
+  },
+  "violent-femmes>the-modern-lovers": {
+   "verdict": "fixed",
+   "url": "https://www.udiscovermusic.com/stories/violent-femmes-career/",
+   "found": "The trio’s combination of rock’n’roll energy and acoustic axes – partly inspired by Jonathan Richman ’s Modern Lovers – was the perfect vehicle for blending Gano’s rootsier influences and the punky sounds the whole band adored.",
+   "citation": "uDiscover's Violent Femmes career retrospective says the trio's acoustic approach was \"partly inspired by Jonathan Richman's Modern Lovers.\"",
+   "sourceTier": "reported",
+   "checked": "2026-10-26"
+  },
+  "violent-femmes>patti-smith": {
+   "verdict": "fixed",
+   "url": "https://en.wikipedia.org/wiki/Gordon_Gano",
+   "found": "He began writing his own songs in the mid 1970s, influenced by the vocal stylings of Lou Reed, the story-telling of Hank Williams, Sr. and the poetics of Patti Smith.",
+   "citation": "Wikipedia's article on Gordon Gano says that when he began writing songs in the mid 1970s he was influenced by the poetics of Patti Smith, and that his older siblings in New York had exposed him to her music.",
+   "sourceTier": "reported",
+   "note": "No footnote behind the sentence; thin.",
+   "checked": "2026-10-26"
+  },
+  "violent-femmes>ramones": {
+   "verdict": "fixed",
+   "url": "https://www.udiscovermusic.com/stories/violent-femmes-career/",
+   "found": "Gano’s teenage discovery of bands like The Ramones and The Velvet Underground along the way sealed his fate as a rocker.",
+   "citation": "uDiscover's Violent Femmes career retrospective says Gordon Gano's teenage discovery of bands like the Ramones and the Velvet Underground \"sealed his fate as a rocker.\"",
+   "sourceTier": "reported",
+   "checked": "2026-10-26"
+  },
+  "alex-g>built-to-spill": {
+   "verdict": "fixed",
+   "url": "https://www.allmusic.com/artist/mn0003292911",
+   "found": "As a teenager, Alexander Giannascoli, a Pennsylvania native, wrote and recorded music in his bedroom, producing a sound that channeled the likes of Elliott Smith and Built to Spill.",
+   "citation": "AllMusic's biography of Alex G says that as a teenager he recorded in his bedroom, \"producing a sound that channeled the likes of Elliott Smith and Built to Spill.\"",
+   "sourceTier": "critic",
+   "note": "Page wording is 'channeled', not the 'takes influence' text previously quoted; borderline comparison, owner may prefer remove.",
+   "checked": "2026-10-26"
+  },
+  "alex-g>duster": {
+   "verdict": "fixed",
+   "url": "https://www.vice.com/en/article/duster-interview-new-ep-numero-group-set",
+   "found": "Before Bandcamp-born songwriters like (Sandy) Alex G and Mitski legitimized inward-peering indie rock for the modern age, Duster penned the operations manual.",
+   "citation": "Brian Coney in Vice (2018): \"Before Bandcamp-born songwriters like (Sandy) Alex G and Mitski legitimized inward-peering indie rock for the modern age, Duster penned the operations manual.\"",
+   "sourceTier": "critic",
+   "note": "AllMusic Duster bio does not mention Alex G or Snail Mail; Vice is the real source.",
+   "checked": "2026-10-26"
+  },
+  "deerhunter>stereolab": {
+   "verdict": "fixed",
+   "url": "https://www.nytimes.com/2008/12/10/arts/music/10deer.html",
+   "found": "The best of his songs are smart and symmetrical, fitted with elegant bridges and layered with enthusiasms, mostly from his early childhood but a few from before: the Breeders, Stereolab, disco rhythm, Krautrock, Sonic Youth’s noise breakdowns, girl-group pop, the picked eighth-note bass lines of 1980s indie rock.",
+   "citation": "Ben Ratliff, \"In Williamsburg, a Stew of Rock and Pop Influences Mixed Well and Served Slickly,\" The New York Times (9 Dec 2008): the best of Bradford Cox's songs are \"layered with enthusiasms\" including \"the Breeders, Stereolab, disco rhythm, Krautrock, Sonic Youth's noise breakdowns.\"",
+   "sourceTier": "critic",
+   "note": "Page headline differs slightly from the old citation; the sentence is about Cox's songs; critic reading, plus a note that Cox posts mixes of favourite music.",
+   "checked": "2026-10-26"
+  },
+  "deerhunter>galaxie-500": {
+   "verdict": "fixed",
+   "url": "https://www.avclub.com/the-slow-and-steady-perfection-of-galaxie-500-s-on-fire-1832429384",
+   "found": "But you can hear On Fire everywhere now. The band’s signature mix of reverb-heavy, dreamy guitars and slow, languorous tempos has cast a wide shadow over indie-rock bands like Beach House, Deerhunter, The Pains Of Being Pure At Heart, and Broken Social Scene.",
+   "citation": "The A.V. Club on Galaxie 500's On Fire: the band's \"signature mix of reverb-heavy, dreamy guitars and slow, languorous tempos has cast a wide shadow over indie-rock bands like Beach House, Deerhunter, The Pains Of Being Pure At Heart, and Broken Social Scene.\"",
+   "sourceTier": "critic",
+   "checked": "2026-10-26"
+  },
+  "beach-house>galaxie-500": {
+   "verdict": "fixed",
+   "url": "https://www.avclub.com/the-slow-and-steady-perfection-of-galaxie-500-s-on-fire-1832429384",
+   "found": "But you can hear On Fire everywhere now. The band’s signature mix of reverb-heavy, dreamy guitars and slow, languorous tempos has cast a wide shadow over indie-rock bands like Beach House, Deerhunter, The Pains Of Being Pure At Heart, and Broken Social Scene.",
+   "citation": "The A.V. Club on Galaxie 500's On Fire: the band's \"signature mix of reverb-heavy, dreamy guitars and slow, languorous tempos has cast a wide shadow over indie-rock bands like Beach House, Deerhunter, The Pains Of Being Pure At Heart, and Broken Social Scene.\"",
+   "sourceTier": "critic",
+   "checked": "2026-10-26"
+  },
+  "red-house-painters>galaxie-500": {
+   "verdict": "decide",
+   "url": "https://www.avclub.com/the-slow-and-steady-perfection-of-galaxie-500-s-on-fire-1832429384",
+   "found": "They also helped kick off the slowcore scene, whose sound was defined by groups like Low (also produced by Kramer), Red House Painters, Codeine, and Bedhead.",
+   "note": "Page says Galaxie 500 helped kick off the slowcore scene that Red House Painters then defined; it does not say RHP drew on Galaxie 500. Proposal: remove (or keep as a weak critic scene-lineage link).",
+   "checked": "2026-10-26"
+  },
+  "pinback>modest-mouse": {
+   "verdict": "decide",
+   "url": "https://pitchfork.com/reviews/albums/6296-pinback/",
+   "found": "Pinback-- sprung from the loins of San Diego's Three Mile Pilot-- makes music of a howlingly bittersweet variety that is at once joyful and melancholy. And if their recent self-titled album is any indication, Pinback may be ready to join the ranks of emotionally confused super-songwriters alongside Modest Mouse, Sunny Day Real Estate, and the Sea and Cake.",
+   "note": "Comparison of peers ('join the ranks of... alongside'), not influence. Proposal: remove.",
+   "checked": "2026-10-26"
+  },
+  "pinback>sunny-day-real-estate": {
+   "verdict": "decide",
+   "url": "https://pitchfork.com/reviews/albums/6296-pinback/",
+   "found": "Pinback-- sprung from the loins of San Diego's Three Mile Pilot-- makes music of a howlingly bittersweet variety that is at once joyful and melancholy. And if their recent self-titled album is any indication, Pinback may be ready to join the ranks of emotionally confused super-songwriters alongside Modest Mouse, Sunny Day Real Estate, and the Sea and Cake.",
+   "note": "Same sentence: grouped as peers, not influence. Proposal: remove.",
+   "checked": "2026-10-26"
+  },
+  "porter-robinson>boards-of-canada": {
+   "verdict": "decide",
+   "url": "https://spinmagazine.com/2014/08/porter-robinson-worlds/",
+   "found": "“Flicker” has the head-nodding thump and angular melodies of Boards of Canada",
+   "note": "Spin's Kamps says one track has the melodies of Boards of Canada, a comparison; in the same passage he says Robinson 'nicked' the sound of M83, Washed Out, Neon Indian, Tycho, Air. Proposal: remove (or lower to a weak critic note).",
+   "checked": "2026-10-26"
+  },
+  "sleater-kinney>x-ray-spex": {
+   "verdict": "fixed",
+   "url": "https://www.salon.com/2000/05/09/sleater/",
+   "found": "In songs like “Ironclad” I can trace threads to Eddie Cochran and X-Ray Spex, and probably dozens of performers before, between and afterward.",
+   "citation": "Stephanie Zacharek, Salon (9 May 2000), in a critics' exchange on All Hands on the Bad One: \"In songs like 'Ironclad' I can trace threads to Eddie Cochran and X-Ray Spex.\"",
+   "sourceTier": "critic",
+   "note": "A traced thread, one song; borderline. Owner may prefer remove.",
+   "checked": "2026-10-26"
+  },
+  "the-shins>neutral-milk-hotel": {
+   "verdict": "fixed",
+   "url": "https://web.archive.org/web/20120329233649/http://www.avclub.com/articles/james-mercer-of-the-shins,71391/",
+   "found": "There were bands like the Lilys that was one dude who wrote everything and would record with a number of people. There was Neutral Milk Hotel . It’s a guy writing songs and recording stuff in his bedroom, and then they’d go out on tour, and he’d get his friends to support him. So I guess I wanted it to be that sort of thing.",
+   "citation": "James Mercer to The A.V. Club (Steven Hyden): \"There were bands like the Lilys that was one dude who wrote everything and would record with a number of people. There was Neutral Milk Hotel. It's a guy writing songs and recording stuff in his bedroom, and then they'd go out on tour, and he'd get his friends to support him. So I guess I wanted it to be that sort of thing.\"",
+   "sourceTier": "first-person",
+   "note": "Mercer says he modelled The Shins' one-man-band-as-a-band set-up on NMH and the Lilys; Wikipedia's Shins article also quotes him 'I always loved these auteurs who presented themselves as bands' naming NMH. Interview date not on the archived page (Wikipedia footnote gives the A.V. Club interview, archived 2012; the interview is about Port of Morrow, so 2012). Grammy.com 'Inside Elephant 6' page was not found (Page not found).",
+   "checked": "2026-10-26"
+  },
+  "the-strokes>ramones": {
+   "verdict": "fixed",
+   "url": "https://www.nme.com/blogs/nme-blogs/the-roots-of-the-strokes",
+   "found": "The Ramones: the ultimate gang, beautifully ugly, masters of melodic dissonance. Blondie: Super-bright pop genius. The Velvet Underground: Nikolai and Julian’s teenage heroes. Talking Heads: their debut album, ’77’, was a sonic touchstone for ‘Room On Fire’.",
+   "citation": "NME's \"The Roots Of... The Strokes\" lists the Ramones first among the New York bands behind them: \"the ultimate gang, beautifully ugly, masters of melodic dissonance.\"",
+   "sourceTier": "critic",
+   "note": "Spin's 'almost like the Ramones' is a comparison and was dropped from the citation. Miami New Times (Pretty Punks) also says the Strokes' music 'follows squarely in the footsteps of East Coast legends such as the Velvet Underground, Television, the Ramones, and Blondie'.",
+   "checked": "2026-10-26"
+  },
+  "the-strokes>guided-by-voices": {
+   "verdict": "decide",
+   "url": "https://groveatlantic.com/book/guided-by-voices-a-brief-history/",
+   "found": "Pollard has been compared by The New York Times to Mozart, Rossini, and Paul McCartney (in the same sentence) and everyone from P. J. Harvey, Radiohead, R.E.M., the Strokes, and U2 has sung his praises and cited his music as an influence.",
+   "note": "Only publisher marketing copy; no Strokes member quoted. Proposal: remove unless an interview with a Strokes member naming GBV turns up.",
+   "checked": "2026-10-26"
+  },
+  "guided-by-voices>rem": {
+   "verdict": "fixed",
+   "url": "https://www.spin.com/2004/09/records-changed-my-life-robert-pollard-guided-voices/",
+   "found": "There have been a few bands where I’ve totally absorbed myself into their world, and R.E.M. was one of them. I see Peter Buck occasionally, and I’m always blowing smoke up his ass about how much they meant to me.",
+   "citation": "Robert Pollard to Spin (\"The Records That Changed My Life\", 2004), on R.E.M.'s Chronic Town EP: \"There have been a few bands where I've totally absorbed myself into their world, and R.E.M. was one of them.\"",
+   "sourceTier": "first-person",
+   "checked": "2026-10-26"
+  },
+  "gary-numan>david-bowie": {
+   "verdict": "fixed",
+   "url": "https://thequietus.com/interviews/bakers-dozen/gary-numan-favourite-albums/7/",
+   "found": "I was a huge Bowie fan up until around _Heroes_ – that had ‘Beauty and the Beast’ and I fucking love that.",
+   "citation": "Gary Numan to The Quietus (Baker's Dozen, 2012), on Bowie's Aladdin Sane: \"I was a huge Bowie fan up until around Heroes.\"",
+   "sourceTier": "first-person",
+   "note": "Date 6 Dec 2012 per Wikipedia's footnote. Wikipedia also says he was a teenage fan of T. Rex, Bowie and Queen.",
+   "checked": "2026-10-26"
+  },
+  "interpol>the-smiths": {
+   "verdict": "fixed",
+   "url": "https://www.rollingstone.com/music/albumreviews/turn-on-the-bright-lights-20020814",
+   "found": "Like many other New York indie bands, these well-dressed young men are bewitched by classic British art fucks such as Echo and the Bunnymen, Joy Division, Ride and the Smiths.",
+   "citation": "Rolling Stone's review of Turn On the Bright Lights (14 Aug 2002): \"Like many other New York indie bands, these well-dressed young men are bewitched by classic British art fucks such as Echo and the Bunnymen, Joy Division, Ride and the Smiths.\"",
+   "sourceTier": "critic",
+   "note": "Critic's reading; band has denied Joy Division elsewhere. Byline not shown on the page text, so none named.",
+   "checked": "2026-10-26"
+  },
+  "interpol>siouxsie-and-the-banshees": {
+   "verdict": "not-found",
+   "note": "The Times (9 Jul 2022, Will Hodgkinson) is paywalled; page URL not found and no search spent. The citation's own wording ('recalling the post-punk iciness of ...') is a comparison, so proposal: remove unless another source is found.",
+   "checked": "2026-10-26"
+  },
+  "jane-remover>my-bloody-valentine": {
+   "verdict": "decide",
+   "url": "https://pitchfork.com/reviews/albums/jane-remover-census-designated/",
+   "found": "Fuse yeule ’s electro-acoustic ballads, Slowdive ’s bright crescendos, and the febrile anticipation of Ethel Cain ’s “Ptolemaea,” and you get a song like “Video,” which strums for six minutes and then erupts with a lung-tearing scream.",
+   "note": "Pitchfork's Census Designated review does not name My Bloody Valentine anywhere; the 'bedroom pop and shoegaze' line is the blurb. Proposal: remove (or find an interview).",
+   "checked": "2026-10-26"
+  },
+  "jane-remover>slowdive": {
+   "verdict": "decide",
+   "url": "https://pitchfork.com/reviews/albums/jane-remover-census-designated/",
+   "found": "Fuse yeule ’s electro-acoustic ballads, Slowdive ’s bright crescendos, and the febrile anticipation of Ethel Cain ’s “Ptolemaea,” and you get a song like “Video,” which strums for six minutes and then erupts with a lung-tearing scream.",
+   "note": "Pitchfork: 'Fuse yeule's electro-acoustic ballads, Slowdive's bright crescendos, and ... Ptolemaea, and you get a song like Video' -- a description of one song's sound, not influence. Proposal: remove.",
+   "checked": "2026-10-26"
+  },
+  "jane-remover>yeule": {
+   "verdict": "decide",
+   "url": "https://pitchfork.com/reviews/albums/jane-remover-census-designated/",
+   "found": "Fuse yeule ’s electro-acoustic ballads, Slowdive ’s bright crescendos, and the febrile anticipation of Ethel Cain ’s “Ptolemaea,” and you get a song like “Video,” which strums for six minutes and then erupts with a lung-tearing scream.",
+   "note": "Same sentence compares one song to yeule's ballads; not influence. Proposal: remove.",
+   "checked": "2026-10-26"
+  },
+  "jane-remover>porter-robinson": {
+   "verdict": "fixed",
+   "url": "https://stereogum.com/2239094/jane-remover-cant-stop-transforming/interviews/qa",
+   "found": "The individual songs themselves are some of the most thrilling music I've encountered in the 21st century, rooted just enough in familiar formats - the saturated, EDM-adjacent ultrapop of Porter Robinson; SoundCloud rap's glitchy, bitcrushed production; the cleansing catharsis of emo - but unquestionably the product of an artist born of scenes where Lil Peep is a true Kurt Cobain figure and Nirvana might as well be Robert Johnson or whatever.",
+   "citation": "Ian Cohen, Stereogum, introducing a Q&A on Frailty: the songs are \"rooted just enough in familiar formats - the saturated, EDM-adjacent ultrapop of Porter Robinson; SoundCloud rap's glitchy, bitcrushed production; the cleansing catharsis of emo.\"",
+   "sourceTier": "critic",
+   "note": "Critic's framing; year/date from search-result summary only (Wikipedia citation says 16 Oct 2023), page shows none -- drop the date if unwanted.",
+   "checked": "2026-10-26"
+  },
+  "mj-lenderman>neil-young": {
+   "verdict": "fixed",
+   "url": "https://fanmailmedia.substack.com/p/mj-lenderman-in-the-key-of-neil-young",
+   "found": "And Lenderman himself has acknowledged Young’s impact, even if indirect, on his sound, telling Billboard , “I can trace back most bands that I like to Neil.” He’s discussed having read Shakey , Young’s biography, just before recording Manning Fireworks.",
+   "citation": "MJ Lenderman to Billboard, as quoted by Cassidy Sollazzo on Fan Mail Media: \"I can trace back most bands that I like to Neil.\"",
+   "sourceTier": "first-person",
+   "note": "Quote relayed from Billboard; the Billboard page itself was not opened. Premier Guitar page not found by search.",
+   "checked": "2026-10-26"
+  },
+  "mj-lenderman>drive-by-truckers": {
+   "verdict": "fixed",
+   "url": "https://stereogum.com/2489074/mj-lenderman-debuts-new-music-at-heathens-homecoming-reveals-if-hes-taller-than-cameron-winter/news",
+   "found": "The Drive-By Truckers are hosting their annual HeAthens Homecoming festival this week at the 40 Watt in Athens, GA. Each of the four nights features a special guest, starting with noted DBT disciple Jake Lenderman.",
+   "citation": "Stereogum describes Lenderman as a \"noted DBT disciple\" in its report on his set at the Drive-By Truckers' HeAthens Homecoming.",
+   "sourceTier": "reported",
+   "note": "A search summary claimed a Lenderman quote about seeing DBT with his dad; that quote is NOT on this page (checked), so it was discarded. Premier Guitar page not found. 'Jake' is the page's wording (typo on the page).",
+   "checked": "2026-10-26"
+  },
+  "mount-eerie>sebadoh": {
+   "verdict": "not-found",
+   "note": "Two searches (directory retrospective claim; Elverum + Sebadoh interviews): no page naming Sebadoh as an influence on Mount Eerie/Microphones. Proposal: remove unless Elverum's own words turn up.",
+   "checked": "2026-10-26"
+  },
+  "parquet-courts>television": {
+   "verdict": "decide",
+   "url": "https://grantland.com/features/parquet-courts-sunbathing-animal-indie-rock/",
+   "found": "If you’re at all familiar with rock history, Parquet Courts’ sound is easy to deconstruct into the usual set of indie reference points. The Velvet Underground’s urban grime. Television’s spazzy guitar solos. The Fall’s rigid repetition. Pavement’s ironic detachment. Guided by Voices’ brevity. Sonic Youth’s candy-coated noisiness. But I’d recommend avoiding the deconstructionist urge.",
+   "note": "Grantland lists the usual reference points only to argue against deconstructing the band into them ('it spoils them, to use Savage's word'). Not influence. Proposal: remove (unless Savage's own words turn up).",
+   "checked": "2026-10-26"
+  },
+  "parquet-courts>sonic-youth": {
+   "verdict": "decide",
+   "url": "https://grantland.com/features/parquet-courts-sunbathing-animal-indie-rock/",
+   "found": "If you’re at all familiar with rock history, Parquet Courts’ sound is easy to deconstruct into the usual set of indie reference points. The Velvet Underground’s urban grime. Television’s spazzy guitar solos. The Fall’s rigid repetition. Pavement’s ironic detachment. Guided by Voices’ brevity. Sonic Youth’s candy-coated noisiness. But I’d recommend avoiding the deconstructionist urge.",
+   "note": "Same: a list of reference points the writer then rejects. Proposal: remove.",
+   "checked": "2026-10-26"
+  },
+  "women>sonic-youth": {
+   "verdict": "decide",
+   "url": "https://web.archive.org/web/2016/https://www.treblezine.com/women-public-strain-review/",
+   "found": "“Locust Valley” grooves with the rhythmic grace of Stereolab and the post-punk guitar chime of Sonic Youth.",
+   "note": "Treble's Public Strain review (opened via archive) has no 'more Sonic Youth or Wire' sentence; it only compares one song's guitar chime to Sonic Youth. Comparison, not influence. Proposal: remove.",
+   "checked": "2026-10-26"
+  },
+  "women>wire": {
+   "verdict": "not-found",
+   "note": "Treble Public Strain review (archive.org 2016 copy) does not mention Wire; the quoted sentence was not found there or in a search. Proposal: remove.",
+   "checked": "2026-10-26"
+  },
+  "women>velvet-underground": {
+   "verdict": "not-found",
+   "note": "The 'radio-show writeup' was not identified; searches found only comparisons (Westword: 'compared to ... the drone-heavy noise rock pioneered by the Velvet Underground'). Comparison only; proposal: remove.",
+   "checked": "2026-10-26"
+  },
+  "women>caribou": {
+   "verdict": "not-found",
+   "note": "The 'radio-show writeup' was not identified; a comparison list is not influence. Proposal: remove.",
+   "checked": "2026-10-26"
+  },
+  "yo-la-tengo>velvet-underground": {
+   "verdict": "fixed",
+   "url": "https://web.archive.org/web/2020/https://digital.bentley.umich.edu/midaily/mdp.39015094733527/1200",
+   "found": "ing always been a big fan of the band",
+   "citation": "The Michigan Daily (30 Nov 1995) says Yo La Tengo have been recognised as deeply influenced by the Velvet Underground, and that Ira Kaplan acknowledges having always been a big fan of the band.",
+   "sourceTier": "reported",
+   "note": "Page is OCR text split across line-fragments (the 'found' is one fragment: 'Lou Reed. Kaplan acknowledges hav-' / 'ing always been a big fan of the band'; another fragment reads 'influenced by the late, great Velvet Un-'). Direct page blocked to tools (403); opened as archive.org copy.",
+   "checked": "2026-10-26"
+  },
+  "built-to-spill>pavement": {
+   "verdict": "decide",
+   "url": "https://en.wikipedia.org/wiki/Built_to_Spill",
+   "found": "He further described the band's sound as an intermixture of \"postmodern, Pavement-style pop\" and the \"loose, spacious jamming\" associated with the likes of Neil Young.",
+   "note": "AllMusic's own bio not opened; Wikipedia quotes Sendra describing the sound as 'Pavement-style pop' -- a stylistic comparison, as the old citation admitted. Proposal: remove.",
+   "checked": "2026-10-26"
+  },
+  "caribou>neutral-milk-hotel": {
+   "verdict": "fixed",
+   "url": "https://thequietus.com/interviews/bakers-dozen/caribou-dan-snaith-favourite-albums-interview/6/",
+   "found": "And he introduced me to Neutral Milk Hotel. It’s kind of an obvious way in for me, because it very much has that sound – the spiritual free jazz and the horns and the power and the instruments from around the world, different bagpipe kind of instruments – for me, it has that same spirit and wildness.",
+   "citation": "Dan Snaith to The Quietus (Baker's Dozen), on Neutral Milk Hotel's In the Aeroplane Over the Sea: \"And he introduced me to Neutral Milk Hotel. It's kind of an obvious way in for me, because it very much has that sound -- the spiritual free jazz and the horns and the power and the instruments from around the world.\"",
+   "sourceTier": "first-person",
+   "note": "He picks it among his 13 favourite albums; the page shows no date.",
+   "checked": "2026-10-26"
+  },
+  "explosions-in-the-sky>bark-psychosis": {
+   "verdict": "not-found",
+   "note": "Searched Spectrum Culture/Stereogum + Absent Friend blueprint, and band interviews (Hrasky names Mogwai and Dirty Three; nothing on Bark Psychosis). Wikipedia pages for EITS, Bark Psychosis, Hex checked, no link. Proposal: remove unless the two pieces turn up.",
+   "checked": "2026-10-26"
+  },
+  "the-shins>olivia-tremor-control": {
+   "verdict": "decide",
+   "url": "https://stereogum.com/1895598/elephant-6-friends-reflect-on-the-legacy-of-the-olivia-tremor-controls-dusk-at-the-cubist-castle/interviews",
+   "found": "Elements of the Olivia Tremor Control's experimentalism can be heard in \"bigger\" bands like Radiohead, the Flaming Lips, Stereolab, and the Shins.",
+   "note": "A passing 'can be heard in' claim about a list of bands; nothing about the Shins learning from them. Proposal: remove.",
+   "checked": "2026-10-26"
+  }
+ },
+ "candidates": [],
+ "offMap": [],
+ "searches": 32,
+ "toolStatus": "WebSearch fine; r.jina.ai via read opened pages",
+ "finished": true
+}

@@ -1,0 +1,382 @@
+{
+  "agent": "c18",
+  "searches": 15,
+  "toolStatus": "WebSearch fine; r.jina.ai proxy ok",
+  "entries": {
+    "neu>kraftwerk": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "url": "https://en.wikipedia.org/wiki/Neu!",
+      "found": "Neu! was formed in 1971 in Düsseldorf as an offshoot from an early line-up of another seminal krautrock band, Kraftwerk, whose early works were also produced by Conny Plank.",
+      "note": "Wikipedia says only that Dinger and Rother left Kraftwerk to form Neu!: personnel overlap, no statement of musical influence. Propose remove (or keep as lineage only if owner wants). Wikitext found text differs by link markup; the plain sentence is on the page."
+    },
+    "nick-drake>bert-jansch": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://en.wikipedia.org/wiki/Nick_Drake",
+      "found": "Boyd additionally listed Django Reinhardt, Miles Davis, Bert Jansch, and Donovan as influences",
+      "sourceTier": "reported",
+      "citation": "Wikipedia's Nick Drake article reports that his producer Joe Boyd listed Bert Jansch among Drake's influences.",
+      "note": "Found via raw wikitext; the sentence has no footnote of its own in the text read. Totally Guitar / Record Collector / Acoustic Guitar pages from the old citation not found in 1 search. Found text above is the plain-text rendering of the wikitext (links stripped)."
+    },
+    "nick-drake>bob-dylan": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://en.wikipedia.org/wiki/Nick_Drake",
+      "found": "As a teenager, Drake learned songs by Bob Dylan, Paul Simon, and Peter, Paul and Mary on guitar, having been particularly affected by Dylan's \"A Hard Rain's a-Gonna Fall\".",
+      "sourceTier": "reported",
+      "citation": "Wikipedia's Nick Drake article: as a teenager Drake learned songs by Bob Dylan on guitar, \"having been particularly affected by Dylan's 'A Hard Rain's a-Gonna Fall'.\"",
+      "note": "Wikipedia only; cover of Tomorrow Is a Long Time dropped as not itself influence. Acoustic Guitar page not found in 1 search."
+    },
+    "modest-mouse>unwound": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.vice.com/en/article/modest-mouse-lonesome-crowded-west-1997-the-year-emo-broke/",
+      "found": "They drew from an well of influential bands like Unwound, Lync, and Calvin Johnson’s various projects as a result of their alignment with the burgeoning punk and house show scene of nearby Olympia.",
+      "sourceTier": "reported",
+      "citation": "Vice (22 Nov 2017), on Modest Mouse's Lonesome Crowded West: the band \"drew from an well of influential bands like Unwound, Lync, and Calvin Johnson’s various projects.\"",
+      "note": "Found via Wikipedia's Unwound footnote. Memphis Flyer page is 404."
+    },
+    "stereolab>silver-apples": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.theguardian.com/music/2019/apr/09/silver-apples-electro-stars-hendrix-stereolab-portishead-john-lennon",
+      "found": "Silver Apples were loved by, and had influenced, countless bands including Stereolab, Spiritualized and Portishead.",
+      "sourceTier": "reported",
+      "citation": "The Guardian (9 Apr 2019): \"Silver Apples were loved by, and had influenced, countless bands including Stereolab, Spiritualized and Portishead.\"",
+      "note": "Wikipedia's Silver Apples footnote for Stereolab is AllMusic bio; Guardian page used instead."
+    },
+    "wire>david-bowie": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://au.rollingstone.com/music/music-news/wire-reflect-on-40-years-as-punks-ultimate-cult-band-1670",
+      "found": "Wire’s members have always fancied themselves to be Dadaists, thumbing their noses at tradition, but here they’ve created a work of anti-Dada – a stark inverse of Pink Flag , full of regular-length songs with bells and whistles and the heavy influence of Berlin-era Bowie.",
+      "sourceTier": "reported",
+      "citation": "Rolling Stone Australia, on Wire's album Silver/Lead: \"full of regular-length songs with bells and whistles and the heavy influence of Berlin-era Bowie.\"",
+      "note": "The page is about Silver/Lead (2017), not 154 as the old citation said; Billboard liner-notes page and any 154 page not found (2 searches). Wikipedia's Wire and 154 articles don't mention Bowie as an influence. Direction right but thin; owner may prefer remove."
+    },
+    "alvvays>pavement": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://en.wikipedia.org/wiki/Alvvays",
+      "found": "Rankin's personal influences include The Magnetic Fields, Teenage Fanclub, Dolly Mixture, The Smiths, Celine Dion, Pavement, The Primitives, Cocteau Twins, Oasis and Australian indie-pop group The Hummingbirds.",
+      "sourceTier": "reported",
+      "citation": "Wikipedia's Alvvays article lists Pavement among Molly Rankin's personal influences, alongside the Magnetic Fields, Teenage Fanclub, the Smiths and Cocteau Twins.",
+      "note": "SPIN and Diffuser.fm pages not opened (Diffuser URL guessed, dead); ABC News 2023 footnote has no Pavement. Wikipedia sentence cited to ABC piece which doesn't carry Pavement. Bare list of names; owner may prefer to keep at low confidence or drop. Wikitext sentence has link markup; plain text used."
+    },
+    "cat-power>siouxsie-and-the-banshees": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://en.wikipedia.org/wiki/Cat_Power",
+      "found": "When she was 13, she listened to the Smiths, the Cure and Siouxsie and the Banshees.",
+      "sourceTier": "reported",
+      "citation": "Wikipedia's Cat Power article: \"When she was 13, she listened to the Smiths, the Cure and Siouxsie and the Banshees.\"",
+      "note": "AllMusic bio not openable (direct, r.jina.ai). Wikipedia's footnote on the next sentence is a Quietus Cat Power favourites page that does not mention Siouxsie/Cure/Smiths, so this sentence has no readable source. Teenage listening, reported; weak."
+    },
+    "cat-power>the-cure": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://en.wikipedia.org/wiki/Cat_Power",
+      "found": "When she was 13, she listened to the Smiths, the Cure and Siouxsie and the Banshees.",
+      "sourceTier": "reported",
+      "citation": "Wikipedia's Cat Power article: \"When she was 13, she listened to the Smiths, the Cure and Siouxsie and the Banshees.\"",
+      "note": "Same as cat-power>siouxsie: AllMusic bio not openable; Wikipedia sentence has no readable source behind it."
+    },
+    "lcd-soundsystem>talking-heads": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.grammy.com/news/lcd-soundsystem-remains-essential-live-electronic-band",
+      "found": "Their influences — ESG, Loose Joints, David Bowie , Talking Heads , CAN, Daft Punk , Kraftwerk — were spiritually present but seamlessly mixed in.",
+      "sourceTier": "reported",
+      "citation": "GRAMMY.com: \"Their influences — ESG, Loose Joints, David Bowie, Talking Heads, CAN, Daft Punk, Kraftwerk — were spiritually present but seamlessly mixed in.\"",
+      "note": "Page also opens as web.archive.org/web/2020/ copy."
+    },
+    "lcd-soundsystem>kraftwerk": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.grammy.com/news/lcd-soundsystem-remains-essential-live-electronic-band",
+      "found": "Their influences — ESG, Loose Joints, David Bowie , Talking Heads , CAN, Daft Punk , Kraftwerk — were spiritually present but seamlessly mixed in.",
+      "sourceTier": "reported",
+      "citation": "GRAMMY.com: \"Their influences — ESG, Loose Joints, David Bowie, Talking Heads, CAN, Daft Punk, Kraftwerk — were spiritually present but seamlessly mixed in.\"",
+      "note": "Far Out Magazine 'Get Innocuous / The Robots' homage not checked; dropped from citation."
+    },
+    "lcd-soundsystem>the-smiths": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/2016/https://www.timeoutabudhabi.com/music/16011-james-murphy-interview",
+      "found": "But I like stuff from my childhood, early OMD or Bronski Beat or The Smiths, which was the kind of music you loved in your room, but the minute someone else walked in who didn’t like that kind of music, you suddenly realised how fey and absurd it was.",
+      "sourceTier": "first-person",
+      "citation": "James Murphy to Time Out Abu Dhabi: \"I like stuff from my childhood, early OMD or Bronski Beat or The Smiths, which was the kind of music you loved in your room...\"",
+      "note": "Original timeoutabudhabi.com URL won't open directly; archive.org copies (2012/2016/2020) read fine. Footnote of Wikipedia's James Murphy page (Jon Wilks, Time Out, 27 May 2010)."
+    },
+    "lcd-soundsystem>omd": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/2016/https://www.timeoutabudhabi.com/music/16011-james-murphy-interview",
+      "found": "But I like stuff from my childhood, early OMD or Bronski Beat or The Smiths, which was the kind of music you loved in your room, but the minute someone else walked in who didn’t like that kind of music, you suddenly realised how fey and absurd it was.",
+      "sourceTier": "first-person",
+      "citation": "James Murphy to Time Out Abu Dhabi: \"I like stuff from my childhood, early OMD or Bronski Beat or The Smiths, which was the kind of music you loved in your room...\"",
+      "note": "Same page as the Smiths link."
+    },
+    "lcd-soundsystem>the-birthday-party": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Independent profile not found in 2 searches (results returned only Wikipedia/Qobuz/AOL syndication of a different Independent piece, which has no Birthday Party); Wikipedia pages for Murphy and LCD have no Birthday Party mention."
+    },
+    "lcd-soundsystem>velvet-underground": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Independent profile not found (2 searches shared with the Birthday Party link). A Qobuz bio snippet lists the Velvet Underground among Murphy's influences but that is a search summary, not read; Wikipedia pages for Murphy/LCD don't mention it. Possible first-person source: Rolling Stone / Reverb 2013 'James Murphy talks influences' (Reverb page opened only via archive and shows Bowie, not VU)."
+    },
+    "low>codeine": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://vice.com/en/article/rank-your-records-low-alan-sparhawk",
+      "found": "I remember hearing Codeine early on too and thinking, “Wow, these guys are going way extreme with things that we’re just barely touching.” I was pretty in awe of them. I remember having to force myself to not listen to Codeine and Red House Painters sometimes when I was writing, because I’d find myself falling too easily into their mannerisms and phrasings.",
+      "sourceTier": "first-person",
+      "citation": "Alan Sparhawk to Vice (Rank Your Records): \"I remember hearing Codeine early on too and thinking, 'Wow, these guys are going way extreme with things that we're just barely touching.' I was pretty in awe of them. I remember having to force myself to not listen to Codeine and Red House Painters sometimes when I was writing, because I'd find myself falling too easily into their mannerisms and phrasings.\""
+    },
+    "suicide>velvet-underground": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.rollingstone.com/music/music-news/remembering-suicides-alan-vega-screamer-of-truths-dreamer-of-dreams-111940/",
+      "found": "The Velvet Underground and the Stooges inspired his rock reincarnation, with his leather-boy Alan Suicide persona.",
+      "sourceTier": "reported",
+      "citation": "Rolling Stone's obituary of Alan Vega: \"The Velvet Underground and the Stooges inspired his rock reincarnation, with his leather-boy Alan Suicide persona.\"",
+      "note": "Malay Mail/AFP obituary (malaymail.com/news/showbiz/2016/07/18/...) also says the Stooges' live shows were one of the early inspirations for Suicide \"along with New York avant-garde legends The Velvet Underground\". Wikipedia's Kris Needs book citation for Vega citing the VU not readable online."
+    },
+    "suicide>the-stooges": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.villagevoice.com/suicide-watch-2/",
+      "found": "Seeing Iggy Pop’s auto-destructive theatrics at a Stooges show in 1970 was a revelation, Vega says. “It showed me you didn’t have to do static artworks, you could create situations, do something environmental. That’s what got me moving more intensely in the direction of doing music. Compared with Iggy, whatever I was doing as an artist felt insignificant.”",
+      "sourceTier": "first-person",
+      "citation": "Alan Vega to Simon Reynolds, The Village Voice (\"Suicide Watch\"), on seeing a Stooges show in 1970: \"It showed me you didn't have to do static artworks, you could create situations, do something environmental. That's what got me moving more intensely in the direction of doing music.\"",
+      "note": "The FarOut 'I Wanna Be Your Dog on repeat' quote was not checked."
+    },
+    "boards-of-canada>cocteau-twins": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/20160306060433/http://pitchfork.com/features/interviews/6151-boards-of-canada/",
+      "found": "Mike: Maybe. In the late-80s the three bands that were a huge influence on us were Front 242 to some extent, and-- to a large extent-- Nitzer Ebb and the Cocteau Twins.",
+      "sourceTier": "first-person",
+      "citation": "Mike Sandison to Pitchfork: \"In the late-80s the three bands that were a huge influence on us were Front 242 to some extent, and-- to a large extent-- Nitzer Ebb and the Cocteau Twins.\" Marcus Eoin adds that they are \"such huge fans of theirs.\"",
+      "note": "Original pitchfork.com URL (pitchfork.com/features/interviews/6151-boards-of-canada/) now Page Not Found; archive.org copy reads. The 'big fans of My Bloody Valentine' in the old citation is not on this page. Marcus's line (such huge fans of theirs) is a separate paragraph, quoted in citation from the page's text 'We've actually been in touch with the Cocteau Twins...'."
+    },
+    "boards-of-canada>autechre": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "url": "https://pitchfork.com/reviews/albums/19832-boards-of-canada-hi-scores-ep/",
+      "found": "the same could be said of \"June 9th\", whose laser zaps and faintly industrial crunch recall Autechre and Disjecta.",
+      "note": "Wikipedia's account (Twoism copy reaching Sean Booth, who suggested Skam) is Autechre helping BoC's career, not BoC being influenced by Autechre. Pitchfork's Hi Scores review and Simon Reynolds' Music Has the Right retrospective only say the early sound recalled Autechre / sat among 'Autechre-indebted' Skam artists: resemblance, not a stated influence. No BoC quote naming Autechre found. Propose remove (or lower to critic if owner accepts Reynolds). Cichli cover not checked."
+    },
+    "brand-new>the-smiths": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "http://www.bbc.co.uk/manchester/content/articles/2007/02/12/120207_brand_new_interview_feature.shtml",
+      "found": "Possibly the Stone Roses; as far as British music, bands like Ride, Morrissey, The Smiths, and The Beatles are favourites of ours. It’s funny when you enjoy music, and realise it all comes from one specific spot, as British pop and rock have had their way with us.",
+      "sourceTier": "first-person",
+      "citation": "Jesse Lacey to BBC Manchester (2007), on British music: \"Possibly the Stone Roses; as far as British music, bands like Ride, Morrissey, The Smiths, and The Beatles are favourites of ours. It's funny when you enjoy music, and realise it all comes from one specific spot, as British pop and rock have had their way with us.\"",
+      "note": "Lacey interview; Alternative Press (altpress.com) page could not be opened, so BBC used. Quote is the page's own; page intro says the chat was with Jesse Lacey."
+    },
+    "brand-new>ride": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "http://www.bbc.co.uk/manchester/content/articles/2007/02/12/120207_brand_new_interview_feature.shtml",
+      "found": "Possibly the Stone Roses; as far as British music, bands like Ride, Morrissey, The Smiths, and The Beatles are favourites of ours. It’s funny when you enjoy music, and realise it all comes from one specific spot, as British pop and rock have had their way with us.",
+      "sourceTier": "first-person",
+      "citation": "Jesse Lacey to BBC Manchester (2007), on British music: \"Possibly the Stone Roses; as far as British music, bands like Ride, Morrissey, The Smiths, and The Beatles are favourites of ours. It's funny when you enjoy music, and realise it all comes from one specific spot, as British pop and rock have had their way with us.\"",
+      "note": "Lacey interview; Alternative Press (altpress.com) page could not be opened, so BBC used. Quote is the page's own; page intro says the chat was with Jesse Lacey."
+    },
+    "brand-new>the-stone-roses": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "http://www.bbc.co.uk/manchester/content/articles/2007/02/12/120207_brand_new_interview_feature.shtml",
+      "found": "\"Possibly the Stone Roses; as far as British music, bands like Ride, Morrissey, The Smiths, and The Beatles are favourites of ours.",
+      "sourceTier": "first-person",
+      "citation": "Jesse Lacey to BBC Manchester (2007), on British music: \"Possibly the Stone Roses; as far as British music, bands like Ride, Morrissey, The Smiths, and The Beatles are favourites of ours. It's funny when you enjoy music, and realise it all comes from one specific spot, as British pop and rock have had their way with us.\"",
+      "note": "Lacey interview; Alternative Press (altpress.com) page could not be opened, so BBC used. Quote is the page's own; page intro says the chat was with Jesse Lacey."
+    },
+    "brand-new>sonic-youth": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/20091125/http://www.chartattack.com/features/76987/brand-new-explain-how-their-songs-become-noisy",
+      "found": "Some of our favourite bands growing up didn't care. They did things that were just so absurd with their music that they set a precedent for what is good. If you listen to a band like Sonic Youth or My Bloody Valentine, they didn't even play their guitars.",
+      "sourceTier": "first-person",
+      "citation": "Brand New (Jesse Lacey and Vinnie Accardi) to CHARTattack, on why their songs got noisy: \"Some of our favourite bands growing up didn't care... If you listen to a band like Sonic Youth or My Bloody Valentine, they didn't even play their guitars.\"",
+      "note": "Original chartattack.com URL is dead (usurped); archive.org copy reads. Page says 'Here's what lead vocalist/guitarist Jesse Lacey and guitarist Vinnie Accardi had to say' and doesn't attribute this answer to one of them."
+    },
+    "brand-new>my-bloody-valentine": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/20091125/http://www.chartattack.com/features/76987/brand-new-explain-how-their-songs-become-noisy",
+      "found": "Some of our favourite bands growing up didn't care. They did things that were just so absurd with their music that they set a precedent for what is good. If you listen to a band like Sonic Youth or My Bloody Valentine, they didn't even play their guitars.",
+      "sourceTier": "first-person",
+      "citation": "Brand New (Jesse Lacey and Vinnie Accardi) to CHARTattack, on why their songs got noisy: \"Some of our favourite bands growing up didn't care... If you listen to a band like Sonic Youth or My Bloody Valentine, they didn't even play their guitars.\"",
+      "note": "Original chartattack.com URL is dead (usurped); archive.org copy reads. Page says 'Here's what lead vocalist/guitarist Jesse Lacey and guitarist Vinnie Accardi had to say' and doesn't attribute this answer to one of them."
+    },
+    "kurt-vile>neil-young": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/20130502090417/http://blogs.villagevoice.com/music/2011/03/qa_kurt_vile_on.php",
+      "found": "I can't say I wasn't influenced by that, because it would be a total lie. But there's this guitar solo, and at the very end he bends a high note, and plays the same note on the neighboring string -- that sustained note changed my life.",
+      "sourceTier": "first-person",
+      "citation": "Kurt Vile to Jayson Greene, The Village Voice, on Neil Young's \"On the Beach\": \"I can't say I wasn't influenced by that, because it would be a total lie. But there's this guitar solo, and at the very end he bends a high note, and plays the same note on the neighboring string -- that sustained note changed my life.\"",
+      "note": "Original blogs.villagevoice.com URL dead; archive.org copy (2013) reads. Page headline: 'Q&A: Kurt Vile on His Favorite Bob Seger Song and the Neil Young Solo That Changed His Life'. AllMusic bio page opened but it is a different artist (not used)."
+    },
+    "kurt-vile>sonic-youth": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.wral.com/archive/17878337/",
+      "found": "He played trumpet in the school jazz band, switched from banjo to guitar, and began studying indie rockers, especially Pavement, Beck, Sonic Youth and Dinosaur Jr.",
+      "sourceTier": "reported",
+      "citation": "WRAL.com profile of Kurt Vile: as a teenager he \"began studying indie rockers, especially Pavement, Beck, Sonic Youth and Dinosaur Jr.\"",
+      "note": "AllMusic bio not readable (r.jina.ai returned a wrong page). Russh interview also says 'In high school... his idols were bands like Pavement, Dinosaur Jr. and Sonic Youth' (writer's words)."
+    },
+    "rites-of-spring>wire": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/2016/https://www.stopsmilingonline.com/story_detail.php?id=1170&page=2",
+      "found": "The music of Wire, the Buzzcocks, the Saints, the Birthday Party, the Mob and the Wipers — which Canty discovered on a Pacific Northwest trip — all figured into the Rites’ musical universe.",
+      "sourceTier": "reported",
+      "citation": "John Dugan, Stop Smiling (\"End on End: Rites of Spring\"): \"The music of Wire, the Buzzcocks, the Saints, the Birthday Party, the Mob and the Wipers -- which Canty discovered on a Pacific Northwest trip -- all figured into the Rites' musical universe.\"",
+      "note": "Original stopsmilingonline.com URL won't open; archive.org copies (2016, 2020) read. Wikipedia's 'cited influences including...' wording is not on the page; the page names them as part of the band's musical universe."
+    },
+    "rites-of-spring>the-birthday-party": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/2016/https://www.stopsmilingonline.com/story_detail.php?id=1170&page=2",
+      "found": "The music of Wire, the Buzzcocks, the Saints, the Birthday Party, the Mob and the Wipers — which Canty discovered on a Pacific Northwest trip — all figured into the Rites’ musical universe.",
+      "sourceTier": "reported",
+      "citation": "John Dugan, Stop Smiling (\"End on End: Rites of Spring\"): \"The music of Wire, the Buzzcocks, the Saints, the Birthday Party, the Mob and the Wipers -- which Canty discovered on a Pacific Northwest trip -- all figured into the Rites' musical universe.\"",
+      "note": "Original stopsmilingonline.com URL won't open; archive.org copies (2016, 2020) read. Wikipedia's 'cited influences including...' wording is not on the page; the page names them as part of the band's musical universe."
+    },
+    "rites-of-spring>television": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "url": "https://web.archive.org/web/2016/https://www.stopsmilingonline.com/story_detail.php?id=1170&page=2",
+      "found": "Later on, the band members discovered Television, the Fall and the Smiths.",
+      "sourceTier": "reported",
+      "citation": "John Dugan, Stop Smiling (\"End on End: Rites of Spring\"): \"Later on, the band members discovered Television, the Fall and the Smiths.\"",
+      "note": "Weaker than Wire/Birthday Party: 'discovered', no stated effect on their music. Owner may prefer to keep as low confidence. Coordinator: only \"later on, the band members discovered\" them, nothing about shaping the music. Propose remove unless a better source turns up."
+    },
+    "rites-of-spring>the-smiths": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "url": "https://web.archive.org/web/2016/https://www.stopsmilingonline.com/story_detail.php?id=1170&page=2",
+      "found": "Later on, the band members discovered Television, the Fall and the Smiths.",
+      "sourceTier": "reported",
+      "citation": "John Dugan, Stop Smiling (\"End on End: Rites of Spring\"): \"Later on, the band members discovered Television, the Fall and the Smiths.\"",
+      "note": "Weaker than Wire/Birthday Party: 'discovered', no stated effect on their music. Owner may prefer to keep as low confidence. Coordinator: only \"later on, the band members discovered\" them, nothing about shaping the music. Propose remove unless a better source turns up."
+    },
+    "rites-of-spring>bob-dylan": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "url": "https://web.archive.org/web/2016/https://www.stopsmilingonline.com/story_detail.php?id=1170&page=2",
+      "found": "Picciotto’s personal favorites included Blonde on Blonde by Bob Dylan and everything by the Zombies and the Beatles.",
+      "sourceTier": "reported",
+      "citation": "John Dugan, Stop Smiling (\"End on End: Rites of Spring\"): \"Picciotto's personal favorites included Blonde on Blonde by Bob Dylan and everything by the Zombies and the Beatles.\"",
+      "note": "Writer's report of Guy Picciotto's favourites. Coordinator: only \"personal favorites\" (Blonde on Blonde), a bare favourite. Propose remove unless a better source turns up."
+    },
+    "slint>big-black": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.factmag.com/2014/03/12/murder-ballads-an-interview-with-slint/",
+      "found": "But as a whole, I think all of us being into Big Black had the biggest effect – the way their music was hypnotic.",
+      "sourceTier": "first-person",
+      "citation": "A member of Slint to Fact (2014), asked how they went from punk to Spiderland: \"I think all of us being into Big Black had the biggest effect – the way their music was hypnotic.\"",
+      "note": "Fact interview with Slint, dated 12 Mar 2014 in the URL; the answer is not attributed to a named member in the paragraph read (a second member adds 'I suppose Big Black had repetition too'). Wikipedia's bare list is cited to this interview plus a New Yorker piece (which has Slint 'had listened to' Big Black's music, said by the writer)."
+    },
+    "slint>minutemen": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://en.wikipedia.org/wiki/Slint",
+      "found": "After being influenced by the music of the Minutemen, Pajo and Walford's musical direction became too obtuse for the other members of Maurice, who parted ways.",
+      "sourceTier": "reported",
+      "citation": "Wikipedia's Slint article: \"After being influenced by the music of the Minutemen, Pajo and Walford's musical direction became too obtuse for the other members of Maurice, who parted ways.\"",
+      "note": "Wikipedia cites the documentary Breadcrumb Trail (Lance Bangs, Touch and Go, 2014) for it; no online text. Minutemen not in the Fact interview or New Yorker 'Slow Fade'. Could be marked print/film if the owner wants."
+    },
+    "the-fall>faust": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.phoenixnewtimes.com/music/mark-e-smith-10076529/",
+      "found": "and a music lover who was influenced by early rockers like Elvis Presley and Gene Vincent just as much as he was by experimental groups like Can, Faust, and The United States of America.",
+      "sourceTier": "reported",
+      "citation": "Phoenix New Times, on Mark E. Smith: \"a music lover who was influenced by early rockers like Elvis Presley and Gene Vincent just as much as he was by experimental groups like Can, Faust, and The United States of America.\""
+    },
+    "wednesday>lucinda-williams": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://diymag.com/interview/wednesday-rat-saw-god-april-2023",
+      "found": "Purposefully deciding to learn more about the artists who filled her radio waves as a child, Karly spent the last few years digging into the country music of Drive-By Truckers and Lucinda Williams.",
+      "sourceTier": "reported",
+      "citation": "DIY (2023): \"Karly spent the last few years digging into the country music of Drive-By Truckers and Lucinda Williams.\" Hartzman adds: \"I definitely recently gained a newfound appreciation for just how talented the songwriters are that contribute to that genre.\"",
+      "note": "Billboard page with the old 'amazing lyricism' quote not found in 1 search; DIY used. The Hartzman quote that follows is about country songwriters generally, not Lucinda by name, hence reported."
+    },
+    "wednesday>sonic-youth": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "url": "https://www.clashmusic.com/features/devil-in-the-detail-wednesday-interviewed/",
+      "found": "Equal parts Tom T. Hall and Sonic Youth the band are an enigmatic mix of alternative country and fuzzed out college rock.",
+      "note": "Only a writer's comparison (Clash). Exclaim! article with 'From Sonic Youth to Drive-by Truckers' not found (1 search + guessed URL); Stereogum, Ringer, DIY, MTV Hartzman interviews don't mention Sonic Youth. Propose remove, or lower to critic only if the owner accepts a comparison."
+    },
+    "animal-collective>pavement": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://reynoldsretro.blogspot.com/2009/01/animal-collective-feels-directors-cut.html",
+      "found": "Pavement introduced them to the buzz of esoterrorism – the encrypted song-titles, the opaquely evocative artwork.",
+      "sourceTier": "reported",
+      "citation": "Simon Reynolds, The Wire (director's cut, ReynoldsRetro), on the band's start: \"Pavement introduced them to the buzz of esoterrorism -- the encrypted song-titles, the opaquely evocative artwork. From lo-fi indie rock, the friends quickly progressed to the noise cassette micro-scene of the Pacific North West.\"",
+      "note": "The 'shared love of Pavement' wording in the old citation is Wikipedia's and isn't on this page; Wikipedia's footnote for it is this Reynolds piece. 'Wire, 2005' is from Wikipedia's footnote; the blog page itself prints no year in the paragraphs read. The second sentence in the citation is the next sentence in the same paragraph (found is only the first)."
+    },
+    "animal-collective>can": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://en.wikipedia.org/wiki/Animal_Collective",
+      "found": "The four started to discover psychedelic rock bands like Can and Silver Apples, as well as local experimental groups such as Climax Golden Twins and Noggin.",
+      "sourceTier": "reported",
+      "citation": "Wikipedia's Animal Collective article: \"The four started to discover psychedelic rock bands like Can and Silver Apples, as well as local experimental groups such as Climax Golden Twins and Noggin.\"",
+      "note": "The old citation credits this sentence to Simon Reynolds (The Wire, 2005); it is NOT in Reynolds' article (read in full, director's cut on reynoldsretro.blogspot.com), and the Wikipedia sentence has no footnote of its own. 1 search for a direct interview found nothing. Weak: reported at best; owner may want to hold or drop."
+    },
+    "animal-collective>silver-apples": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://en.wikipedia.org/wiki/Animal_Collective",
+      "found": "The four started to discover psychedelic rock bands like Can and Silver Apples, as well as local experimental groups such as Climax Golden Twins and Noggin.",
+      "sourceTier": "reported",
+      "citation": "Wikipedia's Animal Collective article: \"The four started to discover psychedelic rock bands like Can and Silver Apples, as well as local experimental groups such as Climax Golden Twins and Noggin.\"",
+      "note": "Same as animal-collective>can: not in Reynolds' Wire article. Wikipedia also says Silver Apples was on Geologist's 'inspirational mix' for Centipede Hz (cited to a Consequence of Sound slideshow, 2012, whose track text could not be read by the tool) - could carry this link at first-person-ish tier if the owner opens it: https://consequence.net/2012/08/the-influences-of-animal-collectives-centipede-hz/"
+    }
+  },
+  "candidates": [
+    {
+      "source": "low",
+      "target": "red-house-painters",
+      "kind": "influence",
+      "speaker": "Alan Sparhawk",
+      "sentence": "I remember having to force myself to not listen to Codeine and Red House Painters sometimes when I was writing, because I’d find myself falling too easily into their mannerisms and phrasings.",
+      "url": "https://vice.com/en/article/rank-your-records-low-alan-sparhawk"
+    }
+  ],
+  "offMap": [
+    {
+      "name": "Nitzer Ebb",
+      "namedBy": "boards-of-canada",
+      "sentence": "In the late-80s the three bands that were a huge influence on us were Front 242 to some extent, and-- to a large extent-- Nitzer Ebb and the Cocteau Twins.",
+      "url": "https://web.archive.org/web/20160306060433/http://pitchfork.com/features/interviews/6151-boards-of-canada/"
+    },
+    {
+      "name": "Front 242",
+      "namedBy": "boards-of-canada",
+      "sentence": "In the late-80s the three bands that were a huge influence on us were Front 242 to some extent, and-- to a large extent-- Nitzer Ebb and the Cocteau Twins.",
+      "url": "https://web.archive.org/web/20160306060433/http://pitchfork.com/features/interviews/6151-boards-of-canada/"
+    },
+    {
+      "name": "The Undertones",
+      "namedBy": "rites-of-spring",
+      "sentence": "“We would also get into kind of the ‘wrong’ records bands would make, like Positive Touch by the Undertones or Cast of Thousands by the Adverts,” says Picciotto.",
+      "url": "https://web.archive.org/web/2016/https://www.stopsmilingonline.com/story_detail.php?id=1170&page=2"
+    }
+  ],
+  "finished": true
+}

@@ -1,0 +1,33 @@
+{
+ "agent": "coordinator",
+ "searches": 0,
+ "toolStatus": "owner-approved holds, not searched",
+ "entries": {
+  "nico>velvet-underground": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Personnel: Nico sang on The Velvet Underground & Nico (1967). Shared membership isn't influence. Propose remove. Not searched."
+  },
+  "harold-budd>brian-eno": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Collaboration: Eno produced and recorded with Budd (The Pavilion of Dreams, The Plateaux of Mirror), and Budd was the older artist. Propose remove. Not searched."
+  },
+  "dirty-three>nick-cave-and-the-bad-seeds": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Personnel: Warren Ellis is in both bands. Propose remove. Not searched."
+  },
+  "talking-heads>brian-eno": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Production: Eno produced More Songs About Buildings and Food, Fear of Music and Remain in Light. Counts only with a statement of fandom from before he produced them. Propose remove unless one turns up. Not searched."
+  },
+  "mono>explosions-in-the-sky": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Chronology: both bands formed in 1999, and Mono's first album came out within a year of Explosions in the Sky's. Propose remove. Not searched."
+  }
+ },
+ "finished": true
+}

@@ -1,0 +1,247 @@
+{
+  "agent": "retry4",
+  "searches": 25,
+  "toolStatus": "web_fetch refused the Pitchfork Kazu Makino page and its Wayback copy (PERMISSIONS_ERROR: URL not in a prior search/fetch result), even though the URL appeared in Wikipedia text I had fetched. Other pages (The Ringer, Line of Best Fit) opened only after their real URLs surfaced as search results; guessed URLs were refused. Pages seen only as search snippets, not opened, are labelled in the notes. Never located: Digital in Berlin, WUVT/Woove, Louder Than War 2014, L Magazine, FLOOD, NME Jockstrap, i-D Oklou, Seven Days, Uncut Prefab Sprout article page. Wayback was not tried for pages whose exact URL I never found.",
+  "entries": {
+    "grouper>this-mortal-coil": {
+      "note": "Not found. 1 search (Grouper + Liz Harris + favorite albums + It'll End in Tears + Juju + Digital in Berlin): only Wikipedia, TV Tropes, Bandcamp Daily, retailer blurbs. No Digital in Berlin URL surfaced, so no Wayback attempt possible.",
+      "verdict": "not-found",
+      "checked": "2026-10-26"
+    },
+    "grouper>siouxsie-and-the-banshees": {
+      "note": "Not found. Same single search as grouper>this-mortal-coil; no page carries Harris naming Juju.",
+      "verdict": "not-found",
+      "checked": "2026-10-26"
+    },
+    "mj-lenderman>silver-jews": {
+      "note": "Not found. 2 searches (WUVT/Woove + Haddad + Silver Jews; Lenderman + Silver Jews + Berman). The WUVT/Woove page never surfaced; results were all David Berman biography/obituary pages with no Lenderman mention.",
+      "verdict": "not-found",
+      "checked": "2026-10-26"
+    },
+    "mj-lenderman>bonnie-prince-billy": {
+      "note": "Not found. Same 2 searches; nothing connects Lenderman to 'Palace Music' or Will Oldham. The claim lives in the unlocated WUVT/Woove interview.",
+      "verdict": "not-found",
+      "checked": "2026-10-26"
+    },
+    "parquet-courts>guided-by-voices": {
+      "url": "https://lavocedinewyork.com/arts/musica/2014/06/25/dal-texas-a-williamsburg-il-post-punk-dei-parquet-courts",
+      "found": "Il frontman e fondatore del progetto, Andy Savage, è certamente un nostalgico, ama The Roxy Music, The Fall, il punk delle origini e la scena indie americana degli anni Ottanta-Novanta (dai Pavement ai Guided By Voices), ma non disdegna hip hop e r’n’b, cosa che farebbe rizzare i capelli a qualunque punk fedele alla linea.",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "GBV appears only as the end of a parenthetical range ('from Pavement to Guided By Voices') describing the 1980s-90s American indie scene Savage 'loves', in an unsourced journalist sentence. The L Magazine 'Inspiration Drills' piece was not found. Proposal: keep as weak 'reported' if scene-level fandom is acceptable, otherwise remove."
+    },
+    "parquet-courts>velvet-underground": {
+      "note": "Not found. Louder Than War 2014 email did not surface in 1 search this time (Savage + Pavement + Roxy Music + the Fall + Velvet Underground). La Voce di New York (opened) names Roxy Music and the Fall, not the Velvets. Grantland and Hyperallergic list the Velvets only as critic reference points. McSweeney's/826 Chicago has Savage deflecting Pavement comparisons, no VU. Vancouver Straight page seen as a snippet only, not opened.",
+      "verdict": "not-found",
+      "checked": "2026-10-26"
+    },
+    "parquet-courts>the-fall": {
+      "url": "https://lavocedinewyork.com/arts/musica/2014/06/25/dal-texas-a-williamsburg-il-post-punk-dei-parquet-courts",
+      "found": "Il frontman e fondatore del progetto, Andy Savage, è certamente un nostalgico, ama The Roxy Music, The Fall, il punk delle origini e la scena indie americana degli anni Ottanta-Novanta (dai Pavement ai Guided By Voices), ma non disdegna hip hop e r’n’b, cosa che farebbe rizzare i capelli a qualunque punk fedele alla linea.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "La Voce di New York (Piero Merola, June 25, 2014) reports that Parquet Courts' Andrew Savage loves Roxy Music, the Fall and early punk.",
+      "sourceTier": "reported",
+      "note": "Louder Than War 2014 Savage email not found. This is a journalist's unsourced statement of fandom in an Italian-language piece, the weakest 'reported' tier."
+    },
+    "women>this-heat": {
+      "url": "https://www.treblezine.com/songs-about-nothing-an-interview-with-women/",
+      "found": "It’s more Sonic Youth or Wire, or perhaps a mutant offspring of The Zombies’ gorgeous melodies and This Heat’s menacing post-punk.",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Treble (2010) interview with Pat Flegel opened. This Heat appears only in the writer's own resemblance sentence. Flegel himself names the Stooges ('Loose'), Iggy Pop and Wire's Pink Flag, not This Heat. Exclaim! (opened earlier) only says 'between Swell Maps and Syd Barrett'. Proposal: remove, or keep as critic."
+    },
+    "blonde-redhead>sonic-youth": {
+      "url": "https://web.archive.org/web/2023/https://pitchfork.com/features/5-10-15-20/blonde-redhead-kazu-makino-on-the-music-that-made-her/",
+      "found": "Indie rock, especially at the time I started, had My Bloody Valentine and Lush on one side, and the other side had Sonic Youth, Beck, Nirvana, bands I loved but definitely didn’t identify with.",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Makino (quoted from her Pitchfork conversation) says she loved Sonic Youth, Beck and Nirvana but 'definitely didn't identify with' them. Fandom is stated, but she explicitly distances herself as an influence on her own sound. Proposal: remove, or keep only as a weak/reported edge. No first-person 'key inspiration' line found. Coordinator: on the Pitchfork original she goes on \"I rejected that other side\". Reads close to a denial: propose record as denial and remove the link."
+    },
+    "blonde-redhead>my-bloody-valentine": {
+      "url": "https://web.archive.org/web/2023/https://pitchfork.com/features/5-10-15-20/blonde-redhead-kazu-makino-on-the-music-that-made-her/",
+      "found": "I was listening to so many different things during this New York period until I hit a wall of noise sound. It was Lush and My Bloody Valentine.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Kazu Makino to Pitchfork (2023): \"I was listening to so many different things during this New York period until I hit a wall of noise sound. It was Lush and My Bloody Valentine.\"",
+      "sourceTier": "first-person",
+      "note": "Coordinator opened the Pitchfork original (Internet Archive copy, 2023) and swapped it in for Far Out."
+    },
+    "mudhoney>wipers": {
+      "url": "https://au.rollingstone.com/music/music-features/wipers-greg-sage-interview-is-this-real-16328",
+      "found": "Turner calls the Wipers one of the “foundational building blocks” of Mudhoney’s sound and adds that they used to refer to their own bass-heavy, noisy number, “No One Has” as “The Wipers Song.”",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Rolling Stone (Kory Grow, Aug 31, 2020) reports that Mudhoney's Steve Turner calls the Wipers one of the \"foundational building blocks\" of Mudhoney's sound.",
+      "sourceTier": "reported",
+      "note": "Canonical US URL: https://www.rollingstone.com/music/music-features/wipers-greg-sage-interview-is-this-real-1049335/ (I opened the Australian copy). The Life of the Record quote is audio-only and I found no transcript. Also opened: Mark Arm in Magnet's 2008 oral history, https://magnetmagazine.com/2008/05/20/mudhoney-superfuzzy-memories-an-oral-history/ ('I remember calling “No One Has” “The Wipers Song,” because that’s what it sounded like'), a resemblance nickname, so not used."
+    },
+    "spoon>talking-heads": {
+      "url": "https://americansongwriter.com/britt-daniel-looks-back-at-two-decades-of-spoon/",
+      "found": "I would say that when we first started out, I was very much into bands like Wire, Talking Heads, that sort of lyric. That’s what I was shooting for, at least — I was very young and those guys were very inspired.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Britt Daniel to American Songwriter (2020): \"when we first started out, I was very much into bands like Wire, Talking Heads, that sort of lyric. That's what I was shooting for, at least.\"",
+      "sourceTier": "first-person",
+      "note": "Year corrected: page is dated September 1, 2020 (modified 2021). The 'still love those Wire records' line is also on the page."
+    },
+    "the-postal-service>new-order": {
+      "url": "https://www.theringer.com/2023/09/05/music/postal-service-give-up-20th-anniversary-tour-history",
+      "found": "But the Postal Service built the perfect bridge from one era to the next.",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Opened The Ringer (Sept 5, 2023), the Chicago Maroon 2003 Gibbard interview and Wikipedia's Give Up page. Gibbard names OMD, Depeche Mode and the Human League (Ringer) and only 'that era of music' (Chicago Maroon). New Order appears only in the Ringer writer's own list of synth-pop touchstones and in a Shazam bio blurb. No Gibbard or Tamborello statement naming New Order or Kraftwerk. Proposal: remove, or keep only as critic."
+    },
+    "the-postal-service>depeche-mode": {
+      "url": "https://www.theringer.com/2023/09/05/music/postal-service-give-up-20th-anniversary-tour-history",
+      "found": "We were in the right place at the right time to resurrect the craftsmanship of that early ’80s electronic music via Orchestral Manoeuvres in the Dark, Depeche Mode, or the Human League.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Ben Gibbard to The Ringer (2023): \"We were in the right place at the right time to resurrect the craftsmanship of that early '80s electronic music via Orchestral Manoeuvres in the Dark, Depeche Mode, or the Human League.\"",
+      "sourceTier": "first-person",
+      "note": "Replaces the SPIN/XLR8R citation. The SPIN sentence is the writer's, and I did not find the XLR8R Tamborello piece. Gibbard's wording is about the project's approach rather than 'listening as a fan'; treated as first-person influence."
+    },
+    "black-midi>godspeed-you-black-emperor": {
+      "note": "Not found. 2 searches this time (the 'droney, Godspeed, Swans, Boredoms' quote; Greep + Godspeed). Opened Rolling Stone's Schlagenheim feature: only says Kwasniewski-Kelvin liked Japanese noise bands like the Boredoms. A JB Hi-Fi product page (Rough Trade press text) appeared as a snippet only, not opened: early music was 'an ambient, droning, noisy thing' as Greep describes it, 'mutating into something reminiscent of Swans or the Boredoms'. That is a writer's resemblance and does not mention Godspeed.",
+      "verdict": "not-found",
+      "checked": "2026-10-26"
+    },
+    "black-midi>swans": {
+      "note": "Not found as first-person. Only lead is the Rough Trade/JB Hi-Fi blurb (https://www.jbhifi.com.au/products/vinyl-black-midi-schlagenheim-vinyl-lp, snippet only, not opened): 'reminiscent of Swans or the Boredoms', a resemblance. The Rolling Stone feature and Interview Magazine pages opened earlier have no Swans line. If the blurb is confirmed, record as critic/reported at best.",
+      "verdict": "not-found",
+      "checked": "2026-10-26"
+    },
+    "black-midi>talking-heads": {
+      "note": "Not found. FLOOD Picton quote not located in 1 search. Venue blurbs on sfstation.com (https://www.sfstation.com/black-midi-e2421870, snippet only, not opened) say the band bonded over 'an appreciation for rapper Danny Brown, Death Grips, Deerhoof, Miles Davis and Talking Heads, who they like so much they called a song... Talking Heads', which is unattributed press-release boilerplate. Rolling Stone's feature only has the writer comparing Greep's vocal to David Byrne (critic resemblance).",
+      "verdict": "not-found",
+      "checked": "2026-10-26"
+    },
+    "fontaines-dc>joy-division": {
+      "note": "Not found as influence. 1 search this time. Seen only as snippets (not opened): NME 2020 ('Certain influences naturally spring to mind... Joy Division, The Fall, Wire, PiL', the writer's assumption), Uncut Feb 2020 ('fleetingly reminiscent of the monochrome post-punk of Joy Division', a critic resemblance), Atwood Magazine (writer's list). None is the band naming Joy Division. Opened Pollstar: no Joy Division. If it must stay: critic resemblance only.",
+      "verdict": "not-found",
+      "checked": "2026-10-26"
+    },
+    "fontaines-dc>pixies": {
+      "url": "https://news.pollstar.com/2022/09/19/fontaines-d-c-dublins-latest-export-makes-punk-rock-poetic/",
+      "found": "Its influences run the gamut from Sinéad O’Connor, Nick Cave, the Pixies, punk and more.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Pollstar (Debbie Speer, Sept 19, 2022) says Fontaines D.C.'s influences run from Sinéad O'Connor and Nick Cave to the Pixies and punk.",
+      "sourceTier": "reported",
+      "note": "Page opened; the sentence is the writer's, unsourced. The Paste interview was not located. No first-person Pixies line found."
+    },
+    "oklou>arca": {
+      "note": "Not found. 1 search (i-D + Oklou + 'the REAL star of current experimental music'): results were bios, AllMusic, First Avenue and a Dazed spring 2026 interview snippet (not opened; no influence line visible). No i-D Oklou interview surfaced.",
+      "verdict": "not-found",
+      "checked": "2026-10-26"
+    },
+    "prefab-sprout>bob-dylan": {
+      "url": "https://www.sproutology.co.uk/interviews/ian-pye-melody-maker-january-28th-1984/",
+      "found": "Early influences were Marc Bolan and Bob Dylan.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Ian Pye in Melody Maker (January 28, 1984) names Marc Bolan and Bob Dylan as Paddy McAloon's early influences.",
+      "sourceTier": "reported",
+      "note": "Page opened (Sproutology transcription of the Melody Maker piece). It is the writer's statement; McAloon then discusses Bolan's lyrics himself. The Uncut Sept 2009 'My Life In Music' (Take 148, interview Sharon O'Connell) exists and its blurb says it covers 'Dylan, Bowie and Puccini', but I could not find the article URL, only its listing at https://www.uncut.co.uk/category/features/interviews/page/75 . The 'Lay Lady Lay' / 'Sad-Eyed Lady' quotes are unverified."
+    },
+    "prefab-sprout>david-bowie": {
+      "note": "Not found. Uncut's listing (https://www.uncut.co.uk/category/features/interviews/page/75) confirms the Sept 2009 'My Life In Music' covers Bowie, but the article page URL never surfaced in 2 searches, so the Station to Station quote is unverified. Only other Bowie hit: Best Magazine, Aug 1989 (sproutology.co.uk), where McAloon calls a musical 'a perfect album, an album like Station to Station by Bowie or Blonde On Blonde by Dylan', which is praise, not influence.",
+      "verdict": "not-found",
+      "checked": "2026-10-26"
+    },
+    "deaths-dynamic-shroud>julee-cruise": {
+      "note": "Not found. 1 search (James Webster + Julee Cruise + Twin Peaks + 'trying to sound like'): results were all Julee Cruise obituaries (Rolling Stone India, Salon, Boston Globe, NPR, American Songwriter, Relix), none mentioning Webster or the band. Earlier checkers already read VWMusic and Bandcamp Daily without finding it.",
+      "verdict": "not-found",
+      "checked": "2026-10-26"
+    },
+    "george-clanton>the-human-league": {
+      "note": "Not found. 1 search (George Clanton + Seven Days + Human League + 'got really into'): Seven Days page did not surface. Results were Human League pages and an NSS Magazine 'Hello Brooklyn #7' Clanton interview (nssmag.com/en/music/8466/hello-brooklyn-part-7-george-clanton, snippet only, not opened; no Human League mention in the snippet).",
+      "verdict": "not-found",
+      "checked": "2026-10-26"
+    },
+    "grizzly-bear>talk-talk": {
+      "url": "https://www.thelineofbestfit.com/features/lists/grizzly-bear-choose-nine-favourite-songs",
+      "found": "This was a real touchstone going into Shields, not so much for Painted Ruins, but it’s still something I always want to get back to, because it’s a trance-like state that feels like it came from no one, it just came out of the ether.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Daniel Rossen to The Line of Best Fit (Ed Nash, Aug 4, 2017), on choosing Talk Talk's \"Myrrhman\" from Laughing Stock for his nine songs that inspired Grizzly Bear: \"This was a real touchstone going into Shields, not so much for Painted Ruins...\"",
+      "sourceTier": "first-person",
+      "note": "Page opened. Rossen also says 'I didn’t hear Talk Talk until after we made Veckatimest' and that Chris Taylor loves those records, so Talk Talk is a Shields-era influence. My guessed URL was refused; the real slug is above (redirected from /features/listomania/...)."
+    },
+    "jockstrap>cocteau-twins": {
+      "note": "Not found. 1 search (Jockstrap + NME + 'Skrillex, Madonna and Cocteau Twins'); the NME page did not surface. Opened Rolling Stone's Jockstrap feature: no Cocteau Twins. Snippets seen (Mojo Rising, Stereogum Band To Watch, First Avenue bio, UAL PDF; not opened) mention Skrillex, Madonna, Stevie Wonder but not Cocteau Twins in the visible text. Loud And Quiet interview (read earlier): Skye says they had no specific influences.",
+      "verdict": "not-found",
+      "checked": "2026-10-26"
+    },
+    "jockstrap>bob-dylan": {
+      "url": "https://www.rollingstone.com/music/music-news/jockstrap-interview-i-love-you-jennifer-b-1394085/",
+      "found": "Jockstrap were tightly aligned on influences for the album, drawing on everything from Bristol-style trip-hop and Eighties dance music to the open-chord expanses of Joni Mitchell, Bob Dylan, and Laura Marling.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Rolling Stone reports that Jockstrap were aligned on influences for I Love You Jennifer B, drawing on the open-chord expanses of Joni Mitchell, Bob Dylan and Laura Marling.",
+      "sourceTier": "reported",
+      "note": "Page opened; the sentence is the writer's, not a band quote. The Loud And Quiet 'turning into my dad' Skye quote was not found, and the 'wasn't interested in Dylan when younger' caveat is unverified, so not used."
+    },
+    "king-gizzard-and-the-lizard-wizard>bob-dylan": {
+      "url": "https://radiomilwaukee.org/discover-music/artist-interviews/2024-08-30/king-gizzard-new-album-flight-b741",
+      "found": "Mackenzie confirmed those layered influences in our conversation: “obvious ones are The Band, Dylan, Steve Miller, CCR [Creedence Clearwater Revival] … early ’70s Stones … even stuff like The Faces, The Who … probably T. Rex.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Stu Mackenzie to Radio Milwaukee (Erin Wolf, Aug 30, 2024), on Flight b741: \"obvious ones are The Band, Dylan, Steve Miller, CCR [Creedence Clearwater Revival] ... early '70s Stones ... even stuff like The Faces, The Who ... probably T. Rex.\"",
+      "sourceTier": "first-person",
+      "note": "Quote corrected: the page uses ellipses and a bracketed gloss. The page continues '...Yeah, there’s stacks.'"
+    },
+    "mac-demarco>neil-young": {
+      "url": "https://mediumrotation.substack.com/p/weekly-neil-a-quick-chat-with-mac",
+      "found": "I go back to Harvest more often than his other records just because I'm intrigued by the way it sounds. He recorded this in his barn.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Mac DeMarco to Patrick Hosken (MTV News interview, early 2023, quoted in Hosken's Weekly Neil newsletter, Sept 4, 2024): \"I go back to Harvest more often than his other records just because I'm intrigued by the way it sounds.\"",
+      "sourceTier": "first-person",
+      "note": "Page opened. In the same answer DeMarco says they covered 'Unknown Legend' almost every night and 'Zuma, we actually used to listen to on tour all the time'. The Guardian ('dry, crisp 70s') and thrift-store dollar-bin details were not found and not used. Original MTV News page archived at https://web.archive.org/web/20230124162752/https://www.mtv.com/news/pki19y/mac-demarco-five-easy-hot-dogs-interview (link from the newsletter; not opened)."
+    }
+  },
+  "candidates": [
+    {
+      "source": "the-postal-service",
+      "target": "omd",
+      "kind": "influence",
+      "speaker": "Ben Gibbard to The Ringer, 2023",
+      "sentence": "We were in the right place at the right time to resurrect the craftsmanship of that early ’80s electronic music via Orchestral Manoeuvres in the Dark, Depeche Mode, or the Human League.",
+      "url": "https://www.theringer.com/2023/09/05/music/postal-service-give-up-20th-anniversary-tour-history"
+    }
+  ],
+  "offMap": [
+    {
+      "name": "The Band",
+      "namedBy": "king-gizzard-and-the-lizard-wizard",
+      "sentence": "Mackenzie confirmed those layered influences in our conversation: “obvious ones are The Band, Dylan, Steve Miller, CCR [Creedence Clearwater Revival] … early ’70s Stones … even stuff like The Faces, The Who … probably T. Rex.",
+      "url": "https://radiomilwaukee.org/discover-music/artist-interviews/2024-08-30/king-gizzard-new-album-flight-b741"
+    },
+    {
+      "name": "Marc Bolan",
+      "namedBy": "prefab-sprout",
+      "sentence": "Early influences were Marc Bolan and Bob Dylan.",
+      "url": "https://www.sproutology.co.uk/interviews/ian-pye-melody-maker-january-28th-1984/"
+    },
+    {
+      "name": "Fleetwood Mac",
+      "namedBy": "grizzly-bear",
+      "sentence": "I feel as a singer and a guitar player he’s become one of my favourite ever players, there’s certain kinds of tricks he did, especially on this song, that I’ve definitely ripped off, not the blues playing but this incredible soulfulness on guitar.",
+      "url": "https://www.thelineofbestfit.com/features/lists/grizzly-bear-choose-nine-favourite-songs"
+    },
+    {
+      "name": "Sinéad O'Connor",
+      "namedBy": "fontaines-dc",
+      "sentence": "I think that influenced a lot of what we did.",
+      "url": "https://news.pollstar.com/2022/09/19/fontaines-d-c-dublins-latest-export-makes-punk-rock-poetic/"
+    },
+    {
+      "name": "Paul McCartney",
+      "namedBy": "mac-demarco",
+      "sentence": "That record and maybe Paul McCartney RAM, or McCartney II — those ones where I was like, “If they did this at their crib, like, what the fuck,” you know?",
+      "url": "https://mediumrotation.substack.com/p/weekly-neil-a-quick-chat-with-mac"
+    }
+  ],
+  "finished": true
+}

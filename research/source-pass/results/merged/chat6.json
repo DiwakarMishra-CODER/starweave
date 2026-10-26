@@ -1,0 +1,117 @@
+{
+  "agent": "chat6",
+  "searches": 15,
+  "toolStatus": "Claude chat; stopped at 15 of 32 (slow on critic links); found fields are short exact fragments",
+  "entries": {
+    "snail-mail>fiona-apple": {
+      "url": "https://api-prod.gothamist.com/arts-entertainment/a-conversation-with-snail-mails-lindsey-jordan-indie-rocks-rookie-of-the-year",
+      "found": "once I really submerged myself into her discography, I was changed.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Lindsey Jordan to Gothamist (7 June 2018), on seeing Fiona Apple live: \"once I really submerged myself into her discography, I was changed.\"",
+      "sourceTier": "first-person"
+    },
+    "low>galaxie-500": {
+      "url": "https://uncut.co.uk/features/low-interview-duluth-february-2011-35017/2",
+      "found": "who had produced one of their formative influences, Galaxie 500.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Uncut's 2011 profile of Low says the band sent a demo to Kramer, \"who had produced one of their formative influences, Galaxie 500.\"",
+      "sourceTier": "reported"
+    },
+    "mogwai>slint": {
+      "url": "https://www.clashmusic.com/features/mogwais-stuart-braithwaite-on-slints-spiderland/",
+      "found": "a lot of bands take a lot from it – I know that we did",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Stuart Braithwaite to Clash (3 April 2014), on Slint's Spiderland: \"a lot of bands take a lot from it – I know that we did\".",
+      "sourceTier": "first-person"
+    },
+    "radiohead>guided-by-voices": {
+      "url": "https://groveatlantic.com/book/guided-by-voices-a-brief-history/",
+      "found": "cited his music as an influence.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Grove Atlantic's publisher copy for James Greer's \"Guided by Voices: A Brief History\" (2005) says P. J. Harvey, Radiohead, R.E.M., the Strokes and U2 have \"cited his music as an influence.\"",
+      "sourceTier": "reported"
+    },
+    "aphex-twin>can": {
+      "url": "https://thequietus.com/interviews/rocks-backpages/simon-reynolds-interview-with-aphex-twin-melody-maker-1993-warp/",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "This is Simon Reynolds's 1993 Melody Maker interview, republished by the Quietus. The page does not use the wording in the current citation. Reynolds writes that James has only recently retraced avant-classical and left-field rock, listening to Cage, Stockhausen, Reich, Riley, Eno and Can among others. James then says of 'all that stuff' that it is excellent. James also says that when he began making music he had never really listened to music and only later got interested in other people's records. So the page shows recent listening to Can, not Can shaping his music, and the direction is not clearly influence. Proposed: remove, or keep at critic tier only if recent listening counts. The citation needs rewriting either way."
+    },
+    "galaxie-500>velvet-underground": {
+      "url": "https://www.spin.com/2019/10/galaxie-500-on-fire-december-1989-interview-satellite-of-love/",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Spin's 1989 interview (republished 2019) says Sterling Morrison's rhythm guitar on The Velvet Underground '69 is Dean Wareham's favourite on record, with no comment from Wareham on influence. Spin's standfirst says the band 'follow footsteps', which is the writer's gloss. In an AV Club interview (6 Aug 2010, https://www.avclub.com/dean-wareham-1798221180) it is the interviewer who says the Velvets' influence has been prominent since the beginning, so that is the wrong speaker. Wareham there only says he had a lot of VU bootlegs. I found no first-person statement that VU shaped Galaxie 500. Proposed: keep as a weak 'reported' fandom link, or leave as critic, and do not cite the AV Club question as Wareham's words."
+    },
+    "galaxie-500>the-modern-lovers": {
+      "url": "https://www.spin.com/2019/10/galaxie-500-on-fire-december-1989-interview-satellite-of-love/",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "The same Spin 1989 page reports that the band covered a Jonathan Richman song on their first album, Today. It also says the band call Richman the most underrated guitar player ever, and that their sympathy for the Modern Lovers 'makes sense'. That is a cover plus admiration reported by the writer, with no statement that the Modern Lovers shaped their music. Proposed: keep as critic or weak reported at most; do not present it as first-person influence."
+    },
+    "this-heat>can": {
+      "url": "https://thequietus.com/culture/books/this-heat-interviewed-by-simon-reynolds-an-outtake-from-totally-wired/",
+      "found": "We loved Can’s edits, but we were also inspired by Zappa, John Cage.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Charles Hayward to Simon Reynolds (interview done in 2001, published by The Quietus in 2009): \"We loved Can’s edits, but we were also inspired by Zappa, John Cage.\"",
+      "sourceTier": "first-person"
+    },
+    "radiohead>this-heat": {
+      "url": "https://www.npr.org/2020/08/21/904291487/understanding-the-impossibly-far-reaching-influence-of-this-heat",
+      "found": "No, you're not listening to Radiohead in 2003 or Liars in 2006 , but it's understandable if the obvious influence of This Heat circa 1977 makes you do a double-take.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "NPR Music (2020), on This Heat's \"Twilight Furniture\": \"No, you're not listening to Radiohead in 2003 or Liars in 2006, but it's understandable if the obvious influence of This Heat circa 1977 makes you do a double-take.\"",
+      "sourceTier": "critic",
+      "note": "The sentence is hedged. It opens by saying the song is not Radiohead in 2003, then speaks of This Heat's 'obvious influence'. The same article then calls such bands This Heat's 'apostles'. This is a critic arguing influence, not an artist or band statement. Coordinator: citation rewritten to the page's sentence; found is the full sentence as read prints it."
+    },
+    "stereolab>this-heat": {
+      "url": "https://www.npr.org/2020/08/21/904291487/understanding-the-impossibly-far-reaching-influence-of-this-heat",
+      "found": "from Women to Stereolab to Deerhunter",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "NPR's 2020 article says you can hear This Heat's tension in post-punk and art-rock, 'from Women to Stereolab to Deerhunter'. That is a resemblance claim in a list, with no statement that Stereolab drew on This Heat. Proposed: keep as critic only if the article's general influence thesis is acceptable, otherwise remove. The old AllMusic citation was not used."
+    },
+    "sonic-youth>this-heat": {
+      "verdict": "not-found",
+      "note": "Two searches (Thurston Moore on This Heat; This Heat with Thurston Moore and Charles Hayward) found no statement that This Heat shaped Sonic Youth. The pages show only collaboration: the Moore/Hayward 2017 album Improvisations, and Moore guesting in This Is Not This Heat. NPR (https://www.npr.org/2020/08/21/904291487/understanding-the-impossibly-far-reaching-influence-of-this-heat) names Moore only as a guest. Wikipedia's This Heat page says critics recognise influence on Sonic Youth. I did not follow its footnote.",
+      "checked": "2026-10-26"
+    },
+    "brand-new>the-jesus-lizard": {
+      "url": "https://beatsperminute.com/brand-new-daisy/",
+      "found": "a Jesus Lizard-inspired noise breakdown",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Larry Weaver, Beats Per Minute (24 September 2009), reviewing Brand New's Daisy: the song \"Vices\" feeds into \"a Jesus Lizard-inspired noise breakdown\", and the review says the band replaced their pop-punk idols with the likes of the Jesus Lizard, Nirvana and Modest Mouse.",
+      "sourceTier": "critic",
+      "note": "The CHARTattack citation was not checked. This is a critic arguing the band drew on the Jesus Lizard. I found no Brand New member saying so in the searches I ran."
+    },
+    "the-replacements>new-york-dolls": {
+      "url": "https://dangerousminds.net/comments/when_johnny_thunders_jammed_with_the_replacements",
+      "found": "Both groups influenced the Replacements",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Dangerous Minds' piece on Johnny Thunders and the Replacements says the New York Dolls and the Heartbreakers \"both groups influenced the Replacements\", and adds that Paul Westerberg brought the Dolls' debut to the band's first rehearsal in late 1979.",
+      "sourceTier": "reported",
+      "note": "This is a blog stating influence as fact, with the rehearsal detail credited to Bob Mehr's Trouble Boys. The same piece says the Heartbreakers mattered most. The citation's capitalisation of 'Both' is changed to fit the sentence."
+    },
+    "modest-mouse>built-to-spill": {
+      "verdict": "not-found",
+      "note": "One search (Isaac Brock on Built to Spill). Isaac Brock praises Doug Martsch as a person in a Nashville Scene interview, and other pages only say the bands toured together, so I found nothing on musical influence. The Pitchfork 'has been said to have been an influence' line from Mark Richardson (2006) was not located or opened. One search remains for this link if you want it.",
+      "checked": "2026-10-26"
+    },
+    "low>velvet-underground": {
+      "verdict": "not-found",
+      "note": "One search (Zak Sally, Low, Velvet Underground, 'Sister Ray', MOJO). It returned only general Velvet Underground and Zak Sally pages. The Stereogum and MOJO sources in the citation were not located. A lead worth opening is the AV Club interview with Zak Sally, https://www.avclub.com/article/interview-zak-sally-of-la-mano-low-16609, which Wikipedia lists but which I did not open. One search remains for this link.",
+      "checked": "2026-10-26"
+    }
+  },
+  "candidates": [],
+  "offMap": [],
+  "finished": true
+}

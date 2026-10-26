@@ -1,0 +1,532 @@
+{
+  "name": "c19",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "reported:bon-iver",
+      "phase": "reported",
+      "speaker": "Bon Iver",
+      "links": [
+        {
+          "key": "bon-iver>fugazi",
+          "from": "Bon Iver",
+          "to": "Fugazi",
+          "fromYear": 2007,
+          "toYear": 1986,
+          "citation": "Wikipedia's Fugazi page lists Justin Vernon among the artists who have cited the band as an influence.",
+          "sourceTier": "reported",
+          "confidence": 0.55
+        },
+        {
+          "key": "bon-iver>tom-waits",
+          "from": "Bon Iver",
+          "to": "Tom Waits",
+          "fromYear": 2007,
+          "toYear": 1971,
+          "citation": "PopMatters wrote in 2008 that Justin Vernon named Tom Waits among the touchstones he moved away from while making For Emma, Forever Ago.",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "reported:bright-eyes",
+      "phase": "reported",
+      "speaker": "Bright Eyes",
+      "links": [
+        {
+          "key": "bright-eyes>the-replacements",
+          "from": "Bright Eyes",
+          "to": "The Replacements",
+          "fromYear": 1995,
+          "toYear": 1979,
+          "citation": "Far Out's piece on how the Replacements shaped Conor Oberst traces the record-shop encounter that leads into his account of discovering Townes Van Zandt, drawn from his own Pitchfork list of influences.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "bright-eyes>leonard-cohen",
+          "from": "Bright Eyes",
+          "to": "Leonard Cohen",
+          "fromYear": 1995,
+          "toYear": 1967,
+          "citation": "BrooklynVegan reported that Conor Oberst called Simon Joyner his favorite lyricist, with \"shades of all the greats (Van Zandt, Cohen, Dylan)\" audible in Joyner's work.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:cabaret-voltaire",
+      "phase": "reported",
+      "speaker": "Cabaret Voltaire",
+      "links": [
+        {
+          "key": "cabaret-voltaire>kraftwerk",
+          "from": "Cabaret Voltaire",
+          "to": "Kraftwerk",
+          "fromYear": 1973,
+          "toYear": 1970,
+          "citation": "Wikipedia/Cabaret Voltaire: cited Kraftwerk among formative influences.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "cabaret-voltaire>velvet-underground",
+          "from": "Cabaret Voltaire",
+          "to": "The Velvet Underground",
+          "fromYear": 1973,
+          "toYear": 1965,
+          "citation": "Wikipedia/Cabaret Voltaire; member Richard H. Kirk cites The Velvet Underground & Nico and White Light/White Heat specifically.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "cabaret-voltaire>can",
+          "from": "Cabaret Voltaire",
+          "to": "Can",
+          "fromYear": 1973,
+          "toYear": 1968,
+          "citation": "Wikipedia/Cabaret Voltaire lists Can among the band's formative influences, alongside Kraftwerk and Neu!. A bare list, with no mechanism stated.",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        },
+        {
+          "key": "cabaret-voltaire>neu",
+          "from": "Cabaret Voltaire",
+          "to": "Neu!",
+          "fromYear": 1973,
+          "toYear": 1971,
+          "citation": "Wikipedia/Cabaret Voltaire lists Neu! among the band's formative influences, alongside Kraftwerk and Can. A bare list, with no mechanism stated.",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        },
+        {
+          "key": "cabaret-voltaire>faust",
+          "from": "Cabaret Voltaire",
+          "to": "Faust",
+          "fromYear": 1973,
+          "toYear": 1971,
+          "citation": "Wikipedia's Faust page lists the band as \"cited as an influence by Radiohead, Swell Maps, Throbbing Gristle, Cabaret Voltaire, Stereolab, Simple Minds, Sonic Youth, Mark E. Smith, Nurse with Wound and Madlib.\"",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "reported:fleet-foxes",
+      "phase": "reported",
+      "speaker": "Fleet Foxes",
+      "links": [
+        {
+          "key": "fleet-foxes>bob-dylan",
+          "from": "Fleet Foxes",
+          "to": "Bob Dylan",
+          "fromYear": 2006,
+          "toYear": 1961,
+          "citation": "Guitar Techniques reported that Robin Pecknold's songwriting is influenced by Bob Dylan, Neil Young and Hank Williams, and that his love of Brian Wilson is audible in Fleet Foxes' harmonies.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "fleet-foxes>neil-young",
+          "from": "Fleet Foxes",
+          "to": "Neil Young",
+          "fromYear": 2006,
+          "toYear": 1966,
+          "citation": "The same Guitar Techniques piece names Neil Young alongside Bob Dylan and Hank Williams as an influence on Robin Pecknold's songwriting.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:minutemen",
+      "phase": "reported",
+      "speaker": "Minutemen",
+      "links": [
+        {
+          "key": "minutemen>wire",
+          "from": "Minutemen",
+          "to": "Wire",
+          "fromYear": 1980,
+          "toYear": 1976,
+          "citation": "Wikipedia/Minutemen: \"influenced heavily by bands such as the Pop Group, Wire, Creedence Clearwater Revival, Pere Ubu, and Richard Hell & The Voidoids\" -- Wire is the only one of these already a graph node.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:phoebe-bridgers",
+      "phase": "reported",
+      "speaker": "Phoebe Bridgers",
+      "links": [
+        {
+          "key": "phoebe-bridgers>elliott-smith",
+          "from": "Phoebe Bridgers",
+          "to": "Elliott Smith",
+          "fromYear": 2014,
+          "toYear": 1994,
+          "citation": "NPR reported that Phoebe Bridgers came to Elliott Smith's work after his death and has listened to Figure 8 more times than she can count.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:geese",
+      "phase": "reported",
+      "speaker": "Geese",
+      "links": [
+        {
+          "key": "geese>radiohead",
+          "from": "Geese",
+          "to": "Radiohead",
+          "fromYear": 2017,
+          "toYear": 1985,
+          "citation": "Stereogum: In Rainbows is collectively cited as a massive influence on the band, though Cameron Winter says they were thinking about the string arrangements more than the guitars.",
+          "sourceTier": "reported",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "reported:have-a-nice-life",
+      "phase": "reported",
+      "speaker": "Have A Nice Life",
+      "links": [
+        {
+          "key": "have-a-nice-life>new-order",
+          "from": "Have A Nice Life",
+          "to": "New Order",
+          "fromYear": 2000,
+          "toYear": 1980,
+          "citation": "Wikipedia's sourced influence list for Have a Nice Life names New Order alongside My Bloody Valentine, Joy Division, Earth, Sunn O))), Xasthur, Lurker of Chalice, Nine Inch Nails, Swans, Sisters of Mercy and Kraftwerk.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "have-a-nice-life>swans",
+          "from": "Have A Nice Life",
+          "to": "Swans",
+          "fromYear": 2000,
+          "toYear": 1982,
+          "citation": "The same Wikipedia sourced influence list for Have a Nice Life names Swans alongside New Order, My Bloody Valentine, Joy Division and Kraftwerk.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "have-a-nice-life>kraftwerk",
+          "from": "Have A Nice Life",
+          "to": "Kraftwerk",
+          "fromYear": 2000,
+          "toYear": 1970,
+          "citation": "The same Wikipedia sourced influence list for Have a Nice Life names Kraftwerk alongside New Order, My Bloody Valentine, Joy Division and Swans.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "have-a-nice-life>dead-kennedys",
+          "from": "Have A Nice Life",
+          "to": "Dead Kennedys",
+          "fromYear": 2000,
+          "toYear": 1978,
+          "citation": "Steel for Brains reported that Tim Macuga said the default music of his youth was Dead Kennedys, Descendents and Operation Ivy.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "have-a-nice-life>descendents",
+          "from": "Have A Nice Life",
+          "to": "Descendents",
+          "fromYear": 2000,
+          "toYear": 1977,
+          "citation": "The same Steel for Brains account of Tim Macuga's youth names Descendents alongside Dead Kennedys and Operation Ivy.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:jeff-buckley",
+      "phase": "reported",
+      "speaker": "Jeff Buckley",
+      "links": [
+        {
+          "key": "jeff-buckley>bob-dylan",
+          "from": "Jeff Buckley",
+          "to": "Bob Dylan",
+          "fromYear": 1992,
+          "toYear": 1961,
+          "citation": "Riffology has written that Bob Dylan shaped Jeff Buckley's sound, pointing to Dylan covers in his live repertoire as evidence.",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        },
+        {
+          "key": "jeff-buckley>the-smiths",
+          "from": "Jeff Buckley",
+          "to": "The Smiths",
+          "fromYear": 1992,
+          "toYear": 1982,
+          "citation": "Riffology has written that the Smiths shaped Jeff Buckley's sound, pointing to his sustained repertoire of their songs at Sin-e and a 1993 session known as You and I.",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        },
+        {
+          "key": "jeff-buckley>joni-mitchell",
+          "from": "Jeff Buckley",
+          "to": "Joni Mitchell",
+          "fromYear": 1992,
+          "toYear": 1964,
+          "citation": "Riffology has written that Joni Mitchell's influence is audible in Jeff Buckley's sound.",
+          "sourceTier": "reported",
+          "confidence": 0.55
+        }
+      ]
+    },
+    {
+      "id": "reported:la-dispute",
+      "phase": "reported",
+      "speaker": "La Dispute",
+      "links": [
+        {
+          "key": "la-dispute>fugazi",
+          "from": "La Dispute",
+          "to": "Fugazi",
+          "fromYear": 2004,
+          "toYear": 1986,
+          "citation": "Documented fact: La Dispute covered Fugazi's \"Strangelight\" for the 2021 compilation Silence Is a Dangerous Sound.",
+          "sourceTier": "reported",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "reported:mitski",
+      "phase": "reported",
+      "speaker": "Mitski",
+      "links": [
+        {
+          "key": "mitski>jeff-buckley",
+          "from": "Mitski",
+          "to": "Jeff Buckley",
+          "fromYear": 2012,
+          "toYear": 1992,
+          "citation": "The New Yorker reported, per Far Out's paraphrase, that the revelation music could diverge from mainstream pop came to Mitski via Jeff Buckley, who introduced her to a different form of songwriting.",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "mitski>st-vincent",
+          "from": "Mitski",
+          "to": "St. Vincent",
+          "fromYear": 2012,
+          "toYear": 2007,
+          "citation": "Far Out reported that in her early days Mitski looked up to innovators including St. Vincent.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:patti-smith",
+      "phase": "reported",
+      "speaker": "Patti Smith",
+      "links": [
+        {
+          "key": "patti-smith>velvet-underground",
+          "from": "Patti Smith",
+          "to": "The Velvet Underground",
+          "fromYear": 1974,
+          "toYear": 1965,
+          "citation": "PBS's American Masters profile describes the Velvet Underground's live album as work Smith said \"allows me to work,\" and credits her admiration for Lou Reed's language, singling out the phrase \"clipper ship\" from \"Heroin.\"",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:underscores",
+      "phase": "reported",
+      "speaker": "underscores",
+      "links": [
+        {
+          "key": "underscores>100-gecs",
+          "from": "underscores",
+          "to": "100 gecs",
+          "fromYear": 2018,
+          "toYear": 2015,
+          "citation": "Wikipedia's sourced line: \"Grey's early influences include Skrillex and 100 gecs.\" A bare pair of names, with no mechanism stated.",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        },
+        {
+          "key": "underscores>sufjan-stevens",
+          "from": "underscores",
+          "to": "Sufjan Stevens",
+          "fromYear": 2018,
+          "toYear": 2000,
+          "citation": "Wikipedia's sourced line: Wallsocket \"was inspired by artists such as Madonna, Imogen Heap, Bruce Springsteen, and Sufjan Stevens.\"",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "underscores>imogen-heap",
+          "from": "underscores",
+          "to": "Imogen Heap",
+          "fromYear": 2018,
+          "toYear": 1998,
+          "citation": "Wikipedia's sourced Wallsocket line names Imogen Heap directly, though underscores has deflected the comparison in NME.",
+          "sourceTier": "reported",
+          "confidence": 0.5
+        },
+        {
+          "key": "underscores>porter-robinson",
+          "from": "underscores",
+          "to": "Porter Robinson",
+          "fromYear": 2018,
+          "toYear": 2010,
+          "citation": "The Music (AU): \"Roused by Porter Robinson and the aforementioned Skrillex, she started off making crunchy glitch-hop and brostep.\"",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "underscores>beck",
+          "from": "underscores",
+          "to": "Beck",
+          "fromYear": 2018,
+          "toYear": 1988,
+          "citation": "Countrytown: \"She grew up listening to artists like Jack White, Beck, and Madonna.\"",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:wolf-alice",
+      "phase": "reported",
+      "speaker": "Wolf Alice",
+      "links": [
+        {
+          "key": "wolf-alice>siouxsie-and-the-banshees",
+          "from": "Wolf Alice",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 2010,
+          "toYear": 1976,
+          "citation": "The Guardian's Wolf Alice webchat (11 Sept 2018), where the band name a liking for the Vines, the Beatles, the Band, Siouxsie and the Banshees, Blur and Courtney Love. Stated as taste rather than as influence.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "wolf-alice>blur",
+          "from": "Wolf Alice",
+          "to": "Blur",
+          "fromYear": 2010,
+          "toYear": 1988,
+          "citation": "The Guardian's Wolf Alice webchat (11 Sept 2018), same answer naming Siouxsie and the Banshees, Blur and Courtney Love among the band's likes. Stated as taste rather than as influence.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:alex-g",
+      "phase": "reported",
+      "speaker": "Alex G",
+      "links": [
+        {
+          "key": "alex-g>modest-mouse",
+          "from": "Alex G",
+          "to": "Modest Mouse",
+          "fromYear": 2010,
+          "toYear": 1992,
+          "citation": "Consequence's \"Ruining Alex G\" piece notes Giannascoli admits that some critical comparisons work, especially Modest Mouse and Elliott Smith -- affirming a comparison rather than volunteering it unprompted.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "alex-g>neil-young",
+          "from": "Alex G",
+          "to": "Neil Young",
+          "fromYear": 2010,
+          "toYear": 1966,
+          "citation": "Wikipedia's Headlights article states the album \"draws influence from various artists, including Neil Young, Elliott Smith and Lucinda Williams.\"",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        },
+        {
+          "key": "alex-g>lucinda-williams",
+          "from": "Alex G",
+          "to": "Lucinda Williams",
+          "fromYear": 2010,
+          "toYear": 1979,
+          "citation": "Wikipedia's Headlights article states the album \"draws influence from various artists, including Neil Young, Elliott Smith and Lucinda Williams.\"",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "reported:autechre",
+      "phase": "reported",
+      "speaker": "Autechre",
+      "links": [
+        {
+          "key": "autechre>boards-of-canada",
+          "from": "Autechre",
+          "to": "Boards of Canada",
+          "fromYear": 1987,
+          "toYear": 1986,
+          "citation": "A 1996 copy of BoC's Twoism reached Sean Booth, who championed the duo to Skam Records; Booth supplied a numbers-station recording used on BoC's \"Gyroscope\"; BoC recorded an unreleased cover of Autechre's \"Cichli.\"",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "reported:blur",
+      "phase": "reported",
+      "speaker": "Blur",
+      "links": [
+        {
+          "key": "blur>david-bowie",
+          "from": "Blur",
+          "to": "David Bowie",
+          "fromYear": 1988,
+          "toYear": 1969,
+          "citation": "Wikipedia's Blur page lists David Bowie first among the band's influences, alongside Bobby Womack, William Onyeabor, the B-52's, the Kinks, Pink Floyd, the Jam and Depeche Mode.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "blur>pavement",
+          "from": "Blur",
+          "to": "Pavement",
+          "fromYear": 1988,
+          "toYear": 1989,
+          "citation": "John Harris, Britpop!: Cool Britannia and the Spectacular Demise of English Rock (2004), pp.259-60: Graham Coxon \"made a point of listening to noisy American alternative rock bands such as Pavement.\"",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:drive-by-truckers",
+      "phase": "reported",
+      "speaker": "Drive-By Truckers",
+      "links": [
+        {
+          "key": "drive-by-truckers>big-star",
+          "from": "Drive-By Truckers",
+          "to": "Big Star",
+          "fromYear": 1996,
+          "toYear": 1971,
+          "citation": "Americana-UK: \"Hood has described this album as 'alt-rock' influenced by their love for The Replacements, Big Star, Blue Oyster Cult and The Faces.\"",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    }
+  ]
+}

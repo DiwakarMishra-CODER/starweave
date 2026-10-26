@@ -1,0 +1,426 @@
+{
+  "name": "c16",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "reported:sonic-youth",
+      "phase": "reported",
+      "speaker": "Sonic Youth",
+      "links": [
+        {
+          "key": "sonic-youth>faust",
+          "from": "Sonic Youth",
+          "to": "Faust",
+          "fromYear": 1981,
+          "toYear": 1971,
+          "citation": "Wikipedia's Faust page lists the band as \"cited as an influence by Radiohead, Swell Maps, Throbbing Gristle, Cabaret Voltaire, Stereolab, Simple Minds, Sonic Youth, Mark E. Smith, Nurse with Wound and Madlib.\"",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        },
+        {
+          "key": "sonic-youth>rhys-chatham",
+          "from": "Sonic Youth",
+          "to": "Rhys Chatham",
+          "fromYear": 1981,
+          "toYear": 1977,
+          "citation": "Sonic Youth's own Wikipedia bio names its \"major influences\" as including, verbatim, \"the Velvet Underground, the Stooges, MC5, Glenn Branca, Rhys Chatham, Ornette Coleman...\" A bare list, with no mechanism stated.",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        },
+        {
+          "key": "sonic-youth>new-york-dolls",
+          "from": "Sonic Youth",
+          "to": "New York Dolls",
+          "fromYear": 1981,
+          "toYear": 1971,
+          "citation": "Red Bull Music Academy's account of Thurston Moore's teenage trips from Connecticut to New York in the mid-70s names the New York Dolls and the Dictators as the must-see bands of that scene.",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "sonic-youth>teenage-jesus-and-the-jerks",
+          "from": "Sonic Youth",
+          "to": "Teenage Jesus and the Jerks",
+          "fromYear": 1981,
+          "toYear": 1976,
+          "citation": "RBMA's account of Thurston Moore's early New York years, naming the young no-wave groups Teenage Jesus and the Jerks, James Chance and the Contortions, Mars and DNA.",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "sonic-youth>james-chance-and-the-contortions",
+          "from": "Sonic Youth",
+          "to": "James Chance and the Contortions",
+          "fromYear": 1981,
+          "toYear": 1977,
+          "citation": "RBMA's account of Thurston Moore's early New York years, naming James Chance and the Contortions alongside Teenage Jesus and the Jerks, Mars and DNA.",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "sonic-youth>mars",
+          "from": "Sonic Youth",
+          "to": "Mars",
+          "fromYear": 1981,
+          "toYear": 1975,
+          "citation": "Red Bull Music Academy's account of Thurston Moore's early New York years names Mars among the no-wave groups that shaped Sonic Youth's sound, alongside Teenage Jesus and the Jerks, James Chance and the Contortions and DNA.",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "sonic-youth>dna",
+          "from": "Sonic Youth",
+          "to": "DNA",
+          "fromYear": 1981,
+          "toYear": 1978,
+          "citation": "RBMA's account of Thurston Moore's early New York years, naming DNA alongside Teenage Jesus and the Jerks, James Chance and the Contortions and Mars.",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "reported:my-bloody-valentine",
+      "phase": "reported",
+      "speaker": "My Bloody Valentine",
+      "links": [
+        {
+          "key": "my-bloody-valentine>joy-division",
+          "from": "My Bloody Valentine",
+          "to": "Joy Division",
+          "fromYear": 1983,
+          "toYear": 1976,
+          "citation": "Mike McGonigal, Loveless (33 1/3 series, 2007), p.21, on the band's early post-punk influences: the Birthday Party, the Cramps and Joy Division.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:siouxsie-and-the-banshees",
+      "phase": "reported",
+      "speaker": "Siouxsie & The Banshees",
+      "links": [
+        {
+          "key": "siouxsie-and-the-banshees>velvet-underground",
+          "from": "Siouxsie & The Banshees",
+          "to": "The Velvet Underground",
+          "fromYear": 1976,
+          "toYear": 1965,
+          "citation": "NPR names Lou Reed specifically; Steven Severin took his stage name from the Velvet Underground song \"Venus in Furs.\"",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "siouxsie-and-the-banshees>can",
+          "from": "Siouxsie & The Banshees",
+          "to": "Can",
+          "fromYear": 1976,
+          "toYear": 1968,
+          "citation": "Michael Bracewell, \"Her dark materials,\" The Guardian (25 Sept 2005), recording the band's \"love for Can, Kraftwerk and Neu!\" alongside their stated first influences.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "siouxsie-and-the-banshees>neu",
+          "from": "Siouxsie & The Banshees",
+          "to": "Neu!",
+          "fromYear": 1976,
+          "toYear": 1971,
+          "citation": "Michael Bracewell, \"Her dark materials,\" The Guardian (25 Sept 2005), recording the band's \"love for Can, Kraftwerk and Neu!\" alongside their stated first influences.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:david-bowie",
+      "phase": "reported",
+      "speaker": "David Bowie",
+      "links": [
+        {
+          "key": "david-bowie>kraftwerk",
+          "from": "David Bowie",
+          "to": "Kraftwerk",
+          "fromYear": 1969,
+          "toYear": 1970,
+          "citation": "NPR, \"How Florian Schneider And Kraftwerk Created Pop's Future\" (2020): Bowie played Autobahn before his Station to Station shows and credited it with turning his focus toward Europe/electronic music; he later wrote the tribute track \"V-2 Schneider\" on \"Heroes\".",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "david-bowie>neu",
+          "from": "David Bowie",
+          "to": "Neu!",
+          "fromYear": 1969,
+          "toYear": 1971,
+          "citation": "Wikipedia/Neu!: \"Artists such as David Bowie, Brian Eno, Iggy Pop, Siouxsie Sioux... have cited Neu! as an influence.\" Some retrospectives (Classic Pop Magazine) attribute the German sound of Bowie's Low/\"Heroes\" era partly to Neu!'s motorik pulse, though other accounts split credit with Klaus Dinger's post-Neu! band La Düsseldorf.",
+          "sourceTier": "reported",
+          "confidence": 0.55
+        }
+      ]
+    },
+    {
+      "id": "reported:joy-division",
+      "phase": "reported",
+      "speaker": "Joy Division",
+      "links": [
+        {
+          "key": "joy-division>david-bowie",
+          "from": "Joy Division",
+          "to": "David Bowie",
+          "fromYear": 1976,
+          "toYear": 1969,
+          "citation": "Savage described Curtis as their \"Bowie-besotted frontman\"; Warsaw took its name from \"Warszawa\" on Bowie's Low.",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "joy-division>neu",
+          "from": "Joy Division",
+          "to": "Neu!",
+          "fromYear": 1976,
+          "toYear": 1971,
+          "citation": "Bernard Sumner, Chapter and Verse - New Order, Joy Division and Me (2014), recalling that Ian Curtis drew on the Doors, Iggy Pop, Bowie, Kraftwerk, the Velvet Underground and Neu!; Stephen Morris separately credited the motorik drum beats of Neu! and Can to Daniel Jones, Electronic Beats (28 Jun 2011).",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "joy-division>sex-pistols",
+          "from": "Joy Division",
+          "to": "Sex Pistols",
+          "fromYear": 1976,
+          "toYear": 1975,
+          "citation": "Sumner and Hook formed the band after the 4 June 1976 Sex Pistols gig at Manchester's Lesser Free Trade Hall; witness Iain Gray called it the cathartic moment that made them think, \"Christ, I could do this.\"",
+          "sourceTier": "reported",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "reported:fugazi",
+      "phase": "reported",
+      "speaker": "Fugazi",
+      "links": [
+        {
+          "key": "fugazi>minor-threat",
+          "from": "Fugazi",
+          "to": "Minor Threat",
+          "fromYear": 1986,
+          "toYear": 1980,
+          "citation": "Paul Brannigan, Louder (16 Apr 2014), \"Ian MacKaye on Minor Threat, Fugazi and the power of Punk Rock\": Fugazi formed out of the groups MacKaye moved through after Minor Threat dissolved -- direct personnel continuity rather than an influence claimed from outside.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "fugazi>the-jesus-lizard",
+          "from": "Fugazi",
+          "to": "The Jesus Lizard",
+          "fromYear": 1986,
+          "toYear": 1987,
+          "citation": "Joe Lally (Fugazi's bassist) named among musicians citing The Jesus Lizard as an influence/favorite.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:radiohead",
+      "phase": "reported",
+      "speaker": "Radiohead",
+      "links": [
+        {
+          "key": "radiohead>talking-heads",
+          "from": "Radiohead",
+          "to": "Talking Heads",
+          "fromYear": 1985,
+          "toYear": 1975,
+          "citation": "The band's own name derives from Talking Heads' \"Radio Head\"; Remain in Light is audible on Kid A.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "radiohead>can",
+          "from": "Radiohead",
+          "to": "Can",
+          "fromYear": 1985,
+          "toYear": 1968,
+          "citation": "Wikipedia/Can: \"Radiohead cited Can as an influence on their albums Kid A (2000) and Amnesiac (2001)... Inspired by Can, they constructed their own studio and worked by recording jams and editing the recordings.\" Corroborated separately by widely-reported remarks from Thom Yorke naming Can among the key ingredients of Kid A.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "radiohead>suicide",
+          "from": "Radiohead",
+          "to": "Suicide",
+          "fromYear": 1985,
+          "toYear": 1970,
+          "citation": "The Guardian: \"Suicide's aggressive synthesiser rock has been cited as an influence by bands such as Radiohead, U2, New Order, and Depeche Mode; electronic acts such as Daft Punk and Aphex Twin.\"",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "radiohead>faust",
+          "from": "Radiohead",
+          "to": "Faust",
+          "fromYear": 1985,
+          "toYear": 1971,
+          "citation": "Wikipedia/Faust: \"cited as an influence by Radiohead, Swell Maps, Throbbing Gristle, Cabaret Voltaire, Stereolab, Simple Minds, Sonic Youth, Mark E. Smith, Nurse with Wound and Madlib.\"",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "radiohead>jeff-buckley",
+          "from": "Radiohead",
+          "to": "Jeff Buckley",
+          "fromYear": 1985,
+          "toYear": 1992,
+          "citation": "Producer John Leckie has said that seeing Jeff Buckley in September 1994 made Thom Yorke realize falsetto singing was viable for him, and Travis's Dougie Payne has said Yorke's singing changed noticeably afterward; Wikipedia cites this account via Dalton's 1997 profile.",
+          "sourceTier": "reported",
+          "confidence": 0.8
+        },
+        {
+          "key": "radiohead>sigur-ros",
+          "from": "Radiohead",
+          "to": "Sigur Rós",
+          "fromYear": 1985,
+          "toYear": 1994,
+          "citation": "The Johns Hopkins News-Letter reported in 2001 that Thom Yorke gave his approval of Sigur Ros by naming them a major influence on Kid A.",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "reported:can",
+      "phase": "reported",
+      "speaker": "Can",
+      "links": [
+        {
+          "key": "can>velvet-underground",
+          "from": "Can",
+          "to": "The Velvet Underground",
+          "fromYear": 1968,
+          "toYear": 1965,
+          "citation": "Richie Unterberger's interview with Holger Czukay (Krautrock.com, 1997), on Can's early rock reference points: the opening of \"Father Cannot Yell\" was inspired by the Velvet Underground's \"European Son.\"",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:pixies",
+      "phase": "reported",
+      "speaker": "Pixies",
+      "links": [
+        {
+          "key": "pixies>velvet-underground",
+          "from": "Pixies",
+          "to": "The Velvet Underground",
+          "fromYear": 1986,
+          "toYear": 1965,
+          "citation": "Joey Santiago's earliest influences included the Velvet Underground.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "pixies>david-bowie",
+          "from": "Pixies",
+          "to": "David Bowie",
+          "fromYear": 1986,
+          "toYear": 1969,
+          "citation": "Music Museum of New England: Joey Santiago says his earliest influences were the Velvet Underground, Les Paul, Wes Montgomery and David Bowie.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "pixies>violent-femmes",
+          "from": "Pixies",
+          "to": "Violent Femmes",
+          "fromYear": 1986,
+          "toYear": 1981,
+          "citation": "Music Museum of New England: Black Francis and Santiago \"together soaked up albums by Violent Femmes, Talking Heads, Hüsker Dü, The Jesus & Mary Chain, Black Flag\" and others while watching films like Eraserhead.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "pixies>talking-heads",
+          "from": "Pixies",
+          "to": "Talking Heads",
+          "fromYear": 1986,
+          "toYear": 1975,
+          "citation": "The Music Museum of New England's account of Black Francis and Joey Santiago's shared listening, which names Talking Heads.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "pixies>the-jesus-and-mary-chain",
+          "from": "Pixies",
+          "to": "The Jesus and Mary Chain",
+          "fromYear": 1986,
+          "toYear": 1983,
+          "citation": "The Music Museum of New England's account of Black Francis and Joey Santiago's shared listening, which names the Jesus and Mary Chain.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "pixies>black-flag",
+          "from": "Pixies",
+          "to": "Black Flag",
+          "fromYear": 1986,
+          "toYear": 1976,
+          "citation": "The Music Museum of New England's account of Black Francis and Joey Santiago's shared listening, which names Black Flag.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "pixies>gang-of-four",
+          "from": "Pixies",
+          "to": "Gang of Four",
+          "fromYear": 1986,
+          "toYear": 1976,
+          "citation": "Ben Sisario, Doolittle (33 1/3 series, 2006), p.128, on Kim Deal's listening: the artists she took in included XTC, Gang of Four and Elvis Costello.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:slowdive",
+      "phase": "reported",
+      "speaker": "Slowdive",
+      "links": [
+        {
+          "key": "slowdive>siouxsie-and-the-banshees",
+          "from": "Slowdive",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 1989,
+          "toYear": 1976,
+          "citation": "The band is named after a Siouxsie and the Banshees single, which Rachel Goswell suggested as a favourite; Neil Halstead's account of it appears in Asa Eisenhardt's When the Sun Hits interview (1 Aug 2014). Simon Reynolds, writing in The New York Times (1 Dec 1991), separately placed the band's formative listening with post-punk groups like the Cure and the Banshees.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "slowdive>david-bowie",
+          "from": "Slowdive",
+          "to": "David Bowie",
+          "fromYear": 1989,
+          "toYear": 1969,
+          "citation": "Neil Halstead and Rachel Goswell naming David Bowie, the Byrds, the Rolling Stones, Cocteau Twins, My Bloody Valentine and Psychocandy in a Berlin audio interview, December 1991. Thin sourcing: the recording circulates without a credited publisher or interviewer.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "slowdive>brian-eno",
+          "from": "Slowdive",
+          "to": "Brian Eno",
+          "fromYear": 1989,
+          "toYear": 1971,
+          "citation": "Neil Halstead was enough of an admirer that Slowdive approached Eno to produce Souvlaki; he declined the production job (Wikipedia/Souvlaki reissue press; KEXP's 2018 Rachel Goswell retrospective).",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        }
+      ]
+    }
+  ]
+}

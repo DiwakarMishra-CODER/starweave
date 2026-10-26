@@ -1,0 +1,345 @@
+{
+  "name": "c15",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:magdalena-bay",
+      "phase": "first-person",
+      "speaker": "Magdalena Bay",
+      "links": [
+        {
+          "key": "magdalena-bay>bjork",
+          "from": "Magdalena Bay",
+          "to": "Björk",
+          "fromYear": 2016,
+          "toYear": 1977,
+          "citation": "Matthew Lewin, on scoring Imaginal Disk: \"We watched Dancer In The Dark, which was new for me... the opener track to that film score is just this beautiful horn arrangement... it really made us want to include more orchestral brass on this album.\" (Stereogum)",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "magdalena-bay>fiona-apple",
+          "from": "Magdalena Bay",
+          "to": "Fiona Apple",
+          "fromYear": 2016,
+          "toYear": 1996,
+          "citation": "Mica Tenenbaum: \"I discovered her through Matt and she became my main songwriting inspiration and influence when I was a teen... she's always been my north star.\" (Under the Radar)",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:mary-timony",
+      "phase": "first-person",
+      "speaker": "Mary Timony",
+      "links": [
+        {
+          "key": "mary-timony>fugazi",
+          "from": "Mary Timony",
+          "to": "Fugazi",
+          "fromYear": 1990,
+          "toYear": 1986,
+          "citation": "Mary Timony told The Hairpin in 2014 that she \"went to every show they ever played\" when Fugazi started, and later told Perfect Sound Forever that she was shaped by the energy of the Washington DC hardcore scene the band came out of.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:natural-snow-buildings",
+      "phase": "first-person",
+      "speaker": "Natural Snow Buildings",
+      "links": [
+        {
+          "key": "natural-snow-buildings>neil-young",
+          "from": "Natural Snow Buildings",
+          "to": "Neil Young",
+          "fromYear": 1998,
+          "toYear": 1966,
+          "citation": "Natural Snow Buildings to OndaRock, naming their influences: \"Kath Bloom and Loren Mazzacane Connors to Tarentel, Neil Young, Six Organs Of Admittance, Charalambides, Alice Coltrane, Stars Of The Lid, film scores, music from all parts of the world.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        },
+        {
+          "key": "natural-snow-buildings>stars-of-the-lid",
+          "from": "Natural Snow Buildings",
+          "to": "Stars of the Lid",
+          "fromYear": 1998,
+          "toYear": 1992,
+          "citation": "Natural Snow Buildings to OndaRock, naming their influences: \"Kath Bloom and Loren Mazzacane Connors to Tarentel, Neil Young, Six Organs Of Admittance, Charalambides, Alice Coltrane, Stars Of The Lid, film scores, music from all parts of the world.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "first-person:oneohtrix-point-never",
+      "phase": "first-person",
+      "speaker": "Oneohtrix Point Never",
+      "links": [
+        {
+          "key": "oneohtrix-point-never>my-bloody-valentine",
+          "from": "Oneohtrix Point Never",
+          "to": "My Bloody Valentine",
+          "fromYear": 2007,
+          "toYear": 1983,
+          "citation": "Daniel Lopatin, RBMA Daily (2011): \"I don't think that there is a record that I've listened to more often... [Loveless] has like a really big effect on me musically... every time I start recording a new record, I listen to Loveless.\" Reiterated in The Quietus's Baker's Dozen (2018), naming it his favorite record of all time.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "oneohtrix-point-never>broadcast",
+          "from": "Oneohtrix Point Never",
+          "to": "Broadcast",
+          "fromYear": 2007,
+          "toYear": 1995,
+          "citation": "The Skinny interview names Autechre, Broadcast, and Boards of Canada as key inspirations for Lopatin; AnOther Magazine (2023) notes his first college band \"was obsessed with Broadcast and The Kinks and The Who and power-pop.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:panchiko",
+      "phase": "first-person",
+      "speaker": "Panchiko",
+      "links": [
+        {
+          "key": "panchiko>radiohead",
+          "from": "Panchiko",
+          "to": "Radiohead",
+          "fromYear": 1998,
+          "toYear": 1985,
+          "citation": "Owain Davies cites Radiohead as one of Panchiko's biggest influences (Bandcamp Daily); Wikipedia's page on the D>E>A>T>H>M>E>T>A>L EP independently notes the record \"has inspirations from Radiohead and Joy Division.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:refused",
+      "phase": "first-person",
+      "speaker": "Refused",
+      "links": [
+        {
+          "key": "refused>fugazi",
+          "from": "Refused",
+          "to": "Fugazi",
+          "fromYear": 1991,
+          "toYear": 1986,
+          "citation": "Dennis Lyxzen (Refused) has named Fugazi's Red Medicine his favorite Fugazi album, cited as a direct influence while recording.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:slayyyter",
+      "phase": "first-person",
+      "speaker": "Slayyyter",
+      "links": [
+        {
+          "key": "slayyyter>sophie",
+          "from": "Slayyyter",
+          "to": "SOPHIE",
+          "fromYear": 2018,
+          "toYear": 2013,
+          "citation": "Slayyyter said discovering SOPHIE and PC Music was unlike anything she'd heard before, crazy in the best way, and called the pair the kind of originators who always do it best.",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        },
+        {
+          "key": "slayyyter>charli-xcx",
+          "from": "Slayyyter",
+          "to": "Charli XCX",
+          "fromYear": 2018,
+          "toYear": 2008,
+          "citation": "Slayyyter told Rolling Stone she didn't even know what topline songwriting was until she read an article of Charli XCX's, and that she feels all of pop now is kind of inspired by her.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:sneaker-pimps",
+      "phase": "first-person",
+      "speaker": "Sneaker Pimps",
+      "links": [
+        {
+          "key": "sneaker-pimps>massive-attack",
+          "from": "Sneaker Pimps",
+          "to": "Massive Attack",
+          "fromYear": 1994,
+          "toYear": 1988,
+          "citation": "Liam Howe told HITS Magazine that Massive Attack's Blue Lines was one of his favourite albums and a huge influence on Sneaker Pimps.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "sneaker-pimps>portishead",
+          "from": "Sneaker Pimps",
+          "to": "Portishead",
+          "fromYear": 1994,
+          "toYear": 1991,
+          "citation": "In the same HITS Magazine interview, Howe said the Portishead album was a huge influence as well.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:squarepusher",
+      "phase": "first-person",
+      "speaker": "Squarepusher",
+      "links": [
+        {
+          "key": "squarepusher>aphex-twin",
+          "from": "Squarepusher",
+          "to": "Aphex Twin",
+          "fromYear": 1995,
+          "toYear": 1992,
+          "citation": "Tom Jenkinson, Furious.com interview, asked if he'd learned from Aphex Twin: \"Absolutely. He's one of my major influences, I'd say. Harmonically yes but also in his approach and his attitude.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-blue-nile",
+      "phase": "first-person",
+      "speaker": "The Blue Nile",
+      "links": [
+        {
+          "key": "the-blue-nile>talking-heads",
+          "from": "The Blue Nile",
+          "to": "Talking Heads",
+          "fromYear": 1981,
+          "toYear": 1975,
+          "citation": "PopMatters: Paul Buchanan recalled that the first time the band heard Talking Heads, \"we were thinking, I could do that\" -- part of what drew them to punk and new wave's stripped-down accessibility over \"ridiculous hair\" and long solos.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-breeders",
+      "phase": "first-person",
+      "speaker": "The Breeders",
+      "links": [
+        {
+          "key": "the-breeders>neil-young",
+          "from": "The Breeders",
+          "to": "Neil Young",
+          "fromYear": 1989,
+          "toYear": 1966,
+          "citation": "Kim Deal to PopMatters: \"I was listening to a lot of Harvest last year, now that you mention it. Because my Volvo only has a cassette player, so I listened to that tape constantly. And I was listening to that a lot when I was writing Fate to Fatal.\" What she was listening to while writing, so favourites tier rather than a shaping claim.",
+          "sourceTier": "first-person",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-chameleons",
+      "phase": "first-person",
+      "speaker": "The Chameleons",
+      "links": [
+        {
+          "key": "the-chameleons>buzzcocks",
+          "from": "The Chameleons",
+          "to": "Buzzcocks",
+          "fromYear": 1981,
+          "toYear": 1976,
+          "citation": "Among Manchester bands, Mark Burgess has said the Buzzcocks had a definitive impact on him.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-last-dinner-party",
+      "phase": "first-person",
+      "speaker": "The Last Dinner Party",
+      "links": [
+        {
+          "key": "the-last-dinner-party>david-bowie",
+          "from": "The Last Dinner Party",
+          "to": "David Bowie",
+          "fromYear": 2021,
+          "toYear": 1969,
+          "citation": "Guitarist Emily Roberts told Guitar.com: \"The music is very David Bowie and Queen-influenced... It's very Florence and The Machine and euphoric.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-white-stripes",
+      "phase": "first-person",
+      "speaker": "The White Stripes",
+      "links": [
+        {
+          "key": "the-white-stripes>the-stooges",
+          "from": "The White Stripes",
+          "to": "The Stooges",
+          "fromYear": 1997,
+          "toYear": 1967,
+          "citation": "Rolling Stone, \"Blues Genes: 15 of Jack White's Biggest Influences\": Iggy Pop a key idol for White, who anoints the Stooges' Fun House the greatest rock and roll record ever made.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:toe",
+      "phase": "first-person",
+      "speaker": "toe",
+      "links": [
+        {
+          "key": "toe>cap-n-jazz",
+          "from": "toe",
+          "to": "Cap'n Jazz",
+          "fromYear": 2000,
+          "toYear": 1989,
+          "citation": "Hirokazu Yamazaki, Tone Glow interview: \"the guitarist from Cap'n Jazz who plays for a band called Ghosts and Vodka [Victor Villarreal]... they were instrumental, and that was a big inspiration for me.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:trail-of-dead",
+      "phase": "first-person",
+      "speaker": "...And You Will Know Us by the Trail of Dead",
+      "links": [
+        {
+          "key": "trail-of-dead>unwound",
+          "from": "...And You Will Know Us by the Trail of Dead",
+          "to": "Unwound",
+          "fromYear": 1994,
+          "toYear": 1991,
+          "citation": "Jason Reece has said the years he and Conrad Keely spent in Olympia shaped the band, naming Beat Happening, Bikini Kill and Unwound as big influences on their lives; Keely separately chose Unwound's Fake Train for MusicRadar's albums-that-changed-my-life feature, writing that hearing it floored him and left him green with envy.",
+          "sourceTier": "first-person",
+          "confidence": 0.9
+        }
+      ]
+    },
+    {
+      "id": "first-person:ween",
+      "phase": "first-person",
+      "speaker": "Ween",
+      "links": [
+        {
+          "key": "ween>velvet-underground",
+          "from": "Ween",
+          "to": "The Velvet Underground",
+          "fromYear": 1984,
+          "toYear": 1965,
+          "citation": "Dean Ween to Berklee Online, on the record collections he and Aaron Freeman grew up between: \"Aaron's dad didn't have a lot of records either, but between the cool ones that I had and the cool ones he had, that's kind of what Ween is. He had everything from Nina Simone to the first two Velvet Underground records, to Richie Havens' Alarm Clock, to... everything, Beefheart.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,532 @@
+{
+  "name": "c18",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "reported:neu",
+      "phase": "reported",
+      "speaker": "Neu!",
+      "links": [
+        {
+          "key": "neu>kraftwerk",
+          "from": "Neu!",
+          "to": "Kraftwerk",
+          "fromYear": 1971,
+          "toYear": 1970,
+          "citation": "Wikipedia/Neu!: formed in 1971 in Düsseldorf as an offshoot of an early Kraftwerk lineup -- Michael Rother and Klaus Dinger both played in Kraftwerk 1970-71 before splitting off.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:nick-drake",
+      "phase": "reported",
+      "speaker": "Nick Drake",
+      "links": [
+        {
+          "key": "nick-drake>bert-jansch",
+          "from": "Nick Drake",
+          "to": "Bert Jansch",
+          "fromYear": 1968,
+          "toYear": 1965,
+          "citation": "Record Collector wrote that Nick Drake was fascinated with Bert Jansch's guitar playing; Totally Guitar dates his interest to 1965, describing him as influenced by the folk movement and artists including Jansch, Bob Dylan and Jackson C. Frank; Acoustic Guitar documents his home recordings including Jansch's \"Strolling Down the Highway.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "nick-drake>bob-dylan",
+          "from": "Nick Drake",
+          "to": "Bob Dylan",
+          "fromYear": 1968,
+          "toYear": 1961,
+          "citation": "Acoustic Guitar documents Nick Drake's home recordings as including Bob Dylan's \"Tomorrow Is a Long Time.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "reported:modest-mouse",
+      "phase": "reported",
+      "speaker": "Modest Mouse",
+      "links": [
+        {
+          "key": "modest-mouse>unwound",
+          "from": "Modest Mouse",
+          "to": "Unwound",
+          "fromYear": 1992,
+          "toYear": 1991,
+          "citation": "Wikipedia Legacy section; no reproduced quote found, flagged weaker-tier.",
+          "sourceTier": "reported",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "reported:stereolab",
+      "phase": "reported",
+      "speaker": "Stereolab",
+      "links": [
+        {
+          "key": "stereolab>silver-apples",
+          "from": "Stereolab",
+          "to": "Silver Apples",
+          "fromYear": 1990,
+          "toYear": 1967,
+          "citation": "FarOut Magazine (\"The surprising early influences on the music of Silver Apples\") and Wikipedia/Silver Apples list Stereolab among influenced artists; Stereolab's Tim Gane separately cited Silver Apples as a favorite record in a 1993 interview.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:wire",
+      "phase": "reported",
+      "speaker": "Wire",
+      "links": [
+        {
+          "key": "wire>david-bowie",
+          "from": "Wire",
+          "to": "David Bowie",
+          "fromYear": 1976,
+          "toYear": 1969,
+          "citation": "Billboard's account of the Savage/Duff liner-note essays for Wire's reissues describes what the band was listening to at the time, and Rolling Stone has written about Berlin-era David Bowie's heavy influence on Wire's third album, 154.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:alvvays",
+      "phase": "reported",
+      "speaker": "Alvvays",
+      "links": [
+        {
+          "key": "alvvays>pavement",
+          "from": "Alvvays",
+          "to": "Pavement",
+          "fromYear": 2011,
+          "toYear": 1989,
+          "citation": "Ilana Kaplan, SPIN (11 Mar 2015), \"SXSW Lone Stars: Alvvays on Archie's Identity and Scot-Pop,\" and Rebecca Schiller, Diffuser.fm (21 Nov 2014) both report Pavement among Molly Rankin's named influences. Reported as a name on her own list rather than a claim she elaborates on, hence the lower confidence.",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "reported:cat-power",
+      "phase": "reported",
+      "speaker": "Cat Power",
+      "links": [
+        {
+          "key": "cat-power>siouxsie-and-the-banshees",
+          "from": "Cat Power",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 1992,
+          "toYear": 1976,
+          "citation": "AllMusic's prose bio: in her teens Marshall listened to Siouxsie and the Cure.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "cat-power>the-cure",
+          "from": "Cat Power",
+          "to": "The Cure",
+          "fromYear": 1992,
+          "toYear": 1978,
+          "citation": "AllMusic's prose biography, on her teenage listening to Siouxsie and the Cure.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:lcd-soundsystem",
+      "phase": "reported",
+      "speaker": "LCD Soundsystem",
+      "links": [
+        {
+          "key": "lcd-soundsystem>talking-heads",
+          "from": "LCD Soundsystem",
+          "to": "Talking Heads",
+          "fromYear": 2002,
+          "toYear": 1975,
+          "citation": "Grammy.com: \"Their influences -- ESG, Loose Joints, David Bowie, Talking Heads, CAN, Daft Punk, Kraftwerk.\"",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "lcd-soundsystem>kraftwerk",
+          "from": "LCD Soundsystem",
+          "to": "Kraftwerk",
+          "fromYear": 2002,
+          "toYear": 1970,
+          "citation": "Grammy.com's list of Murphy's touchstones; Far Out Magazine notes direct sonic homages (\"Get Innocuous!\" nods to \"The Robots\").",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "lcd-soundsystem>the-smiths",
+          "from": "LCD Soundsystem",
+          "to": "The Smiths",
+          "fromYear": 2002,
+          "toYear": 1982,
+          "citation": "Wikipedia (James Murphy page): named \"OMD, Bronski Beat and the Smiths as childhood favorites.\"",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "lcd-soundsystem>omd",
+          "from": "LCD Soundsystem",
+          "to": "Orchestral Manoeuvres in the Dark",
+          "fromYear": 2002,
+          "toYear": 1978,
+          "citation": "Wikipedia's James Murphy page names \"OMD, Bronski Beat and the Smiths as childhood favorites.\" A favourites list rather than a stated influence.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        },
+        {
+          "key": "lcd-soundsystem>the-birthday-party",
+          "from": "LCD Soundsystem",
+          "to": "The Birthday Party",
+          "fromYear": 2002,
+          "toYear": 1976,
+          "citation": "The Independent described James Murphy as an avid student of the Birthday Party, alongside Can, the Velvet Underground and what it called \"weird punk rock.\"",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "lcd-soundsystem>velvet-underground",
+          "from": "LCD Soundsystem",
+          "to": "The Velvet Underground",
+          "fromYear": 2002,
+          "toYear": 1965,
+          "citation": "The same Independent profile named the Velvet Underground among the artists James Murphy studied closely, alongside the Birthday Party and Can.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:low",
+      "phase": "reported",
+      "speaker": "Low",
+      "links": [
+        {
+          "key": "low>codeine",
+          "from": "Low",
+          "to": "Codeine",
+          "fromYear": 1993,
+          "toYear": 1989,
+          "citation": "Codeine predate and are widely cited as a formative reference point for the slowcore sound Low worked in; the same lineage claim recurs independently in Duster's and American Football's own accounts of what they were listening to.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:suicide",
+      "phase": "reported",
+      "speaker": "Suicide",
+      "links": [
+        {
+          "key": "suicide>velvet-underground",
+          "from": "Suicide",
+          "to": "The Velvet Underground",
+          "fromYear": 1970,
+          "toYear": 1965,
+          "citation": "Wikipedia/Suicide: Alan Vega directly cited the Velvet Underground, Iggy Pop, ? and the Mysterians, and Silver Apples as influences.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "suicide>the-stooges",
+          "from": "Suicide",
+          "to": "The Stooges",
+          "fromYear": 1970,
+          "toYear": 1967,
+          "citation": "FarOut Magazine (\"Exploring the early influences of Suicide founder Martin Rev\"): Vega \"was blown away when he saw The Stooges in 1969, going home to play 'I Wanna Be Your Dog' on repeat.\"",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:boards-of-canada",
+      "phase": "reported",
+      "speaker": "Boards of Canada",
+      "links": [
+        {
+          "key": "boards-of-canada>autechre",
+          "from": "Boards of Canada",
+          "to": "Autechre",
+          "fromYear": 1986,
+          "toYear": 1987,
+          "citation": "A 1996 copy of Boards of Canada's Twoism reached Sean Booth, who championed the duo to Skam Records; Booth supplied a numbers-station recording for \"Gyroscope,\" and Boards of Canada recorded an unreleased cover of Autechre's \"Cichli.\"",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        },
+        {
+          "key": "boards-of-canada>cocteau-twins",
+          "from": "Boards of Canada",
+          "to": "Cocteau Twins",
+          "fromYear": 1986,
+          "toYear": 1979,
+          "citation": "The same rare Pitchfork interview: the duo say they are big fans of the Cocteau Twins and My Bloody Valentine.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "reported:brand-new",
+      "phase": "reported",
+      "speaker": "Brand New",
+      "links": [
+        {
+          "key": "brand-new>the-smiths",
+          "from": "Brand New",
+          "to": "The Smiths",
+          "fromYear": 2000,
+          "toYear": 1982,
+          "citation": "Alternative Press (Aug 23, 2017): \"known for naming The Smiths and their frontman Morrissey as favorites.\"",
+          "sourceTier": "reported",
+          "confidence": 0.8
+        },
+        {
+          "key": "brand-new>ride",
+          "from": "Brand New",
+          "to": "Ride",
+          "fromYear": 2000,
+          "toYear": 1988,
+          "citation": "BBC (Feb 12, 2007): Lacey \"cited English rock bands such as Ride, The Stone Roses and The Beatles.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "brand-new>the-stone-roses",
+          "from": "Brand New",
+          "to": "The Stone Roses",
+          "fromYear": 2000,
+          "toYear": 1983,
+          "citation": "BBC (Feb 12, 2007): Lacey \"cited English rock bands such as Ride, The Stone Roses and The Beatles.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "brand-new>sonic-youth",
+          "from": "Brand New",
+          "to": "Sonic Youth",
+          "fromYear": 2000,
+          "toYear": 1981,
+          "citation": "CHARTattack (Nov 25, 2009): \"noisier elements were influenced by adolescent favorites Sonic Youth and My Bloody Valentine.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "brand-new>my-bloody-valentine",
+          "from": "Brand New",
+          "to": "My Bloody Valentine",
+          "fromYear": 2000,
+          "toYear": 1983,
+          "citation": "CHARTattack (Nov 25, 2009): \"noisier elements were influenced by adolescent favorites Sonic Youth and My Bloody Valentine.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "reported:kurt-vile",
+      "phase": "reported",
+      "speaker": "Kurt Vile",
+      "links": [
+        {
+          "key": "kurt-vile>neil-young",
+          "from": "Kurt Vile",
+          "to": "Neil Young",
+          "fromYear": 2003,
+          "toYear": 1966,
+          "citation": "AllMusic's prose biography and Wikipedia's sourced influence line describe Kurt Vile as taking notes from masters including Neil Young; Premier Guitar wrote in June 2026 that his sound draws on grunge, DIY recording, and whatever Neil Young happened to be doing at the time.",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "kurt-vile>sonic-youth",
+          "from": "Kurt Vile",
+          "to": "Sonic Youth",
+          "fromYear": 2003,
+          "toYear": 1981,
+          "citation": "AllMusic's prose biography of Kurt Vile names Sonic Youth among his influences.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:rites-of-spring",
+      "phase": "reported",
+      "speaker": "Rites of Spring",
+      "links": [
+        {
+          "key": "rites-of-spring>wire",
+          "from": "Rites of Spring",
+          "to": "Wire",
+          "fromYear": 1984,
+          "toYear": 1976,
+          "citation": "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "rites-of-spring>television",
+          "from": "Rites of Spring",
+          "to": "Television",
+          "fromYear": 1984,
+          "toYear": 1973,
+          "citation": "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "rites-of-spring>the-birthday-party",
+          "from": "Rites of Spring",
+          "to": "The Birthday Party",
+          "fromYear": 1984,
+          "toYear": 1976,
+          "citation": "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "rites-of-spring>the-smiths",
+          "from": "Rites of Spring",
+          "to": "The Smiths",
+          "fromYear": 1984,
+          "toYear": 1982,
+          "citation": "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        },
+        {
+          "key": "rites-of-spring>bob-dylan",
+          "from": "Rites of Spring",
+          "to": "Bob Dylan",
+          "fromYear": 1984,
+          "toYear": 1961,
+          "citation": "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "reported:slint",
+      "phase": "reported",
+      "speaker": "Slint",
+      "links": [
+        {
+          "key": "slint>minutemen",
+          "from": "Slint",
+          "to": "Minutemen",
+          "fromYear": 1986,
+          "toYear": 1980,
+          "citation": "Wikipedia/Slint: \"Artists that influenced Slint include Leonard Cohen, Neil Young, Nick Cave, Madonna, Philip Glass, Minutemen and Big Black.\" A bare list of seven names on the band's own page, with no mechanism stated.",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        },
+        {
+          "key": "slint>big-black",
+          "from": "Slint",
+          "to": "Big Black",
+          "fromYear": 1986,
+          "toYear": 1981,
+          "citation": "Wikipedia/Slint: \"Artists that influenced Slint include Leonard Cohen, Neil Young, Nick Cave, Madonna, Philip Glass, Minutemen and Big Black.\" A bare list of seven names on the band's own page, with no mechanism stated.",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "reported:the-fall",
+      "phase": "reported",
+      "speaker": "The Fall",
+      "links": [
+        {
+          "key": "the-fall>faust",
+          "from": "The Fall",
+          "to": "Faust",
+          "fromYear": 1976,
+          "toYear": 1971,
+          "citation": "Phoenix New Times wrote that The Fall were influenced by Can, Faust and the United States of America as much as by earlier rock acts.",
+          "sourceTier": "reported",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "reported:wednesday",
+      "phase": "reported",
+      "speaker": "Wednesday",
+      "links": [
+        {
+          "key": "wednesday>sonic-youth",
+          "from": "Wednesday",
+          "to": "Sonic Youth",
+          "fromYear": 2017,
+          "toYear": 1981,
+          "citation": "Exclaim! (2023): \"From Sonic Youth to Drive-by Truckers, they draw inspiration from multiple scenes and influences.\"",
+          "sourceTier": "reported",
+          "confidence": 0.6
+        },
+        {
+          "key": "wednesday>lucinda-williams",
+          "from": "Wednesday",
+          "to": "Lucinda Williams",
+          "fromYear": 2017,
+          "toYear": 1979,
+          "citation": "Billboard: Hartzman's songwriting \"draws on great country music storytellers -- Drive-By Truckers, Lucinda Williams, 'a lot of the outlaw country people' -- who she credits for producing 'some of the most amazing lyricism in the world.'\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "reported:animal-collective",
+      "phase": "reported",
+      "speaker": "Animal Collective",
+      "links": [
+        {
+          "key": "animal-collective>can",
+          "from": "Animal Collective",
+          "to": "Can",
+          "fromYear": 2003,
+          "toYear": 1968,
+          "citation": "Simon Reynolds, The Wire (2005), on the band's formative listening: \"The four started to discover psychedelic rock bands like Can and Silver Apples.\"",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "animal-collective>silver-apples",
+          "from": "Animal Collective",
+          "to": "Silver Apples",
+          "fromYear": 2003,
+          "toYear": 1967,
+          "citation": "Simon Reynolds, The Wire (2005), same sentence as the band's Can discovery: \"The four started to discover psychedelic rock bands like Can and Silver Apples.\"",
+          "sourceTier": "reported",
+          "confidence": 0.7
+        },
+        {
+          "key": "animal-collective>pavement",
+          "from": "Animal Collective",
+          "to": "Pavement",
+          "fromYear": 2003,
+          "toYear": 1989,
+          "citation": "Wikipedia's Animal Collective page, on how the band began: Weitz and Portner \"started playing music together at the age of fifteen because of their shared love of the band Pavement.\"",
+          "sourceTier": "reported",
+          "confidence": 0.75
+        }
+      ]
+    }
+  ]
+}

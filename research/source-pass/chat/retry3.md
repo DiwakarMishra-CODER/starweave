@@ -1,0 +1,375 @@
+THIS IS A RETRY PACK. Every link below was already tried once and marked not-found. Each one carries "lastTry": what the last checker searched and the leads it saw but never opened. Start from those leads (open the pages, follow the footnotes, try the Internet Archive copies) and don't repeat the searches already listed. If you find nothing new, return "not-found" with a note that says what YOU tried this time.
+
+You're helping check sources for Starweave, a map of who influenced whom in indie music. Below is a list of influence links. Each `key` is `source>target`: the first artist was influenced by the second. Each has a `citation` saying who said it and where. For every link, find the web page that actually carries the claim, open it, and read it.
+
+Precision beats speed: an honest "not-found" is far better than a wrong "ok".
+
+RULES
+1. Open the actual page and read it. A search result's snippet or summary is NEVER evidence: search tools have invented quotes before.
+2. `found` = one or two consecutive sentences copied EXACTLY from the page (including any quote the citation uses). Don't retype, tidy, shorten or join paragraphs. A script will re-open every page and look for this exact text, so a paraphrase fails.
+3. The quote must be the right person speaking: the artist, not the interviewer or the journalist's own listening.
+4. It must say INFLUENCE, in the right direction (first artist shaped by the second). Being a fan counts: the artist saying they loved, grew up on, were big fans of, or kept listening to the other artist while forming or making their own music is first-person influence. Fandom someone else reports counts too, at tier "reported": a journalist saying the artist loved X, a bandmate or the other artist saying so, the band's own ad. These are NOT influence: a bare favourites list with no comment, a "what I'm listening to now" answer, covering a song, sharing a member, a producer, a label, a collaboration, being listed in the same genre, and a critic saying they sound alike ("recalls", "sounds like", "the X of its generation"): mark that "decide". Tier "critic" is only for a critic arguing the first artist drew on the second.
+5. Never use Grokipedia. Never use AllMusic's bare "influences" panel, The Student Playlist's "Influenced by" lists, Apple Music editorial "Influences" playlists, or bio blurbs copied across Last.fm-type sites.
+6. Wikipedia only as a last resort: follow its footnote to the real source and use that. A Wikipedia claim with no footnote is tier "reported" at best.
+7. Per link: at most two searches. Then stop and mark it "not-found" with what you tried.
+8. If you know the exact page but can't open it (paywall, login, bot wall), mark it "blocked" with the page's direct URL and what to look for on it.
+9. Opening Internet Archive copies: if your fetch tool refuses an archive URL you built yourself, search for the page first so the URL appears in a result, or say so in the note; never call a page unopenable without trying.
+10. Before marking anything "not-found" or "blocked" when you know the page: try the Internet Archive copy (https://web.archive.org/web/2020/<the page URL>, and older years). Walled or deleted pages are very often there. Only after that fails is it not-found or blocked.
+11. A page you can't open in any form (Under the Radar's live site, PressReader, the Quietus paywall, the Telegraph): try the Internet Archive first; if that fails too, it's "not-found" with the URL in the note, not "blocked".
+
+VERDICTS
+- "ok": page carries it, citation stands. Needs url + found.
+- "fixed": page carries it but you corrected the citation (outlet, year, the quote's exact words) and/or tier. Needs url + found + the new "citation" and/or "sourceTier".
+- "not-found": needs "note" (what you searched).
+- "blocked": needs "url" (the page itself) + "note" (what to look for).
+- "decide": the page exists but doesn't support the link (only a resemblance, wrong direction, a cover, a denial, the wrong speaker). Don't fix it: "note" says what the page says and proposes remove / flip / record as denial / keep as critic.
+
+Tiers: "first-person" = the artist's own words; "reported" = a publication states it, no quote; "critic" = a critic's comparison.
+
+A rewritten citation is a finished sentence: who, where, when, what was said, with straight double quotes around verbatim words. Example: Andy Bell to Under the Radar (2013): "Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine..."
+
+Rewrite nothing into a citation that is a note to me ("could not be checked", "the page misprints", "not the BBC"): those go in "note". A citation is only what a reader should see.
+
+ANSWER with only this JSON, in one code block, every link included:
+
+{
+  "agent": "retry3",
+  "searches": <how many searches you ran>,
+  "toolStatus": "<any sites you couldn't open, any search problems>",
+  "entries": {
+    "<key>": { "url": "...", "found": "...", "checked": "2026-10-26", "verdict": "ok" }
+  },
+  "candidates": [],
+  "offMap": [],
+  "finished": true
+}
+
+(Optional, no extra searching: if a passage you're already reading has the artist naming another influence, add it to "offMap" as {"name", "namedBy": "<the artist's id from the key>", "sentence", "url"}.)
+
+If you can't finish all of them in one reply, do as many as you can properly, return the JSON for those, and say so.
+
+THE LINKS
+```json
+[
+ {
+  "key": "drive-like-jehu>slint",
+  "from": "Drive Like Jehu",
+  "to": "Slint",
+  "fromYear": 1990,
+  "toYear": 1986,
+  "citation": "Vish Khanna podcast (Oct 8, 2015): stated influences include \"Mission of Burma, the Gories, Bastro, Slint, Sonic Youth, the Wipers, and krautrock bands such as Neu!\"",
+  "sourceTier": "first-person",
+  "lastTry": "Two searches. The Vish Khanna podcast (Oct 2015) is audio only; Wikipedia's Drive Like Jehu page cites it by timestamp for the Honor Role passage but I could not check any Slint mention. A transcript on premierrockforum.com attributes 'The Wipers ... Honor Role ... Sonic Youth, Minor Threat' to Rick Froberg, but it is a forum repost with no original source, so I did not use it. Nothing opened carried Slint in Froberg's or Reis's own words."
+ },
+ {
+  "key": "drive-like-jehu>sonic-youth",
+  "from": "Drive Like Jehu",
+  "to": "Sonic Youth",
+  "fromYear": 1990,
+  "toYear": 1981,
+  "citation": "Vish Khanna podcast (Oct 8, 2015): stated influences include \"Mission of Burma, the Gories, Bastro, Slint, Sonic Youth, the Wipers, and krautrock bands such as Neu!\"",
+  "sourceTier": "first-person",
+  "lastTry": "Same two searches as the Slint link. Only a forum repost of a Froberg interview (premierrockforum.com) mentions 'Your Sonic Youth, your Minor Threat and Government Issue'; not a usable source. Lead: the Khanna Kreative Kontrol episode (audio), which Wikipedia's Drive Like Jehu article cites."
+ },
+ {
+  "key": "drive-like-jehu>neu",
+  "from": "Drive Like Jehu",
+  "to": "Neu!",
+  "fromYear": 1990,
+  "toYear": 1971,
+  "citation": "Vish Khanna podcast (Oct 8, 2015): stated influences include \"Mission of Burma, the Gories, Bastro, Slint, Sonic Youth, the Wipers, and krautrock bands such as Neu!\"",
+  "sourceTier": "first-person",
+  "lastTry": "Same two searches as the Slint link. 'Krautrock bands such as Neu!' appears only in an old Wikipedia mirror (wikipedia2006.classicistranieri.com), unsourced there. No first-person Neu! quote found."
+ },
+ {
+  "key": "drive-like-jehu>wipers",
+  "from": "Drive Like Jehu",
+  "to": "Wipers",
+  "fromYear": 1990,
+  "toYear": 1977,
+  "citation": "Vish Khanna podcast (Oct 8, 2015): stated influences include \"Mission of Burma, the Gories, Bastro, Slint, Sonic Youth, the Wipers, and krautrock bands such as Neu!\" Stated influences include \"Mission of Burma, the Gories, Bastro, Slint, Sonic Youth, the Wipers, and krautrock bands such as Neu!\"",
+  "sourceTier": "first-person",
+  "lastTry": "Same two searches as the Slint link. Best lead, not usable yet: premierrockforum.com has a transcript where Rick Froberg says 'bands we’re always citing are The Wipers and ... Honor Role', but it is a forum repost with no named outlet. Find the original interview (the page mentions a 'Mich Vish Interracial Morning Show' segment) and quote that."
+ },
+ {
+  "key": "suicide>silver-apples",
+  "from": "Suicide",
+  "to": "Silver Apples",
+  "fromYear": 1970,
+  "toYear": 1967,
+  "citation": "Wikipedia/Silver Apples: \"Alan Vega of Suicide listed Silver Apples as one of his core inspirations that led him to form the group,\" reciprocally confirmed on Suicide's own page.",
+  "sourceTier": "first-person",
+  "lastTry": "Two searches. The influences sentence ('...and the Mysterians, and Silver Apples') appears in the Wikipedia Suicide (band) text with a footnote [31] I could not see; follow it to the real source. A Legs McNeil piece (legsville.com) only says 'Like the Silver Apples and Kraftwerk, Suicide was the forerunner for all the techno-rock', which is a comparison, and Vega's own words in the Dazed and Legs McNeil pieces name Iggy and the Stooges, not Silver Apples."
+ },
+ {
+  "key": "this-heat>faust",
+  "from": "This Heat",
+  "to": "Faust",
+  "fromYear": 1976,
+  "toYear": 1971,
+  "citation": "Charles Hayward told Perfect Sound Forever that Faust were a direct influence on This Heat, describing how one musical movement could interact with the whole in their music; he specified the Uwe Nettelbeck-produced era of Faust in a separate 2014 interview with Freq.",
+  "sourceTier": "first-person",
+  "lastTry": "Two searches ('Charles Hayward Perfect Sound Forever Faust influence' and a perfectsoundforever.com variant). No Perfect Sound Forever page and no Freq 2014 page appeared. Pages found that name This Heat's influences but not Faust: The Quietus (Hayward/Simon Reynolds, 2001), Psychedelic Baby (Hayward interview), Fact (2016), none with a Faust sentence I could read in full."
+ },
+ {
+  "key": "boards-of-canada>incredible-string-band",
+  "from": "Boards of Canada",
+  "to": "Incredible String Band",
+  "fromYear": 1986,
+  "toYear": 1965,
+  "citation": "Boards of Canada's Michael Sandison, in a rare Pitchfork interview, on melody: \"listen to Jerry Goldsmith or The Incredible String Band.\"",
+  "sourceTier": "first-person",
+  "lastTry": "Two searches. The 2005 Pitchfork interview did not come up. Leads, not opened: Wikipedia's Geogaddi page says Sandison cited the Incredible String Band as an inspiration (footnote [4]); a Trouser Press entry lists the ISB among BoC influences (writer's account). The 'listen to Jerry Goldsmith or The Incredible String Band' quote was not found."
+ },
+ {
+  "key": "brand-new>fugazi",
+  "from": "Brand New",
+  "to": "Fugazi",
+  "fromYear": 2000,
+  "toYear": 1986,
+  "citation": "Jesse Lacey, DrownedInSound (Sept 17, 2009): \"influenced by Polvo, Archers of Loaf, Fugazi and Modest Mouse.\"",
+  "sourceTier": "first-person",
+  "lastTry": "Two searches for the Drowned in Sound (17 Sept 2009) Jesse Lacey interview; no DiS page appeared. Lead: Wikipedia's Jesse Lacey page says 'During the Daisy era, Lacey cited Polvo, Archers of Loaf, Fugazi and Modest Mouse as influences' with footnote [40]; follow that footnote to the DiS URL (try the Internet Archive copy)."
+ },
+ {
+  "key": "brand-new>modest-mouse",
+  "from": "Brand New",
+  "to": "Modest Mouse",
+  "fromYear": 2000,
+  "toYear": 1992,
+  "citation": "Jesse Lacey, DrownedInSound (Sept 17, 2009): \"influenced by Polvo, Archers of Loaf, Fugazi and Modest Mouse.\"",
+  "sourceTier": "first-person",
+  "lastTry": "Same two searches as the Fugazi link. Slant's Daisy review says Lacey does 'his best Isaac Brock impression' (a critic's comparison, not an influence statement)."
+ },
+ {
+  "key": "wednesday>my-bloody-valentine",
+  "from": "Wednesday",
+  "to": "My Bloody Valentine",
+  "fromYear": 2017,
+  "toYear": 1983,
+  "citation": "MOJO (Aug 2023), on Hartzman's formative discoveries in Greensboro: \"a tape made for her by a middle-school friend who had discovered My Bloody\" Valentine.",
+  "sourceTier": "first-person",
+  "lastTry": "MOJO Aug 2023 not found: searched the quoted phrase with MOJO/Hartzman/Rat Saw God; guessed mojo4music.com article URLs 404; The Forty-Five 2023 interview, Stereogum 2023 interview and Wikipedia (Wednesday, Karly Hartzman) have no My Bloody Valentine mention. Remains unverified."
+ },
+ {
+  "key": "bon-iver>bob-dylan",
+  "from": "Bon Iver",
+  "to": "Bob Dylan",
+  "fromYear": 2007,
+  "toYear": 1961,
+  "citation": "Justin Vernon told Pitchfork, quoted via Ewing's Voice, \"after growing up in a Neil Young/Bob Dylan/Indigo Girls/John Prine subjective-songwriter kind of world, I finally realized I didn't have what they had.\"",
+  "sourceTier": "first-person",
+  "lastTry": "Pitchfork quote 'Neil Young/Bob Dylan/Indigo Girls/John Prine subjective-songwriter kind of world' (via Ewing's Voice) not found after 2 searches and reads of Rolling Stone 2011, American Songwriter, Wikipedia (Justin Vernon). Only found: Vernon answering an American Songwriter tweet 'Who is your all time favorite songwriter?' with 'Prine. Indigo Girls. Dylan' (bare list, per Far Out Magazine), which does not count. Pitchfork page URL unknown, so no archive try."
+ },
+ {
+  "key": "bon-iver>john-prine",
+  "from": "Bon Iver",
+  "to": "John Prine",
+  "fromYear": 2007,
+  "toYear": 1970,
+  "citation": "Justin Vernon told Pitchfork, via Ewing's Voice, that he grew up in a \"Neil Young/Bob Dylan/Indigo Girls/John Prine subjective-songwriter kind of world\" before realizing he didn't have what those songwriters had.",
+  "sourceTier": "first-person",
+  "lastTry": "Pitchfork quote 'Neil Young/Bob Dylan/Indigo Girls/John Prine subjective-songwriter kind of world' (via Ewing's Voice) not found after 2 searches and reads of Rolling Stone 2011, American Songwriter, Wikipedia (Justin Vernon). Only found: Vernon answering an American Songwriter tweet 'Who is your all time favorite songwriter?' with 'Prine. Indigo Girls. Dylan' (bare list, per Far Out Magazine), which does not count. Pitchfork page URL unknown, so no archive try."
+ },
+ {
+  "key": "bright-eyes>joni-mitchell",
+  "from": "Bright Eyes",
+  "to": "Joni Mitchell",
+  "fromYear": 1995,
+  "toYear": 1964,
+  "citation": "The same Life of the Record podcast names Joni Mitchell; Mel Magazine reported in October 2020 that Conor Oberst said the record deliberately went for a 1970s folk sound \"like Jackson Browne, Joni Mitchell or Neil Young,\" recorded to tape.",
+  "sourceTier": "first-person",
+  "lastTry": "Mel Magazine (Oct 2020) piece not found in 2 searches; Life of the Record podcast page (talkhouse.com) has no transcript; Paste, AV Club, Wikipedia album page, Far Out page and Substack read: none carries Joni Mitchell or Neil Young as an Oberst influence on this record."
+ },
+ {
+  "key": "bright-eyes>neil-young",
+  "from": "Bright Eyes",
+  "to": "Neil Young",
+  "fromYear": 1995,
+  "toYear": 1966,
+  "citation": "Conor Oberst named Neil Young in the same Mel Magazine interview in which he discussed Joni Mitchell's influence.",
+  "sourceTier": "first-person",
+  "lastTry": "Mel Magazine (Oct 2020) piece not found in 2 searches; Life of the Record podcast page (talkhouse.com) has no transcript; Paste, AV Club, Wikipedia album page, Far Out page and Substack read: none carries Joni Mitchell or Neil Young as an Oberst influence on this record."
+ },
+ {
+  "key": "the-flaming-lips>sonic-youth",
+  "from": "The Flaming Lips",
+  "to": "Sonic Youth",
+  "fromYear": 1983,
+  "toYear": 1981,
+  "citation": "Weirdo Music Forever, Coyne: they were very inspired by American punk rock like Sonic Youth, Black Flag, Minutemen and the Replacements -- bands they'd go and see.",
+  "sourceTier": "first-person",
+  "lastTry": "Cited 'Weirdo Music Forever' line not found in 2 searches. SPIN 2013/2018, Westword, Rolling Stone, Austin Chronicle, Wikipedia opened: none ties Coyne's early inspiration to Sonic Youth."
+ },
+ {
+  "key": "black-country-new-road>american-football",
+  "from": "Black Country, New Road",
+  "to": "American Football",
+  "fromYear": 2018,
+  "toYear": 1997,
+  "citation": "Saxophonist Lewis Evans told the Line of Best Fit: \"Everyone [in the band] appreciates American Football, a bit of Godspeed You! Black Emperor, all the classics you know?\"",
+  "sourceTier": "first-person",
+  "lastTry": "Line of Best Fit Lewis Evans quote ('Everyone appreciates American Football...') searched twice (exact phrase; site+names); opened DIY Class of 2021, Loud and Quiet, SPIN 2022, Quietus Frenz Experiments, Wikipedia (band, For the First Time), FADER 2022, NME 2020: none carries it. Line of Best Fit article URL never surfaced."
+ },
+ {
+  "key": "geese>the-strokes",
+  "from": "Geese",
+  "to": "The Strokes",
+  "fromYear": 2017,
+  "toYear": 1998,
+  "citation": "Cameron Winter: \"I grew up listening to that shit.\" Foster Bassin: \"a big Strokes fan in middle school.\"",
+  "sourceTier": "first-person",
+  "lastTry": "Searched twice (the two quotes; Rolling Stone+names). 'Foster Bassin' is not a band member (drummer is Max Bassin; Foster Hudson was the guitarist who left Dec 2023) so the citation's attribution looks wrong. Opened WRBB interview (Mar 2024): its only Strokes line is Max/Cameron joking about 'waiting for the second coming of the Strokes' as a millennial thing, not influence; Wikipedia lists the Strokes citing that page but the page does not say so. Daily Star 2021, Kaput, Wikipedia pages: nothing."
+ },
+ {
+  "key": "la-dispute>refused",
+  "from": "La Dispute",
+  "to": "Refused",
+  "fromYear": 2004,
+  "toYear": 1991,
+  "citation": "From The Garage interview (Dec 13, 2010): \"Post-hardcore bands like Thursday, Refused, At the Drive-In and Glassjaw.\"",
+  "sourceTier": "first-person",
+  "lastTry": "Two searches covering From The Garage (13 Dec 2010) and the BBC Radio 1 piece. Neither page appeared. 'Influences from post-hardcore bands like Thursday, Refused, At the Drive-In and Glassjaw' shows up only on third-party pages: a Spanish listings site (conciertos.club) and, for Refused and At the Drive-In, a Melkweg gig blurb and a Phoenix New Times piece ('you get echoes of...'), which are critic comparisons, not La Dispute's own words."
+ },
+ {
+  "key": "la-dispute>at-the-drive-in",
+  "from": "La Dispute",
+  "to": "At The Drive-In",
+  "fromYear": 2004,
+  "toYear": 1994,
+  "citation": "From The Garage interview (Dec 13, 2010): \"Post-hardcore bands like Thursday, Refused, At the Drive-In and Glassjaw.\"",
+  "sourceTier": "first-person",
+  "lastTry": "Same two searches as the Refused link. An NPR All Songs Considered piece (2011) says La Dispute has 'all the hooks of a pop-punk band raised on At the Drive-In', which is the writer's line from an email interview with Dreyer (npr.org/sections/allsongs/2011/08/23/139855535/la-dispute-half-spoken-explosions). I did not read the Dreyer answers in full, so it is unconfirmed; check that page for a Dreyer quote."
+ },
+ {
+  "key": "la-dispute>modest-mouse",
+  "from": "La Dispute",
+  "to": "Modest Mouse",
+  "fromYear": 2004,
+  "toYear": 1992,
+  "citation": "BBC Radio 1 \"Under the Influence with La Dispute\": \"influences from Joanna Newsom, The Mountain Goats and Modest Mouse.\"",
+  "sourceTier": "first-person",
+  "lastTry": "BBC Radio 1 'Under the Influence with La Dispute' (Joanna Newsom, The Mountain Goats, Modest Mouse) did not come up in two searches."
+ },
+ {
+  "key": "la-dispute>joanna-newsom",
+  "from": "La Dispute",
+  "to": "Joanna Newsom",
+  "fromYear": 2004,
+  "toYear": 2002,
+  "citation": "BBC Radio 1 \"Under the Influence with La Dispute\": \"influences from Joanna Newsom, The Mountain Goats and Modest Mouse.\" BBC Radio 1 \"Under the Influence with La Dispute,\".",
+  "sourceTier": "first-person",
+  "lastTry": "BBC Radio 1 'Under the Influence with La Dispute' did not come up in two searches."
+ },
+ {
+  "key": "la-dispute>the-mountain-goats",
+  "from": "La Dispute",
+  "to": "The Mountain Goats",
+  "fromYear": 2004,
+  "toYear": 1991,
+  "citation": "BBC Radio 1 \"Under the Influence with La Dispute\": \"influences from Joanna Newsom, The Mountain Goats and Modest Mouse.\" BBC Radio 1 \"Under the Influence with La Dispute,\".",
+  "sourceTier": "first-person",
+  "lastTry": "BBC Radio 1 'Under the Influence with La Dispute' did not come up in two searches."
+ },
+ {
+  "key": "sophie>depeche-mode",
+  "from": "SOPHIE",
+  "to": "Depeche Mode",
+  "fromYear": 2013,
+  "toYear": 1980,
+  "citation": "SOPHIE, The Face (2017), singled out \"Just Can't Get Enough\" (1981) as formative: it \"established one part of the sound of the decade that followed,\" calling it \"an amazing achievement.\"",
+  "sourceTier": "first-person",
+  "lastTry": "Two searches. The Face (2017) page did not come up. An NPR World Cafe piece mentions a 2020 interview with The Face in which SOPHIE named a different song (a Malice and Pusha T hit) as formative; it does not mention Depeche Mode, and I could not open the Face piece. 'Just Can't Get Enough' is a 1981 single, so check the year against whatever source is found."
+ },
+ {
+  "key": "the-national>violent-femmes",
+  "from": "The National",
+  "to": "Violent Femmes",
+  "fromYear": 1999,
+  "toYear": 1981,
+  "citation": "The Scenestar 2007, Berninger: the bands he first fell in love with were the Smiths, Violent Femmes, Tom Waits and Nick Cave.",
+  "sourceTier": "first-person",
+  "lastTry": "Two searches for The Scenestar (2007, Cheryl Cheng). The page did not come up. A fan blog (philnel.com, 'Where Is My Mind?: The National's Influences') quotes the line 'The bands that I first really started falling in love with were The Smiths, Violent Femmes, Tom Waits, Nick Cave...' and credits it to a 2007 interview, but that is a secondary page. A Far Out piece says Berninger's 'Kiss Off' (Violent Femmes) is among songs that 'made me want to do it'; I did not open it."
+ },
+ {
+  "key": "the-national>joy-division",
+  "from": "The National",
+  "to": "Joy Division",
+  "fromYear": 1999,
+  "toYear": 1976,
+  "citation": "The Scenestar: pressed on Ian Curtis comparisons he partly deflects to vocal range, then confirms Joy Division directly and says it's been a big influence on drummer Bryan Devendorf.",
+  "sourceTier": "first-person",
+  "lastTry": "Two searches. The Scenestar page did not come up. A fan blog (philnel.com/?p=2813, 'Where Is My Mind?: The National's Influences') quotes Berninger: 'Definitely Joy Division, I know Bryan our drummer, from a drumming perspective, that’s been a big influence on him.' It is a secondary source without a visible original; the line may come from The Scenestar."
+ },
+ {
+  "key": "the-national>nirvana",
+  "from": "The National",
+  "to": "Nirvana",
+  "fromYear": 1999,
+  "toYear": 1987,
+  "citation": "Q 2011 via a fan transcription: discusses Nirvana alongside Waits, Cave and the Smiths as artists he'd named. Flagged for verification given the secondary source.",
+  "sourceTier": "first-person",
+  "lastTry": "Two searches. The Q 2011 fan transcription did not appear. In the Sound of Young America interview Berninger mentions Nirvana only to say 'I don’t think we’re nearly as dark as, say, Nirvana', which is not influence. A fan blog quotes him saying the Strokes have influenced more bands than 'the artists I mentioned [Waits, Cave, Nirvana, Smiths]', but I could not trace it to a primary page."
+ },
+ {
+  "key": "underscores>jane-remover",
+  "from": "underscores",
+  "to": "Jane Remover",
+  "fromYear": 2018,
+  "toYear": 2019,
+  "citation": "NME profile (on U): \"she reels off Jane Remover, 2hollis and Osamason as equally inspiring as Brandy, Britney Spears and Justin Timberlake while making 'U'.\"",
+  "sourceTier": "first-person",
+  "lastTry": "Two searches for the NME profile of U. No NME page came up. Results were NTS radio listings for Jane Remover's own shows."
+ },
+ {
+  "key": "underscores>oklou",
+  "from": "underscores",
+  "to": "Oklou",
+  "fromYear": 2018,
+  "toYear": 2014,
+  "citation": "NME, 2026: for her new album underscores said she took inspiration from Oklou and Mk.gee and how they use their instruments as a \"sound bed.\"",
+  "sourceTier": "first-person",
+  "lastTry": "Two searches for the NME 2026 piece. Not found. A Dazed article lists 'Harvest Sky' as an Oklou/underscores collaboration, which is a collaboration and does not count."
+ },
+ {
+  "key": "arcade-fire>echo-and-the-bunnymen",
+  "from": "Arcade Fire",
+  "to": "Echo & the Bunnymen",
+  "fromYear": 2001,
+  "toYear": 1978,
+  "citation": "Win Butler's \"unholy amount of B's\" -- Bowie, Bono, Brecht, Byrne, the Bunnymen -- named among his heroes around Ocean Rain.",
+  "sourceTier": "first-person",
+  "lastTry": "Two searches ('unholy amount of B's' and a variant). No Win Butler quote naming the Bunnymen came up."
+ },
+ {
+  "key": "blood-orange>massive-attack",
+  "from": "Blood Orange",
+  "to": "Massive Attack",
+  "fromYear": 2011,
+  "toYear": 1988,
+  "citation": "Dev Hynes cites Massive Attack as his model for how Blood Orange is built -- the one-person-plus-rotating-guests format -- rather than as a sonic influence.",
+  "sourceTier": "first-person",
+  "lastTry": "Searched Hynes+Massive Attack twice; Grammy.com Essex Honey interview, AnOther Essex Honey interview and Wikipedia Dev Hynes article carry no Massive Attack mention. No page found."
+ },
+ {
+  "key": "caribou>boards-of-canada",
+  "from": "Caribou",
+  "to": "Boards of Canada",
+  "fromYear": 2000,
+  "toYear": 1986,
+  "citation": "Dan Snaith, RBMA Daily (\"Caribou on Singing, Love, and Vangelis,\" 2014): \"The first record that I made as Manitoba... was trying to sound like late '90s, early '00s Warp. It was influenced by Boards of Canada and Aphex Twin.\"",
+  "sourceTier": "first-person",
+  "lastTry": "Searched the RBMA Daily quote and outlet+artist+year; RBMA Daily page not found (guessed daily.redbullmusicacademy.com URLs 404). Wikipedia's Dan Snaith page has no Boards of Canada text."
+ },
+ {
+  "key": "caribou>aphex-twin",
+  "from": "Caribou",
+  "to": "Aphex Twin",
+  "fromYear": 2000,
+  "toYear": 1992,
+  "citation": "RBMA Daily, Dan Snaith naming Aphex Twin alongside Boards of Canada.",
+  "sourceTier": "first-person",
+  "lastTry": "Same missing RBMA Daily page as caribou>boards-of-canada; nothing else found."
+ }
+]
+```

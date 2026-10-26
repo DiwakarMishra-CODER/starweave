@@ -1,0 +1,587 @@
+{
+  "name": "c22",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "critic:tortoise",
+      "phase": "critic",
+      "speaker": "Tortoise",
+      "links": [
+        {
+          "key": "tortoise>can",
+          "from": "Tortoise",
+          "to": "Can",
+          "fromYear": 1990,
+          "toYear": 1968,
+          "citation": "AllMusic: krautrock (Can specifically) named as a defining influence on Tortoise.",
+          "sourceTier": "critic",
+          "confidence": 0.75
+        },
+        {
+          "key": "tortoise>brian-eno",
+          "from": "Tortoise",
+          "to": "Brian Eno",
+          "fromYear": 1990,
+          "toYear": 1971,
+          "citation": "AllMusic: ambient and British-electronica influence, Brian Eno specifically named.",
+          "sourceTier": "critic",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "critic:violent-femmes",
+      "phase": "critic",
+      "speaker": "Violent Femmes",
+      "links": [
+        {
+          "key": "violent-femmes>velvet-underground",
+          "from": "Violent Femmes",
+          "to": "The Velvet Underground",
+          "fromYear": 1981,
+          "toYear": 1965,
+          "citation": "UDiscover: Gano's teenage discovery of bands like the Ramones and the Velvet Underground; Please Kill Me names the Velvets among the band's influences and calls Reed's influence on Gano's songwriting clear; a Gano biography traces garage-band covers moving through to Lou Reed and VU songs by 1979.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        },
+        {
+          "key": "violent-femmes>brian-eno",
+          "from": "Violent Femmes",
+          "to": "Brian Eno",
+          "fromYear": 1981,
+          "toYear": 1971,
+          "citation": "A Gano biography (wiki-scraper tier) lists Eno among what Gano's older NYC-based siblings exposed him to, alongside VU, Lou Reed, Patti Smith, Jonathan Richman, the B-52's.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "violent-femmes>the-modern-lovers",
+          "from": "Violent Femmes",
+          "to": "The Modern Lovers",
+          "fromYear": 1981,
+          "toYear": 1970,
+          "citation": "UDiscover: the Femmes' acoustic approach was partly inspired by Jonathan Richman's Modern Lovers.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "violent-femmes>patti-smith",
+          "from": "Violent Femmes",
+          "to": "Patti Smith",
+          "fromYear": 1981,
+          "toYear": 1974,
+          "citation": "A Gano biography lists Patti Smith among what Gordon Gano's older NYC-based siblings exposed him to, alongside the Velvet Underground, Lou Reed, Jonathan Richman and the B-52's.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "violent-femmes>ramones",
+          "from": "Violent Femmes",
+          "to": "Ramones",
+          "fromYear": 1981,
+          "toYear": 1974,
+          "citation": "UDiscover traces Gordon Gano's teenage discovery of bands like the Ramones and the Velvet Underground as formative to the band's sound.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "critic:alex-g",
+      "phase": "critic",
+      "speaker": "Alex G",
+      "links": [
+        {
+          "key": "alex-g>built-to-spill",
+          "from": "Alex G",
+          "to": "Built to Spill",
+          "fromYear": 2010,
+          "toYear": 1992,
+          "citation": "AllMusic's prose biography: \"Intimate, experimental-leaning lo-fi pop from a Pennsylvania songwriter/guitarist who takes influence from Elliott Smith and Built to Spill.\"",
+          "sourceTier": "critic",
+          "confidence": 0.6
+        },
+        {
+          "key": "alex-g>duster",
+          "from": "Alex G",
+          "to": "Duster",
+          "fromYear": 2010,
+          "toYear": 1996,
+          "citation": "The same AllMusic prose biography of Duster credits the band's patient, minimal approach as an influence on Alex G as well as Snail Mail.",
+          "sourceTier": "critic",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "critic:deerhunter",
+      "phase": "critic",
+      "speaker": "Deerhunter",
+      "links": [
+        {
+          "key": "deerhunter>stereolab",
+          "from": "Deerhunter",
+          "to": "Stereolab",
+          "fromYear": 2001,
+          "toYear": 1990,
+          "citation": "Ben Ratliff, \"A Stew of Rock and Pop Influences, Mixed Well and Served Slickly,\" The New York Times (9 Dec 2008), hearing the Breeders, Stereolab, krautrock and Sonic Youth's noise breakdowns in the live set -- the reviewer's reading, not the band's account.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        },
+        {
+          "key": "deerhunter>galaxie-500",
+          "from": "Deerhunter",
+          "to": "Galaxie 500",
+          "fromYear": 2001,
+          "toYear": 1987,
+          "citation": "AV Club: On Fire cast a wide shadow over Beach House, Deerhunter, Pains of Being Pure at Heart, Broken Social Scene.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:pinback",
+      "phase": "critic",
+      "speaker": "Pinback",
+      "links": [
+        {
+          "key": "pinback>modest-mouse",
+          "from": "Pinback",
+          "to": "Modest Mouse",
+          "fromYear": 1998,
+          "toYear": 1992,
+          "citation": "Pitchfork's October 1999 review of Pinback's self-titled debut, by Andrew Goldman, wrote that \"Pinback may be ready to join the ranks of emotionally confused super-songwriters alongside Modest Mouse, Sunny Day Real Estate, and the Sea and Cake.\"",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "pinback>sunny-day-real-estate",
+          "from": "Pinback",
+          "to": "Sunny Day Real Estate",
+          "fromYear": 1998,
+          "toYear": 1992,
+          "citation": "Pitchfork's October 1999 review, grouping Pinback with Sunny Day Real Estate, Modest Mouse and the Sea and Cake as fellow \"emotionally confused super-songwriters.\"",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:porter-robinson",
+      "phase": "critic",
+      "speaker": "Porter Robinson",
+      "links": [
+        {
+          "key": "porter-robinson>boards-of-canada",
+          "from": "Porter Robinson",
+          "to": "Boards of Canada",
+          "fromYear": 2010,
+          "toYear": 1986,
+          "citation": "Spin's Garrett Kamps, reviewing Worlds, \"identified melodic similarities with Boards of Canada.\"",
+          "sourceTier": "critic",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "id": "critic:sleater-kinney",
+      "phase": "critic",
+      "speaker": "Sleater-Kinney",
+      "links": [
+        {
+          "key": "sleater-kinney>x-ray-spex",
+          "from": "Sleater-Kinney",
+          "to": "X-Ray Spex",
+          "fromYear": 1994,
+          "toYear": 1976,
+          "citation": "A Salon review by Stephanie Zacharek traces threads in Sleater-Kinney's \"Ironclad\" back to Eddie Cochran and X-Ray Spex.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:the-shins",
+      "phase": "critic",
+      "speaker": "The Shins",
+      "links": [
+        {
+          "key": "the-shins>olivia-tremor-control",
+          "from": "The Shins",
+          "to": "Olivia Tremor Control",
+          "fromYear": 1996,
+          "toYear": 1992,
+          "citation": "Stereogum: OTC's experimentalism audible in bigger bands including Radiohead, the Flaming Lips, Stereolab and the Shins. (Collective.)",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        },
+        {
+          "key": "the-shins>neutral-milk-hotel",
+          "from": "The Shins",
+          "to": "Neutral Milk Hotel",
+          "fromYear": 1996,
+          "toYear": 1989,
+          "citation": "Grammy.com's \"Inside Elephant 6\" feature, describing the collective rather than this band alone: it \"has inspired acts like Arcade Fire, the Shins, and Tame Impala.\"",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "critic:the-strokes",
+      "phase": "critic",
+      "speaker": "The Strokes",
+      "links": [
+        {
+          "key": "the-strokes>guided-by-voices",
+          "from": "The Strokes",
+          "to": "Guided by Voices",
+          "fromYear": 1998,
+          "toYear": 1983,
+          "citation": "Grove Atlantic's publisher copy for the authorised GBV biography: P.J. Harvey, Radiohead, R.E.M., the Strokes and U2 have cited Pollard as an influence. Publisher marketing copy, not a primary interview.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "the-strokes>ramones",
+          "from": "The Strokes",
+          "to": "Ramones",
+          "fromYear": 1998,
+          "toYear": 1974,
+          "citation": "Spin described the Strokes as \"almost like the Ramones,\" and NME's \"Roots Of\" piece places the Ramones -- \"the ultimate gang, beautifully ugly, masters of melodic dissonance\" -- alongside the Velvet Underground and Talking Heads as the New York lineage the Strokes drew their sound and self-presentation from.",
+          "sourceTier": "critic",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "critic:yo-la-tengo",
+      "phase": "critic",
+      "speaker": "Yo La Tengo",
+      "links": [
+        {
+          "key": "yo-la-tengo>velvet-underground",
+          "from": "Yo La Tengo",
+          "to": "The Velvet Underground",
+          "fromYear": 1984,
+          "toYear": 1965,
+          "citation": "AllMusic's prose bio and NPR both describe the debt; no direct artist statement has surfaced.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "critic:beach-house",
+      "phase": "critic",
+      "speaker": "Beach House",
+      "links": [
+        {
+          "key": "beach-house>galaxie-500",
+          "from": "Beach House",
+          "to": "Galaxie 500",
+          "fromYear": 2004,
+          "toYear": 1987,
+          "citation": "AV Club: On Fire cast a wide shadow over Beach House, Deerhunter, Pains of Being Pure at Heart, Broken Social Scene.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:built-to-spill",
+      "phase": "critic",
+      "speaker": "Built to Spill",
+      "links": [
+        {
+          "key": "built-to-spill>pavement",
+          "from": "Built to Spill",
+          "to": "Pavement",
+          "fromYear": 1992,
+          "toYear": 1989,
+          "citation": "Tim Sendra's AllMusic biography, describing the band's sound as an intermixture of \"postmodern, Pavement-style pop\" and the \"loose, spacious jamming\" of Neil Young -- a stylistic comparison rather than a stated influence.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "critic:caribou",
+      "phase": "critic",
+      "speaker": "Caribou",
+      "links": [
+        {
+          "key": "caribou>neutral-milk-hotel",
+          "from": "Caribou",
+          "to": "Neutral Milk Hotel",
+          "fromYear": 2000,
+          "toYear": 1989,
+          "citation": "A record-shop reissue write-up: the album has been influencing bands including Arcade Fire, Caribou and even Franz Ferdinand.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:explosions-in-the-sky",
+      "phase": "critic",
+      "speaker": "Explosions in the Sky",
+      "links": [
+        {
+          "key": "explosions-in-the-sky>bark-psychosis",
+          "from": "Explosions in the Sky",
+          "to": "Bark Psychosis",
+          "fromYear": 1999,
+          "toYear": 1986,
+          "citation": "Spectrum Culture and Stereogum both name Bark Psychosis's \"Absent Friend\" as a blueprint for Explosions in the Sky's sound.",
+          "sourceTier": "critic",
+          "confidence": 0.55
+        }
+      ]
+    },
+    {
+      "id": "critic:gary-numan",
+      "phase": "critic",
+      "speaker": "Gary Numan",
+      "links": [
+        {
+          "key": "gary-numan>david-bowie",
+          "from": "Gary Numan",
+          "to": "David Bowie",
+          "fromYear": 1977,
+          "toYear": 1969,
+          "citation": "AllMusic bio: \"Chiefly influenced by Kraftwerk and David Bowie's Berlin-era collaborations with Brian Eno\"; Wikipedia notes Bowie/Eno's Low-era work informed Numan's 1981 album Dance.",
+          "sourceTier": "critic",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "critic:guided-by-voices",
+      "phase": "critic",
+      "speaker": "Guided by Voices",
+      "links": [
+        {
+          "key": "guided-by-voices>rem",
+          "from": "Guided by Voices",
+          "to": "R.E.M.",
+          "fromYear": 1983,
+          "toYear": 1980,
+          "citation": "Far Out: heavily influenced by contemporaries such as R.E.M.; Spin's 1995 album guide ties the post-lo-fi shift to touring with R.E.M.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "critic:interpol",
+      "phase": "critic",
+      "speaker": "Interpol",
+      "links": [
+        {
+          "key": "interpol>siouxsie-and-the-banshees",
+          "from": "Interpol",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 1997,
+          "toYear": 1976,
+          "citation": "Will Hodgkinson, \"Interpol: misery loves a comeback,\" The Times (9 Jul 2022), on songs \"recalling the post-punk iciness of Echo & the Bunnymen and Siouxsie and the Banshees\" -- a critic's comparison, not a claim the band makes.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        },
+        {
+          "key": "interpol>the-smiths",
+          "from": "Interpol",
+          "to": "The Smiths",
+          "fromYear": 1997,
+          "toYear": 1982,
+          "citation": "Rob Sheffield's Rolling Stone review of Turn On the Bright Lights (14 Aug 2002), drawing comparisons to Joy Division, Echo and the Bunnymen and the Smiths -- a critic's reading. Note the band has publicly denied the Joy Division comparison elsewhere.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "critic:jane-remover",
+      "phase": "critic",
+      "speaker": "Jane Remover",
+      "links": [
+        {
+          "key": "jane-remover>my-bloody-valentine",
+          "from": "Jane Remover",
+          "to": "My Bloody Valentine",
+          "fromYear": 2019,
+          "toYear": 1983,
+          "citation": "Pitchfork's review of Census Designated (Kieran Press-Reynolds) compared her shift toward \"a blend of shoegaze and bedroom pop\" directly to My Bloody Valentine and Slowdive.",
+          "sourceTier": "critic",
+          "confidence": 0.55
+        },
+        {
+          "key": "jane-remover>slowdive",
+          "from": "Jane Remover",
+          "to": "Slowdive",
+          "fromYear": 2019,
+          "toYear": 1989,
+          "citation": "Pitchfork's review of Census Designated (Kieran Press-Reynolds) compared her shift toward \"a blend of shoegaze and bedroom pop\" directly to My Bloody Valentine and Slowdive.",
+          "sourceTier": "critic",
+          "confidence": 0.55
+        },
+        {
+          "key": "jane-remover>yeule",
+          "from": "Jane Remover",
+          "to": "yeule",
+          "fromYear": 2019,
+          "toYear": 2012,
+          "citation": "Pitchfork's review of Census Designated (Kieran Press-Reynolds).",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "jane-remover>porter-robinson",
+          "from": "Jane Remover",
+          "to": "Porter Robinson",
+          "fromYear": 2019,
+          "toYear": 2010,
+          "citation": "Stereogum (Ian Cohen), introducing a Q&A on her debut Frailty: her songs are \"rooted just enough in familiar formats -- the saturated, EDM-adjacent ultrapop of Porter Robinson; SoundCloud rap's glitchy, bitcrushed production; the cleansing catharsis of emo.\"",
+          "sourceTier": "critic",
+          "confidence": 0.55
+        }
+      ]
+    },
+    {
+      "id": "critic:mj-lenderman",
+      "phase": "critic",
+      "speaker": "MJ Lenderman",
+      "links": [
+        {
+          "key": "mj-lenderman>neil-young",
+          "from": "MJ Lenderman",
+          "to": "Neil Young",
+          "fromYear": 2019,
+          "toYear": 1966,
+          "citation": "Premier Guitar's Kate Koenig writes that as a songwriter Lenderman \"draws influence from Neil Young, Jason Molina, Patterson Hood and Mike Cooley, and David Berman and Will Oldham\" -- the journalist's framing, not independently corroborated as a direct Lenderman quote for Young specifically.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "mj-lenderman>drive-by-truckers",
+          "from": "MJ Lenderman",
+          "to": "Drive-By Truckers",
+          "fromYear": 2019,
+          "toYear": 1996,
+          "citation": "Premier Guitar's Kate Koenig writes that as a songwriter Lenderman \"draws influence from Neil Young, Jason Molina, Patterson Hood and Mike Cooley, and David Berman and Will Oldham\" -- the journalist's framing, not independently corroborated as a direct Lenderman quote for Young specifically. Kate Koenig writes that as a songwriter he \"draws influence from Neil Young, Jason Molina, Patterson Hood and Mike Cooley (Drive-By Truckers), and David Berman and Will Oldham.\"",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:mount-eerie",
+      "phase": "critic",
+      "speaker": "The Microphones / Mount Eerie",
+      "links": [
+        {
+          "key": "mount-eerie>sebadoh",
+          "from": "The Microphones / Mount Eerie",
+          "to": "Sebadoh",
+          "fromYear": 1996,
+          "toYear": 1986,
+          "citation": "A music-directory retrospective asserts Sebadoh's lo-fi approach influenced Modest Mouse, Elliott Smith, the Microphones/Mount Eerie, and Car Seat Headrest.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:parquet-courts",
+      "phase": "critic",
+      "speaker": "Parquet Courts",
+      "links": [
+        {
+          "key": "parquet-courts>television",
+          "from": "Parquet Courts",
+          "to": "Television",
+          "fromYear": 2010,
+          "toYear": 1973,
+          "citation": "Grantland 2014 deconstructs the sound: the Velvets' urban grime, Television's spazzy solos, the Fall's rigid repetition, Pavement's ironic detachment, GBV's brevity, Sonic Youth's candy-coated noisiness.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        },
+        {
+          "key": "parquet-courts>sonic-youth",
+          "from": "Parquet Courts",
+          "to": "Sonic Youth",
+          "fromYear": 2010,
+          "toYear": 1981,
+          "citation": "Grantland 2014 deconstructs the sound: the Velvets' urban grime, Television's spazzy solos, the Fall's rigid repetition, Pavement's ironic detachment, GBV's brevity, Sonic Youth's candy-coated noisiness.",
+          "sourceTier": "critic",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "critic:red-house-painters",
+      "phase": "critic",
+      "speaker": "Red House Painters",
+      "links": [
+        {
+          "key": "red-house-painters>galaxie-500",
+          "from": "Red House Painters",
+          "to": "Galaxie 500",
+          "fromYear": 1988,
+          "toYear": 1987,
+          "citation": "AV Club: helped kick off slowcore, whose sound was defined by Low, RHP, Codeine, Bedhead.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "critic:women",
+      "phase": "critic",
+      "speaker": "Women",
+      "links": [
+        {
+          "key": "women>sonic-youth",
+          "from": "Women",
+          "to": "Sonic Youth",
+          "fromYear": 2007,
+          "toYear": 1981,
+          "citation": "Treble: Public Strain is \"more Sonic Youth or Wire, or perhaps a mutant offspring of The Zombies' gorgeous melodies and This Heat's menacing post-punk.\"",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "women>wire",
+          "from": "Women",
+          "to": "Wire",
+          "fromYear": 2007,
+          "toYear": 1976,
+          "citation": "Treble: Public Strain is \"more Sonic Youth or Wire, or perhaps a mutant offspring of The Zombies' gorgeous melodies and This Heat's menacing post-punk.\"",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "women>velvet-underground",
+          "from": "Women",
+          "to": "The Velvet Underground",
+          "fromYear": 2007,
+          "toYear": 1965,
+          "citation": "A radio-show writeup lists comparisons to Caribou, the Velvet Underground, Deerhoof and Abe Vigoda.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        },
+        {
+          "key": "women>caribou",
+          "from": "Women",
+          "to": "Caribou",
+          "fromYear": 2007,
+          "toYear": 2000,
+          "citation": "A radio-show writeup lists comparisons to Caribou, the Velvet Underground, Deerhoof and Abe Vigoda.",
+          "sourceTier": "critic",
+          "confidence": 0.5
+        }
+      ]
+    }
+  ]
+}

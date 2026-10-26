@@ -2,7 +2,7 @@
 //
 //   npx tsx scripts/source-pass/ledger.ts queue          build queue.json + roster.txt (once)
 //   npx tsx scripts/source-pass/ledger.ts next <name> <n> hand the next ~n links to a checker
-//   npx tsx scripts/source-pass/ledger.ts merge          fold checkers' results into the ledger
+//   npx tsx scripts/source-pass/ledger.ts merge [names…] fold checkers' results into the ledger (all, or just these)
 //   npx tsx scripts/source-pass/ledger.ts status         what's done, what's left
 //   npx tsx scripts/source-pass/ledger.ts check [--all]  re-open every recorded page, look for `found`
 //   npx tsx scripts/source-pass/ledger.ts read <url> [words…] [--raw]  open a page, print the paragraphs holding the words
@@ -165,14 +165,16 @@ function dedupe<T>(list: T[], key: (t: T) => string): T[] {
   return list.filter(t => { const k = key(t); if (seen.has(k)) return false; seen.add(k); return true; });
 }
 
-function merge() {
+function merge(only: string[] = []) {
   if (!existsSync(RESULTS)) return console.log('no results yet');
   const ledger = loadLedger();
   const candidates = readJson<Candidate[]>(CANDIDATES, []);
   const offMap = readJson<OffMap[]>(OFF_MAP, []);
   const ids = new Set(graphData.artists.map(a => a.id));
   mkdirSync(MERGED, { recursive: true });
-  for (const f of readdirSync(RESULTS).filter(f => f.endsWith('.json'))) {
+  // Named files only, when given: a checker still running isn't merged by
+  // accident (its partial file would land in the ledger unreviewed).
+  for (const f of readdirSync(RESULTS).filter(f => f.endsWith('.json') && (!only.length || only.includes(f) || only.includes(f.replace(/\.json$/, ''))))) {
     const r = readJson<Results>(resolve(RESULTS, f), null as unknown as Results);
     // A checker rewrites its file as it goes, so a file may be merged more
     // than once: its newer entries replace its own older ones.
@@ -464,14 +466,14 @@ const [cmd, ...args] = process.argv.slice(2);
 const run: Record<string, () => unknown> = {
   queue: buildQueue,
   next: () => nextBatch(args[0], Number(args[1]), args[2] as Phase | undefined),
-  merge,
+  merge: () => merge(args),
   status,
   check: () => check(args.includes('--all')),
   read: () => readPage(args[0], args.slice(1)),
   rescue: () => rescue(args[0]),
 };
 if (!run[cmd]) {
-  console.log('usage: ledger.ts queue | next <name> <links> [phase] | merge | status | check [--all] | read <url> [words…]');
+  console.log('usage: ledger.ts queue | next <name> <links> [phase] | merge [files…] | status | check [--all] | read <url> [words…]');
   process.exit(1);
 }
 Promise.resolve(run[cmd]()).catch(e => { console.error(e instanceof Error ? e.message : e); process.exit(1); });

@@ -1,0 +1,755 @@
+{
+ "name": "u1",
+ "made": "2026-10-26",
+ "groups": [
+  {
+   "id": "unsourceable:my-bloody-valentine",
+   "phase": "unsourceable",
+   "speaker": "My Bloody Valentine",
+   "links": [
+    {
+     "key": "my-bloody-valentine>cocteau-twins",
+     "from": "My Bloody Valentine",
+     "to": "Cocteau Twins",
+     "fromYear": 1983,
+     "toYear": 1979,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.8
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:the-cure",
+   "phase": "unsourceable",
+   "speaker": "The Cure",
+   "links": [
+    {
+     "key": "the-cure>velvet-underground",
+     "from": "The Cure",
+     "to": "The Velvet Underground",
+     "fromYear": 1978,
+     "toYear": 1965,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.55
+    },
+    {
+     "key": "the-cure>wire",
+     "from": "The Cure",
+     "to": "Wire",
+     "fromYear": 1978,
+     "toYear": 1976,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "the-cure>joy-division",
+     "from": "The Cure",
+     "to": "Joy Division",
+     "fromYear": 1978,
+     "toYear": 1976,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.45
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:siouxsie-and-the-banshees",
+   "phase": "unsourceable",
+   "speaker": "Siouxsie & The Banshees",
+   "links": [
+    {
+     "key": "siouxsie-and-the-banshees>kraftwerk",
+     "from": "Siouxsie & The Banshees",
+     "to": "Kraftwerk",
+     "fromYear": 1976,
+     "toYear": 1970,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.45
+    },
+    {
+     "key": "siouxsie-and-the-banshees>the-stooges",
+     "from": "Siouxsie & The Banshees",
+     "to": "The Stooges",
+     "fromYear": 1976,
+     "toYear": 1967,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.45
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:liz-phair",
+   "phase": "unsourceable",
+   "speaker": "Liz Phair",
+   "links": [
+    {
+     "key": "liz-phair>velvet-underground",
+     "from": "Liz Phair",
+     "to": "The Velvet Underground",
+     "fromYear": 1991,
+     "toYear": 1965,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "liz-phair>big-star",
+     "from": "Liz Phair",
+     "to": "Big Star",
+     "fromYear": 1991,
+     "toYear": 1971,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "liz-phair>sonic-youth",
+     "from": "Liz Phair",
+     "to": "Sonic Youth",
+     "fromYear": 1991,
+     "toYear": 1981,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:sonic-youth",
+   "phase": "unsourceable",
+   "speaker": "Sonic Youth",
+   "links": [
+    {
+     "key": "sonic-youth>television",
+     "from": "Sonic Youth",
+     "to": "Television",
+     "fromYear": 1981,
+     "toYear": 1973,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.6
+    },
+    {
+     "key": "sonic-youth>wire",
+     "from": "Sonic Youth",
+     "to": "Wire",
+     "fromYear": 1981,
+     "toYear": 1976,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.55
+    },
+    {
+     "key": "sonic-youth>the-stooges",
+     "from": "Sonic Youth",
+     "to": "The Stooges",
+     "fromYear": 1981,
+     "toYear": 1967,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.6
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:the-replacements",
+   "phase": "unsourceable",
+   "speaker": "The Replacements",
+   "links": [
+    {
+     "key": "the-replacements>velvet-underground",
+     "from": "The Replacements",
+     "to": "The Velvet Underground",
+     "fromYear": 1979,
+     "toYear": 1965,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.6
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:pavement",
+   "phase": "unsourceable",
+   "speaker": "Pavement",
+   "links": [
+    {
+     "key": "pavement>velvet-underground",
+     "from": "Pavement",
+     "to": "The Velvet Underground",
+     "fromYear": 1989,
+     "toYear": 1965,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:swans",
+   "phase": "unsourceable",
+   "speaker": "Swans",
+   "links": [
+    {
+     "key": "swans>velvet-underground",
+     "from": "Swans",
+     "to": "The Velvet Underground",
+     "fromYear": 1982,
+     "toYear": 1965,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:husker-du",
+   "phase": "unsourceable",
+   "speaker": "Hüsker Dü",
+   "links": [
+    {
+     "key": "husker-du>velvet-underground",
+     "from": "Hüsker Dü",
+     "to": "The Velvet Underground",
+     "fromYear": 1979,
+     "toYear": 1965,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.45
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:the-smiths",
+   "phase": "unsourceable",
+   "speaker": "The Smiths",
+   "links": [
+    {
+     "key": "the-smiths>david-bowie",
+     "from": "The Smiths",
+     "to": "David Bowie",
+     "fromYear": 1982,
+     "toYear": 1969,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.55
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:godspeed-you-black-emperor",
+   "phase": "unsourceable",
+   "speaker": "Godspeed You! Black Emperor",
+   "links": [
+    {
+     "key": "godspeed-you-black-emperor>velvet-underground",
+     "from": "Godspeed You! Black Emperor",
+     "to": "The Velvet Underground",
+     "fromYear": 1994,
+     "toYear": 1965,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "godspeed-you-black-emperor>glenn-branca",
+     "from": "Godspeed You! Black Emperor",
+     "to": "Glenn Branca",
+     "fromYear": 1994,
+     "toYear": 1977,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "godspeed-you-black-emperor>swans",
+     "from": "Godspeed You! Black Emperor",
+     "to": "Swans",
+     "fromYear": 1994,
+     "toYear": 1982,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "godspeed-you-black-emperor>tortoise",
+     "from": "Godspeed You! Black Emperor",
+     "to": "Tortoise",
+     "fromYear": 1994,
+     "toYear": 1990,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "godspeed-you-black-emperor>talk-talk",
+     "from": "Godspeed You! Black Emperor",
+     "to": "Talk Talk",
+     "fromYear": 1994,
+     "toYear": 1981,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "godspeed-you-black-emperor>my-bloody-valentine",
+     "from": "Godspeed You! Black Emperor",
+     "to": "My Bloody Valentine",
+     "fromYear": 1994,
+     "toYear": 1983,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "godspeed-you-black-emperor>slint",
+     "from": "Godspeed You! Black Emperor",
+     "to": "Slint",
+     "fromYear": 1994,
+     "toYear": 1986,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "godspeed-you-black-emperor>low",
+     "from": "Godspeed You! Black Emperor",
+     "to": "Low",
+     "fromYear": 1994,
+     "toYear": 1993,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "godspeed-you-black-emperor>the-cure",
+     "from": "Godspeed You! Black Emperor",
+     "to": "The Cure",
+     "fromYear": 1994,
+     "toYear": 1978,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:broadcast",
+   "phase": "unsourceable",
+   "speaker": "Broadcast",
+   "links": [
+    {
+     "key": "broadcast>velvet-underground",
+     "from": "Broadcast",
+     "to": "The Velvet Underground",
+     "fromYear": 1995,
+     "toYear": 1965,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.45
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:nick-cave-and-the-bad-seeds",
+   "phase": "unsourceable",
+   "speaker": "Nick Cave & The Bad Seeds",
+   "links": [
+    {
+     "key": "nick-cave-and-the-bad-seeds>velvet-underground",
+     "from": "Nick Cave & The Bad Seeds",
+     "to": "The Velvet Underground",
+     "fromYear": 1983,
+     "toYear": 1965,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:pixies",
+   "phase": "unsourceable",
+   "speaker": "Pixies",
+   "links": [
+    {
+     "key": "pixies>the-stooges",
+     "from": "Pixies",
+     "to": "The Stooges",
+     "fromYear": 1986,
+     "toYear": 1967,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.45
+    },
+    {
+     "key": "pixies>sonic-youth",
+     "from": "Pixies",
+     "to": "Sonic Youth",
+     "fromYear": 1986,
+     "toYear": 1981,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:mazzy-star",
+   "phase": "unsourceable",
+   "speaker": "Mazzy Star",
+   "links": [
+    {
+     "key": "mazzy-star>velvet-underground",
+     "from": "Mazzy Star",
+     "to": "The Velvet Underground",
+     "fromYear": 1988,
+     "toYear": 1965,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.75
+    },
+    {
+     "key": "mazzy-star>the-jesus-and-mary-chain",
+     "from": "Mazzy Star",
+     "to": "The Jesus and Mary Chain",
+     "fromYear": 1988,
+     "toYear": 1983,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:radiohead",
+   "phase": "unsourceable",
+   "speaker": "Radiohead",
+   "links": [
+    {
+     "key": "radiohead>my-bloody-valentine",
+     "from": "Radiohead",
+     "to": "My Bloody Valentine",
+     "fromYear": 1985,
+     "toYear": 1983,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.55
+    },
+    {
+     "key": "radiohead>nick-drake",
+     "from": "Radiohead",
+     "to": "Nick Drake",
+     "fromYear": 1985,
+     "toYear": 1968,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "radiohead>talk-talk",
+     "from": "Radiohead",
+     "to": "Talk Talk",
+     "fromYear": 1985,
+     "toYear": 1981,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:david-bowie",
+   "phase": "unsourceable",
+   "speaker": "David Bowie",
+   "links": [
+    {
+     "key": "david-bowie>joni-mitchell",
+     "from": "David Bowie",
+     "to": "Joni Mitchell",
+     "fromYear": 1969,
+     "toYear": 1964,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:weyes-blood",
+   "phase": "unsourceable",
+   "speaker": "Weyes Blood",
+   "links": [
+    {
+     "key": "weyes-blood>velvet-underground",
+     "from": "Weyes Blood",
+     "to": "The Velvet Underground",
+     "fromYear": 2006,
+     "toYear": 1965,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "weyes-blood>this-mortal-coil",
+     "from": "Weyes Blood",
+     "to": "This Mortal Coil",
+     "fromYear": 2006,
+     "toYear": 1983,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:spiritualized",
+   "phase": "unsourceable",
+   "speaker": "Spiritualized",
+   "links": [
+    {
+     "key": "spiritualized>velvet-underground",
+     "from": "Spiritualized",
+     "to": "The Velvet Underground",
+     "fromYear": 1990,
+     "toYear": 1965,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "spiritualized>the-jesus-and-mary-chain",
+     "from": "Spiritualized",
+     "to": "The Jesus and Mary Chain",
+     "fromYear": 1990,
+     "toYear": 1983,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:elliott-smith",
+   "phase": "unsourceable",
+   "speaker": "Elliott Smith",
+   "links": [
+    {
+     "key": "elliott-smith>bob-dylan",
+     "from": "Elliott Smith",
+     "to": "Bob Dylan",
+     "fromYear": 1994,
+     "toYear": 1961,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:fugazi",
+   "phase": "unsourceable",
+   "speaker": "Fugazi",
+   "links": [
+    {
+     "key": "fugazi>wire",
+     "from": "Fugazi",
+     "to": "Wire",
+     "fromYear": 1986,
+     "toYear": 1976,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.55
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:fiona-apple",
+   "phase": "unsourceable",
+   "speaker": "Fiona Apple",
+   "links": [
+    {
+     "key": "fiona-apple>neil-young",
+     "from": "Fiona Apple",
+     "to": "Neil Young",
+     "fromYear": 1996,
+     "toYear": 1966,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.45
+    },
+    {
+     "key": "fiona-apple>liz-phair",
+     "from": "Fiona Apple",
+     "to": "Liz Phair",
+     "fromYear": 1996,
+     "toYear": 1991,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.45
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:rem",
+   "phase": "unsourceable",
+   "speaker": "R.E.M.",
+   "links": [
+    {
+     "key": "rem>television",
+     "from": "R.E.M.",
+     "to": "Television",
+     "fromYear": 1980,
+     "toYear": 1973,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.55
+    },
+    {
+     "key": "rem>nick-drake",
+     "from": "R.E.M.",
+     "to": "Nick Drake",
+     "fromYear": 1980,
+     "toYear": 1968,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:big-thief",
+   "phase": "unsourceable",
+   "speaker": "Big Thief",
+   "links": [
+    {
+     "key": "big-thief>my-bloody-valentine",
+     "from": "Big Thief",
+     "to": "My Bloody Valentine",
+     "fromYear": 2015,
+     "toYear": 1983,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.45
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:the-sundays",
+   "phase": "unsourceable",
+   "speaker": "The Sundays",
+   "links": [
+    {
+     "key": "the-sundays>the-smiths",
+     "from": "The Sundays",
+     "to": "The Smiths",
+     "fromYear": 1987,
+     "toYear": 1982,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "the-sundays>cocteau-twins",
+     "from": "The Sundays",
+     "to": "Cocteau Twins",
+     "fromYear": 1987,
+     "toYear": 1979,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:snail-mail",
+   "phase": "unsourceable",
+   "speaker": "Snail Mail",
+   "links": [
+    {
+     "key": "snail-mail>elliott-smith",
+     "from": "Snail Mail",
+     "to": "Elliott Smith",
+     "fromYear": 2015,
+     "toYear": 1994,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "snail-mail>my-bloody-valentine",
+     "from": "Snail Mail",
+     "to": "My Bloody Valentine",
+     "fromYear": 2015,
+     "toYear": 1983,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "snail-mail>cat-power",
+     "from": "Snail Mail",
+     "to": "Cat Power",
+     "fromYear": 2015,
+     "toYear": 1992,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "unsourceable:sufjan-stevens",
+   "phase": "unsourceable",
+   "speaker": "Sufjan Stevens",
+   "links": [
+    {
+     "key": "sufjan-stevens>neil-young",
+     "from": "Sufjan Stevens",
+     "to": "Neil Young",
+     "fromYear": 2000,
+     "toYear": 1966,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "sufjan-stevens>elliott-smith",
+     "from": "Sufjan Stevens",
+     "to": "Elliott Smith",
+     "fromYear": 2000,
+     "toYear": 1994,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "sufjan-stevens>joni-mitchell",
+     "from": "Sufjan Stevens",
+     "to": "Joni Mitchell",
+     "fromYear": 2000,
+     "toYear": 1964,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    },
+    {
+     "key": "sufjan-stevens>leonard-cohen",
+     "from": "Sufjan Stevens",
+     "to": "Leonard Cohen",
+     "fromYear": 2000,
+     "toYear": 1967,
+     "citation": null,
+     "sourceTier": null,
+     "confidence": 0.5
+    }
+   ]
+  }
+ ]
+}

@@ -13,8 +13,8 @@ your batch.
 - Batch: `research/source-pass/bakers-dozen/judge-<n>.json`. Each pick has
   `speaker` (the map's id for the artist talking), `target` (the map's id for
   the picked artist, or null when they're not on the map), `artist`, `kind`
-  (`new` = no link on the map yet, `existing` = the map already has this link,
-  `off-map`), `ledger` (for an existing link: how the source pass left it;
+  (`new` = no link on the map yet, `existing` = the map already has this link;
+  picks of artists off the map aren't in your batch), `ledger` (for an existing link: how the source pass left it;
   `not-found`/`decide`/null are the ones that most need a source), `url` (the
   pick's own slide), `heading` and `text` (the speaker's words, as printed).
 - Write `research/source-pass/bakers-dozen/judged-<n>.json`, rewriting it as
@@ -76,10 +76,6 @@ For every pick with `target` (on the map), one entry:
 - `favourite` entries need only `speaker`, `target`, `artist`, `kind`, `url`,
   `verdict`.
 
-For `off-map` picks, write an entry **only** when the verdict is
-`influence` (with `found`, no citation): they're tallied to find who the
-artists themselves point to. Skip off-map favourites.
-
 ## Results file
 
 ```json
@@ -87,5 +83,5 @@ artists themselves point to. Skip off-map favourites.
 ```
 
 Report back briefly: how many picks you judged, how many `influence` by kind
-(new / existing / off-map), any denials, and anything odd (garbled text,
+(new / existing), any denials, and anything odd (garbled text,
 picks that look misattributed).

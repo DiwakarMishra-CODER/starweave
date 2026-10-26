@@ -1,0 +1,100 @@
+{
+ "agent": "retry6",
+ "searches": 12,
+ "toolStatus": "No page from PopMatters, AV Club, Music Musings, AllMusic or Hypebeast came up in any result, so I couldn't open them. Without a known URL I also couldn't build Wayback links. Bandsintown's Walkmen bio repeats the AllMusic-style influences list, but it is a copied blurb, so I didn't use it. The 'found' strings are short exact substrings (under 15 words), not whole sentences, because of my quoting limit. They should still match the page text exactly.",
+ "entries": {
+  "beck>nick-drake": {
+   "url": "https://diffuser.fm/artists-that-owe-nick-drake-a-round/",
+   "found": "Beck takes the Nick Drake template and runs with it.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "critic",
+   "citation": "Will Levith in Diffuser.fm (2013), in a list of Nick Drake's \"stylistic disciples\": on Mutations and Sea Change Beck \"takes the Nick Drake template and runs with it.\"",
+   "note": "The original biography sentence wasn't found. The Wikipedia Nick Drake page I opened has no Beck line, and the mirrors that mention Beck have no footnote. The Diffuser piece is a critic arguing Beck drew on Drake. It is not Beck's own words. I found no first-person Beck quote on Drake in this retry."
+  },
+  "bikini-kill>siouxsie-and-the-banshees": {
+   "verdict": "not-found",
+   "note": "Tried this time: a search for Hanna and Vail naming Siouxsie, X-Ray Spex or the Slits, and a search for 'Bikini Kill Kathleen Hanna Siouxsie Sioux influence'. I opened the Uncut Punk Singer review, which names X-Ray Spex but not Siouxsie. I also read two Far Out Magazine pieces. One has Hanna saying Bikini Kill loved the Slits, Raincoats and ESG. The other only puts Hanna 'alongside' Siouxsie as a pioneer, which is not influence. The PopMatters page was never located. Propose remove unless a Bikini Kill member's own words on Siouxsie turn up.",
+   "checked": "2026-10-26"
+  },
+  "bikini-kill>x-ray-spex": {
+   "url": "https://uncut.co.uk/?p=661",
+   "found": "by Gloria Steinem and Jenny Holzer as The Runaways, X-Ray Spex and Fugazi",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "critic",
+   "citation": "Sharon O'Connell, reviewing the film The Punk Singer in Uncut, describes Bikini Kill as shaped by The Runaways, X-Ray Spex and Fugazi, as well as Gloria Steinem and Jenny Holzer.",
+   "note": "The PopMatters source was not found. The full Uncut sentence begins 'Shaped as much by', just before my excerpt. The page text shows no year, so I left it out of the citation. I found no first-person Bikini Kill statement naming X-Ray Spex. Far Out has Hanna naming the Slits, Raincoats and ESG instead, which is an off-map lead."
+  },
+  "broken-social-scene>galaxie-500": {
+   "verdict": "not-found",
+   "note": "Tried this time: a search for Drew or Canning naming Galaxie 500, and a search for 'Galaxie 500' with 'Broken Social Scene', On Fire and the AV Club. The results were Wikipedia Galaxie 500, TV Tropes, Encyclopedia.com and other pages. None mentions Broken Social Scene as a Galaxie 500 follower. The AV Club page was never surfaced. A 'cast a shadow over' sentence would be a resemblance claim at best. Propose remove.",
+   "checked": "2026-10-26"
+  },
+  "descendents>dead-kennedys": {
+   "verdict": "not-found",
+   "note": "Tried this time: one search for Aukerman or Stevenson naming Dead Kennedys. The Consequence interview only names Dead Kennedys as a peer band with more serious politics, which is not influence. The Patch and Magnet pieces have no Dead Kennedys mention. The Cleveland Scene piece has Stevenson crediting some influence on them as young kids, but the band's name is cut off in the text I could see, so I didn't claim it. Propose remove unless an AllMusic prose sentence is produced.",
+   "checked": "2026-10-26"
+  },
+  "pulp>david-bowie": {
+   "url": "https://www.goodreads.com/author/show/491455.Mark_Mordue/blog?page=4",
+   "found": "Pulp's major influences: Roxy Music, The Walker Brothers, David Bowie, Leonard Cohen",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "reported",
+   "citation": "Mark Mordue, profiling Jarvis Cocker in the Sydney Morning Herald Metro (18 September 1998), names David Bowie among Pulp's major influences.",
+   "note": "This is a Goodreads repost of Mordue's SMH piece, reprinted at markmordue.com. The original SMH page may be better if you can reach it. It is the journalist's own statement with no Cocker quote on Bowie, hence 'reported'. The Big Issue Cocker piece (2020) only mentions Bowie at Radio City as a source of early dreams, which I read as not clear influence, so I didn't use it."
+  },
+  "spiritualized>talk-talk": {
+   "verdict": "not-found",
+   "note": "Tried this time: one search for Jason Pierce or J Spaceman on Talk Talk and Spirit of Eden. The results were Pierce interviews (The Quietus, Far Out, Stereogum, Uncut, Hot Press, Boulder Weekly and others) naming Iggy Pop, the Stooges, Brian Wilson and Gil Evans, but not Talk Talk. The Music Musings page was never found. No Pierce statement on Talk Talk turned up.",
+   "checked": "2026-10-26"
+  },
+  "the-walkmen>bjork": {
+   "verdict": "not-found",
+   "note": "Tried this time: searches for Walkmen members naming Bjork or New Order. The only list naming Bjork is a copied Bandsintown bio blurb, which the rules exclude. I couldn't get the AllMusic biography URL from any result, so I couldn't try its Wayback copy. If you supply the AllMusic URL I can check it. No first-person Walkmen quote on Bjork found.",
+   "checked": "2026-10-26"
+  },
+  "the-walkmen>joy-division": {
+   "url": "https://nowtoronto.com/music/walkmen-on-fire/",
+   "found": "I was listening to Joy Division, Bruce Springsteen and a lot of Royal Trux",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "first-person",
+   "citation": "Hamilton Leithauser to NOW Magazine (13 June 2002): on the Walkmen's debut album, he was listening to Joy Division, Bruce Springsteen and a lot of Royal Trux around the time of the recording.",
+   "note": "This replaces the AllMusic bio citation, which was never opened. The quote is first-person fandom during the making of the record, but it is phrased as 'listening to around the time of the recording', so it is borderline. Tim Perlich separately writes that the band prefer the dark tension of later Joy Division, which is a critic's comparison."
+  },
+  "the-walkmen>new-order": {
+   "verdict": "not-found",
+   "note": "Tried this time: the same two searches as for Joy Division and Bjork. Nothing from a Walkmen member or an outlet article names New Order. The only list naming it is the copied Bandsintown bio blurb. The AllMusic URL was not obtainable from results. Propose remove unless AllMusic prose is produced.",
+   "checked": "2026-10-26"
+  },
+  "turnstile>black-flag": {
+   "verdict": "not-found",
+   "note": "Tried this time: one search for Brendan Yates on Black Flag. I read Rolling Stone AU, The Fader (2018), Grammy.com, the Line of Best Fit, AOL and the Antimatter interview. None has Yates or the band naming Black Flag as an influence. The Line of Best Fit piece only says Turnstile got more comparisons to 311 and Red Hot Chili Peppers than to Black Flag or Bad Brains. The Hypebeast page was never located.",
+   "checked": "2026-10-26"
+  }
+ },
+ "candidates": [],
+ "offMap": [
+  {
+   "name": "Bruce Springsteen",
+   "namedBy": "the-walkmen",
+   "sentence": "I was listening to Joy Division, Bruce Springsteen and a lot of Royal Trux",
+   "url": "https://nowtoronto.com/music/walkmen-on-fire/"
+  },
+  {
+   "name": "Royal Trux",
+   "namedBy": "the-walkmen",
+   "sentence": "I was listening to Joy Division, Bruce Springsteen and a lot of Royal Trux",
+   "url": "https://nowtoronto.com/music/walkmen-on-fire/"
+  },
+  {
+   "name": "The Slits",
+   "namedBy": "bikini-kill",
+   "sentence": "Bikini Kill really loved bands like The Slits and the Raincoats and ESG.",
+   "url": "https://faroutmagazine.co.uk/kathleen-hanna-favourite-song-by-the-slits/"
+  }
+ ],
+ "finished": true
+}

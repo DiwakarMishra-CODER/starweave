@@ -1,0 +1,441 @@
+{
+  "agent": "c20",
+  "searches": 15,
+  "toolStatus": "WebSearch fine but low yield; r.jina.ai read worked; WSJ body paywalled (archive copy has subhead only); forbes.com direct fails, archive copy opens; exclaim.ca article pages not readable",
+  "entries": {
+    "kero-kero-bonito>my-bloody-valentine": {
+      "checked": "2026-10-26",
+      "url": "https://i-d.co/article/kero-kero-bonito-time-n-place-interview/",
+      "found": "When we were growing up, the sound of the suburbs was guitar music — My Bloody Valentine, Late Of The Pier, CSS. When we were playing in our little garage band, that was the music we were trying to copy.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Gus Lobban to i-D (2018), on Time 'n' Place: \"When we were growing up, the sound of the suburbs was guitar music — My Bloody Valentine, Late Of The Pier, CSS. When we were playing in our little garage band, that was the music we were trying to copy.\""
+    },
+    "kero-kero-bonito>sweet-trip": {
+      "checked": "2026-10-26",
+      "url": "https://www.dailycal.org/2018/11/01/kero-kero-bonito-talks-pop-boring-pop-and-linkin-park/",
+      "found": "The band’s new influences are varied: Lobban credits acts such as Judy and Mary, Sweet Trip and Citrus.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "The Daily Californian (2018), on Time 'n' Place: \"The band’s new influences are varied: Lobban credits acts such as Judy and Mary, Sweet Trip and Citrus.\""
+    },
+    "kero-kero-bonito>lush": {
+      "checked": "2026-10-26",
+      "url": "https://www.dailycal.org/2018/11/01/kero-kero-bonito-talks-pop-boring-pop-and-linkin-park/",
+      "found": "Scottish duo Strawberry Switchblade and English rockers Lush make the cut, too.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "The Daily Californian (2018), on the band's new sound: \"The band’s new influences are varied: Lobban credits acts such as Judy and Mary, Sweet Trip and Citrus. Scottish duo Strawberry Switchblade and English rockers Lush make the cut, too.\""
+    },
+    "kero-kero-bonito>caroline-polachek": {
+      "checked": "2026-10-26",
+      "url": "https://www.polyvinylrecords.com/blogs/news/kero-kero-bonito-announce-civilisation-ii-ep-with-the-princess-and-the-clock",
+      "found": "inspired by the likes of early ambassadors of art-pop such as Kate Bush , David Byrne , Bjork and Ryuichi Sakamoto , modern peers Grimes and Caroline Polachek , and trumpeter Jon Hassell",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Polyvinyl's announcement of the Civilisation II EP says its three tracks were \"inspired by the likes of early ambassadors of art-pop such as Kate Bush , David Byrne , Bjork and Ryuichi Sakamoto , modern peers Grimes and Caroline Polachek , and trumpeter Jon Hassell\".",
+      "note": "label press release; Northern Transmissions repeats it"
+    },
+    "kero-kero-bonito>bjork": {
+      "checked": "2026-10-26",
+      "url": "https://www.polyvinylrecords.com/blogs/news/kero-kero-bonito-announce-civilisation-ii-ep-with-the-princess-and-the-clock",
+      "found": "inspired by the likes of early ambassadors of art-pop such as Kate Bush , David Byrne , Bjork and Ryuichi Sakamoto , modern peers Grimes and Caroline Polachek , and trumpeter Jon Hassell",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Polyvinyl's announcement of the Civilisation II EP says its three tracks were \"inspired by the likes of early ambassadors of art-pop such as Kate Bush , David Byrne , Bjork and Ryuichi Sakamoto , modern peers Grimes and Caroline Polachek , and trumpeter Jon Hassell\"."
+    },
+    "kero-kero-bonito>grimes": {
+      "checked": "2026-10-26",
+      "url": "https://www.polyvinylrecords.com/blogs/news/kero-kero-bonito-announce-civilisation-ii-ep-with-the-princess-and-the-clock",
+      "found": "inspired by the likes of early ambassadors of art-pop such as Kate Bush , David Byrne , Bjork and Ryuichi Sakamoto , modern peers Grimes and Caroline Polachek , and trumpeter Jon Hassell",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Polyvinyl's announcement of the Civilisation II EP says its three tracks were \"inspired by the likes of early ambassadors of art-pop such as Kate Bush , David Byrne , Bjork and Ryuichi Sakamoto , modern peers Grimes and Caroline Polachek , and trumpeter Jon Hassell\"."
+    },
+    "pinback>minutemen": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "url": "https://en.wikipedia.org/wiki/Minutemen_(band)",
+      "found": "Sublime also sampled George Hurley's drum intro from \"It's Expected I'm Gone\" for their \"Get Out! (remix)\" on their posthumous release Second Hand Smoke, as did San Diego–based indie rockers Pinback",
+      "note": "The only claim is a sampling of Hurley's drum intro, carrying a Citation needed tag (since 2011) and no source; sampling a drum intro is not a stated influence. Propose remove."
+    },
+    "portishead>joy-division": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "url": "https://www.theguardian.com/music/2008/apr/10/popandrock.portishead",
+      "found": "With more guitars and drums than before, this is a rockier Portishead, albeit one haunted by the angry post-punk of Joy Division and Siouxsie and the Banshees.",
+      "note": "Verbatim, Dave Simpson, Guardian live review of Portishead at Manchester (Apr 2008). It describes how the new sound resembles those bands; it does not say they drew on them. A comparison, so propose remove (or keep as critic only if the owner reads 'haunted by' as influence)."
+    },
+    "portishead>siouxsie-and-the-banshees": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "url": "https://www.theguardian.com/music/2008/apr/10/popandrock.portishead",
+      "found": "With more guitars and drums than before, this is a rockier Portishead, albeit one haunted by the angry post-punk of Joy Division and Siouxsie and the Banshees.",
+      "note": "Same Guardian live review (Apr 2008): a resemblance, not a stated influence. Propose remove, or critic if the owner accepts 'haunted by'."
+    },
+    "yeah-yeah-yeahs>sonic-youth": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Wikipedia's 'Their inspirations include...' list (Sonic Youth, Birthday Party, Siouxsie, etc.) is footnoted to Ethan Brown's NY Magazine 'Oh, yeah?' (nymag.com/nymetro/arts/music/features/music2002/n_7749/); that page opened and holds no Sonic Youth, Zorn, Ramones or Birthday Party. The list has no source of its own."
+    },
+    "yeah-yeah-yeahs>the-birthday-party": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Same: Wikipedia's inspirations list, footnoted to the NY Magazine 'Oh, yeah?' piece, which opened and does not name the Birthday Party. No page carries the claim."
+    },
+    "at-the-drive-in>fugazi": {
+      "checked": "2026-10-26",
+      "verdict": "print",
+      "url": "https://en.wikipedia.org/wiki/At_the_Drive-In",
+      "found": "Some of the group's key influences were Indian Summer, Swing Kids, Fugazi, Sunny Day Real Estate (referred to by Ward as \"Fugazi beyond Fugazi\"), Bad Brains, and the Gravity Records-led post-hardcore sound of the 1990s that featured acts such as Antioch Arrow and Heroin.",
+      "note": "Wikipedia's footnote is Eric Grubbs, POST: A Look at the Influence of Post-Hardcore 1985-2007 (iUniverse, 2008), p. 269. Print: Eric Grubbs, POST: A Look at the Influence of Post-Hardcore 1985-2007, 2008, p. 269. The Wikipedia footnote is a book, not the dead link the old citation says.",
+      "print": "Eric Grubbs, POST: A Look at the Influence of Post-Hardcore 1985-2007 (iUniverse), 2008, p. 269"
+    },
+    "at-the-drive-in>bad-brains": {
+      "checked": "2026-10-26",
+      "verdict": "print",
+      "url": "https://en.wikipedia.org/wiki/At_the_Drive-In",
+      "found": "Some of the group's key influences were Indian Summer, Swing Kids, Fugazi, Sunny Day Real Estate (referred to by Ward as \"Fugazi beyond Fugazi\"), Bad Brains, and the Gravity Records-led post-hardcore sound of the 1990s that featured acts such as Antioch Arrow and Heroin.",
+      "note": "Print: Eric Grubbs, POST: A Look at the Influence of Post-Hardcore 1985-2007, 2008, p. 269 (Wikipedia footnote). The 'name partly derives from Bad Brains' At the Movies' part of the old citation was not checked here.",
+      "print": "Eric Grubbs, POST: A Look at the Influence of Post-Hardcore 1985-2007 (iUniverse), 2008, p. 269"
+    },
+    "gary-numan>can": {
+      "checked": "2026-10-26",
+      "verdict": "print",
+      "url": "https://en.wikipedia.org/wiki/Can_(band)",
+      "found": "In the 1980s, Can were referenced by British new wave acts such as Pete Shelley, Gary Numan, Ultravox, The Jesus and Mary Chain and Primal Scream.",
+      "note": "Wikipedia footnote: Rob Young & Irmin Schmidt, All Gates Open: The Story of Can (2018), pp. 86-87. Print: Young & Schmidt, All Gates Open, 2018, pp. 86-87. 'Referenced by' is thin for influence; owner may prefer to drop.",
+      "print": "Rob Young and Irmin Schmidt, All Gates Open: The Story of Can, 2018, pp. 86-87"
+    },
+    "gary-numan>brian-eno": {
+      "checked": "2026-10-26",
+      "verdict": "print",
+      "url": "https://en.wikipedia.org/wiki/Dance_(Gary_Numan_album)",
+      "found": "Influenced by Brian Eno, Kraftwerk, Lou Reed and Japan, Numan hired Japan's bassist Mick Karn to play on the album.",
+      "note": "Wikipedia footnote: Steve Malins, liner notes to Gary Numan, Dance (Beggars Banquet, 1999 CD reissue). Print: Steve Malins, Gary Numan: Dance CD booklet liner notes, Beggars Banquet, 1999. The Gary Numan article gives the same source for Bowie's Berlin-era work with Eno informing Dance.",
+      "print": "Steve Malins, liner notes to Gary Numan, Dance (Beggars Banquet CD reissue), 1999"
+    },
+    "interpol>fugazi": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://web.archive.org/web/2016/https://www.wsj.com/articles/interpols-dan-kessler-on-five-electrifying-albums-1412287964",
+      "found": "From Fugazi to PJ Harvey, the albums that helped give the guitarist an edge",
+      "citation": "The Wall Street Journal (2014), Marc Myers's piece on Interpol guitarist Daniel Kessler's five formative albums, runs under the subhead: \"From Fugazi to PJ Harvey, the albums that helped give the guitarist an edge\".",
+      "note": "WSJ body is paywalled; only the subhead reads from the Internet Archive copy (2016). The page names Fugazi among the albums that shaped Kessler's playing; Kessler's own words on it are not visible. Wikipedia's Fugazi page cites this article for 'Daniel Kessler has also cited the band as an influence on his guitar-playing'. Owner may open the WSJ page for his Fugazi paragraph."
+    },
+    "lucinda-williams>neil-young": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "url": "https://wfuv.org/content/lucinda-williams-bob-dylan",
+      "found": "Williams studied his \"use of biblical stories, biblical references\" and says that she was \"influenced a lot by some of his songs where he does that.\"",
+      "note": "The WFUV (Album ReCue, 2021) piece is entirely about Bob Dylan's Highway 61 Revisited; Neil Young does not appear on it. The citation's Rolling Stone (2018) 'I got out my Bob Dylan and Neil Young albums' line and the affidavit about Everybody Knows This Is Nowhere were not found (one search, no page). Suggest the owner supply or the link wait for a Neil Young source; the WFUV page supports lucinda-williams>bob-dylan if that link exists."
+    },
+    "the-cranberries>the-smiths": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://www.theguardian.com/music/2018/sep/13/she-was-on-a-roll-the-cranberries-on-the-last-days-of-dolores-oriordan",
+      "found": "While the four of them shared a love for the Smiths and the Cure, O’Riordan’s vocal style stood alone",
+      "citation": "The Guardian (2018), on the Cranberries: \"While the four of them shared a love for the Smiths and the Cure, O’Riordan’s vocal style stood alone\"."
+    },
+    "the-cranberries>the-cure": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://www.theguardian.com/music/2018/sep/13/she-was-on-a-roll-the-cranberries-on-the-last-days-of-dolores-oriordan",
+      "found": "While the four of them shared a love for the Smiths and the Cure, O’Riordan’s vocal style stood alone",
+      "citation": "The Guardian (2018), on the Cranberries: \"While the four of them shared a love for the Smiths and the Cure, O’Riordan’s vocal style stood alone\"."
+    },
+    "the-cranberries>rem": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "url": "https://www.pastemagazine.com/articles/2017/04/the-cranberries.html",
+      "found": "We kind of grew up listening to R.E.M. and you’re standing in the hallway in the hotel where we shot the “Linger” video just chatting away.",
+      "citation": "Mike Hogan of the Cranberries to Paste (2017): \"We kind of grew up listening to R.E.M. and you’re standing in the hallway in the hotel where we shot the \"Linger\" video just chatting away.\"",
+      "note": "Speaker label on the page is Hogan (bassist). Wikipedia cites this page for R.E.M. among O'Riordan's primary influences."
+    },
+    "the-cranberries>depeche-mode": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://www.npr.org/2018/01/16/578247252/dolores-oriordan-cranberries-lead-singer-dies-at-46",
+      "found": "She grew up on a healthy dose of The Smiths, The Cure, Depeche Mode and joined The Cranberries when she was 18.",
+      "citation": "NPR (2018), on Dolores O'Riordan: \"She grew up on a healthy dose of The Smiths, The Cure, Depeche Mode and joined The Cranberries when she was 18.\""
+    },
+    "the-cranberries>siouxsie-and-the-banshees": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Wikipedia's Dolores O'Riordan article puts Siouxsie and the Banshees and New Order in a sentence footnoted to Steve Baltin, Forbes (15 Jan 2018), a 1999 interview. Opened the Internet Archive copy (2026) of the Forbes page: no Siouxsie, no 'yodel', no O'Connor. The yodel line is not on the page. No other page found."
+    },
+    "sunny-day-real-estate>fugazi": {
+      "checked": "2026-10-26",
+      "verdict": "print",
+      "note": "Print only: Eric Grubbs, POST: A Look at the Influence of Post-Hardcore 1985-2007 (iUniverse, 2008), p. 72, as in the old citation; no online text found and the book was not searched online.",
+      "print": "Eric Grubbs, POST: A Look at the Influence of Post-Hardcore 1985-2007 (iUniverse), 2008, p. 72"
+    },
+    "sunny-day-real-estate>nomeansno": {
+      "checked": "2026-10-26",
+      "verdict": "print",
+      "url": "https://en.wikipedia.org/wiki/Sunny_Day_Real_Estate",
+      "note": "Print only: Eric Grubbs, POST: A Look at the Influence of Post-Hardcore 1985-2007 (iUniverse, 2008), p. 72, as in the old citation; not searched online.",
+      "print": "Eric Grubbs, POST: A Look at the Influence of Post-Hardcore 1985-2007 (iUniverse), 2008, p. 72"
+    },
+    "the-sound>patti-smith": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://www.toppermost.co.uk/sound-the/",
+      "found": "These influences included those artists mentioned earlier like Pop and Bowie, but also extended to more contemporary songwriters like Patti Smith and German bands like Can and Kraftwerk.",
+      "citation": "Toppermost's profile of the Sound says of Adrian Borland's early writing: \"These influences included those artists mentioned earlier like Pop and Bowie, but also extended to more contemporary songwriters like Patti Smith and German bands like Can and Kraftwerk.\""
+    },
+    "the-sound>can": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://www.toppermost.co.uk/sound-the/",
+      "found": "These influences included those artists mentioned earlier like Pop and Bowie, but also extended to more contemporary songwriters like Patti Smith and German bands like Can and Kraftwerk.",
+      "citation": "Toppermost's profile of the Sound says of Adrian Borland's early writing: \"These influences included those artists mentioned earlier like Pop and Bowie, but also extended to more contemporary songwriters like Patti Smith and German bands like Can and Kraftwerk.\""
+    },
+    "the-sound>kraftwerk": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://www.toppermost.co.uk/sound-the/",
+      "found": "These influences included those artists mentioned earlier like Pop and Bowie, but also extended to more contemporary songwriters like Patti Smith and German bands like Can and Kraftwerk.",
+      "citation": "Toppermost's profile of the Sound says of Adrian Borland's early writing: \"These influences included those artists mentioned earlier like Pop and Bowie, but also extended to more contemporary songwriters like Patti Smith and German bands like Can and Kraftwerk.\""
+    },
+    "the-sound>joy-division": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://www.toppermost.co.uk/sound-the/",
+      "found": "Silent Air is a tribute to Ian Curtis of Joy Division, who had died not long before the album was made.",
+      "citation": "Toppermost's profile of the Sound: \"Silent Air is a tribute to Ian Curtis of Joy Division, who had died not long before the album was made. It is one of Borland’s most affecting and atmospheric songs and is a fitting tribute both to Curtis himself and to his band, which Adrian always admitted had an important influence on his own work.\""
+    },
+    "the-sound>david-bowie": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://www.toppermost.co.uk/sound-the/",
+      "found": "Reflecting his ambitions for the group, he had put two of his musical heroes, Iggy Pop and David Bowie, on the guest list for that concert.",
+      "citation": "Toppermost's profile of the Sound, on Adrian Borland: \"he had put two of his musical heroes, Iggy Pop and David Bowie, on the guest list for that concert.\""
+    },
+    "belle-and-sebastian>cocteau-twins": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://www.westword.com/music/belle-and-sebastians-stuart-murdoch-on-his-unusual-creative-development-6792595",
+      "found": "He chose instead to listen mostly to music of the ’60s and ’70s and only occasionally to more contemporary groups like Felt, Cocteau Twins and the Sundays.",
+      "citation": "Denver Westword, on Stuart Murdoch's years of chronic fatigue: \"He chose instead to listen mostly to music of the ’60s and ’70s and only occasionally to more contemporary groups like Felt, Cocteau Twins and the Sundays.\"",
+      "note": "Listening during the illness, before Belle and Sebastian formed; 'only occasionally' makes it a light fandom claim. Owner may prefer to drop."
+    },
+    "belle-and-sebastian>the-sundays": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://www.westword.com/music/belle-and-sebastians-stuart-murdoch-on-his-unusual-creative-development-6792595",
+      "found": "He chose instead to listen mostly to music of the ’60s and ’70s and only occasionally to more contemporary groups like Felt, Cocteau Twins and the Sundays.",
+      "citation": "Denver Westword, on Stuart Murdoch's years of chronic fatigue: \"He chose instead to listen mostly to music of the ’60s and ’70s and only occasionally to more contemporary groups like Felt, Cocteau Twins and the Sundays.\"",
+      "note": "Light fandom claim ('only occasionally')."
+    },
+    "the-postal-service>the-human-league": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "url": "https://www.theringer.com/2023/09/05/music/postal-service-give-up-20th-anniversary-tour-history",
+      "found": "We were in the right place at the right time to resurrect the craftsmanship of that early ’80s electronic music via Orchestral Manoeuvres in the Dark, Depeche Mode, or the Human League.",
+      "citation": "Ben Gibbard to The Ringer (2023), on Give Up: \"We were in the right place at the right time to resurrect the craftsmanship of that early ’80s electronic music via Orchestral Manoeuvres in the Dark, Depeche Mode, or the Human League.\"",
+      "note": "Wikipedia's Postal Service article cites this Ringer piece for 'influenced by OMD, Depeche Mode and the Human League'. The 'Nothing Better ... Don't You Want Me' line was not found on any page opened."
+    },
+    "chk-chk-chk>depeche-mode": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "url": "https://www.stereogum.com/1345401/turntable-interview/interviews/",
+      "found": "I want to always be as excited about new music as I was when depeche mode's albums would come out.",
+      "citation": "!!! to Stereogum's Turntable Interview, asked whether Depeche Mode and OMD influenced them: \"things creep in here and there... some old depeche mode idea from a song u haven't listened to in years will creep in there... I want to always be as excited about new music as I was when depeche mode's albums would come out.\"",
+      "note": "Respondent is labelled '!!!' on the page (Wikipedia says Nic Offer, 2013)."
+    },
+    "chk-chk-chk>omd": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "url": "https://www.stereogum.com/1345401/turntable-interview/interviews/",
+      "found": "!!! : Mine was Depeche Mode with OMD.",
+      "note": "On the Stereogum Turntable page OMD appears only as half of the respondent's first concert (Depeche Mode with OMD); the answer to 'Think they influenced you?' talks only about Depeche Mode. Wikipedia's 'cited OMD as influences' rests on this. Propose remove, or keep at reported if the owner counts it."
+    },
+    "tom-waits>bob-dylan": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://faroutmagazine.co.uk/write-a-song-like-tom-waits/",
+      "found": "This lead to a deep love for Bob Dylan and other counter culture visionaries, whose songs he would cover as he supported the likes of Tim Buckley on the local coffeehouse circuit.",
+      "citation": "Far Out Magazine on Tom Waits's early years: \"This lead to a deep love for Bob Dylan and other counter culture visionaries, whose songs he would cover as he supported the likes of Tim Buckley on the local coffeehouse circuit.\"",
+      "note": "The 'transcriptions pinned to his bedroom walls' detail is not on this page. Wikipedia's 'Inspired by the work of Bob Dylan' cites this Far Out piece and a San Diego Union-Tribune listing."
+    },
+    "the-stone-roses>the-clash": {
+      "checked": "2026-10-26",
+      "verdict": "print",
+      "url": "https://en.wikipedia.org/wiki/The_Stone_Roses",
+      "found": "formed a short-lived Clash-inspired band, the Patrol, in 1980",
+      "note": "Wikipedia footnote: John Robb, The Stone Roses and the Resurrection of British Pop (2001), p. 40. Print: John Robb, The Stone Roses and the Resurrection of British Pop, 2001, p. 40.",
+      "print": "John Robb, The Stone Roses and the Resurrection of British Pop, 2001, p. 40"
+    },
+    "stars-of-the-lid>brian-eno": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://www.npr.org/transcripts/1196369529",
+      "found": "Stars of the Lid started in Austin, Texas, in 1993. Brian McBride and Adam Wiltzie both loved Brian Eno.",
+      "citation": "NPR's Lars Gotrich (2023), on Stars of the Lid: \"Stars of the Lid started in Austin, Texas, in 1993. Brian McBride and Adam Wiltzie both loved Brian Eno.\""
+    },
+    "the-marias>radiohead": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "url": "https://web.archive.org/web/20191010174947/https://www.onestowatch.com/blog/qa-the-mar%25C3%25ADas-craft-sensual-timeless-music",
+      "found": "Josh: And I grew up listening to The Beatles and more of the psychedelic side. Then we both have influences that we share– D’Angelo, Radiohead, Tame Impala.",
+      "citation": "Josh Conway of the Marías to Ones To Watch (2019): \"I grew up listening to The Beatles and more of the psychedelic side. Then we both have influences that we share– D’Angelo, Radiohead, Tame Impala.\"",
+      "note": "Source is the Ones To Watch Q&A (Internet Archive copy, 2019), not Vice 2018. Speaker label on the page is 'Josh'; Wikipedia ties the line to Josh Conway."
+    },
+    "the-marias>tame-impala": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "url": "https://web.archive.org/web/20191010174947/https://www.onestowatch.com/blog/qa-the-mar%25C3%25ADas-craft-sensual-timeless-music",
+      "found": "Josh: And I grew up listening to The Beatles and more of the psychedelic side. Then we both have influences that we share– D’Angelo, Radiohead, Tame Impala.",
+      "citation": "Josh Conway of the Marías to Ones To Watch (2019): \"I grew up listening to The Beatles and more of the psychedelic side. Then we both have influences that we share– D’Angelo, Radiohead, Tame Impala.\"",
+      "note": "Source is the Ones To Watch Q&A (Internet Archive copy, 2019), not Vice 2018."
+    },
+    "tame-impala>my-bloody-valentine": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "url": "http://latimesblogs.latimes.com/music_blog/2010/06/innerspeaking-tame-impalas-kevin-parker-discusses-his-bands-success-origins-and-impressions-of-calif.html",
+      "found": "I’ve always been in love with the wall of sound as employed by My Bloody Valentine.",
+      "citation": "Kevin Parker to the Los Angeles Times (2010): \"Since then, I’ve tried to go after a more melancholy dreamy feel. I’ve always been in love with the wall of sound as employed by My Bloody Valentine.\"",
+      "note": "Replaces the 'pop-music retrospective'; the claims about Supertramp, Pink Floyd, Daft Punk were not checked."
+    },
+    "four-tet>aphex-twin": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Pitchfork's Four Tet interview (Andy Beta, 2013; Internet Archive 2015/2016) only says a breakout remix of Aphex Twin and a generation 'weaned on... the likes of Aphex and Boards of Canada'. The Medium/MJ O'Neill 'Windowlicker' quote was searched once (no page found) and not on Pitchfork. A remix is not an influence claim by itself."
+    },
+    "coil>kraftwerk": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://en.wikipedia.org/wiki/Coil_(band)",
+      "found": "Coil also expressed interest in krautrock groups including Cluster, Amon Düül II, Can, Kraftwerk and Tangerine Dream.",
+      "citation": "Wikipedia's Coil article says: \"Coil also expressed interest in krautrock groups including Cluster, Amon Düül II, Can, Kraftwerk and Tangerine Dream.\"",
+      "note": "That sentence has no footnote of its own. The 1983 Grok fanzine profile in the old citation was searched once and not found. Weak: 'expressed interest', Wikipedia only."
+    },
+    "coil>velvet-underground": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://en.wikipedia.org/wiki/Coil_(band)",
+      "found": "Rock musicians and groups Coil have expressed interest in are: Angus Maclise, Captain Beefheart, Flipper, Leonard Cohen, Lou Reed, Nico, Pere Ubu, Butthole Surfers, Napalm Death, The Birthday Party, The Velvet Underground and The Virgin Prunes.",
+      "citation": "Wikipedia's Coil article says: \"Rock musicians and groups Coil have expressed interest in are: Angus Maclise, Captain Beefheart, Flipper, Leonard Cohen, Lou Reed, Nico, Pere Ubu, Butthole Surfers, Napalm Death, The Birthday Party, The Velvet Underground and The Virgin Prunes.\"",
+      "note": "Footnoted to six unidentified references [42][60][71][81][82][24]; the 2001 Radio Inferno / Dutch Radio 4 interview in the old citation was searched once and not found. Weak: 'expressed interest', Wikipedia only."
+    },
+    "minor-threat>black-flag": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "url": "https://www.rebelnoise.com/interviews/ian-mackaye-2009",
+      "found": "And of course I always have to credit reading a Black Flag interview in Damage magazine from San Francisco in probably 1980 or '81.",
+      "citation": "Ian MacKaye to Rebel Noise (2009): \"I always have to credit reading a Black Flag interview in Damage magazine from San Francisco in probably 1980 or '81. I think Dukowski the bass player said he'd rather work a day job for the rest of his life than ever become dependent on his music. And I thought, \"That resonates with me in a hell of a way!\"\"",
+      "note": "MacKaye (Minor Threat's singer) on Black Flag's effect on his DIY ethic. Wikipedia's Ian MacKaye article ('looked up to hardcore bands like Bad Brains and Black Flag') footnotes this interview. The Teen Idles and Lyle Preslar/Spoke parts of the old citation were not used."
+    },
+    "mount-eerie>sonic-youth": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://en.wikipedia.org/wiki/Phil_Elverum",
+      "found": "His musical influences include Eric's Trip, Will Oldham, Björk, Nirvana, Popol Vuh, Sunn O))))) \"Sunn O)))\"), Angelo Badalamenti, Tori Amos, The Cranberries, Sinéad O'Connor, Red House Painters, Sonic Youth, This Mortal Coil and Stereolab.",
+      "citation": "Wikipedia's Phil Elverum article says: \"His musical influences include Eric's Trip, Will Oldham, Björk, Nirvana, Popol Vuh, Sunn O))))), Angelo Badalamenti, Tori Amos, The Cranberries, Sinéad O'Connor, Red House Painters, Sonic Youth, This Mortal Coil and Stereolab.\"",
+      "note": "Wikipedia only, footnotes [30][31][32]. The Invisible Oranges footnote (archive 2018) is about black metal and carries no Sonic Youth; the Exclaim Nov 2024 review in the old citation could not be opened (two searches, exclaim.ca article pages unreadable). Weak; Stereolab and Eric's Trip are stated as important to Elverum on the same page."
+    },
+    "mount-eerie>bjork": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://en.wikipedia.org/wiki/Phil_Elverum",
+      "found": "His musical influences include Eric's Trip, Will Oldham, Björk, Nirvana, Popol Vuh, Sunn O))))) \"Sunn O)))\"), Angelo Badalamenti, Tori Amos, The Cranberries, Sinéad O'Connor, Red House Painters, Sonic Youth, This Mortal Coil and Stereolab.",
+      "citation": "Wikipedia's Phil Elverum article says: \"His musical influences include Eric's Trip, Will Oldham, Björk, Nirvana, Popol Vuh, Sunn O))))), Angelo Badalamenti, Tori Amos, The Cranberries, Sinéad O'Connor, Red House Painters, Sonic Youth, This Mortal Coil and Stereolab.\"",
+      "note": "Wikipedia only. The Life of the Record podcast (Sade, Björk, Timbaland) was not found; not searched."
+    },
+    "the-knife>siouxsie-and-the-banshees": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://en.wikipedia.org/wiki/The_Knife",
+      "found": "In addition, Karin named Sonic Youth, Kate Bush, Le Tigre and Siouxsie and the Banshees, while Olof cited techno, grime and Southern hip-hop.",
+      "citation": "Wikipedia's The Knife article, under Influences: \"In addition, Karin named Sonic Youth, Kate Bush, Le Tigre and Siouxsie and the Banshees, while Olof cited techno, grime and Southern hip-hop.\"",
+      "note": "Footnote [20], not the Pitchfork 2006 interview (opened: no Sonic Youth on it). The IndieLondon profile was not opened."
+    },
+    "the-knife>sonic-youth": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://en.wikipedia.org/wiki/The_Knife",
+      "found": "In addition, Karin named Sonic Youth, Kate Bush, Le Tigre and Siouxsie and the Banshees, while Olof cited techno, grime and Southern hip-hop.",
+      "citation": "Wikipedia's The Knife article, under Influences: \"In addition, Karin named Sonic Youth, Kate Bush, Le Tigre and Siouxsie and the Banshees, while Olof cited techno, grime and Southern hip-hop.\"",
+      "note": "Footnote [20] unread; the Pitchfork 2006 interview has no Sonic Youth."
+    },
+    "glenn-branca>rhys-chatham": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://en.wikipedia.org/wiki/Glenn_Branca",
+      "found": "performed with Rhys Chatham's Guitar Trio on occasion from 1977 to 1979,[6][7] a noise music experience that was very important in the development of his compositional voice (Branca 1979).",
+      "citation": "Wikipedia's Glenn Branca article says he performed with Rhys Chatham's Guitar Trio on occasion from 1977 to 1979, \"a noise music experience that was very important in the development of his compositional voice\".",
+      "note": "The 'very important' clause is attributed in text to Branca 1979 (his own writing, not identified); the [6][7] footnotes are books (Boch, The Mudd Club; Masters). Not a print entry because no page was found."
+    },
+    "mid-air-thief>aphex-twin": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://en.wikipedia.org/wiki/Mid-Air_Thief",
+      "found": "Mid-Air Thief has spoken about being a big fan of British electronic musician Aphex Twin and Canadian singer-songwriter Andy Shauf.",
+      "citation": "Wikipedia's Mid-Air Thief article says: \"Mid-Air Thief has spoken about being a big fan of British electronic musician Aphex Twin and Canadian singer-songwriter Andy Shauf.\"",
+      "note": "Wikipedia footnotes [5][4] not opened; the 'Richard D. James Album' detail was not checked. Not searched."
+    },
+    "panchiko>joy-division": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://en.wikipedia.org/wiki/Panchiko",
+      "found": "The music they made was primarily influenced by Radiohead, Super Furry Animals, Ultrasound, Air, The Beatles, DJ Shadow, Joy Division, New Order, Nirvana, and Kid Loco.",
+      "citation": "Wikipedia's Panchiko article says: \"The music they made was primarily influenced by Radiohead, Super Furry Animals, Ultrasound, Air, The Beatles, DJ Shadow, Joy Division, New Order, Nirvana, and Kid Loco.\"",
+      "note": "The old citation pointed at the D>E>A>T>H>M>E>T>A>L EP page, which could not be opened (title error). This is the band's own article, footnotes [11][12] (the sbpress piece [12] has no Joy Division or Radiohead)."
+    },
+    "broken-social-scene>pavement": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "url": "https://en.wikipedia.org/wiki/Broken_Social_Scene",
+      "note": "The only basis is a song title, 'Ibi Dreams of Pavement (A Better Day)' (the old citation also mixes in Blonde Redhead's naming from DNA, which belongs to another link). A song title naming Pavement is a nod, not a statement of influence. No interview found. Propose remove."
+    },
+    "jeff-rosenstock>minor-threat": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Only basis is a full Minor Threat cover set at The Fest 15 (2016); a cover set is not an influence statement. No page opened (not searched). Propose remove unless an interview of Rosenstock on Minor Threat is found."
+    },
+    "far-apart>the-cure": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Basis is the band's Bandcamp bio saying it is named after a Cure song; a name is a nod, not a stated influence. Page not opened (no URL in the batch). Propose remove or record at reported only if the owner counts naming."
+    },
+    "blonde-redhead>dna": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "url": "https://en.wikipedia.org/wiki/Blonde_Redhead",
+      "note": "Wikipedia: the band 'named themselves after a song on the 1981 EP A Taste of DNA by the no wave group DNA' (no footnote on that sentence). Naming after a song is a tribute, not a stated influence. The Guardian 2023 profile (Internet Archive) has no 'DNA'. Propose keep at reported only if the owner counts naming; otherwise remove."
+    }
+  },
+  "candidates": [],
+  "offMap": [],
+  "finished": true
+}
