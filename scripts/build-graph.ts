@@ -2,7 +2,8 @@ import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { graphData } from '../data/seed-data';
-import type { Artist, Album, GraphData, ImageCredit } from '../data/types';
+import type { Artist, Album, ExtraSong, GraphData, ImageCredit } from '../data/types';
+import { TAPE_SONGS, type TapeSong } from '../data/about';
 import { validateEdges, computeInfluenceScores } from './pipeline';
 import { presettleLayout, type LayoutNode, type LayoutLink } from '../lib/graph-layout';
 
@@ -170,6 +171,7 @@ async function resolveItunesArtistId(artistName: string): Promise<number | null>
 type CatalogueTrack = {
   wrapperType: string; trackName?: string; collectionName?: string;
   previewUrl?: string; artworkUrl100?: string; artistName?: string;
+  trackNumber?: number; discNumber?: number; trackTimeMillis?: number;
 };
 
 const catalogueCache = new Map<number, CatalogueTrack[]>();
@@ -623,6 +625,9 @@ function cleanTitle(s: string): string {
   return s
     .replace(/\s*[\[(](?:\d{4}\s+)?(?:remaster(?:ed)?(?:\s+version)?|reissue|live[^)\]]*|single version|mono version|bonus track)[)\]]\s*/gi, '')
     .replace(/\s*[\[(][^\])]*(mix|version|edit)[)\]]\s*/gi, '')
+    // "(2019 Digital Master)", "(Remastered 2009)", "(2018 Remaster)"
+    .replace(/\s*[\[(][^\])]*\bre-?master(?:ed)?\b[^\])]*[)\]]\s*/gi, '')
+    .replace(/\s*[\[(][^\])]*\bdigital master\b[^\])]*[)\]]\s*/gi, '')
     .trim();
 }
 
@@ -744,6 +749,160 @@ async function enrichItunesPreviews(
     misses.forEach(m => console.log(`   missing preview: ${m}`));
   }
   return result;
+}
+
+// ── A song from each major album ─────────────────────────────────────────────
+// The genre pages' essential records each play a song from that very record:
+// the track its write-up names first ('Just Like Honey' for Psychocandy), if
+// the store has it; else the artist's signature song, if it's on the record;
+// else the record's opening track, skipping a short intro. The artist's own
+// preview is reused, with no fetch, when it already comes from this record and
+// is the song the write-up names (or the write-up names none).
+
+interface AlbumPreview { previewUrl: string; previewTrack: string }
+
+/** Song titles a write-up quotes: 'Just Like Honey', "Vapour Trail". */
+function namedTracks(reason: string): string[] {
+  const out: string[] = [];
+  for (const m of reason.matchAll(/(?:^|[\s(\u2014\u2013-])['\u2018"\u201c]([^'\u2019"\u201d]{2,60}?)['\u2019"\u201d](?=[\s.,;:)!?\u2014\u2013-]|$)/g)) {
+    out.push(m[1].replace(/[.,]$/, ''));
+  }
+  return out;
+}
+
+const songIs = (want: string, track: string) => normKey(want).length >= 4 ? titleMatches(want, track) : normKey(want) === normKey(stripEdition(track));
+
+async function fetchAlbumTracks(artistName: string, albumTitle: string): Promise<CatalogueTrack[]> {
+  const artistKey = normKey(artistName.replace(/^(the|a|an)\s+/i, '')).split(' ').find(w => w.length >= 3) ?? normKey(artistName);
+  try {
+    const url = `https://itunes.apple.com/search?term=${encodeURIComponent(`${artistName} ${albumTitle}`)}&media=music&entity=album&limit=10`;
+    const res = await fetchItunesWithBackoff(url);
+    if (res?.ok) {
+      const data = await res.json() as { results: Array<{ artistName: string; collectionName: string; collectionId: number }> };
+      const hit = data.results.find(r => titleMatches(albumTitle, r.collectionName) && normKey(r.artistName).includes(artistKey));
+      if (hit) {
+        await new Promise(r => setTimeout(r, 80));
+        const songs = await fetchItunesWithBackoff(`https://itunes.apple.com/lookup?id=${hit.collectionId}&entity=song`);
+        if (songs?.ok) {
+          const tracks = ((await songs.json()) as { results: CatalogueTrack[] }).results.filter(t => t.wrapperType === 'track');
+          if (tracks.length) return tracks;
+        }
+      }
+    }
+  } catch { /* fall through to the catalogue */ }
+  // Keyword search misses some records that are plainly in the catalogue.
+  const artistId = await resolveItunesArtistId(artistName);
+  if (artistId === null) return [];
+  return (await fetchItunesCatalogue(artistId)).filter(t => t.collectionName && titleMatches(albumTitle, t.collectionName));
+}
+
+function pickAlbumSong(tracks: CatalogueTrack[], wants: string[]): AlbumPreview | null {
+  const usable = tracks.filter(t => t.previewUrl && t.trackName && !/[[(](live|demo)[^)\]]*[)\]]/i.test(t.trackName));
+  for (const want of wants) {
+    const hit = usable.find(t => songIs(want, t.trackName!));
+    if (hit) return { previewUrl: hit.previewUrl!, previewTrack: cleanTitle(hit.trackName!) };
+  }
+  const inOrder = usable.slice().sort((a, b) => (a.discNumber ?? 1) - (b.discNumber ?? 1) || (a.trackNumber ?? 99) - (b.trackNumber ?? 99));
+  const opener = inOrder.find(t => (t.trackTimeMillis ?? 120000) >= 90000) ?? inOrder[0];
+  return opener ? { previewUrl: opener.previewUrl!, previewTrack: cleanTitle(opener.trackName!) } : null;
+}
+
+async function enrichAlbumPreviews(
+  entries: (AlbumFetchEntry & { signatureSong?: string; artistPreview: ItunesPreview | null })[],
+): Promise<Map<string, AlbumPreview | null>> {
+  const result = new Map<string, AlbumPreview | null>();
+  let reused = 0, fetched = 0, misses = 0;
+  for (const { artistId, artistName, album, signatureSong, artistPreview } of entries) {
+    const key = `${artistId}::${album.id}`;
+    const named = namedTracks(album.classicReason ?? '');
+    if (artistPreview && titleMatches(album.title, artistPreview.previewAlbum)
+      && (named.length === 0 || songIs(named[0], artistPreview.previewTrack))) {
+      result.set(key, { previewUrl: artistPreview.previewUrl, previewTrack: artistPreview.previewTrack });
+      reused++;
+      continue;
+    }
+    const tracks = await fetchAlbumTracks(artistName, album.title);
+    const song = pickAlbumSong(tracks, [...named, ...(signatureSong ? [signatureSong] : [])]);
+    result.set(key, song);
+    if (song) fetched++; else misses++;
+    await new Promise(r => setTimeout(r, 80));
+  }
+  console.log(`✓ Album songs: ${reused} reused, ${fetched} fetched, ${misses} not found`);
+  return result;
+}
+
+// ── Songs a page plays: the About page's tape (data/about.ts) ───────────────
+// Particular recordings, not an artist's usual song: "Long Season" live from
+// the farewell show, "When You Sleep" from Loveless (only the UK store has
+// it). Each is looked for by artist, song AND record, in the store given;
+// the record's cover comes with it. Cached while what was asked for is
+// unchanged.
+
+const songSpec = (s: TapeSong) => [s.artistId ?? s.artistName, s.song, s.album, s.country ?? 'us', s.label ?? ''].join('|');
+
+async function fetchTapeSong(artistName: string, s: TapeSong): Promise<ExtraSong | null> {
+  const artistKey = normKey(artistName.replace(/^(the|a|an)\s+/i, '')).split(' ').find(w => w.length >= 3) ?? normKey(artistName);
+  const params = new URLSearchParams({ term: `${artistName} ${s.song}`, media: 'music', entity: 'song', limit: '25', country: s.country ?? 'us' });
+  try {
+    const res = await fetchItunesWithBackoff(`https://itunes.apple.com/search?${params}`);
+    if (!res?.ok) return null;
+    const data = await res.json() as {
+      results: Array<{ artistName: string; trackName: string; collectionName: string; previewUrl?: string; artworkUrl100?: string }>;
+    };
+    let hit: { trackName?: string; collectionName?: string; previewUrl?: string; artworkUrl100?: string } | undefined = data.results.find(t =>
+      t.previewUrl && normKey(t.artistName).includes(artistKey) &&
+      titleMatches(s.song, t.trackName) && titleMatches(s.album, t.collectionName),
+    );
+    // Keyword search misses some songs that are plainly in the artist's
+    // catalogue (the Dillinger Escape Plan's "Prancer"); look there too.
+    if (!hit && (s.country ?? 'us') === 'us') {
+      const artistId = await resolveItunesArtistId(artistName);
+      if (artistId !== null) {
+        hit = (await fetchItunesCatalogue(artistId)).find(t =>
+          t.previewUrl && t.trackName && t.collectionName &&
+          titleMatches(s.song, t.trackName) && titleMatches(s.album, t.collectionName),
+        );
+      }
+    }
+    if (!hit?.previewUrl || !hit.trackName) return null;
+    return {
+      previewUrl: hit.previewUrl,
+      previewTrack: s.label ?? cleanTitle(hit.trackName),
+      album: cleanTitle(hit.collectionName ?? s.album),
+      imageUrl: hit.artworkUrl100?.replace('100x100bb', '600x600bb') ?? null,
+      spec: songSpec(s),
+    };
+  } catch {
+    return null;
+  }
+}
+
+async function enrichTapeSongs(old: Record<string, ExtraSong>): Promise<Record<string, ExtraSong>> {
+  const out: Record<string, ExtraSong> = {};
+  const misses: string[] = [];
+  let fetched = 0;
+  for (const s of TAPE_SONGS) {
+    const cached = old[s.key];
+    // An artist who isn't on the map brings their own photo.
+    const photoMissing = !!s.artistName && cached?.artistImageUrl === undefined;
+    if (cached && cached.spec === songSpec(s) && !photoMissing) { out[s.key] = cached; continue; }
+    const name = s.artistName ?? graphData.artists.find(a => a.id === s.artistId)?.name;
+    const song = cached && cached.spec === songSpec(s) ? cached : name ? await fetchTapeSong(name, s) : null;
+    if (song && s.artistName) song.artistImageUrl = await fetchDeezerImage(s.artistName);
+    if (song) { out[s.key] = song; fetched++; } else misses.push(`${name ?? s.artistId} — "${s.song}" (${s.album})`);
+    await new Promise(r => setTimeout(r, 120));
+  }
+  console.log(`✓ Tape songs: ${Object.keys(out).length}/${TAPE_SONGS.length} (${fetched} fetched)`);
+  misses.forEach(m => console.log(`   missing tape song: ${m}`));
+  return out;
+}
+
+function loadPreviousSongs(outPath: string): Record<string, ExtraSong> {
+  try {
+    return (JSON.parse(readFileSync(outPath, 'utf-8')) as GraphData).songs ?? {};
+  } catch {
+    return {};
+  }
 }
 
 // ── Enrichment cache ─────────────────────────────────────────────────────────
@@ -879,6 +1038,37 @@ async function main() {
         : null);
     }
   }
+  // A song from each album: reused from the last build while the artist, the
+  // record's title and its write-up (which names the song) are unchanged.
+  const needsAlbumSong = ({ artistId, artistName, album }: AlbumFetchEntry) => {
+    const old = oldArtistById.get(artistId);
+    if (!old || old.name !== artistName || old.signatureSong !== graphData.artists.find(a => a.id === artistId)?.signatureSong) return true;
+    const oldAlbum = (old.classicAlbums ?? []).find(x => x.id === album.id);
+    return !oldAlbum || oldAlbum.title !== album.title || oldAlbum.classicReason !== album.classicReason || oldAlbum.previewUrl === undefined;
+  };
+  const songTargets = allAlbumEntries.filter(needsAlbumSong).map(e => ({
+    ...e,
+    signatureSong: graphData.artists.find(a => a.id === e.artistId)?.signatureSong,
+    artistPreview: previewMap.get(e.artistId) ?? null,
+  }));
+  console.log(`  Album songs: ${allAlbumEntries.length - songTargets.length}/${allAlbumEntries.length} reused unchanged`);
+  const freshAlbumSongMap = await enrichAlbumPreviews(songTargets);
+  const albumSongFor = (artistId: string, album: Album): AlbumPreview | null => {
+    const key = `${artistId}::${album.id}`;
+    const oldAlbum = oldArtistById.get(artistId)?.classicAlbums?.find(x => x.id === album.id);
+    const found = freshAlbumSongMap.has(key)
+      ? freshAlbumSongMap.get(key) ?? null
+      : oldAlbum?.previewUrl ? { previewUrl: oldAlbum.previewUrl, previewTrack: oldAlbum.previewTrack ?? '' } : null;
+    if (found) return { ...found, previewTrack: cleanTitle(found.previewTrack) };
+    // The store has no copy of the record itself (Loveless), but the artist's
+    // own preview is a song its write-up names as being on it: use that.
+    const own = previewMap.get(artistId);
+    if (own && namedTracks(album.classicReason ?? '').some(n => songIs(n, own.previewTrack))) {
+      return { previewUrl: own.previewUrl, previewTrack: cleanTitle(own.previewTrack) };
+    }
+    return null;
+  };
+
   const albumCoverMap = new Map<string, string | null>();
   for (const { artistId, album } of allAlbumEntries) {
     const key = `${artistId}::${album.id}`;
@@ -916,6 +1106,8 @@ async function main() {
     classicAlbums:  (a.classicAlbums ?? []).map(al => ({
       ...al,
       imageUrl: albumCoverMap.get(`${a.id}::${al.id}`) ?? null,
+      previewUrl: albumSongFor(a.id, al)?.previewUrl ?? null,
+      previewTrack: albumSongFor(a.id, al)?.previewTrack ?? null,
     })),
   }));
 
@@ -936,12 +1128,15 @@ async function main() {
   }));
   console.log(`✓ Settled the layout (${layoutNodes.length} positions)`);
 
+  const songs = await enrichTapeSongs(force ? {} : loadPreviousSongs(outPath));
+
   const output: GraphData = {
     artists: positionedArtists,
     genres:  graphData.genres,
     scenes:  graphData.scenes,
     edges:   graphData.edges,
     rejectedEdges: graphData.rejectedEdges,
+    songs,
   };
 
   mkdirSync(resolve(ROOT, 'public'), { recursive: true });

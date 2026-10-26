@@ -10,6 +10,7 @@ import { findBestSourcedPath, resolvePathHops } from '@/lib/graph-utils';
 import { PATH_FINDER_ENABLED } from '@/lib/flags';
 import { useStory, setStoryMode, setMapBusy } from '@/lib/story-store';
 import Tour from '@/components/tour/Tour';
+import TapeDoor from '@/components/home/TapeDoor';
 import { useGraphData } from './GraphDataProvider';
 import GraphControls from './GraphControls';
 import ArtistSearch from './ArtistSearch';
@@ -591,6 +592,7 @@ export default function GraphView() {
             <span aria-hidden>▶</span> <span>How it works</span>
           </button>
         )}
+        {pathname === '/' && !hasOwnSelection && !tourOn && <TapeDoor />}
       </div>
       <ArtistSearch artists={graphData.artists} genres={graphData.genres} edges={graphData.edges} onSelectArtist={handleSelectArtist} />
       </>

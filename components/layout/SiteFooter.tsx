@@ -26,7 +26,7 @@ const TRACKS: { label: string; href: string }[] = [
   { label: 'Genres', href: '/genres' },
   { label: 'Scenes', href: '/scenes' },
   { label: 'How it works', href: '/?tour' },
-  { label: 'About', href: '/about' },
+  { label: 'Mixtape', href: '/about' },
 ];
 
 function pressed(): string | null {

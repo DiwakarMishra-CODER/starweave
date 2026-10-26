@@ -10,7 +10,9 @@ const NAV_LINKS = [
   { href: '/browse', label: 'Browse' },
   { href: '/genres', label: 'Genres' },
   { href: '/scenes', label: 'Scenes' },
-  { href: '/about', label: 'About' },
+  // Not "About": visitors skipped that. The page is a mixtape for them; one
+  // word, like the others ("I made you a tape" stood out oddly in the bar).
+  { href: '/about', label: 'Mixtape' },
 ];
 
 export default function TopNav() {

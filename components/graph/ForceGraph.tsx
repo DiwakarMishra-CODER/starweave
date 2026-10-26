@@ -5580,7 +5580,7 @@ export default function ForceGraphCanvas({
           // gate) while isBackgrounded — an /artist/[slug] overlay is
           // covering this canvas entirely, so continuing to redraw every
           // frame only burns CPU competing with that page's own animation
-          // (ArtistBackground's aurora) for nothing visible. Resumes
+          // for nothing visible. Resumes
           // instantly on navigating back: canvas redraws are a full
           // immediate-mode repaint each frame, not incremental, so there's
           // no stale-frame flash from having been paused.
