@@ -272,7 +272,12 @@ export default function PlayerDevice({ variant, children }: Props) {
             )}
             <span className="pocket__status-now">
               {screen.kind === 'now' && live && !loading && <span className="pocket__eq" aria-hidden><i /><i /><i /><i /></span>}
-              {title ?? <span>Press <span className="pocket__blink">▶&#xFE0E;</span> to play</span>}
+              {/* One line, cut with an ellipsis: a long title ("From For Your
+                  Pleasure") wrapping to two lines pushed the name and track
+                  down into the Full song links. */}
+              <span className="pocket__status-text">
+                {title ?? <span>Press <span className="pocket__blink">▶&#xFE0E;</span> to play</span>}
+              </span>
             </span>
             {count && <span>{count}</span>}
           </p>

@@ -16045,6 +16045,20 @@ a.source-ticket:focus-visible {
   display: inline-flex;
   align-items: flex-end;
   gap: 5px;
+  min-width: 0;
+}
+
+.pocket__status-text {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pocket__status > span:last-child:not(.pocket__status-now) {
+  flex: none;
+  margin-left: 6px;
+  white-space: nowrap;
 }
 
 .pocket__eq {

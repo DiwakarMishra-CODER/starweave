@@ -782,7 +782,11 @@ async function fetchAlbumTracks(artistName: string, albumTitle: string): Promise
     const res = await fetchItunesWithBackoff(url);
     if (res?.ok) {
       const data = await res.json() as { results: Array<{ artistName: string; collectionName: string; collectionId: number }> };
-      const hit = data.results.find(r => titleMatches(albumTitle, r.collectionName) && normKey(r.artistName).includes(artistKey));
+      // The plain edition first: an anniversary box set can come back on top
+      // with previews only on its demos (For Your Pleasure's 50th played a
+      // "Pyjamarama" rough take instead of the record).
+      const hits = data.results.filter(r => titleMatches(albumTitle, r.collectionName) && normKey(r.artistName).includes(artistKey));
+      const hit = hits.find(r => normKey(r.collectionName) === normKey(albumTitle)) ?? hits[0];
       if (hit) {
         await new Promise(r => setTimeout(r, 80));
         const songs = await fetchItunesWithBackoff(`https://itunes.apple.com/lookup?id=${hit.collectionId}&entity=song`);
