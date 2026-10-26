@@ -1,0 +1,29 @@
+{
+ "agent": "deep-2", "finished": true, "searches": 16,
+ "toolStatus": "WebSearch standard mode worked but is weak on exact-phrase queries; ledger.ts read works on direct, archive.org and cached pages (terms are ANDed within a paragraph).",
+ "found": [
+  {
+   "source": "harold-budd", "target": "brian-eno", "sourceTier": "first-person", "confidence": 0.85,
+   "url": "https://ceasefiremagazine.co.uk/unknown-spins-2-harold-budd/",
+   "found": "‘When it comes to the use of the studio, I learned everything from Eno,’ says Budd.",
+   "citation": "In a 2012 Ceasefire Magazine interview (Unknown Spins), Harold Budd said of Brian Eno: \"When it comes to the use of the studio, I learned everything from Eno.\" Note: this is Budd saying he learned from Eno (an influence statement, not just the shared albums); the earlier removal was on collaboration grounds, so the owner should decide."
+  },
+  {
+   "source": "george-clanton", "target": "the-human-league", "sourceTier": "first-person", "confidence": 0.85,
+   "url": "https://www.orlandoweekly.com/music/vaporwave-visionary-george-clanton-slides-into-orlando-on-4-20-36652145/",
+   "found": "“The first Mirror Kisses album — that I’ve since erased from the Internet — was me making what I thought was a Human League record,” Clanton says.",
+   "citation": "George Clanton told Orlando Weekly (Tyler Barney, April 2024) that the first Mirror Kisses album was \"me making what I thought was a Human League record.\""
+  },
+  {
+   "source": "women", "target": "wire", "sourceTier": "first-person", "confidence": 0.6,
+   "url": "https://www.treblezine.com/songs-about-nothing-an-interview-with-women/",
+   "found": "We’ll play Pink Flag in its entirety.",
+   "citation": "Patrick Flegel told Treble in 2010 that when Women jam, \"We'll play Pink Flag in its entirety\" (Wire's 1977 album), before songs come together. Weak-to-moderate: a habit of playing the whole record, not an explicit 'influenced us'. Page opened via archive.org copy (https://web.archive.org/web/2016/https://www.treblezine.com/songs-about-nothing-an-interview-with-women/); the direct URL did not open."
+  }
+ ],
+ "none": [
+  {"artist": "silversun-pickups", "tried": "Guitar World 2009 (Swoon), Rolling Stone 2006 (Carnavas), Seattlest, Ghost Media, Guitar World 2012, Rock Hall 2013, David James Young: no first-person MBV/Slowdive influence statement. Only 'feel a closer affinity to MBV' (writer's line, ruled too weak), Aubert saying after seeing MBV live 'Wow, we suck!' (a fan reaction, borderline, not an influence claim), and 'when people say we sound like MBV, we can't believe it' (a denial of resemblance). Nothing on Slowdive. Recommend: leaves the map unless the owner accepts the MBV live-show line."},
+  {"artist": "women>the-stooges (optional, not written)", "tried": "Treble: the band 'jam breaking off an extended cover of The Stooges Loose' is the writer's description, and Flegel's Iggy Pop line is his roommate's joke. Too weak/covers-adjacent."},
+  {"artist": "harold-budd (downstream)", "tried": "Searched Grouper, Stars of the Lid, Tim Hecker, Basinski with Budd: only generic obituary/review claims (critic-level 'influence distilled in Hecker and Fennesz'), no artist's own words. Nothing on Cocteau Twins beyond collaboration."}
+ ]
+}

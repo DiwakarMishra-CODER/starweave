@@ -141,11 +141,13 @@ export function resolvePathHops(path: string[], edges: Edge[]): PathHop[] | null
     // source was influenced BY target (see Edge in data/types.ts), so an edge
     // from->to means `from` inherited from `to`.
     const inherits = edges.find(e => e.type === 'influence' && e.source === from && e.target === to);
-    if (inherits) {
+    const feeds = edges.find(e => e.type === 'influence' && e.source === to && e.target === from);
+    // Two artists who shaped each other (Pavement and Sonic Youth): show the
+    // better-sourced of the two links, the one findBestSourcedPath priced.
+    if (inherits && (!feeds || hopCost(inherits) <= hopCost(feeds))) {
       hops.push({ from, to, direction: 'influenced-by', edge: inherits });
       continue;
     }
-    const feeds = edges.find(e => e.type === 'influence' && e.source === to && e.target === from);
     if (!feeds) return null;
     hops.push({ from, to, direction: 'influenced', edge: feeds });
   }

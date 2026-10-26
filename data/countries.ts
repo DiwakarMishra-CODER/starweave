@@ -122,13 +122,11 @@ export const COUNTRY: Record<string, string> = {
   'cap-n-jazz': 'US',
   'duster': 'US',
   'far-apart': 'SE',
-  'hum': 'US',
   'the-dismemberment-plan': 'US',
   'brand-new': 'US',
   'la-dispute': 'US',
   'jeff-rosenstock': 'US',
   'get-up-kids': 'US',
-  'christie-front-drive': 'US',
 
   // post-rock-drone-noise
   'codeine': 'US',
@@ -150,19 +148,16 @@ export const COUNTRY: Record<string, string> = {
   'dna': 'US',
   'blonde-redhead': 'US',
   'anna-von-hausswolff': 'SE',
-  'dead-can-dance': 'AU',
   'spiritualized': 'UK',
   'talk-talk': 'UK',
   'dirty-three': 'AU',
 
   // american-underground (and the region-one acts without a country)
   'nirvana': 'US',
-  'sebadoh': 'US',
   'guided-by-voices': 'US',
   'wilco': 'US',
   'sleater-kinney': 'US',
   'violent-femmes': 'US',
-  'women': 'CA',
   'superchunk': 'US',
   'parquet-courts': 'US',
   'spoon': 'US',

@@ -1,0 +1,836 @@
+[
+ {
+  "key": "angel-olsen>cocteau-twins",
+  "from": "Angel Olsen",
+  "fromYear": 2010,
+  "to": "Cocteau Twins",
+  "toYear": 1979,
+  "currentCitation": null,
+  "currentTier": null,
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia: Pitchfork likened her album All Mirrors to acts such as the Cure, Cocteau Twins and Siouxsie and the Banshees: a comparison of sound, no Olsen statement. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Angel_Olsen",
+   "by": "u2"
+  }
+ },
+ {
+  "key": "anna-von-hausswolff>siouxsie-and-the-banshees",
+  "from": "Anna von Hausswolff",
+  "fromYear": 2010,
+  "to": "Siouxsie & The Banshees",
+  "toYear": 1976,
+  "currentCitation": null,
+  "currentTier": null,
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia: her vocals \"are compared to Kate Bush and A Kiss In The Dreamhouse-era Siouxsie Sioux\": resemblance only. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Anna_von_Hausswolff",
+   "by": "u2"
+  }
+ },
+ {
+  "key": "autechre>boards-of-canada",
+  "from": "Autechre",
+  "fromYear": 1987,
+  "to": "Boards of Canada",
+  "toYear": 1986,
+  "currentCitation": "A 1996 copy of BoC's Twoism reached Sean Booth, who championed the duo to Skam Records; Booth supplied a numbers-station recording used on BoC's \"Gyroscope\"; BoC recorded an unreleased cover of Autechre's \"Cichli.\"",
+  "currentTier": "reported",
+  "ledger": {
+   "verdict": "decide",
+   "url": "https://en.wikipedia.org/wiki/Boards_of_Canada",
+   "note": "Wikipedia (BoC) says a copy of Twoism reached Sean Booth, who suggested the duo contact Skam; the rest of the old citation (Gyroscope numbers-station sample, unreleased Cichli cover) is on no page opened (two searches). That is Booth championing BoC, not BoC shaping Autechre, so the link as written (Autechre influenced by BoC) isn't supported. Propose remove, or flip direction only if a source says Autechre shaped BoC.",
+   "checked": "2026-10-26",
+   "by": "c19"
+  }
+ },
+ {
+  "key": "bjork>nico",
+  "from": "Björk",
+  "fromYear": 1977,
+  "to": "Nico",
+  "toYear": 1967,
+  "currentCitation": "Far Out, on Björk's own published list of favorite albums, which includes Nico alongside Kate Bush and Joni Mitchell.",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://faroutmagazine.co.uk/bjork-11-favourite-albums/",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Bare favourites list. The page lists Nico's Desertshore among the albums Björk chose for The Rest Is Noise, with no Björk comment about Nico. The only Björk quote on the page is about Kate Bush. Alex Ross's original post (seen only as a Goodreads copy in search results) is also a bare list. Proposal: remove, or keep only if a quote where Björk talks about Nico turns up."
+  }
+ },
+ {
+  "key": "blonde-redhead>sonic-youth",
+  "from": "Blonde Redhead",
+  "fromYear": 1993,
+  "to": "Sonic Youth",
+  "toYear": 1981,
+  "currentCitation": "Kazu Makino has cited Sonic Youth as a key inspiration",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://web.archive.org/web/2023/https://pitchfork.com/features/5-10-15-20/blonde-redhead-kazu-makino-on-the-music-that-made-her/",
+   "found": "Indie rock, especially at the time I started, had My Bloody Valentine and Lush on one side, and the other side had Sonic Youth, Beck, Nirvana, bands I loved but definitely didn’t identify with.",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Makino (quoted from her Pitchfork conversation) says she loved Sonic Youth, Beck and Nirvana but 'definitely didn't identify with' them. Fandom is stated, but she explicitly distances herself as an influence on her own sound. Proposal: remove, or keep only as a weak/reported edge. No first-person 'key inspiration' line found. Coordinator: on the Pitchfork original she goes on \"I rejected that other side\". Reads close to a denial: propose record as denial and remove the link. Pitchfork 5-10-15-20 (Kazu Makino) re-read: \"bands I loved but definitely didn't identify with... I rejected that other side\" -- closer to a denial; still decide.",
+   "by": "retry4"
+  }
+ },
+ {
+  "key": "bon-iver>neutral-milk-hotel",
+  "from": "Bon Iver",
+  "fromYear": 2007,
+  "to": "Neutral Milk Hotel",
+  "toYear": 1989,
+  "currentCitation": "Music-directory retrospective naming Bon Iver, Sufjan Stevens and Phoebe Bridgers among its citers.",
+  "currentTier": "critic",
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://cornellsun.com/2014/01/10/neutral-milk-hotel-is-almost-here-preview",
+   "found": "Its influence is undeniable: You can see strains of Neutral Milk Hotel in the inventive arrangements of Arcade Fire’s Funeral, the homemade intimacy of Bon Iver’s For Emma, Forever Ago and in Sufjan Stevens’s peculiar lyrical obsessions.",
+   "note": "same Cornell Sun sentence, a resemblance to For Emma; no Justin Vernon statement found (search). Propose remove, or keep as critic.",
+   "by": "c21"
+  }
+ },
+ {
+  "key": "broadcast>stereolab",
+  "from": "Broadcast",
+  "fromYear": 1995,
+  "to": "Stereolab",
+  "toYear": 1990,
+  "currentCitation": "Mikey Jones, \"The Essential... Broadcast,\" Fact Magazine (19 Feb 2015), where Stereolab appears as a comparison critics reached for in the band's early years rather than as an influence either member claimed.",
+  "currentTier": "critic",
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://www.factmag.com/2015/02/19/essential-broadcast/",
+   "found": "At the time of their inception, Broadcast were often lazily compared to Stereolab, Portishead and the post-rock movement of the time.",
+   "note": "Fact (Mikey IQ Jones, 19 Feb 2015) calls the Stereolab link a lazy comparison and says Saint Etienne, Disco Inferno and Pram are the better peers; the Stereolab link otherwise is the Duophonic label/management (not influence). Propose remove.",
+   "by": "c21"
+  }
+ },
+ {
+  "key": "broken-social-scene>talk-talk",
+  "from": "Broken Social Scene",
+  "fromYear": 1999,
+  "to": "Talk Talk",
+  "toYear": 1981,
+  "currentCitation": "SPIN's \"My Favorite Things,\" Kevin Drew: \"Laughing Stock by Talk Talk and Whatever You Love, You Are by the Dirty Three. These two records are tied for the most authentic human emotion ever captured on an album. Both will come with me to the next life.\"",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://www.spinmagazine.com/2011/05/my-favorite-things-broken-social-scenes-kevin-drew/",
+   "verdict": "decide",
+   "note": "The SPIN 'My Favorite Things' page (May 2011) carries the quoted text, with Kevin Drew naming 'Laughing Stock by Talk Talk' under FAVORITE ALBUM. It is a favourite-album answer about authentic emotion, with no statement that Talk Talk shaped Drew's or Broken Social Scene's own music. Per the rules that is a favourites-list-type answer, not influence. Proposal: remove, or keep only if a better source turns up. A lead is Drew's Brooklyn Vegan '10 favorite ballads' list (New Grass by Talk Talk), which I did not open.",
+   "checked": "2026-10-26",
+   "by": "chat5"
+  }
+ },
+ {
+  "key": "caroline-polachek>david-bowie",
+  "from": "Caroline Polachek",
+  "fromYear": 2013,
+  "to": "David Bowie",
+  "toYear": 1969,
+  "currentCitation": "Into The Gloss (2016): \"I can't help but think of David Bowie -- I love the photos of him doing his own makeup because it's clear how much vision he had.\"",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://intothegloss.com/2016/06/caroline-polachek-beauty",
+   "found": "I can’t help but think of David Bowie—I love the photos of him doing his own makeup because it’s clear how much vision he had. The man had a serious talent for it.",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Into The Gloss (2016): Polachek admires Bowie doing his own makeup, in a piece about artists whose looks went with their music. About his image, not his music: propose remove unless a better source turns up.",
+   "by": "c9"
+  }
+ },
+ {
+  "key": "codeine>galaxie-500",
+  "from": "Codeine",
+  "fromYear": 1989,
+  "to": "Galaxie 500",
+  "toYear": 1987,
+  "currentCitation": "Guitar-Muse describes Codeine as \"another Galaxie-influenced slowcore band.\"",
+  "currentTier": "critic",
+  "ledger": {
+   "url": "https://web.archive.org/web/2016/https://www.treblezine.com/10-best-slowcore-albums",
+   "found": "While Galaxie 500 proved that rock music need not be loud, fast or climactic to be interesting, Codeine maintained a similar philosophy with regard to tempo, but nonetheless played loud and harsh when the song warranted it.",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Guitar-Muse page not found (two searches). The best page found, Treble's 10 Essential Slowcore Albums (2012), only says Codeine kept a similar philosophy about tempo: a comparison, not influence. Propose remove unless Guitar-Muse sentence is produced; Qobuz bio (not read) also says Codeine took inspiration from Galaxie 500 and the third Velvet Underground album.",
+   "by": "c23"
+  }
+ },
+ {
+  "key": "depeche-mode>cabaret-voltaire",
+  "from": "Depeche Mode",
+  "fromYear": 1980,
+  "to": "Cabaret Voltaire",
+  "toYear": 1973,
+  "currentCitation": "Depeche Mode Wikipedia bio: \"Gahan's and Gore's favourite artists included Siouxsie and the Banshees, Sparks, Cabaret Voltaire, Talking Heads and Iggy Pop.\" A favourites list rather than a stated influence.",
+  "currentTier": "reported",
+  "ledger": {
+   "verdict": "decide",
+   "url": "https://en.wikipedia.org/wiki/Depeche_Mode",
+   "note": "Wikipedia's only support is a favourites list (Look In magazine questionnaires, Dec 1981: Gahan and Gore) -- a favourites list with no comment; the Look In pages (sacreddm.net) are dead and their Internet Archive copies would not open. Propose remove (or keep only if the owner counts a named favourite band as a fan). Note Sumner of New Order, not Depeche, is the Cabaret Voltaire speaker.",
+   "checked": "2026-10-26",
+   "by": "c17"
+  }
+ },
+ {
+  "key": "depeche-mode>talking-heads",
+  "from": "Depeche Mode",
+  "fromYear": 1980,
+  "to": "Talking Heads",
+  "toYear": 1975,
+  "currentCitation": "Depeche Mode's Wikipedia biography: \"Gahan's and Gore's favourite artists included Siouxsie and the Banshees, Sparks, Cabaret Voltaire, Talking Heads and Iggy Pop.\" A favourites list rather than a stated influence.",
+  "currentTier": "reported",
+  "ledger": {
+   "verdict": "decide",
+   "url": "https://en.wikipedia.org/wiki/Depeche_Mode",
+   "note": "Only a favourites list (Look In questionnaire, 1981, Gahan/Gore); page dead, archive copies would not open. Propose remove or hold.",
+   "checked": "2026-10-26",
+   "by": "c17"
+  }
+ },
+ {
+  "key": "elliott-smith>big-star",
+  "from": "Elliott Smith",
+  "fromYear": 1994,
+  "to": "Big Star",
+  "toYear": 1971,
+  "currentCitation": "Elliott Smith named Big Star's Radio City among his five favorite folk albums in a feature for Far Out.",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://faroutmagazine.co.uk/elliott-smith-five-favourite-folk-albums/",
+   "found": "Take, for instance, another of his folk favourites in the form of Radio City by Big Star: somehow the ill-fated backstory of the commercially floundering LP seems to be writ large across its spirit.",
+   "verdict": "decide",
+   "note": "The Far Out page is the writer's own list/essay about Smith's 'folk favourites', no quote or source from Smith. Not first-person. Propose remove, or keep only if another source (Smith interview) is found.",
+   "checked": "2026-10-26",
+   "by": "c4"
+  }
+ },
+ {
+  "key": "elliott-smith>television",
+  "from": "Elliott Smith",
+  "fromYear": 1994,
+  "to": "Television",
+  "toYear": 1973,
+  "currentCitation": "Elliott Smith named Television's Marquee Moon among his favorite albums in an NME interview in March 2000.",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://www.nme.com/?p=782397",
+   "found": "There are several. I think ‘Marquee Moon’ by Television and ‘The Marble Index’ by Nico (laughs).",
+   "verdict": "decide",
+   "note": "NME webchat (archive interview, 2000): answer to 'What is your perfect 2.45am album?'. Smith names Marquee Moon and The Marble Index, but it's a favourite late-night listen with no comment on shaping his music: a favourites answer. Propose lower confidence / keep only as 'favourite', or remove under the bare-favourites rule. Owner call.",
+   "checked": "2026-10-26",
+   "by": "c4"
+  }
+ },
+ {
+  "key": "four-tet>aphex-twin",
+  "from": "Four Tet",
+  "fromYear": 1998,
+  "to": "Aphex Twin",
+  "toYear": 1992,
+  "currentCitation": "Kieran Hebden (2011 interview, Medium/MJ O'Neill) calls Aphex Twin's \"Windowlicker\" \"truly experimental and truly kind of natural and human at the same time\"; corroborated by his 1999 Aphex Twin remix (Warp compilation), widely described as his career breakout.",
+  "currentTier": "reported",
+  "ledger": {
+   "url": "https://medium.com/mjs-ongoing-experiments/archival-interview-kieran-hebden-four-tet-2011-827af1b03129",
+   "found": "I think there’s nothing more magical, though, than when someone makes something that is truly experimental and truly kind of natural and human at the same time. Something like Aphex Twin’s ‘Windowlicker’, for example.",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Hebden's own words (2011, MJ O'Neill on Medium) hold up Windowlicker as the ideal he admires most ('the absolute grail'), but never say it shaped his music; the old 1999-remix corroboration isn't influence. Propose: keep as first-person fandom if admiration from a working producer counts, else remove.",
+   "by": "retry5"
+  }
+ },
+ {
+  "key": "geese>velvet-underground",
+  "from": "Geese",
+  "fromYear": 2017,
+  "to": "The Velvet Underground",
+  "toYear": 1965,
+  "currentCitation": "Geese naming their own influences to Bela Omoeva, WRBB Radio (21 Mar 2024), a list that runs from the Velvet Underground and Television through Radiohead, Deerhunter and Funkadelic.",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://wrbbradio.org/articles/interview-with-geese-an-american-band",
+   "found": "Cameron: Like Velvet Underground.",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "WRBB (Bela Omoeva, 21 Mar 2024) has no list of influences. The only line: Max says their new material is 'skewing more trance-y' and Cameron adds 'Like Velvet Underground.' That is Cameron comparing their new direction to VU, thin. Citation's 'list that runs from VU and Television through Radiohead, Deerhunter and Funkadelic' is not on the page (it comes from Wikipedia's summary). Propose: lower to reported/keep at low confidence, or remove unless a better source is found.",
+   "by": "c8"
+  }
+ },
+ {
+  "key": "hot-chip>four-tet",
+  "from": "Hot Chip",
+  "fromYear": 2000,
+  "to": "Four Tet",
+  "toYear": 1998,
+  "currentCitation": "Multiple pieces on London's Elliott School describe Joe Goddard and Alexis Taylor meeting schoolmate Kieran Hebden (Four Tet) there in the early '90s and finding a mentor in him; the primary source article (Public Pressure magazine) could not be directly re-fetched.",
+  "currentTier": "critic",
+  "ledger": {
+   "url": "https://cherwell.org/?p=24569",
+   "found": "He recalls how he and Kieran Hebden (a.k.a. Four Tet) would “introduce each other to new records” and “go and see shows all around London.”",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Cherwell interview with Joe Goddard: school friends who swapped records and went to shows; Hebden passed on their demos to Moshi Moshi. Mutual friendship and a favour, not one shaping the other; no 'mentor' wording on this page (the mentor line is from a Qobuz bio, not opened). Propose remove, or keep only if owner counts a friend's record recommendations as influence (then tier reported).",
+   "by": "c23"
+  }
+ },
+ {
+  "key": "hum>my-bloody-valentine",
+  "from": "Hum",
+  "fromYear": 1989,
+  "to": "My Bloody Valentine",
+  "toYear": 1983,
+  "currentCitation": "Hum's official band bio (h-u-m.net/bio/): Matt Talbott's favorite bands include \"Dinosaur Jr., Failure, Bitch Magnet, The Flaming Lips, Rush, The Police, R.E.M., Love Cup, and My Bloody Valentine.\"",
+  "currentTier": "first-person",
+  "ledger": {
+   "checked": "2026-10-26",
+   "url": "https://web.archive.org/web/2012/http://www.h-u-m.net/bio/",
+   "found": "Some of Matt's (and Hum's) favorite bands are Dinosaur Jr., Failure, Bitch Magnet, The Flaming Lips, Rush, The Police, R.E.M., Love Cup, and My Bloody Valentine.",
+   "verdict": "decide",
+   "note": "Same bare favourites list (2012 archive of h-u-m.net/bio); New Artillery also recalls Talbott listing Loveless among his favourite records. Strongest of the three; propose keep at reported if the owner accepts favourites lists from the band's own bio.",
+   "by": "c13"
+  }
+ },
+ {
+  "key": "jane-remover>my-bloody-valentine",
+  "from": "Jane Remover",
+  "fromYear": 2019,
+  "to": "My Bloody Valentine",
+  "toYear": 1983,
+  "currentCitation": "Pitchfork's review of Census Designated (Kieran Press-Reynolds) compared her shift toward \"a blend of shoegaze and bedroom pop\" directly to My Bloody Valentine and Slowdive.",
+  "currentTier": "critic",
+  "ledger": {
+   "verdict": "decide",
+   "url": "https://pitchfork.com/reviews/albums/jane-remover-census-designated/",
+   "found": "Fuse yeule ’s electro-acoustic ballads, Slowdive ’s bright crescendos, and the febrile anticipation of Ethel Cain ’s “Ptolemaea,” and you get a song like “Video,” which strums for six minutes and then erupts with a lung-tearing scream.",
+   "note": "Pitchfork's Census Designated review does not name My Bloody Valentine anywhere; the 'bedroom pop and shoegaze' line is the blurb. Proposal: remove (or find an interview).",
+   "checked": "2026-10-26",
+   "by": "c22"
+  }
+ },
+ {
+  "key": "jeff-rosenstock>fugazi",
+  "from": "Jeff Rosenstock",
+  "fromYear": 1995,
+  "to": "Fugazi",
+  "toYear": 1986,
+  "currentCitation": "Dan Ozzi, Noisey/Vice (Jan 20, 2014): described as \"the Fugazi for the internet age of punk\"; independently corroborated with the same framing by David Anthony, The A.V. Club (Aug 20, 2015). A critic comparison rather than a first.",
+  "currentTier": "critic",
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Noisey/Vice (Dan Ozzi 2014) page not located. Search summary of a Metro Times 2018 piece and a Consequence bio use 'the Fugazi of the internet age' about DIY ethics: a comparison about ethos, not Rosenstock saying he drew on Fugazi. Propose remove unless Rosenstock names Fugazi himself.",
+   "by": "c23"
+  }
+ },
+ {
+  "key": "julia-holter>siouxsie-and-the-banshees",
+  "from": "Julia Holter",
+  "fromYear": 2011,
+  "to": "Siouxsie & The Banshees",
+  "toYear": 1976,
+  "currentCitation": null,
+  "currentTier": null,
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia: Guardian and Under the Radar compare her voice to Siouxsie Sioux: resemblance only, no Holter statement. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Julia_Holter",
+   "by": "u2"
+  }
+ },
+ {
+  "key": "lush>my-bloody-valentine",
+  "from": "Lush",
+  "fromYear": 1987,
+  "to": "My Bloody Valentine",
+  "toYear": 1983,
+  "currentCitation": "Anderson has said \"We don't sound like Ride. Or My Bloody Valentine\" -- a denial of sonic resemblance, not of influence; a band can be shaped by something and still sound nothing like it.",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://floodmagazine.com/35680/lush-life-the-sirens-return",
+   "found": "Emma Anderson: No. We don’t sound like Ride. Or My Bloody Valentine. I don’t know what it means, really.",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Flood (2016): Anderson answering whether they were fans of the shoegaze label. A denial of resemblance and of the label, nothing about MBV shaping her. Propose remove (or record as denial of the shoegaze comparison).",
+   "by": "c11"
+  }
+ },
+ {
+  "key": "mogwai>bark-psychosis",
+  "from": "Mogwai",
+  "fromYear": 1995,
+  "to": "Bark Psychosis",
+  "toYear": 1986,
+  "currentCitation": "Spectrum Culture names Bark Psychosis as an influence on Mogwai's sound.",
+  "currentTier": "critic",
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://spectrumculture.com/2020/06/09/rediscover-bark-psychosis-hex/",
+   "found": "As nebulous as post-rock may be, one can listen to several of its most prominent bands in the ‘00s—Sigur Rós, Explosions in the Sky, Mogwai—and hear elements of the sound that Bark Psychosis pioneered: a twinkling guitar riff, a velvety drone or string section, a sudden building or release of noisy tension.",
+   "note": "Spectrum Culture says you can 'hear elements of the sound' -- a resemblance, not learned-from. The Quietus (Wyndham Wallace, thequietus.com/?p=15990) says Bark Psychosis 'don't sound obviously like Mogwai... though each of those bands could, at times, be said to reflect Bark Psychosis' philosophy'. Propose remove, or keep as critic if owner reads 'pioneered' as precedence. Mogwai's debut (1995) is after Hex (1994).",
+   "by": "c21"
+  }
+ },
+ {
+  "key": "my-bloody-valentine>the-jesus-and-mary-chain",
+  "from": "My Bloody Valentine",
+  "fromYear": 1983,
+  "to": "The Jesus and Mary Chain",
+  "toYear": 1983,
+  "currentCitation": "Kevin Shields has called the Cocteau Twins/JAMC comparison \"garbage,\" but concedes Psychocandy as \"the shared record\" between the two bands' sounds.",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://mixdownmag.com.au/features/gear-talks-an-interview-with-kevin-shields-of-my-bloody-valentine/",
+   "found": "We don’t have a shared influence… this kind of Cocteau Twins, Jesus and Mary Chain thing, it’s garbage. You know, Psycho Candy would be the shared record.",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "The source is Mixdown (Isabella Venutti, 2024). Shields calls the shared Cocteau/JAMC influence idea \"garbage\" and concedes Psycho Candy \"would be the shared record.\" He then says \"everything The Jesus and Mary Chain did back then we were not doing.\" Later in the same interview he lists JAMC's first single, alongside Einstürzende Neubauten's live show, among things \"pulling towards\" MBV's early direction. Mixed evidence. Options: keep as first-person with a citation naming Mixdown 2024 and quoting both sides, or record as a partial denial. The current citation names no source. I opened the Westword Q&A lead: it has no JAMC statement.",
+   "by": "retry1"
+  }
+ },
+ {
+  "key": "nico>velvet-underground",
+  "from": "Nico",
+  "fromYear": 1967,
+  "to": "The Velvet Underground",
+  "toYear": 1965,
+  "currentCitation": null,
+  "currentTier": null,
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Personnel: Nico sang on The Velvet Underground & Nico (1967). Shared membership isn't influence. Propose remove. Not searched.",
+   "by": "coordinator"
+  }
+ },
+ {
+  "key": "of-montreal>velvet-underground",
+  "from": "of Montreal",
+  "fromYear": 1996,
+  "to": "The Velvet Underground",
+  "toYear": 1965,
+  "currentCitation": "The same DCist list of the band's influences names Lou Reed; recorded here against the Velvet Underground, since that is the band he fronted.",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/",
+   "found": "KB: Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "DCist names Lou Reed (the person), not the Velvet Underground; Reed's solo work (Transformer etc.) is as likely. Same solo-vs-band trap as in project notes. Propose: keep with citation saying Lou Reed, or remove.",
+   "by": "c9"
+  }
+ },
+ {
+  "key": "parquet-courts>sonic-youth",
+  "from": "Parquet Courts",
+  "fromYear": 2010,
+  "to": "Sonic Youth",
+  "toYear": 1981,
+  "currentCitation": "Grantland 2014 deconstructs the sound: the Velvets' urban grime, Television's spazzy solos, the Fall's rigid repetition, Pavement's ironic detachment, GBV's brevity, Sonic Youth's candy-coated noisiness.",
+  "currentTier": "critic",
+  "ledger": {
+   "verdict": "decide",
+   "url": "https://grantland.com/features/parquet-courts-sunbathing-animal-indie-rock/",
+   "found": "If you’re at all familiar with rock history, Parquet Courts’ sound is easy to deconstruct into the usual set of indie reference points. The Velvet Underground’s urban grime. Television’s spazzy guitar solos. The Fall’s rigid repetition. Pavement’s ironic detachment. Guided by Voices’ brevity. Sonic Youth’s candy-coated noisiness. But I’d recommend avoiding the deconstructionist urge.",
+   "note": "Same: a list of reference points the writer then rejects. Proposal: remove.",
+   "checked": "2026-10-26",
+   "by": "c22"
+  }
+ },
+ {
+  "key": "pavement>slint",
+  "from": "Pavement",
+  "fromYear": 1989,
+  "to": "Slint",
+  "toYear": 1986,
+  "currentCitation": "Bob Nastanovich (Pavement) ranked Spiderland among his favorite albums -- Rob Jovanovic, Perfect Sound Forever (2004).",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://www.thelineofbestfit.com/features/interviews/nine-songs-bob-nastanovich",
+   "found": "Spiderland , like a lot of people who’ve heard it, is one of my favourite records of all time.",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Bob Nastanovich (Pavement) in The Line of Best Fit Nine Songs, choosing Washer: Spiderland is \"one of my favourite records of all time\"; he bought it at 24 (1991, Pavement already going) and talks about it as a driving record. Fandom, but nothing about Pavement's music, and he is the percussionist. Propose: keep as a weak first-person fandom link or remove.",
+   "by": "retry2"
+  }
+ },
+ {
+  "key": "pinback>can",
+  "from": "Pinback",
+  "fromYear": 1998,
+  "to": "Can",
+  "toYear": 1968,
+  "currentCitation": "Rob Crow's own 1995 lyrics for Heavy Vegetable's \"Radio\" (quoted in a Quietus interview): \"They don't play Slint on the radio / They don't play Sentridoh / They don't play Zappa / They don't play Beefheart / They don't play Can / They don't play The Residents / They don't even play Renaldo and the Loaf / the Velvet Underground... Sometimes they will play Devo.\" Crow's prior band, same songwriter, provenance noted.",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://thequietus.com/?p=22797",
+   "found": "They don’t play Can",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Same epigraph lyric as pinback>slint: a list of bands radio doesn't play, from Heavy Vegetable not Pinback; no influence statement on the page. Propose remove.",
+   "by": "c10"
+  }
+ },
+ {
+  "key": "pinback>slint",
+  "from": "Pinback",
+  "fromYear": 1998,
+  "to": "Slint",
+  "toYear": 1986,
+  "currentCitation": "Rob Crow's own 1995 lyrics for Heavy Vegetable's \"Radio\" (quoted in a Quietus interview): \"They don't play Slint on the radio / They don't play Sentridoh / They don't play Zappa / They don't play Beefheart / They don't play Can / They don't play The Residents / They don't even play Renaldo and the Loaf / the Velvet Underground... Sometimes they will play Devo.\"",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://thequietus.com/?p=22797",
+   "found": "They don’t play Slint on the radio",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Page exists; the lyric is only the epigraph of The Quietus's Rob Crow interview ('Radio' by Heavy Vegetable, 1995, a different band). It is a lament that radio doesn't play a list of bands, not a statement that they shaped him; the rest of the interview names none of them as influences. Propose remove (or lower to reported if the owner counts it as fandom).",
+   "by": "c10"
+  }
+ },
+ {
+  "key": "porter-robinson>boards-of-canada",
+  "from": "Porter Robinson",
+  "fromYear": 2010,
+  "to": "Boards of Canada",
+  "toYear": 1986,
+  "currentCitation": "Spin's Garrett Kamps, reviewing Worlds, \"identified melodic similarities with Boards of Canada.\"",
+  "currentTier": "critic",
+  "ledger": {
+   "verdict": "decide",
+   "url": "https://spinmagazine.com/2014/08/porter-robinson-worlds/",
+   "found": "“Flicker” has the head-nodding thump and angular melodies of Boards of Canada",
+   "note": "Spin's Kamps says one track has the melodies of Boards of Canada, a comparison; in the same passage he says Robinson 'nicked' the sound of M83, Washed Out, Neon Indian, Tycho, Air. Proposal: remove (or lower to a weak critic note).",
+   "checked": "2026-10-26",
+   "by": "c22"
+  }
+ },
+ {
+  "key": "portishead>siouxsie-and-the-banshees",
+  "from": "Portishead",
+  "fromYear": 1991,
+  "to": "Siouxsie & The Banshees",
+  "toYear": 1976,
+  "currentCitation": "Dave Simpson, The Guardian (2008): the band were \"haunted by the angry post-punk of Joy Division and Siouxsie and the Banshees.\"",
+  "currentTier": "reported",
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://www.theguardian.com/music/2008/apr/10/popandrock.portishead",
+   "found": "With more guitars and drums than before, this is a rockier Portishead, albeit one haunted by the angry post-punk of Joy Division and Siouxsie and the Banshees.",
+   "note": "Same Guardian live review (Apr 2008): a resemblance, not a stated influence. Propose remove, or critic if the owner accepts 'haunted by'.",
+   "by": "c20"
+  }
+ },
+ {
+  "key": "red-house-painters>galaxie-500",
+  "from": "Red House Painters",
+  "fromYear": 1988,
+  "to": "Galaxie 500",
+  "toYear": 1987,
+  "currentCitation": "AV Club: helped kick off slowcore, whose sound was defined by Low, RHP, Codeine, Bedhead.",
+  "currentTier": "critic",
+  "ledger": {
+   "verdict": "decide",
+   "url": "https://www.avclub.com/the-slow-and-steady-perfection-of-galaxie-500-s-on-fire-1832429384",
+   "found": "They also helped kick off the slowcore scene, whose sound was defined by groups like Low (also produced by Kramer), Red House Painters, Codeine, and Bedhead.",
+   "note": "Page says Galaxie 500 helped kick off the slowcore scene that Red House Painters then defined; it does not say RHP drew on Galaxie 500. Proposal: remove (or keep as a weak critic scene-lineage link).",
+   "checked": "2026-10-26",
+   "by": "c22"
+  }
+ },
+ {
+  "key": "ride>mudhoney",
+  "from": "Ride",
+  "fromYear": 1988,
+  "to": "Mudhoney",
+  "toYear": 1988,
+  "currentCitation": "Neil Halstead, quoted in Magnet, same account of Ride/Slowdive's shared touchstones naming Mudhoney and Dinosaur Jr.",
+  "currentTier": "first-person",
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wrong band: the citation's Mudhoney line is Neil Halstead of Slowdive (Magnet), already the source of slowdive>mudhoney; no Ride member names Mudhoney anywhere read (Ride's Wikipedia footnotes, PopMatters 2003, Under the Radar 2013, Yahoo 2017). Propose: remove.",
+   "by": "retry1"
+  }
+ },
+ {
+  "key": "rites-of-spring>the-smiths",
+  "from": "Rites of Spring",
+  "fromYear": 1984,
+  "to": "The Smiths",
+  "toYear": 1982,
+  "currentCitation": "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"",
+  "currentTier": "reported",
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://web.archive.org/web/2016/https://www.stopsmilingonline.com/story_detail.php?id=1170&page=2",
+   "found": "Later on, the band members discovered Television, the Fall and the Smiths.",
+   "sourceTier": "reported",
+   "citation": "John Dugan, Stop Smiling (\"End on End: Rites of Spring\"): \"Later on, the band members discovered Television, the Fall and the Smiths.\"",
+   "note": "Weaker than Wire/Birthday Party: 'discovered', no stated effect on their music. Owner may prefer to keep as low confidence. Coordinator: only \"later on, the band members discovered\" them, nothing about shaping the music. Propose remove unless a better source turns up.",
+   "by": "c18"
+  }
+ },
+ {
+  "key": "sigur-ros>bark-psychosis",
+  "from": "Sigur Rós",
+  "fromYear": 1994,
+  "to": "Bark Psychosis",
+  "toYear": 1986,
+  "currentCitation": "Spectrum Culture names Bark Psychosis as an influence on Sigur Ros's sound.",
+  "currentTier": "critic",
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://spectrumculture.com/2020/06/09/rediscover-bark-psychosis-hex/",
+   "found": "Opener “The Loom” begins with a repeated piano and strings before unfurling, beautifully, into something indicative of what Sigur Rós would create on their own post-rock landmark, Agætis byrjun .",
+   "note": "resemblance/foreshadowing only, no word that Sigur Ros drew on Bark Psychosis. Propose remove.",
+   "by": "c21"
+  }
+ },
+ {
+  "key": "sleater-kinney>liz-phair",
+  "from": "Sleater-Kinney",
+  "fromYear": 1994,
+  "to": "Liz Phair",
+  "toYear": 1991,
+  "currentCitation": null,
+  "currentTier": null,
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Only link on Wikipedia is a 2026 co-headlining tour (touring, not influence); no Sleater-Kinney statement found. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Liz_Phair",
+   "by": "u2"
+  }
+ },
+ {
+  "key": "squid>tortoise",
+  "from": "Squid",
+  "fromYear": 2015,
+  "to": "Tortoise",
+  "toYear": 1990,
+  "currentCitation": "Naming Tortoise's Millions Now Living Will Never Die among five albums he'd listen to forever, Borlase said it \"has this cool electronic sound, without vocals, and it kind of challenged a lot of the boundaries that they had at the time.\"",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://amherststudent.com/article/squids-louis-borlase-on-his-bands-influences-and-modern-post-punk/",
+   "verdict": "decide",
+   "note": "The Amherst Student interview (23 February 2021) has Borlase naming Tortoise's Millions Now Living Will Never Die first in his 'five albums for the rest of your life' list: 'They have this cool electronic sound, without vocals, and it kind of challenged a lot of the boundaries that they had at the time.' That is a favourites-list answer with praise, but he does not say Tortoise shaped Squid or his own playing; he does say 'It really influenced my taste' about the Philip Glass entry in the same list. Proposal: remove, or keep only as a weak link and look for a statement of influence. It is not a Loud And Quiet piece as the citation says.",
+   "checked": "2026-10-26",
+   "by": "chat5"
+  }
+ },
+ {
+  "key": "sufjan-stevens>neutral-milk-hotel",
+  "from": "Sufjan Stevens",
+  "fromYear": 2000,
+  "to": "Neutral Milk Hotel",
+  "toYear": 1989,
+  "currentCitation": "Music-directory retrospective naming Bon Iver, Sufjan Stevens and Phoebe Bridgers among its citers.",
+  "currentTier": "critic",
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://cornellsun.com/2014/01/10/neutral-milk-hotel-is-almost-here-preview",
+   "found": "Its influence is undeniable: You can see strains of Neutral Milk Hotel in the inventive arrangements of Arcade Fire’s Funeral, the homemade intimacy of Bon Iver’s For Emma, Forever Ago and in Sufjan Stevens’s peculiar lyrical obsessions.",
+   "note": "Cornell Sun preview (2014): 'you can see strains of' -- a resemblance. The directory page behind the old citation was not identified; no Sufjan statement found (search). Propose remove, or keep as critic if the owner reads 'its influence is undeniable' as enough.",
+   "by": "c21"
+  }
+ },
+ {
+  "key": "swans>glenn-branca",
+  "from": "Swans",
+  "fromYear": 1982,
+  "to": "Glenn Branca",
+  "toYear": 1977,
+  "currentCitation": "Michael Gira told The Line of Best Fit that early Glenn Branca concerts were \"just the epitome of how high music can go,\" describing the soaring, ever-ascending sound of them as \"really inspirational.\"",
+  "currentTier": "first-person",
+  "ledger": {
+   "verdict": "decide",
+   "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+   "found": "Participating in Glen Branca's music was a revelation in many ways,\" affirms Gira",
+   "note": "Line of Best Fit quote ('epitome of how high music can go') not found (1 search; Best Fit Gira interview 114144 read, no Branca). In Wire (via Young God) Gira says working under Branca was 'a revelation' and 'an inspiration' but 'Branca was NOT a musical influence, more an ideal of what it's possible to achieve through sound.' Owner decides: keep as inspiration, lower, or record as partial denial.",
+   "checked": "2026-10-26",
+   "by": "c6"
+  }
+ },
+ {
+  "key": "television>new-york-dolls",
+  "from": "Television",
+  "fromYear": 1973,
+  "to": "New York Dolls",
+  "toYear": 1971,
+  "currentCitation": null,
+  "currentTier": null,
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Wikipedia only has Television supporting the New York Dolls on a five-borough tour and a line that the Dolls were the catalyst for the scene Television belonged to (no Television statement). Support slot and scene, not influence. Propose: remove unless a Verlaine/Lloyd statement turns up.",
+   "url": "https://en.wikipedia.org/wiki/New_York_Dolls",
+   "by": "u2"
+  }
+ },
+ {
+  "key": "the-dismemberment-plan>bad-brains",
+  "from": "The Dismemberment Plan",
+  "fromYear": 1993,
+  "to": "Bad Brains",
+  "toYear": 1977,
+  "currentCitation": "Travis Morrison, WBUR (Dec 26, 2014): \"nothing... clears out my sinuses like Bad Brains\" -- same interview places his hardcore discovery in his \"mid-late 30s,\" likely after Bad Brains' classic-era work, flagged with a timing caveat.",
+  "currentTier": "first-person",
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://www.wbur.org/news/2014/12/26/dismemberment-plan-travis-morrison",
+   "found": "But there’s a couple—if I’m in a bad mood, nothing clears out my sinuses like Bad Brains. There’s nothing that just resets the brains like Bad Brains.",
+   "note": "Morrison says he got into hardcore in his mid-late 30s (c. 2012-14), after the band formed and made its records; 'wasn't really into hardcore in high school'. It is current listening, not a shaping influence. Propose remove (or keep only if the owner counts later fandom).",
+   "by": "c14"
+  }
+ },
+ {
+  "key": "the-jesus-and-mary-chain>the-birthday-party",
+  "from": "The Jesus and Mary Chain",
+  "fromYear": 1983,
+  "to": "The Birthday Party",
+  "toYear": 1976,
+  "currentCitation": "Rolling Stone: \"The bands that didn't make us want to puke back then were the likes of the Birthday Party or Echo and the Bunnymen.\"",
+  "currentTier": "first-person",
+  "ledger": {
+   "verdict": "decide",
+   "url": "https://www.rollingstone.com/music/music-news/jesus-and-mary-chain-look-back-on-30-years-of-psychocandy-75675/2",
+   "found": "The bands that didn’t make us want to puke back then were the likes of the Birthday Party or Echo and the Bunnymen.",
+   "note": "They only say these bands did not make them want to puke, in a passage about being unimpressed by 80s music. Not a fan statement; propose remove (or lower).",
+   "checked": "2026-10-26",
+   "by": "c6"
+  }
+ },
+ {
+  "key": "the-mountain-goats>siouxsie-and-the-banshees",
+  "from": "The Mountain Goats",
+  "fromYear": 1991,
+  "to": "Siouxsie & The Banshees",
+  "toYear": 1976,
+  "currentCitation": "The Mountain Goats' own statement on Goths, quoted on Wikipedia, names Siouxsie & the Banshees as one of John Darnielle's favourite bands; he named Siouxsie Sioux directly in his own lyric on \"Abandoned Flesh,\" and the band covered \"Spellbound\" live in 2014.",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://en.wikipedia.org/wiki/Goths_(album)",
+   "found": "The band has stated that _Goths_ was inspired by an adolescence listening to The Cure, Bauhaus, Siouxsie and the Banshees, and Joy Division, as well as hearing songs on the radio station KROQ-FM.[4]",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Only Wikipedia's Goths page says the band stated this, and its footnote [4] is the Noisey piece whose teenage goth listening is the journalist's own, not Darnielle's (the known whose-I trap). Paste (archive) doesn't carry it. Propose: keep as reported on Wikipedia only if the owner accepts it, else hold until a Merge/Bandcamp band statement is found; the link itself is very likely true.",
+   "by": "c12"
+  }
+ },
+ {
+  "key": "the-rapture>gang-of-four",
+  "from": "The Rapture",
+  "fromYear": 1998,
+  "to": "Gang of Four",
+  "toYear": 1976,
+  "currentCitation": "Wikipedia (\"House of Jealous Lovers\"): the song \"follows British predecessors such as Gang of Four, Public Image Ltd, and Happy Mondays\"; corroborated by Rolling Stone Australia's retrospective (\"ornery Gang of Four-style guitar slashing\") and the band covering \"Damaged Goods\" live.",
+  "currentTier": "reported",
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://en.wikipedia.org/wiki/House_of_Jealous_Lovers",
+   "found": "The sound follows British predecessors such as Gang of Four, Public Image Ltd, and Happy Mondays.",
+   "note": "only critic comparison (Wikipedia on the song; Trouser Press: 'Mirror reveals Gang of Four and Cure influences', a resemblance). Band interviews opened (Village Voice, RANGE, anna horan) have no Gang of Four. Propose remove or keep as critic if owner accepts 'reveals influences'.",
+   "by": "c21"
+  }
+ },
+ {
+  "key": "the-strokes>guided-by-voices",
+  "from": "The Strokes",
+  "fromYear": 1998,
+  "to": "Guided by Voices",
+  "toYear": 1983,
+  "currentCitation": "Grove Atlantic's publisher copy for the authorised GBV biography: P.J. Harvey, Radiohead, R.E.M., the Strokes and U2 have cited Pollard as an influence. Publisher marketing copy, not a primary interview.",
+  "currentTier": "critic",
+  "ledger": {
+   "verdict": "decide",
+   "url": "https://groveatlantic.com/book/guided-by-voices-a-brief-history/",
+   "found": "Pollard has been compared by The New York Times to Mozart, Rossini, and Paul McCartney (in the same sentence) and everyone from P. J. Harvey, Radiohead, R.E.M., the Strokes, and U2 has sung his praises and cited his music as an influence.",
+   "note": "Only publisher marketing copy; no Strokes member quoted. Proposal: remove unless an interview with a Strokes member naming GBV turns up.",
+   "checked": "2026-10-26",
+   "by": "c22"
+  }
+ },
+ {
+  "key": "toe>cap-n-jazz",
+  "from": "toe",
+  "fromYear": 2000,
+  "to": "Cap'n Jazz",
+  "toYear": 1989,
+  "currentCitation": "Hirokazu Yamazaki, Tone Glow interview: \"the guitarist from Cap'n Jazz who plays for a band called Ghosts and Vodka [Victor Villarreal]... they were instrumental, and that was a big inspiration for me.\"",
+  "currentTier": "first-person",
+  "ledger": {
+   "url": "https://toneglow.substack.com/p/tone-glow-177-toe",
+   "found": "So they were instrumental, and that was a big inspiration for me.",
+   "verdict": "decide",
+   "note": "Tone Glow 177 (Joshua Minsoo Kim, 2024), Yamazaki speaking. The preceding paragraph: 'There was the guitarist from Cap’n Jazz who plays for a band called Ghosts and Vodka .' [interviewer: 'Right, Victor Villareal.'] then 'So they were instrumental, and that was a big inspiration for me.' So the named inspiration is Ghosts and Vodka (Villarreal's instrumental band), not Cap'n Jazz itself. Same answer lists Texas Is the Reason, The Promise Ring, Cap’n Jazz as a late-90s scene whose 'guitar tone became cleaner' (a scene he belonged to, not stated as a personal influence). Propose: lower to a looser/reported or remove, or re-point the link to the off-map Ghosts and Vodka. Owner decides.",
+   "checked": "2026-10-26",
+   "by": "c15"
+  }
+ },
+ {
+  "key": "tricky>siouxsie-and-the-banshees",
+  "from": "Tricky",
+  "fromYear": 1994,
+  "to": "Siouxsie & The Banshees",
+  "toYear": 1976,
+  "currentCitation": "Toby Manning, The Quietus (\"The Vanishing Twin: Tricky's Nearly God Turns 30\"): Siouxsie and the Banshees' \"Tattoo\" is \"proto trip hop\" that \"helped Tricky to shape his style\"; he covered it as the opening track of Nearly God (1996).",
+  "currentTier": "reported",
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://thequietus.com/?p=268323",
+   "found": "The Banshees’ proto trip hop ‘Tattoo’ has no guitar-line, with such stripping away of pop instrumentation and frequencies indicating the parallels between post punk and contemporaneous hip hop.",
+   "note": "Quietus (Toby Manning) read in full: it describes Tricky covering 'Tattoo' and 'parallels' between post-punk and hip hop; it does NOT say it 'helped Tricky shape his style'. A cover is not an influence claim. Propose remove or lower, unless a Tricky quote is found.",
+   "by": "c21"
+  }
+ },
+ {
+  "key": "wednesday>sonic-youth",
+  "from": "Wednesday",
+  "fromYear": 2017,
+  "to": "Sonic Youth",
+  "toYear": 1981,
+  "currentCitation": "Exclaim! (2023): \"From Sonic Youth to Drive-by Truckers, they draw inspiration from multiple scenes and influences.\"",
+  "currentTier": "reported",
+  "ledger": {
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "url": "https://www.clashmusic.com/features/devil-in-the-detail-wednesday-interviewed/",
+   "found": "Equal parts Tom T. Hall and Sonic Youth the band are an enigmatic mix of alternative country and fuzzed out college rock.",
+   "note": "Only a writer's comparison (Clash). Exclaim! article with 'From Sonic Youth to Drive-by Truckers' not found (1 search + guessed URL); Stereogum, Ringer, DIY, MTV Hartzman interviews don't mention Sonic Youth. Propose remove, or lower to critic only if the owner accepts a comparison.",
+   "by": "c18"
+  }
+ },
+ {
+  "key": "women>sonic-youth",
+  "from": "Women",
+  "fromYear": 2007,
+  "to": "Sonic Youth",
+  "toYear": 1981,
+  "currentCitation": "Treble: Public Strain is \"more Sonic Youth or Wire, or perhaps a mutant offspring of The Zombies' gorgeous melodies and This Heat's menacing post-punk.\"",
+  "currentTier": "critic",
+  "ledger": {
+   "verdict": "decide",
+   "url": "https://web.archive.org/web/2016/https://www.treblezine.com/women-public-strain-review/",
+   "found": "“Locust Valley” grooves with the rhythmic grace of Stereolab and the post-punk guitar chime of Sonic Youth.",
+   "note": "Treble's Public Strain review (opened via archive) has no 'more Sonic Youth or Wire' sentence; it only compares one song's guitar chime to Sonic Youth. Comparison, not influence. Proposal: remove.",
+   "checked": "2026-10-26",
+   "by": "c22"
+  }
+ }
+]

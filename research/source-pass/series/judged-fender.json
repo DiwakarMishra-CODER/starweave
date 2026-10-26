@@ -1,0 +1,175 @@
+{
+ "agent": "fender",
+ "finished": true,
+ "entries": [
+  {
+   "speaker": "snail-mail",
+   "target": "my-bloody-valentine",
+   "artist": "My Bloody Valentine",
+   "kind": null,
+   "url": "https://www.fender.com/articles/artists/under-the-influence-snail-mails-lindsey-jordan-on-mbvs-bilinda-butcher",
+   "verdict": "influence",
+   "found": "She just has this mysterious aura, but she’s this huge figure in my songwriting and my life.",
+   "citation": "Lindsey Jordan of Snail Mail, in Fender's Under the Influence series (2022 page), on My Bloody Valentine's Bilinda Butcher: \"She just has this mysterious aura, but she's this huge figure in my songwriting and my life.\"",
+   "note": "Jordan speaks of Butcher and the band that created shoegaze; also says Snail Mail covers \"Drive It All Over Me\" live."
+  },
+  {
+   "speaker": "kurt-vile",
+   "target": "pavement",
+   "artist": "Pavement",
+   "kind": null,
+   "url": "https://www.fender.com/articles/artists/kurt-vile-on-his-ever-evolving-style-and-love-of-the-jaguar",
+   "verdict": "influence",
+   "found": "Not long after he received a banjo from his father at the age of 14, Vile began releasing cassettes of his home recordings influenced by the likes of Pavement and Beck.",
+   "citation": "Fender's profile of Kurt Vile (2022 page) says that as a teenager he released cassettes of home recordings \"influenced by the likes of Pavement and Beck.\"",
+   "note": "WRITER'S prose, not Vile's quote; stated plainly as fact, so at best reported tier. Pavement and Beck are named together."
+  },
+  {
+   "speaker": "kurt-vile",
+   "target": "beck",
+   "artist": "Beck",
+   "kind": null,
+   "url": "https://www.fender.com/articles/artists/kurt-vile-on-his-ever-evolving-style-and-love-of-the-jaguar",
+   "verdict": "influence",
+   "found": "Not long after he received a banjo from his father at the age of 14, Vile began releasing cassettes of his home recordings influenced by the likes of Pavement and Beck.",
+   "citation": "Fender's profile of Kurt Vile (2022 page) says that as a teenager he released cassettes of home recordings \"influenced by the likes of Pavement and Beck.\"",
+   "note": "WRITER'S prose, not Vile's quote; stated plainly as fact, so at best reported tier. Pavement and Beck are named together."
+  },
+  {
+   "speaker": "kurt-vile",
+   "target": "sonic-youth",
+   "artist": "Sonic Youth",
+   "kind": null,
+   "url": "https://www.fender.com/articles/artists/kurt-vile-on-his-ever-evolving-style-and-love-of-the-jaguar",
+   "verdict": "favourite",
+   "note": "Vile: \"I definitely look up to people like Sonic Youth and Dinosaur Jr.\" in a passage about Jazzmasters vs Jaguar; admiration, nothing about his own formation."
+  },
+  {
+   "speaker": "kurt-vile",
+   "target": "dinosaur-jr",
+   "artist": "Dinosaur Jr.",
+   "kind": null,
+   "url": "https://www.fender.com/articles/artists/kurt-vile-on-his-ever-evolving-style-and-love-of-the-jaguar",
+   "verdict": "favourite",
+   "note": "Vile: \"I definitely look up to people like Sonic Youth and Dinosaur Jr.\" in a passage about Jazzmasters vs Jaguar; admiration, nothing about his own formation."
+  },
+  {
+   "speaker": "sonic-youth",
+   "target": "dinosaur-jr",
+   "artist": "Dinosaur Jr.",
+   "kind": null,
+   "url": "https://www.fender.com/articles/behind-the-scenes/iconic-mods-how-sonic-youth-invented-the-jazzblaster",
+   "verdict": "favourite",
+   "note": "Writer: after touring with Dinosaur Jr., seeing J Mascis's Jazzmasters \"cemented their adoration\" of the guitar. Writer's prose, about a guitar model, not their music."
+  },
+  {
+   "speaker": "the-smiths",
+   "target": "bert-jansch",
+   "artist": "Bert Jansch",
+   "kind": null,
+   "url": "https://www.fender.com/articles/artists/what-i-know-so-far-johnny-marr",
+   "verdict": "favourite",
+   "note": "Marr: \"The people I looked up to that played seriously—people like Rory Gallagher and Burt Jansch and even Neil Young or Jimmy Page\" -- role models as acoustic/electric players, but no tie to his own music or when; borderline, owner may promote."
+  },
+  {
+   "speaker": "the-smiths",
+   "target": "neil-young",
+   "artist": "Neil Young",
+   "kind": null,
+   "url": "https://www.fender.com/articles/artists/what-i-know-so-far-johnny-marr",
+   "verdict": "favourite",
+   "note": "Marr: \"The people I looked up to that played seriously—people like Rory Gallagher and Burt Jansch and even Neil Young or Jimmy Page\" -- role models as acoustic/electric players, but no tie to his own music or when; borderline, owner may promote."
+  }
+ ],
+ "offMap": [
+  {
+   "name": "Sean Lee (Bully soundtrack)",
+   "namedBy": "blossoms (not on map; Josh Dewhurst)",
+   "sentence": "He’s like my biggest influence ever.",
+   "url": "https://www.fender.com/articles/artists/blossoms-josh-dewhurst-and-charlie-salt-on-influences-and-johnny-marr"
+  },
+  {
+   "name": "Arctic Monkeys",
+   "namedBy": "blossoms (not on map; Josh Dewhurst)",
+   "sentence": "I started learning Arctic Monkeys covers and got picked up by Tom, and I haven’t stopped since.",
+   "url": "https://www.fender.com/articles/artists/blossoms-josh-dewhurst-and-charlie-salt-on-influences-and-johnny-marr",
+   "note": "learning covers; weak"
+  },
+  {
+   "name": "Deep Purple",
+   "namedBy": "blossoms (not on map; Charlie Salt)",
+   "sentence": "My dad was a bass player, and he had a copy of a Gibson Ripper. It was always lying around, and this one day when I was about 8 or 9, he taught me Deep Purple on it.",
+   "url": "https://www.fender.com/articles/artists/blossoms-josh-dewhurst-and-charlie-salt-on-influences-and-johnny-marr"
+  },
+  {
+   "name": "Thin Lizzy",
+   "namedBy": "blossoms (not on map; Charlie Salt)",
+   "sentence": "From there, he got me on to really good records, like Thin Lizzy’s _Live and Dangerous_ and disco stuff, Fleetwood Mac.",
+   "url": "https://www.fender.com/articles/artists/blossoms-josh-dewhurst-and-charlie-salt-on-influences-and-johnny-marr",
+   "note": "also Fleetwood Mac"
+  },
+  {
+   "name": "Nirvana (on map)",
+   "namedBy": "weezer (not on map; Rivers Cuomo)",
+   "sentence": "really inspired us to go for it.",
+   "url": "https://www.fender.com/articles/artists/the-soul-of-teen-spirit-artists-remember-kurt-cobain",
+   "note": "target nirvana is on the map but speaker Weezer is not"
+  },
+  {
+   "name": "Nirvana (on map)",
+   "namedBy": "diiv (not on map; Zachary Cole Smith)",
+   "sentence": "The way he approached his own music was so meticulous, it was inspiring to me.",
+   "url": "https://www.fender.com/articles/artists/the-soul-of-teen-spirit-artists-remember-kurt-cobain",
+   "note": "target nirvana on map; speaker off map"
+  },
+  {
+   "name": "Nirvana (on map)",
+   "namedBy": "bleachers (not on map; Jack Antonoff)",
+   "sentence": "I started playing guitar around the time that Nevermind came out.",
+   "url": "https://www.fender.com/articles/artists/the-soul-of-teen-spirit-artists-remember-kurt-cobain",
+   "note": "target nirvana on map; speaker off map"
+  },
+  {
+   "name": "Nirvana (on map)",
+   "namedBy": "sturgill-simpson (not on map)",
+   "sentence": "I remember in seventh or eighth grade, when (_Nevermind_)dropped, it was like a bomb went off in my bedroom.",
+   "url": "https://www.fender.com/articles/artists/the-soul-of-teen-spirit-artists-remember-kurt-cobain",
+   "note": "target nirvana on map; speaker off map"
+  },
+  {
+   "name": "Mott the Hoople (their \"Sweet Jane\")",
+   "namedBy": "the-smiths (Johnny Marr)",
+   "sentence": "I really wanted to play B-minor because Mott the Hoople has their version of ‘Sweet Jane,’ and that’s the key chord.",
+   "url": "https://www.fender.com/articles/artists/what-i-know-so-far-johnny-marr",
+   "note": "Marr at 11-12 learning guitar; a cover of a Velvet Underground song, so no VU line"
+  },
+  {
+   "name": "Rory Gallagher / Jimmy Page",
+   "namedBy": "the-smiths (Johnny Marr)",
+   "sentence": "The people I looked up to that played seriously—people like Rory Gallagher and Burt Jansch and even Neil Young or Jimmy Page—those guys were great rock guitar players but they always could deliver on an acoustic.",
+   "url": "https://www.fender.com/articles/artists/what-i-know-so-far-johnny-marr",
+   "note": "borderline, looked up to"
+  },
+  {
+   "name": "The Doors",
+   "namedBy": "the-strokes (Nick Valensi)",
+   "sentence": "As a teenager, the Doors were a really big influence on me for stuff like that.",
+   "url": "https://web.archive.org/web/2022/https://www.fender.com/articles/behind-the-scenes/what-i-know-so-far-nick-valensi-of-the-strokes-and-crx",
+   "note": "read from Internet Archive copy"
+  },
+  {
+   "name": "Guns N' Roses",
+   "namedBy": "the-strokes (Nick Valensi)",
+   "sentence": "But he asked me what I was interested in learning, and I was into Guns n' Roses. So the first thing that I learned was the intro riff from ‘Sweet Child o' Mine.’ And in a way, I’ve been playing that riff ever since.",
+   "url": "https://web.archive.org/web/2022/https://www.fender.com/articles/behind-the-scenes/what-i-know-so-far-nick-valensi-of-the-strokes-and-crx",
+   "note": "first guitar teacher; check apostrophes against page"
+  },
+  {
+   "name": "The Beatles / Phil Spector productions",
+   "namedBy": "television (Richard Lloyd, from his own site, quoted by Fender)",
+   "sentence": "I got this idea from both the Phil Spector productions and also from the Beatles,” Lloyd wrote.",
+   "url": "https://www.fender.com/articles/artists/one-track-mind-television-shines-under-the-marquee-moon",
+   "note": "idea of doubling guitar parts; technique influence, from Lloyd only"
+  }
+ ]
+}

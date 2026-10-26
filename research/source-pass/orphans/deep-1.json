@@ -1,0 +1,70 @@
+{
+ "tricky": [
+  {
+   "key": "tricky>massive-attack",
+   "why": "Membership and collaboration, not influence.",
+   "note": "Tricky was a member of the Wild Bunch/Massive Attack circle and rapped on Blue Lines and Protection: personnel/collaboration, not influence. No page read stating he was influenced by them. Propose remove.",
+   "url": null
+  },
+  {
+   "key": "tricky>siouxsie-and-the-banshees",
+   "why": "Quietus describes Tricky covering 'Tattoo' and style parallels but not that it shaped him; a cover is not an influence claim.",
+   "note": "Quietus (Toby Manning) read in full: it describes Tricky covering 'Tattoo' and 'parallels' between post-punk and hip hop; it does NOT say it 'helped Tricky shape his style'. A cover is not an influence claim. Propose remove or lower, unless a Tricky quote is found.",
+   "url": "https://thequietus.com/?p=268323"
+  }
+ ],
+ "the-mountain-goats": [
+  {
+   "key": "la-dispute>the-mountain-goats",
+   "why": "Owner: drop every link still without a source at the end of the source pass.",
+   "note": "BBC Radio 1 'Under the Influence with La Dispute' did not come up in two searches.",
+   "url": null
+  },
+  {
+   "key": "the-mountain-goats>joy-division",
+   "why": "Only Wikipedia's Goths page, footnoted to a piece whose teenage goth listening is the journalist's own; the link is likely true but unproven (would change: a band statement).",
+   "note": "Only Wikipedia's Goths page says the band stated this, and its footnote [4] is the Noisey piece whose teenage goth listening is the journalist's own, not Darnielle's (the known whose-I trap). Paste (archive) doesn't carry it. Propose: keep as reported on Wikipedia only if the owner accepts it, else hold until a Merge/Bandcamp band statement is found; the link itself is very likely true.",
+   "url": "https://en.wikipedia.org/wiki/Goths_(album)"
+  },
+  {
+   "key": "the-mountain-goats>siouxsie-and-the-banshees",
+   "why": "Only Wikipedia relays the band statement, citing a Noisey piece whose goth listening is the journalist's own; hold until a band statement is found.",
+   "note": "Only Wikipedia's Goths page says the band stated this, and its footnote [4] is the Noisey piece whose teenage goth listening is the journalist's own, not Darnielle's (the known whose-I trap). Paste (archive) doesn't carry it. Propose: keep as reported on Wikipedia only if the owner accepts it, else hold until a Merge/Bandcamp band statement is found; the link itself is very likely true.",
+   "url": "https://en.wikipedia.org/wiki/Goths_(album)"
+  },
+  {
+   "key": "the-mountain-goats>the-cure",
+   "why": "Only Wikipedia carries the band statement, and its footnote is a journalist's own listening history (whose-I trap); likely true, so a Merge or band statement would change it.",
+   "note": "Only Wikipedia's Goths page says the band stated this, and its footnote [4] is the Noisey piece whose teenage goth listening is the journalist's own, not Darnielle's (the known whose-I trap). Paste (archive) doesn't carry it. Propose: keep as reported on Wikipedia only if the owner accepts it, else hold until a Merge/Bandcamp band statement is found; the link itself is very likely true.",
+   "url": "https://en.wikipedia.org/wiki/Goths_(album)"
+  }
+ ],
+ "hum": [
+  {
+   "key": "hum>dinosaur-jr",
+   "why": "A bare favourite-bands list in the band's bio with no tie to forming their sound (50/50; would change: Talbott saying he learned from Dinosaur Jr.).",
+   "note": "Only the 2012 archive copy of h-u-m.net/bio carries the sentence (the live page no longer has it). It is a bare list of favourite bands in the band's own bio, no comment on shaping their sound, so by the rules not influence on its own. New Artillery's Hum 'Inlet' review (newartillery.com/reviews/reviews-hum-s-inlet) reads that list as tracing 'one side of their development' (critic, from memory). Propose lower to reported/keep if the owner accepts a band-bio favourites list, else remove. Same verdict for the three Hum links.",
+   "url": "https://web.archive.org/web/2012/http://www.h-u-m.net/bio/"
+  },
+  {
+   "key": "hum>my-bloody-valentine",
+   "why": "Bare favourites list in the band's own bio, no comment; 50/50, would change with a statement tying MBV to Hum's sound.",
+   "note": "Same bare favourites list (2012 archive of h-u-m.net/bio); New Artillery also recalls Talbott listing Loveless among his favourite records. Strongest of the three; propose keep at reported if the owner accepts favourites lists from the band's own bio.",
+   "url": "https://web.archive.org/web/2012/http://www.h-u-m.net/bio/"
+  },
+  {
+   "key": "hum>rem",
+   "why": "A bare favourites list on the band bio with no tie to their own music, and the weakest of the three Hum entries.",
+   "note": "Same bare favourites list as hum>dinosaur-jr (2012 archive of h-u-m.net/bio). R.E.M. appears nowhere in the New Artillery review, so it has the weakest support of the three.",
+   "url": "https://web.archive.org/web/2012/http://www.h-u-m.net/bio/"
+  }
+ ],
+ "dead-can-dance": [
+  {
+   "key": "dead-can-dance>cocteau-twins",
+   "why": "Shared 4AD label and genre only.",
+   "note": "Wikipedia only says the early album \"fit in with the ethereal wave style of label mates Cocteau Twins\": shared 4AD label and genre, not influence. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Dead_Can_Dance"
+  }
+ ]
+}

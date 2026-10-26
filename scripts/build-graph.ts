@@ -352,6 +352,8 @@ const ARTIST_PHOTO: Record<string, PhotoOverride> = {
 
   // Wikimedia Commons
   'ariel-pink': { file: '/photos/ariel-pink.jpg', credit: { author: 'Dustin Drew', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Ariel_Pink%27s_Haunted_Graffiti,_FYF_2010_(4975726091).jpg' } },
+  // Deezer's own Spacemen 3 entry carries a stranger's photo.
+  'spacemen-3': { file: '/photos/spacemen-3.jpg', credit: { author: 'Greg Neate', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Spacemen_3.jpg' } },
   'bon-iver': { file: '/photos/bon-iver.jpg', credit: { author: 'Simon.Appelblad', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Bon_Iver_3.jpg' } },
   'bonnie-prince-billy': { file: '/photos/bonnie-prince-billy.jpg', credit: { author: 'Neff Conner', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Bonnie-Prince-Billy-060609_(614bw)_(3606166772)_(cropped).jpg' } },
   'bratmobile': { file: '/photos/bratmobile.jpg', credit: { author: 'Greg Neate', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Bratmobile.jpg' } },

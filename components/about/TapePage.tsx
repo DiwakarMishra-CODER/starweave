@@ -74,8 +74,11 @@ export default function TapePage({ tape, room }: { tape: AboutTape; room: AboutR
     if (n.queue?.id !== tape.queue.id || n.at === null) return;
     if (n.paused && !hushed.current) return; // paused by the visitor: leave it be
     const track = tape.tracks[current];
+    // Only the silent opening track hushes the tape; a later track with no
+    // song of its own (How I find new music, whose crate plays its own
+    // records) lets the song before it play on.
     if (track.songs.length === 0) {
-      if (!n.paused) { hushed.current = true; player.hush(); }
+      if (current === 0 && !n.paused) { hushed.current = true; player.hush(); }
       return;
     }
     if (n.paused) { hushed.current = false; player.glide(track.songs[0].at); return; }

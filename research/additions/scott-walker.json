@@ -1,0 +1,128 @@
+{
+  "id": "scott-walker",
+  "name": "Scott Walker",
+  "place": {
+    "realm": "region-one",
+    "lineage": null,
+    "layer": "outside",
+    "genres": [
+      "art-pop",
+      "chamber-pop",
+      "experimental-pop"
+    ],
+    "country": "GB",
+    "activeFrom": 1964,
+    "signatureSong": "It's Raining Today",
+    "scenes": [],
+    "note": "Born Noel Scott Engel in Hamilton, Ohio, 1943; moved to the UK in the 60s and later took British citizenship. Country: 'US' by birth, 'GB' by career -- owner to choose (I propose GB). activeFrom 1964 = Walker Brothers (solo from 1967). Not in a scene."
+  },
+  "edges": [
+    {
+      "source": "david-bowie",
+      "target": "scott-walker",
+      "sourceTier": "first-person",
+      "confidence": 0.85,
+      "url": "https://www.davidbowie.com/blog/2019/3/25/farewell-to-scott-walker-1943-2019",
+      "found": "I think he's probably been my idol since I was a kid. That's very moving.",
+      "citation": "David Bowie, hearing a personal message from Scott Walker on a 1997 BBC Radio 1 show for his 50th birthday, said: \"I think he's probably been my idol since I was a kid.\"",
+      "note": "Also on NME (nme.com/blogs/nme-blogs/scott-walker-influences-david-bowie-alex-turner-2466400) and davidbowie.com (the official site). 'Idol since a kid' = formative; Bowie covered Walker's version of Brel's 'My Death' on tour (not used)."
+    },
+    {
+      "source": "radiohead",
+      "target": "scott-walker",
+      "sourceTier": "first-person",
+      "confidence": 0.85,
+      "url": "https://radiox.co.uk/artists/radiohead/thom-yorke-pays-tribute-scott-walker",
+      "found": "So very sad to hear that Scott Walker has passed away, he was a huge influence on Radiohead and myself, showing me how i could use my voice and words.",
+      "citation": "On Scott Walker's death in March 2019 Thom Yorke wrote that he \"was a huge influence on Radiohead and myself, showing me how i could use my voice and words.\"",
+      "note": "Speaker Thom Yorke for radiohead. Also Ed O'Brien (Quietus Baker's Dozen) 'Among Radiohead, Scott Walker's definitely our unifying artist' -- supports it as reported/first-person."
+    },
+    {
+      "source": "pulp",
+      "target": "scott-walker",
+      "sourceTier": "first-person",
+      "confidence": 0.85,
+      "url": "https://pitchfork.com/features/5-10-15-20/10048-jarvis-cocker-on-the-music-of-his-life/",
+      "found": "Leonard Cohen and Scott Walker are the two real touchstones in terms of people I've listened to consistently throughout my whole life. If you listen to that first Pulp record, it is just a direct rip off of his first album",
+      "citation": "Jarvis Cocker told Pitchfork's 5-10-15-20 that Scott Walker is one of \"the two real touchstones\" he has listened to throughout his life, and that Pulp's first record is \"a direct rip off of his first album\".",
+      "note": "Strong: also says Pulp's It (1983) copied Scott's first album."
+    },
+    {
+      "source": "destroyer",
+      "target": "scott-walker",
+      "sourceTier": "first-person",
+      "confidence": 0.85,
+      "url": "https://pitchfork.com/features/5-10-15-20/8896-destroyer/",
+      "found": "The bulk of 2003 was very much me wrestling with my intense love of Scott Walker. ... When we were making Your Blues, I had this idea of trying to conflate the heavily-arranged-crooning Scott Walker and Nite Flights Scott Walker and Climate of Hunter Scott Walker and string them all together.",
+      "citation": "Dan Bejar of Destroyer told Pitchfork that in 2003 he was \"wrestling with my intense love of Scott Walker\", and that on Your Blues he tried to blend Walker's crooning, Nite Flights and Climate of Hunter periods.",
+      "note": "Speaker Dan Bejar."
+    },
+    {
+      "source": "xiu-xiu",
+      "target": "scott-walker",
+      "sourceTier": "first-person",
+      "confidence": 0.85,
+      "url": "https://thequietus.com/interviews/bakers-dozen/jamie-stewart-xiu-xiu-interview-favourite-music/7/",
+      "found": "It's not in any way an exaggeration to say that Scott Walker is an idol of mine. ... His trajectory in music is an incredible inspiration to me. ... Having Scott Walker as the model for that keeps the lights on creatively for me.",
+      "citation": "Jamie Stewart of Xiu Xiu told The Quietus that Scott Walker \"is an idol of mine\", that his trajectory is \"an incredible inspiration\", and that having him \"as the model\" keeps Stewart creatively going."
+    },
+    {
+      "source": "echo-and-the-bunnymen",
+      "target": "scott-walker",
+      "sourceTier": "first-person",
+      "confidence": 0.8,
+      "url": "https://thequietus.com/interviews/bakers-dozen/will-sergeant-echo-and-the-bunnymen-favourite-albums/13/",
+      "found": "By the time of Ocean Rain we really loved all that stuff. For me then it was Scott Walker, Love, Jacques Brel; these were the main reasons we went to Paris. ... we went there to make a different sounding record.",
+      "citation": "Will Sergeant of Echo & the Bunnymen told The Quietus that by the time of Ocean Rain (1984) \"it was Scott Walker, Love, Jacques Brel; these were the main reasons we went to Paris\" to make a different-sounding record.",
+      "note": "Speaker Will Sergeant; ties Walker to making Ocean Rain. Also: 'Us lot knew about Scott Walker a bit' earlier."
+    },
+    {
+      "source": "sharon-van-etten",
+      "target": "scott-walker",
+      "sourceTier": "first-person",
+      "confidence": 0.5,
+      "url": "https://www.interviewmagazine.com/music/sharon-van-etten-shows-molly-ringwald-her-resting-sad-face",
+      "found": "VAN ETTEN: Scott Walker, Cocteau Twins, Rowland Stuart Howard, Joy Division, Roy Orbison and Celine Dion. Very melodic and orchestral, but also percussive and angsty and intense.",
+      "citation": "In Interview magazine, Sharon Van Etten named Scott Walker first among artists she described as \"very melodic and orchestral, but also percussive and angsty and intense\".",
+      "note": "WEAK: the page shows the answer but I could not see the question; context suggests it is what she listens to or built a record's playlist around (she mentions making 'music mood boards' / a playlist for a record just before). Likely favourites-level. Owner to rule or drop."
+    }
+  ],
+  "denials": [],
+  "rejected": [
+    {
+      "pair": "cocteau-twins>scott-walker",
+      "why": "Simon Raymonde (Quietus): came to Walker late via Julian Cope's compilation; 'listen to it every day in my mind'. Joined the Twins in 1983. Favourite."
+    },
+    {
+      "pair": "vampire-weekend>scott-walker",
+      "why": "Existing seed citation (Koenig on an LSQ podcast discovered Scott Walker) not re-opened; likely first-person-ish ('discovering Scott Walker') -- check URL in the ledger before using."
+    },
+    {
+      "pair": "nick-cave-and-the-bad-seeds>scott-walker",
+      "why": "Only NME/secondary 'Cave is named as Walker-influenced' (no quote found; one search spent). Unverified."
+    },
+    {
+      "pair": "mitski>scott-walker",
+      "why": "A blog review (albumreviews.blog) says Mitski named Scott Walker among influences for The Land Is Inhospitable; no interview carrying it found (NPR interview doesn't mention him). Unverified; do not use."
+    },
+    {
+      "pair": "scott-walker>anyone on the map",
+      "why": "Upstream is thin/none on the map. His documented influences are Jacques Brel (off the map; in the interview Far Out quotes, Walker says no one else could write like Brel 'not even Dylan' -- a comparison, not a Dylan influence), Sinatra, Sartre, Kafka, Bergman, Phil Spector (all off the map). Nothing found for Velvet Underground. So Scott Walker would have no road back to the Velvet Underground; he is a source node only."
+    },
+    {
+      "pair": "walker-brothers / julian-cope / bat-for-lashes",
+      "why": "Not on the map; Julian Cope compiled the 1981 'Fire Escape in the Sky' (credited by Sergeant and Raymonde as re-introducing him)."
+    }
+  ],
+  "content": {
+    "bio": "Scott Walker was born Noel Scott Engel in Ohio in 1943 and moved to Britain in the mid-1960s, where the Walker Brothers (no relation) became teen idols with huge orchestral hits such as \"The Sun Ain't Gonna Shine Anymore\". Going solo in 1967, he made four albums, known as Scott 1 to 4, mixing his own songs with translations of Jacques Brel and filling them with strings, existential literature and a deep baritone that sounded nothing like pop of the time.\n\nWhen the records stopped selling he drifted through cabaret and cover versions, then returned in 1984 with Climate of Hunter and, from Tilt (1995) onward, made some of the most unsettling and original music of his century: sparse, slow and built from silence. Bish Bosch (2012) is the furthest he went. He died in 2019. Bowie, Radiohead, Pulp and Destroyer have all described him as an idol.",
+    "album": {
+      "title": "Scott 4",
+      "year": 1969,
+      "classicReason": "Scott 4 was the first album Walker wrote entirely himself, and it is a set of short, widescreen songs where Wally Stott's strings press against a close, almost whispered baritone. \"The Seventh Seal\", taken from Bergman's film, and \"The Old Man's Back Again\", about Stalinist Czechoslovakia, show how far he had drifted from pop. It sold so badly that he disowned it and returned to cover versions for years. It endures because later artists heard in it permission to write grand, difficult songs: Radiohead's Ed O'Brien says it is the most-played album on all his devices."
+    }
+  },
+  "searches": 20,
+  "toolStatus": "WebSearch and ledger.ts read worked throughout; 20 of 22 searches used for the whole batch of three.",
+  "notes": "Thom Yorke's quote is from Radio X's report of his March 2019 tribute. Scott 4 line in the album blurb rests on Ed O'Brien's Quietus words ('Scott 4's my most-played album on all of my devices')."
+}

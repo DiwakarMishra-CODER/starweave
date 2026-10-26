@@ -297,7 +297,7 @@ export function resolveAboutTape(data: GraphData): AboutTape {
     roadQueue,
     radiohead: [classic('radiohead'), cover('disappear'), cover('weird-fishes')],
     rotation: [
-      cover('disappear'), cover('joga'), cover('long-season'), cover('andromeda'), classic('the-cure'),
+      cover('disappear'), cover('joga'), cover('andromeda'), classic('the-cure'),
       cover('emily'), cover('weird-fishes'), cover('alison'), cover('dreams-tonite'), classic('radiohead'), cover('story-ends'),
     ],
     constants: {

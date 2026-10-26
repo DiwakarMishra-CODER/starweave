@@ -1,0 +1,116 @@
+{
+ "harold-budd": [
+  {
+   "key": "harold-budd>brian-eno",
+   "why": "Collaboration and production, and Budd was the older artist.",
+   "note": "Collaboration: Eno produced and recorded with Budd (The Pavilion of Dreams, The Plateaux of Mirror), and Budd was the older artist. Propose remove. Not searched.",
+   "url": null
+  }
+ ],
+ "tricky": [
+  {
+   "key": "tricky>massive-attack",
+   "why": "Membership and collaboration, not influence.",
+   "note": "Tricky was a member of the Wild Bunch/Massive Attack circle and rapped on Blue Lines and Protection: personnel/collaboration, not influence. No page read stating he was influenced by them. Propose remove.",
+   "url": null
+  },
+  {
+   "key": "tricky>siouxsie-and-the-banshees",
+   "why": "Quietus describes Tricky covering 'Tattoo' and style parallels but not that it shaped him; a cover is not an influence claim.",
+   "note": "Quietus (Toby Manning) read in full: it describes Tricky covering 'Tattoo' and 'parallels' between post-punk and hip hop; it does NOT say it 'helped Tricky shape his style'. A cover is not an influence claim. Propose remove or lower, unless a Tricky quote is found.",
+   "url": "https://thequietus.com/?p=268323"
+  }
+ ],
+ "the-mountain-goats": [
+  {
+   "key": "la-dispute>the-mountain-goats",
+   "why": "Owner: drop every link still without a source at the end of the source pass.",
+   "note": "BBC Radio 1 'Under the Influence with La Dispute' did not come up in two searches.",
+   "url": null
+  },
+  {
+   "key": "the-mountain-goats>joy-division",
+   "why": "Only Wikipedia's Goths page, footnoted to a piece whose teenage goth listening is the journalist's own; the link is likely true but unproven (would change: a band statement).",
+   "note": "Only Wikipedia's Goths page says the band stated this, and its footnote [4] is the Noisey piece whose teenage goth listening is the journalist's own, not Darnielle's (the known whose-I trap). Paste (archive) doesn't carry it. Propose: keep as reported on Wikipedia only if the owner accepts it, else hold until a Merge/Bandcamp band statement is found; the link itself is very likely true.",
+   "url": "https://en.wikipedia.org/wiki/Goths_(album)"
+  },
+  {
+   "key": "the-mountain-goats>siouxsie-and-the-banshees",
+   "why": "Only Wikipedia relays the band statement, citing a Noisey piece whose goth listening is the journalist's own; hold until a band statement is found.",
+   "note": "Only Wikipedia's Goths page says the band stated this, and its footnote [4] is the Noisey piece whose teenage goth listening is the journalist's own, not Darnielle's (the known whose-I trap). Paste (archive) doesn't carry it. Propose: keep as reported on Wikipedia only if the owner accepts it, else hold until a Merge/Bandcamp band statement is found; the link itself is very likely true.",
+   "url": "https://en.wikipedia.org/wiki/Goths_(album)"
+  },
+  {
+   "key": "the-mountain-goats>the-cure",
+   "why": "Only Wikipedia carries the band statement, and its footnote is a journalist's own listening history (whose-I trap); likely true, so a Merge or band statement would change it.",
+   "note": "Only Wikipedia's Goths page says the band stated this, and its footnote [4] is the Noisey piece whose teenage goth listening is the journalist's own, not Darnielle's (the known whose-I trap). Paste (archive) doesn't carry it. Propose: keep as reported on Wikipedia only if the owner accepts it, else hold until a Merge/Bandcamp band statement is found; the link itself is very likely true.",
+   "url": "https://en.wikipedia.org/wiki/Goths_(album)"
+  }
+ ],
+ "christie-front-drive": [
+  {
+   "key": "christie-front-drive>drive-like-jehu",
+   "why": "Unfootnoted Wikipedia line repeating aggregator bios.",
+   "note": "Wikipedia sentence has no footnote (raw wikitext checked); same unsourced bio claim as Last.fm/Sputnik. Propose remove, or keep at reported only if owner accepts an unfootnoted Wikipedia line.",
+   "url": "https://en.wikipedia.org/wiki/Christie_Front_Drive"
+  }
+ ],
+ "women": [
+  {
+   "key": "women>caribou",
+   "why": "Owner: drop every link still without a source at the end of the source pass.",
+   "note": "The 'radio-show writeup' was not identified; a comparison list is not influence. Proposal: remove.",
+   "url": null
+  },
+  {
+   "key": "women>velvet-underground",
+   "why": "Owner: drop every link still without a source at the end of the source pass.",
+   "note": "The 'radio-show writeup' was not identified; searches found only comparisons (Westword: 'compared to ... the drone-heavy noise rock pioneered by the Velvet Underground'). Comparison only; proposal: remove.",
+   "url": null
+  },
+  {
+   "key": "women>wire",
+   "why": "Owner: drop every link still without a source at the end of the source pass.",
+   "note": "Treble Public Strain review (archive.org 2016 copy) does not mention Wire; the quoted sentence was not found there or in a search. Proposal: remove.",
+   "url": null
+  },
+  {
+   "key": "women>sonic-youth",
+   "why": "Treble's review only compares one song's guitar chime to Sonic Youth.",
+   "note": "Treble's Public Strain review (opened via archive) has no 'more Sonic Youth or Wire' sentence; it only compares one song's guitar chime to Sonic Youth. Comparison, not influence. Proposal: remove.",
+   "url": "https://web.archive.org/web/2016/https://www.treblezine.com/women-public-strain-review/"
+  },
+  {
+   "key": "women>this-heat",
+   "why": "This Heat appears only in the writer's resemblance sentence; Flegel names the Stooges, Iggy Pop and Wire.",
+   "note": "Treble (2010) interview with Pat Flegel opened. This Heat appears only in the writer's own resemblance sentence. Flegel himself names the Stooges ('Loose'), Iggy Pop and Wire's Pink Flag, not This Heat. Exclaim! (opened earlier) only says 'between Swell Maps and Syd Barrett'. Proposal: remove, or keep as critic.",
+   "url": "https://www.treblezine.com/songs-about-nothing-an-interview-with-women/"
+  }
+ ],
+ "broken-social-scene": [
+  {
+   "key": "broken-social-scene>galaxie-500",
+   "why": "Owner: drop every link still without a source at the end of the source pass.",
+   "note": "Searched AV Club On Fire + band names; no AV Club page found. Read rockandrollglobe Galaxie 500 On Fire at 30 and Wikipedia Galaxie 500: no Broken Social Scene mention. Also a 'cast a shadow over' sentence is at most a resemblance claim; propose remove if the AV Club page cannot be produced.",
+   "url": null
+  },
+  {
+   "key": "broken-social-scene>pavement",
+   "why": "A song title nod only.",
+   "note": "The only basis is a song title, 'Ibi Dreams of Pavement (A Better Day)' (the old citation also mixes in Blonde Redhead's naming from DNA, which belongs to another link). A song title naming Pavement is a nod, not a statement of influence. No interview found. Propose remove.",
+   "url": "https://en.wikipedia.org/wiki/Broken_Social_Scene"
+  },
+  {
+   "key": "broken-social-scene>talk-talk",
+   "why": "Favourite-album answer about emotion, no statement that Talk Talk shaped Drew's music.",
+   "note": "The SPIN 'My Favorite Things' page (May 2011) carries the quoted text, with Kevin Drew naming 'Laughing Stock by Talk Talk' under FAVORITE ALBUM. It is a favourite-album answer about authentic emotion, with no statement that Talk Talk shaped Drew's or Broken Social Scene's own music. Per the rules that is a favourites-list-type answer, not influence. Proposal: remove, or keep only if a better source turns up. A lead is Drew's Brooklyn Vegan '10 favorite ballads' list (New Grass by Talk Talk), wh",
+   "url": "https://www.spinmagazine.com/2011/05/my-favorite-things-broken-social-scenes-kevin-drew/"
+  },
+  {
+   "key": "broken-social-scene>dirty-three",
+   "why": "A present-tense favourite-album answer with no claim of shaping Drew's music.",
+   "note": "Same SPIN 'My Favorite Things' page: Drew's FAVORITE ALBUM answer names 'Whatever You Love, You Are by the Dirty Three' as among the most authentic human emotion on an album. It is a present-tense favourite with no claim of influence on his own music. Proposal: remove, or keep only if a better source turns up. A separate Arcana interview of Drew has him listing Dirty Three among his 'favourite bands', which is also not an influence statement.",
+   "url": "https://www.spinmagazine.com/2011/05/my-favorite-things-broken-social-scenes-kevin-drew/"
+  }
+ ]
+}

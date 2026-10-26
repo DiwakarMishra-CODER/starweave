@@ -19,7 +19,7 @@ How they were found: artists the map's own citations and bios already name, coun
 | Spacemen 3 (plus Loop) | 3 (Ride first-person twice; Galaxie 500 critic; Slowdive names Loop) | Spiritualized is Jason Pierce's later band: personnel. |
 | PiL | 3 (Spoon first-person; Clairo; The Rapture critic) | John Lydon → Sex Pistols is personnel. |
 | Smashing Pumpkins | 3 (beabadoobee first-person; Silversun Pickups bio; yeule offhand) | Borderline on scope (arena-sized), kept: the evidence is real, and it gives Silversun Pickups a sourced link. |
-| Peter Cat Recording Co. | 0 | Owner's pick (Delhi). Their stated influences may sit mostly outside the roster (old Hindi film music, jazz, chanson), so find an in-map link first; held under no-orphans if there is none. |
+| Peter Cat Recording Co. | 2 (sourced, Oct 2026) | Owner's pick (Delhi). Clears no-orphans: Stereogum (2023) says Suryakant Sawhney cites the Velvet Underground and Neutral Milk Hotel as formative; Rolling Stone India (2011) calls NMH "one of the outfit's major influences" and VU his lyrical inspiration. Both reported tier; in `research/source-pass/candidates.json`. |
 
 Optional, after that: **a lineage review** of the genres' parents (Hyperpop <- IDM and Drone <- Ambient are the most debatable; see CLAUDE.md's /genres notes). Not urgent: the drawing matches the data and the dates all run forward.
 

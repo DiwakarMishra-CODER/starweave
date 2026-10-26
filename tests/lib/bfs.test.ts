@@ -225,14 +225,20 @@ describe('hopCost', () => {
 
 describe('findBestSourcedPath', () => {
   it('avoids an unsourced hop the shortest path walks straight through', () => {
-    // Fewest hops goes via Nico, whose edge nobody stated on the record.
-    const shortest = findConnectionPath('velvet-underground', 'big-thief', graphData.edges)!;
-    const best = findBestSourcedPath('velvet-underground', 'big-thief', graphData.edges)!;
-    expect(shortest).toContain('nico');
-    expect(best).not.toContain('nico');
+    // Since the source pass every link on the map has a source, so this is a
+    // made-up family: two hops via `mid` that nobody stated on the record,
+    // or three that are all the artists' own words.
+    const e = (source: string, target: string, sourced: boolean): Edge => sourced
+      ? { source, target, type: 'influence', status: 'verified', confidence: 0.85, citation: 'x', sourceTier: 'first-person' }
+      : { source, target, type: 'influence', status: 'verified', confidence: 0.5, citation: undefined, citationStatus: 'unsourceable' };
+    const edges = [e('leaf', 'mid', false), e('mid', 'root', false), e('leaf', 'a', true), e('a', 'b', true), e('b', 'root', true)];
+    const shortest = findConnectionPath('root', 'leaf', edges)!;
+    const best = findBestSourcedPath('root', 'leaf', edges)!;
+    expect(shortest).toContain('mid');
+    expect(best).not.toContain('mid');
 
     // and every hop of the route it picked instead is the artist's own words
-    for (const hop of resolvePathHops(best, graphData.edges)!) {
+    for (const hop of resolvePathHops(best, edges)!) {
       expect(hop.edge.sourceTier).toBe('first-person');
     }
   });

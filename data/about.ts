@@ -37,7 +37,6 @@ export const TAPE_SONGS: TapeSong[] = [
   { key: 'joga', artistId: 'bjork', song: 'Jóga', album: 'Homogenic' },
   { key: 'andromeda', artistId: 'weyes-blood', song: 'Andromeda', album: 'Titanic Rising' },
   { key: 'emily', artistId: 'joanna-newsom', song: 'Emily', album: 'Ys' },
-  { key: 'long-season', artistId: 'fishmans', song: 'Long Season', album: '98.12.28', albumLabel: '98.12.28 \u7537\u9054\u306e\u5225\u308c', country: 'jp', label: 'Long Season (live)' },
   { key: 'dreams-tonite', artistId: 'alvvays', song: 'Dreams Tonite', album: 'Antisocialites' },
   { key: 'get-me-away', artistId: 'belle-and-sebastian', song: "Get Me Away from Here, I'm Dying", album: "If You're Feeling Sinister" },
   // Mathcore, and loud: it never plays by itself on the tape, only when
@@ -126,7 +125,7 @@ export const TAPE_TRACKS: TapeTrack[] = [
     id: 'dig',
     side: 'B',
     title: 'How I find new music',
-    songs: ['long-season'],
+    songs: [],
     heading: 'How I find new music',
     words: [
       "I don't trust the recommendations on music apps much. For every creative artist they give you, they follow with a less creative copy of them. And they narrow your taste.",
@@ -244,8 +243,6 @@ export const DIGGING: { name: string; tab?: string; href: string; finds: (({ son
   {
     name: 'Rate Your Music', href: 'https://rateyourmusic.com/',
     finds: [
-      // #1 live album on Rate Your Music's charts (checked Oct 2026).
-      { song: 'long-season', note: ['The top live album on Rate Your Music\'s charts. That\'s how I found it, and "Long Season": one song, about forty minutes long. No algorithm would ever recommend it; only a real person would.'] },
       { record: 'black-country-new-road', note: ["Rate Your Music's top album of the 2020s."] },
     ],
   },

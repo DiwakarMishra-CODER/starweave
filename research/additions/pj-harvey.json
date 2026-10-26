@@ -1,0 +1,130 @@
+{
+  "id": "pj-harvey",
+  "name": "PJ Harvey",
+  "place": {
+    "realm": "region-one",
+    "lineage": null,
+    "layer": "outside",
+    "genres": [
+      "alt-rock",
+      "art-rock",
+      "noise-rock"
+    ],
+    "country": "GB",
+    "activeFrom": 1991,
+    "signatureSong": "Down by the Water",
+    "scenes": [],
+    "note": "Region-one like Siouxsie/The Fall (UK). Dorset, formed as a trio 1991 (PJ Harvey the band), solo name from 1993; 'Dry' 1992. Alternative genres: 'riot-grrrl'/'grunge' not apt."
+  },
+  "edges": [
+    {
+      "source": "pj-harvey",
+      "target": "bob-dylan",
+      "sourceTier": "first-person",
+      "confidence": 0.85,
+      "url": "https://faroutmagazine.co.uk/pj-harveys-favourite-bob-dylan-album/",
+      "found": "In 2001, PJ Harvey told The Guardian , \"I am an enormous Bob Dylan fan. I once said that Desire was my favourite album, but it changes all the time. He has been a big influence on my work. I grew up on a diet of Dylan – my mum was a big fan – and now when I'm feeling lost or lacking in inspiration I listen to him.\"",
+      "citation": "PJ Harvey told The Guardian in 2001: \"He has been a big influence on my work. I grew up on a diet of Dylan – my mum was a big fan.\"",
+      "note": "Far Out quotes the 2001 Guardian interview; the Guardian original wasn't opened (one more step if wanted). Tier first-person: her own words."
+    },
+    {
+      "source": "spoon",
+      "target": "pj-harvey",
+      "sourceTier": "first-person",
+      "confidence": 0.85,
+      "url": "https://pitchfork.com/features/5-10-15-20/spoons-britt-daniel-on-the-music-that-made-him-an-indie-rock-lifer/",
+      "found": "To Bring You My Love is my favorite PJ Harvey record, I was definitely obsessed with her at that point. ... I still reference To Bring You My Love when we make records.",
+      "citation": "Spoon's Britt Daniel told Pitchfork's 5-10-15-20 that he was \"definitely obsessed\" with PJ Harvey around To Bring You My Love and that \"I still reference To Bring You My Love when we make records.\""
+    },
+    {
+      "source": "kurt-vile",
+      "target": "pj-harvey",
+      "sourceTier": "first-person",
+      "confidence": 0.85,
+      "url": "https://thequietus.com/interviews/bakers-dozen/kurt-vile-interview-bakers-dozen-favourite-13-songs/11/",
+      "found": "PJ Harvey influences me all the time, but I got obsessed enough with this album to research about it.",
+      "citation": "Kurt Vile told The Quietus's Baker's Dozen: \"PJ Harvey influences me all the time\", and that he became obsessed enough with White Chalk (2007) to research it."
+    },
+    {
+      "source": "st-vincent",
+      "target": "pj-harvey",
+      "sourceTier": "first-person",
+      "confidence": 0.7,
+      "url": "https://faroutmagazine.co.uk/how-pj-harvey-inspired-st-vincent/",
+      "found": "I went to the CD store the next day and I bought (Harvey's 1998 album Is This Desire?) , and I bought (Harvey's 1995 album) To Bring You My Love ... At first I listened to Is This Desire? ... and then it became one of my absolute favourite records ever.",
+      "citation": "Annie Clark (St. Vincent) told ABC in 2021 that she first saw PJ Harvey on MTV's 120 Minutes around 1998 (\"What the fuck is this? This is so cool\"), bought two of her records the next day, and that Is This Desire? \"became one of my absolute favourite records ever\".",
+      "note": "Teen discovery while forming, but no sentence about her own music; Far Out headlines it 'how PJ Harvey inspired St. Vincent'. Borderline; owner to rule. Secondary page quoting an ABC interview (not opened)."
+    },
+    {
+      "source": "sharon-van-etten",
+      "target": "pj-harvey",
+      "sourceTier": "reported",
+      "confidence": 0.6,
+      "url": "https://www.seattlemet.com/arts-and-culture/2012/08/points-of-reference-sharon-van-etten-tramp",
+      "found": "PJ Harvey – Rid of Me / PJ Harvey definitely was someone that Aaron kept referring to, specifically with the aggressive way of singing, but also with the darker lyrics. ... He used PJ Harvey's solo records versus the ones with the band to show me it didn't have to take away from the songs.",
+      "citation": "In Seattle Met's \"Points of Reference\" for Tramp (2012), Sharon Van Etten listed PJ Harvey's Rid of Me and said producer Aaron Dessner kept referring to Harvey, for the aggressive singing and darker lyrics, while they made the record.",
+      "note": "Reported not first-person: the reference was the producer's (Dessner), told by SVE and listed by her among Tramp's points of reference. Production is a trap category here, but the claim is about what the record drew on. Owner may prefer to hold. Her NBHAP answer (most wants to play with 'PJ HARVEY') is admiration only."
+    }
+  ],
+  "denials": [
+    {
+      "source": "angel-olsen",
+      "target": "pj-harvey",
+      "url": "https://www.timeout.com/istanbul/music/interview-angel-olsen",
+      "found": "I didn't grow up listening to any of those ladies, and I don't study their lives or try to write based on feminist complaints.",
+      "citation": "Asked by Time Out Istanbul about female songwriters from Patti Smith to PJ Harvey being treated as only confessional, Angel Olsen said: \"I didn't grow up listening to any of those ladies.\"",
+      "strength": "clean",
+      "note": "Covers all four named (Patti Smith, PJ Harvey, Joni Mitchell, Cat Power). Denies growing up on them, not later admiration. Critics hear Harvey in My Woman (Irish Times, RS Australia); that is the soundalike trap."
+    },
+    {
+      "source": "pj-harvey",
+      "target": "patti-smith",
+      "url": "https://www.clashmusic.com/features/10-things-you-never-knew-about-pj-harvey",
+      "found": "Although the musician has frequently been compared to fellow female punk-rocker Patti Smith, Harvey claims she hadn't heard of Smith until the comparison and dismisses the comments as lazy journalism.",
+      "citation": "Clash reports that PJ Harvey says she hadn't heard of Patti Smith until the comparisons began, and dismisses them as lazy journalism.",
+      "strength": "contested",
+      "note": "Secondary, undated listicle; later report (Past Daily, unsourced) has her calling Smith 'so energizing to see'. Treat as 'don't add pj-harvey>patti-smith'. Patti Smith is on the map."
+    }
+  ],
+  "rejected": [
+    {
+      "pair": "low>pj-harvey",
+      "why": "Alan Sparhawk (Quietus): first heard Dry at a clothing store, played the cassette constantly, 'one of the greats'. Praise and listening, nothing about shaping Low's music (Low formed 1993, a year after Dry). Favourite; hold."
+    },
+    {
+      "pair": "wolf-alice>pj-harvey",
+      "why": "WFUV 'Wolf Alice: Five Essential PJ Harvey Songs' is the band choosing songs (not opened past the headline) and critics' comparisons; no formative statement seen."
+    },
+    {
+      "pair": "mitski>pj-harvey; mitski>scott-walker",
+      "why": "No Mitski statement found for either. The 'Scott Walker, Arthur Russell, spaghetti westerns' line is in a blog review (albumreviews.blog) with no source; an NPR interview on that album mentions none. Unverified; do not use."
+    },
+    {
+      "pair": "big-thief / ethel-cain / courtney-barnett>pj-harvey",
+      "why": "Nothing found for Big Thief or Ethel Cain. Courtney Barnett (named PJ Harvey's Stories from the City her favourite album, heard at ~18, Far Out) is NOT on the map; owner could add her."
+    },
+    {
+      "pair": "yeah-yeah-yeahs>pj-harvey",
+      "why": "LEAD NOT CHECKED: the seed's Wikipedia-inspirations citation for yeah-yeah-yeahs names PJ Harvey in a list of twenty (reported, 0.5-level, same as their sonic-youth edge)."
+    },
+    {
+      "pair": "pj-harvey>captain-beefheart / patti-smith / nick-cave / velvet-underground / joy-division",
+      "why": "Beefheart is off the map (named by her, 1990s interview via search summary). Nothing found of her naming Velvet Underground, Joy Division or Nick Cave as influence (Cave is a former partner and collaborator: personnel/relationship, not influence). Her road back to VU is thin: Dylan only."
+    },
+    {
+      "pair": "pj-harvey>bjork/bowie/prince",
+      "why": "Far Out ('completely in love with') has her admiring Bjork's records plunging into the unknown, and loving Bowie and Prince: admiration, no shaping claim, page not read in full."
+    }
+  ],
+  "content": {
+    "bio": "PJ Harvey is Polly Jean Harvey, who grew up on a Dorset farm hearing her parents' blues, Bob Dylan and Captain Beefheart records, and learned saxophone and guitar before forming a trio in Bristol in 1991. Her debut Dry (1992) and Rid of Me (1993), recorded with Steve Albini, set a raw, bluesy, sometimes frightening standard for guitar music by a woman in the early nineties, and she then refused to repeat herself. To Bring You My Love (1995) went to swampy organ and slide, White Chalk (2007) to a high, ghostly piano, and Let England Shake (2011) to autoharp and war songs.\n\nShe is the only artist to have won the Mercury Prize twice, for Stories from the City, Stories from the Sea (2000) and Let England Shake. Her lyrics, her changing look and her live shows treat each record as a new character, and later bands name her as proof you can change completely and still be yourself.",
+    "album": {
+      "title": "Rid of Me",
+      "year": 1993,
+      "classicReason": "Rid of Me is the sound of a trio pushed to breaking point in Steve Albini's recording room, with drums that crack like gunshots and guitars that jump from whisper to scrape. The title track starts as a murmur and ends as a scream, and \"50ft Queenie\" turns bravado into a stomping riff. Albini's dry, close recording makes every breath audible, so the record feels dangerous in the room with you. It endures because it makes rawness sound intentional, and every loud, wounded guitar record since owes it a debt."
+    }
+  },
+  "searches": 20,
+  "toolStatus": "WebSearch and ledger.ts read worked throughout; 20 of 22 searches used for the whole batch of three.",
+  "notes": "Upstream is thin on the map: only Bob Dylan (first-person, secondary page quoting the Guardian). Downstream solid: spoon, kurt-vile; borderline: st-vincent, sharon-van-etten. Denial: angel-olsen. Look for Courtney Barnett as an addition."
+}

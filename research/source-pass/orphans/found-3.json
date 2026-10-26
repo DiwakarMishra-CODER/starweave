@@ -1,0 +1,44 @@
+{
+ "agent": "orphans-3",
+ "finished": true,
+ "searches": 9,
+ "toolStatus": "WebSearch ok; ledger read ok. Four Tet had no Baker's Dozen in sorted.json (nothing for any batch artist).",
+ "found": [
+  {
+   "source": "four-tet",
+   "target": "can",
+   "sourceTier": "first-person",
+   "confidence": 0.8,
+   "url": "https://indyweek.com/?p=125755",
+   "found": "I’m always coming back to the records by bands like Can and Kraftwerk. It’s definitely a great era as music",
+   "citation": "Kieran Hebden of Four Tet told the Independent Weekly: \"I’m always coming back to the records by bands like Can and Kraftwerk. It’s definitely a great era as music.\""
+  },
+  {
+   "source": "four-tet",
+   "target": "kraftwerk",
+   "sourceTier": "first-person",
+   "confidence": 0.8,
+   "url": "https://indyweek.com/?p=125755",
+   "found": "I’m always coming back to the records by bands like Can and Kraftwerk. It’s definitely a great era as music",
+   "citation": "Kieran Hebden of Four Tet told the Independent Weekly: \"I’m always coming back to the records by bands like Can and Kraftwerk. It’s definitely a great era as music.\""
+  }
+ ],
+ "none": [
+  {
+   "artist": "The Incredible String Band",
+   "tried": "Boards of Canada: only a Discopogo 2000 piece listing the ISB among things the duo like in a bare list (no comment, so favourites-list, not counted); freak-folk searches gave only a critic's framing (Portland Mercury). Leaves."
+  },
+  {
+   "artist": "toe",
+   "tried": "Tone Glow 177 page re-read: Yamazaki names a late-90s scene (Texas Is the Reason, Promise Ring, Cap'n Jazz) and Ghosts and Vodka, not a clear Cap'n Jazz influence; no American Football/Slint/Mono statement; Metropolis page has no influence text. Leaves."
+  },
+  {
+   "artist": "Do Make Say Think",
+   "tried": "Wikipedia says they cited Talk Talk (Spirit of Eden, Laughing Stock) and Mercury Rev, footnote [2] unseen; searched twice, no interview page found. Talk Talk is on the map, so a lead if the owner can open the footnote; Spearin Tidal piece names Tomita, not on map. Leaves unless that footnote turns up."
+  },
+  {
+   "artist": "George Clanton",
+   "tried": "Interview Magazine: only Buck Gooter (off map) as inspiring; axs profile mentions Brian Jonestown Massacre and 311 (not opened, not on roster). Leaves."
+  }
+ ]
+}

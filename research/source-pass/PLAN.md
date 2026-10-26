@@ -205,7 +205,112 @@ the whole list up once at the end (or when the owner asks for it).
 - Whether to build the no-search Quietus Baker's Dozen sweep for the
   additions pass, and whether to add Boris (named by Wayne Coyne).
 
-## Progress (session 4, 26 Oct 2026) -- read this first in the next chat
+## Progress (session 5, 26 Oct 2026) -- read this first, then session 4
+
+**Series sweep (step 2b) done for three series, no searches.** Files in
+`research/source-pass/series/` (lists, `BRIEF.md`, `judged-<series>.json`).
+- Listing: Pitchfork 5-10-15-20 via the Internet Archive CDX
+  (`pitchfork.com/features/5-10-15-20/` prefix: 183 features, the whole run)
+  plus the live monthly sitemaps (2021 on); 39 by artists on the map. Spin is
+  now spinmagazine.com, and its WordPress API answers directly
+  (`/wp-json/wp/v2/posts?search=...`): only ~8 "Records That Changed My
+  Life"/"My Life in Music" pieces are online, plus "5 Albums I Can't Live
+  Without" (2021-); 19 on the map. Fender's "Under the Influence" is a single
+  article (Snail Mail on Bilinda Butcher); 26 Fender artist pages read
+  instead, almost nothing usable. CDX filters over a whole domain time out:
+  query a path prefix.
+- Three Sonnet agents opened and judged their own pages (no separate fetch
+  step). Pitchfork 195 judged (61 influence, 3 denials), Spin 32 (12), Fender 8 (3).
+- Merged: 5 ledger entries (Galaxie 500>VU and Lucinda Williams>Neil Young
+  off decide; Sonic Youth>Television and Liz Phair>Sonic Youth off
+  not-found; At the Drive-In>Fugazi from print to a page), all confirmed
+  by `check`. 41 new candidates (foundBy `series-*`; 3 denials: Lydon on
+  Television, Wire on Joy Division and Gang of Four), 123 off-map notes.
+  Left out: Pulp>Adrianne Lenker (same quote as Pulp>Big Thief). Borderline
+  candidates carry a note (Bon Iver>Radiohead, Bikini Kill>Bratmobile,
+  B&S>Camera Obscura: Murdoch produced them, check personnel).
+- Favourites re-read under the fandom rule, only where they sit on an
+  unsourced link (5): Caribou>Aphex Twin and Spiritualized>VU passed
+  (borderline, noted); Blonde Redhead>Sonic Youth (reads as a denial, still
+  decide), R.E.M.>Television and Radiohead>Nick Drake didn't.
+- Then the two "Soundtrack of My Life" series: the Observer's (100 pieces,
+  2006-15, listed from `theguardian.com/music/series/soundtrackofmylife`
+  pages 1-8; the content API's `test` key is dead) and NME's (319 via its
+  WordPress API, mostly actors). 12 + 13 by artists on the map; 52 judged,
+  20 influence. Merged: Stone Roses>Clash from print to the Observer page;
+  8 new candidates (Spoon>Violent Femmes, YYYs>Neutral Milk Hotel, Sharon
+  Van Etten>Low...); 38 off-map notes (NME's are partly paraphrased: a
+  shortlist only). Pavement>VU left on decide (same "Sister Ray" answer as
+  its NME reprint; its note now points at the Observer original).
+- Upgrades: the merge skips links already proven, so sweep hits on links
+  proven only at reported tier were checked by hand: 6 lifted to the
+  artist's own words (Pulp>Cohen, R.E.M.>Patti Smith, Spoon>Wire, Vashti
+  Bunyan>Dylan, Joy Division>Sex Pistols, Pavement>Replacements; the old
+  page is kept in each note); 3 too thin to replace (Bright Eyes>
+  Replacements, Joy Division>Bowie, Yo La Tengo>VU).
+- Second sources: 33 sweep hits fell on links already proven first-person.
+  4 swapped to the sweep's page because their current one was archive-only
+  or unreachable and the new quote is stronger (Blonde Redhead>MBV, Kurt
+  Vile>Pavement, Ride>Stone Roses, Ride>Stooges; old page kept in the
+  note); the other ~29 left as they are (one source per link; they stay in
+  `series/judged-*.json` if a page ever dies).
+- Artists at risk (no link left if not-found/blocked go): 4. 8 searches
+  (owner OK'd). black midi saved: Talking Heads now sourced (Picton to
+  FLOOD, 2021: "our three main reference points"), plus a Bert Jansch
+  candidate (Picton, Stereogum). Still at risk: Julee Cruise, Fishmans,
+  Sebadoh (tries recorded in their notes). **Owner: drop them -- done.**
+  Removed from seed-data with their 6 links (ledger entries kept in
+  `removed.json`), bios, countries, genre pages (dream-pop's No. 7 record
+  now Alvvays, lo-fi's last now MJ Lenderman; Fishmans and Sebadoh out of
+  section lists and blurbs) and the mixtape ("Long Season" off the tape and
+  the RYM crate; How I find new music has no song of its own now and lets
+  the one before play on). Map: 294 artists, 1,047 links. graph.json
+  rebuilt; 173 tests pass (home-story's VU test now expects Eno's Baker's
+  Dozen line, which the pass put on today's record).
+- **The pass is closed: every link on the map now has a source.**
+  - Dropped all 150 links still unsourced (not-found/blocked; Suicide>Silver
+    Apples rescued first from a Wikipedia footnote quoting Kris Needs's book).
+  - The decide list (150), ruled by three agents and reviewed here
+    (`decide/final.json`): 3 kept, 145 removed, Cure>Mogwai's flip already on
+    the map, 2 denials recorded (Swans/Branca contested, Sigur Rós/Cocteau
+    Twins clean). All removed ledger entries are in `removed.json`.
+  - That left 17 artists with no links. One targeted look each
+    (`orphans/`): 6 rescued (Broken Social Scene, the Rapture, Angel Olsen,
+    Pinback, Four Tet, Do Make Say Think), 11 removed (Silversun Pickups,
+    Hum, Dead Can Dance, Harold Budd, Tricky, the Mountain Goats, Christie
+    Front Drive, Women, Incredible String Band, toe, George Clanton) from
+    seed-data, bios, countries, genre pages, and the 4AD and Bristol scenes
+    (Bristol now has two members: owner may want to rule on it).
+  - Additions batch 1 written (research in `research/additions/`): Kate
+    Bush, PJ Harvey, Scott Walker, Spacemen 3, Roxy Music, the Slits, Peter
+    Cat Recording Co., 33 links + 2 denials. Spacemen 3's photo pinned from
+    Commons (Deezer's own entry has a stranger's photo).
+  - Map now: 290 artists, 794 links (all sourced), 35 denials, no orphans.
+    173 tests pass (two tests now use made-up families: no unsourced link
+    or two-way pair is left on the map to test with).
+- **Later the same day (owner: "can we have them sourced?" / "add the new links").**
+  - The 11 removed artists got a deeper search (up to 8 searches each,
+    `orphans/deep-*`): 6 back with sourced links (Harold Budd, George
+    Clanton, Incredible String Band, toe, Tricky, the Mountain Goats), 5 stay
+    out (Silversun Pickups, Hum, Dead Can Dance, Women, Christie Front
+    Drive: comparisons, favourites lists or covers only). Restored from the
+    last commit: entries, genre-page spots, countries, Tricky in Bristol.
+  - All 186 candidate links re-opened and ruled (`candidates-check/`):
+    144 written (same bar as the decide list: dropped Pixies>Television,
+    Sonic Youth>Dylan, Bon Iver>Radiohead, Modest Mouse>Pavement, American
+    Football>Dylan, Perfume Genius>Elliott Smith, Sonic Youth>Sparks), 2
+    denials (Lydon on Television, Wire on Joy Division). Perfume Genius >
+    Talk Talk replaced its old denial (he later counted them an influence).
+  - Pavement and Sonic Youth now name each other: `resolvePathHops` shows
+    the better-sourced of a two-way pair (a test caught Connect two
+    mismatching costs).
+  - Map now: 296 artists, 945 links (all sourced, all in the ledger), 36
+    denials. 173 tests pass. `check`: 981 found, the rest the known walled
+    pages plus Internet Archive copies timing out at the moment.
+- Not yet swept: Stereogum interviews (no single series to list; skip unless
+  a listable series turns up).
+
+## Progress (session 4, 26 Oct 2026)
 
 **Where it stands: all 1,053 links worked.** Verdicts: 634 fixed, 75 ok,
 23 print, 152 decide, 160 not-found (84 of them old unsourceable links that

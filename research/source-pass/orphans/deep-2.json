@@ -1,0 +1,64 @@
+{
+ "harold-budd": [
+  {
+   "key": "harold-budd>brian-eno",
+   "why": "Collaboration and production, and Budd was the older artist.",
+   "note": "Collaboration: Eno produced and recorded with Budd (The Pavilion of Dreams, The Plateaux of Mirror), and Budd was the older artist. Propose remove. Not searched.",
+   "url": null
+  }
+ ],
+ "women": [
+  {
+   "key": "women>caribou",
+   "why": "Owner: drop every link still without a source at the end of the source pass.",
+   "note": "The 'radio-show writeup' was not identified; a comparison list is not influence. Proposal: remove.",
+   "url": null
+  },
+  {
+   "key": "women>velvet-underground",
+   "why": "Owner: drop every link still without a source at the end of the source pass.",
+   "note": "The 'radio-show writeup' was not identified; searches found only comparisons (Westword: 'compared to ... the drone-heavy noise rock pioneered by the Velvet Underground'). Comparison only; proposal: remove.",
+   "url": null
+  },
+  {
+   "key": "women>wire",
+   "why": "Owner: drop every link still without a source at the end of the source pass.",
+   "note": "Treble Public Strain review (archive.org 2016 copy) does not mention Wire; the quoted sentence was not found there or in a search. Proposal: remove.",
+   "url": null
+  },
+  {
+   "key": "women>sonic-youth",
+   "why": "Treble's review only compares one song's guitar chime to Sonic Youth.",
+   "note": "Treble's Public Strain review (opened via archive) has no 'more Sonic Youth or Wire' sentence; it only compares one song's guitar chime to Sonic Youth. Comparison, not influence. Proposal: remove.",
+   "url": "https://web.archive.org/web/2016/https://www.treblezine.com/women-public-strain-review/"
+  },
+  {
+   "key": "women>this-heat",
+   "why": "This Heat appears only in the writer's resemblance sentence; Flegel names the Stooges, Iggy Pop and Wire.",
+   "note": "Treble (2010) interview with Pat Flegel opened. This Heat appears only in the writer's own resemblance sentence. Flegel himself names the Stooges ('Loose'), Iggy Pop and Wire's Pink Flag, not This Heat. Exclaim! (opened earlier) only says 'between Swell Maps and Syd Barrett'. Proposal: remove, or keep as critic.",
+   "url": "https://www.treblezine.com/songs-about-nothing-an-interview-with-women/"
+  }
+ ],
+ "george-clanton": [
+  {
+   "key": "george-clanton>the-human-league",
+   "why": "Owner: drop every link still without a source at the end of the source pass.",
+   "note": "Seven Days page not found; no search spent (share used up). Wikipedia raw for George Clanton has no Human League text.",
+   "url": null
+  },
+  {
+   "key": "george-clanton>ariel-pink",
+   "why": "Pitchfork compares attitude, not influence.",
+   "note": "Pitchfork review of Slide (Miles Bowe, Sept 2018) quote is verbatim, but it compares attitude, not influence. Propose remove.",
+   "url": "https://pitchfork.com/reviews/albums/george-clanton-slide/"
+  }
+ ],
+ "silversun-pickups": [
+  {
+   "key": "silversun-pickups>my-bloody-valentine",
+   "why": "Rolling Stone's comparison, no band statement.",
+   "note": "Wikipedia: first two albums \"are frequently compared to the styles of the Smashing Pumpkins and My Bloody Valentine\" (Rolling Stone review): a comparison, no band statement found. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Silversun_Pickups"
+  }
+ ]
+}

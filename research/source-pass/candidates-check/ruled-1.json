@@ -1,0 +1,577 @@
+{
+ "agent": "cand-1",
+ "finished": true,
+ "rulings": [
+  {
+   "key": "american-football>wilco",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://web.archive.org/web/2020/https://tidal.com/magazine/article/american-football-5-albums-that-changed-my-life/1-32190",
+   "found": "Wilco set me on a path to rediscover the guitar, standard tuning, and just great songwriting.",
+   "citation": "Steve Holmes of American Football, in TIDAL Magazine's \"5 Albums That Changed My Life\": \"Wilco set me on a path to rediscover the guitar, standard tuning, and just great songwriting.\"",
+   "why": "Page only readable via Internet Archive copy."
+  },
+  {
+   "key": "animal-collective>aphex-twin",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://daily.redbullmusicacademy.com/2018/11/animal-collective-oral-history",
+   "found": "That and Aphex Twin really changed the course of my musical life.",
+   "citation": "Noah Lennox (Panda Bear) of Animal Collective, in Red Bull Music Academy Daily's oral history of the band (2018): \"That and Aphex Twin really changed the course of my musical life.\"",
+   "why": ""
+  },
+  {
+   "key": "at-the-drive-in>the-clash",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.8,
+   "url": "https://www.spinmagazine.com/2026/08/5-albums-i-cant-live-without-jim-ward-of-sparta/",
+   "found": "This is the band that taught me about world influence; it is not just the music but the intent.",
+   "citation": "Jim Ward of At the Drive-In and Sparta, choosing the Clash's Combat Rock for Spin's \"5 Albums I Can't Live Without\" (2026): \"This is the band that taught me about world influence; it is not just the music but the intent.\"",
+   "why": "Close: Ward is speaking as an ex-ATDI/Sparta guitarist, tied to his 'college studies' of the band."
+  },
+  {
+   "key": "at-the-drive-in>dead-kennedys",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://www.spinmagazine.com/2026/08/5-albums-i-cant-live-without-jim-ward-of-sparta/",
+   "found": "I learned to play bass by playing along with the Pixies and Dead Kennedys.",
+   "citation": "Jim Ward of At the Drive-In and Sparta, in Spin's \"5 Albums I Can't Live Without\" (2026): \"I learned to play bass by playing along with the Pixies and Dead Kennedys.\"",
+   "why": ""
+  },
+  {
+   "key": "belle-and-sebastian>camera-obscura",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.8,
+   "url": "https://pitchfork.com/features/5-10-15-20/9580-belle-and-sebastians-stuart-murdoch/",
+   "found": "They were a real guide and made me think, \"We need to get back to playing simple music again.\"",
+   "citation": "Stuart Murdoch of Belle and Sebastian, in Pitchfork's 5-10-15-20 (2015), on sitting in on Camera Obscura's early rehearsals: \"They were a real guide and made me think, 'We need to get back to playing simple music again.'\"",
+   "why": "Both bands formed 1996; Murdoch watched Camera Obscura's fledgling rehearsals later, and says it steered his own band."
+  },
+  {
+   "key": "big-black>the-birthday-party",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.55,
+   "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/",
+   "found": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+   "citation": "Steve Albini, asked about his formative years in an interview with VW Music Rocks: \"As a musician, I was formed by being embedded in the Punk scene... My favorite bands during that era include... bands that inspired me like... a bunch of overseas bands like the Birthday Party...\"",
+   "why": "CLOSE CALL: 'inspired me' grammatically attaches to the local bands; the overseas bands (Birthday Party, Contortions) are 'favorite bands during that era' while he was 'formed by' the scene. Bare name in a long list; drop if strict."
+  },
+  {
+   "key": "big-black>james-chance-and-the-contortions",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.55,
+   "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/",
+   "found": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+   "citation": "Steve Albini, asked about his formative years in an interview with VW Music Rocks: \"As a musician, I was formed by being embedded in the Punk scene... My favorite bands during that era include... bands that inspired me like... a bunch of overseas bands like the Birthday Party... Contortions...\"",
+   "why": "CLOSE CALL: same list as the Birthday Party link; bare name in a long list of favourites of the era."
+  },
+  {
+   "key": "black-midi>bert-jansch",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.8,
+   "url": "https://stereogum.com/2149080/black-midi-cavalcade-interview-inspirations/interviews/under-the-influence",
+   "found": "When I was younger, I had a neighbor who taught me guitar. He showed me all this Bert Jansch stuff, like \"Black Waterside\" and all that. I got really into it.",
+   "citation": "Cameron Picton of black midi, in Stereogum's Under the Influence: a neighbour who taught him guitar \"showed me all this Bert Jansch stuff... I got really into it,\" and he still names Jansch as a guitarist he particularly likes.",
+   "why": ""
+  },
+  {
+   "key": "blur>velvet-underground",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.8,
+   "url": "https://www.uncut.co.uk/features/graham-coxon-blur-pop-strange-limiting-form-damon-receptive-days-99254/2/",
+   "found": "Things like Robert Wyatt, Van der Graaf Generator and The Velvet Underground really excited me.",
+   "citation": "Graham Coxon of Blur, asked in Uncut about the moment that changed everything in his early days: \"Things like Robert Wyatt, Van der Graaf Generator and The Velvet Underground really excited me.\"",
+   "why": "Page's first line is the interviewer's question (format 'question for the guest'); answer is Coxon's."
+  },
+  {
+   "key": "bon-iver>radiohead",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.7,
+   "url": "https://www.spinmagazine.com/2022/04/5-albums-i-cant-live-without-s-carey-of-bon-iver/",
+   "found": "Radiohead is one of my favorite bands ever. I am truly inspired by their endless innovation.",
+   "citation": "S. Carey of Bon Iver, picking Radiohead's Kid A and Amnesiac for Spin's \"5 Albums I Can't Live Without\" (2022): \"Radiohead is one of my favorite bands ever. I am truly inspired by their endless innovation.\"",
+   "why": "CLOSE CALL: present-tense admiration ('truly inspired'), not tied to a period of his making; he is Bon Iver's drummer/multi-instrumentalist, not its songwriter."
+  },
+  {
+   "key": "brian-eno>joni-mitchell",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://thequietus.com/interviews/bakers-dozen/brian-eno-favourite-records-interview/14/",
+   "found": "I remember buying this album when it came out in 1974 because I know it had a big impact on what I was working on at the time, which was _Another Green World_. When I heard this record I really thought that I’ve got to change what I’m doing.",
+   "citation": "Brian Eno, on Joni Mitchell's Court and Spark in The Quietus's Baker's Dozen: \"I remember buying this album when it came out in 1974 because I know it had a big impact on what I was working on at the time, which was Another Green World. When I heard this record I really thought that I've got to change what I'm doing.\"",
+   "why": "Found sentence is the later part of the paragraph; chronology fine (1974)."
+  },
+  {
+   "key": "cabaret-voltaire>david-bowie",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.65,
+   "url": "https://thequietus.com/interviews/bakers-dozen/richard-h-kirk-cabaret-voltaire-favourite-albums/2/",
+   "found": "I was a Bowie fan from about 15. I went to see the Ziggy Stardust tour in Sheffield and was kind of blown away as much by the way he looked.",
+   "citation": "Richard H. Kirk of Cabaret Voltaire, on David Bowie's Low in The Quietus's Baker's Dozen: \"I was a Bowie fan from about 15. I went to see the Ziggy Stardust tour in Sheffield and was kind of blown away,\" and Bowie embracing electronic music \"did Cabaret Voltaire and a lot of people like us a favour.\"",
+   "why": "CLOSE CALL: formative fandom plus Bowie opening the door to electronic music for 'people like us'; nothing explicit about their own sound."
+  },
+  {
+   "key": "cat-power>husker-du",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.55,
+   "url": "https://thequietus.com/interviews/bakers-dozen/cat-power-chan-marshall-interview-favourite-music-albums/5/",
+   "found": "I loved that fucking record, that tape, so much. It was my 12th birthday, and everything was great, it was madness. All these impossible sounds were making sense",
+   "citation": "Chan Marshall (Cat Power), on Hüsker Dü's Metal Circus in The Quietus's Baker's Dozen, a cassette her sister gave her for her twelfth birthday: \"I loved that fucking record, that tape, so much... All these impossible sounds were making sense.\"",
+   "why": "CLOSE CALL: strong childhood love, nothing said about her own music. Drop if strict."
+  },
+  {
+   "key": "cocteau-twins>buzzcocks",
+   "ruling": "remove",
+   "why": "Bare name in a list of early punk he 'liked'; Guthrie says his own 'form-a-band' record was the Heartbreakers' Chinese Rocks, and Buzzcocks has nothing individual said."
+  },
+  {
+   "key": "descendents>black-flag",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.75,
+   "url": "https://pitchfork.com/features/5-10-15-20/9924-punk-veteran-milo-aukerman-of-the-descendents-on-the-music-of-his-life/",
+   "found": "I started out with X, and then I graduated to the Germs, and then Black Flag.",
+   "citation": "Milo Aukerman of the Descendents, in Pitchfork's 5-10-15-20: \"I started out with X, and then I graduated to the Germs, and then Black Flag. Those three bands are the holy trinity of L.A. punk rock to me.\"",
+   "why": "Immersion in the scene he then joined; fandom before forming the band."
+  },
+  {
+   "key": "destroyer>the-jesus-and-mary-chain",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.6,
+   "url": "https://pitchfork.com/features/5-10-15-20/8896-destroyer/",
+   "found": "At 15, I was deep in the clutches of the Jesus and Mary Chain.",
+   "citation": "Dan Bejar of Destroyer, in Pitchfork's 5-10-15-20: \"At 15, I was deep in the clutches of the Jesus and Mary Chain. That was the first noisy thing I liked.\"",
+   "why": "CLOSE CALL: formative fandom, not tied to his own music."
+  },
+  {
+   "key": "echo-and-the-bunnymen>david-bowie",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://thequietus.com/interviews/bakers-dozen/ian-mcculloch-echo-and-the-bunnymen-favourite-albums/2/",
+   "found": "It was Bowie was who got me interested in music, then I got into the Velvets and Iggy.",
+   "citation": "Ian McCulloch of Echo & the Bunnymen, on David Bowie's Hunky Dory in The Quietus's Baker's Dozen: \"It was Bowie was who got me interested in music, then I got into the Velvets and Iggy.\"",
+   "why": ""
+  },
+  {
+   "key": "echo-and-the-bunnymen>television",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://thequietus.com/interviews/bakers-dozen/will-sergeant-echo-and-the-bunnymen-favourite-albums/6/",
+   "found": "I learnt all the wobbly guitar sounds you hear on the Bunnymen records from this. I’ve been living off that ever since, really.",
+   "citation": "Will Sergeant of Echo & the Bunnymen, on Television's Marquee Moon in The Quietus's Baker's Dozen: \"I learnt all the wobbly guitar sounds you hear on the Bunnymen records from this. I've been living off that ever since, really.\"",
+   "why": "Marquee Moon 1977, Bunnymen formed 1978."
+  },
+  {
+   "key": "ethel-cain>slowdive",
+   "ruling": "remove",
+   "why": "A listening list ('Nicole Dollanganger and Grouper and Slowdive and Def Leppard') while she was becoming Ethel Cain; no comment on Slowdive and no claim it shaped her music. CLOSE CALL: it is a 'while forming' context, so the main chat may overrule."
+  },
+  {
+   "key": "fleet-foxes>joni-mitchell",
+   "ruling": "remove",
+   "why": "Reported list of a dozen 60s acts his parents played; Joni Mitchell is one bare name among them."
+  },
+  {
+   "key": "geese>television",
+   "ruling": "remove",
+   "why": "Cameron Winter says only that he 'always liked bands like Television that shout out locations in New York'; generic, not about Television shaping Geese."
+  },
+  {
+   "key": "grimes>burial",
+   "ruling": "keep",
+   "sourceTier": "reported",
+   "confidence": 0.6,
+   "url": "https://www.dazeddigital.com/music/article/49241/1/music",
+   "found": "On a more positive note, Grimes gets to express her love for Burial , one of her “all-time favourite artists”, and cites the elusive London producer among artists she considers herself a descendent of ( Aphex Twin and Animal Collective included).",
+   "citation": "Dazed (2018), reporting on Grimes: she calls Burial one of her \"all-time favourite artists\" and \"cites the elusive London producer among artists she considers herself a descendent of (Aphex Twin and Animal Collective included).\"",
+   "why": "Reported by the magazine, not a direct quote; 'considers herself a descendent of' is the claim."
+  },
+  {
+   "key": "hot-chip>neil-young",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.8,
+   "url": "https://thequietus.com/interviews/bakers-dozen/alexis-taylor-hot-chip-favourite-albums-interview/5/",
+   "found": "Neil Young was the first songwriter whose songs I learned to play on the guitar.",
+   "citation": "Alexis Taylor of Hot Chip, on Neil Young's On the Beach in The Quietus's Baker's Dozen: \"Neil Young was the first songwriter whose songs I learned to play on the guitar.\"",
+   "why": ""
+  },
+  {
+   "key": "interpol>nirvana",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://pitchfork.com/features/5-10-15-20/interpols-paul-banks-on-the-music-that-made-him/",
+   "found": "Nirvana helped me understand that music was what I wanted to do with my life.",
+   "citation": "Paul Banks of Interpol, in Pitchfork's 5-10-15-20, on Nirvana's Nevermind: \"Nirvana helped me understand that music was what I wanted to do with my life.\"",
+   "why": ""
+  },
+  {
+   "key": "japanese-breakfast>sufjan-stevens",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://thequietus.com/interviews/bakers-dozen/japanese-breakfast-bakers-dozen-favourite-albums/9/",
+   "found": "My other big influence on [_For Melancholy Brunettes (& Sad Women_)] was Sufjan Stevens’ _Carrie & Lowell_.",
+   "citation": "Michelle Zauner of Japanese Breakfast, in The Quietus's Baker's Dozen: \"My other big influence on [For Melancholy Brunettes (& Sad Women)] was Sufjan Stevens' Carrie & Lowell... That was a huge inspiration for me.\"",
+   "why": ""
+  },
+  {
+   "key": "kurt-vile>guided-by-voices",
+   "ruling": "remove",
+   "why": "Page could not be opened directly, through r.jina.ai or through the Internet Archive; and the quoted line ('I like a lot of the Guided By Voices') is a bare like with nothing about shaping his music."
+  },
+  {
+   "key": "lcd-soundsystem>the-clash",
+   "ruling": "remove",
+   "why": "Murphy: 'Between the age of 13 and 16 I liked The Clash, Bowie, Echo...' is a list of eight bands he liked as a teenager, nothing individual about the Clash or about his own music."
+  },
+  {
+   "key": "liz-phair>the-human-league",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://pitchfork.com/features/5-10-15-20/liz-phair-on-the-music-that-made-her/",
+   "found": "Guyville wouldn’t be Guyville without the Human League.",
+   "citation": "Liz Phair, in Pitchfork's 5-10-15-20, on the Human League's \"Don't You Want Me\": \"it also became really formative for me, because it was the first time I had heard a woman clapping back in a song... Guyville wouldn't be Guyville without the Human League.\"",
+   "why": ""
+  },
+  {
+   "key": "low>the-clash",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://thequietus.com/interviews/bakers-dozen/low-alan-sparhawk-bakers-dozen-favourite-albums/3/",
+   "found": "I remember learning the chords to that song on the guitar, and that was the big lightning bolt going on.",
+   "citation": "Alan Sparhawk of Low, on the Clash's Combat Rock in The Quietus's Baker's Dozen: \"I remember learning the chords to that song on the guitar, and that was the big lightning bolt going on. It was like 'Wow, really, you can do this? I can do this?'\"",
+   "why": ""
+  },
+  {
+   "key": "mary-timony>rites-of-spring",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.75,
+   "url": "https://pitchfork.com/features/5-10-15-20/9518-mary-timony/",
+   "found": "But my favorite band from that time was Rites of Spring, and it still is.",
+   "citation": "Mary Timony, in Pitchfork's 5-10-15-20, on her first punk show in 1985, Rites of Spring and Beefeater: \"That totally changed my life... my favorite band from that time was Rites of Spring, and it still is.\"",
+   "why": "'Changed my life' refers to the show with Rites of Spring on the bill; the favourite-band line names Rites of Spring itself."
+  },
+  {
+   "key": "minutemen>the-stooges",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://thequietus.com/interviews/bakers-dozen/mike-watt-minutemen-the-missingmen-favourite-albums/2/",
+   "found": "I had to learn bass from _Fun House_, Creedence and the brothers doing R&B, or like Trevor Bolder [of Bowie’s Spider From Mars and Uriah Heep], because you could really hear the bass on British rock & roll – most US rock & roll buried the bass in the mix.",
+   "citation": "Mike Watt of the Minutemen, on the Stooges' Fun House in The Quietus's Baker's Dozen: \"I had to learn bass from Fun House, Creedence and the brothers doing R&B... Fun House was a freak out moment for us.\"",
+   "why": ""
+  },
+  {
+   "key": "mogwai>david-bowie",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://thequietus.com/interviews/bakers-dozen/mogwai-stuart-braithwaite-favourite-albums/8/",
+   "found": "So Bowie is one of the people who made me consider that I liked music. It was a really important, formative thing.",
+   "citation": "Stuart Braithwaite of Mogwai, on David Bowie's Low in The Quietus's Baker's Dozen: \"Bowie is one of the people who made me consider that I liked music. It was a really important, formative thing.\"",
+   "why": ""
+  },
+  {
+   "key": "my-bloody-valentine>the-birthday-party",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://mixdownmag.com.au/features/gear-talks-an-interview-with-kevin-shields-of-my-bloody-valentine/",
+   "found": "“Basically, we started out as a band that was really into The Birthday Party and Einstürzende Neubauten .",
+   "citation": "Kevin Shields of My Bloody Valentine, in Mixdown's Gear Talks: \"Basically, we started out as a band that was really into The Birthday Party and Einstürzende Neubauten. Quite physical... quite aggressive.\"",
+   "why": ""
+  },
+  {
+   "key": "of-montreal>patti-smith",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.7,
+   "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/",
+   "found": "Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+   "citation": "Kevin Barnes of Of Montreal, asked by DCist (2015) which musicians have influenced the way he makes music: \"Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith...\"",
+   "why": "Direct answer to an influence question, so the list counts, though Patti Smith is one name of sixteen."
+  },
+  {
+   "key": "pavement>dead-kennedys",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.7,
+   "url": "https://www.theguardian.com/music/2013/nov/24/stephen-malkmus-pavement-soundtrack-my-life",
+   "found": "This album was a gateway towards sarcasm and questioning authority and the rightwing and Ronald Reagan – our Margaret Thatcher. I was listening to them in mid-late high school, 1981-82.",
+   "citation": "Stephen Malkmus of Pavement, on the Dead Kennedys in the Guardian's Soundtrack of My Life (2013): \"This album was a gateway towards sarcasm and questioning authority... I was listening to them in mid-late high school, 1981-82.\"",
+   "why": "Formative fandom; sarcasm and authority are central to his lyrics, but he does not say so."
+  },
+  {
+   "key": "perfume-genius>bjork",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.6,
+   "url": "https://thequietus.com/interviews/bakers-dozen/perfume-genius-interview-favourite-albums/10/",
+   "found": "She was kind of my first true obsession. I had a Björk website where I just typed out all her lyrics.",
+   "citation": "Mike Hadreas of Perfume Genius, on Björk in The Quietus's Baker's Dozen: \"She was kind of my first true obsession. I had a Björk website where I just typed out all her lyrics.\"",
+   "why": "CLOSE CALL: youthful obsession, no word on his own music."
+  },
+  {
+   "key": "pixies>television",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.5,
+   "url": "https://thequietus.com/interviews/bakers-dozen/joey-santiago-pixies-favourite-albums/3/",
+   "found": "That probably seeped in to [his and Black Francis’ playing] on ‘Monkey Gone To Heaven’ through osmosis.",
+   "citation": "Joey Santiago of Pixies, on Television's Marquee Moon in The Quietus's Baker's Dozen, of the guitar playing on \"Monkey Gone to Heaven\": \"That probably seeped in... through osmosis.\"",
+   "why": "CLOSE CALL: hedged ('probably', 'we didn't mean it'); the 'that' is the Television record, but it is a single song and he is unsure. Owner may prefer to drop it."
+  },
+  {
+   "key": "pulp>big-star",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.8,
+   "url": "https://thequietus.com/interviews/bakers-dozen/mark-webber-pulp-interview-favourite-music/8/",
+   "found": "It was records like this that I aspired to make when I was young.",
+   "citation": "Mark Webber of Pulp, on Big Star's Third in The Quietus's Baker's Dozen: \"It was records like this that I aspired to make when I was young.\"",
+   "why": ""
+  },
+  {
+   "key": "rem>wire",
+   "ruling": "remove",
+   "why": "Stipe says 'there were all these records that came out around then that were so profoundly important' and names 154 as 'very shocking', but the one he says he 'pulled a great deal from' is Pylon; Wire sits in a group of records. CLOSE CALL."
+  },
+  {
+   "key": "sex-pistols>television",
+   "ruling": "denial",
+   "sourceTier": null,
+   "confidence": null,
+   "url": "https://pitchfork.com/features/5-10-15-20/9995-john-lydon-on-the-music-that-made-him/",
+   "found": "And I had little time for what was coming out of America; bands like Television never really grabbed me, I just couldn’t connect.",
+   "citation": "John Lydon of the Sex Pistols, in Pitchfork's 5-10-15-20: \"I had little time for what was coming out of America; bands like Television never really grabbed me, I just couldn't connect.\"",
+   "strength": "clean",
+   "why": "Lydon rules Television out; strength clean for him as a speaker, but not about the band's other members."
+  },
+  {
+   "key": "slint>minor-threat",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.8,
+   "url": "https://thequietus.com/interviews/bakers-dozen/david-pajo-slint-favourite-albums/3/",
+   "found": "it was one of those life-altering LPs in that I was never the same afterwards.",
+   "citation": "David Pajo of Slint, on Minor Threat's Out of Step in The Quietus's Baker's Dozen: \"it was one of those life-altering LPs in that I was never the same afterwards.\"",
+   "why": ""
+  },
+  {
+   "key": "slowdive>talk-talk",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://thequietus.com/interviews/bakers-dozen/slowdive-neil-halstead-interview-favourite-albums/12/",
+   "found": "This was a massive influence on _Pygmalion_. It’s all about the way they used the space and how it slides into abstraction at points.",
+   "citation": "Neil Halstead of Slowdive, on Talk Talk in The Quietus's Baker's Dozen: \"This was a massive influence on Pygmalion. It's all about the way they used the space and how it slides into abstraction at points.\"",
+   "why": ""
+  },
+  {
+   "key": "sonic-youth>talking-heads",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://thequietus.com/interviews/bakers-dozen/lee-ranaldo-sonic-youth-interview-bakers-dozen-favourite-albums-the-beatles-leonard-cohen-einsturzende-neubaten/11/",
+   "found": "In the late 70s, I was moving to New York and I was inspired by all this stuff coming out of CBGB’s, and Talking Heads was one of the hugest influences at that time.",
+   "citation": "Lee Ranaldo of Sonic Youth, on Talking Heads in The Quietus's Baker's Dozen: \"In the late 70s, I was moving to New York and I was inspired by all this stuff coming out of CBGB's, and Talking Heads was one of the hugest influences at that time.\"",
+   "why": ""
+  },
+  {
+   "key": "sonic-youth>bob-dylan",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.65,
+   "url": "https://pitchfork.com/features/5-10-15-20/8797-lee-ranaldo/",
+   "found": "For kids of my generation, they (along with Dylan) were the life-changing event.",
+   "citation": "Lee Ranaldo of Sonic Youth, in Pitchfork's 5-10-15-20, on the Beatles: \"For kids of my generation, they (along with Dylan) were the life-changing event.\"",
+   "why": "CLOSE CALL: Dylan is in a parenthesis in a passage about the Beatles; later in the piece he calls Dylan's music 'the paramount musical expression of a single individual'."
+  },
+  {
+   "key": "spiritualized>the-stooges",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://pitchfork.com/features/5-10-15-20/8844-j-spaceman/",
+   "found": "I got lucky, because my whole life premise and what I do is kind of built around that record.",
+   "citation": "J Spaceman of Spiritualized, on the Stooges' Raw Power in Pitchfork's 5-10-15-20: \"my whole life premise and what I do is kind of built around that record.\"",
+   "why": ""
+  },
+  {
+   "key": "spoon>the-cure",
+   "ruling": "remove",
+   "why": "Passing mention ('I was really into The Cure') inside a story about turning 15; the band he credits as biggest for that stretch is the Violent Femmes."
+  },
+  {
+   "key": "swans>kraftwerk",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.5,
+   "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+   "found": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+   "citation": "Michael Gira of Swans, asked about influences in an interview with Young God Records: \"particularly in the early days, I had a lot of influences... I listened to a wide variety of music then: The Stooges, Suicide, Throbbing Gristle, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York, Wire, Sex Pistols, Buzzcocks, Black Flag.\"",
+   "why": "CLOSE CALL: a list; he singles out No New York and Throbbing Gristle as the big ones, so Kraftwerk is one name of fifteen. Drop if strict."
+  },
+  {
+   "key": "swans>black-flag",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.5,
+   "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+   "found": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+   "citation": "Michael Gira of Swans, asked about influences in an interview with Young God Records: \"particularly in the early days, I had a lot of influences... I listened to a wide variety of music then: The Stooges, Suicide, Throbbing Gristle... Sex Pistols, Buzzcocks, Black Flag.\"",
+   "why": "CLOSE CALL: a list; Black Flag is one name of fifteen and he singles out others as the big ones. Drop if strict."
+  },
+  {
+   "key": "swans>buzzcocks",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.5,
+   "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+   "found": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+   "citation": "Michael Gira of Swans, asked about influences in an interview with Young God Records: \"particularly in the early days, I had a lot of influences... I listened to a wide variety of music then: The Stooges, Suicide, Throbbing Gristle... Sex Pistols, Buzzcocks, Black Flag.\"",
+   "why": "CLOSE CALL: a list; Buzzcocks is one name of fifteen and he singles out others as the big ones. Drop if strict."
+  },
+  {
+   "key": "the-blue-nile>the-clash",
+   "ruling": "remove",
+   "why": "Buchanan's specific line ('I could do that') is about Talking Heads; the Clash is one bare name in 'there were some great things. The Clash. The Pistols...' and he says the Blue Nile sounded nothing like them."
+  },
+  {
+   "key": "the-fall>joy-division",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://thequietus.com/interviews/bakers-dozen/brix-smith-the-fall-favourite-albums-extricated/10/",
+   "found": "I think this is the album that made me want to play bass. It made me sit up and say, ‘I want to be in a band.’",
+   "citation": "Brix Smith Start of the Fall, on Joy Division's Unknown Pleasures in The Quietus's Baker's Dozen: \"I think this is the album that made me want to play bass. It made me sit up and say, 'I want to be in a band.'\"",
+   "why": ""
+  },
+  {
+   "key": "the-national>neil-young",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.75,
+   "url": "https://maximumfun.org/episodes/bullseye-with-jesse-thorn/matt-berninger-national-interview-sound-young-america/",
+   "found": "I’ve been a huge fan of people like Tom Waits and Leonard Cohen and The Smiths and Nick Cave, and so I was obsessed with sort of lyric heavy writers. Neil Young and Bob Dylan, those kinds of guys. So the idea of actually trying to do that, to write good lyrics, was something really exciting to me.",
+   "citation": "Matt Berninger of the National, on The Sound of Young America (Maximum Fun): \"I've been a huge fan of people like Tom Waits and Leonard Cohen and The Smiths and Nick Cave... Neil Young and Bob Dylan, those kinds of guys. So the idea of actually trying to do that, to write good lyrics, was something really exciting to me.\"",
+   "why": "Fandom tied to his own lyric writing."
+  },
+  {
+   "key": "the-postal-service>omd",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.8,
+   "url": "https://www.theringer.com/2023/09/05/music/postal-service-give-up-20th-anniversary-tour-history",
+   "found": "We were in the right place at the right time to resurrect the craftsmanship of that early ’80s electronic music via Orchestral Manoeuvres in the Dark, Depeche Mode, or the Human League.",
+   "citation": "Ben Gibbard of the Postal Service, to The Ringer (2023): \"We were in the right place at the right time to resurrect the craftsmanship of that early '80s electronic music via Orchestral Manoeuvres in the Dark, Depeche Mode, or the Human League.\"",
+   "why": ""
+  },
+  {
+   "key": "the-radio-dept>nick-drake",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.7,
+   "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm",
+   "found": "- nick drake",
+   "citation": "The Radio Dept.'s own website (2007), under \"Influences,\" says what the band listens to instead of Slowdive and the Jesus and Mary Chain, and the list includes Nick Drake.",
+   "why": "Page is an Internet Archive copy; the list is the band's own under an INFLUENCES heading, but the 'listens to' list item is a bare name."
+  },
+  {
+   "key": "the-smiths>wire",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://thequietus.com/interviews/bakers-dozen/johnny-marr-favourite-albums-interview/6/",
+   "found": "As a young guitar player, discovering _154_ showed me a world that was an alternative way of looking at the instrument. It has stuck with me all the way through my career.",
+   "citation": "Johnny Marr of the Smiths, on Wire's 154 in The Quietus's Baker's Dozen: \"As a young guitar player, discovering 154 showed me a world that was an alternative way of looking at the instrument. It has stuck with me all the way through my career.\"",
+   "why": ""
+  },
+  {
+   "key": "the-stone-roses>sex-pistols",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.65,
+   "url": "https://www.theguardian.com/music/2010/jun/27/ian-brown-soundtrack-of-my-life",
+   "found": "We couldn’t wait for the LP and when it came out it blew us away.",
+   "citation": "Ian Brown of the Stone Roses, in the Guardian's Soundtrack of My Life (2010), on the Sex Pistols: \"I was really into punk when I was about 14... We couldn't wait for the LP and when it came out it blew us away.\"",
+   "why": "CLOSE CALL: formative fandom before the band; nothing about his own music."
+  },
+  {
+   "key": "unwound>wipers",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://www.scaruffi.com/interv/unwound.html",
+   "found": "Well I like guitar music alot. Should I list my influences? Greg Ginn(black flag), Sonic Youth, Greg Sage(wipers), Jimi Hendrix, David Lester(mecca normal), Helios Creed(chrome), Tom Verlaine(televison), Toni Iommi(black sabbath) and more.",
+   "citation": "Justin Trosper of Unwound, asked about his influences in an interview on Scaruffi.com: \"Greg Ginn (black flag), Sonic Youth, Greg Sage (wipers), Jimi Hendrix, David Lester (mecca normal), Helios Creed (chrome), Tom Verlaine (television), Toni Iommi (black sabbath) and more.\"",
+   "why": "Interview typed with the speaker's own spelling."
+  },
+  {
+   "key": "waxahatchee>rem",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://rollingstone.com/music/music-features/waxahatchee-katie-crutchfield-great-thunder-interview-737269",
+   "found": "R.E.M. was a big influence.",
+   "citation": "Katie Crutchfield of Waxahatchee, in Rolling Stone: \"R.E.M. was a big influence. I saw R.E.M. on their last tour, in an arena... then I saw them and they just blew me away.\"",
+   "why": ""
+  },
+  {
+   "key": "wednesday>neil-young",
+   "ruling": "keep",
+   "sourceTier": "reported",
+   "confidence": 0.6,
+   "url": "https://wrsu.org/interview-with-xandy-chelmis-of-wednesday-and-mj-lenderman-the-wind/",
+   "found": "Before he fell in love with Jason Molina and Jeff Tweedy, there were Neil Young LPs and Dr. Demento radio sets. His childhood favorites sparked a desire to play live",
+   "citation": "WRSU's profile of Xandy Chelmis of Wednesday: \"Before he fell in love with Jason Molina and Jeff Tweedy, there were Neil Young LPs and Dr. Demento radio sets. His childhood favorites sparked a desire to play live.\"",
+   "why": "Reported by the station about Wednesday's steel guitarist."
+  },
+  {
+   "key": "wire>neil-young",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://thequietus.com/interviews/bakers-dozen/graham-lewis-wire-favourite-albums-interview/4/",
+   "found": "He’s in Wire’s minimalism, and you can see his influence go right through",
+   "citation": "Graham Lewis of Wire, on Neil Young in The Quietus's Baker's Dozen: \"He's in Wire's minimalism, and you can see his influence go right through.\"",
+   "why": ""
+  },
+  {
+   "key": "wire>nick-drake",
+   "ruling": "remove",
+   "why": "Colin Newman says only that he was 'always into' Nick Drake as a kid, a lonely fan; nothing links it to Wire's music. CLOSE CALL."
+  },
+  {
+   "key": "xiu-xiu>the-cure",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "confidence": 0.65,
+   "url": "https://thequietus.com/interviews/bakers-dozen/jamie-stewart-xiu-xiu-interview-favourite-music/2/",
+   "found": "When I was in 10th grade, I listened to ‘Kiss Me Kiss Me Kiss Me’ every single night before I went to bed for an entire year.",
+   "citation": "Jamie Stewart of Xiu Xiu, on the Cure in The Quietus's Baker's Dozen: \"When I was in 10th grade, I listened to 'Kiss Me Kiss Me Kiss Me' every single night before I went to bed for an entire year,\" and the songs \"get me on both an emotional and technical level.\"",
+   "why": "CLOSE CALL: formative obsession; the 10th-grade line is about Kiss Me Kiss Me Kiss Me, not the pick itself."
+  }
+ ]
+}

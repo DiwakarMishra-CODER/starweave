@@ -15,12 +15,14 @@ describe('the About tape', () => {
     for (const s of TAPE_SONGS) expect(data.songs?.[s.key]?.imageUrl, s.key).toBeTruthy();
   });
 
-  it('gives every track but the silent first its songs, in tape order', () => {
+  it('gives every track but the silent first (and the dig crate) its songs, in tape order', () => {
     expect(tape.tracks.map(t => t.id)).toEqual(TAPE_TRACKS.map(t => t.id));
     expect(tape.tracks[0].songs).toEqual([]);
     const order = tape.tracks.flatMap(t => t.songs.map(s => s.at));
     expect(order).toEqual([...order].sort((a, b) => a - b));
-    for (const t of tape.tracks.slice(1)) expect(t.songs.length, t.id).toBeGreaterThan(0);
+    // How I find new music plays its crate's records instead (Fishmans'
+    // "Long Season" left with Fishmans, Oct 2026).
+    for (const t of tape.tracks.slice(1).filter(t => t.id !== 'dig')) expect(t.songs.length, t.id).toBeGreaterThan(0);
   });
 
   it('draws both roads from punk as they run in the map\u2019s own family tree', () => {

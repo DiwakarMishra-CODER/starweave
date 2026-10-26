@@ -1,0 +1,14 @@
+{ "agent": "orphans-2", "finished": true, "searches": 7, "toolStatus": "WebSearch standard mode worked; ledger.ts read worked (direct, cache, r.jina.ai).",
+  "found": [
+    { "source": "broken-social-scene", "target": "dinosaur-jr", "sourceTier": "first-person", "confidence": 0.8,
+      "url": "https://spacing.ca/toronto/?p=61894",
+      "found": "That was the first time I heard a new song that I immediately related to. Chord structure, singing, everything. That changed the course of my life, because I thought, that’s how I feel. That’s what I want to do.",
+      "citation": "In Spacing Toronto's feature on Broken Social Scene, Kevin Drew says that hearing Dinosaur Jr.'s 'The Wagon' (from Green Mind) at fourteen was 'the first time I heard a new song that I immediately related to' and 'changed the course of my life', because 'that's what I want to do'." }
+  ],
+  "none": [
+    { "artist": "harold-budd", "tried": "One search. His own interviews name John Cage, Morton Feldman and Rothko (none on the map); nothing naming Eno or any other roster artist as shaping him. Eno link was collaboration, stays removed." },
+    { "artist": "tricky", "tried": "One search. Only critic/Wikipedia-level lines (Public Enemy, PiL, Robert Smith lipstick in a Mail & Guardian piece) and the Siouxsie 'Tattoo' cover; no Tricky quote found naming a roster artist. Massive Attack is personnel." },
+    { "artist": "the-mountain-goats", "tried": "Two searches plus reads of NPR, Paste, WUNC, Willamette Week, Aquarium Drunkard. NPR has Darnielle saying 'Siouxsie was a pretty major fashion influence and a sonic influence in goth' (about goth, not himself) and Paste says he 'refers to' Siouxsie, Bauhaus, Sisters of Mercy as name-checks. Neither says the bands shaped his music, so no link claimed. Cure and Joy Division not found in any of them." },
+    { "artist": "christie-front-drive", "tried": "One search; no interview surfaced (only a Washed Up Emo podcast listing with no content). Nothing found." },
+    { "artist": "women", "tried": "One search; no Flegel interview naming a roster artist surfaced. Reviews only (Beats Per Minute and a 2024 review call VU their biggest influence, but those are critic claims; not opened or verified). Earlier-read Treble 2010 interview has Flegel naming Stooges, Iggy Pop and Wire's Pink Flag, but the previous pass judged this did not cleanly carry wire; not re-proposed." }
+  ] }

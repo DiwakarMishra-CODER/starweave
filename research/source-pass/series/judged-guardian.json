@@ -1,0 +1,415 @@
+{
+ "agent": "guardian",
+ "finished": true,
+ "entries": [
+  {
+   "speaker": "pulp",
+   "target": "suicide",
+   "artist": "Suicide",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2009/apr/19/jarvis-cocker-soundtrack-of-my-life",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "the-stone-roses",
+   "target": "the-clash",
+   "artist": "The Clash",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2010/jun/27/ian-brown-soundtrack-of-my-life",
+   "verdict": "influence",
+   "found": "So I played him The Clash and he went and bought it the next day, and played it every day for about 18 months, before and after school. That got him obsessed with guitar and made him want to play.",
+   "citation": "Ian Brown, in the Observer's Soundtrack of My Life (2010): of The Clash's first album, which he played John Squire: \"he went and bought it the next day, and played it every day for about 18 months, before and after school. That got him obsessed with guitar and made him want to play.\"",
+   "note": "Brown says the album \"started the Roses in a way\"; the obsession described is Squire's, so it is the band's origin, not Brown's own listening."
+  },
+  {
+   "speaker": "the-stone-roses",
+   "target": "sex-pistols",
+   "artist": "Sex Pistols",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2010/jun/27/ian-brown-soundtrack-of-my-life",
+   "verdict": "influence",
+   "found": "We couldn't wait for the LP and when it came out it blew us away. I still think it's the best UK album ever made.",
+   "citation": "Ian Brown, in the Observer's Soundtrack of My Life (2010): on the Sex Pistols at 14: \"We couldn't wait for the LP and when it came out it blew us away. I still think it's the best UK album ever made.\"",
+   "note": "Formative fandom at about 14, before the band; Brown says the whole run of singles was bought on release day."
+  },
+  {
+   "speaker": "st-vincent",
+   "target": "sufjan-stevens",
+   "artist": "Sufjan Stevens",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2012/feb/26/st-vincent-soundtrack-of-my-life",
+   "verdict": "favourite",
+   "note": "Only touring with him (\"an apprenticeship\"); collaboration, not influence."
+  },
+  {
+   "speaker": "joy-division",
+   "target": "sex-pistols",
+   "artist": "Sex Pistols",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2013/jan/27/peter-hook-soundtrack-of-my-life",
+   "verdict": "influence",
+   "found": "I didn't start thinking about being in a band until I saw the Sex Pistols, and only became a bass player by default, because Bernard [Sumner] had a guitar.",
+   "citation": "Peter Hook, in the Observer's Soundtrack of My Life (2013): \"I didn't start thinking about being in a band until I saw the Sex Pistols, and only became a bass player by default, because Bernard [Sumner] had a guitar.\""
+  },
+  {
+   "speaker": "joy-division",
+   "target": "kraftwerk",
+   "artist": "Kraftwerk",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2013/jan/27/peter-hook-soundtrack-of-my-life",
+   "verdict": "influence",
+   "found": "Kraftwerk did a bit, partly because we used to play Trans-Europe Express before Joy Division gigs ... people say they come across as quite Germanic, quite cold, but I always found tracks like Computer Love very romantic.",
+   "citation": "Peter Hook, in the Observer's Soundtrack of My Life (2013): on Kraftwerk: \"we used to play Trans-Europe Express before Joy Division gigs ... people say they come across as quite Germanic, quite cold, but I always found tracks like Computer Love very romantic.\"",
+   "note": "Borderline: the quote is mostly about Kraftwerk helping after Ian Curtis died (New Order era); the Joy Division part is playing Trans-Europe Express before gigs."
+  },
+  {
+   "speaker": "joy-division",
+   "target": "david-bowie",
+   "artist": "David Bowie",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2013/jan/27/peter-hook-soundtrack-of-my-life",
+   "verdict": "influence",
+   "found": "When I came back to Manchester, their first LP [1973's The Human Menagerie ] led me to Roxy, which led me into Bowie.",
+   "citation": "Peter Hook, in the Observer's Soundtrack of My Life (2013): on hearing Cockney Rebel at 17: \"their first LP [1973's The Human Menagerie] led me to Roxy, which led me into Bowie. To that serious side of music beyond crap pop like Mud, Gary Glitter and Racey.\"",
+   "note": "Teenage listening before Joy Division, as the way into serious music; thin on Bowie specifically."
+  },
+  {
+   "speaker": "joy-division",
+   "target": "neil-young",
+   "artist": "Neil Young",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2013/jan/27/peter-hook-soundtrack-of-my-life",
+   "verdict": "favourite",
+   "note": "Old Ways (1985), a New Order-era favourite; Hook says Bernard got him into it."
+  },
+  {
+   "speaker": "joy-division",
+   "target": "the-white-stripes",
+   "artist": "The White Stripes",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2013/jan/27/peter-hook-soundtrack-of-my-life",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "the-smiths",
+   "target": "bert-jansch",
+   "artist": "Bert Jansch",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2013/jun/30/johnny-marr-soundtrack-of-my-life",
+   "verdict": "influence",
+   "found": "I already had a certain facility and knew what I wanted to do. But someone gave me this album – and this is after punk, so it was quite a broad-minded thing to do in those days – with the tagline, \"There you go, hotshot, with your Johnny Thunders shit – let's see if you can get your head round that.\" And I must confess it was one of the few times I actually sat down and thought, \"Wow, I'm either gonna have to work this out, or give up.\"",
+   "citation": "Johnny Marr, in the Observer's Soundtrack of My Life (2013): on Bert Jansch's LA Turnaround: \"it was one of the few times I actually sat down and thought, 'Wow, I'm either gonna have to work this out, or give up.'\"",
+   "note": "Already had facility; the album improved his guitar playing, said to be after punk and before the Smiths."
+  },
+  {
+   "speaker": "the-smiths",
+   "target": "david-bowie",
+   "artist": "David Bowie",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2013/jun/30/johnny-marr-soundtrack-of-my-life",
+   "verdict": "favourite",
+   "note": "Named with Sparks and Roxy Music as glam records he and Morrissey both liked; not tied to Marr's own music."
+  },
+  {
+   "speaker": "the-smiths",
+   "target": "sparks",
+   "artist": "Sparks",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2013/jun/30/johnny-marr-soundtrack-of-my-life",
+   "verdict": "favourite",
+   "note": "Same sentence as Bowie: liked together with Morrissey; borderline."
+  },
+  {
+   "speaker": "the-smiths",
+   "target": "the-stooges",
+   "artist": "The Stooges",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2013/jun/30/johnny-marr-soundtrack-of-my-life",
+   "verdict": "favourite",
+   "note": "Praise for Raw Power; Marr tells his son to study it."
+  },
+  {
+   "speaker": "pavement",
+   "target": "dead-kennedys",
+   "artist": "Dead Kennedys",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2013/nov/24/stephen-malkmus-pavement-soundtrack-my-life",
+   "verdict": "influence",
+   "found": "This album was a gateway towards sarcasm and questioning authority and the rightwing and Ronald Reagan – our Margaret Thatcher. I was listening to them in mid-late high school, 1981-82.",
+   "citation": "Stephen Malkmus, in the Observer's Soundtrack of My Life (2013): on the Dead Kennedys' Fresh Fruit for Rotting Vegetables, from his high-school years: \"This album was a gateway towards sarcasm and questioning authority ... I was listening to them in mid-late high school, 1981-82.\""
+  },
+  {
+   "speaker": "pavement",
+   "target": "the-replacements",
+   "artist": "The Replacements",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2013/nov/24/stephen-malkmus-pavement-soundtrack-my-life",
+   "verdict": "influence",
+   "found": "Paul Westerberg wrote classic songs with a bit of cheek and hopelessness – and brilliance – combined. He's a poet: Let It Be was dramatic, romantic stuff.",
+   "citation": "Stephen Malkmus, in the Observer's Soundtrack of My Life (2013): choosing the Replacements' Let It Be as \"the album that inspired my songwriting\": \"Paul Westerberg wrote classic songs with a bit of cheek and hopelessness – and brilliance – combined. He's a poet: Let It Be was dramatic, romantic stuff.\""
+  },
+  {
+   "speaker": "pavement",
+   "target": "minutemen",
+   "artist": "Minutemen",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2013/nov/24/stephen-malkmus-pavement-soundtrack-my-life",
+   "verdict": "favourite",
+   "note": "Only named alongside the Replacements as 80s college rock."
+  },
+  {
+   "speaker": "pavement",
+   "target": "velvet-underground",
+   "artist": "The Velvet Underground",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2013/nov/24/stephen-malkmus-pavement-soundtrack-my-life",
+   "verdict": "influence",
+   "found": "The 90s was when I became a hipster on a quest for unique stuff. Sister Ray is the ultimate song.",
+   "citation": "Stephen Malkmus, in the Observer's Soundtrack of My Life (2013): on the Velvet Underground: \"The 90s was when I became a hipster on a quest for unique stuff. Sister Ray is the ultimate song.\"",
+   "note": "Borderline: \"with me always\", in the 90s (Pavement formed 1989); stated as a lasting favourite rather than a formative moment."
+  },
+  {
+   "speaker": "pavement",
+   "target": "cat-power",
+   "artist": "Cat Power",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2013/nov/24/stephen-malkmus-pavement-soundtrack-my-life",
+   "verdict": "favourite",
+   "note": "\"Inspirational\" in a general sense about a 1998 song, after Pavement formed."
+  },
+  {
+   "speaker": "yeah-yeah-yeahs",
+   "target": "neutral-milk-hotel",
+   "artist": "Neutral Milk Hotel",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2014/aug/29/karen-o-soundtrack-of-my-life-yeah-yeah-yeahs",
+   "verdict": "influence",
+   "found": "I can credit him for putting the idea in my head that I could sing too, as long as I sang my heart out.",
+   "citation": "Karen O, in the Observer's Soundtrack of My Life (2014): on Neutral Milk Hotel's On Avery Island, as \"the record that inspired me to sing\": \"I can credit him for putting the idea in my head that I could sing too, as long as I sang my heart out.\""
+  },
+  {
+   "speaker": "yeah-yeah-yeahs",
+   "target": "the-birthday-party",
+   "artist": "The Birthday Party",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2014/aug/29/karen-o-soundtrack-of-my-life-yeah-yeah-yeahs",
+   "verdict": "favourite",
+   "note": "A pre-gig record she plays to get into a state; not about forming her music."
+  },
+  {
+   "speaker": "yeah-yeah-yeahs",
+   "target": "fugazi",
+   "artist": "Fugazi",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2014/aug/29/karen-o-soundtrack-of-my-life-yeah-yeah-yeahs",
+   "verdict": "favourite",
+   "note": "Her friends listened to Fugazi before switching to the Dead; not her own account."
+  },
+  {
+   "speaker": "sharon-van-etten",
+   "target": "low",
+   "artist": "Low",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2015/apr/25/soundtrack-my-life-sharon-van-etten-righteous-brothers-lemonheads",
+   "verdict": "influence",
+   "found": "My friend Paul played me this when I was in college, and it just killed me. It was so different, so minimal, and their voices together [Alan Sparhawk and Mimi Parker] were just beautiful.",
+   "citation": "Sharon Van Etten, in the Observer's Soundtrack of My Life (2015): on Low's Two-Step: \"My friend Paul played me this when I was in college, and it just killed me. It was so different, so minimal, and their voices together ... were just beautiful.\""
+  },
+  {
+   "speaker": "sharon-van-etten",
+   "target": "nick-cave-and-the-bad-seeds",
+   "artist": "Nick Cave & The Bad Seeds",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2015/apr/25/soundtrack-my-life-sharon-van-etten-righteous-brothers-lemonheads",
+   "verdict": "favourite",
+   "note": "A song she plays before touring; fandom after her own music was under way."
+  },
+  {
+   "speaker": "mac-demarco",
+   "target": "the-smiths",
+   "artist": "The Smiths",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2015/sep/06/mac-demarco-soundtrack-of-my-life",
+   "verdict": "influence",
+   "found": "At high school, people generally liked the same music I did, but when I started getting into the Smiths everybody was like: “Dude, why are you listening to this crap?”",
+   "citation": "Mac DeMarco, in the Observer's Soundtrack of My Life (2015): on getting into the Smiths in high school: \"when I started getting into the Smiths everybody was like: 'Dude, why are you listening to this crap?'\""
+  },
+  {
+   "speaker": "mac-demarco",
+   "target": "wipers",
+   "artist": "Wipers",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2015/sep/06/mac-demarco-soundtrack-of-my-life",
+   "verdict": "favourite",
+   "note": "Song reminds him of moving to Vancouver; not said to shape his music."
+  },
+  {
+   "speaker": "mac-demarco",
+   "target": "neil-young",
+   "artist": "Neil Young",
+   "kind": null,
+   "url": "https://www.theguardian.com/music/2015/sep/06/mac-demarco-soundtrack-of-my-life",
+   "verdict": "influence",
+   "found": "It was around the time I recorded 2 and I wanted to make my album sound exactly like this: really dry, really crisp 70s style.",
+   "citation": "Mac DeMarco, in the Observer's Soundtrack of My Life (2015): on Neil Young's Harvest, as \"the record that influenced my breakthrough album\": \"It was around the time I recorded 2 and I wanted to make my album sound exactly like this: really dry, really crisp 70s style.\""
+  }
+ ],
+ "offMap": [
+  {
+   "name": "Fairport Convention",
+   "namedBy": "vampire-weekend",
+   "sentence": "\"I played British and Irish folk in an early band I had. We only performed one show and Rostam [Batmanglij, Vampire Weekend multi-instrumentalist] was also in the group, so this was the roots of Vampire Weekend. We covered 'Matty Groves' from this album.\"",
+   "url": "https://www.theguardian.com/music/2010/nov/28/vampire-weekend-ezra-koenig-soundtrack"
+  },
+  {
+   "name": "DJ Shadow",
+   "namedBy": "vampire-weekend",
+   "sentence": "\"This was such a good introduction to sampling, and the idea that modern music could be made from the past. It inspired me in a big way.\"",
+   "url": "https://www.theguardian.com/music/2010/nov/28/vampire-weekend-ezra-koenig-soundtrack"
+  },
+  {
+   "name": "Pearl Jam",
+   "namedBy": "st-vincent",
+   "sentence": "\"From the age of 10 to 13, the record that went everywhere with me ... was Pearl Jam's Ten\"",
+   "url": "https://www.theguardian.com/music/2012/feb/26/st-vincent-soundtrack-of-my-life"
+  },
+  {
+   "name": "Solex",
+   "namedBy": "st-vincent",
+   "sentence": "\"I got really into this Solex record called Pick Up ... this record just reaffirmed my place in the world to myself, 'Oh, I like weird music.'\"",
+   "url": "https://www.theguardian.com/music/2012/feb/26/st-vincent-soundtrack-of-my-life"
+  },
+  {
+   "name": "Public Enemy",
+   "namedBy": "the-stone-roses",
+   "sentence": "\"I loved hip-hop. ... the whole band agreed on Public Enemy. It just sounded completely new\"",
+   "url": "https://www.theguardian.com/music/2010/jun/27/ian-brown-soundtrack-of-my-life"
+  },
+  {
+   "name": "Cockney Rebel",
+   "namedBy": "joy-division",
+   "sentence": "\"I heard it on a lads' holiday to Rhyl when I was 17 ... their first LP led me to Roxy, which led me into Bowie.\"",
+   "url": "https://www.theguardian.com/music/2013/jan/27/peter-hook-soundtrack-of-my-life"
+  },
+  {
+   "name": "Roxy Music",
+   "namedBy": "joy-division",
+   "sentence": "\"their first LP [1973's The Human Menagerie ] led me to Roxy, which led me into Bowie.\"",
+   "url": "https://www.theguardian.com/music/2013/jan/27/peter-hook-soundtrack-of-my-life"
+  },
+  {
+   "name": "The Temptations (Carol Kaye's bass line)",
+   "namedBy": "joy-division",
+   "sentence": "\"There was this woman bassist in the Motown house band called Carol Kaye. In this song, you hear her over the beginning, fantastic, a very musical bassline. I spent years trying to emulate it\"",
+   "url": "https://www.theguardian.com/music/2013/jan/27/peter-hook-soundtrack-of-my-life"
+  },
+  {
+   "name": "Kenny Rogers & The First Edition",
+   "namedBy": "joy-division",
+   "sentence": "\"It's a great feeling to put on something you've had, and you've loved, since you were 13.\" (Ruby, Don't Take Your Love To Town; weak, fandom only)",
+   "url": "https://www.theguardian.com/music/2013/jan/27/peter-hook-soundtrack-of-my-life"
+  },
+  {
+   "name": "Chic / Nile Rodgers",
+   "namedBy": "the-smiths",
+   "sentence": "\"My sister turned me on to Chic when their first album came out, in 1977, and I couldn't believe quite what I was hearing. ... He was a hero ... So he was someone I related to, and still do.\"",
+   "url": "https://www.theguardian.com/music/2013/jun/30/johnny-marr-soundtrack-of-my-life"
+  },
+  {
+   "name": "Hamilton Bohannon",
+   "namedBy": "the-smiths",
+   "sentence": "\"this scratchy guitar that you can hear influenced me and Nile Rodgers too.\"",
+   "url": "https://www.theguardian.com/music/2013/jun/30/johnny-marr-soundtrack-of-my-life"
+  },
+  {
+   "name": "Jimi Hendrix",
+   "namedBy": "pavement",
+   "sentence": "\"the gateway to me thinking the guitar was a cool thing was the E seventh chord. ... a slight change in E seventh that was in Purple Haze\"",
+   "url": "https://www.theguardian.com/music/2013/nov/24/stephen-malkmus-pavement-soundtrack-my-life"
+  },
+  {
+   "name": "Miles Davis",
+   "namedBy": "roy-harper",
+   "sentence": "\"I picked up on Miles Davis, who was a huge influence on me.\"",
+   "url": "https://www.theguardian.com/music/2013/oct/27/roy-harper-soundtrack-my-life"
+  },
+  {
+   "name": "Lonnie Donegan",
+   "namedBy": "roy-harper",
+   "sentence": "\"As soon as I heard skiffle, I loved it and I knew that I wanted to play it. I heard this track in 1954 and it was kind of key in my life.\"",
+   "url": "https://www.theguardian.com/music/2013/oct/27/roy-harper-soundtrack-my-life"
+  },
+  {
+   "name": "Richard and Mimi Farina",
+   "namedBy": "roy-harper",
+   "sentence": "\"Richard and Mimi Fariña's Reflections in a Crystal Wind has been a big influence on me and I still listen to it now.\"",
+   "url": "https://www.theguardian.com/music/2013/oct/27/roy-harper-soundtrack-my-life"
+  },
+  {
+   "name": "ESG",
+   "namedBy": "yeah-yeah-yeahs",
+   "sentence": "\"I listened to it and I decided I wanted to be like those Scroggins sisters. ... Yeah Yeah Yeahs' first EP was largely Nick [Zinner] and I was trying to be like ESG but with guitar instead of bass.\"",
+   "url": "https://www.theguardian.com/music/2014/aug/29/karen-o-soundtrack-of-my-life-yeah-yeah-yeahs"
+  },
+  {
+   "name": "Connie Francis / 50s-60s girl groups (solo work)",
+   "namedBy": "yeah-yeah-yeahs",
+   "sentence": "\"nothing has greater influence than my dad's best of the 50s and 60s CD compilations. The doo-wop and girl group sound from those decades has shaped my melodic sensibility more than anything else.\" (about her solo work)",
+   "url": "https://www.theguardian.com/music/2014/aug/29/karen-o-soundtrack-of-my-life-yeah-yeah-yeahs"
+  },
+  {
+   "name": "Leon Russell",
+   "namedBy": "pixies",
+   "sentence": "\"I realise there's a certain kind of vocalising I do that takes its cue from Leon Russell.\"",
+   "url": "https://www.theguardian.com/music/2014/jun/29/black-francis-soundtrack-of-my-life-pixies"
+  },
+  {
+   "name": "Elvis Costello",
+   "namedBy": "pixies",
+   "sentence": "\"Instead of studying I'd go in there and listen to Elvis Costello over and over until my ears hurt\" (before starting the Pixies)",
+   "url": "https://www.theguardian.com/music/2014/jun/29/black-francis-soundtrack-of-my-life-pixies"
+  },
+  {
+   "name": "Jethro Tull",
+   "namedBy": "pixies",
+   "sentence": "\"I was heavily into Jethro Tull back then and I still am.\" (at 14)",
+   "url": "https://www.theguardian.com/music/2014/jun/29/black-francis-soundtrack-of-my-life-pixies"
+  },
+  {
+   "name": "Iggy Pop / XTC",
+   "namedBy": "pixies",
+   "sentence": "\"I would just sit in the dark and listen to Iggy Pop and XTC records for hours and hours.\" (before starting the Pixies; solo Iggy Pop is not on the map)",
+   "url": "https://www.theguardian.com/music/2014/jun/29/black-francis-soundtrack-of-my-life-pixies"
+  },
+  {
+   "name": "The Lemonheads",
+   "namedBy": "sharon-van-etten",
+   "sentence": "\"Evan Dando's music was all about that for me. ... it's relatable, simple. I try to follow that.\"",
+   "url": "https://www.theguardian.com/music/2015/apr/25/soundtrack-my-life-sharon-van-etten-righteous-brothers-lemonheads"
+  },
+  {
+   "name": "Noveller",
+   "namedBy": "sharon-van-etten",
+   "sentence": "\"I sit down with this track and just want to write, draw, sing, get out my guitar.\" (2015, current inspiration)",
+   "url": "https://www.theguardian.com/music/2015/apr/25/soundtrack-my-life-sharon-van-etten-righteous-brothers-lemonheads"
+  },
+  {
+   "name": "John Lennon / Plastic Ono Band",
+   "namedBy": "mac-demarco",
+   "sentence": "\"I got the John Lennon/Plastic Ono Band album and I was like, whoa! ... aged 15 or 16 – I was starting to play in bands a bit ... I'm going to do this too.\"",
+   "url": "https://www.theguardian.com/music/2015/sep/06/mac-demarco-soundtrack-of-my-life"
+  },
+  {
+   "name": "Steely Dan",
+   "namedBy": "mac-demarco",
+   "sentence": "\"Now that I think about it, my own music is pulled between both sides.\" (on Peg and dad rock)",
+   "url": "https://www.theguardian.com/music/2015/sep/06/mac-demarco-soundtrack-of-my-life"
+  },
+  {
+   "name": "Arthur Russell",
+   "namedBy": "mac-demarco",
+   "sentence": "\"I love Arthur Russell. Wild Combination was the first track that made me pay attention to his music.\" (weak)",
+   "url": "https://www.theguardian.com/music/2015/sep/06/mac-demarco-soundtrack-of-my-life"
+  }
+ ]
+}

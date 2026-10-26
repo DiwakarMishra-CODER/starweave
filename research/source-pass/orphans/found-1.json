@@ -1,0 +1,42 @@
+{
+ "agent": "orphans-1", "finished": true, "searches": 8,
+ "toolStatus": "WebSearch worked; ledger read worked (two pages unopenable: files.hyena.network Bucket zine, smilepolitely).",
+ "found": [
+  { "source": "silversun-pickups", "target": "my-bloody-valentine", "sourceTier": "reported", "confidence": 0.6,
+    "url": "https://guitarworld.com/features/silversun-pickups-heroes-day",
+    "found": "Aubert and company are most often compared with Smashing Pumpkins , but they feel a closer affinity to My Bloody Valentine.",
+    "citation": "Guitar World's 2009 Swoon feature reports that, although critics most often compare Silversun Pickups with the Smashing Pumpkins, the band feel a closer affinity to My Bloody Valentine; Brian Aubert says the band went to hear My Bloody Valentine play Los Angeles the day they finished tracking the album's guitars." },
+  { "source": "the-rapture", "target": "the-cure", "sourceTier": "reported", "confidence": 0.6,
+    "url": "https://www.discopogo.co/archive/the-rapture-gang-of-new-york",
+    "found": "In their school days they listened to a lot of college radio: The Smiths, Soft Cell, The Cure and Gary Numan.",
+    "citation": "Jockey Slut's 2003 profile of the Rapture reports that Luke Jenner and Vito Roccoforte grew up together in La Mesa, California, listening to a lot of college radio in their school days: the Smiths, Soft Cell, the Cure and Gary Numan." },
+  { "source": "the-rapture", "target": "gary-numan", "sourceTier": "reported", "confidence": 0.6,
+    "url": "https://www.discopogo.co/archive/the-rapture-gang-of-new-york",
+    "found": "In their school days they listened to a lot of college radio: The Smiths, Soft Cell, The Cure and Gary Numan.",
+    "citation": "Jockey Slut's 2003 profile of the Rapture reports that Luke Jenner and Vito Roccoforte grew up together in La Mesa, California, listening to a lot of college radio in their school days: the Smiths, Soft Cell, the Cure and Gary Numan." },
+  { "source": "the-rapture", "target": "the-smiths", "sourceTier": "reported", "confidence": 0.6,
+    "url": "https://www.discopogo.co/archive/the-rapture-gang-of-new-york",
+    "found": "In their school days they listened to a lot of college radio: The Smiths, Soft Cell, The Cure and Gary Numan.",
+    "citation": "Jockey Slut's 2003 profile of the Rapture reports that Luke Jenner and Vito Roccoforte grew up together in La Mesa, California, listening to a lot of college radio in their school days: the Smiths, Soft Cell, the Cure and Gary Numan." },
+  { "source": "angel-olsen", "target": "velvet-underground", "sourceTier": "reported", "confidence": 0.6,
+    "url": "https://relix.com/features/detail/spotlight_angel_olsen",
+    "found": "From The Velvet Underground, Leonard Cohen and Neil Young to the ChiLites, Jackie DeShannon and Candi Staton, the 29-year-old St. Louis native draws from a wealth of influences to create songs that burrow under your skin and cut straight to the marrow of life and love.",
+    "citation": "Relix's profile of Angel Olsen says her muses range from the Velvet Underground, Leonard Cohen and Neil Young to the Chi-Lites, Jackie DeShannon and Candi Staton, a wealth of influences she draws from." },
+  { "source": "angel-olsen", "target": "leonard-cohen", "sourceTier": "reported", "confidence": 0.6,
+    "url": "https://relix.com/features/detail/spotlight_angel_olsen",
+    "found": "From The Velvet Underground, Leonard Cohen and Neil Young to the ChiLites, Jackie DeShannon and Candi Staton, the 29-year-old St. Louis native draws from a wealth of influences to create songs that burrow under your skin and cut straight to the marrow of life and love.",
+    "citation": "Relix's profile of Angel Olsen says her muses range from the Velvet Underground, Leonard Cohen and Neil Young to the Chi-Lites, Jackie DeShannon and Candi Staton, a wealth of influences she draws from." },
+  { "source": "angel-olsen", "target": "neil-young", "sourceTier": "reported", "confidence": 0.6,
+    "url": "https://relix.com/features/detail/spotlight_angel_olsen",
+    "found": "From The Velvet Underground, Leonard Cohen and Neil Young to the ChiLites, Jackie DeShannon and Candi Staton, the 29-year-old St. Louis native draws from a wealth of influences to create songs that burrow under your skin and cut straight to the marrow of life and love.",
+    "citation": "Relix's profile of Angel Olsen says her muses range from the Velvet Underground, Leonard Cohen and Neil Young to the Chi-Lites, Jackie DeShannon and Candi Staton, a wealth of influences she draws from." },
+  { "source": "pinback", "target": "black-flag", "sourceTier": "reported", "confidence": 0.5,
+    "url": "https://bpb-experimental.voicemediagroup.com/?p=40580531",
+    "found": "\"We're not metal, not hardcore, not noise,\" Crow explains obliquely as he spouts off influences such as Captain Beefheart, the Shaggs, Black Flag, and Venom.",
+    "citation": "Broward Palm Beach New Times reports that Rob Crow, explaining what Pinback are not, spouted off influences such as Captain Beefheart, the Shaggs, Black Flag and Venom; the paper notes Crow's and Zach Smith's other bands bore the mark of San Diego's hardcore scene." }
+ ],
+ "none": [
+  { "artist": "dead-can-dance", "tried": "Perry/Gerrard influences search; Hot Press and Wikipedia give only punk generally and Stooges/NY Dolls covers (covers excluded); Gerrard Quietus Baker's Dozen names no roster artist in snippets. Nothing solid." },
+  { "artist": "hum", "tried": "Talbott interview search; only New Artillery memory-recalled favourites list; Bucket zine and Smile Politely pages would not open. Nothing solid." }
+ ]
+}

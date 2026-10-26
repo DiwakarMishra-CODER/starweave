@@ -213,6 +213,12 @@
     "url": "https://www.vice.com/en/article/never-meant-the-complete-oral-history-of-american-football/",
     "found": "Steve Holmes: With this band, we really did make a conscious shift away from the post-hardcore, emo, whatever sound and scene that we had come out of. Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc."
   },
+  "american-football>rites-of-spring": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://web.archive.org/web/2020/https://tidal.com/magazine/article/american-football-5-albums-that-changed-my-life/1-32190",
+    "found": "We never saw Rites of Spring, but their record mattered to us."
+  },
   "american-football>slint": {
     "result": "found",
     "at": "2026-10-26",
@@ -236,6 +242,36 @@
     "at": "2026-10-26",
     "url": "https://www.vice.com/da/article/never-meant-the-complete-oral-history-of-american-football/",
     "found": "Tortoise and post-rock bands like Slint were an influence."
+  },
+  "american-football>wilco": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://web.archive.org/web/2020/https://tidal.com/magazine/article/american-football-5-albums-that-changed-my-life/1-32190",
+    "found": "Wilco set me on a path to rediscover the guitar, standard tuning, and just great songwriting."
+  },
+  "angel-olsen>leonard-cohen": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://relix.com/features/detail/spotlight_angel_olsen",
+    "found": "From The Velvet Underground, Leonard Cohen and Neil Young to the ChiLites, Jackie DeShannon and Candi Staton, the 29-year-old St. Louis native draws from a wealth of influences to create songs that burrow under your skin and cut straight to the marrow of life and love."
+  },
+  "angel-olsen>neil-young": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://relix.com/features/detail/spotlight_angel_olsen",
+    "found": "From The Velvet Underground, Leonard Cohen and Neil Young to the ChiLites, Jackie DeShannon and Candi Staton, the 29-year-old St. Louis native draws from a wealth of influences to create songs that burrow under your skin and cut straight to the marrow of life and love."
+  },
+  "angel-olsen>velvet-underground": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://relix.com/features/detail/spotlight_angel_olsen",
+    "found": "From The Velvet Underground, Leonard Cohen and Neil Young to the ChiLites, Jackie DeShannon and Candi Staton, the 29-year-old St. Louis native draws from a wealth of influences to create songs that burrow under your skin and cut straight to the marrow of life and love."
+  },
+  "animal-collective>aphex-twin": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://daily.redbullmusicacademy.com/2018/11/animal-collective-oral-history",
+    "found": "That and Aphex Twin really changed the course of my musical life."
   },
   "animal-collective>brian-eno": {
     "result": "found",
@@ -327,6 +363,12 @@
     "url": "https://macleans.ca/culture/arcade-fire-frontman-win-butler-on-haitian-influences-and-plan-b/",
     "found": "I remember hearing that and thinking it was not worlds away from Headlights—even though we might have a more weird, homemade version of doing that. New Order and Bowie and Talking Heads—these are all primal influences for many of us."
   },
+  "arcade-fire>pixies": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.redbullmusicacademy.com/lectures/win-butler-lecture/",
+    "found": "It was New Order, Debussy, Arvo Part, the Pixies. I think I might have said Depeche Mode, I don’t know, and Neil Young and Motown, which sounds crazy but it’s pretty much what our band sounds like."
+  },
   "arcade-fire>talking-heads": {
     "result": "found (archived copy)",
     "at": "2026-10-26",
@@ -345,6 +387,12 @@
     "url": "https://en.wikipedia.org/wiki/At_the_Drive-In",
     "found": "Some of the group's key influences were Indian Summer, Swing Kids, Fugazi, Sunny Day Real Estate (referred to by Ward as \"Fugazi beyond Fugazi\"), Bad Brains, and the Gravity Records-led post-hardcore sound of the 1990s that featured acts such as Antioch Arrow and Heroin."
   },
+  "at-the-drive-in>dead-kennedys": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.spinmagazine.com/2026/08/5-albums-i-cant-live-without-jim-ward-of-sparta/",
+    "found": "I learned to play bass by playing along with the Pixies and Dead Kennedys."
+  },
   "at-the-drive-in>drive-like-jehu": {
     "result": "found",
     "at": "2026-10-26",
@@ -354,14 +402,32 @@
   "at-the-drive-in>fugazi": {
     "result": "found",
     "at": "2026-10-26",
-    "url": "https://en.wikipedia.org/wiki/At_the_Drive-In",
-    "found": "Some of the group's key influences were Indian Summer, Swing Kids, Fugazi, Sunny Day Real Estate (referred to by Ward as \"Fugazi beyond Fugazi\"), Bad Brains, and the Gravity Records-led post-hardcore sound of the 1990s that featured acts such as Antioch Arrow and Heroin."
+    "url": "https://www.spinmagazine.com/2026/08/5-albums-i-cant-live-without-jim-ward-of-sparta/",
+    "found": "If Billy Joel is my origin story then Fugazi is my coming-of-age moment. This was the first band that was MINE."
+  },
+  "at-the-drive-in>pixies": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.spinmagazine.com/2026/08/5-albums-i-cant-live-without-jim-ward-of-sparta/",
+    "found": "I learned to play bass by playing along with the Pixies and Dead Kennedys."
+  },
+  "at-the-drive-in>radiohead": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.spinmagazine.com/2026/08/5-albums-i-cant-live-without-jim-ward-of-sparta/",
+    "found": "If Joe Strummer made me want to be a better man, Radiohead made me want to be a better musician."
   },
   "at-the-drive-in>sunny-day-real-estate": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://en.wikipedia.org/wiki/At_the_Drive-In",
     "found": "Some of the group's key influences were Indian Summer, Swing Kids, Fugazi, Sunny Day Real Estate (referred to by Ward as \"Fugazi beyond Fugazi\")"
+  },
+  "at-the-drive-in>the-clash": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.spinmagazine.com/2026/08/5-albums-i-cant-live-without-jim-ward-of-sparta/",
+    "found": "This is the band that taught me about world influence; it is not just the music but the intent."
   },
   "autechre>kraftwerk": {
     "result": "found",
@@ -453,11 +519,29 @@
     "url": "https://www.rollingstone.com/music/music-album-reviews/one-foot-in-the-grave-reissue-252736",
     "found": "Beck was a subversive folkie, inspired equally by Sonic Youth and Mississippi John Hurt."
   },
+  "belle-and-sebastian>camera-obscura": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/9580-belle-and-sebastians-stuart-murdoch/",
+    "found": "They were a real guide and made me think, \"We need to get back to playing simple music again.\""
+  },
   "belle-and-sebastian>cocteau-twins": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://thequietus.com/interviews/bakers-dozen/stuart-murdoch-belle-sebastian-favourite-albums/8/",
     "found": "to this day I have listened to the Cocteau Twins more than any other group, with the exception of Felt"
+  },
+  "belle-and-sebastian>the-fall": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/stuart-murdoch-belle-sebastian-favourite-albums/9/",
+    "found": "It had a great effect on me at the time, but I don’t listen to The Fall very often now. It went along with my abrasive nature at the time – this crazy ranter, Mark E Smith, appealed to me deeply."
+  },
+  "belle-and-sebastian>the-smiths": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/stuart-murdoch-belle-sebastian-favourite-albums/7/",
+    "found": "The Smiths were playing ‘Bigmouth Strikes Again’, and during the course of that song I became a different person."
   },
   "belle-and-sebastian>the-sundays": {
     "result": "found",
@@ -470,6 +554,30 @@
     "at": "2026-10-26",
     "url": "https://stubermania.substack.com/p/a-conversation-with-stuart-murdoch",
     "found": "It was a combination of post-punk and embracing the beauty of the ‘60s and ‘70s: the Velvets, the Monkees, the Byrds, Love."
+  },
+  "big-black>bad-brains": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/",
+    "found": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands"
+  },
+  "big-black>james-chance-and-the-contortions": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/",
+    "found": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat."
+  },
+  "big-black>minutemen": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/",
+    "found": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat."
+  },
+  "big-black>the-birthday-party": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/",
+    "found": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat."
   },
   "big-black>this-heat": {
     "result": "found",
@@ -500,6 +608,18 @@
     "at": "2026-10-26",
     "url": "https://www.theringer.com/2019/04/30/music/big-thief-adrianne-lenker-ufof-capacity-band",
     "found": "“I really admire Joni Mitchell , Neil Young, Leonard Cohen—how they have such a breadth of material throughout the years, into old age,” she says."
+  },
+  "bikini-kill>bratmobile": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/9255-kathleen-hanna/",
+    "found": "The quality of sound was really influential for me."
+  },
+  "bikini-kill>the-slits": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/kathleen-hanna-favourite-albums-interview/8/",
+    "found": "Sonically they really changed my world and the freedom and the looseness. They were funny, tough and experimental."
   },
   "bikini-kill>x-ray-spex": {
     "result": "found",
@@ -549,23 +669,59 @@
     "url": "http://www.staythirstymedia.com/news/43/335-greg-ginn.html",
     "found": "We were influenced by the Stooges and then the Ramones; they inspired us. Keith and myself saw the Ramones when they first toured LA in 1976."
   },
+  "black-flag>suicide": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/henry-rollins-on-the-music-of-his-life/",
+    "found": "Alan Vega was a hero to me growing up because of the first Suicide record."
+  },
   "black-flag>the-stooges": {
     "result": "found",
     "at": "2026-10-26",
     "url": "http://www.staythirstymedia.com/news/43/335-greg-ginn.html",
     "found": "We were influenced by the Stooges and then the Ramones; they inspired us."
   },
+  "black-midi>bert-jansch": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://stereogum.com/2149080/black-midi-cavalcade-interview-inspirations/interviews/under-the-influence",
+    "found": "When I was younger, I had a neighbor who taught me guitar. He showed me all this Bert Jansch stuff, like \"Black Waterside\" and all that. I got really into it."
+  },
+  "black-midi>talking-heads": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://floodmagazine.com/88701/in-conversation-black-midi-on-the-colorful-world-of-cavalcade",
+    "found": "We used to say Talking Heads, Deerhoof, and Danny Brown were our three main reference points."
+  },
+  "blonde-redhead>lush": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/blonde-redhead-kazu-makino-on-the-music-that-made-her/",
+    "found": "It was Lush and My Bloody Valentine. I went to those shows and I just remember falling apart every time. Like, “Oh my god, this is what I want to do. I want this noise.”"
+  },
   "blonde-redhead>my-bloody-valentine": {
     "result": "found",
     "at": "2026-10-26",
-    "url": "https://web.archive.org/web/2023/https://pitchfork.com/features/5-10-15-20/blonde-redhead-kazu-makino-on-the-music-that-made-her/",
-    "found": "I was listening to so many different things during this New York period until I hit a wall of noise sound. It was Lush and My Bloody Valentine."
+    "url": "https://pitchfork.com/features/5-10-15-20/blonde-redhead-kazu-makino-on-the-music-that-made-her/",
+    "found": "It was Lush and My Bloody Valentine. I went to those shows and I just remember falling apart every time. Like, “Oh my god, this is what I want to do. I want this noise.”"
   },
   "blonde-redhead>sonic-youth": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://web.archive.org/web/2023/https://pitchfork.com/features/5-10-15-20/blonde-redhead-kazu-makino-on-the-music-that-made-her/",
     "found": "Indie rock, especially at the time I started, had My Bloody Valentine and Lush on one side, and the other side had Sonic Youth, Beck, Nirvana, bands I loved but definitely didn’t identify with."
+  },
+  "blonde-redhead>unwound": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/blonde-redhead-kazu-makino-on-the-music-that-made-her/",
+    "found": "I never said it, but I felt like I was their student."
+  },
+  "blood-orange>kate-bush": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/dev-hynes-blood-orange-favourite-albums-essex-honey/10/",
+    "found": "Hounds Of Love is probably the most influential album for me."
   },
   "blood-orange>new-order": {
     "result": "found",
@@ -615,11 +771,29 @@
     "url": "https://www.uncut.co.uk/features/graham-coxon-blur-pop-strange-limiting-form-damon-receptive-days-99254/2/",
     "found": "The other time was in the mid-’90s when Jo [Johnson] from Huggy Bear got me into things like Pavement and Slint and a lot of other small-label punk groups from the States – Universal Order Of Armageddon, Rites Of Spring, Fugazi. They used the guitar in an incredible way; making quite restrained noisy music, which I’d never heard English bands doing."
   },
+  "blur>slint": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.uncut.co.uk/features/graham-coxon-blur-pop-strange-limiting-form-damon-receptive-days-99254/2/",
+    "found": "Jo [Johnson] from Huggy Bear got me into things like Pavement and Slint and a lot of other small-label punk groups from the States"
+  },
   "blur>sonic-youth": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://www.premierguitar.com/artists/graham-coxon-the-curious-flights-of-an-art-pop-aerialist",
     "found": "I loved Sonic Youth, and I'd listen to _Spy vs Spy_, which was John Zorn's hardcore approach to Ornette Coleman. Then of course Pink Floyd's approach to loose psychedelic improvisation, too. I just concentrated on trying to get all that in one place."
+  },
+  "blur>velvet-underground": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.uncut.co.uk/features/graham-coxon-blur-pop-strange-limiting-form-damon-receptive-days-99254/2/",
+    "found": "Things like Robert Wyatt, Van der Graaf Generator and The Velvet Underground really excited me."
+  },
+  "blur>yo-la-tengo": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.premierguitar.com/artists/graham-coxon-the-curious-flights-of-an-art-pop-aerialist",
+    "found": "Yo La Tengo and Pavement were also great encouragement to do whatever I wanted when I had the space."
   },
   "boards-of-canada>autechre": {
     "result": "found",
@@ -632,6 +806,12 @@
     "at": "2026-10-26",
     "url": "https://web.archive.org/web/20160306060433/http://pitchfork.com/features/interviews/6151-boards-of-canada/",
     "found": "Mike: Maybe. In the late-80s the three bands that were a huge influence on us were Front 242 to some extent, and-- to a large extent-- Nitzer Ebb and the Cocteau Twins."
+  },
+  "boards-of-canada>incredible-string-band": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://bocpages.org/wiki/Interviews-all",
+    "found": "We love artists like Joni Mitchell and The Incredible Stringband. There's a sort of purity of sound that they have, and I guess we are striving for that ourselves."
   },
   "bon-iver>fugazi": {
     "result": "found",
@@ -699,6 +879,12 @@
     "url": "https://web.archive.org/web/20091125/http://www.chartattack.com/features/76987/brand-new-explain-how-their-songs-become-noisy",
     "found": "Some of our favourite bands growing up didn't care. They did things that were just so absurd with their music that they set a precedent for what is good. If you listen to a band like Sonic Youth or My Bloody Valentine, they didn't even play their guitars."
   },
+  "brand-new>superchunk": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://web.archive.org/web/20151012113752/http://drownedinsound.com/in_depth/4137854-i-like-talking-to-people---brand-news-jesse-lacey-chats-to-dis",
+    "found": "I think for a lot of this record we were listening to stuff that we listened to when we were younger. We were listening to Superchunk, Archers Of Loaf, Polvo, Modest Mouse, and even a lot of hardcore bands that we listened to when we were younger, like Fugazi."
+  },
   "brand-new>the-jesus-lizard": {
     "result": "found",
     "at": "2026-10-26",
@@ -717,11 +903,35 @@
     "url": "http://www.bbc.co.uk/manchester/content/articles/2007/02/12/120207_brand_new_interview_feature.shtml",
     "found": "\"Possibly the Stone Roses; as far as British music, bands like Ride, Morrissey, The Smiths, and The Beatles are favourites of ours."
   },
+  "bratmobile>the-slits": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/9950-riot-grrrl-trailblazer-allison-wolfe-on-the-music-that-made-her/",
+    "found": "The Slits have been hugely influential on me—this awesome band of women who created something out of nothing."
+  },
+  "brian-eno>joni-mitchell": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/brian-eno-favourite-records-interview/14/",
+    "found": "I remember buying this album when it came out in 1974 because I know it had a big impact on what I was working on at the time, which was _Another Green World_. When I heard this record I really thought that I’ve got to change what I’m doing."
+  },
+  "brian-eno>my-bloody-valentine": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/brian-eno-favourite-records-interview/11/",
+    "found": "I thought that was great, that singing could be like that. It doesn’t have to be this person at the front with all the articulation and every word clear. It can just be a person in that mess and that was a real liberation for me."
+  },
   "brian-eno>velvet-underground": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://thequietus.com/interviews/bakers-dozen/brian-eno-favourite-records-interview/8/",
     "found": "This was probably the most important pop album for me in that I think it’s the moment where I realised that I could be a musician."
+  },
+  "bright-eyes>elliott-smith": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/the-music-that-made-bright-eyes-conor-oberst/",
+    "found": "I got really into Elliott Smith around that same period."
   },
   "bright-eyes>leonard-cohen": {
     "result": "found",
@@ -753,6 +963,12 @@
     "url": "https://www.factmag.com/2015/02/19/essential-broadcast/",
     "found": "At the time of their inception, Broadcast were often lazily compared to Stereolab, Portishead and the post-rock movement of the time."
   },
+  "broken-social-scene>dinosaur-jr": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://spacing.ca/toronto/?p=61894",
+    "found": "That was the first time I heard a new song that I immediately related to. Chord structure, singing, everything. That changed the course of my life, because I thought, that’s how I feel. That’s what I want to do."
+  },
   "built-to-spill>dinosaur-jr": {
     "result": "found",
     "at": "2026-10-26",
@@ -764,6 +980,12 @@
     "at": "2026-10-26",
     "url": "https://en.wikipedia.org/wiki/Built_to_Spill",
     "found": "He further described the band's sound as an intermixture of \"postmodern, Pavement-style pop\" and the \"loose, spacious jamming\" associated with the likes of Neil Young."
+  },
+  "buzzcocks>david-bowie": {
+    "result": "found (archived copy)",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/steve-diggle-buzzcocks-interview-favourite-music/9/",
+    "found": "Bowie was an inspiration to [Buzzcocks] like The Beatles were."
   },
   "buzzcocks>the-stooges": {
     "result": "found",
@@ -783,6 +1005,12 @@
     "url": "https://thequietus.com/interviews/bakers-dozen/richard-h-kirk-cabaret-voltaire-favourite-albums/14/",
     "found": "Tangerine Dream weren’t as influential as, say, Can or Neu! on Cabaret Voltaire but the interesting stuff was that they were using sequencers, which was quite new at that time."
   },
+  "cabaret-voltaire>david-bowie": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/richard-h-kirk-cabaret-voltaire-favourite-albums/2/",
+    "found": "I was a Bowie fan from about 15. I went to see the Ziggy Stardust tour in Sheffield and was kind of blown away as much by the way he looked."
+  },
   "cabaret-voltaire>faust": {
     "result": "found",
     "at": "2026-10-26",
@@ -800,6 +1028,12 @@
     "at": "2026-10-26",
     "url": "https://thequietus.com/interviews/bakers-dozen/richard-h-kirk-cabaret-voltaire-favourite-albums/14/",
     "found": "Tangerine Dream weren’t as influential as, say, Can or Neu! on Cabaret Voltaire but the interesting stuff was that they were using sequencers, which was quite new at that time."
+  },
+  "cabaret-voltaire>roxy-music": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/richard-h-kirk-cabaret-voltaire-favourite-albums/5/",
+    "found": "Roxy Music were tremendously influential, not least of all on Cabaret Voltaire because of some of the stuff that Eno was saying in interviews about 'non-music' and not needing to learn an instrument."
   },
   "cabaret-voltaire>velvet-underground": {
     "result": "found",
@@ -820,19 +1054,19 @@
     "found": "We’d listen to this album on our drives through Rocky Mountain National Park."
   },
   "candy-claws>boards-of-canada": {
-    "result": "missing",
+    "result": "found",
     "at": "2026-10-26",
     "url": "https://breakyrlegs.tumblr.com/post/81455889764/interview-candy-claws",
     "found": "I was actually reading through your blog and you got me really into The Knife and I’ve been listening to lots of Boards of Canada, so that might come off in our future work."
   },
   "candy-claws>my-bloody-valentine": {
-    "result": "missing",
+    "result": "found",
     "at": "2026-10-26",
     "url": "https://breakyrlegs.tumblr.com/post/81455889764/interview-candy-claws",
     "found": "I loved Beach Boys too, and I listened to Starflyer and My Bloody Valentine during my high school years. I am influenced by stuff I grew up with, and now I want to do my own answer to those bands."
   },
   "candy-claws>the-knife": {
-    "result": "missing",
+    "result": "found",
     "at": "2026-10-26",
     "url": "https://breakyrlegs.tumblr.com/post/81455889764/interview-candy-claws",
     "found": "I was actually reading through your blog and you got me really into The Knife and I’ve been listening to lots of Boards of Canada, so that might come off in our future work."
@@ -861,7 +1095,19 @@
     "url": "https://nowtoronto.com/music/car-seat-headrest-will-toledo-breaks-down-the-influence-behind-his-new-record/",
     "found": "Sure, he’s a fan of Guided by Voices, but “Nirvana and Green Day were my two favourites for a long time. [They] shaped my songwriting style in a specific way because I heard them right around the time I was learning how to play guitar."
   },
+  "caribou>aphex-twin": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/9513-caribou/",
+    "found": "I was also listening to Tortoise, Stereolab, Boards of Canada, Aphex Twin, and Spiritualized—stuff on the fringes."
+  },
   "caribou>boards-of-canada": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://xlr8r.com/features/rewind-caribou/",
+    "found": "In some ways, it was very much influenced by what Kieran was doing, Boards of Canada, and those kind of things, but also sampling off a lot of old records and things like that."
+  },
+  "caribou>four-tet": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://xlr8r.com/features/rewind-caribou/",
@@ -872,6 +1118,12 @@
     "at": "2026-10-26",
     "url": "https://thequietus.com/interviews/bakers-dozen/caribou-dan-snaith-favourite-albums-interview/6/",
     "found": "And he introduced me to Neutral Milk Hotel. It’s kind of an obvious way in for me, because it very much has that sound – the spiritual free jazz and the horns and the power and the instruments from around the world, different bagpipe kind of instruments – for me, it has that same spirit and wildness."
+  },
+  "caribou>silver-apples": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/caribou-dan-snaith-favourite-albums-interview/4/",
+    "found": "People who know my albums from ten years ago will have heard me trying to rip off Silver Apples."
   },
   "caribou>this-heat": {
     "result": "found",
@@ -902,6 +1154,24 @@
     "at": "2026-10-26",
     "url": "https://www.wmagazine.com/culture/caroline-polachek-tour-dua-lipa-2022-interview",
     "found": "I grew up kneeling at the altar of alternative music. Björk and Kate Bush and Fiona Apple were my absolute heroes when I was a teenager."
+  },
+  "caroline-polachek>kate-bush": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.wmagazine.com/culture/caroline-polachek-tour-dua-lipa-2022-interview",
+    "found": "I grew up kneeling at the altar of alternative music. Björk and Kate Bush and Fiona Apple were my absolute heroes when I was a teenager. I also admire how they refused to play by the rules"
+  },
+  "cat-power>bob-dylan": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/cat-power-chan-marshall-interview-favourite-music-albums/11/",
+    "found": "Loved Bob. Loved him. ‘Tangled Up In Blue’ was fucking watershed for me."
+  },
+  "cat-power>husker-du": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/cat-power-chan-marshall-interview-favourite-music-albums/5/",
+    "found": "I loved that fucking record, that tape, so much. It was my 12th birthday, and everything was great, it was madness. All these impossible sounds were making sense"
   },
   "cat-power>nico": {
     "result": "found",
@@ -981,6 +1251,14 @@
     "url": "https://faroutmagazine.co.uk/clairo-biggest-musical-influences/",
     "found": "My mom introduced me to alternative music like Cocteau Twins, Trashcan Sinatras, The The, Public Image Ltd, etc. I would say that I fall somewhere in between”."
   },
+  "clairo>elliott-smith": {
+    "result": "owner",
+    "at": "2026-10-26"
+  },
+  "clairo>joni-mitchell": {
+    "result": "owner",
+    "at": "2026-10-26"
+  },
   "cocteau-twins>ramones": {
     "result": "owner",
     "at": "2026-10-26"
@@ -1032,6 +1310,12 @@
     "at": "2026-10-26",
     "url": "https://www.npr.org/2020/05/07/852081716/how-florian-schneider-and-kraftwerk-created-pops-future",
     "found": "Bowie would credit Autobahn with redirecting his cultural focus away from America and R&B towards Europe and electronic music, ultimately causing him to move to Berlin, where he would make the most adventurous music of his life and produce two career-changing albums for Iggy Pop, The Idiot and Lust for Life ."
+  },
+  "david-bowie>scott-walker": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.davidbowie.com/blog/2019/3/25/farewell-to-scott-walker-1943-2019",
+    "found": "I think he's probably been my idol since I was a kid. That's very moving."
   },
   "david-bowie>the-stooges": {
     "result": "found",
@@ -1123,6 +1407,18 @@
     "url": "http://www.releasemagazine.net/Spotlight/spotlightgore.htm",
     "found": "On the record I do a cover of a Velvet Underground song, and I think for me they were one of the most important bands. I like their darkness but I also like the pop-side of the Velvet Underground."
   },
+  "descendents>bad-brains": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/9924-punk-veteran-milo-aukerman-of-the-descendents-on-the-music-of-his-life/",
+    "found": "Bad Brains had put out the “Pay to Cum” single in 1980, and that had a huge effect on us."
+  },
+  "descendents>black-flag": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/9924-punk-veteran-milo-aukerman-of-the-descendents-on-the-music-of-his-life/",
+    "found": "I started out with X, and then I graduated to the Germs, and then Black Flag."
+  },
   "descendents>the-stooges": {
     "result": "found",
     "at": "2026-10-26",
@@ -1141,17 +1437,47 @@
     "url": "https://indyweek.com/?p=124181",
     "found": "I would say I was thinking even more basic than that. New Order, the Cure, Echo & the Bunnymen, stuff like that."
   },
+  "destroyer>joni-mitchell": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/destroyer-dan-bejar-favourite-albums-interview/2/",
+    "found": "There’s a song or two off Poison Season where I had songs like those Court And Spark songs in mind"
+  },
   "destroyer>new-order": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://indyweek.com/?p=124181",
     "found": "I would say I was thinking even more basic than that. New Order, the Cure, Echo & the Bunnymen, stuff like that."
   },
+  "destroyer>pavement": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8896-destroyer/",
+    "found": "When Slanted and Enchanted came out, everything changed."
+  },
+  "destroyer>roxy-music": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8896-destroyer/",
+    "found": "I got lost in Avalon in an unhealthy way: the reverbs, the drum sounds, the percussion. And that's when my daughter was born. I wrote all the songs off Kaputt shortly afterwards"
+  },
+  "destroyer>scott-walker": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8896-destroyer/",
+    "found": "The bulk of 2003 was very much me wrestling with my intense love of Scott Walker."
+  },
   "destroyer>the-cure": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://indyweek.com/?p=124181",
     "found": "I would say I was thinking even more basic than that. New Order, the Cure, Echo & the Bunnymen, stuff like that."
+  },
+  "destroyer>the-jesus-and-mary-chain": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8896-destroyer/",
+    "found": "At 15, I was deep in the clutches of the Jesus and Mary Chain."
   },
   "dinosaur-jr>husker-du": {
     "result": "missing",
@@ -1195,6 +1521,12 @@
     "url": "https://floodmagazine.com/166444/dirty-three-love-changes-everything-feature/",
     "found": "As each member had a large listening diet from the start, Ellis begins rattling off some of Dirty Three’s initial influences in Elvin Jones, Rahsaan Roland Kirk, and the “wild liberation” of The Velvet Underground."
   },
+  "do-make-say-think>talk-talk": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://web.archive.org/web/20260919212603/https://archive.adhoc.fm/do-make-say-think-playlist/",
+    "found": "To those new to the scene, this band and their two final records are SUPER influential to our band."
+  },
   "drive-by-truckers>big-star": {
     "result": "found",
     "at": "2026-10-26",
@@ -1219,17 +1551,19 @@
     "url": "https://pastemagazine.com/article/drive-by-truckers-patterson-hood-on-his-first-band",
     "found": "“The Clash is still probably my all time favorite rock ’n’ roll band, and The Replacements were a huge band to me and were a huge influence on the beginning of Adam’s House Cat,” he says. And R.E.M.—I’m still a massive R.E.M. fan."
   },
-  "drive-like-jehu>sonic-youth": {
+  "drive-like-jehu>fugazi": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://www.premierrockforum.com/viewtopic.php?t=36727",
-    "found": "And you know, listening to punk rock. Your Sonic Youth, your Minor Threat and Government Issue—whatever, all that stuff."
+    "found": "I’m sure we aped Fugazi, who we were big fans of."
+  },
+  "drive-like-jehu>sonic-youth": {
+    "result": "owner",
+    "at": "2026-10-26"
   },
   "drive-like-jehu>wipers": {
-    "result": "missing",
-    "at": "2026-10-26",
-    "url": "https://www.premierrockforum.com/viewtopic.php?t=36727",
-    "found": "Well, if you’re talking about Drive Like Jehu, bands we’re always citing are The Wipers (http://www.zenorecords.com/) and, I think for that band especially, Honor Role who are a band from Richmond, Virginia in the 80s who we really liked."
+    "result": "owner",
+    "at": "2026-10-26"
   },
   "duster>codeine": {
     "result": "found",
@@ -1243,7 +1577,49 @@
     "url": "https://lineamasondixon.it/en/2020/08/07/a-small-talk-with-duster/",
     "found": "So sure, Codeine but also like Rorshach and Thelonius Monk and The Velvet Underground and Crossed Out and Blondie"
   },
+  "echo-and-the-bunnymen>brian-eno": {
+    "result": "found (archived copy)",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/will-sergeant-echo-and-the-bunnymen-favourite-albums/12/",
+    "found": "And I thought, ‘right, I can kinda do that!’ And that’s when I started getting into recording, buying tape recorders and equipment, because I saw myself more as a creator than a guitarist."
+  },
+  "echo-and-the-bunnymen>david-bowie": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/ian-mcculloch-echo-and-the-bunnymen-favourite-albums/2/",
+    "found": "It was Bowie was who got me interested in music, then I got into the Velvets and Iggy."
+  },
+  "echo-and-the-bunnymen>leonard-cohen": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/ian-mcculloch-echo-and-the-bunnymen-favourite-albums/12/",
+    "found": "I’d seen _Bird On The Wire_ in a little cinema when I was 14, and went out and bought all his albums. It’s kind of like I’m with Suzanne or whoever. I don’t really like story-telling songs, but his lyrics are so simple and poetic; religious and laconic. It’s genius the way he writes lyrics, spinning things on their head, and by the fourth line you have to read it again and again. He flips it round – it’s what I do a lot."
+  },
+  "echo-and-the-bunnymen>scott-walker": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/will-sergeant-echo-and-the-bunnymen-favourite-albums/13/",
+    "found": "By the time of Ocean Rain we really loved all that stuff. For me then it was Scott Walker, Love, Jacques Brel; these were the main reasons we went to Paris."
+  },
+  "echo-and-the-bunnymen>television": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/will-sergeant-echo-and-the-bunnymen-favourite-albums/6/",
+    "found": "I learnt all the wobbly guitar sounds you hear on the Bunnymen records from this. I’ve been living off that ever since, really."
+  },
+  "echo-and-the-bunnymen>velvet-underground": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/ian-mcculloch-echo-and-the-bunnymen-favourite-albums/4/",
+    "found": "Every rhythm guitar part I’ve ever played I’ve just nicked from Lou Reed, even some of the punkier stuff."
+  },
   "editors>echo-and-the-bunnymen": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://web.archive.org/web/20090602061627/http://www.editorsmusic.co.uk/index.php/Interviews/Gigwise.html",
+    "found": "“Obviously, we're dark and moody so yeah we build on the sound of the likes of Joy Division, Echo and the Bunnymen and The Chameleons… Obviously we were too young when these bands came out, so it's only more recently that we discovered them.”"
+  },
+  "editors>joy-division": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://web.archive.org/web/20090602061627/http://www.editorsmusic.co.uk/index.php/Interviews/Gigwise.html",
@@ -1315,6 +1691,12 @@
     "url": "https://www.interviewmagazine.com/music/everything-everything",
     "found": "HIGGS: All sorts, but I guess we all meet in the middle with a shared passion for stuff like Radiohead, The Beatles, Aphex Twin, Kraftwerk, King Crimson, Dr Dre."
   },
+  "everything-everything>nirvana": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/everything-everything-jonathan-higgs-favourite-albums-interview/2/",
+    "found": "But it was very shortly after we heard that that my friend got a drum kit and my brother got a guitar, and my brother had a bass, and I knew that all I had to do was pick up that bass and we had a band."
+  },
   "everything-everything>radiohead": {
     "result": "found",
     "at": "2026-10-26",
@@ -1356,6 +1738,10 @@
     "at": "2026-10-26",
     "url": "https://daily.redbullmusicacademy.com/2013/09/fka-twigs-interview/",
     "found": "During that time every bit of music that I made sounded like a pastiche of Siouxsie and the Banshees or Adam Ant."
+  },
+  "fka-twigs>x-ray-spex": {
+    "result": "owner",
+    "at": "2026-10-26"
   },
   "fleet-foxes>bob-dylan": {
     "result": "found",
@@ -1417,6 +1803,18 @@
     "url": "https://medium.com/mjs-ongoing-experiments/archival-interview-kieran-hebden-four-tet-2011-827af1b03129",
     "found": "I think there’s nothing more magical, though, than when someone makes something that is truly experimental and truly kind of natural and human at the same time. Something like Aphex Twin’s ‘Windowlicker’, for example."
   },
+  "four-tet>can": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://indyweek.com/?p=125755",
+    "found": "I’m always coming back to the records by bands like Can and Kraftwerk. It’s definitely a great era as music"
+  },
+  "four-tet>kraftwerk": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://indyweek.com/?p=125755",
+    "found": "I’m always coming back to the records by bands like Can and Kraftwerk. It’s definitely a great era as music"
+  },
   "fugazi>minor-threat": {
     "result": "found",
     "at": "2026-10-26",
@@ -1434,6 +1832,18 @@
     "at": "2026-10-26",
     "url": "https://pitchfork.com/features/lists-and-guides/the-30-best-dream-pop-albums/",
     "found": "More often, it was the likes of 13th Floor Elevators, Big Star, Love, or Jonathan Richman on the turntable."
+  },
+  "galaxie-500>new-order": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8454-5-10-15-20-damon-naomi/",
+    "found": "Power, Corruption, & Lies was the college record for us. We listened to it endlessly."
+  },
+  "galaxie-500>velvet-underground": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8454-5-10-15-20-damon-naomi/",
+    "found": "We were listening to the Velvet Underground's self-titled third album-- almost to a crazy extreme."
   },
   "gang-of-four>velvet-underground": {
     "result": "found",
@@ -1458,6 +1868,12 @@
     "at": "2026-10-26",
     "url": "https://thequietus.com/interviews/bakers-dozen/gary-numan-favourite-albums/7/",
     "found": "I’d have been 15 when Aladdin Sane came out and I was right in there."
+  },
+  "gary-numan>depeche-mode": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/gary-numan-favourite-albums/8/",
+    "found": "It’s a huge album for me and re-kindled my love of darker music. It’s a massively important album and it helped to massively change my own direction and I’ve been going out in that direction ever since."
   },
   "gary-numan>kraftwerk": {
     "result": "found",
@@ -1501,6 +1917,12 @@
     "url": "https://pitchfork.com/reviews/albums/george-clanton-slide/",
     "found": "Like Ariel Pink before him, Clanton throws himself into his music without any self-conscious concern for cool—and throws himself about in breathtakingly physical live shows that bring to mind a young John Maus."
   },
+  "george-clanton>the-human-league": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.orlandoweekly.com/music/vaporwave-visionary-george-clanton-slides-into-orlando-on-4-20-36652145/",
+    "found": "“The first Mirror Kisses album — that I’ve since erased from the Internet — was me making what I thought was a Human League record,” Clanton says."
+  },
   "get-up-kids>drive-like-jehu": {
     "result": "found",
     "at": "2026-10-26",
@@ -1537,7 +1959,19 @@
     "url": "https://exclaim.ca/music/article/godspeed_you_black_emperor_explain_why_they_are_a_rock_and_roll_band_first_and_foremost",
     "found": "And we were probably definitely influenced by Sonic Youth a lot back then — or at least I was. And not that they [Sonic Youth] were playing 15-minute-long songs, but the idea of alternate tunings became very exciting to me."
   },
+  "grimes>animal-collective": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.dazeddigital.com/music/article/49241/1/music",
+    "found": "cites the elusive London producer among artists she considers herself a descendent of ( Aphex Twin and Animal Collective included)"
+  },
   "grimes>aphex-twin": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.dazeddigital.com/music/article/49241/1/music",
+    "found": "On a more positive note, Grimes gets to express her love for Burial , one of her “all-time favourite artists”, and cites the elusive London producer among artists she considers herself a descendent of ( Aphex Twin and Animal Collective included)."
+  },
+  "grimes>burial": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://www.dazeddigital.com/music/article/49241/1/music",
@@ -1560,6 +1994,18 @@
     "at": "2026-10-26",
     "url": "https://www.spin.com/2004/09/records-changed-my-life-robert-pollard-guided-voices/",
     "found": "There have been a few bands where I’ve totally absorbed myself into their world, and R.E.M. was one of them. I see Peter Buck occasionally, and I’m always blowing smoke up his ass about how much they meant to me."
+  },
+  "guided-by-voices>wire": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.spinmagazine.com/2004/09/records-changed-my-life-robert-pollard-guided-voices/",
+    "found": "154 was a bolt of lightning. When we started, we wanted to sound like a bunch of different bands. The songs were going to be short, sound like they were recorded in a bunch of different places. That was the Wire influence."
+  },
+  "harold-budd>brian-eno": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://ceasefiremagazine.co.uk/unknown-spins-2-harold-budd/",
+    "found": "‘When it comes to the use of the studio, I learned everything from Eno,’ says Budd."
   },
   "have-a-nice-life>dead-kennedys": {
     "result": "found (archived copy)",
@@ -1609,6 +2055,12 @@
     "url": "https://cherwell.org/?p=24569",
     "found": "He recalls how he and Kieran Hebden (a.k.a. Four Tet) would “introduce each other to new records” and “go and see shows all around London.”"
   },
+  "hot-chip>neil-young": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/alexis-taylor-hot-chip-favourite-albums-interview/5/",
+    "found": "Neil Young was the first songwriter whose songs I learned to play on the guitar."
+  },
   "hot-chip>omd": {
     "result": "found",
     "at": "2026-10-26",
@@ -1639,6 +2091,18 @@
     "url": "https://web.archive.org/web/2012/http://www.h-u-m.net/bio/",
     "found": "Some of Matt's (and Hum's) favorite bands are Dinosaur Jr., Failure, Bitch Magnet, The Flaming Lips, Rush, The Police, R.E.M., Love Cup, and My Bloody Valentine."
   },
+  "husker-du>joy-division": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/bob-mould-favourite-albums-interview/6/",
+    "found": "That was one of those records where the instant I’d heard it, by the end of side one I was like, \"This is it, this is what we’re gonna do with music now.\""
+  },
+  "husker-du>ramones": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/bob-mould-favourite-albums-interview/4/",
+    "found": "I got the first Ramones record for my 16th birthday and that was when I said, \"OK, let’s forget about the other stuff\""
+  },
   "idles>gang-of-four": {
     "result": "found",
     "at": "2026-10-26",
@@ -1662,6 +2126,12 @@
     "at": "2026-10-26",
     "url": "https://web.archive.org/web/2016/https://www.wsj.com/articles/interpols-dan-kessler-on-five-electrifying-albums-1412287964",
     "found": "From Fugazi to PJ Harvey, the albums that helped give the guitarist an edge"
+  },
+  "interpol>nirvana": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/interpols-paul-banks-on-the-music-that-made-him/",
+    "found": "Nirvana helped me understand that music was what I wanted to do with my life."
   },
   "interpol>the-smiths": {
     "result": "found",
@@ -1698,6 +2168,30 @@
     "at": "2026-10-26",
     "url": "https://pitchfork.com/features/profile/japanese-breakfast-interview-jubilee-crying-in-h-mart/",
     "found": "“I was thinking about what musicians with long careers do with their third albums,” she says, pointing to Björk’s Homogenic and Wilco’s Summerteeth ."
+  },
+  "japanese-breakfast>elliott-smith": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/japanese-breakfast-bakers-dozen-favourite-albums/4/",
+    "found": "When I started playing guitar, it was important for me to learn how to do finger-picking style because of those Elliott Smith records."
+  },
+  "japanese-breakfast>joanna-newsom": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/japanese-breakfast-bakers-dozen-favourite-albums/8/",
+    "found": "Musicians like her and Kimya Dawson had these very singular voices that were great for me. I loved their songwriting and the character in it and sort of gave me the courage to be a singer without sounding like Aretha Franklin or something."
+  },
+  "japanese-breakfast>kate-bush": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/japanese-breakfast-bakers-dozen-favourite-albums/14/",
+    "found": "There's a song called 'Delius' on that record that I think is really underrated and was a huge inspiration for the song 'Paprika' [from Jubilee]."
+  },
+  "japanese-breakfast>sufjan-stevens": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/japanese-breakfast-bakers-dozen-favourite-albums/9/",
+    "found": "My other big influence on [_For Melancholy Brunettes (& Sad Women_)] was Sufjan Stevens’ _Carrie & Lowell_."
   },
   "japanese-breakfast>wilco": {
     "result": "found",
@@ -1746,6 +2240,12 @@
     "at": "2026-10-26",
     "url": "https://uproxx.com/music/jeff-rosenstock-worry-interview/",
     "found": "I kept thinking about The Clash a lot — with London Calling , they were fearless. They just made whatever they wanted to make. London Calling is one of the best records ever, you know?"
+  },
+  "joanna-newsom>bob-dylan": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thebeliever.net/an-interview-with-joanna-newsom/",
+    "found": "I love Donovan, Kate Bush, Leonard Cohen. Dylan, of course."
   },
   "joanna-newsom>karen-dalton": {
     "result": "found",
@@ -1798,8 +2298,8 @@
   "joy-division>sex-pistols": {
     "result": "found",
     "at": "2026-10-26",
-    "url": "https://www.manchestereveningnews.co.uk/whats-on/music-nightlife-news/sex-pistols-free-trade-manchester-11423565",
-    "found": "Bernard Sumner and his wife Sue arrived on their motorbike to meet pals Peter Hook and Terry Mason (Joy Division's future roadie) at the show. All of them felt the same way after it; they hadn't met Ian Curtis or drummer Stephen Morris at that point, but they knew the kind of band they wanted to form."
+    "url": "https://www.theguardian.com/music/2013/jan/27/peter-hook-soundtrack-of-my-life",
+    "found": "I didn't start thinking about being in a band until I saw the Sex Pistols, and only became a bass player by default, because Bernard [Sumner] had a guitar."
   },
   "joy-division>the-stooges": {
     "result": "found",
@@ -1830,6 +2330,12 @@
     "at": "2026-10-26",
     "url": "https://blog.calarts.edu/2015/10/15/julia-holter-talks-music-influences-at-calarts/",
     "found": "The forum allowed Holter to cover her varied musical influences, which include Joni Mitchell’s 1974 album Court and Spark , Brian Ferry’s (Roxy Music) “very romantic” vibrato, Cocteau Twins’ “Fluffy Tufts” and fellow CalArtian Ariel Pink."
+  },
+  "kate-bush>david-bowie": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://faroutmagazine.co.uk/how-david-bowie-inspired-kate-bush/",
+    "found": "\"I was sitting in my bath, submerged in bubbles, listening to Radio Luxembourg when I heard David Bowie for the first time,\" she once recalled. \"'There's a starman waiting in the sky'. I thought it was such an interesting song and that he had a really unusual voice. Soon I was to hear that track everywhere, and Bowie's music became a part of my life.\""
   },
   "kero-kero-bonito>bjork": {
     "result": "found",
@@ -1873,6 +2379,24 @@
     "url": "https://radiomilwaukee.org/discover-music/artist-interviews/2024-08-30/king-gizzard-new-album-flight-b741",
     "found": "Mackenzie confirmed those layered influences in our conversation: “obvious ones are The Band, Dylan, Steve Miller, CCR [Creedence Clearwater Revival] … early ’70s Stones … even stuff like The Faces, The Who … probably T. Rex."
   },
+  "king-gizzard-and-the-lizard-wizard>kraftwerk": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://loudwire.com/king-gizzard-lizard-wizard-stu-mackenzie-explains-recording-two-versions-silver-cord-liberating-creatively/",
+    "found": "You mentioned Kraftwerk and Devo, that type of thing definitely has influenced Gizz a lot over the years and I think found its way into the sound of this record."
+  },
+  "kurt-vile>beck": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.fender.com/articles/artists/kurt-vile-on-his-ever-evolving-style-and-love-of-the-jaguar",
+    "found": "Not long after he received a banjo from his father at the age of 14, Vile began releasing cassettes of his home recordings influenced by the likes of Pavement and Beck."
+  },
+  "kurt-vile>bob-dylan": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.thelineofbestfit.com/features/interviews/tlobf-interview-kurt-vile-47703",
+    "found": "I was obsessed with Bob Dylan at the time, and we totally geeked-out on that."
+  },
   "kurt-vile>dinosaur-jr": {
     "result": "found",
     "at": "2026-10-26",
@@ -1892,10 +2416,16 @@
     "found": "I can't say I wasn't influenced by that, because it would be a total lie. But there's this guitar solo, and at the very end he bends a high note, and plays the same note on the neighboring string -- that sustained note changed my life."
   },
   "kurt-vile>pavement": {
-    "result": "unreachable",
+    "result": "found",
     "at": "2026-10-26",
-    "url": "https://m.lasvegassun.com/news/2010/sep/30/q-kurt-vile/",
-    "found": "I bought the record and got obsessed with the whole thing. They were one of the first bands I realized had all these older records."
+    "url": "https://pitchfork.com/features/5-10-15-20/8482-5-10-15-20-kurt-vile/",
+    "found": "Around '93, the radio started playing \"Loser\" by Beck and \"Cut Your Hair\" by Pavement, and then I got way into Pavement."
+  },
+  "kurt-vile>pj-harvey": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/kurt-vile-interview-bakers-dozen-favourite-13-songs/11/",
+    "found": "PJ Harvey influences me all the time, but I got obsessed enough with this album to research about it."
   },
   "kurt-vile>sonic-youth": {
     "result": "found",
@@ -1987,6 +2517,24 @@
     "url": "https://www.fusedmagazine.co.uk/james-murphy-interview-lcd-soundsystem-on-daft-punk-losing-my-edge-and-indie-dance-culture/",
     "found": "For me, The Fall, along with The Velvet Underground, are the best rock ‘n’ roll bands of all time."
   },
+  "liz-phair>pavement": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/liz-phair-on-the-music-that-made-her/",
+    "found": "Slanted and Enchanted felt like someone doing what I had inside my heart to do, and it was my war call."
+  },
+  "liz-phair>sonic-youth": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/liz-phair-on-the-music-that-made-her/",
+    "found": "It was my gateway drug into alternative."
+  },
+  "liz-phair>the-human-league": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/liz-phair-on-the-music-that-made-her/",
+    "found": "Guyville wouldn’t be Guyville without the Human League."
+  },
   "liz-phair>velvet-underground": {
     "result": "found",
     "at": "2026-10-26",
@@ -2017,6 +2565,24 @@
     "url": "https://www.thecurrent.org/episode/2019/08/07/low-25-years-in",
     "found": "Some of the bands we were inspired by—Spacemen 3, Joy Division, the Cure, Velvet Underground."
   },
+  "low>red-house-painters": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://vice.com/en/article/rank-your-records-low-alan-sparhawk",
+    "found": "I remember having to force myself to not listen to Codeine and Red House Painters sometimes when I was writing, because I’d find myself falling too easily into their mannerisms and phrasings."
+  },
+  "low>spacemen-3": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.thecurrent.org/episode/2019/08/07/low-25-years-in",
+    "found": "Some of the bands we were inspired by—Spacemen 3, Joy Division, the Cure, Velvet Underground. They all had a little bit of a minimalist end to their spectrum, maybe some quieter songs that we thought, \"What if everything was like that?\""
+  },
+  "low>the-clash": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/low-alan-sparhawk-bakers-dozen-favourite-albums/3/",
+    "found": "I remember learning the chords to that song on the guitar, and that was the big lightning bolt going on."
+  },
   "low>the-cure": {
     "result": "found",
     "at": "2026-10-26",
@@ -2032,14 +2598,20 @@
   "lucinda-williams>neil-young": {
     "result": "found",
     "at": "2026-10-26",
-    "url": "https://wfuv.org/content/lucinda-williams-bob-dylan",
-    "found": "Williams studied his \"use of biblical stories, biblical references\" and says that she was \"influenced a lot by some of his songs where he does that.\""
+    "url": "https://pitchfork.com/features/5-10-15-20/lucinda-williams-on-the-music-that-made-her/",
+    "found": "Especially Neil Young ’s Everybody Knows This Is Nowhere ; he’s a huge influence."
   },
   "lush>cocteau-twins": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://floodmagazine.com/35680/lush-life-the-sirens-return",
     "found": "I was all about post-punk. I liked the Cocteau Twins and Siouxsie and the Banshees."
+  },
+  "lush>husker-du": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/emma-anderson-lush-favourite-albums-bakers-dozen/10/",
+    "found": "I hadn’t listened to this for a while, but I wanted to put something in that influenced my early songwriting. Hüsker Dü and Dinosaur Jr. did so much, Hüsker Dü particularly."
   },
   "lush>my-bloody-valentine": {
     "result": "found",
@@ -2083,11 +2655,35 @@
     "url": "https://www.rookiemag.com/2013/11/theme-song-ex-hex/",
     "found": "I saw almost every single Fugazi show in D.C. from when they first started playing until I moved away to go to college. I guess that you could say they were my role models."
   },
+  "mary-timony>rites-of-spring": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/9518-mary-timony/",
+    "found": "But my favorite band from that time was Rites of Spring, and it still is."
+  },
+  "mary-timony>the-slits": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/9518-mary-timony/",
+    "found": "I'd listen to the Slits' Cut on a cassette a lot in that car. Everything's just so different about it. The rhythms are so interesting, and the lyrics are really great and funny, and the guitar playing is crazy."
+  },
+  "mary-timony>velvet-underground": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/9518-mary-timony/",
+    "found": "That record changed the way I thought of music completely."
+  },
   "massive-attack>kraftwerk": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://thequietus.com/interviews/massive-attack-interview-heligoland-john-robb/",
     "found": "Electronic music seeped into everything as well and there was the German groups like Cluster and Kraftwerk, but it was only when hip-hop come from over from the Atlantic that it really defined that sort of music for me."
+  },
+  "massive-attack>the-clash": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/massive-attack-interview-heligoland-john-robb/",
+    "found": "PiL were a major influence on me with what they went for on Metal Box, and The Clash were really important as well."
   },
   "mazzy-star>the-jesus-and-mary-chain": {
     "result": "found",
@@ -2160,6 +2756,12 @@
     "at": "2026-10-26",
     "url": "https://en.wikipedia.org/wiki/Dead_Kennedys",
     "found": "Dead Kennedys have influenced multiple acts such as System of a Down, Green Day, Faith No More, Rage Against the Machine, Sepultura, Descendents, Bad Religion, Slayer, X, Minutemen, The Hives, Saves the Day and Screeching Weasel among others."
+  },
+  "minutemen>the-stooges": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/mike-watt-minutemen-the-missingmen-favourite-albums/2/",
+    "found": "I had to learn bass from _Fun House_, Creedence and the brothers doing R&B, or like Trevor Bolder [of Bowie’s Spider From Mars and Uriah Heep], because you could really hear the bass on British rock & roll – most US rock & roll buried the bass in the mix."
   },
   "minutemen>wire": {
     "result": "found",
@@ -2251,6 +2853,12 @@
     "url": "https://spectrumculture.com/2020/06/09/rediscover-bark-psychosis-hex/",
     "found": "As nebulous as post-rock may be, one can listen to several of its most prominent bands in the ‘00s—Sigur Rós, Explosions in the Sky, Mogwai—and hear elements of the sound that Bark Psychosis pioneered: a twinkling guitar riff, a velvety drone or string section, a sudden building or release of noisy tension."
   },
+  "mogwai>david-bowie": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/mogwai-stuart-braithwaite-favourite-albums/8/",
+    "found": "So Bowie is one of the people who made me consider that I liked music. It was a really important, formative thing."
+  },
   "mogwai>joy-division": {
     "result": "found",
     "at": "2026-10-26",
@@ -2293,11 +2901,29 @@
     "url": "https://www.slugmag.com/?p=13951",
     "found": "SB: When we first started the band, we were all into Sonic Youth, Joy Division, My Bloody Valentine and other bands like that. I guess we just became more interested in minimal and electronic music as the years went by."
   },
+  "mogwai>television": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8460-5-10-15-20-mogwais-stuart-braithwaite/",
+    "found": "We were interested in a lot of American rock bands like Sonic Youth and Slint, as well as 70s guitar bands like the Stooges and Television."
+  },
   "mogwai>the-cure": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://list.co.uk/news/3259/stuart-braithwaite-you-need-strong-ankles-to-go-see-the-cure",
     "found": "Disintegration was the first record I fell in love with and, along with a few other records, it was part of the blueprint of what Mogwai have become musically, that sprawled-out melancholy atmosphere."
+  },
+  "mogwai>the-jesus-and-mary-chain": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.westword.com/?p=40647786",
+    "found": "The bands that I was really excited by were things like Jimi Hendrix and The Velvet Underground and quite simple stuff like The Cure and The Jesus and Mary Chain."
+  },
+  "mogwai>the-stooges": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8460-5-10-15-20-mogwais-stuart-braithwaite/",
+    "found": "We were interested in a lot of American rock bands like Sonic Youth and Slint, as well as 70s guitar bands like the Stooges and Television."
   },
   "mono>my-bloody-valentine": {
     "result": "found",
@@ -2371,11 +2997,17 @@
     "url": "https://arthurmag.com/2011/03/10/perfect-sound-forever-kevin-shields-of-my-bloody-valentine-interviewed-by-hua-hsu-arthur-no-7nov-2003/",
     "found": "It was good because we were letting ourselves be more Sonic Youth-y, more of our influences in a way."
   },
+  "my-bloody-valentine>the-birthday-party": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://mixdownmag.com.au/features/gear-talks-an-interview-with-kevin-shields-of-my-bloody-valentine/",
+    "found": "“Basically, we started out as a band that was really into The Birthday Party and Einstürzende Neubauten ."
+  },
   "my-bloody-valentine>the-jesus-and-mary-chain": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://mixdownmag.com.au/features/gear-talks-an-interview-with-kevin-shields-of-my-bloody-valentine/",
-    "found": "We don’t have a shared influence… this kind of Cocteau Twins, Jesus and Mary Chain thing, it’s garbage. You know, Psycho Candy would be the shared record."
+    "found": "Around that same time, Jesus Mary Chain brought out their first single. So those things were all kind of pulling towards that."
   },
   "natural-snow-buildings>neil-young": {
     "result": "found",
@@ -2424,6 +3056,12 @@
     "at": "2026-10-26",
     "url": "https://electronicbeats.net/max-dax-interviews-bernard-sumner",
     "found": "BS: There’s an element of Kraftwerk in it, for sure. But by the time I wrote “Blue Monday”, I had already done some gigs with Cabaret Voltaire as well."
+  },
+  "new-order>neu": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/joy-division-new-order-stephen-morris-interview-favourite-records/4/",
+    "found": "As a drummer, Klaus Dinger was important to me: [he taught me] how to make one riff last a lifetime!"
   },
   "new-order>omd": {
     "result": "found",
@@ -2611,11 +3249,35 @@
     "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/",
     "found": "KB: Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…"
   },
+  "of-montreal>kate-bush": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/",
+    "found": "KB: Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…"
+  },
   "of-montreal>leonard-cohen": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/",
     "found": "KB: Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…"
+  },
+  "of-montreal>neutral-milk-hotel": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8469-5-10-15-20-of-montreals-kevin-barnes/",
+    "found": "I saw what was possible, like, if these guys can do it, I can too."
+  },
+  "of-montreal>olivia-tremor-control": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8469-5-10-15-20-of-montreals-kevin-barnes/",
+    "found": "I saw what was possible, like, if these guys can do it, I can too."
+  },
+  "of-montreal>patti-smith": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/",
+    "found": "Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…"
   },
   "of-montreal>the-stooges": {
     "result": "found",
@@ -2743,6 +3405,12 @@
     "url": "https://www.pbs.org/video/patti-smith-on-lou-reed-and-rock-and-roll-nzzxrj/",
     "found": "On July 31, 1997, Patti Smith shared her thoughts on the 70s rock and roll scene and how Lou Reed of the Velvet Underground inspired her as a young girl in South Jersey."
   },
+  "pavement>dead-kennedys": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.theguardian.com/music/2013/nov/24/stephen-malkmus-pavement-soundtrack-my-life",
+    "found": "This album was a gateway towards sarcasm and questioning authority and the rightwing and Ronald Reagan – our Margaret Thatcher. I was listening to them in mid-late high school, 1981-82."
+  },
   "pavement>echo-and-the-bunnymen": {
     "result": "found",
     "at": "2026-10-26",
@@ -2782,14 +3450,20 @@
   "pavement>the-replacements": {
     "result": "found",
     "at": "2026-10-26",
-    "url": "https://web.archive.org/web/20010528224027/http://www.webinfo.co.uk/crackedmachine/pavement.htm",
-    "found": "I first spoke to Pavement back in the Slanted And Enchanted days. Squatting outside the Boardwalk on a warm summer evening, Scott Kannberg aka Spiral Stairs told me how he preferred the Replacements to the Fall."
+    "url": "https://www.theguardian.com/music/2013/nov/24/stephen-malkmus-pavement-soundtrack-my-life",
+    "found": "Paul Westerberg wrote classic songs with a bit of cheek and hopelessness – and brilliance – combined. He's a poet: Let It Be was dramatic, romantic stuff."
   },
   "pavement>velvet-underground": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://web.archive.org/web/2020/https://www.nme.com/?p=1246130",
     "found": "“‘Sister Ray’ is the ultimate song,” he said. “Maybe you can’t call it a song – the ultimate noise statement of all time: there’s never been a song like that and there never will be again. It is with me always.”"
+  },
+  "perfume-genius>bjork": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/perfume-genius-interview-favourite-albums/10/",
+    "found": "She was kind of my first true obsession. I had a Björk website where I just typed out all her lyrics."
   },
   "perfume-genius>liz-phair": {
     "result": "found (archived copy)",
@@ -2803,11 +3477,35 @@
     "url": "https://thequietus.com/interviews/bakers-dozen/perfume-genius-interview-favourite-albums/13/",
     "found": "I was a little older, kind of the end of my teenage years for this one. I think I had dropped out of high school and didn’t know what I was going to do. This album definitely has some of that hymnal quality I love; it’s really minimal but full at the same time."
   },
+  "perfume-genius>patti-smith": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/perfume-genius-interview-favourite-albums/9/",
+    "found": "I count the cover as an influence. She’s defiant but not overt."
+  },
   "perfume-genius>stars-of-the-lid": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://thequietus.com/interviews/bakers-dozen/perfume-genius-interview-favourite-albums/2/",
     "found": "I also listened to this album right before I wrote all of my first album, and I kind of credit it with connecting part of my brain that allowed me to write for the first time."
+  },
+  "perfume-genius>talk-talk": {
+    "result": "unreachable",
+    "at": "2026-10-26",
+    "url": "https://web.archive.org/web/2020/https://tidal.com/magazine/article/perfume-genius-5-albums-that-changed-my-life/1-37705",
+    "found": "So I decided to listen and then I became really obsessed with them and now I really do count them as an influence."
+  },
+  "peter-cat-recording-co>neutral-milk-hotel": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://rollingstoneindia.com/peter-cat-recording-co-tour-india/amp",
+    "found": "Neutral Milk Hotel is a common favourite and one of the outfit’s major influences."
+  },
+  "peter-cat-recording-co>velvet-underground": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.stereogum.com/2221396/peter-cat-recording-co-interview/interviews/qa/",
+    "found": "He cites the Velvet Underground and Neutral Milk Hotel as formative, not only for their sound, but for being emblematic of a distinctly American do-it-yourself ideal."
   },
   "phoebe-bridgers>big-thief": {
     "result": "found",
@@ -2844,6 +3542,12 @@
     "at": "2026-10-26",
     "url": "https://guitar.com/features/interviews/the-guitar-interview-phoebe-bridgers-punisher/",
     "found": "Phoebe cites everything from Billie Eilish (“her production is so cool”) to Guided By Voices, Caroline Polachek, Mitski, and Big Thief as influences on Punisher ."
+  },
+  "pinback>black-flag": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://bpb-experimental.voicemediagroup.com/?p=40580531",
+    "found": "\"We're not metal, not hardcore, not noise,\" Crow explains obliquely as he spouts off influences such as Captain Beefheart, the Shaggs, Black Flag, and Venom."
   },
   "pinback>can": {
     "result": "found",
@@ -2935,6 +3639,12 @@
     "url": "https://www.mmone.org/pixies/",
     "found": "Santiago introduced Thompson to The Cars ’ music, which they say had an incalculable influence on Pixies, and together they soaked up albums by Violent Femmes, Talking Heads, Hüsker Dü, The Jesus & Mary Chain, Black Flag, Iggy Pop and Captain Beefheart while watching surrealistic films like 1977’s Eraserhead ."
   },
+  "pj-harvey>bob-dylan": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://faroutmagazine.co.uk/pj-harveys-favourite-bob-dylan-album/",
+    "found": "In 2001, PJ Harvey told The Guardian , \"I am an enormous Bob Dylan fan. I once said that Desire was my favourite album, but it changes all the time. He has been a big influence on my work. I grew up on a diet of Dylan – my mum was a big fan – and now when I'm feeling lost or lacking in inspiration I listen to him.\""
+  },
   "porter-robinson>aphex-twin": {
     "result": "found",
     "at": "2026-10-26",
@@ -2947,6 +3657,12 @@
     "url": "https://spinmagazine.com/2014/08/porter-robinson-worlds/",
     "found": "“Flicker” has the head-nodding thump and angular melodies of Boards of Canada"
   },
+  "portishead>can": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/portishead-bakers-dozen/14/",
+    "found": "Can are my favourite and most inspirational band ever, I think."
+  },
   "portishead>joy-division": {
     "result": "found",
     "at": "2026-10-26",
@@ -2958,6 +3674,12 @@
     "at": "2026-10-26",
     "url": "https://www.nme.com/blogs/nme-blogs/the-roots-of-portishead-767977",
     "found": "That same year, while Massive Attack were recording their debut LP Blue Lines there, they gifted Geoff some spare studio time to record his own stuff."
+  },
+  "portishead>neil-young": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/portishead-bakers-dozen/9/",
+    "found": "I love Neil Young and this album was massive when I was a kid. It has never left me; I always had a copy around."
   },
   "portishead>silver-apples": {
     "result": "found",
@@ -2977,6 +3699,18 @@
     "url": "https://www.sproutology.co.uk/interviews/ian-pye-melody-maker-january-28th-1984/",
     "found": "Early influences were Marc Bolan and Bob Dylan."
   },
+  "pulp>big-star": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/mark-webber-pulp-interview-favourite-music/8/",
+    "found": "It was records like this that I aspired to make when I was young."
+  },
+  "pulp>big-thief": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.spinmagazine.com/2024/11/5-albums-i-cant-live-without-mark-webber-of-pulp/",
+    "found": "I’ve tried to introduce some elements of Adrianne Lenker and Buck Meek’s approach into my parts, and I’ve even started to play Collings guitars, following their example."
+  },
   "pulp>david-bowie": {
     "result": "found",
     "at": "2026-10-26",
@@ -2986,8 +3720,14 @@
   "pulp>leonard-cohen": {
     "result": "found",
     "at": "2026-10-26",
-    "url": "https://www.thecurrent.org/feature/2025/06/08/npr-pulp-more-jarvis-cocker-interview",
-    "found": "That made sense — we'd been talking about Leonard Cohen , one of Cocker's heroes, who'd been a Zen monk during the latter part of his life."
+    "url": "https://pitchfork.com/features/5-10-15-20/10048-jarvis-cocker-on-the-music-of-his-life/",
+    "found": "If you listen to that first Pulp record, it is just a direct rip off of his first album—though I’m not saying it was as good as that."
+  },
+  "pulp>scott-walker": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/10048-jarvis-cocker-on-the-music-of-his-life/",
+    "found": "Leonard Cohen and Scott Walker are the two real touchstones in terms of people I’ve listened to consistently throughout my whole life."
   },
   "pulp>velvet-underground": {
     "result": "found",
@@ -3024,6 +3764,12 @@
     "at": "2026-10-26",
     "url": "https://faroutmagazine.co.uk/radiohead-thom-yorke-favourite-album-of-all-time/",
     "found": "Then I discovered R.E.M. and it turned my life upside down."
+  },
+  "radiohead>scott-walker": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://radiox.co.uk/artists/radiohead/thom-yorke-pays-tribute-scott-walker",
+    "found": "So very sad to hear that Scott Walker has passed away, he was a huge influence on Radiohead and myself, showing me how i could use my voice and words."
   },
   "radiohead>sigur-ros": {
     "result": "found",
@@ -3112,14 +3858,26 @@
   "rem>patti-smith": {
     "result": "found",
     "at": "2026-10-26",
-    "url": "https://en.wikipedia.org/wiki/R.E.M.",
-    "found": "The pair discovered that they shared similar tastes in music, particularly in punk rock and proto-punk artists like Patti Smith, Television, and the Velvet Underground."
+    "url": "https://pitchfork.com/features/5-10-15-20/michael-stipe-on-the-music-that-made-him/",
+    "found": "I had this epiphany and realized that this is what I wanted to do with my life: learn how to sing and start a band."
+  },
+  "rem>velvet-underground": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.yahoo.com/music/r-e-m-s-peter-buck-on-7in-83-88-remtv-and-more-102931540566.html",
+    "found": "“That was stuff we loved,” Buck says."
   },
   "ride>dinosaur-jr": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://web.archive.org/web/20230623212403/https://www.undertheradarmag.com/interviews/ride_on_nowhere_mark_gardener_and_andy_bell",
     "found": "“Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses,” says Bell. “As well as older stuff like The Beatles, Stones, the Velvets, and the Stooges.”"
+  },
+  "ride>mazzy-star": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/andy-bell-ride-bakers-dozen-favourite-albums/3/",
+    "found": "I’ve taken on board a lot from David Roback’s guitar playing. It’s kind of Doorsy. You don’t hear much music that’s Doors influenced and I absolutely loved The Doors. There’s a romance to Jim Morrison’s LA and then Robby Krieger is the Spanish inflection in the guitar playing. Roback and the other members of The Rain Parade were very influential on me, just because I hadn’t heard much of that kind of stuff."
   },
   "ride>my-bloody-valentine": {
     "result": "found",
@@ -3139,6 +3897,18 @@
     "url": "https://www.premierguitar.com/artists/guitarists/rides-andy-bell-addicted-to-noise",
     "found": "But when you listen back, you can easily tell when it was we'd heard Sonic Youth, because we immediately started to employ noise techniques."
   },
+  "ride>spacemen-3": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.premierguitar.com/articles/23673-rides-andy-bell-addicted-to-noise",
+    "found": "all around us, in the air, it seemed, were bands that came a bit before us, like My Bloody Valentine, Spacemen 3, and Loop. They had a noise element that we found really cool."
+  },
+  "ride>the-cure": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/andy-bell-ride-bakers-dozen-favourite-albums/2/",
+    "found": "I was getting into The Cure and The Smiths at the same time and a year or so later, when I made the switch from cassettes to vinyl, this was the first Cure record I got on vinyl, Seventeen Seconds. It’s my favourite Cure album. It’s stayed with me all this time."
+  },
   "ride>the-fall": {
     "result": "found",
     "at": "2026-10-26",
@@ -3154,14 +3924,14 @@
   "ride>the-stone-roses": {
     "result": "found",
     "at": "2026-10-26",
-    "url": "https://web.archive.org/web/20230623212403/https://www.undertheradarmag.com/interviews/ride_on_nowhere_mark_gardener_and_andy_bell",
-    "found": "“Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses,” says Bell. “As well as older stuff like The Beatles, Stones, the Velvets, and the Stooges.”"
+    "url": "https://pitchfork.com/features/5-10-15-20/8458-5-10-15-20-rides-andy-bell/",
+    "found": "Stone Roses was another seismic shift in my musical taste."
   },
   "ride>the-stooges": {
     "result": "found",
     "at": "2026-10-26",
-    "url": "https://web.archive.org/web/20230623212403/https://www.undertheradarmag.com/interviews/ride_on_nowhere_mark_gardener_and_andy_bell",
-    "found": "“Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses,” says Bell. “As well as older stuff like The Beatles, Stones, the Velvets, and the Stooges.”"
+    "url": "https://www.nme.com/blogs/nme-blogs/soundtrack-of-my-life-ride-and-beady-eye-legend-andy-bell-17446",
+    "found": "‘I Wanna Be Your Dog’, Iggy & The Stooges: “It was the first song we ever jammed and it always reminds me of the early Ride sound as that album was one of our big early influences.”"
   },
   "ride>velvet-underground": {
     "result": "found",
@@ -3211,6 +3981,24 @@
     "url": "https://web.archive.org/web/2016/https://www.stopsmilingonline.com/story_detail.php?id=1170&page=2",
     "found": "The music of Wire, the Buzzcocks, the Saints, the Birthday Party, the Mob and the Wipers — which Canty discovered on a Pacific Northwest trip — all figured into the Rites’ musical universe."
   },
+  "roxy-music>velvet-underground": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.npr.org/transcripts/1139266657",
+    "found": "But, you know, we loved The Velvet Underground. And, you know, they had very few chords in their songs. And it was about simplicity, but it was about the words that had a different subject matter than just boy meets girl."
+  },
+  "sex-pistols>david-bowie": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.spinmagazine.com/2025/08/5-albums-i-cant-live-without-steve-jones-of-the-sex-pistols/",
+    "found": "That album was definitely one of my favorite albums. Very inspirational to me. Steered me in the direction."
+  },
+  "sex-pistols>roxy-music": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.spinmagazine.com/2025/08/5-albums-i-cant-live-without-steve-jones-of-the-sex-pistols/",
+    "found": "Again, it's one of them albums for me as a 15, 16 year old, however old I was when that came out, I would just lie on the bed and close my eyes and just get all these images of it, of what was going on."
+  },
   "sharon-van-etten>cocteau-twins": {
     "result": "found",
     "at": "2026-10-26",
@@ -3220,6 +4008,12 @@
   "sharon-van-etten>joy-division": {
     "result": "owner",
     "at": "2026-10-26"
+  },
+  "sharon-van-etten>low": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.theguardian.com/music/2015/apr/25/soundtrack-my-life-sharon-van-etten-righteous-brothers-lemonheads",
+    "found": "My friend Paul played me this when I was in college, and it just killed me. It was so different, so minimal, and their voices together [Alan Sparhawk and Mimi Parker] were just beautiful."
   },
   "sharon-van-etten>nick-cave-and-the-bad-seeds": {
     "result": "found",
@@ -3232,6 +4026,12 @@
     "at": "2026-10-26",
     "url": "https://afterellen.com/people/81692-an-interview-with-sharon-van-etten/2",
     "found": "SVE: Totally! I listen to a lot of OMD, I’m into ’80s music a lot. I have pop songs that I just write for myself but I’m like, “I could totally do this if I wanted to.” I’m into a lot of the new post-punk electronic stuff. I like a lot of different kind of stuff."
+  },
+  "sharon-van-etten>pj-harvey": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.seattlemet.com/arts-and-culture/2012/08/points-of-reference-sharon-van-etten-tramp",
+    "found": "PJ Harvey definitely was someone that Aaron kept referring to, specifically with the aggressive way of singing, but also with the darker lyrics."
   },
   "sharon-van-etten>portishead": {
     "result": "found",
@@ -3351,11 +4151,23 @@
     "url": "https://www.factmag.com/2014/03/12/murder-ballads-an-interview-with-slint/",
     "found": "But as a whole, I think all of us being into Big Black had the biggest effect – the way their music was hypnotic."
   },
+  "slint>minor-threat": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/david-pajo-slint-favourite-albums/3/",
+    "found": "it was one of those life-altering LPs in that I was never the same afterwards."
+  },
   "slint>minutemen": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://en.wikipedia.org/wiki/Slint",
     "found": "After being influenced by the music of the Minutemen, Pajo and Walford's musical direction became too obtuse for the other members of Maurice, who parted ways."
+  },
+  "slowdive>aphex-twin": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/slowdive-neil-halstead-interview-favourite-albums/9/",
+    "found": "And for me it all came from hearing SAW 85-92 and wanting to try something a bit different."
   },
   "slowdive>brian-eno": {
     "result": "found",
@@ -3374,6 +4186,12 @@
     "at": "2026-10-26",
     "url": "https://www.encyclopedia.com/education/news-wires-white-papers-and-books/slowdive",
     "found": "“ We were all influenced by the same kinds of sounds, ” recalled Slowdive ’ s Neil Halstead in an interview with Corey Dubrowa for Magnet magazine. ‘ The Byrds, Pink Floyd, Loop, the Cocteau Twins, the [Jesus and] Mary Chain — even Mudhoney and Dinosaur Jr."
+  },
+  "slowdive>leonard-cohen": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/slowdive-neil-halstead-interview-favourite-albums/10/",
+    "found": "That album really hit me and it made me aware of music that wasn’t just a wall of guitars. It didn’t have an immediate impact on the way I wrote but it embedded itself in me."
   },
   "slowdive>mudhoney": {
     "result": "found",
@@ -3410,6 +4228,12 @@
     "at": "2026-10-26",
     "url": "https://web.archive.org/web/20140813215902/http://www.undertheradarmag.com/interviews/slowdive_-_neil_halstead_and_rachel_goswell_on_the_bands_that_inspired_them",
     "found": "We were all really into The Jesus and Mary Chain, Dinosaur Jr., Sonic Youth,\" says Halstead."
+  },
+  "slowdive>talk-talk": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/slowdive-neil-halstead-interview-favourite-albums/12/",
+    "found": "This was a massive influence on Pygmalion. It’s all about the way they used the space and how it slides into abstraction at points."
   },
   "slowdive>the-cure": {
     "result": "found",
@@ -3555,6 +4379,18 @@
     "url": "https://daily.redbullmusicacademy.com/2015/01/thurston-moore-musical-education/",
     "found": "It wasn’t until I started seeing these bands who were my age playing that I knew the world was mine, bands like Teenage Jesus and The Jerks and The Contortions and Mars and DNA."
   },
+  "sonic-youth>joni-mitchell": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/lee-ranaldo-sonic-youth-interview-bakers-dozen-favourite-albums-the-beatles-leonard-cohen-einsturzende-neubaten/6/",
+    "found": "I love her words, I love her guitar playing and the tunings, and it’s just constant inspiration for me, especially in that very, very personal ‘writing about your own life as subject matter’ stuff."
+  },
+  "sonic-youth>leonard-cohen": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/lee-ranaldo-sonic-youth-interview-bakers-dozen-favourite-albums-the-beatles-leonard-cohen-einsturzende-neubaten/7/",
+    "found": "Cohen’s another person I just constantly go back to for inspiration, especially these days as I’m writing more songs on my own and playing more acoustic guitar and getting deeper and deeper into the acoustic guitar."
+  },
   "sonic-youth>mars": {
     "result": "found",
     "at": "2026-10-26",
@@ -3566,6 +4402,18 @@
     "at": "2026-10-26",
     "url": "https://www.rollingstone.com/music/music-features/thurston-moore-sonic-youth-influences-patti-smith-glenn-branca-880204",
     "found": "I used to see all these hardcore bands come up to New York and play at CBGB on hardcore nights and Minor Threat was probably the best hardcore band that ever was."
+  },
+  "sonic-youth>minutemen": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8797-lee-ranaldo/",
+    "found": "It was the beginning of this new movement in American music. We were very energized by it."
+  },
+  "sonic-youth>neil-young": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8797-lee-ranaldo/",
+    "found": "There was a time when I could play almost every song on that record on my guitar."
   },
   "sonic-youth>new-york-dolls": {
     "result": "found",
@@ -3579,17 +4427,35 @@
     "url": "https://www.rollingstone.com/music/music-features/thurston-moore-sonic-youth-influences-patti-smith-glenn-branca-880204",
     "found": "It’s not a very verse/chorus/verse/chorus song, and hearing it was very formative to me because of that approach."
   },
+  "sonic-youth>pavement": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/lee-ranaldo-sonic-youth-interview-bakers-dozen-favourite-albums-the-beatles-leonard-cohen-einsturzende-neubaten/13/",
+    "found": "They hardly ever rehearsed and their songs were always thrown together in some way but they made this music that inspired me almost more so than anybody else at the time."
+  },
   "sonic-youth>rhys-chatham": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://joyzine.org/2021/11/17/interview-lee-ranaldo-on-new-release-in-virus-times-sonic-youth-sound-experiments-and-visual-art/",
     "found": "So, from the very beginning of our career together, our times together, we were equally influenced by pop music and pop songs on one side and all this avant-garde music that was being created in New York back then. Glenn Branca and Rhys Chatham ."
   },
+  "sonic-youth>talking-heads": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/lee-ranaldo-sonic-youth-interview-bakers-dozen-favourite-albums-the-beatles-leonard-cohen-einsturzende-neubaten/11/",
+    "found": "In the late 70s, I was moving to New York and I was inspired by all this stuff coming out of CBGB’s, and Talking Heads was one of the hugest influences at that time."
+  },
   "sonic-youth>teenage-jesus-and-the-jerks": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://daily.redbullmusicacademy.com/2015/01/thurston-moore-musical-education/",
     "found": "It wasn’t until I started seeing these bands who were my age playing that I knew the world was mine, bands like Teenage Jesus and The Jerks and The Contortions and Mars and DNA."
+  },
+  "sonic-youth>television": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8797-lee-ranaldo/",
+    "found": "At the time, that was very important to my re-involvement with music, which had gotten so bombastic, serving larger audiences and scenes and big stadium concerts."
   },
   "sonic-youth>the-stooges": {
     "result": "found",
@@ -3627,6 +4493,36 @@
     "url": "https://dmy.co/features/sophie-2",
     "found": "In an interview with The Face from May last year, SOPHIE was talking about Depeche Mode’s 1981 track ‘Just Can’t Get Enough’, one of the inspirations behind the producer’s work."
   },
+  "spacemen-3>suicide": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://spacemen3.co.uk/press/198809forcedexposure/",
+    "found": "We do a song called \"Suicide\" which we dedicate to them every gig. It's kind of like Suicide and the Stooges crossed. It's got keyboards and the drummer drums like Martin Rev's right hand."
+  },
+  "spacemen-3>the-stooges": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://spacemen3.co.uk/press/198809forcedexposure/",
+    "found": "I think that's something we got from the Stooges, \"O.D. Catastrophe\"…"
+  },
+  "spacemen-3>velvet-underground": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://mojo4music.com/articles/stories/spacemen-3s-sonic-boom-on-the-velvet-underground-they-blew-my-mind",
+    "found": "The big thing for me, that I took from The Velvet Underground into Spacemen 3, was the drone."
+  },
+  "spiritualized>the-stooges": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8844-j-spaceman/",
+    "found": "I got lucky, because my whole life premise and what I do is kind of built around that record."
+  },
+  "spiritualized>velvet-underground": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8844-j-spaceman/",
+    "found": "It wasn't all about the Stooges or the Velvet Underground for me anymore."
+  },
   "spoon>gang-of-four": {
     "result": "found",
     "at": "2026-10-26",
@@ -3639,17 +4535,35 @@
     "url": "https://www.encyclopedia.com/people/literature-and-arts/music-popular-and-jazz-biographies/spoon",
     "found": "Plagued by an unstable lineup since forming in the early 1990s, the group also fell victim to record label executives who failed to follow through on promises, a record-buying public that appeared uninterested in, or perhaps unaware of, the group’s music, and the initial media stigma of sounding much like two of their primary influences—the Pixies and Wire."
   },
+  "spoon>pj-harvey": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/spoons-britt-daniel-on-the-music-that-made-him-an-indie-rock-lifer/",
+    "found": "To Bring You My Love is my favorite PJ Harvey record, I was definitely obsessed with her at that point."
+  },
   "spoon>talking-heads": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://americansongwriter.com/britt-daniel-looks-back-at-two-decades-of-spoon/",
     "found": "I would say that when we first started out, I was very much into bands like Wire, Talking Heads, that sort of lyric. That’s what I was shooting for, at least — I was very young and those guys were very inspired."
   },
+  "spoon>violent-femmes": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.nme.com/features/tv-interviews/soundtrack-of-my-life-spoons-britt-daniel-2719076",
+    "found": "The Violent Femmes were probably the biggest band for me in that burst of new freedom, I just completely related to their lyrics. The lyrics speak to the minds of high school students like no other record – insecurity, anger, masturbation, frustration and lust."
+  },
+  "spoon>wipers": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/spoon-britt-daniel-interview-favourite-albums/4/",
+    "found": "At one point I covered ‘No One Wants an Alien’ just on my four track. I used to cover songs a lot just as an exercise because it was fun and to figure out how songs were put together."
+  },
   "spoon>wire": {
     "result": "found",
     "at": "2026-10-26",
-    "url": "https://www.encyclopedia.com/people/literature-and-arts/music-popular-and-jazz-biographies/spoon",
-    "found": "At the time, Daniel later noted, he was listening to and learning from records by Wire, Gang of Four, and Public Image Ltd."
+    "url": "https://pitchfork.com/features/5-10-15-20/spoons-britt-daniel-on-the-music-that-made-him-an-indie-rock-lifer/",
+    "found": "I had really come around to Wire and Talking Heads around this time too, and I started to like that kind of abstract lyrical imagery more than literal story telling."
   },
   "squarepusher>aphex-twin": {
     "result": "found",
@@ -3680,6 +4594,12 @@
     "at": "2026-10-26",
     "url": "https://www.timteeman.com/2014/02/02/st-vincent/",
     "found": "Suddenly my heroes were not C+C Music Factory, it was Kurt Cobain"
+  },
+  "st-vincent>pj-harvey": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://faroutmagazine.co.uk/how-pj-harvey-inspired-st-vincent/",
+    "found": "I went to the CD store the next day and I bought (Harvey's 1998 album Is This Desire?) , and I bought (Harvey's 1995 album) To Bring You My Love"
   },
   "st-vincent>siouxsie-and-the-banshees": {
     "result": "found",
@@ -3729,6 +4649,12 @@
     "url": "https://www.theguardian.com/music/2019/apr/09/silver-apples-electro-stars-hendrix-stereolab-portishead-john-lennon",
     "found": "Silver Apples were loved by, and had influenced, countless bands including Stereolab, Spiritualized and Portishead."
   },
+  "stereolab>the-smiths": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/laetitia-sadier-interview-stereolab-favourite-albums/4/",
+    "found": "I think the real power that hit me was in this record; the urgency and the energy of the record."
+  },
   "stereolab>this-heat": {
     "result": "found",
     "at": "2026-10-26",
@@ -3770,6 +4696,12 @@
     "at": "2026-10-26",
     "url": "https://uncut.co.uk/features/sufjan-stevens-interviewed-you-have-to-cast-out-your-demons-68047/3",
     "found": "That first summer in Eugene, Brams introduced Stevens and his siblings to The Beatles, the Rolling Stones, Ry Cooder, Bob Dylan, Nick Drake, Frank Zappa. “The Wipers were his favourite band,” says Stevens."
+  },
+  "suicide>silver-apples": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://en.wikipedia.org/wiki/Suicide_(band)",
+    "found": "That music was part of me so, from my angle, Suicide stole from the Velvets, Iggy, Question Mark & the Mysterians and the Silver Apples."
   },
   "suicide>the-stooges": {
     "result": "found",
@@ -3819,6 +4751,30 @@
     "url": "https://mountainx.com/?p=502388",
     "found": "He cites British bands like The Cure, OMD and Cocteau Twins as his primary inspirations — sounds that harken back to his own childhood."
   },
+  "swans>black-flag": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "found": "particularly in the early days, I had a lot of influences, but was either smart and determined enough to avoid emulation, or not musically talented or skilled enough to achieve it, or both."
+  },
+  "swans>brian-eno": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "found": "particularly in the early days, I had a lot of influences, but was either smart and determined enough to avoid emulation, or not musically talented or skilled enough to achieve it, or both."
+  },
+  "swans>buzzcocks": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "found": "particularly in the early days, I had a lot of influences, but was either smart and determined enough to avoid emulation, or not musically talented or skilled enough to achieve it, or both."
+  },
+  "swans>cabaret-voltaire": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "found": "particularly in the early days, I had a lot of influences, but was either smart and determined enough to avoid emulation, or not musically talented or skilled enough to achieve it, or both."
+  },
   "swans>can": {
     "result": "found",
     "at": "2026-10-26",
@@ -3831,11 +4787,41 @@
     "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
     "found": "Participating in Glen Branca's music was a revelation in many ways,\" affirms Gira"
   },
+  "swans>kraftwerk": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "found": "particularly in the early days, I had a lot of influences, but was either smart and determined enough to avoid emulation, or not musically talented or skilled enough to achieve it, or both."
+  },
+  "swans>nick-drake": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/michael-gira-swans-bakers-dozen-favourite-albums/9/",
+    "found": "Drake was inspirational to me in thinking about the simplicity and about creating something that has genuine power and truth in it, with very simple means, as opposed to Swans, which relied on volume."
+  },
+  "swans>sex-pistols": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "found": "particularly in the early days, I had a lot of influences, but was either smart and determined enough to avoid emulation, or not musically talented or skilled enough to achieve it, or both."
+  },
   "swans>suicide": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
-    "found": "The Stooges, Suicide, Throbbing Grist"
+    "found": "particularly in the early days, I had a lot of influences, but was either smart and determined enough to avoid emulation, or not musically talented or skilled enough to achieve it, or both."
+  },
+  "swans>the-stooges": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "found": "particularly in the early days, I had a lot of influences, but was either smart and determined enough to avoid emulation, or not musically talented or skilled enough to achieve it, or both."
+  },
+  "swans>wire": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "found": "particularly in the early days, I had a lot of influences, but was either smart and determined enough to avoid emulation, or not musically talented or skilled enough to achieve it, or both."
   },
   "sweet-trip>aphex-twin": {
     "result": "found",
@@ -3946,7 +4932,7 @@
     "found": "according to Strummer: \"It can't be stressed how great the first Ramones album was to the scene... It was the first word of Punk, a fantastic record\"."
   },
   "the-clash>sex-pistols": {
-    "result": "missing",
+    "result": "unreachable",
     "at": "2026-10-26",
     "url": "https://web.archive.org/web/20111005220200/http://www.joestrummer.us/?n9P81fmSnwwFUbhFAMuAAxe6bb31IUP&p=2&aOHDhtT57WPxn9Z7bWGQa3BBQbFVu17LfZSa&c=1&CxeQAdg5hVrrDtzOUCasLrnVGV7&XUZHs",
     "found": "Something that inspired Strummer much more than the struggles of the 101ers was seeing a bunch of young unknowns who supported them at the Nashville on 3rd April 1976. The band went by the name of the Sex Pistols."
@@ -3987,6 +4973,12 @@
     "url": "https://faroutmagazine.co.uk/two-concerts-that-formed-the-cure/",
     "found": "Robert Smith said: “When I first saw The Stranglers, I thought, ‘This is it.’” The pieces of the puzzle fell into place very quickly after that when he “saw the Buzzcocks the following week, and I thought, ‘This is definitely it.’”"
   },
+  "the-cure>can": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/lol-tolhurst-the-cure-bakers-dozen-favourite-albums/5/",
+    "found": "What I always thought of with the drums was once the rhythm’s there, there’s this whole space inside of it that you can listen to and focus on with the push and pull. That’s what I was always trying for."
+  },
   "the-cure>david-bowie": {
     "result": "found",
     "at": "2026-10-26",
@@ -4023,6 +5015,12 @@
     "url": "https://www.nme.com/photos/27-geeky-facts-about-the-cure-1412275",
     "found": "Before that, I’d wanted us to be like the Buzzcocks or Elvis Costello, the punk Beatles. Being a Banshee really changed my attitude to what I was doing."
   },
+  "the-cure>the-clash": {
+    "result": "found (archived copy)",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/lol-tolhurst-the-cure-bakers-dozen-favourite-albums/4/",
+    "found": "I’ve actually got part of a chapter in my new book about how Joe Strummer started me on this path. That was my escape, because I knew that if he could do that, then so can I."
+  },
   "the-dismemberment-plan>bad-brains": {
     "result": "found",
     "at": "2026-10-26",
@@ -4052,6 +5050,12 @@
     "at": "2026-10-26",
     "url": "https://www.phoenixnewtimes.com/music/mark-e-smith-10076529/",
     "found": "and a music lover who was influenced by early rockers like Elvis Presley and Gene Vincent just as much as he was by experimental groups like Can, Faust, and The United States of America."
+  },
+  "the-fall>joy-division": {
+    "result": "found (archived copy)",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/brix-smith-the-fall-favourite-albums-extricated/10/",
+    "found": "I think this is the album that made me want to play bass. It made me sit up and say, ‘I want to be in a band.’"
   },
   "the-fall>velvet-underground": {
     "result": "found",
@@ -4089,11 +5093,23 @@
     "url": "https://thequietus.com/interviews/bakers-dozen/flaming-lips-wayne-coyne-interview-favourite-albums/5/",
     "found": "We would end up listening to them almost by accident. There have been a couple of times where we would do these long drives and we’d put on a record like Boris or Yo La Tengo, and they’ll have songs that go on for ten minutes, and you’re getting into these big soundscapes that just dig into oblivion."
   },
+  "the-human-league>brian-eno": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://postpunk.co.uk/martyn-ware-walthamstow-trades-hall-london",
+    "found": "Ware began speaking about the early electronic scene in Sheffield emerging from the industrial noise of the city, meeting Ian Craig Marsh in a youth project called Meat Whistle and going to see Roxy Music at Sheffield University, with Brian Eno specifically influencing his interest in making music."
+  },
   "the-human-league>david-bowie": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://rockandrollglobe.com/new-wave/the-human-league-spans-generations/",
     "found": "And in Britain, a thing came along which was the great glam revolution—David Bowie, Roxy Music, people like that. And suddenly, that gave us something to be."
+  },
+  "the-human-league>roxy-music": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/martyn-ware-human-league-heaven-17-bef-interview-favourite-albums/4/",
+    "found": "It changed my life. I could have chosen Electric Warrior by T. Rex, all that stuff, I was heavily into glam. It was like an awakening. We were dressing up, wearing makeup, platform boots, me and Phil."
   },
   "the-jesus-and-mary-chain>echo-and-the-bunnymen": {
     "result": "found",
@@ -4224,8 +5240,14 @@
   "the-mountain-goats>the-cure": {
     "result": "found",
     "at": "2026-10-26",
-    "url": "https://en.wikipedia.org/wiki/Goths_(album)",
-    "found": "The band has stated that _Goths_ was inspired by an adolescence listening to The Cure, Bauhaus, Siouxsie and the Banshees, and Joy Division, as well as hearing songs on the radio station KROQ-FM.[4]"
+    "url": "https://magnetmagazine.com/2017/06/07/mountain-goats-american-goth/",
+    "found": "In his “goth/death rock” heyday in the mid-’80s, Darnielle saw shows by Christian Death, the Sisters Of Mercy, Peter Murphy and the Cure. “The Cure counts for all goths,” he says. “The other thing about the Cure is that they’re so good, they transcend all that. If you can’t get down with the Cure, at least through Kiss Me, Kiss Me, Kiss Me , what is wrong with you?”"
+  },
+  "the-national>bob-dylan": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://maximumfun.org/episodes/bullseye-with-jesse-thorn/matt-berninger-national-interview-sound-young-america/",
+    "found": "Neil Young and Bob Dylan, those kinds of guys. So the idea of actually trying to do that, to write good lyrics, was something really exciting to me."
   },
   "the-national>joy-division": {
     "result": "found",
@@ -4238,6 +5260,12 @@
     "at": "2026-10-26",
     "url": "https://philnel.com/?p=2813",
     "found": "In September 2011, Berninger told The Phoenix ’s Michael Christopher , “when I was in high school I became obsessed with Leonard Cohen and Tom Waits.”"
+  },
+  "the-national>neil-young": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://maximumfun.org/episodes/bullseye-with-jesse-thorn/matt-berninger-national-interview-sound-young-america/",
+    "found": "I’ve been a huge fan of people like Tom Waits and Leonard Cohen and The Smiths and Nick Cave, and so I was obsessed with sort of lyric heavy writers. Neil Young and Bob Dylan, those kinds of guys. So the idea of actually trying to do that, to write good lyrics, was something really exciting to me."
   },
   "the-national>nick-cave-and-the-bad-seeds": {
     "result": "found",
@@ -4263,6 +5291,12 @@
     "url": "https://web.archive.org/web/2008/http://thescenestar.typepad.com/ss/2007/06/interview-matt-.html",
     "found": "Matt: The band that I first really started falling in love with were The Smiths, Violent Femmes, Tom Waits, Nick Cave, but then, [for] the other guys, it’s a big motley selection of Simon & Garfunkel, Grateful Dead."
   },
+  "the-postal-service>bjork": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://lifeoftherecord.com/the-postal-service-notes",
+    "found": "That song in particular was definitely Bjork. So yeah, her music definitely influenced the songs on the album."
+  },
   "the-postal-service>depeche-mode": {
     "result": "found",
     "at": "2026-10-26",
@@ -4281,11 +5315,29 @@
     "url": "https://www.theringer.com/2023/09/05/music/postal-service-give-up-20th-anniversary-tour-history",
     "found": "But the Postal Service built the perfect bridge from one era to the next."
   },
+  "the-postal-service>omd": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.theringer.com/2023/09/05/music/postal-service-give-up-20th-anniversary-tour-history",
+    "found": "We were in the right place at the right time to resurrect the craftsmanship of that early ’80s electronic music via Orchestral Manoeuvres in the Dark, Depeche Mode, or the Human League."
+  },
   "the-postal-service>the-human-league": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://www.theringer.com/2023/09/05/music/postal-service-give-up-20th-anniversary-tour-history",
     "found": "We were in the right place at the right time to resurrect the craftsmanship of that early ’80s electronic music via Orchestral Manoeuvres in the Dark, Depeche Mode, or the Human League."
+  },
+  "the-radio-dept>broadcast": {
+    "result": "unreachable",
+    "at": "2026-10-26",
+    "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm",
+    "found": "When it comes to influences we should mention that we're not huge fans of slowdive and we hardly ever listen to jamc these days"
+  },
+  "the-radio-dept>joy-division": {
+    "result": "unreachable",
+    "at": "2026-10-26",
+    "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm",
+    "found": "INFLUENCES When it comes to influences we should mention that we're not huge fans of slowdive and we hardly ever listen to jamc these days, not that we ever did, apart from a few songs from the first record (just like honey is one of the best tracks ever recorded). instead we listen to: - charles aznavour - st ettienne - broadcast - frank sinatra - joy division"
   },
   "the-radio-dept>kraftwerk": {
     "result": "found",
@@ -4299,6 +5351,18 @@
     "url": "https://www.theradiodept.com/news/radio-dept-interview-alexander-kovalev-and-johan-duncanson/",
     "found": "mbv I like because they had a genuine interest in both melody and sound."
   },
+  "the-radio-dept>neu": {
+    "result": "unreachable",
+    "at": "2026-10-26",
+    "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm",
+    "found": "INFLUENCES When it comes to influences we should mention that we're not huge fans of slowdive and we hardly ever listen to jamc these days, not that we ever did, apart from a few songs from the first record (just like honey is one of the best tracks ever recorded). instead we listen to: - charles aznavour - st ettienne - broadcast - frank sinatra - joy division - pet shop boys - chet baker - fennesz - nick drake - kevin rowland - P R E F A B S P R O U T - paddy mcaloon - junior boys - orange juice - kraftwerk - neu!"
+  },
+  "the-radio-dept>nick-drake": {
+    "result": "unreachable",
+    "at": "2026-10-26",
+    "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm",
+    "found": "- nick drake"
+  },
   "the-radio-dept>the-blue-nile": {
     "result": "found",
     "at": "2026-10-26",
@@ -4310,6 +5374,24 @@
     "at": "2026-10-26",
     "url": "https://en.wikipedia.org/wiki/House_of_Jealous_Lovers",
     "found": "The sound follows British predecessors such as Gang of Four, Public Image Ltd, and Happy Mondays."
+  },
+  "the-rapture>gary-numan": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.discopogo.co/archive/the-rapture-gang-of-new-york",
+    "found": "In their school days they listened to a lot of college radio: The Smiths, Soft Cell, The Cure and Gary Numan."
+  },
+  "the-rapture>the-cure": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.discopogo.co/archive/the-rapture-gang-of-new-york",
+    "found": "In their school days they listened to a lot of college radio: The Smiths, Soft Cell, The Cure and Gary Numan."
+  },
+  "the-rapture>the-smiths": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.discopogo.co/archive/the-rapture-gang-of-new-york",
+    "found": "In their school days they listened to a lot of college radio: The Smiths, Soft Cell, The Cure and Gary Numan."
   },
   "the-replacements>big-star": {
     "result": "found",
@@ -4359,11 +5441,35 @@
     "url": "https://www.theguardian.com/music/2007/jan/05/popandrock1",
     "found": "\"1985 to 1989 - 15 to 19 years old. What luck, man. The Smiths, Echo and the Bunnymen, the Cure.\""
   },
+  "the-slits>patti-smith": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://faroutmagazine.co.uk/viv-albertine-on-the-emancipating-feeling-of-discovering-patti-smiths-horses/",
+    "found": "Hearing Patti Smith be sexual, building to an orgasmic crescendo, whilst leading a band, is so exciting. It's emancipating. If I can take a quarter or even an eighth of what she has and not give a shit about making a fool of myself, maybe I still can do something with my life."
+  },
+  "the-slits>sex-pistols": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.bookforum.com/print/2104/punk-heroine-viv-albertine-recounts-a-raucous-life-13923",
+    "found": "Watching the Sex Pistols, she thought, \"This is the first time I've seen a band and felt there are no barriers between me and them.\""
+  },
   "the-smiths>bert-jansch": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://www.musicradar.com/news/johnny-marr-explains-his-three-biggest-guitar-influences",
     "found": "For example, in my case, I didn't really do a lot of interviews in the early Smiths days but when I was asked about guitar playing, when I had to really nail it down it was Nile Rodgers , Bert Jansch and James Williamson from The Stooges."
+  },
+  "the-smiths>brian-eno": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/johnny-marr-favourite-albums-interview/12/",
+    "found": "with me being a teenager during the 70s meant I never stopped being affected by Brian’s music."
+  },
+  "the-smiths>buzzcocks": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/johnny-marr-favourite-albums-interview/10/",
+    "found": "Buzzcocks influenced The Smiths massively in the way we approached our record sleeves and our choice of independent record company – because of the Buzzcocks we took on a Mancunian DIY ethic, whilst being in the charts."
   },
   "the-smiths>david-bowie": {
     "result": "found",
@@ -4388,6 +5494,12 @@
     "at": "2026-10-26",
     "url": "https://thequietus.com/interviews/bakers-dozen/johnny-marr-favourite-albums-interview/7/",
     "found": "I played ‘I Can’t Stand It’ so many times that it stuck in my subconscious and that came out as the inspiration for the rhythm part on the song ‘The Queen Is Dead’. So, the VU album was what I was listening to almost exclusively before I started writing the album The Queen Is Dead."
+  },
+  "the-smiths>wire": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/johnny-marr-favourite-albums-interview/6/",
+    "found": "As a young guitar player, discovering _154_ showed me a world that was an alternative way of looking at the instrument. It has stuck with me all the way through my career."
   },
   "the-sound>can": {
     "result": "found",
@@ -4419,11 +5531,17 @@
     "url": "https://www.toppermost.co.uk/sound-the/",
     "found": "These influences included those artists mentioned earlier like Pop and Bowie, but also extended to more contemporary songwriters like Patti Smith and German bands like Can and Kraftwerk."
   },
+  "the-stone-roses>sex-pistols": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.theguardian.com/music/2010/jun/27/ian-brown-soundtrack-of-my-life",
+    "found": "We couldn’t wait for the LP and when it came out it blew us away."
+  },
   "the-stone-roses>the-clash": {
     "result": "found",
     "at": "2026-10-26",
-    "url": "https://en.wikipedia.org/wiki/The_Stone_Roses",
-    "found": "formed a short-lived Clash-inspired band, the Patrol, in 1980"
+    "url": "https://www.theguardian.com/music/2010/jun/27/ian-brown-soundtrack-of-my-life",
+    "found": "So I played him The Clash and he went and bought it the next day, and played it every day for about 18 months, before and after school. That got him obsessed with guitar and made him want to play."
   },
   "the-stone-roses>the-jesus-and-mary-chain": {
     "result": "found",
@@ -4501,7 +5619,7 @@
     "result": "found",
     "at": "2026-10-26",
     "url": "https://toneglow.substack.com/p/tone-glow-177-toe",
-    "found": "So they were instrumental, and that was a big inspiration for me."
+    "found": "I listened to the music, but I had no idea how they played any of it or how their shows looked"
   },
   "tom-waits>bob-dylan": {
     "result": "found",
@@ -4527,11 +5645,29 @@
     "url": "https://www.encyclopedia.com/education/news-wires-white-papers-and-books/van-zandt-townes",
     "found": "Van Zandt began playing guitar at age 15, turned on by the blues and early records by folk great Bob Dylan ."
   },
+  "trail-of-dead>sonic-youth": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://metropolisjapan.com/trail-of-dead-interview/",
+    "found": "At the time we were influenced bands who we knew like Unwound and Karp, but also bands like Sonic Youth."
+  },
   "trail-of-dead>unwound": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://www.musicradar.com/news/guitars/conrad-keely-10-albums-that-changed-my-fking-life-forever-633166",
     "found": "\"Despite its obscurity outside cooler-than-thou ex-scenester circles from the '90's, this is a great album, and floored me to listen to when it came out. Hearing it for the first time I turned green with envy, yet at the same time I embraced the anger it vented - vented towards nothing in particular!"
+  },
+  "tricky>kate-bush": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.katebushnews.com/?p=616",
+    "found": "In an incredible tribute to Kate, Tricky writes an article in this month’s MOJO magazine (July ’03) on how Kate’s 1978 album, The Kick Inside , changed his life. “Some of the greatest singers in the world…you can spot their influences. But Kate Bush has no mother or father. I’d be an average musician, like everyone else, if it wasn’t for her.”"
+  },
+  "tricky>pj-harvey": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.theskinny.co.uk/music/interviews/tricky-real-gone-kid",
+    "found": "“Polly Harvey still inspires me, lyrically, and people like Rakim and Public Enemy."
   },
   "tricky>siouxsie-and-the-banshees": {
     "result": "found",
@@ -4629,6 +5765,18 @@
     "url": "https://www.stereogum.com/1201722/turntable-interview-sarah-lund-unwound/franchises/turntable-interview/",
     "found": "Andrew was in a band called Irving Klaw Trio, who I should also load into the queue... he is from NYC and was a huge JSBE fan and I was from the midwest and was a huge Jesus Lizard fan"
   },
+  "unwound>velvet-underground": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.scaruffi.com/interv/unwound.html",
+    "found": "Yeah, VU and Sonic Youth are big influences."
+  },
+  "unwound>wipers": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.scaruffi.com/interv/unwound.html",
+    "found": "Well I like guitar music alot. Should I list my influences? Greg Ginn(black flag), Sonic Youth, Greg Sage(wipers), Jimi Hendrix, David Lester(mecca normal), Helios Creed(chrome), Tom Verlaine(televison), Toni Iommi(black sabbath) and more."
+  },
   "unwound>wire": {
     "result": "found",
     "at": "2026-10-26",
@@ -4641,11 +5789,17 @@
     "url": "https://www.earwolf.com/?p=70669",
     "found": "They also talk about when Ezra first heard of Talking Heads, the moment Ezra realized Talking Heads were punk, and how Talking Heads influenced Ezra as a musician."
   },
+  "vampire-weekend>the-walkmen": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/8470-5-10-15-20-ezra-koenig/",
+    "found": "I was already really into the first album."
+  },
   "vashti-bunyan>bob-dylan": {
     "result": "found",
     "at": "2026-10-26",
-    "url": "https://web.archive.org/web/2020/https://www.thecourier.co.uk/fp/lifestyle/entertainment/music/rocktalk/779511/if-i-could-take-off-to-the-hills-now-i-probably-would-says-godmother-of-freak-folk-vashti-bunyan-ahead-of-rare-fife-gig/",
-    "found": "Vashti Bunyan was just 18 when she discovered the music of Bob Dylan in New York and decided to become a full-time musician."
+    "url": "https://pitchfork.com/features/5-10-15-20/9523-vashti-bunyan/",
+    "found": "It also made me want to be a wandering singer myself."
   },
   "violent-femmes>brian-eno": {
     "result": "found",
@@ -4695,17 +5849,41 @@
     "url": "https://stereogum.com/2002586/car-wheels-on-a-gravel-road-turns-20/franchises/the-anniversary",
     "found": "It was \"Can’t Let Go\" by Lucinda Williams from my favorite album of all time, Car Wheels On A Gravel Road , which turns 20 tomorrow."
   },
+  "waxahatchee>rem": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://rollingstone.com/music/music-features/waxahatchee-katie-crutchfield-great-thunder-interview-737269",
+    "found": "R.E.M. was a big influence."
+  },
   "waxahatchee>velvet-underground": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://rollingstone.com/music/music-features/waxahatchee-katie-crutchfield-great-thunder-interview-737269",
     "found": "The Velvet Underground was another big influence."
   },
+  "wednesday>cocteau-twins": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.elienis.com/karly-hartzman-wednesday-heavier-yep-definitely-regrets-interview/",
+    "found": "I remember him playing Sunny Day Real Estate, Cocteau Twins, My Bloody Valentine."
+  },
   "wednesday>drive-by-truckers": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://stereogum.com/2218958/wednesday-interview-rat-saw-god-influences/interviews",
     "found": "HARTZMAN: For \"Chosen To Deserve\" specifically, I heard \"Let There Be Rock\" by Drive-By Truckers. The premise is describing a fucked-up childhood, basically, and I wanted to write that song but use all my memories instead and not let a riff overpower it."
+  },
+  "wednesday>fleet-foxes": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://wrsu.org/interview-with-xandy-chelmis-of-wednesday-and-mj-lenderman-the-wind/",
+    "found": "I really loved The Shins, Grizzly Bear, Real Estate, Beach Fossils, and Fleet Foxes was a big one for me. I think a lot of that music has held up pretty well, and then a lot of it hasn’t, but those bands were definitely informing me pretty heavily at the time."
+  },
+  "wednesday>grizzly-bear": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://wrsu.org/interview-with-xandy-chelmis-of-wednesday-and-mj-lenderman-the-wind/",
+    "found": "I really loved The Shins, Grizzly Bear, Real Estate, Beach Fossils, and Fleet Foxes was a big one for me."
   },
   "wednesday>lucinda-williams": {
     "result": "found",
@@ -4718,6 +5896,12 @@
     "at": "2026-10-26",
     "url": "https://www.elienis.com/karly-hartzman-wednesday-heavier-yep-definitely-regrets-interview/",
     "found": "I remember him playing Sunny Day Real Estate, Cocteau Twins, My Bloody Valentine. And just opening that world for me and me immediately understanding that [music] more than the stuff I was kind of trying to fit into my sister's mold because I thought she was cool."
+  },
+  "wednesday>neil-young": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://wrsu.org/interview-with-xandy-chelmis-of-wednesday-and-mj-lenderman-the-wind/",
+    "found": "Before he fell in love with Jason Molina and Jeff Tweedy, there were Neil Young LPs and Dr. Demento radio sets. His childhood favorites sparked a desire to play live"
   },
   "wednesday>songs-ohia": {
     "result": "found",
@@ -4779,6 +5963,12 @@
     "url": "https://thequietus.com/interviews/bakers-dozen/weyes-blood-natalie-mering-bakers-dozen-favourite-albums/5/",
     "found": "I think it was just being a fan of The Velvet Underground and wanting to check out his solo music."
   },
+  "wilco>minutemen": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/the-music-that-made-wilcos-jeff-tweedy/",
+    "found": "They felt attainable. And they were making music with so few moving parts that you could hear what was going on and learn what each instrument was doing."
+  },
   "wilco>television": {
     "result": "found",
     "at": "2026-10-26",
@@ -4790,6 +5980,12 @@
     "at": "2026-10-26",
     "url": "https://au.rollingstone.com/music/music-news/wire-reflect-on-40-years-as-punks-ultimate-cult-band-1670",
     "found": "Wire’s members have always fancied themselves to be Dadaists, thumbing their noses at tradition, but here they’ve created a work of anti-Dada – a stark inverse of Pink Flag , full of regular-length songs with bells and whistles and the heavy influence of Berlin-era Bowie."
+  },
+  "wire>neil-young": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/graham-lewis-wire-favourite-albums-interview/4/",
+    "found": "He’s in Wire’s minimalism, and you can see his influence go right through"
   },
   "wire>ramones": {
     "result": "found",
@@ -4839,11 +6035,23 @@
     "url": "https://trouserpress.com/reviews/xiu-xiu/",
     "found": "The oft-asked question “are they kidding?” is best answered by the sticker affixed to Knife Play, which serves as both a thank you to sources of inspiration and a frank warning shot to would-be listeners: “When my mom died I listened to Henry Cowell, Joy Division, Detroit techno, the Smiths, Takemitsu, Sabbath, Gamelan, ‘Black Angels’ and Cecil Taylor (Jamie Stewart).”"
   },
+  "xiu-xiu>kraftwerk": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://web.archive.org/web/2020/https://sandiegoreader.com/news/2014/feb/05/blurt-pop-fell-away-heart/",
+    "found": "It is an homage to Suicide, Einstürzende Neubauten, Nico, and Kraftwerk."
+  },
   "xiu-xiu>nico": {
     "result": "found (archived copy)",
     "at": "2026-10-26",
     "url": "https://sandiegoreader.com/news/2014/feb/05/blurt-pop-fell-away-heart/",
     "found": "Pop fell away from heart. It is an homage to Suicide, Einstürzende Neubauten, Nico, and Kraftwerk."
+  },
+  "xiu-xiu>scott-walker": {
+    "result": "found (archived copy)",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/jamie-stewart-xiu-xiu-interview-favourite-music/7/",
+    "found": "It's not in any way an exaggeration to say that Scott Walker is an idol of mine."
   },
   "xiu-xiu>suicide": {
     "result": "found",
@@ -4857,11 +6065,23 @@
     "url": "https://www.westword.com/?p=40628131",
     "found": "His music is some of my favorite music since I was a teenager. I’m consistently really moved by the work he has done."
   },
+  "xiu-xiu>the-cure": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://thequietus.com/interviews/bakers-dozen/jamie-stewart-xiu-xiu-interview-favourite-music/2/",
+    "found": "When I was in 10th grade, I listened to ‘Kiss Me Kiss Me Kiss Me’ every single night before I went to bed for an entire year."
+  },
   "xiu-xiu>this-mortal-coil": {
     "result": "found",
     "at": "2026-10-26",
     "url": "https://sun-13.com/2024/09/24/knifes-edge-in-conversation-with-xiu-xius-jamie-stewart/",
     "found": "They were really into the ’80s… 4AD records like Bauhaus, This Mortal Coil, Cocteau Twins. The Wolfgang Press was another huge one for me, they were a really big influence, especially Bird Word Cage, Nick Cave, bands like that."
+  },
+  "yeah-yeah-yeahs>neutral-milk-hotel": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.theguardian.com/music/2014/aug/29/karen-o-soundtrack-of-my-life-yeah-yeah-yeahs",
+    "found": "I can credit him for putting the idea in my head that I could sing too, as long as I sang my heart out."
   },
   "yeah-yeah-yeahs>sonic-youth": {
     "result": "found",
@@ -4892,6 +6112,18 @@
     "at": "2026-10-26",
     "url": "https://diymag.com/interview/yeule-album-softscars-september-2023",
     "found": "We have so many references from the ‘90s and ‘00s, like Radiohead , My Chemical Romance … Honestly, Gerard Way changed my fucking life,” they enthuse giddily."
+  },
+  "yo-la-tengo>big-star": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://www.premierguitar.com/artists/guitarists/yo-la-tengos-ira-kaplan-if-it-aint-broke",
+    "found": "Soon after that show, I found out how much of Alex's solo repertoire was from the three Big Star records. Two of them had been released, but _Third_ hadn't been issued yet. At that point, I started tracking down Big Star's music, getting copies of _#1 Record_ and _Radio City_, and then I snapped up _Third_ when it came out."
+  },
+  "yo-la-tengo>black-flag": {
+    "result": "found",
+    "at": "2026-10-26",
+    "url": "https://pitchfork.com/features/5-10-15-20/yo-la-tengo-on-the-music-that-made-them-indie-rock-heroes/",
+    "found": "At that point, Damaged by Black Flag had great sway over me and to this day it still does."
   },
   "yo-la-tengo>my-bloody-valentine": {
     "result": "found",

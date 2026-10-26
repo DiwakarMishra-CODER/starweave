@@ -1,0 +1,38 @@
+{
+ "agent": "deep-1",
+ "finished": true,
+ "searches": 26,
+ "toolStatus": "WebSearch worked throughout; every page opened with ledger.ts read (Magnet, Skinny, Kate Bush News, Quietus direct).",
+ "found": [
+  {
+   "source": "tricky", "target": "kate-bush", "sourceTier": "first-person", "confidence": 0.85,
+   "url": "https://www.katebushnews.com/?p=616",
+   "found": "In an incredible tribute to Kate, Tricky writes an article in this month’s MOJO magazine (July ’03) on how Kate’s 1978 album, The Kick Inside , changed his life. “Some of the greatest singers in the world…you can spot their influences. But Kate Bush has no mother or father. I’d be an average musician, like everyone else, if it wasn’t for her.”",
+   "citation": "Tricky wrote in MOJO (July 2003) that Kate Bush's The Kick Inside changed his life: \"I'd be an average musician, like everyone else, if it wasn't for her,\" adding that his track \"Strugglin'\" was inspired by her \"Breathing\" (quoted by Kate Bush News)."
+  },
+  {
+   "source": "tricky", "target": "pj-harvey", "sourceTier": "first-person", "confidence": 0.8,
+   "url": "https://www.theskinny.co.uk/music/interviews/tricky-real-gone-kid",
+   "found": "“Polly Harvey still inspires me, lyrically, and people like Rakim and Public Enemy.",
+   "citation": "Tricky told The Skinny (on Knowle West Boy, 2008) that \"Polly Harvey still inspires me, lyrically,\" part of an \"undiminished love for his early influences.\""
+  },
+  {
+   "source": "the-mountain-goats", "target": "the-cure", "sourceTier": "first-person", "confidence": 0.6,
+   "url": "https://magnetmagazine.com/2017/06/07/mountain-goats-american-goth/",
+   "found": "In his “goth/death rock” heyday in the mid-’80s, Darnielle saw shows by Christian Death, the Sisters Of Mercy, Peter Murphy and the Cure. “The Cure counts for all goths,” he says. “The other thing about the Cure is that they’re so good, they transcend all that. If you can’t get down with the Cure, at least through Kiss Me, Kiss Me, Kiss Me , what is wrong with you?”",
+   "citation": "John Darnielle told Magnet (June 2017, on Goths) that he saw the Cure in his mid-80s goth days and still rates them: \"they're so good, they transcend all that.\""
+  },
+  {
+   "source": "dead-can-dance", "target": "cocteau-twins", "sourceTier": "reported", "confidence": 0.5,
+   "url": "https://thequietus.com/interviews/bakers-dozen/lisa-gerrard-bakers-dozen-favourite-albums/",
+   "found": "Gerrard herself is a fan of the Cocteau Twins, but stresses that they were in no way trying to emulate them.",
+   "citation": "The Quietus (Lisa Gerrard's Baker's Dozen, June 2021) reports that Lisa Gerrard is a fan of the Cocteau Twins, though she stresses Dead Can Dance were not trying to emulate them."
+  }
+ ],
+ "none": [
+  {"artist": "hum", "tried": "6 searches: Talbott's own interviews (Inlet 2020, 1995-98 press), who on the map names Hum (Deftones/Nothing/Deafheaven are off the map; Chino's Quietus Baker's Dozen names Hum but Deftones is not a node); opened musicfeeds, mxdwn, terrorbird, a 90s zine: no Talbott statement of influence. Only the bare favourites list from the band bio remains; the artist leaves."},
+  {"artist": "the-mountain-goats (others)", "tried": "Siouxsie and Joy Division: Magnet and NPR/GBH pages open, but Darnielle only names Siouxsie as influential on 'goth' generally (NPR: 'a pretty major fashion influence and a sonic influence in goth') and Joy Division only via Martin Hannett; the Spellbound-cover 'one of his favorites' line is Wikipedia only; no on-map artist naming Darnielle found (La Dispute's Dreyer: none). Only the Cure link is solid."},
+  {"artist": "tricky (others)", "tried": "Siouxsie: only the Tattoo cover and secondary profiles, no Tricky quote. Public Enemy not in the roster. Massive Attack stays personnel. Specials: nothing found."},
+  {"artist": "dead-can-dance (others)", "tried": "Perry (Hot Press: his punk band covered Stooges, MC5, New York Dolls at 17, a cover repertoire not a stated influence, not used). No on-map artist naming DCD found in 4 searches (Holter, Weyes Blood, Beach House, Grimes, Anna von Hausswolff, Ethel Cain etc.). Caution: dead-can-dance>cocteau-twins was removed once for label adjacency; the new evidence is Gerrard's fandom, thin and second-hand."}
+ ]
+}

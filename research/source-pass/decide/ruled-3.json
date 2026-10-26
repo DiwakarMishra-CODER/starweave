@@ -1,0 +1,268 @@
+{
+ "agent": "decide-3",
+ "finished": true,
+ "rulings": [
+  {
+   "key": "angel-olsen>siouxsie-and-the-banshees",
+   "ruling": "remove",
+   "why": "Pitchfork's comparison of sound, no Olsen statement."
+  },
+  {
+   "key": "anna-von-hausswolff>swans",
+   "ruling": "remove",
+   "why": "A guest vocal spot is collaboration, and no Hausswolff statement of influence was found."
+  },
+  {
+   "key": "bark-psychosis>wire",
+   "ruling": "remove",
+   "why": "Only a cover and an unsourced Wikipedia line; a cover is not an influence statement."
+  },
+  {
+   "key": "black-country-new-road>american-football",
+   "ruling": "remove",
+   "why": "Evans says the band appreciates them but admits he doesn't know them much: liking, not shaping (50/50; a warmer quote would change it)."
+  },
+  {
+   "key": "blood-orange>the-replacements",
+   "ruling": "remove",
+   "why": "Hynes's 'Westerberg' is a tribute song concept, not a statement that the Replacements shaped his music."
+  },
+  {
+   "key": "bon-iver>tom-waits",
+   "ruling": "remove",
+   "why": "Vernon only says Waits records were in the childhood house, and names John Prine as the favourite; the PopMatters claim could not be found."
+  },
+  {
+   "key": "broken-social-scene>dirty-three",
+   "ruling": "remove",
+   "why": "A present-tense favourite-album answer with no claim of shaping Drew's music."
+  },
+  {
+   "key": "built-to-spill>pavement",
+   "ruling": "remove",
+   "why": "Sendra's 'Pavement-style pop' is a stylistic comparison, as the old citation admitted."
+  },
+  {
+   "key": "chk-chk-chk>omd",
+   "ruling": "remove",
+   "why": "OMD appears only as half of a first concert on the page; the influence answer is about Depeche Mode alone."
+  },
+  {
+   "key": "dead-can-dance>cocteau-twins",
+   "ruling": "remove",
+   "why": "Shared 4AD label and genre only."
+  },
+  {
+   "key": "depeche-mode>gary-numan",
+   "ruling": "remove",
+   "why": "Clarke liked early Numan but says he never saw it as something he could do, and names OMD and the Human League as the push (50/50; a Gore or Fletcher quote would change it)."
+  },
+  {
+   "key": "dirty-three>nick-cave-and-the-bad-seeds",
+   "ruling": "remove",
+   "why": "Warren Ellis is in both bands: personnel overlap, not influence."
+  },
+  {
+   "key": "elliott-smith>nick-drake",
+   "ruling": "remove",
+   "why": "Far Out's writer asserts it as a favourite with no Smith quote; the NME page does not mention Drake."
+  },
+  {
+   "key": "explosions-in-the-sky>godspeed-you-black-emperor",
+   "ruling": "remove",
+   "why": "A peer-scene remark that five bands paved a road for each other, not that Godspeed shaped them."
+  },
+  {
+   "key": "fugazi>minor-threat",
+   "ruling": "remove",
+   "why": "MacKaye's words are about shedding the 'ex-Minor Threat' label; this is personnel continuity."
+  },
+  {
+   "key": "george-clanton>ariel-pink",
+   "ruling": "remove",
+   "why": "Pitchfork compares attitude, not influence."
+  },
+  {
+   "key": "hot-chip>this-heat",
+   "ruling": "remove",
+   "why": "Taylor's praise ('sounded like the future') is admiration with no tie to his own music; the Pitchfork page is gone."
+  },
+  {
+   "key": "hum>rem",
+   "ruling": "remove",
+   "why": "A bare favourites list on the band bio with no tie to their own music, and the weakest of the three Hum entries."
+  },
+  {
+   "key": "jane-remover>slowdive",
+   "ruling": "remove",
+   "why": "Pitchfork describes the sound of one song, not influence."
+  },
+  {
+   "key": "jeff-rosenstock>minor-threat",
+   "ruling": "remove",
+   "why": "A cover set at The Fest is not an influence statement."
+  },
+  {
+   "key": "kurt-vile>cat-power",
+   "ruling": "remove",
+   "why": "A favourite-record remark only; the 'grew up listening to' quote was not found."
+  },
+  {
+   "key": "mazzy-star>the-jesus-and-mary-chain",
+   "ruling": "remove",
+   "why": "Touring and guest-vocal collaboration only."
+  },
+  {
+   "key": "mono>explosions-in-the-sky",
+   "ruling": "remove",
+   "why": "Both formed in 1999 with first albums a year apart, so chronology does not support influence."
+  },
+  {
+   "key": "neu>kraftwerk",
+   "ruling": "remove",
+   "why": "Personnel overlap (Rother and Dinger were in Kraftwerk), no statement of musical influence."
+  },
+  {
+   "key": "nirvana>swans",
+   "ruling": "remove",
+   "why": "A bare favourites list in Cobain's journal with no comment."
+  },
+  {
+   "key": "olivia-tremor-control>the-flaming-lips",
+   "ruling": "remove",
+   "why": "The old citation admits scene overlap only and no source for OTC drawing on the Flaming Lips was found."
+  },
+  {
+   "key": "parquet-courts>television",
+   "ruling": "remove",
+   "why": "Grantland lists reference points only to argue against deconstructing the band into them."
+  },
+  {
+   "key": "pinback>minutemen",
+   "ruling": "remove",
+   "why": "An uncited sampling claim marked 'citation needed'; sampling a drum intro is not a stated influence."
+  },
+  {
+   "key": "pinback>sunny-day-real-estate",
+   "ruling": "remove",
+   "why": "Pitchfork groups them as peers, not influence."
+  },
+  {
+   "key": "portishead>joy-division",
+   "ruling": "remove",
+   "why": "A live-review comparison ('haunted by'), not an argument that they drew on those bands (50/50)."
+  },
+  {
+   "key": "ramones>velvet-underground",
+   "ruling": "remove",
+   "why": "The page names Lou Reed solo-era, not the Velvet Underground; no source names the Velvets."
+  },
+  {
+   "key": "red-house-painters>this-mortal-coil",
+   "ruling": "remove",
+   "why": "Shared 4AD label only."
+  },
+  {
+   "key": "rites-of-spring>bob-dylan",
+   "ruling": "remove",
+   "why": "Only Picciotto's 'personal favorites' (Blonde on Blonde), a bare favourite."
+  },
+  {
+   "key": "sharon-van-etten>omd",
+   "ruling": "remove",
+   "why": "Current listening in 2010, not formation (50/50; a statement about OMD shaping her would change it)."
+  },
+  {
+   "key": "stereolab>this-heat",
+   "ruling": "remove",
+   "why": "NPR lists Stereolab in a resemblance list with no claim they drew on This Heat."
+  },
+  {
+   "key": "superchunk>depeche-mode",
+   "ruling": "remove",
+   "why": "McCaughan says he was ambivalent about that synth music and couldn't figure out how to make it."
+  },
+  {
+   "key": "talking-heads>brian-eno",
+   "ruling": "remove",
+   "why": "Eno produced their records; no pre-production statement of fandom found."
+  },
+  {
+   "key": "the-cure>joy-division",
+   "ruling": "remove",
+   "why": "Smith admired Unknown Pleasures in 1980, after The Cure formed and released their debut; admiration, not formative influence."
+  },
+  {
+   "key": "the-jesus-and-mary-chain>echo-and-the-bunnymen",
+   "ruling": "remove",
+   "why": "'Didn't make us want to puke' is faint praise, not influence."
+  },
+  {
+   "key": "the-last-dinner-party>siouxsie-and-the-banshees",
+   "ruling": "remove",
+   "why": "Wikipedia lists Siouxsie only among comparisons; the members' cited influences don't include her."
+  },
+  {
+   "key": "the-mountain-goats>the-cure",
+   "ruling": "remove",
+   "why": "Only Wikipedia carries the band statement, and its footnote is a journalist's own listening history (whose-I trap); likely true, so a Merge or band statement would change it."
+  },
+  {
+   "key": "the-rapture>joy-division",
+   "ruling": "remove",
+   "why": "The Stylus line is a comparison about one song."
+  },
+  {
+   "key": "the-strokes>television",
+   "ruling": "remove",
+   "why": "The only evidence is critics' comparison plus an unlocated denial; no page opened carries either."
+  },
+  {
+   "key": "tortoise>brian-eno",
+   "ruling": "remove",
+   "why": "AllMusic never names Eno."
+  },
+  {
+   "key": "unwound>fugazi",
+   "ruling": "remove",
+   "why": "The interview says 'the DC punk thing' and never names Fugazi."
+  },
+  {
+   "key": "wolf-alice>blur",
+   "ruling": "remove",
+   "why": "An either/or preference pick, not influence."
+  },
+  {
+   "key": "women>this-heat",
+   "ruling": "remove",
+   "why": "This Heat appears only in the writer's resemblance sentence; Flegel names the Stooges, Iggy Pop and Wire."
+  },
+  {
+   "key": "sigur-ros>cocteau-twins",
+   "ruling": "denial",
+   "strength": "clean",
+   "url": "https://www.theguardian.com/music/2020/aug/18/jonsi-birgisson-the-sigur-ros-singer-on-his-bold-new-direction",
+   "found": "Similarly enamoured with high-wire wordless singing, Fraser was often cited as an influence on Birgisson at the start of his career, only he’d never heard a note of her music.",
+   "citation": "The Guardian (18 Aug 2020): Jónsi Birgisson had never heard Cocteau Twins at the start of his career, despite the comparisons, and only listened to them years later.",
+   "why": "The page says Jónsi had not heard them when the comparison was made, so the influence did not run."
+  },
+  {
+   "key": "sonic-youth>faust",
+   "ruling": "keep",
+   "sourceTier": "critic",
+   "url": "https://www.vice.com/en/article/fausts-art-of-improvisation-to-thank-for-everything-you-love/",
+   "found": "it was Faust who served as the weirdo Dada-informed distant cousin more interested in improvisation and poetry, undoubtedly the muse unto which Sonic Youth owes royalties.",
+   "citation": "Vice argued that Faust was \"undoubtedly the muse unto which Sonic Youth owes royalties.\"",
+   "why": "A critic asserts Sonic Youth drew on Faust, a passing but direct claim (close call)."
+  },
+  {
+   "key": "pavement>velvet-underground",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "url": "https://web.archive.org/web/2020/https://www.nme.com/?p=1246130",
+   "found": "“‘Sister Ray’ is the ultimate song,” he said. “Maybe you can’t call it a song – the ultimate noise statement of all time: there’s never been a song like that and there never will be again. It is with me always.”",
+   "citation": "Stephen Malkmus told The Observer in 2013 (reported by NME) that the Velvet Underground's \"Sister Ray\" is \"the ultimate song... It is with me always.\"",
+   "why": "Malkmus says the song has stayed with him always, close to the keep-listening test (closest call; fandom stated after the split)."
+  }
+ ]
+}

@@ -1,0 +1,264 @@
+{
+ "agent": "decide-2",
+ "finished": true,
+ "rulings": [
+  {
+   "key": "angel-olsen>cocteau-twins",
+   "ruling": "remove",
+   "why": "Only a Pitchfork comparison of sound; no Olsen statement."
+  },
+  {
+   "key": "anna-von-hausswolff>siouxsie-and-the-banshees",
+   "ruling": "remove",
+   "why": "Only vocal comparisons by critics; no statement from her."
+  },
+  {
+   "key": "autechre>boards-of-canada",
+   "ruling": "remove",
+   "why": "Page shows Booth championing BoC to Skam, which is not BoC shaping Autechre; the rest of the old citation is on no page. A flip would need a source that Autechre shaped BoC."
+  },
+  {
+   "key": "bjork>nico",
+   "ruling": "remove",
+   "why": "Bare favourites list with no Bjork comment about Nico."
+  },
+  {
+   "key": "blonde-redhead>sonic-youth",
+   "ruling": "remove",
+   "why": "Makino says she loved them but did not identify with them and rejected that side; not an outright denial, but no support for influence (would change if she names SY as shaping her sound)."
+  },
+  {
+   "key": "bon-iver>neutral-milk-hotel",
+   "ruling": "remove",
+   "why": "Cornell Sun only says you can see strains of NMH in the album; a resemblance, no Vernon statement."
+  },
+  {
+   "key": "broadcast>stereolab",
+   "ruling": "remove",
+   "why": "Fact calls the Stereolab comparison lazy; the other tie is label/management."
+  },
+  {
+   "key": "broken-social-scene>talk-talk",
+   "ruling": "remove",
+   "why": "Favourite-album answer about emotion, no statement that Talk Talk shaped Drew's music."
+  },
+  {
+   "key": "caroline-polachek>david-bowie",
+   "ruling": "remove",
+   "why": "Admiration for Bowie's makeup and image, not his music or her own work."
+  },
+  {
+   "key": "codeine>galaxie-500",
+   "ruling": "remove",
+   "why": "Page found only compares tempo philosophy; the Guitar-Muse sentence could not be produced."
+  },
+  {
+   "key": "depeche-mode>cabaret-voltaire",
+   "ruling": "remove",
+   "why": "Bare favourites list from magazine questionnaires with no comment."
+  },
+  {
+   "key": "depeche-mode>talking-heads",
+   "ruling": "remove",
+   "why": "Bare favourites list from magazine questionnaires with no comment."
+  },
+  {
+   "key": "elliott-smith>big-star",
+   "ruling": "remove",
+   "why": "Far Out writer's own essay on his 'folk favourites'; no Smith quote."
+  },
+  {
+   "key": "elliott-smith>television",
+   "ruling": "remove",
+   "why": "A favourite late-night album in a webchat answer, nothing about shaping his music; 50/50, would change if he links it to his own work."
+  },
+  {
+   "key": "four-tet>aphex-twin",
+   "ruling": "remove",
+   "why": "Hebden admires Windowlicker as an ideal but never says it shaped his music; 50/50."
+  },
+  {
+   "key": "geese>velvet-underground",
+   "ruling": "remove",
+   "why": "Page has only Cameron saying new material is 'like Velvet Underground', a comparison of direction; the cited list is not on the page."
+  },
+  {
+   "key": "hot-chip>four-tet",
+   "ruling": "remove",
+   "why": "School friends swapping records and a favour; not one shaping the other, no mentor wording on the page."
+  },
+  {
+   "key": "hum>my-bloody-valentine",
+   "ruling": "remove",
+   "why": "Bare favourites list in the band's own bio, no comment; 50/50, would change with a statement tying MBV to Hum's sound."
+  },
+  {
+   "key": "jane-remover>my-bloody-valentine",
+   "ruling": "remove",
+   "why": "The Pitchfork review does not name My Bloody Valentine."
+  },
+  {
+   "key": "jeff-rosenstock>fugazi",
+   "ruling": "remove",
+   "why": "Only a critic's 'Fugazi of the internet age' ethos comparison; the cited page was not found."
+  },
+  {
+   "key": "julia-holter>siouxsie-and-the-banshees",
+   "ruling": "remove",
+   "why": "Critics compare her voice to Siouxsie; no Holter statement."
+  },
+  {
+   "key": "lush>my-bloody-valentine",
+   "ruling": "remove",
+   "why": "Anderson denies sounding like MBV and the shoegaze label; that denies resemblance, not influence, and nothing says MBV shaped her."
+  },
+  {
+   "key": "mogwai>bark-psychosis",
+   "ruling": "remove",
+   "why": "Spectrum Culture says you can hear elements of the sound, a resemblance; Mogwai's debut came after Hex but nothing says they drew on it."
+  },
+  {
+   "key": "my-bloody-valentine>the-jesus-and-mary-chain",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "url": "https://mixdownmag.com.au/features/gear-talks-an-interview-with-kevin-shields-of-my-bloody-valentine/",
+   "found": "Around that same time, Jesus Mary Chain brought out their first single. So those things were all kind of pulling towards that.",
+   "citation": "Kevin Shields told Mixdown (2024) that The Jesus and Mary Chain's first single, along with Einstürzende Neubauten's live show, was among the things pulling My Bloody Valentine towards their early direction, though he called the idea of a shared Cocteau Twins and Jesus and Mary Chain influence \"garbage\" and named Psychocandy as the one shared record.",
+   "why": "Shields names the first single as one of the things pulling the band toward their direction, though he hedges; a close call."
+  },
+  {
+   "key": "nico>velvet-underground",
+   "ruling": "remove",
+   "why": "Personnel overlap (Nico sang on the Velvets' 1967 album), not influence."
+  },
+  {
+   "key": "of-montreal>velvet-underground",
+   "ruling": "remove",
+   "why": "Barnes names Lou Reed the person, not the Velvet Underground; solo-vs-band trap, would change with a Velvets-specific statement."
+  },
+  {
+   "key": "parquet-courts>sonic-youth",
+   "ruling": "remove",
+   "why": "Grantland lists reference points the writer then sets aside; a comparison."
+  },
+  {
+   "key": "pavement>slint",
+   "ruling": "remove",
+   "why": "Nastanovich calls Spiderland a favourite record, found at 24 after Pavement began; nothing about Pavement's music."
+  },
+  {
+   "key": "pinback>can",
+   "ruling": "remove",
+   "why": "Epigraph lyric from Heavy Vegetable's song lamenting what radio won't play; no influence statement."
+  },
+  {
+   "key": "pinback>slint",
+   "ruling": "remove",
+   "why": "Epigraph lyric from Heavy Vegetable's song lamenting what radio won't play; no influence statement."
+  },
+  {
+   "key": "porter-robinson>boards-of-canada",
+   "ruling": "remove",
+   "why": "Spin hears one track's melodies as like BoC; a comparison."
+  },
+  {
+   "key": "portishead>siouxsie-and-the-banshees",
+   "ruling": "remove",
+   "why": "Guardian live review hears post-punk in the sound; a resemblance, not a stated influence."
+  },
+  {
+   "key": "red-house-painters>galaxie-500",
+   "ruling": "remove",
+   "why": "AV Club says Galaxie 500 helped start the scene RHP defined; it does not say RHP drew on them."
+  },
+  {
+   "key": "ride>mudhoney",
+   "ruling": "remove",
+   "why": "The cited Mudhoney line is Neil Halstead of Slowdive; no Ride member names Mudhoney."
+  },
+  {
+   "key": "rites-of-spring>the-smiths",
+   "ruling": "remove",
+   "why": "Page only says the members 'discovered' the Smiths later, nothing about shaping their music."
+  },
+  {
+   "key": "sigur-ros>bark-psychosis",
+   "ruling": "remove",
+   "why": "Spectrum Culture only says Hex foreshadowed Sigur Ros; no sign they drew on it."
+  },
+  {
+   "key": "sleater-kinney>liz-phair",
+   "ruling": "remove",
+   "why": "Only a co-headlining tour; no Sleater-Kinney statement."
+  },
+  {
+   "key": "squid>tortoise",
+   "ruling": "remove",
+   "why": "Borlase praises the album in a favourites list but does not say it shaped Squid; 50/50, would change with an influence statement."
+  },
+  {
+   "key": "sufjan-stevens>neutral-milk-hotel",
+   "ruling": "remove",
+   "why": "Cornell Sun only says you can see strains of NMH; a resemblance, no Stevens statement."
+  },
+  {
+   "key": "swans>glenn-branca",
+   "ruling": "denial",
+   "strength": "contested",
+   "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+   "found": "But Branca was NOT a musical influence,\" he clarifies, \" more an ideal of what it's possible to achieve through sound.",
+   "citation": "Michael Gira told The Wire (via Young God Records) that playing under Glenn Branca was an inspiration, but that Branca was not a musical influence, more an ideal of what sound could achieve.",
+   "why": "Gira explicitly says not a musical influence while calling Branca an inspiration, so a contested denial; could be kept at first-person inspiration if the owner prefers."
+  },
+  {
+   "key": "television>new-york-dolls",
+   "ruling": "remove",
+   "why": "Support slot and shared scene, no Television statement."
+  },
+  {
+   "key": "the-dismemberment-plan>bad-brains",
+   "ruling": "remove",
+   "why": "Morrison got into hardcore in his mid-to-late 30s, after the band's records; current listening, not a shaping influence."
+  },
+  {
+   "key": "the-jesus-and-mary-chain>the-birthday-party",
+   "ruling": "remove",
+   "why": "They only say these bands did not make them want to puke, which is not a fan statement."
+  },
+  {
+   "key": "the-mountain-goats>siouxsie-and-the-banshees",
+   "ruling": "remove",
+   "why": "Only Wikipedia relays the band statement, citing a Noisey piece whose goth listening is the journalist's own; hold until a band statement is found."
+  },
+  {
+   "key": "the-rapture>gang-of-four",
+   "ruling": "remove",
+   "why": "Critic comparisons only ('follows', 'reveals influences'); no band statement."
+  },
+  {
+   "key": "the-strokes>guided-by-voices",
+   "ruling": "remove",
+   "why": "Publisher marketing copy, no Strokes member quoted."
+  },
+  {
+   "key": "toe>cap-n-jazz",
+   "ruling": "remove",
+   "why": "The named inspiration is Ghosts and Vodka, not Cap'n Jazz itself; would change if Yamazaki names Cap'n Jazz as shaping him."
+  },
+  {
+   "key": "tricky>siouxsie-and-the-banshees",
+   "ruling": "remove",
+   "why": "Quietus describes Tricky covering 'Tattoo' and style parallels but not that it shaped him; a cover is not an influence claim."
+  },
+  {
+   "key": "wednesday>sonic-youth",
+   "ruling": "remove",
+   "why": "Clash only gives a writer's comparison; the Exclaim! line was not found."
+  },
+  {
+   "key": "women>sonic-youth",
+   "ruling": "remove",
+   "why": "Treble's review only compares one song's guitar chime to Sonic Youth."
+  }
+ ]
+}

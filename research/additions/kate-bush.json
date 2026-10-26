@@ -1,0 +1,133 @@
+{
+  "id": "kate-bush",
+  "name": "Kate Bush",
+  "place": {
+    "realm": "region-one",
+    "lineage": null,
+    "layer": "outside",
+    "genres": [
+      "art-pop",
+      "art-rock"
+    ],
+    "country": "GB",
+    "activeFrom": 1975,
+    "signatureSong": "Running Up That Hill (A Deal with God)",
+    "scenes": [],
+    "note": "Compare x-ray-spex/patti-smith: region-one, layer outside. 'art-pop' genre's emergedBasis already names Kate Bush (1979), so the genre page should list her. activeFrom 1975 = signed to EMI/first demos; debut single 1978."
+  },
+  "edges": [
+    {
+      "source": "kate-bush",
+      "target": "david-bowie",
+      "sourceTier": "first-person",
+      "confidence": 0.8,
+      "url": "https://faroutmagazine.co.uk/how-david-bowie-inspired-kate-bush/",
+      "found": "\"I was sitting in my bath, submerged in bubbles, listening to Radio Luxembourg when I heard David Bowie for the first time,\" she once recalled. \"'There's a starman waiting in the sky'. I thought it was such an interesting song and that he had a really unusual voice. Soon I was to hear that track everywhere, and Bowie's music became a part of my life.\"",
+      "citation": "Kate Bush recalled hearing David Bowie's \"Starman\" on Radio Luxembourg as a teenager: she thought it \"such an interesting song\" with a \"really unusual voice\", and said \"Bowie's music became a part of my life\" (quoted by Far Out).",
+      "note": "Far Out is quoting an older interview without naming it; a primary (Mojo/NME) is worth finding if the owner wants first-person certainty. Her 2016 tribute (same family of pages, kate-bush-inspiration-david-bowie-elton-john) calls him \"truly inspirational both visually and musically\". She was at his last Ziggy show, 1973, before her own first records."
+    },
+    {
+      "source": "blood-orange",
+      "target": "kate-bush",
+      "sourceTier": "first-person",
+      "confidence": 0.85,
+      "url": "https://thequietus.com/interviews/bakers-dozen/dev-hynes-blood-orange-favourite-albums-essex-honey/10/",
+      "found": "Hounds Of Love is probably the most influential album for me. ... 50 Words For Snow ... was also deeply influential for me in a different way mostly in terms of piano. ... If I'm incorporating piano into a track, it's essentially because of Kate Bush.",
+      "citation": "Dev Hynes (Blood Orange), in The Quietus's Baker's Dozen, called Hounds of Love \"probably the most influential album for me\" and said that when he uses piano in a track it is \"essentially because of Kate Bush\".",
+      "note": "Speaker is Dev Hynes for blood-orange. Release dates run forward."
+    },
+    {
+      "source": "japanese-breakfast",
+      "target": "kate-bush",
+      "sourceTier": "first-person",
+      "confidence": 0.85,
+      "url": "https://thequietus.com/interviews/bakers-dozen/japanese-breakfast-bakers-dozen-favourite-albums/14/",
+      "found": "There's a song called 'Delius' on that record that I think is really underrated and was a huge inspiration for the song 'Paprika' [from Jubilee]. ... That song in particular was a key part of me figuring out how to write a song that's important to me.",
+      "citation": "Michelle Zauner of Japanese Breakfast told The Quietus that Kate Bush's \"Delius\" was \"a huge inspiration\" for her song \"Paprika\" and \"a key part of me figuring out how to write a song that's important to me\"."
+    },
+    {
+      "source": "caroline-polachek",
+      "target": "kate-bush",
+      "sourceTier": "first-person",
+      "confidence": 0.8,
+      "url": "https://www.wmagazine.com/culture/caroline-polachek-tour-dua-lipa-2022-interview",
+      "found": "I grew up kneeling at the altar of alternative music. Björk and Kate Bush and Fiona Apple were my absolute heroes when I was a teenager. I also admire how they refused to play by the rules ... I aspire to do that in my own way",
+      "citation": "Caroline Polachek told W Magazine in 2022 that Björk, Kate Bush and Fiona Apple \"were my absolute heroes when I was a teenager\", and that she aspires to make her own lane the way they did.",
+      "note": "Same sentence could also source caroline-polachek>bjork and >fiona-apple if not already on the map (Fiona Apple is; check existing edges). Year of piece 2022 from URL."
+    },
+    {
+      "source": "of-montreal",
+      "target": "kate-bush",
+      "sourceTier": "first-person",
+      "confidence": 0.7,
+      "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/",
+      "found": "KB: Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+      "citation": "DCist asked Kevin Barnes of of Montreal which artists influenced how he makes music, and he answered \"definitely\" with a list that includes David Bowie, Prince and Kate Bush.",
+      "note": "The seed already uses this same sentence for of-montreal>david-bowie ('asked which bands influenced how he makes music'); I did not see the question line itself in my read, only the answer. A bare list, so 0.7 not 0.85."
+    }
+  ],
+  "denials": [
+    {
+      "source": "st-vincent",
+      "target": "kate-bush",
+      "url": "https://www.westword.com/music/qanda-with-annie-clark-of-st-vincent-5699926/",
+      "found": "AC: I love Kate Bush, but I don't necessarily feel like I'm trying to carry on her tradition. I think she's amazing. I was probably more influenced by Stravinsky on this record than I am by Kate Bush.",
+      "citation": "Asked by Denver Westword about comparisons to Tori Amos and Kate Bush, Annie Clark said: \"I love Kate Bush, but I don't necessarily feel like I'm trying to carry on her tradition... I was probably more influenced by Stravinsky on this record than I am by Kate Bush.\"",
+      "strength": "contested",
+      "note": "Early-career answer about one record (Westword, around Actor, 2009 -- date not confirmed on the page). She loves Bush and later (2007 Pitchfork 'just discovered Kate Bush'; 2023 Rock Hall tribute she performed Running Up That Hill and said she first wept at This Woman's Work aged 7-8; Georgia Straight 2024 lists Bush among 'invaluable influences', per the existing st-vincent>sonic-youth citation). So: NOT a clean denial; I would NOT add st-vincent>kate-bush as a plain edge without the owner ruling, and a denial of 'carrying on her tradition' fits 'contested'. Also the Hall-of-Fame page (americansongwriter.com/st-vincent-praises-kate-bush-...) is first-person fandom from childhood: possible 0.6 edge if owner wants it despite this."
+    }
+  ],
+  "rejected": [
+    {
+      "pair": "lush>kate-bush",
+      "why": "Emma Anderson (Quietus): childhood tape she loved, wants to cover the title track. Fan from childhood, nothing about her own music: favourite by the strict test. Hold."
+    },
+    {
+      "pair": "the-breeders>kate-bush",
+      "why": "Tanya Donelly (Quietus): fell in love with her as a kid on SNL; vocals on Hounds of Love 'kill me'. Nothing about making her own music, and Donelly is a Breeders alum who left early: favourite. Hold."
+    },
+    {
+      "pair": "bjork>kate-bush",
+      "why": "Bjork called her 'one of my heroes' and 'one of the biggest pioneering producers' (Far Out, about a Debut-era interview, secondary). Admiration, not 'shaped me'; the existing bjork>nico citation is a favourites list that also names Bush. Hold for owner."
+    },
+    {
+      "pair": "perfume-genius>kate-bush",
+      "why": "Stereogum 2022 headline names her but Hadreas only discusses the Stranger Things revival; it is Liz Phair he says shifted his direction. No influence."
+    },
+    {
+      "pair": "weyes-blood>kate-bush",
+      "why": "Only a 2017 cover of Wuthering Heights (cover = not influence) and critic comparisons."
+    },
+    {
+      "pair": "anna-von-hausswolff>kate-bush",
+      "why": "Critic comparisons only (Falter etc.), no statement by her found."
+    },
+    {
+      "pair": "the-last-dinner-party>kate-bush",
+      "why": "Critic comparisons (Rolling Stone UK, The Critic); the band's own named hero is Bowie. Soundalike."
+    },
+    {
+      "pair": "fiona-apple>kate-bush / radiohead>kate-bush",
+      "why": "Only fan-site and Rock Hall lists; Thom Yorke only a fan-site claim (Bush visited A Moon Shaped Pool sessions, which is not influence). No primary quote found."
+    },
+    {
+      "pair": "kero-kero-bonito>kate-bush; the-knife>kate-bush",
+      "why": "LEADS NOT CHECKED: existing seed citations name Kate Bush (KKB: coverage of Civilisation II 'inspired by Kate Bush, David Byrne, Bjork...' -> reported tier; The Knife: Karin Dreijer's favourites incl. Kate Bush per IndieLondon -> favourites). Re-open those two URLs before using."
+    },
+    {
+      "pair": "kate-bush>roxy-music",
+      "why": "Kate Bush 1980 ZigZag lists 'early Roxy' among regular listening (reported via Far Out search summary; page not opened): favourite-level; roxy-music is being added in another batch."
+    }
+  ],
+  "content": {
+    "bio": "Kate Bush was born in Kent in 1958 and was signed to EMI as a teenager after David Gilmour of Pink Floyd helped get her demos heard. \"Wuthering Heights\", written when she was 18 and inspired by the Emily Bronte novel, went to number one in 1978 and made her the first woman to top the UK chart with a song she wrote herself. She then took control of her records, producing her own work from The Dreaming (1982) onward and building a studio at home.\n\nHer music is theatrical and strange in the best way: high, shapeshifting vocals, piano, the Fairlight sampler, and songs about ghosts, obsession, housework and the sea. She studied dance and mime, and her videos and her 2014 London run of shows were staged like small plays. She has released few records and toured only once before 2014, but younger artists keep naming her as a reason they dared to be odd, and \"Running Up That Hill\" found a new generation in 2022.",
+    "album": {
+      "title": "Hounds of Love",
+      "year": 1985,
+      "classicReason": "Hounds of Love splits in two: a first side of near-perfect pop songs, then \"The Ninth Wave\", a half-hour suite about a woman adrift in dark water. Bush built it in her own studio around the Fairlight sampler, Irish pipes and cello, with a drum sound on \"Running Up That Hill\" that still sounds enormous. The title track's galloping rhythm and the suite's dream logic show how far pop could stretch while still having a chorus. It endures because it is both a hit record and an experimental one, and almost every artist who loves it names it first."
+    }
+  },
+  "searches": 20,
+  "toolStatus": "WebSearch and ledger.ts read worked throughout; 20 of 22 searches used for the whole batch of three.",
+  "notes": "Upstream on the map is thin: only David Bowie is solid. Other named influences (Pink Floyd, Elton John, Simon & Garfunkel, Incredible String Band, Kate on Roxy Music/Steely Dan) are off the map or favourites-level. Nico/Velvet Underground: nothing found for Bush. Her road back to VU is via Bowie. Downstream on the map: blood-orange, japanese-breakfast, caroline-polachek, of-montreal solid."
+}

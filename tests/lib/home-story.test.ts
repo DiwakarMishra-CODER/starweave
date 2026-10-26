@@ -40,7 +40,9 @@ describe('whyFor', () => {
     const why = whyFor(data, 'velvet-underground')!;
     expect(why.direction).toBe('child');
     expect(why.other.id).toBe('brian-eno');
-    expect(why.quote).toContain('30,000 copies');
+    // His own words from his Quietus Baker's Dozen (the source pass replaced
+    // the second-hand "30,000 copies" line).
+    expect(why.quote).toContain('I could be a musician');
   });
 
   it('only ever quotes, word for word, a first-person citation on that influence', () => {

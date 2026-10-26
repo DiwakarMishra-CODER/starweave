@@ -1,0 +1,66 @@
+{
+ "id": "peter-cat-recording-co",
+ "name": "Peter Cat Recording Co.",
+ "place": {
+  "realm": "american-underground",
+  "lineage": "indie-rock",
+  "layer": "outside",
+  "genres": [
+   "art-pop",
+   "psychedelic-pop",
+   "indie-rock"
+  ],
+  "country": "IN",
+  "activeFrom": 2009,
+  "signatureSong": "Floated By (unverified, check)",
+  "scenes": [],
+  "placementNote": "Realms on the map follow sound/lineage, not geography (Destroyer, american-underground/indie-rock, art-pop, is the nearest comparison: cabaret/lounge sophistication, a literate songwriter-led band). Both sourced influences, the Velvet Underground (core) and Neutral Milk Hotel, sit in or beside american-underground, so edges stay short. Alternatives: region-one (broad indie-alt catch-all; no Brit lineage fit) or folk-confessional/folk-roots (Tom Waits comparison, but they sing no folk). Recommend american-underground/indie-rock, or neo-psych lineage if owner prefers their psych-folk side (RSI: 'psychedelic folk', 'cabaret', 'swing')."
+ },
+ "edges": [
+  {
+   "source": "peter-cat-recording-co",
+   "target": "velvet-underground",
+   "sourceTier": "reported",
+   "confidence": 0.6,
+   "url": "https://www.stereogum.com/2221396/peter-cat-recording-co-interview/interviews/qa/",
+   "found": "He cites the Velvet Underground and Neutral Milk Hotel as formative, not only for their sound, but for being emblematic of a distinctly American do-it-yourself ideal.",
+   "citation": "Stereogum (April 2023) reports that Suryakant Sawhney of Peter Cat Recording Co. \"cites the Velvet Underground and Neutral Milk Hotel as formative, not only for their sound, but for being emblematic of a distinctly American do-it-yourself ideal.\" Rolling Stone India (2011) likewise has him naming the Velvet Underground for lyrical inspiration.",
+   "note": "Second page opened: https://rollingstoneindia.com/peter-cat-recording-co-tour-india/amp : 'Sawhney hints towards Cooke, Frank Sinatra and Kishore Kumar on vocal stylings and the Velvet Underground on lyrical inspirations.' Both writer's paraphrase; no direct Sawhney quote found."
+  },
+  {
+   "source": "peter-cat-recording-co",
+   "target": "neutral-milk-hotel",
+   "sourceTier": "reported",
+   "confidence": 0.6,
+   "url": "https://rollingstoneindia.com/peter-cat-recording-co-tour-india/amp",
+   "found": "Neutral Milk Hotel is a common favourite and one of the outfit\u2019s major influences.",
+   "citation": "Rolling Stone India (2011) on Peter Cat Recording Co.: \"Neutral Milk Hotel is a common favourite and one of the outfit's major influences\"; Stereogum (2023) also reports Sawhney citing it as formative."
+  }
+ ],
+ "denials": [],
+ "rejected": [
+  {
+   "pair": "peter-cat-recording-co>sam-cooke/sinatra/kishore-kumar",
+   "why": "Named by RSI for vocal style, but off the map."
+  },
+  {
+   "pair": "peter-cat-recording-co>the-strokes",
+   "why": "Stereogum review 'the Strokes doing cabaret' (per search summary only, not opened) is a critic soundalike, and Strokes may not be on the map."
+  },
+  {
+   "pair": "peter-cat-recording-co>tom-waits/destroyer/beirut/leonard-cohen",
+   "why": "No source found of Sawhney naming them (Alipore Post, Why Now, Grammy.com, Open, Platform interviews opened; keyword checks found nothing; Shindig says he was making gypsy jazz and listening to Strauss, off-map)."
+  }
+ ],
+ "content": {
+  "bio": "Peter Cat Recording Co. is a Delhi band built around singer and guitarist Suryakant Sawhney, who formed it in 2009 after leaving film school in San Francisco. With Rohan Kulshreshtha and a shifting set of friends it started out as a part-cabaret, part-folk, part-jazz outfit playing around the capital's small venues, and became known across India for a sound that mixes hot-club swing, old Hindi film music, lounge crooning and psychedelic rock.\n\nSawhney sings in a low, deadpan croon and has named the Velvet Underground and Neutral Milk Hotel as formative, as much for their home-made spirit as their songs. Over albums like Bismillah, Portrait of a Time and Sinema the band built an audience far beyond Delhi, playing festivals in Europe, Australia and the United States and becoming one of the best-known independent bands to come out of India.",
+  "album": {
+   "title": "Portrait of a Time",
+   "year": 2016,
+   "classicReason": "Portrait of a Time (check title and year before writing) folds crooner vocals, brushed jazz drums and psychedelic guitar into songs that feel lifted from a 1960s film. \"Floated By\" sets its tumbling groove against Sawhney's weary half-spoken vocal. The band recorded much of it themselves, in keeping with the do-it-yourself ethos Sawhney credits to the Velvet Underground. It endures as the record that carried an independent Delhi band to audiences around the world."
+  }
+ },
+ "searches": 8,
+ "toolStatus": "WebSearch ok (8 of 22 shared by both artists); ledger read ok; Metro Times and Shindig URLs failed to match (shell glob issue, not retried).",
+ "notes": "Bio/album facts from memory plus search snippets, not fully verified; check before writing."
+}

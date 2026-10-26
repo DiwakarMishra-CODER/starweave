@@ -114,7 +114,6 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           'slowdive',
           'ride',
           'lush',
-          'hum',
         ],
       },
       {
@@ -128,7 +127,6 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         artistIds: [
           'deerhunter',
           'wolf-alice',
-          'silversun-pickups',
           'sweet-trip',
           'parannoul',
           'have-a-nice-life',
@@ -176,8 +174,11 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // electronic art-pop); japanese-breakfast (Jubilee is maximalist chamber-
     // pop/synth-pop, not dream-pop's hazier register).
     // Cut for space — genuinely dream-pop, just short of the top 8: the-
-    // sundays, alvvays, fishmans, ethel-cain, blonde-redhead, candy-claws,
-    // the-marias.
+    // sundays (already on indie-pop's and jangle-pop's pages), ethel-cain,
+    // blonde-redhead, candy-claws, the-marias. (Julee Cruise was No. 7
+    // until she left the map in Oct 2026: no artist on it has said she
+    // shaped them; Alvvays, the next cut with no record on another page,
+    // took the spot.)
     definingAlbums: [
       'cocteau-twins',
       'beach-house',
@@ -185,17 +186,17 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       'slowdive',
       'galaxie-500',
       'this-mortal-coil',
-      'julee-cruise',
       'the-radio-dept',
+      'alvvays',
     ],
     sections: [
       {
         title: 'The founding hush',
         blurb:
           "Dream-pop's first generation, working before the genre had settled into a single " +
-          "sound — from Nico's icy chamber-drone to Cocteau Twins' glossolalia to Japan's " +
-          "Fishmans building an entirely parallel version of the same idea.",
-        artistIds: ['nico', 'cocteau-twins', 'this-mortal-coil', 'julee-cruise', 'the-sundays', 'fishmans'],
+          "sound — from Nico's icy chamber-drone to Cocteau Twins' glossolalia to the " +
+          "Sundays' sunlit jangle.",
+        artistIds: ['nico', 'cocteau-twins', 'this-mortal-coil', 'the-sundays'],
       },
       {
         title: 'Into shoegaze',
@@ -291,7 +292,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           'joy-division',
           'new-order',
           'the-cure',
-          'siouxsie-and-the-banshees',
+          'siouxsie-and-the-banshees', 'the-slits',
           'gang-of-four',
           'wire',
           'echo-and-the-bunnymen',
@@ -316,7 +317,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "A smaller but real American lineage, running from Talking Heads' original CBGB-era " +
           "art-funk through a 2000s New York revival and into the genre's more recent noise and " +
           "riot-grrrl-adjacent corners.",
-        artistIds: ['talking-heads', 'interpol', 'have-a-nice-life', 'sleater-kinney', 'women', 'parquet-courts'],
+        artistIds: ['talking-heads', 'interpol', 'have-a-nice-life', 'sleater-kinney', 'parquet-courts'],
       },
     ],
   },
@@ -385,7 +386,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "instinct alive.",
         artistIds: [
           'david-bowie',
-          'brian-eno',
+          'brian-eno', 'roxy-music', 'kate-bush', 'scott-walker',
           'destroyer',
           'pulp',
           'ariel-pink',
@@ -401,7 +402,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Artists working with orchestration, arrangement, and collective studio-craft rather " +
           "than glam persona — sophisti-pop yearning, psych-pop collectives, and collage-built " +
           "records built more like compositions than performances.",
-        artistIds: ['the-blue-nile', 'prefab-sprout', 'grizzly-bear', 'of-montreal', 'broken-social-scene', 'jockstrap'],
+        artistIds: ['the-blue-nile', 'prefab-sprout', 'peter-cat-recording-co', 'grizzly-bear', 'of-montreal', 'broken-social-scene', 'jockstrap'],
       },
       {
         title: 'Confessional art-pop',
@@ -750,7 +751,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         blurb:
           "The London and Manchester scene — three chords and a confrontation, equal parts " +
           "art-school irony and working-class fury.",
-        artistIds: ['the-clash', 'buzzcocks', 'wire', 'x-ray-spex', 'sex-pistols'],
+        artistIds: ['the-clash', 'buzzcocks', 'wire', 'x-ray-spex', 'the-slits', 'sex-pistols'],
       },
       {
         title: 'The first wave, US',
@@ -928,7 +929,6 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           'la-dispute',
           'jeff-rosenstock',
           'get-up-kids',
-          'christie-front-drive',
         ],
       },
     ],
@@ -978,7 +978,6 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       'the-jesus-lizard',
       'dna',
       'mudhoney',
-      'women',
     ],
     sections: [
       {
@@ -1001,7 +1000,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         blurb:
           "Noise-rock folded into the wider American college-rock underground — the dissonance " +
           "stayed, but real pop songcraft came with it.",
-        artistIds: ['pixies', 'dinosaur-jr', 'yo-la-tengo', 'mudhoney', 'superchunk', 'women'],
+        artistIds: ['pixies', 'dinosaur-jr', 'yo-la-tengo', 'mudhoney', 'superchunk'],
       },
       {
         title: 'Where noise-rock blurs',
@@ -1119,16 +1118,18 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Sebadoh, Guided by Voices, and Car Seat Headrest's albums stay here
     // rather than also appearing on indie-pop's page, where these same four
     // artists are deliberately framed as a secondary "American wing" rather
-    // than given their own album cards. Cut for space: mj-lenderman.
+    // than given their own album cards. Sebadoh's Bakesale was No. 4 until
+    // they left the map in Oct 2026 (no artist on it has said they shaped
+    // them); MJ Lenderman, the one cut for space, took the last spot.
     definingAlbums: [
       'pavement',
       'guided-by-voices',
       'liz-phair',
-      'sebadoh',
       'car-seat-headrest',
       'alex-g',
       'olivia-tremor-control',
       'mac-demarco',
+      'mj-lenderman',
     ],
     sections: [
       {
@@ -1137,7 +1138,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "The genre's actual founding generation, all working within a couple of years of each " +
           "other without much direct contact — home-4-track recording as a genuine budget " +
           "necessity that became a defining sound.",
-        artistIds: ['pavement', 'sebadoh', 'guided-by-voices', 'liz-phair', 'beck', 'olivia-tremor-control', 'ween'],
+        artistIds: ['pavement', 'guided-by-voices', 'liz-phair', 'beck', 'olivia-tremor-control', 'ween'],
       },
       {
         title: 'The 2010s bedroom revival',
@@ -1316,7 +1317,6 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "page, as specifically a recording aesthetic rather than a songwriting tradition.",
         artistIds: [
           'pavement',
-          'sebadoh',
           'guided-by-voices',
           'car-seat-headrest',
           'yo-la-tengo',
@@ -1394,7 +1394,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "directions and different cities — Get Up Kids toward pop hooks and a major-label " +
           "audience, Christie Front Drive toward Denver's own version of the Midwest sound, Duster " +
           "toward something hazier and closer to slowcore.",
-        artistIds: ['get-up-kids', 'christie-front-drive', 'duster'],
+        artistIds: ['get-up-kids', 'duster'],
       },
     ],
   },
@@ -1641,7 +1641,6 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       'siouxsie-and-the-banshees',
       'the-cure',
       'the-birthday-party',
-      'dead-can-dance',
     ],
     sections: [
       {
@@ -1659,7 +1658,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Goth's theatrical instinct outliving its original scene by decades and continents — " +
           "Dead Can Dance's neoclassical turn from Australia, The Last Dinner Party's 2020s London " +
           "chamber-pop update.",
-        artistIds: ['dead-can-dance', 'the-last-dinner-party'],
+        artistIds: ['the-last-dinner-party'],
       },
     ],
   },
@@ -1691,7 +1690,6 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Only 2 artists carry this tag in the graph — the list below is
     // necessarily short, not padded. Don't force it to 4.
     definingAlbums: [
-      'dead-can-dance',
       'anna-von-hausswolff',
     ],
     sections: [
@@ -1701,7 +1699,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Two artists, separated by three decades and no direct scene connecting them, both " +
           "reaching for the same combination of drone, dread, and operatic or wordless vocal " +
           "delivery.",
-        artistIds: ['dead-can-dance', 'anna-von-hausswolff'],
+        artistIds: ['anna-von-hausswolff'],
       },
     ],
   },
@@ -2350,7 +2348,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         blurb:
           "The sound brought to festival scale — five artists, otherwise unconnected, who each " +
           "found their own way to pop hooks wrapped in studio haze.",
-        artistIds: ['the-shins', 'mgmt', 'animal-collective', 'mac-demarco', 'tame-impala'],
+        artistIds: ['the-shins', 'peter-cat-recording-co', 'mgmt', 'animal-collective', 'mac-demarco', 'tame-impala'],
       },
       {
         title: 'Electronic-adjacent psych-pop',
@@ -2545,7 +2543,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         blurb:
           "Artists whose post-rock leans on sustained tone and volume rather than crescendo and " +
           "release — the quietest, least song-shaped corner of that genre.",
-        artistIds: ['mono', 'spiritualized', 'dirty-three'],
+        artistIds: ['mono', 'spiritualized', 'spacemen-3', 'dirty-three'],
       },
       {
         title: 'Gothic and orchestral drone',
@@ -2658,7 +2656,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Mazzy Star's Paisley Underground haze and the Flaming Lips' early art-damaged " +
           "noise-pop both revived the 1960s' studio ambition before the term \"neo-psychedelia\" " +
           "had really caught on.",
-        artistIds: ['mazzy-star', 'the-flaming-lips'],
+        artistIds: ['spacemen-3', 'mazzy-star', 'the-flaming-lips'],
       },
       {
         title: 'The 2010s revival',
@@ -2725,7 +2723,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Silver Apples built the template decades before the genre had a name; Xiu Xiu, " +
           "Animal Collective, and Julia Holter each found their own way to wrap genuinely " +
           "strange production around real melody.",
-        artistIds: ['silver-apples', 'ween', 'xiu-xiu', 'animal-collective', 'julia-holter', 'stereolab', 'olivia-tremor-control'],
+        artistIds: ['silver-apples', 'scott-walker', 'ween', 'xiu-xiu', 'animal-collective', 'julia-holter', 'stereolab', 'olivia-tremor-control'],
       },
       {
         title: 'The 21st-century pop-collage generation',
@@ -2798,7 +2796,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Television, Talking Heads), Bowie's persona-driven glam, and a UK post-punk wing " +
           "(Wire, X-Ray Spex) that carried the same ambition into a rawer, more confrontational " +
           "register.",
-        artistIds: ['velvet-underground', 'nico', 'david-bowie', 'can', 'television', 'talking-heads', 'patti-smith', 'wire', 'x-ray-spex'],
+        artistIds: ['velvet-underground', 'nico', 'david-bowie', 'roxy-music', 'kate-bush', 'can', 'television', 'talking-heads', 'patti-smith', 'wire', 'x-ray-spex'],
       },
       {
         title: "Art-rock's 1980s and 90s turn",
@@ -2806,9 +2804,8 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "A second generation took the same seriousness in gothic, chamber, and " +
           "post-rock-adjacent directions — Nick Cave's baroque menace, Talk Talk's dissolution " +
           "into near-classical calm, Godspeed's orchestral maximalism, and a handful of artists " +
-          "(Fishmans, Broadcast, Tom Waits) building entirely idiosyncratic versions of the " +
-          "same idea.",
-        artistIds: ['the-fall', 'nick-cave-and-the-bad-seeds', 'talk-talk', 'jeff-buckley', 'godspeed-you-black-emperor', 'fishmans', 'broadcast', 'tom-waits'],
+          "(Broadcast, Tom Waits) building entirely idiosyncratic versions of the same idea.",
+        artistIds: ['the-fall', 'nick-cave-and-the-bad-seeds', 'pj-harvey', 'talk-talk', 'jeff-buckley', 'godspeed-you-black-emperor', 'broadcast', 'tom-waits'],
       },
       {
         title: 'The 21st-century UK wing',
@@ -2898,7 +2895,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Nevermind's crossover pulled a whole underground into the mainstream at once — some " +
           "of it (Nirvana itself, Beck) genuinely mainstream-scale, some of it (Bikini Kill, " +
           "Pavement) still resolutely independent despite carrying the same new label.",
-        artistIds: ['nirvana', 'pavement', 'built-to-spill', 'modest-mouse', 'hum', 'the-cranberries', 'blur', 'bikini-kill', 'beck', 'the-breeders', 'ween'],
+        artistIds: ['nirvana', 'pavement', 'pj-harvey', 'built-to-spill', 'modest-mouse', 'the-cranberries', 'blur', 'bikini-kill', 'beck', 'the-breeders', 'ween'],
       },
       {
         title: 'Alt-rock as marketing category, 1997–2010s',
@@ -2907,7 +2904,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "stretched to cover almost anything guitar-based and not-quite-mainstream — a 2000s " +
           "rock revival, Radiohead's studio ambition, and a decade-plus of bands that inherited " +
           "the shelf label without inheriting a sound.",
-        artistIds: ['radiohead', 'the-strokes', 'the-white-stripes', 'the-flaming-lips', 'silversun-pickups'],
+        artistIds: ['radiohead', 'the-strokes', 'the-white-stripes', 'the-flaming-lips'],
       },
       {
         title: 'The 21st-century wing',
@@ -3006,9 +3003,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           'modest-mouse',
           'liz-phair',
           'duster',
-          'hum',
           'the-dismemberment-plan',
-          'sebadoh',
           'guided-by-voices',
           'wilco',
           'sleater-kinney',
@@ -3152,8 +3147,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     definingAlbums: [
       '2814',
       'oneohtrix-point-never',
-      'deaths-dynamic-shroud',
-      'george-clanton',
+      'deaths-dynamic-shroud', 'george-clanton',
     ],
     sections: [
       {
@@ -3662,8 +3656,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "replacing it (LCD Soundsystem, !!!, The Rapture, Four Tet, Caribou).",
         artistIds: [
           'massive-attack',
-          'portishead',
-          'tricky',
+          'portishead', 'tricky',
           'sneaker-pimps',
           'aphex-twin',
           'autechre',
@@ -3690,8 +3683,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           'oneohtrix-point-never',
           'tim-hecker',
           'stars-of-the-lid',
-          'grouper',
-          'harold-budd',
+          'grouper', 'harold-budd',
           'steve-roach',
           'deaths-dynamic-shroud',
           '2814',
@@ -3830,8 +3822,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           'roy-harper',
           'karen-dalton',
           'townes-van-zandt',
-          'john-prine',
-          'incredible-string-band',
+          'john-prine', 'incredible-string-band',
           'vashti-bunyan',
         ],
       },
@@ -3848,8 +3839,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           'tom-waits',
           'lucinda-williams',
           'silver-jews',
-          'kurt-vile',
-          'the-mountain-goats',
+          'kurt-vile', 'the-mountain-goats',
           'waxahatchee',
           'songs-ohia',
         ],

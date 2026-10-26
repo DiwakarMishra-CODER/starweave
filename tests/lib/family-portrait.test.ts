@@ -60,13 +60,13 @@ describe('familyRunningOrder', () => {
   });
 
   it('plays two artists who shaped each other once, with who shaped them', () => {
-    const p = buildPortrait(data, 'mogwai');
-    const back = p.back.flat();
-    const front = p.front.flat();
-    expect(back.some(m => m.id === 'the-cure') && front.some(m => m.id === 'the-cure')).toBe(true);
-    const year = ({ id, activeFrom }: { id: string; activeFrom: number | null }) => ({ id, activeFrom });
-    const ids = familyRunningOrder(back.map(year), { id: 'mogwai', activeFrom: 1995 }, front.map(year)).map(m => m.id);
-    expect(new Set(ids).size).toBe(ids.length);
+    // No two artists on the map shape each other since the source pass (the
+    // Mogwai / Cure pair was one way only), so a made-up family: `both`
+    // stands in both rows.
+    const y = (id: string, activeFrom: number) => ({ id, activeFrom });
+    const both = y('both', 1980);
+    const ids = familyRunningOrder([both, y('old', 1970)], y('me', 1990), [both, y('young', 2000)]).map(m => m.id);
+    expect(ids).toEqual(['old', 'both', 'me', 'young']);
   });
 });
 

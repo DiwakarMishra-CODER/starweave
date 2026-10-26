@@ -1,0 +1,43 @@
+{
+ "agent": "deep-3",
+ "finished": true,
+ "searches": 18,
+ "toolStatus": "WebSearch ok; ledger read ok (r.jina.ai worked; the 2005 Pitchfork URL is a 404). Westword blocked by a browser check.",
+ "found": [
+  {
+   "source": "boards-of-canada",
+   "target": "incredible-string-band",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://bocpages.org/wiki/Interviews-all",
+   "found": "We love artists like Joni Mitchell and The Incredible Stringband. There's a sort of purity of sound that they have, and I guess we are striving for that ourselves.",
+   "citation": "Asked about the folk influence on Geogaddi in an interview with René Passet for the Forcefield site (reproduced verbatim on bocpages.org), Mike Sandison of Boards of Canada said: \"We love artists like Joni Mitchell and The Incredible Stringband. There's a sort of purity of sound that they have, and I guess we are striving for that ourselves.\"",
+   "note": "Same page also carries a second Sandison/Eoin quote (Oor, Mar 2002: 'We have all the String Band records!... I recognize a strong connection to the countryside in their music, a connection we also feel') and a German interview where MS says they sampled ISB and Joni Mitchell. Speaker of the Oor quote is not labelled, so the Forcefield line is the one used. Page says 'Do not edit this text'. This is not the 2005 Pitchfork piece (not found); Wikipedia's Boards of Canada page cites it for the same ISB claim."
+  },
+  {
+   "source": "toe",
+   "target": "cap-n-jazz",
+   "sourceTier": "first-person",
+   "confidence": 0.65,
+   "url": "https://toneglow.substack.com/p/tone-glow-177-toe",
+   "found": "I listened to the music, but I had no idea how they played any of it or how their shows looked",
+   "citation": "Asked in Tone Glow (issue 177, 2024) how he first came to know the American bands he had named (Texas Is the Reason, The Promise Ring, Cap'n Jazz) whose cleaner guitar tone shaped his scene, toe's Hirokazu Yamazaki said he only had the music: \"I listened to the music, but I had no idea how they played any of it or how their shows looked,\" adding that he later saw videos of Cap'n Jazz and they were not what he had imagined.",
+   "note": "Same page as the existing edge; this is the 'listened to them' line, plus Yamazaki separately calls Cap'n Jazz guitarist Victor Villarreal's Ghosts and Vodka 'a big inspiration'. Weaker than a direct 'Cap'n Jazz shaped me', so a modest 0.65. Owner's call whether the existing edge's evidence is enough as is."
+  },
+  {
+   "source": "get-up-kids",
+   "target": "christie-front-drive",
+   "sourceTier": "reported",
+   "confidence": 0.6,
+   "url": "https://www.ocweekly.com/?p=150584",
+   "found": "Over various interviews, the singer/songwriter and front man of folk/indie-rock outfit the New Amsterdams and pivotal indie/OG emo band the Get Up Kids has voiced his love for Weezer, Christie Front Drive, Bon Iver, Fugazi and Jimmy Eat World.",
+   "citation": "OC Weekly reported that Matt Pryor of the Get Up Kids \"has voiced his love for Weezer, Christie Front Drive, Bon Iver, Fugazi and Jimmy Eat World\" over various interviews.",
+   "note": "Reporter's account of Pryor's fandom, no direct quote and no date in the snippet; the specific Pryor interviews were not found. Chronology fine (CFD 1993-97, Get Up Kids 1995). Fandom counts under owner's rule at reported tier."
+  }
+ ],
+ "none": [
+  {"artist": "The Incredible String Band (other directions)", "tried": "Joanna Newsom (only critics: Village Voice, Erik Davis on Ys, comparisons not her words), Vashti Bunyan (says in Clash/OkWhatever she did not know them when recording; lodging only), Devendra Banhart (not on map), Fleet Foxes/Animal Collective (nothing surfaced). Only the Boards of Canada link stands."},
+  {"artist": "toe (upstream beyond Cap'n Jazz)", "tried": "Tone Glow 177 read fully (Envy/Blind Justice and NYC hardcore named, not on map); Metropolis Japan interview has no influences; no on-map artist found naming toe (Rough Trade/Time Out only collaborations and critic comparisons)."},
+  {"artist": "Christie Front Drive (upstream)", "tried": "Wikipedia's Superchunk/Jawbreaker/Jawbox/Buffalo Tom/Drive Like Jehu line is unfootnoted. AV Club Vinyl Retentive has Richter saying 'We were ripping off bands other kids weren't listening to... a complete rip-off of a Buffalo Tom song' (Buffalo Tom not on map). Westword piece (Richter likes Treepeople, Thinking Fellers; critic compares to Superchunk/Yo La Tengo) blocked/critic only. Washed Up Emo podcast has no transcript."}
+ ]
+}

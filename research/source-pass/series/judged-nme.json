@@ -1,0 +1,306 @@
+{
+ "agent": "nme",
+ "finished": true,
+ "entries": [
+  {
+   "speaker": "sonic-youth",
+   "target": "sparks",
+   "artist": "Sparks",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/soundtrack-of-my-life-thurston-moore-3913301",
+   "verdict": "influence",
+   "found": "Nobody else in the band gave a rat’s ass about Sparks! So we really connected – we were Sparks fanatics.",
+   "citation": "Thurston Moore, in NME's Soundtrack Of My Life (2025): \"I was really into Sparks. Nobody else in the band gave a rat's ass about Sparks! So we really connected – we were Sparks fanatics.\"",
+   "note": "Fandom during his Sonic Youth years (Jim O'Rourke era), not a formative-years claim; borderline, owner may prefer favourite."
+  },
+  {
+   "speaker": "sonic-youth",
+   "target": "sex-pistols",
+   "artist": "Sex Pistols",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/soundtrack-of-my-life-thurston-moore-3913301",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "sonic-youth",
+   "target": "the-stooges",
+   "artist": "The Stooges",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/soundtrack-of-my-life-thurston-moore-3913301",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "sonic-youth",
+   "target": "velvet-underground",
+   "artist": "The Velvet Underground",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/soundtrack-of-my-life-thurston-moore-3913301",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "omd",
+   "target": "kraftwerk",
+   "artist": "Kraftwerk",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/omd-andy-mccluskey-orchestral-manouevres-in-the-dark-3498101",
+   "verdict": "influence",
+   "found": "“It changed my life. I went to see them on September 11, 1975, at the Liverpool Empire, and I sat in Q36.",
+   "citation": "Andy McCluskey of OMD, in NME's Soundtrack Of My Life (2023), on Kraftwerk's 'Autobahn': \"It changed my life. I went to see them on September 11, 1975, at the Liverpool Empire... it really was the first day of the rest of my life.\""
+  },
+  {
+   "speaker": "omd",
+   "target": "david-bowie",
+   "artist": "David Bowie",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/omd-andy-mccluskey-orchestral-manouevres-in-the-dark-3498101",
+   "verdict": "influence",
+   "found": "Like the rest of the country, I had just seen David Bowie and The Spiders From Mars on Top Of The Pops the week before when [presenter] Dave Lee Travis said ‘get a load of this’. We’d seen glam, but British glam – Slade and The Sweet – were like builders in sequins. And there was Bowie looking like this androgynous lizard thing, that was a real wow factor.",
+   "citation": "Andy McCluskey of OMD, in NME's Soundtrack Of My Life (2023), on buying Ziggy Stardust at 13: \"And there was Bowie looking like this androgynous lizard thing, that was a real wow factor.\"",
+   "note": "Weak: a thrilled teenage first album purchase, not a claim about his own music. Owner may prefer favourite."
+  },
+  {
+   "speaker": "omd",
+   "target": "joy-division",
+   "artist": "Joy Division",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/omd-andy-mccluskey-orchestral-manouevres-in-the-dark-3498101",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "omd",
+   "target": "the-human-league",
+   "artist": "The Human League",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/omd-andy-mccluskey-orchestral-manouevres-in-the-dark-3498101",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "omd",
+   "target": "echo-and-the-bunnymen",
+   "artist": "Echo & the Bunnymen",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/omd-andy-mccluskey-orchestral-manouevres-in-the-dark-3498101",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "interpol",
+   "target": "nick-cave-and-the-bad-seeds",
+   "artist": "Nick Cave & The Bad Seeds",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/interpol-sam-fogarino-soundtrack-of-my-life-3415543",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "interpol",
+   "target": "neil-young",
+   "artist": "Neil Young",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/interpol-sam-fogarino-soundtrack-of-my-life-3415543",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "talking-heads",
+   "target": "kraftwerk",
+   "artist": "Kraftwerk",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/tina-weymouth-soundtrack-of-my-life-talking-heads-3404028",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "talking-heads",
+   "target": "the-modern-lovers",
+   "artist": "The Modern Lovers",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/tina-weymouth-soundtrack-of-my-life-talking-heads-3404028",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "wilco",
+   "target": "talking-heads",
+   "artist": "Talking Heads",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/soundtrack-of-my-life-wilco-jeff-tweedy-interview-3234625",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "sex-pistols",
+   "target": "david-bowie",
+   "artist": "David Bowie",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/glen-matlock-sex-pistols-soundtrack-of-my-life-2950927",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "joy-division",
+   "target": "david-bowie",
+   "artist": "David Bowie",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/peter-hook-soundtrack-of-my-life-2908808",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "joy-division",
+   "target": "john-prine",
+   "artist": "John Prine",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/peter-hook-soundtrack-of-my-life-2908808",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "joy-division",
+   "target": "the-modern-lovers",
+   "artist": "The Modern Lovers",
+   "kind": null,
+   "url": "https://www.nme.com/features/music-interviews/peter-hook-soundtrack-of-my-life-2908808",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "spoon",
+   "target": "violent-femmes",
+   "artist": "Violent Femmes",
+   "kind": null,
+   "url": "https://www.nme.com/features/tv-interviews/soundtrack-of-my-life-spoons-britt-daniel-2719076",
+   "verdict": "influence",
+   "found": "The Violent Femmes were probably the biggest band for me in that burst of new freedom, I just completely related to their lyrics. The lyrics speak to the minds of high school students like no other record – insecurity, anger, masturbation, frustration and lust.",
+   "citation": "Britt Daniel of Spoon, in NME's Soundtrack Of My Life (2020), on 'Kiss Off' as the song that changed his life: \"The Violent Femmes were probably the biggest band for me in that burst of new freedom, I just completely related to their lyrics.\""
+  },
+  {
+   "speaker": "spoon",
+   "target": "the-cure",
+   "artist": "The Cure",
+   "kind": null,
+   "url": "https://www.nme.com/features/tv-interviews/soundtrack-of-my-life-spoons-britt-daniel-2719076",
+   "verdict": "influence",
+   "found": "When that moment hit me I was just finding out about Eric B. & Rakim, The Beastie Boys were just coming out, I was really into The Cure.",
+   "citation": "Britt Daniel of Spoon, in NME's Soundtrack Of My Life (2020), on turning 15 in Texas: \"I was really into The Cure.\"",
+   "note": "Passing mention of fandom at 15; thin, owner may prefer favourite."
+  },
+  {
+   "speaker": "spoon",
+   "target": "pixies",
+   "artist": "Pixies",
+   "kind": null,
+   "url": "https://www.nme.com/features/tv-interviews/soundtrack-of-my-life-spoons-britt-daniel-2719076",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "wire",
+   "target": "nick-drake",
+   "artist": "Nick Drake",
+   "kind": null,
+   "url": "https://www.nme.com/blogs/nme-blogs/soundtrack-of-my-life-wires-colin-newman-on-joni-mitchell-the-rolling-stones-and-why-he-can-no-longe-17145",
+   "verdict": "influence",
+   "found": "At the time being a Nick Drake fan was a very lonely life, but I was always into him.",
+   "citation": "Colin Newman of Wire, in NME's Soundtrack Of My Life (2015), on buying an Island sampler with Nick Drake on it as his first album: \"At the time being a Nick Drake fan was a very lonely life, but I was always into him.\"",
+   "note": "Thin: a youthful fan, no link to Wire's own music stated."
+  },
+  {
+   "speaker": "wire",
+   "target": "joni-mitchell",
+   "artist": "Joni Mitchell",
+   "kind": null,
+   "url": "https://www.nme.com/blogs/nme-blogs/soundtrack-of-my-life-wires-colin-newman-on-joni-mitchell-the-rolling-stones-and-why-he-can-no-longe-17145",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "wire",
+   "target": "neil-young",
+   "artist": "Neil Young",
+   "kind": null,
+   "url": "https://www.nme.com/blogs/nme-blogs/soundtrack-of-my-life-wires-colin-newman-on-joni-mitchell-the-rolling-stones-and-why-he-can-no-longe-17145",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "ride",
+   "target": "the-stooges",
+   "artist": "The Stooges",
+   "kind": null,
+   "url": "https://www.nme.com/blogs/nme-blogs/soundtrack-of-my-life-ride-and-beady-eye-legend-andy-bell-17446",
+   "verdict": "influence",
+   "found": "‘I Wanna Be Your Dog’, Iggy & The Stooges: “It was the first song we ever jammed and it always reminds me of the early Ride sound as that album was one of our big early influences.”",
+   "citation": "Andy Bell of Ride, in NME's Soundtrack Of My Life (2015), on 'I Wanna Be Your Dog': \"It was the first song we ever jammed and it always reminds me of the early Ride sound as that album was one of our big early influences.\""
+  },
+  {
+   "speaker": "ride",
+   "target": "this-mortal-coil",
+   "artist": "This Mortal Coil",
+   "kind": null,
+   "url": "https://www.nme.com/blogs/nme-blogs/soundtrack-of-my-life-ride-and-beady-eye-legend-andy-bell-17446",
+   "verdict": "favourite"
+  }
+ ],
+ "offMap": [
+  {
+   "name": "Weezer",
+   "namedBy": "mac-demarco",
+   "sentence": "I butchered those songs lots of times, so maybe he did! (first album he bought as a young teen; \"encapsulated teenage counterculture to me\"; played live covers of Weezer)",
+   "url": "https://www.nme.com/features/music-interviews/mac-demarco-soundtrack-of-my-life-3886221"
+  },
+  {
+   "name": "The Moody Blues",
+   "namedBy": "mac-demarco",
+   "sentence": "Hearing it, I was like, ‘Oh that’s what I’m trying to do. The Moody Blues: you understand me’. I’m obsessed with it.",
+   "url": "https://www.nme.com/features/music-interviews/mac-demarco-soundtrack-of-my-life-3886221"
+  },
+  {
+   "name": "Harry Nilsson",
+   "namedBy": "mac-demarco",
+   "sentence": "I’m a huge Harry Nilsson fan and he’s one of my great inspirations",
+   "url": "https://www.nme.com/features/music-interviews/mac-demarco-soundtrack-of-my-life-3886221"
+  },
+  {
+   "name": "The Beatles",
+   "namedBy": "omd",
+   "sentence": "My mother had quite a cool collection of singles and she had quite a lot by The Beatles and The Kinks. (loved 'Thank You Girl' as a child; OMD recorded an unreleased cover)",
+   "url": "https://www.nme.com/features/music-interviews/omd-andy-mccluskey-orchestral-manouevres-in-the-dark-3498101"
+  },
+  {
+   "name": "Harry Nilsson",
+   "namedBy": "omd",
+   "sentence": "It just happens to be the first single I ever bought as well.",
+   "url": "https://www.nme.com/features/music-interviews/omd-andy-mccluskey-orchestral-manouevres-in-the-dark-3498101"
+  },
+  {
+   "name": "Kiss",
+   "namedBy": "interpol",
+   "sentence": "Even though I didn’t play an instrument yet, I knew I wanted to be on that stage.",
+   "url": "https://www.nme.com/features/music-interviews/interpol-sam-fogarino-soundtrack-of-my-life-3415543"
+  },
+  {
+   "name": "The Beatles",
+   "namedBy": "talking-heads",
+   "sentence": "I was trying to learn to play guitar and sing at the time. (bought Meet The Beatles with The Beach Boys, \"equally important\")",
+   "url": "https://www.nme.com/features/music-interviews/tina-weymouth-soundtrack-of-my-life-talking-heads-3404028"
+  },
+  {
+   "name": "The Byrds",
+   "namedBy": "wilco",
+   "sentence": "I listened to those records all day long, but especially this one. (on 'Turn! Turn! Turn!', age seven or eight)",
+   "url": "https://www.nme.com/features/music-interviews/soundtrack-of-my-life-wilco-jeff-tweedy-interview-3234625"
+  },
+  {
+   "name": "The Rolling Stones",
+   "namedBy": "wire",
+   "sentence": "Me and my friend Desmond had a band around 1970 – we used to listen to ‘Get Yer Ya-Ya’s Out’. (his song that made him want to be in a band)",
+   "url": "https://www.nme.com/blogs/nme-blogs/soundtrack-of-my-life-wires-colin-newman-on-joni-mitchell-the-rolling-stones-and-why-he-can-no-longe-17145"
+  },
+  {
+   "name": "The Rolling Stones",
+   "namedBy": "ride",
+   "sentence": "Something about ‘19th Nervous Breakdown’... got me really excited, and made me feel like I needed to make records.",
+   "url": "https://www.nme.com/blogs/nme-blogs/soundtrack-of-my-life-ride-and-beady-eye-legend-andy-bell-17446"
+  },
+  {
+   "name": "The Beatles",
+   "namedBy": "ride",
+   "sentence": "That, and the whole Beatles catalogue. (made him feel he needed to make records)",
+   "url": "https://www.nme.com/blogs/nme-blogs/soundtrack-of-my-life-ride-and-beady-eye-legend-andy-bell-17446"
+  },
+  {
+   "name": "Andrea McArdle",
+   "namedBy": "bikini-kill",
+   "sentence": "I sang along to that song so much that I got the lead in the school play and sang it onstage to a stuffed dog. (song that made her want to make music)",
+   "url": "https://www.nme.com/blogs/nme-blogs/soundtrack-of-my-life-kathleen-hanna-4325"
+  }
+ ]
+}

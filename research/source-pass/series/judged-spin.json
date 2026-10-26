@@ -1,0 +1,449 @@
+{
+ "agent": "spin",
+ "finished": true,
+ "entries": [
+  {
+   "speaker": "bon-iver",
+   "target": "radiohead",
+   "artist": "Radiohead",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2022/04/5-albums-i-cant-live-without-s-carey-of-bon-iver/",
+   "verdict": "influence",
+   "found": "Radiohead is one of my favorite bands ever. I am truly inspired by their endless innovation.",
+   "citation": "S. Carey of Bon Iver, choosing Radiohead's Kid A and Amnesiac for Spin's \"5 Albums I Can't Live Without\" (2022): \"Radiohead is one of my favorite bands ever. I am truly inspired by their endless innovation.\"",
+   "note": "Present-tense admiration (\"inspired by\"), not tied to a period of his own making; borderline."
+  },
+  {
+   "speaker": "radiohead",
+   "target": "nick-drake",
+   "artist": "Nick Drake",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2023/02/5-albums-i-cant-live-without-philip-selway-of-radiohead/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "sneaker-pimps",
+   "target": "the-blue-nile",
+   "artist": "The Blue Nile",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2021/10/5-albums-i-cant-live-without-liam-howe-of-sneaker-pimps/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "kurt-vile",
+   "target": "charli-xcx",
+   "artist": "Charli XCX",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2022/08/5-albums-i-cant-live-without-kurt-vile/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "the-replacements",
+   "target": "the-clash",
+   "artist": "The Clash",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2023/09/5-albums-i-cant-live-without-tommy-stinson-of-the-replacements/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "the-replacements",
+   "target": "bob-dylan",
+   "artist": "Bob Dylan",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2023/09/5-albums-i-cant-live-without-tommy-stinson-of-the-replacements/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "husker-du",
+   "target": "sigur-ros",
+   "artist": "Sigur Rós",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2024/11/5-albums-i-cant-live-without-greg-norton-of-ultrabomb-husker-du/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "pulp",
+   "target": "velvet-underground",
+   "artist": "The Velvet Underground",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2024/11/5-albums-i-cant-live-without-mark-webber-of-pulp/",
+   "verdict": "influence",
+   "found": "Discovering the Velvets and Andy Warhol opened me up to not only a vast range of possibilities in music, but [an even] vaster world of art and culture that has occupied me since my teenage years. I absorbed every possible scrap of Velvets recordings, together and solo, and then worked my way through bands they influenced, and the musicians that influenced them, such as the composer La Monte Young.",
+   "citation": "Mark Webber of Pulp, choosing The Velvet Underground & Nico for Spin's \"5 Albums I Can't Live Without\" (2024): \"Discovering the Velvets and Andy Warhol opened me up to not only a vast range of possibilities in music... that has occupied me since my teenage years.\""
+  },
+  {
+   "speaker": "pulp",
+   "target": "big-star",
+   "artist": "Big Star",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2024/11/5-albums-i-cant-live-without-mark-webber-of-pulp/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "pulp",
+   "target": "cat-power",
+   "artist": "Cat Power",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2024/11/5-albums-i-cant-live-without-mark-webber-of-pulp/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "pulp",
+   "target": "big-thief",
+   "artist": "Big Thief",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2024/11/5-albums-i-cant-live-without-mark-webber-of-pulp/",
+   "verdict": "influence",
+   "found": "I’ve tried to introduce some elements of Adrianne Lenker and Buck Meek’s approach into my parts, and I’ve even started to play Collings guitars, following their example.",
+   "citation": "Mark Webber of Pulp, choosing Big Thief's Two Hands for Spin's \"5 Albums I Can't Live Without\" (2024): \"I've tried to introduce some elements of Adrianne Lenker and Buck Meek's approach into my parts, and I've even started to play Collings guitars, following their example.\"",
+   "note": "About Pulp's new songs (2024), after Two Hands (2019). Same quote names Lenker; see the adrianne-lenker entry."
+  },
+  {
+   "speaker": "pulp",
+   "target": "adrianne-lenker",
+   "artist": "Adrianne Lenker",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2024/11/5-albums-i-cant-live-without-mark-webber-of-pulp/",
+   "verdict": "influence",
+   "found": "I’ve tried to introduce some elements of Adrianne Lenker and Buck Meek’s approach into my parts, and I’ve even started to play Collings guitars, following their example.",
+   "citation": "Mark Webber of Pulp, on Big Thief for Spin's \"5 Albums I Can't Live Without\" (2024): \"I've tried to introduce some elements of Adrianne Lenker and Buck Meek's approach into my parts, and I've even started to play Collings guitars, following their example.\"",
+   "note": "Named as Lenker and Meek within Big Thief; the approach is of the band members, so this is the band link first. Include only if the owner wants Lenker as well."
+  },
+  {
+   "speaker": "sex-pistols",
+   "target": "david-bowie",
+   "artist": "David Bowie",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2025/08/5-albums-i-cant-live-without-steve-jones-of-the-sex-pistols/",
+   "verdict": "influence",
+   "found": "That album was definitely one of my favorite albums. Very inspirational to me. Steered me in the direction.",
+   "citation": "Steve Jones of the Sex Pistols, choosing Bowie's The Rise and Fall of Ziggy Stardust for Spin's \"5 Albums I Can't Live Without\" (2025): \"That album was definitely one of my favorite albums. Very inspirational to me. Steered me in the direction.\""
+  },
+  {
+   "speaker": "black-flag",
+   "target": "bright-eyes",
+   "artist": "Bright Eyes",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2026/06/5-albums-i-cant-live-without-kira-roessler/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "black-flag",
+   "target": "la-dispute",
+   "artist": "La Dispute",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2026/06/5-albums-i-cant-live-without-kira-roessler/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "guided-by-voices",
+   "target": "wire",
+   "artist": "Wire",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2004/09/records-changed-my-life-robert-pollard-guided-voices/",
+   "verdict": "influence",
+   "found": "154 was a bolt of lightning. When we started, we wanted to sound like a bunch of different bands.",
+   "citation": "Robert Pollard of Guided by Voices, choosing Wire's 154 for Spin's \"The Records That Changed My Life\" (2004): \"154 was a bolt of lightning. When we started, we wanted to sound like a bunch of different bands. The songs were going to be short, sound like they were recorded in a bunch of different places. That was the Wire influence.\"",
+   "note": "found is two sentences; the third (\"The songs were going to be short... That was the Wire influence.\") finishes the claim and is quoted in the citation."
+  },
+  {
+   "speaker": "guided-by-voices",
+   "target": "rem",
+   "artist": "R.E.M.",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2004/09/records-changed-my-life-robert-pollard-guided-voices/",
+   "verdict": "influence",
+   "found": "There have been a few bands where I’ve totally absorbed myself into their world, and R.E.M. was one of them. I see Peter Buck occasionally, and I’m always blowing smoke up his ass about how much they meant to me.",
+   "citation": "Robert Pollard of Guided by Voices, choosing R.E.M.'s Chronic Town EP for Spin's \"The Records That Changed My Life\" (2004): \"There have been a few bands where I've totally absorbed myself into their world, and R.E.M. was one of them... I'm always blowing smoke up his ass about how much they meant to me.\""
+  },
+  {
+   "speaker": "guided-by-voices",
+   "target": "dinosaur-jr",
+   "artist": "Dinosaur Jr.",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2004/09/records-changed-my-life-robert-pollard-guided-voices/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "guided-by-voices",
+   "target": "the-breeders",
+   "artist": "The Breeders",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2004/09/records-changed-my-life-robert-pollard-guided-voices/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "joy-division",
+   "target": "kraftwerk",
+   "artist": "Kraftwerk",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2005/07/records-changed-my-life-bernard-sumner-new-order/",
+   "verdict": "influence",
+   "found": "Ian Curtis also turned me on to this — it was revolutionary. We had a record player in the rehearsal room, and people would bring stuff in. We used to play Trans-Europe Express before we went onstage.",
+   "citation": "Bernard Sumner, in Spin's \"The Records That Changed My Life\" (2005), on Kraftwerk's Trans-Europe Express in Joy Division's early days: \"Ian Curtis also turned me on to this — it was revolutionary... We used to play Trans-Europe Express before we went onstage.\"",
+   "note": "Said by Sumner of Joy Division then New Order; found is three short sentences in the page, copied together."
+  },
+  {
+   "speaker": "bikini-kill",
+   "target": "bratmobile",
+   "artist": "Bratmobile",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2022/11/kathleen-hanna-bikini-kill-2005-feature/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "bikini-kill",
+   "target": "echo-and-the-bunnymen",
+   "artist": "Echo & the Bunnymen",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2022/11/kathleen-hanna-bikini-kill-2005-feature/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "at-the-drive-in",
+   "target": "fugazi",
+   "artist": "Fugazi",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2026/08/5-albums-i-cant-live-without-jim-ward-of-sparta/",
+   "verdict": "influence",
+   "found": "If Billy Joel is my origin story then Fugazi is my coming-of-age moment. This was the first band that was MINE.",
+   "citation": "Jim Ward of At the Drive-In and Sparta, choosing a Fugazi record for Spin's \"5 Albums I Can't Live Without\" (2026): \"Fugazi is my coming-of-age moment... So much of who I am as an artist was learned in this school—DIY and the ethics of our community.\"",
+   "note": "found shortened to the claim sentences; the \"learned in this school\" sentence is separate and quoted in the citation."
+  },
+  {
+   "speaker": "at-the-drive-in",
+   "target": "the-clash",
+   "artist": "The Clash",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2026/08/5-albums-i-cant-live-without-jim-ward-of-sparta/",
+   "verdict": "influence",
+   "found": "This is the band that taught me about world influence; it is not just the music but the intent.",
+   "citation": "Jim Ward of At the Drive-In and Sparta, choosing The Clash's Combat Rock for Spin's \"5 Albums I Can't Live Without\" (2026): \"This is the band that taught me about world influence; it is not just the music but the intent... As I learned more about the Clash and the reach they had, it changed my direction.\""
+  },
+  {
+   "speaker": "at-the-drive-in",
+   "target": "radiohead",
+   "artist": "Radiohead",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2026/08/5-albums-i-cant-live-without-jim-ward-of-sparta/",
+   "verdict": "influence",
+   "found": "If Joe Strummer made me want to be a better man, Radiohead made me want to be a better musician.",
+   "citation": "Jim Ward of At the Drive-In and Sparta, choosing Radiohead's OK Computer for Spin's \"5 Albums I Can't Live Without\" (2026): \"If Joe Strummer made me want to be a better man, Radiohead made me want to be a better musician.\"",
+   "note": "OK Computer is 1997, after ATDI formed (1994) but before their main records; the claim is about his musicianship in general."
+  },
+  {
+   "speaker": "at-the-drive-in",
+   "target": "pixies",
+   "artist": "Pixies",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2026/08/5-albums-i-cant-live-without-jim-ward-of-sparta/",
+   "verdict": "influence",
+   "found": "I learned to play bass by playing along with the Pixies and Dead Kennedys.",
+   "citation": "Jim Ward of At the Drive-In and Sparta, in Spin's \"5 Albums I Can't Live Without\" (2026): \"I learned to play bass by playing along with the Pixies and Dead Kennedys.\"",
+   "note": "Said in the intro answers, not under a pick."
+  },
+  {
+   "speaker": "at-the-drive-in",
+   "target": "dead-kennedys",
+   "artist": "Dead Kennedys",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2026/08/5-albums-i-cant-live-without-jim-ward-of-sparta/",
+   "verdict": "influence",
+   "found": "I learned to play bass by playing along with the Pixies and Dead Kennedys.",
+   "citation": "Jim Ward of At the Drive-In and Sparta, in Spin's \"5 Albums I Can't Live Without\" (2026): \"I learned to play bass by playing along with the Pixies and Dead Kennedys.\"",
+   "note": "Said in the intro answers, not under a pick."
+  },
+  {
+   "speaker": "liz-phair",
+   "target": "rem",
+   "artist": "R.E.M.",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2004/07/records-changed-my-life/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "liz-phair",
+   "target": "violent-femmes",
+   "artist": "Violent Femmes",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2004/07/records-changed-my-life/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "liz-phair",
+   "target": "the-replacements",
+   "artist": "The Replacements",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2004/07/records-changed-my-life/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "liz-phair",
+   "target": "joni-mitchell",
+   "artist": "Joni Mitchell",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2004/07/records-changed-my-life/",
+   "verdict": "favourite"
+  },
+  {
+   "speaker": "liz-phair",
+   "target": "radiohead",
+   "artist": "Radiohead",
+   "kind": null,
+   "url": "https://www.spinmagazine.com/2004/07/records-changed-my-life/",
+   "verdict": "favourite"
+  }
+ ],
+ "offMap": [
+  {
+   "name": "Lisa Germano",
+   "namedBy": "radiohead",
+   "sentence": "I learned so much from her about songwriting and finding my own voice.",
+   "url": "https://www.spinmagazine.com/2023/02/5-albums-i-cant-live-without-philip-selway-of-radiohead/"
+  },
+  {
+   "name": "Fela Kuti and Africa 70",
+   "namedBy": "radiohead",
+   "sentence": "With my drumming head on, I listen to this record and hear almost everything I need to know about the instrument from it.",
+   "url": "https://www.spinmagazine.com/2023/02/5-albums-i-cant-live-without-philip-selway-of-radiohead/"
+  },
+  {
+   "name": "David Sylvian",
+   "namedBy": "sneaker-pimps",
+   "sentence": "It’s not only the music that influenced us but the lyrical approach, too.",
+   "url": "https://www.spinmagazine.com/2021/10/5-albums-i-cant-live-without-liam-howe-of-sneaker-pimps/"
+  },
+  {
+   "name": "Wu-Tang Clan",
+   "namedBy": "kurt-vile",
+   "sentence": "Their solo records are just, especially the first ones when they came out, they were all on fire. GZA’s flow… it makes you inspired to make your own music.",
+   "url": "https://www.spinmagazine.com/2022/08/5-albums-i-cant-live-without-kurt-vile/"
+  },
+  {
+   "name": "Sun Ra",
+   "namedBy": "kurt-vile",
+   "sentence": "I feel like that when I listen to Sun Ra, he’s like my God in a way.",
+   "url": "https://www.spinmagazine.com/2022/08/5-albums-i-cant-live-without-kurt-vile/"
+  },
+  {
+   "name": "Terry Reid",
+   "namedBy": "the-replacements",
+   "sentence": "This is a beautiful record that made me and many others, I’m sure, want to be a singer.",
+   "url": "https://www.spinmagazine.com/2023/09/5-albums-i-cant-live-without-tommy-stinson-of-the-replacements/"
+  },
+  {
+   "name": "Gene Vincent and the Blue Caps",
+   "namedBy": "violent-femmes",
+   "sentence": "This album was the blueprint for the Violent Femmes sound and instrumental approach.",
+   "url": "https://www.spinmagazine.com/2024/03/5-albums-i-cant-live-without-brian-ritchie-of-violent-femmes/"
+  },
+  {
+   "name": "La Monte Young",
+   "namedBy": "pulp",
+   "sentence": "I absorbed every possible scrap of Velvets recordings, together and solo, and then worked my way through bands they influenced, and the musicians that influenced them, such as the composer La Monte Young.",
+   "url": "https://www.spinmagazine.com/2024/11/5-albums-i-cant-live-without-mark-webber-of-pulp/"
+  },
+  {
+   "name": "Roxy Music",
+   "namedBy": "sex-pistols",
+   "sentence": "Again, it’s one of them albums for me as a 15, 16 year old, however old I was when that came out, I would just lie on the bed and close my eyes and just get all these images of it, of what was going on.",
+   "url": "https://www.spinmagazine.com/2025/08/5-albums-i-cant-live-without-steve-jones-of-the-sex-pistols/"
+  },
+  {
+   "name": "Rod Stewart",
+   "namedBy": "sex-pistols",
+   "sentence": "I was obsessed with Rod Stewart when I was a teenager.",
+   "url": "https://www.spinmagazine.com/2025/08/5-albums-i-cant-live-without-steve-jones-of-the-sex-pistols/"
+  },
+  {
+   "name": "Billie Holiday",
+   "namedBy": "black-flag",
+   "sentence": "When I was 13 my friend had a cassette of this record and it changed my life.",
+   "url": "https://www.spinmagazine.com/2026/06/5-albums-i-cant-live-without-kira-roessler/"
+  },
+  {
+   "name": "Led Zeppelin",
+   "namedBy": "bad-brains",
+   "sentence": "I consider myself more of a Black Sabbath head, but the Presence album spoke to my young riff-making aspirations.",
+   "url": "https://www.spinmagazine.com/2026/07/5-albums-i-cant-live-without-darryl-jenifer-of-bad-brains-and-the-weather-channel/"
+  },
+  {
+   "name": "Graham Central Station",
+   "namedBy": "bad-brains",
+   "sentence": "I went to school on Graham, a student of the real authentic thumbing, the real growling and digging up bass lines like shoveling a foxhole.",
+   "url": "https://www.spinmagazine.com/2026/07/5-albums-i-cant-live-without-darryl-jenifer-of-bad-brains-and-the-weather-channel/"
+  },
+  {
+   "name": "The Who",
+   "namedBy": "guided-by-voices",
+   "sentence": "The Who was totally my model. We’re the drunken Who.",
+   "url": "https://www.spinmagazine.com/2004/09/records-changed-my-life-robert-pollard-guided-voices/"
+  },
+  {
+   "name": "King Crimson",
+   "namedBy": "guided-by-voices",
+   "sentence": "First, I couldn’t get into it because the songs were so long and jazzy, but after a while I got into a complete prog-rock phase.",
+   "url": "https://www.spinmagazine.com/2004/09/records-changed-my-life-robert-pollard-guided-voices/"
+  },
+  {
+   "name": "Devo",
+   "namedBy": "guided-by-voices",
+   "sentence": "But I kept listening, and it just blew my mind how good it was.",
+   "url": "https://www.spinmagazine.com/2004/09/records-changed-my-life-robert-pollard-guided-voices/"
+  },
+  {
+   "name": "Jimi Hendrix",
+   "namedBy": "joy-division",
+   "sentence": "So I went out and bought it, played it, just a lot of noise, played it, just a lot of noise — and then all of the sudden my musical horizon went up a notch, and I really got into Hendrix.",
+   "url": "https://www.spinmagazine.com/2005/07/records-changed-my-life-bernard-sumner-new-order/"
+  },
+  {
+   "name": "Frightwig",
+   "namedBy": "bikini-kill",
+   "sentence": "Frightwig was just a hugely influential band on Bikini Kill.",
+   "url": "https://www.spinmagazine.com/2022/11/kathleen-hanna-bikini-kill-2005-feature/"
+  },
+  {
+   "name": "ESG",
+   "namedBy": "bikini-kill",
+   "sentence": "Bikini Kill really loved bands like the Slits and the Raincoats and ESG.",
+   "url": "https://www.spinmagazine.com/2022/11/kathleen-hanna-bikini-kill-2005-feature/"
+  },
+  {
+   "name": "The Slits",
+   "namedBy": "bikini-kill",
+   "sentence": "Bikini Kill really loved bands like the Slits and the Raincoats and ESG.",
+   "url": "https://www.spinmagazine.com/2022/11/kathleen-hanna-bikini-kill-2005-feature/"
+  },
+  {
+   "name": "Public Enemy",
+   "namedBy": "bikini-kill",
+   "sentence": "I had this album on cassette and used to jog to it while I was on tour with Bikini Kill. I had a lot of nervous energy, and this just lit a fire under me.",
+   "url": "https://www.spinmagazine.com/2022/11/kathleen-hanna-bikini-kill-2005-feature/"
+  },
+  {
+   "name": "U2",
+   "namedBy": "at-the-drive-in",
+   "sentence": "Everything I thought I knew was out the window, and the feeling they gave me made me want to do this for the rest of my life, regardless of size or success.",
+   "url": "https://www.spinmagazine.com/2026/08/5-albums-i-cant-live-without-jim-ward-of-sparta/"
+  },
+  {
+   "name": "Billy Joel",
+   "namedBy": "at-the-drive-in",
+   "sentence": "He will always be my origin story.",
+   "url": "https://www.spinmagazine.com/2026/08/5-albums-i-cant-live-without-jim-ward-of-sparta/"
+  },
+  {
+   "name": "Jawbox and Jawbreaker",
+   "namedBy": "at-the-drive-in",
+   "sentence": "When I discovered Jawbox and Jawbreaker on the very same day through my older sister, my life changed and there was no looking back.",
+   "url": "https://www.spinmagazine.com/2026/08/5-albums-i-cant-live-without-jim-ward-of-sparta/"
+  },
+  {
+   "name": "Simon & Garfunkel",
+   "namedBy": "liz-phair",
+   "sentence": "Looking back, I really think it had a big effect on my songwriting style.",
+   "url": "https://www.spinmagazine.com/2004/07/records-changed-my-life/"
+  }
+ ]
+}

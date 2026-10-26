@@ -1,0 +1,32 @@
+{
+ "incredible-string-band": [
+  {
+   "key": "boards-of-canada>incredible-string-band",
+   "why": "Owner: drop every link still without a source at the end of the source pass.",
+   "note": "Two searches. The 2005 Pitchfork interview did not come up. Leads, not opened: Wikipedia's Geogaddi page says Sandison cited the Incredible String Band as an inspiration (footnote [4]); a Trouser Press entry lists the ISB among BoC influences (writer's account). The 'listen to Jerry Goldsmith or The Incredible String Band' quote was not found.",
+   "url": null
+  },
+  {
+   "key": "vashti-bunyan>incredible-string-band",
+   "why": "Introduction, session work and lodging.",
+   "note": "Wikipedia: producer Joe Boyd introduced her to the Incredible String Band, Robin Williamson played on her album, and she later stayed in their Glen Row cottages. That is introduction, session work and lodging, not influence; no Bunyan statement of influence found. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Vashti_Bunyan"
+  }
+ ],
+ "toe": [
+  {
+   "key": "toe>cap-n-jazz",
+   "why": "The named inspiration is Ghosts and Vodka, not Cap'n Jazz itself; would change if Yamazaki names Cap'n Jazz as shaping him.",
+   "note": "Tone Glow 177 (Joshua Minsoo Kim, 2024), Yamazaki speaking. The preceding paragraph: 'There was the guitarist from Cap’n Jazz who plays for a band called Ghosts and Vodka .' [interviewer: 'Right, Victor Villareal.'] then 'So they were instrumental, and that was a big inspiration for me.' So the named inspiration is Ghosts and Vodka (Villarreal's instrumental band), not Cap'n Jazz itself. Same answer lists Texas Is the Reason, The Promise Ring, Cap’n Jazz as a late-90s scene whose 'guitar tone became cleaner' (a scene he belonged to, not stated as a personal influence). Propose: lower to a loos",
+   "url": "https://toneglow.substack.com/p/tone-glow-177-toe"
+  }
+ ],
+ "christie-front-drive": [
+  {
+   "key": "christie-front-drive>drive-like-jehu",
+   "why": "Unfootnoted Wikipedia line repeating aggregator bios.",
+   "note": "Wikipedia sentence has no footnote (raw wikitext checked); same unsourced bio claim as Last.fm/Sputnik. Propose remove, or keep at reported only if owner accepts an unfootnoted Wikipedia line.",
+   "url": "https://en.wikipedia.org/wiki/Christie_Front_Drive"
+  }
+ ]
+}

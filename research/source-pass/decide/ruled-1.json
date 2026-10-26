@@ -1,0 +1,265 @@
+{
+ "agent": "decide-1",
+ "finished": true,
+ "rulings": [
+  {
+   "key": "alex-g>modest-mouse",
+   "ruling": "remove",
+   "why": "He only concedes critics' Modest Mouse comparison works; no statement it shaped him (would change: his own words naming them)."
+  },
+  {
+   "key": "angel-olsen>the-cure",
+   "ruling": "remove",
+   "why": "Pitchfork's sound comparison, no Olsen statement."
+  },
+  {
+   "key": "aphex-twin>can",
+   "ruling": "remove",
+   "why": "1993 page shows recent listening to Can, while James says he barely listened to music when he began; not shaping."
+  },
+  {
+   "key": "bjork>aphex-twin",
+   "ruling": "remove",
+   "why": "Bare favourites list; the 'pioneer' wording is a writer's account, not her quote."
+  },
+  {
+   "key": "blonde-redhead>dna",
+   "ruling": "remove",
+   "why": "Naming a band after a song is a tribute, no stated influence; unfootnoted."
+  },
+  {
+   "key": "boards-of-canada>autechre",
+   "ruling": "remove",
+   "why": "Autechre helped BoC's career and critics hear resemblance; no BoC statement."
+  },
+  {
+   "key": "bright-eyes>leonard-cohen",
+   "ruling": "remove",
+   "why": "Oberst praises Simon Joyner as having shades of Cohen; says nothing of Cohen shaping Oberst."
+  },
+  {
+   "key": "broken-social-scene>pavement",
+   "ruling": "remove",
+   "why": "A song title nod only."
+  },
+  {
+   "key": "caroline-polachek>cocteau-twins",
+   "ruling": "remove",
+   "why": "An aside about a photo and a dream-collaborator pick; not shaped by them."
+  },
+  {
+   "key": "christie-front-drive>drive-like-jehu",
+   "ruling": "remove",
+   "why": "Unfootnoted Wikipedia line repeating aggregator bios."
+  },
+  {
+   "key": "deerhunter>sonic-youth",
+   "ruling": "remove",
+   "why": "A reviewer's list of ingredients; Cox's own words credit Stereolab instead."
+  },
+  {
+   "key": "depeche-mode>sparks",
+   "ruling": "remove",
+   "why": "Favourites named in dead 1981 questionnaires, no tie to their music."
+  },
+  {
+   "key": "do-make-say-think>godspeed-you-black-emperor",
+   "ruling": "remove",
+   "why": "Only shared label, scene and near-simultaneous formation."
+  },
+  {
+   "key": "elliott-smith>nico",
+   "ruling": "remove",
+   "why": "A favourites answer; 'playing it for months' is only a paraphrase, and no tie to his own music."
+  },
+  {
+   "key": "far-apart>the-cure",
+   "ruling": "remove",
+   "why": "Naming a band after a song is a nod, not a stated influence."
+  },
+  {
+   "key": "galaxie-500>the-modern-lovers",
+   "ruling": "remove",
+   "why": "A cover and a writer's remark that their sympathy makes sense; Wareham's own words on shaping are absent (would change: a quote saying they learned from Richman)."
+  },
+  {
+   "key": "harold-budd>brian-eno",
+   "ruling": "remove",
+   "why": "Collaboration and production, and Budd was the older artist."
+  },
+  {
+   "key": "hum>dinosaur-jr",
+   "ruling": "remove",
+   "why": "A bare favourite-bands list in the band's bio with no tie to forming their sound (50/50; would change: Talbott saying he learned from Dinosaur Jr.)."
+  },
+  {
+   "key": "interpol>television",
+   "ruling": "remove",
+   "why": "Critics' resemblance only and Interpol deny the obvious comparisons; no denial of this one on record, so not a denial ruling."
+  },
+  {
+   "key": "jane-remover>yeule",
+   "ruling": "remove",
+   "why": "A review comparing one song to yeule's ballads."
+  },
+  {
+   "key": "julia-holter>nico",
+   "ruling": "remove",
+   "why": "Critics' vocal resemblance only."
+  },
+  {
+   "key": "la-dispute>black-flag",
+   "ruling": "remove",
+   "why": "The review covers Family Man and never says influence; it describes a combination of styles."
+  },
+  {
+   "key": "minutemen>dead-kennedys",
+   "ruling": "remove",
+   "why": "Rests on AllMusic's similar-artists panel, a bare name list."
+  },
+  {
+   "key": "my-bloody-valentine>cocteau-twins",
+   "ruling": "remove",
+   "why": "Shields loves them but says he did not want to sound like them and rejects the shared-influence idea; that denies resemblance, and the only support is one writer's clause (would change: a Shields statement of influence)."
+  },
+  {
+   "key": "new-order>the-stooges",
+   "ruling": "remove",
+   "why": "Hook's Metallic K.O. story predates New Order and the quoted wording is not on the page."
+  },
+  {
+   "key": "of-montreal>the-stooges",
+   "ruling": "keep",
+   "sourceTier": "first-person",
+   "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/",
+   "found": "KB: Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+   "citation": "Asked who influenced the way he makes music, Kevin Barnes of of Montreal named Iggy Pop, the Stooges' singer, among David Bowie, Prince, Kate Bush and Lou Reed in a DCist interview (2015).",
+   "why": "Barnes names Iggy Pop as an influence on his music; person-level, so the band link rests on the Stooges being Iggy's band (50/50 on that)."
+  },
+  {
+   "key": "parquet-courts>guided-by-voices",
+   "ruling": "remove",
+   "why": "GBV appears only in a journalist's parenthetical about the scene Savage likes."
+  },
+  {
+   "key": "pavement>pixies",
+   "ruling": "remove",
+   "why": "AllMusic critics' comparisons only; Malkmus names other influences."
+  },
+  {
+   "key": "perfume-genius>xiu-xiu",
+   "ruling": "remove",
+   "why": "A present-tense aside about how an intense song lands, not about shaping his music."
+  },
+  {
+   "key": "pinback>modest-mouse",
+   "ruling": "remove",
+   "why": "A peers comparison ('alongside'), not influence."
+  },
+  {
+   "key": "pinback>velvet-underground",
+   "ruling": "remove",
+   "why": "A lyric listing bands radio does not play."
+  },
+  {
+   "key": "portishead>massive-attack",
+   "ruling": "remove",
+   "why": "Studio access and work as tape-op; no statement of influence."
+  },
+  {
+   "key": "red-house-painters>cocteau-twins",
+   "ruling": "remove",
+   "why": "Only a shared label."
+  },
+  {
+   "key": "rem>big-star",
+   "ruling": "remove",
+   "why": "The quoted line was not found anywhere; the pull-quote is a publisher blurb about wanting to make a Big Star's Third-level album (would change: Buck's original 1991 interview)."
+  },
+  {
+   "key": "rites-of-spring>television",
+   "ruling": "remove",
+   "why": "Only says they discovered Television later, with no effect on their music stated."
+  },
+  {
+   "key": "sheena-ringo>bjork",
+   "ruling": "remove",
+   "why": "A favourites entry on a talent-agency form at 15."
+  },
+  {
+   "key": "silversun-pickups>my-bloody-valentine",
+   "ruling": "remove",
+   "why": "Rolling Stone's comparison, no band statement."
+  },
+  {
+   "key": "sophie>aphex-twin",
+   "ruling": "remove",
+   "why": "A critic's description and a Guardian comparison; no SOPHIE statement."
+  },
+  {
+   "key": "sufjan-stevens>neil-young",
+   "ruling": "remove",
+   "why": "Admiration for Young's career, not his music shaping Stevens."
+  },
+  {
+   "key": "superchunk>echo-and-the-bunnymen",
+   "ruling": "remove",
+   "why": "The interviewer, not McCaughan, names Echo; his own answer lists others."
+  },
+  {
+   "key": "tame-impala>neutral-milk-hotel",
+   "ruling": "remove",
+   "why": "An unfootnoted collective-level Wikipedia claim about Elephant 6."
+  },
+  {
+   "key": "the-cure>mogwai",
+   "ruling": "flip",
+   "flippedKey": "mogwai>the-cure",
+   "sourceTier": "first-person",
+   "url": "https://list.co.uk/news/3259/stuart-braithwaite-you-need-strong-ankles-to-go-see-the-cure",
+   "found": "Disintegration was the first record I fell in love with and, along with a few other records, it was part of the blueprint of what Mogwai have become musically, that sprawled-out melancholy atmosphere.",
+   "citation": "Mogwai's Stuart Braithwaite told The List that the Cure's Disintegration was \"part of the blueprint of what Mogwai have become musically, that sprawled-out melancholy atmosphere.\"",
+   "why": "The page has Mogwai's guitarist crediting the Cure, so influence ran the other way."
+  },
+  {
+   "key": "the-jesus-and-mary-chain>siouxsie-and-the-banshees",
+   "ruling": "remove",
+   "why": "A bare favourites playlist on a radio show."
+  },
+  {
+   "key": "the-mountain-goats>joy-division",
+   "ruling": "remove",
+   "why": "Only Wikipedia's Goths page, footnoted to a piece whose teenage goth listening is the journalist's own; the link is likely true but unproven (would change: a band statement)."
+  },
+  {
+   "key": "the-postal-service>new-order",
+   "ruling": "remove",
+   "why": "New Order appears only in a writer's list; Gibbard names others."
+  },
+  {
+   "key": "the-shins>olivia-tremor-control",
+   "ruling": "remove",
+   "why": "A passing 'can be heard in' claim about a list of bands."
+  },
+  {
+   "key": "tim-hecker>brian-eno",
+   "ruling": "remove",
+   "why": "Reviewers' comparison, and Hecker positions himself against Eno's ambient (would change: Hecker's own words crediting Eno)."
+  },
+  {
+   "key": "tricky>massive-attack",
+   "ruling": "remove",
+   "why": "Membership and collaboration, not influence."
+  },
+  {
+   "key": "vashti-bunyan>incredible-string-band",
+   "ruling": "remove",
+   "why": "Introduction, session work and lodging."
+  },
+  {
+   "key": "wolf-alice>siouxsie-and-the-banshees",
+   "ruling": "remove",
+   "why": "A this-or-that pick in a webchat, no influence on the band's music."
+  }
+ ]
+}

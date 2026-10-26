@@ -1,0 +1,60 @@
+{
+ "four-tet": [
+  {
+   "key": "four-tet>aphex-twin",
+   "why": "Hebden admires Windowlicker as an ideal but never says it shaped his music; 50/50.",
+   "note": "Hebden's own words (2011, MJ O'Neill on Medium) hold up Windowlicker as the ideal he admires most ('the absolute grail'), but never say it shaped his music; the old 1999-remix corroboration isn't influence. Propose: keep as first-person fandom if admiration from a working producer counts, else remove.",
+   "url": "https://medium.com/mjs-ongoing-experiments/archival-interview-kieran-hebden-four-tet-2011-827af1b03129"
+  },
+  {
+   "key": "hot-chip>four-tet",
+   "why": "School friends swapping records and a favour; not one shaping the other, no mentor wording on the page.",
+   "note": "Cherwell interview with Joe Goddard: school friends who swapped records and went to shows; Hebden passed on their demos to Moshi Moshi. Mutual friendship and a favour, not one shaping the other; no 'mentor' wording on this page (the mentor line is from a Qobuz bio, not opened). Propose remove, or keep only if owner counts a friend's record recommendations as influence (then tier reported).",
+   "url": "https://cherwell.org/?p=24569"
+  }
+ ],
+ "incredible-string-band": [
+  {
+   "key": "boards-of-canada>incredible-string-band",
+   "why": "Owner: drop every link still without a source at the end of the source pass.",
+   "note": "Two searches. The 2005 Pitchfork interview did not come up. Leads, not opened: Wikipedia's Geogaddi page says Sandison cited the Incredible String Band as an inspiration (footnote [4]); a Trouser Press entry lists the ISB among BoC influences (writer's account). The 'listen to Jerry Goldsmith or The Incredible String Band' quote was not found.",
+   "url": null
+  },
+  {
+   "key": "vashti-bunyan>incredible-string-band",
+   "why": "Introduction, session work and lodging.",
+   "note": "Wikipedia: producer Joe Boyd introduced her to the Incredible String Band, Robin Williamson played on her album, and she later stayed in their Glen Row cottages. That is introduction, session work and lodging, not influence; no Bunyan statement of influence found. Propose: remove.",
+   "url": "https://en.wikipedia.org/wiki/Vashti_Bunyan"
+  }
+ ],
+ "toe": [
+  {
+   "key": "toe>cap-n-jazz",
+   "why": "The named inspiration is Ghosts and Vodka, not Cap'n Jazz itself; would change if Yamazaki names Cap'n Jazz as shaping him.",
+   "note": "Tone Glow 177 (Joshua Minsoo Kim, 2024), Yamazaki speaking. The preceding paragraph: 'There was the guitarist from Cap’n Jazz who plays for a band called Ghosts and Vodka .' [interviewer: 'Right, Victor Villareal.'] then 'So they were instrumental, and that was a big inspiration for me.' So the named inspiration is Ghosts and Vodka (Villarreal's instrumental band), not Cap'n Jazz itself. Same answer lists Texas Is the Reason, The Promise Ring, Cap’n Jazz as a late-90s scene whose 'guitar tone be",
+   "url": "https://toneglow.substack.com/p/tone-glow-177-toe"
+  }
+ ],
+ "do-make-say-think": [
+  {
+   "key": "do-make-say-think>godspeed-you-black-emperor",
+   "why": "Only shared label, scene and near-simultaneous formation.",
+   "note": "Nothing found. Wikipedia has no statement either way; the only links are the shared label (Constellation), the Canadian post-rock scene and formation a year apart, none of which is influence. Propose: remove.",
+   "url": null
+  }
+ ],
+ "george-clanton": [
+  {
+   "key": "george-clanton>the-human-league",
+   "why": "Owner: drop every link still without a source at the end of the source pass.",
+   "note": "Seven Days page not found; no search spent (share used up). Wikipedia raw for George Clanton has no Human League text.",
+   "url": null
+  },
+  {
+   "key": "george-clanton>ariel-pink",
+   "why": "Pitchfork compares attitude, not influence.",
+   "note": "Pitchfork review of Slide (Miles Bowe, Sept 2018) quote is verbatim, but it compares attitude, not influence. Propose remove.",
+   "url": "https://pitchfork.com/reviews/albums/george-clanton-slide/"
+  }
+ ]
+}

@@ -1,0 +1,99 @@
+{
+ "id": "the-slits",
+ "name": "The Slits",
+ "place": {
+  "realm": "region-one",
+  "lineage": null,
+  "layer": "outside",
+  "genres": [
+   "post-punk",
+   "punk"
+  ],
+  "country": "GB",
+  "activeFrom": 1976,
+  "signatureSong": "Typical Girls",
+  "scenes": [],
+  "placementNote": "Same shape as x-ray-spex (region-one, layer outside, genres punk/post-punk). Not in any scene on the map: they toured with the Clash and borrowed gear from Pistols/Clash friends, but that is not a shared-room scene on the current list."
+ },
+ "edges": [
+  {
+   "source": "the-slits",
+   "target": "patti-smith",
+   "sourceTier": "first-person",
+   "confidence": 0.8,
+   "url": "https://faroutmagazine.co.uk/viv-albertine-on-the-emancipating-feeling-of-discovering-patti-smiths-horses/",
+   "found": "Hearing Patti Smith be sexual, building to an orgasmic crescendo, whilst leading a band, is so exciting. It's emancipating. If I can take a quarter or even an eighth of what she has and not give a shit about making a fool of myself, maybe I still can do something with my life.",
+   "citation": "Slits guitarist Viv Albertine, writing in her memoir and quoted by Far Out in 2020s, said hearing Patti Smith on Horses (1975) was \"emancipating\": \"If I can take a quarter or even an eighth of what she has and not give a shit about making a fool of myself, maybe I still can do something with my life.\"",
+   "note": "Quote is Albertine's memoir words, relayed by Far Out (writer's framing: Horses 'gave Albertine the courage'). Horses 1975 precedes the Slits (1976). Also Ari Up reportedly met Palmolive at a Patti Smith gig, which is how the band began (Wikipedia/Vice, not opened). Far Out date not checked; fill before writing."
+  },
+  {
+   "source": "the-slits",
+   "target": "sex-pistols",
+   "sourceTier": "first-person",
+   "confidence": 0.7,
+   "url": "https://www.bookforum.com/print/2104/punk-heroine-viv-albertine-recounts-a-raucous-life-13923",
+   "found": "Watching the Sex Pistols, she thought, \"This is the first time I've seen a band and felt there are no barriers between me and them.\"",
+   "citation": "Bookforum's review of Viv Albertine's memoir quotes her on seeing the Sex Pistols at art school: \"This is the first time I've seen a band and felt there are no barriers between me and them.\" She then bought a guitar and joined the Slits.",
+   "note": "Albertine's memoir words via a reviewer; the Big Issue interview (https://www.bigissue.com/interviews/viv-albertine-the-slits-was-exhausting-and-i-ended-up-in-hospital) has her own: 'When I went to university I saw one of the Sex Pistols' first gigs. Then I bumped into Sid Vicious and Johnny Rotten on Portobello Road and told them I was going to buy an electric guitar.' Strong sequence, no 'inspired' word; Far Out says it 'inspired her to become a musician' (writer's synthesis). Could be 'reported' if owner is strict. Albertine joined after the Slits formed, so it's her influence, speaking for a member."
+  },
+  {
+   "source": "bikini-kill",
+   "target": "the-slits",
+   "sourceTier": "first-person",
+   "confidence": 0.9,
+   "url": "https://thequietus.com/interviews/bakers-dozen/kathleen-hanna-favourite-albums-interview/8/",
+   "found": "Sonically they really changed my world and the freedom and the looseness. They were funny, tough and experimental.",
+   "citation": "Kathleen Hanna of Bikini Kill, in The Quietus's Baker's Dozen, on the Slits' Cut: \"Sonically they really changed my world and the freedom and the looseness.\" She added: \"They taught me about production. I listened to that album so many times to figure out how it was produced.\"",
+   "note": "Spin 2005 (https://www.spinmagazine.com/2022/11/kathleen-hanna-bikini-kill-2005-feature/) also: 'Bikini Kill really loved bands like the Slits and the Raincoats and ESG.' Replaces the existing PopMatters critic-tier line only for Slits (that edge is bikini-kill>x-ray-spex/siouxsie, not Slits; there is no existing bikini-kill>the-slits edge)."
+  },
+  {
+   "source": "bratmobile",
+   "target": "the-slits",
+   "sourceTier": "first-person",
+   "confidence": 0.85,
+   "url": "https://pitchfork.com/features/5-10-15-20/9950-riot-grrrl-trailblazer-allison-wolfe-on-the-music-that-made-her/",
+   "found": "The Slits have been hugely influential on me\u2014this awesome band of women who created something out of nothing.",
+   "citation": "Allison Wolfe of Bratmobile, in Pitchfork's 5-10-15-20: \"The Slits have been hugely influential on me\u2014this awesome band of women who created something out of nothing. They didn't know what the hell they were doing and they just made noise that sounded really cool. They paved the way for so many of us.\""
+  },
+  {
+   "source": "mary-timony",
+   "target": "the-slits",
+   "sourceTier": "first-person",
+   "confidence": 0.6,
+   "url": "https://pitchfork.com/features/5-10-15-20/9518-mary-timony/",
+   "found": "I'd listen to the Slits' Cut on a cassette a lot in that car. Everything's just so different about it. The rhythms are so interesting, and the lyrics are really great and funny, and the guitar playing is crazy.",
+   "citation": "Mary Timony, in Pitchfork's 5-10-15-20, on her teenage years: \"I'd listen to the Slits' Cut on a cassette a lot in that car. Everything's just so different about it... the guitar playing is crazy.\" Pitchfork's standfirst says she was \"transformed by the Slits and the Raincoats.\"",
+   "note": "Fan-while-forming (teen years, before Helium 1992); the 'transformed' wording is Pitchfork's, not hers. Borderline: owner may rule it first-person fan (0.6) or drop."
+  }
+ ],
+ "denials": [],
+ "rejected": [
+  {
+   "pair": "cocteau-twins>the-slits",
+   "why": "Simon Raymonde (Quietus Baker's Dozen) saw the Slits supporting the Clash and 'still listen[s] to it all the time', but he joined Cocteau Twins in 1983, four years after Cut, and says nothing about it shaping his own music. Favourite, per JUDGE.md."
+  },
+  {
+   "pair": "the-slits>the-clash",
+   "why": "They toured with the Clash (1977) and Albertine dated Mick Jones; touring and a relationship are not influence. No quote found of any Slit saying the Clash shaped their music."
+  },
+  {
+   "pair": "the-slits>bob-marley/reggae/dub",
+   "why": "Real, central (Wikipedia, Hot Press) but off the map; nothing to link."
+  },
+  {
+   "pair": "bikini-kill>x-ray-spex (existing)",
+   "why": "Not mine; note the existing PopMatters line lumps Slits with X-Ray Spex and Siouxsie at critic tier."
+  }
+ ],
+ "content": {
+  "bio": "The Slits formed in London in 1976 when fourteen-year-old Ari Up, the daughter of a German music promoter, teamed up with drummer Palmolive after a Patti Smith gig. Tessa Pollitt joined on bass and Viv Albertine on guitar, and the band learned to play in public, opening for the Clash on their 1977 tour while most of the audience was still working out what to make of four young women who sounded nothing like punk's usual snarl. Palmolive left in 1978 for the Raincoats and was replaced by Budgie.\n\nCut, their 1979 debut, produced by dub engineer Dennis Bovell, folded reggae and dub into punk's rawness and put the band naked and muddy on the cover. Return of the Giant Slits followed in 1981 before they split. Albertine later became a filmmaker and wrote a celebrated memoir, and Ari Up reformed the group with Pollitt in 2006 until her death in 2010. Riot grrrl bands from Bikini Kill to Bratmobile counted them among the first to show that women could make a free, strange noise and call it music.",
+  "album": {
+   "title": "Cut",
+   "year": 1979,
+   "classicReason": "Cut sets punk's jagged guitars against dub bass and loose, rolling drums, so the whole record sounds both tense and relaxed. \"Typical Girls\" turns a list of what women are supposed to be into a sneering chant over a bouncing, off-kilter rhythm. Dennis Bovell's production leaves enormous space around each instrument, which lets Ari Up's yelps and Viv Albertine's scratchy guitar sound improvised and alive. It endures because it proved a band could ignore the rules of both punk and reggae and make something new from both."
+  }
+ },
+ "searches": 8,
+ "toolStatus": "WebSearch ok (8 of 22 shared by both artists); ledger read ok; Metro Times and Shindig URLs failed to match (shell glob issue, not retried).",
+ "notes": "Bio/album facts from memory plus search snippets, not fully verified; check before writing."
+}

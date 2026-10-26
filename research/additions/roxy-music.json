@@ -1,0 +1,51 @@
+{
+ "id":"roxy-music","name":"Roxy Music",
+ "place":{"realm":"region-one","lineage":null,"layer":"outside","genres":["art-rock","art-pop"],"country":"GB","activeFrom":1970,"signatureSong":"Virginia Plain","scenes":[],"note":"Placement like x-ray-spex (region-one, layer outside); could be 'root' layer by era. No scene: nothing on the scene list fits."},
+ "edges":[
+  {"source":"roxy-music","target":"velvet-underground","sourceTier":"first-person","confidence":0.85,
+   "url":"https://www.npr.org/transcripts/1139266657",
+   "found":"But, you know, we loved The Velvet Underground. And, you know, they had very few chords in their songs. And it was about simplicity, but it was about the words that had a different subject matter than just boy meets girl.",
+   "citation":"Guitarist Phil Manzanera, NPR Weekend Edition (Nov 2022): \"we loved The Velvet Underground. And, you know, they had very few chords in their songs. And it was about simplicity...\""},
+  {"source":"destroyer","target":"roxy-music","sourceTier":"first-person","confidence":0.8,
+   "url":"https://pitchfork.com/features/5-10-15-20/8896-destroyer/",
+   "found":"I got lost in Avalon in an unhealthy way: the reverbs, the drum sounds, the percussion. And that's when my daughter was born. I wrote all the songs off Kaputt shortly afterwards",
+   "citation":"Dan Bejar of Destroyer, Pitchfork's 5-10-15-20: \"I got lost in Avalon in an unhealthy way: the reverbs, the drum sounds, the percussion... I wrote all the songs off Kaputt shortly afterwards.\"",
+   "note":"Avalon (1982) is Roxy Music; Kaputt is 2011. Bejar's own words, tied to his own making. Strong."},
+  {"source":"joy-division","target":"roxy-music","sourceTier":"first-person","confidence":0.7,
+   "url":"https://www.theguardian.com/music/2013/jan/27/peter-hook-soundtrack-of-my-life",
+   "found":"When I came back to Manchester, their first LP [1973's The Human Menagerie ] led me to Roxy, which led me into Bowie. To that serious side of music beyond crap pop like Mud, Gary Glitter and Racey.",
+   "citation":"Bassist Peter Hook, The Guardian's Soundtrack of My Life (2013), at 17: \"their first LP led me to Roxy, which led me into Bowie. To that serious side of music beyond crap pop.\"",
+   "note":"'Their' is Cockney Rebel (The Human Menagerie, Steve Harley), which led him to Roxy. Hook's own formative listening, before Joy Division (1976). Speaker is Hook, not the band."},
+  {"source":"the-human-league","target":"roxy-music","sourceTier":"first-person","confidence":0.8,
+   "url":"https://thequietus.com/interviews/bakers-dozen/martyn-ware-human-league-heaven-17-bef-interview-favourite-albums/4/",
+   "found":"It changed my life. I could have chosen Electric Warrior by T. Rex, all that stuff, I was heavily into glam. It was like an awakening. We were dressing up, wearing makeup, platform boots, me and Phil.",
+   "citation":"Martyn Ware of the Human League, Quietus Baker's Dozen, on Roxy Music's debut: \"It changed my life... It was like an awakening. We were dressing up, wearing makeup, platform boots, me and Phil.\"",
+   "note":"Existing map already has human-league>david-bowie at first-person from Oakey naming Roxy. Ware is a founder."},
+  {"source":"cabaret-voltaire","target":"roxy-music","sourceTier":"first-person","confidence":0.7,
+   "url":"https://thequietus.com/interviews/bakers-dozen/richard-h-kirk-cabaret-voltaire-favourite-albums/5/",
+   "found":"Roxy Music were tremendously influential, not least of all on Cabaret Voltaire because of some of the stuff that Eno was saying in interviews about 'non-music' and not needing to learn an instrument.",
+   "citation":"Richard H. Kirk of Cabaret Voltaire, Quietus Baker's Dozen: \"Roxy Music were tremendously influential, not least of all on Cabaret Voltaire because of some of the stuff that Eno was saying in interviews about 'non-music'.\"",
+   "note":"Partly Eno-as-person. Eno was a Roxy member, so still Roxy, but owner may prefer to hold. Kirk also says he saw them quite a few times."},
+  {"source":"sex-pistols","target":"roxy-music","sourceTier":"first-person","confidence":0.55,
+   "url":"https://www.spinmagazine.com/2025/08/5-albums-i-cant-live-without-steve-jones-of-the-sex-pistols/",
+   "found":"Again, it's one of them albums for me as a 15, 16 year old, however old I was when that came out, I would just lie on the bed and close my eyes and just get all these images of it, of what was going on.",
+   "citation":"Steve Jones, SPIN's 5 Albums I Can't Live Without, on Roxy Music's For Your Pleasure: \"it's one of them albums for me as a 15, 16 year old... I would just lie on the bed and close my eyes\" -- and he loved the fashion and the band's look.",
+   "note":"HOLD / owner ruling: formative fandom as a teenager, but he says nothing about it shaping the Pistols; the same page's Chris Spedding/Chris Thomas production link is not influence. Judge: contested, lean favourite."}
+ ],
+ "denials":[],
+ "rejected":[
+  {"pair":"omd>roxy-music","why":"McCluskey (Quietus) says OMD 'rejected' Roxy's image approach and focused on music; interest in glam-era look only. Favourite/near-denial. (OMD's Wikipedia-sourced list already names Roxy Music but is a bare list.)"},
+  {"pair":"wire>roxy-music","why":"Graham Lewis: saw them in 1972, 'Magic. Weird, wilful'; supported them later. Admiration of an act, no shaping claim. Favourite."},
+  {"pair":"julia-holter>roxy-music","why":"Holter heard it as a child via parents, hated it, listened properly at ~21 after her music formed. Favourite."},
+  {"pair":"echo-and-the-bunnymen>roxy-music","why":"Will Sergeant: bought it when it came out, owns many copies; his passage is about Yes/Roger Dean covers. Favourite."},
+  {"pair":"the-smiths>roxy-music","why":"The Quietus text is the writer (Jeremy Allen) interpreting why Morrissey might like it, not Morrissey's words. Not the speaker's."},
+  {"pair":"brian-eno","why":"Member of Roxy Music 1971-73; no edge either way (personnel)."},
+  {"pair":"roxy-music>david-bowie / ferry>?","why":"Ferry's own influences: one search found no Ferry first-person VU quote; secondary bio only. Not used. The VU link rests on Manzanera."}
+ ],
+ "content":{
+  "bio":"Roxy Music formed in London in 1970 around singer and songwriter Bryan Ferry, a former art student, and arrived in 1972 sounding like nothing else on the radio. They had a sax and oboe, Brian Eno's synthesizer treatments, Phil Manzanera's guitar, and a look of 1950s rock and roll crossed with science fiction. Ferry sang in a crooner's quiver with lyrics full of art and ironic romance, and the sleeves and clothes were treated as part of the music.\n\nEno left after two albums, and the band slid towards a smoother, more sophisticated sound that peaked on Avalon in 1982. Guitarist Phil Manzanera has said the band loved the Velvet Underground for their few chords and unusual lyrics. Roxy Music in turn gave a generation of British bands, from the Human League to Cabaret Voltaire and Joy Division, a template for how to be glamorous, arty and a pop group at once.",
+  "album":{"title":"For Your Pleasure","year":1973,"classicReason":"Eno's synthesizers and tape treatments tear through the band's glossy rock, and Ferry sings over it like a lounge singer at the end of a bad night. \"In Every Dream Home a Heartache\" is a slow song about love for an inflatable doll that ends in a noisy storm, and \"The Bogus Man\" is a ten-minute rhythm built almost from bass and drums alone. It was the last album Eno made with them, and it is still the best case for art-school glam."}
+ },
+ "searches":4,"toolStatus":"All fine. NPR transcript and cached pages opened via ledger.ts read.",
+ "notes":"Upstream only VU (Manzanera). Downstream: Destroyer strong; Human League, Joy Division (Hook), Cabaret Voltaire decent; Sex Pistols hold. Alt: roxy bio claims should be double-checked for accuracy about 'oboe' etc: the oboe is Andy Mackay, saxophone and oboe both. Smoother Avalon peak 1982 is commonly stated."
+}
