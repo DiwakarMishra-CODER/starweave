@@ -144,6 +144,8 @@ export interface Album {
   classicReason?: string;     // the "why it's a classic" essay (AI-drafted, human-verified)
   spotifyId?: string | null;  // for the embed preview player
   imageUrl?: string | null;   // album cover art — enriched at build time
+  previewUrl?: string | null;   // a song from this record — enriched at build time
+  previewTrack?: string | null; // which song it is
 }
 
 // Who took a freely licensed photo, and on what terms. CC BY / BY-SA require
@@ -204,6 +206,21 @@ export interface GraphData {
   scenes: Scene[];
   edges: Edge[];
   rejectedEdges: RejectedEdge[];
+  /** Particular recordings a page plays (the About page's tape,
+   *  data/about.ts), by key -- enriched at build time. */
+  songs?: Record<string, ExtraSong>;
+}
+
+export interface ExtraSong {
+  previewUrl: string;
+  previewTrack: string;
+  album: string;
+  /** The record's cover, 600px. */
+  imageUrl: string | null;
+  /** For an artist who isn't on the map: their photo (Deezer). */
+  artistImageUrl?: string | null;
+  /** What was asked for (artist|song|album|country), so the build knows when to look again. */
+  spec: string;
 }
 
 // Explicit-effort states only. 'cited' is NOT a member here — it's derived

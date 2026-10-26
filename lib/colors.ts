@@ -541,10 +541,11 @@ export function readableInk(color: string, background: string, min = 4.6): strin
   return DEEPEN_TOWARD;
 }
 
-// The ink for an artist's riso print behind their page
-// (components/artist/RisoPrint): their colour with its lightness moved, in
-// OKLab, until it stands between `min` and `max` against the page's dark --
-// so every realm colour prints at the same strength, dark or near-white.
+// An artist's colour as an ink on a dark ground (the bass's finish and the
+// ribbon in the room behind their page, components/artist/backline): their
+// colour with its lightness moved, in OKLab, until it stands between `min`
+// and `max` against the ground -- so every realm colour shows at the same
+// strength, dark or near-white.
 export function risoInk(color: string, background: string, min = 3, max = 5): string {
   const [L0, a, b] = rgbToOklab(hexToRgb(color));
   const bg = luminance(hexToRgb(background));
@@ -578,4 +579,15 @@ export function posterTint(color: string, ink = '#1c1724', min = 7): string {
     }
   }
   return POSTER_CREAM;
+}
+
+// The wall of the room behind an artist's page (components/artist/backline/
+// Room): their colour, deep, in OKLab -- dark enough that cream type on it
+// reads at 7:1 or better, with some of its hue kept so every artist's room
+// is their own colour, never plain black.
+export function roomWall(color: string): string {
+  const [, a, b] = rgbToOklab(hexToRgb(color));
+  const chroma = Math.hypot(a, b);
+  const keep = chroma > 0 ? Math.min(1, 0.075 / chroma) : 0;
+  return '#' + oklabToRgb([0.27, a * keep, b * keep]).map(c => Math.round(c * 255).toString(16).padStart(2, '0')).join('');
 }

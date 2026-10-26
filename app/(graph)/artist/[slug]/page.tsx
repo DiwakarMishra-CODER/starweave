@@ -7,15 +7,14 @@ import { buildPortrait, introLine } from '@/lib/family-portrait';
 import BackButton from '@/components/ui/BackButton';
 import FamilyPhoto from '@/components/artist/FamilyPhoto';
 import RecordSleeve from '@/components/artist/RecordSleeve';
-import RisoPrint from '@/components/artist/RisoPrint';
+import Room from '@/components/artist/backline/Room';
+import { resolveBackline } from '@/lib/backline';
 import SiteFooter from '@/components/layout/SiteFooter';
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
-// The page's dark, behind the riso print (.artist-overlay--family in globals.css).
-const PAGE_DARK = '#1a1520';
 
 export async function generateStaticParams() {
   const data = loadGraphData();
@@ -37,8 +36,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // middle of their family photo (who shaped them behind, who they shaped in
 // front -- the part only Starweave has); then their record laid open, front
 // and back: the record to start with on the front, their story as the
-// sleeve notes on the back, and the scene they were part of as a flyer. All
-// of it over a riso print of their own photo.
+// sleeve notes on the back, and the scene they were part of as a flyer. All of
+// it in a room: shelves of their family's records, and instruments that play
+// along with whatever's on (components/artist/backline).
 export default async function ArtistPage({ params }: Props) {
   const { slug } = await params;
   const data = loadGraphData();
@@ -55,6 +55,7 @@ export default async function ArtistPage({ params }: Props) {
   const portrait = buildPortrait(data, artist.id);
   const country = artist.country ? countryName(artist.country) : null;
   const credits = [artist.activeFrom ? `Since ${artist.activeFrom}` : null, country].filter(Boolean).join(' · ') || null;
+  const backline = resolveBackline(data, artist.id, color);
 
   return (
     <div
@@ -63,12 +64,15 @@ export default async function ArtistPage({ params }: Props) {
         '--layer-color': color,
         '--backdrop': backdrop,
         '--spot': readableInk(color, backdrop),
+        '--wall': backline.wall,
       } as React.CSSProperties}
     >
-      <RisoPrint
-        imageUrl={artist.imageUrl ?? null}
-        ink={risoInk(color, PAGE_DARK, 1.7, 2)}
-        lit={risoInk(color, PAGE_DARK, 4, 4.6)}
+      <Room
+        backline={backline}
+        genres={artist.genres.map(g => genreMap[g] ?? g)}
+        finish={risoInk(color, backline.wall, 3.2, 6)}
+        ribbon={risoInk(color, backline.wall, 7, 10)}
+        seed={artist.id}
       />
       <BackButton />
       <div className="artist-family">

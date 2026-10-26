@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, type RefObject } from 'react';
+import { bandBins } from './song-notes';
 
 // "The music drives the light": while a preview plays, its loudness is written
 // to a CSS custom property (--level, 0..1) on a target element, and the CSS
@@ -28,6 +29,9 @@ export function connectAnalyser(audio: HTMLAudioElement | null): void {
     const source = context.createMediaElementSource(audio);
     const analyser = context.createAnalyser();
     analyser.fftSize = 512;
+    // Quick enough that a struck note shows as a jump (the artist page's
+    // strings, readBands); the loudness reading doesn't use it.
+    analyser.smoothingTimeConstant = 0.5;
     source.connect(analyser);
     analyser.connect(context.destination);
     analysers.set(audio, analyser);
@@ -127,6 +131,29 @@ export function readLevel(audio: HTMLAudioElement | null): number {
     sum += v * v;
   }
   return Math.min(1, Math.sqrt(sum / samples.length) * 3.2);
+}
+
+let spectrum: Uint8Array<ArrayBuffer> | null = null;
+let bandMap: [number, number][] | null = null;
+
+/** The song's loudness in `out.length` bands, low to high by pitch, 0..1
+ *  each (lib/song-notes) -- for the strings down the artist's page. Zeros if the
+ *  element was never connected or isn't playing. */
+export function readBands(audio: HTMLAudioElement | null, out: Float32Array): void {
+  const analyser = audio ? analysers.get(audio) : undefined;
+  if (!analyser || audio!.paused) { out.fill(0); return; }
+  if (spectrum?.length !== analyser.frequencyBinCount) {
+    spectrum = new Uint8Array(analyser.frequencyBinCount);
+    bandMap = null;
+  }
+  bandMap ??= bandBins(analyser.context.sampleRate / analyser.fftSize, spectrum.length, out.length);
+  analyser.getByteFrequencyData(spectrum);
+  for (let i = 0; i < out.length; i++) {
+    const [a, b] = bandMap[i];
+    let peak = 0;
+    for (let k = a; k <= b; k++) peak = Math.max(peak, spectrum[k]);
+    out[i] = peak / 255;
+  }
 }
 
 // `onLevel`, if given, also receives each frame's level — for something that

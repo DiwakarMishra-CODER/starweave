@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from 'react';
 import { storyFrame } from './story-store';
-import { connectAnalyser, readLevel } from './use-audio-level';
+import { connectAnalyser, readBands, readLevel } from './use-audio-level';
 import { claimAudio, onAudioClaimed } from './audio-focus';
 
 // The site's one music player. It lives above the pages (mounted once in the
@@ -28,6 +28,8 @@ export interface Track {
   note?: string;
   /** Its own turn, instead of the queue's. */
   ms?: number;
+  /** How loud, against the rest (1 = as usual): a loud song can come in gentler. */
+  gain?: number;
 }
 
 export interface Queue {
@@ -67,6 +69,7 @@ export interface PlayerState {
 export const SONG_MS = 30000; // a whole preview
 const SKIP_MS = 1400;         // a track with no song: just long enough to see it
 const FADE_MS = 600;
+const GLIDE_MS = 450;         // the song on air fading out before another takes over (the About tape)
 const FLOW_DELAY_MS = 300;    // a linked queue's light leaves this long into a track...
 const FLOW_MS = 1500;         // ...and takes this long to cross the line
 const VOLUME = 0.8;
@@ -141,6 +144,23 @@ function begin(index: number) {
   raf = requestAnimationFrame(tick);
 }
 
+// Fade what's playing down to nothing, then go on. The tick stops meanwhile;
+// a pause pressed during the fade cancels it (it shares the frame handle).
+function fadeThen(next: () => void) {
+  const a = audio;
+  if (!a) { next(); return; }
+  cancelAnimationFrame(raf);
+  const from = a.volume;
+  const t0 = performance.now();
+  const step = (t: number) => {
+    const k = clamp01((t - t0) / GLIDE_MS);
+    a.volume = from * (1 - k);
+    if (k < 1) raf = requestAnimationFrame(step);
+    else next();
+  };
+  raf = requestAnimationFrame(step);
+}
+
 function advance() {
   const { queue, at } = state;
   if (!queue || at === null) return;
@@ -155,8 +175,9 @@ function tick(now: number) {
   const track = queue.tracks[at];
   const turn = track.previewUrl ? track.ms ?? queue.stopMs : SKIP_MS;
   const t = now - startedAt;
-  if (track.previewUrl && audio) audio.volume = VOLUME * clamp01(Math.min(t / FADE_MS, (turn - t) / FADE_MS));
+  if (track.previewUrl && audio) audio.volume = VOLUME * (track.gain ?? 1) * clamp01(Math.min(t / FADE_MS, (turn - t) / FADE_MS));
   storyFrame.level = readLevel(audio);
+  readBands(audio, storyFrame.bands);
   showProgress(clamp01(t / turn));
   // Light along the line from the last song's artist to this one's.
   if (flowFrom) {
@@ -182,6 +203,7 @@ export const player = {
     cancelAnimationFrame(raf);
     audio?.pause();
     storyFrame.level = 0;
+    storyFrame.bands.fill(0);
     set({ paused: true });
   },
   resume() {
@@ -192,6 +214,21 @@ export const player = {
     if (onAir(state)?.previewUrl) void audio?.play().catch(() => {});
     raf = requestAnimationFrame(tick);
     set({ paused: false });
+  },
+  /** Move to another track of the queue on air, the song playing fading out
+   *  first (the About page's tape, which follows the reader down the page). */
+  glide(index: number) {
+    const { queue, at, paused } = state;
+    if (!queue || at === null || index === at) return;
+    claimAudio(OWNER);
+    if (paused || !audio || !onAir(state)?.previewUrl) { begin(index); return; }
+    fadeThen(() => begin(index));
+  },
+  /** Fade the song on air out, then hold it: the tape's silent first track. */
+  hush() {
+    if (state.at === null || state.paused) return;
+    if (!audio || !onAir(state)?.previewUrl) { player.pause(); return; }
+    fadeThen(() => player.pause());
   },
   /** On to the next track; from the last, round to the first. */
   next() {
@@ -210,6 +247,7 @@ export const player = {
     storyFrame.pulse = [];
     storyFrame.playing = null;
     storyFrame.level = 0;
+    storyFrame.bands.fill(0);
     showProgress(0);
     set({ at: null, paused: false });
   },

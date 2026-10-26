@@ -1,6 +1,7 @@
 'use client';
 
 import { useSyncExternalStore } from 'react';
+import { BANDS } from './song-notes';
 
 // State shared between the home page's story (app/(graph)/page.tsx, a child of
 // the (graph) layout) and the persistent graph that sits under it in that
@@ -172,6 +173,9 @@ export const storyFrame = {
   /** The loudness of whatever the opening is playing, 0..1 (see
    *  lib/use-audio-level.ts). The music travelling a line swells with it. */
   level: 0,
+  /** What lib/player is playing, as loudness in bands from low to high
+   *  (lib/song-notes): the song plucks the strings down the artist's page. */
+  bands: new Float32Array(BANDS),
   /** Music travelling a family's lines: out of `from` (an influence) into
    *  `to` (the artist they shaped), or into every artist `from` shaped when
    *  `to` is null. `t` is how far along, 0..1. Null when nothing travels. */

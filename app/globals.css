@@ -544,7 +544,6 @@ h3 { font-size: 1.1rem; }
   gap: 0.5rem;
 }
 
-
 .graph-controls__toggle {
   display: flex;
   align-items: center;
@@ -925,7 +924,6 @@ h3 { font-size: 1.1rem; }
   letter-spacing: 0.06em;
   color: var(--color-muted);
 }
-
 
 /* ── Nebula background ────────────────────────────────────────── */
 /* Film grain — very low opacity SVG noise over the whole canvas */
@@ -1501,22 +1499,6 @@ h3 { font-size: 1.1rem; }
   background: var(--color-bg);
 }
 
-/* Dark central band that keeps text legible over the aurora canvas.
-   Sits between the canvas (z:1) and the content (z:3). */
-.artist-bg-scrim {
-  position: fixed;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 820px 130% at center 28%,
-      rgba(14, 11, 26, 0.80) 0%,
-      rgba(14, 11, 26, 0.62) 38%,
-      rgba(14, 11, 26, 0.22) 68%,
-      transparent 82%
-    );
-}
-
 .artist-page {
   position: relative;
   z-index: 3;
@@ -1749,19 +1731,6 @@ h3 { font-size: 1.1rem; }
   font-style: italic;
 }
 
-.artist-page__section { margin-bottom: 2.5rem; }
-
-.artist-page__section-title {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--color-border);
-}
-
 /* ── Visual album cards ─────────────────────────────────────── */
 
 .albums-visual {
@@ -1858,136 +1827,6 @@ h3 { font-size: 1.1rem; }
   }
 }
 
-/* ── Influence circle grid ───────────────────────────────────── */
-
-/* Responsive grid — ~8 circles per row at 1200px content width */
-.influence-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 2rem 0.75rem;
-}
-
-/* Vertical card: circle + name below */
-.influence-circle {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-  text-decoration: none;
-  transition: transform 0.22s ease;
-}
-
-.influence-circle:hover {
-  transform: translateY(-3px);
-}
-
-/* Circle container — layer-color border, glow on hover */
-.influence-circle__avatar {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-  border: 2px solid color-mix(in srgb, var(--chip-color) 35%, transparent);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.04),
-    0 4px 16px rgba(0, 0, 0, 0.45);
-  transition: border-color 0.22s ease, box-shadow 0.22s ease;
-}
-
-.influence-circle:hover .influence-circle__avatar {
-  border-color: color-mix(in srgb, var(--chip-color) 75%, transparent);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 4px 20px rgba(0, 0, 0, 0.5),
-    0 0 24px color-mix(in srgb, var(--chip-color) 30%, transparent);
-}
-
-.influence-circle__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 25%; /* faces sit high in a photo: keep them when cropping */
-  display: block;
-}
-
-/* Fallback when no photo — solid layer-color fill with initial letter */
-.influence-circle__initial {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.88);
-}
-
-.influence-circle__name {
-  font-size: 0.73rem;
-  font-weight: 500;
-  color: rgba(237, 234, 247, 0.72);
-  line-height: 1.3;
-  text-align: center;
-  width: 100%;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  transition: color 0.22s ease;
-}
-
-.influence-circle:hover .influence-circle__name {
-  color: rgba(237, 234, 247, 0.95);
-}
-
-/* Empty state — italic note, tasteful and on-theme */
-.influence-grid__empty {
-  font-style: italic;
-  font-size: 0.83rem;
-  color: var(--color-muted);
-  opacity: 0.5;
-  padding: 0.25rem 0 0.5rem;
-  line-height: 1.5;
-}
-
-/* "Show all N" / "Show less" toggle */
-.influence-grid__toggle {
-  margin-top: 1.4rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--layer-color) 85%, rgba(237, 234, 247, 0.6));
-  background: none;
-  border: 1px solid color-mix(in srgb, var(--layer-color) 32%, transparent);
-  border-radius: 2rem;
-  padding: 0.38rem 1rem;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-
-.influence-grid__toggle:hover {
-  background: color-mix(in srgb, var(--layer-color) 10%, transparent);
-  border-color: color-mix(in srgb, var(--layer-color) 58%, transparent);
-  color: white;
-}
-
-@media (max-width: 520px) {
-  .influence-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 1.5rem 0.5rem;
-  }
-  .influence-circle__avatar {
-    width: 80px;
-    height: 80px;
-  }
-}
-
 /* ── "Show sources" toggle + citation list ──────────────────────
    The photo grid stays the default (it's the best-looking thing on the
    page); this toggle swaps it for a list with each artist's citation state
@@ -2021,18 +1860,6 @@ h3 { font-size: 1.1rem; }
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
 }
 
-.influence-grid__sources-toggle__icon {
-  flex-shrink: 0;
-}
-
-.influence-grid__sources-toggle:hover {
-  background: color-mix(in srgb, var(--layer-color) 22%, transparent);
-  border-color: color-mix(in srgb, var(--layer-color) 70%, transparent);
-  color: white;
-  box-shadow: 0 0 22px color-mix(in srgb, var(--layer-color) 35%, transparent);
-  transform: translateY(-1px);
-}
-
 .influence-grid__sources-toggle--active {
   background: color-mix(in srgb, var(--layer-color) 30%, transparent);
   border-color: var(--layer-color);
@@ -2040,97 +1867,6 @@ h3 { font-size: 1.1rem; }
   box-shadow:
     0 0 24px color-mix(in srgb, var(--layer-color) 40%, transparent),
     inset 0 0 12px color-mix(in srgb, var(--layer-color) 16%, transparent);
-}
-
-.influence-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.influence-list-item {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  padding: 0.5rem 0.4rem;
-  border-radius: var(--radius);
-  text-decoration: none;
-  transition: background 0.2s ease;
-}
-
-.influence-list-item:hover {
-  background: rgba(237, 234, 247, 0.05);
-}
-
-.influence-list-item__avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-  border: 2px solid color-mix(in srgb, var(--chip-color) 35%, transparent);
-}
-
-.influence-list-item__avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 25%; /* faces sit high in a photo: keep them when cropping */
-  display: block;
-}
-
-.influence-list-item__initial {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.88);
-}
-
-.influence-list-item__body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  min-width: 0;
-}
-
-.influence-list-item__name {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: rgba(237, 234, 247, 0.88);
-  transition: color 0.2s ease;
-}
-
-.influence-list-item:hover .influence-list-item__name {
-  color: var(--color-text);
-}
-
-/* Same split as the graph panel: a real quote reads as evidence (body face,
-   italic, muted), "unsourced" reads as a finding rather than an apology
-   (mono label voice) — same wording, same visual distinction, just sized
-   for a page instead of a slide-over panel. */
-.influence-list-item__note {
-  font-size: 0.74rem;
-  line-height: 1.5;
-}
-
-.influence-list-item__note--citation {
-  font-family: var(--font-body);
-  font-style: italic;
-  color: var(--color-muted);
-  opacity: 0.85;
-}
-
-.influence-list-item__note--unsourceable {
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.01em;
-  color: var(--color-muted);
-  opacity: 0.75;
 }
 
 .artist-page__score {
@@ -3095,755 +2831,6 @@ h3 { font-size: 1.1rem; }
   background: var(--color-bg);
 }
 
-/* One shared container width for every genre/scene page section — prose,
-   defining albums, artist grids, member rosters all live at this same
-   700px column so nothing on the page has its own competing left edge. This
-   was briefly widened to 1020px so card grids could sit at ~230px; reverted
-   — the prose column was correct at 700px all along, widening it stranded
-   the text at the left of a mostly-empty container. The grids fit inside
-   the narrow column now (~150px cards, 4 across, see .genre-albums and
-   .scene-roster below), not the other way around. */
-.genre-page {
-  position: relative;
-  z-index: 3;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 2.5rem 1.5rem 5rem;
-}
-
-/* ── Hero header block ────────────────────────────────────────── */
-.genre-page__header {
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 3rem;
-  padding: 2.5rem 2rem 2rem;
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid color-mix(in srgb, var(--genre-color) 22%, transparent);
-  box-shadow:
-    0 0 80px color-mix(in srgb, var(--genre-color) 14%, transparent),
-    inset 0 0 50px color-mix(in srgb, var(--genre-color) 6%, transparent);
-}
-
-/* Radial glow bloom behind the title */
-.genre-page__header::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  height: 200%;
-  background: radial-gradient(
-    ellipse at 50% 30%,
-    color-mix(in srgb, var(--genre-color) 16%, transparent) 0%,
-    transparent 65%
-  );
-  pointer-events: none;
-}
-
-.genre-page__super {
-  position: relative;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--genre-color) 80%, var(--color-muted));
-  margin-bottom: 0.6rem;
-}
-
-.genre-page__title {
-  position: relative;
-  font-family: var(--font-display);
-  font-size: clamp(2.8rem, 8vw, 5.5rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1.0;
-  margin-bottom: 1.2rem;
-  /* Slightly dimmed vs. the raw --genre-color — at this size + a full-strength
-     glow, saturated hues (shoegaze's pink especially) read as too bright/harsh. */
-  color: color-mix(in srgb, var(--genre-color) 80%, black);
-  text-shadow: 0 0 50px color-mix(in srgb, var(--genre-color) 30%, transparent);
-}
-
-.genre-page__deck {
-  position: relative;
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: rgba(237, 234, 247, 0.78);
-  max-width: 58ch;
-}
-
-/* ── Ignite CTA — the payoff action, front and center in the hero ───────
-   Deliberately distinct from the artist page's static .artist-page__graph-link:
-   tinted to the page's own --genre-color (genre or scene, never the artist
-   page's layer gold) and animated to draw the eye rather than just sit there. */
-.genre-ignite-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-top: 1.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 2.5rem;
-  border: 1.5px solid color-mix(in srgb, var(--genre-color) 55%, transparent);
-  background: color-mix(in srgb, var(--genre-color) 14%, transparent);
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 600;
-  font-style: italic;
-  color: var(--genre-color);
-  text-decoration: none;
-  box-shadow:
-    0 0 20px color-mix(in srgb, var(--genre-color) 26%, transparent),
-    inset 0 0 14px color-mix(in srgb, var(--genre-color) 8%, transparent);
-  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
-  animation: genre-ignite-pulse 3.2s ease-in-out infinite;
-}
-
-.genre-ignite-btn:hover {
-  background: color-mix(in srgb, var(--genre-color) 28%, transparent);
-  border-color: color-mix(in srgb, var(--genre-color) 85%, transparent);
-  color: white;
-  transform: translateY(-1px);
-}
-
-.genre-ignite-btn__icon {
-  flex-shrink: 0;
-}
-
-.genre-ignite-btn__arrow {
-  transition: transform 0.2s ease;
-}
-
-.genre-ignite-btn:hover .genre-ignite-btn__arrow {
-  transform: translateX(3px);
-}
-
-/* Secondary, calmer copy of the CTA — used at the end of the read. */
-.genre-ignite-btn--secondary {
-  margin-top: 1rem;
-  animation: none;
-  box-shadow:
-    0 0 14px color-mix(in srgb, var(--genre-color) 16%, transparent),
-    inset 0 0 10px color-mix(in srgb, var(--genre-color) 6%, transparent);
-}
-
-@keyframes genre-ignite-pulse {
-  0%, 100% {
-    box-shadow:
-      0 0 20px color-mix(in srgb, var(--genre-color) 26%, transparent),
-      inset 0 0 14px color-mix(in srgb, var(--genre-color) 8%, transparent);
-  }
-  50% {
-    box-shadow:
-      0 0 40px color-mix(in srgb, var(--genre-color) 52%, transparent),
-      inset 0 0 22px color-mix(in srgb, var(--genre-color) 16%, transparent);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .genre-ignite-btn {
-    animation: none;
-  }
-}
-
-/* ── Lineage strip — ancestors chained up to the current genre, children
-   (if any) listed below. Orientation, not a section — kept small and quiet
-   relative to the hero above it. ──────────────────────────────────────── */
-.genre-lineage-strip {
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.genre-lineage-strip__row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.35rem;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-}
-
-.genre-lineage-strip__item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.genre-lineage-strip__link {
-  color: color-mix(in srgb, var(--genre-color) 65%, var(--color-muted));
-  text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--genre-color) 35%, transparent);
-  text-underline-offset: 2px;
-  transition: color var(--transition), text-decoration-color var(--transition);
-}
-
-.genre-lineage-strip__link:hover {
-  color: var(--genre-color);
-  text-decoration-color: var(--genre-color);
-}
-
-.genre-lineage-strip__sep {
-  color: var(--color-muted);
-  opacity: 0.5;
-}
-
-.genre-lineage-strip__current {
-  font-weight: 700;
-  color: var(--genre-color);
-}
-
-.genre-lineage-strip__children {
-  margin-top: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--color-muted);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-}
-
-.genre-lineage-strip__children-label {
-  margin-right: 0.3rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  opacity: 0.65;
-}
-
-/* ── Body sections ────────────────────────────────────────────── */
-.genre-page__section {
-  margin-bottom: 2.75rem;
-}
-
-.genre-page__section h2 {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.75rem;
-  color: var(--color-text);
-}
-
-.genre-page__section p {
-  font-size: 0.9rem;
-  line-height: 1.8;
-  color: var(--color-text);
-  opacity: 0.82;
-  margin-bottom: 0.75rem;
-}
-
-/* Circle avatar grid inside a section */
-.genre-page__section-artists {
-  margin-top: 1.25rem;
-}
-
-.genre-page__graph-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.65rem 1.2rem;
-  background: var(--genre-color);
-  color: #0e0b1a;
-  border-radius: var(--radius);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  transition: opacity var(--transition);
-  margin-top: 1rem;
-}
-
-.genre-page__graph-btn:hover {
-  opacity: 0.85;
-}
-
-.genre-stub {
-  position: relative;
-  z-index: 3;
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 4rem 1.5rem 4rem;
-  text-align: center;
-}
-
-.genre-stub__title {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  color: var(--color-muted);
-}
-
-.genre-stub__text {
-  font-size: 0.875rem;
-  color: var(--color-muted);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-/* ── Genre defining-albums — same shared container as the prose above ── */
-
-/* Same width + horizontal padding as .genre-page, so this section's cards
-   share the exact left edge as the prose sections around it (previously an
-   independent 900px container — a second left edge, part of the column-
-   alignment bug fixed across .genre-page/.genre-page--lower/.scene-roster). */
-.genre-albums-section {
-  position: relative;
-  z-index: 3;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 0 1.5rem 2.75rem;
-}
-
-.genre-albums-heading {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 1.25rem;
-  color: var(--color-text);
-}
-
-/* Lower prose continuation — same as .genre-page, no top padding. No longer
-   overrides max-width — it shares .genre-page's own width now. */
-.genre-page--lower {
-  padding-top: 0;
-}
-
-/* Grid: 4 square cards per row at the shared 700px width (~150px each —
-   smaller than before, and that's the intended trade: a single left edge
-   across the whole page is worth smaller cards. Album counts are curated to
-   land on 4/8/12, which only produce clean rows at four across, so the
-   column count itself is fixed; auto-fill rather than auto-fit so a
-   below-4 grid, e.g. darkwave's 2-album exception, still renders cards at
-   the same fixed size as every other genre page instead of stretching to
-   fill the row). */
-.genre-albums {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 0.9rem;
-  align-items: start; /* keep all rows top-aligned; no stretching across card heights */
-}
-
-/* Card wrapper — positioned so the hover overlay can anchor to it */
-.genre-album-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-
-.genre-album-card:hover {
-  border-color: color-mix(in srgb, var(--genre-color) 45%, transparent);
-  box-shadow: 0 4px 20px color-mix(in srgb, var(--genre-color) 14%, transparent);
-}
-
-/* Inner link covers the full card area for navigation */
-.genre-album-card__link {
-  display: block;
-  text-decoration: none;
-}
-
-/* Square cover wrapper — acts as stacking context for the hover overlay */
-.genre-album-card__cover-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.genre-album-card__cover {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.genre-album-card__cover--placeholder {
-  width: 100%;
-  height: 100%;
-}
-
-.genre-album-card__info {
-  padding: 0.55rem 0.65rem 0.65rem;
-}
-
-.genre-album-card__title {
-  font-family: var(--font-display);
-  font-size: 0.8rem;
-  font-weight: 600;
-  line-height: 1.25;
-  color: var(--color-text);
-  margin-bottom: 0.15rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.genre-album-card__year {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  color: var(--color-muted);
-  margin-bottom: 0.3rem;
-}
-
-.genre-album-card__artist {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: color-mix(in srgb, var(--genre-color) 80%, var(--color-muted));
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* ── Hover-reveal streaming icons ────────────────────────────── */
-/* Positioned absolutely over the square cover, sibling of the Link
-   so no nested <a> — icons have their own pointer-events: auto */
-.genre-album-card__listen-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  aspect-ratio: 1; /* mirrors .genre-album-card__cover-wrap */
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.72) 0%,
-    rgba(0, 0, 0, 0.28) 45%,
-    transparent 68%
-  );
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 0.45rem;
-  padding-bottom: 0.65rem;
-  pointer-events: none; /* pass through to Link below; icons override below */
-  opacity: 0;
-  transition: opacity 0.18s ease;
-}
-
-.genre-album-card:hover .genre-album-card__listen-overlay {
-  opacity: 1;
-}
-
-/* Icon buttons within the overlay */
-.genre-album-card__listen-overlay a {
-  pointer-events: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid transparent;
-  transition:
-    color 0.15s ease,
-    background 0.15s ease,
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
-  line-height: 0;
-}
-
-.genre-album-card__listen-overlay a[data-platform="spotify"] {
-  color: rgba(29, 185, 84, 0.85);
-  border-color: rgba(29, 185, 84, 0.25);
-}
-.genre-album-card__listen-overlay a[data-platform="apple"] {
-  color: rgba(255, 75, 110, 0.85);
-  border-color: rgba(255, 75, 110, 0.25);
-}
-.genre-album-card__listen-overlay a[data-platform="youtube"] {
-  color: rgba(255, 30, 30, 0.85);
-  border-color: rgba(255, 30, 30, 0.25);
-}
-
-.genre-album-card__listen-overlay a[data-platform="spotify"]:hover {
-  color: #1DB954;
-  background: rgba(29, 185, 84, 0.18);
-  border-color: rgba(29, 185, 84, 0.55);
-  box-shadow: 0 0 10px rgba(29, 185, 84, 0.3);
-}
-.genre-album-card__listen-overlay a[data-platform="apple"]:hover {
-  color: #ff4b6e;
-  background: rgba(255, 75, 110, 0.18);
-  border-color: rgba(255, 75, 110, 0.55);
-  box-shadow: 0 0 10px rgba(255, 75, 110, 0.3);
-}
-.genre-album-card__listen-overlay a[data-platform="youtube"]:hover {
-  color: #ff2020;
-  background: rgba(255, 30, 30, 0.18);
-  border-color: rgba(255, 30, 30, 0.55);
-  box-shadow: 0 0 10px rgba(255, 30, 30, 0.3);
-}
-
-/* ── About page — reuses .genre-page structure for coherence, but reads as
-   an editorial arrival, not a document: a real hero, a live (if unhurried)
-   nebula, per-section accent color drawn from the graph's own layer palette
-   (a deliberate echo of the site's own color language), and varied rhythm
-   instead of one uniform column. Sections set --section-accent inline; rules
-   below fall back to the page's own --genre-color where nothing is set. ── */
-.about-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  overflow-y: auto;
-  padding-top: var(--nav-height);
-  background: linear-gradient(180deg, #17123a 0%, #0e0b1a 100%);
-}
-
-/* Hero — extra vertical room vs. a genre page's header, so arriving on
-   /about feels like a landing, not the first line of a document. */
-.about-page__hero {
-  padding: 4.5rem 2rem 3.5rem;
-  margin-bottom: 3.5rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.about-page__hero .genre-page__title {
-  margin-bottom: 0;
-}
-
-/* Small mono eyebrow above each section heading — tinted per-section via
-   --section-accent so the palette runs through the page like the graph's
-   own layers, instead of one flat color throughout. */
-.about-page__eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--section-accent, var(--genre-color)) 85%, var(--color-muted));
-  margin-bottom: 0.6rem;
-}
-
-/* Restraint: accents live on eyebrows, cards, links, and swatches — section
-   headings themselves always stay the primary light text color, explicitly,
-   regardless of whatever --section-accent a given section carries. */
-.about-overlay .genre-page__section h2 {
-  color: var(--color-text);
-}
-
-/* "Why influence, not genre" — the conceptual heart of the page. More air,
-   a larger/lighter lede paragraph, and a colored left rule so it visibly
-   outweighs its neighbors rather than sitting in the same uniform column. */
-.about-page__section--emphasis {
-  margin: 4rem 0 4.5rem;
-  padding-left: 1.5rem;
-  border-left: 2px solid color-mix(in srgb, var(--section-accent, var(--genre-color)) 45%, transparent);
-}
-
-.about-page__section--emphasis h2 {
-  font-size: 1.6rem;
-}
-
-.about-page__section--emphasis p {
-  font-size: 1.02rem;
-  line-height: 1.85;
-  opacity: 0.9;
-}
-
-/* Short declarative lines ("Nodes are artists…", "Node size reflects…") —
-   set apart from ordinary body paragraphs so they read as shown statements,
-   not documentation copy. */
-.about-page__statement {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 500;
-  font-style: italic;
-  line-height: 1.6;
-  color: var(--color-text);
-  opacity: 0.92;
-  margin: 1.5rem 0;
-}
-
-/* Colour legend — an actual designed moment (swatch + label), not inline
-   dots stitched into a sentence. */
-.about-page__legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem 2rem;
-  margin: 1.5rem 0 1rem;
-  padding: 1.25rem 1.5rem;
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid var(--color-border);
-}
-
-.about-page__legend-item {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-/* Solid legend swatch — a plain colour key, deliberately NOT the graph
-   node's dark-fill-plus-glow treatment. The point here is to show the raw
-   palette clearly, not to mimic a node. */
-.about-page__legend-swatch {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  background: var(--swatch-color);
-}
-
-.about-page__legend-label {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.03em;
-  color: var(--color-text);
-  opacity: 0.85;
-}
-
-/* Caption under the legend — the verbatim "Colours group artists…" sentence,
-   quieter than body text since the legend above already showed it. */
-.about-page__caption {
-  font-size: 0.82rem;
-  color: var(--color-muted);
-  opacity: 0.85;
-  margin-bottom: 1.75rem;
-}
-
-/* Three views (Graph / Genres / Scenes) as elegant linked blocks instead of
-   a run-on sentence — same words, shown rather than narrated. */
-.about-page__views {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 0.85rem;
-  margin: 1.5rem 0 2rem;
-}
-
-.about-page__view-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  padding: 1rem 1.1rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid color-mix(in srgb, var(--section-accent, var(--genre-color)) 28%, var(--color-border));
-  background: rgba(255, 255, 255, 0.025);
-  text-decoration: none;
-  transition: border-color var(--transition), background var(--transition), transform var(--transition);
-}
-
-.about-page__view-card:hover {
-  border-color: color-mix(in srgb, var(--section-accent, var(--genre-color)) 65%, transparent);
-  background: color-mix(in srgb, var(--section-accent, var(--genre-color)) 8%, transparent);
-  transform: translateY(-2px);
-}
-
-.about-page__view-label {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--section-accent, var(--genre-color));
-}
-
-.about-page__view-desc {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  line-height: 1.5;
-  color: var(--color-muted);
-}
-
-/* "About the maker" — the emotional heart, set apart with its own warm
-   accent (rose — "the heart," in the site's own layer language), a subtle
-   divider, and a faint tinted wash rather than a hard visual break. */
-.about-page__personal {
-  position: relative;
-  margin-top: 1.5rem;
-  padding: 3rem 2rem 0.5rem;
-  border-top: 1px solid color-mix(in srgb, var(--section-accent, var(--genre-color)) 25%, transparent);
-  border-radius: var(--radius-lg);
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--section-accent, var(--genre-color)) 6%, transparent) 0%,
-    transparent 40%
-  );
-}
-
-.about-page__personal::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 2px;
-  background: var(--section-accent, var(--genre-color));
-  border-radius: 2px;
-}
-
-/* GitHub CTA — same inviting-button language as .panel-full-link (bordered
-   pill, tinted to the section accent, glow + sliding arrow on hover). */
-.about-page__github-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1.75rem;
-  padding: 0.6rem 1.1rem;
-  border-radius: var(--radius);
-  border: 1px solid color-mix(in srgb, var(--section-accent, var(--genre-color)) 40%, transparent);
-  background: color-mix(in srgb, var(--section-accent, var(--genre-color)) 10%, transparent);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--section-accent, var(--genre-color));
-  text-decoration: none;
-  transition: background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, color 0.22s ease;
-}
-
-.about-page__github-link:hover {
-  background: color-mix(in srgb, var(--section-accent, var(--genre-color)) 22%, transparent);
-  border-color: color-mix(in srgb, var(--section-accent, var(--genre-color)) 70%, transparent);
-  box-shadow: 0 0 16px color-mix(in srgb, var(--section-accent, var(--genre-color)) 30%, transparent);
-  color: white;
-}
-
-.about-page__github-link__arrow {
-  display: inline-block;
-  transition: transform 0.2s ease;
-}
-
-.about-page__github-link:hover .about-page__github-link__arrow {
-  transform: translateX(3px);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .about-page__github-link__arrow {
-    transition: none;
-  }
-
-  .about-page__github-link:hover .about-page__github-link__arrow {
-    transform: none;
-  }
-}
-
-@media (max-width: 640px) {
-  .about-page__hero {
-    padding: 3rem 1.5rem 2.5rem;
-  }
-
-  .about-page__section--emphasis {
-    padding-left: 1rem;
-  }
-
-  .about-page__personal {
-    padding: 2.5rem 1.25rem 0.5rem;
-  }
-}
-
 /* ── Spotify embed ────────────────────────────────────────────── */
 .spotify-embed {
   border-radius: var(--radius);
@@ -4128,7 +3115,7 @@ h3 { font-size: 1.1rem; }
   overflow-y: auto;
   overflow-x: hidden;
   padding-top: var(--nav-height);
-  background: #1a1520;
+  background: #1d1619;
   --night: #17121d;
   --road: #272130;
   --vfd: #ffb547;
@@ -4138,7 +3125,7 @@ h3 { font-size: 1.1rem; }
 .genres-page {
   position: relative;
   z-index: 3;
-  max-width: 1440px;
+  max-width: 2000px; /* the city may grow to fill a big screen (GenreSession's fit) */
   margin: 0 auto;
   padding: 0.7rem 1rem 4rem;
 }
@@ -4696,16 +3683,48 @@ h3 { font-size: 1.1rem; }
 }
 
 /* The roads: asphalt with a dashed centre line. */
+/* A road: one per line (lib/genre-session's roads), edged in its family's
+   colour, with its dashed centre line. Under them, the lane each sits on is
+   only a faint hairline, so a gap between roads reads as a gap. */
 .gsession__road rect {
   fill: var(--road);
-  stroke: rgba(0, 0, 0, 0.5);
-  stroke-width: 1;
+  stroke: color-mix(in srgb, var(--glow) 45%, transparent);
+  stroke-width: 1.2;
 }
 
 .gsession__road line {
-  stroke: rgba(255, 214, 120, 0.3);
+  stroke: color-mix(in srgb, var(--glow) 45%, rgba(255, 214, 120, 0.3));
   stroke-width: 1.2;
   stroke-dasharray: 7 7;
+}
+
+/* The districts (lib/genre-session's district): each family's rows on a
+   flat ground of its colour, alternate decades a shade darker like city
+   blocks, and the family's name lettered big and faint where its rows are
+   empty. Flat tints only -- no glow, no haze -- so signs and roads lead. */
+.gsession__ground {
+  fill: color-mix(in srgb, var(--glow) 7%, transparent);
+}
+
+.gsession__block {
+  fill: rgba(0, 0, 0, 0.2);
+}
+
+.gsession__district {
+  position: absolute;
+  font-family: var(--font-poster);
+  line-height: 1;
+  letter-spacing: 0.04em; /* DISTRICT_TRACKING */
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--glow) 17%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+.gsession__lane {
+  stroke: rgba(255, 255, 255, 0.05);
+  stroke-width: 1;
 }
 
 .gsession__bar {
@@ -4953,7 +3972,10 @@ h3 { font-size: 1.1rem; }
    in sequence; the lighting up is the moment, not everything shouting at
    once. A family's founder has a double keyline. */
 .gsession__clip {
-  --plate: color-mix(in srgb, var(--glow) 22%, #15111b);
+  /* Tinted clearly in the family's colour at rest, with a solid bar of it on
+     the left edge, so the families read as colour groups at a glance (the
+     lettering stays at 5.6:1 or better on every family's plate). */
+  --plate: color-mix(in srgb, var(--glow) 34%, #15111b);
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -4965,6 +3987,7 @@ h3 { font-size: 1.1rem; }
   border: 1.5px solid var(--glow);
   border-radius: 3px;
   box-shadow:
+    inset 4px 0 0 var(--glow),
     inset 0 1px 0 rgba(255, 255, 255, 0.16),
     0 2px 0 rgba(0, 0, 0, 0.6);
   /* A softer cream than paper-white, mixed case and a touch of tracking,
@@ -5339,94 +4362,414 @@ h3 { font-size: 1.1rem; }
   100% { background-size: 100% 0%; }
 }
 
-/* The index: every genre A-Z, including the few with no year to place in
-   the city, as the track listing on a tape box's J-card, its spine down the
-   left. Multi-column, not grid, so it reads down each column the way an
-   index is scanned. */
-.genres-az {
-  position: relative;
-  margin-top: 1.4rem;
-  padding: 1rem 1.2rem 1.2rem 2.4rem;
-  background: #efe6cf;
-  color: #1c1724;
-  border: 1.5px solid #0b080e;
-  border-radius: 4px;
-  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.45);
-  scroll-margin-top: 1.25rem;
+/* The city has the whole first screen to itself (the stage); on its bottom
+   edge a paper tab says the index is underneath and takes you there. */
+.genres-stage {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--nav-height) - 0.7rem);
 }
 
-.genres-az::before {
-  content: '';
-  position: absolute;
-  top: 0;
+.genres-cue {
+  /* Stays on the bottom edge of the screen while the city scrolls past
+     (it runs a little taller than a laptop window), until the index comes. */
+  position: sticky;
   bottom: 0;
-  left: 0;
-  width: 1.2rem;
-  background: #c4362b;
-  border-radius: 3px 0 0 3px;
+  z-index: 4;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding: 7px 14px 9px 8px;
+  border-radius: 8px 8px 0 0;
+  background: #efe6d1;
+  color: #1c1724;
+  text-decoration: none;
+  box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.35);
+  transition: transform 160ms ease, background 160ms ease;
 }
 
-.genres-az__heading {
-  margin-bottom: 0.9rem;
+.genres-cue:hover {
+  transform: translateY(-3px);
+  background: #f6efdd;
+}
+
+.genres-cue:focus-visible {
+  outline: 2px solid #ffb547;
+  outline-offset: 3px;
+}
+
+.genres-cue__tab {
+  padding: 3px 9px 2px;
+  border-radius: 3px;
+  background: #b8321f;
+  color: #efe6d1;
   font-family: var(--font-poster), Impact, sans-serif;
-  font-size: 1.35rem;
-  font-weight: 400;
-  letter-spacing: 0.03em;
+  font-size: 13px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.genres-az__subhead {
-  display: block;
-  margin-top: 0.25rem;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  letter-spacing: 0;
-  text-transform: none;
-  color: rgba(28, 23, 36, 0.8);
+.genres-cue__text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
 }
 
-.genres-az__list {
-  columns: 200px;
-  column-gap: 1.5rem;
+.genres-cue__arrow {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* The wall the issue is pasted on (components/genres/StreetWall): bricks at
+   night, flyposted edge to edge. Under the city and the back page; it scrolls
+   with them. The bricks are a small drawn tile with a few tones, so no two
+   neighbours match; the posters are wheatpasted -- creased, a few torn --
+   and dimmed for night. */
+.genres-page {
+  position: relative;
+}
+
+.street {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='56'%3E%3Crect width='120' height='56' fill='%23150f12'/%3E%3Cg%3E%3Crect x='1' y='1' width='57' height='25' rx='2' fill='%233a2426'/%3E%3Crect x='61' y='1' width='58' height='25' rx='2' fill='%23331f22'/%3E%3Crect x='-29' y='29' width='58' height='25' rx='2' fill='%232f1d20'/%3E%3Crect x='31' y='29' width='57' height='25' rx='2' fill='%233d272a'/%3E%3Crect x='91' y='29' width='58' height='25' rx='2' fill='%232f1d20'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 120px 56px;
+}
+
+.street__canvas {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% 0;
+  filter: brightness(0.62) saturate(0.85);
+}
+
+/* Behind the city it goes quiet: the night falls over the posters there, so
+   the wall doesn't compete with the map in front (owner: sober in the graph
+   only); past the city's screen it clears, round the back page. */
+.street::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 12, 16, 0.8) 0,
+    rgba(18, 12, 16, 0.8) calc(100vh - 140px),
+    rgba(18, 12, 16, 0) calc(100vh + 60px)
+  );
+  pointer-events: none;
+}
+
+/* Wheatpasted: no tape, a crease or two, the paste's faint sheen. */
+.street__poster {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.street__poster::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(178deg, transparent 46%, rgba(0, 0, 0, 0.18) 47%, transparent 49%),
+    linear-gradient(95deg, transparent 62%, rgba(255, 255, 255, 0.08) 63%, transparent 66%);
+  pointer-events: none;
+}
+
+/* Some are half torn off, the wall's older layers showing. */
+.street__poster--torn {
+  clip-path: polygon(0 0, 100% 0, 100% 58%, 88% 64%, 76% 57%, 61% 70%, 47% 62%, 30% 74%, 14% 66%, 0 72%);
+}
+
+.genres-stage,
+.genres-index {
+  position: relative;
+  z-index: 1;
+}
+
+/* The index: the paper's back page, printed (owner, Oct 2026: the quiet
+   type on the dark room looked bland). Newsprint with a masthead and a
+   double rule; every genre A-Z under its letter in newspaper columns, each
+   with its "Start here" record printed small in halftone, a dotted leader
+   to the page its feature is on; and a column of boxes counted from the
+   map. It waits under the city, past the first screen. */
+.genres-index {
+  max-width: 1240px;
+  margin: 3.2rem auto 1rem;
+  padding: 26px 40px 34px;
+  scroll-margin-top: 0.5rem;
+  border-radius: 2px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.04)),
+    #ebe3d0;
+  color: #1c1724;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.5);
+}
+
+.genres-index__masthead {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #b8321f;
+}
+
+.genres-index__title {
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 4px double #1c1724;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.genres-index__sub {
+  max-width: 52rem;
+  margin: 10px 0 24px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.5;
+  color: #3a3330;
+}
+
+.genres-index__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 270px;
+  gap: 2.4rem;
+}
+
+.genres-index__cols {
+  columns: 3 220px;
+  column-gap: 2.2rem;
+  column-rule: 1px solid rgba(28, 23, 36, 0.18);
+}
+
+.genres-index__group {
+  margin-bottom: 16px;
+  break-inside: avoid;
+}
+
+.genres-index__letter {
+  margin: 0 0 4px;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 24px;
+  line-height: 1;
+  color: #b8321f;
+}
+
+.genres-index__list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.genres-az__list > li {
-  break-inside: avoid;
-  -webkit-column-break-inside: avoid;
-  border-bottom: 1px dashed rgba(28, 23, 36, 0.25);
-}
-
-.genres-az__item {
+.genres-index__entry {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.5rem;
-  padding: 0.4rem 0.3rem;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 0;
   color: #1c1724;
-  font-size: 0.84rem;
-  font-weight: 550;
+  font-family: var(--font-display);
+  font-size: 15px;
   text-decoration: none;
 }
 
-.genres-az__item:hover,
-.genres-az__item:focus-visible {
-  background: rgba(28, 23, 36, 0.08);
+/* The record to start with, printed small: grey ink through a dot screen. */
+.genres-index__thumb {
+  position: relative;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  overflow: hidden;
+  background: #cfc6b2;
 }
 
-.genres-az__name {
-  overflow: hidden;
-  text-overflow: ellipsis;
+.genres-index__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.35) brightness(1.05);
+  mix-blend-mode: multiply;
+}
+
+.genres-index__thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 0 0.75px, rgba(235, 227, 208, 0.55) 1.05px) 0 0 / 3px 3px;
+}
+
+.genres-index__name {
   white-space: nowrap;
 }
 
-.genres-az__count {
-  flex-shrink: 0;
+.genres-index__leader {
+  flex: 1;
+  min-width: 12px;
+  border-bottom: 2px dotted rgba(28, 23, 36, 0.3);
+  transform: translateY(4px);
+}
+
+.genres-index__page {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: rgba(28, 23, 36, 0.8);
+  font-size: 12px;
+  color: #b8321f;
+}
+
+.genres-index__entry:hover .genres-index__name,
+.genres-index__entry:focus-visible .genres-index__name {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.genres-index__entry:hover .genres-index__thumb img,
+.genres-index__entry:focus-visible .genres-index__thumb img {
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+.genres-index__entry:focus-visible {
+  outline: 2px solid #b8321f;
+  outline-offset: 2px;
+}
+
+/* The boxes: rule on top, a red kicker, condensed heads. */
+.genres-index__boxes {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.genres-box {
+  padding-top: 8px;
+  border-top: 3px solid #1c1724;
+}
+
+.genres-box__kicker {
+  margin: 0 0 4px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b8321f;
+}
+
+.genres-box__title {
+  margin: 0 0 6px;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.genres-box__title a,
+.genres-box__top a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.genres-box__basis {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.4;
+  color: #3a3330;
+}
+
+.genres-box__bars,
+.genres-box__top {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.genres-box__bars li {
+  display: grid;
+  grid-template-columns: 3.4rem 1fr 1.6rem;
+  align-items: center;
+  gap: 8px;
+}
+
+.genres-box__decade,
+.genres-box__n {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.genres-box__n {
+  text-align: right;
+  color: #b8321f;
+}
+
+.genres-box__bar {
+  display: block;
+  height: 10px;
+  background: #1c1724;
+}
+
+.genres-box__top {
+  counter-reset: top;
+}
+
+.genres-box__top li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 15px;
+}
+
+@media (max-width: 900px) {
+  .genres-index {
+    padding: 20px 18px 26px;
+  }
+
+  .genres-index__body {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .genres-overlay {
+    scroll-behavior: smooth;
+  }
+
+  /* The tab's arrow nods a few times once the city's up, then rests. */
+  .genres-cue__arrow {
+    animation: genres-cue-nod 1.4s ease-in-out 2.5s 3;
+  }
+}
+
+@keyframes genres-cue-nod {
+  0%, 100% { transform: none; }
+  50% { transform: translateY(4px); }
+}
+
+@media (max-width: 700px) {
+  .genres-cue__text {
+    font-size: 11px;
+  }
+
+  .genres-index__title {
+    font-size: 48px;
+  }
 }
 
 /* ── Scenes: contact sheets on a lightbox (components/scenes/Lightbox) ──
@@ -5442,7 +4785,17 @@ h3 { font-size: 1.1rem; }
   overflow-y: auto;
   overflow-x: hidden;
   padding-top: var(--nav-height);
-  background: #1a1520;
+  /* The photo editor's desk: worn walnut, its grain running across at
+     uneven spacings (never an even stripe), a touch lighter at the top. It
+     scrolls with the page, as the lightbox lies on it. */
+  background:
+    linear-gradient(180deg, rgba(255, 236, 205, 0.05), rgba(0, 0, 0, 0.16)),
+    repeating-linear-gradient(178.6deg, rgba(0, 0, 0, 0.1) 0 2px, transparent 2px 11px),
+    repeating-linear-gradient(181.2deg, rgba(255, 214, 160, 0.04) 0 1px, transparent 1px 17px),
+    repeating-linear-gradient(180deg, rgba(0, 0, 0, 0.07) 0 34px, transparent 34px 83px),
+    repeating-linear-gradient(179.4deg, rgba(120, 70, 30, 0.12) 0 9px, transparent 9px 131px),
+    #3a2618;
+  background-attachment: local;
   --lb-light: #efe5cf;
   --lb-film: #1b1511;
   --lb-cream: #efe3cb;
@@ -6547,63 +5900,322 @@ a.lightbox__card-open {
 }
 
 /* The log: every scene in date order, in plain words. */
-.scenes-log {
-  max-width: 60rem;
-  margin: 1.3rem auto 0;
+/* ── The desk round the glass (components/scenes/Desk): a loupe, grease
+   pencils, a film cassette, a tape roll and two stray prints, in the
+   margins and under the glass's edge. ── */
+.pdesk {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
 }
 
-.scenes-log__title {
+.pdesk--lightbox {
+  --edge-l: calc(50% - var(--sheet-w, 1180px) / 2);
+  --edge-r: calc(50% + var(--sheet-w, 1180px) / 2);
+}
+
+.pdesk--table {
+  --edge-l: max(0px, calc(50% - 590px));
+  --edge-r: min(100%, calc(50% + 590px));
+}
+
+.pdesk__thing {
+  position: absolute;
+  display: block;
+}
+
+.pdesk__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.pdesk__cassette { top: 120px; left: calc(var(--edge-l) - 126px); width: 116px; rotate: -16deg; }
+.pdesk__loupe { top: 330px; left: calc(var(--edge-l) - 104px); width: 90px; }
+.pdesk__pencil { left: calc(var(--edge-r) - 10px); width: 156px; transform-origin: 0 50%; }
+.pdesk__pencil--red { top: 150px; rotate: 64deg; left: calc(var(--edge-r) + 40px); }
+.pdesk__pencil--yellow { top: 176px; rotate: 74deg; left: calc(var(--edge-r) + 72px); }
+.pdesk__tape { top: 420px; left: calc(var(--edge-r) + 22px); width: 84px; }
+
+/* Stray prints, half under the glass. */
+.pdesk__print {
+  width: 96px;
+  padding: 5px 5px 14px;
+  background: #f4efe4;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.45);
+}
+
+.pdesk__print img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.pdesk__print--0 { top: 470px; left: calc(var(--edge-l) - 66px); rotate: -9deg; }
+.pdesk__print--1 { top: 34px; left: calc(var(--edge-r) - 44px); rotate: 8deg; }
+
+/* Only where there's a margin to put things in. */
+@media (max-width: 1100px) {
+  .pdesk { display: none; }
+}
+
+/* ── The history drying on a line under the lightbox (components/scenes/
+   Prints): one band from every room, pegged up, oldest first. ── */
+.prints {
+  position: relative;
+  max-width: var(--sheet-w, 1180px);
+  height: 132px;
+  margin: 4px auto 0;
+}
+
+.prints__line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+}
+
+.prints__list {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.prints__item {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: calc(var(--drop) + 4px);
+}
+
+.prints__print {
+  position: relative;
+  display: block;
+  width: 56px;
+  padding: 4px 4px 11px;
+  background: #f4efe4;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.45);
+  transform-origin: 50% -6px;
+}
+
+.prints__print img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+/* A wooden peg on the line. */
+.prints__peg {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 8px;
+  height: 20px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #c9a06a, #e2bf8c 50%, #b88a55);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transform: translateX(-50%);
+}
+
+.prints__print:focus-visible {
+  outline: 2px solid #ffb547;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .prints__print[data-on] { animation: print-swing 1.6s ease-in-out infinite; }
+  .prints__print:hover:not([data-on]) { animation: print-nudge 900ms ease-out; }
+}
+
+@keyframes print-swing {
+  0%, 100% { rotate: -6deg; }
+  50% { rotate: 6deg; }
+}
+
+@keyframes print-nudge {
+  0%, 100% { rotate: 0deg; }
+  25% { rotate: 5deg; }
+  55% { rotate: -3deg; }
+  80% { rotate: 1.5deg; }
+}
+
+@media (max-width: 700px) {
+  .prints { display: none; }
+}
+
+/* ── The log, as a binder of negatives (components/scenes/Binder). ── */
+.binder {
+  max-width: 66rem;
+  margin: 1.4rem auto 0;
+}
+
+.binder__title {
+  margin: 0 0 0.6rem;
   font-family: var(--font-poster);
   font-weight: 400;
   font-size: 1.35rem;
   letter-spacing: 0.02em;
   color: var(--lb-cream);
-  margin-bottom: 0.6rem;
 }
 
-.scenes-log__list {
-  list-style: none;
+/* The binder's page: grey card, three rings down the left. */
+.binder__page {
+  position: relative;
+  padding: 24px 24px 24px 70px;
+  border-radius: 3px;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.06), transparent 60px),
+    #e7e2d6;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+}
+
+.binder__rings {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.binder__rings i {
+  display: block;
+  width: 30px;
+  height: 22px;
+  border: 4px solid #b9b6ae;
+  border-radius: 12px;
+  background: #2b2420;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 2px 3px rgba(0, 0, 0, 0.35);
+}
+
+.binder__sleeves {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 22px;
   margin: 0;
   padding: 0;
-  border-top: 1px solid rgba(239, 227, 203, 0.14);
+  list-style: none;
 }
 
-.scenes-log__item {
-  display: grid;
-  grid-template-columns: 7.5rem 12rem 1fr;
-  gap: 0.25rem 1rem;
-  align-items: baseline;
-  padding: 0.55rem 0;
-  border-bottom: 1px solid rgba(239, 227, 203, 0.14);
-}
-
-.scenes-log__when {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: rgba(239, 227, 203, 0.75);
-}
-
-.scenes-log__name {
-  font-weight: 600;
-  color: var(--lb-cream);
+/* A glassine sleeve: translucent, a sheen, the label, the strip. */
+.binder__sleeve {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.25) 40%, rgba(255, 255, 255, 0.45)),
+    rgba(255, 255, 255, 0.35);
+  color: inherit;
   text-decoration: none;
-  border-bottom: 2px solid var(--row-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  transition: translate 220ms cubic-bezier(0.3, 1.3, 0.5, 1);
 }
 
-.scenes-log__name:hover,
-.scenes-log__name:focus-visible {
-  color: #fff;
+.binder__sleeve:hover,
+.binder__sleeve:focus-visible {
+  translate: 14px 0;
 }
 
-.scenes-log__who {
-  font-size: 0.86rem;
-  color: rgba(239, 227, 203, 0.8);
+.binder__sleeve:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.binder__label {
+  display: flex;
+  flex: 0 0 9.5rem;
+  flex-direction: column;
+  gap: 3px;
+  padding: 6px 8px 7px;
+  background: #fbf8f0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+.binder__name {
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 17px;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.binder__where {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: #4a4238;
+  text-transform: uppercase;
+}
+
+/* The strip: dark film with sprocket holes along both edges, as on the
+   lightbox above, cut after its last frame. */
+.binder__strip {
+  position: relative;
+  display: flex;
+  flex: 0 1 auto;
+  gap: 3px;
+  min-width: 0;
+  padding: 10px 6px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--lb-film, #1b1511);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.binder__strip::before,
+.binder__strip::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  height: 4px;
+  background: repeating-linear-gradient(90deg, rgba(239, 229, 207, 0.75) 0 4px, transparent 4px 9px);
+  border-radius: 1px;
+}
+
+.binder__strip::before { top: 2px; }
+.binder__strip::after { bottom: 2px; }
+
+.binder__frame {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 40px;
+  overflow: hidden;
+  background: #2a2420;
+}
+
+.binder__frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+
+.binder__who {
+  margin: 4px 0 0 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.4;
+  color: #4f483e;
 }
 
 @media (max-width: 700px) {
-  .scenes-log__item {
-    grid-template-columns: 1fr;
-  }
+  .binder__page { padding: 18px 12px 18px 46px; }
+  .binder__rings { left: 8px; }
+  .binder__sleeves { grid-template-columns: 1fr; }
 }
 
 /* ── A scene's page: its strip on its own light table (components/scenes/SceneTable,
@@ -7759,8 +7371,9 @@ a.lightbox__card-open {
     animation: lb-tubes 460ms steps(1, end) both;
   }
 
-  /* The circle's prints wait off the table until they're dealt. */
-  .circle__faces[data-reveal='wait'] > li {
+  /* Anything dealt off a pile (components/ui/DealList: the circle's prints
+     here, a genre's records) waits off the table until it's dealt. */
+  .deal-list[data-reveal='wait'] > li {
     opacity: 0;
   }
 
@@ -7916,6 +7529,1725 @@ a.lightbox__card-open {
   }
 
   .scene-end > :last-child { justify-self: start; }
+}
+
+/* ── A genre's page: its feature inside today's issue of the paper
+   (components/genre: FeatureSpread, Tape, Records, Players, Road). Cream
+   pages on the dark room, ink type, the genre family's colour as the spot
+   colour (--spot, and --spot-ink for words on the paper). ─────────────── */
+.feature-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: var(--nav-height);
+  /* The genre's room shows round the paper (components/artist/backline/Room). */
+  background: var(--wall, #1a1520);
+  --paper: #efe6d1;
+  --print-ink: #1c1724;
+  --print-red: #b8321f;
+}
+
+.feature {
+  /* Over the room (z 0), under the band (z 4); a little narrower than it
+     was, so the instruments have room down the sides, as on an artist's page. */
+  position: relative;
+  z-index: 3;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.1rem 1.25rem 1rem;
+}
+
+/* The opening spread: two facing pages and the fold between them. */
+.fspread {
+  margin-bottom: 2.4rem;
+}
+
+.fspread__frame {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: min(640px, calc(100vh - var(--nav-height) - 44px));
+  perspective: 2200px;
+}
+
+.fspread__page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--print-ink);
+  backface-visibility: hidden;
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.45);
+}
+
+.fspread__page--left {
+  transform-origin: 100% 50%;
+  padding: 24px 20px 18px 24px;
+  border-radius: 3px 0 0 3px;
+}
+
+.fspread__page--right {
+  container-type: inline-size;
+  transform-origin: 0 50%;
+  padding: 24px 40px 26px 34px;
+  border-radius: 0 3px 3px 0;
+}
+
+/* The fold: a soft shadow down the spine, under nothing you read. */
+.fspread__fold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: 2;
+  width: 70px;
+  margin-left: -35px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(70, 48, 22, 0.14) 44%, rgba(70, 48, 22, 0.3) 50%, rgba(70, 48, 22, 0.1) 56%, transparent);
+}
+
+.fspread__photo {
+  position: relative;
+  flex: 1;
+  min-height: 430px;
+  background: #f4ecd8;
+}
+
+.fspread__photo .gprint {
+  overflow: hidden;
+}
+
+/* A two-colour print: the photo itself in black ink, sharp, and the family
+   colour over it as a halftone screen (CoverPrint's colour drum alone). */
+.fspread__ink {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%; /* where CoverPrint crops too, so the screen lines up */
+  filter: grayscale(1) contrast(1.28) brightness(1.05);
+  mix-blend-mode: multiply;
+}
+
+.fspread .gprint--ready .gprint__drum--color {
+  opacity: 0.82;
+  transition: none;
+}
+
+.fspread__reg {
+  position: absolute;
+  z-index: 2;
+  width: 14px;
+  height: 14px;
+  background:
+    linear-gradient(var(--print-ink), var(--print-ink)) 50% 0 / 1px 100% no-repeat,
+    linear-gradient(var(--print-ink), var(--print-ink)) 0 50% / 100% 1px no-repeat;
+}
+
+.fspread__reg::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid var(--print-ink);
+  border-radius: 50%;
+}
+
+.fspread__reg--tl { top: 8px; left: 8px; --r: 0; }
+.fspread__reg--tr { top: 8px; right: 8px; --r: 1; }
+.fspread__reg--bl { bottom: 8px; left: 8px; --r: 2; }
+.fspread__reg--br { bottom: 8px; right: 8px; --r: 3; }
+
+.fspread__credit {
+  margin: 9px 0 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.fspread__credit a {
+  color: inherit;
+  font-weight: 600;
+}
+
+.fspread__tape {
+  position: absolute;
+  right: 26px;
+  bottom: 30px;
+  z-index: 3;
+}
+
+/* The free tape: a cassette with a paper label, built like the pocket
+   player. It's the play button. Upright; only the masking tape leans. */
+.ftape {
+  position: relative;
+  display: block;
+  width: 236px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ftape__shell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 10px 12px 9px;
+  border-radius: 11px;
+  background: linear-gradient(#2c2632, #19141d);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.5),
+    0 12px 24px rgba(0, 0, 0, 0.42);
+  transition: transform 160ms ease;
+}
+
+.ftape:hover .ftape__shell {
+  transform: translateY(-2px);
+}
+
+.ftape:focus-visible {
+  outline: 3px solid var(--spot-ink);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.ftape__label {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 10px 7px;
+  border-radius: 4px;
+  background:
+    linear-gradient(var(--spot), var(--spot)) 0 0 / 100% 5px no-repeat,
+    repeating-linear-gradient(to bottom, transparent 0 13px, rgba(70, 118, 186, 0.2) 13px 14px) 0 5px / 100% calc(100% - 5px) no-repeat,
+    #f3ead4;
+  color: var(--print-ink);
+}
+
+.ftape__free {
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--print-red);
+}
+
+.ftape__title {
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 21px;
+  line-height: 1.15;
+  color: var(--spot-ink);
+}
+
+.ftape__sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #4a3d30;
+}
+
+.ftape__window {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  margin: 0 20px;
+  padding: 0 14px;
+  border-radius: 21px;
+  background: rgba(240, 230, 210, 0.1);
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.45);
+}
+
+/* A reel: a hub with spokes; it turns only while the tape plays. */
+.ftape__reel {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #19141d 0 20%, transparent 21%),
+    repeating-conic-gradient(#e9dfc8 0 14deg, #3a3240 14deg 60deg);
+  box-shadow: 0 0 0 3px #3a3240, inset 0 0 0 4px #e9dfc8;
+  animation: ftape-spin 1.6s linear infinite paused;
+}
+
+.ftape[data-playing] .ftape__reel {
+  animation-play-state: running;
+}
+
+.ftape__ribbon {
+  flex: 1;
+  height: 14px;
+  border-radius: 7px;
+  background: linear-gradient(#5a3a24, #3b2617);
+}
+
+.ftape__press {
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffd896;
+}
+
+.ftape__strip {
+  position: absolute;
+  z-index: 2;
+  width: 64px;
+  height: 20px;
+  background: rgba(236, 222, 176, 0.84);
+  box-shadow: 0 1px 1px rgba(43, 30, 12, 0.2);
+  transform: rotate(var(--strip-rot));
+  pointer-events: none;
+}
+
+.ftape__strip--l { top: -8px; left: -20px; --strip-rot: -32deg; --t: 0; }
+.ftape__strip--r { bottom: -6px; right: -20px; --strip-rot: -28deg; --t: 1; }
+
+@keyframes ftape-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* The right-hand page: the paper's running head, the kicker, the headline
+   (sized so its longest word fits: --headline, and --fitcq when the page
+   is narrower than planned), the standfirst and the facts. */
+.fspread__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--print-ink);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.fspread__back {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.fspread__back:hover,
+.fspread__back:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.fspread__kicker {
+  margin: 4px 0 8px;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--print-red);
+}
+
+.fspread__basis {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-style: italic;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--print-ink);
+}
+
+.fspread__headline {
+  margin: 0;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: min(var(--headline), calc(var(--fitcq) * 1cqw));
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: var(--print-ink);
+  /* The spot colour overprinted a hair off, as on the cover. */
+  text-shadow: 3px 3px 0 color-mix(in srgb, var(--spot) 75%, transparent);
+}
+
+.fspread__standfirst {
+  max-width: 34rem;
+  margin: 16px 0 0;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.fspread__meta {
+  max-width: 34rem;
+  margin: 20px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(28, 23, 36, 0.25);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #4a3d30;
+}
+
+.fspread__map {
+  align-self: flex-start;
+  /* Pinned to the page's foot on the left: the bottom-right corner of the
+     first screen is where the pocket player floats. */
+  margin-top: auto;
+  padding-top: 14px;
+  font-weight: 600;
+  color: var(--spot-ink);
+}
+
+/* The article's pages: each section its own sheet of the paper. */
+.fsheet {
+  margin: 0 auto 2rem;
+  padding: 34px 44px 38px;
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--print-ink);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
+}
+
+.fhead {
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 4px double var(--print-ink);
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+/* How it started: newspaper columns, a drop cap, and the pull quote across them. */
+.farticle__columns {
+  columns: 2 22rem;
+  column-gap: 2.6rem;
+  column-rule: 1px solid rgba(28, 23, 36, 0.2);
+  font-family: var(--font-display);
+  font-size: 17px;
+  line-height: 1.62;
+}
+
+.farticle__columns > p {
+  margin: 0 0 1em;
+}
+
+.farticle__first::first-letter {
+  float: left;
+  padding: 7px 10px 0 0;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 5.1em;
+  line-height: 0.8;
+  color: var(--spot-ink);
+}
+
+.fpull {
+  column-span: all;
+  margin: 0.4em 0 1.4em;
+  padding: 20px 0 18px;
+  border-top: 3px solid var(--print-ink);
+  border-bottom: 1px solid var(--print-ink);
+  text-align: center;
+}
+
+.fpull__quote {
+  display: block;
+  max-width: 48rem;
+  margin: 0 auto;
+  font-family: var(--font-display);
+  font-size: 29px;
+  font-style: italic;
+  line-height: 1.32;
+}
+
+blockquote.fpull .fpull__quote::before,
+blockquote.fpull .fpull__quote::after {
+  display: inline-block;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-style: normal;
+  font-size: 1.6em;
+  line-height: 0;
+  vertical-align: -0.35em;
+  color: var(--spot-ink);
+}
+
+blockquote.fpull .fpull__quote::before { content: '\201C'; margin-right: 0.08em; }
+blockquote.fpull .fpull__quote::after { content: '\201D'; margin-left: 0.04em; }
+
+.fpull__who,
+.fpull__label {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--spot-ink);
+}
+
+.fpull__label {
+  margin: 0 0 8px;
+}
+
+/* The sound: a boxed sidebar taped onto the page. */
+.fsound {
+  position: relative;
+  max-width: 46rem;
+  margin: 26px auto 0;
+  padding: 18px 24px 20px;
+  border: 2px solid var(--print-ink);
+  background: #f8f2e3;
+  box-shadow: 5px 6px 0 var(--spot);
+  --rot: 2deg;
+}
+
+.fsound__title {
+  margin: 0 0 6px;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--spot-ink);
+}
+
+.fsound p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 16.5px;
+  line-height: 1.6;
+}
+
+.fsound__tape {
+  position: absolute;
+  top: -9px;
+  width: 54px;
+  height: 18px;
+  background: rgba(236, 222, 176, 0.84);
+  box-shadow: 0 1px 1px rgba(43, 30, 12, 0.15);
+  transform: rotate(var(--tape-rot));
+}
+
+.fsound__tape--l { left: 22px; --tape-rot: -5deg; --t: 0; }
+.fsound__tape--r { right: 22px; --tape-rot: 6deg; --t: 1; }
+
+/* Essential records: the reviews page. The disc sits in the sleeve's own
+   column, so pulling it out never runs over the words. */
+.frecords {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 30px 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.frecord {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.frecord__sleeve {
+  position: relative;
+  display: block;
+  width: 150px;
+  height: 150px;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+button.frecord__sleeve {
+  cursor: pointer;
+}
+
+.frecord__sleeve img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.frecord__disc {
+  position: absolute;
+  inset: 4%;
+  z-index: 0;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, #121014 0 2px, #0b090c 2px 4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+  transition: transform 560ms cubic-bezier(0.25, 1.2, 0.45, 1);
+}
+
+/* The label, with a cream stripe so the turning shows. */
+.frecord__label {
+  position: absolute;
+  inset: 38%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle closest-side, #f3ead6 0 16%, transparent 19%),
+    conic-gradient(from 30deg, var(--spot) 0 70%, #f3ead6 70% 75%, var(--spot) 75%);
+}
+
+.frecord:hover .frecord__disc,
+.frecord[data-air] .frecord__disc {
+  transform: translateX(26%);
+}
+
+/* Its song is on: the disc comes most of the way out and turns at 33 1/3. */
+.frecord[data-loaded] .frecord__disc {
+  transform: translateX(36%);
+}
+
+.frecord[data-spin] .frecord__label {
+  animation: fr-spin 1.8s linear infinite;
+}
+
+@keyframes fr-spin {
+  to { transform: rotate(360deg); }
+}
+
+.frecord__title {
+  margin: 0;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+/* Where it ranks: "Start here" on the first, then No. 2, No. 3... */
+.frecord__rank {
+  margin: 0 0 3px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--print-ink) 70%, transparent);
+}
+
+/* The record to start with gets its own spread: across the sheet's full
+   width on a band of the genre's colour, the sleeve twice the size with its
+   disc already half out, the title big, under a red stamp. */
+.frecord[data-lead] {
+  grid-column: 1 / -1;
+  grid-template-columns: 470px 1fr;
+  gap: 26px;
+  align-items: center;
+  margin: 0 -44px 6px;
+  padding: 30px 44px 34px;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.04), transparent 30%),
+    color-mix(in srgb, var(--spot) 16%, var(--paper));
+  border-block: 1.5px solid color-mix(in srgb, var(--print-ink) 30%, transparent);
+}
+
+.frecord[data-lead] .frecord__sleeve {
+  width: 310px;
+  height: 310px;
+}
+
+.frecord[data-lead] .frecord__disc {
+  transform: translateX(32%);
+}
+
+.frecord[data-lead][data-loaded] .frecord__disc {
+  transform: translateX(42%);
+}
+
+.frecord[data-lead] .frecord__rank {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 3px 8px 2px;
+  border: 2px solid var(--print-red);
+  border-radius: 3px;
+  color: var(--print-red);
+  font-size: 12px;
+}
+
+.frecord[data-lead] .frecord__title {
+  font-size: 58px;
+  line-height: 0.95;
+}
+
+.frecord[data-lead] .frecord__review {
+  max-width: 60ch;
+  font-size: 18px;
+}
+
+/* The first wave: a strip of press photos across the top of How it started,
+   in their own colour, lifting a touch when pointed at. */
+.fwave {
+  margin: 0 0 22px;
+}
+
+.fwave__strip {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fwave__photo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.fwave__photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  transition: translate 160ms ease, box-shadow 160ms ease;
+}
+
+.fwave__photo:hover img,
+.fwave__photo:focus-visible img {
+  translate: 0 -3px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25), 0 8px 14px rgba(0, 0, 0, 0.25);
+}
+
+.fwave__photo:focus-visible {
+  outline: 2px solid var(--print-red);
+  outline-offset: 3px;
+}
+
+.fwave__name {
+  margin-top: 4px;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 14px;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.fwave__year {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: color-mix(in srgb, var(--print-ink) 65%, transparent);
+}
+
+.fwave__caption {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid color-mix(in srgb, var(--print-ink) 25%, transparent);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-style: italic;
+  color: color-mix(in srgb, var(--print-ink) 75%, transparent);
+}
+
+@media (max-width: 700px) {
+  .fwave__strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.frecord[data-air] .frecord__title {
+  background: linear-gradient(color-mix(in srgb, var(--spot) 55%, transparent), color-mix(in srgb, var(--spot) 55%, transparent)) no-repeat 0 85% / 100% 45%;
+}
+
+.frecord__by {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  margin: 8px 0 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+/* Who made it: a name tag with their photo and an arrow, so it reads as the
+   way to their page. */
+.frecord__artist {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 2px 10px 2px 2px;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--spot-ink) 60%, transparent);
+  color: var(--spot-ink);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.frecord__artist img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.frecord__artist-name {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--spot-ink) 45%, transparent);
+}
+
+.frecord__artist-arrow {
+  transition: transform 180ms ease;
+}
+
+.frecord__artist:hover,
+.frecord__artist:focus-visible {
+  background: color-mix(in srgb, var(--spot) 30%, transparent);
+  box-shadow: inset 0 0 0 1.5px var(--spot-ink);
+}
+
+.frecord__artist:hover .frecord__artist-arrow,
+.frecord__artist:focus-visible .frecord__artist-arrow {
+  transform: translateX(3px);
+}
+
+.frecord__artist:focus-visible {
+  outline: 2px solid var(--print-ink);
+  outline-offset: 2px;
+}
+
+.frecord__year {
+  color: color-mix(in srgb, var(--print-ink) 75%, transparent);
+}
+
+/* Its song: a round ink button and the song's name. While it plays the
+   button is a pause and three bars move beside the name. */
+.frecord__play {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 10px;
+  padding: 0 6px 0 0;
+  border: 0;
+  background: none;
+  color: var(--print-ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.frecord__play-icon {
+  position: relative;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--print-ink);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.frecord__play-icon::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 8px;
+  border-style: solid;
+  border-width: 6px 0 6px 9px;
+  border-color: transparent transparent transparent var(--paper);
+}
+
+.frecord__play-icon[data-pause]::before {
+  left: 9px;
+  top: 9px;
+  width: 3px;
+  height: 10px;
+  border: 0;
+  background: var(--paper);
+  box-shadow: 7px 0 0 var(--paper);
+}
+
+.frecord__play:hover .frecord__play-icon,
+.frecord__play:focus-visible .frecord__play-icon {
+  transform: scale(1.08);
+}
+
+.frecord__play:focus-visible {
+  outline: 2px solid var(--print-ink);
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+.frecord__play-song {
+  padding: 1px 2px;
+  background: linear-gradient(color-mix(in srgb, var(--spot) 50%, transparent), color-mix(in srgb, var(--spot) 50%, transparent)) no-repeat 0 88% / 0% 40%;
+  transition: background-size 260ms ease;
+}
+
+.frecord__play:hover .frecord__play-song,
+.frecord[data-loaded] .frecord__play-song {
+  background-size: 100% 40%;
+}
+
+.frecord__eq {
+  display: none;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.frecord[data-spin] .frecord__eq {
+  display: inline-flex;
+}
+
+.frecord__eq i {
+  width: 3px;
+  height: 100%;
+  background: var(--spot-ink);
+  transform-origin: bottom;
+  animation: fr-eq 700ms ease-in-out infinite alternate;
+}
+
+.frecord__eq i:nth-child(2) { animation-duration: 520ms; animation-delay: -200ms; }
+.frecord__eq i:nth-child(3) { animation-duration: 860ms; animation-delay: -420ms; }
+
+@keyframes fr-eq {
+  from { transform: scaleY(0.25); }
+  to { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frecord[data-spin] .frecord__label,
+  .frecord__eq i {
+    animation: none;
+  }
+}
+
+/* Play the records: all of them, a song from each, oldest first. */
+.frecords__deck {
+  display: flex;
+  justify-content: flex-end;
+  margin: -6px 0 18px;
+}
+
+.frecords__all {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px 6px 6px;
+  border: 1.5px solid var(--print-ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--print-ink);
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 160ms ease;
+}
+
+.frecords__all:hover,
+.frecords__all[data-on] {
+  background: color-mix(in srgb, var(--spot) 35%, transparent);
+}
+
+.frecords__all:focus-visible {
+  outline: 2px solid var(--print-ink);
+  outline-offset: 3px;
+}
+
+.frecords__all-icon {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--print-ink);
+}
+
+.frecords__all-icon::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 7px;
+  border-style: solid;
+  border-width: 6px 0 6px 9px;
+  border-color: transparent transparent transparent var(--paper);
+}
+
+.frecords__all-icon[data-pause]::before {
+  left: 8px;
+  top: 8px;
+  width: 3px;
+  height: 10px;
+  border: 0;
+  background: var(--paper);
+  box-shadow: 7px 0 0 var(--paper);
+}
+
+.frecords__all-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 10px;
+  text-align: left;
+}
+
+.frecords__all-icon {
+  flex: none;
+}
+
+.frecords__all-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0;
+  text-transform: none;
+  opacity: 0.75;
+}
+
+.frecord__review {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* Who plays it: scene reports, each face its real photo as a small print,
+   ringed in the family colour; the one on the tape gets a thicker ring. (They
+   were printed one-ink in the spot colour once; on the purple families every
+   face became a purple blob until pointed at.) */
+.fplayers {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.fgroup__title {
+  margin: 0 0 4px;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.fgroup__blurb {
+  max-width: 48rem;
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.fgroup__press {
+  position: relative;
+  container-type: inline-size;
+  overflow: hidden;
+}
+
+.fgroup__roller {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: 120px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--spot) 40%, transparent), transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fgroup__faces {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: 18px 12px;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+}
+
+.fface {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--print-ink);
+  text-decoration: none;
+}
+
+.fface__print {
+  width: 84px;
+  height: 84px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #d8cdb6;
+  box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--spot), 0 6px 12px rgba(28, 23, 36, 0.25);
+  transition: transform 160ms ease, box-shadow 200ms ease;
+}
+
+.fface__print img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 25%;
+}
+
+[data-air] > .fface .fface__print {
+  box-shadow: 0 0 0 3px var(--paper), 0 0 0 8px var(--spot), 0 8px 16px rgba(28, 23, 36, 0.3);
+}
+
+.fface:hover .fface__print,
+.fface:focus-visible .fface__print {
+  transform: translateY(-3px);
+}
+
+.fface:focus-visible {
+  outline: 2px solid var(--spot-ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.fface__name {
+  margin-top: 7px;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 14px;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+[data-air] > .fface .fface__name {
+  background: linear-gradient(color-mix(in srgb, var(--spot) 55%, transparent), color-mix(in srgb, var(--spot) 55%, transparent)) no-repeat 0 85% / 100% 45%;
+}
+
+.fface__year {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #5a4a3a;
+}
+
+/* The road: enamel signs as on the city centrefold. */
+.froad {
+  position: relative;
+  overflow-x: auto;
+  padding: 6px 4px 8px;
+}
+
+.froad__over {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin: 0 0 20px;
+}
+
+.froad__over-label,
+.froad__branch-label {
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 16px;
+  color: var(--spot-ink);
+}
+
+.froad__over-signs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.froad__line {
+  display: flex;
+  align-items: center;
+  gap: var(--gap, 38px); /* Road widens it to fill the page */
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.froad__stop {
+  position: relative;
+}
+
+/* The road between two signs, its centre line dashed. */
+.froad__stop + .froad__stop::before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  width: var(--gap, 38px);
+  height: 8px;
+  margin-top: -4px;
+  background:
+    linear-gradient(90deg, #f3e5b5 50%, transparent 50%) 0 50% / 8px 2px repeat-x,
+    #2b2430;
+  transform-origin: 0 50%;
+}
+
+.froad__stop--branches::before {
+  top: calc(50% + 11px);
+}
+
+.froad__sign {
+  --plate: color-mix(in srgb, var(--glow) 22%, #15111b);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 6px 12px 7px;
+  border: 2px solid var(--glow);
+  border-radius: 4px;
+  background: var(--plate);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 3px 0 rgba(0, 0, 0, 0.45);
+  color: #e4d8bf;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 16px;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+a.froad__sign:hover,
+a.froad__sign:focus-visible {
+  background: var(--glow);
+  color: #15111b;
+}
+
+.froad__year {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+.froad__sign--self {
+  padding: 10px 18px 11px;
+  background: var(--glow);
+  color: #15111b;
+  font-size: 24px;
+  box-shadow: 0 0 0 4px var(--paper), 0 0 0 6px var(--glow), 0 6px 0 rgba(0, 0, 0, 0.35);
+}
+
+.froad__stop--branches {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.froad__branches {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0 0 0 14px;
+  border-left: 4px solid #2b2430;
+  list-style: none;
+}
+
+.froad__note {
+  margin: 14px 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: #4a3d30;
+}
+
+/* The end: the features before and after, and back to the issue. */
+.fend {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.4rem auto 2.6rem;
+}
+
+.fend > :first-child { justify-self: start; }
+.fend > :last-child { justify-self: end; }
+
+.fend__issue {
+  color: #efe3cb;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.fstep {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--print-ink);
+  text-decoration: none;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+  transition: transform 160ms ease;
+}
+
+.fstep:hover {
+  transform: translateY(-2px);
+}
+
+.fstep:focus-visible {
+  outline: 3px solid var(--paper);
+  outline-offset: 3px;
+}
+
+.fstep__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.fstep--next .fstep__text {
+  align-items: flex-end;
+}
+
+.fstep__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--print-red);
+}
+
+.fstep__name {
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 24px;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.fstep__arrow {
+  font-size: 22px;
+}
+
+/* The page's corner: a small dog-ear that lifts when pointed at, the next
+   (or previous) feature's colour showing underneath -- the turn to come.
+   It lifts once on its own when the end comes into view. */
+.fstep--big {
+  position: relative;
+}
+
+.fstep--big::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.fstep--next.fstep--big::after {
+  right: 0;
+  border-bottom-right-radius: 3px;
+  background: linear-gradient(to top left, var(--under) 0 50%, #c9ba98 50%, #e6dabd 100%);
+  box-shadow: -2px -2px 5px rgba(28, 23, 36, 0.2);
+}
+
+.fstep--prev.fstep--big::after {
+  left: 0;
+  border-bottom-left-radius: 3px;
+  background: linear-gradient(to top right, var(--under) 0 50%, #c9ba98 50%, #e6dabd 100%);
+  box-shadow: 2px -2px 5px rgba(28, 23, 36, 0.2);
+}
+
+.fstep--big:hover::after,
+.fstep--big:focus-visible::after {
+  width: 46px;
+  height: 46px;
+}
+
+.fstep:hover .fstep__arrow,
+.fstep:focus-visible .fstep__arrow {
+  translate: 3px 0;
+}
+
+.fstep--prev:hover .fstep__arrow,
+.fstep--prev:focus-visible .fstep__arrow {
+  translate: -3px 0;
+}
+
+/* The moves, none under reduced motion: the corner's lift; and with the
+   music (data-live, --beat and --energy from lib/music-motion) the cover's
+   colour screen kicking a hair out of register on each beat and swelling
+   with the song, its registration marks pulsing, and the face on air
+   bumping. Transforms and a slow opacity only; nothing flashes. */
+@media (prefers-reduced-motion: no-preference) {
+  .fstep--big::after {
+    transition: width 340ms cubic-bezier(0.3, 1.4, 0.5, 1), height 340ms cubic-bezier(0.3, 1.4, 0.5, 1);
+  }
+
+  .fstep__arrow {
+    transition: translate 200ms ease;
+  }
+
+  .fend[data-reveal='in'] .fstep--next::after {
+    animation: fr-peel 1100ms ease-in-out 700ms both;
+  }
+
+  .fspread .fspread__photo[data-live] .gprint--ready .gprint__drum--color {
+    translate: calc(var(--beat, 0) * 4px) calc(var(--beat, 0) * -3px);
+    scale: calc(1 + var(--energy, 0) * 0.025);
+    opacity: calc(0.7 + var(--energy, 0) * 0.22);
+  }
+
+  .fspread__photo[data-live] .fspread__reg {
+    scale: calc(1 + var(--beat, 0) * 0.35);
+  }
+
+  /* The face on air bumps on the beat, its ring swelling with the song. */
+  .fplayers[data-live] [data-air] > .fface .fface__print {
+    scale: calc(1.1 + var(--beat, 0) * 0.12);
+    box-shadow: 0 0 0 3px var(--paper), 0 0 0 calc(6px + var(--energy, 0) * 5px) var(--spot), 0 10px 18px rgba(28, 23, 36, 0.32);
+  }
+}
+
+@keyframes fr-peel {
+  0%, 100% { width: 16px; height: 16px; }
+  45%, 60% { width: 38px; height: 38px; }
+}
+
+/* While someone here plays, they step forward; everyone else stays as
+   they are, in full colour (owner: faded faces read as black and white). */
+.fface__print {
+  transition: transform 160ms ease, box-shadow 200ms ease;
+}
+
+/* The tour van on the road: drives from the oldest sign to this one as the
+   section scrolls through (Road measures --run). It passes behind the signs
+   and along the top of the asphalt. Parked at the end where scroll-driven animation
+   isn't supported, or under reduced motion. */
+.froad-section {
+  view-timeline: --froad block;
+}
+
+.froad__track {
+  position: relative;
+  width: max-content;
+}
+
+/* Each stop is its own layer (its reveal animation makes it one), so the
+   van goes under the stops as a whole -- and rides on top of the asphalt,
+   never in it, so the road never covers its wheels. */
+.froad__line > .froad__stop {
+  z-index: 1;
+}
+
+.froad__van {
+  position: absolute;
+  left: 0;
+  top: calc(50% - 4px - 25px);
+  z-index: 0;
+  translate: var(--run, 0) 0;
+}
+
+.froad__van-body {
+  fill: var(--spot);
+  stroke: var(--print-ink);
+  stroke-width: 1.3;
+  stroke-linejoin: round;
+}
+
+.froad__van-glass {
+  fill: #f3ead6;
+  stroke: var(--print-ink);
+  stroke-width: 0.9;
+}
+
+.froad__van-wheel {
+  fill: var(--print-ink);
+  stroke: #f3ead6;
+  stroke-width: 1.4;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .froad__van {
+      animation: fr-van linear both;
+      animation-timeline: --froad;
+      animation-range: entry 40% cover 62%;
+    }
+  }
+}
+
+@keyframes fr-van {
+  from { translate: 0 0; }
+  to { translate: var(--run, 0) 0; }
+}
+
+/* How the feature opens (FeatureSpread; times match it) and how each part
+   is laid down as it scrolls into view (Reveal, DealList). Nothing jumps in
+   brightness; none of it under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .fspread[data-stage='pending'] :is(.fspread__page--right, .fspread__tape, .gprint__drum, .fspread__ink) {
+    opacity: 0 !important;
+  }
+
+  /* Fresh: the paper opens to the feature, the photo prints, the headline
+     stamps on, the words set in, the tape is slapped on. */
+  .fspread[data-stage='open'] .fspread__page--right { animation: fs-open 760ms cubic-bezier(0.2, 0.75, 0.3, 1) both; }
+  .fspread[data-stage='open'] .gprint--ready .gprint__drum--color { animation: fs-wipe 560ms cubic-bezier(0.5, 0, 0.3, 1) 380ms both; }
+  .fspread[data-stage='open'] .fspread__ink { animation: fs-wipe 560ms cubic-bezier(0.5, 0, 0.3, 1) 720ms both, fs-register 320ms ease-out 1280ms both; }
+  .fspread[data-stage='open'] .fspread__reg { animation: sc-pop 300ms cubic-bezier(0.3, 1.6, 0.5, 1) both; animation-delay: calc(1100ms + var(--r) * 60ms); }
+  .fspread[data-stage='open'] .fspread__top { animation: sc-rise 360ms ease-out 640ms both; }
+  .fspread[data-stage='open'] .fspread__headline { animation: fp-stamp 460ms cubic-bezier(0.3, 1.5, 0.5, 1) 700ms both; }
+  .fspread[data-stage='open'] .fspread__kicker { animation: sc-rise 360ms ease-out 860ms both; }
+  .fspread[data-stage='open'] .fspread__standfirst { animation: sc-rise 420ms ease-out 960ms both; }
+  .fspread[data-stage='open'] .fspread__meta { animation: sc-rise 360ms ease-out 1080ms both; }
+  .fspread[data-stage='open'] .fspread__map { animation: sc-rise 360ms ease-out 1140ms both; }
+  .fspread[data-stage='open'] .fspread__credit { animation: sc-rise 360ms ease-out 1200ms both; }
+  .fspread[data-stage='open'] .ftape { animation: fs-tape 640ms cubic-bezier(0.2, 0.9, 0.3, 1.1) 1240ms both; }
+  .fspread[data-stage='open'] .ftape__strip { animation: fs-strip 280ms cubic-bezier(0.3, 1.5, 0.5, 1) both; animation-delay: calc(1760ms + var(--t) * 100ms); }
+
+  /* Turned to from the feature before or after: the page lands (WAAPI), the
+     photo prints quickly, the headline writes on. */
+  .fspread[data-stage='turn'] .gprint--ready .gprint__drum--color { animation: fs-wipe 320ms ease-out 220ms both; }
+  .fspread[data-stage='turn'] .fspread__ink { animation: fs-wipe 320ms ease-out 400ms both; }
+  .fspread[data-stage='turn'] .fspread__headline { animation: lb-write 420ms ease-out 260ms both; }
+
+  /* Read already this visit: the tape gives a wobble. */
+  .fspread[data-stage='quick'] .ftape { animation: fs-wobble 440ms ease-in-out both; }
+
+  /* As each sheet comes into view. */
+  [data-reveal='wait'] .fhead {
+    clip-path: inset(-20% 100% -40% 0);
+  }
+
+  [data-reveal='in'] .fhead {
+    animation: sc-write 560ms cubic-bezier(0.3, 0.7, 0.3, 1) both;
+  }
+
+  [data-reveal='wait'] :is(.farticle__columns > p, .fpull, .fsound, .fgroup__title, .fgroup__blurb, .froad__stop, .froad__over, .froad__note) {
+    opacity: 0;
+  }
+
+  [data-reveal='in'] .farticle__first { animation: sc-rise 520ms ease-out 200ms both; }
+  [data-reveal='in'] .fpull { animation: sc-rise 520ms ease-out 380ms both; }
+  [data-reveal='in'] blockquote.fpull .fpull__quote::before,
+  [data-reveal='in'] blockquote.fpull .fpull__quote::after { animation: sc-pop 360ms cubic-bezier(0.3, 1.6, 0.5, 1) 700ms both; }
+  [data-reveal='in'] .fpull__quote { animation: lb-write 900ms ease-out 520ms both; }
+  [data-reveal='in'] .farticle__columns > p:not(.farticle__first) { animation: sc-rise 520ms ease-out 640ms both; }
+  [data-reveal='in'] .fsound { animation: sc-card 680ms cubic-bezier(0.2, 0.9, 0.25, 1) 900ms both; }
+
+  [data-reveal='wait'] .fsound__tape {
+    opacity: 0;
+  }
+
+  [data-reveal='in'] .fsound__tape {
+    animation: sc-tape 300ms cubic-bezier(0.3, 1.5, 0.5, 1) both;
+    animation-delay: calc(1480ms + var(--t) * 90ms);
+  }
+
+  /* The records, once dealt, slide their discs out a little in turn. */
+  .frecords[data-reveal='in'] .frecord__disc {
+    animation: fr-peek 620ms cubic-bezier(0.25, 1.2, 0.45, 1) both;
+    animation-delay: calc(650ms + var(--i) * 90ms);
+  }
+
+  /* The faces print as a roller sweeps across each group. */
+  [data-reveal='in'] .fgroup__title { animation: sc-rise 420ms ease-out both; animation-delay: calc(160ms + var(--g) * 420ms); }
+  [data-reveal='in'] .fgroup__blurb { animation: sc-rise 420ms ease-out both; animation-delay: calc(240ms + var(--g) * 420ms); }
+
+  [data-reveal='wait'] .fgroup__faces > li {
+    opacity: 0;
+  }
+
+  [data-reveal='in'] .fgroup__faces > li {
+    animation: fp-ink 420ms ease-out both;
+    animation-delay: calc(360ms + var(--g) * 420ms + min(var(--k), 24) * 45ms);
+  }
+
+  [data-reveal='in'] .fgroup__roller {
+    animation: fp-roll 1200ms ease-in-out both;
+    animation-delay: calc(300ms + var(--g) * 420ms);
+  }
+
+  /* The road draws from the oldest sign, each switching on as the light
+     passes, then the branches come out. */
+  [data-reveal='in'] .froad__stop { animation: sc-rise 380ms ease-out both; animation-delay: calc(200ms + var(--i) * 230ms); }
+  [data-reveal='in'] .froad__stop + .froad__stop::before { animation: fr-road 240ms linear both; animation-delay: calc(80ms + var(--i) * 230ms); }
+  [data-reveal='in'] .froad__stop:not(.froad__stop--self) > .froad__sign { animation: fr-pass 640ms ease-out both; animation-delay: calc(260ms + var(--i) * 230ms); }
+  [data-reveal='in'] .froad__over { animation: sc-rise 420ms ease-out both; animation-delay: calc(300ms + var(--n) * 230ms); }
+  [data-reveal='in'] .froad__note { animation: sc-rise 420ms ease-out both; animation-delay: calc(500ms + var(--n) * 230ms); }
+
+  /* The features before and after slide in from their sides. */
+  .fend[data-reveal='wait'] > * { opacity: 0; }
+  .fend[data-reveal='in'] > :first-child { animation: sc-from-left 620ms cubic-bezier(0.3, 1.2, 0.5, 1) 120ms both; }
+  .fend[data-reveal='in'] > :nth-child(2) { animation: sc-rise 420ms ease-out 320ms both; }
+  .fend[data-reveal='in'] > :last-child { animation: sc-from-right 620ms cubic-bezier(0.3, 1.2, 0.5, 1) 200ms both; }
+}
+
+/* The opening spread eases back and dims as it scrolls away. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .fspread__frame {
+      animation: sc-recede linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 85%;
+    }
+  }
+}
+
+@keyframes fs-open {
+  from { transform: rotateY(-100deg); }
+  to { transform: none; }
+}
+
+@keyframes fs-wipe {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes fs-register {
+  from { translate: 3px -2px; }
+  to { translate: 0 0; }
+}
+
+@keyframes fs-tape {
+  0% { opacity: 0; transform: translate(-40px, -90px) rotate(-16deg) scale(1.12); }
+  55% { opacity: 1; }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes fs-strip {
+  from { opacity: 0; transform: rotate(var(--strip-rot)) translateY(-12px) scale(1.4, 1.2); }
+  to { opacity: 1; transform: rotate(var(--strip-rot)); }
+}
+
+@keyframes fs-wobble {
+  0%, 100% { transform: none; }
+  30% { transform: rotate(-2.5deg); }
+  65% { transform: rotate(1.5deg); }
+}
+
+@keyframes fr-peek {
+  from { translate: 0 0; }
+  to { translate: 14% 0; }
+}
+
+@keyframes fp-ink {
+  from { opacity: 0; transform: scale(0.86); }
+}
+
+@keyframes fp-roll {
+  0% { opacity: 1; transform: translateX(-130px); }
+  100% { opacity: 1; transform: translateX(calc(100cqw + 20px)); }
+}
+
+@keyframes fr-road {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes fr-pass {
+  0% { background: var(--plate); color: #e4d8bf; }
+  30% { background: var(--glow); color: #15111b; }
+  100% { background: var(--plate); color: #e4d8bf; }
+}
+
+/* A phone: the spread stacks, the columns become one, the road scrolls
+   sideways, and the paper doesn't swing open (the page simply rises). */
+@media (max-width: 700px) {
+  .feature {
+    padding: 0.6rem 0.75rem 1rem;
+  }
+
+  .fspread__frame {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    perspective: none;
+  }
+
+  .fspread__fold {
+    display: none;
+  }
+
+  .fspread__page--left,
+  .fspread__page--right {
+    border-radius: 3px;
+  }
+
+  .fspread__photo {
+    min-height: 380px;
+  }
+
+  .fspread__tape {
+    right: 12px;
+    bottom: 16px;
+  }
+
+  .ftape {
+    width: 200px;
+  }
+
+  .fspread__page--right {
+    padding: 20px 20px 22px;
+  }
+
+  .fsheet {
+    padding: 22px 18px 26px;
+  }
+
+  .fhead {
+    font-size: 32px;
+  }
+
+  .farticle__columns {
+    columns: 1;
+  }
+
+  .fpull__quote {
+    font-size: 22px;
+  }
+
+  .frecords {
+    grid-template-columns: 1fr;
+  }
+
+  .frecord {
+    grid-template-columns: 1fr;
+  }
+
+  .frecord__sleeve,
+  .frecord[data-lead] .frecord__sleeve {
+    width: 130px;
+    height: 130px;
+  }
+
+  .frecord[data-lead] {
+    grid-template-columns: 1fr;
+  }
+
+  .frecord[data-lead] .frecord__title {
+    font-size: 30px;
+  }
+
+  .fspread__paper {
+    display: none;
+  }
+
+  .fend {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .fend > :last-child { justify-self: start; }
+}
+
+@media (max-width: 700px) and (prefers-reduced-motion: no-preference) {
+  .fspread[data-stage='open'] .fspread__page--right {
+    animation: sc-rise 520ms ease-out both;
+  }
 }
 
 /* ── Mobile adjustments ───────────────────────────────────────── */
@@ -8269,7 +9601,6 @@ a.lightbox__card-open {
   color: var(--layer-color, var(--color-post-punk));
   white-space: nowrap;
 }
-
 
 /* ── Evidence filter ──────────────────────────────────────────────
    Bottom-left: the only corner of the canvas with no permanent chrome
@@ -9370,7 +10701,6 @@ a.lightbox__card-open {
   opacity: 0.6;
 }
 
-
 /* Same collapsed-by-default control the artist panel uses, so a hop with real
    evidence and a hop with none take the same space until asked. */
 /* The only control on this row, so it carries real button weight: full
@@ -9708,16 +11038,6 @@ a.lightbox__card-open {
   .path-link__cite-chevron {
     transition: none;
   }
-}
-
-/* Count beside a section heading — muted and lighter than the title it
-   follows, so it reads as an annotation rather than part of the name. */
-.artist-page__section-count {
-  font-family: var(--font-mono);
-  font-size: 0.6em;
-  font-weight: 400;
-  color: var(--color-muted);
-  letter-spacing: 0.02em;
 }
 
 /* ── Zoom hint ────────────────────────────────────────────────────
@@ -10292,6 +11612,18 @@ html[data-story='off'] .intro {
 .graph-replay:hover {
   background: rgba(14, 11, 26, 0.95);
 }
+
+/* ── Home: the way into "I made you a tape" (components/home/TapeDoor) ──
+   A button like "How it works" above it (.graph-replay), with a small
+   cassette; it slides in once the map is handed over, so it's noticed. */
+.tape-door { text-decoration: none; }
+.tape-door__icon { flex: none; width: 17px; height: 11px; color: #b8321f; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .tape-door { animation: tape-door-in 500ms cubic-bezier(0.3, 1.3, 0.5, 1) 400ms both; }
+}
+
+@keyframes tape-door-in { from { opacity: 0; translate: -16px 0; } to { opacity: 1; translate: 0 0; } }
 
 /* ── Home: today's record on the map (components/home/TodayStar) ── */
 
@@ -12970,48 +14302,458 @@ html[data-story='off'] .intro {
    story, and the scene they played in, on the map's own dark. Crisp: no tilt
    or grain on text. */
 .artist-overlay--family {
-  background: #1a1520;
+  background: var(--wall, #1a1520);
 }
 
-/* The riso print of the artist behind their page (components/artist/
-   RisoPrint): fixed, so the paper sheets scroll over it. Fades in once,
-   when it's first drawn. */
-.riso-frame {
+/* The room behind the artist's page (components/artist/backline): a wall in
+   a deep shade of their colour, shelves of their family's records, and a
+   bass and a guitar that play along. Pinned to the screen behind the
+   sheets; decoration only. */
+.room {
   position: fixed;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
   pointer-events: none;
+  background: var(--wall, #1a1520);
+  /* The room a touch darker than the band and the page, so they stand in front of it. */
+  filter: brightness(0.88);
 }
 
-.riso {
-  position: absolute;
+/* The band, in front of the page (its margin only), behind the back button. */
+.room__band {
+  position: fixed;
   inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  transition: opacity 400ms ease, translate 400ms ease;
+}
+
+.room__band[data-away] {
+  opacity: 0;
+  translate: 0 40px;
+}
+
+.room__rec {
+  position: absolute;
+  isolation: isolate;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+.room__rec img {
   display: block;
   width: 100%;
   height: 100%;
-  opacity: 0;
-  transition: opacity 500ms ease;
+  object-fit: cover;
 }
 
-.riso--ready {
+/* Now and then the record's half out of its sleeve. */
+.room__rec[data-out]::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 10%;
+  top: -22%;
+  width: 80%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #d9cdb4 0 15%, #111 16% 19%, transparent 20%),
+    repeating-radial-gradient(circle, #1d1a1e 0 2px, #262227 2px 3px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* A bookcase, floor to ceiling in a side column: wooden uprights, a dark
+   back, shelves crammed (components/artist/backline/Wall). */
+.room__case {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-inline: 10px solid #a5713f;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 14%, rgba(0, 0, 0, 0.1) 86%, rgba(0, 0, 0, 0.4)),
+    #3b2617;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.45), 0 0 24px rgba(0, 0, 0, 0.45);
+}
+
+.room__shelf {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 11px;
+  background: linear-gradient(#c8925a 0 3px, #a5713f 3px 100%);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45), 0 10px 14px rgba(0, 0, 0, 0.4);
+}
+
+.room__spines,
+.room__books {
+  position: absolute;
+  display: flex;
+  transform: translateY(-100%);
+}
+
+.room__spines {
+  align-items: flex-end;
+  gap: 0.5px;
+}
+
+.room__spines span {
+  display: block;
+  transform-origin: 0 100%;
+  box-shadow: inset -1px 0 rgba(0, 0, 0, 0.4), inset 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Books laid flat, the first at the bottom. */
+.room__books {
+  flex-direction: column-reverse;
+}
+
+.room__books span {
+  display: block;
+  border-radius: 1px;
+  box-shadow: inset 0 2px rgba(255, 255, 255, 0.16), inset 0 -1px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* What rattles on the big hits moves on its own layer, so the room isn't repainted. */
+.room [data-rattle] {
+  will-change: transform;
+}
+
+.room__cassette {
+  position: absolute;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}
+
+.room__cassette .cass {
+  height: auto;
+  aspect-ratio: 1004 / 638;
+}
+
+/* A framed photo: dark frame, cream mat. */
+.room__frame {
+  position: absolute;
+  padding: 4px;
+  background: #1c1712;
+  box-shadow: inset 0 0 0 1px #3a2f25, 0 4px 6px rgba(0, 0, 0, 0.45);
+}
+
+.room__frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 3px solid #efe7d6;
+}
+
+/* The wall behind the page, plastered with posters. */
+.room__poster {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+.room__poster--record {
+  border: 6px solid #f3ecdc;
+}
+
+.room__poster--record img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* A band poster: their photo printed in one ink over black, the name below. */
+.room__poster--band {
+  padding: 7px 7px 4px;
+  background: #f1e9d6;
+}
+
+.room__duo {
+  flex: 1;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.room__duo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.25) brightness(1.08);
+  mix-blend-mode: multiply;
+}
+
+.room__bill,
+.room__flyer-name,
+.room__poster--type {
+  font-family: var(--font-poster), Impact, sans-serif;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.room__bill {
+  padding-top: 5px;
+  overflow: hidden;
+  color: #1c1724;
+  white-space: nowrap;
+}
+
+/* Their scene's flyer: name, city, years, from the map. */
+.room__poster--flyer {
+  gap: 6px;
+  padding: 12px 11px;
+  border-top: 12px solid var(--ink);
+  background: #efe7d6;
+  color: #1c1724;
+}
+
+.room__flyer-kicker,
+.room__flyer-where {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.room__flyer-rule {
+  width: 40%;
+  border-top: 3px solid #1c1724;
+}
+
+/* A type poster of a sound they're filed under. */
+.room__poster--type {
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: var(--ink);
+  color: #f6efe0;
+  text-align: center;
+}
+
+.room__tape {
+  position: absolute;
+  top: -8px;
+  width: 44px;
+  height: 16px;
+  background: rgba(236, 226, 186, 0.82);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
+}
+
+.bline__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* An instrument, held: placed at its player's hold and turned about it. Its
+   shadow falls towards the page, onto it, as something in front would. */
+.bline__inst {
+  position: absolute;
+  will-change: transform;
+  filter: drop-shadow(var(--cast, 0px) 20px 14px rgba(0, 0, 0, 0.5));
+}
+
+.bline__decor {
+  position: absolute;
+  inset: 0;
+}
+
+/* Tap any piece to play the artist: only the drawing itself catches the
+   tap, never the empty corners of its box, so the page under it stays
+   clickable. A wiggle when pointed at. */
+.room__band .bline__svg :is(path, rect, circle, ellipse) {
+  pointer-events: visiblePainted;
+  cursor: pointer;
+}
+
+.bline__hold {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bline__inst:hover .bline__hold {
+    animation: bline-wiggle 620ms ease-in-out;
+  }
+}
+
+@keyframes bline-wiggle {
+  0%, 100% { rotate: 0deg; }
+  25% { rotate: -2.2deg; }
+  55% { rotate: 1.8deg; }
+  80% { rotate: -0.8deg; }
+}
+
+/* After the soundcheck: how to hear them. Upright, on a paper tag. */
+.room__hint {
+  position: absolute;
+  top: calc(var(--nav-height, 46px) + 66px);
+  left: 14px;
+  margin: 0;
+  padding: 9px 11px 10px;
+  border-radius: 2px;
+  background: #efe7d6;
+  color: #1c1724;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 15px;
+  line-height: 1.25;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .room__hint {
+    animation: room-hint 420ms cubic-bezier(0.3, 1.4, 0.5, 1) both;
+  }
+}
+
+@keyframes room-hint {
+  from { opacity: 0; translate: 0 10px; }
+}
+
+/* Sound in the air: rings spreading out of each piece and fading,
+   two-fifths as strong over the page (a mask set by Room). Lines only, no glow. */
+.room__air {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* A light line with a dark edge either side, so it reads on the dark
+   shelves and the cream page alike. */
+.room__ring {
+  position: absolute;
+  border: 2.5px solid var(--ring, #f3ead6);
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.25);
+  will-change: transform, opacity;
+}
+
+/* A pluck's blur along a string, the way a vibrating string looks: a faint
+   lens with its two edges showing, narrowing as the note dies. */
+.bline__blur {
+  fill: rgba(236, 230, 218, 0.2);
+  stroke: rgba(240, 235, 225, 0.75);
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scaleX(0);
+}
+
+/* The synth's knobs turn about their middles; its keys go down when played. */
+.bline__knob,
+.bline__cone {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.bline__key[data-down] {
+  transform: translateY(5px);
+  fill: var(--press, #f2b42c);
+}
+
+/* The drum machine's step lights: one lit, running in time. */
+.bline__step {
+  fill: #4a2723;
+}
+
+.bline__step[data-lit] {
+  fill: #ff6a3a;
+}
+
+/* The pick: out of sight until the music starts. */
+.bline__pick {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity 300ms ease;
+}
+
+.room__band[data-playing] .bline__pick {
   opacity: 1;
 }
 
-/* The lit print, over the resting one: its opacity follows the music
-   (RisoPrint), which the GPU handles -- nothing is redrawn. */
-.riso.riso--lit {
-  /* Glows with the song's swell and pulses brighter on each beat (--energy,
-     --beat: lib/music-motion, both read against the song's own range). The
-     swell takes at most 0.6 so a beat always has light left to add -- at
-     twice the swell it sat pinned at full on any loud record. Light only:
-     moving or zooming a full-screen dot pattern makes it shimmer, which
-     reads as lag. */
-  opacity: clamp(0, calc(var(--energy, 0) * 0.6 + var(--beat, 0) * 0.6), 1);
-  transition: none;
-  will-change: opacity;
+.bline__tail {
+  transform-box: view-box;
 }
 
-/* The back button sits on the print: solid, so it doesn't get lost in it. */
+.bline__badge,
+.bline__sticker,
+.bline__button {
+  position: absolute;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) rotate(var(--tilt, 0deg));
+  transition: transform 280ms cubic-bezier(0.3, 1.5, 0.5, 1), box-shadow 280ms ease;
+}
+
+.bline__badge {
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px #f4efe4, 0 0 0 2.5px rgba(0, 0, 0, 0.35), 0 3px 5px rgba(0, 0, 0, 0.45);
+}
+
+.bline__sticker {
+  overflow: hidden;
+  border: 2.5px solid #fbf8f0;
+  border-radius: 12%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.bline__badge img,
+.bline__sticker img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* A badge's domed shine; a sticker's flat sheen. */
+.bline__badge::after,
+.bline__sticker::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.55), transparent 46%);
+}
+
+.bline__sticker::after {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), transparent 40%);
+}
+
+/* Whoever's on air lifts off the instrument. */
+.bline__badge[data-on],
+.bline__sticker[data-on] {
+  z-index: 2;
+  transform: translate(-50%, -50%) rotate(0deg) scale(1.5);
+  box-shadow: 0 0 0 2px #f4efe4, 0 10px 16px rgba(0, 0, 0, 0.55);
+}
+
+/* A plain sewing button with four holes, where no one's wearing a badge. */
+.bline__button {
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 40% 40%, rgba(0, 0, 0, 0.5) 0 7%, transparent 8%),
+    radial-gradient(circle at 60% 40%, rgba(0, 0, 0, 0.5) 0 7%, transparent 8%),
+    radial-gradient(circle at 40% 60%, rgba(0, 0, 0, 0.5) 0 7%, transparent 8%),
+    radial-gradient(circle at 60% 60%, rgba(0, 0, 0, 0.5) 0 7%, transparent 8%),
+    var(--btn);
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.14), inset 0 -2px 3px rgba(0, 0, 0, 0.22), 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bline__badge,
+  .bline__sticker {
+    transition: none;
+  }
+}
+
+/* The back button sits over the room: solid, so it doesn't get lost in it. */
 .artist-overlay--family .page-back {
   border: 1.5px solid rgba(243, 232, 214, 0.6);
   background: #1a1520;
@@ -13032,7 +14774,7 @@ html[data-story='off'] .intro {
   display: flex;
   flex-direction: column;
   gap: 2.6rem;
-  max-width: 1120px;
+  max-width: 1060px;
   margin: 0 auto;
   padding: 2.2rem 1.25rem 5rem;
 }
@@ -15857,10 +17599,6 @@ a.flyer__act:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .riso {
-    transition: none;
-  }
-
   .sleeve__cover {
     transform: none;
     transition: none;
@@ -16068,4 +17806,1936 @@ a.flyer__act:focus-visible {
   .site-foot__copy {
     margin-left: 0;
   }
+}
+
+/* ── About: "I made you a tape" (components/about). The maker's story as a
+   mixtape: a cassette case that opens onto its inlay card, then the tracks,
+   Side A grey at first and gaining colour as their taste did. Paper and
+   ink for words, the dark room around them, Permanent Marker for anything
+   hand-lettered. No flashes; no tilt on anything with words on it; none of
+   the motion under reduced motion. ─────────────────────────────────────── */
+.tape-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: var(--nav-height);
+  /* Their room shows either side of the tape (components/artist/backline/Room). */
+  background: var(--wall, #1a1520);
+  color: #efe3cb;
+  --paper: #efe6d1;
+  --print-ink: #1c1724;
+  --print-red: #b8321f;
+  --grey-bg: #2b2a2f;
+  --grey-tile: #3b3a40;
+  --grey-ink: #9a99a0;
+  --vfd: #ffb547;
+}
+
+/* Behind the tape's column, the room's own wall, bare: the posters stay
+   out from behind the words, and the page is the room's colour -- the same
+   wall, through the same dimming as the room (.room's filter), so there's
+   no seam where the shelves end. (It was the site's darker ink once, a
+   slab of another colour laid over the room.) */
+.tape__dim {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent calc(50% - 600px), var(--wall) calc(50% - 572px), var(--wall) calc(50% + 572px), transparent calc(50% + 600px));
+  filter: brightness(var(--room-light, 0.88));
+  transition: filter 1400ms ease;
+}
+
+.tape {
+  position: relative;
+  z-index: 3;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* One reading column down the middle, the words left-aligned in it: the
+   room is busy on both sides, so the words keep an equal distance from each
+   (they hugged the left edge once, next to the bass and its bookcase, with
+   an empty stretch on their right). The drawings keep their own widths,
+   centred on the same line. */
+.tape { --read: 700px; }
+
+/* The lights go down on the room while you read, and come up when the band
+   plays (and at the opening). Slow, so nothing flashes; the page's column
+   dims with the wall so there's never a seam. */
+.tape-overlay { --room-light: 0.88; }
+.tape-overlay:has(.tape[data-reading]) { --room-light: 0.5; }
+.tape-overlay:has(.room__band[data-playing]) { --room-light: 0.88; }
+.tape-overlay .room { filter: brightness(var(--room-light)); transition: filter 1400ms ease; }
+/* The instruments go down a little too, but not the paper note on how to play them. */
+.tape-overlay .bline__inst { filter: drop-shadow(var(--cast, 0px) 20px 14px rgba(0, 0, 0, 0.5)) brightness(1); transition: filter 1400ms ease; }
+.tape-overlay:has(.tape[data-reading]):not(:has(.room__band[data-playing])) .bline__inst { filter: drop-shadow(var(--cast, 0px) 20px 14px rgba(0, 0, 0, 0.5)) brightness(0.72); }
+
+/* A button with a round ink play/pause icon. */
+.tbutton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px 6px 6px;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  color: #efe3cb;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 160ms ease;
+}
+
+.tbutton:hover { background: rgba(239, 227, 203, 0.1); }
+.tbutton:focus-visible { outline: 2px solid #efe3cb; outline-offset: 3px; }
+.tbutton--small { font-size: 12px; padding: 4px 12px 4px 4px; }
+
+.tbutton__icon,
+.ttrack__song-icon,
+.tlabel__icon,
+.tcard__play-icon {
+  position: relative;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.tbutton__icon::before,
+.ttrack__song-icon::before,
+.tlabel__icon::before,
+.tcard__play-icon::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 7px;
+  border-style: solid;
+  border-width: 6px 0 6px 9px;
+  border-color: transparent transparent transparent #1a1520;
+}
+
+:is(.tbutton__icon, .ttrack__song-icon, .tlabel__icon, .tcard__play-icon)[data-pause]::before {
+  left: 8px;
+  top: 8px;
+  width: 3px;
+  height: 10px;
+  border: 0;
+  background: #1a1520;
+  box-shadow: 7px 0 0 #1a1520;
+}
+
+/* ── The case and its inlay card ── */
+/* The case and the card that says what this is side by side, the same
+   height; the inlay card unfolded across under both, the track list. (The
+   case once stood alone at the top of a tall column, with the whole card
+   beside it, and left a hole under it.) */
+.tcase {
+  display: grid;
+  grid-template-columns: 480px 1fr;
+  grid-template-areas: 'box head' 'list list';
+  align-items: center;
+  column-gap: 48px;
+  row-gap: 30px;
+  padding: 28px 0 36px;
+}
+
+.tcase[data-stage='pending'] { visibility: hidden; }
+
+/* The case: clear plastic, the size of a real one round the tape (110 x 69
+   mm), with room above it for the tape lifted half out. */
+.tcase__box {
+  grid-area: box;
+  position: relative;
+  width: 480px;
+  aspect-ratio: 110 / 69;
+  margin-top: 72px;
+  perspective: 1400px;
+}
+
+.tcase__tray {
+  position: absolute;
+  inset: 0;
+  border-radius: 7px;
+  background:
+    linear-gradient(118deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0) 28%, rgba(255, 255, 255, 0) 64%, rgba(255, 255, 255, 0.05) 76%, rgba(255, 255, 255, 0) 88%),
+    rgba(255, 255, 255, 0.03);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.17),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.3),
+    0 26px 44px rgba(0, 0, 0, 0.5);
+}
+
+/* The tray's inner wall and its floor. */
+.tcase__tray::before {
+  content: '';
+  position: absolute;
+  inset: 9px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07), inset 0 -14px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* The lid swings open on its left edge; the inlay's front shows through it. */
+.tcase__lid {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  transform-origin: 0 50%;
+  transform: rotateY(-118deg);
+  backface-visibility: hidden;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22), inset 0 1.5px 0 rgba(255, 255, 255, 0.3);
+}
+
+.tcase__front {
+  position: absolute;
+  inset: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 26px;
+  border-radius: 2px;
+  background: var(--paper);
+  color: var(--print-ink);
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+}
+
+/* The lid's plastic over the inlay. */
+.tcase__front::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(118deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 66%, rgba(255, 255, 255, 0.14) 78%, rgba(255, 255, 255, 0) 90%);
+}
+
+.tcase__to { font-size: 52px; line-height: 1; }
+.tcase__from { align-self: flex-end; font-size: 20px; }
+
+/* The cassette sits in the tray, lifted half out of it once it's open. */
+.tcass {
+  position: absolute;
+  left: 4.35%;
+  top: 3.8%;
+  z-index: 1;
+  width: 91.3%;
+  aspect-ratio: 1004 / 638;
+  border-radius: 3.4% / 5.3%;
+  box-shadow: 0 22px 34px -10px rgba(0, 0, 0, 0.65), 0 3px 8px rgba(0, 0, 0, 0.45);
+  transform: translate(3%, -24%);
+}
+
+.cass { display: block; width: 100%; height: 100%; }
+.cass__hand { font-family: var(--font-marker), 'Marker Felt', cursive; fill: var(--print-ink); }
+.cass__hand--red { fill: var(--print-red); }
+.cass__side, .cass__print { font-family: var(--font-poster), Impact, sans-serif; fill: var(--print-ink); }
+.cass__print { letter-spacing: 0.03em; }
+.cass__mono { font-family: var(--font-mono); fill: var(--print-ink); letter-spacing: 0.06em; }
+
+/* Playing, the hubs turn the way the tape runs: off the left reel, past the head, onto the right. */
+.cass__hub {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tcass-spin 1.6s linear infinite reverse paused;
+}
+
+.tape[data-playing] .tcase .cass__hub { animation-play-state: running; }
+
+@keyframes tcass-spin { to { transform: rotate(360deg); } }
+
+/* The card that says what this is, and the inlay card, unfolded: the track list. */
+.tcard,
+.tinlay {
+  padding: 26px 30px 28px;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--print-ink);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45);
+}
+
+.tcard__kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--print-red);
+}
+
+.tcard { grid-area: head; }
+.tinlay { grid-area: list; padding-top: 14px; padding-bottom: 16px; }
+
+.tcard__title {
+  margin: 4px 0 0;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: clamp(38px, 4.1vw, 58px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.tcard__title-line { display: block; }
+
+.tcard__line {
+  margin: 6px 0 18px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+}
+
+.tcard__intro {
+  margin: -8px 0 16px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.tdays__genres a { color: var(--vfd); }
+
+.tcard__side span { font-family: var(--font-display); font-size: 16px; font-style: italic; }
+
+.tcard__panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  perspective: 1400px;
+}
+
+.tcard__panel {
+  padding: 10px 18px 6px;
+  border-top: 1.5px solid var(--print-ink);
+  transform-origin: 0 50%;
+}
+
+.tcard__panel + .tcard__panel { border-left: 1.5px dashed rgba(28, 23, 36, 0.45); }
+
+.tcard__side {
+  margin: 0 0 6px;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 22px;
+}
+
+.tcard__tracks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tcard__tracks a {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 4px;
+  padding: 5px 0;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(28, 23, 36, 0.3);
+}
+
+.tcard__tracks a:hover .tcard__name,
+.tcard__tracks a:focus-visible .tcard__name {
+  background: linear-gradient(rgba(255, 181, 71, 0.6), rgba(255, 181, 71, 0.6)) no-repeat 0 85% / 100% 45%;
+}
+
+.tcard__n { font-family: var(--font-mono); font-size: 12px; padding-top: 3px; }
+.tcard__name { font-family: var(--font-marker), 'Marker Felt', cursive; font-size: 17px; line-height: 1.2; }
+.tcard__songs { display: block; font-family: var(--font-mono); font-size: 11px; line-height: 1.4; color: #4a3d48; }
+
+.tcard__play {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  margin: 0 0 18px;
+  padding: 8px 20px 8px 8px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--print-ink);
+  color: var(--paper);
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.tcard__play:focus-visible { outline: 3px solid var(--print-ink); outline-offset: 3px; }
+.tcard__play .tcard__play-icon { width: 34px; height: 34px; color: var(--paper); }
+.tcard__play .tcard__play-icon::before { left: 13px; top: 10px; border-color: transparent transparent transparent var(--print-ink); }
+.tcard__play .tcard__play-icon[data-pause]::before { left: 11px; top: 11px; background: var(--print-ink); box-shadow: 7px 0 0 var(--print-ink); }
+.tcard__play-sub { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0; text-transform: none; opacity: 0.75; }
+
+/* ── The sticky label: where you are on the tape ── */
+.tlabel {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto;
+  padding: 8px 12px;
+  border-radius: 0 0 10px 10px;
+  background: #0f0c13;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+  color: var(--vfd);
+  transition: opacity 240ms ease, translate 240ms ease;
+}
+
+.tlabel:not([data-shown]) {
+  opacity: 0;
+  translate: 0 -8px;
+  pointer-events: none;
+}
+
+.tlabel__play { padding: 0; border: 0; background: none; color: var(--vfd); cursor: pointer; }
+.tlabel__play:focus-visible { outline: 2px solid var(--vfd); outline-offset: 2px; border-radius: 50%; }
+
+.tlabel__now {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  align-items: baseline;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-family: var(--font-mono);
+  text-align: left;
+  cursor: pointer;
+}
+
+.tlabel__side { flex: none; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; }
+.tlabel__name { overflow: hidden; font-size: 14px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+
+.tlabel__counter {
+  flex: none;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: #efe3cb;
+  color: #0f0c13;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.tlabel__list {
+  position: absolute;
+  left: 12px;
+  top: calc(100% + 6px);
+  margin: 0;
+  padding: 8px 0;
+  min-width: 280px;
+  list-style: none;
+  border-radius: 6px;
+  background: var(--paper);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
+}
+
+.tlabel__list a {
+  display: block;
+  padding: 5px 14px;
+  color: var(--print-ink);
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.tlabel__list a span { font-family: var(--font-mono); font-size: 11px; margin-right: 6px; }
+.tlabel__list a:hover { background: rgba(255, 181, 71, 0.4); }
+
+/* ── A track ── */
+.ttrack {
+  position: relative;
+  padding: 96px 0 72px;
+  scroll-margin-top: calc(var(--nav-height) + 48px);
+}
+
+.ttrack__head { max-width: 760px; }
+
+.ttrack__title {
+  margin: 0 0 14px;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.ttrack__songs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none;
+}
+
+/* Each track's songs, as buttons that look like buttons: a pill round the
+   play circle and the name (bare text with a dot didn't read as pressable). */
+.ttrack__song {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 3px 14px 3px 3px;
+  border: 1.5px solid rgba(239, 227, 203, 0.35);
+  border-radius: 999px;
+  background: rgba(239, 227, 203, 0.06);
+  color: #efe3cb;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.ttrack__song:hover { background: rgba(239, 227, 203, 0.14); border-color: #efe3cb; }
+.ttrack__song[data-on] { border-color: var(--vfd); }
+
+.ttrack__song b { font-weight: 700; }
+.ttrack__song[data-on] b { background: linear-gradient(rgba(255, 181, 71, 0.55), rgba(255, 181, 71, 0.55)) no-repeat 0 85% / 100% 45%; }
+.ttrack__song:focus-visible { outline: 2px solid #efe3cb; outline-offset: 3px; border-radius: 999px; }
+
+.ttrack__words { max-width: 680px; }
+
+.ttrack__words p {
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-size: 21px;
+  line-height: 1.55;
+}
+
+.tape__side--b { position: relative; }
+
+.tape__why {
+  margin: 40px 0 0;
+  padding-top: 40px;
+  border-top: 1.5px dashed rgba(239, 227, 203, 0.25);
+}
+
+.tape__flip {
+  margin: 0 0 14px;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 34px;
+  color: var(--vfd);
+}
+
+.tape__flip span { font-family: var(--font-display); font-size: 22px; font-style: italic; color: #efe3cb; }
+
+.tape__why-words {
+  max-width: 720px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+/* How genres split apart and come together: two mirror images on one axis.
+   Soft and beautiful on the left, heavy and brutal on the right, in both;
+   the arrows point out from the centre in one and in to it in the other. */
+.tfork { margin-top: 34px; }
+
+.tsplit, .tmerge { padding: 26px 0 10px; }
+.tmerge { margin-top: 60px; border-top: 1.5px dashed rgba(239, 227, 203, 0.2); }
+
+/* Words start at the page's left edge, as on every other track; only the
+   drawings (the rows of genres, the bands under them) sit centred, since
+   they mirror about the middle. */
+.tfork__label {
+  margin: 0 0 18px;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 34px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.tfork__label span {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 20px;
+  text-transform: none;
+  color: var(--vfd);
+}
+
+.tmerge__words { max-width: 680px; margin: 0 0 26px; }
+.tmerge__words p { margin: 0 0 14px; font-family: var(--font-display); font-size: 21px; line-height: 1.55; }
+
+.tfork__road {
+  display: flex;
+  align-items: center;
+  /* "safe": if the row is ever wider than the page, it scrolls from its
+     start instead of losing both ends off the sides. */
+  justify-content: safe center;
+  overflow-x: auto;
+  padding: 10px 4px;
+}
+
+.tfork__half {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 0 8px;
+  list-style: none;
+}
+
+.tfork .froad__sign,
+.tfork__sign--off { padding: 5px 9px 6px; font-size: 15px; }
+
+/* Come together runs a longer line from each end, so it's set a size tighter. */
+.tmerge .tfork__half { gap: 4px; padding: 0 3px; }
+.tmerge .tfork__arrow { font-size: 19px; }
+.tmerge .froad__sign,
+.tmerge .tfork__sign--off { padding: 4px 7px 5px; font-size: 14px; }
+.tmerge .tfork__sign--off .froad__year { font-size: 9px; }
+.tmerge .tfork__sign.tfork__sign--centre { padding: 8px 14px 9px; font-size: 22px; }
+
+.tfork__half--soft { flex-direction: row-reverse; }
+.tfork__half--in { flex-direction: row; }
+.tfork__half li { flex: none; }
+
+.tfork__arrow {
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--vfd);
+}
+
+.tfork .tfork__sign--centre { padding: 10px 18px 11px; font-size: 26px; background: var(--glow); color: #15111b; }
+.tfork__sign--off.tfork__sign--centre { background: none; color: #efe3cb; border-color: var(--vfd); }
+
+.tfork__sign--off {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 6px 12px 7px;
+  border: 2px dashed #9a99a0;
+  border-radius: 4px;
+  color: #cfc4ad;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 16px;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+}
+
+.tfork__dirs {
+  display: flex;
+  justify-content: space-between;
+  max-width: 980px;
+  margin: 10px auto 0;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 19px;
+}
+
+/* The same two sides, the same two colours, in both pictures. */
+.tfork__dirs span:first-child { color: #f2a8c4; }
+.tfork__dirs span:last-child { color: #e0457b; }
+
+.tfork__ends {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 980px;
+  margin: 26px auto 0;
+}
+
+.tfork__end { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+/* Names keep two lines' room, so every Listen button sits on one line. */
+.tfork__end .tface__name { min-height: 2.1em; }
+/* Come together: a band at each end, and the one they meet in, in the middle. */
+.tfork__ends--three { display: grid; grid-template-columns: 1fr auto 1fr; justify-items: center; max-width: 1100px; }
+.tfork__ends--three .tbutton { white-space: nowrap; }
+.tfork__end--meet .tface__photo { box-shadow: 0 0 0 3px #1a1520, 0 0 0 6px var(--vfd); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .tmerge[data-reveal='in'] .tfork__ends--three .tfork__end { animation: tfork-light 420ms ease-out both; }
+  .tmerge[data-reveal='in'] .tfork__ends--three .tfork__end:first-child { --dx: -14px; animation-delay: 3000ms; }
+  .tmerge[data-reveal='in'] .tfork__ends--three .tfork__end:last-child { --dx: 14px; animation-delay: 3000ms; }
+  .tmerge[data-reveal='in'] .tfork__ends--three .tfork__end--meet { animation-name: tfork-meet; animation-duration: 640ms; animation-delay: 3400ms; }
+}
+
+.tfork__band {
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 26px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.tbutton--loud { border-color: #e0457b; }
+
+.tfork__last { margin: 40px 0 0; font-family: var(--font-display); font-size: 21px; }
+.tfork__last a { color: var(--vfd); }
+
+/* 1. Static: everything grey, edge to edge. */
+.ttrack--static {
+  color: var(--grey-ink);
+  background: var(--grey-bg);
+  box-shadow: 0 0 0 100vmax var(--grey-bg);
+  clip-path: inset(0 -100vmax);
+}
+
+
+.tstatic { margin-top: 30px; }
+
+.tstatic__row { margin-top: 18px; }
+
+.tstatic__label {
+  margin: 0 0 8px;
+  font-family: var(--font-body, system-ui), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #918f97;
+}
+
+.tstatic__belt {
+  display: flex;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.tstatic__strip {
+  display: flex;
+  flex: none;
+  gap: 14px;
+  padding-right: 14px;
+}
+
+.tstatic__tile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 120px;
+}
+
+.tstatic__tile i { display: block; aspect-ratio: 1; border-radius: 4px; background: var(--grey-tile); }
+.tstatic__tile b { display: block; height: 8px; width: 80%; border-radius: 4px; background: var(--grey-tile); }
+.tstatic__tile b + b { width: 55%; }
+
+/* 2. How to Disappear Completely: the grey goes, tile by tile. */
+.ttrack--disappear {
+  view-timeline: --tdis block;
+  clip-path: inset(0 -100vmax);
+}
+
+.ttrack--disappear::before {
+  content: '';
+  position: absolute;
+  inset: 0 -100vmax;
+  z-index: -1;
+  background: linear-gradient(var(--grey-bg), #1a1520 70%);
+}
+
+.tdis { position: relative; margin-top: 34px; width: fit-content; }
+
+.tdis__covers {
+  display: flex;
+  gap: 22px;
+}
+
+.tdis__cover { margin: 0; }
+
+/* Each Radiohead record is a button: it plays a song from itself. */
+.tdis__play { position: relative; display: block; padding: 0; border: 0; background: none; cursor: pointer; }
+.tdis__play img { transition: translate 200ms ease; }
+.tdis__play:hover img { translate: 0 -4px; }
+.tdis__play[data-on] img { box-shadow: 0 0 0 3px var(--vfd), 0 14px 30px rgba(0, 0, 0, 0.45); }
+.tdis__play[data-on] .trot__play { color: var(--vfd); }
+.tdis__play .trot__play { right: 10px; bottom: 10px; }
+
+.tdis__cover img {
+  display: block;
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+}
+
+.tdis[data-live] .tdis__cover img { scale: calc(1 + var(--beat, 0) * 0.03); }
+
+.tdis__cover figcaption {
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #cfc4ad;
+}
+
+.tdis__grey {
+  position: absolute;
+  inset: -12px -12px 18px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 3px;
+  pointer-events: none;
+}
+
+.tdis__tile { background: var(--grey-tile); border-radius: 2px; }
+
+/* 3. The road in. */
+.troad {
+  position: relative;
+  container-type: inline-size;
+  margin-top: 34px;
+}
+
+.troad__stops {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0 10px;
+  list-style: none;
+}
+
+/* The asphalt behind the stops, its centre line dashed. */
+.troad__stops::before {
+  content: '';
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  top: 36px;
+  height: 10px;
+  background:
+    linear-gradient(90deg, #f3e5b5 50%, transparent 50%) 0 50% / 10px 2px repeat-x,
+    #2b2430;
+}
+
+.troad__stop { position: relative; z-index: 1; }
+
+/* How they got from the last stop to this one, written over the road. */
+.troad__via {
+  position: absolute;
+  right: calc(50% + 62px);
+  bottom: calc(100% - 18px);
+  width: 200px;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 15px;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--vfd);
+}
+
+.troad__sign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #efe3cb;
+  text-decoration: none;
+}
+
+.troad__face {
+  width: 82px;
+  height: 82px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #2b2430;
+  box-shadow: 0 0 0 4px #1a1520, 0 0 0 7px var(--glow);
+}
+
+.troad__face img { width: 100%; height: 100%; object-fit: cover; }
+.troad__name { font-family: var(--font-poster), Impact, sans-serif; font-size: 20px; letter-spacing: 0.02em; text-transform: uppercase; }
+.troad__sign:hover .troad__name, .troad__sign:focus-visible .troad__name { color: var(--glow); }
+.troad__stop[data-air] .troad__face { box-shadow: 0 0 0 4px #1a1520, 0 0 0 10px var(--glow); }
+
+.troad__van {
+  position: absolute;
+  left: 10px;
+  top: 13px;
+  z-index: 0;
+  --print-ink: #1c1724;
+  translate: calc(100cqw - 70px) 0;
+}
+
+/* The genre road's van, reused: here it is placed by .troad__van. */
+.troad__van .froad__van { position: static; display: block; translate: none; animation: none; }
+
+/* "Play my road", under the road. */
+.troad > .tbutton { margin-top: 34px; }
+
+/* 4. The rotation round the two constants. */
+.trot {
+  position: relative;
+  width: min(640px, 90vw);
+  aspect-ratio: 1;
+  margin: 30px auto 52px;
+  --R: 270px;
+}
+
+.trot__ring { position: absolute; inset: 0; }
+
+.trot__rec {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transform: rotate(var(--a)) translateY(calc(var(--R) * -1)) rotate(calc(var(--a) * -1));
+}
+
+.trot__upright { position: relative; display: block; width: 100%; height: 100%; }
+
+/* Each sleeve's play button, at its corner; it grows with the sleeve on hover. */
+.trot__play {
+  position: absolute;
+  right: -7px;
+  bottom: -7px;
+  z-index: 1;
+  display: block;
+  color: var(--paper);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  transition: scale 180ms ease;
+}
+
+.trot__play .tbutton__icon { display: block; }
+.trot__rec:hover .trot__play, .trot__rec:focus-visible .trot__play { scale: 1.25; }
+.trot__rec[data-on] .trot__play { color: var(--vfd); }
+
+.trot__hint {
+  position: absolute;
+  left: 50%;
+  bottom: -46px;
+  margin: 0;
+  translate: -50% 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  white-space: nowrap;
+  color: #cfc4ad;
+}
+
+.trot__upright img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
+  transition: scale 200ms ease;
+}
+
+.trot__rec:hover img, .trot__rec:focus-visible img, .trot__rec[data-on] img { scale: 1.14; }
+.trot__rec[data-on] img { box-shadow: 0 0 0 3px var(--vfd), 0 8px 16px rgba(0, 0, 0, 0.45); }
+.trot__rec:focus-visible { outline: 2px solid #efe3cb; outline-offset: 4px; }
+
+.trot__constants {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  translate: -50% -50%;
+}
+
+/* The two in the middle: buttons, the vinyl inside each sleeve. Pointed at,
+   it slides out (Heaven or Las Vegas to the left, Loveless to the right);
+   playing, it stays out and spins, and the sleeve moves with the song. */
+.trot__constant {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  isolation: isolate;
+  transition: opacity 500ms ease, scale 500ms ease;
+}
+
+.trot__constant img { position: relative; z-index: 1; transition: scale 200ms ease, box-shadow 200ms ease; }
+.trot__constant--left .trot__vinyl { --out: -44%; }
+.trot__constant--right .trot__vinyl { --out: 44%; }
+
+.trot__vinyl {
+  position: absolute;
+  inset: 5%;
+  z-index: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #111 0 3%, var(--label) 3.5% 17%, #0d0c0f 17.5% 19%, transparent 19.5%),
+    repeating-radial-gradient(circle, #151417 0 2px, #222126 2px 3px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.55);
+  transition: translate 420ms cubic-bezier(0.3, 1.25, 0.5, 1);
+}
+
+.trot__constant:is(:hover, :focus-visible, [data-on]) .trot__vinyl { translate: var(--out) 0; }
+.trot__constant[data-on] .trot__vinyl { animation: tcass-spin 1.8s linear infinite; }
+.trot__constant[data-on] img { scale: calc(1 + var(--beat, 0) * 0.04); box-shadow: 0 0 0 3px var(--vfd), 0 16px 30px rgba(0, 0, 0, 0.5); }
+.trot__constant:focus-visible { outline: 3px solid var(--vfd); outline-offset: 4px; }
+
+/* Its play button, big, on the sleeve's outer corner. */
+.trot__big-play {
+  position: absolute;
+  bottom: 10px;
+  z-index: 2;
+  color: var(--paper);
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.55));
+  transition: scale 180ms ease;
+}
+
+.trot__constant--left .trot__big-play { left: 10px; }
+.trot__constant--right .trot__big-play { right: 10px; }
+.trot__constant:hover .trot__big-play { scale: 1.12; }
+.trot__constant[data-on] .trot__big-play { color: var(--vfd); }
+
+/* A bigger play circle, for the records that matter most. */
+:is(.trot__big-play, .trot__play--big) .tbutton__icon { display: block; width: 44px; height: 44px; }
+:is(.trot__big-play, .trot__play--big) .tbutton__icon::before { left: 17px; top: 12px; border-width: 10px 0 10px 14px; }
+:is(.trot__big-play, .trot__play--big) .tbutton__icon[data-pause]::before { left: 14px; top: 13px; width: 5px; height: 18px; box-shadow: 11px 0 0 #1a1520; }
+
+/* The record pulled out for the day (just below) leaves its place in the orbit. */
+.ttrack--rotation:has(.tdays[data-day='down']) .trot__constant:nth-of-type(1),
+.ttrack--rotation:has(.tdays[data-day='tired']) .trot__constant:nth-of-type(2) { opacity: 0.15; scale: 0.9; }
+.trot__constant + .trot__constant { margin-left: -26px; }
+
+.trot__constant img {
+  display: block;
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.5);
+}
+
+.trot__caption {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 12px);
+  margin: 0;
+  translate: -50% 0;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 22px;
+  white-space: nowrap;
+  color: var(--vfd);
+}
+
+/* Two kinds of day, under the orbit. */
+.tdays__ask {
+  margin: 30px 0 14px;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 34px;
+  color: var(--vfd);
+}
+
+.tdays__choices { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
+
+/* Each day is a button that says what it plays: the record, the day, and
+   the song with a play circle. */
+.tdays__choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 22px 8px 8px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--print-ink);
+  text-align: left;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: background-color 200ms ease, translate 200ms ease, box-shadow 200ms ease;
+}
+
+.tdays__choice:hover { translate: 0 -3px; box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45); }
+.tdays__choice img { flex: none; width: 56px; height: 56px; border-radius: 4px; object-fit: cover; }
+.tdays__choice-text { display: flex; flex-direction: column; gap: 6px; }
+.tdays__choice-day { font-family: var(--font-poster), Impact, sans-serif; font-size: 24px; line-height: 1; letter-spacing: 0.02em; text-transform: uppercase; }
+.tdays__choice-song { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 12px; font-weight: 600; }
+.tdays__choice-song .tbutton__icon { width: 22px; height: 22px; color: var(--print-ink); }
+.tdays__choice-song .tbutton__icon::before { left: 8px; top: 6px; border-width: 5px 0 5px 8px; border-left-color: var(--paper); }
+.tdays__choice-song .tbutton__icon[data-pause]::before { left: 6px; top: 6px; width: 3px; height: 10px; background: var(--paper); box-shadow: 6px 0 0 var(--paper); }
+
+.tdays__choice[aria-pressed='true'] { background: var(--vfd); }
+.tdays__choice:focus-visible { outline: 3px solid var(--paper); outline-offset: 3px; }
+
+.tworld {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 30px;
+  min-height: 520px;
+  padding: 40px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #221b29;
+  isolation: isolate;
+}
+
+/* Heaven or Las Vegas: the sleeve's iridescence, slow lights rising. */
+.tworld::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  opacity: 0;
+  background: linear-gradient(120deg, #f6c6dc, #f2dba0, #c9def4, #e6c8f2, #f6c6dc);
+  background-size: 400% 400%;
+  transition: opacity 1600ms ease;
+}
+
+.tworld--down::before { opacity: 1; }
+
+.tworld__heaven { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+
+.tworld__mote {
+  position: absolute;
+  left: calc(4% + var(--k) * 6.8%);
+  bottom: -20px;
+  width: calc(6px + var(--k) * 0.6px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fffaf0;
+  opacity: 0.6;
+}
+
+/* Loveless: the real sleeve, four deep, drifting and bending. */
+.tworld__layers { position: absolute; inset: -8%; z-index: -1; pointer-events: none; }
+
+.tworld__layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.42;
+  transition: translate 1600ms cubic-bezier(0.5, 0, 0.3, 1);
+}
+
+.tworld__layer:first-child { opacity: 1; }
+.tworld[data-parted] .tworld__layer:nth-child(odd) { translate: -110% 0; }
+.tworld[data-parted] .tworld__layer:nth-child(even) { translate: 110% 0; }
+.tworld--tired[data-parted] { background: #f3eadb; }
+
+.tworld__records { display: flex; justify-content: center; }
+
+.tworld:not(.tworld--down):not(.tworld--tired) {
+  grid-template-columns: 1fr;
+  min-height: 0;
+  padding: 30px;
+}
+
+.tworld__record { margin: 0; transition: opacity 600ms ease, scale 600ms ease; }
+.tworld__play { position: relative; display: block; padding: 0; border: 0; background: none; cursor: pointer; }
+.tworld__play .trot__play { right: 12px; bottom: 12px; }
+.tworld__record + .tworld__record { margin-left: -40px; }
+.tworld__record[data-off] { opacity: 0.18; scale: 0.9; }
+.tworld__record[data-on] { position: relative; z-index: 1; scale: 1.06; }
+
+.tworld__record img {
+  display: block;
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.5);
+}
+
+.tworld__record figcaption {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-align: center;
+  color: #efe3cb;
+}
+
+.tworld--down .tworld__record figcaption,
+.tworld--tired[data-parted] .tworld__record figcaption { color: var(--print-ink); }
+
+.tworld__card {
+  padding: 22px 26px 24px;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--print-ink);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.tworld__when { margin: 0; font-family: var(--font-marker), 'Marker Felt', cursive; font-size: 20px; color: var(--print-red); }
+.tworld__title { margin: 2px 0 10px; font-family: var(--font-poster), Impact, sans-serif; font-size: 40px; line-height: 1; text-transform: uppercase; }
+.tworld__words { margin: 0 0 10px; font-family: var(--font-display); font-size: 19px; line-height: 1.55; }
+
+.tdays__genres {
+  max-width: 680px;
+  margin: 26px 0 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+/* 6. How I dig: two crates. */
+
+/* The crate and its cards, on the page's centre line; its heading starts
+   where the words above it do. */
+.tdig {
+  max-width: 800px;
+  margin: 30px auto 0;
+}
+
+.tdig .tcrate__name { display: block; max-width: var(--read); margin-inline: auto; }
+
+.tcrate { margin: 0; }
+
+.tcrate__name {
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 24px;
+  color: var(--vfd);
+}
+
+
+/* The bin, seen from the front: records stand front to back, the ones
+   behind peeking over the one in front, in a crate just their width. The
+   real crate is two pine slats on corner posts with a handle cut in the
+   top one; the algorithm's is a grey plastic one, holes all over. */
+.tcrate__bin {
+  position: relative;
+  height: 480px;
+  margin-top: 12px;
+}
+
+.tcrate__bin::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 30;
+  width: 220px;
+  height: 92px;
+  margin-left: -110px;
+  border-radius: 3px;
+  background:
+    radial-gradient(circle 3px at 6.5px 21px, #3d2817 2px, transparent 3px),
+    radial-gradient(circle 3px at calc(100% - 6.5px) 21px, #3d2817 2px, transparent 3px),
+    radial-gradient(circle 3px at 6.5px 71px, #3d2817 2px, transparent 3px),
+    radial-gradient(circle 3px at calc(100% - 6.5px) 71px, #3d2817 2px, transparent 3px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.26) 0 13px, transparent 13px calc(100% - 13px), rgba(0, 0, 0, 0.26) calc(100% - 13px)),
+    linear-gradient(transparent 0 42px, #2a1a10 42px 49px, transparent 49px),
+    linear-gradient(rgba(255, 255, 255, 0.22) 0 2px, transparent 2px 49px, rgba(255, 255, 255, 0.14) 49px 51px, transparent 51px),
+    repeating-linear-gradient(0deg, transparent 0 5px, rgba(80, 45, 15, 0.13) 5px 6px, transparent 6px 11px),
+    #b07a45;
+  box-shadow: 0 14px 18px -6px rgba(0, 0, 0, 0.6);
+}
+
+/* The handle, cut through the top slat; nail heads at the posts. */
+.tcrate__bin::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 60px;
+  z-index: 31;
+  width: 56px;
+  height: 14px;
+  margin-left: -28px;
+  border-radius: 7px;
+  background: #1c120b;
+  box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.6);
+}
+
+.tcrate__rec,
+.tcrate__divider {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  width: 170px;
+  height: 170px;
+  margin-left: -85px;
+}
+
+.tcrate__rec {
+  --lift: calc(min(120px, 280px - var(--y) * 1px) * -1);
+  z-index: calc(20 - var(--k));
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  translate: 0 calc(var(--y) * -1px);
+}
+
+/* The sleeve moves, never the record's place in the bin: a hit area that
+   moved with it slid out from under the pointer, and the record dropped
+   back and rose again, over and over. */
+.tcrate__lift {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: translate 260ms cubic-bezier(0.3, 1.3, 0.5, 1);
+}
+
+.tcrate__rec img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* Flipping through: the record pointed at comes up out of the bin -- the
+   ones at the back, already high, only as far as the bin's top, so they
+   never rise into the heading. */
+.tcrate__rec:hover .tcrate__lift,
+.tcrate__rec[data-up] .tcrate__lift,
+.tcrate__rec[data-on] .tcrate__lift {
+  translate: 0 var(--lift);
+}
+
+.tcrate__rec:focus-visible { outline: 3px solid var(--vfd); outline-offset: 3px; }
+
+/* A divider is a record shop's: a sheet of kraft card a little wider and
+   taller than the records, its tab cut from the same card, the place
+   written on it in marker. (Cream and record-sized, they read as blank
+   sleeves, and the longest tab hung off its card.) */
+.tcrate__divider {
+  --kraft: #b98d5a;
+  z-index: calc(20 - var(--k));
+  display: block;
+  width: 184px;
+  height: 184px;
+  margin-left: -92px;
+  border-radius: 2px;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 3px, rgba(90, 55, 20, 0.07) 3px 4px, transparent 4px 9px),
+    var(--kraft);
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.22), 0 -2px 6px rgba(0, 0, 0, 0.35);
+  color: var(--print-ink);
+  text-decoration: none;
+  translate: 0 calc(var(--y) * -1px);
+}
+
+.tcrate__divider span {
+  position: absolute;
+  top: -21px;
+  left: 10px;
+  max-width: 164px;
+  padding: 3px 10px 1px;
+  border-radius: 7px 7px 0 0;
+  background: var(--kraft);
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.22);
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.tcrate__divider:nth-of-type(even) span { left: auto; right: 8px; }
+.tcrate__divider:hover span, .tcrate__divider:focus-visible span { background: var(--vfd); }
+
+/* Beside the crate, its staff-pick cards stay pinned up, one per record,
+   in the crate's order top to bottom: a red "found on" stamp, the record,
+   why, in their own words, and its song. The crate stays in view beside
+   them while they're read. */
+.tcrate__shop {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  align-items: start;
+  gap: 34px;
+  margin-top: 12px;
+}
+
+.tcrate__stand { position: sticky; top: calc(var(--nav-height) + 100px); }
+.tcrate__shop .tcrate__bin { margin-top: 0; }
+
+.tcrate__picks {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tcrate__card {
+  position: relative;
+  padding: 16px 20px 16px;
+  border-radius: 2px;
+  background: var(--paper);
+  color: var(--print-ink);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
+  transition: translate 220ms ease, box-shadow 220ms ease;
+}
+
+/* The one pointed at, or playing, steps towards its record. */
+.tcrate__card[data-lit] { translate: -6px 0; box-shadow: 0 0 0 2px var(--vfd), 0 14px 28px rgba(0, 0, 0, 0.5); }
+
+/* A strip of tape holding it up. */
+.tcrate__card::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 70px;
+  height: 18px;
+  margin-left: -35px;
+  background: rgba(236, 226, 196, 0.75);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  rotate: -3deg;
+}
+
+/* Its point, towards the crate. */
+.tcrate__card::after {
+  content: '';
+  position: absolute;
+  top: 26px;
+  left: -10px;
+  border-style: solid;
+  border-width: 9px 10px 9px 0;
+  border-color: transparent var(--paper) transparent transparent;
+}
+
+.tcrate__stamp {
+  display: inline-block;
+  padding: 2px 7px 1px;
+  border: 2px solid var(--print-red);
+  border-radius: 3px;
+  color: var(--print-red);
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.tcrate__card-head { display: flex; align-items: center; gap: 12px; margin-top: 11px; }
+.tcrate__card-head img { flex: none; width: 54px; height: 54px; object-fit: cover; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35); }
+.tcrate__card-title { display: block; font-family: var(--font-display); font-size: 21px; font-style: italic; line-height: 1.15; }
+.tcrate__card-by { display: block; margin-top: 2px; font-family: var(--font-mono); font-size: 11px; color: #4a3d48; }
+.tcrate__card-note { margin: 11px 0 0; font-family: var(--font-display); font-size: 17px; line-height: 1.55; }
+
+/* Someone else's words, set as theirs: a rule down the side, credited. */
+.tcrate__card-quote { margin: 12px 0 0; padding: 2px 0 2px 14px; border-left: 3px solid var(--print-red); }
+.tcrate__card-quote p { margin: 0; font-family: var(--font-display); font-size: 17px; font-style: italic; line-height: 1.5; }
+.tcrate__card-quote footer { margin-top: 6px; font-family: var(--font-mono); font-size: 11px; color: #4a3d48; }
+.tcrate__card-quote footer::before { content: '\2014\00a0'; }
+
+/* Its song, in ink on the paper. */
+.tcrate__card-play { margin-top: 13px; color: var(--print-ink); }
+.tcrate__card-play:hover { background: rgba(28, 23, 36, 0.08); }
+.tcrate__card-play:focus-visible { outline-color: var(--print-ink); }
+.tcrate__card-play .tbutton__icon::before { border-left-color: var(--paper); }
+.tcrate__card-play .tbutton__icon[data-pause]::before { background: var(--paper); box-shadow: 7px 0 0 var(--paper); }
+
+/* When the crate comes into view, the records come up one at a time, each
+   card clipped on as its record rises; then everything stays put. */
+@media (prefers-reduced-motion: no-preference) {
+  .ttrack--dig[data-reveal='wait'] .tcrate__card { opacity: 0; }
+  .ttrack--dig[data-reveal='in'] .tcrate__card { animation: tcrate-clip 460ms cubic-bezier(0.3, 1.4, 0.5, 1) both; animation-delay: calc(700ms + var(--n) * 560ms); }
+  .ttrack--dig[data-reveal='in'] .tcrate__rec .tcrate__lift { animation: tcrate-peek 1150ms ease-in-out; animation-delay: calc(450ms + var(--n) * 560ms); }
+}
+
+@keyframes tcrate-clip { from { opacity: 0; translate: 0 -14px; scale: 0.96; } to { opacity: 1; translate: 0 0; scale: 1; } }
+@keyframes tcrate-peek { 0%, 100% { translate: 0 0; } 35%, 65% { translate: 0 var(--lift); } }
+
+/* 7. Sounds like isn't learned from. */
+.tlearn__stage {
+  position: relative;
+  aspect-ratio: 920 / 560;
+  margin-top: 26px;
+}
+
+.tlearn__lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+.tlearn__lines line {
+  stroke: #efe3cb;
+  stroke-width: 1.4;
+  stroke-dasharray: 5 6;
+  opacity: 0.55;
+  vector-effect: non-scaling-stroke;
+}
+
+.tlearn__tag {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  translate: -50% 0;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 22px;
+  white-space: nowrap;
+}
+
+.tlearn__tag span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.tlearn__tag--like { color: var(--grey-ink); }
+.tlearn__tag--from { color: var(--vfd); }
+
+/* What an app shows beside them: in grey, ringed in grey, no line. Pointing
+   at one brings its colour back (it is a band, after all). */
+.tlearn__like {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  translate: -50% -50%;
+  color: var(--grey-ink);
+  text-decoration: none;
+}
+
+.tlearn__like .tface__photo { box-shadow: 0 0 0 3px #1a1520, 0 0 0 5px #5a5960; }
+.tlearn__like img { filter: grayscale(1) contrast(0.85); opacity: 0.62; transition: filter 260ms ease, opacity 260ms ease; }
+.tlearn__like:is(:hover, :focus-visible) img { filter: none; opacity: 1; }
+.tlearn__like:is(:hover, :focus-visible) .tface__name { color: #efe3cb; }
+
+.tlearn__band,
+.tlearn__from {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  translate: -50% -50%;
+  color: #efe3cb;
+  text-decoration: none;
+}
+
+.tlearn__band { z-index: 2; }
+
+.tface__photo {
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #2b2430;
+  box-shadow: 0 0 0 3px #1a1520, 0 0 0 5px var(--glow);
+}
+
+.tface__photo img { display: block; object-fit: cover; }
+.tface__name { max-width: 104px; font-family: var(--font-poster), Impact, sans-serif; font-size: 13px; line-height: 1.05; letter-spacing: 0.02em; text-align: center; text-transform: uppercase; }
+.tlearn__band .tface__name { max-width: none; }
+.tlearn__band .tface__name { font-size: 20px; }
+:is(.tlearn__band, .tlearn__from, .tnot__face):hover .tface__name { color: var(--vfd); }
+
+.tnot {
+  max-width: 900px;
+  margin: 60px 0 0;
+}
+
+.tnot__words { max-width: 680px; margin: 0 0 24px; font-family: var(--font-display); font-size: 21px; line-height: 1.55; }
+
+.tnot__pair {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 640px;
+}
+
+.tnot__band { display: flex; flex-direction: column; align-items: center; gap: 10px; z-index: 1; }
+.tnot__face { display: flex; flex-direction: column; align-items: center; gap: 6px; color: #efe3cb; text-decoration: none; }
+
+.tnot__line {
+  position: absolute;
+  left: 130px;
+  right: 130px;
+  top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 2px dashed var(--vfd);
+  text-align: center;
+}
+
+.tnot__quote { font-family: var(--font-marker), 'Marker Felt', cursive; font-size: 22px; color: var(--vfd); }
+.tnot__source { font-family: var(--font-mono); font-size: 11px; color: #cfc4ad; }
+
+/* 8. Between the two constants. */
+.tvenn {
+  position: relative;
+  width: 700px;
+  max-width: 100%;
+  height: 380px;
+  margin: 30px auto 0;
+}
+
+.tvenn__disc {
+  position: absolute;
+  top: 20px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, #141117 0 2px, #0c0a0e 2px 4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+}
+
+.tvenn__disc--a { left: 70px; }
+.tvenn__disc--b { right: 70px; opacity: 0.94; }
+
+.tvenn__label {
+  position: absolute;
+  inset: 38%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle closest-side, #f3ead6 0 14%, transparent 17%),
+    conic-gradient(from 20deg, var(--glow) 0 72%, #f3ead6 72% 76%, var(--glow) 76%);
+}
+
+.tvenn[data-live] .tvenn__label { animation: tcass-spin 1.8s linear infinite; }
+
+.tvenn__count {
+  position: absolute;
+  top: 50%;
+  width: 90px;
+  margin: 0;
+  translate: 0 -50%;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.35;
+  color: #efe3cb;
+}
+
+.tvenn__count b { display: block; font-family: var(--font-poster), Impact, sans-serif; font-size: 34px; font-weight: 400; line-height: 1; color: var(--glow); }
+.tvenn__disc--a .tvenn__count { left: 18px; }
+.tvenn__disc--b .tvenn__count { right: 18px; text-align: right; }
+
+.tvenn__both {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, 46px);
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  translate: -50% -50%;
+}
+
+.tvenn__both li:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; }
+.tvenn__both a { display: block; }
+
+.tvenn__both-label {
+  position: absolute;
+  left: 50%;
+  bottom: -18px;
+  margin: 0;
+  translate: -50% 0;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 22px;
+  white-space: nowrap;
+  color: var(--vfd);
+}
+
+.tknow__lead { max-width: 680px; margin: 70px 0 18px; font-family: var(--font-display); font-size: 21px; line-height: 1.55; }
+
+.tknow__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
+}
+
+.tknow__card {
+  position: relative;
+  margin: 0;
+  padding: 26px 24px 20px;
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--print-ink);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+}
+
+.tknow__stamp {
+  position: absolute;
+  right: 16px;
+  top: -12px;
+  padding: 3px 8px 2px;
+  border: 2px solid var(--print-red);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--print-red);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tknow__quote { margin: 0 0 12px; font-family: var(--font-display); font-size: 21px; font-style: italic; line-height: 1.45; }
+.tknow__who { font-family: var(--font-poster), Impact, sans-serif; font-size: 16px; letter-spacing: 0.02em; text-transform: uppercase; }
+.tknow__who span { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0; text-transform: none; color: #5a4a3a; }
+
+.tknow__tally {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tknow__tally li { font-family: var(--font-mono); font-size: 13px; line-height: 1.4; color: #cfc4ad; }
+.tknow__tally b { display: block; font-family: var(--font-poster), Impact, sans-serif; font-size: 46px; font-weight: 400; line-height: 1; color: var(--vfd); }
+
+/* 9. The end. */
+.tend {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  align-items: center;
+  gap: 40px;
+  margin-top: 10px;
+}
+
+.tend__doors { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+
+.tend__door {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--print-ink);
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+  transition: translate 160ms ease;
+}
+
+.tend__door:hover, .tend__door:focus-visible { translate: 4px 0; }
+.tend__door:focus-visible { outline: 3px solid var(--paper); outline-offset: 3px; }
+
+.tend__tape { position: relative; height: 240px; }
+.tend__tape .tcass { left: 0; top: 0; width: 100%; transform: none; }
+
+.tend__sign {
+  position: absolute;
+  left: 6px;
+  bottom: -46px;
+  margin: 0;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 28px;
+  color: var(--vfd);
+}
+
+/* How to read the map, on an index card. */
+.tkey {
+  max-width: 560px;
+  margin: 70px 0 0;
+  padding: 22px 26px 20px;
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--print-ink);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+}
+
+.tkey__title { margin: 0 0 8px; font-family: var(--font-marker), 'Marker Felt', cursive; font-size: 24px; }
+.tkey ul { margin: 0 0 12px; padding-left: 18px; }
+.tkey li { margin: 0 0 4px; font-family: var(--font-display); font-size: 17px; line-height: 1.45; }
+.tkey__tour { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--print-red); }
+
+/* The hidden track: after the tape has run out, how it's made. */
+.thidden {
+  max-width: 680px;
+  margin: 140px 0 40px;
+  padding-top: 24px;
+  border-top: 1.5px dashed rgba(239, 227, 203, 0.25);
+}
+
+.thidden__no { margin: 0 0 10px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--vfd); }
+.thidden p:not(.thidden__no) { margin: 0 0 12px; font-family: var(--font-display); font-size: 17px; line-height: 1.55; color: #cfc4ad; }
+.thidden__code { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--vfd); }
+
+/* ── The moves (none under reduced motion) ── */
+/* The reading column (--read, above): every block of words, and the cards
+   of words, share it; their lines start at its left edge. */
+:is(.ttrack__head, .ttrack__words, .tape__why, .tnot, .tmerge__words, .tfork__label, .tfork__last, .tknow__lead, .tknow__cards, .tknow__tally, .tdays__ask, .tdays__choices, .tdays__genres, .tkey, .thidden) {
+  max-width: var(--read);
+  margin-inline: auto;
+}
+
+/* Drawings narrower than the page sit on the same centre line. */
+.tdis { margin-inline: auto; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* The case opens: the lid swings, the inlay unfolds, the tape slides out. */
+  .tcase[data-stage='open'] .tcase__lid { animation: tcase-lid 760ms cubic-bezier(0.45, 0, 0.25, 1) 250ms both; }
+  .tcase[data-stage='open'] .tcass { animation: tcase-out 520ms cubic-bezier(0.3, 1.3, 0.5, 1) 1000ms both; }
+  .tcase[data-stage='open'] .tcard { animation: tcase-card 520ms ease-out 700ms both; }
+  .tcase[data-stage='open'] .tinlay { animation: tcase-card 520ms ease-out 850ms both; }
+  .tcase[data-stage='open'] .tcard__panel { animation: tcase-panel 640ms cubic-bezier(0.25, 0.9, 0.3, 1) both; animation-delay: calc(950ms + var(--p) * 380ms); }
+  .tcase[data-stage='open'] .tcard__play { animation: tcase-pop 420ms cubic-bezier(0.3, 1.6, 0.5, 1) 1900ms both; }
+
+  /* The feed never stops, and nothing in it changes. */
+  .tstatic__strip { animation: tstatic-belt 46s linear infinite; }
+  .tstatic__row:nth-child(2) .tstatic__strip { animation-direction: reverse; animation-duration: 52s; }
+  .tstatic__row:nth-child(3) .tstatic__strip { animation-duration: 60s; }
+
+  /* The grey disappears: patch by patch once the covers are in view... */
+  .ttrack--disappear[data-reveal='in'] .tdis__tile { animation: tdis-vanish 700ms ease-out both; animation-delay: calc(500ms + var(--o) * 55ms); }
+
+  /* The road: the van drives it, and each stop lights as it's reached. */
+  .ttrack--expanding[data-reveal='wait'] .troad__face img { filter: grayscale(1); opacity: 0.5; }
+  .ttrack--expanding[data-reveal='wait'] .troad__van { translate: 0 0; }
+  .ttrack--expanding[data-reveal='in'] .troad__van { animation: troad-drive 2800ms cubic-bezier(0.45, 0, 0.4, 1) 300ms both; }
+  .ttrack--expanding[data-reveal='in'] .troad__face img { animation: troad-light 600ms ease-out both; animation-delay: calc(300ms + var(--i) * 800ms); }
+  .ttrack--expanding[data-reveal='in'] .troad__face { animation: troad-ring 600ms ease-out both; animation-delay: calc(300ms + var(--i) * 800ms); }
+
+  /* The rotation turns; the two constants never move. Pointing stops it,
+     so a record can be picked. */
+  .trot__ring { animation: tcass-spin 36s linear infinite; }
+  .trot__upright { animation: tcass-spin 36s linear infinite reverse; }
+  /* It stops only while a record is pointed at (or tabbed to), not for the
+     pointer anywhere over the circle or in the gaps between records. */
+  .trot:has(.trot__rec:hover, .trot__rec:focus-visible) :is(.trot__ring, .trot__upright) { animation-play-state: paused; }
+
+  /* Heaven: the colours shift slowly, lights rise. */
+  .tworld--down::before { animation: tworld-irid 26s ease-in-out infinite alternate; }
+  .tworld__mote { animation: tworld-rise calc(11s + var(--k) * 0.6s) linear infinite; animation-delay: calc(var(--k) * -1.3s); }
+
+  /* Loveless: the layers come in from either side and fill the room, then
+     drift and bend; with the music they swell. */
+  .tworld__layer { animation: tlove-in 1200ms cubic-bezier(0.3, 0.7, 0.3, 1) backwards, tlove-drift calc(9s + var(--k) * 2.3s) ease-in-out infinite alternate; animation-delay: calc(var(--k) * 420ms), calc(var(--k) * -1.7s); }
+  .tworld__layer:nth-child(even) { animation-name: tlove-in-r, tlove-drift; }
+  .tworld--tired[data-live] .tworld__layer { scale: calc(1.04 + var(--energy, 0) * 0.06); }
+  .tworld--tired { transition: background-color 1400ms ease; }
+
+  .tworld__card { animation: sc-rise 600ms ease-out 300ms both; }
+
+  /* The algorithm's crate closes up as it scrolls past (time-based where
+     scroll-driven animation isn't supported). */
+
+  /* Learned from: the lines draw out from Alvvays, the faces come up, the
+     faceless fade. */
+  .ttrack--learned[data-reveal='wait'] :is(.tlearn__from, .tlearn__lines line) { opacity: 0; }
+  .ttrack--learned[data-reveal='in'] .tlearn__lines line { animation: tlearn-draw 700ms ease-out both; animation-delay: calc(400ms + var(--i) * 120ms); }
+  .ttrack--learned[data-reveal='in'] .tlearn__from { animation: sc-pop 420ms cubic-bezier(0.3, 1.6, 0.5, 1) both; animation-delay: calc(700ms + var(--i) * 120ms); }
+  .ttrack--learned[data-reveal='wait'] .tlearn__like { opacity: 0; }
+  .ttrack--learned[data-reveal='in'] .tlearn__like { animation: sc-rise 420ms ease-out both; animation-delay: calc(200ms + var(--i) * 70ms); }
+
+  /* Between: the two records slide together, the bands in both drop in. */
+  .ttrack--between[data-reveal='wait'] :is(.tvenn__both li, .tvenn__both-label, .tknow__card, .tknow__tally li) { opacity: 0; }
+  .ttrack--between[data-reveal='in'] .tvenn__disc--a { animation: tvenn-a 1100ms cubic-bezier(0.3, 1, 0.4, 1) 200ms both; }
+  .ttrack--between[data-reveal='in'] .tvenn__disc--b { animation: tvenn-b 1100ms cubic-bezier(0.3, 1, 0.4, 1) 200ms both; }
+  .ttrack--between[data-reveal='in'] .tvenn__both li { animation: sc-pop 420ms cubic-bezier(0.3, 1.6, 0.5, 1) both; animation-delay: calc(1300ms + var(--i) * 110ms); }
+  .ttrack--between[data-reveal='in'] .tvenn__both-label { animation: sc-rise 420ms ease-out 2100ms both; }
+  .ttrack--between[data-reveal='in'] .tknow__card { animation: tknow-drop 520ms cubic-bezier(0.3, 1.3, 0.5, 1) both; animation-delay: calc(2300ms + var(--i) * 180ms); }
+  .ttrack--between[data-reveal='in'] .tknow__tally li { animation: tknow-stamp 380ms cubic-bezier(0.3, 1.6, 0.5, 1) both; animation-delay: calc(2800ms + var(--i) * 160ms); }
+
+  /* Split apart: punk lights first, then the light runs out from it to
+     both ends at once, sign by sign (each step further from the centre,
+     --d, a beat later). */
+  :is(.tsplit, .tmerge)[data-reveal='wait'] :is(.tfork__centre, .tfork__half li, .tfork__dirs, .tfork__ends, .tmerge__words p) { opacity: 0; }
+  .tsplit .tfork__half--soft, .tmerge .tfork__half--loud { --dx: 14px; }
+  .tsplit .tfork__half--loud, .tmerge .tfork__half--soft { --dx: -14px; }
+  .tsplit[data-reveal='in'] .tfork__centre { animation: sc-pop 460ms cubic-bezier(0.3, 1.6, 0.5, 1) 200ms both; }
+  .tsplit[data-reveal='in'] .tfork__half li { animation: tfork-light 420ms ease-out both; animation-delay: calc(650ms + var(--d) * 170ms); }
+  .tsplit[data-reveal='in'] :is(.tfork__dirs, .tfork__ends) { animation: sc-rise 420ms ease-out 2100ms both; }
+
+  /* Come together: the two ends light first, the light runs in from both,
+     and the centre pops only when they meet. */
+  .tmerge[data-reveal='in'] .tmerge__words p { animation: sc-rise 520ms ease-out both; }
+  .tmerge[data-reveal='in'] .tmerge__words p + p { animation-delay: 160ms; }
+  .tmerge[data-reveal='in'] .tfork__half li { animation: tfork-light 420ms ease-out both; animation-delay: calc(900ms + var(--d) * 190ms); }
+  .tmerge[data-reveal='in'] .tfork__centre { animation: tfork-meet 640ms cubic-bezier(0.3, 1.6, 0.5, 1) 2500ms both; }
+  .tmerge[data-reveal='in'] :is(.tfork__dirs, .tfork__ends) { animation: sc-rise 420ms ease-out 3000ms both; }
+
+  /* The end: the doors come in, the reels give a last turn and stop. */
+  .ttrack--end[data-reveal='wait'] .tend__door { opacity: 0; }
+  .ttrack--end[data-reveal='in'] .tend__door { animation: sc-rise 420ms ease-out both; animation-delay: calc(200ms + var(--i) * 90ms); }
+  .ttrack--end[data-reveal='in'] .tcass--end .cass__hub { animation: tend-runout 2600ms cubic-bezier(0.2, 0.6, 0.3, 1) 300ms both; }
+  .ttrack--end[data-reveal='in'] .tend__sign { animation: sc-write 700ms cubic-bezier(0.3, 0.7, 0.3, 1) 1800ms both; }
+}
+
+/* Where scroll-driven animation works, the grey and the algorithm's crate
+   follow the scroll itself instead of a clock. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .ttrack--disappear .tdis__tile,
+    .ttrack--disappear[data-reveal='in'] .tdis__tile {
+      animation: tdis-vanish linear both;
+      animation-timeline: --tdis;
+      animation-range: cover calc(28% + var(--o) * 0.7%) cover calc(36% + var(--o) * 0.7%);
+    }
+  }
+}
+
+@keyframes tcase-lid { from { transform: rotateY(0deg); } to { transform: rotateY(-118deg); } }
+@keyframes tcase-out { from { transform: translate(0, 0); } to { transform: translate(3%, -24%); } }
+@keyframes tcase-card { from { opacity: 0; translate: -24px 0; } to { opacity: 1; translate: 0 0; } }
+@keyframes tcase-panel { from { transform: rotateY(-100deg); opacity: 0; } 30% { opacity: 1; } to { transform: rotateY(0deg); opacity: 1; } }
+@keyframes tcase-pop { from { scale: 0.6; opacity: 0; } to { scale: 1; opacity: 1; } }
+@keyframes tstatic-belt { to { transform: translateX(-100%); } }
+@keyframes tdis-vanish { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-16px) scale(0.55); } }
+@keyframes troad-drive { from { translate: 0 0; } to { translate: calc(100cqw - 70px) 0; } }
+@keyframes troad-light { from { filter: grayscale(1); opacity: 0.5; } to { filter: none; opacity: 1; } }
+@keyframes troad-ring { from { box-shadow: 0 0 0 4px #1a1520, 0 0 0 7px #4a4950; } to { box-shadow: 0 0 0 4px #1a1520, 0 0 0 7px var(--glow); } }
+@keyframes tworld-irid { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+@keyframes tworld-rise { from { transform: translateY(0); } to { transform: translateY(-640px); } }
+@keyframes tlove-in { from { translate: -100% 0; } }
+@keyframes tlove-in-r { from { translate: 100% 0; } }
+@keyframes tlove-drift { from { transform: translateX(-3%) skewX(-2deg) scaleY(1.02); } to { transform: translateX(3%) skewX(2.5deg) scaleY(1.06); } }
+@keyframes tlearn-draw { from { opacity: 0; stroke-dashoffset: 60; } to { opacity: 0.55; stroke-dashoffset: 0; } }
+@keyframes tvenn-a { from { translate: -90px 0; } }
+@keyframes tvenn-b { from { translate: 90px 0; } }
+@keyframes tknow-drop { from { opacity: 0; translate: 0 -24px; } to { opacity: 1; translate: 0 0; } }
+@keyframes tknow-stamp { from { opacity: 0; scale: 1.4; } to { opacity: 1; scale: 1; } }
+@keyframes tfork-light { from { opacity: 0; translate: var(--dx, 0) 0; } to { opacity: 1; translate: 0 0; } }
+@keyframes tfork-meet { from { opacity: 0; scale: 0.6; } 70% { opacity: 1; scale: 1.12; } to { opacity: 1; scale: 1; } }
+@keyframes tend-runout { from { transform: rotate(0deg); } to { transform: rotate(-540deg); } }
+
+/* ── Phone ── */
+@media (max-width: 760px) {
+  .tcase { grid-template-columns: 1fr; grid-template-areas: 'box' 'head' 'list'; gap: 26px; }
+  .tcase__box { width: 320px; margin: 70px auto 0; }
+  .tcard, .tinlay { padding: 20px 18px; }
+  .tcard__panels { grid-template-columns: 1fr; }
+  .tcard__panel + .tcard__panel { border-left: 0; margin-top: 10px; }
+  .ttrack { padding: 70px 0 50px; }
+  .ttrack__words p, .tnot__words, .tknow__lead, .tdays__genres { font-size: 18px; }
+  .tdis__covers { gap: 10px; }
+  .tdis__cover img { width: 28vw; height: 28vw; }
+  .troad__face { width: 58px; height: 58px; }
+  .troad__name { font-size: 14px; }
+  .troad__stops::before { top: 24px; }
+  .troad__van { display: none; }
+  .troad__via { position: static; display: block; width: auto; max-width: 84px; margin-bottom: 6px; font-size: 12px; }
+  .trot { --R: 40vw; }
+  .trot__rec { width: 54px; height: 54px; margin: -27px 0 0 -27px; }
+  .trot__constant img { width: 110px; height: 110px; }
+  .tworld { grid-template-columns: 1fr; padding: 24px; min-height: 0; }
+  .tworld__record img { width: 150px; height: 150px; }
+  .tdig { grid-template-columns: 1fr; }
+  .tcrate__shop { grid-template-columns: 1fr; justify-items: center; }
+  .tcrate__stand { position: static; width: 240px; }
+  .tcrate__card::after { display: none; }
+  .tlearn__stage { aspect-ratio: auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .tlearn__lines { display: none; }
+  .tlearn__band, .tlearn__from, .tlearn__like { position: static; translate: none; }
+  /* Stacked: the grey group under its label, Alvvays, then the other under its own. */
+  .tlearn__tag { position: static; flex-basis: 100%; translate: none; margin-top: 10px; text-align: center; }
+  .tlearn__tag--like { order: 0; }
+  .tlearn__like { order: 1; }
+  .tlearn__band { order: 2; }
+  .tlearn__tag--from { order: 3; }
+  .tlearn__from { order: 4; }
+  .tlearn__band { flex-basis: 100%; }
+  .tnot__pair { flex-direction: column; align-items: center; gap: 70px; }
+  .tnot__line { left: 0; right: 0; top: 50%; }
+  .tvenn { height: 300px; }
+  .tvenn__disc { width: 230px; height: 230px; top: 30px; }
+  .tvenn__disc--a { left: calc(50% - 190px); }
+  .tvenn__disc--b { right: calc(50% - 190px); }
+  .tvenn__count { width: 70px; font-size: 11px; }
+  .tvenn__count b { font-size: 24px; }
+  .tknow__tally { grid-template-columns: 1fr; }
+  .tend { grid-template-columns: 1fr; }
+  .tape__why-words { font-size: 20px; }
+  .tfork__road { justify-content: flex-start; }
+  .tfork__label { font-size: 26px; }
+  .tfork__dirs { font-size: 15px; }
+  .tfork__ends { flex-direction: column; align-items: center; }
+  .tfork__ends--three { grid-template-columns: 1fr; }
+  .tend__tape { height: 200px; max-width: 320px; }
 }

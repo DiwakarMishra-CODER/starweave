@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 import { sizedImageUrl } from '@/lib/image-url';
-import { readTone, type Tone } from '@/components/artist/RisoPrint';
 
 // The cover star, printed the way an indie paper would print them: a
 // two-drum risograph on the cover's cream stock. The colour drum (the story
@@ -15,6 +14,49 @@ import { readTone, type Tone } from '@/components/artist/RisoPrint';
 //
 // On the cover's dark-to-lit moment the drums print in turn, colour first,
 // then black, like a sheet going through a riso twice.
+//
+// `colorOnly` prints just the colour drum, for a page that lays the sharp
+// photo itself down as the black (the genre features: their print is far
+// bigger than the cover's, and a black drum sampled from a small photo went
+// soft at that size).
+
+const TONE_W = 128; // samples across a photo, by default
+
+export interface Tone {
+  w: number;
+  h: number;
+  /** Brightness 0..1 per sample, levelled so every photo has a full range. */
+  lum: Float32Array;
+}
+
+/** A photo's light, sampled and levelled. */
+export function readTone(img: HTMLImageElement, samples = TONE_W): Tone | null {
+  const w = samples;
+  const h = Math.max(1, Math.round((samples * img.naturalHeight) / img.naturalWidth));
+  const c = document.createElement('canvas');
+  c.width = w;
+  c.height = h;
+  const ctx = c.getContext('2d', { willReadFrequently: true });
+  if (!ctx) return null;
+  ctx.drawImage(img, 0, 0, w, h);
+  let data: Uint8ClampedArray;
+  try {
+    data = ctx.getImageData(0, 0, w, h).data;
+  } catch {
+    return null; // pixels not readable
+  }
+  const lum = new Float32Array(w * h);
+  for (let i = 0; i < lum.length; i++) {
+    lum[i] = (0.2126 * data[i * 4] + 0.7152 * data[i * 4 + 1] + 0.0722 * data[i * 4 + 2]) / 255;
+  }
+  // Auto-levels: stretch the 2nd to 98th percentile across the full range.
+  const sorted = Float32Array.from(lum).sort();
+  const lo = sorted[Math.floor(sorted.length * 0.02)];
+  const hi = sorted[Math.floor(sorted.length * 0.98)];
+  const span = Math.max(0.05, hi - lo);
+  for (let i = 0; i < lum.length; i++) lum[i] = Math.min(1, Math.max(0, (lum[i] - lo) / span));
+  return { w, h, lum };
+}
 
 const CELL = 5.2; // dot spacing, CSS px: a fine screen, so the face reads
 const FACE_Y = 0.3; // crop toward the top, where the faces are
@@ -76,7 +118,13 @@ function printDrum(canvas: HTMLCanvasElement, tone: Tone, drum: Drum) {
   ctx.fill(path);
 }
 
-export default function CoverPrint({ imageUrl, color }: { imageUrl: string; color: string }) {
+export default function CoverPrint({ imageUrl, color, colorOnly = false, samples }: {
+  imageUrl: string;
+  color: string;
+  colorOnly?: boolean;
+  /** How finely to sample the photo (readTone's default suits the cover). */
+  samples?: number;
+}) {
   const colorRef = useRef<HTMLCanvasElement>(null);
   const blackRef = useRef<HTMLCanvasElement>(null);
   const beatRef = useRef<HTMLCanvasElement>(null);
@@ -100,20 +148,20 @@ export default function CoverPrint({ imageUrl, color }: { imageUrl: string; colo
     img.decoding = 'async';
     img.onload = () => {
       if (cancelled) return;
-      tone = readTone(img);
+      tone = readTone(img, samples);
       print();
     };
     img.src = sizedImageUrl(imageUrl, 500);
     const ro = new ResizeObserver(() => print());
     if (frameRef.current) ro.observe(frameRef.current);
     return () => { cancelled = true; ro.disconnect(); };
-  }, [imageUrl, color]);
+  }, [imageUrl, color, samples]);
 
   return (
     <span ref={frameRef} className="gprint" aria-hidden>
       <canvas ref={colorRef} className="gprint__drum gprint__drum--color" />
-      <canvas ref={blackRef} className="gprint__drum gprint__drum--black" />
-      <canvas ref={beatRef} className="gprint__drum gprint__drum--beat" />
+      {!colorOnly && <canvas ref={blackRef} className="gprint__drum gprint__drum--black" />}
+      {!colorOnly && <canvas ref={beatRef} className="gprint__drum gprint__drum--beat" />}
     </span>
   );
 }
