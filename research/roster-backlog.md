@@ -21,6 +21,8 @@ How they were found: artists the map's own citations and bios already name, coun
 | Smashing Pumpkins | 3 (beabadoobee first-person; Silversun Pickups bio; yeule offhand) | Borderline on scope (arena-sized), kept: the evidence is real, and it gives Silversun Pickups a sourced link. |
 | Peter Cat Recording Co. | 0 | Owner's pick (Delhi). Their stated influences may sit mostly outside the roster (old Hindi film music, jazz, chanson), so find an in-map link first; held under no-orphans if there is none. |
 
+Optional, after that: **a lineage review** of the genres' parents (Hyperpop <- IDM and Drone <- Ambient are the most debatable; see CLAUDE.md's /genres notes). Not urgent: the drawing matches the data and the dates all run forward.
+
 Still to run: **a genre sweep.** For each of the map's 53 genres, list its founders and key artists from proper references and check who's missing. The mention method above can't see artists nobody on the map was asked about, which is how PJ Harvey and The Raincoats (0 mentions, a known influence on Nirvana and riot grrrl) were missed.
 
 ## Decided against
