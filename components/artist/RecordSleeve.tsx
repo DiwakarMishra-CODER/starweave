@@ -46,7 +46,7 @@ export default function RecordSleeve({ album, artist, bio, credits, scene }: Pro
       <div className={`sleeve__spread${album ? '' : ' sleeve__spread--back-only'}`}>
         {album && (
           <div className="sleeve__front">
-            <RecordObject album={album} artistName={artist.name} />
+            <RecordObject album={album} artistId={artist.id} artistName={artist.name} />
 
             <div className="sleeve__card" data-arrive>
               <p className="sleeve__tag">Start here</p>

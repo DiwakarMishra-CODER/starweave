@@ -18,6 +18,7 @@ import { useAudioFocus } from '@/lib/audio-focus';
 // line under it — set directly each frame, never through React.
 
 const STOP_MS = 8000;   // each stop's turn (the default; see `stopMs`)
+const GIVE_UP_MS = 12000; // a stop's song that won't load in this long is skipped
 const SKIP_MS = 1400;   // a stop with no song: just long enough to see it
 const TRAVEL_MS = 1200; // the light crossing to the next stop, at the end of a turn
 const FADE_MS = 600;
@@ -84,6 +85,17 @@ export function useRoadPlayer<E extends HTMLElement = HTMLOListElement>(
     connectAnalyser(audio);
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    // The next stop's song, fetched while this one plays, so it starts at once.
+    const spare = new Audio();
+    spare.crossOrigin = 'anonymous';
+    spare.muted = true;
+    audio.addEventListener('playing', () => {
+      const next = stops[i + 1]?.previewUrl;
+      if (next && spare.src !== next) { spare.preload = 'auto'; spare.src = next; spare.load(); }
+    });
+    // A song that can't be fetched: on to the next stop.
+    audio.addEventListener('error', () => { if (stops[i].previewUrl) skip(); });
+
     let i = 0;
     let startedAt = 0;
     let raf = 0;
@@ -145,10 +157,21 @@ export function useRoadPlayer<E extends HTMLElement = HTMLOListElement>(
       setPaused(false);
     };
 
+    const skip = () => { if (i === stops.length - 1) end(); else begin(i + 1); };
+
+    // A stop's turn runs on its song's own clock, so the seconds a preview
+    // takes to arrive aren't taken off its turn (and the bar waits for it);
+    // a stop with no song, or one that never arrives, goes by the wall clock.
     const tick = (now: number) => {
       const here = stops[i];
       const turn = here.previewUrl ? runMs : SKIP_MS;
-      const t = now - startedAt;
+      if (here.previewUrl && audio.currentTime === 0 && now - startedAt > GIVE_UP_MS) {
+        if (i === stops.length - 1) { end(); return; }
+        begin(i + 1);
+        raf = requestAnimationFrame(tick);
+        return;
+      }
+      const t = here.previewUrl ? audio.currentTime * 1000 : now - startedAt;
       const last = i === stops.length - 1;
       // Fade in, and out before the light sets off for the next stop.
       if (here.previewUrl) {

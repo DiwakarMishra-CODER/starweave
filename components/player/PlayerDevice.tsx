@@ -2,7 +2,9 @@
 
 /* eslint-disable @next/next/no-img-element -- small faces on the player's screen, sized by lib/image-url */
 import { useEffect, useMemo, useRef, useState } from 'react';
+import Link from 'next/link';
 import { useGraphData } from '@/components/graph/GraphDataProvider';
+import StreamingLinks from '@/components/ui/StreamingLinks';
 import { sizedImageUrl } from '@/lib/image-url';
 import { onAir, player, usePlayer, type Queue, type Track } from '@/lib/player';
 import { artistThenFamily, searchArtists, shuffled, stations, wholeStory } from '@/lib/player-library';
@@ -60,15 +62,18 @@ export default function PlayerDevice({ variant, children }: Props) {
   const story = useMemo(() => (data ? wholeStory(data.artists) : null), [data]);
   const allStations = useMemo(() => (data ? stations(data.artists) : []), [data]);
 
-  // Docked in an artist's photo, the player is theirs: music from somewhere
-  // else keeps playing (the floating player shows it), but this screen
-  // offers their family, and play switches to it.
-  const onAirNow = onAir(s);
-  const elsewhere = variant === 'docked' && onAirNow !== null
-    && !s.context?.queue.tracks.some(t => t.id === onAirNow.id);
-  const current = elsewhere ? null : onAirNow;
+  // One player, one state: docked or floating, it shows and controls
+  // whatever is on air. (Docked, it used to treat music that wasn't this
+  // artist's family as not playing: its ⏭ only flipped through the family
+  // on the screen, while the real song played on with nothing to skip it
+  // -- the floating player steps aside while this one is on screen.) The
+  // family is still what it offers when nothing plays, and "Play the
+  // family" switches to it.
+  const current = onAir(s);
   const playing = current !== null;
   const live = playing && !s.paused;
+  // While its song is still on its way, it says so instead of pretending to play.
+  const loading = live && s.loading;
   // What play starts when nothing is on: a "keep going" offer if there is
   // one, else this page's family at the artist, else the whole story.
   const offer = (s.offer && { queue: s.offer.queue, start: 0 }) ?? s.context ?? (story ? { queue: story, start: 0 } : null);
@@ -78,6 +83,8 @@ export default function PlayerDevice({ variant, children }: Props) {
   const [pick, setPick] = useState<{ id: string; at: number } | null>(null);
   const offerAt = offer ? (pick && pick.id === offer.queue.id ? pick.at : offer.start) : 0;
   const shown: Track | null = current ?? (offer ? offer.queue.tracks[offerAt] : null);
+  // Whoever's on the screen links to their page, if they're on the map.
+  const shownOnMap = !!shown && !!data?.artists.some(a => a.id === shown.id);
 
   const go = (next: Screen, at = 0) => { setScreen(next); setSel(at); };
   const playFrom = (queue: Queue, from: number) => { player.play(queue, from); go({ kind: 'now' }); };
@@ -226,7 +233,7 @@ export default function PlayerDevice({ variant, children }: Props) {
   };
 
   const title =
-    screen.kind === 'now' ? (!playing ? null : s.paused ? 'Paused' : current?.note ?? s.queue!.title)
+    screen.kind === 'now' ? (!playing ? null : s.paused ? 'Paused' : loading ? 'Loading…' : current?.note ?? s.queue!.title)
     : screen.kind === 'menu' ? 'Music'
     : screen.kind === 'stations' ? 'Stations'
     : screen.kind === 'search' ? 'Search'
@@ -254,7 +261,7 @@ export default function PlayerDevice({ variant, children }: Props) {
   );
 
   return (
-    <div className={`pocket pocket--${variant}${s.heard ? '' : ' pocket--fresh'}${live ? ' pocket--live' : ''}`}>
+    <div className={`pocket pocket--${variant}${s.heard ? '' : ' pocket--fresh'}${live ? ' pocket--live' : ''}${loading ? ' pocket--loading' : ''}`}>
       <div className="pocket__device" ref={deviceRef}>
         <div className="pocket__screen" ref={screenRef}>
           <p className="pocket__status">
@@ -264,7 +271,7 @@ export default function PlayerDevice({ variant, children }: Props) {
               </button>
             )}
             <span className="pocket__status-now">
-              {screen.kind === 'now' && live && <span className="pocket__eq" aria-hidden><i /><i /><i /><i /></span>}
+              {screen.kind === 'now' && live && !loading && <span className="pocket__eq" aria-hidden><i /><i /><i /><i /></span>}
               {title ?? <span>Press <span className="pocket__blink">▶&#xFE0E;</span> to play</span>}
             </span>
             {count && <span>{count}</span>}
@@ -276,11 +283,22 @@ export default function PlayerDevice({ variant, children }: Props) {
                 {shown?.imageUrl && <img src={sizedImageUrl(shown.imageUrl, 250)} alt="" width={46} height={46} />}
               </span>
               <span className="pocket__what">
-                <span className="pocket__name">{shown?.name ?? 'Loading…'}</span>
+                {/* To their page, when they're on the map. */}
+                {shownOnMap ? (
+                  <Link href={`/artist/${shown!.id}`} className="pocket__name pocket__name--link">{shown!.name} <span aria-hidden>&rsaquo;</span></Link>
+                ) : (
+                  <span className="pocket__name">{shown?.name ?? 'Loading…'}</span>
+                )}
                 {shown && (
                   <span className="pocket__track">
                     {shown.previewUrl ? (shown.previewTrack ?? 'A song') : 'No song to play'}
                     {shown.activeFrom ? ` · ${shown.activeFrom}` : ''}
+                  </span>
+                )}
+                {/* The previews are 30 seconds: the whole song is a tap away. */}
+                {shown?.previewUrl && shown.previewTrack && (
+                  <span className="pocket__full">
+                    <StreamingLinks query={`${shown.name} ${shown.previewTrack}`} size="xs" label="Full song" />
                   </span>
                 )}
               </span>

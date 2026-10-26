@@ -3,6 +3,7 @@
 /* eslint-disable @next/next/no-img-element -- the cover, sized by lib/image-url */
 import { useEffect, useRef, useState } from 'react';
 import { imageSrcSet, sizedImageUrl } from '@/lib/image-url';
+import { player, usePlayer, SONG_MS, type Queue } from '@/lib/player';
 import type { Album } from '@/data/types';
 
 // The record on the artist page, as something you can handle:
@@ -12,11 +13,17 @@ import type { Album } from '@/data/types';
 // - the cover tilts toward the pointer, as if you're holding the sleeve
 //   (mouse and trackpad only);
 // - the vinyl can be grabbed and spun, and coasts to a stop when let go; a
-//   "Spin it" tag says so until someone has.
-// All decoration: the cover's alt text and the card beside it carry the facts.
+//   "Spin it" tag says so until someone has;
+// - it plays: the crate's front is a record shop's listening post, a play
+//   button and the song (the one its write-up names, from the record);
+//   clicking the cover plays it too, and the vinyl spins while it does.
+//   (The crate's front said "LPs" and the letter they're filed under once,
+//   which nobody read as anything.)
+// The cover's alt text and the card beside it carry the facts.
 
 interface Props {
   album: Album;
+  artistId: string;
   artistName: string;
 }
 
@@ -24,7 +31,7 @@ const TILT_X = 9;  // degrees, top and bottom
 const TILT_Y = 12; // degrees, either side
 const COAST = 0.955; // how much spin is left each frame after letting go
 
-export default function RecordObject({ album, artistName }: Props) {
+export default function RecordObject({ album, artistId, artistName }: Props) {
   const coverRef = useRef<HTMLElement>(null);
   const discRef = useRef<HTMLDivElement>(null);
   const spin = useRef({ angle: 0, velocity: 0, raf: 0, grab: null as null | { last: number; at: number } });
@@ -32,6 +39,25 @@ export default function RecordObject({ album, artistName }: Props) {
 
   // The record shop's divider: the first letter they're filed under.
   const filed = artistName.replace(/^the\s+/i, '').charAt(0).toUpperCase();
+
+  // Its song, through the site's player.
+  const now = usePlayer();
+  const queue: Queue | null = album.previewUrl ? {
+    id: `record:${artistId}:${album.id}`,
+    title: album.title,
+    stopMs: SONG_MS,
+    tracks: [{
+      id: artistId, name: artistName, imageUrl: album.imageUrl ?? null, previewUrl: album.previewUrl,
+      previewTrack: album.previewTrack ?? null, activeFrom: album.year ?? null, note: `From ${album.title}`,
+    }],
+  } : null;
+  const loaded = queue !== null && now.queue?.id === queue.id && now.at !== null;
+  const playing = loaded && !now.paused;
+  const toggle = () => {
+    if (!queue) return;
+    if (loaded) { if (now.paused) player.resume(); else player.pause(); }
+    else player.play(queue, 0);
+  };
 
   // Tilt toward the pointer, once a frame at most.
   const tiltRaf = useRef(0);
@@ -108,7 +134,7 @@ export default function RecordObject({ album, artistName }: Props) {
   }, []);
 
   return (
-    <div className="sleeve__object" data-arrive>
+    <div className="sleeve__object" data-arrive data-playing={playing || undefined}>
       <div className="sleeve__lift">
         {!spun && <span className="vinyl__hint" aria-hidden>Spin it <span className="vinyl__hint-arrow">↻</span></span>}
         <div className="vinyl" aria-hidden>
@@ -127,7 +153,7 @@ export default function RecordObject({ album, artistName }: Props) {
           </div>
         </div>
         {album.imageUrl && (
-          <figure ref={coverRef} className="sleeve__cover" onPointerMove={onTilt} onPointerLeave={onLetGo}>
+          <figure ref={coverRef} className="sleeve__cover" onPointerMove={onTilt} onPointerLeave={onLetGo} onClick={toggle} data-plays={queue ? true : undefined}>
             <img
               src={sizedImageUrl(album.imageUrl, 600)}
               srcSet={imageSrcSet(album.imageUrl, [300, 600, 1200])}
@@ -139,9 +165,21 @@ export default function RecordObject({ album, artistName }: Props) {
           </figure>
         )}
       </div>
-      <div className="crate" aria-hidden>
-        <span className="crate__label">LPs</span>
-        <span className="crate__divider">{filed}</span>
+      <div className="crate">
+        {queue ? (
+          <button type="button" className="crate__play" onClick={toggle} aria-label={`${playing ? 'Pause' : 'Play'} ${album.previewTrack ?? album.title}, from ${album.title}`}>
+            <span className="crate__icon" data-pause={playing || undefined} aria-hidden />
+            <span className="crate__song" aria-hidden>
+              <span className="crate__kicker">{playing ? (now.loading ? 'Loading…' : 'Now playing') : 'Listen'}</span>
+              <span className="crate__name">{album.previewTrack ?? album.title}</span>
+            </span>
+          </button>
+        ) : (
+          <span aria-hidden>
+            <span className="crate__label">LPs</span>
+            <span className="crate__divider">{filed}</span>
+          </span>
+        )}
       </div>
     </div>
   );

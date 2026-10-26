@@ -15575,6 +15575,17 @@ html[data-story='off'] .intro {
   -webkit-line-clamp: 1;
 }
 
+/* The name links to their page; the whole song is on the streaming
+   services (the previews are 30 seconds). Ink on the screen's grey-green. */
+.pocket__name--link { color: inherit; text-decoration: none; }
+.pocket__name--link:hover { text-decoration: underline; }
+/* Along the screen's foot, above the progress line, the full width of it. */
+.pocket__full { position: absolute; left: 8px; right: 8px; bottom: 17px; display: block; }
+.pocket__full .streaming-links { gap: 3px; }
+.pocket__full .streaming-links__label { margin-right: 2px; color: #1c1724; font-size: 0.5rem; }
+.pocket__full .streaming-links__btn { width: 19px; height: 19px; border-color: rgba(28, 23, 36, 0.5); background: rgba(255, 255, 255, 0.35); }
+.pocket__full .streaming-links__btn svg { width: 11px; height: 11px; }
+
 .pocket__progress {
   position: absolute;
   left: 8px;
@@ -15994,7 +16005,12 @@ html[data-story='off'] .intro {
   align-items: flex-end;
   gap: 10px;
   color: var(--ink);
+  /* Only its parts catch the pointer, never the empty box round them, which
+     can lie over the page (or another player's buttons). */
+  pointer-events: none;
 }
+
+.player-float > * { pointer-events: auto; }
 
 .player-float[hidden] {
   display: none;
@@ -16163,6 +16179,20 @@ html[data-story='off'] .intro {
   width: calc(var(--player-progress, 0) * 100%);
   background: #1c1724;
 }
+
+/* While a song is still on its way (lib/player `loading`), the bar doesn't
+   pretend to move: a short block slides back and forth along it instead,
+   and the status says "Loading…". Under reduced motion it just waits. */
+:is(.pocket--loading .pocket__progress, .player-float--loading .player-float__progress)::after { width: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  :is(.pocket--loading .pocket__progress, .player-float--loading .player-float__progress)::after {
+    width: 28%;
+    animation: player-loading 1100ms ease-in-out infinite alternate;
+  }
+}
+
+@keyframes player-loading { from { translate: 0 0; } to { translate: 257% 0; } }
 
 /* The mini click wheel: MENU on top opens the library, skip either side,
    play in the middle. */
@@ -16771,6 +16801,69 @@ body:has(.tour) .player-float:not(.tour-shown) {
   font-size: calc(var(--cover) * 0.07);
   line-height: 1;
   color: var(--ink);
+}
+
+/* The crate's front is the record's listening post: a play button and the
+   song, in marker. The vinyl spins while it plays; the cover plays too. */
+.crate:has(.crate__play)::before { display: none; }
+
+.crate__play {
+  position: absolute;
+  inset: 4px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.crate__play:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
+
+.crate__icon {
+  position: relative;
+  flex: none;
+  width: calc(var(--cover) * 0.12);
+  height: calc(var(--cover) * 0.12);
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+  transition: scale 160ms ease;
+}
+
+.crate__icon::before {
+  content: '';
+  position: absolute;
+  left: 38%;
+  top: 28%;
+  border-style: solid;
+  border-width: calc(var(--cover) * 0.026) 0 calc(var(--cover) * 0.026) calc(var(--cover) * 0.04);
+  border-color: transparent transparent transparent var(--paper);
+}
+
+.crate__icon[data-pause]::before {
+  left: 32%;
+  top: 30%;
+  width: 12%;
+  height: 40%;
+  border: 0;
+  background: var(--paper);
+  box-shadow: calc(var(--cover) * 0.022) 0 0 var(--paper);
+}
+
+.crate__play:hover .crate__icon { scale: 1.08; }
+.crate__song { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.crate__kicker { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75; }
+.crate__name { overflow: hidden; font-family: var(--font-marker), 'Marker Felt', cursive; font-size: calc(var(--cover) * 0.055); line-height: 1.15; white-space: nowrap; text-overflow: ellipsis; }
+
+.sleeve__cover[data-plays] { cursor: pointer; }
+.sleeve__object[data-playing] .vinyl__disc { animation: tcass-spin 1.8s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sleeve__object[data-playing] .vinyl__disc { animation: none; }
 }
 
 @keyframes crate-rise {

@@ -52,6 +52,9 @@ export interface PlayerState {
   at: number | null;
   /** On air but held. */
   paused: boolean;
+  /** On air, but its song hasn't started sounding yet (or has stopped to
+   *  buffer): the players say so, and the clock waits for it. */
+  loading: boolean;
   /** Anything played yet this visit (the "it really plays" invitation goes). */
   heard: boolean;
   /** The floating player is opened up. */
@@ -70,6 +73,7 @@ export const SONG_MS = 30000; // a whole preview
 const SKIP_MS = 1400;         // a track with no song: just long enough to see it
 const FADE_MS = 600;
 const GLIDE_MS = 450;         // the song on air fading out before another takes over (the About tape)
+const GIVE_UP_MS = 12000;     // a song that won't load in this long is skipped
 const FLOW_DELAY_MS = 300;    // a linked queue's light leaves this long into a track...
 const FLOW_MS = 1500;         // ...and takes this long to cross the line
 const VOLUME = 0.8;
@@ -78,7 +82,7 @@ const OWNER = Symbol('player');
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 
 const INITIAL: PlayerState = {
-  queue: null, at: null, paused: false, heard: false, open: false, browsed: false, docked: false, context: null, offer: null,
+  queue: null, at: null, paused: false, loading: false, heard: false, open: false, browsed: false, docked: false, context: null, offer: null,
 };
 let state = INITIAL;
 const listeners = new Set<() => void>();
@@ -99,11 +103,20 @@ export function usePlayer(): PlayerState {
 export const onAir = (s: PlayerState): Track | null => (s.queue && s.at !== null ? s.queue.tracks[s.at] : null);
 
 // ── The engine ──
+// A song's turn runs on the song's own clock (audio.currentTime), not the
+// wall's: a preview can take a few seconds to arrive, and the bar, the fades
+// and the turn's end used to start counting at the press, so the bar ran
+// ahead of a song that hadn't begun and a sampled turn was cut short. Until
+// it sounds (or while it buffers) the player is `loading`, and a song that
+// never arrives is skipped. Tracks with no song keep the wall clock.
 let audio: HTMLAudioElement | null = null;
+/** A second element, never played, that fetches the next song ahead of time. */
+let spare: HTMLAudioElement | null = null;
 let raf = 0;
 let flowFrom: string | null = null;
 let startedAt = 0;
 let pausedAt = 0;
+let waitingSince = 0;
 // Elements that show how far through its turn the track on air is
 // (--player-progress), written every frame rather than through React.
 const progressEls = new Set<HTMLElement>();
@@ -117,8 +130,44 @@ function sound(): HTMLAudioElement {
   audio.preload = 'auto';
   connectAnalyser(audio);
   audio.addEventListener('ended', () => { if (state.at !== null && !state.paused) advance(); });
+  audio.addEventListener('playing', () => {
+    if (state.loading) set({ loading: false });
+    warmNext();
+  });
+  audio.addEventListener('waiting', () => {
+    if (state.at !== null && !state.paused && !state.loading) { waitingSince = performance.now(); set({ loading: true }); }
+  });
+  audio.addEventListener('error', () => { if (state.at !== null && onAir(state)?.previewUrl) advance(); });
   onAudioClaimed(OWNER, () => player.pause());
   return audio;
+}
+
+/** Start fetching a song before it's needed, so it starts at once when it
+ *  is: the next one in the queue in full, a page's first one just its start. */
+function warm(url: string | null, whole: boolean) {
+  if (!url || typeof Audio === 'undefined' || audio?.src === url) return;
+  if (!spare) {
+    spare = new Audio();
+    spare.crossOrigin = 'anonymous'; // the same request as the player's, so it shares the cache
+    spare.muted = true;
+  }
+  if (spare.src === url) return;
+  spare.preload = whole ? 'auto' : 'metadata';
+  spare.src = url;
+  spare.load();
+}
+
+function warmNext() {
+  const { queue, at } = state;
+  if (!queue || at === null) return;
+  const next = queue.tracks[at + 1];
+  if (next) warm(next.previewUrl, true);
+}
+
+/** How far into its turn the track on air is, ms: the song's own position,
+ *  or the wall clock for a track with no song. */
+function elapsed(track: Track, now: number): number {
+  return track.previewUrl && audio ? audio.currentTime * 1000 : now - startedAt;
 }
 
 function begin(index: number) {
@@ -127,8 +176,9 @@ function begin(index: number) {
   const track = queue.tracks[index];
   startedAt = performance.now();
   pausedAt = 0;
+  waitingSince = startedAt;
   flowFrom = queue.flows && index > 0 ? queue.tracks[index - 1].id : null;
-  set({ at: index, paused: false, heard: true, offer: null });
+  set({ at: index, paused: false, loading: !!track.previewUrl, heard: true, offer: null });
   storyFrame.pulse = [track.id];
   storyFrame.playing = track.id;
   const a = sound();
@@ -174,7 +224,10 @@ function tick(now: number) {
   if (!queue || at === null) return;
   const track = queue.tracks[at];
   const turn = track.previewUrl ? track.ms ?? queue.stopMs : SKIP_MS;
-  const t = now - startedAt;
+  // Still waiting for the song: hold everything at its start, and give up
+  // on one that never comes.
+  if (state.loading && now - waitingSince > GIVE_UP_MS) { advance(); return; }
+  const t = elapsed(track, now);
   if (track.previewUrl && audio) audio.volume = VOLUME * (track.gain ?? 1) * clamp01(Math.min(t / FADE_MS, (turn - t) / FADE_MS));
   storyFrame.level = readLevel(audio);
   readBands(audio, storyFrame.bands);
@@ -204,16 +257,19 @@ export const player = {
     audio?.pause();
     storyFrame.level = 0;
     storyFrame.bands.fill(0);
-    set({ paused: true });
+    set({ paused: true, loading: false });
   },
   resume() {
     if (state.at === null || !state.paused) return;
     claimAudio(OWNER);
     startedAt += performance.now() - pausedAt;
     pausedAt = 0;
-    if (onAir(state)?.previewUrl) void audio?.play().catch(() => {});
+    waitingSince = performance.now();
+    const song = !!onAir(state)?.previewUrl;
+    if (song) void audio?.play().catch(() => {});
     raf = requestAnimationFrame(tick);
-    set({ paused: false });
+    // Until it's sounding again (it may have to buffer), it's loading.
+    set({ paused: false, loading: song && !!audio && audio.readyState < 3 });
   },
   /** Move to another track of the queue on air, the song playing fading out
    *  first (the About page's tape, which follows the reader down the page). */
@@ -230,10 +286,16 @@ export const player = {
     if (!audio || !onAir(state)?.previewUrl) { player.pause(); return; }
     fadeThen(() => player.pause());
   },
-  /** On to the next track; from the last, round to the first. */
+  /** On to the next track; from the last, round to the first. A single
+   *  song (an artist page's record) has nothing after it, so it goes on to
+   *  what the page offers, the artist's family, instead of starting over. */
   next() {
-    const { queue, at } = state;
+    const { queue, at, context } = state;
     if (!queue || at === null) return;
+    if (queue.tracks.length === 1 && context && context.queue.id !== queue.id) {
+      player.play(context.queue, context.start);
+      return;
+    }
     begin(at >= queue.tracks.length - 1 ? 0 : at + 1);
   },
   prev() {
@@ -249,7 +311,7 @@ export const player = {
     storyFrame.level = 0;
     storyFrame.bands.fill(0);
     showProgress(0);
-    set({ at: null, paused: false });
+    set({ at: null, paused: false, loading: false });
   },
   /** Let the "keep going" offer go. */
   dismissOffer() {
@@ -261,9 +323,11 @@ export const player = {
   setDocked(docked: boolean) {
     if (docked !== state.docked) set({ docked });
   },
-  /** An artist page offers its family first; it clears it again on the way out. */
+  /** An artist page offers its family first; it clears it again on the way
+   *  out. Its first song starts loading straight away, so play is quick. */
   setContext(context: PlayerState['context']) {
     set({ context });
+    if (context && state.at === null) warm(context.queue.tracks[context.start]?.previewUrl ?? null, false);
   },
   clearContext(queueId: string) {
     if (state.context?.queue.id === queueId) set({ context: null });

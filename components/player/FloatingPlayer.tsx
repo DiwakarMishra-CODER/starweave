@@ -40,11 +40,11 @@ export default function FloatingPlayer() {
   const offer = (s.offer && { queue: s.offer.queue, start: 0 }) ?? s.context ?? (story ? { queue: story, start: 0 } : null);
   const shown = current ?? (offer ? offer.queue.tracks[offer.start] : null);
   const color = (shown && colorOf.get(shown.id)) ?? '#e8c87a';
-  // The artist page's docked player stands in for this one -- unless the
-  // song playing isn't from that page's family; then this one stays, to
-  // show and control it.
-  const elsewhere = current !== null && !s.context?.queue.tracks.some(t => t.id === current.id);
-  const hidden = mode === 'story' || (s.docked && !elsewhere);
+  // The artist page's docked player stands in for this one while it's on
+  // screen: it shows and controls whatever is playing. (This one used to
+  // stay up for music from outside the artist's family, and its frame sat
+  // over the docked player's ⏭, so pressing it did nothing.)
+  const hidden = mode === 'story' || s.docked;
 
   // The screen's progress line (--player-progress, set every frame by lib/player).
   useEffect(() => {
@@ -75,13 +75,15 @@ export default function FloatingPlayer() {
   const open = () => player.setOpen(true);
 
   // What the song is doing here when it says ("Where it came from"), else the state.
-  const status = !current ? 'Ready' : s.paused ? 'Paused' : current.note ?? 'Playing';
+  // While its song is still on its way, it says so instead of pretending to play.
+  const loading = live && s.loading;
+  const status = !current ? 'Ready' : s.paused ? 'Paused' : loading ? 'Loading…' : current.note ?? 'Playing';
   const song = shown ? (shown.previewTrack ?? (shown.previewUrl ? 'A song' : 'No song')) : '';
 
   return (
     <div
       ref={rootRef}
-      className={`player-float${pathname === '/' ? ' player-float--map' : ''}${current || s.offer ? '' : ' player-float--idle'}${live ? ' player-float--live' : ''}${s.heard ? '' : ' player-float--fresh'}`}
+      className={`player-float${pathname === '/' ? ' player-float--map' : ''}${current || s.offer ? '' : ' player-float--idle'}${live ? ' player-float--live' : ''}${loading ? ' player-float--loading' : ''}${s.heard ? '' : ' player-float--fresh'}`}
       style={{ '--layer-color': color } as React.CSSProperties}
       hidden={hidden}
     >
@@ -128,7 +130,7 @@ export default function FloatingPlayer() {
               aria-label={`${current ? `${status}: ${shown?.name}, ${song}` : `${shown?.name ?? 'Music'}`}. Open the library`}
             >
               <span className="player-float__status" aria-hidden>
-                {live && <span className="pocket__eq"><i /><i /><i /><i /></span>}
+                {live && !loading && <span className="pocket__eq"><i /><i /><i /><i /></span>}
                 {status}
               </span>
               <span className="player-float__now" aria-hidden>

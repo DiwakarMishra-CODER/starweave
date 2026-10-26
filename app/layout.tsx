@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/next';
 import { Anton, Fraunces, Inter, IBM_Plex_Mono, Permanent_Marker } from 'next/font/google';
+import AudioHints from '@/components/player/AudioHints';
 import TopNav from '@/components/layout/TopNav';
 import './globals.css';
 
@@ -66,6 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: "if(location.pathname==='/'&&/[?&](artist|genre|scene)=/.test(location.search))document.documentElement.dataset.story='off'",
           }}
         />
+        <AudioHints />
         <TopNav />
         {children}
         <Analytics />
