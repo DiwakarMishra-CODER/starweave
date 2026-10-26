@@ -11212,7 +11212,7 @@ html[data-story='off'] .intro {
   height: 10px;
   border-radius: 50%;
   background: var(--color-root);
-  box-shadow: 0 0 18px 6px rgba(232, 200, 122, 0.55);
+  box-shadow: 0 0 0 3px rgba(232, 200, 122, 0.3);
   animation: intro-label-in 450ms ease-out backwards;
 }
 
@@ -11221,7 +11221,8 @@ html[data-story='off'] .intro {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1rem;
-  color: rgba(237, 234, 247, 0.7);
+  color: #efe3cb;
+  text-shadow: 0 1px 2px rgba(7, 5, 14, 0.9);
   animation: intro-label-in 450ms ease-out 120ms backwards;
 }
 
@@ -11324,7 +11325,7 @@ html[data-story='off'] .intro {
   text-transform: uppercase;
   white-space: nowrap;
   color: #f0c97a;
-  text-shadow: 0 1px 12px rgba(7, 5, 14, 0.95);
+  text-shadow: 0 1px 2px rgba(7, 5, 14, 0.95);
   pointer-events: none;
   opacity: 0;
 }
@@ -11363,8 +11364,8 @@ html[data-story='off'] .intro {
   font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: 0.06em;
-  color: #fff4d6;
-  text-shadow: 0 0 18px rgba(255, 228, 160, 0.55);
+  color: #f0c97a;
+  text-shadow: 0 1px 2px rgba(7, 5, 14, 0.9);
 }
 
 .intro__counter-name {
@@ -11372,8 +11373,8 @@ html[data-story='off'] .intro {
   font-style: italic;
   font-size: 0.95rem;
   white-space: nowrap;
-  color: rgba(237, 234, 247, 0.78);
-  text-shadow: 0 1px 12px rgba(7, 5, 14, 0.9);
+  color: #efe3cb;
+  text-shadow: 0 1px 2px rgba(7, 5, 14, 0.9);
 }
 
 /* The picture receding while words are up (opacity set by Intro), so the
@@ -11397,6 +11398,8 @@ html[data-story='off'] .intro {
   pointer-events: none;
   opacity: 0;
   transition: opacity 700ms ease;
+  /* Not needed now the words are on a card. */
+  display: none;
 }
 
 .intro--mapped .intro__scrim,
@@ -11420,13 +11423,26 @@ html[data-story='off'] .intro {
 
 /* One line at a time, bottom centre. Its words land one by one; the small
    line follows the last of them (--n is the word count). */
+/* The words are a paper caption card (ink on aged paper, a fine outline and
+   a hard shadow, like the map's ticket and buttons), hugging the text:
+   crisp, where glowing white words over the stars read as the old look. */
 .intro__caption {
   position: absolute;
   z-index: 4;
-  left: 50%;
+  /* Centred by its margins, so it can use the whole width to fit its words
+     (centred from the middle, a phone gave it half the screen). */
+  left: 0;
+  right: 0;
   bottom: clamp(1.5rem, 6vh, 3.25rem);
-  translate: -50% 0;
-  width: min(42rem, calc(100% - 2rem));
+  width: fit-content;
+  max-width: min(42rem, calc(100% - 2rem));
+  margin-inline: auto;
+  padding: 14px 24px 16px;
+  border: 1.5px solid rgba(28, 23, 36, 0.85);
+  border-radius: 4px;
+  background: var(--paper-aged);
+  box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.35);
+  color: #1c1724;
   text-align: center;
   pointer-events: none;
   transition: opacity 350ms ease;
@@ -11453,9 +11469,9 @@ html[data-story='off'] .intro {
   margin-bottom: 0.45rem !important;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(232, 200, 122, 0.9);
+  color: #a8261e;
   animation: intro-fade-in 500ms ease backwards;
 }
 
@@ -11464,8 +11480,7 @@ html[data-story='off'] .intro {
   font-weight: 500;
   font-size: clamp(1.35rem, 3vw, 2.1rem);
   line-height: 1.2;
-  color: #fff8e8;
-  text-shadow: 0 0 28px rgba(232, 200, 122, 0.25), 0 2px 20px rgba(7, 5, 14, 0.95);
+  color: #1c1724;
 }
 
 .intro__word {
@@ -11480,8 +11495,7 @@ html[data-story='off'] .intro {
   font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(1rem, 1.6vw, 1.2rem);
-  color: rgba(237, 234, 247, 0.82);
-  text-shadow: 0 2px 16px rgba(7, 5, 14, 0.95);
+  color: #4a3d48;
   animation: intro-fade-in 600ms ease backwards;
   animation-delay: calc(var(--n, 0) * 45ms + 250ms);
 }
@@ -11509,32 +11523,17 @@ html[data-story='off'] .intro {
   gap: 0.5rem;
 }
 
+/* Sound and Skip: the map's paper buttons (the "Paper" block below gives
+   their look); sound on gets the amber of the site's lit things. */
 .intro__button {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.45rem 0.8rem;
-  background: var(--surface-float);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--color-border-float);
-  border-radius: var(--radius);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--color-text);
+  padding: 0.42rem 0.85rem;
   cursor: pointer;
-  transition: background var(--transition), border-color var(--transition);
 }
 
-.intro__button:hover {
-  background: rgba(14, 11, 26, 0.95);
-}
-
-.intro__button[aria-pressed='true'] {
-  border-color: rgba(232, 200, 122, 0.55);
-}
+.intro__button[aria-pressed='true'] { --paper: #f0c97a; }
 
 .intro__icon {
   width: 14px;
@@ -11753,7 +11752,8 @@ html[data-story='off'] .intro {
 .graph-controls__toggle,
 .path-finder__toggle,
 .graph-replay,
-.zoom-hint {
+.zoom-hint,
+.intro__button {
   --paper: var(--paper-aged);
   background: var(--paper);
   backdrop-filter: none;
@@ -11775,11 +11775,13 @@ html[data-story='off'] .intro {
 .path-finder__toggle svg { color: #4f6b3c; }
 .graph-replay > span:first-child { color: #9a6a12; }
 .zoom-hint__icon { color: #3f5f7a; }
+.intro__icon, .intro__button > span[aria-hidden] { color: #a84f45; }
 
 .graph-controls__toggle:hover,
 .path-finder__toggle:hover,
 .graph-replay:hover,
-.zoom-hint:hover {
+.zoom-hint:hover,
+.intro__button:hover {
   background: color-mix(in srgb, var(--paper) 88%, #fff);
   border-color: rgba(28, 23, 36, 0.85);
   color: #1c1724;
@@ -11789,7 +11791,8 @@ html[data-story='off'] .intro {
 
 .graph-controls__toggle:active,
 .path-finder__toggle:active,
-.graph-replay:active {
+.graph-replay:active,
+.intro__button:active {
   translate: 1px 2px;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
 }
@@ -11797,7 +11800,8 @@ html[data-story='off'] .intro {
 .graph-controls__toggle:focus-visible,
 .path-finder__toggle:focus-visible,
 .graph-replay:focus-visible,
-.zoom-hint:focus-visible {
+.zoom-hint:focus-visible,
+.intro__button:focus-visible {
   outline: 2px solid #ffd9a0;
   outline-offset: 3px;
 }
