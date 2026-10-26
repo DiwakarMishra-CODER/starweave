@@ -65,15 +65,19 @@ describe('buildGenreSession', () => {
   });
 
   it('never runs a cable behind a clip it does not join', () => {
+    // Collected, then asserted once: an expect per sample point made this
+    // slow enough to time out on CI.
+    const behind: string[] = [];
     for (const l of session.links) {
       for (const pt of samples(l.d)) {
         for (const o of session.clips) {
           if (o.id === l.childId || o.id === l.parentId) continue;
           const inside = pt.x > o.left + 1 && pt.x < o.left + o.w - 1 && Math.abs(pt.y - o.y) < CLIP_H / 2 - 1;
-          expect(inside, `${l.parentId} -> ${l.childId} behind ${o.id}`).toBe(false);
+          if (inside) behind.push(`${l.parentId} -> ${l.childId} behind ${o.id}`);
         }
       }
     }
+    expect([...new Set(behind)]).toEqual([]);
   });
 
   it('keeps the bottom-right corner clear for the pocket player', () => {
