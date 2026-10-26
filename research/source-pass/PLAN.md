@@ -118,3 +118,153 @@ was missed.
   across several days with usage limits in between.
 - Then the additions pass: the candidates found on the way, the roster
   backlog (`research/roster-backlog.md`) and the twee pop founders.
+
+---
+
+## The Quietus Baker's Dozen sweep (owner said yes, 26 Oct) -- in progress
+
+For the additions pass (and as a source for existing links), no searches.
+Files in `research/source-pass/bakers-dozen/`; tool
+`scripts/source-pass/bakers-dozen.ts`.
+- Done: the 624 Baker's Dozens on the Quietus sitemap matched to the map;
+  `speakers.json` lists the 89 by artists on it (a band member counts for the
+  band; false matches like Nicky Wire or Sophie Ellis-Bextor dropped).
+- Running when the chat ended: `npx tsx scripts/source-pass/bakers-dozen.ts
+  fetch` (four at a time, ~6s a slide). It resumes where it stopped: dozens
+  already in `picks.json` are skipped and slides are cached in `.pages/`.
+  Re-run it until the log says `done`, then check `failed.json`.
+  Some dozens come back with 0 picks (the Fall's, Brix Smith): probably an
+  older layout with no slide links; open one with `ledger.ts read` and adapt
+  `parse` before judging.
+- Then: `bakers-dozen.ts sort 3` (writes `sorted.json` and `judge-1..3.json`),
+  and three Sonnet checkers (medium effort, no searches) following
+  `bakers-dozen/JUDGE.md`, each writing `judged-<n>.json`.
+- Then by hand: `influence` picks of kind `new` go to `candidates.json`,
+  `existing` ones become ledger entries (verdict `fixed`, url = the slide,
+  for links whose ledger entry is missing, `not-found` or `decide`), and
+  off-map `influence` picks go to `off-map.json`. Scan citations before
+  merging, as with checkers.
+
+## Owner's optional list -- remind the owner only at the very end of the pass, or when they ask
+
+Optional, owner's call (26 Oct): don't raise these session by session; bring
+the whole list up once at the end (or when the owner asks for it).
+- Pages to open (live list: `ledger.ts status`, "for the owner to open"):
+  Clairo's Apple Music "Influences" playlist (her notes on Elliott Smith and
+  Joni Mitchell), FKA twigs' 2014 Mercury Prize Q&A on YouTube (X-Ray Spex),
+  the LSQ podcast ep. 105 with Ezra Koenig (Radiohead, Neil Young, Belle and
+  Sebastian), R.E.M.'s 1983 Alternative America interview on Rock's Backpages
+  (Velvet Underground).
+- The Candy Claws Break Yr Legs interview on Tumblr (a bot wall to `check`):
+  confirm "you got me really into The Knife" and "I listened to Starflyer and
+  My Bloody Valentine" are on it.
+- Whether to build the no-search Quietus Baker's Dozen sweep for the
+  additions pass, and whether to add Boris (named by Wayne Coyne).
+
+## Progress (session 2, 26 Oct 2026) -- read this first in the next chat
+
+**Where it stands:** first-person 472 / 494 worked, all 68 today's-record
+links done; reported, critic, unsourceable not started. Verdicts: 343 fixed,
+56 ok, 82 not-found (61 never retried), 49 decide, 7 for the owner to open, 3
+print. Page check: 401 found + 10 on archive copies; the misses are pages a
+bot can't open (a Tumblr bot wall, owner-pasted pages, one flaky site).
+
+**Session 2 ran:** six checkers (c9-c14, Sonnet medium, 157 searches between
+them, about 55-90% sourced), two Claude chat packs (chat5, retry2: 55
+searches on the owner's side) and two pages the owner opened (Coyne's Quietus
+picks, Strummer's Record Collector interview).
+
+**Session 2 lessons:**
+- Quietus Baker's Dozens are not walled: every pick has its own URL
+  (`.../bakers-dozen/<slug>/2/` to `/14/`), readable with `read`. Now in
+  BRIEF.md. A no-search sweep of every Baker's Dozen by a roster artist is a
+  cheap source of new candidates (offered to the owner for the additions pass).
+- Checkers share one scratchpad: c11's helper `m.js` swallowed c9's results.
+  BRIEF.md now says helper files go in `<scratchpad>/<name>/` and checkers
+  never run `merge`. Running `merge` also merges any other finished file, so a
+  results file vanishing into `results/merged/` is normal.
+- `merge` used to delete the old not-found entries before checking the file
+  and then refuse it, so a refused retry file dropped them (caught and
+  restored the same session). Fixed: the file is checked first.
+- Claude chat sometimes leaves `checked` off not-found/decide entries; fill
+  it in before merging.
+- Repeated traps from CLAUDE.md showed up again and were caught: Wikipedia
+  resting on the Noisey journalist's own listening (Mountain Goats), Iggy Pop
+  / Lou Reed named as people rather than the band, a makeup compliment read as
+  musical influence (Polachek/Bowie).
+
+**Owner preferences this session:** hand chat packs over by clipboard
+(`pbcopy`), one at a time, the next only once the last one's answer is back.
+
+## Progress (session 1, 26 Oct 2026)
+
+**Where it stands:** 340 of 1,053 links worked. 250 proven (217 fixed, 30 ok,
+1 print and the rest of the owner-read ones), ~68 not-found, 21 decide, 2
+blocked. All 68 today's-record links done; first-person ~275 / 494. Reported,
+critic and unsourceable not started. `npx tsx scripts/source-pass/ledger.ts
+status` gives the live numbers.
+
+**What was built (setup, done):** `lib/edge-sources.ts` (types, merge,
+`ledgerProblems`, `TIER_CONFIDENCE_CAP`), `data/edge-sources.json` (the
+ledger; the build refuses an unsound one), `Edge.sourceUrl`/`sourcePrint`,
+`components/ui/SourceLink.tsx` ("Source ↗" on the artist panel, the family
+photo card, today's record and Connect two), `tests/lib/edge-sources.test.ts`,
+and `scripts/source-pass/ledger.ts`:
+`queue` (built once) · `next <name> <n> [phase]` · `merge` · `status` ·
+`check [--all]` · `read <url> <words> [--raw]` · `rescue [key]`.
+Checkers follow `research/source-pass/BRIEF.md`; Claude chat packs are in
+`research/source-pass/chat/` (copy the newest as the template).
+
+**The owner's rulings (26 Oct), already in BRIEF.md:**
+- Being a fan counts: an artist saying they loved, grew up on, were big fans
+  of, kept listening to someone while forming or making their own music is
+  first-person influence. A bare favourites list with no comment doesn't.
+- Fandom someone else reports (journalist, bandmate, the other artist, the
+  band's own ad) counts at `reported`.
+- Sounding alike is not influence: a critic's "sounds like / recalls / the X
+  of its generation" goes to `decide`; `critic` tier is only for a critic
+  arguing one drew on the other.
+- Never give up a known page: try its Internet Archive copies (`read` takes
+  web.archive.org URLs and fetches them raw; `rescue` sweeps them) before
+  not-found. The owner was rightly angry when five Slowdive links were marked
+  not-found while the 2014 archive copy had all six quotes.
+- `blocked` only for pages a person with a browser can open; the owner can't
+  open Under the Radar live, PressReader, the Quietus paywall or the
+  Telegraph. The owner happily opens walled pages: give them the direct link
+  and what to look for.
+- Home page: keep all 77 today's-record quotes for now (owner's call); the
+  "every why line has a link" test waits until the pass reaches them all.
+- A corrected tier caps the link's confidence (first-person 0.9, reported
+  0.7, critic 0.55), applied in the merge.
+
+**Measured (for the estimate):** ~1 search per link, ~10-14 min per agent
+for 20-35 links; this session worked ~340 links with ~170 searches here plus
+~150 on the owner's Claude chat. Agents here sourced 57-81% of their batches;
+chat packs 32-70%; a retry pack in chat turned 21 of 32 not-found around.
+About 6 in 7 sourced links needed their citation corrected (words, outlet,
+speaker, tier) but only ~6% were actually unsupported (the decide list).
+
+**Lessons (traps found this session):**
+- Claude chat sometimes calls a quote "not found" that is on the page (the
+  About page's Alvvays/MBV line): when a fixed entry swaps out a quote another
+  page uses (About tests, today's record), re-read the original first.
+- A checker or I will occasionally add a plausible detail the page doesn't
+  carry (a year, a song name): every sentence of a rewritten citation must be
+  on the page. Scan rewrites before merging.
+- Merge only when a checker's file says `"finished": true`; a checker's own
+  later file replaces its earlier entries; a found result replaces anyone's
+  not-found.
+- Off-map names from checkers are often on the map: convert them to
+  candidates (the merge snippets in this session did it by roster lookup).
+
+**Next session, in order:**
+1. `status`; the last 22 first-person links in one checker batch, then
+   `next` batches of `reported` (Wikipedia ones mostly need no search).
+2. Retry packs for the 61 not-found never retried (build them as retry2 was:
+   the batch file by hand from the ledger's not-found entries plus each
+   note as `lastTry`; chat/retry2.md is the template).
+3. The owner's 7 pages to open (`status` lists them).
+3. Then reported, critic, unsourceable.
+4. At the end: `reworded` clean-up for unsourced links whose old citation
+   carries commentary (~80, e.g. "-- a critic's comparison rather than..."),
+   the decide list shown to the owner once, then the today's-record test.

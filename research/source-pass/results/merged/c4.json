@@ -1,0 +1,257 @@
+{
+  "agent": "c4",
+  "searches": 19,
+  "toolStatus": "WebSearch fine; undertheradarmag.com blocked (Cloudflare); others opened via read",
+  "entries": {
+    "radiohead>pixies": {
+      "url": "https://www.bigissue.com/culture/music/colin-greenwood-interview-radiohead-jonny-music/",
+      "found": "He could play the keyboards and then he learned the guitar very quickly, listening to Pixies and Lou Reed's New York album, and that was it.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Colin Greenwood to The Big Issue (2024), on his brother Jonny: \"He could play the keyboards and then he learned the guitar very quickly, listening to Pixies and Lou Reed's New York album.\"",
+      "note": "Original citation (Jonny on teenage London trips to Throwing Muses and Pixies) not found; Pitchfork 2016 Monroe interview (Wikipedia fn 144) 404s. Speaker is Colin, a Radiohead member, about Jonny.",
+      "checked": "2026-10-26"
+    },
+    "pixies>husker-du": {
+      "url": "https://en.wikipedia.org/wiki/Black_Francis",
+      "found": "Bassist Kim Deal was recruited a week later via a classified advertisement placed in a Boston paper, which requested a bassist \"into Hüsker Dü and Peter, Paul and Mary\".",
+      "verdict": "decide",
+      "note": "Only Wikipedia (footnote is a Frank Black bio / Ganz book p.18) and Uncut 2017 retell the ad; the ad says what they wanted in a bassist, not that Pixies were shaped by Hüsker Dü. Propose lower to reported with citation 'Their classified ad sought a bassist \"into Hüsker Dü and Peter, Paul and Mary\"', or remove. Uncut (uncut.co.uk/features/pixies-black-francis-82017/2) words it 'Peter, Paul & Mary and Hüsker Dü'.",
+      "checked": "2026-10-26"
+    },
+    "pixies>rem": {
+      "url": "https://faroutmagazine.co.uk/pixies-song-black-francis-no-memory-writing/",
+      "found": "“I was listening to Murmur by R.E.M. a lot just before Come on Pilgrim, and that was hugely influential on me as a songwriter,” he told The Guardian in 2022.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Black Francis to The Guardian (2022), as quoted by Far Out: \"I was listening to Murmur by R.E.M. a lot just before Come on Pilgrim, and that was hugely influential on me as a songwriter.\"",
+      "note": "Guardian original not opened; Far Out relays it. Interviewer 'Scott Pelley' not confirmed anywhere, dropped from citation.",
+      "checked": "2026-10-26"
+    },
+    "depeche-mode>the-human-league": {
+      "url": "https://modefan.com/interview-andrew-fletcher/",
+      "found": "After that it was Siouxsie & the Banshees, the Cure, Kraftwerk even came into fashion, early Human League, even early OMD.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Andrew Fletcher to Modefan (2011), on what followed punk for him: \"Siouxsie & the Banshees, the Cure, Kraftwerk even came into fashion, early Human League, even early OMD.\"",
+      "note": "Wikipedia 'Gore was a fan of ... early Human League and Sparks' sentence not on the current article; Fletcher interview is the real source. Mild: it's a list of what he got into, said as the band's formative music.",
+      "checked": "2026-10-26"
+    },
+    "depeche-mode>gary-numan": {
+      "verdict": "not-found",
+      "note": "Current Wikipedia Depeche Mode article has no 'inspired by acts like Gary Numan and the Human League' sentence; it only says Numan cited DM. Not searched further: budget.",
+      "checked": "2026-10-26"
+    },
+    "depeche-mode>omd": {
+      "url": "https://en.wikipedia.org/wiki/Depeche_Mode",
+      "found": "Clarke was inspired to pursue electronic music by the band Orchestral Manoeuvres in the Dark (OMD), whom he cited as crucial to the formation of Depeche Mode.[150][151]",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Vince Clarke was inspired to pursue electronic music by OMD, whom he cited as crucial to the formation of Depeche Mode (Electronic Sound, 2023; Rolling Stone Germany, 2019).",
+      "note": "Footnotes are Ilic, Electronic Sound 14 Sep 2023 and Niasseri, Rolling Stone DE 2019; not opened. Fletcher (Modefan 2011) also names 'even early OMD'. Tier lowered to reported since no quote seen.",
+      "checked": "2026-10-26"
+    },
+    "slowdive>cocteau-twins": {
+      "verdict": "not-found",
+      "note": "Page lives on undertheradarmag.com (unopenable by owner too): https://www.encyclopedia.com/education/news-wires-white-papers-and-books/slowdive . Citation's 'driving around endlessly listening to Cocteau Twins tapes' is in Under the Radar (2014) https://undertheradarmag.com/interviews/slowdive_-_neil_halstead_and_rachel_goswell_on_the_bands_that_inspired_them (blocked). Cocteau is also named in the Magnet quote (via Encyclopedia.com, found text uses entity-decoded quotes). Savill 'Pearly Dewdrops' Drops changed my life' not found anywhere. Look on UTR page for: 'drive around endlessly in Nick's car ... listen to tapes of Cocteau Twins'.",
+      "checked": "2026-10-26"
+    },
+    "slowdive>the-jesus-and-mary-chain": {
+      "url": "https://www.encyclopedia.com/education/news-wires-white-papers-and-books/slowdive",
+      "found": "“ We were all influenced by the same kinds of sounds, ” recalled Slowdive ’ s Neil Halstead in an interview with Corey Dubrowa for Magnet magazine. ‘ The Byrds, Pink Floyd, Loop, the Cocteau Twins, the [Jesus and] Mary Chain — even Mudhoney and Dinosaur Jr.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Neil Halstead to Corey Dubrowa, Magnet: \"We were all influenced by the same kinds of sounds. The Byrds, Pink Floyd, Loop, the Cocteau Twins, the [Jesus and] Mary Chain -- even Mudhoney and Dinosaur Jr.\"",
+      "note": "The cited Under the Radar quote 'We were all really into The Jesus and Mary Chain, Dinosaur Jr., Sonic Youth' is on a blocked page (UTR 2014, URL in slowdive>sonic-youth); Magnet quote (read via Encyclopedia.com reprint) carries JAMC.",
+      "checked": "2026-10-26"
+    },
+    "slowdive>sonic-youth": {
+      "verdict": "not-found",
+      "note": "Page lives on undertheradarmag.com (unopenable by owner too): https://undertheradarmag.com/interviews/slowdive_-_neil_halstead_and_rachel_goswell_on_the_bands_that_inspired_them . Under the Radar 2014 Halstead/Goswell interview; look for Halstead: 'We were all really into The Jesus and Mary Chain, Dinosaur Jr., Sonic Youth.' A search summary says Halstead named Dinosaur Jr. and Sonic Youth there, unconfirmed.",
+      "checked": "2026-10-26"
+    },
+    "slowdive>dinosaur-jr": {
+      "url": "https://www.encyclopedia.com/education/news-wires-white-papers-and-books/slowdive",
+      "found": "“ We were all influenced by the same kinds of sounds, ” recalled Slowdive ’ s Neil Halstead in an interview with Corey Dubrowa for Magnet magazine. ‘ The Byrds, Pink Floyd, Loop, the Cocteau Twins, the [Jesus and] Mary Chain — even Mudhoney and Dinosaur Jr.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Neil Halstead to Corey Dubrowa, Magnet: \"We were all influenced by the same kinds of sounds. The Byrds, Pink Floyd, Loop, the Cocteau Twins, the [Jesus and] Mary Chain -- even Mudhoney and Dinosaur Jr.\"",
+      "note": "Also Inquirer 2012: Halstead 'When I was a kid, I remember listening to Dinosaur Jr.' (https://www.inquirer.com/philly/entertainment/20120928_Neil_Halstead_plays_on_a_learning_curve.html).",
+      "checked": "2026-10-26"
+    },
+    "slowdive>velvet-underground": {
+      "url": "https://www.inquirer.com/philly/entertainment/20120928_Neil_Halstead_plays_on_a_learning_curve.html",
+      "found": "When I was a kid, I remember listening to Dinosaur Jr., then reading a review or something, discovering Neil Young, and discovering the Velvet Underground because of the Jesus & Mary Chain.",
+      "verdict": "decide",
+      "note": "Goswell's list of influences on the track 'Slowdive' (UTR) not opened (blocked). Inquirer 2012 has Halstead 'discovering the Velvet Underground because of the Jesus & Mary Chain' (as a kid, then 'That's one of the really great things... It's all connected'): a discovery, mild first-person. PopMatters says both 'had a mutual love for the Smiths and the Velvet Underground' (journalist). Propose keep as fixed to Inquirer wording at lower confidence, or send UTR page to owner. (found text above uses straight quotes; page prints them with curly quotes and different wording order: check).",
+      "checked": "2026-10-26"
+    },
+    "slowdive>the-cure": {
+      "verdict": "not-found",
+      "note": "Page lives on undertheradarmag.com (unopenable by owner too): https://www.uncut.co.uk/features/slowdive-interviewed-the-destination-was-never-really-discussed-or-known-143507/ . Halstead 'we all really liked The Cure' not found (probably UTR 2014 page, blocked). Uncut 2023 only has Goswell: 'Nick, our bass player, he only really listens to the Cure'; Wikipedia says Chaplin's favourite band is the Cure. UTR: https://undertheradarmag.com/interviews/slowdive_-_neil_halstead_and_rachel_goswell_on_the_bands_that_inspired_them",
+      "checked": "2026-10-26"
+    },
+    "slowdive>the-smiths": {
+      "verdict": "not-found",
+      "note": "Page lives on undertheradarmag.com (unopenable by owner too): https://undertheradarmag.com/interviews/slowdive_-_neil_halstead_and_rachel_goswell_on_the_bands_that_inspired_them . Look for Goswell: 'I used to love The Smiths -- I still do -- and The Cure.' A search summary placed it in a UTR interview (possibly the 2017 'Rachel Goswell on the shoegazing icon's first album in 22 years', https://www.undertheradarmag.com/interviews/slowdive_-_rachel_goswell_on_the_shoegazing_icons_first_album_in_22_years/); neither opens. PopMatters (journalist) says Goswell and Halstead 'both had a mutual love for the Smiths'.",
+      "checked": "2026-10-26"
+    },
+    "slowdive>mudhoney": {
+      "url": "https://www.encyclopedia.com/education/news-wires-white-papers-and-books/slowdive",
+      "found": "“ We were all influenced by the same kinds of sounds, ” recalled Slowdive ’ s Neil Halstead in an interview with Corey Dubrowa for Magnet magazine. ‘ The Byrds, Pink Floyd, Loop, the Cocteau Twins, the [Jesus and] Mary Chain — even Mudhoney and Dinosaur Jr.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Neil Halstead to Corey Dubrowa, Magnet: \"We were all influenced by the same kinds of sounds. The Byrds, Pink Floyd, Loop, the Cocteau Twins, the [Jesus and] Mary Chain -- even Mudhoney and Dinosaur Jr.\"",
+      "note": "Read via Encyclopedia.com reprint, Magnet original not opened. Dates: Mudhoney's 1988 debut precedes Slowdive's 1990 debut EP.",
+      "checked": "2026-10-26"
+    },
+    "slowdive>new-order": {
+      "verdict": "not-found",
+      "note": "Page lives on undertheradarmag.com (unopenable by owner too): https://undertheradarmag.com/interviews/slowdive_-_neil_halstead_and_rachel_goswell_on_the_bands_that_inspired_them . Look for Goswell on Nick Chaplin: 'would probably say his bass playing was inspired in part by Simon Gallup and in part by Hooky from New Order.' Not found elsewhere; also a bassist's influence stated by Goswell, secondhand.",
+      "checked": "2026-10-26"
+    },
+    "the-smiths>the-stooges": {
+      "url": "https://loudersound.com/features/smiths-stooges-johnny-marr-favourite-record",
+      "found": "\"At the age of 14, I was starting to play guitar in a certain way and the name [of Stooges’ guitarist] James Williamson kept cropping up,\" Marr told The Quietus in 2015.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Johnny Marr to Spin (2012): \"I got the first two Stooges albums immediately after I got Raw Power, and I know every note and word on them.\"",
+      "note": "Same Louder page also quotes Marr to Spin 2012: 'I got the first two Stooges albums immediately after I got Raw Power , and I know every note and word on them.' ('an entire winter' and 'completely pivotal' not found on pages read; a search summary attributed 'an entire winter playing guitar along' to a Vinyl Writers reprint but read found no 'winter' there.) Also Far Out (faroutmagazine.co.uk/johnny-marr-copied-the-rolling-stones/): Marr 1986 'I had an idea to do a song that had the aggression of the Detroit garage bands, 'cos I'm such a Stooges fan'.",
+      "checked": "2026-10-26"
+    },
+    "the-smiths>new-york-dolls": {
+      "url": "https://en.wikipedia.org/wiki/Morrissey",
+      "found": "He was also a fan of American glam rock artists such as Sparks , Jobriath and the New York Dolls . [ 37 ] He formed a British fan club for the latter, attracting members through small adverts in the back pages of music magazines.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Morrissey was a fan of the New York Dolls as a teenager, ran their British fan club, and wrote a 1981 booklet about them; Johnny Marr, also a Dolls fan, was impressed enough by that book to knock on his door and propose forming a band.",
+      "note": "Wikipedia only (footnotes 37, 38 not followed). Marr's own 'girl-group guitar lineage through the Dolls' not found (one search, no hit). Tier lowered to reported.",
+      "checked": "2026-10-26"
+    },
+    "elliott-smith>big-star": {
+      "url": "https://faroutmagazine.co.uk/elliott-smith-five-favourite-folk-albums/",
+      "found": "Take, for instance, another of his folk favourites in the form of Radio City by Big Star: somehow the ill-fated backstory of the commercially floundering LP seems to be writ large across its spirit.",
+      "verdict": "decide",
+      "note": "The Far Out page is the writer's own list/essay about Smith's 'folk favourites', no quote or source from Smith. Not first-person. Propose remove, or keep only if another source (Smith interview) is found.",
+      "checked": "2026-10-26"
+    },
+    "elliott-smith>television": {
+      "url": "https://www.nme.com/?p=782397",
+      "found": "There are several. I think ‘Marquee Moon’ by Television and ‘The Marble Index’ by Nico (laughs).",
+      "verdict": "decide",
+      "note": "NME webchat (archive interview, 2000): answer to 'What is your perfect 2.45am album?'. Smith names Marquee Moon and The Marble Index, but it's a favourite late-night listen with no comment on shaping his music: a favourites answer. Propose lower confidence / keep only as 'favourite', or remove under the bare-favourites rule. Owner call.",
+      "checked": "2026-10-26"
+    },
+    "elliott-smith>nico": {
+      "url": "https://www.nme.com/?p=782397",
+      "found": "There are several. I think ‘Marquee Moon’ by Television and ‘The Marble Index’ by Nico (laughs).",
+      "verdict": "decide",
+      "note": "Same NME 2000 answer. The 'playing it for months' detail is only Far Out's paraphrase (faroutmagazine.co.uk/elliott-smith-favourite-albums-of-all-time/: 'There was even a time when he claimed to have only listened to that album for months at a time'), no source given. Favourites answer; propose remove or keep low.",
+      "checked": "2026-10-26"
+    },
+    "elliott-smith>nick-drake": {
+      "url": "https://faroutmagazine.co.uk/elliott-smith-favourite-albums-of-all-time/",
+      "found": "Perhaps one of his most obvious favourite albums is Pink Moon by Nick Drake.",
+      "verdict": "decide",
+      "note": "NME 2000 page does not mention Drake. Far Out is the writer's own assertion with no Smith quote. Propose remove unless a Smith interview naming Drake is found.",
+      "checked": "2026-10-26"
+    },
+    "godspeed-you-black-emperor>sonic-youth": {
+      "url": "https://exclaim.ca/music/article/godspeed_you_black_emperor_explain_why_they_are_a_rock_and_roll_band_first_and_foremost",
+      "found": "And we were probably definitely influenced by Sonic Youth a lot back then — or at least I was. And not that they [Sonic Youth] were playing 15-minute-long songs, but the idea of alternate tunings became very exciting to me.",
+      "verdict": "ok",
+      "note": "Speaker (Pezzente) and podcast 155 per the Exclaim article; Pezzente adds 'or at least I was' (his own view, not the whole band).",
+      "checked": "2026-10-26"
+    },
+    "talking-heads>the-stooges": {
+      "url": "https://faroutmagazine.co.uk/david-byrne-talking-heads-favourite-artists-musicians/",
+      "found": "“At the same time [as listening to The Stooges we, the Talking Heads and I, were listening to a lot of R&B,” Byrne added",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "David Byrne on BBC Desert Island Discs (2018), as reported by Far Out, picking the Stooges' \"I Wanna Be Your Dog\": the band came \"from somewhere you didn't know existed\"; he and the rest of Talking Heads were listening to the Stooges alongside a lot of R&B while forming the band.",
+      "note": "Far Out relays the episode; BBC page not opened. The 'from somewhere you didn't know existed' sentence is on the page in the preceding paragraph: 'When David Byrne appeared on Desert Island Discs on the BBC back in 2018, he made sure to deliver a slice of New York City in his selections with The Stooges’ ‘I Wanna Be Your Dog’, with the singer saying the band came “from somewhere you didn’t know existed.”' Not-quite-quoted: the 'listening' sentence's bracket is as printed.",
+      "checked": "2026-10-26"
+    },
+    "talking-heads>ramones": {
+      "url": "https://faroutmagazine.co.uk/david-byrne-talking-heads-favourite-artists-musicians/",
+      "found": "Frantz also revealed that all of the Talking Heads members loved the Ramones even though their punk contemporaries didn’t initially enjoy their brand of ‘new wave’ but eventually were won over.",
+      "verdict": "decide",
+      "note": "Wrong speaker: the 'Sure, they're gonna suck' line is Chris Frantz to the New York Post (relayed by Far Out), not Byrne on Desert Island Discs, and it's an anecdote about the CBGB slot, not influence. The only influence-like sentence is Far Out's paraphrase that all Talking Heads members loved the Ramones. Propose: lower to reported with that sentence and correct speaker to Frantz, or remove.",
+      "checked": "2026-10-26"
+    },
+    "mogwai>sonic-youth": {
+      "url": "https://www.slugmag.com/?p=13951",
+      "found": "SB: When we first started the band, we were all into Sonic Youth, Joy Division, My Bloody Valentine and other bands like that. I guess we just became more interested in minimal and electronic music as the years went by.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Stuart Braithwaite to Justin Burch, SLUG Magazine (Aug 2004): \"When we first started the band, we were all into Sonic Youth, Joy Division, My Bloody Valentine and other bands like that.\"",
+      "note": "Page URL also https://www.slugmag.com/music/interviews/music-interviews/mogwai-august-2004/ ; byline 'By Justin Burch, Esq.'. Same sentence supports joy-division and my-bloody-valentine.",
+      "checked": "2026-10-26"
+    },
+    "mogwai>joy-division": {
+      "url": "https://www.slugmag.com/?p=13951",
+      "found": "SB: When we first started the band, we were all into Sonic Youth, Joy Division, My Bloody Valentine and other bands like that. I guess we just became more interested in minimal and electronic music as the years went by.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Stuart Braithwaite to Justin Burch, SLUG Magazine (Aug 2004): \"When we first started the band, we were all into Sonic Youth, Joy Division, My Bloody Valentine and other bands like that.\"",
+      "note": "Glide Magazine 2011 corroboration not found (search did not surface it); dropped from citation.",
+      "checked": "2026-10-26"
+    },
+    "mogwai>my-bloody-valentine": {
+      "url": "https://www.slugmag.com/?p=13951",
+      "found": "SB: When we first started the band, we were all into Sonic Youth, Joy Division, My Bloody Valentine and other bands like that. I guess we just became more interested in minimal and electronic music as the years went by.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Stuart Braithwaite to Justin Burch, SLUG Magazine (Aug 2004): \"When we first started the band, we were all into Sonic Youth, Joy Division, My Bloody Valentine and other bands like that.\"",
+      "note": "Duplicated sentence in the old citation removed.",
+      "checked": "2026-10-26"
+    },
+    "mogwai>fugazi": {
+      "verdict": "not-found",
+      "note": "Slugmag Aug 2004 (read in full) has no Fugazi. Wikipedia lists Fugazi among Mogwai's incorporated influences only via The Rough Guide (Simmonds, 2003 Buckley ed.), not first-person. Not searched further.",
+      "checked": "2026-10-26"
+    },
+    "mogwai>aphex-twin": {
+      "url": "https://drownedinsound.com/in_depth/4141988-mixtape-monday--10-songs-that-influenced-mogwai-by-stuart-braithwaite",
+      "found": "Over the years we've definitely gotten more involved and appreciative of electronic music but I think that this song alongside a lot of early releases on the majestic WARP was something that we were listening to a lot.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Stuart Braithwaite, Drowned in Sound, \"Mixtape Monday: 10 Songs That Influenced Mogwai\" (Feb 14, 2011), on Aphex Twin's remix of Nine Inch Nails: \"Over the years we've definitely gotten more involved and appreciative of electronic music but I think that this song alongside a lot of early releases on the majestic WARP was something that we were listening to a lot.\"",
+      "note": "Slugmag 2004 does not mention Aphex Twin; DiS entry is for his remix of NIN 'At The Heart Of It All'. Mild: a listening-a-lot claim, owner may judge.",
+      "checked": "2026-10-26"
+    },
+    "mogwai>low": {
+      "url": "https://drownedinsound.com/in_depth/4141988-mixtape-monday--10-songs-that-influenced-mogwai-by-stuart-braithwaite",
+      "found": "Low were one of the first touring bands that we got to open for and i literally could not believe how amazing they were.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Stuart Braithwaite, Drowned in Sound, \"Mixtape Monday: 10 Songs That Influenced Mogwai\" (Feb 14, 2011): \"Low were one of the first touring bands that we got to open for and i literally could not believe how amazing they were.\" On their delays: \"I'm sure this inspired us to try a bit harder to use them a bit better.\"",
+      "note": "Next sentences on the page: 'I remember them playing this song and there being a massive mirror ball shining all over the sadly mostly empty room. I'm sure we were already using delays on our guitars but I'm sure this inspired us to try a bit harder to use them a bit better.' Slugmag 2004 has no Low.",
+      "checked": "2026-10-26"
+    },
+    "mogwai>neu": {
+      "url": "https://drownedinsound.com/in_depth/4141988-mixtape-monday--10-songs-that-influenced-mogwai-by-stuart-braithwaite",
+      "found": "When Brendan O'Hare joined us for a while in 1997 he introduced us to a lot of German rock music from the 70s and showed us Julian Cope's tremendous Krautrock sampler book. There's not much I can really say about Neu! that hasn't been said already to be honest. It's just fucking great.",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Stuart Braithwaite, Drowned in Sound, \"Mixtape Monday: 10 Songs That Influenced Mogwai\" (Feb 14, 2011), on Neu!'s \"Hallogallo\": \"When Brendan O'Hare joined us for a while in 1997 he introduced us to a lot of German rock music from the 70s and showed us Julian Cope's tremendous Krautrock sampler book.\"",
+      "note": "Slugmag 2004 has no Neu!; Glide 2011 'blatantly influenced by Neu! and Harmonia' not found. Listed as a song that influenced Mogwai; his comment is admiration.",
+      "checked": "2026-10-26"
+    },
+    "mogwai>kraftwerk": {
+      "verdict": "not-found",
+      "note": "Line of Best Fit 'From Young Team to Atomic' (Apr 2016): live URL 404s, archive copy (web.archive.org/web/20160413052640/http://www.thelineofbestfit.com/news/latest-news/from-young-team-to-atomic-stuart-braithwaite-on-twenty-years-of-mogwai) opens but has no 'Kraftwerk'. Wikipedia Mogwai says 'Braithwaite also listed Nirvana, Kraftwerk, and guitarist John McGeoch as personal influences' with footnotes 65, 67, 69 (not followed: out of searches). Drowned in Sound mixtape has no Kraftwerk.",
+      "checked": "2026-10-26"
+    },
+    "mogwai>the-cure": {
+      "url": "https://en.wikipedia.org/wiki/Stuart_Braithwaite",
+      "found": "Braithwaite grew up listening to records by The Cure, Joy Division, The Stooges, The Velvet Underground, Black Sabbath and other artists.",
+      "verdict": "decide",
+      "note": "The Bambarger quote ('my big sister's favorite band... first I learned to play on the guitar') was not found (one search). Wikipedia says only that Braithwaite grew up listening to The Cure (no footnote seen). Propose lower to reported with that sentence, or keep pending the Bambarger piece.",
+      "checked": "2026-10-26"
+    }
+  },
+  "candidates": [],
+  "offMap": [],
+  "finished": true
+}

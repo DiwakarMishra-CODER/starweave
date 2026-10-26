@@ -1,0 +1,301 @@
+{
+  "name": "retry1",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "retry",
+      "phase": "first-person",
+      "speaker": "various",
+      "links": [
+        {
+          "key": "alex-g>elliott-smith",
+          "from": "Alex G",
+          "to": "Elliott Smith",
+          "fromYear": 2010,
+          "toYear": 1994,
+          "citation": "Consequence (2015), \"Ruining Alex G\": \"I've been really influenced by Elliott Smith's singing style. When you sing like that, in a kind of whispery way... I do it for no other reason than it makes it easier to sing in tune, to hit all the notes correctly. And also I didn't want to wake my roommates.\" Corroborated in OndaRock: \"I listened to Elliott Smith a lot when I was younger, so it seems natural that my music might reflect his sound.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "arca>aphex-twin",
+          "from": "Arca",
+          "to": "Aphex Twin",
+          "fromYear": 2012,
+          "toYear": 1992,
+          "citation": "FADER's \"Arca Finds Xen\" (2014): her teenage project Nuuro consisted of \"glitchy, Aphex Twin-inspired beat compositions\"; GRAMMY.com quote: \"I have a brother seven years older... He had a lot of Aphex Twin, Squarepusher.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "I have a brother seven years older... He had a lot of Aphex Twin, Squarepusher.",
+            "speaker": "Arca"
+          }
+        },
+        {
+          "key": "arca>squarepusher",
+          "from": "Arca",
+          "to": "Squarepusher",
+          "fromYear": 2012,
+          "toYear": 1995,
+          "citation": "GRAMMY.com, Arca on her teenage listening: \"I have a brother seven years older... He had a lot of Aphex Twin, Squarepusher.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "depeche-mode>gary-numan",
+          "from": "Depeche Mode",
+          "to": "Gary Numan",
+          "fromYear": 1980,
+          "toYear": 1977,
+          "citation": "Depeche Mode's Wikipedia biography describes the band's synth sound as \"inspired by acts like Gary Numan and the Human League.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "geese>interpol",
+          "from": "Geese",
+          "to": "Interpol",
+          "fromYear": 2017,
+          "toYear": 1997,
+          "citation": "Rolling Stone feature/interview on Geese.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "geese>yeah-yeah-yeahs",
+          "from": "Geese",
+          "to": "Yeah Yeah Yeahs",
+          "fromYear": 2017,
+          "toYear": 2000,
+          "citation": "Foster Bassin, Still Listening: \"I was a big Strokes fan in middle school and high school. And you know, same with Interpol and the Yeah Yeah Yeahs.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7,
+          "why": {
+            "quote": "I was a big Strokes fan in middle school and high school. And you know, same with Interpol and the Yeah Yeah Yeahs.",
+            "speaker": "Geese"
+          }
+        },
+        {
+          "key": "mogwai>fugazi",
+          "from": "Mogwai",
+          "to": "Fugazi",
+          "fromYear": 1995,
+          "toYear": 1986,
+          "citation": "Slugmag, Justin Burch interview (Aug 13, 2004). Slugmag, Justin Burch interview (Aug 13, 2004).",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "my-bloody-valentine>the-jesus-and-mary-chain",
+          "from": "My Bloody Valentine",
+          "to": "The Jesus and Mary Chain",
+          "fromYear": 1983,
+          "toYear": 1983,
+          "citation": "Kevin Shields has called the Cocteau Twins/JAMC comparison \"garbage,\" but concedes Psychocandy as \"the shared record\" between the two bands' sounds.",
+          "sourceTier": "first-person",
+          "confidence": 0.65
+        },
+        {
+          "key": "nick-cave-and-the-bad-seeds>david-bowie",
+          "from": "Nick Cave & The Bad Seeds",
+          "to": "David Bowie",
+          "fromYear": 1983,
+          "toYear": 1969,
+          "citation": "Nick Cave told the German magazine Spex in 2013 that David Bowie was his idol, and that he owned all of Bowie's early albums along with the three Berlin records.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "siouxsie-and-the-banshees>david-bowie",
+          "from": "Siouxsie & The Banshees",
+          "to": "David Bowie",
+          "fromYear": 1976,
+          "toYear": 1969,
+          "citation": "NPR: Siouxsie Sioux grew up on Bowie and Lou Reed. AllMusic's prose bio recounts her head being turned seeing Bowie perform on television.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "sonic-youth>black-flag",
+          "from": "Sonic Youth",
+          "to": "Black Flag",
+          "fromYear": 1981,
+          "toYear": 1976,
+          "citation": "Lee Ranaldo, Wikipedia/Sonic Youth -- SST-label admiration rather than a direct sound-influence claim, flagged weaker-tier.",
+          "sourceTier": "first-person",
+          "confidence": 0.5
+        },
+        {
+          "key": "xiu-xiu>this-mortal-coil",
+          "from": "Xiu Xiu",
+          "to": "This Mortal Coil",
+          "fromYear": 2002,
+          "toYear": 1983,
+          "citation": "Jamie Stewart, Sun 13 (2024): \"They were really into the '80s... 4AD records like Bauhaus, This Mortal Coil, Cocteau Twins. The Wolfgang Press was another huge one for me.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "They were really into the '80s... 4AD records like Bauhaus, This Mortal Coil, Cocteau Twins. The Wolfgang Press was another huge one for me.",
+            "speaker": "Xiu Xiu"
+          }
+        },
+        {
+          "key": "arca>autechre",
+          "from": "Arca",
+          "to": "Autechre",
+          "fromYear": 2012,
+          "toYear": 1987,
+          "citation": "FADER (2014): \"Aided partly by his older brother's CD collection, he went through a series of musical obsessions... Aaliyah, Autechre, Nine Inch Nails, Marilyn Manson.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "arcade-fire>neutral-milk-hotel",
+          "from": "Arcade Fire",
+          "to": "Neutral Milk Hotel",
+          "fromYear": 2001,
+          "toYear": 1989,
+          "citation": "Red Bull Music Academy lecture, Win Butler: Merge had In the Aeroplane Over the Sea, \"a complete classic\"; he says Magnetic Fields and Neutral Milk were about as good as anything, and their dream was to be on Merge partly because of this record. rs500albums adds Butler has said this was the primary reason they signed with Merge.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "explosions-in-the-sky>tortoise",
+          "from": "Explosions in the Sky",
+          "to": "Tortoise",
+          "fromYear": 1999,
+          "toYear": 1990,
+          "citation": "Epigram Q&A (2023): \"it gave us a lot of inspiration to see bands like Mogwai and Tortoise making really cool music that had no vocals.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "it gave us a lot of inspiration to see bands like Mogwai and Tortoise making really cool music that had no vocals.",
+            "speaker": "Explosions in the Sky"
+          }
+        },
+        {
+          "key": "kurt-vile>velvet-underground",
+          "from": "Kurt Vile",
+          "to": "The Velvet Underground",
+          "fromYear": 2003,
+          "toYear": 1965,
+          "citation": "Kurt Vile said in an interview with Under the Radar in April 2022 that he grew up listening to the Velvet Underground.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "mazzy-star>nick-drake",
+          "from": "Mazzy Star",
+          "to": "Nick Drake",
+          "fromYear": 1988,
+          "toYear": 1968,
+          "citation": "David Roback, 1990: \"I've listened to Nick Drake -- there is a certain feeling in his music that I find very tangible and sad.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75,
+          "why": {
+            "quote": "I've listened to Nick Drake -- there is a certain feeling in his music that I find very tangible and sad.",
+            "speaker": "Mazzy Star"
+          }
+        },
+        {
+          "key": "perfume-genius>liz-phair",
+          "from": "Perfume Genius",
+          "to": "Liz Phair",
+          "fromYear": 2008,
+          "toYear": 1991,
+          "citation": "The Quietus's Baker's Dozen: on Exile in Guyville, Hadreas said \"this album changed music for me when I was about 12... hearing someone sing about it without apology and with power was just really helpful.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75,
+          "why": {
+            "quote": "this album changed music for me when I was about 12... hearing someone sing about it without apology and with power was just really helpful.",
+            "speaker": "Perfume Genius"
+          }
+        },
+        {
+          "key": "ride>mudhoney",
+          "from": "Ride",
+          "to": "Mudhoney",
+          "fromYear": 1988,
+          "toYear": 1988,
+          "citation": "Neil Halstead, quoted in Magnet, same account of Ride/Slowdive's shared touchstones naming Mudhoney and Dinosaur Jr.",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        },
+        {
+          "key": "the-postal-service>kraftwerk",
+          "from": "The Postal Service",
+          "to": "Kraftwerk",
+          "fromYear": 2001,
+          "toYear": 1970,
+          "citation": "Ben Gibbard, SPIN (Aug 2024): \"I grew up a huge Depeche Mode fan, a huge Kraftwerk fan... New Order.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "I grew up a huge Depeche Mode fan, a huge Kraftwerk fan... New Order.",
+            "speaker": "The Postal Service"
+          }
+        },
+        {
+          "key": "wolf-alice>the-replacements",
+          "from": "Wolf Alice",
+          "to": "The Replacements",
+          "fromYear": 2010,
+          "toYear": 1979,
+          "citation": "In Pitchfork's \"Perfect 10\" video series, Wolf Alice chose the Replacements' Tim, and one of the band described Paul Westerberg as \"super influential to me.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "xiu-xiu>cocteau-twins",
+          "from": "Xiu Xiu",
+          "to": "Cocteau Twins",
+          "fromYear": 2002,
+          "toYear": 1979,
+          "citation": "Jamie Stewart, Sun 13 (2024): \"They were really into the '80s... 4AD records like Bauhaus, This Mortal Coil, Cocteau Twins. The Wolfgang Press was another huge one for me.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "xiu-xiu>joy-division",
+          "from": "Xiu Xiu",
+          "to": "Joy Division",
+          "fromYear": 2002,
+          "toYear": 1976,
+          "citation": "The sticker on Xiu Xiu's debut album Knife Play lists what Jamie Stewart was listening to when his mother died -- Henry Cowell, Joy Division, Detroit techno, the Smiths, Takemitsu, Sabbath, Gamelan, \"Black Angels,\" and Cecil Taylor.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "xiu-xiu>nico",
+          "from": "Xiu Xiu",
+          "to": "Nico",
+          "fromYear": 2002,
+          "toYear": 1967,
+          "citation": "Stewart described the sonic direction of Angel Guts: Red Classroom as \"a mean, tight hearted, blackness of Neubauten vs Suicide vs Nico.\" (Vice)",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "xiu-xiu>swans",
+          "from": "Xiu Xiu",
+          "to": "Swans",
+          "fromYear": 2002,
+          "toYear": 1982,
+          "citation": "Jamie Stewart on Michael Gira, The Beijinger (2014): \"I admire that he has never given up, has never relented in his intensity, and that he continues, after 30 years, to change and grow his music... It is good to have that model before you.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        },
+        {
+          "key": "bark-psychosis>wire",
+          "from": "Bark Psychosis",
+          "to": "Wire",
+          "fromYear": 1986,
+          "toYear": 1976,
+          "citation": "Audrie's Diary zine, 1994, Graham Sutton interview (per Wikipedia citation): \"Other early influences included Sonic Youth, Talk Talk, Wire, Butthole Surfers, Big Black, Swans and Joy Division.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    }
+  ]
+}

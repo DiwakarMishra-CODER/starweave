@@ -1,0 +1,34 @@
+{
+  "agent": "owner1",
+  "searches": 0,
+  "toolStatus": "slides of the Baker's Dozen open through read at their own /N/ URLs",
+  "finished": true,
+  "entries": {
+    "the-flaming-lips>yo-la-tengo": {
+      "url": "https://thequietus.com/interviews/bakers-dozen/flaming-lips-wayne-coyne-interview-favourite-albums/5/",
+      "found": "We would end up listening to them almost by accident. There have been a couple of times where we would do these long drives and we’d put on a record like Boris or Yo La Tengo, and they’ll have songs that go on for ten minutes, and you’re getting into these big soundscapes that just dig into oblivion.",
+      "citation": "Wayne Coyne, choosing Yo La Tengo's Popular Songs for his Quietus Baker's Dozen: \"We would end up listening to them almost by accident... you're getting into these big soundscapes that just dig into oblivion. We've really embraced that in the past couple of years: to find this perfect goal, a sound you can play over and over... to get to the edge and stay there. And they do that great.\"",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "note": "owner opened the slideshow; slide 5 of the Baker's Dozen"
+    }
+  },
+  "candidates": [
+    {
+      "source": "the-flaming-lips",
+      "target": "lcd-soundsystem",
+      "kind": "influence",
+      "speaker": "Wayne Coyne",
+      "sentence": "We’ve played with them quite a few times over the last couple of years, getting to know James Murphy and hearing that music in unexpected places. I love them now.",
+      "url": "https://thequietus.com/interviews/bakers-dozen/flaming-lips-wayne-coyne-interview-favourite-albums/8/"
+    }
+  ],
+  "offMap": [
+    {
+      "name": "Boris",
+      "namedBy": "the-flaming-lips",
+      "sentence": "There have been a couple of times where we would do these long drives and we’d put on a record like Boris or Yo La Tengo, and they’ll have songs that go on for ten minutes, and you’re getting into these big soundscapes that just dig into oblivion.",
+      "url": "https://thequietus.com/interviews/bakers-dozen/flaming-lips-wayne-coyne-interview-favourite-albums/5/"
+    }
+  ]
+}

@@ -1,0 +1,445 @@
+{
+  "name": "c5",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:new-order",
+      "phase": "first-person",
+      "speaker": "New Order",
+      "links": [
+        {
+          "key": "new-order>kraftwerk",
+          "from": "New Order",
+          "to": "Kraftwerk",
+          "fromYear": 1980,
+          "toYear": 1970,
+          "citation": "Bernard Sumner: \"Blue Monday was influenced by Sylvester, by Kraftwerk... Ian used to bring Kraftwerk records to rehearsals.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "new-order>cabaret-voltaire",
+          "from": "New Order",
+          "to": "Cabaret Voltaire",
+          "fromYear": 1980,
+          "toYear": 1973,
+          "citation": "Wikipedia/Cabaret Voltaire: Bernard Sumner said Cabaret Voltaire helped him understand \"one could make music without guitars.\" Also corroborated on New Order's own Wikipedia page, crediting the songwriting shift to \"English electronic groups such as Cabaret Voltaire, the Human League, and OMD.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:nirvana",
+      "phase": "first-person",
+      "speaker": "Nirvana",
+      "links": [
+        {
+          "key": "nirvana>pixies",
+          "from": "Nirvana",
+          "to": "Pixies",
+          "fromYear": 1987,
+          "toYear": 1986,
+          "citation": "Rolling Stone 1994: Cobain says he was aiming at the ultimate pop song and was \"basically trying to rip off the Pixies,\" and admits it outright.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "nirvana>sonic-youth",
+          "from": "Nirvana",
+          "to": "Sonic Youth",
+          "fromYear": 1987,
+          "toYear": 1981,
+          "citation": "Live Nirvana archive, Apr 1992: asked who he'd put on a bill, names Mudhoney, Sonic Youth, Pixies or Breeders, Shonen Knife, Jesus Lizard, Melvins. Also NPR's \"50 Artists Who Inspired Kurt Cobain.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "nirvana>dinosaur-jr",
+          "from": "Nirvana",
+          "to": "Dinosaur Jr.",
+          "fromYear": 1987,
+          "toYear": 1984,
+          "citation": "1992 interview: lists bands he likes -- Breeders, Pixies, R.E.M., Jesus Lizard, Urge Overkill, Beat Happening, Dinosaur Jr, Flipper.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "nirvana>rem",
+          "from": "Nirvana",
+          "to": "R.E.M.",
+          "fromYear": 1987,
+          "toYear": 1980,
+          "citation": "A 1992 interview in which Cobain lists the bands he likes: the Breeders, Pixies, R.E.M., the Jesus Lizard, Urge Overkill, Beat Happening, Dinosaur Jr and Flipper.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "nirvana>the-jesus-lizard",
+          "from": "Nirvana",
+          "to": "The Jesus Lizard",
+          "fromYear": 1987,
+          "toYear": 1987,
+          "citation": "The same 1992 interview listing the bands Cobain likes -- the Breeders, Pixies, R.E.M., the Jesus Lizard, Urge Overkill, Beat Happening, Dinosaur Jr and Flipper -- and, in the Live Nirvana archive for April 1992, his answer about who he would put on a bill.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "nirvana>velvet-underground",
+          "from": "Nirvana",
+          "to": "The Velvet Underground",
+          "fromYear": 1987,
+          "toYear": 1965,
+          "citation": "Roy Trakin asked about Iggy/Stooges/Velvets/Lou Reed; Cobain affirmed and called it some of his favourite music.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "nirvana>the-stooges",
+          "from": "Nirvana",
+          "to": "The Stooges",
+          "fromYear": 1987,
+          "toYear": 1967,
+          "citation": "Roy Trakin asked Kurt Cobain about Iggy and the Stooges, the Velvet Underground and Lou Reed; Cobain affirmed all of it and called it some of his favourite music.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "nirvana>black-flag",
+          "from": "Nirvana",
+          "to": "Black Flag",
+          "fromYear": 1987,
+          "toYear": 1976,
+          "citation": "Interview 1991: sold off his hard-rock records and got into MDC and Black Flag.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "nirvana>swans",
+          "from": "Nirvana",
+          "to": "Swans",
+          "fromYear": 1987,
+          "toYear": 1982,
+          "citation": "Swans' 1984 EP Young God appears at number 50 on the handwritten list of favourite albums Kurt Cobain kept in his journals, published as Journals in 2002 -- he wrote it down as \"Raping a Slave,\" the name of its opening track.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "nirvana>neil-young",
+          "from": "Nirvana",
+          "to": "Neil Young",
+          "fromYear": 1987,
+          "toYear": 1966,
+          "citation": "Kurt Cobain told Les Inrockuptibles in 1993 that he had unbounded admiration for Neil Young, calling his career exemplary -- he did everything, tried everything, and never gave people what they expected.",
+          "sourceTier": "first-person",
+          "confidence": 0.55
+        },
+        {
+          "key": "nirvana>ramones",
+          "from": "Nirvana",
+          "to": "Ramones",
+          "fromYear": 1987,
+          "toYear": 1974,
+          "citation": "Discussing the new-wave strand of his own record collection, Kurt Cobain named the B-52's, Devo, and the Ramones in the same breath.",
+          "sourceTier": "first-person",
+          "confidence": 0.6
+        },
+        {
+          "key": "nirvana>the-breeders",
+          "from": "Nirvana",
+          "to": "The Breeders",
+          "fromYear": 1987,
+          "toYear": 1989,
+          "citation": "Kurt Cobain in Melody Maker (1992), on Pod: \"The main reason I like them is for their songs, for the way they structure them, which is totally unique, very atmospheric.\" He also said \"I wish Kim was allowed to write more songs for the Pixies, because 'Gigantic' is the best Pixies song, and Kim wrote it.\" Kim Deal has separately said she believes Nirvana hired Steve Albini for In Utero because of Pod.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:american-football",
+      "phase": "first-person",
+      "speaker": "American Football",
+      "links": [
+        {
+          "key": "american-football>fugazi",
+          "from": "American Football",
+          "to": "Fugazi",
+          "fromYear": 1997,
+          "toYear": 1986,
+          "citation": "Steve Holmes, Crack Magazine: \"The single most important band of the 90s was Fugazi\" (corroborated by Wikipedia/Rolling Stone). Read as historical/scene acknowledgment rather than a sonic.",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        },
+        {
+          "key": "american-football>slint",
+          "from": "American Football",
+          "to": "Slint",
+          "fromYear": 1997,
+          "toYear": 1986,
+          "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016): \"Tortoise and post-rock bands like Slint were an influence.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "american-football>nick-drake",
+          "from": "American Football",
+          "to": "Nick Drake",
+          "fromYear": 1997,
+          "toYear": 1968,
+          "citation": "Steve Holmes, quoted in Paste Magazine, Matt Mitchell, \"American Football's Silver Jubilee\" (Sept 16, 2024): the band leaned toward \"slow, quiet, pretty songs more influenced by Red House Painters and Nick Drake\" than the post-hardcore/emo sound around them; independently corroborated by the same account in Steve Holmes' Vice oral history \"Never Meant\" (Feb 2, 2016). Airtight, directly quoted, first-person.",
+          "sourceTier": "first-person",
+          "confidence": 0.9
+        },
+        {
+          "key": "american-football>red-house-painters",
+          "from": "American Football",
+          "to": "Red House Painters",
+          "fromYear": 1997,
+          "toYear": 1988,
+          "citation": "Steve Holmes, quoted in Paste Magazine, Matt Mitchell, \"American Football's Silver Jubilee\" (Sept 16, 2024): the band leaned toward \"slow, quiet, pretty songs more influenced by Red House Painters and Nick Drake\" than the post-hardcore/emo sound around them; independently corroborated by the same account in Steve Holmes' Vice oral history \"Never Meant\" (Feb 2, 2016). Airtight, directly quoted, first-person. Steve Holmes, Paste Magazine (Sept 16, 2024) / Vice oral history (Feb 2, 2016) --.",
+          "sourceTier": "first-person",
+          "confidence": 0.9
+        },
+        {
+          "key": "american-football>elliott-smith",
+          "from": "American Football",
+          "to": "Elliott Smith",
+          "fromYear": 1997,
+          "toYear": 1994,
+          "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016).",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "american-football>slowdive",
+          "from": "American Football",
+          "to": "Slowdive",
+          "fromYear": 1997,
+          "toYear": 1989,
+          "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016). Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016).",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "american-football>my-bloody-valentine",
+          "from": "American Football",
+          "to": "My Bloody Valentine",
+          "fromYear": 1997,
+          "toYear": 1983,
+          "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016). Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016).",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "american-football>can",
+          "from": "American Football",
+          "to": "Can",
+          "fromYear": 1997,
+          "toYear": 1968,
+          "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016). Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016).",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "american-football>the-smiths",
+          "from": "American Football",
+          "to": "The Smiths",
+          "fromYear": 1997,
+          "toYear": 1982,
+          "citation": "Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016). Steve Holmes, Vice oral history \"Never Meant\" (Feb 2, 2016).",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:pavement",
+      "phase": "first-person",
+      "speaker": "Pavement",
+      "links": [
+        {
+          "key": "pavement>rem",
+          "from": "Pavement",
+          "to": "R.E.M.",
+          "fromYear": 1989,
+          "toYear": 1980,
+          "citation": "Their own song \"Unseen Power of the Picket Fence\" is Malkmus's tribute to R.E.M.'s Reckoning.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "pavement>slint",
+          "from": "Pavement",
+          "to": "Slint",
+          "fromYear": 1989,
+          "toYear": 1986,
+          "citation": "Bob Nastanovich (Pavement) ranked Spiderland among his favorite albums -- Rob Jovanovic, Perfect Sound Forever (2004).",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "pavement>the-fall",
+          "from": "Pavement",
+          "to": "The Fall",
+          "fromYear": 1989,
+          "toYear": 1976,
+          "citation": "Malkmus has described one Pavement song outright as \"Fall-influenced,\" calling its beat \"a mid-period Fall approximation.\" Mark E. Smith's complaint about \"mere Fall copyists\" was originally misread as a denial; he was complaining about being copied, which corroborates the influence rather than disputing it.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:ramones",
+      "phase": "first-person",
+      "speaker": "Ramones",
+      "links": [
+        {
+          "key": "ramones>the-stooges",
+          "from": "Ramones",
+          "to": "The Stooges",
+          "fromYear": 1974,
+          "toYear": 1967,
+          "citation": "Tommy Ramone named the Stooges among the band's direct influences in his Rock and Roll Hall of Fame induction remarks, a list he kept explicit and separate from the CBGB peers he named elsewhere; Joey Ramone made the same point in a 1991 interview.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "ramones>new-york-dolls",
+          "from": "Ramones",
+          "to": "New York Dolls",
+          "fromYear": 1974,
+          "toYear": 1971,
+          "citation": "Tommy Ramone named the New York Dolls among the same influences list in his Rock and Roll Hall of Fame induction remarks, corroborated by Joey Ramone in a 1991 interview.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "ramones>velvet-underground",
+          "from": "Ramones",
+          "to": "The Velvet Underground",
+          "fromYear": 1974,
+          "toYear": 1965,
+          "citation": "Both Tommy Ramone's Rock and Roll Hall of Fame remarks and Joey Ramone's 1991 interview name Lou Reed specifically among their influences, predating the band by several years and falling within the Velvet Underground's own active period.",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        },
+        {
+          "key": "ramones>mc5",
+          "from": "Ramones",
+          "to": "MC5",
+          "fromYear": 1974,
+          "toYear": 1964,
+          "citation": "Tommy Ramone named MC5 first among the band's influences in his Rock and Roll Hall of Fame induction remarks, corroborated by Joey Ramone's 1991 interview naming MC5 alongside the Stooges and the New York Dolls.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:rem",
+      "phase": "first-person",
+      "speaker": "R.E.M.",
+      "links": [
+        {
+          "key": "rem>velvet-underground",
+          "from": "R.E.M.",
+          "to": "The Velvet Underground",
+          "fromYear": 1980,
+          "toYear": 1965,
+          "citation": "Peter Buck got talking to Michael Stipe over the Patti Smith and Velvet Underground albums Stipe was buying at the record shop where Buck worked.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:snail-mail",
+      "phase": "first-person",
+      "speaker": "Snail Mail",
+      "links": [
+        {
+          "key": "snail-mail>liz-phair",
+          "from": "Snail Mail",
+          "to": "Liz Phair",
+          "fromYear": 2015,
+          "toYear": 1991,
+          "citation": "Lindsey Jordan named Liz Phair in the same 2016 9:30 Club interview in which she named Grouper, Broadcast, Joni Mitchell, Psychic TV and Beat Happening as artists she was listening to while writing Habit.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "snail-mail>grouper",
+          "from": "Snail Mail",
+          "to": "Grouper",
+          "fromYear": 2015,
+          "toYear": 2005,
+          "citation": "Lindsey Jordan said in a 2016 interview at the 9:30 Club, posted to Tumblr, that while writing Habit she was listening to a lot of Grouper, Broadcast, Joni Mitchell, Psychic TV, Beat Happening and Liz Phair, adding that not all of them influenced the album stylistically but she had learned from their songwriting, which she called articulate and inspirational.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "snail-mail>broadcast",
+          "from": "Snail Mail",
+          "to": "Broadcast",
+          "fromYear": 2015,
+          "toYear": 1995,
+          "citation": "The same 2016 9:30 Club interview names Broadcast alongside Grouper, Joni Mitchell, Psychic TV, Beat Happening and Liz Phair as artists Lindsey Jordan was listening to while writing Habit.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "snail-mail>sleater-kinney",
+          "from": "Snail Mail",
+          "to": "Sleater-Kinney",
+          "fromYear": 2015,
+          "toYear": 1994,
+          "citation": "Lindsey Jordan told Modern Girls in 2017 that she got into punk in middle school and was \"really into Sleater-Kinney and Bratmobile.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "snail-mail>beach-house",
+          "from": "Snail Mail",
+          "to": "Beach House",
+          "fromYear": 2015,
+          "toYear": 2004,
+          "citation": "In the same Modern Girls interview, Jordan named Beach House among the indie bands with \"thorough songwriting\" that will \"always be faves.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "snail-mail>bratmobile",
+          "from": "Snail Mail",
+          "to": "Bratmobile",
+          "fromYear": 2015,
+          "toYear": 1991,
+          "citation": "The same Modern Girls quote in which Jordan names Sleater-Kinney also names Bratmobile as a band she got into during middle school.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "snail-mail>sharon-van-etten",
+          "from": "Snail Mail",
+          "to": "Sharon Van Etten",
+          "fromYear": 2015,
+          "toYear": 2005,
+          "citation": "The same Modern Girls interview in which Jordan named Beach House also named Sharon Van Etten among her lasting favorites.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "snail-mail>joni-mitchell",
+          "from": "Snail Mail",
+          "to": "Joni Mitchell",
+          "fromYear": 2015,
+          "toYear": 1964,
+          "citation": "Lindsey Jordan named Joni Mitchell in the same 2016 9:30 Club interview in which she named Grouper, Broadcast and Liz Phair as artists she was listening to while writing Habit.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    }
+  ]
+}

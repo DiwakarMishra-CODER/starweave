@@ -1,0 +1,374 @@
+{
+  "agent": "c6",
+  "searches": 15,
+  "finished": true,
+  "toolStatus": "WebSearch fine. undertheradarmag.com and thetimes.com opened only as web.archive.org copies; theredhandfiles.com could not be opened; younggodrecords.com, scaruffi.com, uncut.co.uk, premierguitar.com opened.",
+  "entries": {
+    "ride>my-bloody-valentine": {
+      "verdict": "fixed",
+      "url": "https://www.premierguitar.com/artists/guitarists/rides-andy-bell-addicted-to-noise",
+      "found": "My Bloody Valentine was hugely influential on the bass sound—the overall dreaminess of the guitars, even the drums, and our overall production. We had become addicted to noise.",
+      "citation": "Andy Bell to Premier Guitar: \"My Bloody Valentine was hugely influential on the bass sound... We had become addicted to noise.\"",
+      "note": "Speaker is Andy Bell, not Mark Bell.",
+      "checked": "2026-10-26"
+    },
+    "ride>sonic-youth": {
+      "verdict": "fixed",
+      "url": "https://www.premierguitar.com/artists/guitarists/rides-andy-bell-addicted-to-noise",
+      "found": "But when you listen back, you can easily tell when it was we'd heard Sonic Youth, because we immediately started to employ noise techniques.",
+      "citation": "Andy Bell to Premier Guitar: \"you can easily tell when it was we'd heard Sonic Youth, because we immediately started to employ noise techniques... Songs like \"Nowhere\" and \"Seagull\" came out of that.\"",
+      "note": "Speaker is Andy Bell, not Mark Bell.",
+      "checked": "2026-10-26"
+    },
+    "ride>the-jesus-and-mary-chain": {
+      "verdict": "not-found",
+      "note": "MusicRadar quote (Mary Chain, the Valentines, House Of Love, Spacemen 3) not found: 2 searches; opened musicradar.com Andy Bell Rickenbacker piece and Gardener interview, neither carries it. Speaker would be Andy Bell, not Mark. FACT 2015 says in its own voice Ride smashed together MBV, House of Love and the Mary Chain (critic) but that is not the Bell quote.",
+      "checked": "2026-10-26"
+    },
+    "ride>the-stone-roses": {
+      "verdict": "ok",
+      "url": "https://web.archive.org/web/20230623212403/https://www.undertheradarmag.com/interviews/ride_on_nowhere_mark_gardener_and_andy_bell",
+      "found": "“Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses,” says Bell. “As well as older stuff like The Beatles, Stones, the Velvets, and the Stooges.”",
+      "checked": "2026-10-26"
+    },
+    "ride>dinosaur-jr": {
+      "verdict": "ok",
+      "url": "https://web.archive.org/web/20230623212403/https://www.undertheradarmag.com/interviews/ride_on_nowhere_mark_gardener_and_andy_bell",
+      "found": "“Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses,” says Bell. “As well as older stuff like The Beatles, Stones, the Velvets, and the Stooges.”",
+      "checked": "2026-10-26"
+    },
+    "ride>pixies": {
+      "verdict": "ok",
+      "url": "https://web.archive.org/web/20230623212403/https://www.undertheradarmag.com/interviews/ride_on_nowhere_mark_gardener_and_andy_bell",
+      "found": "“Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses,” says Bell. “As well as older stuff like The Beatles, Stones, the Velvets, and the Stooges.”",
+      "checked": "2026-10-26"
+    },
+    "ride>the-fall": {
+      "verdict": "ok",
+      "url": "https://web.archive.org/web/20230623212403/https://www.undertheradarmag.com/interviews/ride_on_nowhere_mark_gardener_and_andy_bell",
+      "found": "“Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses,” says Bell. “As well as older stuff like The Beatles, Stones, the Velvets, and the Stooges.”",
+      "checked": "2026-10-26"
+    },
+    "ride>velvet-underground": {
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/20230623212403/https://www.undertheradarmag.com/interviews/ride_on_nowhere_mark_gardener_and_andy_bell",
+      "found": "“Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses,” says Bell. “As well as older stuff like The Beatles, Stones, the Velvets, and the Stooges.”",
+      "citation": "Andy Bell to Under the Radar (2013): \"Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses... As well as older stuff like The Beatles, Stones, the Velvets, and the Stooges.\"",
+      "note": "MusicRadar quote not found; the same speaker names the Velvets in Under the Radar. Page opened via the web.archive.org copy.",
+      "checked": "2026-10-26"
+    },
+    "ride>the-stooges": {
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/20230623212403/https://www.undertheradarmag.com/interviews/ride_on_nowhere_mark_gardener_and_andy_bell",
+      "found": "“Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses,” says Bell. “As well as older stuff like The Beatles, Stones, the Velvets, and the Stooges.”",
+      "citation": "Andy Bell to Under the Radar (2013): \"Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses... As well as older stuff like The Beatles, Stones, the Velvets, and the Stooges.\"",
+      "note": "MusicRadar quote not found; the same speaker names the Stooges in Under the Radar. Page opened via the web.archive.org copy.",
+      "checked": "2026-10-26"
+    },
+    "ride>mudhoney": {
+      "verdict": "not-found",
+      "note": "Citation attributes it to Neil Halstead (Slowdive) in Magnet; one search found no such page and Mudhoney is on no Ride page read (Under the Radar, Premier Guitar, FACT, Fused). Likely wrong band; propose remove unless owner has the Magnet page.",
+      "checked": "2026-10-26"
+    },
+    "the-jesus-and-mary-chain>velvet-underground": {
+      "verdict": "ok",
+      "url": "https://www.rollingstone.com/music/music-news/jesus-and-mary-chain-look-back-on-30-years-of-psychocandy-75675/2",
+      "found": "The punk thing was a massive influence on the Mary Chain. After that, we got seriously into the Velvets and the Stooges.",
+      "checked": "2026-10-26"
+    },
+    "the-jesus-and-mary-chain>the-birthday-party": {
+      "verdict": "decide",
+      "url": "https://www.rollingstone.com/music/music-news/jesus-and-mary-chain-look-back-on-30-years-of-psychocandy-75675/2",
+      "found": "The bands that didn’t make us want to puke back then were the likes of the Birthday Party or Echo and the Bunnymen.",
+      "note": "They only say these bands did not make them want to puke, in a passage about being unimpressed by 80s music. Not a fan statement; propose remove (or lower).",
+      "checked": "2026-10-26"
+    },
+    "dinosaur-jr>neil-young": {
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://en.wikipedia.org/wiki/Dinosaur_Jr.",
+      "found": "After high school, they began exploring slower yet still aggressive music like Black Sabbath, the Replacements, and Neil Young.",
+      "citation": "Wikipedia's Dinosaur Jr. article: after high school, Mascis and Barlow began exploring slower yet still aggressive music like Black Sabbath, the Replacements and Neil Young.",
+      "note": "MOJO 'J loved The Zombies and Neil Young' not found (2 searches; SPIN oral-history excerpt, Clash excerpt read, no match). found text is from the wikitext at action=raw with markup removed; footnote there is Spin 2012 and the Spin page doesn't carry Neil Young. Tier lowered to reported.",
+      "checked": "2026-10-26"
+    },
+    "omd>kraftwerk": {
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://web.archive.org/web/20260225171731/https://www.thetimes.com/sunday-times-rich-list/profile/article/why-omd-are-embarrassed-to-be-back-rzvkkz8bt5c",
+      "found": "One song on the new album, rfwk , is a love letter to Kraftwerk. Back then, the German electro pioneers ruled their world.",
+      "citation": "The Times (2010): OMD's new album includes a love letter to Kraftwerk, who \"ruled their world\" back then, with the Velvet Underground, David Bowie, Neu, Roxy Music and Brian Eno also named as influences.",
+      "note": "Wikipedia's OMD bio ('primary musical influence', McCluskey on Autobahn) footnotes this Times piece, but the Autobahn line is not on the page read; page opened via archive copy. The Times states it in its own voice, so tier lowered to reported; McCluskey's own quote on the page is 'Everybody else was shit to us'.",
+      "checked": "2026-10-26"
+    },
+    "the-replacements>ramones": {
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "url": "https://en.wikipedia.org/wiki/The_Replacements_(band)",
+      "found": "The Replacements' music was influenced by rock artists such as the Rolling Stones, the Beatles, Faces, Big Star, Slade, Badfinger, Creedence Clearwater Revival, and Bob Dylan as well as punk rock bands including the Ramones, the New York Dolls, the Buzzcocks, the Damned and the Sex Pistols.",
+      "citation": "Wikipedia's article on the band says the Replacements' music was influenced by punk rock bands including the Ramones, the New York Dolls, the Buzzcocks, the Damned and the Sex Pistols.",
+      "note": "2004 Westerberg radio interview ('Judy Is a Punk') not found (1 search; Rolling Stone and Current pages read, no match). Only a Wikipedia claim; its footnote (marker [12]/[13]) not followed. Rolling Stone 1980s profile only says their sound is 'chainsaw Ramones' (resemblance).",
+      "checked": "2026-10-26"
+    },
+    "unwound>black-flag": {
+      "verdict": "ok",
+      "url": "https://www.scaruffi.com/interv/unwound.html",
+      "found": "We were into the Melvins alot and Nirvana, but more influenced by the DC punk thing happening back then and just more interesting US hardcore(husker du/black flag/mission of burma) and punk from England(wire/gang of 4/joy division).",
+      "note": "Interview page doesn't name the speaker in the paragraph; reads as Unwound ('we'); Wikipedia attributes it to Trosper (1999 Scaruffi interview).",
+      "checked": "2026-10-26"
+    },
+    "unwound>husker-du": {
+      "verdict": "ok",
+      "url": "https://www.scaruffi.com/interv/unwound.html",
+      "found": "We were into the Melvins alot and Nirvana, but more influenced by the DC punk thing happening back then and just more interesting US hardcore(husker du/black flag/mission of burma) and punk from England(wire/gang of 4/joy division).",
+      "note": "Interview page doesn't name the speaker in the paragraph; reads as Unwound ('we'); Wikipedia attributes it to Trosper (1999 Scaruffi interview).",
+      "checked": "2026-10-26"
+    },
+    "unwound>wire": {
+      "verdict": "ok",
+      "url": "https://www.scaruffi.com/interv/unwound.html",
+      "found": "We were into the Melvins alot and Nirvana, but more influenced by the DC punk thing happening back then and just more interesting US hardcore(husker du/black flag/mission of burma) and punk from England(wire/gang of 4/joy division).",
+      "note": "Interview page doesn't name the speaker in the paragraph; reads as Unwound ('we'); Wikipedia attributes it to Trosper (1999 Scaruffi interview).",
+      "checked": "2026-10-26"
+    },
+    "unwound>gang-of-four": {
+      "verdict": "ok",
+      "url": "https://www.scaruffi.com/interv/unwound.html",
+      "found": "We were into the Melvins alot and Nirvana, but more influenced by the DC punk thing happening back then and just more interesting US hardcore(husker du/black flag/mission of burma) and punk from England(wire/gang of 4/joy division).",
+      "note": "Interview page doesn't name the speaker in the paragraph; reads as Unwound ('we'); Wikipedia attributes it to Trosper (1999 Scaruffi interview).",
+      "checked": "2026-10-26"
+    },
+    "unwound>joy-division": {
+      "verdict": "ok",
+      "url": "https://www.scaruffi.com/interv/unwound.html",
+      "found": "We were into the Melvins alot and Nirvana, but more influenced by the DC punk thing happening back then and just more interesting US hardcore(husker du/black flag/mission of burma) and punk from England(wire/gang of 4/joy division).",
+      "note": "Interview page doesn't name the speaker in the paragraph; reads as Unwound ('we'); Wikipedia attributes it to Trosper (1999 Scaruffi interview).",
+      "checked": "2026-10-26"
+    },
+    "unwound>fugazi": {
+      "verdict": "decide",
+      "url": "https://www.scaruffi.com/interv/unwound.html",
+      "found": "We were into the Melvins alot and Nirvana, but more influenced by the DC punk thing happening back then and just more interesting US hardcore(husker du/black flag/mission of burma) and punk from England(wire/gang of 4/joy division).",
+      "note": "Scaruffi interview says only 'the DC punk thing'; Fugazi is not named on the page, nor in Treble or Stereogum (Sara Lund) pages read. Wikipedia lists Fugazi among influences unreferenced. Propose lower to reported/critic or remove; the citation's 'AllMusic/Fred Thomas' not checked.",
+      "checked": "2026-10-26"
+    },
+    "unwound>the-jesus-lizard": {
+      "verdict": "fixed",
+      "url": "https://www.stereogum.com/1201722/turntable-interview-sarah-lund-unwound/franchises/turntable-interview/",
+      "found": "Andrew was in a band called Irving Klaw Trio, who I should also load into the queue... he is from NYC and was a huge JSBE fan and I was from the midwest and was a huge Jesus Lizard fan",
+      "citation": "Sara Lund to Stereogum, Turntable Interview (2012), on seeing the Jesus Lizard in Portland in 1993: \"I was from the midwest and was a huge Jesus Lizard fan.\"",
+      "note": "Fan statement, not explicitly about shaping Unwound's music; passes under the owner's 'fan' ruling.",
+      "checked": "2026-10-26"
+    },
+    "neu>velvet-underground": {
+      "verdict": "ok",
+      "url": "https://uncut.co.uk/?p=39316",
+      "found": "KD: For me, it’s a different story. Velvet Underground was in there. Also The Beatles, several years before, like Michael said, also The Stones, all the big ones I would say. Well, not all the big ones.",
+      "note": "Rother: 'That was in the background too, yeah.' (MR). Page opened via r.jina.ai.",
+      "checked": "2026-10-26"
+    },
+    "nick-cave-and-the-bad-seeds>david-bowie": {
+      "verdict": "not-found",
+      "note": "Spex 2013 not found (1 search). Wikipedia says only that Cave's school band covered Bowie, Reed, Roxy. Far Out has a Cave piece on Bowie ('a certain kind of immortality', https://faroutmagazine.co.uk/the-star-nick-cave-hailed-as-immortal/) that was not checked for an influence statement.",
+      "checked": "2026-10-26"
+    },
+    "nick-cave-and-the-bad-seeds>leonard-cohen": {
+      "verdict": "fixed",
+      "url": "https://faroutmagazine.co.uk/nick-cave-10-favourite-songs/",
+      "found": "Leonard Cohen – ‘Avalanche’",
+      "citation": "Nick Cave in the Red Hand Files, on his ten \"hiding songs\" (\"They are the essential pillars that hold up the structure of my artistic world\"): Leonard Cohen's \"Avalanche\" is on the list.",
+      "note": "Red Hand Files page itself could not be opened (tried 3 URLs); page is Far Out's, which quotes Cave's text and lists the ten. Issue number #16 unconfirmed. The list is unranked in his words (citation said 'ranks first/second'); he says the songs hold up 'the structure of my artistic world', which is more than a bare list.",
+      "checked": "2026-10-26"
+    },
+    "nick-cave-and-the-bad-seeds>karen-dalton": {
+      "verdict": "fixed",
+      "url": "https://faroutmagazine.co.uk/nick-cave-10-favourite-songs/",
+      "found": "Karen Dalton – ‘Katie Cruel’",
+      "citation": "Nick Cave in the Red Hand Files, on his ten \"hiding songs\" (\"They are the essential pillars that hold up the structure of my artistic world\"): Karen Dalton's \"Katie Cruel\" is on the list.",
+      "note": "Red Hand Files page itself could not be opened (tried 3 URLs); page is Far Out's, which quotes Cave's text and lists the ten. Issue number #16 unconfirmed. The list is unranked in his words (citation said 'ranks first/second'); he says the songs hold up 'the structure of my artistic world', which is more than a bare list.",
+      "checked": "2026-10-26"
+    },
+    "nick-cave-and-the-bad-seeds>neil-young": {
+      "verdict": "fixed",
+      "url": "https://faroutmagazine.co.uk/nick-cave-10-favourite-songs/",
+      "found": "Neil Young – ‘On the Beach’",
+      "citation": "Nick Cave in the Red Hand Files, on his ten \"hiding songs\" (\"They are the essential pillars that hold up the structure of my artistic world\"): Neil Young's \"On the Beach\" is on the list.",
+      "note": "Red Hand Files page itself could not be opened (tried 3 URLs); page is Far Out's, which quotes Cave's text and lists the ten. Issue number #16 unconfirmed. The list is unranked in his words (citation said 'ranks first/second'); he says the songs hold up 'the structure of my artistic world', which is more than a bare list.",
+      "checked": "2026-10-26"
+    },
+    "nick-cave-and-the-bad-seeds>bob-dylan": {
+      "verdict": "fixed",
+      "url": "https://faroutmagazine.co.uk/nick-cave-10-favourite-songs/",
+      "found": "Bob Dylan – ‘It’s All Over Now, Baby Blue’",
+      "citation": "Nick Cave in the Red Hand Files, on his ten \"hiding songs\" (\"They are the essential pillars that hold up the structure of my artistic world\"): Bob Dylan's \"It's All Over Now, Baby Blue\" is on the list.",
+      "note": "Red Hand Files page itself could not be opened (tried 3 URLs); page is Far Out's, which quotes Cave's text and lists the ten. Issue number #16 unconfirmed. The list is unranked in his words (citation said 'ranks first/second'); he says the songs hold up 'the structure of my artistic world', which is more than a bare list.",
+      "checked": "2026-10-26"
+    },
+    "nick-cave-and-the-bad-seeds>big-star": {
+      "verdict": "fixed",
+      "url": "https://faroutmagazine.co.uk/nick-cave-10-favourite-songs/",
+      "found": "Big Star – ‘Holocaust’",
+      "citation": "Nick Cave in the Red Hand Files, on his ten \"hiding songs\" (\"They are the essential pillars that hold up the structure of my artistic world\"): Big Star's \"Holocaust\" is on the list.",
+      "note": "Red Hand Files page itself could not be opened (tried 3 URLs); page is Far Out's, which quotes Cave's text and lists the ten. Issue number #16 unconfirmed. The list is unranked in his words (citation said 'ranks first/second'); he says the songs hold up 'the structure of my artistic world', which is more than a bare list.",
+      "checked": "2026-10-26"
+    },
+    "nick-cave-and-the-bad-seeds>brian-eno": {
+      "verdict": "fixed",
+      "url": "https://faroutmagazine.co.uk/nick-cave-10-favourite-songs/",
+      "found": "Brian Eno – ‘Becalmed’",
+      "citation": "Nick Cave in the Red Hand Files, on his ten \"hiding songs\" (\"They are the essential pillars that hold up the structure of my artistic world\"): Brian Eno's \"Becalmed\" is on the list.",
+      "note": "Red Hand Files page itself could not be opened (tried 3 URLs); page is Far Out's, which quotes Cave's text and lists the ten. Issue number #16 unconfirmed. The list is unranked in his words (citation said 'ranks first/second'); he says the songs hold up 'the structure of my artistic world', which is more than a bare list.",
+      "checked": "2026-10-26"
+    },
+    "swans>can": {
+      "verdict": "ok",
+      "url": "https://younggodrecords.com/blogs/press/14183989-pitchfork-interview-with-michael-gira",
+      "found": "But the people that inspire me, like Nina Simone, James Brown , Fela Kuti , or Can might have something to do with the sound.",
+      "note": "Gira first says it's hard to name influences, then lists these. Pitchfork 19 May 2014 as republished on younggodrecords.com. Slug Magazine also has him naming CAN and early Kraftwerk.",
+      "checked": "2026-10-26"
+    },
+    "swans>suicide": {
+      "verdict": "fixed",
+      "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+      "found": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+      "citation": "Michael Gira (Wire magazine interview, republished by Young God Records): \"particularly in the early days, I had a lot of influences... I listened to a wide variety of music then - The Stooges, Suicide, Throbbing Gristle, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York, Wire, Sex Pistols, Buzzcocks, Black Flag.\"",
+      "note": "YouTube video not checked. found text copied from read output including its soft hyphen and mangled 'Grist\"le'; if the verifier fails on it, use 'Suicide' context paragraph. Gira adds No New York and Throbbing Gristle 'probably had a big influence'.",
+      "checked": "2026-10-26"
+    },
+    "swans>glenn-branca": {
+      "verdict": "decide",
+      "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+      "found": "Participating in Glen Branca's music was a revelation in many ways,\" affirms Gira",
+      "note": "Line of Best Fit quote ('epitome of how high music can go') not found (1 search; Best Fit Gira interview 114144 read, no Branca). In Wire (via Young God) Gira says working under Branca was 'a revelation' and 'an inspiration' but 'Branca was NOT a musical influence, more an ideal of what it's possible to achieve through sound.' Owner decides: keep as inspiration, lower, or record as partial denial.",
+      "checked": "2026-10-26"
+    }
+  },
+  "candidates": [
+    {
+      "source": "swans",
+      "target": "the-stooges",
+      "kind": "influence",
+      "speaker": "Michael Gira",
+      "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+      "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview"
+    },
+    {
+      "source": "swans",
+      "target": "kraftwerk",
+      "kind": "influence",
+      "speaker": "Michael Gira",
+      "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+      "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview"
+    },
+    {
+      "source": "swans",
+      "target": "brian-eno",
+      "kind": "influence",
+      "speaker": "Michael Gira",
+      "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+      "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview"
+    },
+    {
+      "source": "swans",
+      "target": "wire",
+      "kind": "influence",
+      "speaker": "Michael Gira",
+      "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+      "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview"
+    },
+    {
+      "source": "swans",
+      "target": "black-flag",
+      "kind": "influence",
+      "speaker": "Michael Gira",
+      "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+      "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview"
+    },
+    {
+      "source": "swans",
+      "target": "cabaret-voltaire",
+      "kind": "influence",
+      "speaker": "Michael Gira",
+      "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+      "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview"
+    },
+    {
+      "source": "swans",
+      "target": "sex-pistols",
+      "kind": "influence",
+      "speaker": "Michael Gira",
+      "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+      "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview"
+    },
+    {
+      "source": "swans",
+      "target": "buzzcocks",
+      "kind": "influence",
+      "speaker": "Michael Gira",
+      "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+      "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview"
+    },
+    {
+      "source": "unwound",
+      "target": "velvet-underground",
+      "kind": "influence",
+      "speaker": "Justin Trosper (Unwound)",
+      "sentence": "Yeah, VU and Sonic Youth are big influences.",
+      "url": "https://www.scaruffi.com/interv/unwound.html"
+    },
+    {
+      "source": "unwound",
+      "target": "wipers",
+      "kind": "influence",
+      "speaker": "Justin Trosper (Unwound)",
+      "sentence": "Well I like guitar music alot. Should I list my influences? Greg Ginn(black flag), Sonic Youth, Greg Sage(wipers), Jimi Hendrix, David Lester(mecca normal), Helios Creed(chrome), Tom Verlaine(televison), Toni Iommi(black sabbath) and more.",
+      "url": "https://www.scaruffi.com/interv/unwound.html"
+    },
+    {
+      "source": "unwound",
+      "target": "nirvana",
+      "kind": "influence",
+      "speaker": "Justin Trosper (Unwound)",
+      "sentence": "We were into the Melvins alot and Nirvana, but more influenced by the DC punk thing happening back then and just more interesting US hardcore(husker du/black flag/mission of burma) and punk from England(wire/gang of 4/joy division).",
+      "url": "https://www.scaruffi.com/interv/unwound.html"
+    }
+  ],
+  "offMap": [
+    {
+      "name": "Spacemen 3",
+      "namedBy": "ride",
+      "sentence": "“Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses,” says Bell. “As well as older stuff like The Beatles, Stones, the Velvets, and the Stooges.”",
+      "url": "https://web.archive.org/web/20230623212403/https://www.undertheradarmag.com/interviews/ride_on_nowhere_mark_gardener_and_andy_bell"
+    },
+    {
+      "name": "House of Love",
+      "namedBy": "ride",
+      "sentence": "“Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses,” says Bell. “As well as older stuff like The Beatles, Stones, the Velvets, and the Stooges.”",
+      "url": "https://web.archive.org/web/20230623212403/https://www.undertheradarmag.com/interviews/ride_on_nowhere_mark_gardener_and_andy_bell"
+    },
+    {
+      "name": "Loop",
+      "namedBy": "ride",
+      "sentence": "“Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses,” says Bell. “As well as older stuff like The Beatles, Stones, the Velvets, and the Stooges.”",
+      "url": "https://web.archive.org/web/20230623212403/https://www.undertheradarmag.com/interviews/ride_on_nowhere_mark_gardener_and_andy_bell"
+    },
+    {
+      "name": "Mission of Burma",
+      "namedBy": "unwound",
+      "sentence": "We were into the Melvins alot and Nirvana, but more influenced by the DC punk thing happening back then and just more interesting US hardcore(husker du/black flag/mission of burma) and punk from England(wire/gang of 4/joy division).",
+      "url": "https://www.scaruffi.com/interv/unwound.html"
+    },
+    {
+      "name": "Melvins",
+      "namedBy": "unwound",
+      "sentence": "We were into the Melvins alot and Nirvana, but more influenced by the DC punk thing happening back then and just more interesting US hardcore(husker du/black flag/mission of burma) and punk from England(wire/gang of 4/joy division).",
+      "url": "https://www.scaruffi.com/interv/unwound.html"
+    },
+    {
+      "name": "Throbbing Gristle",
+      "namedBy": "swans",
+      "sentence": "I'd say the No New York music and Throbbing Gristle probably had a big influence on looking at the potential of music as sound, rather than as a typical series of chords.",
+      "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview"
+    }
+  ]
+}

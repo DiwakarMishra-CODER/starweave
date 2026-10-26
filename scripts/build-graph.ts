@@ -6,6 +6,7 @@ import type { Artist, Album, ExtraSong, GraphData, ImageCredit } from '../data/t
 import { TAPE_SONGS, type TapeSong } from '../data/about';
 import { validateEdges, computeInfluenceScores } from './pipeline';
 import { presettleLayout, type LayoutNode, type LayoutLink } from '../lib/graph-layout';
+import { applyEdgeSources, hasProof, ledgerProblems, type EdgeSources } from '../lib/edge-sources';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -951,6 +952,17 @@ async function main() {
   }
   console.log(`✓ Validated ${graphData.artists.length} artists, ${graphData.edges.length} edges`);
 
+  // The source pass's ledger: each link's proof, merged onto its edge.
+  const edgeSources = JSON.parse(readFileSync(resolve(ROOT, 'data/edge-sources.json'), 'utf-8')) as EdgeSources;
+  const ledgerErrors = ledgerProblems(graphData.edges, edgeSources);
+  if (ledgerErrors.length > 0) {
+    console.error('❌ Source ledger problems:\n');
+    ledgerErrors.forEach(e => console.error('   ', e));
+    process.exit(1);
+  }
+  const sourcedEdges = applyEdgeSources(graphData.edges, edgeSources);
+  console.log(`✓ Merged the source ledger (${Object.values(edgeSources).filter(hasProof).length} of ${graphData.edges.length} links proven)`);
+
   const scores = computeInfluenceScores(graphData.artists, graphData.edges);
   console.log(`✓ Computed influence scores (top: ${
     [...scores.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3)
@@ -1134,7 +1146,7 @@ async function main() {
     artists: positionedArtists,
     genres:  graphData.genres,
     scenes:  graphData.scenes,
-    edges:   graphData.edges,
+    edges:   sourcedEdges,
     rejectedEdges: graphData.rejectedEdges,
     songs,
   };

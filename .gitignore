@@ -42,3 +42,4 @@ next-env.d.ts
 
 # full-resolution screenshot originals (docs/images/*.jpg are the committed ones)
 docs/images/_originals/
+research/source-pass/.pages/

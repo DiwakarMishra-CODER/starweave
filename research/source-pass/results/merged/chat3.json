@@ -1,0 +1,279 @@
+{
+  "agent": "chat3",
+  "searches": 20,
+  "toolStatus": "All 28 links are covered. Rolling Stone and Under the Radar interview pages for LCD Soundsystem and Kurt Vile's Velvet Underground quote did not turn up in search; the one Under the Radar page that did appear was a review without the quote. The Internet Archive copies I tried (post-rock.lv/bark2.htm and the Stop Smiling Rites of Spring page) were refused by the fetch tool because the URL had not appeared in a prior result, so they count as not opened. Audrie's Diary is quoted from In Sheep's Clothing HiFi. Several not-found entries were never found in two searches, and the rest of the Wikipedia 'influences' sentences have footnotes I could not follow.",
+  "entries": {
+    "lcd-soundsystem>david-bowie": {
+      "url": "https://www.vice.com/es/article/james-murphy-lcd-soundsystem-2017-interview-american-dream/",
+      "found": "The Fall are part of my DNA, arguably as much as David Bowie. Mark E Smith is amazing.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "James Murphy to John Doran, Noisey/VICE (12 Oct 2017): \"The Fall are part of my DNA, arguably as much as David Bowie.\"",
+      "sourceTier": "first-person",
+      "note": "The Rolling Stone line 'the B-52's, the Fall, Yes, David Bowie and Can' came via LCD Soundsystem's Wikipedia page and was not found. In the same interview Murphy says he liked 'The Clash, Bowie, Echo And The Bunnymen, The Cure, The Smiths, Sisters Of Mercy, Joy Division and New Order' between 13 and 16."
+    },
+    "lcd-soundsystem>the-fall": {
+      "url": "https://www.fusedmagazine.co.uk/james-murphy-interview-lcd-soundsystem-on-daft-punk-losing-my-edge-and-indie-dance-culture/",
+      "found": "For me, The Fall, along with The Velvet Underground, are the best rock ‘n’ roll bands of all time. The Fall are my Beatles.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "James Murphy to Fused Magazine (2005): \"The Fall are my Beatles.\" He adds: \"One of the reasons I love The Fall is because the guitars are as ego-less as the bass. And that’s a rare fucking thing.\"",
+      "sourceTier": "first-person"
+    },
+    "low>joy-division": {
+      "url": "https://www.thecurrent.org/episode/2019/08/07/low-25-years-in",
+      "found": "Some of the bands we were inspired by—Spacemen 3, Joy Division, the Cure, Velvet Underground.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Alan Sparhawk to Andrea Swensson, The Current Rewind: Low: 25 Years In (7 Aug 2019): \"Some of the bands we were inspired by—Spacemen 3, Joy Division, the Cure, Velvet Underground.\"",
+      "sourceTier": "first-person",
+      "note": "The 1995 Billboard interview and the Rolling Stone obituary were not found in two searches. A Boston Globe obituary (search result only, not opened) says Low drew inspiration from Joy Division, which is the writer's account."
+    },
+    "low>brian-eno": {
+      "url": "https://www.thecurrent.org/episode/2019/08/07/low-25-years-in",
+      "found": "We were looking at postmodern stuff too—La Monte Young. I guess you'd call Brian Eno kind of postmodern.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Alan Sparhawk to Andrea Swensson, The Current Rewind: Low: 25 Years In (7 Aug 2019): \"We were looking at postmodern stuff too—La Monte Young. I guess you'd call Brian Eno kind of postmodern.\"",
+      "sourceTier": "first-person",
+      "note": "This names Eno as part of what the band was looking at early on; it is less direct than the Joy Division line. The 1995 Billboard interview was not found."
+    },
+    "suicide>silver-apples": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Two searches. The influences sentence ('...and the Mysterians, and Silver Apples') appears in the Wikipedia Suicide (band) text with a footnote [31] I could not see; follow it to the real source. A Legs McNeil piece (legsville.com) only says 'Like the Silver Apples and Kraftwerk, Suicide was the forerunner for all the techno-rock', which is a comparison, and Vega's own words in the Dazed and Legs McNeil pieces name Iggy and the Stooges, not Silver Apples."
+    },
+    "this-heat>faust": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Two searches ('Charles Hayward Perfect Sound Forever Faust influence' and a perfectsoundforever.com variant). No Perfect Sound Forever page and no Freq 2014 page appeared. Pages found that name This Heat's influences but not Faust: The Quietus (Hayward/Simon Reynolds, 2001), Psychedelic Baby (Hayward interview), Fact (2016), none with a Faust sentence I could read in full."
+    },
+    "bad-brains>ramones": {
+      "url": "https://www.spinmagazine.com/2012/11/bad-brains-strange-survival-tale/2/",
+      "found": "We decided to change our name from Mind Power to the Bad Brains after hearing the Ramones’ ‘Bad Brain,’",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "H.R. to Kory Grow, SPIN (29 Nov 2012): \"We decided to change our name from Mind Power to the Bad Brains after hearing the Ramones’ ‘Bad Brain,’\"",
+      "sourceTier": "first-person",
+      "note": "Borderline: he describes naming the band after a Ramones song, not an explicit 'they influenced us'. The same page says that after seeing the Ramones and Clash in concert H.R. decided to try singing, and that Sid McCray introduced the band to punk (writer's account). The Juice and Classic Rock (1985) sources were not found."
+    },
+    "bark-psychosis>sonic-youth": {
+      "url": "https://insheepsclothinghifi.com/bark-psychosis-to-boymerang/",
+      "found": "When I was 14, I was into Sonic Youth, Butthole Surfers, Big Black and those hardcore bands. Swans … It kind of has quite an impression on you when you’re at that age.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Graham Sutton to Audrie's Diary (1994), quoted by In Sheep's Clothing HiFi (Randall Roberts, 17 June 2024): \"When I was 14, I was into Sonic Youth, Butthole Surfers, Big Black and those hardcore bands. Swans … It kind of has quite an impression on you when you’re at that age.\"",
+      "sourceTier": "first-person",
+      "note": "The old citation's 'Other early influences included...' line is Wikipedia's wording, not Sutton's. The original zine page (post-rock.lv/bark2.htm) was not opened."
+    },
+    "bark-psychosis>talk-talk": {
+      "url": "https://insheepsclothinghifi.com/bark-psychosis-to-boymerang/",
+      "found": "It’s weird that you mention AR Kane and Talk Talk because I’m really into them…I’ve been into Talk Talk since I was 14 years old.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Graham Sutton to Audrie's Diary (1994), quoted by In Sheep's Clothing HiFi (Randall Roberts, 17 June 2024): \"It’s weird that you mention AR Kane and Talk Talk because I’m really into them…I’ve been into Talk Talk since I was 14 years old.\"",
+      "sourceTier": "first-person"
+    },
+    "bark-psychosis>wire": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Searched for the Sutton/Audrie's Diary list in two searches. Wire appears only in Wikipedia's 'Other early influences' sentence (no Sutton quote). The article that quotes the zine (In Sheep's Clothing HiFi) does not mention Wire. The zine itself is at post-rock.lv/bark2.htm, which I could not open. The archived zine page (post-rock.lv/bark2.htm, read) mentions Wire only as a song they covered on Game Over; a cover isn't influence."
+    },
+    "bark-psychosis>big-black": {
+      "url": "https://insheepsclothinghifi.com/bark-psychosis-to-boymerang/",
+      "found": "When I was 14, I was into Sonic Youth, Butthole Surfers, Big Black and those hardcore bands. Swans … It kind of has quite an impression on you when you’re at that age.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Graham Sutton to Audrie's Diary (1994), quoted by In Sheep's Clothing HiFi (Randall Roberts, 17 June 2024): \"When I was 14, I was into Sonic Youth, Butthole Surfers, Big Black and those hardcore bands. Swans … It kind of has quite an impression on you when you’re at that age.\"",
+      "sourceTier": "first-person"
+    },
+    "bark-psychosis>joy-division": {
+      "url": "https://web.archive.org/web/2010/http://www.post-rock.lv/bark2.htm",
+      "found": "Inspired by a bizarre mixture of Joy Division, Swans, Sonic Youth, Big Black, Cocteau Twins, Dead Can Dance, Talk Talk and others, Graham Sutton (vocals/samples, etc) and John Ling (bass/samples, etc) formed Bark Psychosis in 1986 while still at school",
+      "citation": "The post-rock.lv profile of Bark Psychosis says Graham Sutton and John Ling formed the band in 1986, while still at school, \"inspired by a bizarre mixture of Joy Division, Swans, Sonic Youth, Big Black, Cocteau Twins, Dead Can Dance, Talk Talk and others.\"",
+      "sourceTier": "reported",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "note": "Read from an Internet Archive copy (the live page is gone)."
+    },
+    "bark-psychosis>swans": {
+      "url": "https://insheepsclothinghifi.com/bark-psychosis-to-boymerang/",
+      "found": "When I was 14, I was into Sonic Youth, Butthole Surfers, Big Black and those hardcore bands. Swans … It kind of has quite an impression on you when you’re at that age.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Graham Sutton to Audrie's Diary (1994), quoted by In Sheep's Clothing HiFi (Randall Roberts, 17 June 2024): \"When I was 14, I was into Sonic Youth, Butthole Surfers, Big Black and those hardcore bands. Swans … It kind of has quite an impression on you when you’re at that age.\"",
+      "sourceTier": "first-person",
+      "note": "The quoted text has the ellipsis straight after 'Swans', so the zine's own sentence about Swans may be cut; check the zine."
+    },
+    "boards-of-canada>incredible-string-band": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Two searches. The 2005 Pitchfork interview did not come up. Leads, not opened: Wikipedia's Geogaddi page says Sandison cited the Incredible String Band as an inspiration (footnote [4]); a Trouser Press entry lists the ISB among BoC influences (writer's account). The 'listen to Jerry Goldsmith or The Incredible String Band' quote was not found."
+    },
+    "brand-new>fugazi": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Two searches for the Drowned in Sound (17 Sept 2009) Jesse Lacey interview; no DiS page appeared. Lead: Wikipedia's Jesse Lacey page says 'During the Daisy era, Lacey cited Polvo, Archers of Loaf, Fugazi and Modest Mouse as influences' with footnote [40]; follow that footnote to the DiS URL (try the Internet Archive copy)."
+    },
+    "brand-new>modest-mouse": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Same two searches as the Fugazi link. Slant's Daisy review says Lacey does 'his best Isaac Brock impression' (a critic's comparison, not an influence statement)."
+    },
+    "kurt-vile>john-prine": {
+      "url": "https://au.rollingstone.com/music/music-country/kurt-vile-john-prine-speed-sound-lonely-ep-17360/",
+      "found": "That comment sent Vile on a journey, spending “one cool summer” diving deep into Prine’s greatest hits collection. “The heartbreakers hit you first,” he says, “but from then on out it got deeper all the time.”",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Jonathan Bernstein reports in Rolling Stone (24 Sept 2020) that Kurt Vile began listening to John Prine in his early twenties after a fan told him he sounded like him, spending \"one cool summer\" on Prine's greatest hits; Vile says \"The heartbreakers hit you first, but from then on out it got deeper all the time.\"",
+      "sourceTier": "reported"
+    },
+    "kurt-vile>velvet-underground": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "One search. The Under the Radar (April 2022) interview did not come up; an Under the Radar review of (watch my moves) did, with no VU quote. Other April 2022 interviews found (SPIN, Stereogum, Flood) and an AP piece say Vile signed to Verve, the VU's label, but do not carry him saying he grew up on the VU. An AP quote saying 'Verve was Velvet Underground’s home' is from someone else (a Verve executive or fan, not Vile)."
+    },
+    "kurt-vile>pavement": {
+      "url": "https://m.lasvegassun.com/news/2010/sep/30/q-kurt-vile/",
+      "found": "I bought the record and got obsessed with the whole thing. They were one of the first bands I realized had all these older records.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Kurt Vile to the Las Vegas Sun (30 Sept 2010), on Pavement's Crooked Rain, Crooked Rain: \"I bought the record and got obsessed with the whole thing. They were one of the first bands I realized had all these older records.\"",
+      "sourceTier": "first-person",
+      "note": "The 'home of Pavement, Yo La Tengo, Cat Power, so many people I grew up listening to' quote from the old citation was not found. In this Q&A he calls Pavement 'my No. 1 favorite band'. The Russh piece (see the Dinosaur Jr. link) also names Pavement as a high-school idol, in the writer's words."
+    },
+    "kurt-vile>yo-la-tengo": {
+      "url": "https://m.lasvegassun.com/news/2010/sep/30/q-kurt-vile/",
+      "found": "I really love that I Can Feel the Heart Beating as One Yo La Tengo record a lot",
+      "citation": "Kurt Vile to the Las Vegas Sun (30 Sept 2010), on his favourite Matador records: \"I really love that I Can Feel the Heart Beating as One Yo La Tengo record a lot,\" adding \"I'm just basically looking back to my teens.\"",
+      "sourceTier": "first-person",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "note": "Fandom from his teens: counts under the owner's ruling."
+    },
+    "kurt-vile>dinosaur-jr": {
+      "url": "https://www.russh.com/kurt-vile-interview/",
+      "found": "In high school, back when he was playing the trumpet and still skateboarding around Lansdowne, Philadelphia, his idols were bands like Pavement, Dinosaur Jr. and Sonic Youth.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "RUSSH (Jasmine Pirovic, 9 March 2023) reports that in high school Kurt Vile's idols were bands like Pavement, Dinosaur Jr. and Sonic Youth.",
+      "sourceTier": "reported",
+      "note": "This is the writer's statement, not a Vile quote. The AllMusic bio and Wikipedia lines in the old citation were not used."
+    },
+    "kurt-vile>cat-power": {
+      "url": "https://m.lasvegassun.com/news/2010/sep/30/q-kurt-vile/",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Las Vegas Sun (30 Sept 2010): Vile says he is excited to see Cat Power and that 'Cat Power, You Are Free' is 'one of my favorite Matador records'. That is a favourite-album remark, not a statement that she shaped him. The 'home of Pavement, Yo La Tengo, Cat Power, so many people I grew up listening to' quote was not found. Proposal: remove unless a first-person quote about Cat Power is found."
+    },
+    "rites-of-spring>the-fall": {
+      "url": "https://web.archive.org/web/2010/https://www.stopsmilingonline.com/story_detail.php?id=1170&page=2",
+      "found": "Later on, the band members discovered Television, the Fall and the Smiths.",
+      "citation": "John Dugan, Stop Smiling (\"End on End: Rites of Spring\", 2008): \"Later on, the band members discovered Television, the Fall and the Smiths.\"",
+      "sourceTier": "reported",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "note": "Read from an Internet Archive copy (the live page is gone)."
+    },
+    "rites-of-spring>buzzcocks": {
+      "url": "https://web.archive.org/web/2010/https://www.stopsmilingonline.com/story_detail.php?id=1170&page=1",
+      "found": "“I collected Buzzcocks and Wire singles and early Scritti Politti.”",
+      "citation": "Brendan Canty to John Dugan, Stop Smiling (\"End on End: Rites of Spring\", 2008), on the band's high-school years: \"I collected Buzzcocks and Wire singles and early Scritti Politti.\" Stop Smiling adds that the music of Wire, the Buzzcocks, the Saints, the Birthday Party, the Mob and the Wipers \"all figured into the Rites' musical universe.\"",
+      "sourceTier": "first-person",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "note": "Read from an Internet Archive copy (the live page is gone). Found after chat3 could not open the archive copy."
+    },
+    "sufjan-stevens>nick-drake": {
+      "url": "https://uncut.co.uk/features/sufjan-stevens-interviewed-you-have-to-cast-out-your-demons-68047/3",
+      "found": "That first summer in Eugene, Brams introduced Stevens and his siblings to The Beatles, the Rolling Stones, Ry Cooder, Bob Dylan, Nick Drake, Frank Zappa. “The Wipers were his favourite band,” says Stevens.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Uncut (June 2015 issue) reports that the first summer in Eugene Lowell Brams introduced Sufjan Stevens and his siblings to Nick Drake, among others; Stevens says \"It was as if he had opened up a Pandora’s Box, and we were so thrilled.\"",
+      "sourceTier": "reported",
+      "note": "Uncut's page dates the interview to the June 2015 issue, not February 2015. This is the writer's account of being introduced to Drake, not Stevens naming Drake himself. His 2021 'Pink Moon' cover is a cover and does not count."
+    },
+    "sufjan-stevens>bob-dylan": {
+      "url": "https://uncut.co.uk/features/sufjan-stevens-interviewed-you-have-to-cast-out-your-demons-68047/3",
+      "found": "That first summer in Eugene, Brams introduced Stevens and his siblings to The Beatles, the Rolling Stones, Ry Cooder, Bob Dylan, Nick Drake, Frank Zappa. “The Wipers were his favourite band,” says Stevens.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Uncut (June 2015 issue) reports that the first summer in Eugene Lowell Brams introduced Sufjan Stevens and his siblings to Bob Dylan, among others; Stevens says \"It was as if he had opened up a Pandora’s Box, and we were so thrilled.\"",
+      "sourceTier": "reported",
+      "note": "Uncut's page dates the interview to the June 2015 issue, not February 2015. Stevens does not name Dylan himself on this page."
+    },
+    "the-fall>can": {
+      "url": "https://www.dazeddigital.com/music/article/39949/1/mark-e-smith-the-fall-can-irmin-schmidt-interview",
+      "found": "Can saved my life. Irmin, you fucking saved my life! And because you saved my life I even bought Soon Over Babaluma.",
+      "checked": "2026-10-26",
+      "verdict": "ok",
+      "note": "Dazed (3 May 2018), Mark E. Smith talking to Irmin Schmidt in 2016 for Rob Young's All Gates Open. The mail-order Tago Mago story is on the same page in Smith's own words."
+    },
+    "the-fall>velvet-underground": {
+      "url": "https://www.dazeddigital.com/music/article/39949/1/mark-e-smith-the-fall-can-irmin-schmidt-interview",
+      "found": "When I was 15, I was a hardcore Velvet Underground fan. And other friends of mine who were also listening to The Velvet Underground told me that I should listen to Can.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Mark E. Smith to Irmin Schmidt (recorded 2016, published by Dazed, 3 May 2018): \"When I was 15, I was a hardcore Velvet Underground fan. And other friends of mine who were also listening to The Velvet Underground told me that I should listen to Can.\"",
+      "sourceTier": "first-person",
+      "note": "The Crack Magazine quote in the old citation was not found."
+    }
+  },
+  "candidates": [
+    {
+      "source": "lcd-soundsystem",
+      "target": "the-cure",
+      "kind": "influence",
+      "speaker": "lcd-soundsystem",
+      "sentence": "Between the age of 13 and 16 I liked The Clash, Bowie, Echo And The Bunnymen, The Cure, The Smiths, Sisters Of Mercy, Joy Division and New Order.",
+      "url": "https://www.vice.com/es/article/james-murphy-lcd-soundsystem-2017-interview-american-dream/"
+    },
+    {
+      "source": "kurt-vile",
+      "target": "guided-by-voices",
+      "kind": "influence",
+      "speaker": "kurt-vile",
+      "sentence": "I like a lot of the Guided By Voices.",
+      "url": "https://m.lasvegassun.com/news/2010/sep/30/q-kurt-vile/"
+    },
+    {
+      "source": "lcd-soundsystem",
+      "target": "the-clash",
+      "kind": "influence",
+      "speaker": "James Murphy",
+      "sentence": "Between the age of 13 and 16 I liked The Clash, Bowie, Echo And The Bunnymen, The Cure, The Smiths, Sisters Of Mercy, Joy Division and New Order.",
+      "url": "https://www.vice.com/es/article/james-murphy-lcd-soundsystem-2017-interview-american-dream/"
+    },
+    {
+      "source": "lcd-soundsystem",
+      "target": "joy-division",
+      "kind": "influence",
+      "speaker": "James Murphy",
+      "sentence": "Between the age of 13 and 16 I liked The Clash, Bowie, Echo And The Bunnymen, The Cure, The Smiths, Sisters Of Mercy, Joy Division and New Order.",
+      "url": "https://www.vice.com/es/article/james-murphy-lcd-soundsystem-2017-interview-american-dream/"
+    },
+    {
+      "source": "lcd-soundsystem",
+      "target": "new-order",
+      "kind": "influence",
+      "speaker": "James Murphy",
+      "sentence": "Between the age of 13 and 16 I liked The Clash, Bowie, Echo And The Bunnymen, The Cure, The Smiths, Sisters Of Mercy, Joy Division and New Order.",
+      "url": "https://www.vice.com/es/article/james-murphy-lcd-soundsystem-2017-interview-american-dream/"
+    }
+  ],
+  "offMap": [
+    {
+      "name": "Spacemen 3",
+      "namedBy": "low",
+      "sentence": "Some of the bands we were inspired by—Spacemen 3, Joy Division, the Cure, Velvet Underground.",
+      "url": "https://www.thecurrent.org/episode/2019/08/07/low-25-years-in"
+    },
+    {
+      "name": "Butthole Surfers",
+      "namedBy": "bark-psychosis",
+      "sentence": "When I was 14, I was into Sonic Youth, Butthole Surfers, Big Black and those hardcore bands.",
+      "url": "https://insheepsclothinghifi.com/bark-psychosis-to-boymerang/"
+    }
+  ],
+  "finished": true
+}

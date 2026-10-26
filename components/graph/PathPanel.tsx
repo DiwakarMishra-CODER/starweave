@@ -7,6 +7,7 @@ import { resolveCitationStatus } from '@/data/types';
 import { readableInk, resolveNodeColor } from '@/lib/colors';
 import { countryName } from '@/lib/format';
 import { useNarrowLayout } from '@/lib/use-media-query';
+import SourceLink, { SourceStampIcon } from '@/components/ui/SourceLink';
 import { useRoadPlayer } from './useRoadPlayer';
 import {
   countDirectionTurns,
@@ -128,6 +129,7 @@ function Segment({
   const status = resolveCitationStatus(hop.edge);
   const inherits = hop.direction === 'influenced-by';
   const hasToggle = status === 'cited' || status === 'unsourceable';
+  const checked = !!(hop.edge.sourceUrl || hop.edge.sourcePrint);
   return (
     <li className={`road-seg road-seg--${tier}`}>
       <span className="road-seg__road" aria-hidden>
@@ -141,22 +143,21 @@ function Segment({
           <div className="road-seg__evidence">
             <button
               type="button"
-              className={`zine-row__stamp${status === 'unsourceable' ? ' zine-row__stamp--none' : ''}`}
+              className={`zine-row__stamp${status === 'unsourceable' ? ' zine-row__stamp--none' : ''}${checked ? ' zine-row__stamp--checked' : ''}`}
               onClick={onToggle}
               aria-expanded={isOpen}
             >
-              <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden>
-                <circle cx="5" cy="5" r="4.3" fill="none" stroke="currentColor" strokeWidth="1.2" />
-                <rect x="4.4" y="4.2" width="1.2" height="3.3" rx="0.6" fill="currentColor" />
-                <circle cx="5" cy="2.8" r="0.7" fill="currentColor" />
-              </svg>
+              <SourceStampIcon checked={checked} />
               {status === 'cited' ? (isOpen ? 'Hide source' : 'Source') : 'No source'}
             </button>
             {TIER_WORD[tier] && <span className="road-seg__tier">{TIER_WORD[tier]}</span>}
           </div>
         )}
         {isOpen && status === 'cited' && hop.edge.citation && (
-          <p className="road-seg__slip">{hop.edge.citation}</p>
+          <div className="road-seg__slip">
+            <p>{hop.edge.citation}</p>
+            <SourceLink url={hop.edge.sourceUrl} print={hop.edge.sourcePrint} />
+          </div>
         )}
         {isOpen && status === 'unsourceable' && (
           <p className="road-seg__slip">Widely accepted, unsourced.</p>

@@ -1,0 +1,266 @@
+{
+  "agent": "c7",
+  "searches": 16,
+  "toolStatus": "WebSearch fine (16 used). read opened Wikipedia raw, Guardian, Rolling Stone, Stereogum, Billboard, Guitar.com, WRSU, RBMA, Far Out, Pocklington Post; tidal.com article (+archive 2016/2020) and mojo4music URLs could not be opened. read prints HTML entities (&#x27; etc.) in some pages; found strings copied as printed.",
+  "entries": {
+    "sigur-ros>ride": {
+      "url": "https://www.theguardian.com/music/2007/oct/14/popandrock11",
+      "found": "But at this time we were listening to [Spiritualized&#x27;s] Lazer Guided Melodies, and Ride, and the first two Verve albums. That kind of stuff. I&#x27;m sure there is kind of a similarity. And Loveless, My Bloody Valentine.&#x27;",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Kjartan Sveinsson to The Guardian (2007), on the band's early days: \"at this time we were listening to [Spiritualized's] Lazer Guided Melodies, and Ride, and the first two Verve albums.\"",
+      "note": "The cited 2010 Guardian Jonsi piece names only Spiritualized and the Verve, not Ride or MBV. The real source is Craig McLean's 2007 Guardian piece (Wikipedia's second footnote), speaker Kjartan Sveinsson, a band member, not Jonsi."
+    },
+    "sigur-ros>my-bloody-valentine": {
+      "url": "https://www.theguardian.com/music/2007/oct/14/popandrock11",
+      "found": "But at this time we were listening to [Spiritualized&#x27;s] Lazer Guided Melodies, and Ride, and the first two Verve albums. That kind of stuff. I&#x27;m sure there is kind of a similarity. And Loveless, My Bloody Valentine.&#x27;",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Kjartan Sveinsson to The Guardian (2007), on the band's early days: \"And Loveless, My Bloody Valentine.\"",
+      "note": "Citation was a copy of the Ride one and pointed at the 2010 Jonsi Guardian piece, which does not name MBV. Real source: McLean, Guardian 2007; speaker is Sveinsson."
+    },
+    "sigur-ros>cocteau-twins": {
+      "url": "https://www.theguardian.com/music/2020/aug/18/jonsi-birgisson-the-sigur-ros-singer-on-his-bold-new-direction",
+      "found": "Similarly enamoured with high-wire wordless singing, Fraser was often cited as an influence on Birgisson at the start of his career, only he’d never heard a note of her music.",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Page says the opposite of influence: Jonsi had never heard Cocteau Twins at the start, resented the comparison, and only listened three years before 2020 (\"Who the fuck are these Cocteau Twins? I really don't like being pigeonholed like that\"). Propose remove (or record as a denial)."
+    },
+    "gang-of-four>velvet-underground": {
+      "url": "https://www.pocklingtonpost.co.uk/whats-on/arts-and-entertainment/jon-king-of-gang-of-four-i-wanted-it-to-mean-something-and-to-try-to-change-the-world-4274482",
+      "found": "“It was really a pilgrimage because The Velvet Underground was really the marker for me and Andy of what bands should sound like and we came back and thought we’d have a band.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Jon King to the Pocklington Post: seeing the Velvet Underground was \"really a pilgrimage because The Velvet Underground was really the marker for me and Andy of what bands should sound like and we came back and thought we'd have a band.\"",
+      "note": "Neither the Andy Gill 'noise and cacophony... grooves of reggae' line nor the 'play your instrument very well' line was found on any page read (2 searches; Tidal Gill article unopenable, archive 2016/2020 failed). Replaced with King's own words, same speaker group. Gill quote unverified; not used."
+    },
+    "wednesday>the-sundays": {
+      "url": "https://thefortyfive.com/interviews/wednesday-band-interview-2023/",
+      "found": "For my first ever record, I remember I heard The Sundays’ ‘Reading, Writing, and Arithmetic’. That album really blew my mind and since then it’s just gotten noisier and noisier.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Karly Hartzman to The Forty-Five (2023): \"For my first ever record, I remember I heard The Sundays' 'Reading, Writing, and Arithmetic'. That album really blew my mind...\" She added that the band is named after them: \"that was definitely a really pivotal moment for me.\"",
+      "note": "MOJO corroboration not opened (mojo4music URLs I tried 404; one search found nothing); dropped from the citation."
+    },
+    "wednesday>my-bloody-valentine": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "MOJO Aug 2023 not found: searched the quoted phrase with MOJO/Hartzman/Rat Saw God; guessed mojo4music.com article URLs 404; The Forty-Five 2023 interview, Stereogum 2023 interview and Wikipedia (Wednesday, Karly Hartzman) have no My Bloody Valentine mention. Remains unverified."
+    },
+    "wednesday>drive-by-truckers": {
+      "url": "https://stereogum.com/2218958/wednesday-interview-rat-saw-god-influences/interviews",
+      "found": "HARTZMAN: For \"Chosen To Deserve\" specifically, I heard \"Let There Be Rock\" by Drive-By Truckers. The premise is describing a fucked-up childhood, basically, and I wanted to write that song but use all my memories instead and not let a riff overpower it.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Karly Hartzman to Stereogum (2023): \"For 'Chosen To Deserve' specifically, I heard 'Let There Be Rock' by Drive-By Truckers. The premise is describing a fucked-up childhood, basically, and I wanted to write that song but use all my memories instead... Drive-By Truckers have a lot of songs that are easy to pick up on guitar.\"",
+      "note": "Quote verified verbatim; piece is Stereogum's April 2023 Rat Saw God interview. Billboard/Rolling Stone AU corroboration not opened, dropped."
+    },
+    "wednesday>wilco": {
+      "url": "https://wrsu.org/interview-with-xandy-chelmis-of-wednesday-and-mj-lenderman-the-wind/",
+      "found": "There’s some really sick Wilco songs off Yankee Hotel Foxtrot that have steel heavily featured in them. I think that’s their guitarist playing that.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Xandy Chelmis, Wednesday's pedal steel player, to WRSU (Rutgers Radio): \"There's some really sick Wilco songs off Yankee Hotel Foxtrot that have steel heavily featured in them.\" The page's intro adds that he \"fell in love with Jason Molina and Jeff Tweedy.\"",
+      "note": "Speaker is Chelmis, not Hartzman; the interview is on wrsu.org (no date visible to me; citation said January 2026). Fandom of a sideman, kept first-person."
+    },
+    "wednesday>songs-ohia": {
+      "url": "https://wrsu.org/interview-with-xandy-chelmis-of-wednesday-and-mj-lenderman-the-wind/",
+      "found": "Chelmis’s passion for music began with his parents. Before he fell in love with Jason Molina and Jeff Tweedy, there were Neil Young LPs and Dr. Demento radio sets.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "WRSU (Rutgers Radio) on Xandy Chelmis, Wednesday's pedal steel player: \"Before he fell in love with Jason Molina and Jeff Tweedy, there were Neil Young LPs and Dr. Demento radio sets.\" Chelmis himself praises Mike Brenner, the steel player \"on all the original Molina records.\"",
+      "note": "Tier lowered to reported: the 'fell in love with Jason Molina' line is the interviewer's intro, not Chelmis's quote. Page names Molina and 'Molina records', not 'Songs: Ohia' by name."
+    },
+    "wednesday>the-shins": {
+      "url": "https://wrsu.org/interview-with-xandy-chelmis-of-wednesday-and-mj-lenderman-the-wind/",
+      "found": "I was listening to the tweest of twee. I really loved The Shins, Grizzly Bear, Real Estate, Beach Fossils, and Fleet Foxes was a big one for me.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Xandy Chelmis, Wednesday's pedal steel player, to WRSU (Rutgers Radio), on high school: \"I really loved The Shins, Grizzly Bear, Real Estate, Beach Fossils, and Fleet Foxes was a big one for me... those bands were definitely informing me pretty heavily at the time.\" He also names \"a Shins song that I really loved in high school that has steel in it.\"",
+      "note": "Wording corrected; 'informing me pretty heavily' is in the next sentences of the same paragraph."
+    },
+    "animal-collective>brian-eno": {
+      "url": "https://daily.redbullmusicacademy.com/2018/11/animal-collective-oral-history",
+      "found": "Brian Eno ’s Music For Airports is something that really made an impression upon me as a teenager, as far as what you might call psych-electronic music. That and Aphex Twin really changed the course of my musical life.",
+      "checked": "2026-10-26",
+      "verdict": "ok",
+      "note": "Speaker is Panda Bear (Noah Lennox), per the page's speaker heading before the paragraph (seen via r.jina.ai raw)."
+    },
+    "bon-iver>neil-young": {
+      "url": "https://www.rollingstone.com/music/news/why-bon-iver-had-to-relearn-everything-he-knows-20110323/",
+      "found": "“I always had a dream to be that sort of student of Neil Young, one of those people who can sit down and write a song and have it be this full statement and sound good,” he says.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Justin Vernon to Rolling Stone (2011): \"I always had a dream to be that sort of student of Neil Young, one of those people who can sit down and write a song and have it be this full statement and sound good.\"",
+      "note": "The Pitchfork/Voice quote naming Neil Young/Dylan/Indigo Girls/Prine could not be located (2 searches; no page found). Replaced with this verified Rolling Stone line. Quote uses &#x201C; entities as printed by read."
+    },
+    "bon-iver>bob-dylan": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Pitchfork quote 'Neil Young/Bob Dylan/Indigo Girls/John Prine subjective-songwriter kind of world' (via Ewing's Voice) not found after 2 searches and reads of Rolling Stone 2011, American Songwriter, Wikipedia (Justin Vernon). Only found: Vernon answering an American Songwriter tweet 'Who is your all time favorite songwriter?' with 'Prine. Indigo Girls. Dylan' (bare list, per Far Out Magazine), which does not count. Pitchfork page URL unknown, so no archive try."
+    },
+    "bon-iver>john-prine": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Pitchfork quote 'Neil Young/Bob Dylan/Indigo Girls/John Prine subjective-songwriter kind of world' (via Ewing's Voice) not found after 2 searches and reads of Rolling Stone 2011, American Songwriter, Wikipedia (Justin Vernon). Only found: Vernon answering an American Songwriter tweet 'Who is your all time favorite songwriter?' with 'Prine. Indigo Girls. Dylan' (bare list, per Far Out Magazine), which does not count. Pitchfork page URL unknown, so no archive try."
+    },
+    "bright-eyes>townes-van-zandt": {
+      "url": "https://faroutmagazine.co.uk/how-the-replacements-shaped-conor-oberst/",
+      "found": "“I think everybody is a combination of their influences, but Townes is the deep, dark part that I carry around”, Oberst said of the influential but underrated Townes Van Zandt.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Conor Oberst, on his own list of influences for Pitchfork (2020): \"I think everybody is a combination of their influences, but Townes is the deep, dark part that I carry around.\"",
+      "note": "Quote verified at Far Out Magazine, which says it comes from Oberst's Pitchfork list (Sam Sodomsky, 2020); the Pitchfork page itself was not opened (URL unknown). The Life of the Record podcast claim could not be checked: its Talkhouse page has no transcript. Dropped from the citation."
+    },
+    "bright-eyes>joni-mitchell": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Mel Magazine (Oct 2020) piece not found in 2 searches; Life of the Record podcast page (talkhouse.com) has no transcript; Paste, AV Club, Wikipedia album page, Far Out page and Substack read: none carries Joni Mitchell or Neil Young as an Oberst influence on this record."
+    },
+    "bright-eyes>neil-young": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Mel Magazine (Oct 2020) piece not found in 2 searches; Life of the Record podcast page (talkhouse.com) has no transcript; Paste, AV Club, Wikipedia album page, Far Out page and Substack read: none carries Joni Mitchell or Neil Young as an Oberst influence on this record."
+    },
+    "fleet-foxes>elliott-smith": {
+      "url": "https://www.rollingstone.com/music/music-features/fleet-foxes-shore-robin-pecknold-interview-1064060/",
+      "found": "“Sunblind” keeps going from there, reciting the names of Judee Sill, John Prine, Elliott Smith (a &#x201C;hugely, hugely formative&#x201D; artist for Pecknold, who remembers going to Smith fansite sweetadeline.net in the early 2000s to look up guitar tabs), Silver Jews’ David Berman, and more",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Rolling Stone (2020), on Robin Pecknold: Elliott Smith is a \"hugely, hugely formative\" artist for him, who remembers going to the fansite sweetadeline.net in the early 2000s to look up guitar tabs.",
+      "note": "Page is a Rolling Stone feature (not an interview transcript): the 'hugely, hugely formative' quote is the writer's quoting of Pecknold. First-person kept since the words are Pecknold's own."
+    },
+    "fleet-foxes>john-prine": {
+      "url": "https://www.rollingstone.com/music/music-features/fleet-foxes-shore-robin-pecknold-interview-1064060/",
+      "found": "“Sunblind” keeps going from there, reciting the names of Judee Sill, John Prine, Elliott Smith (a &#x201C;hugely, hugely formative&#x201D; artist for Pecknold, who remembers going to Smith fansite sweetadeline.net in the early 2000s to look up guitar tabs), Silver Jews’ David Berman, and more, mingling recent tragedies with older ones in a cosmic scroll of appreciation.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Rolling Stone (2020) on Fleet Foxes' \"Sunblind\": \"the stunning litany of thanks for musicians gone before their time,\" reciting the names of Judee Sill, John Prine, Elliott Smith, Silver Jews' David Berman and more, \"in a cosmic scroll of appreciation.\"",
+      "note": "Under Pecknold's own song lyrics naming them (Wikipedia Shore page: lyrics reference his musical heroes). Rolling Stone describes it as thanks to musicians; Under the Radar quote not opened (cannot be). Tier lowered to reported (writer's description, no Pecknold quote about this artist). Wording of the 'litany of thanks' phrase: from a separate paragraph on the same page."
+    },
+    "fleet-foxes>silver-jews": {
+      "url": "https://www.rollingstone.com/music/music-features/fleet-foxes-shore-robin-pecknold-interview-1064060/",
+      "found": "“Sunblind” keeps going from there, reciting the names of Judee Sill, John Prine, Elliott Smith (a &#x201C;hugely, hugely formative&#x201D; artist for Pecknold, who remembers going to Smith fansite sweetadeline.net in the early 2000s to look up guitar tabs), Silver Jews’ David Berman, and more, mingling recent tragedies with older ones in a cosmic scroll of appreciation.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Rolling Stone (2020) on Fleet Foxes' \"Sunblind\": \"the stunning litany of thanks for musicians gone before their time,\" reciting the names of Judee Sill, John Prine, Elliott Smith, Silver Jews' David Berman and more, \"in a cosmic scroll of appreciation.\"",
+      "note": "Under Pecknold's own song lyrics naming them (Wikipedia Shore page: lyrics reference his musical heroes). Rolling Stone describes it as thanks to musicians; Under the Radar quote not opened (cannot be). Tier lowered to reported (writer's description, no Pecknold quote about this artist). Wording of the 'litany of thanks' phrase: from a separate paragraph on the same page."
+    },
+    "fleet-foxes>joanna-newsom": {
+      "url": "https://beatsperminute.com/video-fleet-foxes-grown-ocean-with-a-letter-from-robin-pecknold/",
+      "found": "A couple months later, Joanna Newsom asked me if I would open some shows for her. As a huge fan of hers, I was completely honored and flattered that she’d want me to open her shows, and I felt like I needed some new songs that I could play alone.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Robin Pecknold, in a letter (2011): \"As a huge fan of hers, I was completely honored and flattered that she'd want me to open her shows, and I felt like I needed some new songs that I could play alone.\" Asked what was in regular rotation while recording Helplessness Blues, he named \"Nic Jones, Beach House, Roy Harper, Dungen, Joanna Newsom, West Coast Pop Art Experimental Band.\"",
+      "note": "Paste interview not found; used the Beats Per Minute-published letter (verbatim) and the Santa Barbara Independent Q&A (https://www.independent.com/multimedia/fleet-foxes-sing-the-blues/), both read. Recording rotation answer is from the Independent."
+    },
+    "phoebe-bridgers>bright-eyes": {
+      "url": "https://www.billboard.com/music/rock/phoebe-bridgers-geeking-out-new-album-punisher-interview-9395623",
+      "found": "Those bluegrass influences, along with Bright Eyes’ I’m Wide Awake, It’s Morning , influenced &#x201C;Graceland Too,&#x201D; the banjo standout that features accompanying vocals from Baker and Dacus.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Billboard (2020), on what Phoebe Bridgers geeked out on while making Punisher: bluegrass \"along with Bright Eyes' I'm Wide Awake, It's Morning, influenced 'Graceland Too.'\"",
+      "note": "Tier lowered to reported: it is the writer's sentence, not a quote of Bridgers. A separate Stereogum Punisher interview has her calling \"Lime Tree\" one of her favourite Bright Eyes songs of all time."
+    },
+    "phoebe-bridgers>john-prine": {
+      "url": "https://www.billboard.com/music/rock/phoebe-bridgers-geeking-out-new-album-punisher-interview-9395623",
+      "found": "Of the late folk icon Prine, who died in April of complications from the COVID-19 virus, Bridgers says she was also influenced by his final album The Tree of Forgiveness , particularly its track &#x201C;Summer’s End.&#x201D;",
+      "checked": "2026-10-26",
+      "verdict": "ok",
+      "note": "Same paragraph: \"I learned a lot of Carter Family songs and lots of John Prine,\" she says."
+    },
+    "phoebe-bridgers>big-thief": {
+      "url": "https://guitar.com/features/interviews/the-guitar-interview-phoebe-bridgers-punisher/",
+      "found": "Phoebe cites everything from Billie Eilish (“her production is so cool”) to Guided By Voices, Caroline Polachek, Mitski, and Big Thief as influences on Punisher .",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Guitar.com's interview with Phoebe Bridgers on Punisher (2020): \"Phoebe cites everything from Billie Eilish ('her production is so cool') to Guided By Voices, Caroline Polachek, Mitski, and Big Thief as influences on Punisher.\"",
+      "note": "Tier lowered to reported: the writer paraphrases what she cited; no direct quote of her naming Big Thief. Date of the piece not shown on the page."
+    },
+    "phoebe-bridgers>mitski": {
+      "url": "https://guitar.com/features/interviews/the-guitar-interview-phoebe-bridgers-punisher/",
+      "found": "Phoebe cites everything from Billie Eilish (“her production is so cool”) to Guided By Voices, Caroline Polachek, Mitski, and Big Thief as influences on Punisher .",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Guitar.com's interview with Phoebe Bridgers on Punisher (2020): \"Phoebe cites everything from Billie Eilish ('her production is so cool') to Guided By Voices, Caroline Polachek, Mitski, and Big Thief as influences on Punisher.\"",
+      "note": "Tier lowered to reported: the writer paraphrases what she cited; no direct quote of her naming Mitski. Date of the piece not shown on the page."
+    },
+    "phoebe-bridgers>bon-iver": {
+      "url": "https://stereogum.com/2180943/phoebe-bridgers-essay-bon-iver-10th-anniversary-edition/news",
+      "found": "But it is one of your favorite albums in the way you can only have favorite albums when you are a teenager; so, ten years after hearing these songs for the first time, two days after taking MDMA, going eighty on the highway next to someone you love who loves you back, you put it on.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "In her essay for the 10th anniversary edition of Bon Iver, Bon Iver (2022, printed by Stereogum), Phoebe Bridgers writes that it is \"one of your favorite albums in the way you can only have favorite albums when you are a teenager.\"",
+      "note": "Allston Pudding 2018 'four-track' claim not found (1 search; nothing on For Emma, Forever Ago). Replaced with her own essay, about Bon Iver, Bon Iver (2011), not For Emma. Stereogum calls her a 'long-time fan'. Essay is in second person ('you'). Line of Best Fit (2018) also says she opened two shows for Bon Iver; not influence."
+    }
+  },
+  "candidates": [
+    {
+      "source": "wednesday",
+      "target": "grizzly-bear",
+      "kind": "influence",
+      "speaker": "Xandy Chelmis",
+      "sentence": "I really loved The Shins, Grizzly Bear, Real Estate, Beach Fossils, and Fleet Foxes was a big one for me.",
+      "url": "https://wrsu.org/interview-with-xandy-chelmis-of-wednesday-and-mj-lenderman-the-wind/"
+    },
+    {
+      "source": "wednesday",
+      "target": "fleet-foxes",
+      "kind": "influence",
+      "speaker": "Xandy Chelmis",
+      "sentence": "I really loved The Shins, Grizzly Bear, Real Estate, Beach Fossils, and Fleet Foxes was a big one for me.",
+      "url": "https://wrsu.org/interview-with-xandy-chelmis-of-wednesday-and-mj-lenderman-the-wind/"
+    },
+    {
+      "source": "wednesday",
+      "target": "neil-young",
+      "kind": "influence",
+      "speaker": "WRSU (reported, on Xandy Chelmis)",
+      "sentence": "Before he fell in love with Jason Molina and Jeff Tweedy, there were Neil Young LPs and Dr. Demento radio sets.",
+      "url": "https://wrsu.org/interview-with-xandy-chelmis-of-wednesday-and-mj-lenderman-the-wind/"
+    },
+    {
+      "source": "animal-collective",
+      "target": "aphex-twin",
+      "kind": "influence",
+      "speaker": "Panda Bear (Noah Lennox)",
+      "sentence": "That and Aphex Twin really changed the course of my musical life.",
+      "url": "https://daily.redbullmusicacademy.com/2018/11/animal-collective-oral-history"
+    },
+    {
+      "source": "fleet-foxes",
+      "target": "beach-house",
+      "kind": "influence",
+      "speaker": "Robin Pecknold",
+      "sentence": "Lots of Nic Jones, Beach House, Roy Harper, Dungen, Joanna Newsom, West Coast Pop Art Experimental Band.",
+      "url": "https://www.independent.com/multimedia/fleet-foxes-sing-the-blues/"
+    }
+  ],
+  "offMap": [
+    {
+      "name": "Swirlies",
+      "namedBy": "wednesday",
+      "sentence": "Once I heard Swirlies, I [knew I wanted to] combine The Sundays’ vocals with this music and country lyrics.",
+      "url": "https://thefortyfive.com/interviews/wednesday-band-interview-2023/"
+    },
+    {
+      "name": "Real Estate",
+      "namedBy": "wednesday",
+      "sentence": "I really loved The Shins, Grizzly Bear, Real Estate, Beach Fossils, and Fleet Foxes was a big one for me.",
+      "url": "https://wrsu.org/interview-with-xandy-chelmis-of-wednesday-and-mj-lenderman-the-wind/"
+    },
+    {
+      "name": "Nic Jones",
+      "namedBy": "fleet-foxes",
+      "sentence": "Lots of Nic Jones, Beach House, Roy Harper, Dungen, Joanna Newsom, West Coast Pop Art Experimental Band.",
+      "url": "https://www.independent.com/multimedia/fleet-foxes-sing-the-blues/"
+    }
+  ],
+  "finished": true
+}

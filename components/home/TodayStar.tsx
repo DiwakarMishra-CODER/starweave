@@ -10,6 +10,7 @@ const close = () => {
   storyCamera.overview?.(900);
 };
 import type { RecordCard } from '@/lib/home-story';
+import SourceLink from '@/components/ui/SourceLink';
 
 // Today's record, on the map itself: its star turns as a little record
 // (drawn by ForceGraph, see storyFrame.todayId) and this tag rides beside it
@@ -85,6 +86,7 @@ export default function TodayStar({ record, onListen }: { record: RecordCard; on
           <figcaption>
             {why.speaker} on {why.direction === 'parent' ? why.other.name : record.name}
           </figcaption>
+          <SourceLink url={why.sourceUrl} print={why.sourcePrint} size="small" />
         </figure>
       )}
       <button type="button" className="today-tag__play" onClick={onListen}>

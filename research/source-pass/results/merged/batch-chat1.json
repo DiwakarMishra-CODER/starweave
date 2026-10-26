@@ -1,0 +1,329 @@
+{
+  "name": "chat1",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:sonic-youth",
+      "phase": "first-person",
+      "speaker": "Sonic Youth",
+      "links": [
+        {
+          "key": "sonic-youth>velvet-underground",
+          "from": "Sonic Youth",
+          "to": "The Velvet Underground",
+          "fromYear": 1981,
+          "toYear": 1965,
+          "citation": "Thurston Moore has said he met his scene in a record shop while hunting for Velvet Underground records.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "sonic-youth>black-flag",
+          "from": "Sonic Youth",
+          "to": "Black Flag",
+          "fromYear": 1981,
+          "toYear": 1976,
+          "citation": "Lee Ranaldo, Wikipedia/Sonic Youth -- SST-label admiration rather than a direct sound-influence claim, flagged weaker-tier.",
+          "sourceTier": "first-person",
+          "confidence": 0.5
+        },
+        {
+          "key": "sonic-youth>glenn-branca",
+          "from": "Sonic Youth",
+          "to": "Glenn Branca",
+          "fromYear": 1981,
+          "toYear": 1977,
+          "citation": "Thurston Moore told Rolling Stone that seeing Glenn Branca play guitars tuned outside of standard tunings \"really is what informed a lot of what happened in Sonic Youth.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "sonic-youth>patti-smith",
+          "from": "Sonic Youth",
+          "to": "Patti Smith",
+          "fromYear": 1981,
+          "toYear": 1974,
+          "citation": "Thurston Moore has described seeing the Patti Smith Group live as a teenager as the moment he'd been waiting for, and singled out one of her less verse-chorus, almost-improvised songs as directly formative to Sonic Youth's own break from traditional song structure.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:my-bloody-valentine",
+      "phase": "first-person",
+      "speaker": "My Bloody Valentine",
+      "links": [
+        {
+          "key": "my-bloody-valentine>the-jesus-and-mary-chain",
+          "from": "My Bloody Valentine",
+          "to": "The Jesus and Mary Chain",
+          "fromYear": 1983,
+          "toYear": 1983,
+          "citation": "Kevin Shields has called the Cocteau Twins/JAMC comparison \"garbage,\" but concedes Psychocandy as \"the shared record\" between the two bands' sounds.",
+          "sourceTier": "first-person",
+          "confidence": 0.65
+        },
+        {
+          "key": "my-bloody-valentine>ramones",
+          "from": "My Bloody Valentine",
+          "to": "Ramones",
+          "fromYear": 1983,
+          "toYear": 1974,
+          "citation": "NME's \"Roots of MBV\": hearing the Ramones was when Shields realised the guitar could be more than a melodic cosh -- in his words, \"a noise generator.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "my-bloody-valentine>siouxsie-and-the-banshees",
+          "from": "My Bloody Valentine",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 1983,
+          "toYear": 1976,
+          "citation": "Kevin Shields to Karen Leng, Double J / ABC (8 Apr 2021), on the dark post-punk bands the band drew from: \"the best of all was Siouxsie and the Banshees, the Cure and Killing Joke.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.65
+        },
+        {
+          "key": "my-bloody-valentine>the-cure",
+          "from": "My Bloody Valentine",
+          "to": "The Cure",
+          "fromYear": 1983,
+          "toYear": 1978,
+          "citation": "Kevin Shields to Karen Leng, Double J / ABC (8 Apr 2021), same answer: \"the best of all was Siouxsie and the Banshees, the Cure and Killing Joke.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "first-person:siouxsie-and-the-banshees",
+      "phase": "first-person",
+      "speaker": "Siouxsie & The Banshees",
+      "links": [
+        {
+          "key": "siouxsie-and-the-banshees>david-bowie",
+          "from": "Siouxsie & The Banshees",
+          "to": "David Bowie",
+          "fromYear": 1976,
+          "toYear": 1969,
+          "citation": "NPR: Siouxsie Sioux grew up on Bowie and Lou Reed. AllMusic's prose bio recounts her head being turned seeing Bowie perform on television.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:cocteau-twins",
+      "phase": "first-person",
+      "speaker": "Cocteau Twins",
+      "links": [
+        {
+          "key": "cocteau-twins>siouxsie-and-the-banshees",
+          "from": "Cocteau Twins",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 1979,
+          "toYear": 1976,
+          "citation": "Robin Guthrie's page on the band's own site names Siouxsie and the Banshees among the artists who made the beautiful noise that drew a teenage Fraser and Guthrie together.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "cocteau-twins>sex-pistols",
+          "from": "Cocteau Twins",
+          "to": "Sex Pistols",
+          "fromYear": 1979,
+          "toYear": 1975,
+          "citation": "Guthrie's page on the band's own site: an alienated teenager who loved the Sex Pistols, the Birthday Party, and Siouxsie and the Banshees.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "cocteau-twins>the-birthday-party",
+          "from": "Cocteau Twins",
+          "to": "The Birthday Party",
+          "fromYear": 1979,
+          "toYear": 1976,
+          "citation": "Robin Guthrie, on the band's own site: they were \"influenced by guitarists who made a beautiful noise, like Roland S. Howard... it's because of them that we sent a demo to 4AD.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:david-bowie",
+      "phase": "first-person",
+      "speaker": "David Bowie",
+      "links": [
+        {
+          "key": "david-bowie>the-stooges",
+          "from": "David Bowie",
+          "to": "The Stooges",
+          "fromYear": 1969,
+          "toYear": 1967,
+          "citation": "Iggy Pop: \"David had said something in Melody Maker about his favorite songs, and he said he liked the Stooges\" -- 1971, before the two men had met.",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "first-person:joy-division",
+      "phase": "first-person",
+      "speaker": "Joy Division",
+      "links": [
+        {
+          "key": "joy-division>velvet-underground",
+          "from": "Joy Division",
+          "to": "The Velvet Underground",
+          "fromYear": 1976,
+          "toYear": 1965,
+          "citation": "Hook, in Jon Savage's oral history: \"Ian was much better educated for things like Can, Kraftwerk, Velvet Underground.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "joy-division>kraftwerk",
+          "from": "Joy Division",
+          "to": "Kraftwerk",
+          "fromYear": 1976,
+          "toYear": 1970,
+          "citation": "Peter Hook: \"Ian was much better educated for things like Can, Kraftwerk, Velvet Underground.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "joy-division>can",
+          "from": "Joy Division",
+          "to": "Can",
+          "fromYear": 1976,
+          "toYear": 1968,
+          "citation": "Peter Hook, Jon Savage's oral history: \"Ian was much better educated for things like Can, Kraftwerk, Velvet Underground.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:neil-young",
+      "phase": "first-person",
+      "speaker": "Neil Young",
+      "links": [
+        {
+          "key": "neil-young>bob-dylan",
+          "from": "Neil Young",
+          "to": "Bob Dylan",
+          "fromYear": 1966,
+          "toYear": 1961,
+          "citation": "Neil Young has described first hearing Bob Dylan in Winnipeg around 1963, the same year he named Dylan directly in his own lyric on \"Flags of Freedom.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:fugazi",
+      "phase": "first-person",
+      "speaker": "Fugazi",
+      "links": [
+        {
+          "key": "fugazi>sonic-youth",
+          "from": "Fugazi",
+          "to": "Sonic Youth",
+          "fromYear": 1986,
+          "toYear": 1981,
+          "citation": "Guy Picciotto, Cultural Glitch (Nov 3, 2011): \"Fugazi's influences include Bad Brains, the Faith, Void, Minutemen, Black Flag, Sonic Youth, the Ex.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.65
+        },
+        {
+          "key": "fugazi>bad-brains",
+          "from": "Fugazi",
+          "to": "Bad Brains",
+          "fromYear": 1986,
+          "toYear": 1977,
+          "citation": "Guy Picciotto, Cultural Glitch (Nov 3, 2011): \"Fugazi's influences include Bad Brains, the Faith, Void, Minutemen, Black Flag, Sonic Youth, the Ex.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "fugazi>minutemen",
+          "from": "Fugazi",
+          "to": "Minutemen",
+          "fromYear": 1986,
+          "toYear": 1980,
+          "citation": "Guy Picciotto, Cultural Glitch (Nov 3, 2011): \"Fugazi's influences include Bad Brains, the Faith, Void, Minutemen, Black Flag, Sonic Youth, the Ex.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "fugazi>black-flag",
+          "from": "Fugazi",
+          "to": "Black Flag",
+          "fromYear": 1986,
+          "toYear": 1976,
+          "citation": "Guy Picciotto, Cultural Glitch (Nov 3, 2011): \"Fugazi's influences include Bad Brains, the Faith, Void, Minutemen, Black Flag, Sonic Youth, the Ex.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-cure",
+      "phase": "first-person",
+      "speaker": "The Cure",
+      "links": [
+        {
+          "key": "the-cure>siouxsie-and-the-banshees",
+          "from": "The Cure",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 1978,
+          "toYear": 1976,
+          "citation": "Robert Smith, in Mark Paytress's Siouxsie & the Banshees: The Authorised Biography (2003), p.96, on playing with the Banshees: \"On stage that first night with the Banshees, I was blown away by how powerful I felt playing that kind of music. It was so different to what we were doing with the Cure... Being a Banshee really changed my attitude to what I was doing.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.65
+        },
+        {
+          "key": "the-cure>nick-drake",
+          "from": "The Cure",
+          "to": "Nick Drake",
+          "fromYear": 1978,
+          "toYear": 1968,
+          "citation": "Robert Smith named Nick Drake among his five favorite songs for the BBC, saying it embodied \"everything I would aspire to in understated mood songwriting,\" and told Clash that Drake's \"Time Has Told Me\" gave the band its name.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-cure>sex-pistols",
+          "from": "The Cure",
+          "to": "Sex Pistols",
+          "fromYear": 1978,
+          "toYear": 1975,
+          "citation": "Smith's BBC five-songs list: \"Anarchy in the UK\" was \"the last time something really major happened to me and changed me.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-cure>buzzcocks",
+          "from": "The Cure",
+          "to": "Buzzcocks",
+          "fromYear": 1978,
+          "toYear": 1976,
+          "citation": "Smith, Rolling Stone Q&A: \"when I first saw the Stranglers, I thought, 'This is it.' And I saw the Buzzcocks the following week, and I thought, 'This is definitely it.'\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "the-cure>mogwai",
+          "from": "The Cure",
+          "to": "Mogwai",
+          "fromYear": 1978,
+          "toYear": 1995,
+          "citation": "Smith, in the Bambarger interview: \"When I first got hold of Mogwai's Young Team album, I played it endlessly\" -- audible, he has said, on Bloodflowers.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    }
+  ]
+}

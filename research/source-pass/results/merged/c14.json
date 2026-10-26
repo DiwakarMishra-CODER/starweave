@@ -1,0 +1,324 @@
+{
+  "agent": "c14",
+  "searches": 30,
+  "toolStatus": "WebSearch fine; pages opened via read",
+  "entries": {
+    "pulp>leonard-cohen": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.thecurrent.org/feature/2025/06/08/npr-pulp-more-jarvis-cocker-interview",
+      "found": "That made sense — we'd been talking about Leonard Cohen , one of Cocker's heroes, who'd been a Zen monk during the latter part of his life.",
+      "sourceTier": "reported",
+      "citation": "NPR (2025) describes Leonard Cohen as \"one of Cocker's heroes\" and says Pulp has been \"the primary vehicle through which Cocker has followed Cohen's life advice\"; Cocker told NPR that Cohen once warned him \"We must not discuss the sacred mechanics.\"",
+      "note": "Original cited Washington Post and Hot Press; NPR page read. Cocker's own words on Cohen as an influence on his music not on this page (the Cohen quote is Cohen's, a warning), so lowered to reported. Hot Press page (Beatles/Cohen article) only recounts Cohen's warning from Cocker's memoir."
+    },
+    "pulp>velvet-underground": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.hotpress.com/music/pulp-a-lot-of-foundational-things-for-the-band-came-from-listening-to-the-velvet-underground-23087162",
+      "found": "“I had my mind blown by them,” he said. “That’s why I’ve always used strings. They had Mo Tucker playing drums, so it was alright to have a woman in a band. You know, a lot of foundational things for the band came from listening to The Velvet Underground.”",
+      "citation": "Jarvis Cocker to Hot Press (2025): \"I had my mind blown by them... That's why I've always used strings. They had Mo Tucker playing drums, so it was alright to have a woman in a band. You know, a lot of foundational things for the band came from listening to The Velvet Underground.\""
+    },
+    "the-dismemberment-plan>bad-brains": {
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "url": "https://www.wbur.org/news/2014/12/26/dismemberment-plan-travis-morrison",
+      "found": "But there’s a couple—if I’m in a bad mood, nothing clears out my sinuses like Bad Brains. There’s nothing that just resets the brains like Bad Brains.",
+      "note": "Morrison says he got into hardcore in his mid-late 30s (c. 2012-14), after the band formed and made its records; 'wasn't really into hardcore in high school'. It is current listening, not a shaping influence. Propose remove (or keep only if the owner counts later fandom)."
+    },
+    "the-dismemberment-plan>neil-young": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.wbur.org/news/2014/12/26/dismemberment-plan-travis-morrison",
+      "found": "But I’m not like—I’m a huge Neil Young fan, and for some reason I was like, “I wonder what that ‘Greendale’ record is like.” He made a concept record about being in a small town.",
+      "citation": "Travis Morrison to WBUR (2014): \"I'm a huge Neil Young fan,\" adding that he was struck by how Young sustained a concept record, Greendale, for 55 minutes: \"I don't think I'll ever be like, 'Here's my song cycle about Greendale.'\"",
+      "note": "Thin: a self-declared huge fan, with the concept-record remark about his own writing. Fan counts under the owner's ruling but the page does not say Young shaped the band's music; owner may prefer lower confidence."
+    },
+    "the-radio-dept>my-bloody-valentine": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.theradiodept.com/news/radio-dept-interview-alexander-kovalev-and-johan-duncanson/",
+      "found": "mbv I like because they had a genuine interest in both melody and sound.",
+      "citation": "Johan Duncanson to Alexander Kovalev (interview on the band's site): \"mbv I like because they had a genuine interest in both melody and sound.\" He adds that the band got tired of being compared to them and the Jesus and Mary Chain.",
+      "note": "Not a Labrador Records page; interview is hosted on theradiodept.com. QRO interview also has Duncanson: 'Of course, I love My Bloody Valentine'."
+    },
+    "the-radio-dept>kraftwerk": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm",
+      "found": "- kraftwerk",
+      "citation": "The Radio Dept.'s own biography page, under \"Influences\", says the band are not huge fans of Slowdive and hardly ever listen to the Jesus and Mary Chain, and instead lists what they listen to, Kraftwerk among it.",
+      "note": "Archive copy (2007) of the band's own site; list item under INFLUENCES header. Also Duncanson to Kovalev: 'Quite a lot of the music I listen to is electronic in some fashion whether it’s house, electronica or old stuff like kraftwerk or the klf' (https://www.theradiodept.com/news/radio-dept-interview-alexander-kovalev-and-johan-duncanson/). Not a Labrador page."
+    },
+    "the-radio-dept>the-blue-nile": {
+      "checked": "2026-10-26",
+      "verdict": "ok",
+      "url": "https://floodmagazine.com/76764/in-conversation-the-radio-dept-on-10-years-of-clinging-to-a-scheme/",
+      "found": "We listened to ’80s indie bands like Marine Girls, Young Marble Giants, Antena, [but also] The Blue Nile, Style Council, Saint Etienne, Lovers Rock compilations, ’70s folk, Marvin Gaye, Philly soul, Dusty Springfield, and tons of other stuff.",
+      "note": "FLOOD, 2020, about Clinging to a Scheme; Duncanson speaking."
+    },
+    "tim-hecker>ride": {
+      "checked": "2026-10-26",
+      "verdict": "ok",
+      "url": "https://www.redbullmusicacademy.com/lectures/tim-hecker-lecture",
+      "found": "I was faking driver’s license IDs so I could get into clubs to see bands like Ride or My Bloody Valentine play.",
+      "note": "Fandom in his teens (going to see them); RBMA lecture 2016 per the site."
+    },
+    "tim-hecker>my-bloody-valentine": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.redbullmusicacademy.com/lectures/tim-hecker-lecture",
+      "found": "I was faking driver’s license IDs so I could get into clubs to see bands like Ride or My Bloody Valentine play.",
+      "citation": "Tim Hecker, Red Bull Music Academy lecture: \"I was faking driver's license IDs so I could get into clubs to see bands like Ride or My Bloody Valentine play. In Vancouver, that was like a huge thing if one of those bands came through town.\"",
+      "note": "Dropped the Dowsers 'corroborated' clause: I did not open that page."
+    },
+    "wilco>television": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.guitarplayer.com/players/nels-cline-five-riffs",
+      "found": "That’s where I get my penchant for the &lsquo;wiggle’ – which I use all over songs like Wilco’s &lsquo; Impossible Germany .’”",
+      "citation": "Nels Cline, Wilco's guitarist, chose Television's \"Marquee Moon\" for Guitar Player's five life-changing riffs and said of its Cipollina-style figure: \"That's where I get my penchant for the 'wiggle' - which I use all over songs like Wilco's 'Impossible Germany.'\"",
+      "note": "The citation's quote ('iconic, beautiful guitar arrangements', 're-embrace of the rock band') is NOT on the Guitar Player page; page says 'a veritable feast of memorable and influential guitar riffs' and the wiggle line above. Page text prints HTML entities (&lsquo;) literally. Handshake Drugs/Tweedy detail is on Jambase (https://www.jambase.com/article/nels-cline-5-riffs-video) as reported. Cline's claim, not Tweedy's, as already settled."
+    },
+    "a-g-cook>sophie": {
+      "checked": "2026-10-26",
+      "verdict": "ok",
+      "url": "https://www.thelineofbestfit.com/features/interviews/ag-cook-travels-space-time-continuum",
+      "found": "I feel that there are tributes to SOPHIE all over my work, and I actually see her fingerprints as much on ‘Silver Thread Golden Needle’ and a lot of the instrumental tracks as I do on something like ‘Without’.”",
+      "note": "Line of Best Fit 2024 interview (Britpop). Quote on page uses curly quotes."
+    },
+    "a-g-cook>kraftwerk": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://mixmag.net/feature/a-g-cook-pc-music-experimental-pop-interview",
+      "found": "He’s quick to downplay his impact, though, describing it as a continuum, with influences including Hudson Mohawke , Rustie , Uffie and Ed Banger going back to Gorillaz , Daft Punk and even Kraftwerk , referencing “how unbelievably mainstream and high concept genre-destroying that stuff was. There’s been plenty of things that we’ve also evolved from.”",
+      "sourceTier": "reported",
+      "citation": "Mixmag reports A. G. Cook describing his work as a continuum with influences going back to Gorillaz, Daft Punk and even Kraftwerk, and quotes him on \"how unbelievably mainstream and high concept genre-destroying that stuff was.\"",
+      "note": "Lowered to reported: the influence list is Mixmag's paraphrase; only the 'unbelievably mainstream...' part is his quoted words. No year on the page I read."
+    },
+    "cap-n-jazz>fugazi": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://www.rollingstone.com/music/music-features/american-football-inside-emo-godfathers-unlikely-return-122039/",
+      "found": "“Cap’n Jazz had that sort of Dischord, Fugazi influence,” says Kinsella.",
+      "citation": "Mike Kinsella to Rolling Stone, in a story on American Football: \"Cap'n Jazz had that sort of Dischord, Fugazi influence.\"",
+      "note": "Quote verbatim. Year 2016 is not on the page I read, so dropped from the citation."
+    },
+    "deaths-dynamic-shroud>radiohead": {
+      "checked": "2026-10-26",
+      "verdict": "ok",
+      "url": "https://vwmusicrocks.com/an-interview-with-tech-honors-of-deaths-dynamic-shroud/",
+      "found": "I can speak for both James and myself when I say that Radiohead has had the biggest influence on our music. He and I were both very into 90s British Rock music, which itself is kind of just an extension of The Beatles.",
+      "note": "Tech Honors to VWMusic, speaking for himself and James."
+    },
+    "deaths-dynamic-shroud>julee-cruise": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Not in the VWMusic interview (read), Bandcamp Daily Jan 2024 feature (read) or Wikipedia. No search spent on it (search share used up)."
+    },
+    "editors>the-chameleons": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/20090602061627/http://www.editorsmusic.co.uk/index.php/Interviews/Gigwise.html",
+      "found": "“Obviously, we're dark and moody so yeah we build on the sound of the likes of Joy Division, Echo and the Bunnymen and The Chameleons… Obviously we were too young when these bands came out, so it's only more recently that we discovered them.”",
+      "citation": "Tom Smith to Gigwise: \"Obviously, we're dark and moody so yeah we build on the sound of the likes of Joy Division, Echo and the Bunnymen and The Chameleons... Obviously we were too young when these bands came out, so it's only more recently that we discovered them.\"",
+      "note": "Page is the archived copy of the Gigwise interview hosted on editorsmusic.co.uk (Wikipedia's footnote). Gigwise original not opened."
+    },
+    "editors>echo-and-the-bunnymen": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://web.archive.org/web/20090602061627/http://www.editorsmusic.co.uk/index.php/Interviews/Gigwise.html",
+      "found": "“Obviously, we're dark and moody so yeah we build on the sound of the likes of Joy Division, Echo and the Bunnymen and The Chameleons… Obviously we were too young when these bands came out, so it's only more recently that we discovered them.”",
+      "citation": "Tom Smith to Gigwise: \"Obviously, we're dark and moody so yeah we build on the sound of the likes of Joy Division, Echo and the Bunnymen and The Chameleons... Obviously we were too young when these bands came out, so it's only more recently that we discovered them.\""
+    },
+    "fka-twigs>siouxsie-and-the-banshees": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://daily.redbullmusicacademy.com/2013/09/fka-twigs-interview/",
+      "found": "During that time every bit of music that I made sounded like a pastiche of Siouxsie and the Banshees or Adam Ant.",
+      "citation": "FKA twigs to Red Bull Music Academy (2013): \"I used to be obsessed with New Romantics like Adam Ant, Bow Wow Wow and Siouxsie and the Banshees... During that time every bit of music that I made sounded like a pastiche of Siouxsie and the Banshees or Adam Ant.\"",
+      "note": "Outlet is Red Bull Music Academy Daily, not Complex (Complex 2015 cover story and M3LL155X pieces searched for the words: nothing)."
+    },
+    "fka-twigs>x-ray-spex": {
+      "checked": "2026-10-26",
+      "verdict": "blocked",
+      "url": "https://www.youtube.com/watch?v=Pe4eTsTcyEc",
+      "note": "Wikipedia's Germfree Adolescents article says twigs named it her favourite album ever in an interview after the 2014 Mercury Prize shortlisting; its footnote is this YouTube video 'FKA twigs Q&A - 2014 Mercury Prize' (MercuryPrize channel, 15 Sep 2014). Look in it for her naming Germfree Adolescents as her favourite album of all time. I could not watch it; only Wikipedia's sentence read (https://en.wikipedia.org/wiki/Germfree_Adolescents). The citation's 'Mercury shortlisting' wording is Wikipedia's."
+    },
+    "george-clanton>the-human-league": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Seven Days page not found; no search spent (share used up). Wikipedia raw for George Clanton has no Human League text."
+    },
+    "grizzly-bear>talk-talk": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Line of Best Fit Rossen nine-favourites list: one search found nothing; guessed URL .../features/lists/daniel-rossen-my-nine-favourite-songs is a 404. Wikipedia raw for Grizzly Bear/Rossen has nothing on Talk Talk."
+    },
+    "jockstrap>cocteau-twins": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "NME interview not located; no search spent on it. Guessed nme.com URL 404. Loud And Quiet interview https://www.loudandquiet.com/interview/jockstrap/ read: Skye says 'we didn't have any specific influences' and has no Cocteau Twins."
+    },
+    "jockstrap>bob-dylan": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "One search for the Skye 'turning into my dad' quote found nothing. Loud And Quiet interview at https://www.loudandquiet.com/interview/jockstrap/ is a different piece with no Dylan or 'dad'. If found, note he says he wasn't interested in Dylan when younger, so it is weak as influence."
+    },
+    "king-gizzard-and-the-lizard-wizard>bob-dylan": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Radio Milwaukee Mackenzie quote on Flight b741 not searched (search share used up)."
+    },
+    "mac-demarco>neil-young": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Guardian and 2023 Weekly Neil pieces not found (no search left). Wikipedia's only support is a Pitchfork 2012 guest list naming Neil Young as a favourite (bare list, not citable). Citation's thrift-store dollar bin detail is the Grokipedia-substitution warning case in CLAUDE.md; do not feature it without a page."
+    },
+    "mac-demarco>the-smiths": {
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "url": "https://faroutmagazine.co.uk/mac-demarco-love-the-smiths/",
+      "found": "During another conversation with The Guardian , the Canadian musician singled out ‘Ask’ by the band as the piece of music that made him “feel different at school”. The Canadian explained: “At high school, people generally liked the same music I did, but when I started getting into the Smiths, everybody was like: ‘Dude, why are you listening to this crap?’”",
+      "citation": "Mac DeMarco, in a Guardian conversation reported by Far Out Magazine, singled out the Smiths' \"Ask\" as the song that made him \"feel different at school\": \"At high school, people generally liked the same music I did, but when I started getting into the Smiths, everybody was like: 'Dude, why are you listening to this crap?'\"",
+      "note": "Guardian original not opened; quote via Far Out."
+    }
+  },
+  "candidates": [
+    {
+      "source": "editors",
+      "target": "joy-division",
+      "kind": "influence",
+      "speaker": "Tom Smith",
+      "sentence": "“Obviously, we're dark and moody so yeah we build on the sound of the likes of Joy Division, Echo and the Bunnymen and The Chameleons… Obviously we were too young when these bands came out, so it's only more recently that we discovered them.”",
+      "url": "https://web.archive.org/web/20090602061627/http://www.editorsmusic.co.uk/index.php/Interviews/Gigwise.html"
+    },
+    {
+      "source": "the-radio-dept",
+      "target": "broadcast",
+      "kind": "influence",
+      "speaker": "The Radio Dept. (band site)",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    },
+    {
+      "source": "the-radio-dept",
+      "target": "joy-division",
+      "kind": "influence",
+      "speaker": "The Radio Dept. (band site)",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    },
+    {
+      "source": "the-radio-dept",
+      "target": "nick-drake",
+      "kind": "influence",
+      "speaker": "The Radio Dept. (band site)",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    },
+    {
+      "source": "the-radio-dept",
+      "target": "prefab-sprout",
+      "kind": "influence",
+      "speaker": "The Radio Dept. (band site)",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    },
+    {
+      "source": "the-radio-dept",
+      "target": "neu",
+      "kind": "influence",
+      "speaker": "The Radio Dept. (band site)",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    }
+  ],
+  "offMap": [
+    {
+      "name": "Gorillaz",
+      "namedBy": "a-g-cook",
+      "sentence": "He’s quick to downplay his impact, though, describing it as a continuum, with influences including Hudson Mohawke , Rustie , Uffie and Ed Banger going back to Gorillaz , Daft Punk and even Kraftwerk",
+      "url": "https://mixmag.net/feature/a-g-cook-pc-music-experimental-pop-interview"
+    },
+    {
+      "name": "Daft Punk",
+      "namedBy": "a-g-cook",
+      "sentence": "He’s quick to downplay his impact, though, describing it as a continuum, with influences including Hudson Mohawke , Rustie , Uffie and Ed Banger going back to Gorillaz , Daft Punk and even Kraftwerk",
+      "url": "https://mixmag.net/feature/a-g-cook-pc-music-experimental-pop-interview"
+    },
+    {
+      "name": "Charles Aznavour",
+      "namedBy": "the-radio-dept",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    },
+    {
+      "name": "Saint Etienne",
+      "namedBy": "the-radio-dept",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    },
+    {
+      "name": "Frank Sinatra",
+      "namedBy": "the-radio-dept",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    },
+    {
+      "name": "Pet Shop Boys",
+      "namedBy": "the-radio-dept",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    },
+    {
+      "name": "Chet Baker",
+      "namedBy": "the-radio-dept",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    },
+    {
+      "name": "Fennesz",
+      "namedBy": "the-radio-dept",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    },
+    {
+      "name": "Kevin Rowland",
+      "namedBy": "the-radio-dept",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    },
+    {
+      "name": "Junior Boys",
+      "namedBy": "the-radio-dept",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    },
+    {
+      "name": "Orange Juice",
+      "namedBy": "the-radio-dept",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    },
+    {
+      "name": "Jonathan Richman",
+      "namedBy": "the-radio-dept",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    },
+    {
+      "name": "The Avalanches",
+      "namedBy": "the-radio-dept",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    },
+    {
+      "name": "The Pale Fountains",
+      "namedBy": "the-radio-dept",
+      "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+      "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm"
+    }
+  ],
+  "finished": true
+}

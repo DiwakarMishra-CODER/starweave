@@ -1,0 +1,399 @@
+{
+  "name": "c6",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:ride",
+      "phase": "first-person",
+      "speaker": "Ride",
+      "links": [
+        {
+          "key": "ride>my-bloody-valentine",
+          "from": "Ride",
+          "to": "My Bloody Valentine",
+          "fromYear": 1988,
+          "toYear": 1983,
+          "citation": "Mark Bell: MBV was \"hugely influential on the bass sound... We had become addicted to noise.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "ride>the-jesus-and-mary-chain",
+          "from": "Ride",
+          "to": "The Jesus and Mary Chain",
+          "fromYear": 1988,
+          "toYear": 1983,
+          "citation": "Bell, MusicRadar: \"We were basically translating our version of a certain crop of 60s bands... and putting that through a filter of what was going on right then. The Mary Chain, the Valentines, the House Of Love and Spacemen 3.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "ride>sonic-youth",
+          "from": "Ride",
+          "to": "Sonic Youth",
+          "fromYear": 1988,
+          "toYear": 1981,
+          "citation": "Mark Bell, Premier Guitar: \"you can easily tell when it was we'd heard Sonic Youth, because we immediately started to employ noise techniques... Songs like 'Nowhere' and 'Seagull' came out of that.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "ride>the-stone-roses",
+          "from": "Ride",
+          "to": "The Stone Roses",
+          "fromYear": 1988,
+          "toYear": 1983,
+          "citation": "Bell, Under the Radar: \"Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "ride>dinosaur-jr",
+          "from": "Ride",
+          "to": "Dinosaur Jr.",
+          "fromYear": 1988,
+          "toYear": 1984,
+          "citation": "Andy Bell to Under the Radar: \"Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "ride>pixies",
+          "from": "Ride",
+          "to": "Pixies",
+          "fromYear": 1988,
+          "toYear": 1986,
+          "citation": "Andy Bell to Under the Radar: \"Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "ride>velvet-underground",
+          "from": "Ride",
+          "to": "The Velvet Underground",
+          "fromYear": 1988,
+          "toYear": 1965,
+          "citation": "Bell, MusicRadar: \"We were basically translating our version of a certain crop of 60s bands -- The Beatles, The Byrds, The Velvets and The Stooges -- and putting that through a filter of what was going on right then.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "ride>the-fall",
+          "from": "Ride",
+          "to": "The Fall",
+          "fromYear": 1988,
+          "toYear": 1976,
+          "citation": "Andy Bell to Under the Radar: \"Early on in Ride, it was Spacemen 3, House of Love, My Bloody Valentine, Loop, Sonic Youth, Dinosaur Jr., The Fall, Pixies, and Stone Roses.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "ride>the-stooges",
+          "from": "Ride",
+          "to": "The Stooges",
+          "fromYear": 1988,
+          "toYear": 1967,
+          "citation": "Andy Bell, MusicRadar: \"We were basically translating our version of a certain crop of 60s bands -- The Beatles, The Byrds, The Velvets and The Stooges -- and putting that through a filter of what was going on right then.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "ride>mudhoney",
+          "from": "Ride",
+          "to": "Mudhoney",
+          "fromYear": 1988,
+          "toYear": 1988,
+          "citation": "Neil Halstead, quoted in Magnet, same account of Ride/Slowdive's shared touchstones naming Mudhoney and Dinosaur Jr.",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-jesus-and-mary-chain",
+      "phase": "first-person",
+      "speaker": "The Jesus and Mary Chain",
+      "links": [
+        {
+          "key": "the-jesus-and-mary-chain>velvet-underground",
+          "from": "The Jesus and Mary Chain",
+          "to": "The Velvet Underground",
+          "fromYear": 1983,
+          "toYear": 1965,
+          "citation": "Rolling Stone, on writing Psychocandy: \"we got seriously into the Velvets and the Stooges.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-jesus-and-mary-chain>the-birthday-party",
+          "from": "The Jesus and Mary Chain",
+          "to": "The Birthday Party",
+          "fromYear": 1983,
+          "toYear": 1976,
+          "citation": "Rolling Stone: \"The bands that didn't make us want to puke back then were the likes of the Birthday Party or Echo and the Bunnymen.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "first-person:dinosaur-jr",
+      "phase": "first-person",
+      "speaker": "Dinosaur Jr.",
+      "links": [
+        {
+          "key": "dinosaur-jr>neil-young",
+          "from": "Dinosaur Jr.",
+          "to": "Neil Young",
+          "fromYear": 1984,
+          "toYear": 1966,
+          "citation": "MOJO's oral history of the band, Lou Barlow: \"J loved The Zombies and Neil Young.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:omd",
+      "phase": "first-person",
+      "speaker": "Orchestral Manoeuvres in the Dark",
+      "links": [
+        {
+          "key": "omd>kraftwerk",
+          "from": "Orchestral Manoeuvres in the Dark",
+          "to": "Kraftwerk",
+          "fromYear": 1978,
+          "toYear": 1970,
+          "citation": "OMD Wikipedia bio: Kraftwerk was OMD's \"primary musical influence\"; McCluskey credits Autobahn with piquing his and Humphreys' interest in electronic music; \"Electricity\" described as \"a punky sped-up version of Kraftwerk's Radioactivity.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-replacements",
+      "phase": "first-person",
+      "speaker": "The Replacements",
+      "links": [
+        {
+          "key": "the-replacements>ramones",
+          "from": "The Replacements",
+          "to": "Ramones",
+          "fromYear": 1979,
+          "toYear": 1974,
+          "citation": "Paul Westerberg picked \"Judy Is a Punk\" in a 2004 radio interview -- a favorites-tier pick, not a stated influence claim.",
+          "sourceTier": "first-person",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "first-person:unwound",
+      "phase": "first-person",
+      "speaker": "Unwound",
+      "links": [
+        {
+          "key": "unwound>fugazi",
+          "from": "Unwound",
+          "to": "Fugazi",
+          "fromYear": 1991,
+          "toYear": 1986,
+          "citation": "Justin Trosper, Piero Scaruffi interview (1999): \"more influenced by the DC punk thing happening back then... (husker du/black flag/mission of burma)\"; Fugazi also named directly in the band's general influences list (AllMusic/Fred Thomas).",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "unwound>black-flag",
+          "from": "Unwound",
+          "to": "Black Flag",
+          "fromYear": 1991,
+          "toYear": 1976,
+          "citation": "Justin Trosper, Piero Scaruffi interview (1999): \"more influenced by... US hardcore (husker du/black flag/mission of burma).\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "unwound>the-jesus-lizard",
+          "from": "Unwound",
+          "to": "The Jesus Lizard",
+          "fromYear": 1991,
+          "toYear": 1987,
+          "citation": "Sara Lund, Stereogum \"Turntable Interview\" (Nov 15, 2012).",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "unwound>husker-du",
+          "from": "Unwound",
+          "to": "Hüsker Dü",
+          "fromYear": 1991,
+          "toYear": 1979,
+          "citation": "Justin Trosper, Piero Scaruffi interview (1999): \"more influenced by the DC punk thing happening back then and just more interesting US hardcore (husker du/black flag/mission of burma) and punk from England (wire/gang of four/joy division).\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "unwound>wire",
+          "from": "Unwound",
+          "to": "Wire",
+          "fromYear": 1991,
+          "toYear": 1976,
+          "citation": "Justin Trosper, Piero Scaruffi interview (1999): \"more influenced by the DC punk thing happening back then and just more interesting US hardcore (husker du/black flag/mission of burma) and punk from England (wire/gang of four/joy division).\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "unwound>gang-of-four",
+          "from": "Unwound",
+          "to": "Gang of Four",
+          "fromYear": 1991,
+          "toYear": 1976,
+          "citation": "Justin Trosper, Piero Scaruffi interview (1999): \"more influenced by the DC punk thing happening back then and just more interesting US hardcore (husker du/black flag/mission of burma) and punk from England (wire/gang of four/joy division).\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "unwound>joy-division",
+          "from": "Unwound",
+          "to": "Joy Division",
+          "fromYear": 1991,
+          "toYear": 1976,
+          "citation": "Justin Trosper, Piero Scaruffi interview (1999): \"more influenced by the DC punk thing happening back then and just more interesting US hardcore (husker du/black flag/mission of burma) and punk from England (wire/gang of four/joy division).\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:neu",
+      "phase": "first-person",
+      "speaker": "Neu!",
+      "links": [
+        {
+          "key": "neu>velvet-underground",
+          "from": "Neu!",
+          "to": "The Velvet Underground",
+          "fromYear": 1971,
+          "toYear": 1965,
+          "citation": "Klaus Dinger in Uncut's \"lost\" Neu! interview, recorded in 2000 around the reissues: \"Velvet Underground was in there. Also The Beatles, several years before, like Michael said, also The Stones, all the big ones I would say.\" Michael Rother adds only \"That was in the background too, yeah\" -- first-person, but an acknowledgement of background listening rather than a claim about shaping Neu!'s sound, hence the lowered confidence.",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "first-person:nick-cave-and-the-bad-seeds",
+      "phase": "first-person",
+      "speaker": "Nick Cave & The Bad Seeds",
+      "links": [
+        {
+          "key": "nick-cave-and-the-bad-seeds>david-bowie",
+          "from": "Nick Cave & The Bad Seeds",
+          "to": "David Bowie",
+          "fromYear": 1983,
+          "toYear": 1969,
+          "citation": "Nick Cave told the German magazine Spex in 2013 that David Bowie was his idol, and that he owned all of Bowie's early albums along with the three Berlin records.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "nick-cave-and-the-bad-seeds>leonard-cohen",
+          "from": "Nick Cave & The Bad Seeds",
+          "to": "Leonard Cohen",
+          "fromYear": 1983,
+          "toYear": 1967,
+          "citation": "Red Hand Files, issue #16: Cohen's \"Avalanche\" ranks first on Nick Cave's own list of ten favorite pieces of music by other artists.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "nick-cave-and-the-bad-seeds>karen-dalton",
+          "from": "Nick Cave & The Bad Seeds",
+          "to": "Karen Dalton",
+          "fromYear": 1983,
+          "toYear": 1960,
+          "citation": "Red Hand Files, issue #16: Dalton's \"Katie Cruel\" ranks second on Nick Cave's own list, above Dylan and Neil Young.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "nick-cave-and-the-bad-seeds>neil-young",
+          "from": "Nick Cave & The Bad Seeds",
+          "to": "Neil Young",
+          "fromYear": 1983,
+          "toYear": 1966,
+          "citation": "Red Hand Files, issue #16: Nick Cave names Neil Young's \"On the Beach\" among his own ten favorite pieces of music by other artists.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "nick-cave-and-the-bad-seeds>bob-dylan",
+          "from": "Nick Cave & The Bad Seeds",
+          "to": "Bob Dylan",
+          "fromYear": 1983,
+          "toYear": 1961,
+          "citation": "Red Hand Files, issue #16: Nick Cave names Bob Dylan's \"It's All Over Now, Baby Blue\" among his own ten favorite pieces of music by other artists.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "nick-cave-and-the-bad-seeds>big-star",
+          "from": "Nick Cave & The Bad Seeds",
+          "to": "Big Star",
+          "fromYear": 1983,
+          "toYear": 1971,
+          "citation": "Red Hand Files, issue #16: Nick Cave names Big Star's \"Holocaust\" among his own ten favorite pieces of music by other artists.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "nick-cave-and-the-bad-seeds>brian-eno",
+          "from": "Nick Cave & The Bad Seeds",
+          "to": "Brian Eno",
+          "fromYear": 1983,
+          "toYear": 1971,
+          "citation": "Red Hand Files, issue #16: Nick Cave names Brian Eno's \"Becalmed\" among his own ten favorite pieces of music by other artists.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:swans",
+      "phase": "first-person",
+      "speaker": "Swans",
+      "links": [
+        {
+          "key": "swans>can",
+          "from": "Swans",
+          "to": "Can",
+          "fromYear": 1982,
+          "toYear": 1968,
+          "citation": "Michael Gira, Pitchfork interview republished at younggodrecords.com (May 19, 2014): asked about influences, named \"Nina Simone, James Brown, Fela Kuti, Can, and Led Zeppelin.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "swans>suicide",
+          "from": "Swans",
+          "to": "Suicide",
+          "fromYear": 1982,
+          "toYear": 1970,
+          "citation": "\"SWANS: Where Does a Body End?\" (YouTube, Sept 9, 2023): Michael Gira named Suicide as an influence.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "swans>glenn-branca",
+          "from": "Swans",
+          "to": "Glenn Branca",
+          "fromYear": 1982,
+          "toYear": 1977,
+          "citation": "Michael Gira told The Line of Best Fit that early Glenn Branca concerts were \"just the epitome of how high music can go,\" describing the soaring, ever-ascending sound of them as \"really inspirational.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    }
+  ]
+}

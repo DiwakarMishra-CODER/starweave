@@ -1,0 +1,154 @@
+{
+  "agent": "c3",
+  "searches": 25,
+  "toolStatus": "WebSearch fine, all 25 used. read opened most pages direct or via r.jina.ai; pocklingtonpost.co.uk could not be opened; Guardian page guess 404.",
+  "entries": {
+    "autechre>kraftwerk": {
+      "url": "https://www.indexmagazine.com/interviews-autechre",
+      "found": "SEAN: When I was first getting spun out by music, it was things like K-Rob, Kraftwerk's \"Tour de France,\" \"Hip-Hop Bee-Bop\" by Man Parrish — all Man Parrish, actually — and stuff like Jonzun Crew.",
+      "verdict": "ok",
+      "note": "Index Magazine interview with Autechre (2000). Sean Booth speaking. Citation's quote elides the Man Parrish clause and uses single quotes for the nested title; fine.",
+      "checked": "2026-10-26"
+    },
+    "caroline-polachek>fiona-apple": {
+      "url": "https://www.wmagazine.com/culture/caroline-polachek-tour-dua-lipa-2022-interview",
+      "found": "I grew up kneeling at the altar of alternative music. Björk and Kate Bush and Fiona Apple were my absolute heroes when I was a teenager.",
+      "verdict": "fixed",
+      "citation": "Caroline Polachek to W Magazine (2022): \"I grew up kneeling at the altar of alternative music. Björk and Kate Bush and Fiona Apple were my absolute heroes when I was a teenager. I also admire how they refused to play by the rules and continue to do what they do without limits.\"",
+      "sourceTier": "first-person",
+      "note": "The Guardian page carrying the cited line was not found (2 searches; only secondary sites repeat it). W Magazine page is open and carries her own words naming Fiona Apple as a hero; used instead.",
+      "checked": "2026-10-26"
+    },
+    "drive-by-truckers>neil-young": {
+      "verdict": "not-found",
+      "note": "2 searches (Bluegrass Situation + Hood + the quote words); no page. Found only Cover Me and Slant pages with nothing on Neil Young as influence in these words. Speaker is Patterson Hood.",
+      "checked": "2026-10-26"
+    },
+    "porter-robinson>ninajirachi": {
+      "verdict": "not-found",
+      "note": "2 searches for the triple j interview (quote words, WannaCry/Abby and Tyrone); only news coverage, no transcript. Possibly a video/radio segment; the owner may know the page.",
+      "checked": "2026-10-26"
+    },
+    "portishead>silver-apples": {
+      "url": "https://faroutmagazine.co.uk/record-rebound-silver-apples-vinyl-reissue/",
+      "found": "“He said: ‘You have to check this out’,” Geoff Barrow remembered per The Guardian . “And I was like: ‘Fucking hell, this is amazing.’ For people like us, they are the perfect band. Silver Apples were a pathway to Portishead. They should definitely be up there with the pioneers of electronic music.”",
+      "verdict": "fixed",
+      "citation": "Geoff Barrow of Portishead, quoted by Far Out from The Guardian: \"For people like us, they are the perfect band. Silver Apples were a pathway to Portishead. They should definitely be up there with the pioneers of electronic music.\"",
+      "sourceTier": "first-person",
+      "note": "Outlet corrected: Far Out quoting The Guardian, not Sound on Sound. Original Guardian piece not opened (Far Out relays it). The 'We Carry On' homage sentence is not checked by this page (Westword page did not carry it either).",
+      "checked": "2026-10-26"
+    },
+    "the-human-league>kraftwerk": {
+      "verdict": "not-found",
+      "note": "2 searches (Oakey/Ware/Trans-Europe Express/I Feel Love; the exact 'Martyn came around' line); nothing. Wikipedia's Human League page says only that the Sheffield scene 'took more influence from Kraftwerk' (critic-level). Tier first-person unsupported by any open page.",
+      "checked": "2026-10-26"
+    },
+    "the-strokes>velvet-underground": {
+      "url": "https://www.rollingstone.com/music/news/the-strokes-elegantly-wasted-20031113",
+      "found": "The dream when they formed the Strokes, according to Casablancas, “revolved around taking the Velvet Underground and thinking, &#8216;If only they were really famous.’",
+      "verdict": "fixed",
+      "citation": "Julian Casablancas to Rolling Stone (2003): the dream when they formed the Strokes \"revolved around taking the Velvet Underground and thinking, 'If only they were really famous.'\" The seed of the band was a Velvet Underground CD Nikolai Fraiture's brother gave Casablancas for Christmas in high school.",
+      "sourceTier": "first-person",
+      "note": "The 'I listened to Loaded all the time... They taught me just to be myself' quote was not found on any page opened (2 searches; Rolling Stone 2014 and Far Out pages checked, no 'Loaded'). Replaced with a verbatim Casablancas line from Rolling Stone 2003. Page prints curly single quotes as entities. Unverified quote should not be used.",
+      "checked": "2026-10-26"
+    },
+    "yo-la-tengo>my-bloody-valentine": {
+      "url": "https://www.premierguitar.com/artists/guitarists/yo-la-tengos-ira-kaplan-if-it-aint-broke",
+      "found": "Well, My Bloody Valentine, for sure. We certainly felt a kinship with gazing at our shoes and nothing else. I remember a friend of mine giving us a copy of _Loveless_, saying we should hear it, thinking we were going to love it as much as we did. We were big fans of that band in particular.",
+      "verdict": "decide",
+      "sourceTier": "first-person",
+      "note": "Premier Guitar: Kaplan says they \"felt a kinship\" with My Bloody Valentine and \"were big fans of that band in particular\" -- fandom and kinship, not shaping; the old citation spliced wording not on the page. Propose: keep the link at critic weight with this quote, or remove it.",
+      "checked": "2026-10-26"
+    },
+    "buzzcocks>velvet-underground": {
+      "url": "https://thequietus.com/?p=3023",
+      "found": "Most people thought the music we were into was just noise, but we thought it was the future. Even now, I think the Velvet Underground are more influential than they’re given credit for.",
+      "verdict": "fixed",
+      "citation": "Pete Shelley to The Quietus: \"Even now, I think the Velvet Underground are more influential than they're given credit for.\" He recalls Howard Devoto leaving an advert on their college noticeboard asking if anyone wanted to work out a version of the Velvet Underground's \"Sister Ray\".",
+      "sourceTier": "first-person",
+      "note": "Outlet corrected: The Quietus, not Far Out. 'Even now' opens the sentence.",
+      "checked": "2026-10-26"
+    },
+    "charli-xcx>sophie": {
+      "url": "https://www.thepinknews.com/2025/03/01/charli-xcx-pays-tribute-to-trans-icon-sophie-in-brit-awards-speech",
+      "found": "After noting her list of dance inspirations, Charli concluded : “…And of course, someone who none of us would be up here without, SOPHIE.”",
+      "verdict": "fixed",
+      "citation": "Charli XCX, accepting Best Dance Act at the 2025 BRIT Awards (reported by PinkNews): \"And of course, someone who none of us would be up here without, SOPHIE.\"",
+      "sourceTier": "first-person",
+      "note": "Punctuation corrected (comma, not colon); NME page URL guessed was not found, PinkNews carries it. The speech also names other dance inspirations in a list (Crack Magazine; Aphex Twin, Autechre among them) not read in full here.",
+      "checked": "2026-10-26"
+    },
+    "explosions-in-the-sky>tortoise": {
+      "verdict": "not-found",
+      "note": "1 search for the Epigram Q&A (2023) quote; no page found; epigram.org.uk site search page showed nothing. Search budget used up before a second try. Related finding: Chris Hrasky has named Mogwai and Dirty Three (not Tortoise) in other interviews per search summary only (unread).",
+      "checked": "2026-10-26"
+    },
+    "lucinda-williams>bob-dylan": {
+      "url": "https://wfuv.org/content/lucinda-williams-bob-dylan",
+      "found": "Williams studied his \"use of biblical stories, biblical references\" and says that she was \"influenced a lot by some of his songs where he does that.\"",
+      "verdict": "fixed",
+      "citation": "Lucinda Williams to WFUV (2021), on Highway 61 Revisited: \"It didn't bother me at all. I loved the combination of the electric with the folk. Nobody had done that at the time.\" She studied Dylan's \"use of biblical stories, biblical references\" and was \"influenced a lot by some of his songs where he does that.\"",
+      "sourceTier": "first-person",
+      "note": "WFUV page carries her words (partly paraphrased by the writer around short quotes). The Rolling Stone (2018) 'I got out my Bob Dylan and Neil Young albums' corroboration was not found/opened, so dropped; the Neil Young line is unverified.",
+      "checked": "2026-10-26"
+    },
+    "lush>siouxsie-and-the-banshees": {
+      "url": "https://floodmagazine.com/35680/lush-life-the-sirens-return",
+      "found": "I was all about post-punk. I liked the Cocteau Twins and Siouxsie and the Banshees.",
+      "verdict": "ok",
+      "note": "Emma Anderson, FLOOD 2016 interview. Also on page: Miki into garage rock, Steve into Beach Boys and Byrds.",
+      "checked": "2026-10-26"
+    },
+    "mazzy-star>nick-drake": {
+      "verdict": "not-found",
+      "note": "1 search for the 1990 Roback quote; Westword 1997 and 'Mother of Invention' pages and Uncut 2013 opened, none mention Nick Drake as Roback's influence (Westword only says Jansch's songs were covered by Drake). Search budget used up.",
+      "checked": "2026-10-26"
+    },
+    "mount-eerie>stereolab": {
+      "url": "https://genius.com/The-microphones-microphones-in-2020-lyrics",
+      "found": "I saw Stereolab in Bellingham and they played one chord for fifteen minutes",
+      "verdict": "fixed",
+      "citation": "In \"Microphones in 2020,\" Phil Elverum sings: \"I saw Stereolab in Bellingham and they played one chord for fifteen minutes\"; \"Something in me shifted\" and \"I brought back home belief I could create eternity.\"",
+      "sourceTier": "first-person",
+      "note": "Lyrics (Genius page, opened), each line its own paragraph. Original quote wording 'I brought home belief that I could create eternity' differs from the lyric 'I brought back home belief I could create eternity'. Lyrics carry the claim in his own voice; owner may judge a song lyric tier-wise.",
+      "checked": "2026-10-26"
+    },
+    "beabadoobee>dinosaur-jr": {
+      "url": "https://theboar.org/2020/11/beabadoobee-interview/",
+      "found": "“All of these massively inspired me in making Fake It Flowers , both sonically and in certain ways that I would incorporate into my lyric writing: being quick-loose with it but speaking from personal experience, and also not having to be too serious and being playful with what I say.”",
+      "verdict": "ok",
+      "note": "Boar, Nov 2020. 'All of these' refers to the artists listed by the writer earlier in the piece; not re-read in the surrounding paragraph beyond the search summary.",
+      "checked": "2026-10-26"
+    },
+    "perfume-genius>liz-phair": {
+      "verdict": "not-found",
+      "note": "1 search (Quietus Baker's Dozen, quote words); no Quietus page surfaced; guessed URL returned 'Page not found'. Search budget used up.",
+      "checked": "2026-10-26"
+    },
+    "squid>neu": {
+      "url": "https://www.loudandquiet.com/interview/squid-listen-to-modal-jazz-obsess-over-neu-become-a-post-punk-band/",
+      "found": "“Neu! was rubbing off on us a lot, especially with Ollie’s style of drumming,” says Borlase. “Even before we’d introduced any vocals, that motorik, monotonous beat began to define the sound. It was a very important stage in realising our style.”",
+      "verdict": "fixed",
+      "citation": "Squid guitarist Louis Borlase to Loud And Quiet: \"Neu! was rubbing off on us a lot, especially with Ollie's style of drumming. Even before we'd introduced any vocals, that motorik, monotonous beat began to define the sound.\"",
+      "sourceTier": "first-person",
+      "note": "Quote now starts at 'Neu!' so the home-page caption reads whole.",
+      "checked": "2026-10-26"
+    },
+    "the-postal-service>kraftwerk": {
+      "verdict": "not-found",
+      "note": "1 search; SPIN Gibbard interview (Sept 2023) opened with read: no 'Kraftwerk' anywhere in it (it names OMD, Depeche Mode, Human League only in the writer's voice). Quote and date (Aug 2024) not located.",
+      "checked": "2026-10-26"
+    },
+    "jeff-rosenstock>the-clash": {
+      "url": "https://uproxx.com/music/jeff-rosenstock-worry-interview/",
+      "found": "I kept thinking about The Clash a lot — with London Calling , they were fearless. They just made whatever they wanted to make. London Calling is one of the best records ever, you know?",
+      "verdict": "fixed",
+      "citation": "Jeff Rosenstock to Uproxx (2016), asked where the suite on Worry came from: \"I kept thinking about The Clash a lot — with London Calling, they were fearless. They just made whatever they wanted to make.\"",
+      "sourceTier": "first-person",
+      "note": "The cited 'open to taking risks... wouldn't adhere to any formula' wording was not found on this page (2 searches, 1 page). This is Rosenstock answering Uproxx's question about the record's eclectic structure; the question was in the paragraph above (read).",
+      "checked": "2026-10-26"
+    }
+  },
+  "candidates": [],
+  "offMap": []
+}

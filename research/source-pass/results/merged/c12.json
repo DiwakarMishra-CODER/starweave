@@ -1,0 +1,201 @@
+{
+  "agent": "c12",
+  "searches": 23,
+  "toolStatus": "WebSearch fine; some direct pages unreadable (archive copies used)",
+  "entries": {
+    "tame-impala>the-flaming-lips": {
+      "url": "https://web.archive.org/web/2015/http://www.heyreverb.com/blog/2013/10/24/tame-impalas-kevin-parker-talks-flaming-lips-influences-his-disco-funk-band/79814/",
+      "found": "Parker said the Flaming Lips’ explosive, though DIY, space rock sound has been hugely influential for Tame Impala.",
+      "verdict": "fixed",
+      "citation": "Kevin Parker to Hey Reverb (2013): \"In a way, we've always been looking for an excuse to cover a Flaming Lips song... We all knew the songs so well because we're such good fans.\" The piece says Parker called the Flaming Lips' sound hugely influential for Tame Impala.",
+      "note": "Page found only as archive copy; the original EW 'fanboy' quote was not opened. Quote uses curly apostrophe on page; I normalised to straight in citation.",
+      "checked": "2026-10-26"
+    },
+    "the-mountain-goats>the-cure": {
+      "url": "https://en.wikipedia.org/wiki/Goths_(album)",
+      "found": "The band has stated that _Goths_ was inspired by an adolescence listening to The Cure, Bauhaus, Siouxsie and the Banshees, and Joy Division, as well as hearing songs on the radio station KROQ-FM.[4]",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Only Wikipedia's Goths page says the band stated this, and its footnote [4] is the Noisey piece whose teenage goth listening is the journalist's own, not Darnielle's (the known whose-I trap). Paste (archive) doesn't carry it. Propose: keep as reported on Wikipedia only if the owner accepts it, else hold until a Merge/Bandcamp band statement is found; the link itself is very likely true."
+    },
+    "the-mountain-goats>siouxsie-and-the-banshees": {
+      "url": "https://en.wikipedia.org/wiki/Goths_(album)",
+      "found": "The band has stated that _Goths_ was inspired by an adolescence listening to The Cure, Bauhaus, Siouxsie and the Banshees, and Joy Division, as well as hearing songs on the radio station KROQ-FM.[4]",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Only Wikipedia's Goths page says the band stated this, and its footnote [4] is the Noisey piece whose teenage goth listening is the journalist's own, not Darnielle's (the known whose-I trap). Paste (archive) doesn't carry it. Propose: keep as reported on Wikipedia only if the owner accepts it, else hold until a Merge/Bandcamp band statement is found; the link itself is very likely true."
+    },
+    "the-mountain-goats>joy-division": {
+      "url": "https://en.wikipedia.org/wiki/Goths_(album)",
+      "found": "The band has stated that _Goths_ was inspired by an adolescence listening to The Cure, Bauhaus, Siouxsie and the Banshees, and Joy Division, as well as hearing songs on the radio station KROQ-FM.[4]",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Only Wikipedia's Goths page says the band stated this, and its footnote [4] is the Noisey piece whose teenage goth listening is the journalist's own, not Darnielle's (the known whose-I trap). Paste (archive) doesn't carry it. Propose: keep as reported on Wikipedia only if the owner accepts it, else hold until a Merge/Bandcamp band statement is found; the link itself is very likely true."
+    },
+    "the-postal-service>new-order": {
+      "verdict": "not-found",
+      "note": "SPIN 2023 Gibbard interview (spinmagazine.com/2023/09/ben-gibbard-postal-service-death-cab-interview/) opened: only the writer's sentence that the project filtered OMD, Depeche Mode and Human League-style synth-pop; no Kraftwerk or New Order. MusicRadar Give Up oral history also lacks both. 2 searches, no page.",
+      "checked": "2026-10-26"
+    },
+    "the-postal-service>depeche-mode": {
+      "verdict": "not-found",
+      "note": "SPIN 2023 page has only the writer's sentence 'filtered OMD, Depeche Mode, and Human League-style synth-pop through the artists' more homespun sensibilities' (not Gibbard's words). XLR8R Rewind (Tamborello) not located. 2 searches. Could be lowered to reported on that SPIN sentence if owner wishes: url https://www.spinmagazine.com/2023/09/ben-gibbard-postal-service-death-cab-interview/",
+      "checked": "2026-10-26"
+    },
+    "vampire-weekend>radiohead": {
+      "verdict": "blocked",
+      "url": "https://da.player.fm/series/lsq-2942982/vampire-weekend-ezra-koenig",
+      "note": "Episode 105 of Jenny Eliscu's LSQ podcast (not Loud and Quiet). Player.fm episode page 403s read and WebFetch; Apple/Pocket Casts/moon.fm show pages don't carry the episode text. Owner to open it and check the show notes for early-2000s Radiohead (search summary said the notes mention discovering Scott Walker, Neil Young, 90s hip-hop and early-2000s Radiohead, and Belle and Sebastian among favourites, spelled 'mega-favorites'; unverified) and give the episode date. Citation should say LSQ, not LSQ/Loud and Quiet.",
+      "checked": "2026-10-26"
+    },
+    "vampire-weekend>neil-young": {
+      "verdict": "blocked",
+      "url": "https://da.player.fm/series/lsq-2942982/vampire-weekend-ezra-koenig",
+      "note": "Episode 105 of Jenny Eliscu's LSQ podcast (not Loud and Quiet). Player.fm episode page 403s read and WebFetch; Apple/Pocket Casts/moon.fm show pages don't carry the episode text. Owner to open it and check the show notes for Neil Young (search summary said the notes mention discovering Scott Walker, Neil Young, 90s hip-hop and early-2000s Radiohead, and Belle and Sebastian among favourites, spelled 'mega-favorites'; unverified) and give the episode date. Citation should say LSQ, not LSQ/Loud and Quiet.",
+      "checked": "2026-10-26"
+    },
+    "vampire-weekend>belle-and-sebastian": {
+      "verdict": "blocked",
+      "url": "https://da.player.fm/series/lsq-2942982/vampire-weekend-ezra-koenig",
+      "note": "Episode 105 of Jenny Eliscu's LSQ podcast (not Loud and Quiet). Player.fm episode page 403s read and WebFetch; Apple/Pocket Casts/moon.fm show pages don't carry the episode text. Owner to open it and check the show notes for Belle and Sebastian as a 'mega favourite' (search summary said the notes mention discovering Scott Walker, Neil Young, 90s hip-hop and early-2000s Radiohead, and Belle and Sebastian among favourites, spelled 'mega-favorites'; unverified) and give the episode date. Citation should say LSQ, not LSQ/Loud and Quiet.",
+      "checked": "2026-10-26"
+    },
+    "vampire-weekend>talking-heads": {
+      "url": "https://www.earwolf.com/?p=70669",
+      "found": "They also talk about when Ezra first heard of Talking Heads, the moment Ezra realized Talking Heads were punk, and how Talking Heads influenced Ezra as a musician.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Earwolf's episode notes for U Talkin' Talking Heads 2 My Talking Head? (Ep. 73, with Ezra Koenig) say he and the hosts talk about when he first heard Talking Heads, the moment he realized they were punk, and how Talking Heads influenced him as a musician.",
+      "note": "Episode notes are the show's, not Koenig's words, so reported. Date left out of the citation because the opened page does not print it.",
+      "checked": "2026-10-26"
+    },
+    "waxahatchee>bright-eyes": {
+      "url": "https://consequence.net/2021/07/bright-eyes-waxahatchee-interview/2",
+      "found": "I feel like Bright Eyes had one of the biggest impacts of any band at the time. Growing up in a small city and being kind of an introverted person, those records made people like me feel less alone.",
+      "verdict": "fixed",
+      "citation": "Katie Crutchfield to Consequence (July 2021): \"I feel like Bright Eyes had one of the biggest impacts of any band at the time. Growing up in a small city and being kind of an introverted person, those records made people like me feel less alone.\" The piece names Letting Off the Happiness, Fevers and Mirrors and Lifted as albums she fell for in high school.",
+      "note": "Page is a phone interview with Crutchfield plus Oberst Q&A; first-person quote verified. Year 2021 from URL.",
+      "checked": "2026-10-26"
+    },
+    "waxahatchee>fiona-apple": {
+      "url": "https://www.rollingstone.com/music/music-features/fiona-apple-waxahatchee-tribute-1127619/",
+      "found": "That was the beginning of my fandom, and it’s gone all the way through her career.",
+      "verdict": "fixed",
+      "citation": "Katie Crutchfield to Rolling Stone, in its Icons & Influences tribute to Fiona Apple: \"The first time I heard Fiona was right around When the Pawn… came out... That was the beginning of my fandom, and it's gone all the way through her career.\"",
+      "note": "Original citation's quote differed from the page (page: 'What I think is so cool about her is, there's this trope or this stereotype of women's emotions...'); rewritten around the fandom sentences, both read on the page. Page does not print a year in what read returned.",
+      "checked": "2026-10-26"
+    },
+    "waxahatchee>velvet-underground": {
+      "url": "https://rollingstone.com/music/music-features/waxahatchee-katie-crutchfield-great-thunder-interview-737269",
+      "found": "The Velvet Underground was another big influence.",
+      "verdict": "fixed",
+      "citation": "Katie Crutchfield to Rolling Stone: \"R.E.M. was a big influence... The Velvet Underground was another big influence. Allison and I were into British Invasion music—the Kinks, the Beatles.\"",
+      "note": "Oklahoman piece not found (1 search); this Rolling Stone interview carries it in her own words. Candidate waxahatchee>rem checked below.",
+      "checked": "2026-10-26"
+    },
+    "waxahatchee>lucinda-williams": {
+      "url": "https://stereogum.com/2002586/car-wheels-on-a-gravel-road-turns-20/franchises/the-anniversary",
+      "found": "It was \"Can’t Let Go\" by Lucinda Williams from my favorite album of all time, Car Wheels On A Gravel Road , which turns 20 tomorrow.",
+      "verdict": "fixed",
+      "citation": "Katie Crutchfield, in a Stereogum guest essay on Car Wheels on a Gravel Road turning 20: it is \"my favorite album of all time,\" and \"I've never experienced this type of infatuation with an album more than I have with Car Wheels.\"",
+      "note": "Interview Magazine page (Crutchfield and Lucinda Williams conversation) opened: the 'No one means more to me on earth' and 'three to four chords' quotes are NOT on it (searched 'means more','earth','bridge'); AllMusic quote not tried. Stereogum essay is her own words.",
+      "checked": "2026-10-26"
+    },
+    "yeule>aphex-twin": {
+      "url": "https://floodmagazine.com/147368/yeule-softscars-in-convo/",
+      "found": "But their panoramic perspective brings other elements into the fold, such as finding inspirations in Aphex Twin and Suzanne Ciani (“They’re not doing music by the book,” Ćmiel says, “they’re doing it by the feeling ”)",
+      "verdict": "fixed",
+      "citation": "FLOOD Magazine's softscars interview (2023) says yeule finds inspiration in Aphex Twin and Suzanne Ciani: \"They're not doing music by the book... they're doing it by the feeling.\"",
+      "note": "Page is the 'in convo' interview (floodmagazine.com/147368), not the 144076 review. The inspiration framing is the writer's, the quote is yeule's. Year/month not printed in the text read; 2023 from the album release.",
+      "checked": "2026-10-26"
+    },
+    "anna-von-hausswolff>nico": {
+      "url": "https://thequietus.com/interviews/bakers-dozen/anna-von-hausswolff-favourite-albums-interview/8/",
+      "found": "Nico is probably one of the most influential songwriters for me, when it comes to vocal delivery. She is very brave in the way that she uses her voice and, of course, I am very impressed by the depth of her voice. It is raw, honest, and very authentic.",
+      "verdict": "fixed",
+      "citation": "Anna von Hausswolff in The Quietus's Baker's Dozen, choosing Nico's Desertshore: \"Nico is probably one of the most influential songwriters for me, when it comes to vocal delivery... It is raw, honest, and very authentic.\"",
+      "note": "Same slide: 'Nico is without doubt one of my most important role models, alongside Diamanda Galás.'",
+      "checked": "2026-10-26"
+    },
+    "ariel-pink>the-cure": {
+      "url": "https://web.archive.org/web/20120320082400/http://junkmedia.org/index.php?i=1433",
+      "found": "All up until 1991 when I went to Mexico and got into Death Rock. That was like Bauhaus and the Cure. The Cure is probably my all time favorite band ever.",
+      "verdict": "fixed",
+      "citation": "Ariel Pink to Junkmedia (2005): \"All up until 1991 when I went to Mexico and got into Death Rock. That was like Bauhaus and the Cure. The Cure is probably my all time favorite band ever.\"",
+      "note": "Wire (June 2012) 'Faith' quote not found (1 search, Wire archive unreadable); this Wikipedia-footnoted Junkmedia interview (archive copy, Mark Griffey, 14 March 2005 per Wikipedia footnote) carries it in his own words. Wikipedia itself says the Cure were his favourite band of all time. Year 2005 comes from Wikipedia's footnote, not the page text.",
+      "checked": "2026-10-26"
+    },
+    "black-midi>godspeed-you-black-emperor": {
+      "verdict": "not-found",
+      "note": "Searched the quote (2 searches + read of Rolling Stone's 'Artist You Need to Know' / Schlagenheim review, Rolling Stone AU copy, Interview Magazine, KALX, Stereogum Greep solo interview, Wikipedia for black midi and Greep): no page carries it. The Rolling Stone feature (rollingstone.com/music/music-features/black-midi-schlagenheim-interview-947251/) only says Kwasniewski-Kelvin liked Japanese noise bands like the Boredoms and writer says Greep's vocal is reminiscent of David Byrne.",
+      "checked": "2026-10-26"
+    },
+    "black-midi>swans": {
+      "verdict": "not-found",
+      "note": "Searched the quote (2 searches + read of Rolling Stone's 'Artist You Need to Know' / Schlagenheim review, Rolling Stone AU copy, Interview Magazine, KALX, Stereogum Greep solo interview, Wikipedia for black midi and Greep): no page carries it. The Rolling Stone feature (rollingstone.com/music/music-features/black-midi-schlagenheim-interview-947251/) only says Kwasniewski-Kelvin liked Japanese noise bands like the Boredoms and writer says Greep's vocal is reminiscent of David Byrne.",
+      "checked": "2026-10-26"
+    },
+    "black-midi>talking-heads": {
+      "verdict": "not-found",
+      "note": "FLOOD Picton quote ('Talking Heads, Deerhoof, and Danny Brown were our three main reference points') not found; a search only returned retailer/venue blurbs saying the band bonded over liking Danny Brown, Death Grips, Deerhoof, Miles Davis and Talking Heads (unattributed boilerplate, not usable). Rolling Stone Schlagenheim feature only has the writer comparing Greep's vocal to David Byrne.",
+      "checked": "2026-10-26"
+    },
+    "car-seat-headrest>nirvana": {
+      "url": "https://nowtoronto.com/music/car-seat-headrest-will-toledo-breaks-down-the-influence-behind-his-new-record/",
+      "found": "Sure, he’s a fan of Guided by Voices, but “Nirvana and Green Day were my two favourites for a long time. [They] shaped my songwriting style in a specific way because I heard them right around the time I was learning how to play guitar.",
+      "verdict": "fixed",
+      "citation": "Will Toledo to NOW Toronto: \"Nirvana and Green Day were my two favourites for a long time. [They] shaped my songwriting style in a specific way because I heard them right around the time I was learning how to play guitar. I drew out pop melodies from Green Day, and maybe a little more experimental, underground stuff from Nirvana.\"",
+      "note": "Outlet is NOW (Toronto) Fall Music Preview; year not printed in the text read (2016 per Teens of Denial era).",
+      "checked": "2026-10-26"
+    },
+    "car-seat-headrest>guided-by-voices": {
+      "url": "https://nowtoronto.com/music/car-seat-headrest-will-toledo-breaks-down-the-influence-behind-his-new-record/",
+      "found": "Sure, he’s a fan of Guided by Voices, but “Nirvana and Green Day were my two favourites for a long time.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "NOW Toronto's piece on the influences behind Car Seat Headrest's new record says of Will Toledo: \"Sure, he's a fan of Guided by Voices.\"",
+      "note": "Westword quote and CityBeat not found (1 search); The Stranger 2016 Q&A has no GBV. A writer's one-line 'he's a fan' is thin but within the owner's fandom-reported ruling; owner may prefer to keep it as decide/remove.",
+      "checked": "2026-10-26"
+    },
+    "car-seat-headrest>destroyer": {
+      "url": "https://www.loudandquiet.com/interview/car-seat-headrest-cover-story-will-toledos-12-album-overnight-success-story/",
+      "found": "“God,” he pleads on the swaggering ‘Cute Thing’, “give me Dan Bejar’s voice and John Entwistle’s stage presence.”",
+      "verdict": "fixed",
+      "citation": "Loud And Quiet's Car Seat Headrest cover story, on the Twin Fantasy song \"Cute Thing\": Will Toledo's lyric pleads \"God, give me Dan Bejar's voice and John Entwistle's stage presence,\" which the writer calls \"naked hero worship.\"",
+      "note": "Quote is a lyric, not an interview statement; the page itself frames it as hero worship. Page says Twin Fantasy is 2011 and does not print the article year, so '2016' dropped. Bejar fronts Destroyer, not named on the page; owner may accept that as common knowledge.",
+      "checked": "2026-10-26"
+    },
+    "clairo>cocteau-twins": {
+      "url": "https://faroutmagazine.co.uk/clairo-biggest-musical-influences/",
+      "found": "My mom introduced me to alternative music like Cocteau Twins, Trashcan Sinatras, The The, Public Image Ltd, etc. I would say that I fall somewhere in between”.",
+      "verdict": "fixed",
+      "citation": "Clairo to Far Out: \"I'd say my musical influences are a mixture between my mom and dad's musical taste. My dad introduced me to soul music like Al Green, Brenton Wood, Billy Paul, etc. My mom introduced me to alternative music like Cocteau Twins, Trashcan Sinatras, The The, Public Image Ltd, etc. I would say that I fall somewhere in between.\"",
+      "note": "Apple bio and Crack not read; dropped from citation. Page year not printed.",
+      "checked": "2026-10-26"
+    },
+    "clairo>elliott-smith": {
+      "verdict": "blocked",
+      "url": "https://apple.co/3xT3tHv?l=en-US",
+      "note": "Apple Music playlist 'Clairo: Influences' opened: page text says she is 'taking over her Influences playlist with a selection of songs she listened to most while making the record' (Sling) and lists Elliott Smith among artists, but the per-song notes are not in the text read gets (app-rendered). Owner: open the playlist in a browser/Apple Music and copy her note for 'I Didn't Understand'. The takeover framing alone is a listened-to-while-making-the-record claim and may be enough for fandom tier if the owner is happy with it.",
+      "checked": "2026-10-26"
+    },
+    "clairo>joni-mitchell": {
+      "verdict": "blocked",
+      "url": "https://apple.co/3xT3tHv?l=en-US",
+      "note": "Apple Music playlist 'Clairo: Influences' opened: page text says she is 'taking over her Influences playlist with a selection of songs she listened to most while making the record' (Sling) and lists Joni Mitchell among artists, but the per-song notes are not in the text read gets (app-rendered). Owner: open the playlist in a browser/Apple Music and copy her note for 'Coyote' (search summary quoted her note: 'weird guitar tunings, the unapologetic attitude, but mostly her words and metaphors. Genius, to say the least.' -- unverified). The takeover framing alone is a listened-to-while-making-the-record claim and may be enough for fandom tier if the owner is happy with it.",
+      "checked": "2026-10-26"
+    }
+  },
+  "candidates": [
+    {
+      "source": "waxahatchee",
+      "target": "rem",
+      "kind": "influence",
+      "speaker": "Katie Crutchfield",
+      "sentence": "R.E.M. was a big influence. I saw R.E.M. on their last tour, in an arena.",
+      "url": "https://rollingstone.com/music/music-features/waxahatchee-katie-crutchfield-great-thunder-interview-737269"
+    }
+  ],
+  "offMap": [],
+  "finished": true
+}

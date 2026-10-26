@@ -1,0 +1,261 @@
+{
+  "agent": "retry1",
+  "searches": 26,
+  "toolStatus": "Not finished: the tool-use limit was reached before five links (mazzy-star>nick-drake, ride>mudhoney, the-postal-service>kraftwerk, wolf-alice>the-replacements, bark-psychosis>wire) could be searched, so they are left out of entries. The TIDAL page for perfume-genius>liz-phair was found but not opened. thisisdig.com (?p=29365) again redirected to the Rhino homepage. The GRAMMY.com URL taken from Wikipedia's footnote was refused until it appeared in a search result. No Internet Archive fetches were needed this round.",
+  "entries": {
+    "alex-g>elliott-smith": {
+      "url": "https://consequence.net/2015/10/ruining-alex-g/",
+      "found": "Giannascoli admits that some of these analogs work, especially Modest Mouse and Smith. “I’ve been really influenced by Elliott Smith’s singing style,” he says.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Alex G to Consequence (Geoff Nelson, \"Ruining Alex G\", 2015): \"I've been really influenced by Elliott Smith's singing style... When you sing like that, in a kind of whispery way... I do it for no other reason than it makes it easier to sing in tune, to hit all the notes correctly. And also I didn't want to wake my roommates and shit, because a lot of times I was recording at night.\"",
+      "sourceTier": "first-person",
+      "note": "The old citation clipped the roommates sentence mid-way. I dropped the OndaRock quote because I did not locate or verify it."
+    },
+    "arca>aphex-twin": {
+      "url": "https://grammy.com/news/meet-first-time-grammy-nominee-arca-expanding-latin-music-her-terms-electronic-album-",
+      "found": "I think his musical tastes left a big influence on me. He had a lot of Aphex Twin, Squarepusher.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Arca to GRAMMY.com (Jennifer Velez, 2021), on her older brother's records: \"I think his musical tastes left a big influence on me. He had a lot of Aphex Twin, Squarepusher.\" The FADER's \"Cover Story: Arca Finds Xen\" (Emilie Friedlander, 2014) also describes her teenage Nuuro songs as \"glitchy, Aphex Twin-inspired beat compositions.\"",
+      "sourceTier": "first-person",
+      "note": "Both pages were opened and read. The FADER line is in the journalist's voice. The GRAMMY quote supplies the first-person tier."
+    },
+    "arca>squarepusher": {
+      "url": "https://grammy.com/news/meet-first-time-grammy-nominee-arca-expanding-latin-music-her-terms-electronic-album-",
+      "found": "I think his musical tastes left a big influence on me. He had a lot of Aphex Twin, Squarepusher.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Arca to GRAMMY.com (Jennifer Velez, 2021): \"I have a brother seven years older, and I would often borrow his music... I think his musical tastes left a big influence on me. He had a lot of Aphex Twin, Squarepusher.\"",
+      "sourceTier": "first-person",
+      "note": "This is Wikipedia footnote [8], followed to the source. The old citation skipped the sentence that actually states the influence."
+    },
+    "arca>autechre": {
+      "url": "https://www.thefader.com/2014/09/30/arca-producer-xen-interview-cover-story",
+      "found": "Aided partly by his older brother’s CD collection, he went through a series of musical obsessions typical of kids growing up in the ’90s—Aaliyah, Autechre, Nine Inch Nails, Marilyn Manson—and started spending more and more time on the internet.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "The FADER (Emilie Friedlander, \"Cover Story: Arca Finds Xen\", 2014) reports that, aided partly by an older brother's CD collection, Arca went through \"a series of musical obsessions typical of kids growing up in the '90s—Aaliyah, Autechre, Nine Inch Nails, Marilyn Manson.\"",
+      "sourceTier": "reported",
+      "note": "This is the journalist's narration, not Arca's words, so I changed the tier from first-person to reported. The 2014 article uses pre-transition pronouns."
+    },
+    "depeche-mode>gary-numan": {
+      "url": "https://www.musicradar.com/news/vince-clarke-interview",
+      "found": "It’s funny, but I really liked the early Gary Numan records, yet never really saw that as something I could do myself.",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Vince Clarke (founding member, left after Speak & Spell) told MusicRadar (Danny Turner, 2023) that he liked early Numan but never saw it as something he could do himself. He says OMD and the Human League are what made him think he could. That is fandom, but he places the formative push elsewhere, and he is one departed member. Options: keep as first-person with the citation rewritten to Clarke's own words, or remove. The current citation quotes a Wikipedia sentence that does not exist and is not first-person in any case."
+    },
+    "geese>interpol": {
+      "url": "https://www.stilllisteningmagazine.com/interviews/jfttggti876itd2dg9r18uq00h9ez8",
+      "found": "I was a big Strokes fan when I was in middle school and high school. And you know, same with Interpol and the Yeah Yeah Yeahs and everything.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Geese drummer Max Bassin to Still Listening Magazine (Issue Six, 2023): \"I was a big Strokes fan when I was in middle school and high school. And you know, same with Interpol and the Yeah Yeah Yeahs and everything... I grew up listening to that shit.\"",
+      "sourceTier": "first-person",
+      "note": "The old citation (\"Rolling Stone feature\") was unlocatable, so I replaced it with this Still Listening interview."
+    },
+    "geese>yeah-yeah-yeahs": {
+      "url": "https://www.stilllisteningmagazine.com/interviews/jfttggti876itd2dg9r18uq00h9ez8",
+      "found": "I was a big Strokes fan when I was in middle school and high school. And you know, same with Interpol and the Yeah Yeah Yeahs and everything.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Geese drummer Max Bassin to Still Listening Magazine (Issue Six, 2023): \"I was a big Strokes fan when I was in middle school and high school. And you know, same with Interpol and the Yeah Yeah Yeahs and everything... I grew up listening to that shit.\"",
+      "sourceTier": "first-person",
+      "note": "Speaker corrected: the old citation said \"Foster Bassin\", which conflates guitarist Foster Hudson and drummer Max Bassin. The speaker is Max Bassin. Still Listening is a magazine, not a podcast."
+    },
+    "mogwai>fugazi": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Ran two new searches for Braithwaite on Fugazi, Ian MacKaye, Repeater and Steady Diet. Neither turned up a Mogwai member on Fugazi. I opened Westword's Braithwaite 'musical roots' Q&A (https://www.westword.com/?p=40647786): it names the Velvet Underground, the Cure, the Jesus and Mary Chain, Bauhaus, Ultra Vivid Scene and Mudhoney, but not Fugazi. The only Fugazi link remains Wikipedia's Rough Guide line, which is not first-person. Proposal: remove, or keep as reported only if the Rough Guide text itself can be checked."
+    },
+    "my-bloody-valentine>the-jesus-and-mary-chain": {
+      "url": "https://mixdownmag.com.au/features/gear-talks-an-interview-with-kevin-shields-of-my-bloody-valentine/",
+      "found": "We don’t have a shared influence… this kind of Cocteau Twins, Jesus and Mary Chain thing, it’s garbage. You know, Psycho Candy would be the shared record.",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "The source is Mixdown (Isabella Venutti, 2024). Shields calls the shared Cocteau/JAMC influence idea \"garbage\" and concedes Psycho Candy \"would be the shared record.\" He then says \"everything The Jesus and Mary Chain did back then we were not doing.\" Later in the same interview he lists JAMC's first single, alongside Einstürzende Neubauten's live show, among things \"pulling towards\" MBV's early direction. Mixed evidence. Options: keep as first-person with a citation naming Mixdown 2024 and quoting both sides, or record as a partial denial. The current citation names no source. I opened the Westword Q&A lead: it has no JAMC statement."
+    },
+    "nick-cave-and-the-bad-seeds>david-bowie": {
+      "url": "https://faroutmagazine.co.uk/the-star-nick-cave-hailed-as-immortal/",
+      "found": "“David Bowie’s not merely a performer,” he noted, “He was part of our childhood. In my eyes, Bowie stands for a certain kind of immortality”.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Far Out Magazine, relaying Nick Cave's 2013 interview with the German magazine Spex, quotes him: \"David Bowie's not merely a performer... He was part of our childhood. In my eyes, Bowie stands for a certain kind of immortality,\" and calls Cave \"a massive admirer of David Bowie and his artistry.\"",
+      "sourceTier": "reported",
+      "note": "One search did not find the Spex original. Far Out relays Cave's words secondhand, so the tier is reported. The old citation's specifics (\"idol\", owning all the early albums and the Berlin trilogy) appear nowhere I could verify, so I dropped them."
+    },
+    "siouxsie-and-the-banshees>david-bowie": {
+      "url": "https://www.untiedundone.com/020204c.html",
+      "found": "It was no coincidence that so many people involved in punk at the beginning had been inspired by him. Bowie was the catalyst who'd brought a lot of us, the so-called Bromley Contingent, together.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Siouxsie Sioux, foreword to MOJO's David Bowie special edition (dated November 2003): \"I was 15 when I first saw David Bowie... I just couldn't believe how striking he was... It was no coincidence that so many people involved in punk at the beginning had been inspired by him. Bowie was the catalyst who'd brought a lot of us, the so-called Bromley Contingent, together. And out of that really small group of people, a lot happened including Siouxsie And The Banshees.\"",
+      "sourceTier": "first-person",
+      "note": "This page is a fan-site transcription of her own signed MOJO foreword, and it is the original of the 'couldn't believe how striking he was' quote. The NPR and AllMusic items in the old citation were not located, so I dropped them."
+    },
+    "sonic-youth>black-flag": {
+      "url": "https://www.spin.com/?p=335475",
+      "found": "In an interview two years ago, Thurston stated that his intention in starting Sonic Youth was to combine the bone-splitting intensity of Throbbing Gristle (Britain’s seminal and monolithic un-punk squall masters) and the reckless energy of Black Flag (America’s dukes of the hard-noise arena).",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "SPIN (August 1985 issue) reports that Thurston Moore had said in an earlier interview that \"his intention in starting Sonic Youth was to combine the bone-splitting intensity of Throbbing Gristle... and the reckless energy of Black Flag.\" Moore also includes Black Flag's Damaged in NYLON's \"Thurston Moore On 9 Albums That Shaped His Life and Music\" (2014), calling Black Flag \"the most physical, engaged band I had ever witnessed.\"",
+      "sourceTier": "reported",
+      "note": "This replaces the pipeline-worded Ranaldo/SST citation. The SPIN line paraphrases Moore, so the tier is reported. I opened NYLON (https://www.nylon.com/articles/thurston-moore-9-albums-shaped-life-music); it adds first-person fandom from the early '80s."
+    },
+    "xiu-xiu>this-mortal-coil": {
+      "url": "https://sun-13.com/2024/09/24/knifes-edge-in-conversation-with-xiu-xius-jamie-stewart/",
+      "found": "They were really into the ’80s… 4AD records like Bauhaus, This Mortal Coil, Cocteau Twins. The Wolfgang Press was another huge one for me, they were a really big influence, especially Bird Word Cage, Nick Cave, bands like that.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Jamie Stewart to Sun 13 (Simon Kirk, 2024), on high-school listening via a bandmate's older sisters: \"They were really into the '80s... 4AD records like Bauhaus, This Mortal Coil, Cocteau Twins. The Wolfgang Press was another huge one for me, they were a really big influence,\" adding of that listening: \"A lot of that made its way into Xiu Xiu.\"",
+      "sourceTier": "first-person",
+      "note": "The old quote cut the Wolfgang Press sentence mid-way. In a separate interview, Westword (2012, https://www.westword.com/?p=40628131), Stewart also says \"I think I'd like to cover all of This Mortal Coil's songs.\""
+    },
+    "xiu-xiu>cocteau-twins": {
+      "url": "https://sun-13.com/2024/09/24/knifes-edge-in-conversation-with-xiu-xius-jamie-stewart/",
+      "found": "They were really into the ’80s… 4AD records like Bauhaus, This Mortal Coil, Cocteau Twins. The Wolfgang Press was another huge one for me, they were a really big influence, especially Bird Word Cage, Nick Cave, bands like that.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Jamie Stewart to Sun 13 (Simon Kirk, 2024), on high-school listening via a bandmate's older sisters: \"They were really into the '80s... 4AD records like Bauhaus, This Mortal Coil, Cocteau Twins. The Wolfgang Press was another huge one for me, they were a really big influence,\" adding of that listening: \"A lot of that made its way into Xiu Xiu.\"",
+      "sourceTier": "first-person",
+      "note": "Corroborated by a 15 Questions interview (search snippet only, not opened): a friend gave him a mix tape of early 4AD bands including Cocteau Twins."
+    },
+    "xiu-xiu>joy-division": {
+      "url": "https://trouserpress.com/reviews/xiu-xiu/",
+      "found": "The oft-asked question “are they kidding?” is best answered by the sticker affixed to Knife Play, which serves as both a thank you to sources of inspiration and a frank warning shot to would-be listeners: “When my mom died I listened to Henry Cowell, Joy Division, Detroit techno, the Smiths, Takemitsu, Sabbath, Gamelan, ‘Black Angels’ and Cecil Taylor (Jamie Stewart).”",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Trouser Press (Leon Avelino) describes the sticker on Xiu Xiu's debut Knife Play as \"a thank you to sources of inspiration\": \"When my mom died I listened to Henry Cowell, Joy Division, Detroit techno, the Smiths, Takemitsu, Sabbath, Gamelan, 'Black Angels' and Cecil Taylor (Jamie Stewart).\"",
+      "sourceTier": "reported",
+      "note": "The sticker itself is only a 'what I listened to' list. Reading it as inspiration is Trouser Press's interpretation, so the tier is reported. Xiu Xiu also covered Joy Division's \"Ceremony\" on Chapel of the Chimes; a cover does not count as influence."
+    },
+    "xiu-xiu>nico": {
+      "url": "https://sandiegoreader.com/news/2014/feb/05/blurt-pop-fell-away-heart/",
+      "found": "Pop fell away from heart. It is an homage to Suicide, Einstürzende Neubauten, Nico, and Kraftwerk.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Jamie Stewart to the San Diego Reader (2014, by email), on Angel Guts: Red Classroom: \"It is an homage to Suicide, Einstürzende Neubauten, Nico, and Kraftwerk.\"",
+      "sourceTier": "first-person",
+      "note": "This is a stronger, explicit homage statement than the Vice line. The Vice/Noisey page (https://noisey.vice.com/blog/xiu-xius-jamie-stewart-opens-up-about-nina-simone-suicide-and-angel-guts) appeared only as a search snippet, where the interviewer restates the \"Neubauten vs Suicide vs Nico\" phrase. I did not open it."
+    },
+    "xiu-xiu>swans": {
+      "url": "https://www.westword.com/?p=40628131",
+      "found": "His music is some of my favorite music since I was a teenager. I’m consistently really moved by the work he has done.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Jamie Stewart to Westword (2012), on Swans' Michael Gira: \"His music is some of my favorite music since I was a teenager. I'm consistently really moved by the work he has done.\"",
+      "sourceTier": "first-person",
+      "note": "I did not search for The Beijinger (2014); this Westword quote replaces it with a teenage-fandom statement."
+    },
+    "arcade-fire>neutral-milk-hotel": {
+      "url": "https://www.redbullmusicacademy.com/lectures/win-butler-lecture/",
+      "found": "I thought that Magnetic Fields and Neutral Milk were about as good as anything. I didn’t know any better songwriters than those guys.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Win Butler, Red Bull Music Academy lecture (Montréal, 2016): \"They had In the Aeroplane Over the Sea by Neutral Milk Hotel, which is just a complete classic... I thought that Magnetic Fields and Neutral Milk were about as good as anything. I didn't know any better songwriters than those guys. My dream was to be on Merge, basically.\"",
+      "sourceTier": "first-person",
+      "note": "I read the full transcript; the lecture text matches the old citation. I dropped the rs500albums claim because I did not verify it. Butler speaks of admiring Neutral Milk Hotel as songwriters while founding the band, but the passage also concerns label choice. Owner may want to judge whether that is enough for influence."
+    },
+    "explosions-in-the-sky>tortoise": {
+      "url": "https://epigram.org.uk/q-a-with-explosions-in-the-sky/",
+      "found": "And it gave us a lot of inspiration to see bands like Mogwai and Tortoise making really cool music that had no vocals, so we went with it.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Explosions in the Sky, Q&A with Epigram (Guy Marcham, 2020): \"it gave us a lot of inspiration to see bands like Mogwai and Tortoise making really cool music that had no vocals, so we went with it.\"",
+      "sourceTier": "first-person",
+      "note": "Year corrected: published 17 February 2020 (updated 2023). The answers are credited to the band, not a named member. A Seven Days interview, seen only in a search snippet, has Hrasky saying \"we don't sound anything like Tortoise\"; that is about sound, not influence, and I did not open it."
+    },
+    "kurt-vile>velvet-underground": {
+      "url": "https://www.phillyvoice.com/kurt-vile-violators-velvet-underground-tribute-album/",
+      "found": "\"Lou Reed/the Velvet Underground were probably my earliest classic rock influence,\" Vile told Rolling Stone.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Kurt Vile to Rolling Stone (2021), as quoted by PhillyVoice: \"Lou Reed/the Velvet Underground were probably my earliest classic rock influence... It just has an effect on you that you can't even necessarily detect at the moment.\"",
+      "sourceTier": "first-person",
+      "note": "The Under the Radar April 2022 interview was not found. The Rolling Stone original (https://www.rollingstone.com/music/music-news/kurt-vile-violators-velvet-underground-tribute-album-1196669/) is linked from PhillyVoice but I did not open it. Separately, Vile's 2021 Verve signing statement (\"admired the Verve logo... since my teens\") is about the label, not influence."
+    },
+    "perfume-genius>liz-phair": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Ran two searches: one for the Quietus Baker's Dozen quote (not found again) and one for TIDAL. TIDAL's \"Perfume Genius: 5 Albums That Changed My Life\" (https://tidal.com/magazine/article/perfume-genius-5-albums-that-changed-my-life/1-37705) surfaced, with Hadreas on Exile in Guyville in the snippet, but the tool limit hit before I could open it. Next retry: open that page first. Second lead, also unopened and premium: Gay & Lesbian Review 2015 (https://glreview.org/article/mike-hadreas-is-perfume-genius/)."
+    }
+  },
+  "candidates": [
+    {
+      "source": "arca",
+      "target": "bjork",
+      "kind": "influence",
+      "speaker": "arca",
+      "sentence": "He had a few Björk records that were very formative in my musical heritage [and] instruction.",
+      "url": "https://grammy.com/news/meet-first-time-grammy-nominee-arca-expanding-latin-music-her-terms-electronic-album-"
+    },
+    {
+      "source": "geese",
+      "target": "ween",
+      "kind": "influence",
+      "speaker": "geese",
+      "sentence": "A lot of Ween, which I feel emboldened us to give more of a sense of humour to the stuff.",
+      "url": "https://www.stilllisteningmagazine.com/interviews/jfttggti876itd2dg9r18uq00h9ez8"
+    },
+    {
+      "source": "mogwai",
+      "target": "the-jesus-and-mary-chain",
+      "kind": "influence",
+      "speaker": "mogwai",
+      "sentence": "The bands that I was really excited by were things like Jimi Hendrix and The Velvet Underground and quite simple stuff like The Cure and The Jesus and Mary Chain.",
+      "url": "https://www.westword.com/?p=40647786"
+    },
+    {
+      "source": "my-bloody-valentine",
+      "target": "the-birthday-party",
+      "kind": "influence",
+      "speaker": "my-bloody-valentine",
+      "sentence": "Basically, we started out as a band that was really into The Birthday Party and Einstürzende Neubauten.",
+      "url": "https://mixdownmag.com.au/features/gear-talks-an-interview-with-kevin-shields-of-my-bloody-valentine/"
+    },
+    {
+      "source": "xiu-xiu",
+      "target": "kraftwerk",
+      "kind": "influence",
+      "speaker": "xiu-xiu",
+      "sentence": "It is an homage to Suicide, Einstürzende Neubauten, Nico, and Kraftwerk.",
+      "url": "https://sandiegoreader.com/news/2014/feb/05/blurt-pop-fell-away-heart/"
+    },
+    {
+      "source": "arcade-fire",
+      "target": "pixies",
+      "kind": "influence",
+      "speaker": "arcade-fire",
+      "sentence": "It was New Order, Debussy, Arvo Part, the Pixies.",
+      "url": "https://www.redbullmusicacademy.com/lectures/win-butler-lecture/"
+    }
+  ],
+  "offMap": [
+    {
+      "name": "Einstürzende Neubauten",
+      "namedBy": "my-bloody-valentine",
+      "sentence": "Basically, we started out as a band that was really into The Birthday Party and Einstürzende Neubauten.",
+      "url": "https://mixdownmag.com.au/features/gear-talks-an-interview-with-kevin-shields-of-my-bloody-valentine/"
+    },
+    {
+      "name": "The Wolfgang Press",
+      "namedBy": "xiu-xiu",
+      "sentence": "The Wolfgang Press was another huge one for me, they were a really big influence, especially Bird Word Cage, Nick Cave, bands like that.",
+      "url": "https://sun-13.com/2024/09/24/knifes-edge-in-conversation-with-xiu-xius-jamie-stewart/"
+    },
+    {
+      "name": "Einstürzende Neubauten",
+      "namedBy": "xiu-xiu",
+      "sentence": "It is an homage to Suicide, Einstürzende Neubauten, Nico, and Kraftwerk.",
+      "url": "https://sandiegoreader.com/news/2014/feb/05/blurt-pop-fell-away-heart/"
+    },
+    {
+      "name": "The Magnetic Fields",
+      "namedBy": "arcade-fire",
+      "sentence": "I thought that Magnetic Fields and Neutral Milk were about as good as anything.",
+      "url": "https://www.redbullmusicacademy.com/lectures/win-butler-lecture/"
+    }
+  ],
+  "finished": true
+}

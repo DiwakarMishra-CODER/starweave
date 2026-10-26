@@ -1,0 +1,298 @@
+# id	name	active from -- every artist on the map
+100-gecs	100 gecs	2015
+2814	2814	2014
+a-g-cook	A.G. Cook	2013
+adrianne-lenker	Adrianne Lenker	2006
+airiel	Airiel	1996
+alex-g	Alex G	2010
+alvvays	Alvvays	2011
+american-football	American Football	1997
+angel-olsen	Angel Olsen	2010
+animal-collective	Animal Collective	2003
+anna-von-hausswolff	Anna von Hausswolff	2010
+aphex-twin	Aphex Twin	1992
+arca	Arca	2012
+arcade-fire	Arcade Fire	2001
+ariel-pink	Ariel Pink	1996
+at-the-drive-in	At The Drive-In	1994
+autechre	Autechre	1987
+bad-brains	Bad Brains	1977
+bark-psychosis	Bark Psychosis	1986
+beabadoobee	beabadoobee	2017
+beach-house	Beach House	2004
+beck	Beck	1988
+belle-and-sebastian	Belle and Sebastian	1996
+bert-jansch	Bert Jansch	1965
+big-black	Big Black	1981
+big-star	Big Star	1971
+big-thief	Big Thief	2015
+bikini-kill	Bikini Kill	1990
+bjork	Björk	1977
+black-country-new-road	Black Country, New Road	2018
+black-flag	Black Flag	1976
+black-midi	black midi	2017
+blonde-redhead	Blonde Redhead	1993
+blood-orange	Blood Orange	2011
+blur	Blur	1988
+boards-of-canada	Boards of Canada	1986
+bob-dylan	Bob Dylan	1961
+bon-iver	Bon Iver	2007
+bonnie-prince-billy	Bonnie Prince Billy	1993
+brand-new	Brand New	2000
+bratmobile	Bratmobile	1991
+brian-eno	Brian Eno	1971
+bright-eyes	Bright Eyes	1995
+broadcast	Broadcast	1995
+broken-social-scene	Broken Social Scene	1999
+built-to-spill	Built to Spill	1992
+burial	Burial	2005
+buzzcocks	Buzzcocks	1976
+cabaret-voltaire	Cabaret Voltaire	1973
+camera-obscura	Camera Obscura	1996
+can	Can	1968
+candy-claws	Candy Claws	2007
+cap-n-jazz	Cap'n Jazz	1989
+car-seat-headrest	Car Seat Headrest	2010
+caribou	Caribou	2000
+caroline-polachek	Caroline Polachek	2013
+cat-power	Cat Power	1992
+charli-xcx	Charli XCX	2008
+chk-chk-chk	!!!	1996
+christie-front-drive	Christie Front Drive	1993
+clairo	Clairo	2017
+cocteau-twins	Cocteau Twins	1979
+codeine	Codeine	1989
+coil	Coil	1982
+david-bowie	David Bowie	1969
+dead-can-dance	Dead Can Dance	1981
+dead-kennedys	Dead Kennedys	1978
+deaths-dynamic-shroud	death's dynamic shroud	2012
+deerhunter	Deerhunter	2001
+depeche-mode	Depeche Mode	1980
+descendents	Descendents	1977
+destroyer	Destroyer	1995
+dinosaur-jr	Dinosaur Jr.	1984
+dirty-three	Dirty Three	1992
+dna	DNA	1978
+do-make-say-think	Do Make Say Think	1995
+drive-by-truckers	Drive-By Truckers	1996
+drive-like-jehu	Drive Like Jehu	1990
+duster	Duster	1996
+echo-and-the-bunnymen	Echo & the Bunnymen	1978
+editors	Editors	2002
+elliott-smith	Elliott Smith	1994
+ethel-cain	Ethel Cain	2019
+everything-everything	Everything Everything	2007
+explosions-in-the-sky	Explosions in the Sky	1999
+far-apart	Far Apart	1995
+faust	Faust	1971
+fiona-apple	Fiona Apple	1996
+fishmans	Fishmans	1987
+fka-twigs	FKA twigs	2012
+fleet-foxes	Fleet Foxes	2006
+fontaines-dc	Fontaines D.C.	2017
+four-tet	Four Tet	1998
+fugazi	Fugazi	1986
+galaxie-500	Galaxie 500	1987
+gang-of-four	Gang of Four	1976
+gary-numan	Gary Numan	1977
+geese	Geese	2017
+george-clanton	George Clanton	2010
+get-up-kids	The Get Up Kids	1995
+glenn-branca	Glenn Branca	1977
+godspeed-you-black-emperor	Godspeed You! Black Emperor	1994
+grimes	Grimes	2010
+grizzly-bear	Grizzly Bear	2002
+grouper	Grouper	2005
+guided-by-voices	Guided by Voices	1983
+harold-budd	Harold Budd	1962
+have-a-nice-life	Have A Nice Life	2000
+hot-chip	Hot Chip	2000
+hum	Hum	1989
+husker-du	Hüsker Dü	1979
+idles	IDLES	2009
+imogen-heap	Imogen Heap	1998
+incredible-string-band	Incredible String Band	1965
+interpol	Interpol	1997
+james-chance-and-the-contortions	James Chance and the Contortions	1977
+jane-remover	Jane Remover	2019
+japanese-breakfast	Japanese Breakfast	2013
+jeff-buckley	Jeff Buckley	1992
+jeff-rosenstock	Jeff Rosenstock	1995
+joanna-newsom	Joanna Newsom	2002
+jockstrap	Jockstrap	2018
+john-prine	John Prine	1970
+joni-mitchell	Joni Mitchell	1964
+joy-division	Joy Division	1976
+julee-cruise	Julee Cruise	1989
+julia-holter	Julia Holter	2011
+karen-dalton	Karen Dalton	1960
+kero-kero-bonito	Kero Kero Bonito	2011
+king-gizzard-and-the-lizard-wizard	King Gizzard and the Lizard Wizard	2010
+kraftwerk	Kraftwerk	1970
+kurt-vile	Kurt Vile	2003
+la-dispute	La Dispute	2004
+lcd-soundsystem	LCD Soundsystem	2002
+leonard-cohen	Leonard Cohen	1967
+liz-phair	Liz Phair	1991
+low	Low	1993
+lucinda-williams	Lucinda Williams	1979
+lush	Lush	1987
+mac-demarco	Mac DeMarco	2008
+magdalena-bay	Magdalena Bay	2016
+mars	Mars	1975
+mary-timony	Mary Timony	1990
+massive-attack	Massive Attack	1988
+mazzy-star	Mazzy Star	1988
+mc5	MC5	1964
+mgmt	MGMT	2002
+mid-air-thief	Mid-Air Thief	2014
+minor-threat	Minor Threat	1980
+minutemen	Minutemen	1980
+mitski	Mitski	2012
+mj-lenderman	MJ Lenderman	2019
+modest-mouse	Modest Mouse	1992
+mogwai	Mogwai	1995
+mono	Mono	1999
+mount-eerie	The Microphones / Mount Eerie	1996
+mudhoney	Mudhoney	1988
+my-bloody-valentine	My Bloody Valentine	1983
+natural-snow-buildings	Natural Snow Buildings	1998
+neil-young	Neil Young	1966
+neu	Neu!	1971
+neutral-milk-hotel	Neutral Milk Hotel	1989
+new-order	New Order	1980
+new-york-dolls	New York Dolls	1971
+nick-cave-and-the-bad-seeds	Nick Cave & The Bad Seeds	1983
+nick-drake	Nick Drake	1968
+nico	Nico	1967
+ninajirachi	Ninajirachi	2017
+nirvana	Nirvana	1987
+nomeansno	NoMeansNo	1979
+of-montreal	of Montreal	1996
+oklou	Oklou	2014
+olivia-tremor-control	Olivia Tremor Control	1992
+omd	Orchestral Manoeuvres in the Dark	1978
+oneohtrix-point-never	Oneohtrix Point Never	2007
+panchiko	Panchiko	1998
+parannoul	Parannoul	2017
+parquet-courts	Parquet Courts	2010
+patti-smith	Patti Smith	1974
+pavement	Pavement	1989
+perfume-genius	Perfume Genius	2008
+phoebe-bridgers	Phoebe Bridgers	2014
+pinback	Pinback	1998
+pixies	Pixies	1986
+porter-robinson	Porter Robinson	2010
+portishead	Portishead	1991
+prefab-sprout	Prefab Sprout	1982
+pulp	Pulp	1978
+radiohead	Radiohead	1985
+ramones	Ramones	1974
+red-house-painters	Red House Painters	1988
+refused	Refused	1991
+rem	R.E.M.	1980
+rhys-chatham	Rhys Chatham	1977
+ride	Ride	1988
+rites-of-spring	Rites of Spring	1984
+roy-harper	Roy Harper	1964
+sebadoh	Sebadoh	1986
+sex-pistols	Sex Pistols	1975
+sharon-van-etten	Sharon Van Etten	2005
+sheena-ringo	Sheena Ringo	1998
+sigur-ros	Sigur Rós	1994
+silver-apples	Silver Apples	1967
+silver-jews	Silver Jews	1989
+silversun-pickups	Silversun Pickups	2000
+siouxsie-and-the-banshees	Siouxsie & The Banshees	1976
+slayyyter	Slayyyter	2018
+sleater-kinney	Sleater-Kinney	1994
+slint	Slint	1986
+slowdive	Slowdive	1989
+snail-mail	Snail Mail	2015
+sneaker-pimps	Sneaker Pimps	1994
+songs-ohia	Songs: Ohia	1996
+sonic-youth	Sonic Youth	1981
+sophie	SOPHIE	2013
+sparks	Sparks	1968
+spiritualized	Spiritualized	1990
+spoon	Spoon	1993
+squarepusher	Squarepusher	1995
+squid	Squid	2015
+st-vincent	St. Vincent	2007
+stars-of-the-lid	Stars of the Lid	1992
+stereolab	Stereolab	1990
+steve-roach	Steve Roach	1981
+sufjan-stevens	Sufjan Stevens	2000
+suicide	Suicide	1970
+sunny-day-real-estate	Sunny Day Real Estate	1992
+superchunk	Superchunk	1989
+swans	Swans	1982
+sweet-trip	Sweet Trip	1998
+talk-talk	Talk Talk	1981
+talking-heads	Talking Heads	1975
+tame-impala	Tame Impala	2007
+teenage-jesus-and-the-jerks	Teenage Jesus and the Jerks	1976
+television	Television	1973
+the-birthday-party	The Birthday Party	1976
+the-blue-nile	The Blue Nile	1981
+the-breeders	The Breeders	1989
+the-chameleons	The Chameleons	1981
+the-clash	The Clash	1976
+the-cranberries	The Cranberries	1989
+the-cure	The Cure	1978
+the-dismemberment-plan	The Dismemberment Plan	1993
+the-fall	The Fall	1976
+the-flaming-lips	The Flaming Lips	1983
+the-human-league	The Human League	1977
+the-jesus-and-mary-chain	The Jesus and Mary Chain	1983
+the-jesus-lizard	The Jesus Lizard	1987
+the-knife	The Knife	1999
+the-last-dinner-party	The Last Dinner Party	2021
+the-marias	The Marías	2016
+the-modern-lovers	The Modern Lovers	1970
+the-mountain-goats	The Mountain Goats	1991
+the-national	The National	1999
+the-postal-service	The Postal Service	2001
+the-radio-dept	The Radio Dept.	1995
+the-rapture	The Rapture	1998
+the-replacements	The Replacements	1979
+the-shins	The Shins	1996
+the-smiths	The Smiths	1982
+the-sound	The Sound	1979
+the-stone-roses	The Stone Roses	1983
+the-stooges	The Stooges	1967
+the-strokes	The Strokes	1998
+the-sundays	The Sundays	1987
+the-walkmen	The Walkmen	2000
+the-white-stripes	The White Stripes	1997
+this-heat	This Heat	1976
+this-mortal-coil	This Mortal Coil	1983
+tim-hecker	Tim Hecker	2000
+toe	toe	2000
+tom-waits	Tom Waits	1971
+tortoise	Tortoise	1990
+townes-van-zandt	Townes Van Zandt	1965
+trail-of-dead	...And You Will Know Us by the Trail of Dead	1994
+tricky	Tricky	1994
+turnstile	Turnstile	2010
+underscores	underscores	2018
+unwound	Unwound	1991
+vampire-weekend	Vampire Weekend	2006
+vashti-bunyan	Vashti Bunyan	1965
+velvet-underground	The Velvet Underground	1965
+violent-femmes	Violent Femmes	1981
+waxahatchee	Waxahatchee	2010
+wednesday	Wednesday	2017
+ween	Ween	1984
+weyes-blood	Weyes Blood	2006
+wilco	Wilco	1994
+wipers	Wipers	1977
+wire	Wire	1976
+wolf-alice	Wolf Alice	2010
+women	Women	2007
+x-ray-spex	X-Ray Spex	1976
+xiu-xiu	Xiu Xiu	2002
+yeah-yeah-yeahs	Yeah Yeah Yeahs	2000
+yeule	yeule	2012
+yo-la-tengo	Yo La Tengo	1984

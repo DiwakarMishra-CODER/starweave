@@ -1,0 +1,447 @@
+{
+  "name": "c2",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "why:the-replacements",
+      "phase": "why",
+      "speaker": "The Replacements",
+      "links": [
+        {
+          "key": "the-replacements>big-star",
+          "from": "The Replacements",
+          "to": "Big Star",
+          "fromYear": 1979,
+          "toYear": 1971,
+          "citation": "The song \"Alex Chilton\": \"I never travel far without a little Big Star.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "I never travel far without a little Big Star.",
+            "speaker": "The Replacements"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:bjork",
+      "phase": "why",
+      "speaker": "Björk",
+      "links": [
+        {
+          "key": "bjork>joni-mitchell",
+          "from": "Björk",
+          "to": "Joni Mitchell",
+          "fromYear": 1977,
+          "toYear": 1964,
+          "citation": "Björk's own site: \"I was around fourteen, fifteen and I knew it by heart.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "I was around fourteen, fifteen and I knew it by heart.",
+            "speaker": "Björk"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:modest-mouse",
+      "phase": "why",
+      "speaker": "Modest Mouse",
+      "links": [
+        {
+          "key": "modest-mouse>fugazi",
+          "from": "Modest Mouse",
+          "to": "Fugazi",
+          "fromYear": 1992,
+          "toYear": 1986,
+          "citation": "Jeremiah Green (Modest Mouse): \"Fugazi was probably my biggest influence as far as wanting to start a band.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "Fugazi was probably my biggest influence as far as wanting to start a band.",
+            "speaker": "Modest Mouse"
+          }
+        },
+        {
+          "key": "modest-mouse>drive-like-jehu",
+          "from": "Modest Mouse",
+          "to": "Drive Like Jehu",
+          "fromYear": 1992,
+          "toYear": 1990,
+          "citation": "Isaac Brock (2007): \"Jehu is one of my favorite all-time bands actually.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75,
+          "why": {
+            "quote": "Jehu is one of my favorite all-time bands actually.",
+            "speaker": "Modest Mouse"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:the-jesus-lizard",
+      "phase": "why",
+      "speaker": "The Jesus Lizard",
+      "links": [
+        {
+          "key": "the-jesus-lizard>black-flag",
+          "from": "The Jesus Lizard",
+          "to": "Black Flag",
+          "fromYear": 1987,
+          "toYear": 1976,
+          "citation": "Duane Denison, guitarguitar.co.uk (Apr 2, 2021): compositional approach drew on \"bands of the US underground scenes like Black Flag, Husker Du, Butthole Surfers and Big Black.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "bands of the US underground scenes like Black Flag, Husker Du, Butthole Surfers and Big Black.",
+            "speaker": "The Jesus Lizard"
+          }
+        },
+        {
+          "key": "the-jesus-lizard>big-black",
+          "from": "The Jesus Lizard",
+          "to": "Big Black",
+          "fromYear": 1987,
+          "toYear": 1981,
+          "citation": "Duane Denison, guitarguitar.co.uk (Apr 2, 2021): compositional approach drew on \"bands of the US underground scenes like Black Flag, Husker Du, Butthole Surfers and Big Black.\" Duane Denison, guitarguitar.co.uk (Apr 2, 2021): \"bands of the US underground scenes like Black Flag, Husker Du, Butthole Surfers and Big Black.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "bands of the US underground scenes like Black Flag, Husker Du, Butthole Surfers and Big Black.",
+            "speaker": "The Jesus Lizard"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:wire",
+      "phase": "why",
+      "speaker": "Wire",
+      "links": [
+        {
+          "key": "wire>ramones",
+          "from": "Wire",
+          "to": "Ramones",
+          "fromYear": 1976,
+          "toYear": 1974,
+          "citation": "Colin Newman, interviewed by Eastwood, denied Wire had influences at all before conceding, \"you could list the Ramones as one of our influences\" -- a hedge offered inside that denial rather than a direct claim.",
+          "sourceTier": "first-person",
+          "confidence": 0.6,
+          "why": {
+            "quote": "you could list the Ramones as one of our influences",
+            "speaker": "Wire"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:alvvays",
+      "phase": "why",
+      "speaker": "Alvvays",
+      "links": [
+        {
+          "key": "alvvays>rem",
+          "from": "Alvvays",
+          "to": "R.E.M.",
+          "fromYear": 2011,
+          "toYear": 1980,
+          "citation": "Tape Op, Geoff Stanfield (May 2023). Alec O'Hanley on the same session: \"We tried to go full [R.E.M.] Murmur/Reckoning,\" and Molly Rankin describes writing \"a Smiths' verse and an R.E.M. chorus.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "We tried to go full [R.E.M.] Murmur/Reckoning,",
+            "speaker": "Alvvays"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:cat-power",
+      "phase": "why",
+      "speaker": "Cat Power",
+      "links": [
+        {
+          "key": "cat-power>velvet-underground",
+          "from": "Cat Power",
+          "to": "The Velvet Underground",
+          "fromYear": 1992,
+          "toYear": 1965,
+          "citation": "Chan Marshall, CityBeat: \"I think the Velvet Underground in general was a huge influence on me.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "I think the Velvet Underground in general was a huge influence on me.",
+            "speaker": "Cat Power"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:lcd-soundsystem",
+      "phase": "why",
+      "speaker": "LCD Soundsystem",
+      "links": [
+        {
+          "key": "lcd-soundsystem>can",
+          "from": "LCD Soundsystem",
+          "to": "Can",
+          "fromYear": 2002,
+          "toYear": 1968,
+          "citation": "James Murphy, RBMA lecture: \"When I found Can I was in heaven 'cause they were just like, 'Here's this for 30 minutes.'\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "When I found Can I was in heaven 'cause they were just like, 'Here's this for 30 minutes.'",
+            "speaker": "LCD Soundsystem"
+          }
+        },
+        {
+          "key": "lcd-soundsystem>gang-of-four",
+          "from": "LCD Soundsystem",
+          "to": "Gang of Four",
+          "fromYear": 2002,
+          "toYear": 1976,
+          "citation": "James Murphy, RBMA lecture: \"later on I got into like Gang Of Four and stuff like that.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "later on I got into like Gang Of Four and stuff like that.",
+            "speaker": "LCD Soundsystem"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:bad-brains",
+      "phase": "why",
+      "speaker": "Bad Brains",
+      "links": [
+        {
+          "key": "bad-brains>sex-pistols",
+          "from": "Bad Brains",
+          "to": "Sex Pistols",
+          "fromYear": 1977,
+          "toYear": 1975,
+          "citation": "H.R. told Juice that when Sid McCray brought punk records to the house in 1977, \"we got a chance to listen to the Sex Pistols and the Ramones,\" naming them the band's primary trigger toward punk.",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "we got a chance to listen to the Sex Pistols and the Ramones,",
+            "speaker": "Bad Brains"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:boards-of-canada",
+      "phase": "why",
+      "speaker": "Boards of Canada",
+      "links": [
+        {
+          "key": "boards-of-canada>my-bloody-valentine",
+          "from": "Boards of Canada",
+          "to": "My Bloody Valentine",
+          "fromYear": 1986,
+          "toYear": 1983,
+          "citation": "Pitchfork interview (2005): \"even if we don't sound like them, there's a connection in terms of the approach to music.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75,
+          "why": {
+            "quote": "even if we don't sound like them, there's a connection in terms of the approach to music.",
+            "speaker": "Boards of Canada"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:wednesday",
+      "phase": "why",
+      "speaker": "Wednesday",
+      "links": [
+        {
+          "key": "wednesday>unwound",
+          "from": "Wednesday",
+          "to": "Unwound",
+          "fromYear": 2017,
+          "toYear": 1991,
+          "citation": "The Forty-Five (2023), Karly Hartzman: \"We are listening to a lot of music and lyricists and noise and shoegaze bands like our favourite bands Unwound and Swirlies.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "We are listening to a lot of music and lyricists and noise and shoegaze bands like our favourite bands Unwound and Swirlies.",
+            "speaker": "Wednesday"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:fleet-foxes",
+      "phase": "why",
+      "speaker": "Fleet Foxes",
+      "links": [
+        {
+          "key": "fleet-foxes>roy-harper",
+          "from": "Fleet Foxes",
+          "to": "Roy Harper",
+          "fromYear": 2006,
+          "toYear": 1964,
+          "citation": "Robin Pecknold told Paste that Helplessness Blues \"was about honoring our influences, like Roy Harper and Joanna Newsom and Joni Mitchell\"; Georgia Straight and Guitar Techniques both corroborate Roy Harper shaping the album's direction.",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "was about honoring our influences, like Roy Harper and Joanna Newsom and Joni Mitchell",
+            "speaker": "Fleet Foxes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:black-country-new-road",
+      "phase": "why",
+      "speaker": "Black Country, New Road",
+      "links": [
+        {
+          "key": "black-country-new-road>godspeed-you-black-emperor",
+          "from": "Black Country, New Road",
+          "to": "Godspeed You! Black Emperor",
+          "fromYear": 2018,
+          "toYear": 1994,
+          "citation": "Saxophonist Lewis Evans to the Line of Best Fit, qualified: \"I don't know much about them but I love the way they sound.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.5,
+          "why": {
+            "quote": "I don't know much about them but I love the way they sound.",
+            "speaker": "Black Country, New Road"
+          }
+        },
+        {
+          "key": "black-country-new-road>the-fall",
+          "from": "Black Country, New Road",
+          "to": "The Fall",
+          "fromYear": 2018,
+          "toYear": 1976,
+          "citation": "Tyler Hyde, in The Quietus's Baker's Dozen, on Fall Heads Roll: \"The Fall really heavily informed the first band that I was in, to the point where I sometimes felt like we were a bit of a pastiche.\" Of the way 'Midnight In Aspen' drops out and returns, she adds: \"I'm definitely gonna steal that.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "The Fall really heavily informed the first band that I was in, to the point where I sometimes felt like we were a bit of a pastiche.",
+            "speaker": "Black Country, New Road"
+          }
+        },
+        {
+          "key": "black-country-new-road>slint",
+          "from": "Black Country, New Road",
+          "to": "Slint",
+          "fromYear": 2018,
+          "toYear": 1986,
+          "citation": "Lewis Evans to the Line of Best Fit, on the constant Slint comparisons: \"We like Slint, but we'd be on more common ground with post-rock I think.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.55,
+          "why": {
+            "quote": "We like Slint, but we'd be on more common ground with post-rock I think.",
+            "speaker": "Black Country, New Road"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:ethel-cain",
+      "phase": "why",
+      "speaker": "Ethel Cain",
+      "links": [
+        {
+          "key": "ethel-cain>imogen-heap",
+          "from": "Ethel Cain",
+          "to": "Imogen Heap",
+          "fromYear": 2019,
+          "toYear": 1998,
+          "citation": "Ethel Cain told Crack Magazine in a December 2022 cover story that friends she met on Tumblr as a teenager introduced her to artists who \"influence her to this day,\" naming Daughter, Banks, Susanne Sundfor and Imogen Heap; she told Vice in July 2024 that discovering that side of pop made her think, \"that's what I want to make.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "that's what I want to make.",
+            "speaker": "Ethel Cain"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:geese",
+      "phase": "why",
+      "speaker": "Geese",
+      "links": [
+        {
+          "key": "geese>yeah-yeah-yeahs",
+          "from": "Geese",
+          "to": "Yeah Yeah Yeahs",
+          "fromYear": 2017,
+          "toYear": 2000,
+          "citation": "Foster Bassin, Still Listening: \"I was a big Strokes fan in middle school and high school. And you know, same with Interpol and the Yeah Yeah Yeahs.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7,
+          "why": {
+            "quote": "I was a big Strokes fan in middle school and high school. And you know, same with Interpol and the Yeah Yeah Yeahs.",
+            "speaker": "Geese"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:xiu-xiu",
+      "phase": "why",
+      "speaker": "Xiu Xiu",
+      "links": [
+        {
+          "key": "xiu-xiu>this-mortal-coil",
+          "from": "Xiu Xiu",
+          "to": "This Mortal Coil",
+          "fromYear": 2002,
+          "toYear": 1983,
+          "citation": "Jamie Stewart, Sun 13 (2024): \"They were really into the '80s... 4AD records like Bauhaus, This Mortal Coil, Cocteau Twins. The Wolfgang Press was another huge one for me.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "They were really into the '80s... 4AD records like Bauhaus, This Mortal Coil, Cocteau Twins. The Wolfgang Press was another huge one for me.",
+            "speaker": "Xiu Xiu"
+          }
+        },
+        {
+          "key": "xiu-xiu>suicide",
+          "from": "Xiu Xiu",
+          "to": "Suicide",
+          "fromYear": 2002,
+          "toYear": 1970,
+          "citation": "Denver Westword: \"Oh yeah, they're one of my favorite, favorite bands of all time... I think probably the next Xiu Xiu record will be really baldly influenced by Suicide.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "Oh yeah, they're one of my favorite, favorite bands of all time... I think probably the next Xiu Xiu record will be really baldly influenced by Suicide.",
+            "speaker": "Xiu Xiu"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:arca",
+      "phase": "why",
+      "speaker": "Arca",
+      "links": [
+        {
+          "key": "arca>aphex-twin",
+          "from": "Arca",
+          "to": "Aphex Twin",
+          "fromYear": 2012,
+          "toYear": 1992,
+          "citation": "FADER's \"Arca Finds Xen\" (2014): her teenage project Nuuro consisted of \"glitchy, Aphex Twin-inspired beat compositions\"; GRAMMY.com quote: \"I have a brother seven years older... He had a lot of Aphex Twin, Squarepusher.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "I have a brother seven years older... He had a lot of Aphex Twin, Squarepusher.",
+            "speaker": "Arca"
+          }
+        }
+      ]
+    }
+  ]
+}

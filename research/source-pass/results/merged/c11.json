@@ -1,0 +1,288 @@
+{
+  "agent": "c11",
+  "searches": 36,
+  "toolStatus": "WebSearch fine (summaries never used as evidence). Not openable: digitalinberlin.info, tidal.com live (archive copy ok), treblezine.com, invisibleoranges.com, woove.wuvt.vt.edu (403), thestranger.com (429). Searches stopped early at 36 of 55: remaining not-founds had no known page.",
+  "entries": {
+    "gary-numan>kraftwerk": {
+      "url": "https://shortlist.com/news/theyre-cold-geeky-geniuses",
+      "found": "Kraftwerk were completely electronic and non-conventional, and I really admired it.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Gary Numan to Shortlist: \"The sort of music I wanted to do when I got involved in electronic music, though, wasn’t what Kraftwerk were doing... Kraftwerk were completely electronic and non-conventional, and I really admired it.\"",
+      "note": "Original Manchester Evening News Dec 1979 quote ('very staccato and basic') not found on any page searched; Shortlist page is Numan on Kraftwerk, an admiring fan who wanted to add a layer to their approach. Citation rewritten to this page. Quote in citation has a cut; check 'found' is one sentence only."
+    },
+    "grouper>this-mortal-coil": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Searched Digital in Berlin + Grouper favourite albums, and quoted album titles; digitalinberlin.info pages and search not openable by read; Wikipedia, Norman Records, emilyelhaj interview don't carry it."
+    },
+    "grouper>siouxsie-and-the-banshees": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Same as grouper>this-mortal-coil: no page found carrying Harris naming Juju."
+    },
+    "japanese-breakfast>yeah-yeah-yeahs": {
+      "url": "https://www.cbc.ca/arts/q/michelle-zauner-shares-the-sage-rock-advice-karen-o-gave-her-that-changed-her-life-1.7541952",
+      "found": "\"That was so exciting for me and a big reason why I think I felt the courage I did to start playing music.\"",
+      "checked": "2026-10-26",
+      "verdict": "ok"
+    },
+    "joanna-newsom>vashti-bunyan": {
+      "url": "https://thebeliever.net/an-interview-with-joanna-newsom/",
+      "found": "Devendra Banhart introduced me to Vashti Bunyan’s music—she was an English singer in the sixties, and I love her songwriting style.",
+      "checked": "2026-10-26",
+      "verdict": "ok"
+    },
+    "joanna-newsom>karen-dalton": {
+      "url": "https://thebeliever.net/an-interview-with-joanna-newsom/",
+      "found": "Also, I love Karen Dalton. She was a singer in the sixties who ran around with Fred Neil and Bob Dylan a lot, and had a beautiful voice.",
+      "checked": "2026-10-26",
+      "verdict": "ok"
+    },
+    "lush>cocteau-twins": {
+      "url": "https://floodmagazine.com/35680/lush-life-the-sirens-return",
+      "found": "I was all about post-punk. I liked the Cocteau Twins and Siouxsie and the Banshees.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Emma Anderson to Flood (2016): \"I was all about post-punk. I liked the Cocteau Twins and Siouxsie and the Banshees.\"",
+      "note": "Original quote 'I did love The Cocteau Twins even before I met them' not found; Flood page carries Anderson's own liking of the band as she formed Lush. Whole paragraph starts 'Miki was quite close to the garage rock scene...'."
+    },
+    "lush>my-bloody-valentine": {
+      "url": "https://floodmagazine.com/35680/lush-life-the-sirens-return",
+      "found": "Emma Anderson: No. We don’t sound like Ride. Or My Bloody Valentine. I don’t know what it means, really.",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Flood (2016): Anderson answering whether they were fans of the shoegaze label. A denial of resemblance and of the label, nothing about MBV shaping her. Propose remove (or record as denial of the shoegaze comparison)."
+    },
+    "massive-attack>kraftwerk": {
+      "url": "https://thequietus.com/interviews/massive-attack-interview-heligoland-john-robb/",
+      "found": "Electronic music seeped into everything as well and there was the German groups like Cluster and Kraftwerk, but it was only when hip-hop come from over from the Atlantic that it really defined that sort of music for me.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Robert \"3D\" Del Naja to The Quietus (2010, interviewed by John Robb): \"Electronic music seeped into everything as well and there was the German groups like Cluster and Kraftwerk, but it was only when hip-hop come from over from the Atlantic that it really defined that sort of music for me.\"",
+      "note": "Quote verbatim; speaker unlabelled in the quote paragraph but the interview is Robb quoting 3D (Robert) throughout. Tier kept at first-person; it is a 'seeped into everything' mention not a stronger statement, owner may judge."
+    },
+    "mj-lenderman>silver-jews": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "WUVT/The Woove interview not found by 3 searches; woove.wuvt.vt.edu returns 403 to read. No exact page URL known."
+    },
+    "mj-lenderman>songs-ohia": {
+      "url": "https://www.stereogum.com/2232203/mj-lenderman-is-knockin-on-rock-stardoms-door/music/",
+      "found": "LENDERMAN: A friend showed me in high school, and I got really obsessed.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "MJ Lenderman to Stereogum, asked how he got into Jason Molina: \"A friend showed me in high school, and I got really obsessed. I think you'd be surprised. All the musicians I know that are around my age love Molina.\"",
+      "note": "WUVT/Woove 'derivative of Magnolia Electric Co.' quote not found. Stereogum page (interviewer asks about Jason Molina, who led Songs: Ohia/Magnolia Electric Co.) carries his own obsession. The 'found' sentence alone doesn't name Molina; the preceding interviewer line does."
+    },
+    "mj-lenderman>bonnie-prince-billy": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Palace Music claim lives in the WUVT/Woove interview, which could not be found or opened; Stereogum page has no Oldham mention."
+    },
+    "mono>sonic-youth": {
+      "url": "http://www.terrascope.co.uk/Features/Mono.htm",
+      "found": "I wanted to combine the noise of My Bloody Valentine and Sonic Youth.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Taka Goto of Mono to Terrascope (2006), asked about their first album Under the Pipal Tree: \"I wanted to combine the noise of My Bloody Valentine and Sonic Youth.\"",
+      "note": "Wikipedia's wording quoted in the old citation is its paraphrase, not a quote. Read via direct fetch (page's apostrophes are garbled, hence this short sentence)."
+    },
+    "mono>my-bloody-valentine": {
+      "url": "http://www.terrascope.co.uk/Features/Mono.htm",
+      "found": "I wanted to combine the noise of My Bloody Valentine and Sonic Youth.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Taka Goto of Mono to Terrascope (2006), asked about their first album Under the Pipal Tree: \"I wanted to combine the noise of My Bloody Valentine and Sonic Youth.\"",
+      "note": "Same sentence as mono>sonic-youth."
+    },
+    "mount-eerie>bonnie-prince-billy": {
+      "url": "https://www.kexp.org/read/2022/3/24/phil-elverum-the-microphones-it-was-hot-we-stayed-in-the-water-interview/",
+      "found": "After listening to early on Palace Brothers, Will Oldham, his songs and how they were sort of like folky country, but also deeply poetic if you actually listened to the words and like, kind of obtuse and just mysterious.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Phil Elverum to KEXP (2022), on the Microphones' It Was Hot, We Stayed in the Water: \"After listening to early on Palace Brothers, Will Oldham, his songs and how they were sort of like folky country, but also deeply poetic if you actually listened to the words... it made me write in a more free and kind of deep way.\"",
+      "note": "Exclaim Nov 2024 article could not be found (search found only headline 'Mount Eerie Celebrates the Transformative Influence of Eric's Trip'; guessed URLs not valid). KEXP page is Elverum's own words on Oldham; Wikipedia's Phil Elverum page also lists Oldham as influence (cites Invisible Oranges, which would not open)."
+    },
+    "parannoul>sweet-trip": {
+      "url": "https://www.jellybones.net/interviews/parannoul",
+      "found": "Then, as I became influenced by Takagi Masakatsu , Sufjan Stevens , and Sweet Trip , I wanted to put all my favorite things into one album.",
+      "checked": "2026-10-26",
+      "verdict": "ok",
+      "note": "Page text has stray spaces before commas; citation quote is the same sentence."
+    },
+    "parannoul>sufjan-stevens": {
+      "url": "https://www.jellybones.net/interviews/parannoul",
+      "found": "Then, as I became influenced by Takagi Masakatsu , Sufjan Stevens , and Sweet Trip , I wanted to put all my favorite things into one album.",
+      "checked": "2026-10-26",
+      "verdict": "ok"
+    },
+    "parquet-courts>guided-by-voices": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "L Magazine piece 'Inspiration Drills' not found in 2 searches. Grantland (Sunbathing Animal) only lists GBV's 'brevity' as a critic's reference point and Savage calls such deconstruction 'spoiling'."
+    },
+    "parquet-courts>velvet-underground": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Louder Than War 2014 Savage email not found (2 searches, LTW search/guess URLs, Wikipedia footnotes, McSweeney's/KRLX/Yorkshire Post/Southwest Review interviews don't carry it). Grantland lists the Velvets as critic reference only."
+    },
+    "parquet-courts>the-fall": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Same as parquet-courts>velvet-underground."
+    },
+    "women>this-heat": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Exclaim 'Women Indulge Themselves' (exclaim.ca/music/article/women_indulge_themselves) opened: only 'a sound resting between Swell Maps and Syd Barrett', no This Heat; Jagjaguwar release notes name This Heat but as the label's comparison. Wikipedia Women/Public Strain, PopMatters feature, 2 searches: no first-person This Heat statement. treblezine interview could not be opened."
+    },
+    "red-house-painters>neil-young": {
+      "url": "https://providencephoenix.com/archive/music/99/07/22/PAINTERS.html",
+      "found": "But Kozelek himself claims that he'd never heard of arty types like Cohen and Drake (he admits to Neil Young), that he was just a Midwestern boy grooving on Cat Stevens ballads.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Providence Phoenix (1999) reports that Mark Kozelek says he had never heard of Leonard Cohen or Nick Drake as a young man, but admits to Neil Young.",
+      "note": "beermelodies May 2009 interview not found (site not archived usefully). PopMatters 2008 (popmatters.com/theres-never-anything-planned-an-interview-with-mark-kozelek-2496159905.html) has Kozelek: 'Neil Young and Led Zeppelin records take me: just away somewhere' (listening, not clearly an influence). Tier lowered to reported; Stereogum clause in citation is from https://stereogum.com/1061652/counting-down-mark-kozelek/ ('one of Kozelek's favorite artists'). Weak overall; owner may prefer decide."
+    },
+    "sunny-day-real-estate>rites-of-spring": {
+      "url": "https://www.subpop.com/artists/sunny_day_real_estate",
+      "found": "We ourselves would look at Rites of Spring.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Nate Mendel to Sub Pop: \"A few years after we broke up, people began to cite us as an influence... We ourselves would look at Rites of Spring. They put out one or two records, had a short lifespan and didn't have very many fans at the time. But they left a huge mark.\"",
+      "note": "Eric Grubbs, Post (2008) p.72 not checked (print); the Mendel quote is the verbatim online source. Also opens via web.archive.org/web/20240311040942/ copy."
+    },
+    "superchunk>new-order": {
+      "url": "https://charlestoncitypaper.com/?p=95290",
+      "found": "I certainly have a somewhat romantic attachment to a lot of songs from that era and artists like New Order, the Cocteau Twins, or something like that.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Mac McCaughan to the Charleston City Paper (2015), on the '80s records behind his solo album Non-Believers: \"I certainly have a somewhat romantic attachment to a lot of songs from that era and artists like New Order, the Cocteau Twins, or something like that... I don't think it's just because I was listening to them when I was 15.\"",
+      "note": "Baltimore Sun piece not found (2 searches). Said about McCaughan's 2015 solo album, but he is Superchunk's founder and the listening was as a teenager. Apostrophes in page are curly; replace in citation as needed."
+    },
+    "superchunk>cocteau-twins": {
+      "url": "https://charlestoncitypaper.com/?p=95290",
+      "found": "I certainly have a somewhat romantic attachment to a lot of songs from that era and artists like New Order, the Cocteau Twins, or something like that.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Mac McCaughan to the Charleston City Paper (2015), on the '80s records behind his solo album Non-Believers: \"I certainly have a somewhat romantic attachment to a lot of songs from that era and artists like New Order, the Cocteau Twins, or something like that.\"",
+      "note": "Same page as superchunk>new-order. Mountain Xpress (https://mountainx.com/?p=502388) also lists Cocteau Twins among his primary inspirations."
+    },
+    "superchunk>the-cure": {
+      "url": "https://mountainx.com/?p=502388",
+      "found": "He cites British bands like The Cure, OMD and Cocteau Twins as his primary inspirations — sounds that harken back to his own childhood.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Mountain Xpress (2015) reports that Mac McCaughan, on his solo album Non-Believers, cites British bands like The Cure, OMD and Cocteau Twins as his primary inspirations, sounds from his own teenage years.",
+      "note": "Tier lowered to reported: the sentence is the writer's, quoting only 'It's hard for anything to have that kind of impact on you [as it does when you're 16]'. The Baltimore Sun quote not found. IndyWeek (indyweek.com/music/talking-non-believers-superchunk-s-mac-mccaughan-home-studio/) has McCaughan: 'This sounds exactly like that Cure record' (craft talk, no fandom)."
+    },
+    "superchunk>depeche-mode": {
+      "url": "https://www.spinmagazine.com/2015/05/mac-mccaughan-non-believers-interview-superchunk-merge-records/",
+      "found": "If you played me a Depeche Mode song, I would say, “I have no idea how to make this.”",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "SPIN 2015: McCaughan says of that '80s synth stuff 'I was very ambivalent about because I was very into rock... I certainly liked some of the bands, but I thought, Is that really rock'n'roll?' and that he couldn't figure out how to make a Depeche Mode song. Not influence on his making in the 80s. 'Songwriters on Process' quote (Yaz and Depeche Mode) not found; Yaz not on SPIN page. Propose remove."
+    },
+    "superchunk>echo-and-the-bunnymen": {
+      "url": "https://charlestoncitypaper.com/?p=95290",
+      "found": "And then there’s Echo and the Bunnymen, who also put out one of my top-five albums last year — the album sounds like Echo but is still relevant in terms of what more and more bands want to sound like now, you know what I mean?",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "That is the interviewer (City Paper) speaking, not McCaughan; his answer names New Order, Cocteau Twins and the Cure only. Baltimore Sun page not found. Propose remove unless the Baltimore Sun page turns up."
+    },
+    "weyes-blood>joni-mitchell": {
+      "url": "https://web.archive.org/web/2020/https://tidal.com/magazine/article/weyes-blood-5-albums-that-changed-my-life/1-40544",
+      "found": "That was played at my house when I was a child all throughout my young years. That was an earworm to my life my mom, who was obsessed with Joni.",
+      "checked": "2026-10-26",
+      "verdict": "ok",
+      "note": "TIDAL Magazine 2017 'Weyes Blood: 5 Albums That Changed My Life' (live page unreadable by read; archive copy opens). Quote is about Court and Spark. Citation should say Tidal 2017; the live link is https://tidal.com/magazine/article/weyes-blood-5-albums-that-changed-my-life/1-40544."
+    },
+    "adrianne-lenker>joni-mitchell": {
+      "url": "https://www.theringer.com/music/2019/4/30/18523793/big-thief-adrianne-lenker-ufof-capacity-band",
+      "found": "“I really admire Joni Mitchell , Neil Young, Leonard Cohen—how they have such a breadth of material throughout the years, into old age,” she says.",
+      "checked": "2026-10-26",
+      "verdict": "ok",
+      "note": "Quote verbatim (The Ringer, 30 Apr 2019, 'The Big Themes and Big Dreams of Big Thief'). She admires their career approach, not a sound; citation already says so."
+    },
+    "adrianne-lenker>neil-young": {
+      "url": "https://www.theringer.com/music/2019/4/30/18523793/big-thief-adrianne-lenker-ufof-capacity-band",
+      "found": "“I really admire Joni Mitchell , Neil Young, Leonard Cohen—how they have such a breadth of material throughout the years, into old age,” she says.",
+      "checked": "2026-10-26",
+      "verdict": "ok",
+      "note": "Same as adrianne-lenker>joni-mitchell."
+    },
+    "adrianne-lenker>leonard-cohen": {
+      "url": "https://www.theringer.com/music/2019/4/30/18523793/big-thief-adrianne-lenker-ufof-capacity-band",
+      "found": "“I really admire Joni Mitchell , Neil Young, Leonard Cohen—how they have such a breadth of material throughout the years, into old age,” she says.",
+      "checked": "2026-10-26",
+      "verdict": "ok",
+      "note": "Same as adrianne-lenker>joni-mitchell."
+    }
+  },
+  "candidates": [
+    {
+      "source": "joanna-newsom",
+      "target": "leonard-cohen",
+      "kind": "influence",
+      "speaker": "Joanna Newsom",
+      "sentence": "I love Donovan, Kate Bush, Leonard Cohen. Dylan, of course.",
+      "url": "https://thebeliever.net/an-interview-with-joanna-newsom/"
+    },
+    {
+      "source": "joanna-newsom",
+      "target": "bob-dylan",
+      "kind": "influence",
+      "speaker": "Joanna Newsom",
+      "sentence": "I love Donovan, Kate Bush, Leonard Cohen. Dylan, of course.",
+      "url": "https://thebeliever.net/an-interview-with-joanna-newsom/"
+    },
+    {
+      "source": "massive-attack",
+      "target": "the-clash",
+      "kind": "influence",
+      "speaker": "Robert Del Naja",
+      "sentence": "PiL were a major influence on me with what they went for on Metal Box, and The Clash were really important as well.",
+      "url": "https://thequietus.com/interviews/massive-attack-interview-heligoland-john-robb/"
+    }
+  ],
+  "offMap": [
+    {
+      "name": "Ruth Crawford Seeger",
+      "namedBy": "joanna-newsom",
+      "sentence": "Ruth Crawford Seeger is a huge influence.",
+      "url": "https://thebeliever.net/an-interview-with-joanna-newsom/"
+    },
+    {
+      "name": "Public Image Ltd",
+      "namedBy": "massive-attack",
+      "sentence": "PiL were a major influence on me with what they went for on Metal Box, and The Clash were really important as well.",
+      "url": "https://thequietus.com/interviews/massive-attack-interview-heligoland-john-robb/"
+    },
+    {
+      "name": "Cluster",
+      "namedBy": "massive-attack",
+      "sentence": "there was the German groups like Cluster and Kraftwerk",
+      "url": "https://thequietus.com/interviews/massive-attack-interview-heligoland-john-robb/"
+    },
+    {
+      "name": "Takagi Masakatsu",
+      "namedBy": "parannoul",
+      "sentence": "as I became influenced by Takagi Masakatsu , Sufjan Stevens , and Sweet Trip , I wanted to put all my favorite things into one album.",
+      "url": "https://www.jellybones.net/interviews/parannoul"
+    }
+  ],
+  "finished": true
+}

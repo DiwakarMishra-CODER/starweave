@@ -1,0 +1,445 @@
+{
+  "name": "c11",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:gary-numan",
+      "phase": "first-person",
+      "speaker": "Gary Numan",
+      "links": [
+        {
+          "key": "gary-numan>kraftwerk",
+          "from": "Gary Numan",
+          "to": "Kraftwerk",
+          "fromYear": 1977,
+          "toYear": 1970,
+          "citation": "Gary Numan to the Manchester Evening News (December 1979): \"Of course I've learned from Kraftwerk and Ultravox. But I've added all sorts of textures. I find Kraftwerk very staccato and basic. I've given it a richer feel.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:grouper",
+      "phase": "first-person",
+      "speaker": "Grouper",
+      "links": [
+        {
+          "key": "grouper>this-mortal-coil",
+          "from": "Grouper",
+          "to": "This Mortal Coil",
+          "fromYear": 2005,
+          "toYear": 1983,
+          "citation": "Liz Harris named It'll End in Tears among her five favorite albums of all time (Digital in Berlin interview).",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "grouper>siouxsie-and-the-banshees",
+          "from": "Grouper",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 2005,
+          "toYear": 1976,
+          "citation": "Digital in Berlin interview: Liz Harris names Juju among her five favourite albums of all time.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:japanese-breakfast",
+      "phase": "first-person",
+      "speaker": "Japanese Breakfast",
+      "links": [
+        {
+          "key": "japanese-breakfast>yeah-yeah-yeahs",
+          "from": "Japanese Breakfast",
+          "to": "Yeah Yeah Yeahs",
+          "fromYear": 2013,
+          "toYear": 2000,
+          "citation": "Michelle Zauner told CBC's Q that seeing Karen O, a fellow half-Korean woman, on stage was a big reason she felt the courage to start playing music herself.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:joanna-newsom",
+      "phase": "first-person",
+      "speaker": "Joanna Newsom",
+      "links": [
+        {
+          "key": "joanna-newsom>vashti-bunyan",
+          "from": "Joanna Newsom",
+          "to": "Vashti Bunyan",
+          "fromYear": 2002,
+          "toYear": 1965,
+          "citation": "Joanna Newsom told The Believer that Devendra Banhart introduced her to Vashti Bunyan's music, an English singer from the sixties whose songwriting style she loves.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "joanna-newsom>karen-dalton",
+          "from": "Joanna Newsom",
+          "to": "Karen Dalton",
+          "fromYear": 2002,
+          "toYear": 1960,
+          "citation": "In the same Believer interview, Joanna Newsom said she loves Karen Dalton, a sixties singer who ran with Fred Neil and Bob Dylan and had a beautiful voice.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:lush",
+      "phase": "first-person",
+      "speaker": "Lush",
+      "links": [
+        {
+          "key": "lush>cocteau-twins",
+          "from": "Lush",
+          "to": "Cocteau Twins",
+          "fromYear": 1987,
+          "toYear": 1979,
+          "citation": "Emma Anderson: \"I did love The Cocteau Twins even before I met them\" -- pre-dating any production relationship with Robin Guthrie.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "lush>my-bloody-valentine",
+          "from": "Lush",
+          "to": "My Bloody Valentine",
+          "fromYear": 1987,
+          "toYear": 1983,
+          "citation": "Anderson has said \"We don't sound like Ride. Or My Bloody Valentine\" -- a denial of sonic resemblance, not of influence; a band can be shaped by something and still sound nothing like it.",
+          "sourceTier": "first-person",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "first-person:massive-attack",
+      "phase": "first-person",
+      "speaker": "Massive Attack",
+      "links": [
+        {
+          "key": "massive-attack>kraftwerk",
+          "from": "Massive Attack",
+          "to": "Kraftwerk",
+          "fromYear": 1988,
+          "toYear": 1970,
+          "citation": "3D (Robert Del Naja) told The Quietus: \"Electronic music seeped into everything as well and there was the German groups like Cluster and Kraftwerk, but it was only when hip-hop come from over from the Atlantic that it really defined that sort of music for me.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:mj-lenderman",
+      "phase": "first-person",
+      "speaker": "MJ Lenderman",
+      "links": [
+        {
+          "key": "mj-lenderman>silver-jews",
+          "from": "MJ Lenderman",
+          "to": "Silver Jews",
+          "fromYear": 2019,
+          "toYear": 1989,
+          "citation": "In a WUVT/The Woove interview with Michael Haddad, Lenderman said Silver Jews is a band he loves \"so lyrically\" that it's been \"really helpful,\" calling himself a student of songwriters like David Berman.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "mj-lenderman>songs-ohia",
+          "from": "MJ Lenderman",
+          "to": "Songs: Ohia",
+          "fromYear": 2019,
+          "toYear": 1996,
+          "citation": "WUVT/The Woove interview: describing his earlier material, Lenderman said \"it was very derivative of Magnolia Electric Co. and Jason Molina and Palace Music,\" before deliberately moving away from that sound.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "mj-lenderman>bonnie-prince-billy",
+          "from": "MJ Lenderman",
+          "to": "Bonnie Prince Billy",
+          "fromYear": 2019,
+          "toYear": 1993,
+          "citation": "WUVT/The Woove interview -- the \"Palace Music\" Lenderman names as a formative influence on his earlier sound is Will Oldham's early-career moniker, predating the Bonnie \"Prince\" Billy name.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:mono",
+      "phase": "first-person",
+      "speaker": "Mono",
+      "links": [
+        {
+          "key": "mono>sonic-youth",
+          "from": "Mono",
+          "to": "Sonic Youth",
+          "fromYear": 1999,
+          "toYear": 1981,
+          "citation": "Terrascope.co.uk, \"MONO interview\" (Apr 10, 2006), cited in Wikipedia: \"their main influences were... Sonic Youth and... My Bloody Valentine when making Under the Pipal Tree and One Step More and You Die.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "mono>my-bloody-valentine",
+          "from": "Mono",
+          "to": "My Bloody Valentine",
+          "fromYear": 1999,
+          "toYear": 1983,
+          "citation": "Terrascope.co.uk, \"MONO interview\" (Apr 10, 2006), cited in Wikipedia: \"their main influences were... Sonic Youth and... My Bloody Valentine when making Under the Pipal Tree and One Step More and You Die.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:mount-eerie",
+      "phase": "first-person",
+      "speaker": "The Microphones / Mount Eerie",
+      "links": [
+        {
+          "key": "mount-eerie>bonnie-prince-billy",
+          "from": "The Microphones / Mount Eerie",
+          "to": "Bonnie Prince Billy",
+          "fromYear": 1996,
+          "toYear": 1993,
+          "citation": "Exclaim!, November 2024: listeners can hear traces of Eric's Trip, Will Oldham (Bonnie Prince Billy) and Sonic Youth, artists Phil Elverum has cited as direct inspirations.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:parannoul",
+      "phase": "first-person",
+      "speaker": "Parannoul",
+      "links": [
+        {
+          "key": "parannoul>sweet-trip",
+          "from": "Parannoul",
+          "to": "Sweet Trip",
+          "fromYear": 2017,
+          "toYear": 1998,
+          "citation": "Jellybones: \"as I became influenced by Takagi Masakatsu, Sufjan Stevens, and Sweet Trip, I wanted to put all my favorite things into one album.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "parannoul>sufjan-stevens",
+          "from": "Parannoul",
+          "to": "Sufjan Stevens",
+          "fromYear": 2017,
+          "toYear": 2000,
+          "citation": "Jellybones: \"as I became influenced by Takagi Masakatsu, Sufjan Stevens, and Sweet Trip, I wanted to put all my favorite things into one album.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:parquet-courts",
+      "phase": "first-person",
+      "speaker": "Parquet Courts",
+      "links": [
+        {
+          "key": "parquet-courts>guided-by-voices",
+          "from": "Parquet Courts",
+          "to": "Guided by Voices",
+          "fromYear": 2010,
+          "toYear": 1983,
+          "citation": "The L Magazine, \"Inspiration Drills: On the Influence of Guided by Voices and Robert Pollard\": Andrew Savage on GBV's songwriting -- melodies that read as simple but aren't, songs that feel like navigating Pollard's brain.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "parquet-courts>velvet-underground",
+          "from": "Parquet Courts",
+          "to": "The Velvet Underground",
+          "fromYear": 2010,
+          "toYear": 1965,
+          "citation": "Louder Than War 2014, Savage by email: says Pavement isn't a big influence and they share similar influences instead -- naming the Velvet Underground, Roxy Music and the Fall.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "parquet-courts>the-fall",
+          "from": "Parquet Courts",
+          "to": "The Fall",
+          "fromYear": 2010,
+          "toYear": 1976,
+          "citation": "Andrew Savage told Louder Than War by email that Pavement wasn't a big influence on Parquet Courts and that the band instead shares similar influences, naming the Velvet Underground, Roxy Music and the Fall.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:red-house-painters",
+      "phase": "first-person",
+      "speaker": "Red House Painters",
+      "links": [
+        {
+          "key": "red-house-painters>neil-young",
+          "from": "Red House Painters",
+          "to": "Neil Young",
+          "fromYear": 1988,
+          "toYear": 1966,
+          "citation": "Mark Kozelek told beermelodies in May 2009 that he definitely loves Neil Young, and Stereogum has called Young one of Kozelek's favorite artists, noting his eventual shift to a higher vocal register.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:sunny-day-real-estate",
+      "phase": "first-person",
+      "speaker": "Sunny Day Real Estate",
+      "links": [
+        {
+          "key": "sunny-day-real-estate>rites-of-spring",
+          "from": "Sunny Day Real Estate",
+          "to": "Rites of Spring",
+          "fromYear": 1992,
+          "toYear": 1984,
+          "citation": "Eric Grubbs, Post: A Look at the Influence of Post-Hardcore 1985-2007 (2008), p.72: early influences \"included Dischord Records bands like Rites of Spring... and Fugazi.\" Eric Grubbs, Post (2008); independently corroborated by Nate Mendel: \"We ourselves would look at Rites of Spring.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:superchunk",
+      "phase": "first-person",
+      "speaker": "Superchunk",
+      "links": [
+        {
+          "key": "superchunk>new-order",
+          "from": "Superchunk",
+          "to": "New Order",
+          "fromYear": 1989,
+          "toYear": 1980,
+          "citation": "Baltimore Sun: McCaughan on why certain '80s records still resonate, working from \"Temptation\" and \"Bizarre Love Triangle\" and then \"other '80s influences like Cocteau Twins, Echo and the Bunnymen, or The Cure.\" (Attribution caveat: from press around McCaughan's 2015 solo album Non-Believers, attributed here to Superchunk per the task's own note.)",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "superchunk>cocteau-twins",
+          "from": "Superchunk",
+          "to": "Cocteau Twins",
+          "fromYear": 1989,
+          "toYear": 1979,
+          "citation": "Baltimore Sun: McCaughan on why certain '80s records still resonate, working from \"Temptation\" and \"Bizarre Love Triangle\" and then \"other '80s influences like Cocteau Twins, Echo and the Bunnymen, or The Cure.\" (Attribution caveat: from press around McCaughan's 2015 solo album Non-Believers, attributed here to Superchunk per the task's own note.)",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "superchunk>the-cure",
+          "from": "Superchunk",
+          "to": "The Cure",
+          "fromYear": 1989,
+          "toYear": 1978,
+          "citation": "Baltimore Sun: McCaughan on why certain '80s records still resonate, working from \"Temptation\" and \"Bizarre Love Triangle\" and then \"other '80s influences like Cocteau Twins, Echo and the Bunnymen, or The Cure.\" (Attribution caveat: from press around McCaughan's 2015 solo album Non-Believers, attributed here to Superchunk per the task's own note.)",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "superchunk>depeche-mode",
+          "from": "Superchunk",
+          "to": "Depeche Mode",
+          "fromYear": 1989,
+          "toYear": 1980,
+          "citation": "Songwriters on Process: for Non-Believers he listened to '80s new wave and post-punk, bands like Yaz and Depeche Mode from his school days.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "superchunk>echo-and-the-bunnymen",
+          "from": "Superchunk",
+          "to": "Echo & the Bunnymen",
+          "fromYear": 1989,
+          "toYear": 1978,
+          "citation": "Baltimore Sun: Mac McCaughan on why certain '80s records still resonate, working from \"Temptation\" and \"Bizarre Love Triangle\" toward \"other '80s influences like Cocteau Twins, Echo and the Bunnymen, or The Cure.\" Said in press around his 2015 solo album Non-Believers rather than about Superchunk directly.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:weyes-blood",
+      "phase": "first-person",
+      "speaker": "Weyes Blood",
+      "links": [
+        {
+          "key": "weyes-blood>joni-mitchell",
+          "from": "Weyes Blood",
+          "to": "Joni Mitchell",
+          "fromYear": 2006,
+          "toYear": 1964,
+          "citation": "Natalie Mering has said Joni Mitchell's Court and Spark played throughout her childhood, with her mother obsessed with Mitchell's music.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:women",
+      "phase": "first-person",
+      "speaker": "Women",
+      "links": [
+        {
+          "key": "women>this-heat",
+          "from": "Women",
+          "to": "This Heat",
+          "fromYear": 2007,
+          "toYear": 1976,
+          "citation": "Women's Pat Flegel told Exclaim! that This Heat and Swell Maps provided the primary inspiration for the band's makeshift home-recording techniques.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:adrianne-lenker",
+      "phase": "first-person",
+      "speaker": "Adrianne Lenker",
+      "links": [
+        {
+          "key": "adrianne-lenker>joni-mitchell",
+          "from": "Adrianne Lenker",
+          "to": "Joni Mitchell",
+          "fromYear": 2006,
+          "toYear": 1964,
+          "citation": "Adrianne Lenker to The Ringer (2019): \"I really admire Joni Mitchell, Neil Young, Leonard Cohen -- how they have such a breadth of material throughout the years, into old age.\" She is describing a career approach rather than a sound: \"They seemed to follow their own thread of curiosity and creativity, even through some weird phases when people were like, 'I don't know what they're doing.'\"",
+          "sourceTier": "first-person",
+          "confidence": 0.55
+        },
+        {
+          "key": "adrianne-lenker>neil-young",
+          "from": "Adrianne Lenker",
+          "to": "Neil Young",
+          "fromYear": 2006,
+          "toYear": 1966,
+          "citation": "Adrianne Lenker to The Ringer (2019): \"I really admire Joni Mitchell, Neil Young, Leonard Cohen -- how they have such a breadth of material throughout the years, into old age.\" She is describing a career approach rather than a sound: \"They seemed to follow their own thread of curiosity and creativity, even through some weird phases when people were like, 'I don't know what they're doing.'\"",
+          "sourceTier": "first-person",
+          "confidence": 0.55
+        },
+        {
+          "key": "adrianne-lenker>leonard-cohen",
+          "from": "Adrianne Lenker",
+          "to": "Leonard Cohen",
+          "fromYear": 2006,
+          "toYear": 1967,
+          "citation": "Adrianne Lenker to The Ringer (2019): \"I really admire Joni Mitchell, Neil Young, Leonard Cohen -- how they have such a breadth of material throughout the years, into old age.\" She is describing a career approach rather than a sound: \"They seemed to follow their own thread of curiosity and creativity, even through some weird phases when people were like, 'I don't know what they're doing.'\"",
+          "sourceTier": "first-person",
+          "confidence": 0.55
+        }
+      ]
+    }
+  ]
+}

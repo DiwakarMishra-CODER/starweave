@@ -1,0 +1,393 @@
+{
+  "name": "chat4",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:la-dispute",
+      "phase": "first-person",
+      "speaker": "La Dispute",
+      "links": [
+        {
+          "key": "la-dispute>refused",
+          "from": "La Dispute",
+          "to": "Refused",
+          "fromYear": 2004,
+          "toYear": 1991,
+          "citation": "From The Garage interview (Dec 13, 2010): \"Post-hardcore bands like Thursday, Refused, At the Drive-In and Glassjaw.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "la-dispute>at-the-drive-in",
+          "from": "La Dispute",
+          "to": "At The Drive-In",
+          "fromYear": 2004,
+          "toYear": 1994,
+          "citation": "From The Garage interview (Dec 13, 2010): \"Post-hardcore bands like Thursday, Refused, At the Drive-In and Glassjaw.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "la-dispute>modest-mouse",
+          "from": "La Dispute",
+          "to": "Modest Mouse",
+          "fromYear": 2004,
+          "toYear": 1992,
+          "citation": "BBC Radio 1 \"Under the Influence with La Dispute\": \"influences from Joanna Newsom, The Mountain Goats and Modest Mouse.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "la-dispute>joanna-newsom",
+          "from": "La Dispute",
+          "to": "Joanna Newsom",
+          "fromYear": 2004,
+          "toYear": 2002,
+          "citation": "BBC Radio 1 \"Under the Influence with La Dispute\": \"influences from Joanna Newsom, The Mountain Goats and Modest Mouse.\" BBC Radio 1 \"Under the Influence with La Dispute,\".",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "la-dispute>the-mountain-goats",
+          "from": "La Dispute",
+          "to": "The Mountain Goats",
+          "fromYear": 2004,
+          "toYear": 1991,
+          "citation": "BBC Radio 1 \"Under the Influence with La Dispute\": \"influences from Joanna Newsom, The Mountain Goats and Modest Mouse.\" BBC Radio 1 \"Under the Influence with La Dispute,\".",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:mitski",
+      "phase": "first-person",
+      "speaker": "Mitski",
+      "links": [
+        {
+          "key": "mitski>bjork",
+          "from": "Mitski",
+          "to": "Björk",
+          "fromYear": 2012,
+          "toYear": 1977,
+          "citation": "The Skinny reported that Mitski discovered Bjork at a listening station in a Japanese record store at age fifteen and was terrified -- it viscerally scared her; she has said Vespertine especially helped her look further into herself, and that she wasn't ready for it at fifteen, and that Bjork opened up a world of music and taught her there are a million ways to put sounds and thoughts together.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "mitski>sheena-ringo",
+          "from": "Mitski",
+          "to": "Sheena Ringo",
+          "fromYear": 2012,
+          "toYear": 1998,
+          "citation": "Mitski has named Sheena Ringo's Kalk Samen Kuri no Hana as the album she wishes she had made.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:patti-smith",
+      "phase": "first-person",
+      "speaker": "Patti Smith",
+      "links": [
+        {
+          "key": "patti-smith>bob-dylan",
+          "from": "Patti Smith",
+          "to": "Bob Dylan",
+          "fromYear": 1974,
+          "toYear": 1961,
+          "citation": "Patti Smith told PBS's American Masters in 1997 that she identified with Bob Dylan more than anyone, and SPIN has reported on her own memoir drawing a direct line between Dylan and Rimbaud in her work.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:sophie",
+      "phase": "first-person",
+      "speaker": "SOPHIE",
+      "links": [
+        {
+          "key": "sophie>depeche-mode",
+          "from": "SOPHIE",
+          "to": "Depeche Mode",
+          "fromYear": 2013,
+          "toYear": 1980,
+          "citation": "SOPHIE, The Face (2017), singled out \"Just Can't Get Enough\" (1981) as formative: it \"established one part of the sound of the decade that followed,\" calling it \"an amazing achievement.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-national",
+      "phase": "first-person",
+      "speaker": "The National",
+      "links": [
+        {
+          "key": "the-national>violent-femmes",
+          "from": "The National",
+          "to": "Violent Femmes",
+          "fromYear": 1999,
+          "toYear": 1981,
+          "citation": "The Scenestar 2007, Berninger: the bands he first fell in love with were the Smiths, Violent Femmes, Tom Waits and Nick Cave.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-national>nick-cave-and-the-bad-seeds",
+          "from": "The National",
+          "to": "Nick Cave & The Bad Seeds",
+          "fromYear": 1999,
+          "toYear": 1983,
+          "citation": "The Scenestar 2007: the bands he first fell in love with were the Smiths, Violent Femmes, Tom Waits and Nick Cave. Corroborated by Q at Reading 2011 and a 2023 talk on Cave as an inspiration.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-national>the-smiths",
+          "from": "The National",
+          "to": "The Smiths",
+          "fromYear": 1999,
+          "toYear": 1982,
+          "citation": "The Scenestar 2007: the bands he first fell in love with were the Smiths, Violent Femmes, Tom Waits and Nick Cave. Corroborated by Q at Reading 2011 and a 2023 talk on Cave as an inspiration.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-national>joy-division",
+          "from": "The National",
+          "to": "Joy Division",
+          "fromYear": 1999,
+          "toYear": 1976,
+          "citation": "The Scenestar: pressed on Ian Curtis comparisons he partly deflects to vocal range, then confirms Joy Division directly and says it's been a big influence on drummer Bryan Devendorf.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-national>nirvana",
+          "from": "The National",
+          "to": "Nirvana",
+          "fromYear": 1999,
+          "toYear": 1987,
+          "citation": "Q 2011 via a fan transcription: discusses Nirvana alongside Waits, Cave and the Smiths as artists he'd named. Flagged for verification given the secondary source.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-national>tom-waits",
+          "from": "The National",
+          "to": "Tom Waits",
+          "fromYear": 1999,
+          "toYear": 1971,
+          "citation": "Matt Berninger named the Smiths, Violent Femmes, Tom Waits and Nick Cave as the first bands he fell in love with, in an interview with The Scenestar in 2007 -- corroborated by a 2011 Q at Reading appearance where Waits and Cave topped his list again.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:underscores",
+      "phase": "first-person",
+      "speaker": "underscores",
+      "links": [
+        {
+          "key": "underscores>jane-remover",
+          "from": "underscores",
+          "to": "Jane Remover",
+          "fromYear": 2018,
+          "toYear": 2019,
+          "citation": "NME profile (on U): \"she reels off Jane Remover, 2hollis and Osamason as equally inspiring as Brandy, Britney Spears and Justin Timberlake while making 'U'.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "underscores>oklou",
+          "from": "underscores",
+          "to": "Oklou",
+          "fromYear": 2018,
+          "toYear": 2014,
+          "citation": "NME, 2026: for her new album underscores said she took inspiration from Oklou and Mk.gee and how they use their instruments as a \"sound bed.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:wolf-alice",
+      "phase": "first-person",
+      "speaker": "Wolf Alice",
+      "links": [
+        {
+          "key": "wolf-alice>the-replacements",
+          "from": "Wolf Alice",
+          "to": "The Replacements",
+          "fromYear": 2010,
+          "toYear": 1979,
+          "citation": "In Pitchfork's \"Perfect 10\" video series, Wolf Alice chose the Replacements' Tim, and one of the band described Paul Westerberg as \"super influential to me.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "wolf-alice>yeah-yeah-yeahs",
+          "from": "Wolf Alice",
+          "to": "Yeah Yeah Yeahs",
+          "fromYear": 2010,
+          "toYear": 2000,
+          "citation": "Line of Best Fit feature/interview on Wolf Alice.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:xiu-xiu",
+      "phase": "first-person",
+      "speaker": "Xiu Xiu",
+      "links": [
+        {
+          "key": "xiu-xiu>joy-division",
+          "from": "Xiu Xiu",
+          "to": "Joy Division",
+          "fromYear": 2002,
+          "toYear": 1976,
+          "citation": "The sticker on Xiu Xiu's debut album Knife Play lists what Jamie Stewart was listening to when his mother died -- Henry Cowell, Joy Division, Detroit techno, the Smiths, Takemitsu, Sabbath, Gamelan, \"Black Angels,\" and Cecil Taylor.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "xiu-xiu>cocteau-twins",
+          "from": "Xiu Xiu",
+          "to": "Cocteau Twins",
+          "fromYear": 2002,
+          "toYear": 1979,
+          "citation": "Jamie Stewart, Sun 13 (2024): \"They were really into the '80s... 4AD records like Bauhaus, This Mortal Coil, Cocteau Twins. The Wolfgang Press was another huge one for me.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "xiu-xiu>swans",
+          "from": "Xiu Xiu",
+          "to": "Swans",
+          "fromYear": 2002,
+          "toYear": 1982,
+          "citation": "Jamie Stewart on Michael Gira, The Beijinger (2014): \"I admire that he has never given up, has never relented in his intensity, and that he continues, after 30 years, to change and grow his music... It is good to have that model before you.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        },
+        {
+          "key": "xiu-xiu>nico",
+          "from": "Xiu Xiu",
+          "to": "Nico",
+          "fromYear": 2002,
+          "toYear": 1967,
+          "citation": "Stewart described the sonic direction of Angel Guts: Red Classroom as \"a mean, tight hearted, blackness of Neubauten vs Suicide vs Nico.\" (Vice)",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:alex-g",
+      "phase": "first-person",
+      "speaker": "Alex G",
+      "links": [
+        {
+          "key": "alex-g>elliott-smith",
+          "from": "Alex G",
+          "to": "Elliott Smith",
+          "fromYear": 2010,
+          "toYear": 1994,
+          "citation": "Consequence (2015), \"Ruining Alex G\": \"I've been really influenced by Elliott Smith's singing style. When you sing like that, in a kind of whispery way... I do it for no other reason than it makes it easier to sing in tune, to hit all the notes correctly. And also I didn't want to wake my roommates.\" Corroborated in OndaRock: \"I listened to Elliott Smith a lot when I was younger, so it seems natural that my music might reflect his sound.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:arca",
+      "phase": "first-person",
+      "speaker": "Arca",
+      "links": [
+        {
+          "key": "arca>squarepusher",
+          "from": "Arca",
+          "to": "Squarepusher",
+          "fromYear": 2012,
+          "toYear": 1995,
+          "citation": "GRAMMY.com, Arca on her teenage listening: \"I have a brother seven years older... He had a lot of Aphex Twin, Squarepusher.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "arca>autechre",
+          "from": "Arca",
+          "to": "Autechre",
+          "fromYear": 2012,
+          "toYear": 1987,
+          "citation": "FADER (2014): \"Aided partly by his older brother's CD collection, he went through a series of musical obsessions... Aaliyah, Autechre, Nine Inch Nails, Marilyn Manson.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:arcade-fire",
+      "phase": "first-person",
+      "speaker": "Arcade Fire",
+      "links": [
+        {
+          "key": "arcade-fire>neutral-milk-hotel",
+          "from": "Arcade Fire",
+          "to": "Neutral Milk Hotel",
+          "fromYear": 2001,
+          "toYear": 1989,
+          "citation": "Red Bull Music Academy lecture, Win Butler: Merge had In the Aeroplane Over the Sea, \"a complete classic\"; he says Magnetic Fields and Neutral Milk were about as good as anything, and their dream was to be on Merge partly because of this record. rs500albums adds Butler has said this was the primary reason they signed with Merge.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "arcade-fire>talking-heads",
+          "from": "Arcade Fire",
+          "to": "Talking Heads",
+          "fromYear": 2001,
+          "toYear": 1975,
+          "citation": "Maclean's 2013, Win Butler: New Order and Bowie and Talking Heads are all primal influences for many of them. NME's \"Roots Of\" independently traces Talking Heads' \"This Must Be The Place\" into \"Wake Up.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "arcade-fire>new-order",
+          "from": "Arcade Fire",
+          "to": "New Order",
+          "fromYear": 2001,
+          "toYear": 1980,
+          "citation": "Maclean's: Butler arrives at New Order via hearing the Rapture's \"House of Jealous Lovers\" and noticing it was not worlds away from their own \"Headlights Look Like Diamonds.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "arcade-fire>david-bowie",
+          "from": "Arcade Fire",
+          "to": "David Bowie",
+          "fromYear": 2001,
+          "toYear": 1969,
+          "citation": "Maclean's; NME traces Bowie's \"Queen Bitch\" into the early songs; Butler told Zane Lowe and Billboard in 2022 that Bowie shaped \"Age of Anxiety II,\" borrowing Bowie's own \"plastic soul\" term.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "arcade-fire>echo-and-the-bunnymen",
+          "from": "Arcade Fire",
+          "to": "Echo & the Bunnymen",
+          "fromYear": 2001,
+          "toYear": 1978,
+          "citation": "Win Butler's \"unholy amount of B's\" -- Bowie, Bono, Brecht, Byrne, the Bunnymen -- named among his heroes around Ocean Rain.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    }
+  ]
+}

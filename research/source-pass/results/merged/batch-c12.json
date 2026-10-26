@@ -1,0 +1,343 @@
+{
+  "name": "c12",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:tame-impala",
+      "phase": "first-person",
+      "speaker": "Tame Impala",
+      "links": [
+        {
+          "key": "tame-impala>the-flaming-lips",
+          "from": "Tame Impala",
+          "to": "The Flaming Lips",
+          "fromYear": 2007,
+          "toYear": 1983,
+          "citation": "Far Out on Parker's psychedelic roots: he takes huge inspiration from the Flaming Lips, quoting him to Entertainment Weekly that he was a fanboy first and they later became good friends. Caveat: Dave Fridmann mixed Lonerism and produces the Flaming Lips -- part of the resemblance is plausibly a shared engineer, but the fanboy statement is independent of the production link.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-mountain-goats",
+      "phase": "first-person",
+      "speaker": "The Mountain Goats",
+      "links": [
+        {
+          "key": "the-mountain-goats>the-cure",
+          "from": "The Mountain Goats",
+          "to": "The Cure",
+          "fromYear": 1991,
+          "toYear": 1978,
+          "citation": "The Mountain Goats' band statement said Goths was inspired by an adolescence spent listening to the Cure, Bauhaus, Siouxsie and Joy Division; John Darnielle named Robert Smith directly in his own lyric on \"Abandoned Flesh.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "the-mountain-goats>siouxsie-and-the-banshees",
+          "from": "The Mountain Goats",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 1991,
+          "toYear": 1976,
+          "citation": "The Mountain Goats' own statement on Goths, quoted on Wikipedia, names Siouxsie & the Banshees as one of John Darnielle's favourite bands; he named Siouxsie Sioux directly in his own lyric on \"Abandoned Flesh,\" and the band covered \"Spellbound\" live in 2014.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-mountain-goats>joy-division",
+          "from": "The Mountain Goats",
+          "to": "Joy Division",
+          "fromYear": 1991,
+          "toYear": 1976,
+          "citation": "The same Goths band statement names Joy Division; bandmate Peter Hughes told No Depression, quoted in the Oklahoma Gazette, that John Darnielle was largely influenced by Joy Division and New Order in his youth.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-postal-service",
+      "phase": "first-person",
+      "speaker": "The Postal Service",
+      "links": [
+        {
+          "key": "the-postal-service>new-order",
+          "from": "The Postal Service",
+          "to": "New Order",
+          "fromYear": 2001,
+          "toYear": 1980,
+          "citation": "SPIN, Ben Gibbard naming New Order alongside Kraftwerk and Depeche Mode.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "the-postal-service>depeche-mode",
+          "from": "The Postal Service",
+          "to": "Depeche Mode",
+          "fromYear": 2001,
+          "toYear": 1980,
+          "citation": "SPIN, Ben Gibbard naming Depeche Mode alongside Kraftwerk and New Order; corroborated by Jimmy Tamborello (XLR8R \"Rewind\"), whose side project Figurine's aesthetic came from \"love for bands like Kraftwerk and Depeche Mode.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:vampire-weekend",
+      "phase": "first-person",
+      "speaker": "Vampire Weekend",
+      "links": [
+        {
+          "key": "vampire-weekend>radiohead",
+          "from": "Vampire Weekend",
+          "to": "Radiohead",
+          "fromYear": 2006,
+          "toYear": 1985,
+          "citation": "LSQ podcast 2024, Koenig: his tastes shifted from 50s/60s oldies-radio pop into discovering Scott Walker, Neil Young, 90s hip-hop and early-aughts Radiohead.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "vampire-weekend>neil-young",
+          "from": "Vampire Weekend",
+          "to": "Neil Young",
+          "fromYear": 2006,
+          "toYear": 1966,
+          "citation": "LSQ podcast 2024, Koenig: his tastes shifted from 50s/60s oldies-radio pop into discovering Scott Walker, Neil Young, 90s hip-hop and early-aughts Radiohead.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "vampire-weekend>talking-heads",
+          "from": "Vampire Weekend",
+          "to": "Talking Heads",
+          "fromYear": 2006,
+          "toYear": 1975,
+          "citation": "Earwolf's U Talkin' U2 To Me? / Scott Aukerman archive: Koenig guests to discuss Talking Heads' True Stories, covering when he first heard them, realizing they were punk, and how they influenced him as a musician. Note: the press-cliche version of this claim (Westword 2008, a repetitious reviewer comparison) is NOT the basis for this edge -- the podcast appearance is.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "vampire-weekend>belle-and-sebastian",
+          "from": "Vampire Weekend",
+          "to": "Belle and Sebastian",
+          "fromYear": 2006,
+          "toYear": 1996,
+          "citation": "On the LSQ podcast, Ezra Koenig called Belle and Sebastian a \"mega favourite.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:waxahatchee",
+      "phase": "first-person",
+      "speaker": "Waxahatchee",
+      "links": [
+        {
+          "key": "waxahatchee>bright-eyes",
+          "from": "Waxahatchee",
+          "to": "Bright Eyes",
+          "fromYear": 2010,
+          "toYear": 1995,
+          "citation": "Consequence, July 2021, in a joint interview timed to Bright Eyes' Down in the Weeds: Katie Crutchfield said \"I feel like Bright Eyes had one of the biggest impacts of any band at the time,\" naming Letting Off the Happiness, Fevers and Mirrors, and Lifted as formative during her teenage years.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "waxahatchee>fiona-apple",
+          "from": "Waxahatchee",
+          "to": "Fiona Apple",
+          "fromYear": 2010,
+          "toYear": 1996,
+          "citation": "Rolling Stone's Women Shaping the Future issue frames it explicitly as the influence of Fiona Apple on her music; Katie Crutchfield: \"What I think is so special about her is there's this stereotype of women's emotions -- the idea of the hysterical woman -- and that has been weaponized against women forever... she takes that idea and she turns it into this superpower.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "waxahatchee>velvet-underground",
+          "from": "Waxahatchee",
+          "to": "The Velvet Underground",
+          "fromYear": 2010,
+          "toYear": 1965,
+          "citation": "The Oklahoman reported on Katie Crutchfield and her sister's early-teen listening to the Velvet Underground, an earlier point in the same musical lineage Rolling Stone later traced through to Lucinda Williams.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "waxahatchee>lucinda-williams",
+          "from": "Waxahatchee",
+          "to": "Lucinda Williams",
+          "fromYear": 2010,
+          "toYear": 1979,
+          "citation": "Interview Magazine (2024), Crutchfield: \"No one means more to me on earth as an artist than Lucinda Williams... My approach to songwriting, as far as the structure of the songs, is identical to Lucinda. Rarely will you find a bridge. It's usually like, three to four chords only, and it's simple.\" Corroborated in AllMusic's interview: \"I'd been through a three-year obsession with Lucinda Williams, and she was an influence on that... the way that I sing it, I'm trying to emulate her a little bit.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.9
+        }
+      ]
+    },
+    {
+      "id": "first-person:yeule",
+      "phase": "first-person",
+      "speaker": "yeule",
+      "links": [
+        {
+          "key": "yeule>aphex-twin",
+          "from": "yeule",
+          "to": "Aphex Twin",
+          "fromYear": 2012,
+          "toYear": 1992,
+          "citation": "FLOOD Magazine (Oct 2023, on softscars): names Aphex Twin and Suzanne Ciani as inspirations: \"They're not doing music by the book, they're doing it by the feeling.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:anna-von-hausswolff",
+      "phase": "first-person",
+      "speaker": "Anna von Hausswolff",
+      "links": [
+        {
+          "key": "anna-von-hausswolff>nico",
+          "from": "Anna von Hausswolff",
+          "to": "Nico",
+          "fromYear": 2010,
+          "toYear": 1967,
+          "citation": "In The Quietus's Baker's Dozen feature, von Hausswolff named Nico among her favourite artists, calling her one of the most influential singers on her own vocal delivery for how raw, honest, and unafraid Nico's voice is.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:ariel-pink",
+      "phase": "first-person",
+      "speaker": "Ariel Pink",
+      "links": [
+        {
+          "key": "ariel-pink>the-cure",
+          "from": "Ariel Pink",
+          "to": "The Cure",
+          "fromYear": 1996,
+          "toYear": 1978,
+          "citation": "The Wire (June 2012): his favourite record was Faith by the Cure. \"It changed my life when I was younger. That record, for me, was its own genre... that record for me typified everything I wanted to be, which is mediocrity, ambiguity, totally serious and totally helpless.\" Corroborated by Wikipedia: \"His early influences were artists such as Michael Jackson, the Cure, and R. Stevie Moore.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:black-midi",
+      "phase": "first-person",
+      "speaker": "black midi",
+      "links": [
+        {
+          "key": "black-midi>godspeed-you-black-emperor",
+          "from": "black midi",
+          "to": "Godspeed You! Black Emperor",
+          "fromYear": 2017,
+          "toYear": 1994,
+          "citation": "Geordie Greep told Rolling Stone their early sound was \"a droney, Godspeed, Swans, Boredoms thing.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "black-midi>swans",
+          "from": "black midi",
+          "to": "Swans",
+          "fromYear": 2017,
+          "toYear": 1982,
+          "citation": "Rolling Stone, naming Godspeed You! Black Emperor, Swans and Boredoms as touchstones for their early sound.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "black-midi>talking-heads",
+          "from": "black midi",
+          "to": "Talking Heads",
+          "fromYear": 2017,
+          "toYear": 1975,
+          "citation": "Cameron Picton told FLOOD Magazine: \"We used to say Talking Heads, Deerhoof, and Danny Brown were our three main reference points.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:car-seat-headrest",
+      "phase": "first-person",
+      "speaker": "Car Seat Headrest",
+      "links": [
+        {
+          "key": "car-seat-headrest>guided-by-voices",
+          "from": "Car Seat Headrest",
+          "to": "Guided by Voices",
+          "fromYear": 2010,
+          "toYear": 1983,
+          "citation": "Westword 2016: \"certainly influenced by lo-fi music, like Guided by Voices.\" CityBeat: growing up on 60s music leads naturally toward 90s lo-fi like GBV. DIY 2016 and Austin Chronicle corroborate.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "car-seat-headrest>nirvana",
+          "from": "Car Seat Headrest",
+          "to": "Nirvana",
+          "fromYear": 2010,
+          "toYear": 1987,
+          "citation": "NOW Magazine 2016, asked directly: Nirvana and Green Day were his two favourites for a long time, shaping his songwriting style specifically because he heard them while learning guitar.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "car-seat-headrest>destroyer",
+          "from": "Car Seat Headrest",
+          "to": "Destroyer",
+          "fromYear": 2010,
+          "toYear": 1995,
+          "citation": "Loud And Quiet 2016 quotes the \"Cute Thing\" lyric asking to be given Dan Bejar's voice and John Entwistle's stage presence. A named influence inside the songs.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:clairo",
+      "phase": "first-person",
+      "speaker": "Clairo",
+      "links": [
+        {
+          "key": "clairo>elliott-smith",
+          "from": "Clairo",
+          "to": "Elliott Smith",
+          "fromYear": 2017,
+          "toYear": 1994,
+          "citation": "Claire Cottrill took over her own Apple Music playlist in July 2021 and wrote per-song notes, describing Elliott Smith's \"I Didn't Understand\" as the most heartbreaking song she has ever heard, on a playlist framed around the songs she listened to most while making Sling.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "clairo>cocteau-twins",
+          "from": "Clairo",
+          "to": "Cocteau Twins",
+          "fromYear": 2017,
+          "toYear": 1979,
+          "citation": "Claire Cottrill told Far Out that her influences are a mixture of her parents' tastes -- her father's soul records (Al Green, Brenton Wood, Billy Paul) and her mother's alternative music, including Cocteau Twins, Trashcan Sinatras, The The and PiL -- and that she falls somewhere between them; Apple Music's artist bio and Crack Magazine corroborate the Cocteau Twins connection.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "clairo>joni-mitchell",
+          "from": "Clairo",
+          "to": "Joni Mitchell",
+          "fromYear": 2017,
+          "toYear": 1964,
+          "citation": "Claire Cottrill discussed Joni Mitchell's tunings, attitude and use of metaphor on her own song \"Coyote,\" calling Mitchell \"a genius, to say the least.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    }
+  ]
+}

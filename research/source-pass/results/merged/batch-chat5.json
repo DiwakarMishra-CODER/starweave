@@ -1,0 +1,383 @@
+{
+  "name": "chat5",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:airiel",
+      "phase": "first-person",
+      "speaker": "Airiel",
+      "links": [
+        {
+          "key": "airiel>my-bloody-valentine",
+          "from": "Airiel",
+          "to": "My Bloody Valentine",
+          "fromYear": 1996,
+          "toYear": 1983,
+          "citation": "Jeremy Wrenn: \"My Bloody Valentine was definitely something that I was listening to when Airiel started.\" Asked whether the comparison was lazy or an honest influence, he said, \"to be perfectly honest, it's both.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "airiel>cocteau-twins",
+          "from": "Airiel",
+          "to": "Cocteau Twins",
+          "fromYear": 1996,
+          "toYear": 1979,
+          "citation": "Jeremy Wrenn describes getting into the Cocteau Twins, Lush, My Bloody Valentine, Ride and \"all those great British bands\" as Airiel's formative listening.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "airiel>lush",
+          "from": "Airiel",
+          "to": "Lush",
+          "fromYear": 1996,
+          "toYear": 1987,
+          "citation": "Jeremy Wrenn describes getting into the Cocteau Twins, Lush, My Bloody Valentine, Ride and \"all those great British bands\" as Airiel's formative listening.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "airiel>ride",
+          "from": "Airiel",
+          "to": "Ride",
+          "fromYear": 1996,
+          "toYear": 1988,
+          "citation": "Jeremy Wrenn describes getting into the Cocteau Twins, Lush, My Bloody Valentine, Ride and \"all those great British bands\" as Airiel's formative listening.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:beabadoobee",
+      "phase": "first-person",
+      "speaker": "beabadoobee",
+      "links": [
+        {
+          "key": "beabadoobee>pavement",
+          "from": "beabadoobee",
+          "to": "Pavement",
+          "fromYear": 2017,
+          "toYear": 1989,
+          "citation": "NME: \"My influencers are Sonic Youth, Pavement -- this shit that totally shaped me. They shaped the way I dress, how I speak, act and just everything I am.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "beabadoobee>sonic-youth",
+          "from": "beabadoobee",
+          "to": "Sonic Youth",
+          "fromYear": 2017,
+          "toYear": 1981,
+          "citation": "NME: \"My influencers are Sonic Youth, Pavement -- this shit that totally shaped me. They shaped the way I dress, how I speak, act and just everything I am.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "beabadoobee>elliott-smith",
+          "from": "beabadoobee",
+          "to": "Elliott Smith",
+          "fromYear": 2017,
+          "toYear": 1994,
+          "citation": "She has named Elliott Smith among her first big influences, tattooed \"XO\" (his fourth album's title) on her arm, and has said she took the chords from his song \"Bled White\" directly for her own song \"Take a Bite.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:belle-and-sebastian",
+      "phase": "first-person",
+      "speaker": "Belle and Sebastian",
+      "links": [
+        {
+          "key": "belle-and-sebastian>velvet-underground",
+          "from": "Belle and Sebastian",
+          "to": "The Velvet Underground",
+          "fromYear": 1996,
+          "toYear": 1965,
+          "citation": "In a 2014 interview, Stuart Murdoch said Belle and Sebastian's sound was a combination of post-punk and embracing the beauty of the '60s and '70s: the Velvets, the Monkees, the Byrds, Love.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:blonde-redhead",
+      "phase": "first-person",
+      "speaker": "Blonde Redhead",
+      "links": [
+        {
+          "key": "blonde-redhead>sonic-youth",
+          "from": "Blonde Redhead",
+          "to": "Sonic Youth",
+          "fromYear": 1993,
+          "toYear": 1981,
+          "citation": "Kazu Makino has cited Sonic Youth as a key inspiration",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "blonde-redhead>my-bloody-valentine",
+          "from": "Blonde Redhead",
+          "to": "My Bloody Valentine",
+          "fromYear": 1993,
+          "toYear": 1983,
+          "citation": "Kazu Makino cites My Bloody Valentine alongside Sonic Youth as a key inspiration.",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "first-person:broken-social-scene",
+      "phase": "first-person",
+      "speaker": "Broken Social Scene",
+      "links": [
+        {
+          "key": "broken-social-scene>talk-talk",
+          "from": "Broken Social Scene",
+          "to": "Talk Talk",
+          "fromYear": 1999,
+          "toYear": 1981,
+          "citation": "SPIN's \"My Favorite Things,\" Kevin Drew: \"Laughing Stock by Talk Talk and Whatever You Love, You Are by the Dirty Three. These two records are tied for the most authentic human emotion ever captured on an album. Both will come with me to the next life.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        },
+        {
+          "key": "broken-social-scene>dirty-three",
+          "from": "Broken Social Scene",
+          "to": "Dirty Three",
+          "fromYear": 1999,
+          "toYear": 1992,
+          "citation": "SPIN's \"My Favorite Things,\" Kevin Drew: \"Laughing Stock by Talk Talk and Whatever You Love, You Are by the Dirty Three. These two records are tied for the most authentic human emotion ever captured on an album. Both will come with me to the next life.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "first-person:candy-claws",
+      "phase": "first-person",
+      "speaker": "Candy Claws",
+      "links": [
+        {
+          "key": "candy-claws>blonde-redhead",
+          "from": "Candy Claws",
+          "to": "Blonde Redhead",
+          "fromYear": 2007,
+          "toYear": 1993,
+          "citation": "Ryan Hoover, on making Ceres & Calypso, FLOOD Magazine: \"We were also listening to a lot of Blonde Redhead's album 23, which also skirts shoegaze, though it's really washy.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "candy-claws>my-bloody-valentine",
+          "from": "Candy Claws",
+          "to": "My Bloody Valentine",
+          "fromYear": 2007,
+          "toYear": 1983,
+          "citation": "Ryan Hoover, Break Yr Legs: \"I listened to Starflyer and My Bloody Valentine during my high school years.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "candy-claws>the-knife",
+          "from": "Candy Claws",
+          "to": "The Knife",
+          "fromYear": 2007,
+          "toYear": 1999,
+          "citation": "Ryan Hoover, Break Yr Legs: \"I was actually reading through your blog and you got me really into The Knife and I've been listening to lots of Boards of Canada, so that might come off in our future work.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.55
+        },
+        {
+          "key": "candy-claws>boards-of-canada",
+          "from": "Candy Claws",
+          "to": "Boards of Canada",
+          "fromYear": 2007,
+          "toYear": 1986,
+          "citation": "Ryan Hoover, Break Yr Legs: \"I was actually reading through your blog and you got me really into The Knife and I've been listening to lots of Boards of Canada, so that might come off in our future work.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.55
+        }
+      ]
+    },
+    {
+      "id": "first-person:duster",
+      "phase": "first-person",
+      "speaker": "Duster",
+      "links": [
+        {
+          "key": "duster>velvet-underground",
+          "from": "Duster",
+          "to": "The Velvet Underground",
+          "fromYear": 1996,
+          "toYear": 1965,
+          "citation": "Clay Parton, La Linea Mason & Dixon interview (Aug 7, 2020): \"codeine but also like Rorshach and Thelonius Monk and The Velvet Underground.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "duster>codeine",
+          "from": "Duster",
+          "to": "Codeine",
+          "fromYear": 1996,
+          "toYear": 1989,
+          "citation": "Clay Parton, La Linea Mason & Dixon interview (Aug 7, 2020): \"codeine but also like Rorshach and Thelonius Monk and The Velvet Underground.\" Clay Parton, La Linea Mason & Dixon interview (Aug 7, 2020).",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:mudhoney",
+      "phase": "first-person",
+      "speaker": "Mudhoney",
+      "links": [
+        {
+          "key": "mudhoney>wipers",
+          "from": "Mudhoney",
+          "to": "Wipers",
+          "fromYear": 1988,
+          "toYear": 1977,
+          "citation": "Life of the Record (2024), Mark Arm and Steve Turner on making Superfuzz Bigmuff: \"When we were kind of forming the song ['No One Has'], it kind of reminded us a little bit of the Wipers, another Northwest influence on us.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "mudhoney>black-flag",
+          "from": "Mudhoney",
+          "to": "Black Flag",
+          "fromYear": 1988,
+          "toYear": 1976,
+          "citation": "Steve Turner, Popwell (2023), on Black Flag's My War: \"I swear, that record instantly made the Melvins slow down to a crawl... And I know it was a huge influence on us as well.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:perfume-genius",
+      "phase": "first-person",
+      "speaker": "Perfume Genius",
+      "links": [
+        {
+          "key": "perfume-genius>xiu-xiu",
+          "from": "Perfume Genius",
+          "to": "Xiu Xiu",
+          "fromYear": 2008,
+          "toYear": 2002,
+          "citation": "The Fader (2021): \"there's some music like Xiu Xiu, who I love, where their songs are so intense and visceral and over the top.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "perfume-genius>stars-of-the-lid",
+          "from": "Perfume Genius",
+          "to": "Stars of the Lid",
+          "fromYear": 2008,
+          "toYear": 1992,
+          "citation": "The Quietus's Baker's Dozen: on And Their Refinement of the Decline, Mike Hadreas said he listened to it before writing his first album and credits it with unlocking his creative process, describing it as a \"calming wash\" he could use in a \"lucid dreaming kind of way.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        },
+        {
+          "key": "perfume-genius>low",
+          "from": "Perfume Genius",
+          "to": "Low",
+          "fromYear": 2008,
+          "toYear": 1993,
+          "citation": "The Quietus's Baker's Dozen: on Things We Lost in the Fire, Hadreas praises its \"hymnal quality,\" calling it \"really minimal but full at the same time.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "first-person:spoon",
+      "phase": "first-person",
+      "speaker": "Spoon",
+      "links": [
+        {
+          "key": "spoon>wire",
+          "from": "Spoon",
+          "to": "Wire",
+          "fromYear": 1993,
+          "toYear": 1976,
+          "citation": "American Songwriter 2021, Britt Daniel: starting out he was very much into bands like Wire and Talking Heads, shooting for that kind of lyric; still plays those Wire records.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "spoon>talking-heads",
+          "from": "Spoon",
+          "to": "Talking Heads",
+          "fromYear": 1993,
+          "toYear": 1975,
+          "citation": "American Songwriter 2021, Britt Daniel: starting out he was very much into bands like Wire and Talking Heads, shooting for that kind of lyric; still plays those Wire records.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "spoon>gang-of-four",
+          "from": "Spoon",
+          "to": "Gang of Four",
+          "fromYear": 1993,
+          "toYear": 1976,
+          "citation": "Encyclopedia.com's Spoon biography (drawing on Austin Chronicle): around A Series of Sneaks he was listening to and learning from Wire, Gang of Four and Public Image Ltd.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "spoon>pixies",
+          "from": "Spoon",
+          "to": "Pixies",
+          "fromYear": 1993,
+          "toYear": 1986,
+          "citation": "Rolling Stone 2025, on touring with the Pixies: describes them as a huge influence on Daniel growing up.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:squid",
+      "phase": "first-person",
+      "speaker": "Squid",
+      "links": [
+        {
+          "key": "squid>stereolab",
+          "from": "Squid",
+          "to": "Stereolab",
+          "fromYear": 2015,
+          "toYear": 1990,
+          "citation": "Borlase praised Stereolab's Tim Gane: \"I think he's just one of the best guitar players in that he's managed to kind of make that band's music so memorable and unique for them.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.65
+        },
+        {
+          "key": "squid>tortoise",
+          "from": "Squid",
+          "to": "Tortoise",
+          "fromYear": 2015,
+          "toYear": 1990,
+          "citation": "Naming Tortoise's Millions Now Living Will Never Die among five albums he'd listen to forever, Borlase said it \"has this cool electronic sound, without vocals, and it kind of challenged a lot of the boundaries that they had at the time.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.5
+        },
+        {
+          "key": "squid>burial",
+          "from": "Squid",
+          "to": "Burial",
+          "fromYear": 2015,
+          "toYear": 2005,
+          "citation": "Guitarist Louis Borlase told Loud And Quiet that Burial's Untrue was \"my first real introduction to electronic music.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.55
+        }
+      ]
+    }
+  ]
+}

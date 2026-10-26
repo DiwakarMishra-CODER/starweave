@@ -1,0 +1,371 @@
+{
+  "name": "c14",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:pulp",
+      "phase": "first-person",
+      "speaker": "Pulp",
+      "links": [
+        {
+          "key": "pulp>leonard-cohen",
+          "from": "Pulp",
+          "to": "Leonard Cohen",
+          "fromYear": 1978,
+          "toYear": 1967,
+          "citation": "Washington Post names Scott Walker and Leonard Cohen as Cocker's chief influences; Hot Press recounts Cohen personally advising Cocker on exploring \"sacred mechanics\"; NPR frames the advice as followed across his career.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "pulp>velvet-underground",
+          "from": "Pulp",
+          "to": "The Velvet Underground",
+          "fromYear": 1978,
+          "toYear": 1965,
+          "citation": "Hot Press: Cocker enumerates the influences behind More, naming the Beatles, the Velvet Underground and Lisa O'Neill.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-dismemberment-plan",
+      "phase": "first-person",
+      "speaker": "The Dismemberment Plan",
+      "links": [
+        {
+          "key": "the-dismemberment-plan>bad-brains",
+          "from": "The Dismemberment Plan",
+          "to": "Bad Brains",
+          "fromYear": 1993,
+          "toYear": 1977,
+          "citation": "Travis Morrison, WBUR (Dec 26, 2014): \"nothing... clears out my sinuses like Bad Brains\" -- same interview places his hardcore discovery in his \"mid-late 30s,\" likely after Bad Brains' classic-era work, flagged with a timing caveat.",
+          "sourceTier": "first-person",
+          "confidence": 0.6
+        },
+        {
+          "key": "the-dismemberment-plan>neil-young",
+          "from": "The Dismemberment Plan",
+          "to": "Neil Young",
+          "fromYear": 1993,
+          "toYear": 1966,
+          "citation": "Travis Morrison, WBUR (Dec 26, 2014): a \"huge Neil Young fan,\" citing Young's concept-album approach.",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-radio-dept",
+      "phase": "first-person",
+      "speaker": "The Radio Dept.",
+      "links": [
+        {
+          "key": "the-radio-dept>my-bloody-valentine",
+          "from": "The Radio Dept.",
+          "to": "My Bloody Valentine",
+          "fromYear": 1995,
+          "toYear": 1983,
+          "citation": "Labrador Records interview: asked about press comparisons to My Bloody Valentine and the Jesus and Mary Chain, Johan Duncanson said he liked My Bloody Valentine specifically for their genuine interest in both melody and sound.",
+          "sourceTier": "first-person",
+          "confidence": 0.5
+        },
+        {
+          "key": "the-radio-dept>kraftwerk",
+          "from": "The Radio Dept.",
+          "to": "Kraftwerk",
+          "fromYear": 1995,
+          "toYear": 1970,
+          "citation": "Labrador Records: Johan Duncanson said a lot of what he listens to is electronic in some fashion -- house, electronica, or old records like Kraftwerk and the KLF.",
+          "sourceTier": "first-person",
+          "confidence": 0.5
+        },
+        {
+          "key": "the-radio-dept>the-blue-nile",
+          "from": "The Radio Dept.",
+          "to": "The Blue Nile",
+          "fromYear": 1995,
+          "toYear": 1981,
+          "citation": "FLOOD Magazine: Duncanson said that while making the record they were listening to '80s acts like Marine Girls, Young Marble Giants and Antena, but also the Blue Nile, the Style Council and Saint Etienne.",
+          "sourceTier": "first-person",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "first-person:tim-hecker",
+      "phase": "first-person",
+      "speaker": "Tim Hecker",
+      "links": [
+        {
+          "key": "tim-hecker>ride",
+          "from": "Tim Hecker",
+          "to": "Ride",
+          "fromYear": 2000,
+          "toYear": 1988,
+          "citation": "Tim Hecker, RBMA lecture: \"I was faking driver's license IDs so I could get into clubs to see bands like Ride or My Bloody Valentine play,\" describing his teenage years in Vancouver.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "tim-hecker>my-bloody-valentine",
+          "from": "Tim Hecker",
+          "to": "My Bloody Valentine",
+          "fromYear": 2000,
+          "toYear": 1983,
+          "citation": "Tim Hecker, RBMA lecture: \"I was faking driver's license IDs so I could get into clubs to see bands like Ride or My Bloody Valentine play,\" describing his teenage years in Vancouver; corroborated by The Dowsers' \"Tim Hecker: Influences\" profile.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:wilco",
+      "phase": "first-person",
+      "speaker": "Wilco",
+      "links": [
+        {
+          "key": "wilco>television",
+          "from": "Wilco",
+          "to": "Television",
+          "fromYear": 1994,
+          "toYear": 1973,
+          "citation": "Nels Cline, Wilco's lead guitarist, chose Television's \"Marquee Moon\" for Guitar Player's five-guitar-riffs-that-changed-my-life feature (2017): \"'Marquee Moon' is, to me, one of the most iconic, beautiful guitar arrangements in rock 'n' roll -- in music.\" He describes it as his re-embrace of the rock band as a form, and has folded the riff into live performances of Wilco's \"Handshake Drugs.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "first-person:a-g-cook",
+      "phase": "first-person",
+      "speaker": "A.G. Cook",
+      "links": [
+        {
+          "key": "a-g-cook>sophie",
+          "from": "A.G. Cook",
+          "to": "SOPHIE",
+          "fromYear": 2013,
+          "toYear": 2013,
+          "citation": "A.G. Cook, Line of Best Fit (2024, around Britpop): \"I actually see her fingerprints as much on 'Silver Thread Golden Needle' and a lot of the instrumental tracks as I do on something like 'Without.'\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "a-g-cook>kraftwerk",
+          "from": "A.G. Cook",
+          "to": "Kraftwerk",
+          "fromYear": 2013,
+          "toYear": 1970,
+          "citation": "A.G. Cook told Mixmag his influences ran \"back to Gorillaz, Daft Punk and even Kraftwerk,\" praising that lineage as \"unbelievably mainstream and high concept genre-destroying.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:cap-n-jazz",
+      "phase": "first-person",
+      "speaker": "Cap'n Jazz",
+      "links": [
+        {
+          "key": "cap-n-jazz>fugazi",
+          "from": "Cap'n Jazz",
+          "to": "Fugazi",
+          "fromYear": 1989,
+          "toYear": 1986,
+          "citation": "Mike Kinsella, Rolling Stone (2016): \"Cap'n Jazz had that sort of Dischord, Fugazi influence.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:deaths-dynamic-shroud",
+      "phase": "first-person",
+      "speaker": "death's dynamic shroud",
+      "links": [
+        {
+          "key": "deaths-dynamic-shroud>radiohead",
+          "from": "death's dynamic shroud",
+          "to": "Radiohead",
+          "fromYear": 2012,
+          "toYear": 1985,
+          "citation": "Tech Honors told VWMusic that Radiohead has had the biggest influence on death's dynamic shroud's music, adding that he and bandmate James were both very into '90s British rock.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "deaths-dynamic-shroud>julee-cruise",
+          "from": "death's dynamic shroud",
+          "to": "Julee Cruise",
+          "fromYear": 2012,
+          "toYear": 1989,
+          "citation": "James Webster said he'd been trying to sound like Julee Cruise from Twin Peaks for years.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:editors",
+      "phase": "first-person",
+      "speaker": "Editors",
+      "links": [
+        {
+          "key": "editors>the-chameleons",
+          "from": "Editors",
+          "to": "The Chameleons",
+          "fromYear": 2002,
+          "toYear": 1981,
+          "citation": "Tom Smith, Gigwise: \"we're dark and moody so yeah we build on the sound of the likes of Joy Division, Echo and the Bunnymen and The Chameleons... Obviously we were too young when these bands came out, so it's only more recently that we discovered them.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "editors>echo-and-the-bunnymen",
+          "from": "Editors",
+          "to": "Echo & the Bunnymen",
+          "fromYear": 2002,
+          "toYear": 1978,
+          "citation": "Tom Smith, Gigwise: \"we're dark and moody so yeah we build on the sound of the likes of Joy Division, Echo and the Bunnymen and The Chameleons... Obviously we were too young when these bands came out, so it's only more recently that we discovered them.\" Naming Echo and the Bunnymen alongside Joy Division and the Chameleons.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:fka-twigs",
+      "phase": "first-person",
+      "speaker": "FKA twigs",
+      "links": [
+        {
+          "key": "fka-twigs>siouxsie-and-the-banshees",
+          "from": "FKA twigs",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 2012,
+          "toYear": 1976,
+          "citation": "FKA twigs told Complex that every bit of music she made used to sound like a pastiche of Siouxsie and the Banshees or Adam Ant, before she found her own voice through that phase.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "fka-twigs>x-ray-spex",
+          "from": "FKA twigs",
+          "to": "X-Ray Spex",
+          "fromYear": 2012,
+          "toYear": 1976,
+          "citation": "After being shortlisted for the 2014 Mercury Prize, FKA twigs named X-Ray Spex's Germfree Adolescents as her favorite album of all time.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:george-clanton",
+      "phase": "first-person",
+      "speaker": "George Clanton",
+      "links": [
+        {
+          "key": "george-clanton>the-human-league",
+          "from": "George Clanton",
+          "to": "The Human League",
+          "fromYear": 2010,
+          "toYear": 1977,
+          "citation": "George Clanton told Seven Days he got really into the Human League and made a song that sounded like them, playing it for friends who found it hilarious but also awesome.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:grizzly-bear",
+      "phase": "first-person",
+      "speaker": "Grizzly Bear",
+      "links": [
+        {
+          "key": "grizzly-bear>talk-talk",
+          "from": "Grizzly Bear",
+          "to": "Talk Talk",
+          "fromYear": 2002,
+          "toYear": 1981,
+          "citation": "The Line of Best Fit, Daniel Rossen's nine favourite songs, framed explicitly as what inspired Grizzly Bear: picks from Laughing Stock, Spirit of Eden, or Mark Hollis's solo record, which he loves and which Chris Taylor loves too.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:jockstrap",
+      "phase": "first-person",
+      "speaker": "Jockstrap",
+      "links": [
+        {
+          "key": "jockstrap>cocteau-twins",
+          "from": "Jockstrap",
+          "to": "Cocteau Twins",
+          "fromYear": 2018,
+          "toYear": 1979,
+          "citation": "Asked by NME to name their influences, Taylor Skye and Georgia Ellery jointly answered: \"Skrillex, Madonna and Cocteau Twins.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "jockstrap>bob-dylan",
+          "from": "Jockstrap",
+          "to": "Bob Dylan",
+          "fromYear": 2018,
+          "toYear": 1961,
+          "citation": "Taylor Skye told Loud And Quiet: \"I'm just turning into my dad basically. He was such a big Bob Dylan fan, and I just wasn't interested [when I was younger] but my parents have really influenced my music taste now.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "id": "first-person:king-gizzard-and-the-lizard-wizard",
+      "phase": "first-person",
+      "speaker": "King Gizzard and the Lizard Wizard",
+      "links": [
+        {
+          "key": "king-gizzard-and-the-lizard-wizard>bob-dylan",
+          "from": "King Gizzard and the Lizard Wizard",
+          "to": "Bob Dylan",
+          "fromYear": 2010,
+          "toYear": 1961,
+          "citation": "Radio Milwaukee, Mackenzie on Flight b741's layered influences: \"the obvious ones are the Band, Dylan, Steve Miller, CCR, early-70s Stones, even the Faces and the Who, probably T. Rex.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:mac-demarco",
+      "phase": "first-person",
+      "speaker": "Mac DeMarco",
+      "links": [
+        {
+          "key": "mac-demarco>neil-young",
+          "from": "Mac DeMarco",
+          "to": "Neil Young",
+          "fromYear": 2008,
+          "toYear": 1966,
+          "citation": "Mac DeMarco has described himself as an obsessive Neil Young listener who played Harvest several times a day for months, telling The Guardian he wanted his album 2 to sound \"really dry, really crisp '70s style\" like it; he discussed the same ambition again in a 2023 Weekly Neil interview, recalling recording it broke in Montreal and digging through a thrift-store dollar bin.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "mac-demarco>the-smiths",
+          "from": "Mac DeMarco",
+          "to": "The Smiths",
+          "fromYear": 2008,
+          "toYear": 1982,
+          "citation": "Mac DeMarco told The Guardian, via Far Out, that the Smiths' \"Ask\" was the song that made him feel different at school, and that he got into the band as a teenager despite his friends' derision.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "agent": "chat2",
+  "searches": 16,
+  "toolStatus": "All 29 links are covered. CREEM's Sharon Van Etten piece (creemarchive.creem.com) opened as an empty shell, so I could not read the page body, and I never found the Irish Times interview. Tape Op #98 is paywalled after the first few answers; the Gane sentence I need is above the paywall. Rolling Stone-style tollbit blocks did not come up this time. Björk's Alex Ross 'My Favorite Records' source was seen only as a Goodreads copy in search results. Some leads in the not-found notes come from search-result text that I did not open, and they are marked as leads. The Drive Like Jehu podcast is audio only, and the one transcript I found was a forum repost.",
+  "entries": {
+    "bjork>nico": {
+      "url": "https://faroutmagazine.co.uk/bjork-11-favourite-albums/",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Bare favourites list. The page lists Nico's Desertshore among the albums Björk chose for The Rest Is Noise, with no Björk comment about Nico. The only Björk quote on the page is about Kate Bush. Alex Ross's original post (seen only as a Goodreads copy in search results) is also a bare list. Proposal: remove, or keep only if a quote where Björk talks about Nico turns up."
+    },
+    "bjork>aphex-twin": {
+      "url": "https://faroutmagazine.co.uk/bjork-11-favourite-albums/",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Bare favourites list again: the page lists Aphex Twin's Drukqs with no Björk comment on it. Lead, seen only in search results and not opened: Far Out's 'Björk's favourite albums of the 21st century' (https://faroutmagazine.co.uk/bjorks-favourite-albums-of-the-21st-century/) says she called 'Come to Daddy' 'a masterpiece' and him a 'pioneer'. That is the writer's account, not a Björk quote. Proposal: remove unless her own words are found."
+    },
+    "modest-mouse>pixies": {
+      "url": "https://faroutmagazine.co.uk/the-album-that-changed-isaac-brocks-life/",
+      "found": "At the point my life when I found that record, I think it was middle school and eighth grade, it had everything I wanted. It’s hypnotic, it’s fucking weird, and I can read into the lyrics in so many different ways, and there are endless possibilities",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Isaac Brock, quoted by Far Out Magazine, on first hearing Pixies' Doolittle: \"At the point my life when I found that record, I think it was middle school and eighth grade, it had everything I wanted. It’s hypnotic, it’s fucking weird, and I can read into the lyrics in so many different ways, and there are endless possibilities\".",
+      "sourceTier": "first-person",
+      "note": "The page gives no date and does not say where Brock said it, so the '2021' and 'told Far Out' parts of the old citation are unverified."
+    },
+    "modest-mouse>talking-heads": {
+      "url": "https://www.rrr.org.au/on-demand/segments/the-golden-age-of-piracy-isaac-brock-of-modest-mouses-formative-five",
+      "found": "Isaac selects his Formative Five, and shares the artists and experiences that have influenced him over his music career spanning three decades, from being introduced to They Might Be Giants, Crass and The Pixies via school goth mix tapes, to his love of Pavement and Talking Heads.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Triple R's The Golden Age Of Piracy (3 June 2026) describes Isaac Brock's \"Formative Five\" as covering artists who influenced him, ending with \"his love of Pavement and Talking Heads\".",
+      "sourceTier": "reported",
+      "note": "This is the station's description of an audio interview, not Brock's words. The 'More Songs About Buildings and Food ... forty thousand times / production' claim was not found in two searches."
+    },
+    "sharon-van-etten>joy-division": {
+      "url": "https://creemarchive.creem.com/archive/article/2025/06/01/love-and-ardor-sharon-van-etten",
+      "checked": "2026-10-26",
+      "verdict": "blocked",
+      "note": "CREEM, 'Love & Ardor: Sharon Van Etten' (Jaan Uhelszki, 1 June 2025). The page opened as an empty shell. In search-result text I saw: 'I know people say how much different this sounds, but I’ve been listening to the Cure, Duran Duran, Joy Division, and Portishead since I was a teenager.' Look for that sentence near the end of the interview. The Irish Times (Aug 2025) interview named in the old citation was not located in two searches."
+    },
+    "sharon-van-etten>nick-cave-and-the-bad-seeds": {
+      "url": "https://jagjaguwar.com/release/jag331/",
+      "found": "I tracked two songs as a trial run with John [Jupiter 4 and Memorial Day]. I gave him Suicide, Portishead, and Nick Cave’s Skeleton Tree as references and he got excited.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Sharon Van Etten, in Jagjaguwar's press bio for Remind Me Tomorrow (2019), on her trial session with producer John Congleton: \"I gave him Suicide, Portishead, and Nick Cave’s Skeleton Tree as references and he got excited.\"",
+      "sourceTier": "first-person",
+      "note": "She is naming references for the producer, not a childhood influence. The 'six interviews' and Stereogum/Billboard claims were not checked."
+    },
+    "sharon-van-etten>suicide": {
+      "url": "https://jagjaguwar.com/release/jag331/",
+      "found": "I tracked two songs as a trial run with John [Jupiter 4 and Memorial Day]. I gave him Suicide, Portishead, and Nick Cave’s Skeleton Tree as references and he got excited.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Sharon Van Etten, in Jagjaguwar's press bio for Remind Me Tomorrow (2019), on her trial session with producer John Congleton: \"I gave him Suicide, Portishead, and Nick Cave’s Skeleton Tree as references and he got excited.\"",
+      "sourceTier": "first-person",
+      "note": "Same page and caveat as the Nick Cave link."
+    },
+    "sharon-van-etten>portishead": {
+      "url": "https://jagjaguwar.com/release/jag331/",
+      "found": "I tracked two songs as a trial run with John [Jupiter 4 and Memorial Day]. I gave him Suicide, Portishead, and Nick Cave’s Skeleton Tree as references and he got excited.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Sharon Van Etten, in Jagjaguwar's press bio for Remind Me Tomorrow (2019), on her trial session with producer John Congleton: \"I gave him Suicide, Portishead, and Nick Cave’s Skeleton Tree as references and he got excited.\"",
+      "sourceTier": "first-person",
+      "note": "Same page and caveat as the Nick Cave link. The CREEM interview (see the Joy Division entry) also names Portishead, but I could not read it."
+    },
+    "sharon-van-etten>the-cure": {
+      "url": "https://creemarchive.creem.com/archive/article/2025/06/01/love-and-ardor-sharon-van-etten",
+      "checked": "2026-10-26",
+      "verdict": "blocked",
+      "note": "Same CREEM page as the Joy Division link (page body would not render for me). Look for: 'I’ve been listening to the Cure, Duran Duran, Joy Division, and Portishead since I was a teenager.' The Irish Times passage from the old citation was not found in two searches."
+    },
+    "stereolab>neu": {
+      "url": "https://tapeop.com/interviews/98/tim-gane-bonus",
+      "found": "Well, in the early and mid-'80s I was a big fan of Krautrock music — like Faust, Neu! and Can.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Tim Gane to Tape Op #98 (Nov 2013): \"Well, in the early and mid-'80s I was a big fan of Krautrock music — like Faust, Neu! and Can.\"",
+      "sourceTier": "first-person"
+    },
+    "stereolab>can": {
+      "url": "https://tapeop.com/interviews/98/tim-gane-bonus",
+      "found": "Well, in the early and mid-'80s I was a big fan of Krautrock music — like Faust, Neu! and Can.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Tim Gane to Tape Op #98 (Nov 2013): \"Well, in the early and mid-'80s I was a big fan of Krautrock music — like Faust, Neu! and Can.\"",
+      "sourceTier": "first-person"
+    },
+    "stereolab>faust": {
+      "url": "https://www.electronicsound.co.uk/features/long-reads/tim-gane-sky-high/",
+      "found": "The review talked about it sounding like a lot of the contemporary music I was into, but said the album had actually been recorded in 1971, which seemed incredible to me. I went straight out and bought it… and it knocked me out.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Tim Gane to Electronic Sound (30 Sept 2014), on a 1980 Sounds review of the first Faust album: \"The review talked about it sounding like a lot of the contemporary music I was into, but said the album had actually been recorded in 1971, which seemed incredible to me. I went straight out and bought it… and it knocked me out.\"",
+      "sourceTier": "first-person"
+    },
+    "stereolab>cabaret-voltaire": {
+      "url": "https://www.electronicsound.co.uk/features/long-reads/tim-gane-sky-high/",
+      "found": "I was a big fan of bands like Cabaret Voltaire, so I’d had my ears opened to bolder, more experimental electronic music",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Tim Gane to Electronic Sound (30 Sept 2014): \"I was a big fan of bands like Cabaret Voltaire, so I’d had my ears opened to bolder, more experimental electronic music\".",
+      "sourceTier": "first-person",
+      "note": "The old citation was a third-person paraphrase; these are his actual words."
+    },
+    "the-jesus-lizard>the-birthday-party": {
+      "url": "https://www.kut.org/texasstandard/2024-10-31/jesus-lizard-levitation-festival-austin-reunion-shows-rack-david-yow",
+      "found": "I was extremely influenced by the Birthday Party and the stuff that Nick Cave was doing back before the The Bad Seeds, David Thomas of Pere Ubu, Lux Interior of the Cramps, and Lee Ving of Fear… Gary Floyd, Gibby Haynes and Nick Cave… I kind of have sort of stole from all of them.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "David Yow to Texas Standard (KUT, 31 Oct 2024), on starting to sing with Scratch Acid: \"I was extremely influenced by the Birthday Party and the stuff that Nick Cave was doing back before the The Bad Seeds\".",
+      "sourceTier": "first-person",
+      "note": "The old 'four white guys who liked to play a cross between Led Zeppelin and the Birthday Party' line was only seen as a Wikipedia sentence (footnote [26]), which I did not follow."
+    },
+    "the-jesus-lizard>gang-of-four": {
+      "url": "https://www.guitarguitar.co.uk/news/141347/",
+      "found": "But then the next wave, when you had, say, Andy Gill from Gang of Four, Geordie Walker from Killing Joke, Keith Levine from Public Image Ltd, John McGeoch from Magazine & Siouxsie and the Banshees. That’s when it got good.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Duane Denison to guitarguitar (2 April 2021), on the post-punk guitarists who shaped his playing: \"But then the next wave, when you had, say, Andy Gill from Gang of Four, Geordie Walker from Killing Joke, Keith Levine from Public Image Ltd, John McGeoch from Magazine & Siouxsie and the Banshees. That’s when it got good.\"",
+      "sourceTier": "first-person"
+    },
+    "the-jesus-lizard>siouxsie-and-the-banshees": {
+      "url": "https://www.guitarguitar.co.uk/news/141347/",
+      "found": "But then the next wave, when you had, say, Andy Gill from Gang of Four, Geordie Walker from Killing Joke, Keith Levine from Public Image Ltd, John McGeoch from Magazine & Siouxsie and the Banshees. That’s when it got good.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Duane Denison to guitarguitar (2 April 2021), on the post-punk guitarists who shaped his playing: \"But then the next wave, when you had, say, Andy Gill from Gang of Four, Geordie Walker from Killing Joke, Keith Levine from Public Image Ltd, John McGeoch from Magazine & Siouxsie and the Banshees. That’s when it got good.\"",
+      "sourceTier": "first-person",
+      "note": "He names McGeoch (of Magazine and the Banshees) as one of several guitarists, not the Banshees as a band."
+    },
+    "the-jesus-lizard>husker-du": {
+      "url": "https://www.guitarguitar.co.uk/news/141347/",
+      "found": "But then in America, the underground scenes started coming up with Black Flag and Husker Du and Sonic Youth, Butthole Surfers, Big Black, Naked Raygun and Scratch Acid. And I said, ‘Okay, now I see where I belong’.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Duane Denison to guitarguitar (2 April 2021): \"But then in America, the underground scenes started coming up with Black Flag and Husker Du and Sonic Youth, Butthole Surfers, Big Black, Naked Raygun and Scratch Acid. And I said, ‘Okay, now I see where I belong’.\"",
+      "sourceTier": "first-person",
+      "note": "The old citation paraphrased this; the quoted words were not on the page."
+    },
+    "alvvays>the-smiths": {
+      "url": "https://guitar.com/features/ones-to-watch-alvvays/",
+      "found": "We lean pretty heavily on the Glaswegians and Mancunians. We got into The Smiths together, Cocteau Twins were big for us, and Johnny Marr is tough to top.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Alec O'Hanley to Guitar.com (Gary Walker, 9 Oct 2015): \"We lean pretty heavily on the Glaswegians and Mancunians. We got into The Smiths together, Cocteau Twins were big for us, and Johnny Marr is tough to top.\"",
+      "sourceTier": "first-person",
+      "note": "The Tape Op 'Pressed' quote (Rankin, May 2023) was not found on the part of the Tape Op page I could read. The Beat Magazine piece (see the Replacements link) also has Rankin naming the Smiths."
+    },
+    "alvvays>cocteau-twins": {
+      "url": "https://guitar.com/features/ones-to-watch-alvvays/",
+      "found": "We lean pretty heavily on the Glaswegians and Mancunians. We got into The Smiths together, Cocteau Twins were big for us, and Johnny Marr is tough to top.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Alec O'Hanley to Guitar.com (Gary Walker, 9 Oct 2015): \"We got into The Smiths together, Cocteau Twins were big for us, and Johnny Marr is tough to top.\"",
+      "sourceTier": "first-person",
+      "note": "SPIN (2015), Diffuser.fm (2014) and the Pitchfork perfect-10 quote from the old citation were not located."
+    },
+    "alvvays>the-replacements": {
+      "url": "https://beat.com.au/alvvays/",
+      "found": "When I got to age 20 I really got into the Replacements, the Smiths, Camera Obscura, Stereolab. I was consciously trying to influence my music based on stuff I was listening to.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Molly Rankin to Beat Magazine (Liza Dezfouli, 2 March 2016): \"When I got to age 20 I really got into the Replacements, the Smiths, Camera Obscura, Stereolab. I was consciously trying to influence my music based on stuff I was listening to.\"",
+      "sourceTier": "first-person",
+      "note": "The Allston Pudding interview from the old citation was not found in two searches."
+    },
+    "alvvays>yo-la-tengo": {
+      "url": "https://stereogum.com/2201143/alvvays-blue-rev-interview/interviews",
+      "found": "I know Al has a lot of love for Yo La Tengo, as do I. I've seen them performing in many formations.",
+      "checked": "2026-10-26",
+      "verdict": "ok",
+      "note": "The page does not show an 'Under The Influence' label in its text, but the quote and the author and date match."
+    },
+    "alvvays>my-bloody-valentine": {
+      "url": "https://guitar.com/features/ones-to-watch-alvvays/",
+      "found": "I’ve got the reverb at zero most shows, I like the Kevin Shields approach of achieving that wall of sound without reverb",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Alec O'Hanley to Guitar.com (Gary Walker, 9 Oct 2015): \"I’ve got the reverb at zero most shows, I like the Kevin Shields approach of achieving that wall of sound without reverb\".",
+      "sourceTier": "first-person",
+      "note": "This is admiration for Shields's approach to sound. The Tape Op (May 2023) 'limitations' quote was not found."
+    },
+    "alvvays>camera-obscura": {
+      "url": "https://beat.com.au/alvvays/",
+      "found": "When I got to age 20 I really got into the Replacements, the Smiths, Camera Obscura, Stereolab. I was consciously trying to influence my music based on stuff I was listening to.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Molly Rankin to Beat Magazine (Liza Dezfouli, 2 March 2016): \"When I got to age 20 I really got into the Replacements, the Smiths, Camera Obscura, Stereolab. I was consciously trying to influence my music based on stuff I was listening to.\"",
+      "sourceTier": "first-person",
+      "note": "The KEXP and SPIN quotes from the old citation were not located."
+    },
+    "cat-power>the-replacements": {
+      "url": "https://www.citybeat.com/music/cat-powers-chan-marshall-talks-about-her-latest-covers-album-ahead-of-indianapolis-show-13016912/",
+      "found": "It impacted me so much. When I moved to New York, I had three favorite songs on the jukeboxes at the two bars I would go to — Sophie’s and Mona’s.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Chan Marshall to Jeff Niesel, CityBeat/Cleveland Scene (21 April 2022), on seeing Paul Westerberg throw his guitar off and run away after \"Answering Machine\": \"It impacted me so much.\"",
+      "sourceTier": "first-person",
+      "note": "The old citation said she covered 'Answering Machine'; the page says her Covers album includes the Replacements' 'Here Comes a Regular'."
+    },
+    "cat-power>nico": {
+      "url": "https://www.citybeat.com/music/cat-powers-chan-marshall-talks-about-her-latest-covers-album-ahead-of-indianapolis-show-13016912/",
+      "found": "She was so broken. That European classical way of singing that I wanna say is very Catholic is very influential.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Chan Marshall to Jeff Niesel, CityBeat/Cleveland Scene (21 April 2022), on Nico: \"Nico broke the mold by becoming a female icon. She was so broken. That European classical way of singing that I wanna say is very Catholic is very influential.\"",
+      "sourceTier": "first-person"
+    },
+    "drive-like-jehu>slint": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Two searches. The Vish Khanna podcast (Oct 2015) is audio only; Wikipedia's Drive Like Jehu page cites it by timestamp for the Honor Role passage but I could not check any Slint mention. A transcript on premierrockforum.com attributes 'The Wipers ... Honor Role ... Sonic Youth, Minor Threat' to Rick Froberg, but it is a forum repost with no original source, so I did not use it. Nothing opened carried Slint in Froberg's or Reis's own words."
+    },
+    "drive-like-jehu>sonic-youth": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Same two searches as the Slint link. Only a forum repost of a Froberg interview (premierrockforum.com) mentions 'Your Sonic Youth, your Minor Threat and Government Issue'; not a usable source. Lead: the Khanna Kreative Kontrol episode (audio), which Wikipedia's Drive Like Jehu article cites."
+    },
+    "drive-like-jehu>neu": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Same two searches as the Slint link. 'Krautrock bands such as Neu!' appears only in an old Wikipedia mirror (wikipedia2006.classicistranieri.com), unsourced there. No first-person Neu! quote found."
+    },
+    "drive-like-jehu>wipers": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Same two searches as the Slint link. Best lead, not usable yet: premierrockforum.com has a transcript where Rick Froberg says 'bands we’re always citing are The Wipers and ... Honor Role', but it is a forum repost with no named outlet. Find the original interview (the page mentions a 'Mich Vish Interracial Morning Show' segment) and quote that."
+    }
+  },
+  "candidates": [
+    {
+      "source": "modest-mouse",
+      "target": "pavement",
+      "kind": "influence",
+      "speaker": "Triple R (station's description of Isaac Brock's Formative Five)",
+      "sentence": "Isaac selects his Formative Five, and shares the artists and experiences that have influenced him over his music career spanning three decades, from being introduced to They Might Be Giants, Crass and The Pixies via school goth mix tapes, to his love of Pavement and Talking Heads.",
+      "url": "https://www.rrr.org.au/on-demand/segments/the-golden-age-of-piracy-isaac-brock-of-modest-mouses-formative-five"
+    }
+  ],
+  "offMap": [
+    {
+      "name": "They Might Be Giants",
+      "namedBy": "modest-mouse",
+      "sentence": "Isaac selects his Formative Five, and shares the artists and experiences that have influenced him over his music career spanning three decades, from being introduced to They Might Be Giants, Crass and The Pixies via school goth mix tapes, to his love of Pavement and Talking Heads.",
+      "url": "https://www.rrr.org.au/on-demand/segments/the-golden-age-of-piracy-isaac-brock-of-modest-mouses-formative-five"
+    },
+    {
+      "name": "Pere Ubu",
+      "namedBy": "the-jesus-lizard",
+      "sentence": "I was extremely influenced by the Birthday Party and the stuff that Nick Cave was doing back before the The Bad Seeds, David Thomas of Pere Ubu, Lux Interior of the Cramps, and Lee Ving of Fear… Gary Floyd, Gibby Haynes and Nick Cave… I kind of have sort of stole from all of them.",
+      "url": "https://www.kut.org/texasstandard/2024-10-31/jesus-lizard-levitation-festival-austin-reunion-shows-rack-david-yow"
+    },
+    {
+      "name": "The Cramps",
+      "namedBy": "the-jesus-lizard",
+      "sentence": "I was extremely influenced by the Birthday Party and the stuff that Nick Cave was doing back before the The Bad Seeds, David Thomas of Pere Ubu, Lux Interior of the Cramps, and Lee Ving of Fear… Gary Floyd, Gibby Haynes and Nick Cave… I kind of have sort of stole from all of them.",
+      "url": "https://www.kut.org/texasstandard/2024-10-31/jesus-lizard-levitation-festival-austin-reunion-shows-rack-david-yow"
+    },
+    {
+      "name": "Teenage Fanclub",
+      "namedBy": "alvvays",
+      "sentence": "The first time I heard Bandwagonesque by Teenage Fanclub, I was floored.",
+      "url": "https://guitar.com/features/ones-to-watch-alvvays/"
+    }
+  ]
+}

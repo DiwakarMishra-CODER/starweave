@@ -1,0 +1,411 @@
+{
+  "name": "c10",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:pinback",
+      "phase": "first-person",
+      "speaker": "Pinback",
+      "links": [
+        {
+          "key": "pinback>slint",
+          "from": "Pinback",
+          "to": "Slint",
+          "fromYear": 1998,
+          "toYear": 1986,
+          "citation": "Rob Crow's own 1995 lyrics for Heavy Vegetable's \"Radio\" (quoted in a Quietus interview): \"They don't play Slint on the radio / They don't play Sentridoh / They don't play Zappa / They don't play Beefheart / They don't play Can / They don't play The Residents / They don't even play Renaldo and the Loaf / the Velvet Underground... Sometimes they will play Devo.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "pinback>can",
+          "from": "Pinback",
+          "to": "Can",
+          "fromYear": 1998,
+          "toYear": 1968,
+          "citation": "Rob Crow's own 1995 lyrics for Heavy Vegetable's \"Radio\" (quoted in a Quietus interview): \"They don't play Slint on the radio / They don't play Sentridoh / They don't play Zappa / They don't play Beefheart / They don't play Can / They don't play The Residents / They don't even play Renaldo and the Loaf / the Velvet Underground... Sometimes they will play Devo.\" Crow's prior band, same songwriter, provenance noted.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "pinback>velvet-underground",
+          "from": "Pinback",
+          "to": "The Velvet Underground",
+          "fromYear": 1998,
+          "toYear": 1965,
+          "citation": "Rob Crow's own 1995 lyrics for Heavy Vegetable's \"Radio\" (quoted in a Quietus interview): \"They don't play Slint on the radio / They don't play Sentridoh / They don't play Zappa / They don't play Beefheart / They don't play Can / They don't play The Residents / They don't even play Renaldo and the Loaf / the Velvet Underground... Sometimes they will play Devo.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:porter-robinson",
+      "phase": "first-person",
+      "speaker": "Porter Robinson",
+      "links": [
+        {
+          "key": "porter-robinson>aphex-twin",
+          "from": "Porter Robinson",
+          "to": "Aphex Twin",
+          "fromYear": 2010,
+          "toYear": 1992,
+          "citation": "FADER (2018, on Virtual Self): described trying to recreate \"what electronic music sounded like when I was 12 years old, just typing the word 'techno' into Limewire and downloading horribly mislabeled songs by Aphex Twin and other artists.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:portishead",
+      "phase": "first-person",
+      "speaker": "Portishead",
+      "links": [
+        {
+          "key": "portishead>massive-attack",
+          "from": "Portishead",
+          "to": "Massive Attack",
+          "fromYear": 1991,
+          "toYear": 1988,
+          "citation": "Geoff Barrow's own account (Mojo, 1999) of working as tape-op on Massive Attack's Blue Lines sessions in 1991; Massive Attack gave him spare studio time to develop his own ideas, directly leading to Portishead's formation. Corroborated by Far Out Magazine and Paste's Dummy at 30 retrospective.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:sleater-kinney",
+      "phase": "first-person",
+      "speaker": "Sleater-Kinney",
+      "links": [
+        {
+          "key": "sleater-kinney>sonic-youth",
+          "from": "Sleater-Kinney",
+          "to": "Sonic Youth",
+          "fromYear": 1994,
+          "toYear": 1981,
+          "citation": "Band profile: Sleater-Kinney have named their influences as Bikini Kill, Mecca Normal, Bratmobile, Throwing Muses and Sonic Youth.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "sleater-kinney>bikini-kill",
+          "from": "Sleater-Kinney",
+          "to": "Bikini Kill",
+          "fromYear": 1994,
+          "toYear": 1990,
+          "citation": "Band profile: Sleater-Kinney have named their influences as Bikini Kill, Mecca Normal, Bratmobile, Throwing Muses and Sonic Youth. Sleater-Kinney have named their influences as Bikini Kill, Mecca Normal, Bratmobile, Throwing Muses and Sonic Youth.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "sleater-kinney>bratmobile",
+          "from": "Sleater-Kinney",
+          "to": "Bratmobile",
+          "fromYear": 1994,
+          "toYear": 1991,
+          "citation": "Band profile: Sleater-Kinney have named their influences as Bikini Kill, Mecca Normal, Bratmobile, Throwing Muses and Sonic Youth. Sleater-Kinney have named their influences as Bikini Kill, Mecca Normal, Bratmobile, Throwing Muses and Sonic Youth.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:st-vincent",
+      "phase": "first-person",
+      "speaker": "St. Vincent",
+      "links": [
+        {
+          "key": "st-vincent>sonic-youth",
+          "from": "St. Vincent",
+          "to": "Sonic Youth",
+          "fromYear": 2007,
+          "toYear": 1981,
+          "citation": "Georgia Straight 2024: over the years Clark has listed Sonic Youth, Kate Bush, Jimi Hendrix and Siouxsie and the Banshees as invaluable influences.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "st-vincent>siouxsie-and-the-banshees",
+          "from": "St. Vincent",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 2007,
+          "toYear": 1976,
+          "citation": "Georgia Straight 2024: over the years Clark has listed Sonic Youth, Kate Bush, Jimi Hendrix and Siouxsie and the Banshees as invaluable influences.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "st-vincent>nirvana",
+          "from": "St. Vincent",
+          "to": "Nirvana",
+          "fromYear": 2007,
+          "toYear": 1987,
+          "citation": "Guitar Player (syndicated twice): a Berklee grad inspired to learn electric guitar by grunge acts like Nirvana and Soundgarden.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-clash",
+      "phase": "first-person",
+      "speaker": "The Clash",
+      "links": [
+        {
+          "key": "the-clash>ramones",
+          "from": "The Clash",
+          "to": "Ramones",
+          "fromYear": 1976,
+          "toYear": 1974,
+          "citation": "Joe Strummer told Kris Needs in Louder (October 1976) that the Ramones' debut album was what made him join the band, and that he spent weeks learning to play along to it; he later told CNN he doubted London's punk scene could have been built without that record.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-clash>sex-pistols",
+          "from": "The Clash",
+          "to": "Sex Pistols",
+          "fromYear": 1976,
+          "toYear": 1975,
+          "citation": "In the same Louder interview with Kris Needs (October 1976), Joe Strummer named seeing the Sex Pistols as the other formative event of that year, alongside discovering the Ramones' debut album.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-human-league",
+      "phase": "first-person",
+      "speaker": "The Human League",
+      "links": [
+        {
+          "key": "the-human-league>david-bowie",
+          "from": "The Human League",
+          "to": "David Bowie",
+          "fromYear": 1977,
+          "toYear": 1969,
+          "citation": "Philip Oakey, Variety interview: \"We loved Roxy Music and we loved David Bowie... They were the inspirations to us.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-shins",
+      "phase": "first-person",
+      "speaker": "The Shins",
+      "links": [
+        {
+          "key": "the-shins>the-cure",
+          "from": "The Shins",
+          "to": "The Cure",
+          "fromYear": 1996,
+          "toYear": 1978,
+          "citation": "Montana Kaimin 2017, Mercer on what still shapes the records: bands he loved in high school -- Echo and the Bunnymen, the Cure, the Smiths.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-shins>the-smiths",
+          "from": "The Shins",
+          "to": "The Smiths",
+          "fromYear": 1996,
+          "toYear": 1982,
+          "citation": "Montana Kaimin 2017, Mercer on what still shapes the records: bands he loved in high school -- Echo and the Bunnymen, the Cure, the Smiths.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-shins>echo-and-the-bunnymen",
+          "from": "The Shins",
+          "to": "Echo & the Bunnymen",
+          "fromYear": 1996,
+          "toYear": 1978,
+          "citation": "Montana Kaimin 2017, Mercer on what still shapes the records: bands he loved in high school -- Echo and the Bunnymen, the Cure, the Smiths. > the-smiths: \"bands he loved in high school -- Echo and the Bunnymen, the Cure, the Smiths.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:at-the-drive-in",
+      "phase": "first-person",
+      "speaker": "At The Drive-In",
+      "links": [
+        {
+          "key": "at-the-drive-in>drive-like-jehu",
+          "from": "At The Drive-In",
+          "to": "Drive Like Jehu",
+          "fromYear": 1994,
+          "toYear": 1990,
+          "citation": "Cedric Bixler-Zavala: \"there would be no Relationship of Command without Drive Like Jehu\"; SPIN (2013): \"people like Hot Snakes and Drive Like Jehu were our strongest influences.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "at-the-drive-in>sunny-day-real-estate",
+          "from": "At The Drive-In",
+          "to": "Sunny Day Real Estate",
+          "fromYear": 1994,
+          "toYear": 1992,
+          "citation": "Jim Ward called Sunny Day Real Estate \"Fugazi beyond Fugazi\" -- Wikipedia-mediated quote, flagged weaker-tier.",
+          "sourceTier": "first-person",
+          "confidence": 0.55
+        }
+      ]
+    },
+    {
+      "id": "first-person:big-black",
+      "phase": "first-person",
+      "speaker": "Big Black",
+      "links": [
+        {
+          "key": "big-black>this-heat",
+          "from": "Big Black",
+          "to": "This Heat",
+          "fromYear": 1981,
+          "toYear": 1976,
+          "citation": "Steve Albini named This Heat among the favorite regional and overseas bands that shaped him, in a 2020 interview with VWMusic.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:built-to-spill",
+      "phase": "first-person",
+      "speaker": "Built to Spill",
+      "links": [
+        {
+          "key": "built-to-spill>dinosaur-jr",
+          "from": "Built to Spill",
+          "to": "Dinosaur Jr.",
+          "fromYear": 1992,
+          "toYear": 1984,
+          "citation": "Doug Martsch told Esquire in 2015 that Dinosaur Jr.'s You're Living All Over Me took him about ten listens before he liked it at all -- and then he loved it; he has called it the record that shaped both Treepeople and Built to Spill.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:buzzcocks",
+      "phase": "first-person",
+      "speaker": "Buzzcocks",
+      "links": [
+        {
+          "key": "buzzcocks>the-stooges",
+          "from": "Buzzcocks",
+          "to": "The Stooges",
+          "fromYear": 1976,
+          "toYear": 1967,
+          "citation": "Far Out Magazine: Shelley and Devoto \"knew all of them back to front\" -- the Stooges and the Velvet Underground both -- well before Buzzcocks existed.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:caribou",
+      "phase": "first-person",
+      "speaker": "Caribou",
+      "links": [
+        {
+          "key": "caribou>boards-of-canada",
+          "from": "Caribou",
+          "to": "Boards of Canada",
+          "fromYear": 2000,
+          "toYear": 1986,
+          "citation": "Dan Snaith, RBMA Daily (\"Caribou on Singing, Love, and Vangelis,\" 2014): \"The first record that I made as Manitoba... was trying to sound like late '90s, early '00s Warp. It was influenced by Boards of Canada and Aphex Twin.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "caribou>aphex-twin",
+          "from": "Caribou",
+          "to": "Aphex Twin",
+          "fromYear": 2000,
+          "toYear": 1992,
+          "citation": "RBMA Daily, Dan Snaith naming Aphex Twin alongside Boards of Canada.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "caribou>this-heat",
+          "from": "Caribou",
+          "to": "This Heat",
+          "fromYear": 2000,
+          "toYear": 1976,
+          "citation": "Alexis Taylor, self-cited. Pitchfork, Evan Minsker, \"This Heat to Reissue Discography\" (Nov 18, 2015). Dan Snaith, self-cited, Pitchfork, Evan Minsker (Nov 18, 2015).",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:charli-xcx",
+      "phase": "first-person",
+      "speaker": "Charli XCX",
+      "links": [
+        {
+          "key": "charli-xcx>arca",
+          "from": "Charli XCX",
+          "to": "Arca",
+          "fromYear": 2008,
+          "toYear": 2012,
+          "citation": "Charli XCX's 2025 BRIT Awards speech: \"Shout out to Justice, Daft Punk, Sebastian, Honey Dijon, Robyn, Arca, M.I.A., Autechre, Aphex Twin.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "charli-xcx>autechre",
+          "from": "Charli XCX",
+          "to": "Autechre",
+          "fromYear": 2008,
+          "toYear": 1987,
+          "citation": "Charli XCX's 2025 BRIT Awards speech, naming Autechre: \"Shout out to Justice, Daft Punk, Sebastian, Honey Dijon, Robyn, Arca, M.I.A., Autechre, Aphex Twin.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "charli-xcx>aphex-twin",
+          "from": "Charli XCX",
+          "to": "Aphex Twin",
+          "fromYear": 2008,
+          "toYear": 1992,
+          "citation": "Charli XCX's 2025 BRIT Awards speech, naming Aphex Twin: \"Shout out to Justice, Daft Punk, Sebastian, Honey Dijon, Robyn, Arca, M.I.A., Autechre, Aphex Twin.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:explosions-in-the-sky",
+      "phase": "first-person",
+      "speaker": "Explosions in the Sky",
+      "links": [
+        {
+          "key": "explosions-in-the-sky>mogwai",
+          "from": "Explosions in the Sky",
+          "to": "Mogwai",
+          "fromYear": 1999,
+          "toYear": 1995,
+          "citation": "Epigram Q&A (2023): \"it gave us a lot of inspiration to see bands like Mogwai and Tortoise making really cool music that had no vocals.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "explosions-in-the-sky>godspeed-you-black-emperor",
+          "from": "Explosions in the Sky",
+          "to": "Godspeed You! Black Emperor",
+          "fromYear": 1999,
+          "toYear": 1994,
+          "citation": "Clash Music interview: Explosions in the Sky name the five-band post-rock lineage (Mogwai / Godspeed You! Black Emperor / Explosions in the Sky / Sigur Ros / Mono).",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    }
+  ]
+}

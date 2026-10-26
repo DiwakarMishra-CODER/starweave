@@ -1,0 +1,322 @@
+{
+  "name": "c7",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:wednesday",
+      "phase": "first-person",
+      "speaker": "Wednesday",
+      "links": [
+        {
+          "key": "wednesday>the-sundays",
+          "from": "Wednesday",
+          "to": "The Sundays",
+          "fromYear": 2017,
+          "toYear": 1987,
+          "citation": "In a 2023 interview with The Forty-Five, Karly Hartzman named the Sundays' Reading, Writing and Arithmetic as her first formative record, corroborated in MOJO (Aug 2023) describing her formative discoveries in Greensboro as including \"a CD of The Sundays' Reading, Writing And Arithmetic.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "wednesday>my-bloody-valentine",
+          "from": "Wednesday",
+          "to": "My Bloody Valentine",
+          "fromYear": 2017,
+          "toYear": 1983,
+          "citation": "MOJO (Aug 2023), on Hartzman's formative discoveries in Greensboro: \"a tape made for her by a middle-school friend who had discovered My Bloody\" Valentine.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "wednesday>drive-by-truckers",
+          "from": "Wednesday",
+          "to": "Drive-By Truckers",
+          "fromYear": 2017,
+          "toYear": 1996,
+          "citation": "Stereogum's \"Under the Influence,\" Hartzman: \"For 'Chosen To Deserve' specifically, I heard 'Let There Be Rock' by Drive-By Truckers. The premise is describing a fucked-up childhood, basically, and I wanted to write that song but use all my memories instead... Drive-By Truckers have a lot of songs that are easy to pick up on guitar.\" Corroborated in Billboard, crediting the outlaw-country storytellers with \"some of the most amazing lyricism in the world,\" and Rolling Stone AU noting \"Bath County\" contains a \"big shout-out to Drive-By Truckers.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "wednesday>wilco",
+          "from": "Wednesday",
+          "to": "Wilco",
+          "fromYear": 2017,
+          "toYear": 1994,
+          "citation": "Xandy Chelmis, Wednesday's pedal steel player, discussed the steel parts on Wilco's Yankee Hotel Foxtrot in an interview with Rutgers Radio in January 2026 -- his own influence as a sideman rather than the band's principal songwriter.",
+          "sourceTier": "first-person",
+          "confidence": 0.6
+        },
+        {
+          "key": "wednesday>songs-ohia",
+          "from": "Wednesday",
+          "to": "Songs: Ohia",
+          "fromYear": 2017,
+          "toYear": 1996,
+          "citation": "In the same Rutgers Radio interview, Chelmis named Jason Molina's steel-laced Songs: Ohia records, pointing to Mike Brenner's pedal steel work on them specifically.",
+          "sourceTier": "first-person",
+          "confidence": 0.6
+        },
+        {
+          "key": "wednesday>the-shins",
+          "from": "Wednesday",
+          "to": "The Shins",
+          "fromYear": 2017,
+          "toYear": 1996,
+          "citation": "The same Rutgers Radio interview has Chelmis naming a Shins song with a steel part he loved in high school.",
+          "sourceTier": "first-person",
+          "confidence": 0.55
+        }
+      ]
+    },
+    {
+      "id": "first-person:animal-collective",
+      "phase": "first-person",
+      "speaker": "Animal Collective",
+      "links": [
+        {
+          "key": "animal-collective>brian-eno",
+          "from": "Animal Collective",
+          "to": "Brian Eno",
+          "fromYear": 2003,
+          "toYear": 1971,
+          "citation": "In Red Bull Music Academy's 2018 oral history of the band, Noah Lennox describes Brian Eno's Music For Airports as a record that changed the course of his musical life.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:bon-iver",
+      "phase": "first-person",
+      "speaker": "Bon Iver",
+      "links": [
+        {
+          "key": "bon-iver>bob-dylan",
+          "from": "Bon Iver",
+          "to": "Bob Dylan",
+          "fromYear": 2007,
+          "toYear": 1961,
+          "citation": "Justin Vernon told Pitchfork, quoted via Ewing's Voice, \"after growing up in a Neil Young/Bob Dylan/Indigo Girls/John Prine subjective-songwriter kind of world, I finally realized I didn't have what they had.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "bon-iver>neil-young",
+          "from": "Bon Iver",
+          "to": "Neil Young",
+          "fromYear": 2007,
+          "toYear": 1966,
+          "citation": "The same Pitchfork quote names Neil Young; PopMatters wrote in 2008 that For Emma, Forever Ago is the record where Justin Vernon \"got away from touchstones like Tom Waits, Patty Griffin, Bob Dylan, Bruce Springsteen, and Neil Young,\" and the Journal Sentinel reported that his mother sang Indigo Girls and Neil Young while driving her kids around.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "bon-iver>john-prine",
+          "from": "Bon Iver",
+          "to": "John Prine",
+          "fromYear": 2007,
+          "toYear": 1970,
+          "citation": "Justin Vernon told Pitchfork, via Ewing's Voice, that he grew up in a \"Neil Young/Bob Dylan/Indigo Girls/John Prine subjective-songwriter kind of world\" before realizing he didn't have what those songwriters had.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:bright-eyes",
+      "phase": "first-person",
+      "speaker": "Bright Eyes",
+      "links": [
+        {
+          "key": "bright-eyes>townes-van-zandt",
+          "from": "Bright Eyes",
+          "to": "Townes Van Zandt",
+          "fromYear": 1995,
+          "toYear": 1965,
+          "citation": "Conor Oberst said on the Life of the Record podcast, marking I'm Wide Awake, It's Morning's 20th anniversary, that the record aimed for a purist 1970s folk approach heavily influenced by Jackson Browne, Joni Mitchell, Gram Parsons and Townes Van Zandt; on his own Pitchfork list of influences he called Van Zandt \"the deep, dark part that I carry around.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "bright-eyes>joni-mitchell",
+          "from": "Bright Eyes",
+          "to": "Joni Mitchell",
+          "fromYear": 1995,
+          "toYear": 1964,
+          "citation": "The same Life of the Record podcast names Joni Mitchell; Mel Magazine reported in October 2020 that Conor Oberst said the record deliberately went for a 1970s folk sound \"like Jackson Browne, Joni Mitchell or Neil Young,\" recorded to tape.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "bright-eyes>neil-young",
+          "from": "Bright Eyes",
+          "to": "Neil Young",
+          "fromYear": 1995,
+          "toYear": 1966,
+          "citation": "Conor Oberst named Neil Young in the same Mel Magazine interview in which he discussed Joni Mitchell's influence.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:fleet-foxes",
+      "phase": "first-person",
+      "speaker": "Fleet Foxes",
+      "links": [
+        {
+          "key": "fleet-foxes>john-prine",
+          "from": "Fleet Foxes",
+          "to": "John Prine",
+          "fromYear": 2006,
+          "toYear": 1970,
+          "citation": "Fleet Foxes named John Prine directly in their own lyrics on \"Sunblind,\" alongside Judee Sill, Elliott Smith and David Berman; Robin Pecknold told Under the Radar the song expresses gratitude toward songwriters whose work had affected him.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "fleet-foxes>elliott-smith",
+          "from": "Fleet Foxes",
+          "to": "Elliott Smith",
+          "fromYear": 2006,
+          "toYear": 1994,
+          "citation": "Robin Pecknold told Rolling Stone that Elliott Smith was \"hugely, hugely formative,\" and that he used the tab site sweetadeline.net to learn his songs on guitar.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "fleet-foxes>joanna-newsom",
+          "from": "Fleet Foxes",
+          "to": "Joanna Newsom",
+          "fromYear": 2006,
+          "toYear": 2002,
+          "citation": "Robin Pecknold named Joanna Newsom in the same Paste interview in which he discussed Roy Harper's influence on Helplessness Blues.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "fleet-foxes>silver-jews",
+          "from": "Fleet Foxes",
+          "to": "Silver Jews",
+          "fromYear": 2006,
+          "toYear": 1989,
+          "citation": "Fleet Foxes named Silver Jews songwriter David Berman directly in their own song \"Sunblind.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:gang-of-four",
+      "phase": "first-person",
+      "speaker": "Gang of Four",
+      "links": [
+        {
+          "key": "gang-of-four>velvet-underground",
+          "from": "Gang of Four",
+          "to": "The Velvet Underground",
+          "fromYear": 1976,
+          "toYear": 1965,
+          "citation": "Andy Gill described \"the noise and cacophony of The Velvet Underground, but with the grooves of reggae\"; Jon King said \"you don't actually have to play your instrument very well to be in a band.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:phoebe-bridgers",
+      "phase": "first-person",
+      "speaker": "Phoebe Bridgers",
+      "links": [
+        {
+          "key": "phoebe-bridgers>bright-eyes",
+          "from": "Phoebe Bridgers",
+          "to": "Bright Eyes",
+          "fromYear": 2014,
+          "toYear": 1995,
+          "citation": "Billboard reported that Bright Eyes's I'm Wide Awake, It's Morning influenced Phoebe Bridgers's song \"Graceland Too.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "phoebe-bridgers>big-thief",
+          "from": "Phoebe Bridgers",
+          "to": "Big Thief",
+          "fromYear": 2014,
+          "toYear": 2015,
+          "citation": "Phoebe Bridgers told Guitar.com in June 2020 that she drew on influences from Billie Eilish to Guided by Voices, Caroline Polachek, Mitski and Big Thief while making Punisher.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "phoebe-bridgers>mitski",
+          "from": "Phoebe Bridgers",
+          "to": "Mitski",
+          "fromYear": 2014,
+          "toYear": 2012,
+          "citation": "The same Guitar.com interview from June 2020 names Mitski among the influences Phoebe Bridgers drew on while making Punisher.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "phoebe-bridgers>bon-iver",
+          "from": "Phoebe Bridgers",
+          "to": "Bon Iver",
+          "fromYear": 2014,
+          "toYear": 2007,
+          "citation": "Phoebe Bridgers told Allston Pudding in 2018 that Bon Iver's For Emma, Forever Ago made her want to start recording to four-track tape.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "phoebe-bridgers>john-prine",
+          "from": "Phoebe Bridgers",
+          "to": "John Prine",
+          "fromYear": 2014,
+          "toYear": 1970,
+          "citation": "Phoebe Bridgers told Billboard she learned many of John Prine's songs and that his final album, The Tree of Forgiveness, particularly its closing track \"Summer's End,\" influenced her own writing.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:sigur-ros",
+      "phase": "first-person",
+      "speaker": "Sigur Rós",
+      "links": [
+        {
+          "key": "sigur-ros>ride",
+          "from": "Sigur Rós",
+          "to": "Ride",
+          "fromYear": 1994,
+          "toYear": 1988,
+          "citation": "The Guardian, Gareth Grundy, \"Jonsi: Soundtrack of my life\" (May 30, 2010): names Ride among early influences.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "sigur-ros>my-bloody-valentine",
+          "from": "Sigur Rós",
+          "to": "My Bloody Valentine",
+          "fromYear": 1994,
+          "toYear": 1983,
+          "citation": "The Guardian, Gareth Grundy, \"Jonsi: Soundtrack of my life\" (May 30, 2010): names Ride among early influences.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "sigur-ros>cocteau-twins",
+          "from": "Sigur Rós",
+          "to": "Cocteau Twins",
+          "fromYear": 1994,
+          "toYear": 1979,
+          "citation": "The Guardian (Aug 18, 2020), per Wikipedia citation: Jonsi says he hadn't actually heard Cocteau Twins until introduced by Alex Somers, after which he said \"they're so good, man!\" -- a discovered-affinity claim more than a formative-influence one, flagged weaker-tier.",
+          "sourceTier": "first-person",
+          "confidence": 0.5
+        }
+      ]
+    }
+  ]
+}

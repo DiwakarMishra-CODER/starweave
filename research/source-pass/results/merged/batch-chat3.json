@@ -1,0 +1,370 @@
+{
+  "name": "chat3",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:lcd-soundsystem",
+      "phase": "first-person",
+      "speaker": "LCD Soundsystem",
+      "links": [
+        {
+          "key": "lcd-soundsystem>david-bowie",
+          "from": "LCD Soundsystem",
+          "to": "David Bowie",
+          "fromYear": 2002,
+          "toYear": 1969,
+          "citation": "Murphy to Rolling Stone, cited \"the B-52's, the Fall, Yes, David Bowie and Can\" (via LCD Soundsystem Wikipedia).",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "lcd-soundsystem>the-fall",
+          "from": "LCD Soundsystem",
+          "to": "The Fall",
+          "fromYear": 2002,
+          "toYear": 1976,
+          "citation": "James Murphy has called the Fall his Beatles, and in a 2005 interview singled out why: \"the guitars are as ego-less as the bass. And that's a rare fucking thing.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:low",
+      "phase": "first-person",
+      "speaker": "Low",
+      "links": [
+        {
+          "key": "low>joy-division",
+          "from": "Low",
+          "to": "Joy Division",
+          "fromYear": 1993,
+          "toYear": 1976,
+          "citation": "Alan Sparhawk named Brian Eno and Joy Division as inspirations in a 1995 Billboard interview, alongside the boredom of living in Duluth -- quoted in Rolling Stone's obituary for Mimi Parker in November 2022.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "low>brian-eno",
+          "from": "Low",
+          "to": "Brian Eno",
+          "fromYear": 1993,
+          "toYear": 1971,
+          "citation": "Alan Sparhawk named Brian Eno in the same Billboard interview from 1995 in which he discussed Joy Division's influence on Low.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:suicide",
+      "phase": "first-person",
+      "speaker": "Suicide",
+      "links": [
+        {
+          "key": "suicide>silver-apples",
+          "from": "Suicide",
+          "to": "Silver Apples",
+          "fromYear": 1970,
+          "toYear": 1967,
+          "citation": "Wikipedia/Silver Apples: \"Alan Vega of Suicide listed Silver Apples as one of his core inspirations that led him to form the group,\" reciprocally confirmed on Suicide's own page.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:this-heat",
+      "phase": "first-person",
+      "speaker": "This Heat",
+      "links": [
+        {
+          "key": "this-heat>faust",
+          "from": "This Heat",
+          "to": "Faust",
+          "fromYear": 1976,
+          "toYear": 1971,
+          "citation": "Charles Hayward told Perfect Sound Forever that Faust were a direct influence on This Heat, describing how one musical movement could interact with the whole in their music; he specified the Uwe Nettelbeck-produced era of Faust in a separate 2014 interview with Freq.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:bad-brains",
+      "phase": "first-person",
+      "speaker": "Bad Brains",
+      "links": [
+        {
+          "key": "bad-brains>ramones",
+          "from": "Bad Brains",
+          "to": "Ramones",
+          "fromYear": 1977,
+          "toYear": 1974,
+          "citation": "H.R. (in Juice) and Darryl Jenifer (in Classic Rock, 1985) both recount Sid McCray bringing Ramones records to the house in 1977, and the band's own name comes from the Ramones song \"Bad Brain.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:bark-psychosis",
+      "phase": "first-person",
+      "speaker": "Bark Psychosis",
+      "links": [
+        {
+          "key": "bark-psychosis>sonic-youth",
+          "from": "Bark Psychosis",
+          "to": "Sonic Youth",
+          "fromYear": 1986,
+          "toYear": 1981,
+          "citation": "Audrie's Diary zine, 1994, Graham Sutton interview (per Wikipedia citation): \"Other early influences included Sonic Youth, Talk Talk, Wire, Butthole Surfers, Big Black, Swans and Joy Division.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "bark-psychosis>talk-talk",
+          "from": "Bark Psychosis",
+          "to": "Talk Talk",
+          "fromYear": 1986,
+          "toYear": 1981,
+          "citation": "Audrie's Diary zine, 1994, Graham Sutton interview (per Wikipedia citation): \"Other early influences included Sonic Youth, Talk Talk, Wire, Butthole Surfers, Big Black, Swans and Joy Division.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "bark-psychosis>wire",
+          "from": "Bark Psychosis",
+          "to": "Wire",
+          "fromYear": 1986,
+          "toYear": 1976,
+          "citation": "Audrie's Diary zine, 1994, Graham Sutton interview (per Wikipedia citation): \"Other early influences included Sonic Youth, Talk Talk, Wire, Butthole Surfers, Big Black, Swans and Joy Division.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "bark-psychosis>big-black",
+          "from": "Bark Psychosis",
+          "to": "Big Black",
+          "fromYear": 1986,
+          "toYear": 1981,
+          "citation": "Audrie's Diary zine, 1994, Graham Sutton interview (per Wikipedia citation): \"Other early influences included Sonic Youth, Talk Talk, Wire, Butthole Surfers, Big Black, Swans and Joy Division.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "bark-psychosis>joy-division",
+          "from": "Bark Psychosis",
+          "to": "Joy Division",
+          "fromYear": 1986,
+          "toYear": 1976,
+          "citation": "Audrie's Diary zine, 1994, Graham Sutton interview (per Wikipedia citation): \"Other early influences included Sonic Youth, Talk Talk, Wire, Butthole Surfers, Big Black, Swans and Joy Division.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "bark-psychosis>swans",
+          "from": "Bark Psychosis",
+          "to": "Swans",
+          "fromYear": 1986,
+          "toYear": 1982,
+          "citation": "Audrie's Diary zine, 1994, Graham Sutton interview (per Wikipedia citation): \"Other early influences included Sonic Youth, Talk Talk, Wire, Butthole Surfers, Big Black, Swans and Joy Division.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:boards-of-canada",
+      "phase": "first-person",
+      "speaker": "Boards of Canada",
+      "links": [
+        {
+          "key": "boards-of-canada>incredible-string-band",
+          "from": "Boards of Canada",
+          "to": "Incredible String Band",
+          "fromYear": 1986,
+          "toYear": 1965,
+          "citation": "Boards of Canada's Michael Sandison, in a rare Pitchfork interview, on melody: \"listen to Jerry Goldsmith or The Incredible String Band.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:brand-new",
+      "phase": "first-person",
+      "speaker": "Brand New",
+      "links": [
+        {
+          "key": "brand-new>fugazi",
+          "from": "Brand New",
+          "to": "Fugazi",
+          "fromYear": 2000,
+          "toYear": 1986,
+          "citation": "Jesse Lacey, DrownedInSound (Sept 17, 2009): \"influenced by Polvo, Archers of Loaf, Fugazi and Modest Mouse.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "brand-new>modest-mouse",
+          "from": "Brand New",
+          "to": "Modest Mouse",
+          "fromYear": 2000,
+          "toYear": 1992,
+          "citation": "Jesse Lacey, DrownedInSound (Sept 17, 2009): \"influenced by Polvo, Archers of Loaf, Fugazi and Modest Mouse.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:kurt-vile",
+      "phase": "first-person",
+      "speaker": "Kurt Vile",
+      "links": [
+        {
+          "key": "kurt-vile>john-prine",
+          "from": "Kurt Vile",
+          "to": "John Prine",
+          "fromYear": 2003,
+          "toYear": 1970,
+          "citation": "Kurt Vile told Rolling Stone in September 2020 that he began listening to John Prine in his early twenties after a fan told him he sounded like Prine, and spent what he called \"one cool summer\" on the greatest hits.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "kurt-vile>velvet-underground",
+          "from": "Kurt Vile",
+          "to": "The Velvet Underground",
+          "fromYear": 2003,
+          "toYear": 1965,
+          "citation": "Kurt Vile said in an interview with Under the Radar in April 2022 that he grew up listening to the Velvet Underground.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "kurt-vile>pavement",
+          "from": "Kurt Vile",
+          "to": "Pavement",
+          "fromYear": 2003,
+          "toYear": 1989,
+          "citation": "Kurt Vile told Under the Radar in April 2022 that signing to Matador was a lifelong dream because it was \"home of Pavement, Yo La Tengo, Cat Power, so many people I grew up listening to\"; Russh magazine reported in 2023 that his high-school idols were Pavement and Dinosaur Jr.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "kurt-vile>yo-la-tengo",
+          "from": "Kurt Vile",
+          "to": "Yo La Tengo",
+          "fromYear": 2003,
+          "toYear": 1984,
+          "citation": "Kurt Vile named Yo La Tengo in the same Under the Radar quote about signing to Matador Records in April 2022.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "kurt-vile>dinosaur-jr",
+          "from": "Kurt Vile",
+          "to": "Dinosaur Jr.",
+          "fromYear": 2003,
+          "toYear": 1984,
+          "citation": "Kurt Vile named Dinosaur Jr. among his high-school idols in a 2023 Russh interview, alongside Pavement; AllMusic's prose biography and Wikipedia's sourced influence line both describe him as taking notes from masters including Neil Young, Sonic Youth and Dinosaur Jr.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "kurt-vile>cat-power",
+          "from": "Kurt Vile",
+          "to": "Cat Power",
+          "fromYear": 2003,
+          "toYear": 1992,
+          "citation": "Kurt Vile has described Matador Records as \"home of Pavement, Yo La Tengo, Cat Power, so many people I grew up listening to.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:rites-of-spring",
+      "phase": "first-person",
+      "speaker": "Rites of Spring",
+      "links": [
+        {
+          "key": "rites-of-spring>the-fall",
+          "from": "Rites of Spring",
+          "to": "The Fall",
+          "fromYear": 1984,
+          "toYear": 1976,
+          "citation": "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "rites-of-spring>buzzcocks",
+          "from": "Rites of Spring",
+          "to": "Buzzcocks",
+          "fromYear": 1984,
+          "toYear": 1976,
+          "citation": "John Dugan, Stop Smiling: Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\" Rites of Spring \"cited influences including the Smiths, the Birthday Party, Buzzcocks, the Mob, the Fall, Television, Bob Dylan, the Saints, Wire, the Undertones and the Adverts.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:sufjan-stevens",
+      "phase": "first-person",
+      "speaker": "Sufjan Stevens",
+      "links": [
+        {
+          "key": "sufjan-stevens>nick-drake",
+          "from": "Sufjan Stevens",
+          "to": "Nick Drake",
+          "fromYear": 2000,
+          "toYear": 1968,
+          "citation": "The same Uncut account names Nick Drake among the artists Lowell Brams introduced Sufjan Stevens to that summer; Stevens later covered Drake's \"Pink Moon\" for a 2021 single.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "sufjan-stevens>bob-dylan",
+          "from": "Sufjan Stevens",
+          "to": "Bob Dylan",
+          "fromYear": 2000,
+          "toYear": 1961,
+          "citation": "Sufjan Stevens told Uncut in February 2015 that there was no music, art or television at home growing up -- his stepfather Lowell Brams introduced him and his siblings to the Beatles, the Rolling Stones, Ry Cooder, Bob Dylan, Nick Drake and Frank Zappa the summer they moved to Eugene, an experience Stevens described as Brams opening a Pandora's box.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-fall",
+      "phase": "first-person",
+      "speaker": "The Fall",
+      "links": [
+        {
+          "key": "the-fall>can",
+          "from": "The Fall",
+          "to": "Can",
+          "fromYear": 1976,
+          "toYear": 1968,
+          "citation": "Far Out and Dazed both report Mark E. Smith telling Irmin Schmidt that Can \"saved my life,\" recalling how he bought Tago Mago by mail order as a teenager and later phoned Schmidt directly to ask Can to play with The Fall.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-fall>velvet-underground",
+          "from": "The Fall",
+          "to": "The Velvet Underground",
+          "fromYear": 1976,
+          "toYear": 1965,
+          "citation": "Mark E. Smith named the Velvet Underground among the few artists he rated in the same conversation where he described Can's Tago Mago as formative, and told Crack Magazine he preferred the repetition of the Velvet Underground and Can to the Sex Pistols'.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    }
+  ]
+}

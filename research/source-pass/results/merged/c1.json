@@ -1,0 +1,212 @@
+{
+ "agent": "c1",
+ "searches": 25,
+ "toolStatus": "WebSearch fine. undertheradarmag.com: Cloudflare 'Just a moment' wall on read, archive and WebFetch 403. telegraph.co.uk 402. cocteautwins.com MOJO page is an image scan. louderthanwar.com only via web.archive.org.",
+ "entries": {
+  "black-flag>the-stooges": {
+   "url": "http://www.staythirstymedia.com/news/43/335-greg-ginn.html",
+   "found": "We were influenced by the Stooges and then the Ramones; they inspired us.",
+   "verdict": "fixed",
+   "citation": "Greg Ginn to Stay Thirsty Media: \"We were influenced by the Stooges and then the Ramones; they inspired us.\"",
+   "checked": "2026-10-26"
+  },
+  "black-flag>ramones": {
+   "url": "http://www.staythirstymedia.com/news/43/335-greg-ginn.html",
+   "found": "We were influenced by the Stooges and then the Ramones; they inspired us. Keith and myself saw the Ramones when they first toured LA in 1976.",
+   "verdict": "fixed",
+   "citation": "Greg Ginn to Stay Thirsty Media: \"We were influenced by the Stooges and then the Ramones; they inspired us. Keith and myself saw the Ramones when they first toured LA in 1976.\"",
+   "checked": "2026-10-26"
+  },
+  "depeche-mode>kraftwerk": {
+   "url": "https://diffuser.fm/kraftwerk-hall-of-fame/",
+   "found": "\"For anyone of our generation involved in electronic music, Kraftwerk were the godfathers.",
+   "verdict": "fixed",
+   "citation": "Martin Gore to The Telegraph (2013): \"For anyone of our generation involved in electronic music, Kraftwerk were the godfathers.\"",
+   "note": "Telegraph original is paywalled (402); quote and 2013 Telegraph attribution read on Diffuser.fm.",
+   "checked": "2026-10-26"
+  },
+  "cocteau-twins>ramones": {
+   "url": "https://cocteautwins.com/press-and-news/2011/12/01/2011-robin-guthrie-interview-mojo-magazine/",
+   "verdict": "blocked",
+   "note": "Page is Martin Aston's Dec 2011 MOJO interview with Robin Guthrie reposted on cocteautwins.com, but the text is an image scan; read returns nothing. Look for: Guthrie saying he adored the fast R&B of Doctor Feelgood and The Count Bishops, then heard the Ramones. Citation says MOJO; correct outlet if the scan agrees. Same page also at https://cocteautwins.com/2011-robin-guthrie-interview-mojo-magazine.html",
+   "checked": "2026-10-26"
+  },
+  "talking-heads>velvet-underground": {
+   "url": "https://www.rollingstone.com/music/music-news/david-byrne-remembers-the-brave-lou-reed-91939/",
+   "found": "No surprise I was a big fan, and his music, with and without the Velvets, was a big influence on myself and Talking Heads.",
+   "verdict": "fixed",
+   "citation": "David Byrne to Rolling Stone on Lou Reed's death (2013): \"his music, with and without the Velvets, was a big influence on myself and Talking Heads.\" He added: \"His work and that of the Velvets was a big reason I moved to NY.\"",
+   "note": "Original quote 'a big reason I moved to New York' was a mangled join of two sentences; page says 'a big reason I moved to NY'. Not a 'tribute' piece but Byrne's statement to Rolling Stone.",
+   "checked": "2026-10-26"
+  },
+  "brian-eno>velvet-underground": {
+   "url": "https://quoteinvestigator.com/2016/03/01/velvet/",
+   "found": "I think everyone who bought one of those 30,000 copies started a band!",
+   "verdict": "ok",
+   "note": "Quote Investigator reproduces the 23 May 1982 Los Angeles Times piece (Kristine McKenna, 'Lots of Aura, No Air Play', p. L6) with the line; original is ProQuest only. Eno is the speaker. (McKenna has said elsewhere it ran in Musician; QI cites the LA Times.)",
+   "checked": "2026-10-26"
+  },
+  "mogwai>nick-drake": {
+   "url": "https://thequietus.com/interviews/bakers-dozen/mogwai-stuart-braithwaite-favourite-albums/14/",
+   "found": "It’s a perfect record. Succinct, sad, melodic, definitely its own thing. The simplicity of it was a big thing for me, that music that simple can also be really moving",
+   "verdict": "ok",
+   "note": "Quietus Baker's Dozen, item 13 Nick Drake Pink Moon; Braithwaite speaking. Opened via r.jina.ai.",
+   "checked": "2026-10-26"
+  },
+  "radiohead>rem": {
+   "url": "https://faroutmagazine.co.uk/radiohead-thom-yorke-favourite-album-of-all-time/",
+   "found": "Then I discovered R.E.M. and it turned my life upside down.",
+   "verdict": "fixed",
+   "citation": "Thom Yorke to VinylWriters, as quoted by Far Out: \"Then I discovered R.E.M. and it turned my life upside down.\" He added: \"Shortly after that, I signed up for art school and started to take making music seriously.\"",
+   "note": "Original quote elided 'that' in 'Shortly after that'; caption line replaced with the cleaner 'turned my life upside down' sentence. Far Out names VinylWriters as the original; original not opened.",
+   "checked": "2026-10-26"
+  },
+  "my-bloody-valentine>sonic-youth": {
+   "url": "https://arthurmag.com/2011/03/10/perfect-sound-forever-kevin-shields-of-my-bloody-valentine-interviewed-by-hua-hsu-arthur-no-7nov-2003/",
+   "found": "It was good because we were letting ourselves be more Sonic Youth-y, more of our influences in a way.",
+   "verdict": "fixed",
+   "citation": "Kevin Shields to Hua Hsu in Arthur (2003), on the first Creation session: \"It was good because we were letting ourselves be more Sonic Youth-y, more of our influences in a way.\"",
+   "note": "Named the outlet/year; Shields is the speaker.",
+   "checked": "2026-10-26"
+  },
+  "joy-division>the-stooges": {
+   "verdict": "not-found",
+   "note": "Searched the exact quote and Hook + Louder Than War top-10; no page carries 'Ian gave me Metallic K.O.' Only lead: Louder Than War 2012 'Peter Hook: my top 10 favourite albums' (opened via web.archive.org copy) lists 'Iggy & The Stooges - Metallic KO' with no commentary at all (favourites list only, and it names no Ian Curtis gift). Quote may come from a Hook book (Unknown Pleasures / Substance) - unverified.",
+   "checked": "2026-10-26"
+  },
+  "new-order>the-stooges": {
+   "verdict": "not-found",
+   "note": "Searched the exact quote and Hook + Louder Than War top-10; no page carries 'Ian gave me Metallic K.O.' Only lead: Louder Than War 2012 'Peter Hook: my top 10 favourite albums' (opened via web.archive.org copy) lists 'Iggy & The Stooges - Metallic KO' with no commentary at all (favourites list only, and it names no Ian Curtis gift). Quote may come from a Hook book (Unknown Pleasures / Substance) - unverified. Also the Joy Division link carries the same quote.",
+   "checked": "2026-10-26"
+  },
+  "the-cure>david-bowie": {
+   "url": "https://faroutmagazine.co.uk/the-cure-robert-smith-loves-david-bowie/",
+   "found": "David Bowie was probably the first artist that I felt was mine. He was singing to me.",
+   "verdict": "fixed",
+   "citation": "Robert Smith, asked how Bowie influenced his approach to music, as quoted by Far Out: \"David Bowie was probably the first artist that I felt was mine. He was singing to me.\" Ziggy Stardust was the first vinyl album he bought.",
+   "note": "The 'David Bowie was an obvious influence on me' line was not found on this page, in Wikipedia's Cure/Robert Smith pages, or in one search; replaced with a verbatim line from the same Smith answer. Far Out gives no original outlet for the clip. 'first vinyl album I ever bought' is on the page as: _Ziggy Stardust_ was the first vinyl album I ever bought.",
+   "checked": "2026-10-26"
+  },
+  "slowdive>my-bloody-valentine": {
+   "url": "https://reverb.com/au/news/slowdive-interview",
+   "found": "When I listened to My Bloody Valentine and Cocteau Twins I wanted something between those sounds.",
+   "verdict": "fixed",
+   "citation": "Neil Halstead to Reverb (2017): \"When I listened to My Bloody Valentine and Cocteau Twins I wanted something between those sounds.\"",
+   "note": "Quote verbatim on the Reverb interview (published 2017-06-16, Halstead and Christian Savill). The paragraph carries no speaker label but follows Halstead's labelled answers on tunings/reverb, so attributed to him. The claim in the old citation that Goswell and Savill 'said the same in separate interviews' was not verified and is dropped. Resolves the project's note that this Halstead quote had no source.",
+   "checked": "2026-10-26"
+  },
+  "slowdive>pixies": {
+   "url": "https://undertheradarmag.com/interviews/slowdive_-_neil_halstead_and_rachel_goswell_on_the_bands_that_inspired_them",
+   "verdict": "blocked",
+   "note": "Under the Radar, 'Slowdive - Neil Halstead and Rachel Goswell on the bands that inspired them' (2014). Search summary says it carries Goswell: \"We really liked Pixies. Doolittle was kind of an anthemic LP for us back in those days.\" Cloudflare wall blocks read, archive.org copy and WebFetch (403). Look for that quote, and that Goswell is the speaker.",
+   "checked": "2026-10-26"
+  },
+  "nirvana>wipers": {
+   "url": "https://faroutmagazine.co.uk/wipers-the-band-before-nirvana/",
+   "found": "The first two [albums] were totally classic and influenced the Melvins and all the other punk rock bands. They’re another band I tried to assimilate,",
+   "verdict": "fixed",
+   "citation": "Kurt Cobain to Melody Maker, on the Wipers: \"The first two [albums] were totally classic and influenced the Melvins and all the other punk rock bands. They're another band I tried to assimilate.\"",
+   "note": "Verbatim on two Far Out pieces (which name Melody Maker as the original; original not opened). Far Out prints 'The first two [albums]', the bracket being an editor's gloss; kept in the citation. The 'named three records among favourites' part of the old citation was not checked here and is dropped.",
+   "checked": "2026-10-26"
+  },
+  "rem>big-star": {
+   "verdict": "not-found",
+   "note": "Two searches (exact quote; Buck + Big Star + 'as popular'); no page carries 'I was hoping we might get as popular as Big Star.' Related line that IS sourced: Wikipedia's Big Star page quotes Peter Buck: \"We've sort of flirted with greatness, but we've yet to make a record as good as Revolver or Highway 61 Revisited or Exile on Main Street or Big Star's Third.\" (footnote is a book, Jovanovic p.247 per the rp tag) - an admiration/comparison, not a hope to be as popular; could replace the caption if the owner wants it.",
+   "checked": "2026-10-26"
+  },
+  "ride>the-smiths": {
+   "url": "https://www.premierguitar.com/articles/23673-rides-andy-bell-addicted-to-noise",
+   "found": "Still, I didn't think about it too much until I heard the Smiths on the radio when I was 13, in 1983. I really, really liked the sound of the band, so I went and bought the first cassette of theirs I could find. That's when it all clicked. I was immediately trying to figure out Johnny Marr's guitar parts.",
+   "verdict": "fixed",
+   "citation": "Andy Bell to Premier Guitar: \"I heard the Smiths on the radio when I was 13, in 1983. I really, really liked the sound of the band, so I went and bought the first cassette of theirs I could find. That's when it all clicked. I was immediately trying to figure out Johnny Marr's guitar parts.\"",
+   "note": "The VWMusic line ('By age thirteen, I was getting into The Smiths, and Johnny Marr was a big formative influence') was not found (one search, no hit); replaced with Bell's own words from Premier Guitar. Guitar.com 'Ride Revival' also has Bell: 'When The Smiths came out, I was still a bit young, I was 13 and obsessed with Johnny Marr and a bit of a copyist.' found text is as printed (straight apostrophes).",
+   "checked": "2026-10-26"
+  },
+  "snail-mail>st-vincent": {
+   "verdict": "not-found",
+   "note": "Searched the exact quote with Modern Girls/2017, then Snail Mail + St. Vincent + 'saw myself in'; no page found. Wikipedia's Snail Mail page raw wikitext has no St. Vincent or 'saw myself' text. Modern Girls Magazine page not located.",
+   "checked": "2026-10-26"
+  },
+  "the-jesus-and-mary-chain>the-stooges": {
+   "url": "https://www.rollingstone.com/music/music-news/jesus-and-mary-chain-look-back-on-30-years-of-psychocandy-75675/2",
+   "found": "After that, we got seriously into the Velvets and the Stooges.",
+   "verdict": "ok",
+   "note": "Rolling Stone '30 Years of Psychocandy' retrospective (page 2). The page prints the answer unattributed within the band's Q&A ('we'); read as the band's own words.",
+   "checked": "2026-10-26"
+  },
+  "the-jesus-and-mary-chain>echo-and-the-bunnymen": {
+   "url": "https://www.rollingstone.com/music/music-news/jesus-and-mary-chain-look-back-on-30-years-of-psychocandy-75675/2",
+   "found": "The bands that didn’t make us want to puke back then were the likes of the Birthday Party or Echo and the Bunnymen.",
+   "verdict": "ok",
+   "note": "Same unattributed band answer. Weak as influence: it says these were the 80s bands they could stomach, while the answer's driving point is that the awful radio made them start a band. Owner may prefer to lower confidence or keep as is. Straight quotes in the citation vs curly apostrophe on page ('didn’t').",
+   "checked": "2026-10-26"
+  },
+  "sonic-youth>minor-threat": {
+   "verdict": "print",
+   "print": "Michael Azerrad, Our Band Could Be Your Life (Little, Brown, 2001), p. 273",
+   "note": "Could not find the text online (one search, Wikipedia Minor Threat has no such line); quote and page as given in the citation, unchecked. Out of search budget.",
+   "checked": "2026-10-26"
+  },
+  "dinosaur-jr>the-birthday-party": {
+   "url": "https://www.furious.com/perfect/sebadoh.html",
+   "found": "Dinosaur was really influenced by Neil Young and Black Sabbath and also a lot of... not exactly indie rock, since that wasn't around then. There was stuff like the Birthday Party, Scratch Acid and Sonic Youth.",
+   "verdict": "fixed",
+   "citation": "Lou Barlow to Jason Gross in Perfect Sound Forever (January 1997): \"There was stuff like the Birthday Party, Scratch Acid and Sonic Youth.\" Of Dinosaur Jr., he said they were \"really influenced by Neil Young and Black Sabbath\".",
+   "note": "'we were into The Birthday Party' and Mascis breaking eggs for Cave's haircut were not found (Village Voice Barlow Q&A via archive.org has neither). Replaced with Barlow's words in PSF. Barlow is speaking about Dinosaur (his old band) in general, third person, so first-person tier is a stretch but he was a member; keep as first-person or lower to reported - owner's call. Wikipedia Dinosaur Jr. also says Mascis frequently names Nick Cave as an influence (unsourced here).",
+   "checked": "2026-10-26"
+  },
+  "dinosaur-jr>wipers": {
+   "url": "https://www.clashmusic.com/?p=243991",
+   "found": "I really liked it and tried to copy stuff for my own guitar style. I couldn’t do it very well, but it was an inspiration in learning to play guitar.",
+   "verdict": "fixed",
+   "citation": "J Mascis to Clash (2014), on Wipers' Over the Edge: \"I really liked it and tried to copy stuff for my own guitar style. I couldn't do it very well, but it was an inspiration in learning to play guitar.\"",
+   "note": "Guitar World's '10 guitarists who shaped my sound' text could not be opened or found (listing page only; BrooklynVegan says Greg Sage is on the list); replaced with Mascis's 'Foundations' answer in Clash (page published 2014-07-08), Over the Edge entry. The old caption '10 guitarists who shaped my sound,' was not Mascis's words.",
+   "checked": "2026-10-26"
+  },
+  "dinosaur-jr>minutemen": {
+   "url": "https://www.pressreader.com/uk/mojo-uk/20210501/281496459032582",
+   "verdict": "blocked",
+   "note": "Mascis in MOJO, May 2021 oral history (PressReader: https://www.pressreader.com/uk/mojo-uk/20210501/281496459032582, found by search; summary said: 'We loved the Minutemen, Hüsker Dü and the Meat Puppets, and our ambition was to tour like they did and sign to SST Records, the label they were on'). read gets only PressReader's paywall shell. Look for that sentence and that Mascis speaks. Note the old Hüsker Dü citation quoted only the tail 'our ambition was to tour like they did...' which names no one; use the full sentence.",
+   "checked": "2026-10-26"
+  },
+  "dinosaur-jr>husker-du": {
+   "url": "https://www.pressreader.com/uk/mojo-uk/20210501/281496459032582",
+   "verdict": "blocked",
+   "note": "Mascis in MOJO, May 2021 oral history (PressReader: https://www.pressreader.com/uk/mojo-uk/20210501/281496459032582, found by search; summary said: 'We loved the Minutemen, Hüsker Dü and the Meat Puppets, and our ambition was to tour like they did and sign to SST Records, the label they were on'). read gets only PressReader's paywall shell. Look for that sentence and that Mascis speaks. Note the old Hüsker Dü citation quoted only the tail 'our ambition was to tour like they did...' which names no one; use the full sentence.",
+   "checked": "2026-10-26"
+  }
+ },
+ "candidates": [],
+ "offMap": [
+  {
+   "name": "Spacemen 3",
+   "namedBy": "ride",
+   "sentence": "Also, it was the late '80s and all around us, in the air, it seemed, were bands that came a bit before us, like My Bloody Valentine, Spacemen 3, and Loop. They had a noise element that we found really cool.",
+   "url": "https://www.premierguitar.com/articles/23673-rides-andy-bell-addicted-to-noise"
+  },
+  {
+   "name": "Loop",
+   "namedBy": "ride",
+   "sentence": "Also, it was the late '80s and all around us, in the air, it seemed, were bands that came a bit before us, like My Bloody Valentine, Spacemen 3, and Loop. They had a noise element that we found really cool.",
+   "url": "https://www.premierguitar.com/articles/23673-rides-andy-bell-addicted-to-noise"
+  },
+  {
+   "name": "Scratch Acid",
+   "namedBy": "dinosaur-jr",
+   "sentence": "There was stuff like the Birthday Party, Scratch Acid and Sonic Youth.",
+   "url": "https://www.furious.com/perfect/sebadoh.html"
+  },
+  {
+   "name": "Black Sabbath",
+   "namedBy": "dinosaur-jr",
+   "sentence": "Dinosaur was really influenced by Neil Young and Black Sabbath",
+   "url": "https://www.furious.com/perfect/sebadoh.html"
+  },
+  {
+   "name": "Meat Puppets",
+   "namedBy": "dinosaur-jr",
+   "sentence": "Meat Puppets are the singularly most influential band on both Dinosaur Jr. and Sebadoh.",
+   "url": "https://web.archive.org/web/20231112234514/https://www.villagevoice.com/qa-sebadoh-dinosaur-jr-s-lou-barlow-on-80s-hardcore-signing-with-sst-records-and-how-evil-j-mascis-used-to-be/"
+  }
+ ]
+}

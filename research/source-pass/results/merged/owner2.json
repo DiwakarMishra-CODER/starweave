@@ -1,0 +1,32 @@
+{
+  "agent": "owner2",
+  "searches": 0,
+  "toolStatus": "owner opened the archived joestrummer.us copy and pasted the article",
+  "finished": true,
+  "entries": {
+    "the-clash>sex-pistols": {
+      "url": "https://web.archive.org/web/20111005220200/http://www.joestrummer.us/?n9P81fmSnwwFUbhFAMuAAxe6bb31IUP&p=2&aOHDhtT57WPxn9Z7bWGQa3BBQbFVu17LfZSa&c=1&CxeQAdg5hVrrDtzOUCasLrnVGV7&XUZHs",
+      "found": "Something that inspired Strummer much more than the struggles of the 101ers was seeing a bunch of young unknowns who supported them at the Nashville on 3rd April 1976. The band went by the name of the Sex Pistols.",
+      "citation": "Joe Strummer to Record Collector, on seeing the Sex Pistols support his band the 101ers at the Nashville on 3 April 1976: \"I knew something was up... It was immediately clear.\" Record Collector adds: \"Further exposure to the Pistols' live act convinced Strummer that the 101ers had to change.\"",
+      "sourceTier": "first-person",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "note": "owner pasted the full article from the archive copy; read could not open it"
+    }
+  },
+  "offMap": [
+    {
+      "name": "Woody Guthrie",
+      "namedBy": "the-clash",
+      "sentence": "But his main inspiration was someone who might seem an even less likely inspiration: Woody Guthrie.",
+      "url": "https://web.archive.org/web/20111005220200/http://www.joestrummer.us/?n9P81fmSnwwFUbhFAMuAAxe6bb31IUP&p=2&aOHDhtT57WPxn9Z7bWGQa3BBQbFVu17LfZSa&c=1&CxeQAdg5hVrrDtzOUCasLrnVGV7&XUZHs"
+    },
+    {
+      "name": "Dr. Feelgood",
+      "namedBy": "the-clash",
+      "sentence": "Dr. Feelgood were the undisputed kings of that scene.",
+      "url": "https://web.archive.org/web/20111005220200/http://www.joestrummer.us/?n9P81fmSnwwFUbhFAMuAAxe6bb31IUP&p=2&aOHDhtT57WPxn9Z7bWGQa3BBQbFVu17LfZSa&c=1&CxeQAdg5hVrrDtzOUCasLrnVGV7&XUZHs"
+    }
+  ],
+  "candidates": []
+}

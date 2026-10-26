@@ -14,6 +14,7 @@ import { useNarrowLayout } from '@/lib/use-media-query';
 import { useAudioPreview } from '@/lib/use-audio-preview';
 import { whyFor } from '@/lib/home-story';
 import { storyCamera } from '@/lib/story-store';
+import SourceLink, { SourceStampIcon } from '@/components/ui/SourceLink';
 
 // The artist panel is a page from a cut-and-paste fan zine: their photo taped
 // on, their name with a highlighter swipe behind it, then straight away a
@@ -90,6 +91,7 @@ function FamilyRow({
 }) {
   const status = resolveCitationStatus(edge);
   const hasToggle = status === 'cited' || status === 'unsourceable';
+  const checked = !!(edge.sourceUrl || edge.sourcePrint);
   return (
     <li className="zine-row">
       <div className="zine-row__line">
@@ -100,16 +102,12 @@ function FamilyRow({
         {other.activeFrom && <span className="zine-row__year">since {other.activeFrom}</span>}
         {hasToggle && (
           <button
-            className={`zine-row__stamp${status === 'unsourceable' ? ' zine-row__stamp--none' : ''}`}
+            className={`zine-row__stamp${status === 'unsourceable' ? ' zine-row__stamp--none' : ''}${checked ? ' zine-row__stamp--checked' : ''}`}
             onClick={onToggleCitation}
             aria-expanded={isExpanded}
-            aria-label={`${isExpanded ? 'Hide' : 'Show'} source for ${other.name}`}
+            aria-label={`${isExpanded ? 'Hide' : 'Show'} source for ${other.name}${checked ? ', checked against its page' : ''}`}
           >
-            <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden>
-              <circle cx="5" cy="5" r="4.3" fill="none" stroke="currentColor" strokeWidth="1.2" />
-              <rect x="4.4" y="4.2" width="1.2" height="3.3" rx="0.6" fill="currentColor" />
-              <circle cx="5" cy="2.8" r="0.7" fill="currentColor" />
-            </svg>
+            <SourceStampIcon checked={checked} />
             {status === 'cited' ? 'Source' : 'No source'}
           </button>
         )}
@@ -118,7 +116,10 @@ function FamilyRow({
         <p className="zine-row__note">Widely accepted, unsourced.</p>
       )}
       {isExpanded && status === 'cited' && edge.citation && (
-        <p className="zine-row__note">{edge.citation}</p>
+        <div className="zine-row__note">
+          <p>{edge.citation}</p>
+          <SourceLink url={edge.sourceUrl} print={edge.sourcePrint} />
+        </div>
       )}
     </li>
   );

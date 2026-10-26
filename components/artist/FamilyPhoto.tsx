@@ -14,6 +14,7 @@ import Crossfader from './Crossfader';
 import { sizedImageUrl, imageSrcSet } from '@/lib/image-url';
 import { familyRunningOrder, standInRow, type Denial, type Member, type Portrait } from '@/lib/family-portrait';
 import type { Artist } from '@/data/types';
+import SourceLink from '@/components/ui/SourceLink';
 
 // The top of the artist page: their family as a group photo (lib/family-portrait).
 // Who shaped them stand in the back row, the artist in the middle with their
@@ -393,6 +394,7 @@ export default function FamilyPhoto({ artist, intro, genres, country, portrait }
         <span className="family-card__tier">{m.tier}</span>
       </p>
       {m.citation && <p className="family-card__quote">{m.citation}</p>}
+      <SourceLink url={m.sourceUrl} print={m.sourcePrint} className="family-card__source" />
       {/* Also while the family plays: starting it stops the player, so it
           first opens this card for real (it may only be up because this
           face is on air), or the card would close under it. */}

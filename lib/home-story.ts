@@ -71,6 +71,11 @@ export interface RecordWhy {
   speaker: string;
   /** Verbatim from a first-person citation. */
   quote: string;
+  /** Where it can be read (or the book it's in), once the source pass has checked it. */
+  sourceUrl: string | null;
+  sourcePrint: string | null;
+  /** The edge it comes from, `source>target`. */
+  edgeKey: string;
 }
 
 // The artist's own words from a citation: a quoted passage long enough to be
@@ -157,6 +162,9 @@ export function whyFor(data: StoryData, id: string): RecordWhy | null {
         other: { id: other.id, name: other.name, previewUrl: other.previewUrl ?? null, previewTrack: other.previewTrack ?? null },
         speaker: direction === 'parent' ? pick.name : other.name,
         quote,
+        sourceUrl: e.sourceUrl ?? null,
+        sourcePrint: e.sourcePrint ?? null,
+        edgeKey: `${e.source}>${e.target}`,
       },
     };
   }

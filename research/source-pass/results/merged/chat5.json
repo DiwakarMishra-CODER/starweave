@@ -1,0 +1,304 @@
+{
+  "agent": "chat5",
+  "searches": 32,
+  "toolStatus": "All 30 links now have a verdict. Five are still unresolved not-found: blonde-redhead>sonic-youth, blonde-redhead>my-bloody-valentine, mudhoney>wipers, perfume-genius>low and spoon>talking-heads. Fetch tool: it refused URLs that had not appeared in a search result (the When The Sun Hits blogspot page and a web.archive.org URL) until a search returned the page itself. Some text was read from the search tool's extract of the page URL rather than through a separate fetch. That covers SPIN (Broken Social Scene), Encyclopedia.com (Spoon, three entries) and The Fader (Perfume Genius). Not found anywhere: the original FLOOD Magazine page for Candy Claws>Blonde Redhead (Ryan Hoover on listening to the Blonde Redhead album 23), the Pitchfork Kazu Makino page, the Life of the Record podcast page and the American Songwriter Britt Daniel piece.",
+  "entries": {
+    "airiel>my-bloody-valentine": {
+      "url": "https://somewherecold.net/2004/05/15/airiel/",
+      "found": "And then around that time, I started listening to the Cocteau Twins, Lush, My Bloody Valentine, Ride and all those great British bands.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Jeremy Wrenn to Somewherecold (2004), on his influences: \"And then around that time, I started listening to the Cocteau Twins, Lush, My Bloody Valentine, Ride and all those great British bands.\"",
+      "sourceTier": "first-person"
+    },
+    "airiel>cocteau-twins": {
+      "url": "http://whenthesunhitsblog.blogspot.com/2011/05/interview-jeremy-wrenn-of-airiel.html",
+      "found": "The obvious ones would be Cocteau Twins, Kitchens of Distinction, maybe Pale Saints.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Jeremy Wrenn to When The Sun Hits (2011), asked which artists most influenced his work: \"The obvious ones would be Cocteau Twins, Kitchens of Distinction, maybe Pale Saints.\"",
+      "sourceTier": "first-person"
+    },
+    "airiel>lush": {
+      "url": "https://somewherecold.net/2004/05/15/airiel/",
+      "found": "And then around that time, I started listening to the Cocteau Twins, Lush, My Bloody Valentine, Ride and all those great British bands.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Jeremy Wrenn to Somewherecold (2004), on his influences: \"And then around that time, I started listening to the Cocteau Twins, Lush, My Bloody Valentine, Ride and all those great British bands.\"",
+      "sourceTier": "first-person"
+    },
+    "airiel>ride": {
+      "url": "https://somewherecold.net/2004/05/15/airiel/",
+      "found": "And then around that time, I started listening to the Cocteau Twins, Lush, My Bloody Valentine, Ride and all those great British bands.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Jeremy Wrenn to Somewherecold (2004), on his influences: \"And then around that time, I started listening to the Cocteau Twins, Lush, My Bloody Valentine, Ride and all those great British bands.\"",
+      "sourceTier": "first-person"
+    },
+    "beabadoobee>pavement": {
+      "url": "https://www.nme.com/big-reads/the-big-read-beabadoobee-interview-space-cadet-dirty-hit-2561006",
+      "found": "My influencers are Sonic Youth, Pavement – this shit that totally shaped me,",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Beabadoobee to NME (October 2019): \"My influencers are Sonic Youth, Pavement – this shit that totally shaped me,\" and \"They shaped the way I dress, how I speak, act and just everything I am.\"",
+      "sourceTier": "first-person"
+    },
+    "beabadoobee>sonic-youth": {
+      "url": "https://www.nme.com/big-reads/the-big-read-beabadoobee-interview-space-cadet-dirty-hit-2561006",
+      "found": "My influencers are Sonic Youth, Pavement – this shit that totally shaped me,",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Beabadoobee to NME (October 2019): \"My influencers are Sonic Youth, Pavement – this shit that totally shaped me,\" and \"They shaped the way I dress, how I speak, act and just everything I am.\"",
+      "sourceTier": "first-person"
+    },
+    "beabadoobee>elliott-smith": {
+      "url": "https://www.thecurrent.org/feature/2021/07/05/album-of-the-week-beabadoobee-our-extended-play",
+      "found": "I loved Elliott Smith. I still love him.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Beabadoobee to Jill Riley for The Current (July 2021), on learning guitar from YouTube tutorials: \"I loved Elliott Smith. I still love him.\"",
+      "sourceTier": "first-person"
+    },
+    "belle-and-sebastian>velvet-underground": {
+      "url": "https://stubermania.substack.com/p/a-conversation-with-stuart-murdoch",
+      "found": "It was a combination of post-punk and embracing the beauty of the ‘60s and ‘70s: the Velvets, the Monkees, the Byrds, Love.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Stuart Murdoch to Stuart Berman (a 2014 Pitchfork interview, expanded on Berman's Stübermania newsletter), on where Belle and Sebastian came from: \"It was a combination of post-punk and embracing the beauty of the ‘60s and ‘70s: the Velvets, the Monkees, the Byrds, Love.\"",
+      "sourceTier": "first-person"
+    },
+    "blonde-redhead>sonic-youth": {
+      "verdict": "not-found",
+      "note": "Two searches. The only lead is a Pitchfork conversation with Kazu Makino (her influential albums), which I never reached. A FarOut Magazine article paraphrasing it has her saying Sonic Youth, Beck and Nirvana were 'bands I loved but definitely didn't identify with', so that page may not support SY as an influence. Another page I found, a BmoreArt interview (bmoreart.com/2024/04/standing-firm-at-thirty-an-interview-with-blonde-redheads-kazu-makino.html), only has the interviewer saying the band was compared to Sonic Youth. To check: open the Pitchfork page and look for a first-person Sonic Youth line; if there is none, mark it 'decide' (comparison only).",
+      "checked": "2026-10-26"
+    },
+    "blonde-redhead>my-bloody-valentine": {
+      "verdict": "not-found",
+      "note": "Two searches. The Pitchfork Kazu Makino page never surfaced. FarOut Magazine says Makino told Pitchfork about hitting a 'wall of noise sound' during her early New York years: 'It was Lush and My Bloody Valentine.' That is probably the right first-person influence source, but I haven't opened the original. A TIDAL Magazine interview (tidal.com/magazine/article/blonde-redhead-its-almost-too-personal/1-8869) has her saying 'And of course My Bloody Valentine – they're so soothing', but that is an admired-sound answer, not influence. To check: open the Pitchfork page and copy the exact sentence.",
+      "checked": "2026-10-26"
+    },
+    "broken-social-scene>talk-talk": {
+      "url": "https://www.spinmagazine.com/2011/05/my-favorite-things-broken-social-scenes-kevin-drew/",
+      "verdict": "decide",
+      "note": "The SPIN 'My Favorite Things' page (May 2011) carries the quoted text, with Kevin Drew naming 'Laughing Stock by Talk Talk' under FAVORITE ALBUM. It is a favourite-album answer about authentic emotion, with no statement that Talk Talk shaped Drew's or Broken Social Scene's own music. Per the rules that is a favourites-list-type answer, not influence. Proposal: remove, or keep only if a better source turns up. A lead is Drew's Brooklyn Vegan '10 favorite ballads' list (New Grass by Talk Talk), which I did not open.",
+      "checked": "2026-10-26"
+    },
+    "broken-social-scene>dirty-three": {
+      "url": "https://www.spinmagazine.com/2011/05/my-favorite-things-broken-social-scenes-kevin-drew/",
+      "verdict": "decide",
+      "note": "Same SPIN 'My Favorite Things' page: Drew's FAVORITE ALBUM answer names 'Whatever You Love, You Are by the Dirty Three' as among the most authentic human emotion on an album. It is a present-tense favourite with no claim of influence on his own music. Proposal: remove, or keep only if a better source turns up. A separate Arcana interview of Drew has him listing Dirty Three among his 'favourite bands', which is also not an influence statement.",
+      "checked": "2026-10-26"
+    },
+    "candy-claws>blonde-redhead": {
+      "url": "https://web.archive.org/web/2024/https://www.documentjournal.com/2023/08/candy-claws-playlist-music-ceres-calypso-anniversary-reissue-music/",
+      "found": "We’d listen to this album on our drives through Rocky Mountain National Park.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Candy Claws, in a 2023 Document Journal playlist of \"the tracks that influence their tender sound\", on Blonde Redhead's 23: \"We’d listen to this album on our drives through Rocky Mountain National Park.\"",
+      "sourceTier": "first-person",
+      "note": "live page refuses read; archive copy opened"
+    },
+    "candy-claws>my-bloody-valentine": {
+      "url": "https://breakyrlegs.tumblr.com/post/81455889764/interview-candy-claws",
+      "found": "I loved Beach Boys too, and I listened to Starflyer and My Bloody Valentine during my high school years. I am influenced by stuff I grew up with, and now I want to do my own answer to those bands.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Ryan Hover of Candy Claws to Break Yr Legs (April 2014): \"I loved Beach Boys too, and I listened to Starflyer and My Bloody Valentine during my high school years. I am influenced by stuff I grew up with, and now I want to do my own answer to those bands.\"",
+      "sourceTier": "first-person"
+    },
+    "candy-claws>the-knife": {
+      "url": "https://breakyrlegs.tumblr.com/post/81455889764/interview-candy-claws",
+      "found": "I was actually reading through your blog and you got me really into The Knife and I’ve been listening to lots of Boards of Canada, so that might come off in our future work.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Ryan Hover of Candy Claws to Break Yr Legs (2014): \"I was actually reading through your blog and you got me really into The Knife and I’ve been listening to lots of Boards of Canada, so that might come off in our future work.\""
+    },
+    "candy-claws>boards-of-canada": {
+      "url": "https://breakyrlegs.tumblr.com/post/81455889764/interview-candy-claws",
+      "found": "I was actually reading through your blog and you got me really into The Knife and I’ve been listening to lots of Boards of Canada, so that might come off in our future work.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "sourceTier": "first-person",
+      "citation": "Ryan Hover of Candy Claws to Break Yr Legs (2014): \"I was actually reading through your blog and you got me really into The Knife and I’ve been listening to lots of Boards of Canada, so that might come off in our future work.\""
+    },
+    "duster>velvet-underground": {
+      "url": "https://lineamasondixon.it/en/2020/08/07/a-small-talk-with-duster/",
+      "found": "So sure, Codeine but also like Rorshach and Thelonius Monk and The Velvet Underground and Crossed Out and Blondie",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Clay Parton to La Linea Mason & Dixon (7 August 2020), asked whether post-rock, slowcore and shoegaze acts affected Duster's music: \"So sure, Codeine but also like Rorshach and Thelonius Monk and The Velvet Underground and Crossed Out and Blondie\"",
+      "sourceTier": "first-person"
+    },
+    "duster>codeine": {
+      "url": "https://lineamasondixon.it/en/2020/08/07/a-small-talk-with-duster/",
+      "found": "So sure, Codeine but also like Rorshach and Thelonius Monk and The Velvet Underground and Crossed Out and Blondie",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Clay Parton to La Linea Mason & Dixon (7 August 2020), asked whether post-rock, slowcore and shoegaze acts affected Duster's music: \"So sure, Codeine but also like Rorshach and Thelonius Monk and The Velvet Underground and Crossed Out and Blondie\"",
+      "sourceTier": "first-person"
+    },
+    "mudhoney>black-flag": {
+      "url": "https://cvindependent.com/2015/09/gods-of-grunge-mark-your-calendars-for-mudhoney-s-show-at-pappy-and-harriet-s/",
+      "found": "But we were half Black Flag, half Sonics, half Black Sabbath—so I guess we were 3 halves!",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Steve Turner to the Coachella Valley Independent (September 2015), on Mudhoney's makeup: \"But we were half Black Flag, half Sonics, half Black Sabbath—so I guess we were 3 halves!\"",
+      "sourceTier": "first-person"
+    },
+    "mudhoney>wipers": {
+      "verdict": "not-found",
+      "note": "One search. The Life of the Record (Talkhouse) podcast page (talkhouse.com/the-making-of-superfuzz-bigmuff-by-mudhoney-featuring-mark-arm-and-steve-turner) is a summary with no transcript, and the quote would be in the audio. Lead: Rolling Stone Italia, 'Senza i Wipers non ci sarebbero stati i Nirvana' (rollingstone.it/?p=529722), reports in Italian that Steve Turner called 'No One Has' the 'Wipers song' and that Turner and Arm formed Green River partly inspired by the Wipers. That would be tier 'reported', and I haven't opened it. Better to find the English original of that piece, or a transcript of the podcast.",
+      "checked": "2026-10-26"
+    },
+    "perfume-genius>xiu-xiu": {
+      "url": "https://www.thefader.com/2021/08/09/perfume-genius-on-writing-erotic-fan-fiction-and-turning-40",
+      "verdict": "decide",
+      "note": "The Fader podcast write-up (9 August 2021) carries the quoted words: Hadreas says 'there's some music like Xiu Xiu, who I love, where their songs are so intense and visceral and over the top...' He is using Xiu Xiu as an example of how his reaction to one intense song changes from day to day (devastating one day, campy the next). It is a present-tense fan remark in an aside about listening, not a statement that Xiu Xiu shaped his own music, so it falls under 'what I'm listening to now'. Proposal: remove, or keep only if a better source turns up. I read it from the search tool's page extract, not through a separate fetch.",
+      "checked": "2026-10-26"
+    },
+    "perfume-genius>stars-of-the-lid": {
+      "url": "https://thequietus.com/interviews/bakers-dozen/perfume-genius-interview-favourite-albums/2/",
+      "found": "I also listened to this album right before I wrote all of my first album, and I kind of credit it with connecting part of my brain that allowed me to write for the first time.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Mike Hadreas to The Quietus (Baker's Dozen, 5 July 2017), on Stars of the Lid's And Their Refinement of the Decline: \"I also listened to this album right before I wrote all of my first album, and I kind of credit it with connecting part of my brain that allowed me to write for the first time.\"",
+      "sourceTier": "first-person"
+    },
+    "perfume-genius>low": {
+      "url": "https://thequietus.com/interviews/bakers-dozen/perfume-genius-interview-favourite-albums/13/",
+      "found": "I was a little older, kind of the end of my teenage years for this one. I think I had dropped out of high school and didn’t know what I was going to do. This album definitely has some of that hymnal quality I love; it’s really minimal but full at the same time.",
+      "citation": "Mike Hadreas to The Quietus (Baker's Dozen, 2017), on Low's Things We Lost in the Fire: \"I was a little older, kind of the end of my teenage years for this one... This album definitely has some of that hymnal quality I love; it’s really minimal but full at the same time.\"",
+      "sourceTier": "first-person",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "note": "slide 13 of the Baker's Dozen, opened by the coordinator through read"
+    },
+    "spoon>wire": {
+      "url": "https://www.encyclopedia.com/people/literature-and-arts/music-popular-and-jazz-biographies/spoon",
+      "found": "At the time, Daniel later noted, he was listening to and learning from records by Wire, Gang of Four, and Public Image Ltd.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Encyclopedia.com's Spoon biography, on the period of A Series of Sneaks: \"At the time, Daniel later noted, he was listening to and learning from records by Wire, Gang of Four, and Public Image Ltd.\"",
+      "sourceTier": "reported"
+    },
+    "spoon>gang-of-four": {
+      "url": "https://www.encyclopedia.com/people/literature-and-arts/music-popular-and-jazz-biographies/spoon",
+      "found": "At the time, Daniel later noted, he was listening to and learning from records by Wire, Gang of Four, and Public Image Ltd.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Encyclopedia.com's Spoon biography, on the period of A Series of Sneaks: \"At the time, Daniel later noted, he was listening to and learning from records by Wire, Gang of Four, and Public Image Ltd.\"",
+      "sourceTier": "reported"
+    },
+    "spoon>pixies": {
+      "url": "https://www.encyclopedia.com/people/literature-and-arts/music-popular-and-jazz-biographies/spoon",
+      "found": "Plagued by an unstable lineup since forming in the early 1990s, the group also fell victim to record label executives who failed to follow through on promises, a record-buying public that appeared uninterested in, or perhaps unaware of, the group’s music, and the initial media stigma of sounding much like two of their primary influences—the Pixies and Wire.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Encyclopedia.com's Spoon biography names the Pixies and Wire as two of the band's \"primary influences\".",
+      "sourceTier": "reported"
+    },
+    "spoon>talking-heads": {
+      "verdict": "not-found",
+      "note": "Two searches for the American Songwriter (2021) Britt Daniel interview; it never surfaced. Nothing I read carried a Talking Heads link. Searched: Britt Daniel with Wire, Talking Heads, American Songwriter. Needs the American Songwriter page opened.",
+      "checked": "2026-10-26"
+    },
+    "squid>stereolab": {
+      "url": "https://amherststudent.com/article/squids-louis-borlase-on-his-bands-influences-and-modern-post-punk/",
+      "found": "I love the guitarist Tim Gane. I think he’s just one of the best guitar players in that he’s managed to kind of make that band’s music so memorable and unique for them.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Louis Borlase to The Amherst Student (23 February 2021), asked about a favourite guitarist who has influenced him: \"I love the guitarist Tim Gane. I think he’s just one of the best guitar players in that he’s managed to kind of make that band’s music so memorable and unique for them.\"",
+      "sourceTier": "first-person"
+    },
+    "squid>tortoise": {
+      "url": "https://amherststudent.com/article/squids-louis-borlase-on-his-bands-influences-and-modern-post-punk/",
+      "verdict": "decide",
+      "note": "The Amherst Student interview (23 February 2021) has Borlase naming Tortoise's Millions Now Living Will Never Die first in his 'five albums for the rest of your life' list: 'They have this cool electronic sound, without vocals, and it kind of challenged a lot of the boundaries that they had at the time.' That is a favourites-list answer with praise, but he does not say Tortoise shaped Squid or his own playing; he does say 'It really influenced my taste' about the Philip Glass entry in the same list. Proposal: remove, or keep only as a weak link and look for a statement of influence. It is not a Loud And Quiet piece as the citation says.",
+      "checked": "2026-10-26"
+    },
+    "squid>burial": {
+      "url": "https://amherststudent.com/article/squids-louis-borlase-on-his-bands-influences-and-modern-post-punk/",
+      "found": "This actually was my first real introduction to electronic music.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Louis Borlase to The Amherst Student (23 February 2021), on Burial's Untrue, one of five albums he would listen to for the rest of his life: \"This actually was my first real introduction to electronic music.\"",
+      "sourceTier": "first-person"
+    }
+  },
+  "candidates": [
+    {
+      "source": "perfume-genius",
+      "target": "bjork",
+      "kind": "influence",
+      "speaker": "Mike Hadreas",
+      "sentence": "She was kind of my first true obsession.",
+      "url": "https://thequietus.com/interviews/bakers-dozen/perfume-genius-interview-favourite-albums/10/"
+    },
+    {
+      "source": "perfume-genius",
+      "target": "this-mortal-coil",
+      "kind": "influence",
+      "speaker": "Mike Hadreas",
+      "sentence": "I was driving with a friend and they put the cover of ‘Song to the Siren’ on, and it was very transformative. I’d consider that my favorite song of all time.",
+      "url": "https://thequietus.com/interviews/bakers-dozen/perfume-genius-interview-favourite-albums/8/"
+    }
+  ],
+  "offMap": [
+    {
+      "name": "Kitchens of Distinction",
+      "namedBy": "airiel",
+      "sentence": "As for my influences, I think my heart stopped the first time I heard the Kitchens of Distinction’s “Drive That Fast”.",
+      "url": "https://somewherecold.net/2004/05/15/airiel/"
+    },
+    {
+      "name": "The Stone Roses",
+      "namedBy": "airiel",
+      "sentence": "The Happy Mondays, Stone Roses and Charlatans UK were a major influence on my drum programming.",
+      "url": "https://somewherecold.net/2004/05/15/airiel/"
+    },
+    {
+      "name": "Astrobrite",
+      "namedBy": "airiel",
+      "sentence": "Astrobrite was a big influence when I started Airiel.",
+      "url": "http://whenthesunhitsblog.blogspot.com/2011/05/interview-jeremy-wrenn-of-airiel.html"
+    },
+    {
+      "name": "Public Image Ltd",
+      "namedBy": "spoon",
+      "sentence": "At the time, Daniel later noted, he was listening to and learning from records by Wire, Gang of Four, and Public Image Ltd.",
+      "url": "https://www.encyclopedia.com/people/literature-and-arts/music-popular-and-jazz-biographies/spoon"
+    },
+    {
+      "name": "Rorschach",
+      "namedBy": "duster",
+      "sentence": "So sure, Codeine but also like Rorshach and Thelonius Monk and The Velvet Underground and Crossed Out and Blondie",
+      "url": "https://lineamasondixon.it/en/2020/08/07/a-small-talk-with-duster/"
+    },
+    {
+      "name": "The Sonics",
+      "namedBy": "mudhoney",
+      "sentence": "But we were half Black Flag, half Sonics, half Black Sabbath—so I guess we were 3 halves!",
+      "url": "https://cvindependent.com/2015/09/gods-of-grunge-mark-your-calendars-for-mudhoney-s-show-at-pappy-and-harriet-s/"
+    },
+    {
+      "name": "The Beatles",
+      "namedBy": "candy-claws",
+      "sentence": "I was just really into the Beatles at the time.",
+      "url": "https://breakyrlegs.tumblr.com/post/81455889764/interview-candy-claws"
+    },
+    {
+      "name": "Starflyer 59",
+      "namedBy": "candy-claws",
+      "sentence": "Fifties pop with shoegaze guitars—a huge influence on how we approached the classic pop-song structure with blown-out sound.",
+      "url": "https://www.documentjournal.com/2023/08/candy-claws-playlist-music-ceres-calypso-anniversary-reissue-music/"
+    },
+    {
+      "name": "Philip Glass",
+      "namedBy": "squid",
+      "sentence": "It really influenced my taste, and just the simple piano playing.",
+      "url": "https://amherststudent.com/article/squids-louis-borlase-on-his-bands-influences-and-modern-post-punk/"
+    }
+  ],
+  "finished": true
+}

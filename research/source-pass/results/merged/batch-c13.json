@@ -1,0 +1,347 @@
+{
+  "name": "c13",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:coil",
+      "phase": "first-person",
+      "speaker": "Coil",
+      "links": [
+        {
+          "key": "coil>can",
+          "from": "Coil",
+          "to": "Can",
+          "fromYear": 1982,
+          "toYear": 1968,
+          "citation": "Peter Christopherson traced Coil's early musical interests back to Stockhausen, Captain Beefheart, Can and Amon Duul, in a 1998 Wire magazine interview.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:dirty-three",
+      "phase": "first-person",
+      "speaker": "Dirty Three",
+      "links": [
+        {
+          "key": "dirty-three>velvet-underground",
+          "from": "Dirty Three",
+          "to": "The Velvet Underground",
+          "fromYear": 1992,
+          "toYear": 1965,
+          "citation": "FLOOD Magazine, \"The Poetry of Motion: Dirty Three on 30 Years of Love Changes Everything\" (June 26, 2024): Warren Ellis \"begins rattling off some of Dirty Three's initial influences in Elvin Jones, Rahsaan Roland Kirk, and the 'wild liberation' of The Velvet Underground.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:everything-everything",
+      "phase": "first-person",
+      "speaker": "Everything Everything",
+      "links": [
+        {
+          "key": "everything-everything>radiohead",
+          "from": "Everything Everything",
+          "to": "Radiohead",
+          "fromYear": 2007,
+          "toYear": 1985,
+          "citation": "Jonathan Higgs told Interview Magazine the band shares \"a shared passion for stuff like Radiohead, The Beatles, Aphex Twin, Kraftwerk, King Crimson, Dr Dre\"; separately, drummer Michael Spearman told NME that Kid A was a massive album for them because they were the right age when it came out, and Radiohead have always loomed large as an influence on the band.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "everything-everything>aphex-twin",
+          "from": "Everything Everything",
+          "to": "Aphex Twin",
+          "fromYear": 2007,
+          "toYear": 1992,
+          "citation": "Interview Magazine, Jonathan Higgs naming Aphex Twin alongside Radiohead and Kraftwerk; guitarist Alex Robertshaw separately told MusicTech in 2024 he has \"always been a fan of early Aphex.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "everything-everything>kraftwerk",
+          "from": "Everything Everything",
+          "to": "Kraftwerk",
+          "fromYear": 2007,
+          "toYear": 1970,
+          "citation": "Jonathan Higgs told Interview Magazine the band shares \"a shared passion for stuff like Radiohead, The Beatles, Aphex Twin, Kraftwerk, King Crimson, Dr Dre.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:far-apart",
+      "phase": "first-person",
+      "speaker": "Far Apart",
+      "links": [
+        {
+          "key": "far-apart>fugazi",
+          "from": "Far Apart",
+          "to": "Fugazi",
+          "fromYear": 1995,
+          "toYear": 1986,
+          "citation": "Far Apart's own Bandcamp bio (written for the 2025 reissue): \"Drawing inspiration from bands like Fugazi, Drive Like Jehu, and Jawbox.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "far-apart>drive-like-jehu",
+          "from": "Far Apart",
+          "to": "Drive Like Jehu",
+          "fromYear": 1995,
+          "toYear": 1990,
+          "citation": "Far Apart's own Bandcamp bio (written for the 2025 reissue): \"Drawing inspiration from bands like Fugazi, Drive Like Jehu, and Jawbox.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "first-person:fontaines-dc",
+      "phase": "first-person",
+      "speaker": "Fontaines D.C.",
+      "links": [
+        {
+          "key": "fontaines-dc>joy-division",
+          "from": "Fontaines D.C.",
+          "to": "Joy Division",
+          "fromYear": 2017,
+          "toYear": 1976,
+          "citation": "Guitar World feature/interview on Fontaines D.C.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "fontaines-dc>pixies",
+          "from": "Fontaines D.C.",
+          "to": "Pixies",
+          "fromYear": 2017,
+          "toYear": 1986,
+          "citation": "Paste feature/interview on Fontaines D.C.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:grimes",
+      "phase": "first-person",
+      "speaker": "Grimes",
+      "links": [
+        {
+          "key": "grimes>cocteau-twins",
+          "from": "Grimes",
+          "to": "Cocteau Twins",
+          "fromYear": 2010,
+          "toYear": 1979,
+          "citation": "Cocteau Twins is definitely a pretty heavy influence on me... one of the first bands I was into that was considered alternative, or artistically relevant, that was female-fronted. I feel like that was a pretty big thing for me when I was in high school. (Georgia Straight)",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "grimes>aphex-twin",
+          "from": "Grimes",
+          "to": "Aphex Twin",
+          "fromYear": 2010,
+          "toYear": 1992,
+          "citation": "My favourite Aphex Twin is Selected Ambient Works -- the really early stuff. I'm just really into the texture of a lot of his beats and how sharp they are. (TheThousands, shortly after Visions, 2012)",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:hot-chip",
+      "phase": "first-person",
+      "speaker": "Hot Chip",
+      "links": [
+        {
+          "key": "hot-chip>this-heat",
+          "from": "Hot Chip",
+          "to": "This Heat",
+          "fromYear": 2000,
+          "toYear": 1976,
+          "citation": "Alexis Taylor, self-cited. Pitchfork, Evan Minsker, \"This Heat to Reissue Discography\" (Nov 18, 2015).",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:hum",
+      "phase": "first-person",
+      "speaker": "Hum",
+      "links": [
+        {
+          "key": "hum>dinosaur-jr",
+          "from": "Hum",
+          "to": "Dinosaur Jr.",
+          "fromYear": 1989,
+          "toYear": 1984,
+          "citation": "Hum's official band bio (h-u-m.net/bio/): Matt Talbott's favorite bands include \"Dinosaur Jr., Failure, Bitch Magnet, The Flaming Lips, Rush, The Police, R.E.M., Love Cup, and My Bloody Valentine.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "hum>rem",
+          "from": "Hum",
+          "to": "R.E.M.",
+          "fromYear": 1989,
+          "toYear": 1980,
+          "citation": "Hum's official band bio (h-u-m.net/bio/): Matt Talbott's favorite bands include \"Dinosaur Jr., Failure, Bitch Magnet, The Flaming Lips, Rush, The Police, R.E.M., Love Cup, and My Bloody Valentine.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "hum>my-bloody-valentine",
+          "from": "Hum",
+          "to": "My Bloody Valentine",
+          "fromYear": 1989,
+          "toYear": 1983,
+          "citation": "Hum's official band bio (h-u-m.net/bio/): Matt Talbott's favorite bands include \"Dinosaur Jr., Failure, Bitch Magnet, The Flaming Lips, Rush, The Police, R.E.M., Love Cup, and My Bloody Valentine.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:idles",
+      "phase": "first-person",
+      "speaker": "IDLES",
+      "links": [
+        {
+          "key": "idles>the-clash",
+          "from": "IDLES",
+          "to": "The Clash",
+          "fromYear": 2009,
+          "toYear": 1976,
+          "citation": "Joe Talbot told the Irish News that if a band is genuinely subversive, it's probably influenced by the Clash in some way -- their bravery in pushing boundaries, and their celebration of different cultures, is something IDLES built on even for listeners who don't personally like the Clash's music.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:mgmt",
+      "phase": "first-person",
+      "speaker": "MGMT",
+      "links": [
+        {
+          "key": "mgmt>brian-eno",
+          "from": "MGMT",
+          "to": "Brian Eno",
+          "fromYear": 2002,
+          "toYear": 1971,
+          "citation": "AllMusic: Congratulations contains a song dedicated to two of their heroes, Dan Treacy of Television Personalities and Brian Eno. Apple Music and BrooklynVegan both describe the tracklist as a love letter to their influences; there is literally a song called \"Brian Eno.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "mgmt>talking-heads",
+          "from": "MGMT",
+          "to": "Talking Heads",
+          "fromYear": 2002,
+          "toYear": 1975,
+          "citation": "Andrew VanWyngarden to Larry Fitzmaurice, Vice (18 Feb 2018), naming Talking Heads and OMD as artists \"definitely in [their] blood.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "mgmt>omd",
+          "from": "MGMT",
+          "to": "Orchestral Manoeuvres in the Dark",
+          "fromYear": 2002,
+          "toYear": 1978,
+          "citation": "Andrew VanWyngarden to Larry Fitzmaurice, Vice (18 Feb 2018), naming Talking Heads and OMD as \"definitely in [their] blood.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:ninajirachi",
+      "phase": "first-person",
+      "speaker": "Ninajirachi",
+      "links": [
+        {
+          "key": "ninajirachi>porter-robinson",
+          "from": "Ninajirachi",
+          "to": "Porter Robinson",
+          "fromYear": 2017,
+          "toYear": 2010,
+          "citation": "MusicTech interview: she has a tattoo of his logo, and describes \"the emotion I was drawn to [early on]... the contrast of the emotion and gorgeous chord progressions with the really, like, disgusting sound design.\" Bandcamp Daily profile adds that seeing his production at Second Sky festival \"gave her a vision for making big music.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "ninajirachi>sophie",
+          "from": "Ninajirachi",
+          "to": "SOPHIE",
+          "fromYear": 2017,
+          "toYear": 2013,
+          "citation": "MusicTech, invoking \"another of her musical heroes, SOPHIE, who manipulated technology to bold and thrilling effect.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:oklou",
+      "phase": "first-person",
+      "speaker": "Oklou",
+      "links": [
+        {
+          "key": "oklou>arca",
+          "from": "Oklou",
+          "to": "Arca",
+          "fromYear": 2014,
+          "toYear": 2012,
+          "citation": "I-D magazine interview (around Galore): Oklou called Arca \"the REAL star of current experimental music.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        },
+        {
+          "key": "oklou>vashti-bunyan",
+          "from": "Oklou",
+          "to": "Vashti Bunyan",
+          "fromYear": 2014,
+          "toYear": 1965,
+          "citation": "Oklou curated her own NTS mix around the inspirations behind Choke Enough, naming Vashti Bunyan among them.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:prefab-sprout",
+      "phase": "first-person",
+      "speaker": "Prefab Sprout",
+      "links": [
+        {
+          "key": "prefab-sprout>bob-dylan",
+          "from": "Prefab Sprout",
+          "to": "Bob Dylan",
+          "fromYear": 1982,
+          "toYear": 1961,
+          "citation": "Uncut's 2009 \"My Life In Music\" feature: Paddy McAloon named Dylan's \"Lay Lady Lay\" as his first record purchase, at 13, prizing \"the gorgeousness of the record and the finger-breaking possibilities... for a 13-year-old learning barre chords.\" He also singled out \"Sad-Eyed Lady of the Lowlands\" for being grateful it ran 11 minutes rather than three and a half.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "prefab-sprout>david-bowie",
+          "from": "Prefab Sprout",
+          "to": "David Bowie",
+          "fromYear": 1982,
+          "toYear": 1969,
+          "citation": "Uncut: McAloon called Bowie's Station to Station the LP that sounds mysterious to him -- \"It sounds like Bowie's mid-way between two things and I like that. The music is mysterious -- chilly and passionate at the same time.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    }
+  ]
+}

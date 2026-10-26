@@ -1,0 +1,369 @@
+{
+  "name": "c9",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:big-thief",
+      "phase": "first-person",
+      "speaker": "Big Thief",
+      "links": [
+        {
+          "key": "big-thief>elliott-smith",
+          "from": "Big Thief",
+          "to": "Elliott Smith",
+          "fromYear": 2015,
+          "toYear": 1994,
+          "citation": "Adrianne Lenker has said she got into Elliott Smith between the ages of 12 and 14, per Stereogum, and later called his music \"life-changing\" in an interview with The Ringer.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "big-thief>joni-mitchell",
+          "from": "Big Thief",
+          "to": "Joni Mitchell",
+          "fromYear": 2015,
+          "toYear": 1964,
+          "citation": "Adrianne Lenker named Joni Mitchell among the artists she got into between ages 12 and 14, per Stereogum, and discussed the breadth of Mitchell's career in a separate interview with The Ringer.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "big-thief>leonard-cohen",
+          "from": "Big Thief",
+          "to": "Leonard Cohen",
+          "fromYear": 2015,
+          "toYear": 1967,
+          "citation": "Adrianne Lenker named Leonard Cohen in the same Stereogum list of formative artists from ages 12 to 14, corroborated in her interview with The Ringer.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "big-thief>neil-young",
+          "from": "Big Thief",
+          "to": "Neil Young",
+          "fromYear": 2015,
+          "toYear": 1966,
+          "citation": "Adrianne Lenker discussed Neil Young's career breadth admiringly in her interview with The Ringer, distinct from the earlier-formed formative-listening list she gave Stereogum.",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "first-person:blood-orange",
+      "phase": "first-person",
+      "speaker": "Blood Orange",
+      "links": [
+        {
+          "key": "blood-orange>the-smiths",
+          "from": "Blood Orange",
+          "to": "The Smiths",
+          "fromYear": 2011,
+          "toYear": 1982,
+          "citation": "Dev Hynes to Grammy.com (Aug 2025): \"if I go back to when I was younger and the earliest things that informed me, it's the Smiths, Radiohead, New Order, Megadeth and Slipknot, Prefab Sprout.\" Corroborated in AnOther with a stated mechanism: \"Some of my biggest lyrical references, like Morrissey, have a way with these really blunt sentences.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.9
+        },
+        {
+          "key": "blood-orange>radiohead",
+          "from": "Blood Orange",
+          "to": "Radiohead",
+          "fromYear": 2011,
+          "toYear": 1985,
+          "citation": "Dev Hynes to Grammy.com (Aug 2025): \"if I go back to when I was younger and the earliest things that informed me, it's the Smiths, Radiohead, New Order, Megadeth and Slipknot, Prefab Sprout.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "blood-orange>new-order",
+          "from": "Blood Orange",
+          "to": "New Order",
+          "fromYear": 2011,
+          "toYear": 1980,
+          "citation": "Dev Hynes to Grammy.com (Aug 2025): \"if I go back to when I was younger and the earliest things that informed me, it's the Smiths, Radiohead, New Order, Megadeth and Slipknot, Prefab Sprout.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "blood-orange>prefab-sprout",
+          "from": "Blood Orange",
+          "to": "Prefab Sprout",
+          "fromYear": 2011,
+          "toYear": 1982,
+          "citation": "Dev Hynes to Grammy.com (Aug 2025): \"if I go back to when I was younger and the earliest things that informed me, it's the Smiths, Radiohead, New Order, Megadeth and Slipknot, Prefab Sprout.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "blood-orange>the-replacements",
+          "from": "Blood Orange",
+          "to": "The Replacements",
+          "fromYear": 2011,
+          "toYear": 1979,
+          "citation": "Dev Hynes describes writing \"a song that did to Paul Westerberg what he did to Big Star\" -- a compositional model rather than a statement of admiration.",
+          "sourceTier": "first-person",
+          "confidence": 0.6
+        },
+        {
+          "key": "blood-orange>massive-attack",
+          "from": "Blood Orange",
+          "to": "Massive Attack",
+          "fromYear": 2011,
+          "toYear": 1988,
+          "citation": "Dev Hynes cites Massive Attack as his model for how Blood Orange is built -- the one-person-plus-rotating-guests format -- rather than as a sonic influence.",
+          "sourceTier": "first-person",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "first-person:blur",
+      "phase": "first-person",
+      "speaker": "Blur",
+      "links": [
+        {
+          "key": "blur>sonic-youth",
+          "from": "Blur",
+          "to": "Sonic Youth",
+          "fromYear": 1988,
+          "toYear": 1981,
+          "citation": "Graham Coxon told Premier Guitar in 2018 that he loved Sonic Youth, discovering them via a South Bank Show programme on the New York scene, and built his own guitar style by trying to get them, John Zorn's Spy vs. Spy and Pink Floyd's loose psychedelic improvisation all in one place.",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        },
+        {
+          "key": "blur>fugazi",
+          "from": "Blur",
+          "to": "Fugazi",
+          "fromYear": 1988,
+          "toYear": 1986,
+          "citation": "Graham Coxon: his introduction to Fugazi (and the Picciotto-led Rites of Spring) in the mid-90s was \"one of the most musically significant moments of his life.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "blur>rites-of-spring",
+          "from": "Blur",
+          "to": "Rites of Spring",
+          "fromYear": 1988,
+          "toYear": 1984,
+          "citation": "Graham Coxon's account names Fugazi \"(and the Picciotto-led Rites of Spring)\" together as a formative discovery.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:caroline-polachek",
+      "phase": "first-person",
+      "speaker": "Caroline Polachek",
+      "links": [
+        {
+          "key": "caroline-polachek>david-bowie",
+          "from": "Caroline Polachek",
+          "to": "David Bowie",
+          "fromYear": 2013,
+          "toYear": 1969,
+          "citation": "Into The Gloss (2016): \"I can't help but think of David Bowie -- I love the photos of him doing his own makeup because it's clear how much vision he had.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "caroline-polachek>cocteau-twins",
+          "from": "Caroline Polachek",
+          "to": "Cocteau Twins",
+          "fromYear": 2013,
+          "toYear": 1979,
+          "citation": "Interview magazine (2019) named her dream collaborator as \"early '90s Cocteau Twins\"; FADER (Oct 2019) has her describing Elizabeth Fraser at length: \"Cocteau Twins to me feels like a whole kind of storm cloud, but at the end of the day, they're human beings.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "caroline-polachek>bjork",
+          "from": "Caroline Polachek",
+          "to": "Björk",
+          "fromYear": 2013,
+          "toYear": 1977,
+          "citation": "The Guardian: \"Growing up listening to artists like Fiona Apple, Kate Bush and Björk... felt so aspirational to me.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:deerhunter",
+      "phase": "first-person",
+      "speaker": "Deerhunter",
+      "links": [
+        {
+          "key": "deerhunter>animal-collective",
+          "from": "Deerhunter",
+          "to": "Animal Collective",
+          "fromYear": 2001,
+          "toYear": 2003,
+          "citation": "Bradford Cox told Exclaim! in 2008 that Animal Collective's Here Comes the Indian shaped Cryptograms.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:destroyer",
+      "phase": "first-person",
+      "speaker": "Destroyer",
+      "links": [
+        {
+          "key": "destroyer>new-order",
+          "from": "Destroyer",
+          "to": "New Order",
+          "fromYear": 1995,
+          "toYear": 1980,
+          "citation": "INDY Week: the interviewer proposes Prefab Sprout, Thomas Dolby and Gary Numan for ken; Bejar redirects to something more basic -- New Order, the Cure, Echo & the Bunnymen.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "destroyer>the-cure",
+          "from": "Destroyer",
+          "to": "The Cure",
+          "fromYear": 1995,
+          "toYear": 1978,
+          "citation": "INDY Week: the interviewer proposes Prefab Sprout, Thomas Dolby and Gary Numan for ken; Bejar redirects to something more basic -- New Order, the Cure, Echo & the Bunnymen.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "destroyer>david-bowie",
+          "from": "Destroyer",
+          "to": "David Bowie",
+          "fromYear": 1995,
+          "toYear": 1969,
+          "citation": "Uncut 2015: classic rock got him singing in a band in 1997, and Bowie's \"Where Are We Now?\" sparked revisiting the early-70s records pivotal to him. Read as early-70s glam Bowie, not Berlin-era -- Bejar explicitly says he didn't listen to Station to Station or the Berlin albums while making Kaputt.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "destroyer>echo-and-the-bunnymen",
+          "from": "Destroyer",
+          "to": "Echo & the Bunnymen",
+          "fromYear": 1995,
+          "toYear": 1978,
+          "citation": "INDY Week: asked whether ken drew on Prefab Sprout, Thomas Dolby and Gary Numan, Dan Bejar redirects to something more basic -- New Order, the Cure, and Echo & the Bunnymen.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:drive-by-truckers",
+      "phase": "first-person",
+      "speaker": "Drive-By Truckers",
+      "links": [
+        {
+          "key": "drive-by-truckers>the-replacements",
+          "from": "Drive-By Truckers",
+          "to": "The Replacements",
+          "fromYear": 1996,
+          "toYear": 1979,
+          "citation": "303 Magazine (2025), Patterson Hood: \"Adam's House Cat was our serious band. I'm sure The Replacements and R.E.M. were big influences at the time. That's what we were really into then in the late 80's.\" Corroborated by Willamette Week on the Adam's House Cat reissue and by Hood in Grammy.com: \"we were doing our post-punk, Replacements-y kind of thing.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "drive-by-truckers>rem",
+          "from": "Drive-By Truckers",
+          "to": "R.E.M.",
+          "fromYear": 1996,
+          "toYear": 1980,
+          "citation": "303 Magazine (2025), Patterson Hood: \"Adam's House Cat was our serious band. I'm sure The Replacements and R.E.M. were big influences at the time. That's what we were really into then in the late 80's.\" Corroborated by Willamette Week on the Adam's House Cat reissue and by Hood in Grammy.com: \"we were doing our post-punk, Replacements-y kind of thing.\" Naming R.E.M. alongside the Replacements as big influences on Adam's House Cat.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:minor-threat",
+      "phase": "first-person",
+      "speaker": "Minor Threat",
+      "links": [
+        {
+          "key": "minor-threat>bad-brains",
+          "from": "Minor Threat",
+          "to": "Bad Brains",
+          "fromYear": 1980,
+          "toYear": 1977,
+          "citation": "Wikipedia/Teen Idles (Ian MacKaye's pre-Minor Threat band, same two core members): \"After seeing a Bad Brains concert, MacKaye and Nelson began playing in a punk band.\" Corroborated by Wikipedia/Ian MacKaye (\"looked up to hardcore bands like Bad Brains and Black Flag\") and Lyle Preslar on Scott Crawford's Spoke podcast (May 25, 2021), crediting Dr. Know's guitar technique directly.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:of-montreal",
+      "phase": "first-person",
+      "speaker": "of Montreal",
+      "links": [
+        {
+          "key": "of-montreal>david-bowie",
+          "from": "of Montreal",
+          "to": "David Bowie",
+          "fromYear": 1996,
+          "toYear": 1969,
+          "citation": "DCist, asked which bands influenced how he makes music, Kevin Barnes lists Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, and others. Corroborated in The Aquarian 2025 (Bowie, Kate Bush, Prince as theatrical models).",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "of-montreal>the-stooges",
+          "from": "of Montreal",
+          "to": "The Stooges",
+          "fromYear": 1996,
+          "toYear": 1967,
+          "citation": "A DCist list of the band's influences names Iggy Pop; recorded here against the Stooges, since that is the band he fronted.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "of-montreal>velvet-underground",
+          "from": "of Montreal",
+          "to": "The Velvet Underground",
+          "fromYear": 1996,
+          "toYear": 1965,
+          "citation": "The same DCist list of the band's influences names Lou Reed; recorded here against the Velvet Underground, since that is the band he fronted.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "of-montreal>leonard-cohen",
+          "from": "of Montreal",
+          "to": "Leonard Cohen",
+          "fromYear": 1996,
+          "toYear": 1967,
+          "citation": "The same DCist list of the band's influences names Leonard Cohen.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "of-montreal>bob-dylan",
+          "from": "of Montreal",
+          "to": "Bob Dylan",
+          "fromYear": 1996,
+          "toYear": 1961,
+          "citation": "Diffuser 2015 on Lousy With Sylvianbriar: rock-inspired in the late-60s/early-70s sense, naming the Flying Burrito Brothers, early-ish Grateful Dead, Bob Dylan and the Stones.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "of-montreal>arca",
+          "from": "of Montreal",
+          "to": "Arca",
+          "fromYear": 1996,
+          "toYear": 2012,
+          "citation": "Under the Radar and The Aquarian: for Innocence Reaches he was inspired by modern electronic music and EDM, citing Chairlift, Arca and Jack U -- the first time he'd worked from contemporary sources.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    }
+  ]
+}

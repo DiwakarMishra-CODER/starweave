@@ -1,0 +1,322 @@
+{
+  "name": "c8",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:sweet-trip",
+      "phase": "first-person",
+      "speaker": "Sweet Trip",
+      "links": [
+        {
+          "key": "sweet-trip>my-bloody-valentine",
+          "from": "Sweet Trip",
+          "to": "My Bloody Valentine",
+          "fromYear": 1998,
+          "toYear": 1983,
+          "citation": "Sonemic interview, Dec 2020 -- Roberto Burgos and Valerie Cooper listing their own influences.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "sweet-trip>slowdive",
+          "from": "Sweet Trip",
+          "to": "Slowdive",
+          "fromYear": 1998,
+          "toYear": 1989,
+          "citation": "Sonemic interview, Dec 2020 -- Roberto Burgos and Valerie Cooper listing their own influences: Aphex Twin, My Bloody Valentine, Slowdive, Sonic Youth.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "sweet-trip>sonic-youth",
+          "from": "Sweet Trip",
+          "to": "Sonic Youth",
+          "fromYear": 1998,
+          "toYear": 1981,
+          "citation": "Sonemic interview, Dec 2020 -- Roberto Burgos and Valerie Cooper listing their own influences: Aphex Twin, My Bloody Valentine, Slowdive, Sonic Youth.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "sweet-trip>aphex-twin",
+          "from": "Sweet Trip",
+          "to": "Aphex Twin",
+          "fromYear": 1998,
+          "toYear": 1992,
+          "citation": "Sonemic interview, Dec 2020 -- Roberto Burgos and Valerie Cooper listing their own influences: Aphex Twin, My Bloody Valentine, Slowdive, Sonic Youth.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "sweet-trip>broadcast",
+          "from": "Sweet Trip",
+          "to": "Broadcast",
+          "fromYear": 1998,
+          "toYear": 1995,
+          "citation": "Jesse Taconelli, \"Sonemic Interview: Sweet Trip\" (20 Dec 2020), in which Roberto Burgos and Valerie Cooper list their own inspirations: Aphex Twin, My Bloody Valentine, Slowdive, Sonic Youth, Broadcast, Cocteau Twins, Pale Saints and others.",
+          "sourceTier": "first-person",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-flaming-lips",
+      "phase": "first-person",
+      "speaker": "The Flaming Lips",
+      "links": [
+        {
+          "key": "the-flaming-lips>husker-du",
+          "from": "The Flaming Lips",
+          "to": "Hüsker Dü",
+          "fromYear": 1983,
+          "toYear": 1979,
+          "citation": "Coyne 2013: not many of the bands around them appealed -- Husker Du and Black Flag were the bands that really influenced them in the early days.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-flaming-lips>black-flag",
+          "from": "The Flaming Lips",
+          "to": "Black Flag",
+          "fromYear": 1983,
+          "toYear": 1976,
+          "citation": "Wayne Coyne (2013): not many of the bands around them appealed -- Husker Du and Black Flag were the ones that really influenced them in the early days; Black Flag appears again in the Weirdo Music Forever list.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-flaming-lips>sonic-youth",
+          "from": "The Flaming Lips",
+          "to": "Sonic Youth",
+          "fromYear": 1983,
+          "toYear": 1981,
+          "citation": "Weirdo Music Forever, Coyne: they were very inspired by American punk rock like Sonic Youth, Black Flag, Minutemen and the Replacements -- bands they'd go and see.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-flaming-lips>minutemen",
+          "from": "The Flaming Lips",
+          "to": "Minutemen",
+          "fromYear": 1983,
+          "toYear": 1980,
+          "citation": "Weirdo Music Forever, Coyne: they were very inspired by American punk rock like Sonic Youth, Black Flag, Minutemen and the Replacements -- bands they'd go and see.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-flaming-lips>the-replacements",
+          "from": "The Flaming Lips",
+          "to": "The Replacements",
+          "fromYear": 1983,
+          "toYear": 1979,
+          "citation": "Weirdo Music Forever, Wayne Coyne: they were very inspired by American punk rock like Sonic Youth, Black Flag, Minutemen and the Replacements -- bands they would go and see.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "the-flaming-lips>yo-la-tengo",
+          "from": "The Flaming Lips",
+          "to": "Yo La Tengo",
+          "fromYear": 1983,
+          "toYear": 1984,
+          "citation": "Quietus Baker's Dozen: Coyne's 13 favourite albums include the Beatles, Led Zeppelin, Yo La Tengo, Miles Davis and the Wizard of Oz soundtrack.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:black-country-new-road",
+      "phase": "first-person",
+      "speaker": "Black Country, New Road",
+      "links": [
+        {
+          "key": "black-country-new-road>arcade-fire",
+          "from": "Black Country, New Road",
+          "to": "Arcade Fire",
+          "fromYear": 2018,
+          "toYear": 2001,
+          "citation": "Drummer Charlie Wayne told Dork: \"We did invite that. We knew we wanted to do something which was not dissimilar to Arcade Fire, but most people just thought we were joking. Having a touchpoint is important.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "black-country-new-road>american-football",
+          "from": "Black Country, New Road",
+          "to": "American Football",
+          "fromYear": 2018,
+          "toYear": 1997,
+          "citation": "Saxophonist Lewis Evans told the Line of Best Fit: \"Everyone [in the band] appreciates American Football, a bit of Godspeed You! Black Emperor, all the classics you know?\"",
+          "sourceTier": "first-person",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "first-person:ethel-cain",
+      "phase": "first-person",
+      "speaker": "Ethel Cain",
+      "links": [
+        {
+          "key": "ethel-cain>mazzy-star",
+          "from": "Ethel Cain",
+          "to": "Mazzy Star",
+          "fromYear": 2019,
+          "toYear": 1988,
+          "citation": "Ethel Cain told The FADER in May 2022 that while making the record she was listening to slowcore and midwest emo acts like Title Fight and American Football, along with \"female singers that are very lazy like Mazzy Star\"; Nylon listed Mazzy Star's psychedelic melancholy among the album's ingredients that September.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "ethel-cain>american-football",
+          "from": "Ethel Cain",
+          "to": "American Football",
+          "fromYear": 2019,
+          "toYear": 1997,
+          "citation": "Kerrang!, on her cover of \"For Sure\" for the LP1 (Covers) 25th-anniversary release: \"Their sonic storytelling has inspired me in more ways than I can count.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "ethel-cain>grouper",
+          "from": "Ethel Cain",
+          "to": "Grouper",
+          "fromYear": 2019,
+          "toYear": 2005,
+          "citation": "Hayden Anhedonia has said she listens to \"Grouper always and forever,\" and Crack Magazine has written that Grouper's slowcore inspired Preacher's Daughter.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:geese",
+      "phase": "first-person",
+      "speaker": "Geese",
+      "links": [
+        {
+          "key": "geese>the-strokes",
+          "from": "Geese",
+          "to": "The Strokes",
+          "fromYear": 2017,
+          "toYear": 1998,
+          "citation": "Cameron Winter: \"I grew up listening to that shit.\" Foster Bassin: \"a big Strokes fan in middle school.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        },
+        {
+          "key": "geese>velvet-underground",
+          "from": "Geese",
+          "to": "The Velvet Underground",
+          "fromYear": 2017,
+          "toYear": 1965,
+          "citation": "Geese naming their own influences to Bela Omoeva, WRBB Radio (21 Mar 2024), a list that runs from the Velvet Underground and Television through Radiohead, Deerhunter and Funkadelic.",
+          "sourceTier": "first-person",
+          "confidence": 0.65
+        },
+        {
+          "key": "geese>interpol",
+          "from": "Geese",
+          "to": "Interpol",
+          "fromYear": 2017,
+          "toYear": 1997,
+          "citation": "Rolling Stone feature/interview on Geese.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:have-a-nice-life",
+      "phase": "first-person",
+      "speaker": "Have A Nice Life",
+      "links": [
+        {
+          "key": "have-a-nice-life>joy-division",
+          "from": "Have A Nice Life",
+          "to": "Joy Division",
+          "fromYear": 2000,
+          "toYear": 1976,
+          "citation": "Have a Nice Life have named Joy Division as an influence across three independent interviews: Todestrieb (2007), where Dan Barrett unprompted cited Xasthur and Lurker of Chalice for their bedroom-recording aesthetic \"as well as older bands like My Bloody Valentine and Sisters of Mercy, Joy Division\"; Last Day Deaf (2008), where Tim Macuga said he bought Unknown Pleasures as a teenager, with Barrett calling it a \"huge influence, obviously\"; and Steel for Brains, where Barrett named Sisters of Mercy, Joy Division and My Bloody Valentine as the bands influencing Have a Nice Life most directly, while noting they weren't childhood listening.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "have-a-nice-life>my-bloody-valentine",
+          "from": "Have A Nice Life",
+          "to": "My Bloody Valentine",
+          "fromYear": 2000,
+          "toYear": 1983,
+          "citation": "The same three interviews (Todestrieb 2007, Last Day Deaf 2008, Steel for Brains) in which Have a Nice Life named Joy Division also name My Bloody Valentine -- Tim Macuga has said he bought Loveless as a teenager soon after discovering Joy Division, with Dan Barrett calling both \"huge influences, obviously.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:jeff-buckley",
+      "phase": "first-person",
+      "speaker": "Jeff Buckley",
+      "links": [
+        {
+          "key": "jeff-buckley>patti-smith",
+          "from": "Jeff Buckley",
+          "to": "Patti Smith",
+          "fromYear": 1992,
+          "toYear": 1974,
+          "citation": "Jeff Buckley told Interview magazine in 1994, as reported by No Depression, that he grew up on Nina Simone, Nusrat Fateh Ali Khan and Patti Smith -- artists who showed him that music should be free and penetrating.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "jeff-buckley>bad-brains",
+          "from": "Jeff Buckley",
+          "to": "Bad Brains",
+          "fromYear": 1992,
+          "toYear": 1977,
+          "citation": "Jeff Buckley named Bad Brains directly in his own self-written press biography.",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "first-person:julia-holter",
+      "phase": "first-person",
+      "speaker": "Julia Holter",
+      "links": [
+        {
+          "key": "julia-holter>cocteau-twins",
+          "from": "Julia Holter",
+          "to": "Cocteau Twins",
+          "fromYear": 2011,
+          "toYear": 1979,
+          "citation": "Julia Holter played and discussed Cocteau Twins' \"Fluffy Tufts\" at a CalArts forum on her own musical influences in October 2015, alongside Joni Mitchell's Court and Spark, Bryan Ferry's vibrato and Ariel Pink.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "julia-holter>ariel-pink",
+          "from": "Julia Holter",
+          "to": "Ariel Pink",
+          "fromYear": 2011,
+          "toYear": 1996,
+          "citation": "Julia Holter discussed Ariel Pink's influence in her own words on a CalArts influences forum.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "julia-holter>joni-mitchell",
+          "from": "Julia Holter",
+          "to": "Joni Mitchell",
+          "fromYear": 2011,
+          "toYear": 1964,
+          "citation": "Holter presented Joni Mitchell's Court and Spark at the same October 2015 CalArts influences forum where she discussed Cocteau Twins and Ariel Pink.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    }
+  ]
+}

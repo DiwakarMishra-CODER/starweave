@@ -1,0 +1,312 @@
+{
+ "agent": "c10",
+ "searches": 21,
+ "toolStatus": "WebSearch fine (21 used); thequietus, spin, clash, exclaim opened via read; redbullmusicacademy 404; joestrummer.us archive and blackmarketclash page unusable; no search budget message",
+ "entries": {
+  "pinback>slint": {
+   "url": "https://thequietus.com/?p=22797",
+   "found": "They don’t play Slint on the radio",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Page exists; the lyric is only the epigraph of The Quietus's Rob Crow interview ('Radio' by Heavy Vegetable, 1995, a different band). It is a lament that radio doesn't play a list of bands, not a statement that they shaped him; the rest of the interview names none of them as influences. Propose remove (or lower to reported if the owner counts it as fandom)."
+  },
+  "pinback>can": {
+   "url": "https://thequietus.com/?p=22797",
+   "found": "They don’t play Can",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Same epigraph lyric as pinback>slint: a list of bands radio doesn't play, from Heavy Vegetable not Pinback; no influence statement on the page. Propose remove."
+  },
+  "pinback>velvet-underground": {
+   "url": "https://thequietus.com/?p=22797",
+   "found": "the Velvet Underground",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "Same epigraph lyric: a list of bands radio doesn't play, in a Heavy Vegetable song; no influence statement on the page. Propose remove."
+  },
+  "porter-robinson>aphex-twin": {
+   "url": "https://www.thefader.com/2018/02/28/porter-robinson-virtual-self-interview",
+   "found": "It’s almost like me trying to create what electronic music sounded like when I was 12 years old, just typing the word “techno” into Limewire and downloading horribly mislabeled songs by Aphex Twin and other artists.",
+   "checked": "2026-10-26",
+   "verdict": "ok"
+  },
+  "portishead>massive-attack": {
+   "url": "https://www.nme.com/blogs/nme-blogs/the-roots-of-portishead-767977",
+   "found": "That same year, while Massive Attack were recording their debut LP Blue Lines there, they gifted Geoff some spare studio time to record his own stuff.",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "NME 'The Roots of... Portishead' (and Wikipedia's Geoff Barrow page) report only that Barrow was tape-op at Coach House while Massive Attack made Blue Lines and they gave him spare studio time. That is working together / studio access, not a statement of influence; I found no Mojo 1999 page or Barrow quote saying Massive Attack shaped his music (one search). Propose remove, or record as reported only if the owner counts the apprenticeship."
+  },
+  "sleater-kinney>sonic-youth": {
+   "url": "https://faroutmagazine.co.uk/kim-gordon-inspired-carrie-brownstein/",
+   "found": "In the book No Icon by Kim Gordon, Brownstein gives a short foreword about the musician, revealing her most distinctive memories of falling in love with Sonic Youth.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "citation": "Carrie Brownstein, in her foreword to Kim Gordon's No Icon (quoted by Far Out Magazine), recalls falling in love with Sonic Youth as a teenager: \"I only brought one CD with me on that trip, Goo by Sonic Youth.\"",
+   "sourceTier": "first-person"
+  },
+  "sleater-kinney>bikini-kill": {
+   "url": "https://exclaim.ca/music/article/sleater-kinney-drama_youve_been_craving",
+   "found": "\"I was 18 when I went to a show that Bratmobile and Bikini Kill played. It was February 14, 1991.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "citation": "Corin Tucker, to the New York Times (quoted in Exclaim!, 2015), on seeing Bratmobile and Bikini Kill in 1991: \"It was the first time I'd seen feminism translated into an emotional language... it totally blew my mind. I was like, 'O.K., that's it. That's it for me — I'm going in a band, right now.'\"",
+   "sourceTier": "first-person"
+  },
+  "sleater-kinney>bratmobile": {
+   "url": "https://exclaim.ca/music/article/sleater-kinney-drama_youve_been_craving",
+   "found": "\"I was 18 when I went to a show that Bratmobile and Bikini Kill played. It was February 14, 1991.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "citation": "Corin Tucker, to the New York Times (quoted in Exclaim!, 2015), on seeing Bratmobile and Bikini Kill in 1991: \"It was the first time I'd seen feminism translated into an emotional language... it totally blew my mind. I was like, 'O.K., that's it. That's it for me — I'm going in a band, right now.'\"",
+   "sourceTier": "first-person"
+  },
+  "st-vincent>sonic-youth": {
+   "url": "https://www.timteeman.com/2014/02/02/st-vincent/",
+   "found": "Bands such as Sonic Youth and Pearl Jam became Clark’s teenage favourites.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "citation": "Tim Teeman (2014, interview with Annie Clark): \"Bands such as Sonic Youth and Pearl Jam became Clark's teenage favourites.\"",
+   "sourceTier": "reported"
+  },
+  "st-vincent>siouxsie-and-the-banshees": {
+   "url": "https://www.billboard.com/articles/news/5944777/st-vincent-delivers-groove-element-at-grammy-museum-show-qa",
+   "found": "Thursday night, Annie Clark eloquently and gracefully explained her history and art, creative process, upbringing in Dallas and the influence of everything from Raymond Carver short stories to Jimi Hendrix to Siouxsie and the Banshees.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "citation": "Billboard (2014), reporting Annie Clark's Grammy Museum Q&A: she explained \"the influence of everything from Raymond Carver short stories to Jimi Hendrix to Siouxsie and the Banshees.\"",
+   "sourceTier": "reported"
+  },
+  "st-vincent>nirvana": {
+   "url": "https://www.timteeman.com/2014/02/02/st-vincent/",
+   "found": "Suddenly my heroes were not C+C Music Factory, it was Kurt Cobain",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "citation": "Annie Clark to Tim Teeman (2014): \"When I was nine, Nirvana's Nevermind came out and that was a sea change across the world... Suddenly my heroes were not C+C Music Factory, it was Kurt Cobain.\"",
+   "sourceTier": "first-person"
+  },
+  "the-clash>ramones": {
+   "verdict": "print",
+   "url": "https://en.wikipedia.org/wiki/The_Clash",
+   "found": "according to Strummer: \"It can't be stressed how great the first Ramones album was to the scene... It was the first word of Punk, a fantastic record\".",
+   "print": "The Clash, The Clash (Atlantic Books), 2008, p. 61",
+   "citation": "Joe Strummer, in the band's own book The Clash (2008), on the Ramones' debut album: \"It can't be stressed how great the first Ramones album was to the scene... It was the first word of Punk, a fantastic record.\"",
+   "sourceTier": "first-person",
+   "note": "Quote and page come from Wikipedia's footnote (Clash 2008 p.61); book not readable online. The citation's 'Louder, October 1976, Kris Needs' could not be found: Needs's ZigZag piece (April 1977, blackmarketclash.co.uk) opened but has no Ramones passage, and Louder's Ramones story has no Strummer quote. 'Spent weeks learning to play along' and the CNN remark are unverified; dropped.",
+   "checked": "2026-10-26"
+  },
+  "the-clash>sex-pistols": {
+   "verdict": "blocked",
+   "url": "https://web.archive.org/web/20111005220200/http://www.joestrummer.us/?n9P81fmSnwwFUbhFAMuAAxe6bb31IUP&p=2&aOHDhtT57WPxn9Z7bWGQa3BBQbFVu17LfZSa&c=1&CxeQAdg5hVrrDtzOUCasLrnVGV7&XUZHs",
+   "note": "Wikipedia (The Clash) quotes Strummer (Record Collector interview, 2000, hosted on joestrummer.us): \"I knew something was up, so I went out in the crowd... And I saw the future-with a snotty handkerchief-right in front of me. It was immediately clear.\" about seeing the Sex Pistols in April 1976. The archive page of that interview would not open; owner to open it and send the passage. The 'Louder Oct 1976 Kris Needs' citation could not be found.",
+   "checked": "2026-10-26"
+  },
+  "the-human-league>david-bowie": {
+   "url": "https://rockandrollglobe.com/new-wave/the-human-league-spans-generations/",
+   "found": "And in Britain, a thing came along which was the great glam revolution—David Bowie, Roxy Music, people like that. And suddenly, that gave us something to be.",
+   "verdict": "fixed",
+   "citation": "Philip Oakey to Rock and Roll Globe: \"in Britain, a thing came along which was the great glam revolution—David Bowie, Roxy Music, people like that. And suddenly, that gave us something to be.\"",
+   "sourceTier": "first-person",
+   "note": "The Variety interview (a repost on reybee.com) has Oakey saying \"We love T Rex, we loved Roxy Music, David Bowie, Prince\"; the quote in the old citation (\"They were the inspirations to us\") isn't on it. Rock and Roll Globe carries a better first-person line.",
+   "checked": "2026-10-26"
+  },
+  "the-shins>the-cure": {
+   "url": "https://www.theguardian.com/music/2007/jan/05/popandrock1",
+   "found": "\"1985 to 1989 - 15 to 19 years old. What luck, man. The Smiths, Echo and the Bunnymen, the Cure.\"",
+   "verdict": "fixed",
+   "citation": "James Mercer to The Guardian (2007), on living at RAF Lakenheath as a teenager: \"1985 to 1989 - 15 to 19 years old. What luck, man. The Smiths, Echo and the Bunnymen, the Cure.\" He added: \"It was like: wow, I feel right at home here with this music.\"",
+   "sourceTier": "first-person",
+   "note": "Montana Kaimin 2017 page not found; Guardian 2007 (Wikipedia's footnote) carries it.",
+   "checked": "2026-10-26"
+  },
+  "the-shins>the-smiths": {
+   "url": "https://www.theguardian.com/music/2007/jan/05/popandrock1",
+   "found": "\"1985 to 1989 - 15 to 19 years old. What luck, man. The Smiths, Echo and the Bunnymen, the Cure.\"",
+   "verdict": "fixed",
+   "citation": "James Mercer to The Guardian (2007), on living at RAF Lakenheath as a teenager: \"1985 to 1989 - 15 to 19 years old. What luck, man. The Smiths, Echo and the Bunnymen, the Cure.\" He added: \"It was like: wow, I feel right at home here with this music.\"",
+   "sourceTier": "first-person",
+   "note": "Montana Kaimin 2017 page not found; Guardian 2007 (Wikipedia's footnote) carries it.",
+   "checked": "2026-10-26"
+  },
+  "the-shins>echo-and-the-bunnymen": {
+   "url": "https://www.theguardian.com/music/2007/jan/05/popandrock1",
+   "found": "\"1985 to 1989 - 15 to 19 years old. What luck, man. The Smiths, Echo and the Bunnymen, the Cure.\"",
+   "verdict": "fixed",
+   "citation": "James Mercer to The Guardian (2007), on living at RAF Lakenheath as a teenager: \"1985 to 1989 - 15 to 19 years old. What luck, man. The Smiths, Echo and the Bunnymen, the Cure.\" He added: \"It was like: wow, I feel right at home here with this music.\"",
+   "sourceTier": "first-person",
+   "note": "Montana Kaimin 2017 page not found; Guardian 2007 (Wikipedia's footnote) carries it.",
+   "checked": "2026-10-26"
+  },
+  "at-the-drive-in>drive-like-jehu": {
+   "url": "https://www.spinmagazine.com/2013/04/cedric-bixler-zavala-at-the-drive-in-reissue-reunion-mars-volta-interview/",
+   "found": "I definitely knew what school we came from, and that people like Hot Snakes and Drive Like Jehu were our strongest influences, but they weren’t exactly huge in Europe.",
+   "verdict": "fixed",
+   "citation": "Cedric Bixler-Zavala to SPIN (2013): \"people like Hot Snakes and Drive Like Jehu were our strongest influences.\"",
+   "sourceTier": "first-person",
+   "note": "The 'no Relationship of Command without Drive Like Jehu' line is a 2015 tweet by Bixler-Zavala (per Wikipedia), not on the SPIN page; left out of the citation.",
+   "checked": "2026-10-26"
+  },
+  "at-the-drive-in>sunny-day-real-estate": {
+   "verdict": "print",
+   "url": "https://en.wikipedia.org/wiki/At_the_Drive-In",
+   "found": "Some of the group's key influences were Indian Summer, Swing Kids, Fugazi, Sunny Day Real Estate (referred to by Ward as \"Fugazi beyond Fugazi\")",
+   "print": "Eric Grubbs, POST: A Look at the Influence of Post-Hardcore 1985-2007 (iUniverse), 2008, p. 269",
+   "citation": "Jim Ward called Sunny Day Real Estate \"Fugazi beyond Fugazi\"; At the Drive-In's key influences included them (Eric Grubbs, POST, 2008, p. 269).",
+   "sourceTier": "reported",
+   "note": "Wikipedia's footnote is Grubbs's book (no text online); one search found nothing else. Print only, tier reported (the book, not Ward's interview, as far as seen).",
+   "checked": "2026-10-26"
+  },
+  "big-black>this-heat": {
+   "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/",
+   "found": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+   "verdict": "ok",
+   "note": "Interview year not shown in the text I read; citation says 2020.",
+   "checked": "2026-10-26"
+  },
+  "built-to-spill>dinosaur-jr": {
+   "url": "https://daily.bandcamp.com/big-ups/doug-martsch-built-to-spill-big-ups",
+   "found": "It was maybe the most influential record for Treepeople and Built To Spill as well.",
+   "verdict": "fixed",
+   "citation": "Doug Martsch to Bandcamp Daily (Big Ups, 2022), on Dinosaur Jr.'s You're Living All Over Me: \"It took me a long time of listening to it and not really understanding it at all... It was maybe the most influential record for Treepeople and Built To Spill as well.\"",
+   "sourceTier": "first-person",
+   "note": "No Esquire 2015 / 'ten listens' page found (2 searches).",
+   "checked": "2026-10-26"
+  },
+  "buzzcocks>the-stooges": {
+   "url": "https://www.yorkshirepost.co.uk/arts-and-culture/never-mind-the-age-gap-the-buzzcocks-legacy-still-inspires-1987624",
+   "found": "\"Bands like the Velvet Underground and The Stooges were the biggest influence on us, because the music they were doing had a rawer edge to it\", said Shelley.",
+   "verdict": "fixed",
+   "citation": "Pete Shelley to The Yorkshire Post (2010): \"Bands like the Velvet Underground and The Stooges were the biggest influence on us, because the music they were doing had a rawer edge to it.\"",
+   "sourceTier": "first-person",
+   "note": "Far Out page for 'back to front' not found; the Far Out Sister Ray article covers only the Velvet Underground.",
+   "checked": "2026-10-26"
+  },
+  "caribou>boards-of-canada": {
+   "verdict": "not-found",
+   "note": "Searched the RBMA Daily quote and outlet+artist+year; RBMA Daily page not found (guessed daily.redbullmusicacademy.com URLs 404). Wikipedia's Dan Snaith page has no Boards of Canada text.",
+   "checked": "2026-10-26"
+  },
+  "caribou>aphex-twin": {
+   "verdict": "not-found",
+   "note": "Same missing RBMA Daily page as caribou>boards-of-canada; nothing else found.",
+   "checked": "2026-10-26"
+  },
+  "caribou>this-heat": {
+   "url": "http://exclaim.ca/music/article/this_heat_reissue_albums_through_light_in_attic",
+   "found": "The first time I heard This Heat was their track 'Sleep' in the early 2000s, and it sounded so fresh then, more than 20 years on from its release, that I thought it was a newly released record.",
+   "verdict": "fixed",
+   "citation": "Dan Snaith, in a Light in the Attic press-release quote (Exclaim!, Pitchfork, Nov 2015): \"The first time I heard This Heat was their track 'Sleep' in the early 2000s... I couldn't believe one band had an imagination this broad and this incandescent.\"",
+   "sourceTier": "first-person",
+   "note": "Admiration for the band, not an explicit 'it shaped my music'; owner may prefer to treat as decide. Alexis Taylor's half of the old citation is Hot Chip, not Caribou.",
+   "checked": "2026-10-26"
+  },
+  "charli-xcx>arca": {
+   "url": "https://crackmagazine.net/2025/03/charli-xcx-brit-awards-2025-speech/",
+   "found": "“Shout out to Justice, Daft Punk, Sebastian, Honey Dijon, Robyn, Arca , M.I.A., Autechre, Aphex Twin ,” she continued.",
+   "verdict": "fixed",
+   "citation": "Charli XCX at the 2025 BRIT Awards (reported by Crack Magazine): she thanked the \"legends in the field\" who inspired or shaped her music: \"Shout out to Justice, Daft Punk, Sebastian, Honey Dijon, Robyn, Arca, M.I.A., Autechre, Aphex Twin.\"",
+   "sourceTier": "reported",
+   "note": "Her own words are a thank-you list; Crack's sentence before it frames them as inspirations. A thank-you shout-out, borderline as influence; owner may want decide. Chronology: Arca's first releases 2012, Charli's Brat 2024; fine.",
+   "checked": "2026-10-26"
+  },
+  "charli-xcx>autechre": {
+   "url": "https://crackmagazine.net/2025/03/charli-xcx-brit-awards-2025-speech/",
+   "found": "“Shout out to Justice, Daft Punk, Sebastian, Honey Dijon, Robyn, Arca , M.I.A., Autechre, Aphex Twin ,” she continued.",
+   "verdict": "fixed",
+   "citation": "Charli XCX at the 2025 BRIT Awards (reported by Crack Magazine): she thanked the \"legends in the field\" who inspired or shaped her music: \"Shout out to Justice, Daft Punk, Sebastian, Honey Dijon, Robyn, Arca, M.I.A., Autechre, Aphex Twin.\"",
+   "sourceTier": "reported",
+   "note": "Her own words are a thank-you list; Crack's sentence before it frames them as inspirations. A thank-you shout-out, borderline as influence; owner may want decide. Chronology: Arca's first releases 2012, Charli's Brat 2024; fine.",
+   "checked": "2026-10-26"
+  },
+  "charli-xcx>aphex-twin": {
+   "url": "https://crackmagazine.net/2025/03/charli-xcx-brit-awards-2025-speech/",
+   "found": "“Shout out to Justice, Daft Punk, Sebastian, Honey Dijon, Robyn, Arca , M.I.A., Autechre, Aphex Twin ,” she continued.",
+   "verdict": "fixed",
+   "citation": "Charli XCX at the 2025 BRIT Awards (reported by Crack Magazine): she thanked the \"legends in the field\" who inspired or shaped her music: \"Shout out to Justice, Daft Punk, Sebastian, Honey Dijon, Robyn, Arca, M.I.A., Autechre, Aphex Twin.\"",
+   "sourceTier": "reported",
+   "note": "Her own words are a thank-you list; Crack's sentence before it frames them as inspirations. A thank-you shout-out, borderline as influence; owner may want decide. Chronology: Arca's first releases 2012, Charli's Brat 2024; fine.",
+   "checked": "2026-10-26"
+  },
+  "explosions-in-the-sky>mogwai": {
+   "url": "https://www.metrotimes.com/music-2/explosions-in-the-sky-bring-all-their-heaviness-to-you-2464596/",
+   "found": "So if it weren’t for a band like Mogwai — their style and the way they approached things — I don’t think we would have been the band we are.",
+   "verdict": "fixed",
+   "citation": "Chris Hrasky to Metro Times: \"So if it weren't for a band like Mogwai — their style and the way they approached things — I don't think we would have been the band we are.\"",
+   "sourceTier": "first-person",
+   "note": "Epigram Q&A (2023) not found; Metro Times carries it. Speaker is labelled Hrasky in the transcript. Year of the piece not shown.",
+   "checked": "2026-10-26"
+  },
+  "explosions-in-the-sky>godspeed-you-black-emperor": {
+   "url": "https://www.clashmusic.com/?p=198367",
+   "found": "So let’s take these five bands, none of them being exactly alike, but all of them sharing an umbrella",
+   "verdict": "decide",
+   "note": "Clash interview: the band member says Mogwai, Godspeed, Explosions, Sigur Ros and Mono \"paved a road for each other\", with Godspeed 'starting to run the race' a few years before them. A peer scene remark, not that Godspeed shaped them. Propose remove or lower to critic-free 'reported' only if owner counts it; speaker not named in the text I read.",
+   "checked": "2026-10-26"
+  }
+ },
+ "candidates": [
+  {
+   "source": "big-black",
+   "target": "bad-brains",
+   "kind": "influence",
+   "speaker": "Steve Albini",
+   "sentence": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+   "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/"
+  },
+  {
+   "source": "big-black",
+   "target": "minutemen",
+   "kind": "influence",
+   "speaker": "Steve Albini",
+   "sentence": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+   "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/"
+  },
+  {
+   "source": "big-black",
+   "target": "the-birthday-party",
+   "kind": "influence",
+   "speaker": "Steve Albini",
+   "sentence": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+   "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/"
+  },
+  {
+   "source": "big-black",
+   "target": "sonic-youth",
+   "kind": "influence",
+   "speaker": "Steve Albini",
+   "sentence": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+   "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/"
+  },
+  {
+   "source": "big-black",
+   "target": "swans",
+   "kind": "influence",
+   "speaker": "Steve Albini",
+   "sentence": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+   "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/"
+  },
+  {
+   "source": "big-black",
+   "target": "james-chance-and-the-contortions",
+   "kind": "influence",
+   "speaker": "Steve Albini",
+   "sentence": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+   "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/"
+  }
+ ],
+ "offMap": [
+  {
+   "name": "Naked Raygun",
+   "namedBy": "big-black",
+   "sentence": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+   "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/"
+  },
+  {
+   "name": "Killing Joke",
+   "namedBy": "big-black",
+   "sentence": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+   "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/"
+  }
+ ],
+ "finished": true
+}

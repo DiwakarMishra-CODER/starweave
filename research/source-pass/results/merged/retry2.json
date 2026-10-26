@@ -1,0 +1,258 @@
+{
+  "agent": "retry2",
+  "searches": 23,
+  "toolStatus": "Opened in full: PressReader MOJO (Dinosaur Jr.), SLUG Magazine (Mogwai), Wikipedia Kevin Shields, Modern Girls (Snail Mail), 9:30 Club Tumblr (Snail Mail), FACT (Ride), Denver Westword via den-experimental.voicemediagroup.com mirror (Hook), 4th Estate Big Star page, Far Out (Cobain), Aaron Davis Music (Patterson Hood). web_fetch refused the Buddyhead archive URL (web.archive.org/web/20050408040110/http://www.buddyhead.com/music/kevinshields/) and the Line of Best Fit nine-songs Nastanovich URL because neither had appeared in a search result. No Internet Archive copies were opened in this run. pitchfork.com, the Crack Magazine cover story, the Double J / Karen Leng page, the RBMA lecture (video only) and the triple j interview (video only) never surfaced as text.",
+  "entries": {
+    "joy-division>the-stooges": {
+      "url": "https://den-experimental.voicemediagroup.com/music/peter-hook-joy-division-new-order-14876858/",
+      "found": "“He would say to me, ‘Listen to this record,’ and he gives me Metallic K.O. by the Stooges,” Hook recalls.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Peter Hook to Denver Westword (2 Sep 2022), on Ian Curtis educating him musically: \"He would say to me, 'Listen to this record,' and he gives me Metallic K.O. by the Stooges.\"",
+      "sourceTier": "first-person"
+    },
+    "new-order>the-stooges": {
+      "verdict": "decide",
+      "note": "The same Westword page (https://den-experimental.voicemediagroup.com/music/peter-hook-joy-division-new-order-14876858/) has Hook saying Curtis gave him Metallic K.O. in 1970s Manchester, before New Order existed. It supports Hook's own exposure, not New Order. The 'blew my mind' wording is not on the page. Proposal: keep the link on Joy Division only and remove New Order, or record it as 'reported' at most.",
+      "checked": "2026-10-26"
+    },
+    "rem>big-star": {
+      "verdict": "decide",
+      "note": "Two searches plus a full read of https://www.4thestate.co.uk/products/big-star-the-story-of-rocks-forgotten-band-rob-jovanovic-9780007149087/. 'I was hoping we might get as popular as Big Star' was not found anywhere. The 4th Estate page carries a pull-quote attributed to Peter Buck, R.E.M., 1991: \"I want to make an album of real genius, to sit alongside the Stones' 'Exile On Main Street', and Big Star's 'Third'\". It is a publisher's blurb, not an interview page, so I did not mark it ok. Proposal: replace the caption with this quote as tier 'reported' if a blurb is acceptable; otherwise find Buck's original 1991 interview.",
+      "checked": "2026-10-26"
+    },
+    "snail-mail>st-vincent": {
+      "url": "https://themoderngirlsco.wordpress.com/2017/01/31/moderngirlcrush-lindsey-jordan/",
+      "found": "I also took a lot of interest in St. Vincent because she was a classically trained guitarist, which is the background I come from, and she was sort of the first artist I saw myself in that I wanted to strive to be like.",
+      "checked": "2026-10-26",
+      "verdict": "ok"
+    },
+    "dinosaur-jr>husker-du": {
+      "url": "https://www.pressreader.com/uk/mojo-uk/20210501/281496459032582",
+      "found": "We loved the Minutemen, Hüsker Dü and the Meat Puppets, and our ambition was to tour like they did and sign to SST Records, the label they were on.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "J Mascis in MOJO's Dinosaur Jr. oral history (May 2021): \"We loved the Minutemen, Hüsker Dü and the Meat Puppets, and our ambition was to tour like they did and sign to SST Records, the label they were on.\"",
+      "sourceTier": "first-person"
+    },
+    "dinosaur-jr>minutemen": {
+      "url": "https://www.pressreader.com/uk/mojo-uk/20210501/281496459032582",
+      "found": "We loved the Minutemen, Hüsker Dü and the Meat Puppets, and our ambition was to tour like they did and sign to SST Records, the label they were on.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "J Mascis in MOJO's Dinosaur Jr. oral history (May 2021): \"We loved the Minutemen, Hüsker Dü and the Meat Puppets, and our ambition was to tour like they did and sign to SST Records, the label they were on.\"",
+      "sourceTier": "first-person"
+    },
+    "modest-mouse>drive-like-jehu": {
+      "verdict": "not-found",
+      "note": "Two searches (exact quote with Brock; Drive Like Jehu Wikipedia with 'I love Jehu') found no page carrying the Brock 2007 line. AV Club Random Rules and Isaac Brock's Wikipedia page have no Jehu text. The Wikipedia Drive Like Jehu footnote was not reachable. No archive copy tried.",
+      "checked": "2026-10-26"
+    },
+    "lcd-soundsystem>can": {
+      "verdict": "not-found",
+      "note": "Three searches over the runs. The RBMA New York 2013 lecture (Vimeo 67135948) and London 2012 lecture are video-only; Consequence, Rolling Stone, FACT and Live For Live Music pages only summarise them and none carries this line. Fused, NME and Spin Murphy interviews opened earlier have no Can line. The owner would need to watch the video.",
+      "checked": "2026-10-26"
+    },
+    "lcd-soundsystem>gang-of-four": {
+      "verdict": "not-found",
+      "note": "Same as the Can link: the RBMA lectures are video-only and no transcript or write-up carries the Gang of Four line.",
+      "checked": "2026-10-26"
+    },
+    "boards-of-canada>my-bloody-valentine": {
+      "verdict": "not-found",
+      "note": "Three searches over the runs. Pitchfork's 2005 BoC interview never surfaced (pitchfork.com is closed to the search tool). Seen instead: The Age interview (11 Nov 2005, on twoism.org), a Clash archive piece, a Wire (Oct 2005) interview behind Rock's Backpages membership. None carries the MBV line in the parts I could read. A Metro Times 2005 review compares BoC to MBV and Portishead, which is a critic's comparison, not influence.",
+      "checked": "2026-10-26"
+    },
+    "wednesday>unwound": {
+      "verdict": "not-found",
+      "note": "Three searches over the runs. The Forty-Five page never surfaced. Karly Hartzman's NTS show (30 Apr 2026, https://www.nts.live/shows/karly-hartzman/episodes/karly-hartzman-30th-april-2026) lists Unwound and Swirlies tracks but that is a playlist, not an influence statement.",
+      "checked": "2026-10-26"
+    },
+    "black-country-new-road>godspeed-you-black-emperor": {
+      "verdict": "not-found",
+      "note": "Three searches over the runs. No Line of Best Fit Lewis Evans interview surfaced. Opened or seen: Quietus 'Frenz Experiments' interview, Quietus Le Guess Who? preview with Evans (MGMT, Weyes Blood, Dexter Gordon, black midi), Spin's Ants From Up There interview snippet, Wikipedia. None has a Godspeed line. Even if the quote is found, it reads as Evans saying he does not know them well.",
+      "checked": "2026-10-26"
+    },
+    "black-country-new-road>slint": {
+      "verdict": "not-found",
+      "note": "Three searches over the runs. No page carries 'We like Slint, but we'd be on more common ground with post-rock I think.' Leads seen only as search snippets and not opened: theprogressiveaspect.net review saying the band name-check themselves as 'the world's second best Slint tribute band' on the song Science Fair and 'acknowledge this influence' (reviewer's voice); the Science Fair lyric itself (Isaac Wood). Neither is Lewis Evans speaking.",
+      "checked": "2026-10-26"
+    },
+    "ethel-cain>imogen-heap": {
+      "verdict": "not-found",
+      "note": "Three searches over the runs. Crack Magazine's Ethel Cain cover story (Dec 2022) and the Vice July 2024 piece never surfaced as pages. Seen: Wikipedia, PAPER Britney interview, a Rolling Stone feature saying Tumblr communities changed her life (snippet only), an Acast page for Crack's audio version of the story. A 'facts' blog lists Imogen Heap as an influence without sourcing; I did not use it.",
+      "checked": "2026-10-26"
+    },
+    "drive-by-truckers>neil-young": {
+      "url": "https://aarondavismusic.com/news-vault/interview-with-patterson-hood-h8y9g",
+      "found": "I was highly influenced by Curtis Mayfield and Todd Rundgren as well as Paul Westerburg and Neil Young and Bruce Springsteen.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Patterson Hood to Seadar Davis for Aaron Davis Music (posted 7 January 2014; a portion ran in Planet JH Weekly): \"I was highly influenced by Curtis Mayfield and Todd Rundgren as well as Paul Westerburg and Neil Young and Bruce Springsteen.\"",
+      "sourceTier": "first-person"
+    },
+    "porter-robinson>ninajirachi": {
+      "verdict": "not-found",
+      "note": "Three searches over the runs. The triple j interview (released with 'WannaCry', July 2026) is video only; EDMTunes (https://www.edmtunes.com/?p=414559) only describes it with no quotes. Note the reverse direction exists: a venue bio at https://www.cactusclubmilwaukee.com/?p=40789 quotes Ninajirachi: 'My first musical heroes were Lady Gaga and Porter Robinson.' That supports ninajirachi>porter-robinson, not this link.",
+      "checked": "2026-10-26"
+    },
+    "the-human-league>kraftwerk": {
+      "verdict": "not-found",
+      "note": "Three searches over the runs. No page carries Oakey's 'Martyn came around... Kraftwerk's Trans-Europe Express and I Feel Love' line. Seen: Sound on Sound Oakey interview (snippet only, not opened), Wikipedia's Human League and Oakey pages, Martyn Ware talk write-ups (Ware names Roxy Music and Brian Eno, not Kraftwerk).",
+      "checked": "2026-10-26"
+    },
+    "my-bloody-valentine>siouxsie-and-the-banshees": {
+      "url": "https://web.archive.org/web/20050408040110/http://www.buddyhead.com/music/kevinshields/",
+      "found": "So then we moved from being a typical punk band to being much more like Joy Division and Siouxsie and the Banshees.",
+      "citation": "Kevin Shields to Buddyhead (2005), on his early-1980s band before My Bloody Valentine: \"we started playing with a bass player who was your typical early 80's, slightly funky… Gang Of Four type guy. So then we moved from being a typical punk band to being much more like Joy Division and Siouxsie and the Banshees.\"",
+      "sourceTier": "first-person",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "note": "coordinator opened the archive copy; the passage is about the pre-MBV band, Shields' own development"
+    },
+    "my-bloody-valentine>the-cure": {
+      "verdict": "not-found",
+      "note": "Same searches as the Siouxsie link. The Double J / Karen Leng page was not found. Wikipedia's Kevin Shields influence list (read in full) does not name the Cure. No source found.",
+      "checked": "2026-10-26"
+    },
+    "fugazi>sonic-youth": {
+      "verdict": "not-found",
+      "note": "Three searches over the runs. No Cultural Glitch page surfaced. The sentence reads as a third-person summary, not Picciotto speaking. Seen: Wikipedia, Apple/Shazam bios, a Stereogum DC hardcore list, a Shadowproof piece (2002 Picciotto quote 'What, like the Bad Brains weren't emotional?', not an influence statement).",
+      "checked": "2026-10-26"
+    },
+    "fugazi>bad-brains": {
+      "verdict": "not-found",
+      "note": "Same Cultural Glitch searches; no page found. The Shadowproof 2002 quote is not an influence statement. An Apple/Shazam bio says Bad Brains gigs convinced Picciotto to form his own band, but that is a biographer's line (Greg Prato), not Picciotto; I did not open it.",
+      "checked": "2026-10-26"
+    },
+    "fugazi>minutemen": {
+      "verdict": "not-found",
+      "note": "Same Cultural Glitch searches; no page found and no other source for Minutemen.",
+      "checked": "2026-10-26"
+    },
+    "fugazi>black-flag": {
+      "verdict": "not-found",
+      "note": "Same Cultural Glitch searches; no page found and no other source for Black Flag.",
+      "checked": "2026-10-26"
+    },
+    "mogwai>kraftwerk": {
+      "verdict": "not-found",
+      "note": "Four searches over the runs plus a full read of SLUG Magazine (13 Aug 2004). Braithwaite names Sonic Youth, Joy Division, My Bloody Valentine and later minimal/electronic music, not Kraftwerk. Wikipedia Mogwai footnotes 65, 67, 69 not reached. The archived Line of Best Fit page names Kraftwerk only in a sidebar headline.",
+      "checked": "2026-10-26"
+    },
+    "nirvana>neil-young": {
+      "verdict": "not-found",
+      "note": "Three searches over the runs. No page carries a Cobain statement to Les Inrockuptibles (1993) about Neil Young's career. Seen: thrasherswheat Cobain/Young page and several Far Out pieces, all about Cobain's suicide note quoting Neil Young and Young's reaction, with no first-person Cobain admiration quote. Far Out calls Cobain 'a devoted disciple' in its own voice (critic).",
+      "checked": "2026-10-26"
+    },
+    "nirvana>ramones": {
+      "url": "https://faroutmagazine.co.uk/kurt-cobain-grossest-period-music-history/",
+      "found": "The interviewer then mentioned the new wave genre, which Nirvana liked, saying, “The whole new wave concept, when it began, was very pop, I don’t know if you can name any bands (that influenced you),” to which Cobain responded, “The B-52’s, Devo, you know, anything… Ramones”.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Asked in a Rio de Janeiro interview (21 Jan 1993) which new wave bands influenced Nirvana, Kurt Cobain answered, as quoted by Far Out: \"The B-52's, Devo, you know, anything… Ramones\".",
+      "sourceTier": "first-person"
+    },
+    "pavement>slint": {
+      "url": "https://www.thelineofbestfit.com/features/interviews/nine-songs-bob-nastanovich",
+      "found": "Spiderland , like a lot of people who’ve heard it, is one of my favourite records of all time.",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Bob Nastanovich (Pavement) in The Line of Best Fit Nine Songs, choosing Washer: Spiderland is \"one of my favourite records of all time\"; he bought it at 24 (1991, Pavement already going) and talks about it as a driving record. Fandom, but nothing about Pavement's music, and he is the percussionist. Propose: keep as a weak first-person fandom link or remove."
+    },
+    "ride>the-jesus-and-mary-chain": {
+      "verdict": "not-found",
+      "note": "Three searches plus a full read of FACT's Andy Bell interview (9 May 2015). Bell names Spacemen 3, the House of Love, the Valentines and The Smiths but not the Mary Chain. The Mary Chain mention there is FACT's own voice (critic). MusicRadar quote not found. A BrooklynVegan Bell Creation top-10 has commentary on the Mary Chain's 'Upside Down' but it is about the song, not influence; I did not open it.",
+      "checked": "2026-10-26"
+    },
+    "snail-mail>liz-phair": {
+      "url": "https://www.tumblr.com/930club/149701778786/930-interview-lindsey-jordan-snail-mail",
+      "found": "While writing Habit I was definitely listening to a lot of Grouper, Broadcast, Joni Mitchell, Psychic TV, Beat Happening, and Liz Phair. Not all of these artists influenced the sound of the album stylistically, but I feel like I've learned a lot from their songwriting.",
+      "checked": "2026-10-26",
+      "verdict": "ok"
+    },
+    "snail-mail>grouper": {
+      "url": "https://www.tumblr.com/930club/149701778786/930-interview-lindsey-jordan-snail-mail",
+      "found": "While writing Habit I was definitely listening to a lot of Grouper, Broadcast, Joni Mitchell, Psychic TV, Beat Happening, and Liz Phair. Not all of these artists influenced the sound of the album stylistically, but I feel like I've learned a lot from their songwriting.",
+      "checked": "2026-10-26",
+      "verdict": "ok"
+    },
+    "snail-mail>broadcast": {
+      "url": "https://www.tumblr.com/930club/149701778786/930-interview-lindsey-jordan-snail-mail",
+      "found": "While writing Habit I was definitely listening to a lot of Grouper, Broadcast, Joni Mitchell, Psychic TV, Beat Happening, and Liz Phair. Not all of these artists influenced the sound of the album stylistically, but I feel like I've learned a lot from their songwriting.",
+      "checked": "2026-10-26",
+      "verdict": "ok"
+    },
+    "snail-mail>joni-mitchell": {
+      "url": "https://www.tumblr.com/930club/149701778786/930-interview-lindsey-jordan-snail-mail",
+      "found": "While writing Habit I was definitely listening to a lot of Grouper, Broadcast, Joni Mitchell, Psychic TV, Beat Happening, and Liz Phair. Not all of these artists influenced the sound of the album stylistically, but I feel like I've learned a lot from their songwriting.",
+      "checked": "2026-10-26",
+      "verdict": "ok"
+    },
+    "snail-mail>sleater-kinney": {
+      "url": "https://themoderngirlsco.wordpress.com/2017/01/31/moderngirlcrush-lindsey-jordan/",
+      "found": "In middle school, I started taking a lot of interest in punk, so I was really into Sleater Kinney and Bratmobile, as well as indie bands with thorough songwriting like Beach House and Sharon Van Etten (two faves that will always be faves).",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Lindsey Jordan to Modern Girls (31 Jan 2017): \"In middle school, I started taking a lot of interest in punk, so I was really into Sleater Kinney and Bratmobile.\"",
+      "sourceTier": "first-person"
+    },
+    "snail-mail>bratmobile": {
+      "url": "https://themoderngirlsco.wordpress.com/2017/01/31/moderngirlcrush-lindsey-jordan/",
+      "found": "In middle school, I started taking a lot of interest in punk, so I was really into Sleater Kinney and Bratmobile, as well as indie bands with thorough songwriting like Beach House and Sharon Van Etten (two faves that will always be faves).",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Lindsey Jordan to Modern Girls (31 Jan 2017): \"In middle school, I started taking a lot of interest in punk, so I was really into Sleater Kinney and Bratmobile.\"",
+      "sourceTier": "first-person"
+    },
+    "snail-mail>beach-house": {
+      "url": "https://themoderngirlsco.wordpress.com/2017/01/31/moderngirlcrush-lindsey-jordan/",
+      "found": "In middle school, I started taking a lot of interest in punk, so I was really into Sleater Kinney and Bratmobile, as well as indie bands with thorough songwriting like Beach House and Sharon Van Etten (two faves that will always be faves).",
+      "checked": "2026-10-26",
+      "verdict": "ok"
+    },
+    "snail-mail>sharon-van-etten": {
+      "url": "https://themoderngirlsco.wordpress.com/2017/01/31/moderngirlcrush-lindsey-jordan/",
+      "found": "In middle school, I started taking a lot of interest in punk, so I was really into Sleater Kinney and Bratmobile, as well as indie bands with thorough songwriting like Beach House and Sharon Van Etten (two faves that will always be faves).",
+      "checked": "2026-10-26",
+      "verdict": "ok"
+    }
+  },
+  "candidates": [
+    {
+      "source": "the-human-league",
+      "target": "brian-eno",
+      "kind": "influence",
+      "speaker": "the-human-league",
+      "sentence": "Ware began speaking about the early electronic scene in Sheffield emerging from the industrial noise of the city, meeting Ian Craig Marsh in a youth project called Meat Whistle and going to see Roxy Music at Sheffield University, with Brian Eno specifically influencing his interest in making music.",
+      "url": "https://postpunk.co.uk/martyn-ware-walthamstow-trades-hall-london"
+    }
+  ],
+  "offMap": [
+    {
+      "name": "Spacemen 3",
+      "namedBy": "ride",
+      "sentence": "But from my point of view, we did definitely listen to all the bands around, and we were feeding that, so we were being influenced by, for example, Spacemen 3, feeding that back into a new song, and then releasing it.",
+      "url": "https://factmag.com/2015/05/09/ride-interview"
+    },
+    {
+      "name": "Avril Lavigne",
+      "namedBy": "snail-mail",
+      "sentence": "I can confidently say the artist who sparked my interest in music was Avril Lavigne (“I’m With You” is still the best song ever written) because she was an alt-rocker and sort of tomboy, which is what I always wanted to be when I was little (and she played a guitar).",
+      "url": "https://themoderngirlsco.wordpress.com/2017/01/31/moderngirlcrush-lindsey-jordan/"
+    },
+    {
+      "name": "Todd Rundgren",
+      "namedBy": "drive-by-truckers",
+      "sentence": "I was highly influenced by Curtis Mayfield and Todd Rundgren as well as Paul Westerburg and Neil Young and Bruce Springsteen.",
+      "url": "https://aarondavismusic.com/news-vault/interview-with-patterson-hood-h8y9g"
+    },
+    {
+      "name": "Bruce Springsteen",
+      "namedBy": "drive-by-truckers",
+      "sentence": "I was highly influenced by Curtis Mayfield and Todd Rundgren as well as Paul Westerburg and Neil Young and Bruce Springsteen.",
+      "url": "https://aarondavismusic.com/news-vault/interview-with-patterson-hood-h8y9g"
+    }
+  ],
+  "finished": true
+}

@@ -1,0 +1,581 @@
+{
+  "name": "retry2",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "why:joy-division",
+      "phase": "why",
+      "speaker": "Joy Division",
+      "links": [
+        {
+          "key": "joy-division>the-stooges",
+          "from": "Joy Division",
+          "to": "The Stooges",
+          "fromYear": 1976,
+          "toYear": 1967,
+          "citation": "Hook: \"Ian gave me Metallic K.O. and it blew my mind. I'd never heard of Iggy or the Velvets; he introduced me to it all.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "Ian gave me Metallic K.O. and it blew my mind. I'd never heard of Iggy or the Velvets; he introduced me to it all.",
+            "speaker": "Joy Division"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:new-order",
+      "phase": "why",
+      "speaker": "New Order",
+      "links": [
+        {
+          "key": "new-order>the-stooges",
+          "from": "New Order",
+          "to": "The Stooges",
+          "fromYear": 1980,
+          "toYear": 1967,
+          "citation": "Peter Hook: \"Ian gave me Metallic K.O. and it blew my mind\" -- though this predates Joy Division/New Order.",
+          "sourceTier": "first-person",
+          "confidence": 0.6,
+          "why": {
+            "quote": "Ian gave me Metallic K.O. and it blew my mind",
+            "speaker": "New Order"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:rem",
+      "phase": "why",
+      "speaker": "R.E.M.",
+      "links": [
+        {
+          "key": "rem>big-star",
+          "from": "R.E.M.",
+          "to": "Big Star",
+          "fromYear": 1980,
+          "toYear": 1971,
+          "citation": "Buck: \"I was hoping we might get as popular as Big Star.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "I was hoping we might get as popular as Big Star.",
+            "speaker": "R.E.M."
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:snail-mail",
+      "phase": "why",
+      "speaker": "Snail Mail",
+      "links": [
+        {
+          "key": "snail-mail>st-vincent",
+          "from": "Snail Mail",
+          "to": "St. Vincent",
+          "fromYear": 2015,
+          "toYear": 2007,
+          "citation": "Lindsey Jordan told Modern Girls in 2017 that she and St. Vincent shared classical guitar training, calling her \"the first artist I saw myself in.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "the first artist I saw myself in.",
+            "speaker": "Snail Mail"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:dinosaur-jr",
+      "phase": "why",
+      "speaker": "Dinosaur Jr.",
+      "links": [
+        {
+          "key": "dinosaur-jr>husker-du",
+          "from": "Dinosaur Jr.",
+          "to": "Hüsker Dü",
+          "fromYear": 1984,
+          "toYear": 1979,
+          "citation": "J Mascis: \"our ambition was to tour like they did and sign to SST Records.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "our ambition was to tour like they did and sign to SST Records.",
+            "speaker": "Dinosaur Jr."
+          }
+        },
+        {
+          "key": "dinosaur-jr>minutemen",
+          "from": "Dinosaur Jr.",
+          "to": "Minutemen",
+          "fromYear": 1984,
+          "toYear": 1980,
+          "citation": "MOJO oral history, May 2021: J Mascis: \"We loved the Minutemen, Hüsker Dü and the Meat Puppets, and our ambition was to tour like they did and sign to SST Records.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "We loved the Minutemen, Hüsker Dü and the Meat Puppets, and our ambition was to tour like they did and sign to SST Records.",
+            "speaker": "Dinosaur Jr."
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:modest-mouse",
+      "phase": "why",
+      "speaker": "Modest Mouse",
+      "links": [
+        {
+          "key": "modest-mouse>drive-like-jehu",
+          "from": "Modest Mouse",
+          "to": "Drive Like Jehu",
+          "fromYear": 1992,
+          "toYear": 1990,
+          "citation": "Isaac Brock (2007): \"Jehu is one of my favorite all-time bands actually.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75,
+          "why": {
+            "quote": "Jehu is one of my favorite all-time bands actually.",
+            "speaker": "Modest Mouse"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:lcd-soundsystem",
+      "phase": "why",
+      "speaker": "LCD Soundsystem",
+      "links": [
+        {
+          "key": "lcd-soundsystem>can",
+          "from": "LCD Soundsystem",
+          "to": "Can",
+          "fromYear": 2002,
+          "toYear": 1968,
+          "citation": "James Murphy, RBMA lecture: \"When I found Can I was in heaven 'cause they were just like, 'Here's this for 30 minutes.'\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "When I found Can I was in heaven 'cause they were just like, 'Here's this for 30 minutes.'",
+            "speaker": "LCD Soundsystem"
+          }
+        },
+        {
+          "key": "lcd-soundsystem>gang-of-four",
+          "from": "LCD Soundsystem",
+          "to": "Gang of Four",
+          "fromYear": 2002,
+          "toYear": 1976,
+          "citation": "James Murphy, RBMA lecture: \"later on I got into like Gang Of Four and stuff like that.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "later on I got into like Gang Of Four and stuff like that.",
+            "speaker": "LCD Soundsystem"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:boards-of-canada",
+      "phase": "why",
+      "speaker": "Boards of Canada",
+      "links": [
+        {
+          "key": "boards-of-canada>my-bloody-valentine",
+          "from": "Boards of Canada",
+          "to": "My Bloody Valentine",
+          "fromYear": 1986,
+          "toYear": 1983,
+          "citation": "Pitchfork interview (2005): \"even if we don't sound like them, there's a connection in terms of the approach to music.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75,
+          "why": {
+            "quote": "even if we don't sound like them, there's a connection in terms of the approach to music.",
+            "speaker": "Boards of Canada"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:wednesday",
+      "phase": "why",
+      "speaker": "Wednesday",
+      "links": [
+        {
+          "key": "wednesday>unwound",
+          "from": "Wednesday",
+          "to": "Unwound",
+          "fromYear": 2017,
+          "toYear": 1991,
+          "citation": "The Forty-Five (2023), Karly Hartzman: \"We are listening to a lot of music and lyricists and noise and shoegaze bands like our favourite bands Unwound and Swirlies.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "We are listening to a lot of music and lyricists and noise and shoegaze bands like our favourite bands Unwound and Swirlies.",
+            "speaker": "Wednesday"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:black-country-new-road",
+      "phase": "why",
+      "speaker": "Black Country, New Road",
+      "links": [
+        {
+          "key": "black-country-new-road>godspeed-you-black-emperor",
+          "from": "Black Country, New Road",
+          "to": "Godspeed You! Black Emperor",
+          "fromYear": 2018,
+          "toYear": 1994,
+          "citation": "Saxophonist Lewis Evans to the Line of Best Fit, qualified: \"I don't know much about them but I love the way they sound.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.5,
+          "why": {
+            "quote": "I don't know much about them but I love the way they sound.",
+            "speaker": "Black Country, New Road"
+          }
+        },
+        {
+          "key": "black-country-new-road>slint",
+          "from": "Black Country, New Road",
+          "to": "Slint",
+          "fromYear": 2018,
+          "toYear": 1986,
+          "citation": "Lewis Evans to the Line of Best Fit, on the constant Slint comparisons: \"We like Slint, but we'd be on more common ground with post-rock I think.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.55,
+          "why": {
+            "quote": "We like Slint, but we'd be on more common ground with post-rock I think.",
+            "speaker": "Black Country, New Road"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:ethel-cain",
+      "phase": "why",
+      "speaker": "Ethel Cain",
+      "links": [
+        {
+          "key": "ethel-cain>imogen-heap",
+          "from": "Ethel Cain",
+          "to": "Imogen Heap",
+          "fromYear": 2019,
+          "toYear": 1998,
+          "citation": "Ethel Cain told Crack Magazine in a December 2022 cover story that friends she met on Tumblr as a teenager introduced her to artists who \"influence her to this day,\" naming Daughter, Banks, Susanne Sundfor and Imogen Heap; she told Vice in July 2024 that discovering that side of pop made her think, \"that's what I want to make.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "that's what I want to make.",
+            "speaker": "Ethel Cain"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:drive-by-truckers",
+      "phase": "why",
+      "speaker": "Drive-By Truckers",
+      "links": [
+        {
+          "key": "drive-by-truckers>neil-young",
+          "from": "Drive-By Truckers",
+          "to": "Neil Young",
+          "fromYear": 1996,
+          "toYear": 1966,
+          "citation": "The Bluegrass Situation, Hood: \"I'm sure part of that influence was Todd Rundgren and Neil Young, too, 'cause he's all over the map. A lot of the artists I love tend to go all over the map.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "I'm sure part of that influence was Todd Rundgren and Neil Young, too, 'cause he's all over the map. A lot of the artists I love tend to go all over the map.",
+            "speaker": "Drive-By Truckers"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:porter-robinson",
+      "phase": "why",
+      "speaker": "Porter Robinson",
+      "links": [
+        {
+          "key": "porter-robinson>ninajirachi",
+          "from": "Porter Robinson",
+          "to": "Ninajirachi",
+          "fromYear": 2010,
+          "toYear": 2017,
+          "citation": "Robinson, in a triple j interview with Ninajirachi, on two things he took from her into his own studio practice: her approach to lyrics -- \"she would just kind of like come up with stuff and not overthink it and go for it and sell it really. And I've been trying to carry that with me in the studio\" -- and her \"glitch generation\" technique of recording long files of experimental sound to draw on, which he says \"led to so many breakthroughs.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "she would just kind of like come up with stuff and not overthink it and go for it and sell it really. And I've been trying to carry that with me in the studio",
+            "speaker": "Porter Robinson"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:the-human-league",
+      "phase": "why",
+      "speaker": "The Human League",
+      "links": [
+        {
+          "key": "the-human-league>kraftwerk",
+          "from": "The Human League",
+          "to": "Kraftwerk",
+          "fromYear": 1977,
+          "toYear": 1970,
+          "citation": "Philip Oakey, on co-founder Martyn Ware: \"Martyn came around, and under his arm he had Kraftwerk's Trans-Europe Express and I Feel Love by Donna Summer\" (Oakey interview, FLOOD/Reybee); corroborated by Wikipedia: \"The Sheffield scene in which The Human League formed... took more influence from Kraftwerk.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "Martyn came around, and under his arm he had Kraftwerk's Trans-Europe Express and I Feel Love by Donna Summer",
+            "speaker": "The Human League"
+          }
+        }
+      ]
+    },
+    {
+      "id": "first-person:my-bloody-valentine",
+      "phase": "first-person",
+      "speaker": "My Bloody Valentine",
+      "links": [
+        {
+          "key": "my-bloody-valentine>siouxsie-and-the-banshees",
+          "from": "My Bloody Valentine",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 1983,
+          "toYear": 1976,
+          "citation": "Kevin Shields to Karen Leng, Double J / ABC (8 Apr 2021), on the dark post-punk bands the band drew from: \"the best of all was Siouxsie and the Banshees, the Cure and Killing Joke.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.65
+        },
+        {
+          "key": "my-bloody-valentine>the-cure",
+          "from": "My Bloody Valentine",
+          "to": "The Cure",
+          "fromYear": 1983,
+          "toYear": 1978,
+          "citation": "Kevin Shields to Karen Leng, Double J / ABC (8 Apr 2021), same answer: \"the best of all was Siouxsie and the Banshees, the Cure and Killing Joke.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "first-person:fugazi",
+      "phase": "first-person",
+      "speaker": "Fugazi",
+      "links": [
+        {
+          "key": "fugazi>sonic-youth",
+          "from": "Fugazi",
+          "to": "Sonic Youth",
+          "fromYear": 1986,
+          "toYear": 1981,
+          "citation": "Guy Picciotto, Cultural Glitch (Nov 3, 2011): \"Fugazi's influences include Bad Brains, the Faith, Void, Minutemen, Black Flag, Sonic Youth, the Ex.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.65
+        },
+        {
+          "key": "fugazi>bad-brains",
+          "from": "Fugazi",
+          "to": "Bad Brains",
+          "fromYear": 1986,
+          "toYear": 1977,
+          "citation": "Guy Picciotto, Cultural Glitch (Nov 3, 2011): \"Fugazi's influences include Bad Brains, the Faith, Void, Minutemen, Black Flag, Sonic Youth, the Ex.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "fugazi>minutemen",
+          "from": "Fugazi",
+          "to": "Minutemen",
+          "fromYear": 1986,
+          "toYear": 1980,
+          "citation": "Guy Picciotto, Cultural Glitch (Nov 3, 2011): \"Fugazi's influences include Bad Brains, the Faith, Void, Minutemen, Black Flag, Sonic Youth, the Ex.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "fugazi>black-flag",
+          "from": "Fugazi",
+          "to": "Black Flag",
+          "fromYear": 1986,
+          "toYear": 1976,
+          "citation": "Guy Picciotto, Cultural Glitch (Nov 3, 2011): \"Fugazi's influences include Bad Brains, the Faith, Void, Minutemen, Black Flag, Sonic Youth, the Ex.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:mogwai",
+      "phase": "first-person",
+      "speaker": "Mogwai",
+      "links": [
+        {
+          "key": "mogwai>kraftwerk",
+          "from": "Mogwai",
+          "to": "Kraftwerk",
+          "fromYear": 1995,
+          "toYear": 1970,
+          "citation": "Stuart Braithwaite, The Line of Best Fit, Andrew Hannah, \"From Young Team to Atomic: Stuart Braithwaite on twenty years of Mogwai\" (Apr 11, 2016).",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:nirvana",
+      "phase": "first-person",
+      "speaker": "Nirvana",
+      "links": [
+        {
+          "key": "nirvana>neil-young",
+          "from": "Nirvana",
+          "to": "Neil Young",
+          "fromYear": 1987,
+          "toYear": 1966,
+          "citation": "Kurt Cobain told Les Inrockuptibles in 1993 that he had unbounded admiration for Neil Young, calling his career exemplary -- he did everything, tried everything, and never gave people what they expected.",
+          "sourceTier": "first-person",
+          "confidence": 0.55
+        },
+        {
+          "key": "nirvana>ramones",
+          "from": "Nirvana",
+          "to": "Ramones",
+          "fromYear": 1987,
+          "toYear": 1974,
+          "citation": "Discussing the new-wave strand of his own record collection, Kurt Cobain named the B-52's, Devo, and the Ramones in the same breath.",
+          "sourceTier": "first-person",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "first-person:pavement",
+      "phase": "first-person",
+      "speaker": "Pavement",
+      "links": [
+        {
+          "key": "pavement>slint",
+          "from": "Pavement",
+          "to": "Slint",
+          "fromYear": 1989,
+          "toYear": 1986,
+          "citation": "Bob Nastanovich (Pavement) ranked Spiderland among his favorite albums -- Rob Jovanovic, Perfect Sound Forever (2004).",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:ride",
+      "phase": "first-person",
+      "speaker": "Ride",
+      "links": [
+        {
+          "key": "ride>the-jesus-and-mary-chain",
+          "from": "Ride",
+          "to": "The Jesus and Mary Chain",
+          "fromYear": 1988,
+          "toYear": 1983,
+          "citation": "Bell, MusicRadar: \"We were basically translating our version of a certain crop of 60s bands... and putting that through a filter of what was going on right then. The Mary Chain, the Valentines, the House Of Love and Spacemen 3.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:snail-mail",
+      "phase": "first-person",
+      "speaker": "Snail Mail",
+      "links": [
+        {
+          "key": "snail-mail>liz-phair",
+          "from": "Snail Mail",
+          "to": "Liz Phair",
+          "fromYear": 2015,
+          "toYear": 1991,
+          "citation": "Lindsey Jordan named Liz Phair in the same 2016 9:30 Club interview in which she named Grouper, Broadcast, Joni Mitchell, Psychic TV and Beat Happening as artists she was listening to while writing Habit.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "snail-mail>grouper",
+          "from": "Snail Mail",
+          "to": "Grouper",
+          "fromYear": 2015,
+          "toYear": 2005,
+          "citation": "Lindsey Jordan said in a 2016 interview at the 9:30 Club, posted to Tumblr, that while writing Habit she was listening to a lot of Grouper, Broadcast, Joni Mitchell, Psychic TV, Beat Happening and Liz Phair, adding that not all of them influenced the album stylistically but she had learned from their songwriting, which she called articulate and inspirational.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "snail-mail>broadcast",
+          "from": "Snail Mail",
+          "to": "Broadcast",
+          "fromYear": 2015,
+          "toYear": 1995,
+          "citation": "The same 2016 9:30 Club interview names Broadcast alongside Grouper, Joni Mitchell, Psychic TV, Beat Happening and Liz Phair as artists Lindsey Jordan was listening to while writing Habit.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "snail-mail>sleater-kinney",
+          "from": "Snail Mail",
+          "to": "Sleater-Kinney",
+          "fromYear": 2015,
+          "toYear": 1994,
+          "citation": "Lindsey Jordan told Modern Girls in 2017 that she got into punk in middle school and was \"really into Sleater-Kinney and Bratmobile.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "snail-mail>beach-house",
+          "from": "Snail Mail",
+          "to": "Beach House",
+          "fromYear": 2015,
+          "toYear": 2004,
+          "citation": "In the same Modern Girls interview, Jordan named Beach House among the indie bands with \"thorough songwriting\" that will \"always be faves.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "snail-mail>bratmobile",
+          "from": "Snail Mail",
+          "to": "Bratmobile",
+          "fromYear": 2015,
+          "toYear": 1991,
+          "citation": "The same Modern Girls quote in which Jordan names Sleater-Kinney also names Bratmobile as a band she got into during middle school.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "snail-mail>sharon-van-etten",
+          "from": "Snail Mail",
+          "to": "Sharon Van Etten",
+          "fromYear": 2015,
+          "toYear": 2005,
+          "citation": "The same Modern Girls interview in which Jordan named Beach House also named Sharon Van Etten among her lasting favorites.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "snail-mail>joni-mitchell",
+          "from": "Snail Mail",
+          "to": "Joni Mitchell",
+          "fromYear": 2015,
+          "toYear": 1964,
+          "citation": "Lindsey Jordan named Joni Mitchell in the same 2016 9:30 Club interview in which she named Grouper, Broadcast and Liz Phair as artists she was listening to while writing Habit.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    }
+  ]
+}

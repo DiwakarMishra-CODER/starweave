@@ -1,0 +1,489 @@
+{
+  "name": "c1",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "why:sonic-youth",
+      "phase": "why",
+      "speaker": "Sonic Youth",
+      "links": [
+        {
+          "key": "sonic-youth>minor-threat",
+          "from": "Sonic Youth",
+          "to": "Minor Threat",
+          "fromYear": 1981,
+          "toYear": 1980,
+          "citation": "Michael Azerrad, Our Band Could Be Your Life (2001), p.273: after seeing Minor Threat play in May 1982, Thurston Moore called them \"the greatest live band I have ever seen.\" Praise for them as a live act, alongside the band's broader turn toward hardcore.",
+          "sourceTier": "first-person",
+          "confidence": 0.65,
+          "why": {
+            "quote": "the greatest live band I have ever seen.",
+            "speaker": "Sonic Youth"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:my-bloody-valentine",
+      "phase": "why",
+      "speaker": "My Bloody Valentine",
+      "links": [
+        {
+          "key": "my-bloody-valentine>sonic-youth",
+          "from": "My Bloody Valentine",
+          "to": "Sonic Youth",
+          "fromYear": 1983,
+          "toYear": 1981,
+          "citation": "Shields has said MBV got good by \"letting ourselves be more Sonic Youth-y, more of our influences.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "letting ourselves be more Sonic Youth-y, more of our influences.",
+            "speaker": "My Bloody Valentine"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:cocteau-twins",
+      "phase": "why",
+      "speaker": "Cocteau Twins",
+      "links": [
+        {
+          "key": "cocteau-twins>ramones",
+          "from": "Cocteau Twins",
+          "to": "Ramones",
+          "fromYear": 1979,
+          "toYear": 1974,
+          "citation": "Guthrie, in a MOJO interview reposted on the band's site: \"I adored the fast R&B of Doctor Feelgood and The Count Bishops, and then I heard the Ramones.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7,
+          "why": {
+            "quote": "I adored the fast R&B of Doctor Feelgood and The Count Bishops, and then I heard the Ramones.",
+            "speaker": "Cocteau Twins"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:joy-division",
+      "phase": "why",
+      "speaker": "Joy Division",
+      "links": [
+        {
+          "key": "joy-division>the-stooges",
+          "from": "Joy Division",
+          "to": "The Stooges",
+          "fromYear": 1976,
+          "toYear": 1967,
+          "citation": "Hook: \"Ian gave me Metallic K.O. and it blew my mind. I'd never heard of Iggy or the Velvets; he introduced me to it all.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "Ian gave me Metallic K.O. and it blew my mind. I'd never heard of Iggy or the Velvets; he introduced me to it all.",
+            "speaker": "Joy Division"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:the-cure",
+      "phase": "why",
+      "speaker": "The Cure",
+      "links": [
+        {
+          "key": "the-cure>david-bowie",
+          "from": "The Cure",
+          "to": "David Bowie",
+          "fromYear": 1978,
+          "toYear": 1969,
+          "citation": "Ziggy Stardust was the first record Robert Smith bought; he has said \"David Bowie was an obvious influence on me.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "David Bowie was an obvious influence on me.",
+            "speaker": "The Cure"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:radiohead",
+      "phase": "why",
+      "speaker": "Radiohead",
+      "links": [
+        {
+          "key": "radiohead>rem",
+          "from": "Radiohead",
+          "to": "R.E.M.",
+          "fromYear": 1985,
+          "toYear": 1980,
+          "citation": "Thom Yorke has said R.E.M. \"turned my life upside down... Shortly after, I signed up for art school.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "turned my life upside down... Shortly after, I signed up for art school.",
+            "speaker": "Radiohead"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:slowdive",
+      "phase": "why",
+      "speaker": "Slowdive",
+      "links": [
+        {
+          "key": "slowdive>my-bloody-valentine",
+          "from": "Slowdive",
+          "to": "My Bloody Valentine",
+          "fromYear": 1989,
+          "toYear": 1983,
+          "citation": "Neil Halstead: \"When I listened to My Bloody Valentine and Cocteau Twins I wanted something between those sounds.\" Rachel Goswell and Christian Savill have said the same in separate interviews.",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "When I listened to My Bloody Valentine and Cocteau Twins I wanted something between those sounds.",
+            "speaker": "Slowdive"
+          }
+        },
+        {
+          "key": "slowdive>pixies",
+          "from": "Slowdive",
+          "to": "Pixies",
+          "fromYear": 1989,
+          "toYear": 1986,
+          "citation": "Rachel Goswell: \"We really liked Pixies. Doolittle was kind of an anthemic LP for us back in those days.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "We really liked Pixies. Doolittle was kind of an anthemic LP for us back in those days.",
+            "speaker": "Slowdive"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:depeche-mode",
+      "phase": "why",
+      "speaker": "Depeche Mode",
+      "links": [
+        {
+          "key": "depeche-mode>kraftwerk",
+          "from": "Depeche Mode",
+          "to": "Kraftwerk",
+          "fromYear": 1980,
+          "toYear": 1970,
+          "citation": "Martin Gore, widely re-quoted via Kraftwerk's Wikipedia influence section: \"For anyone of our generation involved in electronic music, Kraftwerk were the godfathers.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "For anyone of our generation involved in electronic music, Kraftwerk were the godfathers.",
+            "speaker": "Depeche Mode"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:talking-heads",
+      "phase": "why",
+      "speaker": "Talking Heads",
+      "links": [
+        {
+          "key": "talking-heads>velvet-underground",
+          "from": "Talking Heads",
+          "to": "The Velvet Underground",
+          "fromYear": 1975,
+          "toYear": 1965,
+          "citation": "Byrne, in a 2013 Lou Reed tribute: Reed and the Velvet Underground were \"a big influence on myself and Talking Heads... a big reason I moved to New York.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "a big influence on myself and Talking Heads... a big reason I moved to New York.",
+            "speaker": "Talking Heads"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:brian-eno",
+      "phase": "why",
+      "speaker": "Brian Eno",
+      "links": [
+        {
+          "key": "brian-eno>velvet-underground",
+          "from": "Brian Eno",
+          "to": "The Velvet Underground",
+          "fromYear": 1971,
+          "toYear": 1965,
+          "citation": "Brian Eno, LA Times interview with Kristine McKenna (1982): \"I think everyone who bought one of those 30,000 copies started a band!\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "I think everyone who bought one of those 30,000 copies started a band!",
+            "speaker": "Brian Eno"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:mogwai",
+      "phase": "why",
+      "speaker": "Mogwai",
+      "links": [
+        {
+          "key": "mogwai>nick-drake",
+          "from": "Mogwai",
+          "to": "Nick Drake",
+          "fromYear": 1995,
+          "toYear": 1968,
+          "citation": "Mogwai's Stuart Braithwaite told The Quietus that Nick Drake's Pink Moon is \"a perfect record\" and that \"the simplicity of it was a big thing for me, that music that simple can also be really moving.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "the simplicity of it was a big thing for me, that music that simple can also be really moving.",
+            "speaker": "Mogwai"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:new-order",
+      "phase": "why",
+      "speaker": "New Order",
+      "links": [
+        {
+          "key": "new-order>the-stooges",
+          "from": "New Order",
+          "to": "The Stooges",
+          "fromYear": 1980,
+          "toYear": 1967,
+          "citation": "Peter Hook: \"Ian gave me Metallic K.O. and it blew my mind\" -- though this predates Joy Division/New Order.",
+          "sourceTier": "first-person",
+          "confidence": 0.6,
+          "why": {
+            "quote": "Ian gave me Metallic K.O. and it blew my mind",
+            "speaker": "New Order"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:nirvana",
+      "phase": "why",
+      "speaker": "Nirvana",
+      "links": [
+        {
+          "key": "nirvana>wipers",
+          "from": "Nirvana",
+          "to": "Wipers",
+          "fromYear": 1987,
+          "toYear": 1977,
+          "citation": "Cobain named Is This Real?, Youth of America and Over the Edge among his favorite records outright, saying of the Wipers' first two albums specifically: \"The first two were totally classic and influenced the Melvins and all the other punk rock bands. They're another band I tried to assimilate.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "The first two were totally classic and influenced the Melvins and all the other punk rock bands. They're another band I tried to assimilate.",
+            "speaker": "Nirvana"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:black-flag",
+      "phase": "why",
+      "speaker": "Black Flag",
+      "links": [
+        {
+          "key": "black-flag>the-stooges",
+          "from": "Black Flag",
+          "to": "The Stooges",
+          "fromYear": 1976,
+          "toYear": 1967,
+          "citation": "Greg Ginn, Wikipedia/Black Flag: \"We were influenced by the Stooges and then the Ramones; they inspired us.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "We were influenced by the Stooges and then the Ramones; they inspired us.",
+            "speaker": "Black Flag"
+          }
+        },
+        {
+          "key": "black-flag>ramones",
+          "from": "Black Flag",
+          "to": "Ramones",
+          "fromYear": 1976,
+          "toYear": 1974,
+          "citation": "Greg Ginn, via Wikipedia: \"We were influenced by the Stooges and then the Ramones; they inspired us.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "We were influenced by the Stooges and then the Ramones; they inspired us.",
+            "speaker": "Black Flag"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:rem",
+      "phase": "why",
+      "speaker": "R.E.M.",
+      "links": [
+        {
+          "key": "rem>big-star",
+          "from": "R.E.M.",
+          "to": "Big Star",
+          "fromYear": 1980,
+          "toYear": 1971,
+          "citation": "Buck: \"I was hoping we might get as popular as Big Star.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "I was hoping we might get as popular as Big Star.",
+            "speaker": "R.E.M."
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:ride",
+      "phase": "why",
+      "speaker": "Ride",
+      "links": [
+        {
+          "key": "ride>the-smiths",
+          "from": "Ride",
+          "to": "The Smiths",
+          "fromYear": 1988,
+          "toYear": 1982,
+          "citation": "Bell, VWMusic: \"By age thirteen, I was getting into The Smiths, and Johnny Marr was a big formative influence.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "By age thirteen, I was getting into The Smiths, and Johnny Marr was a big formative influence.",
+            "speaker": "Ride"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:snail-mail",
+      "phase": "why",
+      "speaker": "Snail Mail",
+      "links": [
+        {
+          "key": "snail-mail>st-vincent",
+          "from": "Snail Mail",
+          "to": "St. Vincent",
+          "fromYear": 2015,
+          "toYear": 2007,
+          "citation": "Lindsey Jordan told Modern Girls in 2017 that she and St. Vincent shared classical guitar training, calling her \"the first artist I saw myself in.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "the first artist I saw myself in.",
+            "speaker": "Snail Mail"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:the-jesus-and-mary-chain",
+      "phase": "why",
+      "speaker": "The Jesus and Mary Chain",
+      "links": [
+        {
+          "key": "the-jesus-and-mary-chain>the-stooges",
+          "from": "The Jesus and Mary Chain",
+          "to": "The Stooges",
+          "fromYear": 1983,
+          "toYear": 1967,
+          "citation": "Rolling Stone, on writing Psychocandy: \"we got seriously into the Velvets and the Stooges.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "we got seriously into the Velvets and the Stooges.",
+            "speaker": "The Jesus and Mary Chain"
+          }
+        },
+        {
+          "key": "the-jesus-and-mary-chain>echo-and-the-bunnymen",
+          "from": "The Jesus and Mary Chain",
+          "to": "Echo & the Bunnymen",
+          "fromYear": 1983,
+          "toYear": 1978,
+          "citation": "Rolling Stone: \"The bands that didn't make us want to puke back then were the likes of the Birthday Party or Echo and the Bunnymen.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7,
+          "why": {
+            "quote": "The bands that didn't make us want to puke back then were the likes of the Birthday Party or Echo and the Bunnymen.",
+            "speaker": "The Jesus and Mary Chain"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:dinosaur-jr",
+      "phase": "why",
+      "speaker": "Dinosaur Jr.",
+      "links": [
+        {
+          "key": "dinosaur-jr>husker-du",
+          "from": "Dinosaur Jr.",
+          "to": "Hüsker Dü",
+          "fromYear": 1984,
+          "toYear": 1979,
+          "citation": "J Mascis: \"our ambition was to tour like they did and sign to SST Records.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "our ambition was to tour like they did and sign to SST Records.",
+            "speaker": "Dinosaur Jr."
+          }
+        },
+        {
+          "key": "dinosaur-jr>minutemen",
+          "from": "Dinosaur Jr.",
+          "to": "Minutemen",
+          "fromYear": 1984,
+          "toYear": 1980,
+          "citation": "MOJO oral history, May 2021: J Mascis: \"We loved the Minutemen, Hüsker Dü and the Meat Puppets, and our ambition was to tour like they did and sign to SST Records.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "We loved the Minutemen, Hüsker Dü and the Meat Puppets, and our ambition was to tour like they did and sign to SST Records.",
+            "speaker": "Dinosaur Jr."
+          }
+        },
+        {
+          "key": "dinosaur-jr>the-birthday-party",
+          "from": "Dinosaur Jr.",
+          "to": "The Birthday Party",
+          "fromYear": 1984,
+          "toYear": 1976,
+          "citation": "Lou Barlow: \"we were into The Birthday Party.\" J Mascis broke eggs into his hair to copy Nick Cave's haircut.",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "we were into The Birthday Party.",
+            "speaker": "Dinosaur Jr."
+          }
+        },
+        {
+          "key": "dinosaur-jr>wipers",
+          "from": "Dinosaur Jr.",
+          "to": "Wipers",
+          "fromYear": 1984,
+          "toYear": 1977,
+          "citation": "J Mascis named Greg Sage among the guitarists who shaped his sound in Guitar World's \"10 guitarists who shaped my sound,\" pointing to the \"Kracked\" intro on \"You're Living All Over Me\" as a Wipers-styled thing.",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "10 guitarists who shaped my sound,",
+            "speaker": "Dinosaur Jr."
+          }
+        }
+      ]
+    }
+  ]
+}

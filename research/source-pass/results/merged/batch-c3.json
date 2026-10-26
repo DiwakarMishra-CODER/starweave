@@ -1,0 +1,426 @@
+{
+  "name": "c3",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "why:autechre",
+      "phase": "why",
+      "speaker": "Autechre",
+      "links": [
+        {
+          "key": "autechre>kraftwerk",
+          "from": "Autechre",
+          "to": "Kraftwerk",
+          "fromYear": 1987,
+          "toYear": 1970,
+          "citation": "Sean Booth, Index Magazine: \"When I was first getting spun out by music, it was things like K-Rob, Kraftwerk's 'Tour de France'... and stuff like Jonzun Crew.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "When I was first getting spun out by music, it was things like K-Rob, Kraftwerk's 'Tour de France'... and stuff like Jonzun Crew.",
+            "speaker": "Autechre"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:caroline-polachek",
+      "phase": "why",
+      "speaker": "Caroline Polachek",
+      "links": [
+        {
+          "key": "caroline-polachek>fiona-apple",
+          "from": "Caroline Polachek",
+          "to": "Fiona Apple",
+          "fromYear": 2013,
+          "toYear": 1996,
+          "citation": "Caroline Polachek to The Guardian: \"Growing up listening to artists like Fiona Apple, Kate Bush and Björk... felt so aspirational to me.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "Growing up listening to artists like Fiona Apple, Kate Bush and Björk... felt so aspirational to me.",
+            "speaker": "Caroline Polachek"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:drive-by-truckers",
+      "phase": "why",
+      "speaker": "Drive-By Truckers",
+      "links": [
+        {
+          "key": "drive-by-truckers>neil-young",
+          "from": "Drive-By Truckers",
+          "to": "Neil Young",
+          "fromYear": 1996,
+          "toYear": 1966,
+          "citation": "The Bluegrass Situation, Hood: \"I'm sure part of that influence was Todd Rundgren and Neil Young, too, 'cause he's all over the map. A lot of the artists I love tend to go all over the map.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "I'm sure part of that influence was Todd Rundgren and Neil Young, too, 'cause he's all over the map. A lot of the artists I love tend to go all over the map.",
+            "speaker": "Drive-By Truckers"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:porter-robinson",
+      "phase": "why",
+      "speaker": "Porter Robinson",
+      "links": [
+        {
+          "key": "porter-robinson>ninajirachi",
+          "from": "Porter Robinson",
+          "to": "Ninajirachi",
+          "fromYear": 2010,
+          "toYear": 2017,
+          "citation": "Robinson, in a triple j interview with Ninajirachi, on two things he took from her into his own studio practice: her approach to lyrics -- \"she would just kind of like come up with stuff and not overthink it and go for it and sell it really. And I've been trying to carry that with me in the studio\" -- and her \"glitch generation\" technique of recording long files of experimental sound to draw on, which he says \"led to so many breakthroughs.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "she would just kind of like come up with stuff and not overthink it and go for it and sell it really. And I've been trying to carry that with me in the studio",
+            "speaker": "Porter Robinson"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:portishead",
+      "phase": "why",
+      "speaker": "Portishead",
+      "links": [
+        {
+          "key": "portishead>silver-apples",
+          "from": "Portishead",
+          "to": "Silver Apples",
+          "fromYear": 1991,
+          "toYear": 1967,
+          "citation": "Geoff Barrow (Portishead), via Sound on Sound/FarOut: \"for people like us, they are the perfect band... They should definitely be up there with the pioneers of electronic music.\" Portishead's 2008 track \"We Carry On\" is widely cited as a direct homage.",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "for people like us, they are the perfect band... They should definitely be up there with the pioneers of electronic music.",
+            "speaker": "Portishead"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:the-human-league",
+      "phase": "why",
+      "speaker": "The Human League",
+      "links": [
+        {
+          "key": "the-human-league>kraftwerk",
+          "from": "The Human League",
+          "to": "Kraftwerk",
+          "fromYear": 1977,
+          "toYear": 1970,
+          "citation": "Philip Oakey, on co-founder Martyn Ware: \"Martyn came around, and under his arm he had Kraftwerk's Trans-Europe Express and I Feel Love by Donna Summer\" (Oakey interview, FLOOD/Reybee); corroborated by Wikipedia: \"The Sheffield scene in which The Human League formed... took more influence from Kraftwerk.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "Martyn came around, and under his arm he had Kraftwerk's Trans-Europe Express and I Feel Love by Donna Summer",
+            "speaker": "The Human League"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:the-strokes",
+      "phase": "why",
+      "speaker": "The Strokes",
+      "links": [
+        {
+          "key": "the-strokes>velvet-underground",
+          "from": "The Strokes",
+          "to": "The Velvet Underground",
+          "fromYear": 1998,
+          "toYear": 1965,
+          "citation": "Julian Casablancas: \"I listened to Loaded all the time when we started the band... They taught me just to be myself.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "I listened to Loaded all the time when we started the band... They taught me just to be myself.",
+            "speaker": "The Strokes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:yo-la-tengo",
+      "phase": "why",
+      "speaker": "Yo La Tengo",
+      "links": [
+        {
+          "key": "yo-la-tengo>my-bloody-valentine",
+          "from": "Yo La Tengo",
+          "to": "My Bloody Valentine",
+          "fromYear": 1984,
+          "toYear": 1983,
+          "citation": "Ira Kaplan, Premier Guitar: \"Well, My Bloody Valentine, for sure... a friend gave us a copy of Loveless... We were big fans of that band in particular.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7,
+          "why": {
+            "quote": "Well, My Bloody Valentine, for sure... a friend gave us a copy of Loveless... We were big fans of that band in particular.",
+            "speaker": "Yo La Tengo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:buzzcocks",
+      "phase": "why",
+      "speaker": "Buzzcocks",
+      "links": [
+        {
+          "key": "buzzcocks>velvet-underground",
+          "from": "Buzzcocks",
+          "to": "The Velvet Underground",
+          "fromYear": 1976,
+          "toYear": 1965,
+          "citation": "Far Out Magazine: Pete Shelley has said flatly that \"even now, I think the Velvet Underground are more influential than they're given credit for\" -- the connection runs back to Howard Devoto advertising for bandmates who liked the Velvets' \"Sister Ray\" on a college noticeboard, which is how he and Shelley met in the first place.",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "even now, I think the Velvet Underground are more influential than they're given credit for",
+            "speaker": "Buzzcocks"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:charli-xcx",
+      "phase": "why",
+      "speaker": "Charli XCX",
+      "links": [
+        {
+          "key": "charli-xcx>sophie",
+          "from": "Charli XCX",
+          "to": "SOPHIE",
+          "fromYear": 2008,
+          "toYear": 2013,
+          "citation": "2025 BRIT Awards Best Dance Act speech (widely reported, incl. NME): \"And of course, someone who none of us would be up here without: SOPHIE.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "And of course, someone who none of us would be up here without: SOPHIE.",
+            "speaker": "Charli XCX"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:explosions-in-the-sky",
+      "phase": "why",
+      "speaker": "Explosions in the Sky",
+      "links": [
+        {
+          "key": "explosions-in-the-sky>tortoise",
+          "from": "Explosions in the Sky",
+          "to": "Tortoise",
+          "fromYear": 1999,
+          "toYear": 1990,
+          "citation": "Epigram Q&A (2023): \"it gave us a lot of inspiration to see bands like Mogwai and Tortoise making really cool music that had no vocals.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "it gave us a lot of inspiration to see bands like Mogwai and Tortoise making really cool music that had no vocals.",
+            "speaker": "Explosions in the Sky"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:lucinda-williams",
+      "phase": "why",
+      "speaker": "Lucinda Williams",
+      "links": [
+        {
+          "key": "lucinda-williams>bob-dylan",
+          "from": "Lucinda Williams",
+          "to": "Bob Dylan",
+          "fromYear": 1979,
+          "toYear": 1961,
+          "citation": "WFUV (2021), on Highway 61 Revisited: she studied his \"use of biblical stories, biblical references\" and says she was \"influenced a lot by some of his songs where he does that,\" adding \"I loved the combination of the electric with the folk.\" Corroborated by Rolling Stone (2018): after a label executive told her none of her songs had bridges, \"I got out my Bob Dylan and Neil Young albums.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "I got out my Bob Dylan and Neil Young albums.",
+            "speaker": "Lucinda Williams"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:lush",
+      "phase": "why",
+      "speaker": "Lush",
+      "links": [
+        {
+          "key": "lush>siouxsie-and-the-banshees",
+          "from": "Lush",
+          "to": "Siouxsie & The Banshees",
+          "fromYear": 1987,
+          "toYear": 1976,
+          "citation": "Emma Anderson, FLOOD: \"I was all about post-punk. I liked the Cocteau Twins and Siouxsie and the Banshees.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "I was all about post-punk. I liked the Cocteau Twins and Siouxsie and the Banshees.",
+            "speaker": "Lush"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:mazzy-star",
+      "phase": "why",
+      "speaker": "Mazzy Star",
+      "links": [
+        {
+          "key": "mazzy-star>nick-drake",
+          "from": "Mazzy Star",
+          "to": "Nick Drake",
+          "fromYear": 1988,
+          "toYear": 1968,
+          "citation": "David Roback, 1990: \"I've listened to Nick Drake -- there is a certain feeling in his music that I find very tangible and sad.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75,
+          "why": {
+            "quote": "I've listened to Nick Drake -- there is a certain feeling in his music that I find very tangible and sad.",
+            "speaker": "Mazzy Star"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:mount-eerie",
+      "phase": "why",
+      "speaker": "The Microphones / Mount Eerie",
+      "links": [
+        {
+          "key": "mount-eerie>stereolab",
+          "from": "The Microphones / Mount Eerie",
+          "to": "Stereolab",
+          "fromYear": 1996,
+          "toYear": 1990,
+          "citation": "In \"Microphones in 2020,\" Phil Elverum describes seeing Stereolab play \"one chord for fifteen minutes\" in Bellingham, Washington -- \"something in me shifted\" and \"I brought home belief that I could create eternity.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "I brought home belief that I could create eternity.",
+            "speaker": "The Microphones / Mount Eerie"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:beabadoobee",
+      "phase": "why",
+      "speaker": "beabadoobee",
+      "links": [
+        {
+          "key": "beabadoobee>dinosaur-jr",
+          "from": "beabadoobee",
+          "to": "Dinosaur Jr.",
+          "fromYear": 2017,
+          "toYear": 1984,
+          "citation": "The Boar (Nov 2020) lists Dinosaur Jr, Sonic Youth, the Smashing Pumpkins and Stephen Malkmus as the main influences on Fake It Flowers, and beabadoobee confirms them directly: \"All of these massively inspired me in making Fake It Flowers, both sonically and in certain ways that I would incorporate into lyric writing.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8,
+          "why": {
+            "quote": "All of these massively inspired me in making Fake It Flowers, both sonically and in certain ways that I would incorporate into lyric writing.",
+            "speaker": "beabadoobee"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:perfume-genius",
+      "phase": "why",
+      "speaker": "Perfume Genius",
+      "links": [
+        {
+          "key": "perfume-genius>liz-phair",
+          "from": "Perfume Genius",
+          "to": "Liz Phair",
+          "fromYear": 2008,
+          "toYear": 1991,
+          "citation": "The Quietus's Baker's Dozen: on Exile in Guyville, Hadreas said \"this album changed music for me when I was about 12... hearing someone sing about it without apology and with power was just really helpful.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75,
+          "why": {
+            "quote": "this album changed music for me when I was about 12... hearing someone sing about it without apology and with power was just really helpful.",
+            "speaker": "Perfume Genius"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:squid",
+      "phase": "why",
+      "speaker": "Squid",
+      "links": [
+        {
+          "key": "squid>neu",
+          "from": "Squid",
+          "to": "Neu!",
+          "fromYear": 2015,
+          "toYear": 1971,
+          "citation": "Guitarist Louis Borlase told Loud And Quiet that Neu! \"was rubbing off on us a lot, especially with Ollie's style of drumming\" -- the motorik, monotonous beat began to define the sound.",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "was rubbing off on us a lot, especially with Ollie's style of drumming",
+            "speaker": "Squid"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:the-postal-service",
+      "phase": "why",
+      "speaker": "The Postal Service",
+      "links": [
+        {
+          "key": "the-postal-service>kraftwerk",
+          "from": "The Postal Service",
+          "to": "Kraftwerk",
+          "fromYear": 2001,
+          "toYear": 1970,
+          "citation": "Ben Gibbard, SPIN (Aug 2024): \"I grew up a huge Depeche Mode fan, a huge Kraftwerk fan... New Order.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "I grew up a huge Depeche Mode fan, a huge Kraftwerk fan... New Order.",
+            "speaker": "The Postal Service"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why:jeff-rosenstock",
+      "phase": "why",
+      "speaker": "Jeff Rosenstock",
+      "links": [
+        {
+          "key": "jeff-rosenstock>the-clash",
+          "from": "Jeff Rosenstock",
+          "to": "The Clash",
+          "fromYear": 1995,
+          "toYear": 1976,
+          "citation": "Rosenstock has called out the Clash by name as inspiring precisely because \"they were so open to taking risks... they wouldn't adhere to any formula and I find that really inspiring.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85,
+          "why": {
+            "quote": "they were so open to taking risks... they wouldn't adhere to any formula and I find that really inspiring.",
+            "speaker": "Jeff Rosenstock"
+          }
+        }
+      ]
+    }
+  ]
+}

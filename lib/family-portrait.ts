@@ -26,6 +26,9 @@ export interface Member {
   tier: string;
   /** The source, ready to read; null for a widely accepted, unsourced link. */
   citation: string | null;
+  /** Where it can be read (or the book it's in), once the source pass has checked it. */
+  sourceUrl: string | null;
+  sourcePrint: string | null;
 }
 
 export interface Denial {
@@ -109,6 +112,8 @@ export function buildPortrait(
           rank: 0,
           tier: tierWords(edge, speaker),
           citation: resolveCitationStatus(edge) === 'cited' ? edge.citation ?? null : null,
+          sourceUrl: edge.sourceUrl ?? null,
+          sourcePrint: edge.sourcePrint ?? null,
         }];
       })
       .map((m, rank) => ({ ...m, rank }));

@@ -1,0 +1,399 @@
+{
+  "name": "c4",
+  "made": "2026-10-26",
+  "groups": [
+    {
+      "id": "first-person:radiohead",
+      "phase": "first-person",
+      "speaker": "Radiohead",
+      "links": [
+        {
+          "key": "radiohead>pixies",
+          "from": "Radiohead",
+          "to": "Pixies",
+          "fromYear": 1985,
+          "toYear": 1986,
+          "citation": "Jonny Greenwood has described teenage trips to London to see Throwing Muses and Pixies.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:pixies",
+      "phase": "first-person",
+      "speaker": "Pixies",
+      "links": [
+        {
+          "key": "pixies>husker-du",
+          "from": "Pixies",
+          "to": "Hüsker Dü",
+          "fromYear": 1986,
+          "toYear": 1979,
+          "citation": "The band's own classified ad wanted a bassist who liked \"Hüsker Dü and Peter, Paul and Mary.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "pixies>rem",
+          "from": "Pixies",
+          "to": "R.E.M.",
+          "fromYear": 1986,
+          "toYear": 1980,
+          "citation": "Black Francis to Scott Pelley, The Guardian (2022), calling R.E.M. \"hugely influential\" on his songwriting in the period before Come On Pilgrim.",
+          "sourceTier": "first-person",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "first-person:slowdive",
+      "phase": "first-person",
+      "speaker": "Slowdive",
+      "links": [
+        {
+          "key": "slowdive>cocteau-twins",
+          "from": "Slowdive",
+          "to": "Cocteau Twins",
+          "fromYear": 1989,
+          "toYear": 1979,
+          "citation": "Halstead has described driving around endlessly listening to Cocteau Twins tapes; Savill has said \"Pearly Dewdrops' Drops\" changed his life.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "slowdive>the-jesus-and-mary-chain",
+          "from": "Slowdive",
+          "to": "The Jesus and Mary Chain",
+          "fromYear": 1989,
+          "toYear": 1983,
+          "citation": "Neil Halstead, Under the Radar: \"We were all really into The Jesus and Mary Chain, Dinosaur Jr., Sonic Youth.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "slowdive>sonic-youth",
+          "from": "Slowdive",
+          "to": "Sonic Youth",
+          "fromYear": 1989,
+          "toYear": 1981,
+          "citation": "Neil Halstead, Under the Radar: \"We were all really into The Jesus and Mary Chain, Dinosaur Jr., Sonic Youth.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "slowdive>dinosaur-jr",
+          "from": "Slowdive",
+          "to": "Dinosaur Jr.",
+          "fromYear": 1989,
+          "toYear": 1984,
+          "citation": "Neil Halstead, Under the Radar: \"We were all really into The Jesus and Mary Chain, Dinosaur Jr., Sonic Youth.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "slowdive>velvet-underground",
+          "from": "Slowdive",
+          "to": "The Velvet Underground",
+          "fromYear": 1989,
+          "toYear": 1965,
+          "citation": "Goswell lists the influences on the band's own track \"Slowdive\": The Primitives, MBV, JAMC, House of Love, Velvet Underground.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "slowdive>the-cure",
+          "from": "Slowdive",
+          "to": "The Cure",
+          "fromYear": 1989,
+          "toYear": 1978,
+          "citation": "Halstead: \"we all really liked The Cure.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "slowdive>the-smiths",
+          "from": "Slowdive",
+          "to": "The Smiths",
+          "fromYear": 1989,
+          "toYear": 1982,
+          "citation": "Goswell: \"I used to love The Smiths -- I still do -- and The Cure.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "slowdive>mudhoney",
+          "from": "Slowdive",
+          "to": "Mudhoney",
+          "fromYear": 1989,
+          "toYear": 1988,
+          "citation": "Halstead, quoted in Magnet: \"We were all influenced by the same kinds of sounds -- The Byrds, Pink Floyd, Loop, the Cocteau Twins, the Mary Chain -- even Mudhoney and Dinosaur Jr.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        },
+        {
+          "key": "slowdive>new-order",
+          "from": "Slowdive",
+          "to": "New Order",
+          "fromYear": 1989,
+          "toYear": 1980,
+          "citation": "Goswell: Nick Chaplin \"would probably say his bass playing was inspired in part by Simon Gallup and in part by Hooky from New Order.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "first-person:the-smiths",
+      "phase": "first-person",
+      "speaker": "The Smiths",
+      "links": [
+        {
+          "key": "the-smiths>the-stooges",
+          "from": "The Smiths",
+          "to": "The Stooges",
+          "fromYear": 1982,
+          "toYear": 1967,
+          "citation": "Johnny Marr spent \"an entire winter\" playing along to the Stooges' first album; Raw Power was \"completely pivotal.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "the-smiths>new-york-dolls",
+          "from": "The Smiths",
+          "to": "New York Dolls",
+          "fromYear": 1982,
+          "toYear": 1971,
+          "citation": "Morrissey wrote a book about the New York Dolls; Marr traced his own girl-group guitar lineage through them.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:depeche-mode",
+      "phase": "first-person",
+      "speaker": "Depeche Mode",
+      "links": [
+        {
+          "key": "depeche-mode>the-human-league",
+          "from": "Depeche Mode",
+          "to": "The Human League",
+          "fromYear": 1980,
+          "toYear": 1977,
+          "citation": "Depeche Mode Wikipedia bio: \"Gore was a fan of glam, early Human League and Sparks\"; also synths \"inspired by acts like Gary Numan and the Human League.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "depeche-mode>gary-numan",
+          "from": "Depeche Mode",
+          "to": "Gary Numan",
+          "fromYear": 1980,
+          "toYear": 1977,
+          "citation": "Depeche Mode's Wikipedia biography describes the band's synth sound as \"inspired by acts like Gary Numan and the Human League.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "depeche-mode>omd",
+          "from": "Depeche Mode",
+          "to": "Orchestral Manoeuvres in the Dark",
+          "fromYear": 1980,
+          "toYear": 1978,
+          "citation": "Depeche Mode Wikipedia bio: \"Clarke was inspired to pursue electronic music by... OMD, whom he later cited as crucial to the formation of Depeche Mode.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "first-person:elliott-smith",
+      "phase": "first-person",
+      "speaker": "Elliott Smith",
+      "links": [
+        {
+          "key": "elliott-smith>big-star",
+          "from": "Elliott Smith",
+          "to": "Big Star",
+          "fromYear": 1994,
+          "toYear": 1971,
+          "citation": "Elliott Smith named Big Star's Radio City among his five favorite folk albums in a feature for Far Out.",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "elliott-smith>television",
+          "from": "Elliott Smith",
+          "to": "Television",
+          "fromYear": 1994,
+          "toYear": 1973,
+          "citation": "Elliott Smith named Television's Marquee Moon among his favorite albums in an NME interview in March 2000.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "elliott-smith>nico",
+          "from": "Elliott Smith",
+          "to": "Nico",
+          "fromYear": 1994,
+          "toYear": 1967,
+          "citation": "Elliott Smith named Nico's The Marble Index among his favorite albums in the same NME interview from March 2000, saying he had been playing it for months.",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "elliott-smith>nick-drake",
+          "from": "Elliott Smith",
+          "to": "Nick Drake",
+          "fromYear": 1994,
+          "toYear": 1968,
+          "citation": "Elliott Smith named Nick Drake's Pink Moon among his favorite albums in the same NME interview from March 2000.",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "first-person:godspeed-you-black-emperor",
+      "phase": "first-person",
+      "speaker": "Godspeed You! Black Emperor",
+      "links": [
+        {
+          "key": "godspeed-you-black-emperor>sonic-youth",
+          "from": "Godspeed You! Black Emperor",
+          "to": "Sonic Youth",
+          "fromYear": 1994,
+          "toYear": 1981,
+          "citation": "Godspeed You! Black Emperor bassist Mauro Pezzente said the band was \"probably definitely influenced by Sonic Youth a lot back then,\" singling out the idea of alternate tunings, on the podcast 155 in December 2021 (reported by Exclaim!).",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "first-person:talking-heads",
+      "phase": "first-person",
+      "speaker": "Talking Heads",
+      "links": [
+        {
+          "key": "talking-heads>the-stooges",
+          "from": "Talking Heads",
+          "to": "The Stooges",
+          "fromYear": 1975,
+          "toYear": 1967,
+          "citation": "Desert Island Discs, BBC 2018: Byrne picks the Stooges' \"I Wanna Be Your Dog,\" saying the band came \"from somewhere you didn't know existed.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.75
+        },
+        {
+          "key": "talking-heads>ramones",
+          "from": "Talking Heads",
+          "to": "Ramones",
+          "fromYear": 1975,
+          "toYear": 1974,
+          "citation": "Byrne on BBC Desert Island Discs, recounting Johnny Ramone letting Talking Heads open for the Ramones at CBGB -- \"Sure, they're gonna suck, so no problem.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "first-person:mogwai",
+      "phase": "first-person",
+      "speaker": "Mogwai",
+      "links": [
+        {
+          "key": "mogwai>sonic-youth",
+          "from": "Mogwai",
+          "to": "Sonic Youth",
+          "fromYear": 1995,
+          "toYear": 1981,
+          "citation": "Slugmag, Justin Burch interview (Aug 13, 2004).",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "mogwai>joy-division",
+          "from": "Mogwai",
+          "to": "Joy Division",
+          "fromYear": 1995,
+          "toYear": 1976,
+          "citation": "Slugmag (Aug 13, 2004); independently corroborated by Glide Magazine (2011): early songs \"sounded like God Machine or Joy Division or Slint.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "mogwai>my-bloody-valentine",
+          "from": "Mogwai",
+          "to": "My Bloody Valentine",
+          "fromYear": 1995,
+          "toYear": 1983,
+          "citation": "Slugmag, Justin Burch interview (Aug 13, 2004). Slugmag, Justin Burch interview (Aug 13, 2004).",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "mogwai>fugazi",
+          "from": "Mogwai",
+          "to": "Fugazi",
+          "fromYear": 1995,
+          "toYear": 1986,
+          "citation": "Slugmag, Justin Burch interview (Aug 13, 2004). Slugmag, Justin Burch interview (Aug 13, 2004).",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "mogwai>aphex-twin",
+          "from": "Mogwai",
+          "to": "Aphex Twin",
+          "fromYear": 1995,
+          "toYear": 1992,
+          "citation": "Slugmag, Justin Burch interview (Aug 13, 2004). Slugmag, Justin Burch interview (Aug 13, 2004).",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "mogwai>low",
+          "from": "Mogwai",
+          "to": "Low",
+          "fromYear": 1995,
+          "toYear": 1993,
+          "citation": "Slugmag, Justin Burch interview (Aug 13, 2004). Slugmag, Justin Burch interview (Aug 13, 2004).",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "mogwai>neu",
+          "from": "Mogwai",
+          "to": "Neu!",
+          "fromYear": 1995,
+          "toYear": 1971,
+          "citation": "Slugmag (Aug 13, 2004); independently corroborated by Glide Magazine (2011): \"a few songs on the new record that are pretty blatantly influenced by Neu! and Harmonia.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.85
+        },
+        {
+          "key": "mogwai>kraftwerk",
+          "from": "Mogwai",
+          "to": "Kraftwerk",
+          "fromYear": 1995,
+          "toYear": 1970,
+          "citation": "Stuart Braithwaite, The Line of Best Fit, Andrew Hannah, \"From Young Team to Atomic: Stuart Braithwaite on twenty years of Mogwai\" (Apr 11, 2016).",
+          "sourceTier": "first-person",
+          "confidence": 0.8
+        },
+        {
+          "key": "mogwai>the-cure",
+          "from": "Mogwai",
+          "to": "The Cure",
+          "fromYear": 1995,
+          "toYear": 1978,
+          "citation": "Stuart Braithwaite, in the Bambarger piece: The Cure was \"my big sister's favorite band when she was a teenager, and their songs were some of the first I learned to play on the guitar.\"",
+          "sourceTier": "first-person",
+          "confidence": 0.7
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "agent": "c13",
+  "searches": 24,
+  "toolStatus": "WebSearch fine, 24 of 30 used. sproutology.co.uk 503 live; pitchfork This Heat page 404; h-u-m.net live page lacks the favourites line (archive 2012 has it). floodmagazine.com old URL server error (found right URL via search); farapart bandcamp album page failed direct, official page opened.",
+  "entries": {
+    "coil>can": {
+      "checked": "2026-10-26",
+      "url": "http://brainwashed.com/common/htdocs/publications/coil-1998-the_wire.php?site=coil08",
+      "found": "I was always interested in experimental music - early electronic music, Stockhausen, Captain Beefheart, Can and Amon Duul and people like that when I was a kid and it just seemed natural to us to want to continue doing experimental stuff.",
+      "verdict": "fixed",
+      "citation": "Peter Christopherson to David Keenan, The Wire (1998): \"I was always interested in experimental music - early electronic music, Stockhausen, Captain Beefheart, Can and Amon Duul and people like that when I was a kid and it just seemed natural to us to want to continue doing experimental stuff.\"",
+      "note": "Page is the Brainwashed archive of the Wire 1998 interview transcript (Keenan, 21 Jul 1998 per Wikipedia footnote). Speaker is Christopherson (says 'I met John in 1980'). Citation tightened to his exact words."
+    },
+    "dirty-three>velvet-underground": {
+      "checked": "2026-10-26",
+      "url": "https://floodmagazine.com/166444/dirty-three-love-changes-everything-feature/",
+      "found": "As each member had a large listening diet from the start, Ellis begins rattling off some of Dirty Three’s initial influences in Elvin Jones, Rahsaan Roland Kirk, and the “wild liberation” of The Velvet Underground.",
+      "verdict": "fixed",
+      "citation": "FLOOD Magazine, \"The Poetry of Motion: Dirty Three on 30 Years of Love Changing Everything\": Warren Ellis \"begins rattling off some of Dirty Three's initial influences in Elvin Jones, Rahsaan Roland Kirk, and the 'wild liberation' of The Velvet Underground.\"",
+      "note": "Citation had the title as 'Love Changes Everything' (the page says 'Love Changing Everything'); I dropped the date as the page text I read doesn't show it."
+    },
+    "everything-everything>radiohead": {
+      "checked": "2026-10-26",
+      "url": "https://www.interviewmagazine.com/music/everything-everything",
+      "found": "HIGGS: All sorts, but I guess we all meet in the middle with a shared passion for stuff like Radiohead, The Beatles, Aphex Twin, Kraftwerk, King Crimson, Dr Dre.",
+      "verdict": "fixed",
+      "citation": "Jonathan Higgs to Interview Magazine: \"we all meet in the middle with a shared passion for stuff like Radiohead, The Beatles, Aphex Twin, Kraftwerk, King Crimson, Dr Dre.\"",
+      "note": "Only the Interview Magazine piece was read; the NME Spearman claim in the old citation was not opened so is removed. Borderline: 'shared passion' list answering what the band listen to, but it is the band's own words about what unites them."
+    },
+    "everything-everything>aphex-twin": {
+      "checked": "2026-10-26",
+      "url": "https://www.interviewmagazine.com/music/everything-everything",
+      "found": "HIGGS: All sorts, but I guess we all meet in the middle with a shared passion for stuff like Radiohead, The Beatles, Aphex Twin, Kraftwerk, King Crimson, Dr Dre.",
+      "verdict": "fixed",
+      "citation": "Jonathan Higgs to Interview Magazine: \"we all meet in the middle with a shared passion for stuff like Radiohead, The Beatles, Aphex Twin, Kraftwerk, King Crimson, Dr Dre.\"",
+      "note": "MusicTech/Robertshaw quote not opened, removed from citation."
+    },
+    "everything-everything>kraftwerk": {
+      "checked": "2026-10-26",
+      "url": "https://www.interviewmagazine.com/music/everything-everything",
+      "found": "HIGGS: All sorts, but I guess we all meet in the middle with a shared passion for stuff like Radiohead, The Beatles, Aphex Twin, Kraftwerk, King Crimson, Dr Dre.",
+      "verdict": "fixed",
+      "citation": "Jonathan Higgs to Interview Magazine: \"we all meet in the middle with a shared passion for stuff like Radiohead, The Beatles, Aphex Twin, Kraftwerk, King Crimson, Dr Dre.\""
+    },
+    "far-apart>fugazi": {
+      "checked": "2026-10-26",
+      "url": "https://farapartofficial.bandcamp.com/",
+      "found": "Drawing inspiration from bands like Fugazi, Drive Like Jehu, and Jawbox, they crafted a raw, melodic sound that became a cult favorite.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "The Bandcamp page for Far Apart's 2025 release (also on Lovitt Records' product page) says the band were \"Drawing inspiration from bands like Fugazi, Drive Like Jehu, and Jawbox.\"",
+      "note": "Bio is written in the third person ('the band featured...'), same wording on Lovitt, so label/reissue copy rather than the band's own words: lowered to reported."
+    },
+    "far-apart>drive-like-jehu": {
+      "checked": "2026-10-26",
+      "url": "https://farapartofficial.bandcamp.com/",
+      "found": "Drawing inspiration from bands like Fugazi, Drive Like Jehu, and Jawbox, they crafted a raw, melodic sound that became a cult favorite.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "The Bandcamp page for Far Apart's 2025 release (also on Lovitt Records' product page) says the band were \"Drawing inspiration from bands like Fugazi, Drive Like Jehu, and Jawbox.\""
+    },
+    "fontaines-dc>joy-division": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Guitar World feature (guitarworld.com/features/fontaines-dc-were-not-great-musicians-...) opened: no Joy Division. NME 2020 cover piece only lists JD as an influence people assume (journalist, not the band). NME 2022/2024, Hot Press, Vice also opened: nothing. Searches: 3 total on Fontaines."
+    },
+    "fontaines-dc>pixies": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Searched Fontaines + Pixies twice; opened Guitar World, NME 2020/2022/2024, Hot Press, Vice, Wikipedia raw: no Pixies mention. Paste piece never located."
+    },
+    "grimes>cocteau-twins": {
+      "checked": "2026-10-26",
+      "url": "https://straight.com/node/34524",
+      "found": "“Cocteau Twins is definitely a pretty heavy influence on me,” notes the musician, who until recently was based in Montreal. “They’re one of the first bands I was into that was considered alternative, or artistically relevant, that was female-fronted. I feel like that was a pretty big thing for me when I was in high school, because there weren’t a lot of bands that I could relate to in that way. Cocteau Twins are pretty seminal, for me.”",
+      "verdict": "fixed",
+      "citation": "Claire Boucher (Grimes) to the Georgia Straight, around the release of Visions: \"Cocteau Twins is definitely a pretty heavy influence on me... They're one of the first bands I was into that was considered alternative, or artistically relevant, that was female-fronted. I feel like that was a pretty big thing for me when I was in high school...\"",
+      "note": "Original citation spliced the quote; now verbatim with ellipses. Page year not shown in text read."
+    },
+    "grimes>aphex-twin": {
+      "checked": "2026-10-26",
+      "url": "https://www.dazeddigital.com/music/article/49241/1/music",
+      "found": "On a more positive note, Grimes gets to express her love for Burial , one of her “all-time favourite artists”, and cites the elusive London producer among artists she considers herself a descendent of ( Aphex Twin and Animal Collective included).",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Dazed reports that Grimes counts Burial among the artists she considers herself a descendent of, \"Aphex Twin and Animal Collective included.\"",
+      "note": "The TheThousands quote ('My favourite Aphex Twin is Selected Ambient Works...') could not be found (3 searches); this Dazed passage is a journalist's report of her own statement, so reported tier. Page date not shown in the text read."
+    },
+    "hot-chip>this-heat": {
+      "checked": "2026-10-26",
+      "url": "https://www.goodreads.com/author_blog_posts/9429207-this-heat-full-discography-reissue",
+      "found": "- Alexis Taylor (Hot Chip) “ This Heat sounded like the future then… and still do now.\"",
+      "verdict": "decide",
+      "note": "Pitchfork page is now a 404 (no archive copy opened). A repost of the Nov 18 2015 reissue press release carries only Taylor's praise ('sounded like the future then... and still do now'), not a statement of influence. Other pages (Bandcamp Daily, Cutler & Gross, Wikipedia) show only collaboration with Charles Hayward / About Group, which is not influence. Propose remove unless the owner has the Pitchfork text showing more."
+    },
+    "hum>dinosaur-jr": {
+      "checked": "2026-10-26",
+      "url": "https://web.archive.org/web/2012/http://www.h-u-m.net/bio/",
+      "found": "Some of Matt's (and Hum's) favorite bands are Dinosaur Jr., Failure, Bitch Magnet, The Flaming Lips, Rush, The Police, R.E.M., Love Cup, and My Bloody Valentine.",
+      "verdict": "decide",
+      "note": "Only the 2012 archive copy of h-u-m.net/bio carries the sentence (the live page no longer has it). It is a bare list of favourite bands in the band's own bio, no comment on shaping their sound, so by the rules not influence on its own. New Artillery's Hum 'Inlet' review (newartillery.com/reviews/reviews-hum-s-inlet) reads that list as tracing 'one side of their development' (critic, from memory). Propose lower to reported/keep if the owner accepts a band-bio favourites list, else remove. Same verdict for the three Hum links."
+    },
+    "hum>rem": {
+      "checked": "2026-10-26",
+      "url": "https://web.archive.org/web/2012/http://www.h-u-m.net/bio/",
+      "found": "Some of Matt's (and Hum's) favorite bands are Dinosaur Jr., Failure, Bitch Magnet, The Flaming Lips, Rush, The Police, R.E.M., Love Cup, and My Bloody Valentine.",
+      "verdict": "decide",
+      "note": "Same bare favourites list as hum>dinosaur-jr (2012 archive of h-u-m.net/bio). R.E.M. appears nowhere in the New Artillery review, so it has the weakest support of the three."
+    },
+    "hum>my-bloody-valentine": {
+      "checked": "2026-10-26",
+      "url": "https://web.archive.org/web/2012/http://www.h-u-m.net/bio/",
+      "found": "Some of Matt's (and Hum's) favorite bands are Dinosaur Jr., Failure, Bitch Magnet, The Flaming Lips, Rush, The Police, R.E.M., Love Cup, and My Bloody Valentine.",
+      "verdict": "decide",
+      "note": "Same bare favourites list (2012 archive of h-u-m.net/bio); New Artillery also recalls Talbott listing Loveless among his favourite records. Strongest of the three; propose keep at reported if the owner accepts favourites lists from the band's own bio."
+    },
+    "idles>the-clash": {
+      "checked": "2026-10-26",
+      "url": "https://irishnews.com/arts/2019/04/19/news/idles-we-re-a-subversive-band-that-disagrees-vehemently-with-our-government-1599379",
+      "found": "\"So, if you are a subversive act, then you probably are in some way influenced by The Clash, because at that point in time, their bravery to do what they did and to push boundaries and to break down rules, as Malcolm McLaren did in very different ways, you can’t ignore that. You are definitely part of that heritage, whether you want to be or not.",
+      "verdict": "fixed",
+      "citation": "Joe Talbot to the Irish News (19 April 2019), asked whether the Clash influenced IDLES: \"if you are a subversive act, then you probably are in some way influenced by The Clash... You don't have to like The Clash to be influenced by them.\"",
+      "note": "Borderline: Talbot answers in general terms ('you are definitely part of that heritage'), not 'I loved them'. Page does not show it is Talbot rather than Bowen answering beyond the headline context; the citation attributes it to Talbot as before. Owner may prefer lowering confidence."
+    },
+    "mgmt>brian-eno": {
+      "checked": "2026-10-26",
+      "url": "https://www.stereogum.com/2079609/mgmt-congratulations-turns-10/reviews/the-anniversary/",
+      "found": "The pair of songs named for MGMT's musical heroes are among the most anxiously jittery on the album. Carnivalesque horror-movie organs descend upon \"Song For Dan Treacy,\" a tribute to the brains behind post-punk pioneers Television Personalities, only to become pumped-up Elvis Costello organs by the end. \"Brian Eno\" honors the iconic producer and ambient composer with breakneck gothic indie-pop that briefly bottoms out into whispery lounge jazz.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Stereogum's retrospective on MGMT's Congratulations describes \"The pair of songs named for MGMT's musical heroes\", \"Song For Dan Treacy\" and \"Brian Eno\", the latter honoring \"the iconic producer and ambient composer.\"",
+      "note": "AllMusic page could not be read for this and no band quote found; Stereogum is a writer's statement, so lowered to reported. The text I read has straight/curly quotes as given; check the apostrophe in 'MGMT's' when matching."
+    },
+    "mgmt>talking-heads": {
+      "checked": "2026-10-26",
+      "url": "https://www.vice.com/en/article/mgmt-little-dark-age-interview/",
+      "found": "VanWyngarden: It’s weird to have been born in the ’80s but not have distinct memories from the ’80s—while also having a nostalgic leaning toward the 80s. It’s definitely in our blood—Talking Heads, OMD. “Me and Michael” pulls on OMD a whole lot.",
+      "verdict": "fixed",
+      "citation": "Andrew VanWyngarden to Larry Fitzmaurice, Vice (18 Feb 2018), on the 1980s: \"It's definitely in our blood—Talking Heads, OMD.\"",
+      "note": "Article title 'MGMT Are Still Perfectly Strange'; date from the Wikipedia footnote, not shown in the page text I read."
+    },
+    "mgmt>omd": {
+      "checked": "2026-10-26",
+      "url": "https://www.vice.com/en/article/mgmt-little-dark-age-interview/",
+      "found": "VanWyngarden: It’s weird to have been born in the ’80s but not have distinct memories from the ’80s—while also having a nostalgic leaning toward the 80s. It’s definitely in our blood—Talking Heads, OMD. “Me and Michael” pulls on OMD a whole lot.",
+      "verdict": "fixed",
+      "citation": "Andrew VanWyngarden to Larry Fitzmaurice, Vice (18 Feb 2018): \"It's definitely in our blood—Talking Heads, OMD. 'Me and Michael' pulls on OMD a whole lot.\""
+    },
+    "ninajirachi>porter-robinson": {
+      "checked": "2026-10-26",
+      "url": "https://musictech.com/features/interviews/ninajirachi-interview-girl-edm-disc-1",
+      "found": "A constant from Nina’s teenage years to now is her love for Porter Robinson’s music — as evidenced by the tattoo of his logo on her wrist. “It was very much the emotion I was drawn to [early on],” she says. “Or the contrast of the emotion and gorgeous chord progressions with the really, like, disgusting sound design.\"",
+      "verdict": "fixed",
+      "citation": "Ninajirachi to MusicTech: \"I've been a fan all the way through, and love everything he does,\" she says of Porter Robinson, whose logo is tattooed on her wrist; \"It was very much the emotion I was drawn to [early on]... Or the contrast of the emotion and gorgeous chord progressions with the really, like, disgusting sound design.\"",
+      "note": "Bandcamp Daily's paraphrase ('she saw a vision for making big music' at Second Sky) is its own words, not a quote; dropped the quotation marks. The MusicTech page also says she was a fan of Skrillex, Madeon, Deadmau5 and Flume in high school (possible off-roster influences)."
+    },
+    "ninajirachi>sophie": {
+      "checked": "2026-10-26",
+      "url": "https://musictech.com/features/interviews/ninajirachi-interview-girl-edm-disc-1",
+      "found": "To illuminate this point, Nina invokes another of her musical heroes, SOPHIE , who manipulated technology to bold and thrilling effect.",
+      "verdict": "fixed",
+      "note": "Writer's phrasing ('another of her musical heroes'), reported rather than her own quote; first-person tier could be lowered to reported by the owner. The same page says the album filters EDM 'through a SOPHIE-skewed pop sensibility'.",
+      "sourceTier": "reported",
+      "citation": "MusicTech calls SOPHIE another of Ninajirachi's \"musical heroes\", invoked to show how SOPHIE \"manipulated technology to bold and thrilling effect.\""
+    },
+    "oklou>arca": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Searched i-D + Oklou + Arca quote twice; no i-D Oklou interview found in results. No page opened carrying the 'REAL star of current experimental music' line."
+    },
+    "oklou>vashti-bunyan": {
+      "checked": "2026-10-26",
+      "url": "https://www.nts.live/shows/guests/episodes/oklou-choke-soundscape-15th-april-2025",
+      "found": "oklou returns to the NTS signal to share a dreamy soundscape of influences and sonic inspirations behind her debut album \"choke enough\".",
+      "verdict": "fixed",
+      "citation": "NTS describes Oklou's mix \"choke soundscape\" (2025) as \"a dreamy soundscape of influences and sonic inspirations behind her debut album\"; it includes Vashti Bunyan.",
+      "note": "Vashti Bunyan is in the episode's tracklist on the NTS page (opened via read). The page doesn't say which track, and the description is NTS's wording of her mix.",
+      "sourceTier": "reported"
+    },
+    "prefab-sprout>bob-dylan": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Uncut 2009 'My Life In Music' not found: 3 searches; sproutology.co.uk interviews page (archive 2020) lists Uncut items but none could be opened by title; live sproutology 503. Substack Alternating Currents interview and Creem 1988 opened: no Dylan/Bowie."
+    },
+    "prefab-sprout>david-bowie": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Same as prefab-sprout>bob-dylan: Uncut feature not located; Creem 1988 and Substack interview have no Bowie."
+    }
+  },
+  "candidates": [
+    {
+      "source": "grimes",
+      "target": "burial",
+      "kind": "influence",
+      "speaker": "Dazed (reporting Grimes)",
+      "sentence": "On a more positive note, Grimes gets to express her love for Burial , one of her “all-time favourite artists”, and cites the elusive London producer among artists she considers herself a descendent of ( Aphex Twin and Animal Collective included).",
+      "url": "https://www.dazeddigital.com/music/article/49241/1/music"
+    },
+    {
+      "source": "grimes",
+      "target": "animal-collective",
+      "kind": "influence",
+      "speaker": "Dazed (reporting Grimes)",
+      "sentence": "On a more positive note, Grimes gets to express her love for Burial , one of her “all-time favourite artists”, and cites the elusive London producer among artists she considers herself a descendent of ( Aphex Twin and Animal Collective included).",
+      "url": "https://www.dazeddigital.com/music/article/49241/1/music"
+    }
+  ],
+  "offMap": [],
+  "finished": true
+}

@@ -1,0 +1,154 @@
+{
+  "agent": "c2",
+  "searches": 25,
+  "toolStatus": "WebSearch fine, 25 used; pitchfork.com blocked to search; Quietus Baker's Dozen body paywalled; moderndrummer PDF unreadable; web.archive.org opens via read; Westword, Far Out, CityBeat, Tape Op, Juice, Eastwood, guitarguitar open fine",
+  "entries": {
+    "the-replacements>big-star": {
+      "url": "https://genius.com/The-replacements-alex-chilton-lyrics",
+      "found": "I never travel far",
+      "verdict": "ok",
+      "note": "Genius lyrics page; the line continues on the next line: 'Without a little Big Star, ooh-ooh' (bridge of 'Alex Chilton'). A song lyric, so the band's own words; found is the first half because lines print separately.",
+      "checked": "2026-10-26"
+    },
+    "bjork>joni-mitchell": {
+      "url": "https://faroutmagazine.co.uk/how-joni-mitchell-influenced-bjork/",
+      "found": "“The first record of hers I discovered was Don Juan’s Daughter; I was around fourteen, fifteen and I knew it by heart (still do, every instrument, every noise, every word),” she added.",
+      "verdict": "fixed",
+      "citation": "Björk, on her official website (quoted by Far Out Magazine): \"I was around fourteen, fifteen and I knew it by heart (still do, every instrument, every noise, every word).\" The record was Joni Mitchell's Don Juan's Reckless Daughter.",
+      "note": "Far Out says she wrote it on her official website; bjork.com page not found (404), so Far Out is the page read. Original quote continues past 'by heart' with a parenthesis; caption cut there is verbatim.",
+      "checked": "2026-10-26"
+    },
+    "modest-mouse>fugazi": {
+      "verdict": "blocked",
+      "url": "https://www.moderndrummer.com/wp-content/uploads/2017/06/md432cs.pdf",
+      "note": "Wikipedia's Jeremiah Green article says he cited Fugazi as his biggest influence for starting a band, footnoted to Stephen Bidwell, Modern Drummer, Nov 2015 (PDF above). read returned nothing, curl got empty. Look in that interview for 'Fugazi was probably my biggest influence as far as wanting to start a band' and confirm it's Green speaking. Current citation mentions no outlet; add Modern Drummer (Nov 2015).",
+      "checked": "2026-10-26"
+    },
+    "modest-mouse>drive-like-jehu": {
+      "verdict": "not-found",
+      "note": "Searched exact quote (3 searches); Wikipedia's Drive Like Jehu article states Brock said in 2007: \"I love [Drive Like] Jehu. Jehu is one of my favorite all-time bands actually.\" with a footnote I could not read from the page text. No page carrying it opened (AV Club Random Rules, Rolling Stone Q&A, Spin 2004, Herald 2007 checked: no Jehu). Citation names no outlet.",
+      "checked": "2026-10-26"
+    },
+    "the-jesus-lizard>black-flag": {
+      "url": "https://www.guitarguitar.co.uk/news/141347/",
+      "found": "But then in America, the underground scenes started coming up with Black Flag and Husker Du and Sonic Youth, Butthole Surfers, Big Black, Naked Raygun and Scratch Acid. And I said, ‘Okay, now I see where I belong’.",
+      "verdict": "fixed",
+      "citation": "Duane Denison to guitarguitar: \"But then in America, the underground scenes started coming up with Black Flag and Husker Du and Sonic Youth, Butthole Surfers, Big Black, Naked Raygun and Scratch Acid.\" He adds that he then saw where he belonged.",
+      "note": "Old quote ('bands of the US underground scenes like Black Flag, Husker Du, Butthole Surfers and Big Black.') is not on the page; real wording above. Duplicated sentence in big-black citation removed. Page shows no date (previous citation said Apr 2 2021). Denison is the Jesus Lizard guitarist, speaking about his own roots. Also names Sonic Youth, Naked Raygun, Scratch Acid.",
+      "checked": "2026-10-26"
+    },
+    "the-jesus-lizard>big-black": {
+      "url": "https://www.guitarguitar.co.uk/news/141347/",
+      "found": "But then in America, the underground scenes started coming up with Black Flag and Husker Du and Sonic Youth, Butthole Surfers, Big Black, Naked Raygun and Scratch Acid. And I said, ‘Okay, now I see where I belong’.",
+      "verdict": "fixed",
+      "citation": "Duane Denison to guitarguitar: \"But then in America, the underground scenes started coming up with Black Flag and Husker Du and Sonic Youth, Butthole Surfers, Big Black, Naked Raygun and Scratch Acid.\" He adds that he then saw where he belonged.",
+      "note": "Old quote ('bands of the US underground scenes like Black Flag, Husker Du, Butthole Surfers and Big Black.') is not on the page; real wording above. Duplicated sentence in big-black citation removed. Page shows no date (previous citation said Apr 2 2021). Denison is the Jesus Lizard guitarist, speaking about his own roots. Also names Sonic Youth, Naked Raygun, Scratch Acid.",
+      "checked": "2026-10-26"
+    },
+    "wire>ramones": {
+      "url": "https://eastwoodguitars.com/blogs/news/interview-with-wires-colin-newman-we-are-not-punk",
+      "found": "Colin: \"Well, the Ramones laid out the blueprint for what punk rock should sound like. They didn't look like a British punk group, but they had the sound and the attitude. They were the main group that made you think 'yeah you can do something with that'.",
+      "verdict": "fixed",
+      "citation": "Colin Newman to Eastwood Guitars: \"Well, the Ramones laid out the blueprint for what punk rock should sound like.\" Asked about punk, he said Wire were never a punk band: \"You could list the Ramones as one of our influences, but we were never interested in just doing that genre.\"",
+      "note": "Old citation said Newman 'denied Wire had influences at all'; page says only that Wire were never a punk band. Page also has Newman calling the Ramones 'the main group that made you think yeah you can do something with that'. Hedged line 'You could list the Ramones...' is on the page with capital Y. Interview unattributed in paragraph form but it is the Newman interview.",
+      "checked": "2026-10-26"
+    },
+    "alvvays>rem": {
+      "url": "https://tapeop.com/interviews/164/alvvays",
+      "found": "We tried to go full [R.E.M.] Murmur / Reckoning .",
+      "verdict": "fixed",
+      "citation": "Alec O'Hanley to Tape Op, on \"Earthquake\": \"We tried to go full [R.E.M.] Murmur / Reckoning\"; Molly Rankin, on \"Pressed\": \"We were trying to do a Smiths' verse and an R.E.M. chorus.\"",
+      "note": "Page spacing is 'Murmur / Reckoning .' (spaces around slash); caption line in the old citation had no spaces. Rankin line verified in the next-but-one paragraph. Also O'Hanley: 'All IRS Records, like Jersey jangle East Coast. We tried to hit that mark'. Page shows no date; old citation said May 2023. Speaker is O'Hanley (Alvvays).",
+      "checked": "2026-10-26"
+    },
+    "cat-power>velvet-underground": {
+      "url": "https://www.citybeat.com/?p=223618",
+      "found": "“I think the Velvet Underground in general was a huge influence on me,” she says. “They broke the mold with their sound.",
+      "verdict": "ok",
+      "note": "CityBeat interview on her Covers album. Same text also at Cleveland Scene. Page date not shown.",
+      "checked": "2026-10-26"
+    },
+    "lcd-soundsystem>can": {
+      "verdict": "not-found",
+      "note": "Two searches (exact quotes, RBMA transcript). RBMA lecture is a video (Vimeo 67135948 / RBMA New York 2013, 90 min; London 2012 also exists) with no transcript text found; redbullmusicacademy.com lecture URLs guessed return 404. Fused, NME and Spin Murphy interviews opened: no Gang of Four / Can-heaven line. Citation names no date or venue; owner may need to watch the video.",
+      "checked": "2026-10-26"
+    },
+    "lcd-soundsystem>gang-of-four": {
+      "verdict": "not-found",
+      "note": "Two searches (exact quotes, RBMA transcript). RBMA lecture is a video (Vimeo 67135948 / RBMA New York 2013, 90 min; London 2012 also exists) with no transcript text found; redbullmusicacademy.com lecture URLs guessed return 404. Fused, NME and Spin Murphy interviews opened: no Gang of Four / Can-heaven line. Citation names no date or venue; owner may need to watch the video.",
+      "checked": "2026-10-26"
+    },
+    "bad-brains>sex-pistols": {
+      "url": "https://juicemagazine.com/home/?p=75056",
+      "found": "Well, a friend of ours named Sid McCray had been playing punk and hardcore records over at his house in ’77, and we got a chance to listen to the Sex Pistols and the Ramones and other great punk rock bands, then we decided to give it a try.",
+      "verdict": "ok",
+      "note": "Juice Magazine, H.R. interviewed by Jim Murphy of the Alva Boyz; date not on page text (search snippets disagree: March or Sept 2018). Citation says 'told Juice' - fine.",
+      "checked": "2026-10-26"
+    },
+    "boards-of-canada>my-bloody-valentine": {
+      "verdict": "not-found",
+      "note": "Two searches. The 2005 Pitchfork interview exists (Wikipedia cites it for the brothers reveal) but search never returned its URL (pitchfork.com is closed to the search tool) and guessed URLs are 404. twoism.org Age interview, Wikipedia: no MBV line. Owner could find the Pitchfork 2005 BoC interview and look for 'connection in terms of the approach to music'.",
+      "checked": "2026-10-26"
+    },
+    "wednesday>unwound": {
+      "verdict": "not-found",
+      "note": "Two searches (outlet+quote, thefortyfive.com Hartzman 2023). The Forty-Five page never surfaced; guessed URL 404. DIY (Apr 2023) and two Clash Hartzman interviews opened: no Unwound. Her NTS show (30 Apr 2026) lists Unwound tracks but that is a playlist, not an influence statement.",
+      "checked": "2026-10-26"
+    },
+    "fleet-foxes>roy-harper": {
+      "url": "https://uncut.co.uk/?p=3979",
+      "found": "Roy Harper’s influence, Pecknold has acknowledged, can be detected in the layered vocals at the start of “The Plains/Bitter Dancer”.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Uncut reports that Robin Pecknold, in a note written for journalists, listed Roy Harper among the musical influences at play on Helplessness Blues, and that Pecknold has acknowledged Harper's influence in the layered vocals at the start of \"The Plains/Bitter Dancer\".",
+      "note": "Revised after owner's ruling: Pecknold's own acknowledgement of Harper's influence is on the page, so the link stands, lowered to reported (no Pecknold quote on the page). The Paste quote ('was about honoring our influences...') was not found, so there is no first-person caption; as a today's-record link it needs another line if one is found (Wikipedia's Helplessness Blues article has Pecknold on Harper's Stormcock: 'That will be the primary sonic distancing from the last record', source not opened).",
+      "checked": "2026-10-26"
+    },
+    "black-country-new-road>godspeed-you-black-emperor": {
+      "verdict": "not-found",
+      "note": "Two searches (exact quote; Evans+Line of Best Fit+Godspeed). No Line of Best Fit Evans interview surfaced; Best Fit's Stewart Lee conversation snippet and Wikipedia pages have no Godspeed line. Quietus 'Frenz Experiments' BCNR interview opened: no Godspeed. Even if found, the quote is Evans saying he doesn't know them, so the link would likely be a decide (not influence). Revisited after owner's ruling: 'We like Slint' / 'I love the way they sound' would count as fan statements if the pages are found; still not-found.",
+      "checked": "2026-10-26"
+    },
+    "black-country-new-road>slint": {
+      "verdict": "not-found",
+      "note": "Searched the exact quote and Evans/Line of Best Fit; no page. Wikipedia only says critics compared them to Slint. Quote itself reads as a mild denial of the comparison, so owner may want to treat the link as critic-only or remove. Revisited after owner's ruling: 'We like Slint' / 'I love the way they sound' would count as fan statements if the pages are found; still not-found.",
+      "checked": "2026-10-26"
+    },
+    "black-country-new-road>the-fall": {
+      "verdict": "blocked",
+      "url": "https://thequietus.com/?p=257173",
+      "note": "The Quietus Baker's Dozen 'God Tier: Tyler Hyde of Black Country, New Road's Favourite Albums' (25 Mar 2025). Page opens through read but the body is paywalled; only the standfirst shows ('13 records that influence her craft, from Randy Newman to The Fall via Frank Ocean'). Look in the Fall entry (Fall Heads Roll) for: 'The Fall really heavily informed the first band that I was in, to the point where I sometimes felt like we were a bit of a pastiche' and 'I'm definitely gonna steal that' (Midnight In Aspen). Speaker is Tyler Hyde, a current BCNR member.",
+      "checked": "2026-10-26"
+    },
+    "xiu-xiu>suicide": {
+      "url": "https://www.westword.com/?p=40628131",
+      "found": "I think probably the next Xiu Xiu record will be really baldly influenced by Suicide.",
+      "verdict": "fixed",
+      "citation": "Jamie Stewart to Denver Westword: \"I think probably the next Xiu Xiu record will be really baldly influenced by Suicide.\" Asked about them, he also said: \"Oh yeah, they're one of my favorite, favorite bands of all time.\"",
+      "note": "Both quotes verbatim on the page (separate paragraphs; page uses curly apostrophes). Reordered so the caption is the influence line, 85 chars instead of 160. Year not on page text.",
+      "checked": "2026-10-26"
+    },
+    "xiu-xiu>this-mortal-coil": {
+      "verdict": "not-found",
+      "note": "Out of search share (25 used) before this link. Only tried: Wikipedia for the artist where relevant; no page found. Source named: Jamie Stewart, Sun 13 (2024). Not searched.",
+      "checked": "2026-10-26"
+    },
+    "ethel-cain>imogen-heap": {
+      "verdict": "not-found",
+      "note": "Two searches (Vice July 2024 quote; Crack Magazine Dec 2022 cover story): no Cain/Heap page surfaced. Crack's Ethel Cain cover feature (Issue 132, Emma Garland) exists and is where the Heap/Daughter/Banks line should be; its URL was not found. Wikipedia Ethel Cain has no Heap line. Also the caption 'that's what I want to make.' is only 6 words and comes from the Vice piece.",
+      "checked": "2026-10-26"
+    },
+    "geese>yeah-yeah-yeahs": {
+      "verdict": "not-found",
+      "note": "Out of search share (25 used) before this link. Only tried: Wikipedia for the artist where relevant; no page found. Source named: Foster Bassin on the Still Listening podcast. Not searched.",
+      "checked": "2026-10-26"
+    },
+    "arca>aphex-twin": {
+      "verdict": "not-found",
+      "note": "Out of search share (25 used) before this link. Only tried: Wikipedia for the artist where relevant; no page found. Sources named: FADER 'Arca Finds Xen' (2014) and a GRAMMY.com piece. Not searched.",
+      "checked": "2026-10-26"
+    }
+  },
+  "candidates": [],
+  "offMap": []
+}

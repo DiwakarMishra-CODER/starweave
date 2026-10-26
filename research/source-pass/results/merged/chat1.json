@@ -1,0 +1,241 @@
+{
+  "agent": "chat1",
+  "searches": 20,
+  "toolStatus": "All 26 links are covered. 16 of them are not not-found. Rolling Stone's 2004 Robert Smith Q&A (Buzzcocks) would not open (tollbit client error), so I used Far Out Magazine's retelling of the same quote. One thisisdig.com URL redirected to the Rhino homepage (Siouxsie/Bowie, not verified). The first Shields/Double J searches returned only Wikipedia and unrelated pages. No page for the Hook 'much better educated' sentence or the Cultural Glitch Fugazi line turned up in two searches. Some leads in the not-found/decide notes come from search-result text I did not open; they are marked as leads.",
+  "entries": {
+    "sonic-youth>velvet-underground": {
+      "url": "https://www.pbs.org/wnet/americanmasters/archive/interview/thurston-moore/",
+      "found": "We never really wanted to sound like the Velvet Underground. We just sort of wanted to use elements of what they were doing as, again, just sort of carry on that lineage.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Thurston Moore to PBS American Masters (interview dated 13 July 1997): he met his first New York bandmate J.D. King while browsing the Velvet Underground bin of a New Haven record store, and of Sonic Youth he says \"We never really wanted to sound like the Velvet Underground. We just sort of wanted to use elements of what they were doing as, again, just sort of carry on that lineage.\"",
+      "sourceTier": "first-person"
+    },
+    "sonic-youth>black-flag": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "One search. The cited Ranaldo line is Wikipedia's 'It was the first record company we were on that we really would have given anything to be on', which is about the SST label, not influence. Not opened (only seen on a Last.fm/Seymour Duncan mirror, which are barred). Leads, not opened: Tidal 'How to Embrace Your Influences' (https://tidal.com/magazine/article/how-to-embrace-your-influences/1-95824), where Moore talks about hardcore and Black Flag's Jealous Again, and Far Out's Thurston Moore favourite-albums piece, which lists Damaged. Neither was confirmed as Moore saying Black Flag shaped Sonic Youth."
+    },
+    "sonic-youth>glenn-branca": {
+      "url": "https://www.rollingstone.com/music/music-features/thurston-moore-sonic-youth-influences-patti-smith-glenn-branca-880204",
+      "found": "I realized he was playing with guitars where he was changing the tunings and that really is what informed a lot of what happened in South Youth, the idea of making music away from traditional tuning structures.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Thurston Moore to Rolling Stone, on Glenn Branca's changed guitar tunings: \"I realized he was playing with guitars where he was changing the tunings and that really is what informed a lot of what happened in [Sonic] Youth, the idea of making music away from traditional tuning structures.\"",
+      "sourceTier": "first-person",
+      "note": "Page misprints Sonic Youth as 'South Youth' (bracketed in the citation); no date on the page."
+    },
+    "sonic-youth>patti-smith": {
+      "url": "https://www.rollingstone.com/music/music-features/thurston-moore-sonic-youth-influences-patti-smith-glenn-branca-880204",
+      "found": "It’s not a very verse/chorus/verse/chorus song, and hearing it was very formative to me because of that approach.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Thurston Moore to Rolling Stone, on the Patti Smith Group's \"Godspeed\" B-side, which \"seemed almost improvised\": \"It's not a very verse/chorus/verse/chorus song, and hearing it was very formative to me because of that approach.\"",
+      "sourceTier": "first-person",
+      "note": "The 'seeing the group live as a teenager' part of the old citation is not on the page; dropped."
+    },
+    "my-bloody-valentine>the-jesus-and-mary-chain": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "One search. The Shields quote about the Cocteau Twins/JAMC comparison being 'garbage' and Psychocandy as 'the shared record' was not found anywhere. Closest lead, only seen in search results and not opened: Westword's Shields Q&A (https://www.westword.com/music/my-bloody-valentines-kevin-shields-talks-loveless-and-the-influence-of-bands-like-sonic-youth-and-dinosaur-jr-5103473), where he discusses the Cocteau Twins comparison, but no JAMC statement was visible. Encyclopedia.com's MBV bio says The New Record EP showed a JAMC influence; that is a reported claim with no Shields words."
+    },
+    "my-bloody-valentine>ramones": {
+      "url": "https://arthurmag.com/2011/03/10/perfect-sound-forever-kevin-shields-of-my-bloody-valentine-interviewed-by-hua-hsu-arthur-no-7nov-2003/",
+      "found": "And that’s what happened—that’s the Ramones connection. What I did that was any good in the end came from the mentality that Johnny wasn’t playing guitar.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Kevin Shields to Hua Hsu, Arthur No. 7 (Nov. 2003), on the Ramones and Johnny Ramone's guitar: \"And that's what happened—that's the Ramones connection. What I did that was any good in the end came from the mentality that Johnny wasn't playing guitar.\"",
+      "sourceTier": "first-person",
+      "note": "The 'noise generator' words appear only in Hsu's question; the old citation's NME 'Roots of MBV' source was not found."
+    },
+    "my-bloody-valentine>siouxsie-and-the-banshees": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Two searches ('Double J Karen Leng Kevin Shields' with the quote, and an abc.net.au variant) turned up no Double J / ABC page and no 'the best of all was Siouxsie and the Banshees, the Cure and Killing Joke' line. Lead, from search snippets only and not opened: Wikipedia's Kevin Shields page says his 1981 band A Life in the Day was 'influenced by Siouxsie and the Banshees and Joy Division'. Follow its footnote for a real source. Tier would be reported at best."
+    },
+    "my-bloody-valentine>the-cure": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Same two searches as the Siouxsie link; the Double J / Karen Leng page was not found, so the quote could not be verified. In the Arthur 2003 interview (opened) Shields names Joy Division, Birthday Party/Cramps, Einsturzende Neubauten and the Byrds, but not the Cure. No other source for this link was found."
+    },
+    "siouxsie-and-the-banshees>david-bowie": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "One search. Not opened: thisisdig.com's Starman Top of the Pops article (the fetch redirected to the Rhino homepage) credits Siouxsie, aged 15, with \"I just couldn’t believe how striking he was\"; and indiehoy.com quotes a 2016 Mojo interview, \"I can say hand on heart I don't know where I'd be without David Bowie\". Both are secondhand. Suggested next step: find Siouxsie's own Mojo 2016 piece or the original Bowie-on-TV quote. The NPR / AllMusic items in the original citation were not located."
+    },
+    "cocteau-twins>siouxsie-and-the-banshees": {
+      "url": "https://cocteautwins.com/press-and-news/2011/12/01/2011-robin-guthrie-interview-mojo-magazine/",
+      "found": "“Pearly-Dewdrops’ Drops,” their first attempt to write a single, saw them discard their earlier Siouxsie & The Banshees influences to reveal a unique musical intricacy.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Martin Aston, in MOJO's sidebar to his Robin Guthrie interview (December 2011), reproduced on the band's site, wrote that \"Pearly-Dewdrops' Drops\" \"saw them discard their earlier Siouxsie & The Banshees influences to reveal a unique musical intricacy.\"",
+      "sourceTier": "reported"
+    },
+    "cocteau-twins>sex-pistols": {
+      "url": "https://cocteautwins.com/press-and-news/2011/12/01/2011-robin-guthrie-interview-mojo-magazine/",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "note": "Fandom while forming the band: counts as first-person under the owner's 26 Oct 2026 ruling. The old 'Guthrie page' wording was not found.",
+      "sourceTier": "first-person",
+      "found": "I liked all the early punk—Buzzcocks, the Pistols and The Clash, before it all went commercial, when Sham 69 counted as punk.",
+      "citation": "Robin Guthrie to Martin Aston, MOJO (December 2011), on what he listened to before forming the band: \"I liked all the early punk—Buzzcocks, the Pistols and The Clash, before it all went commercial.\" The band set out \"to make music with the energy of punk but with more finesse and beauty.\""
+    },
+    "cocteau-twins>the-birthday-party": {
+      "url": "https://cocteautwins.com/press-and-news/2011/12/01/2011-robin-guthrie-interview-mojo-magazine/",
+      "found": "I was trying to make my guitar sound like I could play it, so I was influenced by guitarists who made a beautiful noise, like Roland S. Howard of The Birthday Party. We followed The Birthday Party all over and it’s because of them that we sent a demo to 4AD.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Robin Guthrie to Martin Aston, MOJO (Dec 2011), reproduced on the band's site: \"I was trying to make my guitar sound like I could play it, so I was influenced by guitarists who made a beautiful noise, like Roland S. Howard of The Birthday Party. We followed The Birthday Party all over and it's because of them that we sent a demo to 4AD.\"",
+      "sourceTier": "first-person"
+    },
+    "david-bowie>the-stooges": {
+      "url": "https://www.nme.com/news/music/iggy-pop-26-1189468",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Wrong speaker and wrong claim. The page (NME, 28 Jan 2016, reporting Iggy Pop to Rolling Stone) says Pop first met Bowie after hearing he liked the Stooges, 'something not a lot of people would admit at the time'. It is Iggy talking about Bowie liking his band, not Bowie saying they shaped him; the 1971 Melody Maker framing and the exact quote in the citation are not on this page (a producelikeapro.com blog repeats it but is secondhand). Proposal: keep only as weak, tier 'reported', or remove until Bowie's own words are found."
+    },
+    "joy-division>velvet-underground": {
+      "url": "https://den-experimental.voicemediagroup.com/music/peter-hook-joy-division-new-order-14876858/",
+      "found": "He’d give me Velvet Underground Loaded, and he’d give me a John Cale solo album. Then he’d do Can and Faust and Kraftwerk.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Peter Hook to Denver Westword (2 Sept 2022), on Ian Curtis educating him musically: \"He'd give me Velvet Underground Loaded, and he'd give me a John Cale solo album. Then he'd do Can and Faust and Kraftwerk.\"",
+      "sourceTier": "first-person",
+      "note": "The old 'much better educated' line (Jon Savage's oral history) was not found; dropped."
+    },
+    "joy-division>kraftwerk": {
+      "url": "https://www.nme.com/features/peter-hook-florian-schneider-kraftwerk-new-order-joy-division-influence-tribute-2660805",
+      "found": "Kraftwerk were such a huge influence on us, both musically and stylistically. Ian was so in awe of the way that they dressed and the way they acted as well as their music.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Peter Hook to NME (as told to Andrew Trendell, 6 May 2020): \"Kraftwerk were such a huge influence on us, both musically and stylistically. Ian was so in awe of the way that they dressed and the way they acted as well as their music.\"",
+      "sourceTier": "first-person"
+    },
+    "joy-division>can": {
+      "url": "https://www.nme.com/features/peter-hook-florian-schneider-kraftwerk-new-order-joy-division-influence-tribute-2660805",
+      "found": "Ian’s musical education was fantastic. He taught us about everything from The Doors to Can.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Peter Hook to NME (as told to Andrew Trendell, 6 May 2020): \"Ian's musical education was fantastic. He taught us about everything from The Doors to Can.\"",
+      "sourceTier": "first-person",
+      "note": "The old 'much better educated' line (Jon Savage's oral history) was not found; dropped."
+    },
+    "neil-young>bob-dylan": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "One search. Not opened, lead only: Guitar Player (https://www.guitarplayer.com/music/bob-dylan-on-the-dylan-imitator-who-bothered-him-the-most) says Young told Time in 2005 'He's the master' and quotes the 'Flags of Freedom' lyric naming Dylan 'in 1963'. A song lyric is not a statement of influence. thrasherswheat.org (secondhand) cites Shakey, where Young calls himself 'a B student of Bob Dylan'. The 'first heard Dylan in Winnipeg around 1963' claim was not found; Young's own 1969 KSAN remark (also secondhand) says he avoided owning a Dylan album for fear of being influenced."
+    },
+    "fugazi>sonic-youth": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Two searches ('Cultural Glitch Guy Picciotto Fugazi influences...' and '\"Cultural Glitch\" Fugazi Picciotto 2011'). No Cultural Glitch page appeared. The sentence 'Fugazi's influences include Bad Brains, the Faith, Void, Minutemen, Black Flag, Sonic Youth, the Ex' reads like a third-person summary, not Picciotto speaking; treat the quote as unverified. Picciotto-related pages found (Wikipedia, Last.fm mirrors, Apple) are barred or give no first-person influence quote."
+    },
+    "fugazi>bad-brains": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Same two Cultural Glitch searches as fugazi>sonic-youth; no page found. One lead from a search snippet, not opened: a Shadowproof article quotes Picciotto in a 2002 interview 'What, like the Bad Brains weren't emotional?', which is not an influence statement."
+    },
+    "fugazi>minutemen": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Same two Cultural Glitch searches as fugazi>sonic-youth; no page found and no other source for Minutemen turned up."
+    },
+    "fugazi>black-flag": {
+      "verdict": "not-found",
+      "checked": "2026-10-26",
+      "note": "Same two Cultural Glitch searches as fugazi>sonic-youth; no page found and no other source for Black Flag turned up."
+    },
+    "the-cure>siouxsie-and-the-banshees": {
+      "url": "https://www.nme.com/photos/27-geeky-facts-about-the-cure-1412275",
+      "found": "Before that, I’d wanted us to be like the Buzzcocks or Elvis Costello, the punk Beatles. Being a Banshee really changed my attitude to what I was doing.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Robert Smith, quoted in NME's '27 Geeky Facts About The Cure' (5 Nov 2014), on playing guitar for the Banshees in 1979: \"It was so different to what we were doing with The Cure. Before that, I'd wanted us to be like the Buzzcocks or Elvis Costello, the punk Beatles. Being a Banshee really changed my attitude to what I was doing.\"",
+      "sourceTier": "first-person",
+      "note": "The old Paytress biography (p.96) attribution and 'blown away' passage could not be checked; replaced."
+    },
+    "the-cure>nick-drake": {
+      "url": "https://faroutmagazine.co.uk/five-songs-that-changed-robert-smiths-life/",
+      "found": "He noted his admiration for the vulnerability steeped in his songwriting and deemed Drake “everything I would aspire to in… understated mood songwriting and singing”.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Far Out Magazine reports that Robert Smith, listing five songs that changed his life for Richard Kingsmill on Triple J, named Nick Drake's \"Time Has Told Me\" and called Drake \"everything I would aspire to in… understated mood songwriting and singing\".",
+      "sourceTier": "reported",
+      "note": "The BBC attribution is wrong. The Clash article (https://www.clashmusic.com/?p=412059, seen in search results only) calls the claim that 'Time Has Told Me' gave the band its name 'a theory', so it is not supported. The old citation said BBC; Far Out says Triple J."
+    },
+    "the-cure>sex-pistols": {
+      "url": "https://faroutmagazine.co.uk/five-songs-that-changed-robert-smiths-life/",
+      "found": "The Cure frontman rounds out the list with British punk pioneers, the Sex Pistols, naming ‘Anarchy In The UK’ as “the last time something really major happened to me and changed me”.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Far Out Magazine reports that Robert Smith, in his Triple J five-songs appearance with Richard Kingsmill, named the Sex Pistols' \"Anarchy In The UK\" as \"the last time something really major happened to me and changed me\".",
+      "sourceTier": "reported",
+      "note": "The old citation said BBC; Far Out says Triple J."
+    },
+    "the-cure>buzzcocks": {
+      "url": "https://faroutmagazine.co.uk/two-concerts-that-formed-the-cure/",
+      "found": "Robert Smith said: “When I first saw The Stranglers, I thought, ‘This is it.’” The pieces of the puzzle fell into place very quickly after that when he “saw the Buzzcocks the following week, and I thought, ‘This is definitely it.’”",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Robert Smith to Rolling Stone (2004), as quoted by Far Out Magazine: \"When I first saw The Stranglers, I thought, 'This is it.'\" Then he \"saw the Buzzcocks the following week, and I thought, 'This is definitely it.'\"",
+      "note": "Original is Rolling Stone, https://www.rollingstone.com/music/music-news/qa-the-cures-robert-smith-on-his-musical-influences-193136/ . It would not open (tollbit client error). Look for 'But when I first saw the Stranglers, I thought, \"This is it.\"' near the start of the first-show answer."
+    },
+    "the-cure>mogwai": {
+      "verdict": "decide",
+      "checked": "2026-10-26",
+      "note": "Direction is reversed: The List has Mogwai's Stuart Braithwaite saying the Cure's Disintegration was part of Mogwai's blueprint (opened and read). No source has the Cure influenced by Mogwai. Propose: flip to mogwai>the-cure (first-person).",
+      "url": "https://list.co.uk/news/3259/stuart-braithwaite-you-need-strong-ankles-to-go-see-the-cure",
+      "found": "Disintegration was the first record I fell in love with and, along with a few other records, it was part of the blueprint of what Mogwai have become musically, that sprawled-out melancholy atmosphere."
+    }
+  },
+  "candidates": [
+    {
+      "source": "cocteau-twins",
+      "target": "buzzcocks",
+      "kind": "influence",
+      "speaker": "Robin Guthrie",
+      "sentence": "I liked all the early punk—Buzzcocks, the Pistols and The Clash, before it all went commercial, when Sham 69 counted as punk.",
+      "url": "https://cocteautwins.com/press-and-news/2011/12/01/2011-robin-guthrie-interview-mojo-magazine/"
+    },
+    {
+      "source": "cocteau-twins",
+      "target": "the-clash",
+      "kind": "influence",
+      "speaker": "Robin Guthrie",
+      "sentence": "I liked all the early punk—Buzzcocks, the Pistols and The Clash, before it all went commercial, when Sham 69 counted as punk.",
+      "url": "https://cocteautwins.com/press-and-news/2011/12/01/2011-robin-guthrie-interview-mojo-magazine/"
+    }
+  ],
+  "offMap": [
+    {
+      "name": "Minor Threat",
+      "namedBy": "sonic-youth",
+      "sentence": "I used to see all these hardcore bands come up to New York and play at CBGB on hardcore nights and Minor Threat was probably the best hardcore band that ever was.",
+      "url": "https://www.rollingstone.com/music/music-features/thurston-moore-sonic-youth-influences-patti-smith-glenn-branca-880204"
+    },
+    {
+      "name": "Einstürzende Neubauten",
+      "namedBy": "my-bloody-valentine",
+      "sentence": "Einsturzende Neubauten were a big influence.",
+      "url": "https://arthurmag.com/2011/03/10/perfect-sound-forever-kevin-shields-of-my-bloody-valentine-interviewed-by-hua-hsu-arthur-no-7nov-2003/"
+    },
+    {
+      "name": "The Doors",
+      "namedBy": "joy-division",
+      "sentence": "He taught us about everything from The Doors to Can.",
+      "url": "https://www.nme.com/features/peter-hook-florian-schneider-kraftwerk-new-order-joy-division-influence-tribute-2660805"
+    },
+    {
+      "name": "Elvis Costello",
+      "namedBy": "the-cure",
+      "sentence": "Before that, I’d wanted us to be like the Buzzcocks or Elvis Costello, the punk Beatles.",
+      "url": "https://www.nme.com/photos/27-geeky-facts-about-the-cure-1412275"
+    },
+    {
+      "name": "Phil Spector",
+      "namedBy": "cocteau-twins",
+      "sentence": "To make music with the energy of punk but with more finesse and beauty and that shiny and dense Phil Spector sound.",
+      "url": "https://cocteautwins.com/press-and-news/2011/12/01/2011-robin-guthrie-interview-mojo-magazine/"
+    }
+  ]
+}

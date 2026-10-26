@@ -14175,12 +14175,172 @@ html[data-story='off'] .intro {
   border-style: dashed;
 }
 
+/* The source ticket (components/ui/SourceLink): the proof under every
+   citation, drawn as an object of its own in the paper-button language --
+   ink outline, hard shadow, a red rubber-stamp SOURCE, the publication's
+   name, an arrow out. Its own colours, so it reads the same on the paper
+   panel, the family card and the dark today's-record tag. It lifts when
+   pointed at and presses down when clicked; no motion under reduced motion. */
+.source-ticket {
+  --t-ink: #1c1724;
+  --t-paper: #f6eedd;
+  --t-red: #a8261e;
+  display: inline-flex;
+  align-items: stretch;
+  max-width: 100%;
+  margin-top: 0.6rem;
+  border: 1.5px solid var(--t-ink);
+  border-radius: 4px;
+  background: var(--t-paper);
+  box-shadow: 2px 2px 0 var(--t-ink);
+  color: var(--t-ink);
+  text-decoration: none;
+  line-height: 1.2;
+  overflow: hidden;
+}
+
+.source-ticket__stamp {
+  display: flex;
+  align-items: center;
+  padding: 0.34rem 0.5rem 0.3rem;
+  background: var(--t-red);
+  color: #fbf3e2;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.source-ticket__place {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.45rem;
+  min-width: 0;
+  padding: 0.32rem 0.6rem 0.3rem 0.55rem;
+  border-left: 1.5px solid var(--t-ink);
+}
+
+.source-ticket__name {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.source-ticket__note {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(28, 23, 36, 0.7);
+}
+
+.source-ticket__arrow {
+  flex: none;
+  width: 11px;
+  height: 11px;
+}
+
+a.source-ticket:hover .source-ticket__name {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a.source-ticket:focus-visible {
+  outline: 2px solid var(--t-ink);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a.source-ticket {
+    transition: translate 120ms ease, box-shadow 120ms ease;
+  }
+
+  a.source-ticket .source-ticket__arrow {
+    transition: translate 120ms ease;
+  }
+
+  a.source-ticket:hover {
+    translate: -1px -1px;
+    box-shadow: 3px 3px 0 var(--t-ink);
+  }
+
+  a.source-ticket:hover .source-ticket__arrow {
+    translate: 1.5px -1.5px;
+  }
+
+  a.source-ticket:active {
+    translate: 1px 1px;
+    box-shadow: 1px 1px 0 var(--t-ink);
+  }
+}
+
+/* Only in a book: the same ticket, dashed, nothing to click. */
+.source-ticket--print {
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.source-ticket--print .source-ticket__stamp {
+  background: transparent;
+  color: var(--t-red);
+}
+
+.source-ticket--print .source-ticket__place {
+  border-left-style: dashed;
+}
+
+.source-ticket--print .source-ticket__name {
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Today's record: a smaller ticket for a compact tag. */
+.source-ticket--small {
+  margin-top: 0.5rem;
+}
+
+.source-ticket--small .source-ticket__stamp {
+  padding: 0.26rem 0.42rem 0.22rem;
+  font-size: 0.56rem;
+}
+
+.source-ticket--small .source-ticket__place {
+  padding: 0.24rem 0.5rem 0.22rem 0.45rem;
+}
+
+.source-ticket--small .source-ticket__name {
+  font-size: 0.72rem;
+}
+
+/* A "Source" stamp whose citation the source pass has checked on its page:
+   a red tick, so the rows that open onto their proof stand out. */
+.zine-row__stamp--checked svg {
+  color: #a8261e;
+}
+
+.zine-row__stamp--checked:hover svg,
+.zine-row__stamp--checked[aria-expanded="true"] svg {
+  color: currentColor;
+}
+
 .zine-row__note {
   margin: 0.35rem 0 0.2rem 1.1rem;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   line-height: 1.5;
   color: rgba(28, 23, 36, 0.82);
+}
+
+.zine-row__note p,
+.road-seg__slip p {
+  margin: 0;
+}
+
+.zine-row__note .source-ticket {
+  margin-bottom: 0.35rem;
 }
 
 .zine__more {
@@ -15331,6 +15491,10 @@ html[data-story='off'] .intro {
   margin: 0 0 0.65rem;
   font-size: 0.92rem;
   line-height: 1.55;
+}
+
+.family-card__source.source-ticket {
+  margin: -0.15rem 0 0.85rem;
 }
 
 .family-card__actions {

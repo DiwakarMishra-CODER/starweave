@@ -1,0 +1,236 @@
+{
+ "agent": "c8",
+ "searches": 18,
+ "toolStatus": "WebSearch fine. rateyourmusic.com 403 direct and via proxy; opened via web.archive.org/web/2020 copy.",
+ "entries": {
+  "sweet-trip>my-bloody-valentine": {
+   "url": "https://web.archive.org/web/2020/https://rateyourmusic.com/feature/sonemic-interview-sweet-trip/",
+   "found": "it was a brave new world – Sonic Youth , The Stone Roses , My Bloody Valentine , Slowdive – and these bands made me feel so much, like eating Gouda for the first time and never going back to American cheese.",
+   "checked": "2026-10-26",
+   "verdict": "ok",
+   "note": "Page is the Wayback 2020 copy of the RYM Sonemic interview (Jesse Taconelli, 20 Dec 2020). Roby Burgos speaking."
+  },
+  "sweet-trip>slowdive": {
+   "url": "https://web.archive.org/web/2020/https://rateyourmusic.com/feature/sonemic-interview-sweet-trip/",
+   "found": "This record started it all for me, so it has a special place in my heart.",
+   "checked": "2026-10-26",
+   "verdict": "ok",
+   "note": "Page is the Wayback 2020 copy of the RYM Sonemic interview (Jesse Taconelli, 20 Dec 2020). Roby on Just for a Day (his album inspirations)."
+  },
+  "sweet-trip>sonic-youth": {
+   "url": "https://web.archive.org/web/2020/https://rateyourmusic.com/feature/sonemic-interview-sweet-trip/",
+   "found": "For my musical experience, there was Sonic Youth before there was My Bloody Valentine.",
+   "checked": "2026-10-26",
+   "verdict": "ok",
+   "note": "Page is the Wayback 2020 copy of the RYM Sonemic interview (Jesse Taconelli, 20 Dec 2020). Roby on Goo."
+  },
+  "sweet-trip>aphex-twin": {
+   "url": "https://web.archive.org/web/2020/https://rateyourmusic.com/feature/sonemic-interview-sweet-trip/",
+   "found": "This series was and still is super influential to me.",
+   "checked": "2026-10-26",
+   "verdict": "ok",
+   "note": "Page is the Wayback 2020 copy of the RYM Sonemic interview (Jesse Taconelli, 20 Dec 2020). Roby on Aphex Twin's Analord (listed as AFX) under 'Sweet Trip's album inspirations'."
+  },
+  "sweet-trip>broadcast": {
+   "url": "https://web.archive.org/web/2020/https://rateyourmusic.com/feature/sonemic-interview-sweet-trip/",
+   "found": "How to appeal to your creepy but beautiful side.",
+   "checked": "2026-10-26",
+   "verdict": "ok",
+   "note": "Page is the Wayback 2020 copy of the RYM Sonemic interview (Jesse Taconelli, 20 Dec 2020). Valerie Cooper lists The Noise Made by People under 'Sweet Trip's album inspirations' with this comment; thin but a commented inspiration."
+  },
+  "the-flaming-lips>husker-du": {
+   "url": "https://spinmagazine.com/2013/04/spin-interview-wayne-coyne/",
+   "found": "Those were our heroes, the Replacements and Hüsker Dü, and then we got to play there where they had played.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "first-person",
+   "citation": "Wayne Coyne to SPIN (2013), remembering their first show at 7th St Entry in Minneapolis: \"Those were our heroes, the Replacements and Hüsker Dü, and then we got to play there where they had played.\"",
+   "note": "The cited line 'Husker Du and Black Flag were the bands that really influenced them' was not found on any page opened; replaced with Coyne's own 'heroes' line."
+  },
+  "the-flaming-lips>the-replacements": {
+   "url": "https://spinmagazine.com/2013/04/spin-interview-wayne-coyne/",
+   "found": "Those were our heroes, the Replacements and Hüsker Dü, and then we got to play there where they had played.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "first-person",
+   "citation": "Wayne Coyne to SPIN (2013), remembering their first show at 7th St Entry in Minneapolis: \"Those were our heroes, the Replacements and Hüsker Dü, and then we got to play there where they had played.\"",
+   "note": "The 'Weirdo Music Forever' source was not located (2 searches); SPIN covers the Replacements."
+  },
+  "the-flaming-lips>black-flag": {
+   "url": "https://www.westword.com/music/lips-service-5054009/",
+   "found": "“Michael and I would always do sound for all the hardcore bands that came through town back in ’82 and ’83,” he enthuses. “We did sound for Black Flag, the Meat Puppets, Die Kreuzen–all kinds of bands. Those groups kind of put a light bulb into our head.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "first-person",
+   "citation": "Wayne Coyne to Westword: \"We did sound for Black Flag, the Meat Puppets, Die Kreuzen--all kinds of bands. Those groups kind of put a light bulb into our head.\" The paper says the early Lips were influenced by the punk groups that played Oklahoma City.",
+   "note": "Westword article 'Lips Service', year not shown in the text I read (mid-1990s from context). The 2013 Coyne line cited could not be found. Also SPIN 2013: 'You'd admit to people that you liked the Beatles and Black Flag.'"
+  },
+  "the-flaming-lips>minutemen": {
+   "url": "https://www.rollingstone.com/music/music-news/the-flaming-lips-okies-from-outer-space-93390/",
+   "found": "They took drugs and emulated their stadium-rock heroes – Led Zeppelin , the Who – but couldn’t really play their instruments, which led Wayne and Michael to messier, punk-inspired bands like the Minutemen and the Butthole Surfers.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "reported",
+   "citation": "Rolling Stone, \"The Flaming Lips: Okies From Outer Space\": unable to play their instruments, Wayne Coyne and Michael Ivins turned to \"messier, punk-inspired bands like the Minutemen and the Butthole Surfers.\"",
+   "note": "Weirdo Music Forever source not located. Also Austin Chronicle 'Candy Store Rock': Coyne, Mark and Ivins saw Dicks, Hüsker Dü, Replacements, Black Flag, Minutemen as they toured through Oklahoma."
+  },
+  "the-flaming-lips>sonic-youth": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Cited 'Weirdo Music Forever' line not found in 2 searches. SPIN 2013/2018, Westword, Rolling Stone, Austin Chronicle, Wikipedia opened: none ties Coyne's early inspiration to Sonic Youth."
+  },
+  "the-flaming-lips>yo-la-tengo": {
+   "url": "https://thequietus.com/?p=6410",
+   "checked": "2026-10-26",
+   "verdict": "blocked",
+   "note": "Quietus Baker's Dozen (Stewart Smith, Wayne Coyne's 13 albums) is a click-through slideshow; read gets only the standfirst naming Yo La Tengo, also archive.org 2013/2016/2020 copies. Look in the slideshow for Coyne's Yo La Tengo pick and what he says about it (he is only influenced if he comments on it)."
+  },
+  "black-country-new-road>arcade-fire": {
+   "url": "https://www.thefader.com/2022/02/04/black-country-new-road-on-love-aliens-and-perfect-pop",
+   "found": "CW: Massively. When you watch an Arcade Fire show, the group vocal is a huge part of their energy. It’s something we want to tap into.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "first-person",
+   "citation": "Charlie Wayne to The FADER (Feb 2022), asked whether Arcade Fire shaped the band: \"When you watch an Arcade Fire show, the group vocal is a huge part of their energy. It's something we want to tap into.\" Tyler Hyde adds that they watched Arcade Fire at Rock en Seine 2005 in lockdown: \"we love this album so much.\"",
+   "note": "The Dork quote (\"not dissimilar to Arcade Fire... touchpoint\") was not found (searched, Bush Hall review opened). Verbatim in found: the page prints a curly apostrophe in It's."
+  },
+  "black-country-new-road>american-football": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Line of Best Fit Lewis Evans quote ('Everyone appreciates American Football...') searched twice (exact phrase; site+names); opened DIY Class of 2021, Loud and Quiet, SPIN 2022, Quietus Frenz Experiments, Wikipedia (band, For the First Time), FADER 2022, NME 2020: none carries it. Line of Best Fit article URL never surfaced."
+  },
+  "ethel-cain>mazzy-star": {
+   "url": "https://www.thefader.com/2022/05/26/the-life-and-death-of-ethel-cain",
+   "found": "And I was smoking a ton of weed every day [listening to] slowcore and midwest emo bands like Title Fight and American Football and female singers that are very lazy like Mazzy Star.",
+   "checked": "2026-10-26",
+   "verdict": "ok",
+   "note": "The FADER, 26 May 2022, 'The life and death of Ethel Cain'. Nylon part of the citation not checked."
+  },
+  "ethel-cain>american-football": {
+   "url": "https://www.thefader.com/2022/05/26/the-life-and-death-of-ethel-cain",
+   "found": "And I was smoking a ton of weed every day [listening to] slowcore and midwest emo bands like Title Fight and American Football and female singers that are very lazy like Mazzy Star.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "citation": "Ethel Cain to The FADER (May 2022), on making Preacher's Daughter: \"I was smoking a ton of weed every day [listening to] slowcore and midwest emo bands like Title Fight and American Football and female singers that are very lazy like Mazzy Star.\"",
+   "note": "Kerrang 'inspired me in more ways than I can count' quote (For Sure cover) not found; searched none, opened them.us and Pitchfork pages (no such line). FADER quote is her own words on listening while making the record."
+  },
+  "ethel-cain>grouper": {
+   "url": "https://www.thefader.com/2022/05/26/the-life-and-death-of-ethel-cain",
+   "found": "I was no longer listening to crazy heavy synth electronic music; I was listening to Nicole Dollanganger and Grouper and Slowdive and Def Leppard…",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "citation": "Ethel Cain to The FADER (May 2022), on the change that made her Ethel Cain: \"I was no longer listening to crazy heavy synth electronic music; I was listening to Nicole Dollanganger and Grouper and Slowdive and Def Leppard...\"",
+   "note": "The 'always and forever' line and Crack Magazine claim not found. Rolling Stone (Ethel Cain new music interview) also reports a playlist guiding her with Brian Eno, Explosions in the Sky, Grouper, William Basinski. Slowdive is a roster artist also named here (candidate ethel-cain>slowdive if not on map)."
+  },
+  "geese>the-strokes": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Searched twice (the two quotes; Rolling Stone+names). 'Foster Bassin' is not a band member (drummer is Max Bassin; Foster Hudson was the guitarist who left Dec 2023) so the citation's attribution looks wrong. Opened WRBB interview (Mar 2024): its only Strokes line is Max/Cameron joking about 'waiting for the second coming of the Strokes' as a millennial thing, not influence; Wikipedia lists the Strokes citing that page but the page does not say so. Daily Star 2021, Kaput, Wikipedia pages: nothing."
+  },
+  "geese>velvet-underground": {
+   "url": "https://wrbbradio.org/articles/interview-with-geese-an-american-band",
+   "found": "Cameron: Like Velvet Underground.",
+   "checked": "2026-10-26",
+   "verdict": "decide",
+   "note": "WRBB (Bela Omoeva, 21 Mar 2024) has no list of influences. The only line: Max says their new material is 'skewing more trance-y' and Cameron adds 'Like Velvet Underground.' That is Cameron comparing their new direction to VU, thin. Citation's 'list that runs from VU and Television through Radiohead, Deerhunter and Funkadelic' is not on the page (it comes from Wikipedia's summary). Propose: lower to reported/keep at low confidence, or remove unless a better source is found."
+  },
+  "geese>interpol": {
+   "checked": "2026-10-26",
+   "verdict": "not-found",
+   "note": "Rolling Stone feature not located in 1 search (Rolling Stone Italia/Brazil hits, Wikipedia pages for Geese and Cameron Winter, Kaput opened: Interpol appears only in a Kaput line comparing debut-album legacies, not influence). Citation names no article title or date."
+  },
+  "have-a-nice-life>joy-division": {
+   "url": "https://web.archive.org/web/20080530043559/http://www.myspace.com/haveanicelife",
+   "found": "Influences My Bloody Valentine, Joy Division, New Order, Earth, Sunn, Xasthur, Lurker of Chalice, Nine Inch Nails, the periodic \"starving times\" of native Alaskans dependent on herds of migrant caribou, Swans, Sisters of Mercy, Kraftwerk, Nietzsche",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "first-person",
+   "citation": "Have a Nice Life's own MySpace profile (2008) lists their influences as \"My Bloody Valentine, Joy Division, New Order, Earth, Sunn, Xasthur, Lurker of Chalice, Nine Inch Nails\" and others.",
+   "note": "The cited Todestrieb (2007), Last Day Deaf (2008) and Steel for Brains interviews were not found (1 search; opened Sonemic interview 2020-22 archive, Machine Music 2019, Iodine, Bandcamp Daily, Now Flensing, Wikipedia: none has the quotes). The band's own MySpace profile (Wayback 30 May 2008) carries the band naming them under 'Influences'; it is a plain list without comment, so tier could be argued either way."
+  },
+  "have-a-nice-life>my-bloody-valentine": {
+   "url": "https://web.archive.org/web/20080530043559/http://www.myspace.com/haveanicelife",
+   "found": "Influences My Bloody Valentine, Joy Division, New Order, Earth, Sunn, Xasthur, Lurker of Chalice, Nine Inch Nails, the periodic \"starving times\" of native Alaskans dependent on herds of migrant caribou, Swans, Sisters of Mercy, Kraftwerk, Nietzsche",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "first-person",
+   "citation": "Have a Nice Life's own MySpace profile (2008) lists their influences as \"My Bloody Valentine, Joy Division, New Order, Earth, Sunn, Xasthur, Lurker of Chalice, Nine Inch Nails\" and others.",
+   "note": "The cited Todestrieb (2007), Last Day Deaf (2008) and Steel for Brains interviews were not found (1 search; opened Sonemic interview 2020-22 archive, Machine Music 2019, Iodine, Bandcamp Daily, Now Flensing, Wikipedia: none has the quotes). The band's own MySpace profile (Wayback 30 May 2008) carries the band naming them under 'Influences'; it is a plain list without comment, so tier could be argued either way."
+  },
+  "jeff-buckley>patti-smith": {
+   "url": "https://interviewmagazine.com/music/new-again-jeff-buckley",
+   "found": "I was brought up with all these different influences—Nina Simone, Nusrat Fateh Ali Kahn, Patti Smith—people who showed me music should be free, should be penetrating, should carry you.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "citation": "Jeff Buckley to Interview magazine (1994): \"I was brought up with all these different influences—Nina Simone, Nusrat Fateh Ali Kahn, Patti Smith—people who showed me music should be free, should be penetrating, should carry you.\"",
+   "note": "Citation said 'as reported by No Depression' and 'grew up on'; the quote is on Interview's own reprint (BUCKLEY speaking), so cite Interview directly."
+  },
+  "jeff-buckley>bad-brains": {
+   "url": "https://en.wikipedia.org/wiki/Jeff_Buckley",
+   "found": "He also became interested in the blues musician Robert Johnson and the hardcore punk band Bad Brains during this time.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "reported",
+   "citation": "Wikipedia's Jeff Buckley article says that, after he moved to Memphis, he became interested in the hardcore punk band Bad Brains.",
+   "note": "Self-written press biography not found (1 search; Wikipedia, Michigan Daily 1994 hit not opened). Wikipedia sentence has no visible footnote in the text I read (page printed it with the sentence ending '...during this time.'; I did not confirm the exact wording in the rendered page, only the raw wikitext). Weak: Buckley also covered Bad Brains' 'I Against I' (a cover alone is not influence). Owner may prefer decide/remove. found copied from raw wikitext, without the [[ ]] markup."
+  },
+  "julia-holter>cocteau-twins": {
+   "url": "https://blog.calarts.edu/2015/10/15/julia-holter-talks-music-influences-at-calarts/",
+   "found": "The forum allowed Holter to cover her varied musical influences, which include Joni Mitchell’s 1974 album Court and Spark , Brian Ferry’s (Roxy Music) “very romantic” vibrato, Cocteau Twins’ “Fluffy Tufts” and fellow CalArtian Ariel Pink.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "reported",
+   "citation": "CalArts blog (15 Oct 2015) on Julia Holter's VoiceArts Forum talk there (28 Sept 2015): the forum let her cover her varied musical influences, which include Cocteau Twins' \"Fluffy Tufts\".",
+   "note": "Forum was 28 Sept 2015 per the blog, not October; the blog (not Holter's quote) states it, so reported tier."
+  },
+  "julia-holter>joni-mitchell": {
+   "url": "https://blog.calarts.edu/2015/10/15/julia-holter-talks-music-influences-at-calarts/",
+   "found": "The forum allowed Holter to cover her varied musical influences, which include Joni Mitchell’s 1974 album Court and Spark , Brian Ferry’s (Roxy Music) “very romantic” vibrato, Cocteau Twins’ “Fluffy Tufts” and fellow CalArtian Ariel Pink.",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "reported",
+   "citation": "CalArts blog (15 Oct 2015) on Julia Holter's VoiceArts Forum talk there (28 Sept 2015): the forum let her cover her varied musical influences, which include Joni Mitchell's 1974 album Court and Spark.",
+   "note": "Reported tier, same page as the Cocteau Twins link."
+  },
+  "julia-holter>ariel-pink": {
+   "url": "https://blog.calarts.edu/2015/10/15/julia-holter-talks-music-influences-at-calarts/",
+   "found": "“I love the way Ariel brings all these different voices together,” she said. “Having tons of layers and voices is something that I love.”",
+   "checked": "2026-10-26",
+   "verdict": "fixed",
+   "sourceTier": "first-person",
+   "citation": "Julia Holter at CalArts' VoiceArts Forum (Sept 2015), as reported by the CalArts blog: \"I love the way Ariel brings all these different voices together... Having tons of layers and voices is something that I love.\"",
+   "note": "Her own quote about Ariel Pink; the 'Ariel' is Ariel Pink per the blog's preceding sentence."
+  }
+ },
+ "candidates": [
+  {
+   "source": "ethel-cain",
+   "target": "slowdive",
+   "kind": "influence",
+   "speaker": "Ethel Cain",
+   "sentence": "I was no longer listening to crazy heavy synth electronic music; I was listening to Nicole Dollanganger and Grouper and Slowdive and Def Leppard…",
+   "url": "https://www.thefader.com/2022/05/26/the-life-and-death-of-ethel-cain"
+  }
+ ],
+ "offMap": [
+  {
+   "name": "Roxy Music (Bryan Ferry)",
+   "namedBy": "julia-holter",
+   "sentence": "The forum allowed Holter to cover her varied musical influences, which include Joni Mitchell’s 1974 album Court and Spark , Brian Ferry’s (Roxy Music) “very romantic” vibrato, Cocteau Twins’ “Fluffy Tufts” and fellow CalArtian Ariel Pink.",
+   "url": "https://blog.calarts.edu/2015/10/15/julia-holter-talks-music-influences-at-calarts/"
+  },
+  {
+   "name": "Title Fight",
+   "namedBy": "ethel-cain",
+   "sentence": "And I was smoking a ton of weed every day [listening to] slowcore and midwest emo bands like Title Fight and American Football and female singers that are very lazy like Mazzy Star.",
+   "url": "https://www.thefader.com/2022/05/26/the-life-and-death-of-ethel-cain"
+  },
+  {
+   "name": "Nicole Dollanganger",
+   "namedBy": "ethel-cain",
+   "sentence": "I was no longer listening to crazy heavy synth electronic music; I was listening to Nicole Dollanganger and Grouper and Slowdive and Def Leppard…",
+   "url": "https://www.thefader.com/2022/05/26/the-life-and-death-of-ethel-cain"
+  }
+ ],
+ "finished": true
+}

@@ -260,6 +260,11 @@ export interface Edge {
   citation?: string | null;  // source URL/text for verified edges (fill in)
   citationStatus?: CitationStatus; // see CitationStatus above; omit unless 'unsourceable'
   sourceTier?: SourceTier;   // see SourceTier above; only meaningful when citation is set
+  // Where the citation can be read. Never written in seed-data.ts: merged in
+  // at build time from the source pass's ledger (data/edge-sources.json, see
+  // lib/edge-sources.ts), so they only exist in public/graph.json.
+  sourceUrl?: string;        // the page that carries the claim, opened and read
+  sourcePrint?: string;      // a print-only source: book, edition, page
 }
 
 // Single source of truth for the three-way cited/unsourceable/unchecked

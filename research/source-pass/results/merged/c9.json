@@ -1,0 +1,477 @@
+{
+  "agent": "c9",
+  "searches": 23,
+  "toolStatus": "WebSearch fine; undertheradarmag.com not needed; BrooklynVegan would not open (Guardian quote via Albumism)",
+  "entries": {
+    "blur>sonic-youth": {
+      "url": "https://www.premierguitar.com/artists/graham-coxon-the-curious-flights-of-an-art-pop-aerialist",
+      "found": "I loved Sonic Youth, and I'd listen to _Spy vs Spy_, which was John Zorn's hardcore approach to Ornette Coleman. Then of course Pink Floyd's approach to loose psychedelic improvisation, too. I just concentrated on trying to get all that in one place.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Graham Coxon to Premier Guitar (2018): \"There was a great South Bank Show episode about the New York scene and Sonic Youth and John Zorn. I loved Sonic Youth, and I'd listen to Spy vs Spy... Then of course Pink Floyd's approach to loose psychedelic improvisation, too. I just concentrated on trying to get all that in one place.\"",
+      "sourceTier": "first-person",
+      "note": "found text has the page's markdown underscores around Spy vs Spy as printed by read."
+    },
+    "blur>fugazi": {
+      "url": "https://www.uncut.co.uk/features/graham-coxon-blur-pop-strange-limiting-form-damon-receptive-days-99254/2/",
+      "found": "The other time was in the mid-’90s when Jo [Johnson] from Huggy Bear got me into things like Pavement and Slint and a lot of other small-label punk groups from the States – Universal Order Of Armageddon, Rites Of Spring, Fugazi. They used the guitar in an incredible way; making quite restrained noisy music, which I’d never heard English bands doing.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Graham Coxon to Uncut (2017), on the mid-1990s: \"Jo from Huggy Bear got me into things like Pavement and Slint and a lot of other small-label punk groups from the States – Universal Order Of Armageddon, Rites Of Spring, Fugazi. They used the guitar in an incredible way; making quite restrained noisy music, which I'd never heard English bands doing.\"",
+      "sourceTier": "first-person",
+      "note": "Found via Wikipedia's Fugazi footnote. The 'one of the most musically significant moments of his life' wording is Wikipedia's paraphrase, not Coxon's; the Uncut page is a Q&A answer to 'was there a moment musically that changed everything?'"
+    },
+    "blur>rites-of-spring": {
+      "url": "https://www.uncut.co.uk/features/graham-coxon-blur-pop-strange-limiting-form-damon-receptive-days-99254/2/",
+      "found": "The other time was in the mid-’90s when Jo [Johnson] from Huggy Bear got me into things like Pavement and Slint and a lot of other small-label punk groups from the States – Universal Order Of Armageddon, Rites Of Spring, Fugazi. They used the guitar in an incredible way; making quite restrained noisy music, which I’d never heard English bands doing.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Graham Coxon to Uncut (2017), on the mid-1990s: \"Jo from Huggy Bear got me into things like Pavement and Slint and a lot of other small-label punk groups from the States – Universal Order Of Armageddon, Rites Of Spring, Fugazi. They used the guitar in an incredible way; making quite restrained noisy music, which I'd never heard English bands doing.\"",
+      "sourceTier": "first-person",
+      "note": "Found via Wikipedia's Fugazi footnote. The 'one of the most musically significant moments of his life' wording is Wikipedia's paraphrase, not Coxon's; the Uncut page is a Q&A answer to 'was there a moment musically that changed everything?'"
+    },
+    "caroline-polachek>david-bowie": {
+      "url": "https://intothegloss.com/2016/06/caroline-polachek-beauty",
+      "found": "I can’t help but think of David Bowie—I love the photos of him doing his own makeup because it’s clear how much vision he had. The man had a serious talent for it.",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Into The Gloss (2016): Polachek admires Bowie doing his own makeup, in a piece about artists whose looks went with their music. About his image, not his music: propose remove unless a better source turns up."
+    },
+    "caroline-polachek>cocteau-twins": {
+      "url": "https://www.thefader.com/2019/10/15/caroline-polachek-pang-interview",
+      "found": "I saw a picture of Liz Fraser playing onstage in California last week, and it was like, Right ! Cocteau Twins to me feels like a whole kind of storm cloud, but at the end of the day, they’re human beings.",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "FADER (Oct 2019) quote is verbatim but is an aside about seeing a photo of Liz Fraser, not a statement of being shaped by them. Interview magazine (2019, https://interviewmagazine.com/music/caroline-polachek-katy-perry-enya-third-eye-blind-pang-add-to-queue): 'It would probably be like early ’90s Cocteau Twins' as dream collab only. Nothing says she listened to or learned from them. Propose remove (or hold) unless a better source turns up."
+    },
+    "caroline-polachek>bjork": {
+      "url": "https://www.wmagazine.com/culture/caroline-polachek-tour-dua-lipa-2022-interview",
+      "found": "Björk and Kate Bush and Fiona Apple were my absolute heroes when I was a teenager.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Caroline Polachek to W Magazine (2022): \"I grew up kneeling at the altar of alternative music. Björk and Kate Bush and Fiona Apple were my absolute heroes when I was a teenager.\" She also told Into The Gloss (2016): \"Björk was my hero.\"",
+      "sourceTier": "first-person",
+      "note": "The Guardian quote (reproduced by Albumism, https://albumism.com/storefront-new-releases/caroline-polachek-desire-i-want-to-turn-into-you) is real as quoted there, but the Guardian page itself was not opened; W Magazine is the better, direct page. Into The Gloss 'Björk was my hero' read at https://intothegloss.com/2016/06/caroline-polachek-beauty."
+    },
+    "deerhunter>animal-collective": {
+      "url": "https://exclaim.ca/music/article/deerhunters_bradford_cox",
+      "found": "Animal Collective were influential on that record, but we recorded that way before they went off into that pop direction. Like I was listening to Here Comes the Indian a lot.",
+      "checked": "2026-10-26",
+      "verdict": "ok",
+      "note": "Cox: Cryptograms 'influenced by tape music, field recordings; Animal Collective were influential on that record'. Page prints apostrophes stripped."
+    },
+    "destroyer>new-order": {
+      "url": "https://indyweek.com/?p=124181",
+      "found": "I would say I was thinking even more basic than that. New Order, the Cure, Echo & the Bunnymen, stuff like that.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Dan Bejar to INDY Week (2017), asked about ken's early-eighties pocket (Prefab Sprout, Thomas Dolby, Gary Numan): \"I would say I was thinking even more basic than that. New Order, the Cure, Echo & the Bunnymen, stuff like that.\"",
+      "sourceTier": "first-person"
+    },
+    "destroyer>the-cure": {
+      "url": "https://indyweek.com/?p=124181",
+      "found": "I would say I was thinking even more basic than that. New Order, the Cure, Echo & the Bunnymen, stuff like that.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Dan Bejar to INDY Week (2017), asked about ken's early-eighties pocket (Prefab Sprout, Thomas Dolby, Gary Numan): \"I would say I was thinking even more basic than that. New Order, the Cure, Echo & the Bunnymen, stuff like that.\"",
+      "sourceTier": "first-person"
+    },
+    "destroyer>echo-and-the-bunnymen": {
+      "url": "https://indyweek.com/?p=124181",
+      "found": "I would say I was thinking even more basic than that. New Order, the Cure, Echo & the Bunnymen, stuff like that.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Dan Bejar to INDY Week (2017), asked about ken's early-eighties pocket (Prefab Sprout, Thomas Dolby, Gary Numan): \"I would say I was thinking even more basic than that. New Order, the Cure, Echo & the Bunnymen, stuff like that.\"",
+      "sourceTier": "first-person"
+    },
+    "destroyer>david-bowie": {
+      "url": "https://www.uncut.co.uk/?p=70236",
+      "found": "For some reason I recently started to revisit those early-’70s records that were so pivotal to me in the late ’90s, mostly sparked by the song ‘Where Are We Now’ by David Bowie.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Dan Bejar to Uncut (2015): \"[Classic rock] has always been Destroyer's comfort zone. That is the music that got me out of the basement, and into trying to sing in a rock'n'roll band, in 1997. For some reason I recently started to revisit those early-'70s records that were so pivotal to me in the late '90s, mostly sparked by the song 'Where Are We Now' by David Bowie.\"",
+      "sourceTier": "first-person",
+      "note": "The Station to Station/Berlin remark in the old citation is not on this Uncut web page (it is the short news item); dropped from the citation. Page doesn't strictly name Bowie as the early-70s records' artist; INDY Week page also calls Bowie one of Bejar's 'heroes' (writer)."
+    },
+    "drive-by-truckers>the-replacements": {
+      "url": "https://pastemagazine.com/article/drive-by-truckers-patterson-hood-on-his-first-band",
+      "found": "“The Clash is still probably my all time favorite rock ’n’ roll band, and The Replacements were a huge band to me and were a huge influence on the beginning of Adam’s House Cat,” he says. And R.E.M.—I’m still a massive R.E.M. fan.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Patterson Hood to Paste (2018): \"The Replacements were a huge band to me and were a huge influence on the beginning of Adam's House Cat.\" He also told Grammy.com: \"we were doing our post-punk, Replacements-y kind of thing.\"",
+      "sourceTier": "first-person",
+      "note": "The 303 Magazine (2025) quote was not found; Paste (2018) is the page that carries it. Grammy.com line at https://www.grammy.com/news/drive-by-truckers-welcome-2-club-xiii-patterson-hood-interview-new-album/ verified."
+    },
+    "drive-by-truckers>rem": {
+      "url": "https://pastemagazine.com/article/drive-by-truckers-patterson-hood-on-his-first-band",
+      "found": "And R.E.M.—I’m still a massive R.E.M. fan. And that was one of the things that really kind of took us back when we listened to these tapes after all these years, was just how big the R.E.M. influence was, how blatant the R.E.M. influence was.”",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Patterson Hood to Paste (2018), on the Adam's House Cat tapes: \"I'm still a massive R.E.M. fan. And that was one of the things that really kind of took us back when we listened to these tapes after all these years, was just how big the R.E.M. influence was, how blatant the R.E.M. influence was.\"",
+      "sourceTier": "first-person"
+    },
+    "minor-threat>bad-brains": {
+      "url": "https://ohhzion.omeka.net/items/show/9",
+      "found": "Besotted, MacKaye invited the cash-strapped Bad Brains to rehearse in the basement of their singer's parents' house, later saying that \"watching Bad Brains work was inspirational. . . They were the fastest, greatest band in the world.\"",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Stevie Chick, in his \"A History of Modern Music: Indie\" series: Ian MacKaye first met Bad Brains at a Cramps gig in DC in January 1979, forming Teen Idles after seeing them play, and later said \"watching Bad Brains work was inspirational. . . They were the fastest, greatest band in the world.\"",
+      "sourceTier": "first-person",
+      "note": "Page is an Omeka archive copy of Chick's essay (original is a Guardian series piece; not opened). Threatening Society interview https://threateningsociety.com/ian read: 'Then the BAD BRAINS and THE DAMNED in June of 1979. Totally great. Then, at that point, we were already in a band called THE SLINKEES... formed TEEN IDLES' -- MacKaye's own words but with no explicit shaping claim; the Chick quote is the influence statement. Teen Idles Wikipedia sentence was not found in the raw text. Lyle Preslar/Spoke podcast not checked."
+    },
+    "of-montreal>david-bowie": {
+      "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/",
+      "found": "KB: Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Kevin Barnes to DCist (2015), asked which bands or musicians influenced the way he makes music: \"Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins...\" He also told the Georgia Straight: \"Obviously, I listen to a lot of David Bowie, Prince, and Sly and the Family Stone.\"",
+      "sourceTier": "first-person",
+      "note": "Georgia Straight page https://www.straight.com/node/54278 verified. The Aquarian 2025 not checked."
+    },
+    "of-montreal>leonard-cohen": {
+      "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/",
+      "found": "KB: Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Kevin Barnes to DCist (2015), asked which bands or musicians influenced the way he makes music: \"Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins...\"",
+      "sourceTier": "first-person"
+    },
+    "of-montreal>the-stooges": {
+      "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/",
+      "found": "KB: Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "DCist names Iggy Pop (the person), asked who influenced how he makes music, not the Stooges (the band). Iggy's solo work (Bowie-produced The Idiot, Lust for Life) is as likely as the Stooges. Propose: keep but relabel the citation to say Iggy Pop, or remove if the owner wants band-level proof."
+    },
+    "of-montreal>velvet-underground": {
+      "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/",
+      "found": "KB: Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "DCist names Lou Reed (the person), not the Velvet Underground; Reed's solo work (Transformer etc.) is as likely. Same solo-vs-band trap as in project notes. Propose: keep with citation saying Lou Reed, or remove."
+    },
+    "of-montreal>bob-dylan": {
+      "url": "https://diffuser.fm/of-montreal-kevin-barnes-interview-2015/",
+      "found": "Americana is sort-of \"middle of the road\" boring stuff, more like bands like the Flying Burrito Brothers and early-ish Grateful Dead, Bob Dylan and the Stones.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Kevin Barnes to Diffuser (2015), on Lousy With Sylvianbriar: \"I think 'Lousy With Sylvianbriar' was definitely rock-inspired as far as late '60s, early '70s music goes... more like bands like the Flying Burrito Brothers and early-ish Grateful Dead, Bob Dylan and the Stones.\"",
+      "sourceTier": "first-person",
+      "note": "Describes the record as rock-inspired in that vein; sentence is an Americana-boredom aside naming them as the model. Acceptable but a little loose."
+    },
+    "of-montreal>arca": {
+      "url": "https://www.polyvinylrecords.com/blogs/news/of-montreal-announces-new-album-innocence-reaches-stream-new-single-it-s-different-for-girls",
+      "found": "But last year, I was hearing Jack Ü, Chairlift, Arca, and others, thinking about low end and sound collage. It was an extra layer to geek out on.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Kevin Barnes, in Polyvinyl's announcement of Innocence Reaches (2016): \"Forever I've been detached from current music... But last year, I was hearing Jack Ü, Chairlift, Arca, and others, thinking about low end and sound collage. It was an extra layer to geek out on.\"",
+      "sourceTier": "first-person",
+      "note": "Spin (https://www.spin.com/?p=196680) says Innocence Reaches was inspired by recent outputs from Jack Ü, Arca and Chairlift per Stereogum -- reported. Under the Radar and The Aquarian not opened. Arca's first release 2012 precedes the record."
+    },
+    "big-thief>elliott-smith": {
+      "url": "https://www.theringer.com/2019/04/30/music/big-thief-adrianne-lenker-ufof-capacity-band",
+      "found": "as a teenager, Lenker was blown away by Elliott Smith and still recalls the experience of hearing his songs, songs that made the listener feel like she was in the same room as the musician, as “life-changing.”",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "The Ringer (2019): \"as a teenager, Lenker was blown away by Elliott Smith and still recalls the experience of hearing his songs... as 'life-changing.'\" Adrianne Lenker also told Stereogum (2019) she \"got into Elliott Smith and Joni Mitchell and Leonard Cohen\" between 12 and 14, before wanting to find her own way.",
+      "sourceTier": "reported",
+      "note": "Ringer is the writer paraphrasing, with only 'life-changing' quoted as her word; hence reported. Stereogum: https://stereogum.com/2059181/big-thief-two-hands-ufof-interview/interviews says 'I got into Elliott Smith and Joni Mitchell and Leonard Cohen and I was like, This doesn't resonate with me' (she moved away from them)."
+    },
+    "big-thief>joni-mitchell": {
+      "url": "https://www.theringer.com/2019/04/30/music/big-thief-adrianne-lenker-ufof-capacity-band",
+      "found": "“I really admire Joni Mitchell , Neil Young, Leonard Cohen—how they have such a breadth of material throughout the years, into old age,” she says.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Adrianne Lenker to The Ringer (2019): \"I really admire Joni Mitchell, Neil Young, Leonard Cohen—how they have such a breadth of material throughout the years, into old age... They seemed to follow their own thread of curiosity and creativity.\" She also told Stereogum (2019) she \"got into Elliott Smith and Joni Mitchell and Leonard Cohen\" at 12 to 14.",
+      "sourceTier": "first-person",
+      "note": "Admiration of career model, plus got-into at 12-14 (Stereogum, then 'doesn't resonate with me'). Borderline but within fan ruling."
+    },
+    "big-thief>leonard-cohen": {
+      "url": "https://www.theringer.com/2019/04/30/music/big-thief-adrianne-lenker-ufof-capacity-band",
+      "found": "“I really admire Joni Mitchell , Neil Young, Leonard Cohen—how they have such a breadth of material throughout the years, into old age,” she says.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Adrianne Lenker to The Ringer (2019): \"I really admire Joni Mitchell, Neil Young, Leonard Cohen—how they have such a breadth of material throughout the years, into old age.\" She also told Stereogum (2019) she \"got into Elliott Smith and Joni Mitchell and Leonard Cohen\" at 12 to 14.",
+      "sourceTier": "first-person"
+    },
+    "big-thief>neil-young": {
+      "url": "https://www.theringer.com/2019/04/30/music/big-thief-adrianne-lenker-ufof-capacity-band",
+      "found": "“I really admire Joni Mitchell , Neil Young, Leonard Cohen—how they have such a breadth of material throughout the years, into old age,” she says.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Adrianne Lenker to The Ringer (2019): \"I really admire Joni Mitchell, Neil Young, Leonard Cohen—how they have such a breadth of material throughout the years, into old age. They seemed to follow their own thread of curiosity and creativity, even through some weird phases.\"",
+      "sourceTier": "first-person"
+    },
+    "blood-orange>the-smiths": {
+      "url": "https://www.grammy.com/news/blood-orange-devonte-hynes-interview-new-album-essex-honey",
+      "found": "But if I go back to when I was younger and the earliest things that informed me, it's the Smiths, Radiohead, New Order, Megadeth and Slipknot, Prefab Sprout.",
+      "checked": "2026-10-26",
+      "verdict": "fixed",
+      "citation": "Dev Hynes to Grammy.com (Aug 2025): \"if I go back to when I was younger and the earliest things that informed me, it's the Smiths, Radiohead, New Order, Megadeth and Slipknot, Prefab Sprout.\" He also told AnOther (2025): \"Some of my biggest lyrical references, like Morrissey, have a way with these really blunt sentences.\"",
+      "note": "AnOther quote verified at https://www.anothermag.com/fashion-beauty/16554/dev-hynes-interview-blood-orange-essex-honey-new-album ; names Morrissey, not the Smiths by name."
+    },
+    "blood-orange>radiohead": {
+      "url": "https://www.grammy.com/news/blood-orange-devonte-hynes-interview-new-album-essex-honey",
+      "found": "But if I go back to when I was younger and the earliest things that informed me, it's the Smiths, Radiohead, New Order, Megadeth and Slipknot, Prefab Sprout.",
+      "checked": "2026-10-26",
+      "verdict": "ok"
+    },
+    "blood-orange>new-order": {
+      "url": "https://www.grammy.com/news/blood-orange-devonte-hynes-interview-new-album-essex-honey",
+      "found": "But if I go back to when I was younger and the earliest things that informed me, it's the Smiths, Radiohead, New Order, Megadeth and Slipknot, Prefab Sprout.",
+      "checked": "2026-10-26",
+      "verdict": "ok"
+    },
+    "blood-orange>prefab-sprout": {
+      "url": "https://www.grammy.com/news/blood-orange-devonte-hynes-interview-new-album-essex-honey",
+      "found": "But if I go back to when I was younger and the earliest things that informed me, it's the Smiths, Radiohead, New Order, Megadeth and Slipknot, Prefab Sprout.",
+      "checked": "2026-10-26",
+      "verdict": "ok"
+    },
+    "blood-orange>the-replacements": {
+      "url": "https://www.grammy.com/news/blood-orange-devonte-hynes-interview-new-album-essex-honey",
+      "found": "I'd always had this idea of a song that did to Paul Westerberg what he did to Big Star.",
+      "checked": "2026-10-26",
+      "verdict": "decide",
+      "note": "Hynes's song 'Westerberg' is a tribute (concept: a song that did to Westerberg what he did to Big Star; 'someone like Westerberg... just felt quite fitting'). Tribute/homage, no statement that the Replacements shaped his music. Same page also says he listens to the same things he always has, but doesn't name the Replacements there. Propose: lower to reported or remove; owner decides."
+    },
+    "blood-orange>massive-attack": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Searched Hynes+Massive Attack twice; Grammy.com Essex Honey interview, AnOther Essex Honey interview and Wikipedia Dev Hynes article carry no Massive Attack mention. No page found."
+    }
+  },
+  "candidates": [
+    {
+      "source": "blur",
+      "target": "velvet-underground",
+      "kind": "influence",
+      "speaker": "Graham Coxon",
+      "sentence": "Things like Robert Wyatt, Van der Graaf Generator and The Velvet Underground really excited me.",
+      "url": "https://www.uncut.co.uk/features/graham-coxon-blur-pop-strange-limiting-form-damon-receptive-days-99254/2/"
+    },
+    {
+      "source": "blur",
+      "target": "slint",
+      "kind": "influence",
+      "speaker": "Graham Coxon",
+      "sentence": "Jo [Johnson] from Huggy Bear got me into things like Pavement and Slint and a lot of other small-label punk groups from the States",
+      "url": "https://www.uncut.co.uk/features/graham-coxon-blur-pop-strange-limiting-form-damon-receptive-days-99254/2/"
+    },
+    {
+      "source": "blur",
+      "target": "yo-la-tengo",
+      "kind": "influence",
+      "speaker": "Graham Coxon",
+      "sentence": "Yo La Tengo and Pavement were also great encouragement to do whatever I wanted when I had the space.",
+      "url": "https://www.premierguitar.com/artists/graham-coxon-the-curious-flights-of-an-art-pop-aerialist"
+    },
+    {
+      "source": "drive-by-truckers",
+      "target": "the-clash",
+      "kind": "influence",
+      "speaker": "Patterson Hood",
+      "sentence": "The Clash is still probably my all time favorite rock ’n’ roll band",
+      "url": "https://pastemagazine.com/article/drive-by-truckers-patterson-hood-on-his-first-band"
+    },
+    {
+      "source": "of-montreal",
+      "target": "patti-smith",
+      "kind": "influence",
+      "speaker": "Kevin Barnes",
+      "sentence": "Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+      "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/"
+    },
+    {
+      "source": "blur",
+      "target": "velvet-underground",
+      "kind": "influence",
+      "speaker": "Graham Coxon",
+      "sentence": "Things like Robert Wyatt, Van der Graaf Generator and The Velvet Underground really excited me.",
+      "url": "https://www.uncut.co.uk/features/graham-coxon-blur-pop-strange-limiting-form-damon-receptive-days-99254/2/"
+    },
+    {
+      "source": "blur",
+      "target": "slint",
+      "kind": "influence",
+      "speaker": "Graham Coxon",
+      "sentence": "Jo [Johnson] from Huggy Bear got me into things like Pavement and Slint and a lot of other small-label punk groups from the States",
+      "url": "https://www.uncut.co.uk/features/graham-coxon-blur-pop-strange-limiting-form-damon-receptive-days-99254/2/"
+    },
+    {
+      "source": "blur",
+      "target": "yo-la-tengo",
+      "kind": "influence",
+      "speaker": "Graham Coxon",
+      "sentence": "Yo La Tengo and Pavement were also great encouragement to do whatever I wanted when I had the space.",
+      "url": "https://www.premierguitar.com/artists/graham-coxon-the-curious-flights-of-an-art-pop-aerialist"
+    },
+    {
+      "source": "drive-by-truckers",
+      "target": "the-clash",
+      "kind": "influence",
+      "speaker": "Patterson Hood",
+      "sentence": "The Clash is still probably my all time favorite rock ’n’ roll band",
+      "url": "https://pastemagazine.com/article/drive-by-truckers-patterson-hood-on-his-first-band"
+    },
+    {
+      "source": "of-montreal",
+      "target": "patti-smith",
+      "kind": "influence",
+      "speaker": "Kevin Barnes",
+      "sentence": "Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+      "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/"
+    },
+    {
+      "source": "blur",
+      "target": "velvet-underground",
+      "kind": "influence",
+      "speaker": "Graham Coxon",
+      "sentence": "Things like Robert Wyatt, Van der Graaf Generator and The Velvet Underground really excited me.",
+      "url": "https://www.uncut.co.uk/features/graham-coxon-blur-pop-strange-limiting-form-damon-receptive-days-99254/2/"
+    },
+    {
+      "source": "blur",
+      "target": "slint",
+      "kind": "influence",
+      "speaker": "Graham Coxon",
+      "sentence": "Jo [Johnson] from Huggy Bear got me into things like Pavement and Slint and a lot of other small-label punk groups from the States",
+      "url": "https://www.uncut.co.uk/features/graham-coxon-blur-pop-strange-limiting-form-damon-receptive-days-99254/2/"
+    },
+    {
+      "source": "blur",
+      "target": "yo-la-tengo",
+      "kind": "influence",
+      "speaker": "Graham Coxon",
+      "sentence": "Yo La Tengo and Pavement were also great encouragement to do whatever I wanted when I had the space.",
+      "url": "https://www.premierguitar.com/artists/graham-coxon-the-curious-flights-of-an-art-pop-aerialist"
+    },
+    {
+      "source": "drive-by-truckers",
+      "target": "the-clash",
+      "kind": "influence",
+      "speaker": "Patterson Hood",
+      "sentence": "The Clash is still probably my all time favorite rock ’n’ roll band",
+      "url": "https://pastemagazine.com/article/drive-by-truckers-patterson-hood-on-his-first-band"
+    },
+    {
+      "source": "of-montreal",
+      "target": "patti-smith",
+      "kind": "influence",
+      "speaker": "Kevin Barnes",
+      "sentence": "Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+      "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/"
+    }
+  ],
+  "offMap": [
+    {
+      "name": "Kate Bush",
+      "namedBy": "caroline-polachek",
+      "sentence": "Björk and Kate Bush and Fiona Apple were my absolute heroes when I was a teenager.",
+      "url": "https://www.wmagazine.com/culture/caroline-polachek-tour-dua-lipa-2022-interview"
+    },
+    {
+      "name": "The House of Love",
+      "namedBy": "destroyer",
+      "sentence": "Also Creation bands that I used to be into but took a twenty-five-year break from listening, but kind of had cool, mystic druggy lyrics, like The House of Love. The Church is another example.",
+      "url": "https://indyweek.com/?p=124181"
+    },
+    {
+      "name": "The Church",
+      "namedBy": "destroyer",
+      "sentence": "Also Creation bands that I used to be into but took a twenty-five-year break from listening, but kind of had cool, mystic druggy lyrics, like The House of Love. The Church is another example.",
+      "url": "https://indyweek.com/?p=124181"
+    },
+    {
+      "name": "Kate Bush",
+      "namedBy": "of-montreal",
+      "sentence": "Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+      "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/"
+    },
+    {
+      "name": "Prince",
+      "namedBy": "of-montreal",
+      "sentence": "Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+      "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/"
+    },
+    {
+      "name": "Sly and the Family Stone",
+      "namedBy": "of-montreal",
+      "sentence": "Obviously, I listen to a lot of David Bowie, Prince, and Sly and the Family Stone.",
+      "url": "https://www.straight.com/node/54278"
+    },
+    {
+      "name": "Kate Bush",
+      "namedBy": "caroline-polachek",
+      "sentence": "Björk and Kate Bush and Fiona Apple were my absolute heroes when I was a teenager.",
+      "url": "https://www.wmagazine.com/culture/caroline-polachek-tour-dua-lipa-2022-interview"
+    },
+    {
+      "name": "The House of Love",
+      "namedBy": "destroyer",
+      "sentence": "Also Creation bands that I used to be into but took a twenty-five-year break from listening, but kind of had cool, mystic druggy lyrics, like The House of Love. The Church is another example.",
+      "url": "https://indyweek.com/?p=124181"
+    },
+    {
+      "name": "The Church",
+      "namedBy": "destroyer",
+      "sentence": "Also Creation bands that I used to be into but took a twenty-five-year break from listening, but kind of had cool, mystic druggy lyrics, like The House of Love. The Church is another example.",
+      "url": "https://indyweek.com/?p=124181"
+    },
+    {
+      "name": "Kate Bush",
+      "namedBy": "of-montreal",
+      "sentence": "Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+      "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/"
+    },
+    {
+      "name": "Prince",
+      "namedBy": "of-montreal",
+      "sentence": "Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+      "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/"
+    },
+    {
+      "name": "Sly and the Family Stone",
+      "namedBy": "of-montreal",
+      "sentence": "Obviously, I listen to a lot of David Bowie, Prince, and Sly and the Family Stone.",
+      "url": "https://www.straight.com/node/54278"
+    },
+    {
+      "name": "Kate Bush",
+      "namedBy": "caroline-polachek",
+      "sentence": "Björk and Kate Bush and Fiona Apple were my absolute heroes when I was a teenager.",
+      "url": "https://www.wmagazine.com/culture/caroline-polachek-tour-dua-lipa-2022-interview"
+    },
+    {
+      "name": "The House of Love",
+      "namedBy": "destroyer",
+      "sentence": "Also Creation bands that I used to be into but took a twenty-five-year break from listening, but kind of had cool, mystic druggy lyrics, like The House of Love. The Church is another example.",
+      "url": "https://indyweek.com/?p=124181"
+    },
+    {
+      "name": "The Church",
+      "namedBy": "destroyer",
+      "sentence": "Also Creation bands that I used to be into but took a twenty-five-year break from listening, but kind of had cool, mystic druggy lyrics, like The House of Love. The Church is another example.",
+      "url": "https://indyweek.com/?p=124181"
+    },
+    {
+      "name": "Kate Bush",
+      "namedBy": "of-montreal",
+      "sentence": "Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+      "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/"
+    },
+    {
+      "name": "Prince",
+      "namedBy": "of-montreal",
+      "sentence": "Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+      "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/"
+    },
+    {
+      "name": "Sly and the Family Stone",
+      "namedBy": "of-montreal",
+      "sentence": "Obviously, I listen to a lot of David Bowie, Prince, and Sly and the Family Stone.",
+      "url": "https://www.straight.com/node/54278"
+    }
+  ],
+  "finished": true
+}

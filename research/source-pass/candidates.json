@@ -1,0 +1,614 @@
+[
+  {
+    "source": "cocteau-twins",
+    "target": "buzzcocks",
+    "kind": "influence",
+    "speaker": "Robin Guthrie",
+    "sentence": "I liked all the early punk—Buzzcocks, the Pistols and The Clash, before it all went commercial, when Sham 69 counted as punk.",
+    "url": "https://cocteautwins.com/press-and-news/2011/12/01/2011-robin-guthrie-interview-mojo-magazine/",
+    "foundBy": "chat1"
+  },
+  {
+    "source": "cocteau-twins",
+    "target": "the-clash",
+    "kind": "influence",
+    "speaker": "Robin Guthrie",
+    "sentence": "I liked all the early punk—Buzzcocks, the Pistols and The Clash, before it all went commercial, when Sham 69 counted as punk.",
+    "url": "https://cocteautwins.com/press-and-news/2011/12/01/2011-robin-guthrie-interview-mojo-magazine/",
+    "foundBy": "chat1"
+  },
+  {
+    "source": "modest-mouse",
+    "target": "pavement",
+    "kind": "influence",
+    "speaker": "Triple R (station's description of Isaac Brock's Formative Five)",
+    "sentence": "Isaac selects his Formative Five, and shares the artists and experiences that have influenced him over his music career spanning three decades, from being introduced to They Might Be Giants, Crass and The Pixies via school goth mix tapes, to his love of Pavement and Talking Heads.",
+    "url": "https://www.rrr.org.au/on-demand/segments/the-golden-age-of-piracy-isaac-brock-of-modest-mouses-formative-five",
+    "foundBy": "chat2"
+  },
+  {
+    "source": "american-football",
+    "target": "wilco",
+    "kind": "influence",
+    "speaker": "Steve Holmes",
+    "sentence": "Wilco set me on a path to rediscover the guitar, standard tuning, and just great songwriting.",
+    "url": "https://tidal.com/magazine/article/american-football-5-albums-that-changed-my-life/1-32190",
+    "foundBy": "owner"
+  },
+  {
+    "source": "american-football",
+    "target": "rites-of-spring",
+    "kind": "influence",
+    "speaker": "Steve Holmes",
+    "sentence": "We never saw Rites of Spring, but their record mattered to us.",
+    "url": "https://tidal.com/magazine/article/american-football-5-albums-that-changed-my-life/1-32190",
+    "foundBy": "owner"
+  },
+  {
+    "source": "american-football",
+    "target": "bob-dylan",
+    "kind": "influence",
+    "speaker": "Steve Holmes",
+    "sentence": "Dylan is probably my favorite artist of all time.",
+    "url": "https://tidal.com/magazine/article/american-football-5-albums-that-changed-my-life/1-32190",
+    "foundBy": "owner"
+  },
+  {
+    "source": "swans",
+    "target": "the-stooges",
+    "kind": "influence",
+    "speaker": "Michael Gira",
+    "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "foundBy": "c6"
+  },
+  {
+    "source": "swans",
+    "target": "kraftwerk",
+    "kind": "influence",
+    "speaker": "Michael Gira",
+    "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "foundBy": "c6"
+  },
+  {
+    "source": "swans",
+    "target": "brian-eno",
+    "kind": "influence",
+    "speaker": "Michael Gira",
+    "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "foundBy": "c6"
+  },
+  {
+    "source": "swans",
+    "target": "wire",
+    "kind": "influence",
+    "speaker": "Michael Gira",
+    "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "foundBy": "c6"
+  },
+  {
+    "source": "swans",
+    "target": "black-flag",
+    "kind": "influence",
+    "speaker": "Michael Gira",
+    "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "foundBy": "c6"
+  },
+  {
+    "source": "swans",
+    "target": "cabaret-voltaire",
+    "kind": "influence",
+    "speaker": "Michael Gira",
+    "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "foundBy": "c6"
+  },
+  {
+    "source": "swans",
+    "target": "sex-pistols",
+    "kind": "influence",
+    "speaker": "Michael Gira",
+    "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "foundBy": "c6"
+  },
+  {
+    "source": "swans",
+    "target": "buzzcocks",
+    "kind": "influence",
+    "speaker": "Michael Gira",
+    "sentence": "I listened to a wide variety of music then ­ The Stooges, Suicide, Throbbing Grist\"le, SPK, Cabaret Voltaire, Whitehouse, Brian Eno, Kraftwerk, No New York , Wire, Sex Pistols, Buzzcocks, Black Flag.",
+    "url": "https://younggodrecords.com/blogs/press/13026841-michael-gira-interview",
+    "foundBy": "c6"
+  },
+  {
+    "source": "unwound",
+    "target": "velvet-underground",
+    "kind": "influence",
+    "speaker": "Justin Trosper (Unwound)",
+    "sentence": "Yeah, VU and Sonic Youth are big influences.",
+    "url": "https://www.scaruffi.com/interv/unwound.html",
+    "foundBy": "c6"
+  },
+  {
+    "source": "unwound",
+    "target": "wipers",
+    "kind": "influence",
+    "speaker": "Justin Trosper (Unwound)",
+    "sentence": "Well I like guitar music alot. Should I list my influences? Greg Ginn(black flag), Sonic Youth, Greg Sage(wipers), Jimi Hendrix, David Lester(mecca normal), Helios Creed(chrome), Tom Verlaine(televison), Toni Iommi(black sabbath) and more.",
+    "url": "https://www.scaruffi.com/interv/unwound.html",
+    "foundBy": "c6"
+  },
+  {
+    "source": "unwound",
+    "target": "nirvana",
+    "kind": "influence",
+    "speaker": "Justin Trosper (Unwound)",
+    "sentence": "We were into the Melvins alot and Nirvana, but more influenced by the DC punk thing happening back then and just more interesting US hardcore(husker du/black flag/mission of burma) and punk from England(wire/gang of 4/joy division).",
+    "url": "https://www.scaruffi.com/interv/unwound.html",
+    "foundBy": "c6"
+  },
+  {
+    "source": "lcd-soundsystem",
+    "target": "the-cure",
+    "kind": "influence",
+    "speaker": "lcd-soundsystem",
+    "sentence": "Between the age of 13 and 16 I liked The Clash, Bowie, Echo And The Bunnymen, The Cure, The Smiths, Sisters Of Mercy, Joy Division and New Order.",
+    "url": "https://www.vice.com/es/article/james-murphy-lcd-soundsystem-2017-interview-american-dream/",
+    "foundBy": "chat3"
+  },
+  {
+    "source": "kurt-vile",
+    "target": "guided-by-voices",
+    "kind": "influence",
+    "speaker": "kurt-vile",
+    "sentence": "I like a lot of the Guided By Voices.",
+    "url": "https://m.lasvegassun.com/news/2010/sep/30/q-kurt-vile/",
+    "foundBy": "chat3"
+  },
+  {
+    "source": "lcd-soundsystem",
+    "target": "the-clash",
+    "kind": "influence",
+    "speaker": "James Murphy",
+    "sentence": "Between the age of 13 and 16 I liked The Clash, Bowie, Echo And The Bunnymen, The Cure, The Smiths, Sisters Of Mercy, Joy Division and New Order.",
+    "url": "https://www.vice.com/es/article/james-murphy-lcd-soundsystem-2017-interview-american-dream/",
+    "foundBy": "chat3"
+  },
+  {
+    "source": "lcd-soundsystem",
+    "target": "joy-division",
+    "kind": "influence",
+    "speaker": "James Murphy",
+    "sentence": "Between the age of 13 and 16 I liked The Clash, Bowie, Echo And The Bunnymen, The Cure, The Smiths, Sisters Of Mercy, Joy Division and New Order.",
+    "url": "https://www.vice.com/es/article/james-murphy-lcd-soundsystem-2017-interview-american-dream/",
+    "foundBy": "chat3"
+  },
+  {
+    "source": "lcd-soundsystem",
+    "target": "new-order",
+    "kind": "influence",
+    "speaker": "James Murphy",
+    "sentence": "Between the age of 13 and 16 I liked The Clash, Bowie, Echo And The Bunnymen, The Cure, The Smiths, Sisters Of Mercy, Joy Division and New Order.",
+    "url": "https://www.vice.com/es/article/james-murphy-lcd-soundsystem-2017-interview-american-dream/",
+    "foundBy": "chat3"
+  },
+  {
+    "source": "wednesday",
+    "target": "grizzly-bear",
+    "kind": "influence",
+    "speaker": "Xandy Chelmis",
+    "sentence": "I really loved The Shins, Grizzly Bear, Real Estate, Beach Fossils, and Fleet Foxes was a big one for me.",
+    "url": "https://wrsu.org/interview-with-xandy-chelmis-of-wednesday-and-mj-lenderman-the-wind/",
+    "foundBy": "c7"
+  },
+  {
+    "source": "wednesday",
+    "target": "fleet-foxes",
+    "kind": "influence",
+    "speaker": "Xandy Chelmis",
+    "sentence": "I really loved The Shins, Grizzly Bear, Real Estate, Beach Fossils, and Fleet Foxes was a big one for me.",
+    "url": "https://wrsu.org/interview-with-xandy-chelmis-of-wednesday-and-mj-lenderman-the-wind/",
+    "foundBy": "c7"
+  },
+  {
+    "source": "wednesday",
+    "target": "neil-young",
+    "kind": "influence",
+    "speaker": "WRSU (reported, on Xandy Chelmis)",
+    "sentence": "Before he fell in love with Jason Molina and Jeff Tweedy, there were Neil Young LPs and Dr. Demento radio sets.",
+    "url": "https://wrsu.org/interview-with-xandy-chelmis-of-wednesday-and-mj-lenderman-the-wind/",
+    "foundBy": "c7"
+  },
+  {
+    "source": "ethel-cain",
+    "target": "slowdive",
+    "kind": "influence",
+    "speaker": "Ethel Cain",
+    "sentence": "I was no longer listening to crazy heavy synth electronic music; I was listening to Nicole Dollanganger and Grouper and Slowdive and Def Leppard…",
+    "url": "https://www.thefader.com/2022/05/26/the-life-and-death-of-ethel-cain",
+    "foundBy": "c8"
+  },
+  {
+    "source": "geese",
+    "target": "television",
+    "kind": "influence",
+    "speaker": "Cameron Winter",
+    "sentence": "I’ve always liked bands like Television that shout out locations in New York.",
+    "url": "https://www.dailystar.co.uk/music/geese-interview-hotly-tipped-new-25298321",
+    "foundBy": "c8"
+  },
+  {
+    "source": "the-national",
+    "target": "neil-young",
+    "kind": "influence",
+    "speaker": "the-national",
+    "sentence": "Neil Young and Bob Dylan, those kinds of guys.",
+    "url": "https://maximumfun.org/episodes/bullseye-with-jesse-thorn/matt-berninger-national-interview-sound-young-america/",
+    "foundBy": "chat4"
+  },
+  {
+    "source": "the-national",
+    "target": "bob-dylan",
+    "kind": "influence",
+    "speaker": "the-national",
+    "sentence": "Neil Young and Bob Dylan, those kinds of guys.",
+    "url": "https://maximumfun.org/episodes/bullseye-with-jesse-thorn/matt-berninger-national-interview-sound-young-america/",
+    "foundBy": "chat4"
+  },
+  {
+    "source": "animal-collective",
+    "target": "aphex-twin",
+    "kind": "influence",
+    "speaker": "Panda Bear (Noah Lennox)",
+    "sentence": "That and Aphex Twin really changed the course of my musical life.",
+    "url": "https://daily.redbullmusicacademy.com/2018/11/animal-collective-oral-history",
+    "foundBy": "c7"
+  },
+  {
+    "source": "fleet-foxes",
+    "target": "beach-house",
+    "kind": "influence",
+    "speaker": "Robin Pecknold",
+    "sentence": "Lots of Nic Jones, Beach House, Roy Harper, Dungen, Joanna Newsom, West Coast Pop Art Experimental Band.",
+    "url": "https://www.independent.com/multimedia/fleet-foxes-sing-the-blues/",
+    "foundBy": "c7"
+  },
+  {
+    "source": "arca",
+    "target": "bjork",
+    "kind": "influence",
+    "speaker": "arca",
+    "sentence": "He had a few Björk records that were very formative in my musical heritage [and] instruction.",
+    "url": "https://grammy.com/news/meet-first-time-grammy-nominee-arca-expanding-latin-music-her-terms-electronic-album-",
+    "foundBy": "retry1"
+  },
+  {
+    "source": "geese",
+    "target": "ween",
+    "kind": "influence",
+    "speaker": "geese",
+    "sentence": "A lot of Ween, which I feel emboldened us to give more of a sense of humour to the stuff.",
+    "url": "https://www.stilllisteningmagazine.com/interviews/jfttggti876itd2dg9r18uq00h9ez8",
+    "foundBy": "retry1"
+  },
+  {
+    "source": "mogwai",
+    "target": "the-jesus-and-mary-chain",
+    "kind": "influence",
+    "speaker": "mogwai",
+    "sentence": "The bands that I was really excited by were things like Jimi Hendrix and The Velvet Underground and quite simple stuff like The Cure and The Jesus and Mary Chain.",
+    "url": "https://www.westword.com/?p=40647786",
+    "foundBy": "retry1"
+  },
+  {
+    "source": "my-bloody-valentine",
+    "target": "the-birthday-party",
+    "kind": "influence",
+    "speaker": "my-bloody-valentine",
+    "sentence": "Basically, we started out as a band that was really into The Birthday Party and Einstürzende Neubauten.",
+    "url": "https://mixdownmag.com.au/features/gear-talks-an-interview-with-kevin-shields-of-my-bloody-valentine/",
+    "foundBy": "retry1"
+  },
+  {
+    "source": "xiu-xiu",
+    "target": "kraftwerk",
+    "kind": "influence",
+    "speaker": "xiu-xiu",
+    "sentence": "It is an homage to Suicide, Einstürzende Neubauten, Nico, and Kraftwerk.",
+    "url": "https://sandiegoreader.com/news/2014/feb/05/blurt-pop-fell-away-heart/",
+    "foundBy": "retry1"
+  },
+  {
+    "source": "arcade-fire",
+    "target": "pixies",
+    "kind": "influence",
+    "speaker": "arcade-fire",
+    "sentence": "It was New Order, Debussy, Arvo Part, the Pixies.",
+    "url": "https://www.redbullmusicacademy.com/lectures/win-butler-lecture/",
+    "foundBy": "retry1"
+  },
+  {
+    "source": "perfume-genius",
+    "target": "talk-talk",
+    "kind": "influence",
+    "speaker": "perfume-genius",
+    "sentence": "So I decided to listen and then I became really obsessed with them and now I really do count them as an influence.",
+    "url": "https://tidal.com/magazine/article/perfume-genius-5-albums-that-changed-my-life/1-37705",
+    "foundBy": "retry1"
+  },
+  {
+    "source": "perfume-genius",
+    "target": "elliott-smith",
+    "kind": "influence",
+    "speaker": "perfume-genius",
+    "sentence": "And then to hear someone else having that same feeling but then forming it into something really beautiful and honest…it was very powerful to me and became the soundtrack to that time in my life.",
+    "url": "https://tidal.com/magazine/article/perfume-genius-5-albums-that-changed-my-life/1-37705",
+    "foundBy": "retry1"
+  },
+  {
+    "source": "the-postal-service",
+    "target": "bjork",
+    "kind": "influence",
+    "speaker": "the-postal-service",
+    "sentence": "So yeah, her music definitely influenced the songs on the album.",
+    "url": "https://lifeoftherecord.com/the-postal-service-notes",
+    "foundBy": "retry1"
+  },
+  {
+    "source": "wolf-alice",
+    "target": "velvet-underground",
+    "kind": "influence",
+    "speaker": "wolf-alice",
+    "sentence": "Our aspirations are to follow in that kind of vein.",
+    "url": "https://tidal.com/magazine/article/joff-oddie-wolf-alice-5-albums-that-changed-my-life/1-44074",
+    "foundBy": "retry1"
+  },
+  {
+    "source": "joanna-newsom",
+    "target": "leonard-cohen",
+    "kind": "influence",
+    "speaker": "Joanna Newsom",
+    "sentence": "I love Donovan, Kate Bush, Leonard Cohen. Dylan, of course.",
+    "url": "https://thebeliever.net/an-interview-with-joanna-newsom/",
+    "foundBy": "c11"
+  },
+  {
+    "source": "joanna-newsom",
+    "target": "bob-dylan",
+    "kind": "influence",
+    "speaker": "Joanna Newsom",
+    "sentence": "I love Donovan, Kate Bush, Leonard Cohen. Dylan, of course.",
+    "url": "https://thebeliever.net/an-interview-with-joanna-newsom/",
+    "foundBy": "c11"
+  },
+  {
+    "source": "massive-attack",
+    "target": "the-clash",
+    "kind": "influence",
+    "speaker": "Robert Del Naja",
+    "sentence": "PiL were a major influence on me with what they went for on Metal Box, and The Clash were really important as well.",
+    "url": "https://thequietus.com/interviews/massive-attack-interview-heligoland-john-robb/",
+    "foundBy": "c11"
+  },
+  {
+    "source": "blur",
+    "target": "velvet-underground",
+    "kind": "influence",
+    "speaker": "Graham Coxon",
+    "sentence": "Things like Robert Wyatt, Van der Graaf Generator and The Velvet Underground really excited me.",
+    "url": "https://www.uncut.co.uk/features/graham-coxon-blur-pop-strange-limiting-form-damon-receptive-days-99254/2/",
+    "foundBy": "c9"
+  },
+  {
+    "source": "blur",
+    "target": "slint",
+    "kind": "influence",
+    "speaker": "Graham Coxon",
+    "sentence": "Jo [Johnson] from Huggy Bear got me into things like Pavement and Slint and a lot of other small-label punk groups from the States",
+    "url": "https://www.uncut.co.uk/features/graham-coxon-blur-pop-strange-limiting-form-damon-receptive-days-99254/2/",
+    "foundBy": "c9"
+  },
+  {
+    "source": "blur",
+    "target": "yo-la-tengo",
+    "kind": "influence",
+    "speaker": "Graham Coxon",
+    "sentence": "Yo La Tengo and Pavement were also great encouragement to do whatever I wanted when I had the space.",
+    "url": "https://www.premierguitar.com/artists/graham-coxon-the-curious-flights-of-an-art-pop-aerialist",
+    "foundBy": "c9"
+  },
+  {
+    "source": "drive-by-truckers",
+    "target": "the-clash",
+    "kind": "influence",
+    "speaker": "Patterson Hood",
+    "sentence": "The Clash is still probably my all time favorite rock ’n’ roll band",
+    "url": "https://pastemagazine.com/article/drive-by-truckers-patterson-hood-on-his-first-band",
+    "foundBy": "c9"
+  },
+  {
+    "source": "of-montreal",
+    "target": "patti-smith",
+    "kind": "influence",
+    "speaker": "Kevin Barnes",
+    "sentence": "Yeah, definitely David Bowie, Prince, Kate Bush, Iggy Pop, Lou Reed, John Lennon, Leonard Cohen, Ray Davies, Skip Spence, Patti Smith, Sly Stone, Fairport Convention, George Clinton, Richard Hell, Wayne County, Screaming Jay Hawkins…",
+    "url": "https://dcist.com/story/15/03/04/dcist-interview-kevin-barnes-of-of/",
+    "foundBy": "c9"
+  },
+  {
+    "source": "big-black",
+    "target": "bad-brains",
+    "kind": "influence",
+    "speaker": "Steve Albini",
+    "sentence": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+    "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/",
+    "foundBy": "c10"
+  },
+  {
+    "source": "big-black",
+    "target": "minutemen",
+    "kind": "influence",
+    "speaker": "Steve Albini",
+    "sentence": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+    "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/",
+    "foundBy": "c10"
+  },
+  {
+    "source": "big-black",
+    "target": "the-birthday-party",
+    "kind": "influence",
+    "speaker": "Steve Albini",
+    "sentence": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+    "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/",
+    "foundBy": "c10"
+  },
+  {
+    "source": "big-black",
+    "target": "sonic-youth",
+    "kind": "influence",
+    "speaker": "Steve Albini",
+    "sentence": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+    "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/",
+    "foundBy": "c10"
+  },
+  {
+    "source": "big-black",
+    "target": "swans",
+    "kind": "influence",
+    "speaker": "Steve Albini",
+    "sentence": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+    "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/",
+    "foundBy": "c10"
+  },
+  {
+    "source": "big-black",
+    "target": "james-chance-and-the-contortions",
+    "kind": "influence",
+    "speaker": "Steve Albini",
+    "sentence": "My favorite bands during that era include those mentioned above, and local/regional bands that inspired me like Naked Raygun, the Effigies, the Appliances, Killdozer, Die Kreuzen, Bad Brains, the Minutemen, Scrawl, Man-Sized Action, the Blackouts, MX-80, Chrome and a bunch of overseas bands like the Birthday Party, Killing Joke, the Bishops, Dr. Feelgood, the Raincoats, Kleenex, Delta Five, Ut, Contortions, Sonic Youth, Swans, Public Image Ltd, This Heat.",
+    "url": "https://vwmusicrocks.com/an-interview-with-steve-albini/",
+    "foundBy": "c10"
+  },
+  {
+    "source": "the-flaming-lips",
+    "target": "lcd-soundsystem",
+    "kind": "influence",
+    "speaker": "Wayne Coyne",
+    "sentence": "We’ve played with them quite a few times over the last couple of years, getting to know James Murphy and hearing that music in unexpected places. I love them now.",
+    "url": "https://thequietus.com/interviews/bakers-dozen/flaming-lips-wayne-coyne-interview-favourite-albums/8/",
+    "foundBy": "owner1"
+  },
+  {
+    "source": "perfume-genius",
+    "target": "bjork",
+    "kind": "influence",
+    "speaker": "Mike Hadreas",
+    "sentence": "She was kind of my first true obsession.",
+    "url": "https://thequietus.com/interviews/bakers-dozen/perfume-genius-interview-favourite-albums/10/",
+    "foundBy": "chat5"
+  },
+  {
+    "source": "perfume-genius",
+    "target": "this-mortal-coil",
+    "kind": "influence",
+    "speaker": "Mike Hadreas",
+    "sentence": "I was driving with a friend and they put the cover of ‘Song to the Siren’ on, and it was very transformative. I’d consider that my favorite song of all time.",
+    "url": "https://thequietus.com/interviews/bakers-dozen/perfume-genius-interview-favourite-albums/8/",
+    "foundBy": "chat5"
+  },
+  {
+    "source": "waxahatchee",
+    "target": "rem",
+    "kind": "influence",
+    "speaker": "Katie Crutchfield",
+    "sentence": "R.E.M. was a big influence. I saw R.E.M. on their last tour, in an arena.",
+    "url": "https://rollingstone.com/music/music-features/waxahatchee-katie-crutchfield-great-thunder-interview-737269",
+    "foundBy": "c12"
+  },
+  {
+    "source": "editors",
+    "target": "joy-division",
+    "kind": "influence",
+    "speaker": "Tom Smith",
+    "sentence": "“Obviously, we're dark and moody so yeah we build on the sound of the likes of Joy Division, Echo and the Bunnymen and The Chameleons… Obviously we were too young when these bands came out, so it's only more recently that we discovered them.”",
+    "url": "https://web.archive.org/web/20090602061627/http://www.editorsmusic.co.uk/index.php/Interviews/Gigwise.html",
+    "foundBy": "c14"
+  },
+  {
+    "source": "the-radio-dept",
+    "target": "broadcast",
+    "kind": "influence",
+    "speaker": "The Radio Dept. (band site)",
+    "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+    "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm",
+    "foundBy": "c14"
+  },
+  {
+    "source": "the-radio-dept",
+    "target": "joy-division",
+    "kind": "influence",
+    "speaker": "The Radio Dept. (band site)",
+    "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+    "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm",
+    "foundBy": "c14"
+  },
+  {
+    "source": "the-radio-dept",
+    "target": "nick-drake",
+    "kind": "influence",
+    "speaker": "The Radio Dept. (band site)",
+    "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+    "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm",
+    "foundBy": "c14"
+  },
+  {
+    "source": "the-radio-dept",
+    "target": "prefab-sprout",
+    "kind": "influence",
+    "speaker": "The Radio Dept. (band site)",
+    "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+    "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm",
+    "foundBy": "c14"
+  },
+  {
+    "source": "the-radio-dept",
+    "target": "neu",
+    "kind": "influence",
+    "speaker": "The Radio Dept. (band site)",
+    "sentence": "INFLUENCES (the band's own list on its 2007 site)",
+    "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm",
+    "foundBy": "c14"
+  },
+  {
+    "source": "grimes",
+    "target": "burial",
+    "kind": "influence",
+    "speaker": "Dazed (reporting Grimes)",
+    "sentence": "On a more positive note, Grimes gets to express her love for Burial , one of her “all-time favourite artists”, and cites the elusive London producer among artists she considers herself a descendent of ( Aphex Twin and Animal Collective included).",
+    "url": "https://www.dazeddigital.com/music/article/49241/1/music",
+    "foundBy": "c13"
+  },
+  {
+    "source": "grimes",
+    "target": "animal-collective",
+    "kind": "influence",
+    "speaker": "Dazed (reporting Grimes)",
+    "sentence": "On a more positive note, Grimes gets to express her love for Burial , one of her “all-time favourite artists”, and cites the elusive London producer among artists she considers herself a descendent of ( Aphex Twin and Animal Collective included).",
+    "url": "https://www.dazeddigital.com/music/article/49241/1/music",
+    "foundBy": "c13"
+  },
+  {
+    "source": "the-human-league",
+    "target": "brian-eno",
+    "kind": "influence",
+    "speaker": "the-human-league",
+    "sentence": "Ware began speaking about the early electronic scene in Sheffield emerging from the industrial noise of the city, meeting Ian Craig Marsh in a youth project called Meat Whistle and going to see Roxy Music at Sheffield University, with Brian Eno specifically influencing his interest in making music.",
+    "url": "https://postpunk.co.uk/martyn-ware-walthamstow-trades-hall-london",
+    "foundBy": "retry2"
+  }
+]

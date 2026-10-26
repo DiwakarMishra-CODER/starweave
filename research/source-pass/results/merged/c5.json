@@ -1,0 +1,276 @@
+{
+  "agent": "c5",
+  "searches": 21,
+  "toolStatus": "WebSearch fine, 21 of 30 used. tidal.com 403 on read and WebFetch; rockhall.com and rocksbackpages unreadable. Opened fine: rollingstone, vice, avclub, spinmagazine, electronicbeats, flavorwire, faroutmagazine, chipmidnight, wikipedia.",
+  "entries": {
+    "new-order>kraftwerk": {
+      "url": "https://electronicbeats.net/max-dax-interviews-bernard-sumner",
+      "found": "BS: There’s an element of Kraftwerk in it, for sure. But by the time I wrote “Blue Monday”, I had already done some gigs with Cabaret Voltaire as well.",
+      "verdict": "fixed",
+      "citation": "Bernard Sumner to Max Dax, Electronic Beats (2012), on \"Blue Monday\": \"There's an element of Kraftwerk in it, for sure.\"",
+      "note": "Page does not carry the Sylvester / 'Ian brought Kraftwerk records' wording; only the Kraftwerk element in Blue Monday.",
+      "checked": "2026-10-26"
+    },
+    "new-order>cabaret-voltaire": {
+      "url": "https://electronicbeats.net/max-dax-interviews-bernard-sumner",
+      "found": "But by the time I wrote “Blue Monday”, I had already done some gigs with Cabaret Voltaire as well. The early Human League and OMD ’s first steps must not be forgotten either. I remember some very non-commercial early gigs in Manchester. Once I had understood that you could make music without guitars, I felt like there were no longer any borders.",
+      "verdict": "fixed",
+      "citation": "Bernard Sumner to Max Dax, Electronic Beats (2012): \"by the time I wrote 'Blue Monday', I had already done some gigs with Cabaret Voltaire as well... Once I had understood that you could make music without guitars, I felt like there were no longer any borders.\"",
+      "checked": "2026-10-26"
+    },
+    "nirvana>pixies": {
+      "url": "https://www.rollingstone.com/music/music-news/kurt-cobain-the-rolling-stone-interview-success-doesnt-suck-97194/",
+      "found": "I was trying to write the ultimate pop song. I was basically trying to rip off the Pixies. I have to admit it [_smiles_].",
+      "verdict": "ok",
+      "note": "Rolling Stone interview by David Fricke, 27 Jan 1994 (published 1994, interview 1993).",
+      "checked": "2026-10-26"
+    },
+    "nirvana>sonic-youth": {
+      "url": "https://faroutmagazine.co.uk/nirvana-kurt-cobain-greatest-band/",
+      "found": "Most recognisably, Nirvana were disciples of the 1980s post-punk and noise rock craze and cited Pixies, Sonic Youth and The Vaselines as pivotal influences.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Far Out Magazine states that Nirvana \"cited Pixies, Sonic Youth and The Vaselines as pivotal influences\"; Cobain also put Sonic Youth's Daydream Nation (1988) in his handwritten list of favourite albums, published in Journals (2002).",
+      "note": "Livenirvana Apr 1992 page not found; no verbatim Cobain statement on Sonic Youth found. Tier lowered to reported.",
+      "checked": "2026-10-26"
+    },
+    "nirvana>dinosaur-jr": {
+      "url": "https://www.rollingstone.com/music/music-news/nirvana-inside-the-heart-and-mind-of-kurt-cobain-2-235093/3/",
+      "found": "Cobain is happier to reel off a list of some of the bands he does like: the Breeders, the Pixies, R.E.M., Jesus Lizard, Urge Overkill, Beat Happening, Dinosaur Jr and Flipper.",
+      "verdict": "decide",
+      "note": "Only a bare 'bands he does like' list, paraphrased by the Rolling Stone writer (undated page, no comment on influence). Proposal: remove or lower to reported unless a real statement is found.",
+      "checked": "2026-10-26"
+    },
+    "nirvana>rem": {
+      "url": "https://www.rollingstone.com/music/music-news/kurt-cobain-the-rolling-stone-interview-success-doesnt-suck-97194/",
+      "found": "I was heavily into pop, I really liked R.E.M., and I was into all kinds of old ’60s stuff.",
+      "verdict": "fixed",
+      "citation": "Kurt Cobain to Rolling Stone (Jan 1994), on the Bleach era: \"I was heavily into pop, I really liked R.E.M., and I was into all kinds of old '60s stuff.\" Of the next record: \"pretty ethereal, acoustic, like R.E.M.'s last album. If I could write just a couple of songs as good as what they've written...\"",
+      "note": "Better than the 1992 bands-he-likes list, which is a Rolling Stone paraphrase.",
+      "checked": "2026-10-26"
+    },
+    "nirvana>the-jesus-lizard": {
+      "url": "https://www.rollingstone.com/music/music-news/nirvana-inside-the-heart-and-mind-of-kurt-cobain-2-235093/3/",
+      "found": "Cobain is happier to reel off a list of some of the bands he does like: the Breeders, the Pixies, R.E.M., Jesus Lizard, Urge Overkill, Beat Happening, Dinosaur Jr and Flipper.",
+      "verdict": "decide",
+      "note": "Same: bare list of bands he likes, written by the journalist; no influence claim. Also timing: Jesus Lizard formed 1987, first record 1989. Proposal: remove.",
+      "checked": "2026-10-26"
+    },
+    "nirvana>velvet-underground": {
+      "url": "https://www.flavorwire.com/562118/kurt-cobain-on-the-bands-and-musicians-he-loved",
+      "found": "“Roy Trakin: ‘How about Iggy and the Stooges? Velvets? Lou Reed?’ Kurt Cobain: ‘Oh yeah, definitely. Some of my favorite music.'”",
+      "verdict": "ok",
+      "note": "Flavorwire quotes it without naming the outlet/date of the Trakin interview; original not opened.",
+      "checked": "2026-10-26"
+    },
+    "nirvana>the-stooges": {
+      "url": "https://www.flavorwire.com/562118/kurt-cobain-on-the-bands-and-musicians-he-loved",
+      "found": "“Roy Trakin: ‘How about Iggy and the Stooges? Velvets? Lou Reed?’ Kurt Cobain: ‘Oh yeah, definitely. Some of my favorite music.'”",
+      "verdict": "ok",
+      "note": "Same quote; Flavorwire does not name the Trakin interview's outlet/date.",
+      "checked": "2026-10-26"
+    },
+    "nirvana>black-flag": {
+      "url": "https://www.flavorwire.com/562118/kurt-cobain-on-the-bands-and-musicians-he-loved",
+      "found": "COBAIN: Right. I sold my Aerosmith and Led Zepplin collection for twelve dollars. I completely threw away my hard-rock roots and was into MDC and Black Flag.",
+      "verdict": "ok",
+      "note": "Flavorwire reproduces the 1991 Interview magazine piece.",
+      "checked": "2026-10-26"
+    },
+    "nirvana>swans": {
+      "url": "https://faroutmagazine.co.uk/kurt-cobain-50-favourite-albums-list/",
+      "found": "Swans – Young God (1984, erroneously listed as Raping a Slave)",
+      "verdict": "decide",
+      "note": "Journals favourites list: a bare list with no comment, which the ruling excludes. Proposal: remove, or keep only as reported if the owner accepts the journal list.",
+      "checked": "2026-10-26"
+    },
+    "nirvana>neil-young": {
+      "checked": "2026-10-26",
+      "verdict": "not-found",
+      "note": "Searched Les Inrockuptibles 1993 Cobain Neil Young; nothing carrying the quote. Far Out/thrasherswheat pages opened had no first-person Cobain statement."
+    },
+    "nirvana>ramones": {
+      "verdict": "not-found",
+      "note": "Searched B-52's/Devo/Ramones Cobain; no page. livenirvana Jan 1991 and Far Out new wave pages have no Ramones.",
+      "checked": "2026-10-26"
+    },
+    "nirvana>the-breeders": {
+      "url": "https://en.wikipedia.org/wiki/The_Breeders",
+      "found": "Pod was cited by Kurt Cobain as one of his favorite records ever: \"The main reason I like [the Breeders] is for their songs, for the way they structure them, which is totally unique, very atmospheric. I wish Kim was allowed to write more songs for the Pixies, because 'Gigantic' is the best Pixies song, and Kim wrote it.\"",
+      "verdict": "print",
+      "print": "Melody Maker, \"Kurt Cobain of Nirvana Talks About the Records That Changed His Life\", 29 August 1992 (Wikipedia footnote 14); no online text opened",
+      "note": "Cobain's journal also lists Pod among the 50 albums. Citation's Kim Deal/Albini line not checked.",
+      "checked": "2026-10-26"
+    },
+    "american-football>fugazi": {
+      "url": "https://tidal.com/magazine/article/american-football-5-albums-that-changed-my-life/1-32190",
+      "verdict": "blocked",
+      "note": "Tidal 'American Football: 5 Albums That Changed My Life' (Steve Holmes on his first Fugazi album) returned 403 to read and WebFetch. Look for Holmes on Fugazi. The cited Crack Magazine line 'single most important band of the 90s was Fugazi' not found anywhere; Vice oral history has no Fugazi paragraph.",
+      "checked": "2026-10-26"
+    },
+    "american-football>slint": {
+      "url": "https://www.vice.com/en/article/never-meant-the-complete-oral-history-of-american-football/",
+      "found": "Tortoise and post-rock bands like Slint were an influence.",
+      "verdict": "fixed",
+      "citation": "Steve Holmes to Vice (2 Feb 2016, \"Never Meant: The Complete Oral History of American Football\"): \"Tortoise and post-rock bands like Slint were an influence.\"",
+      "note": "Vice page opened directly; same answer carries nine links.",
+      "checked": "2026-10-26"
+    },
+    "american-football>nick-drake": {
+      "url": "https://www.vice.com/en/article/never-meant-the-complete-oral-history-of-american-football/",
+      "found": "Steve Holmes: With this band, we really did make a conscious shift away from the post-hardcore, emo, whatever sound and scene that we had come out of. Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.",
+      "verdict": "fixed",
+      "citation": "Steve Holmes to Vice (2 Feb 2016, \"Never Meant: The Complete Oral History of American Football\"): \"Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.\"",
+      "note": "Paste 2024 article not checked; Vice page carries it.",
+      "checked": "2026-10-26"
+    },
+    "american-football>red-house-painters": {
+      "url": "https://www.vice.com/en/article/never-meant-the-complete-oral-history-of-american-football/",
+      "found": "Steve Holmes: With this band, we really did make a conscious shift away from the post-hardcore, emo, whatever sound and scene that we had come out of. Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.",
+      "verdict": "fixed",
+      "citation": "Steve Holmes to Vice (2 Feb 2016, \"Never Meant: The Complete Oral History of American Football\"): \"Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.\"",
+      "checked": "2026-10-26"
+    },
+    "american-football>elliott-smith": {
+      "url": "https://www.vice.com/en/article/never-meant-the-complete-oral-history-of-american-football/",
+      "found": "Steve Holmes: With this band, we really did make a conscious shift away from the post-hardcore, emo, whatever sound and scene that we had come out of. Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.",
+      "verdict": "fixed",
+      "citation": "Steve Holmes to Vice (2 Feb 2016, \"Never Meant: The Complete Oral History of American Football\"): \"Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.\"",
+      "checked": "2026-10-26"
+    },
+    "american-football>slowdive": {
+      "url": "https://www.vice.com/en/article/never-meant-the-complete-oral-history-of-american-football/",
+      "found": "Steve Holmes: With this band, we really did make a conscious shift away from the post-hardcore, emo, whatever sound and scene that we had come out of. Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.",
+      "verdict": "fixed",
+      "citation": "Steve Holmes to Vice (2 Feb 2016, \"Never Meant: The Complete Oral History of American Football\"): \"Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.\"",
+      "checked": "2026-10-26"
+    },
+    "american-football>my-bloody-valentine": {
+      "url": "https://www.vice.com/en/article/never-meant-the-complete-oral-history-of-american-football/",
+      "found": "Steve Holmes: With this band, we really did make a conscious shift away from the post-hardcore, emo, whatever sound and scene that we had come out of. Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.",
+      "verdict": "fixed",
+      "citation": "Steve Holmes to Vice (2 Feb 2016, \"Never Meant: The Complete Oral History of American Football\"): \"Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.\"",
+      "checked": "2026-10-26"
+    },
+    "american-football>can": {
+      "url": "https://www.vice.com/en/article/never-meant-the-complete-oral-history-of-american-football/",
+      "found": "Steve Holmes: With this band, we really did make a conscious shift away from the post-hardcore, emo, whatever sound and scene that we had come out of. Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.",
+      "verdict": "fixed",
+      "citation": "Steve Holmes to Vice (2 Feb 2016, \"Never Meant: The Complete Oral History of American Football\"): \"Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.\"",
+      "checked": "2026-10-26"
+    },
+    "american-football>the-smiths": {
+      "url": "https://www.vice.com/en/article/never-meant-the-complete-oral-history-of-american-football/",
+      "found": "Steve Holmes: With this band, we really did make a conscious shift away from the post-hardcore, emo, whatever sound and scene that we had come out of. Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.",
+      "verdict": "fixed",
+      "citation": "Steve Holmes to Vice (2 Feb 2016, \"Never Meant: The Complete Oral History of American Football\"): \"Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.\"",
+      "checked": "2026-10-26"
+    },
+    "pavement>rem": {
+      "url": "https://www.spinmagazine.com/2022/07/big-slack-attack-jim-greers-1994-interview-with-pavement-for-spin/",
+      "found": "Pavement contributed a song to the recent AIDS-benefit compilation No Alternative called “Unseen Power of the Picket Fence,” a paean to the Athens, Georgia, combo, and specifically to Reckoning",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Jim Greer in SPIN (1994) writes that Pavement's \"Unseen Power of the Picket Fence\" is \"a paean to the Athens, Georgia, combo, and specifically to Reckoning.\" The A.V. Club (2022) also calls R.E.M. among Pavement's \"own heroes.\"",
+      "note": "No Malkmus quote found saying it is his tribute; the writer states it. Tier lowered to reported. A.V. Club (avclub.com/pavement-interview-30th-anniversary-reunion-tour-1849501992) says 'their own heroes, including R.E.M., Sonic Youth, and Echo & the Bunnymen' (writer, not band).",
+      "checked": "2026-10-26"
+    },
+    "pavement>slint": {
+      "verdict": "not-found",
+      "note": "Searched Perfect Sound Forever / Nastanovich / Jovanovic / Spiderland; no page found.",
+      "checked": "2026-10-26"
+    },
+    "pavement>the-fall": {
+      "url": "https://faroutmagazine.co.uk/the-pavement-songs-inspired-by-the-fall/",
+      "found": "During a conversation with Rolling Stone , the Pavement frontman and soloist explained how a number of his songs were directly inspired by The Fall, beginning with ‘Our Singer’.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "Far Out Magazine reports that Stephen Malkmus told Rolling Stone that several Pavement songs were directly inspired by The Fall, starting with \"Our Singer,\" which he called \"very related\" to \"Hip Priest.\"",
+      "note": "Rolling Stone original not found/opened; the 'Fall-influenced' / 'mid-period Fall approximation' wording was not found. Far Out is secondary, so reported.",
+      "checked": "2026-10-26"
+    },
+    "ramones>the-stooges": {
+      "url": "https://chipmidnight.com/2020/05/19/ramones-1991/",
+      "found": "Back then, the Ramones liked music that nobody else was really familiar with or would accept, such as Alice Cooper, Lou Reed, the Stooges, the MC5 and the New York Dolls.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "The Lantern (Ohio State University, April 1991), interviewing Joey Ramone, reports that in the early days \"the Ramones liked music that nobody else was really familiar with or would accept, such as Alice Cooper, Lou Reed, the Stooges, the MC5 and the New York Dolls.\" Joey is quoted: \"We've been inspired by the greatest things that have gone down since the inception of rock and roll.\"",
+      "note": "Page is Chip Midnight's repost of the 1991 Lantern article. The list is the writer's sentence, not a Joey quote. Tommy Ramone Hall of Fame remarks not found (rockhall.com unreadable; ramonesheaven page has no such passage). Tier lowered to reported.",
+      "checked": "2026-10-26"
+    },
+    "ramones>new-york-dolls": {
+      "url": "https://chipmidnight.com/2020/05/19/ramones-1991/",
+      "found": "Back then, the Ramones liked music that nobody else was really familiar with or would accept, such as Alice Cooper, Lou Reed, the Stooges, the MC5 and the New York Dolls.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "The Lantern (Ohio State University, April 1991), interviewing Joey Ramone, reports that in the early days \"the Ramones liked music that nobody else was really familiar with or would accept, such as Alice Cooper, Lou Reed, the Stooges, the MC5 and the New York Dolls.\"",
+      "note": "Writer's sentence, not a quote; Tommy HOF remarks not found. Tier lowered to reported.",
+      "checked": "2026-10-26"
+    },
+    "ramones>velvet-underground": {
+      "url": "https://chipmidnight.com/2020/05/19/ramones-1991/",
+      "found": "Back then, the Ramones liked music that nobody else was really familiar with or would accept, such as Alice Cooper, Lou Reed, the Stooges, the MC5 and the New York Dolls.",
+      "verdict": "decide",
+      "note": "The 1991 Lantern article names Lou Reed (solo, in the early 1970s), not the Velvet Underground, and as a writer's sentence. Proposal: lower to reported with Lou Reed named, or remove unless a source names the Velvets.",
+      "checked": "2026-10-26"
+    },
+    "ramones>mc5": {
+      "url": "https://chipmidnight.com/2020/05/19/ramones-1991/",
+      "found": "Back then, the Ramones liked music that nobody else was really familiar with or would accept, such as Alice Cooper, Lou Reed, the Stooges, the MC5 and the New York Dolls.",
+      "verdict": "fixed",
+      "sourceTier": "reported",
+      "citation": "The Lantern (Ohio State University, April 1991), interviewing Joey Ramone, reports that in the early days \"the Ramones liked music that nobody else was really familiar with or would accept, such as Alice Cooper, Lou Reed, the Stooges, the MC5 and the New York Dolls.\"",
+      "note": "Writer's sentence, not a quote; the 'Tommy named MC5 first' claim not found. Tier lowered to reported.",
+      "checked": "2026-10-26"
+    },
+    "rem>velvet-underground": {
+      "url": "https://www.rocksbackpages.com/Library/Article/rem-3",
+      "verdict": "blocked",
+      "note": "Wikipedia (R.E.M., 'Formation') says Buck and Stipe met at Wuxtry Records in Jan 1980 and shared tastes in 'Patti Smith, Television, and the Velvet Underground', with Stipe quoted: \"It turns out that I was buying all the records that [Buck] was saving for himself.\" Its footnote is Blake Gumprecht, 'Interview with R.E.M.', Alternative America fanzine, Winter 1983, on Rocks Backpages (subscription). Look in that interview for Buck/Stipe on the Velvet Underground records. Rolling Stone Q&A, Reverb, Seattle Times and Fender Buck interviews had no Velvet mention.",
+      "checked": "2026-10-26"
+    },
+    "snail-mail>liz-phair": {
+      "verdict": "not-found",
+      "note": "Searched for the 2016 9:30 Club/Tumblr interview and the 2017 Modern Girls interview by exact phrases and names; neither found. Opened Fader 2017, SPIN 2018, Interview Magazine, Highsnobiety, Honeycombers, Emily Elhaj, KALX and Wikipedia: none name these artists as Jordan's influences.",
+      "checked": "2026-10-26"
+    },
+    "snail-mail>grouper": {
+      "verdict": "not-found",
+      "note": "Searched for the 2016 9:30 Club/Tumblr interview and the 2017 Modern Girls interview by exact phrases and names; neither found. Opened Fader 2017, SPIN 2018, Interview Magazine, Highsnobiety, Honeycombers, Emily Elhaj, KALX and Wikipedia: none name these artists as Jordan's influences.",
+      "checked": "2026-10-26"
+    },
+    "snail-mail>broadcast": {
+      "verdict": "not-found",
+      "note": "Searched for the 2016 9:30 Club/Tumblr interview and the 2017 Modern Girls interview by exact phrases and names; neither found. Opened Fader 2017, SPIN 2018, Interview Magazine, Highsnobiety, Honeycombers, Emily Elhaj, KALX and Wikipedia: none name these artists as Jordan's influences.",
+      "checked": "2026-10-26"
+    },
+    "snail-mail>sleater-kinney": {
+      "verdict": "not-found",
+      "note": "Searched for the 2016 9:30 Club/Tumblr interview and the 2017 Modern Girls interview by exact phrases and names; neither found. Opened Fader 2017, SPIN 2018, Interview Magazine, Highsnobiety, Honeycombers, Emily Elhaj, KALX and Wikipedia: none name these artists as Jordan's influences.",
+      "checked": "2026-10-26"
+    },
+    "snail-mail>beach-house": {
+      "verdict": "not-found",
+      "note": "Searched for the 2016 9:30 Club/Tumblr interview and the 2017 Modern Girls interview by exact phrases and names; neither found. Opened Fader 2017, SPIN 2018, Interview Magazine, Highsnobiety, Honeycombers, Emily Elhaj, KALX and Wikipedia: none name these artists as Jordan's influences.",
+      "checked": "2026-10-26"
+    },
+    "snail-mail>bratmobile": {
+      "verdict": "not-found",
+      "note": "Searched for the 2016 9:30 Club/Tumblr interview and the 2017 Modern Girls interview by exact phrases and names; neither found. Opened Fader 2017, SPIN 2018, Interview Magazine, Highsnobiety, Honeycombers, Emily Elhaj, KALX and Wikipedia: none name these artists as Jordan's influences.",
+      "checked": "2026-10-26"
+    },
+    "snail-mail>sharon-van-etten": {
+      "verdict": "not-found",
+      "note": "Searched for the 2016 9:30 Club/Tumblr interview and the 2017 Modern Girls interview by exact phrases and names; neither found. Opened Fader 2017, SPIN 2018, Interview Magazine, Highsnobiety, Honeycombers, Emily Elhaj, KALX and Wikipedia: none name these artists as Jordan's influences.",
+      "checked": "2026-10-26"
+    },
+    "snail-mail>joni-mitchell": {
+      "verdict": "not-found",
+      "note": "Searched for the 2016 9:30 Club/Tumblr interview and the 2017 Modern Girls interview by exact phrases and names; neither found. Opened Fader 2017, SPIN 2018, Interview Magazine, Highsnobiety, Honeycombers, Emily Elhaj, KALX and Wikipedia: none name these artists as Jordan's influences.",
+      "checked": "2026-10-26"
+    }
+  },
+  "candidates": [],
+  "offMap": [],
+  "finished": true
+}
