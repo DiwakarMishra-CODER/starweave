@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import type { GraphData } from '@/data/types';
-import { CLIP_H, PLAYER_CORNER, buildGenreSession, letterLines, signTextWidth } from '@/lib/genre-session';
+import { CLIP_H, NOTE_W, PLAYER_CORNER, buildGenreSession, letterLines, lineageOf, placeNote, signTextWidth, spreadYears, YEAR_LABEL_GAP } from '@/lib/genre-session';
 
 const data = JSON.parse(readFileSync(resolve(__dirname, '../../public/graph.json'), 'utf-8')) as GraphData;
 const session = buildGenreSession(data);
@@ -81,9 +81,55 @@ describe('buildGenreSession', () => {
     expect(under.map(c => c.id)).toEqual([]);
   });
 
-  it('fits one laptop screen, under a ~760px browser window', () => {
+  it("never prints one lit year over another, and keeps them in order", () => {
+    for (const c of session.clips) {
+      const lit = new Set(lineageOf(c.id, byId).map(id => byId.get(id)!.emerged));
+      const at = spreadYears(session.years.filter(yr => lit.has(yr.year)), session.timeStart, session.timeEnd);
+      const xs = [...lit].sort((a, b) => a - b).map(y => at.get(y)!);
+      for (let i = 0; i + 1 < xs.length; i++) expect(xs[i + 1] - xs[i], c.id).toBeGreaterThanOrEqual(YEAR_LABEL_GAP - 0.01);
+      for (const x of xs) {
+        expect(x).toBeGreaterThanOrEqual(session.timeStart);
+        expect(x).toBeLessThanOrEqual(session.timeEnd);
+      }
+    }
+  });
+
+  it("pins every sign's note clear of the signs on its line back to the founder", () => {
+    for (const c of session.clips) {
+      const line = new Set(lineageOf(c.id, byId));
+      const at = placeNote(session, c.id, line, 200);
+      const hidden = session.clips.filter(o => line.has(o.id)
+        && o.left < at.left + NOTE_W && o.left + o.w > at.left
+        && o.y + CLIP_H / 2 > at.top && o.y - CLIP_H / 2 < at.top + 200);
+      expect(hidden.map(o => o.id), c.id).toEqual([]);
+    }
+  });
+
+  it("letters every district's name inside its own rows, clear of every sign and cable", () => {
+    for (const f of session.families) {
+      const d = f.district;
+      expect(d, f.id).not.toBeNull();
+      expect(d!.px).toBeGreaterThanOrEqual(22);
+      expect(d!.y).toBeGreaterThanOrEqual(f.top);
+      expect(d!.y + d!.px).toBeLessThanOrEqual(f.bottom);
+      for (const c of session.clips) {
+        const apart = c.left + c.w <= d!.x || d!.x + d!.w <= c.left
+          || c.y + CLIP_H / 2 <= d!.y || d!.y + d!.px <= c.y - CLIP_H / 2;
+        expect(apart, `${f.id} / ${c.id}`).toBe(true);
+      }
+      for (const l of session.links.filter(k => k.kind === 'cable')) {
+        const through = samples(l.d).filter(q => q.x > d!.x && q.x < d!.x + d!.w && q.y > d!.y && q.y < d!.y + d!.px);
+        expect(through, `${f.id} / ${l.childId}`).toEqual([]);
+      }
+    }
+  });
+
+  // As wide as a laptop window; as tall as it needs for the rows to breathe
+  // (it once had to fit a ~760px window and the rows were too cramped to
+  // read), but no taller than a short scroll.
+  it('fits a laptop window across, and is only a short scroll tall', () => {
     expect(session.width).toBeLessThanOrEqual(1400);
-    expect(session.height).toBeLessThanOrEqual(660);
+    expect(session.height).toBeLessThanOrEqual(860);
   });
 
   it('fits every name inside its sign', () => {
@@ -101,5 +147,23 @@ describe('letterLines', () => {
     expect(letterLines('Punk')).toEqual(['Punk']);
     expect(letterLines('Alternative rock')).toEqual(['Alternative', 'rock']);
     expect(letterLines('Singer-songwriter')).toEqual(['Singer-', 'songwriter']);
+  });
+
+  it('draws one road per line: a road only ever joins a sign to the one it grew out of', () => {
+    for (const c of session.clips) {
+      const under = session.roads.filter(r => r.y === c.y && r.x1 <= c.left && c.left + c.w <= r.x2);
+      expect(under).toHaveLength(1);
+    }
+    for (const r of session.roads) {
+      const on = session.clips.filter(c => c.y === r.y && r.x1 <= c.left && c.left + c.w <= r.x2).sort((a, b) => a.left - b.left);
+      expect(on.length).toBeGreaterThan(0);
+      for (let i = 1; i < on.length; i++) expect(on[i].parentId).toBe(on[i - 1].id);
+      expect(new Set(on.map(c => c.familyId)).size).toBe(1);
+    }
+    // Roads on one lane never overlap.
+    for (const y of session.trackYs) {
+      const rs = session.roads.filter(r => r.y === y).sort((a, b) => a.x1 - b.x1);
+      for (let i = 1; i < rs.length; i++) expect(rs[i].x1).toBeGreaterThanOrEqual(rs[i - 1].x2);
+    }
   });
 });

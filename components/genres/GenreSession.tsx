@@ -1,8 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { CLIP_H, HEAD_W, RULER_H, SKY_H, JACK_W, lineageOf, type GenreSession as Session, type SessionClip } from '@/lib/genre-session';
+import { CLIP_H, HEAD_W, NOTE_W, RULER_H, SKY_H, JACK_W, YEAR_LABEL_GAP, lineageOf, placeNote, spreadYears, type GenreSession as Session, type SessionClip } from '@/lib/genre-session';
 import { buildSkyline, WINDOW } from '@/lib/skyline';
 import MagazineCover from './MagazineCover';
 import { useIssue } from './Issue';
@@ -24,7 +24,9 @@ import type { CoverStar, Issue } from '@/lib/genre-issue';
 // into its page. Lines and the city are SVG; every word is HTML, so text is
 // always real CSS size. Too wide for the window? The spread zooms down to
 // fit, but never below FIT_MIN; past that it keeps its size and scrolls
-// sideways, the family heads staying put.
+// sideways, the family heads staying put. On a bigger screen it grows to
+// fill the first screen (up to FIT_MAX), leaving room under it for the
+// index's tab.
 
 interface Props {
   session: Session;
@@ -35,7 +37,11 @@ interface Props {
 }
 
 const FIT_MIN = 0.86;
-const NOTE_W = 240;
+const FIT_MAX = 1.4;
+const CUE_ROOM = 56; // under the city, for the index's tab (/genres)
+// The leftmost a year's label can be centred and still clear the sticky
+// family heads (the first year's "1" hid under them).
+const YEAR_MIN_X = HEAD_W + 20;
 const LEAVE_MS = 180; // time to move from a clip onto its note
 
 const splicePen = (count: number) => Math.min(5, 2.4 + Math.sqrt(count) * 0.5);
@@ -108,6 +114,14 @@ export default function GenreSession({ session, counts, stars }: Props) {
     [lineageList, byId],
   );
   const yearX = useMemo(() => new Map(session.years.map(yr => [yr.year, yr.x])), [session.years]);
+  // Where the lit years' labels go, spread apart where they crowd; any
+  // other year label they'd land on steps aside while they're lit.
+  const litYearAt = useMemo(
+    () => spreadYears(session.years.filter(yr => litYears.has(yr.year)), YEAR_MIN_X, session.timeEnd),
+    [session, litYears],
+  );
+  const yearShown = (yr: Session['years'][number]) =>
+    litYears.has(yr.year) || (yr.labelled && [...litYearAt.values()].every(x => Math.abs(x - yr.x) >= YEAR_LABEL_GAP));
 
   const city = useMemo(() => buildSkyline(session.width, SKY_H, {
     seed: 7,
@@ -118,7 +132,9 @@ export default function GenreSession({ session, counts, stars }: Props) {
   const opened = stage !== 'dark' && stage !== 'lit' && stage !== 'counting';
 
 
-  // Fit the sheet to the window when it nearly fits; scroll sideways when not.
+  // Fit the sheet to the window: down when it nearly fits, sideways scroll
+  // when it doesn't, and up to fill the first screen when there's room to
+  // spare (never taller than the window less the index tab's strip).
   const frameRef = useRef<HTMLDivElement>(null);
   const [fit, setFit] = useState({ zoom: 1, scroll: false });
   useEffect(() => {
@@ -126,13 +142,18 @@ export default function GenreSession({ session, counts, stars }: Props) {
     if (!frame) return;
     const measure = () => {
       const room = frame.parentElement?.clientWidth ?? frame.clientWidth;
-      const z = Math.min(1, room / session.width);
+      const scroller = frame.closest('.genres-overlay');
+      const top = frame.getBoundingClientRect().top + (scroller?.scrollTop ?? 0);
+      const roomH = window.innerHeight - top - CUE_ROOM;
+      const grow = Math.max(1, Math.min(FIT_MAX, roomH / session.height));
+      const z = Math.min(room / session.width, grow);
       setFit(z >= FIT_MIN ? { zoom: z, scroll: false } : { zoom: 1, scroll: true });
     };
     const ro = new ResizeObserver(measure);
     ro.observe(frame.parentElement ?? frame);
-    return () => ro.disconnect();
-  }, [session.width]);
+    window.addEventListener('resize', measure);
+    return () => { ro.disconnect(); window.removeEventListener('resize', measure); };
+  }, [session.width, session.height]);
 
   // On a phone the city scrolls sideways: bring the cover story's road into
   // view before it lights.
@@ -142,21 +163,35 @@ export default function GenreSession({ session, counts, stars }: Props) {
     frameRef.current?.scrollTo({ left: Math.max(0, (leaf?.left ?? 0) - 140), behavior: 'smooth' });
   }, [stage, fit.scroll, issue, byId]);
 
-  const note = activeClip && (() => {
-    const left = Math.max(HEAD_W, Math.min(activeClip.left, session.width - NOTE_W - 8));
-    const below = activeClip.y + CLIP_H / 2 + 8;
-    const fitsBelow = below + 200 < session.height;
+  // The note pins beside the sign wherever it hides none of what's lit with
+  // it (placeNote); its height is measured once it's drawn, in the sheet's
+  // own pixels, before the browser paints.
+  const noteRef = useRef<HTMLDivElement>(null);
+  const [noteH, setNoteH] = useState(200);
+  useLayoutEffect(() => {
+    const el = noteRef.current;
+    const sheet = el?.closest('.gsession__sheet');
+    if (!el || !sheet) return;
+    const h = Math.round(el.getBoundingClientRect().height / (sheet.getBoundingClientRect().height / session.height));
+    if (h > 0 && Math.abs(h - noteH) > 2) setNoteH(h);
+  }, [active, stage, noteH, session.height]);
+  const notePlace = useMemo(() => {
+    if (!activeClip) return null;
+    return placeNote(session, activeClip.id, new Set([...(lineage ?? []), ...touched]), noteH);
+  }, [session, activeClip, lineage, touched, noteH]);
+
+  const note = activeClip && notePlace && (() => {
     const family = familyOf.get(activeClip.familyId);
     const parent = activeClip.parentId ? byId.get(activeClip.parentId) : undefined;
     const also = activeClip.alsoFromIds.map(id => byId.get(id)?.name).filter(Boolean) as string[];
     return (
       <div
+        ref={noteRef}
         className="gsession-note"
         style={{
-          left,
+          left: notePlace.left,
+          top: notePlace.top,
           width: NOTE_W,
-          top: fitsBelow ? below : undefined,
-          bottom: fitsBelow ? undefined : session.height - (activeClip.y - CLIP_H / 2 - 8),
           '--ink': family?.ink,
           '--glow': family?.color,
         } as React.CSSProperties}
@@ -215,6 +250,44 @@ export default function GenreSession({ session, counts, stars }: Props) {
             onWheel={release}
             onTouchStart={release}
           >
+            {/* The districts: each family's rows on a ground of its own
+                colour, alternate decades a shade darker like city blocks,
+                then the family's name big and faint in the emptiest stretch
+                of its rows -- all under the roads and lines. */}
+            <svg className="gsession__ink" width={session.width} height={session.height} aria-hidden>
+              {session.families.map(f => (
+                <rect
+                  key={f.id}
+                  className="gsession__ground"
+                  x={session.timeStart - 8}
+                  y={f.top + 1}
+                  width={session.timeEnd - session.timeStart + 16}
+                  height={f.bottom - f.top - 2}
+                  rx={6}
+                  style={{ '--glow': f.color } as React.CSSProperties}
+                />
+              ))}
+              {session.decades.map((d, i) => i % 2 === 1 && (
+                <rect
+                  key={d.label}
+                  className="gsession__block"
+                  x={d.x}
+                  y={top - 12}
+                  width={(session.decades[i + 1]?.x ?? session.timeEnd + 8) - d.x}
+                  height={session.height - top + 8}
+                />
+              ))}
+            </svg>
+            {session.families.map(f => f.district && (
+              <span
+                key={f.id}
+                className="gsession__district"
+                style={{ left: f.district.x, top: f.district.y, width: f.district.w, fontSize: f.district.px, '--glow': f.color } as React.CSSProperties}
+                aria-hidden
+              >
+                {f.name}
+              </span>
+            ))}
             <svg className="gsession__ink" width={session.width} height={session.height} aria-hidden>
               {/* The city along the top. */}
               {city.stars.map((st, i) => <circle key={i} className="gsession__star" cx={st.x} cy={st.y} r={st.r} />)}
@@ -235,11 +308,16 @@ export default function GenreSession({ session, counts, stars }: Props) {
               {session.decades.map(d => (
                 <line key={d.label} className="gsession__bar" x1={d.x} x2={d.x} y1={top - 12} y2={session.height - 4} />
               ))}
-              {/* The roads, each with its centre line. */}
+              {/* The faint lanes the roads are laid on, then the roads: one
+                  per line, breaking where the next sign didn't grow out of
+                  the one before it, edged in the family's colour. */}
               {session.trackYs.map(y => (
-                <g key={y} className="gsession__road">
-                  <rect x={session.timeStart - 8} y={y - CLIP_H / 2 - 3} width={span + 18} height={CLIP_H + 6} rx={3} />
-                  <line x1={session.timeStart - 4} x2={session.timeEnd + 6} y1={y} y2={y} />
+                <line key={y} className="gsession__lane" x1={session.timeStart - 4} x2={session.timeEnd + 6} y1={y} y2={y} />
+              ))}
+              {session.roads.map(r => (
+                <g key={`${r.y}:${r.x1}`} className="gsession__road" style={{ '--glow': familyOf.get(r.familyId)?.color } as React.CSSProperties}>
+                  <rect x={r.x1} y={r.y - CLIP_H / 2 - 3} width={r.x2 - r.x1} height={CLIP_H + 6} rx={4} />
+                  <line x1={r.x1 + 4} x2={r.x2 - 4} y1={r.y} y2={r.y} />
                 </g>
               ))}
               {session.years.map(yr => (
@@ -285,7 +363,7 @@ export default function GenreSession({ session, counts, stars }: Props) {
                     {l.jack && (
                       <path
                         className="gsession__arrow"
-                        d={`M ${l.jack.x} ${l.jack.y} H ${l.jack.x + JACK_W - 1} M ${l.jack.x + JACK_W - 5.5} ${l.jack.y - 3.6} L ${l.jack.x + JACK_W - 1} ${l.jack.y} L ${l.jack.x + JACK_W - 5.5} ${l.jack.y + 3.6}`}
+                        d={`M ${l.jack.x} ${l.jack.y} V ${l.jack.y + l.jack.dir * (JACK_W - 1)} M ${l.jack.x - 3.6} ${l.jack.y + l.jack.dir * (JACK_W - 5.5)} L ${l.jack.x} ${l.jack.y + l.jack.dir * (JACK_W - 1)} L ${l.jack.x + 3.6} ${l.jack.y + l.jack.dir * (JACK_W - 5.5)}`}
                         stroke={color}
                       />
                     )}
@@ -349,7 +427,7 @@ export default function GenreSession({ session, counts, stars }: Props) {
 
             {/* The sky: the title on a rooftop sign, and how to read it. */}
             <div className="gsession__rooftop">
-              <h1 className="gsession-sign">Where every sound came from</h1>
+              <h1 className="gsession-sign">The family tree of genres</h1>
             </div>
             <div className="gsession__intro" style={{ left: SIGN_END + 18 }}>
               {stage === 'story' && issue && <StoryBanner issue={issue} />}
@@ -360,11 +438,11 @@ export default function GenreSession({ session, counts, stars }: Props) {
             {session.decades.map(d => (
               <span key={d.label} className="gsession__decade" style={{ left: d.x }}>{d.label.replace('the ', '\u2019')}</span>
             ))}
-            {session.years.filter(yr => yr.labelled || litYears.has(yr.year)).map(yr => (
+            {session.years.filter(yearShown).map(yr => (
               <span
                 key={yr.year}
                 className={`gsession__year${litYears.has(yr.year) ? ' is-lit' : ''}${active && !litYears.has(yr.year) ? ' is-quiet' : ''}`}
-                style={{ left: yr.x }}
+                style={{ left: litYearAt.get(yr.year) ?? Math.max(YEAR_MIN_X, yr.x) }}
               >
                 {yr.year}
               </span>
@@ -452,13 +530,15 @@ function HowToRead({ phone = false }: { phone?: boolean }) {
           grew out of the one before
         </span>
         <span className="gsession-key__item" style={{ '--i': 2 } as React.CSSProperties}>
-          <svg width="34" height="16" aria-hidden>
-            <path d="M 3 2 V 7 Q 3 11 7 11 H 24" className="gsession-key__edge" strokeWidth="5.6" />
-            <path d="M 3 2 V 7 Q 3 11 7 11 H 24" stroke="#C77DD1" strokeWidth="3.4" fill="none" />
-            <path d="M 3 2 V 7 Q 3 11 7 11 H 24" className="gsession__rail-core" strokeWidth="1.2" fill="none" />
-            <path d="M 24 11 H 31 M 27 7.5 L 31 11 L 27 14.5" stroke="#C77DD1" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          {/* As on the map: the line runs along the gap and drops onto the sign. */}
+          <svg width="34" height="20" aria-hidden>
+            <path d="M 2 4 H 19 Q 23 4 23 8 V 9" className="gsession-key__edge" strokeWidth="5.6" />
+            <path d="M 2 4 H 19 Q 23 4 23 8 V 9" stroke="#C77DD1" strokeWidth="3.4" fill="none" />
+            <path d="M 2 4 H 19 Q 23 4 23 8 V 9" className="gsession__rail-core" strokeWidth="1.2" fill="none" />
+            <path d="M 23 9 V 13 M 20 10.5 L 23 13 L 26 10.5" stroke="#C77DD1" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <rect x="16" y="14" width="16" height="5" rx="1" fill="#C77DD1" opacity="0.7" />
           </svg>
-          grew out of another road
+          grew out of a genre in another row
         </span>
         <span className="gsession-key__item" style={{ '--i': 3 } as React.CSSProperties}>
           <svg width="30" height="12" aria-hidden><path d="M 1 9 Q 15 0 29 9" className="gsession-key__pencil" /></svg>
@@ -466,9 +546,9 @@ function HowToRead({ phone = false }: { phone?: boolean }) {
         </span>
       </p>
       <p className="gsession-key__do">
-        <span>Each road is a family of sound. {phone ? 'Tap' : 'Point at'} a sign to light up its road back to where it came from.</span>
+        <span>Every genre sits in the year it was born, joined to the one it grew out of; each colour is a family. {phone ? 'Tap' : 'Point at'} a genre to light up its line back to where it began.</span>
         {phone && <span> Swipe to travel through time.</span>}{' '}
-        <a href="#all-genres" className="gsession__az">All genres A&ndash;Z &darr;</a>
+        <a href="#index" className="gsession__az">The index, A&ndash;Z &darr;</a>
       </p>
       {/* The lamps lighting it, along its bottom edge. */}
       <span className="gsession-board__lamps" aria-hidden><i /><i /><i /></span>

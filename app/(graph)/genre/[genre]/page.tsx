@@ -2,23 +2,23 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { loadGraphData } from '@/lib/graph-data';
-import { GENRE_COLORS, DEFAULT_GENRE_COLOR } from '@/lib/colors';
-import { getGenreLineage } from '@/lib/genre-lineage';
+import { HEADLINE_W, resolveGenreFeature } from '@/lib/genre-feature';
+import FeatureSpread from '@/components/genre/FeatureSpread';
+import FeatureStep from '@/components/genre/FeatureStep';
+import Records from '@/components/genre/Records';
+import Players from '@/components/genre/Players';
+import Road from '@/components/genre/Road';
+import Reveal from '@/components/ui/Reveal';
+import Room from '@/components/artist/backline/Room';
+import { resolveGenreBackline } from '@/lib/backline';
+import { risoInk } from '@/lib/colors';
 import { GENRE_PAGES } from '@/data/genre-pages';
-import ArtistBackground from '@/components/artist/ArtistBackground';
-import BackButton from '@/components/ui/BackButton';
-import ArtistCircleGrid from '@/components/artist/ArtistCircleGrid';
-import AlbumGrid from '@/components/artist/AlbumGrid';
-import IgniteGraphButton from '@/components/artist/IgniteGraphButton';
-import GenreLineageStrip from '@/components/artist/GenreLineageStrip';
+import { sizedImageUrl } from '@/lib/image-url';
 import SiteFooter from '@/components/layout/SiteFooter';
 
 interface Props {
   params: Promise<{ genre: string }>;
 }
-
-// Genres with a full story page live in data/genre-pages.ts; others render a stub.
-const BUILT_GENRES = new Set(Object.keys(GENRE_PAGES));
 
 export function generateStaticParams() {
   const data = loadGraphData();
@@ -27,122 +27,122 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { genre } = await params;
-  const data = loadGraphData();
-  const g = data.genres.find(x => x.id === genre);
-  if (!g) return {};
-  return { title: `${g.name} — Starweave` };
+  const f = resolveGenreFeature(loadGraphData(), genre);
+  if (!f) return {};
+  return { title: `${f.name} — Starweave`, description: f.deck };
 }
 
+// A genre's page: its feature inside today's issue of the paper (/genres),
+// with a free tape stuck to the front. The data is lib/genre-feature.ts; the
+// opening and the page turns are described in components/genre/FeatureSpread.
 export default async function GenrePage({ params }: Props) {
   const { genre } = await params;
   const data = loadGraphData();
-  const genreData = data.genres.find(g => g.id === genre);
-  if (!genreData) notFound();
-
-  const genreColor = GENRE_COLORS[genre] ?? DEFAULT_GENRE_COLOR;
-
-  if (!BUILT_GENRES.has(genre)) {
-    return (
-      <div
-        className="genre-overlay"
-        style={{ '--genre-color': genreColor, '--layer-color': genreColor } as React.CSSProperties}
-      >
-        <ArtistBackground layerColor={genreColor} boost={1.7} />
-        <div className="artist-bg-scrim" aria-hidden />
-        <BackButton />
-        <div className="genre-stub">
-          <p className="genre-stub__title">{genreData.name}</p>
-          <p className="genre-stub__text">
-            This genre story is coming in a future update. The graph already includes{' '}
-            {genreData.name.toLowerCase()} artists — explore them on the{' '}
-            <Link href="/" style={{ color: 'var(--genre-color)' }}>graph</Link>.
-          </p>
-          <Link href="/" className="genre-page__graph-btn" style={{ display: 'inline-flex' }}>
-            Open graph →
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  // --- Content-defined genre story (see data/genre-pages.ts) ---
-  const content = GENRE_PAGES[genre]!;
-  const lineage = getGenreLineage(data.genres, genre);
-
-  // "View in graph" highlights every artist in this genre as a cluster.
-  const graphHref = `/?genre=${genre}`;
-  const graphLabel = `See ${genreData.name} light up the graph`;
-
-  // Curated, not derived — see the file-level comment in data/genre-pages.ts.
-  // An artist can carry this genre's tag while their classicAlbum belongs to
-  // a different one; content.definingAlbums is the hand-picked subset whose
-  // album genuinely fits.
-  const definingAlbums = content.definingAlbums
-    .map(id => data.artists.find(a => a.id === id))
-    .filter((a): a is NonNullable<typeof a> => a !== undefined && !!a.classicAlbums?.length)
-    .map(a => ({ artist: a, album: a.classicAlbums![0] }))
-    .sort((a, b) => (a.album.year ?? 0) - (b.album.year ?? 0));
-
-  const resolvedSections = content.sections.map(section => ({
-    ...section,
-    artists: section.artistIds
-      .map(id => data.artists.find(a => a.id === id))
-      .filter((a): a is NonNullable<typeof a> => a !== undefined),
-  }));
+  const f = resolveGenreFeature(data, genre);
+  if (!f) notFound();
+  const [first, ...rest] = f.origin;
+  // Its room behind the paper: its records, its people on the wall, the
+  // instruments its artists play, which play along with its tape.
+  const backline = resolveGenreBackline(data, f.id, f.color, GENRE_PAGES[f.id]?.definingAlbums ?? []);
+  const sounds = [...f.road.ancestors, f.road.self, ...f.road.children].map(s => s.name);
 
   return (
-    <div
-      className="genre-overlay"
-      style={{ '--genre-color': genreColor, '--layer-color': genreColor } as React.CSSProperties}
-    >
-      <ArtistBackground layerColor={genreColor} boost={1.7} />
-      <div className="artist-bg-scrim" aria-hidden />
-      <BackButton />
+    <div className="feature-overlay" style={{ '--spot': f.color, '--spot-ink': f.ink, '--wall': backline.wall } as React.CSSProperties}>
+      <Room
+        backline={backline}
+        genres={sounds}
+        finish={risoInk(f.color, backline.wall, 3.2, 6)}
+        ribbon={risoInk(f.color, backline.wall, 7, 10)}
+        seed={`genre:${f.id}`}
+        page=".feature"
+        soundcheck={false}
+        queue={f.queue}
+        hint="Tap an instrument to play the tape: the band plays along."
+      />
+      <div className="feature">
+        <FeatureSpread
+          id={f.id}
+          name={f.name}
+          emerged={f.emerged}
+          emergedBasis={f.emergedBasis}
+          familyName={f.familyName}
+          folio={f.folio}
+          headlinePx={f.headlinePx}
+          deck={f.deck}
+          lead={f.lead}
+          artistCount={f.artistCount}
+          recordCount={f.records.length}
+          headlineFit={(f.headlinePx * 100) / HEADLINE_W}
+          color={f.color}
+          ink={f.ink}
+          queue={f.queue}
+        />
 
-      {/* Prose — 700px reading width */}
-      <article className="genre-page">
-        <header className="genre-page__header">
-          <p className="genre-page__super">Genre story</p>
-          <h1 className="genre-page__title">{genreData.name}</h1>
-          <p className="genre-page__deck">{content.deck}</p>
-          <IgniteGraphButton href={graphHref} label={graphLabel} />
-        </header>
+        <Reveal className="fsheet farticle" aria-labelledby="feature-started">
+          <h2 id="feature-started" className="fhead">How it started</h2>
+          {/* The first on the map to play it, oldest first: the story opens on faces. */}
+          {f.firstWave.length > 0 && (
+            <figure className="fwave">
+              <ul className="fwave__strip">
+                {f.firstWave.map(a => (
+                  <li key={a.id}>
+                    <Link href={`/artist/${a.id}`} className="fwave__photo">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={sizedImageUrl(a.imageUrl!, 250)} alt="" loading="lazy" />
+                      <span className="fwave__name">{a.name}</span>
+                      <span className="fwave__year">{a.activeFrom}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <figcaption className="fwave__caption">The first on the map to play it, oldest first.</figcaption>
+            </figure>
+          )}
+          <div className="farticle__columns">
+            {first && <p className="farticle__first">{first}</p>}
+            {'quote' in f.pull ? (
+              <blockquote className="fpull">
+                <p className="fpull__quote">{f.pull.quote}</p>
+                <footer className="fpull__who">
+                  {f.pull.speaker}{f.pull.about ? <>, on {f.pull.about}</> : null}
+                </footer>
+              </blockquote>
+            ) : (
+              <p className="fpull fpull--born">
+                <span className="fpull__label">Where it started</span>
+                <span className="fpull__quote">{f.pull.born}</span>
+              </p>
+            )}
+            {rest.map((p, i) => <p key={i}>{p}</p>)}
+          </div>
+          <aside className="fsound" aria-labelledby="feature-sound">
+            <span className="fsound__tape fsound__tape--l" aria-hidden />
+            <span className="fsound__tape fsound__tape--r" aria-hidden />
+            <h3 id="feature-sound" className="fsound__title">The sound</h3>
+            <p>{f.sound}</p>
+          </aside>
+        </Reveal>
 
-        {lineage && (
-          <GenreLineageStrip lineage={lineage} />
-        )}
+        <Reveal className="fsheet frecords-section" aria-labelledby="feature-records">
+          <h2 id="feature-records" className="fhead">Essential records</h2>
+          <Records records={f.records} tapeId={f.queue.id} queue={f.recordsQueue} />
+        </Reveal>
 
-        <section className="genre-page__section">
-          <h2>Origin</h2>
-          {content.originParagraphs.map((p, i) => <p key={i}>{p}</p>)}
-        </section>
+        <Reveal className="fsheet fplayers-section" aria-labelledby="feature-players">
+          <h2 id="feature-players" className="fhead">Who plays it</h2>
+          <Players groups={f.groups} />
+        </Reveal>
 
-        <section className="genre-page__section">
-          <h2>The sound</h2>
-          <p>{content.soundParagraph}</p>
-        </section>
-      </article>
+        <Reveal className="fsheet froad-section" aria-labelledby="feature-road">
+          <h2 id="feature-road" className="fhead">Where it came from, where it went</h2>
+          <Road road={f.road} />
+        </Reveal>
 
-      {/* Defining albums — wider section, breaks out of prose column. Placed
-          right after "The sound" (and before the artist sections below) so
-          the covers — the most visually arresting element on the page —
-          appear before a reader has scrolled through four blocks of prose
-          with nothing to look at. */}
-      <AlbumGrid heading="Defining albums" items={definingAlbums} />
-
-      {/* Lower prose — 700px reading width, no top padding */}
-      <div className="genre-page genre-page--lower">
-        {resolvedSections.map(section => (
-          <section className="genre-page__section" key={section.title}>
-            <h2>{section.title}</h2>
-            <p>{section.blurb}</p>
-            <div className="genre-page__section-artists">
-              <ArtistCircleGrid artists={section.artists} />
-            </div>
-          </section>
-        ))}
-
-        <IgniteGraphButton href={graphHref} label={graphLabel} secondary />
+        <Reveal as="nav" className="fend" aria-label="More features">
+          <FeatureStep step={f.prev} dir="prev" big />
+          <Link href="/genres" className="fend__issue">Back to today&rsquo;s issue</Link>
+          <FeatureStep step={f.next} dir="next" big />
+        </Reveal>
       </div>
       <SiteFooter />
     </div>

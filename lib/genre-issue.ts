@@ -70,7 +70,7 @@ export function coverStories(session: GenreSession): CoverStory[] {
       from,
       to,
       headline: `How ${inSentence(line[0].name)} became ${inSentence(line[line.length - 1].name)} in ${years} ${years === 1 ? 'year' : 'years'}`,
-      kicker: `${line.length} sounds, one road`,
+      kicker: `${line.length} genres, one line`,
     });
   }
   return stories.sort((a, b) => a.from - b.from || a.to - b.to || a.leafId.localeCompare(b.leafId));
@@ -108,8 +108,8 @@ export function buildIssue(
   const star = stars[story.leafId] ?? null;
   const steps = NUMBER_WORDS[story.line.length] ?? String(story.line.length);
   const standfirst = star
-    ? `From ${story.from} to ${story.to}: ${steps} sounds, one road, and ${star.name} at the end of it.`
-    : `From ${story.from} to ${story.to}: ${steps} sounds, one road.`;
+    ? `From ${story.from} to ${story.to}: ${steps} genres, each grown out of the one before, and ${star.name} at the end of it.`
+    : `From ${story.from} to ${story.to}: ${steps} genres, each grown out of the one before.`;
 
   const perYear = new Map<number, number>();
   for (const c of session.clips) perYear.set(c.emerged, (perYear.get(c.emerged) ?? 0) + 1);

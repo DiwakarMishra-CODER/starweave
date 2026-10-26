@@ -19,6 +19,16 @@
 // classicAlbum genuinely define the genre, not just does the artist carry
 // the tag.
 //
+// RANKED (Oct 2026): each list is in order of importance, most essential
+// first, and the page prints it in that order with the first as its "Start
+// here" record (it used to sort them by year, so shoegaze opened on
+// Psychocandy, not Loveless). Two older constraints no longer shape the
+// lists, and the per-genre notes below that cite them are history: counts
+// no longer have to land on 4/8/12 (that was a 4-across cover grid, now
+// gone), and a canonical record may appear on every page it defines (the
+// no-repeat rule was relaxed, see the folk page). The album test above
+// still holds.
+//
 // A per-section version of this field was tried and reverted — sections
 // divide artists into meaningful groups, but the defining-album canon is a
 // small curated set that doesn't distribute evenly across them, and several
@@ -81,7 +91,15 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // the four kept here are the unimpeachable classic-era pillars; this
     // does mean the grid loses its only modern-era (2020s) representation,
     // a real tradeoff of the cut rather than a costless one.
-    definingAlbums: ['the-jesus-and-mary-chain', 'my-bloody-valentine', 'ride', 'slowdive'],
+    // Lush's Spooky back: it was only cut to fill a 4-across grid that no
+    // longer exists.
+    definingAlbums: [
+      'my-bloody-valentine',
+      'slowdive',
+      'ride',
+      'the-jesus-and-mary-chain',
+      'lush',
+    ],
     sections: [
       {
         title: 'Pioneers',
@@ -162,12 +180,12 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // the-marias.
     definingAlbums: [
       'cocteau-twins',
+      'beach-house',
+      'mazzy-star',
+      'slowdive',
+      'galaxie-500',
       'this-mortal-coil',
       'julee-cruise',
-      'mazzy-star',
-      'galaxie-500',
-      'beach-house',
-      'slowdive',
       'the-radio-dept',
     ],
     sections: [
@@ -183,7 +201,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         title: 'Into shoegaze',
         blurb:
           "The point where dream-pop's haze turns to noise. These artists carry both tags in " +
-          "the graph, and most of them get fuller treatment on shoegaze's own page — this is " +
+          "the map, and most of them get fuller treatment on shoegaze's own page — this is " +
           "just where the two genres actually overlap.",
         artistIds: ['slowdive', 'ride', 'lush', 'airiel', 'the-radio-dept', 'sweet-trip', 'candy-claws'],
       },
@@ -249,16 +267,19 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // 8 rather than being cut — New Order and The Birthday Party added back
     // from the earlier cut-for-space list. Still cut for space: interpol,
     // women, parquet-courts, the-sound, the-chameleons, squid, editors.
+    // Wire's Pink Flag in (with Chairs Missing it's one of the records
+    // post-punk is dated from; it stays on punk's page too). The Cure out:
+    // Disintegration had crept back in against the exclusion above.
     definingAlbums: [
       'joy-division',
+      'wire',
       'gang-of-four',
-      'siouxsie-and-the-banshees',
-      'echo-and-the-bunnymen',
-      'the-fall',
       'talking-heads',
+      'siouxsie-and-the-banshees',
+      'the-fall',
       'new-order',
+      'echo-and-the-bunnymen',
       'the-birthday-party',
-      'the-cure',
     ],
     sections: [
       {
@@ -309,7 +330,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     originParagraphs: [
       "The label crystallized around 1979, when Talking Heads' Fear of Music and the emerging " +
         "art-pop wing of British music (Kate Bush chief among them, working outside this " +
-        "graph) proved that conceptual ambition and chart appeal weren't opposites. David " +
+        "map) proved that conceptual ambition and chart appeal weren't opposites. David " +
         "Bowie had already spent the decade demonstrating the same thing — a different " +
         "persona and sonic palette per album, glam theater applied to genuinely strange music " +
         "— and Brian Eno, moving between Bowie's Berlin records and his own ambient " +
@@ -341,19 +362,19 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // destroyer's peers of-montreal, prefab-sprout, jockstrap, the-last-
     // dinner-party, everything-everything, sheena-ringo, magdalena-bay,
     // kero-kero-bonito, oklou, perfume-genius.
+    // Destroyer and Grizzly Bear out (Kaputt is sophisti-pop, Veckatimest
+    // chamber/indie); both stay in the groups below.
     definingAlbums: [
       'david-bowie',
-      'brian-eno',
-      'destroyer',
-      'st-vincent',
-      'the-blue-nile',
-      'grizzly-bear',
-      'weyes-blood',
-      'julia-holter',
       'bjork',
-      'grimes',
+      'brian-eno',
+      'the-blue-nile',
+      'st-vincent',
       'fka-twigs',
+      'grimes',
+      'weyes-blood',
       'caroline-polachek',
+      'julia-holter',
     ],
     sections: [
       {
@@ -398,6 +419,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           'stereolab',
           'the-knife',
           'sparks',
+          'blood-orange',
           'arca',
           'caroline-polachek',
           'oklou',
@@ -451,11 +473,15 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // drone-ambient records. This does undo 2814's earlier addition (it had
     // been the grid's only vaporwave representative) — vaporwave now has
     // its own dedicated page instead, which is the more honest home for it.
+    // Aphex Twin's Selected Ambient Works 85-92 in and first: the
+    // one-grid-per-artist rule above is relaxed, and it is the record most
+    // listeners start ambient from. Grouper back (cut only for the grid).
     definingAlbums: [
-      'brian-eno',
+      'aphex-twin',
       'harold-budd',
-      'tim-hecker',
+      'brian-eno',
       'stars-of-the-lid',
+      'tim-hecker',
       'grouper',
     ],
     sections: [
@@ -471,7 +497,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         blurb:
           "Ambient pushed toward its heaviest, most physical extreme — long-form drone, " +
           "industrial-adjacent texture, and post-rock's widescreen calm.",
-        artistIds: ['tim-hecker', 'stars-of-the-lid', 'coil', 'grouper', 'sigur-ros'],
+        artistIds: ['tim-hecker', 'stars-of-the-lid', 'coil', 'grouper', 'sigur-ros', 'natural-snow-buildings'],
       },
       {
         title: 'The digital generation',
@@ -505,9 +531,9 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         "confrontational sustained itself without radio or major labels.",
       "A parallel, tightly connected scene was doing much the same thing in Washington, DC, " +
         "centered on Ian MacKaye's Dischord label and Minor Threat's straight-edge discipline. " +
-        "Hardcore's most direct descendants — post-hardcore and emo, both genres in this graph " +
+        "Hardcore's most direct descendants — post-hardcore and emo, both genres in this map " +
         "in their own right — grew straight out of these same DC and LA circles. Its wider " +
-        "downstream, pop-punk and metalcore, is real but deliberately outside this graph's scope.",
+        "downstream, pop-punk and metalcore, is real but deliberately outside this map's scope.",
     ],
     soundParagraph:
       "Tempos run faster than punk's and songs run shorter, often under two minutes, built from " +
@@ -529,7 +555,12 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // earlier addition, which had been the grid's only 21st-century record
     // — the page is now weighted entirely toward the 1980s wave again, a
     // real tradeoff worth naming rather than hiding.
-    definingAlbums: ['black-flag', 'bad-brains', 'minor-threat', 'dead-kennedys'],
+    definingAlbums: [
+      'black-flag',
+      'bad-brains',
+      'minor-threat',
+      'dead-kennedys',
+    ],
     sections: [
       {
         title: 'DC and its lineage',
@@ -587,7 +618,12 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // dropped, leaving the PC Music pair plus the two records (100 gecs,
     // underscores) that carry the digicore generation's actual breakout
     // moments.
-    definingAlbums: ['sophie', 'a-g-cook', '100-gecs', 'underscores'],
+    definingAlbums: [
+      'sophie',
+      '100-gecs',
+      'a-g-cook',
+      'underscores',
+    ],
     sections: [
       {
         title: 'PC Music and its circle',
@@ -610,7 +646,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     deck:
       "West Germany's postwar generation refusing to inherit Anglo-American blues-rock — hypnotic, " +
       "motorik rhythm and studio experimentation in its place. Krautrock is a single, compact " +
-      "scene, but its downstream runs through nearly every electronic genre in this graph.",
+      "scene, but its downstream runs through nearly every electronic genre in this map.",
     originParagraphs: [
       "Can and Amon Düül both formed in 1968, assembled out of a generation with one foot in " +
         "experimental composition — Can's Irmin Schmidt and Holger Czukay had studied under " +
@@ -639,7 +675,14 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // instead); Tortoise's TNT is post-rock's own genre-defining album;
     // Squid's Bright Green Field is post-punk/art-rock. That leaves exactly
     // the 4 actual 1968–73 originators — no padding was needed to get there.
-    definingAlbums: ['kraftwerk', 'can', 'neu', 'faust'],
+    // Trans-Europe Express last: it is Kraftwerk's electronic turn rather than
+    // krautrock proper.
+    definingAlbums: [
+      'can',
+      'neu',
+      'faust',
+      'kraftwerk',
+    ],
     sections: [
       {
         title: 'The scene and its heirs',
@@ -689,13 +732,17 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // the old note this replaced); Buzzcocks dropped from the grid to make
     // room, though Buzzcocks stays tagged and still appears in the UK
     // section below.
+    // Fugazi out (Repeater is post-hardcore, as the exclusion above says; it
+    // had crept back in). X-Ray Spex's Germfree Adolescents and the Wipers' Is
+    // This Real? in.
     definingAlbums: [
-      'sex-pistols',
       'ramones',
+      'sex-pistols',
+      'wire',
       'the-clash',
       'patti-smith',
-      'fugazi',
-      'wire',
+      'x-ray-spex',
+      'wipers',
     ],
     sections: [
       {
@@ -761,14 +808,14 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // space: unwound, nomeansno, the-dismemberment-plan.
     definingAlbums: [
       'fugazi',
-      'big-black',
-      'at-the-drive-in',
       'slint',
-      'drive-like-jehu',
+      'rites-of-spring',
+      'big-black',
       'the-jesus-lizard',
+      'drive-like-jehu',
+      'at-the-drive-in',
       'refused',
       'trail-of-dead',
-      'rites-of-spring',
     ],
     sections: [
       {
@@ -847,7 +894,15 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // considered there); La Dispute and Far Apart reserved for
     // post-hardcore's own framing of the overlap; Christie Front Drive cut
     // for space.
-    definingAlbums: ['rites-of-spring', 'sunny-day-real-estate', 'brand-new', 'get-up-kids'],
+    // American Football in: it is on midwest emo's page too, and repeating a
+    // canonical record is now allowed.
+    definingAlbums: [
+      'sunny-day-real-estate',
+      'rites-of-spring',
+      'american-football',
+      'get-up-kids',
+      'brand-new',
+    ],
     sections: [
       {
         title: 'The founding wave',
@@ -915,7 +970,16 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // yo-la-tengo, superchunk, unwound, trail-of-dead, blonde-redhead,
     // black-midi — all real, all already claimed or better-represented
     // elsewhere.
-    definingAlbums: ['sonic-youth', 'pixies', 'dinosaur-jr', 'big-black', 'the-jesus-lizard', 'mudhoney', 'women', 'dna'],
+    definingAlbums: [
+      'sonic-youth',
+      'pixies',
+      'dinosaur-jr',
+      'big-black',
+      'the-jesus-lizard',
+      'dna',
+      'mudhoney',
+      'women',
+    ],
     sections: [
       {
         title: 'No wave origins',
@@ -980,7 +1044,16 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Magdalena Bay left for art-pop's own page, where their albums are
     // already claimed. Cut for space: porter-robinson, sharon-van-etten,
     // george-clanton.
-    definingAlbums: ['new-order', 'depeche-mode', 'the-human-league', 'omd', 'gary-numan', 'the-knife', 'hot-chip', 'the-postal-service'],
+    definingAlbums: [
+      'the-human-league',
+      'depeche-mode',
+      'omd',
+      'new-order',
+      'gary-numan',
+      'the-knife',
+      'the-postal-service',
+      'hot-chip',
+    ],
     sections: [
       {
         title: 'The founding wave, 1978–1983',
@@ -1003,7 +1076,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         blurb:
           "A generation of indietronica and internet-native artists rediscovered the genre's " +
           "warmth, often filtered through nostalgia for its own earliest records.",
-        artistIds: ['hot-chip', 'the-postal-service', 'george-clanton'],
+        artistIds: ['hot-chip', 'the-postal-service', 'blood-orange', 'george-clanton'],
       },
       {
         title: 'Where synth-pop blurs',
@@ -1047,7 +1120,16 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // rather than also appearing on indie-pop's page, where these same four
     // artists are deliberately framed as a secondary "American wing" rather
     // than given their own album cards. Cut for space: mj-lenderman.
-    definingAlbums: ['pavement', 'sebadoh', 'guided-by-voices', 'liz-phair', 'olivia-tremor-control', 'alex-g', 'mac-demarco', 'car-seat-headrest'],
+    definingAlbums: [
+      'pavement',
+      'guided-by-voices',
+      'liz-phair',
+      'sebadoh',
+      'car-seat-headrest',
+      'alex-g',
+      'olivia-tremor-control',
+      'mac-demarco',
+    ],
     sections: [
       {
         title: 'The American 90s wave',
@@ -1055,7 +1137,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "The genre's actual founding generation, all working within a couple of years of each " +
           "other without much direct contact — home-4-track recording as a genuine budget " +
           "necessity that became a defining sound.",
-        artistIds: ['pavement', 'sebadoh', 'guided-by-voices', 'liz-phair', 'beck', 'olivia-tremor-control'],
+        artistIds: ['pavement', 'sebadoh', 'guided-by-voices', 'liz-phair', 'beck', 'olivia-tremor-control', 'ween'],
       },
       {
         title: 'The 2010s bedroom revival',
@@ -1113,15 +1195,15 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // dirty-three.
     definingAlbums: [
       'talk-talk',
-      'this-heat',
-      'bark-psychosis',
+      'slint',
       'godspeed-you-black-emperor',
+      'tortoise',
       'mogwai',
       'sigur-ros',
+      'bark-psychosis',
       'explosions-in-the-sky',
-      'tortoise',
       'swans',
-      'slint',
+      'this-heat',
     ],
     sections: [
       {
@@ -1196,7 +1278,19 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // alt-country turn, not the earlier lo-fi-indie-pop work that actually
     // earns her this tag. of Montreal excluded the same way: Hissing Fauna
     // is glam art-pop, not the early twee records that earn the tag.
-    definingAlbums: ['the-smiths', 'the-stone-roses', 'belle-and-sebastian', 'the-sundays', 'rem', 'the-shins', 'clairo', 'snail-mail'],
+    // Clairo and Snail Mail out (Charm is soft rock, Lush indie rock); Belle
+    // and Sebastian and Camera Obscura in (repeats now allowed) and Japanese
+    // Breakfast's Jubilee.
+    definingAlbums: [
+      'the-smiths',
+      'belle-and-sebastian',
+      'rem',
+      'the-stone-roses',
+      'the-sundays',
+      'the-shins',
+      'camera-obscura',
+      'japanese-breakfast',
+    ],
     sections: [
       {
         title: 'The originators',
@@ -1236,7 +1330,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         blurb:
           "A 2010s–2020s generation absorbed indie-pop's melodic instinct into bedroom-pop's " +
           "laptop-and-webcam production — the tradition's newest chapter, not a break from it.",
-        artistIds: ['beach-house', 'clairo', 'snail-mail', 'japanese-breakfast', 'mac-demarco', 'waxahatchee', 'beabadoobee'],
+        artistIds: ['beach-house', 'blood-orange', 'clairo', 'snail-mail', 'japanese-breakfast', 'mac-demarco', 'waxahatchee', 'beabadoobee'],
       },
     ],
   },
@@ -1277,7 +1371,12 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Normalization pass: cut from 5 to 4 — Christie Front Drive dropped,
     // the least-known of the five, leaving the Champaign-Urbana founding
     // trio plus Get Up Kids as the "wider circle" representative.
-    definingAlbums: ['sunny-day-real-estate', 'cap-n-jazz', 'american-football', 'get-up-kids'],
+    definingAlbums: [
+      'american-football',
+      'cap-n-jazz',
+      'get-up-kids',
+      'sunny-day-real-estate',
+    ],
     sections: [
       {
         title: 'The Champaign-Urbana axis',
@@ -1334,7 +1433,15 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Normalization pass: cut from 6 to 4 — black midi and Pinback dropped;
     // math-rock is more a secondary tag than a primary identity for either
     // (art-rock/post-punk for black midi, indie-rock for Pinback).
-    definingAlbums: ['slint', 'drive-like-jehu', 'at-the-drive-in', 'toe'],
+    // American Football in, repeating midwest emo's centrepiece: it is as much
+    // a math-rock landmark.
+    definingAlbums: [
+      'slint',
+      'drive-like-jehu',
+      'american-football',
+      'toe',
+      'at-the-drive-in',
+    ],
     sections: [
       {
         title: 'The founding wave',
@@ -1399,7 +1506,12 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // credit duplicates Teenage Jesus and the Jerks' own, so keeping both
     // added nothing distinct) and Rhys Chatham dropped in favor of Glenn
     // Branca alone representing the guitar-orchestra wing.
-    definingAlbums: ['teenage-jesus-and-the-jerks', 'dna', 'james-chance-and-the-contortions', 'glenn-branca'],
+    definingAlbums: [
+      'teenage-jesus-and-the-jerks',
+      'james-chance-and-the-contortions',
+      'dna',
+      'glenn-branca',
+    ],
     sections: [
       {
         title: 'The No New York scene and its outgrowths',
@@ -1463,8 +1575,8 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // revival.
     definingAlbums: [
       'gang-of-four',
-      'james-chance-and-the-contortions',
       'lcd-soundsystem',
+      'james-chance-and-the-contortions',
       'the-rapture',
       'chk-chk-chk',
     ],
@@ -1502,8 +1614,8 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     originParagraphs: [
       "Bauhaus's 1979 single \"Bela Lugosi's Dead\" — nine minutes of dub-cavernous bass, sparse " +
         "guitar scratches, and Peter Murphy's vampiric drawl, named after the Dracula actor " +
-        "outright — is the genre's usual origin point, even though Bauhaus themselves aren't a " +
-        "graph node here. Siouxsie and the Banshees and The Birthday Party arrived from the same " +
+        "outright — is the genre's usual origin point, even though Bauhaus themselves aren't " +
+        "on the map here. Siouxsie and the Banshees and The Birthday Party arrived from the same " +
         "UK post-punk scene at almost the same moment, both trading post-punk's angularity for " +
         "something more theatrical and explicitly morbid, Nick Cave's Birthday Party detouring " +
         "into outright blues-damaged menace.",
@@ -1525,7 +1637,12 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Dinner Party dropped, keeping the three UK founders plus Dead Can
     // Dance representing goth's reach beyond the UK (Dead Can Dance's album
     // is genuinely dual-fitting — it's also darkwave's own central pick).
-    definingAlbums: ['the-cure', 'siouxsie-and-the-banshees', 'the-birthday-party', 'dead-can-dance'],
+    definingAlbums: [
+      'siouxsie-and-the-banshees',
+      'the-cure',
+      'the-birthday-party',
+      'dead-can-dance',
+    ],
     sections: [
       {
         title: 'The UK founding wave',
@@ -1551,8 +1668,8 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     deck:
       "Goth's electronic cousin — the same funereal atmosphere and theatrical dread, built from " +
       "synthesizers and drones as much as guitars. It's a small, specialist lineage rather than a " +
-      "wide-reaching scene, and this page is honestly sized to match: only two artists in the " +
-      "graph carry the tag.",
+      "wide-reaching scene, and this page is honestly sized to match: only two artists on the " +
+      "map carry the tag.",
     originParagraphs: [
       "Darkwave grew out of European goth in the mid-1980s once synthesizers and drum machines " +
         "started replacing guitars as the genre's primary color. Dead Can Dance, formed in " +
@@ -1573,7 +1690,10 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       "would elsewhere.",
     // Only 2 artists carry this tag in the graph — the list below is
     // necessarily short, not padded. Don't force it to 4.
-    definingAlbums: ['dead-can-dance', 'anna-von-hausswolff'],
+    definingAlbums: [
+      'dead-can-dance',
+      'anna-von-hausswolff',
+    ],
     sections: [
       {
         title: 'A small, electronic lineage',
@@ -1622,12 +1742,17 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // The Modern Lovers dropped, keeping the two actual co-founders (Velvet
     // Underground, The Stooges) plus Patti Smith and Ramones marking the
     // handoff into punk proper.
+    // MC5 in (Kick Out the Jams is on file now); the New York Dolls and the
+    // Modern Lovers back (cut only for the grid). Ramones last, as the handoff
+    // into punk.
     definingAlbums: [
       'velvet-underground',
       'the-stooges',
+      'mc5',
+      'new-york-dolls',
+      'the-modern-lovers',
       'patti-smith',
       'ramones',
-      'new-york-dolls',
     ],
     sections: [
       {
@@ -1687,12 +1812,16 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // that's where the fuller telling of their record belongs. MC5 excluded
     // for having no classicAlbum on file (see proto-punk's own note on the
     // same gap).
+    // The Stooges and MC5 in: the no-repeat rule is relaxed and MC5 has an
+    // album on file now, so the page no longer skips the 1960s it is named
+    // for.
     definingAlbums: [
+      'the-stooges',
+      'mc5',
+      'the-modern-lovers',
       'the-strokes',
       'the-white-stripes',
       'king-gizzard-and-the-lizard-wizard',
-      'the-modern-lovers',
-      'the-stooges',
     ],
     sections: [
       {
@@ -1750,7 +1879,16 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // earlier, more straightforward jangle-pop work). Belle and Sebastian's
     // and Camera Obscura's albums are used here rather than repeated on
     // chamber-pop's page, where both artists also carry a tag.
-    definingAlbums: ['big-star', 'rem', 'the-smiths', 'the-stone-roses', 'the-sundays', 'the-cranberries', 'belle-and-sebastian', 'camera-obscura'],
+    definingAlbums: [
+      'rem',
+      'the-smiths',
+      'big-star',
+      'the-stone-roses',
+      'the-sundays',
+      'belle-and-sebastian',
+      'camera-obscura',
+      'the-cranberries',
+    ],
     sections: [
       {
         title: 'American roots',
@@ -1811,15 +1949,18 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // page frames them as chamber-pop's founding wave in prose without also
     // reaching for the same two covers). Cut for space — genuinely chamber-
     // pop, just short of the top 8: the-national, perfume-genius.
+    // The Blue Nile and Prefab Sprout out (Hats and Steve McQueen are
+    // sophisti-pop, and both predate the genre); Belle and Sebastian (repeats
+    // now allowed) and the National's Boxer in.
     definingAlbums: [
-      'the-blue-nile',
-      'prefab-sprout',
       'sufjan-stevens',
       'arcade-fire',
-      'fleet-foxes',
-      'black-country-new-road',
+      'belle-and-sebastian',
       'fiona-apple',
+      'fleet-foxes',
       'weyes-blood',
+      'black-country-new-road',
+      'the-national',
     ],
     sections: [
       {
@@ -1856,7 +1997,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
   'singer-songwriter': {
     deck:
       "One person, one guitar or piano, and lyrics written in the first person — the most " +
-      "enduring, least genre-bound tradition in this graph. Singer-songwriter isn't defined by a " +
+      "enduring, least genre-bound tradition in this map. Singer-songwriter isn't defined by a " +
       "sound so much as by an authorial stance: the writer is presumed to be singing about their " +
       "own life.",
     originParagraphs: [
@@ -1884,7 +2025,16 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // vashti-bunyan, bert-jansch, roy-harper, karen-dalton, sharon-van-etten,
     // adrianne-lenker. No off-genre exclusions — every candidate album here
     // is a real, undisputed singer-songwriter record.
-    definingAlbums: ['bob-dylan', 'leonard-cohen', 'joni-mitchell', 'nick-drake', 'neil-young', 'townes-van-zandt', 'john-prine', 'elliott-smith'],
+    definingAlbums: [
+      'joni-mitchell',
+      'bob-dylan',
+      'leonard-cohen',
+      'nick-drake',
+      'neil-young',
+      'elliott-smith',
+      'john-prine',
+      'townes-van-zandt',
+    ],
     sections: [
       {
         title: 'The originators, 1965–1972',
@@ -1926,7 +2076,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         "had already found a plainspoken, literate register between folk and indie rock years " +
         "before the genre had a name — David Berman's and John Darnielle's songwriting drawing as " +
         "much on rock lyricism as on folk tradition. The genre itself dates to 2004, once Sufjan " +
-        "Stevens' and Iron & Wine's records (the latter outside this graph) made the combination " +
+        "Stevens' and Iron & Wine's records (the latter outside this map) made the combination " +
         "legible as its own thing: hushed, acoustic-based songwriting recorded with an indie band's " +
         "studio ambition rather than a folk revivalist's minimalism.",
       "Bon Iver's For Emma, Forever Ago (2007), recorded alone in a Wisconsin cabin, became the " +
@@ -1946,12 +2096,15 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Normalization pass: cut from 6 to 4 — The Mountain Goats and Kurt Vile
     // dropped, keeping Silver Jews as the pre-genre-name anchor alongside
     // the three most influential 2000s–2020s records.
+    // The Mountain Goats back (cut only for the grid); Silver Jews last, as
+    // the anchor from before the name.
     definingAlbums: [
-      'silver-jews',
       'bon-iver',
-      'big-thief',
-      'phoebe-bridgers',
       'sufjan-stevens',
+      'phoebe-bridgers',
+      'big-thief',
+      'the-mountain-goats',
+      'silver-jews',
     ],
     sections: [
       {
@@ -1980,7 +2133,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     originParagraphs: [
       "The genre takes its name from the same source twice over: Uncle Tupelo's 1990 debut No " +
         "Depression (itself named for a Carter Family song), and the alt-country fanzine that later " +
-        "took its own name from that album. Uncle Tupelo, outside this graph, fused punk volume and " +
+        "took its own name from that album. Uncle Tupelo, outside this map, fused punk volume and " +
         "DIY recording with straight country songwriting, rejecting Nashville's polished mainstream " +
         "in favor of something rougher and more indebted to Gram Parsons' original cosmic-American-" +
         "music fusion.",
@@ -2013,13 +2166,13 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Wednesday were tagged, had albums, and were simply never picked.
     definingAlbums: [
       'lucinda-williams',
-      'drive-by-truckers',
       'songs-ohia',
-      'angel-olsen',
-      'bright-eyes',
-      'wednesday',
-      'mj-lenderman',
       'silver-jews',
+      'drive-by-truckers',
+      'bright-eyes',
+      'angel-olsen',
+      'mj-lenderman',
+      'wednesday',
     ],
     sections: [
       {
@@ -2050,7 +2203,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         "as any note played. Low, forming in Duluth, Minnesota that same year, pushed the " +
         "minimalism furthest — hushed harmony vocals over a barely-there drum kit, volume kept " +
         "deliberately low even live. Galaxie 500 is often named alongside both as a third founding " +
-        "reference, though in this graph they carry a dream-pop tag rather than a slowcore one.",
+        "reference, though in this map they carry a dream-pop tag rather than a slowcore one.",
       "Mark Kozelek's Red House Painters brought a more baroque, string-laden version of the same " +
         "patience, and the sound has stayed a small, quietly persistent undercurrent since — " +
         "resurfacing in Cat Power's hushed early records and, decades later, in Phil Elverum's " +
@@ -2068,10 +2221,10 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // pick. The other four are the genre's founders plus its main baroque
     // and drone-leaning extensions.
     definingAlbums: [
+      'galaxie-500',
       'codeine',
       'low',
       'red-house-painters',
-      'galaxie-500',
       'duster',
     ],
     sections: [
@@ -2099,7 +2252,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         "a label, or much more than a laptop and a cheap interface. It's less a sound than a " +
         "production circumstance: hooks and melody as direct as any indie-pop record, built " +
         "entirely inside a bedroom rather than a rehearsal space.",
-      "Three of this graph's four bedroom-pop artists — Clairo, Snail Mail, beabadoobee — also " +
+      "Three of this map's four bedroom-pop artists — Clairo, Snail Mail, beabadoobee — also " +
         "carry the indie-pop tag, and the overlap is real: bedroom-pop is best understood as indie-" +
         "pop's most recent recording generation, distinguished mainly by where and how the record " +
         "was actually made. Alex G, the fourth, sits closer to lo-fi's rougher, more experimental " +
@@ -2114,7 +2267,11 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Only 4 artists carry this tag, so 4 is the correct, non-padded count —
     // not a cap being undershot. All four albums are genuinely bedroom-pop-
     // defining.
-    definingAlbums: ['clairo', 'beabadoobee', 'alex-g'],
+    definingAlbums: [
+      'alex-g',
+      'clairo',
+      'beabadoobee',
+    ],
     sections: [
       {
         title: 'The streaming-era bedroom scene',
@@ -2135,7 +2292,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       "pop's hooks while treating the studio itself as a hallucinogen.",
     originParagraphs: [
       "1966 is the hinge year on both sides of the Atlantic — the Beach Boys' and Beatles' own " +
-        "studio turn (both outside this graph) proved a pop song could carry orchestral ambition " +
+        "studio turn (both outside this map) proved a pop song could carry orchestral ambition " +
         "and backwards, treated sound and still function as a single. The Incredible String Band " +
         "took the same impulse toward British folk-psychedelia that same year, while Silver Apples, " +
         "working in New York, arrived at a stranger, purely electronic version of the same idea a " +
@@ -2160,14 +2317,16 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // sound). Excluded — already claimed elsewhere: mac-demarco and olivia-
     // tremor-control (Salad Days and Dusk at Cubist Castle are both already
     // used on lo-fi's own page). Cut for space: of-montreal.
+    // The Olivia Tremor Control in (repeats now allowed); the Shins out (Oh,
+    // Inverted World is indie pop, on that page).
     definingAlbums: [
-      'silver-apples',
-      'incredible-string-band',
-      'the-shins',
-      'neutral-milk-hotel',
-      'mgmt',
-      'tame-impala',
       'animal-collective',
+      'neutral-milk-hotel',
+      'tame-impala',
+      'olivia-tremor-control',
+      'mgmt',
+      'incredible-string-band',
+      'silver-apples',
       'mid-air-thief',
     ],
     sections: [
@@ -2238,7 +2397,12 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Normalization pass: cut from 5 to 4 — Four Tet dropped, which removes
     // the "folktronica turn" section's own grid representation in favor of
     // the four hardest, most canonically IDM-defining records.
-    definingAlbums: ['aphex-twin', 'autechre', 'boards-of-canada', 'squarepusher'],
+    definingAlbums: [
+      'aphex-twin',
+      'boards-of-canada',
+      'autechre',
+      'squarepusher',
+    ],
     sections: [
       {
         title: 'The Warp generation',
@@ -2269,7 +2433,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         "Industrial Records label, treated the studio as a machine for producing calculated " +
         "unpleasantness — tape manipulation, distorted electronics, and deliberately abrasive " +
         "live performance art rather than songs in any conventional sense. Throbbing Gristle " +
-        "isn't a node in this graph, but the scene's basic instinct — noise as confrontation, " +
+        "isn't on this map, but the scene's basic instinct — noise as confrontation, " +
         "the factory rather than the stage as the guiding image — runs through every artist " +
         "below.",
       "Suicide, working in New York around the same years with nothing but a drum machine and a " +
@@ -2327,7 +2491,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       "Drone as a technique predates any genre built around it by decades — La Monte Young's " +
         "minimalist sustained-tone experiments in the early 1960s and centuries of raga and " +
         "Indian classical practice did the same thing long before rock or electronic music " +
-        "picked it up. As its own recognizable current within this graph's world, though, drone " +
+        "picked it up. As its own recognizable current within this map's world, though, drone " +
         "dates to around 1990, when Stars of the Lid began stretching guitar and tape loops " +
         "into pieces that could run twenty minutes on a single, barely-moving chord.",
       "The style spread in two directions from there: an electronic wing (Tim Hecker's " +
@@ -2350,12 +2514,16 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // drone-adjacent, are cut for space in favor of picks that sit more
     // centrally in the genre; both are still represented as section members
     // below.
+    // Low out (Things We Lost in the Fire is slowcore, on that page); Natural
+    // Snow Buildings' The Winter Ray and Have a Nice Life's Deathconsciousness
+    // in.
     definingAlbums: [
-      'tim-hecker',
       'stars-of-the-lid',
+      'tim-hecker',
       'grouper',
-      'low',
+      'natural-snow-buildings',
       'anna-von-hausswolff',
+      'have-a-nice-life',
     ],
     sections: [
       {
@@ -2363,7 +2531,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         blurb:
           "Drone's most directly ambient-descended wing — tone and texture stretched past the " +
           "point where \"song\" is even the right word.",
-        artistIds: ['tim-hecker', 'stars-of-the-lid', 'grouper', 'coil'],
+        artistIds: ['tim-hecker', 'stars-of-the-lid', 'grouper', 'coil', 'natural-snow-buildings'],
       },
       {
         title: "Slowcore's drone wing",
@@ -2419,7 +2587,12 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Normalization pass: cut from 5 to 4 — Sneaker Pimps dropped, the
     // slickest and least essential of the five, keeping the Bristol
     // founding trio plus Burial's modern revival.
-    definingAlbums: ['massive-attack', 'portishead', 'tricky', 'burial'],
+    definingAlbums: [
+      'portishead',
+      'massive-attack',
+      'tricky',
+      'burial',
+    ],
     sections: [
       {
         title: 'The Bristol sound, 1991–1996',
@@ -2449,7 +2622,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         "toward the 1960s' most extravagant studio techniques — layered tape effects, orchestral " +
         "arrangement, songs that swelled rather than just played — at a moment when the wider " +
         "indie underground was mostly moving the opposite direction, toward lo-fi minimalism. " +
-        "Mercury Rev isn't a node in this graph, but the Flaming Lips' own arc from noisy guitar " +
+        "Mercury Rev isn't on this map, but the Flaming Lips' own arc from noisy guitar " +
         "band toward The Soft Bulletin's symphonic maximalism follows exactly that same " +
         "instinct.",
       "Mazzy Star, working slightly earlier out of Los Angeles's Paisley Underground scene, " +
@@ -2472,7 +2645,12 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Normalization pass: cut from 5 to 4 — Candy Claws dropped, the most
     // niche of the five, keeping the genre's co-founder plus its three
     // biggest 2010s-revival names.
-    definingAlbums: ['the-flaming-lips', 'tame-impala', 'king-gizzard-and-the-lizard-wizard', 'mid-air-thief'],
+    definingAlbums: [
+      'the-flaming-lips',
+      'tame-impala',
+      'king-gizzard-and-the-lizard-wizard',
+      'mid-air-thief',
+    ],
     sections: [
       {
         title: 'The first wave, 1988–1990',
@@ -2533,12 +2711,12 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // originator/major-figure pair alongside Jockstrap and Xiu Xiu as the
     // most substantial of the 21st-century generation.
     definingAlbums: [
-      'silver-apples',
       'animal-collective',
-      'jockstrap',
-      'xiu-xiu',
       'stereolab',
       'olivia-tremor-control',
+      'xiu-xiu',
+      'jockstrap',
+      'silver-apples',
     ],
     sections: [
       {
@@ -2547,7 +2725,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Silver Apples built the template decades before the genre had a name; Xiu Xiu, " +
           "Animal Collective, and Julia Holter each found their own way to wrap genuinely " +
           "strange production around real melody.",
-        artistIds: ['silver-apples', 'xiu-xiu', 'animal-collective', 'julia-holter', 'stereolab', 'olivia-tremor-control'],
+        artistIds: ['silver-apples', 'ween', 'xiu-xiu', 'animal-collective', 'julia-holter', 'stereolab', 'olivia-tremor-control'],
       },
       {
         title: 'The 21st-century pop-collage generation',
@@ -2563,11 +2741,11 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     deck:
       "Rock ambition borrowed from the art gallery rather than the blues bar — conceptual " +
       "seriousness, theatrical persona, and a studio treated as a compositional tool in its own " +
-      "right. Art-rock is this graph's oldest root genre, running in an unbroken line from 1967 " +
+      "right. Art-rock is this map's oldest root genre, running in an unbroken line from 1967 " +
       "to the present.",
     originParagraphs: [
       "The Velvet Underground & Nico, released in 1967, is as close to a single founding " +
-        "document as this graph's genres get — Lou Reed and John Cale's fusion of pop songcraft " +
+        "document as this map's genres get — Lou Reed and John Cale's fusion of pop songcraft " +
         "with Cale's classical-avant-garde training and Andy Warhol's art-world backing, " +
         "treating a rock record as something that could carry the same seriousness as a gallery " +
         "show. Nico's own solo work extended the same instinct into something colder and more " +
@@ -2597,18 +2775,20 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // same batch), which needed them more. Cut for space, real candidates:
     // fishmans, geese, black-midi, black-country-new-road, squid,
     // everything-everything.
+    // Jeff Buckley out (Grace is not an art-rock record); Talk Talk's Laughing
+    // Stock in.
     definingAlbums: [
       'velvet-underground',
-      'nico',
+      'david-bowie',
+      'talking-heads',
       'television',
+      'can',
+      'radiohead',
+      'talk-talk',
+      'tom-waits',
+      'nico',
       'nick-cave-and-the-bad-seeds',
       'broadcast',
-      'radiohead',
-      'jeff-buckley',
-      'tom-waits',
-      'david-bowie',
-      'can',
-      'talking-heads',
     ],
     sections: [
       {
@@ -2688,22 +2868,20 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // The Flaming Lips (neo-psychedelia's own page, this same batch).
     // Everything Everything is a real, if more marginal, candidate cut for
     // space.
+    // Cut to the genre's core: Hum, the Cranberries, Blur, Beck, the Strokes
+    // and the White Stripes out (all on pages that fit them better); Dinosaur
+    // Jr. in.
     definingAlbums: [
-      'husker-du',
-      'the-replacements',
       'nirvana',
-      'built-to-spill',
-      'modest-mouse',
-      'hum',
-      'the-cranberries',
-      'blur',
-      'beck',
-      'the-strokes',
-      'the-white-stripes',
       'sonic-youth',
       'pixies',
       'rem',
       'radiohead',
+      'the-replacements',
+      'husker-du',
+      'dinosaur-jr',
+      'modest-mouse',
+      'built-to-spill',
     ],
     sections: [
       {
@@ -2720,7 +2898,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Nevermind's crossover pulled a whole underground into the mainstream at once — some " +
           "of it (Nirvana itself, Beck) genuinely mainstream-scale, some of it (Bikini Kill, " +
           "Pavement) still resolutely independent despite carrying the same new label.",
-        artistIds: ['nirvana', 'pavement', 'built-to-spill', 'modest-mouse', 'hum', 'the-cranberries', 'blur', 'bikini-kill', 'beck'],
+        artistIds: ['nirvana', 'pavement', 'built-to-spill', 'modest-mouse', 'hum', 'the-cranberries', 'blur', 'bikini-kill', 'beck', 'the-breeders', 'ween'],
       },
       {
         title: 'Alt-rock as marketing category, 1997–2010s',
@@ -2746,7 +2924,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     deck:
       "The word \"indie\" started as a description of who released a record, not what it sounded " +
       "like — an independent label, outside the major-label system, however that label's actual " +
-      "sound varied. Indie-rock is this graph's broadest genre by far, and honestly, there's no " +
+      "sound varied. Indie-rock is this map's broadest genre by far, and honestly, there's no " +
       "single indie-rock sound underneath the label — the narrower genres nested beneath it " +
       "(lo-fi, indie-pop, noise-rock, chamber-pop, and more) are where the real sonic " +
       "distinctions actually live.",
@@ -2788,20 +2966,23 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // couldn't fit every one of the 51 artists tagged here, and the twelve
     // below were picked to span the genre's full thirty-year, four-section
     // range rather than cluster in any one era.
+    // Pavement, Liz Phair, Modest Mouse and Yo La Tengo in (repeats now
+    // allowed: the genre's own canon was missing from its page). Out:
+    // Stereolab, Fontaines D.C., Violent Femmes (1983, before the genre),
+    // Waxahatchee and Snail Mail.
     definingAlbums: [
-      'stereolab',
-      'fontaines-dc',
+      'pavement',
       'neutral-milk-hotel',
-      'the-dismemberment-plan',
-      'violent-femmes',
+      'liz-phair',
+      'modest-mouse',
+      'yo-la-tengo',
       'wilco',
       'arcade-fire',
-      'vampire-weekend',
+      'the-dismemberment-plan',
       'broken-social-scene',
-      'wednesday',
-      'waxahatchee',
       'mitski',
-      'snail-mail',
+      'vampire-weekend',
+      'wednesday',
     ],
     sections: [
       {
@@ -2838,6 +3019,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           'galaxie-500',
           'drive-by-truckers',
           'mary-timony',
+          'the-breeders',
         ],
       },
       {
@@ -2904,10 +3086,10 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         "DIY, explicitly feminist tradition without ever quite settling inside its boundaries — " +
         "Corin Tucker and Carrie Brownstein's interlocking guitars pushed the sound toward something " +
         "more structurally ambitious than riot grrrl's founding bands had attempted. The movement's " +
-        "reach extended well beyond what this graph currently tracks: Huggy Bear carried the UK's " +
+        "reach extended well beyond what this map currently tracks: Huggy Bear carried the UK's " +
         "own answer to the scene, and Heavens to Betsy — Corin Tucker's band before Sleater-Kinney " +
         "— worked the same Olympia circuit from its earliest days, both real riot grrrl acts sitting " +
-        "outside this graph's current roster.",
+        "outside this map's current roster.",
     ],
     soundParagraph:
       "Guitars stay simple and driving, closer to hardcore's economy than to punk's own melodic " +
@@ -2918,7 +3100,11 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       "the music itself does.",
     // All 3 riot-grrrl-tagged artists' classicAlbums are genuinely riot-
     // grrrl-defining — no exclusions, no padding needed at this size.
-    definingAlbums: ['bikini-kill', 'bratmobile', 'sleater-kinney'],
+    definingAlbums: [
+      'bikini-kill',
+      'sleater-kinney',
+      'bratmobile',
+    ],
     sections: [
       {
         title: "Olympia's founding network",
@@ -2963,7 +3149,12 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Person alias, is still the right pick here: it's the record where the
     // genre's chopped-sample technique became a fully composed album rather
     // than a loop collection.
-    definingAlbums: ['oneohtrix-point-never', 'deaths-dynamic-shroud', '2814', 'george-clanton'],
+    definingAlbums: [
+      '2814',
+      'oneohtrix-point-never',
+      'deaths-dynamic-shroud',
+      'george-clanton',
+    ],
     sections: [
       {
         title: 'An internet-native lineage',
@@ -2981,7 +3172,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     deck:
       "British Invasion melody and Beatles-scale hooks run through a harder, more economical rock " +
       "band — verse-chorus-bridge discipline, big vocal harmonies, and almost no interest in a " +
-      "guitar solo outstaying its welcome. Power-pop is one of this graph's oldest root genres, and " +
+      "guitar solo outstaying its welcome. Power-pop is one of this map's oldest root genres, and " +
       "its own direct descendant, jangle-pop, gets a full page of its own.",
     originParagraphs: [
       "Big Star's #1 Record, released in Memphis in 1972, set the template over a decade before " +
@@ -3010,7 +3201,11 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // pop's page frames it as the guitar-tone template, this page as the
     // genre's founding hooks-first record — different angles on the same
     // record, not a duplicate.
-    definingAlbums: ['big-star', 'buzzcocks', 'the-replacements'],
+    definingAlbums: [
+      'big-star',
+      'buzzcocks',
+      'the-replacements',
+    ],
     sections: [
       {
         title: 'Memphis to Manchester to Minneapolis',
@@ -3027,7 +3222,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     deck:
       "Folk's mystical, psychedelic wing — harp and banjo drone, communal outsider aesthetics, and " +
       "a deliberate embrace of the strange over the plainspoken. The name was coined in 2003 for a " +
-      "specific early-2000s scene built around Devendra Banhart, who isn't a node in this graph but " +
+      "specific early-2000s scene built around Devendra Banhart, who isn't on this map but " +
       "whose records are the reason the genre has a name at all.",
     originParagraphs: [
       "Devendra Banhart's earliest records — recorded lo-fi, steeped in outsider folk and a self-" +
@@ -3044,7 +3239,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         "Post Pavilion (2009) folds freak-folk's hand percussion and layered vocal harmony into " +
         "dense, psychedelic pop production. Vetiver, Devendra Banhart's frequent collaborator, " +
         "worked the same circuit from close to its center — another real freak-folk act sitting " +
-        "outside this graph's current roster.",
+        "outside this map's current roster.",
     ],
     soundParagraph:
       "Acoustic instruments — harp, banjo, fingerpicked guitar — carry the songs, but the " +
@@ -3054,7 +3249,13 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       "repetition over a clean verse-chorus shape.",
     // All 3 freak-folk-tagged artists' classicAlbums are genuinely freak-
     // folk-defining — no exclusions needed at this size.
-    definingAlbums: ['joanna-newsom', 'bonnie-prince-billy', 'animal-collective'],
+    // Natural Snow Buildings' The Winter Ray in.
+    definingAlbums: [
+      'joanna-newsom',
+      'bonnie-prince-billy',
+      'natural-snow-buildings',
+      'animal-collective',
+    ],
     sections: [
       {
         title: 'A small, deliberately strange lineage',
@@ -3062,7 +3263,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Devendra Banhart's early records gave the scene its name in 2003, and Joanna Newsom's " +
           "harp-driven ambition, Bonnie Prince Billy's Appalachian-gothic elder status, and Animal " +
           "Collective's electronic-psych turn show just how wide the genre's actual range runs.",
-        artistIds: ['joanna-newsom', 'bonnie-prince-billy', 'animal-collective'],
+        artistIds: ['joanna-newsom', 'bonnie-prince-billy', 'animal-collective', 'natural-snow-buildings'],
       },
     ],
   },
@@ -3070,7 +3271,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
   britpop: {
     deck:
       "Mid-90s British guitar-pop, self-consciously English in its reference points and its accent, " +
-      "arriving as a direct answer to American grunge's chart dominance. This graph covers only its " +
+      "arriving as a direct answer to American grunge's chart dominance. This map covers only its " +
       "arty, lyrically observational half — Britpop's biggest chart-topping names sit outside its " +
       "current scope.",
     originParagraphs: [
@@ -3085,7 +3286,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         "when both bands released singles on the same day — a chart event British tabloids covered " +
         "as a genuine culture war. Elastica brought a more angular, Wire-indebted edge to the same " +
         "scene, and Oasis themselves became Britpop's biggest global export by some distance; both, " +
-        "along with Suede, sit outside this graph's current roster, which covers only Blur and Pulp.",
+        "along with Suede, sit outside this map's current roster, which covers only Blur and Pulp.",
     ],
     soundParagraph:
       "Guitars stay chiming and hook-forward, closer to the Kinks and the Small Faces' British " +
@@ -3098,14 +3299,17 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // defining — no exclusions needed. Oasis, Suede, and Elastica would be
     // obvious additions if they were graph nodes; they aren't, and no
     // substitute has been reached for in their place.
-    definingAlbums: ['blur', 'pulp'],
+    definingAlbums: [
+      'blur',
+      'pulp',
+    ],
     sections: [
       {
-        title: "The graph's half of the story",
+        title: "The map's half of the story",
         blurb:
           "Blur's arch suburban observation and Pulp's class-conscious character studies represent " +
           "Britpop's more art-school half — its bigger, more chart-dominant wing (Oasis chief among " +
-          "them) isn't yet part of this graph.",
+          "them) isn't yet part of this map.",
         artistIds: ['blur', 'pulp'],
       },
     ],
@@ -3114,7 +3318,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
   grunge: {
     deck:
       "Seattle's fusion of punk's speed, metal's weight, and classic-rock melody, incubated on Sub " +
-      "Pop's shoestring budget before breaking worldwide almost by accident. This graph covers " +
+      "Pop's shoestring budget before breaking worldwide almost by accident. This map covers " +
       "grunge's more underground, independent half — its arena-rock wing sits outside its current " +
       "scope.",
     originParagraphs: [
@@ -3128,7 +3332,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         "record that took the sound global and effectively ended grunge's run as an underground " +
         "genre. The wing that followed on its commercial success — Pearl Jam, Soundgarden, Alice in " +
         "Chains — turned grunge into an arena-scale radio format; all three are real, major grunge " +
-        "acts that sit outside this graph's current roster, which tracks Nirvana's earlier Sub Pop " +
+        "acts that sit outside this map's current roster, which tracks Nirvana's earlier Sub Pop " +
         "years and Mudhoney's continued run instead.",
     ],
     soundParagraph:
@@ -3142,14 +3346,17 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // Chains would be the obvious additions if they were graph nodes; they
     // aren't, and this page names that gap directly rather than implying by
     // omission that the genre stops at these two.
-    definingAlbums: ['nirvana', 'mudhoney'],
+    definingAlbums: [
+      'nirvana',
+      'mudhoney',
+    ],
     sections: [
       {
         title: 'The underground half',
         blurb:
           "Nirvana's Sub Pop years and Mudhoney's continued fuzzed-out run represent grunge's " +
           "independent, DIY half — its bigger, arena-scale wing (Pearl Jam, Soundgarden, Alice in " +
-          "Chains) isn't yet part of this graph.",
+          "Chains) isn't yet part of this map.",
         artistIds: ['nirvana', 'mudhoney'],
       },
     ],
@@ -3159,7 +3366,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     deck:
       "Pop melody run straight through a wall of guitar feedback — hooks intact, but coated in " +
       "distortion instead of polished clean. Noise-pop is a small, tightly-sourced lineage in " +
-      "this graph: two artists, one shared point of origin.",
+      "this map: two artists, one shared point of origin.",
     originParagraphs: [
       "The Jesus and Mary Chain's Psychocandy (1985) is the record that essentially invents the " +
         "genre in one move — Velvet Underground-style drones and Phil Spector-style pop " +
@@ -3171,7 +3378,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         "provocateurs versus a Minneapolis hardcore band pushing past its own genre's limits — " +
         "but both arrive at the same idea from opposite directions: bury a genuine pop song " +
         "under more noise than pop is supposed to tolerate. Shoegaze, the wall-of-sound genre " +
-        "noise-pop is most often mentioned alongside, descends in this graph from dream-pop's " +
+        "noise-pop is most often mentioned alongside, descends in this map from dream-pop's " +
         "hazier lineage rather than directly from noise-pop — but Psychocandy is the record both " +
         "genres point back to as a starting shot, whichever branch of the tree they're filed " +
         "under.",
@@ -3184,7 +3391,12 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       "direct, keeping the songs anchored even as the guitars threaten to swallow them.",
     // Only 2 artists carry this tag in the graph — the list below is
     // necessarily short, not padded. Don't force it to 4.
-    definingAlbums: ['the-jesus-and-mary-chain', 'husker-du'],
+    // The Breeders' Last Splash in.
+    definingAlbums: [
+      'the-jesus-and-mary-chain',
+      'the-breeders',
+      'husker-du',
+    ],
     sections: [
       {
         title: 'Two roads to the same wall of sound',
@@ -3192,7 +3404,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Separated by scene, geography, and starting genre — Scottish art-provocation versus " +
           "Minneapolis hardcore — but arriving within a year of each other at the same basic " +
           "move: real pop songs, buried under more distortion than pop is supposed to carry.",
-        artistIds: ['the-jesus-and-mary-chain', 'husker-du'],
+        artistIds: ['the-jesus-and-mary-chain', 'husker-du', 'the-breeders'],
       },
     ],
   },
@@ -3200,7 +3412,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
   minimalism: {
     deck:
       "Not the classical downtown-composition tradition the name usually calls to mind — no " +
-      "Terry Riley, Steve Reich, or Philip Glass here. In this graph, minimalism means a " +
+      "Terry Riley, Steve Reich, or Philip Glass here. In this map, minimalism means a " +
       "specific, later branch: massed electric guitars droning and pulsing in place of an " +
       "orchestra, grown out of no-wave rather than out of a conservatory.",
     originParagraphs: [
@@ -3208,10 +3420,10 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         "the piece that gives classical minimalism its starting date, a set of short melodic " +
         "cells repeated and layered by a variable ensemble until the overlapping patterns became " +
         "the entire composition. Riley, Reich, and Glass built a whole downtown-composition " +
-        "tradition from that idea over the following decade — but none of them are nodes in " +
-        "this graph, and that tradition isn't what the artists tagged with this genre here " +
+        "tradition from that idea over the following decade — but none of them are on " +
+        "this map, and that tradition isn't what the artists tagged with this genre here " +
         "actually represent.",
-      "What the graph actually has is Glenn Branca and Rhys Chatham, two composers who came up " +
+      "What the map actually has is Glenn Branca and Rhys Chatham, two composers who came up " +
         "through New York's no-wave scene at the turn of the 1980s and pointed minimalism's " +
         "repetition-and-drift logic at massed electric guitars instead of an ensemble of " +
         "acoustic or orchestral instruments — a dozen or more guitars, all detuned and " +
@@ -3231,7 +3443,10 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // adjacent massed-guitar branch rather than the classical tradition the
     // genre name usually implies — see the deck and Origin above. The list
     // below is necessarily short, not padded.
-    definingAlbums: ['glenn-branca', 'rhys-chatham'],
+    definingAlbums: [
+      'glenn-branca',
+      'rhys-chatham',
+    ],
     sections: [
       {
         title: 'Massed-guitar minimalism',
@@ -3247,7 +3462,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
   'folk-punk': {
     deck:
       "Punk's confrontational energy and DIY ethos, played on acoustic instruments instead of " +
-      "distorted electric ones. In this graph it's a genre of exactly one artist — the one who " +
+      "distorted electric ones. In this map it's a genre of exactly one artist — the one who " +
       "actually defines it.",
     originParagraphs: [
       "Violent Femmes' self-titled 1983 debut is the record the genre traces back to: nervy, " +
@@ -3257,7 +3472,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         "energy anyway.",
       "The genre proper — the folk-punk scenes and squats that would spring up around acts like " +
         "Against Me! and Defiance, Ohio a generation later — grew out of that template but sits " +
-        "outside this graph's roster. Here, folk-punk is represented by its own real point of " +
+        "outside this map's roster. Here, folk-punk is represented by its own real point of " +
         "origin and nothing else: one artist, one record, no scene to build sections around.",
     ],
     soundParagraph:
@@ -3270,12 +3485,14 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       "it.",
     // Only 1 artist carries this tag in the graph — the single section below
     // is that one artist, not a manufactured scene.
-    definingAlbums: ['violent-femmes'],
+    definingAlbums: [
+      'violent-femmes',
+    ],
     sections: [
       {
         title: 'The genre in one record',
         blurb:
-          "Violent Femmes' 1983 debut is folk-punk's entire representation in this graph — " +
+          "Violent Femmes' 1983 debut is folk-punk's entire representation in this map — " +
           "acoustic instrumentation, punk's confrontational nerve, and no other artist here " +
           "carries the tag alongside it.",
         artistIds: ['violent-femmes'],
@@ -3313,13 +3530,15 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       "resolve into either one cleanly.",
     // Only 1 artist carries this tag in the graph — the single section below
     // is that one artist, not a manufactured scene.
-    definingAlbums: ['ariel-pink'],
+    definingAlbums: [
+      'ariel-pink',
+    ],
     sections: [
       {
         title: 'The genre in one artist',
         blurb:
           "Ariel Pink's music is what the term was coined to describe in the first place — no " +
-          "other artist in this graph carries the tag, and Before Today is the record where the " +
+          "other artist in this map carries the tag, and Before Today is the record where the " +
           "sound met a real studio for the first time.",
         artistIds: ['ariel-pink'],
       },
@@ -3352,7 +3571,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         "a run of 2000s dance-punk bands who plugged a dancefloor's rhythm section into guitar " +
         "music instead of replacing it; and, most recently, a laptop and a DAW made the whole " +
         "question of equipment moot. Every one of those directions has its own fuller page in " +
-        "this graph — synth-pop, ambient, industrial, krautrock, IDM, hyperpop, trip-hop, and " +
+        "this map — synth-pop, ambient, industrial, krautrock, IDM, hyperpop, trip-hop, and " +
         "drone among them — even though the tree's actual parent-child pointers run through " +
         "krautrock rather than through this page directly; this one is the trunk they all " +
         "ultimately trace back to, whatever the literal lineage strip above shows.",
@@ -3382,21 +3601,22 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // particular grid toward the 2000s–2020s art-electronic and hyperpop-adjacent wing (the
     // least individually page-covered stretch of the realm) rather than the 1970s originators
     // most readers would expect to see first — a real tradeoff, not an oversight.
+    // Rebuilt from the realm's landmarks now that repeats are allowed (the
+    // leftovers-only rule above skewed it away from them). Out: Sparks (Kimono
+    // My House is glam), Magdalena Bay, Imogen Heap, Porter Robinson, Charli
+    // XCX, Kero Kero Bonito, Steve Roach and Brian Eno (all on pages that fit
+    // them better).
     definingAlbums: [
-      'sparks',
-      'magdalena-bay',
+      'kraftwerk',
+      'aphex-twin',
+      'suicide',
+      'bjork',
+      'boards-of-canada',
+      'burial',
       'four-tet',
       'caribou',
-      'oneohtrix-point-never',
-      'steve-roach',
-      'imogen-heap',
       'arca',
-      'porter-robinson',
-      'charli-xcx',
-      'kero-kero-bonito',
-      'kraftwerk',
-      'brian-eno',
-      'aphex-twin',
+      'oneohtrix-point-never',
     ],
     sections: [
       {
@@ -3522,7 +3742,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       "down, essentially authorless — and the word now means close to the opposite: one " +
       "person's specific, often painfully personal life, sung in the first person over an " +
       "acoustic guitar. That reversal, not any shared sound, is what actually unifies the 39 " +
-      "artists below; in this graph, \"folk\" mostly means confession, not tradition.",
+      "artists below; in this map, \"folk\" mostly means confession, not tradition.",
     originParagraphs: [
       "The word originally described a process, not a sound or an author — songs gathered from " +
         "rural, oral tradition and passed down through generations, revised and re-sung by " +
@@ -3538,7 +3758,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         "country's regional inheritors, a 2000s freak-folk revival, and a wide 2010s–2020s " +
         "indie and bedroom lineage — kept the confessional stance and, in most cases, dropped " +
         "the tradition-bearing half of the word's original meaning almost entirely. Folk has " +
-        "five real descendants of its own in this graph (singer-songwriter, alt-country, freak-" +
+        "five real descendants of its own in this map (singer-songwriter, alt-country, freak-" +
         "folk, indie-folk, folk-punk), each chasing a different piece of what's left of the " +
         "original tradition; this page is the trunk they all grew from.",
     ],
@@ -3572,23 +3792,21 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // expect"), and Joni Mitchell absent from the folk page is exactly it.
     // Repeat an album where it genuinely belongs on both pages; keep the rule
     // as a tiebreaker for artists whose album fits several pages equally.
+    // Cut to folk records: Kurt Vile, Ethel Cain, Sharon Van Etten, Adrianne
+    // Lenker, Cat Power, Songs: Ohia and the Mountain Goats out (on pages that
+    // fit them better); Bob Dylan and Vashti Bunyan in.
     definingAlbums: [
-      'joni-mitchell',
-      'bert-jansch',
-      'roy-harper',
-      'karen-dalton',
-      'kurt-vile',
-      'the-mountain-goats',
-      'songs-ohia',
-      'joanna-newsom',
-      'adrianne-lenker',
-      'bonnie-prince-billy',
-      'sharon-van-etten',
-      'ethel-cain',
-      'cat-power',
-      'neil-young',
       'nick-drake',
+      'joni-mitchell',
       'leonard-cohen',
+      'bob-dylan',
+      'neil-young',
+      'bert-jansch',
+      'vashti-bunyan',
+      'karen-dalton',
+      'roy-harper',
+      'joanna-newsom',
+      'bonnie-prince-billy',
     ],
     sections: [
       {
@@ -3659,7 +3877,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       {
         title: 'Folk as confession, full stop',
         blurb:
-          "By the 2010s \"folk\" in this graph has almost nothing to do with the word's " +
+          "By the 2010s \"folk\" in this map has almost nothing to do with the word's " +
           "original meaning — it means a quiet, first-person, often acoustic-adjacent mode of " +
           "direct emotional address, whether that's Elliott Smith's whispered confession, " +
           "Mitski's and Phoebe Bridgers' generation of it, or Grouper's confession dissolved " +

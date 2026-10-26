@@ -33,7 +33,7 @@ describe('coverStories', () => {
       expect(s.from).toBe(byId.get(s.line[0].id)!.emerged);
       expect(s.to).toBe(byId.get(s.leafId)!.emerged);
       expect(s.headline).toContain(`in ${s.to - s.from} year`);
-      expect(s.kicker).toBe(`${s.line.length} sounds, one road`);
+      expect(s.kicker).toBe(`${s.line.length} genres, one line`);
     }
   });
 });

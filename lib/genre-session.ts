@@ -52,6 +52,14 @@ export const SIGN_TRACKING = 0.04; // em, between letters
 const CLIP_CHROME = 9 + 8 + 3 + 1;
 const CLIP_MIN_W = 42;
 
+/** How wide a line of text is in the condensed poster face (Anton), at
+ *  `px`, with `tracking` em between letters: the genre features' headlines. */
+export function antonWidth(line: string, px: number, tracking = 0): number {
+  let w = 0;
+  for (const ch of line) w += SIGN_GLYPHS[ch] ?? 50;
+  return (w * px) / 100 + line.length * tracking * px;
+}
+
 /** How wide a line of a sign's name is, as it's lettered. */
 export function signTextWidth(line: string): number {
   let w = 0;
@@ -60,28 +68,32 @@ export function signTextWidth(line: string): number {
 }
 // A name this long or shorter stays on one line.
 const ONE_LINE_MAX_CHARS = 10;
-// Sized so the whole page fits a laptop browser window ~760px tall.
 export const CLIP_H = 30;
-// The 10px between rows is where cables run, like cords taped down along
-// the gaps of a studio floor.
-export const TRACK_H = 40;
-const FAMILY_GAP = 6;
+// The 20px between rows is where cables run, like cords taped down along
+// the gaps of a studio floor. It was 10px, so the whole city fit a ~760px
+// laptop window, but the owner couldn't see what went where in the stacked
+// rows (Post-punk, No wave, Dance-punk); the city now runs a little past
+// the first screen instead, at full lettering size.
+export const TRACK_H = 50;
+const FAMILY_GAP = 14;
 export const HEAD_W = 96;
 // The night sky along the top of the spread: the skyline, the rooftop sign
 // with the page's title, and beside it how to read the whole thing -- the
 // key on one line, what to do on the next -- always in the same place.
 export const SKY_H = 60;
 export const RULER_H = 36; // the year ticker, under the sky
-const YEAR_LABEL_GAP = 36; // a four-digit year on the display, and room either side
+export const YEAR_LABEL_GAP = 36; // a four-digit year on the display, and room either side
 const PAD_LEFT = 10; // after the track heads
 const PAD_RIGHT = 12;
 const PAD_BOTTOM = 10;
 const CLIP_GAP = 16; // between clips on a track: room for a cable to drop in and plug
 const YEAR_STEP = 4; // the least a year moves time along
 export const JACK_W = 9;
-const DROP_IN = 12; // a cable comes down this far left of its clip, then plugs in
+const ROAD_LEAD = 8; // how far a road runs on past its first and last sign
+const DROP_IN = 12; // a cable crosses between gaps this far left of its clip
+const ENTRY_IN = 14; // and drops onto the clip this far in from its left edge
 const CORNER_R = 6;
-const RUN_STEP = 2.8; // cables sharing a gap run side by side
+const RUN_STEP = 4; // cables sharing a gap run side by side
 
 // The family founders' colours, from the app's palette (lib/colors.ts):
 // gold for the earliest and biggest, magenta for the krautrock/electronic
@@ -142,6 +154,9 @@ export interface SessionFamily {
   trackCount: number;
   top: number;
   bottom: number;
+  /** The family's name lettered big and faint across its district, in the
+   *  emptiest stretch of its rows: the box's top-left, width and type size. */
+  district: { x: number; y: number; w: number; px: number } | null;
 }
 
 export interface SessionLink {
@@ -150,10 +165,20 @@ export interface SessionLink {
   /** A splice carries a track straight on; a cable patches in from elsewhere. */
   kind: 'splice' | 'cable';
   d: string;
+  /** The corners the line runs through (d rounds them off). */
+  pts: { x: number; y: number }[];
   ink: string;
   count: number; // the child's artists, for the pen weight
-  /** The plug at a cable's end, just left of the child. */
-  jack?: { x: number; y: number };
+  /** The arrow at a cable's end, dropping onto the child's top edge (dir 1)
+   *  or up onto its bottom edge (dir -1). */
+  jack?: { x: number; y: number; dir: 1 | -1 };
+}
+
+export interface SessionRoad {
+  y: number;
+  x1: number;
+  x2: number;
+  familyId: string;
 }
 
 export interface GenreSession {
@@ -161,6 +186,13 @@ export interface GenreSession {
   families: SessionFamily[];
   links: SessionLink[];
   trackYs: number[];
+  /** The roads as drawn: one per line. A road runs from a line's first sign
+   *  to its last and breaks where the next sign on the lane didn't grow out
+   *  of the one before it, so a continuous road always means "this grew out
+   *  of that". (The lanes themselves stay packed by interval colouring; a
+   *  lane once drew as one road end to end, and unrelated genres read as
+   *  one line.) */
+  roads: SessionRoad[];
   /** Each year's place on the ruler, and whether its label fits. */
   years: { year: number; x: number; labelled: boolean }[];
   /** Where each decade starts: a bar line down the sheet. */
@@ -294,6 +326,7 @@ export function buildGenreSession(graphData: GraphData): GenreSession {
       trackCount: n,
       top,
       bottom: y,
+      district: null,
     });
   });
   const inkOf = new Map(families.map(f => [f.id, f.ink]));
@@ -379,8 +412,10 @@ export function buildGenreSession(graphData: GraphData): GenreSession {
   // Splices and cables. A cable leaves the parent's edge facing the child,
   // runs along the gap beside the parent's track, drops at an x where every
   // track in the way is clear, runs along the gap beside the child's track,
-  // and comes down just left of the child into its plug -- never behind a
-  // clip, where the clip would read as the parent.
+  // and drops straight onto the child's top (or bottom) edge -- never behind
+  // a clip, where the clip would read as the parent, and never along a road:
+  // it used to come down beside the child and run in along the road's centre
+  // line, which read as the sign before it being the parent.
   const channelY = (k: number) => {
     // k: the gap above track k (k = trackYs.length is below the last).
     if (k === 0) return trackYs[0] - CLIP_H / 2 - 6;
@@ -398,7 +433,7 @@ export function buildGenreSession(graphData: GraphData): GenreSession {
     if (!p) continue;
     const ink = inkOf.get(c.familyId)!;
     if (nextOnTrack.get(p.id) === c.id) {
-      links.push({ childId: c.id, parentId: p.id, kind: 'splice', d: `M ${p.left + p.w} ${p.y} H ${c.left}`, ink, count: c.count });
+      links.push({ childId: c.id, parentId: p.id, kind: 'splice', d: `M ${p.left + p.w} ${p.y} H ${c.left}`, pts: [{ x: p.left + p.w, y: p.y }, { x: c.left, y: p.y }], ink, count: c.count });
       continue;
     }
     const down = c.track >= p.track;
@@ -422,8 +457,13 @@ export function buildGenreSession(graphData: GraphData): GenreSession {
       drops.push({ x: dx, y1, y2, parent: p.id });
       pts.push({ x: dx, y: 0, ch: ch1 }, { x: dx, y: 0, ch: ch2 });
     }
-    pts.push({ x: xIn, y: 0, ch: ch2 }, { x: xIn, y: c.y }, { x: c.left - JACK_W, y: c.y });
-    const link: SessionLink = { childId: c.id, parentId: p.id, kind: 'cable', d: '', ink, count: c.count, jack: { x: c.left - JACK_W, y: c.y } };
+    // Onto the sign from the gap it arrives in: from above when that gap is
+    // over the child's track, from below otherwise.
+    const dir: 1 | -1 = ch2 === c.track ? 1 : -1;
+    const entryX = c.left + Math.min(ENTRY_IN, c.w / 2);
+    const jackY = c.y - dir * (CLIP_H / 2 + JACK_W);
+    pts.push({ x: xIn, y: 0, ch: ch2 }, { x: entryX, y: 0, ch: ch2 }, { x: entryX, y: jackY });
+    const link: SessionLink = { childId: c.id, parentId: p.id, kind: 'cable', d: '', pts: [], ink, count: c.count, jack: { x: entryX, y: jackY, dir } };
     links.push(link);
     routes.push({ link, pts });
   }
@@ -452,18 +492,50 @@ export function buildGenreSession(graphData: GraphData): GenreSession {
       offsetOf.get(run.route)!.set(ch, OFFSETS[k]);
     }
   }
+  // Every straight run of every cable, as a box the districts' names keep clear of.
+  const cableRuns: Box[] = [];
   for (const r of routes) {
     const pts = r.pts.map(q => (q.ch === undefined ? q : { x: q.x, y: channelY(q.ch) + (offsetOf.get(r)?.get(q.ch) ?? 0) }));
     r.link.d = roundedPath(pts);
+    r.link.pts = pts.map(q => ({ x: q.x, y: q.y }));
+    for (let i = 0; i + 1 < pts.length; i++) {
+      const a = pts[i], b = pts[i + 1];
+      cableRuns.push({ x1: Math.min(a.x, b.x), x2: Math.max(a.x, b.x), y1: Math.min(a.y, b.y), y2: Math.max(a.y, b.y) });
+    }
+  }
+
+  // The roads: walk each lane left to right, carrying a road on only while
+  // each sign was spliced onto the one before it (its parent, right behind
+  // it on the same lane).
+  const splicedIn = new Set(links.filter(l => l.kind === 'splice').map(l => l.childId));
+  const roads: SessionRoad[] = [];
+  for (let t = 0; t < trackYs.length; t++) {
+    let road: (SessionRoad & { last: string }) | null = null;
+    for (const c of clips.filter(k => k.track === t).sort((a, b) => a.left - b.left)) {
+      if (road && splicedIn.has(c.id) && c.parentId === road.last) {
+        road.x2 = c.left + c.w + ROAD_LEAD;
+        road.last = c.id;
+        continue;
+      }
+      if (road) roads.push({ y: road.y, x1: road.x1, x2: road.x2, familyId: road.familyId });
+      road = { y: trackYs[t], x1: c.left - ROAD_LEAD, x2: c.left + c.w + ROAD_LEAD, familyId: c.familyId, last: c.id };
+    }
+    if (road) roads.push({ y: road.y, x1: road.x1, x2: road.x2, familyId: road.familyId });
   }
 
   const width = timeEnd + PAD_RIGHT;
   const height = y + PAD_BOTTOM;
+  const inTheWay: Box[] = [
+    ...roads.map(r => ({ x1: r.x1, x2: r.x2, y1: r.y - CLIP_H / 2 - 3, y2: r.y + CLIP_H / 2 + 3 })),
+    ...cableRuns,
+  ];
+  for (const f of families) f.district = placeDistrict(f, trackYs, inTheWay, timeStart, timeEnd, width, height);
   return {
     clips,
     families,
     links,
     trackYs,
+    roads,
     years,
     decades,
     timeStart,
@@ -477,6 +549,138 @@ export function buildGenreSession(graphData: GraphData): GenreSession {
  *  the sheet sits flush left, and a browser window ~720px tall puts the
  *  player this far up it. Kept empty of genres and the key. */
 export const PLAYER_CORNER = { w: 90, h: 220 };
+
+// A district's name: the family's, in capitals in the sign face, as big as
+// the emptiest stretch of its rows allows -- centred on any run of its rows,
+// wherever no road or cable crosses it -- and kept out of the pocket
+// player's corner. (A cable through a name read as a strikethrough.)
+interface Box { x1: number; x2: number; y1: number; y2: number }
+const DISTRICT_PAD = 12;
+const DISTRICT_MIN_PX = 22;
+const DISTRICT_MAX_PX = 96;
+const DISTRICT_FILL = 0.66; // of the rows' height
+export const DISTRICT_TRACKING = 0.04;
+
+function placeDistrict(
+  f: SessionFamily, trackYs: number[], inTheWay: Box[],
+  timeStart: number, timeEnd: number, width: number, height: number,
+): SessionFamily['district'] {
+  const label = f.name.toUpperCase();
+  const perPx = antonWidth(label, 1, DISTRICT_TRACKING);
+  let best: SessionFamily['district'] = null;
+  for (let i = 0; i < f.trackCount; i++) {
+    for (let j = i; j < f.trackCount; j++) {
+      const bandTop = trackYs[f.firstTrack + i] - TRACK_H / 2;
+      const bandH = (j - i + 1) * TRACK_H;
+      const mid = bandTop + bandH / 2;
+      // The tallest the name could be here; whatever crosses that is in the way.
+      const tall = Math.min(DISTRICT_MAX_PX, bandH * DISTRICT_FILL);
+      const end = bandTop + bandH > height - PLAYER_CORNER.h ? Math.min(timeEnd, width - PLAYER_CORNER.w) : timeEnd;
+      const across = inTheWay
+        .filter(o => o.y2 > mid - tall / 2 - 2 && o.y1 < mid + tall / 2 + 2)
+        .sort((a, b) => a.x1 - b.x1);
+      const gaps: [number, number][] = [];
+      let x = timeStart;
+      for (const o of across) { if (o.x1 > x) gaps.push([x, o.x1]); x = Math.max(x, o.x2); }
+      if (end > x) gaps.push([x, end]);
+      for (const [a, b] of gaps) {
+        const room = b - a - 2 * DISTRICT_PAD;
+        const px = Math.floor(Math.min(tall, room / perPx));
+        if (px < DISTRICT_MIN_PX || (best && px <= best.px)) continue;
+        const w = perPx * px;
+        best = { x: Math.round((a + b - w) / 2), y: Math.round(mid - px / 2), w: Math.ceil(w), px };
+      }
+    }
+  }
+  return best;
+}
+
+/** Where each lit year's label sits on the ticker. A road's years can fall
+ *  within a few pixels of each other (Art rock 1967, Krautrock 1968,
+ *  Industrial 1975 sit 12px apart) and printed over each other read as
+ *  "11975", so crowded labels are spread just far enough apart, in order,
+ *  each run of them centred on its years: the classic one-dimensional label
+ *  layout, merging runs that collide until none do. */
+export function spreadYears(years: { year: number; x: number }[], minX: number, maxX: number, gap = YEAR_LABEL_GAP): Map<number, number> {
+  const sorted = years.slice().sort((a, b) => a.x - b.x);
+  type Run = { ideal: number[]; years: number[]; start: number };
+  const place = (r: Run) => {
+    const n = r.ideal.length;
+    const mid = r.ideal.reduce((a, b) => a + b, 0) / n;
+    r.start = Math.max(minX, Math.min(maxX - (n - 1) * gap, mid - ((n - 1) * gap) / 2));
+  };
+  const runs: Run[] = [];
+  for (const y of sorted) {
+    runs.push({ ideal: [y.x], years: [y.year], start: y.x });
+    place(runs[runs.length - 1]);
+    while (runs.length > 1) {
+      const a = runs[runs.length - 2], b = runs[runs.length - 1];
+      if (a.start + (a.ideal.length - 1) * gap + gap <= b.start) break;
+      runs.splice(-2, 2, { ideal: [...a.ideal, ...b.ideal], years: [...a.years, ...b.years], start: 0 });
+      place(runs[runs.length - 1]);
+    }
+  }
+  const at = new Map<number, number>();
+  for (const r of runs) r.years.forEach((year, i) => at.set(year, r.start + i * gap));
+  return at;
+}
+
+// The note a sign pins when it's pointed at.
+export const NOTE_W = 240;
+const NOTE_GAP = 8;
+
+/** Where a sign's note goes: beside it, in the first of a few spots -- below,
+ *  above, then to either side -- that covers none of the signs and lines lit
+ *  with it, or failing that the spot that covers least. (It always went
+ *  below, and hid Indie rock under Slowcore's note.) */
+export function placeNote(
+  session: GenreSession, clipId: string, lit: Set<string>, noteH: number,
+): { left: number; top: number } {
+  const clip = session.clips.find(c => c.id === clipId)!;
+  const top0 = SKY_H + RULER_H;
+  const maxLeft = session.width - NOTE_W - 8;
+  const clampX = (x: number) => Math.max(HEAD_W, Math.min(maxLeft, x));
+  const clampY = (y: number) => Math.max(top0, Math.min(session.height - noteH - 4, y));
+  const cTop = clip.y - CLIP_H / 2, cBottom = clip.y + CLIP_H / 2;
+  const below = cBottom + NOTE_GAP, above = cTop - NOTE_GAP - noteH;
+  const spots: { left: number; top: number }[] = [];
+  for (const top of [below, above]) {
+    if (top < top0 || top + noteH > session.height - 4) continue;
+    spots.push({ left: clampX(clip.left), top }, { left: clampX(clip.left + clip.w - NOTE_W), top });
+  }
+  const side = clampY(cTop);
+  if (clip.left + clip.w + NOTE_GAP + NOTE_W <= session.width - 8) spots.push({ left: clip.left + clip.w + NOTE_GAP, top: side });
+  if (clip.left - NOTE_GAP - NOTE_W >= HEAD_W) spots.push({ left: clip.left - NOTE_GAP - NOTE_W, top: side });
+  if (spots.length === 0) spots.push({ left: clampX(clip.left), top: clampY(below) });
+
+  const signs = session.clips.filter(c => lit.has(c.id));
+  const lines = session.links.filter(l => lit.has(l.childId) && lit.has(l.parentId));
+  const covered = ({ left, top }: { left: number; top: number }) => {
+    const r = left + NOTE_W, b = top + noteH;
+    let cost = 0;
+    for (const c of signs) {
+      const w = Math.min(r, c.left + c.w + 4) - Math.max(left, c.left - 4);
+      const h = Math.min(b, c.y + CLIP_H / 2 + 4) - Math.max(top, c.y - CLIP_H / 2 - 4);
+      if (w > 0 && h > 0) cost += w * h * (c.id === clipId ? 100 : 1);
+    }
+    for (const l of lines) {
+      for (let i = 0; i + 1 < l.pts.length; i++) {
+        const a = l.pts[i], z = l.pts[i + 1];
+        const w = Math.min(r, Math.max(a.x, z.x)) - Math.max(left, Math.min(a.x, z.x));
+        const h = Math.min(b, Math.max(a.y, z.y)) - Math.max(top, Math.min(a.y, z.y));
+        if (w >= 0 && h >= 0 && w + h > 0) cost += (w + h) * 10;
+      }
+    }
+    return cost;
+  };
+  let best = spots[0], bestCost = Infinity;
+  for (const spot of spots) {
+    const cost = covered(spot);
+    if (cost === 0) return spot;
+    if (cost < bestCost) { best = spot; bestCost = cost; }
+  }
+  return best;
+}
 
 /** An axis-aligned line through `pts`, its corners rounded like a cable bending. */
 function roundedPath(pts: { x: number; y: number }[]): string {
