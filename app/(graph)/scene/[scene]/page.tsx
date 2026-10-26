@@ -7,7 +7,8 @@ import SceneTable from '@/components/scenes/SceneTable';
 import RoomToRoom from '@/components/scenes/RoomToRoom';
 import SceneCircle from '@/components/scenes/SceneCircle';
 import SceneStep from '@/components/scenes/SceneStep';
-import Reveal from '@/components/scenes/Reveal';
+import Desk from '@/components/scenes/Desk';
+import Reveal from '@/components/ui/Reveal';
 import SiteFooter from '@/components/layout/SiteFooter';
 
 interface Props {
@@ -42,6 +43,7 @@ export default async function ScenePage({ params }: Props) {
   return (
     <div className="scenes-overlay scene-overlay" style={{ '--ink': scene.ink, '--color': scene.color } as React.CSSProperties}>
       <div className="scene-page">
+        <Desk prints={scene.members.flatMap(m => (m.imageUrl ? [{ imageUrl: m.imageUrl }] : [])).slice(-2)} at="table" />
         <SceneTable
           scene={scene}
           place={page.place}

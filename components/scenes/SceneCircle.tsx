@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import type { CircleFace } from '@/lib/scene-page';
 import { sizedImageUrl } from '@/lib/image-url';
-import DealList from '@/components/scenes/DealList';
+import DealList from '@/components/ui/DealList';
 
 // Everyone on the map the bands in a room name as an influence, and everyone
 // who names them, rooms or not: two rows of small prints, oldest first, each

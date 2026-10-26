@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
+import { IN_VIEW } from './Reveal';
 
 // A row of prints dealt onto the table the first time it scrolls into view:
 // each one flies off a pile at the row's start to its place, oldest first,
@@ -24,7 +25,7 @@ export default function DealList({ className, children }: { className?: string; 
         setState('in');
         io.disconnect();
       }
-    }, { threshold: 0.25 });
+    }, IN_VIEW);
     io.observe(el);
     return () => io.disconnect();
   }, []);
@@ -45,5 +46,6 @@ export default function DealList({ className, children }: { className?: string; 
     return () => anims.forEach(a => a.cancel());
   }, [state]);
 
-  return <ul ref={ref} className={className} data-reveal={state}>{children}</ul>;
+  // `deal-list` hides the cards until they're dealt (globals), whatever list it is.
+  return <ul ref={ref} className={`deal-list${className ? ` ${className}` : ''}`} data-reveal={state}>{children}</ul>;
 }

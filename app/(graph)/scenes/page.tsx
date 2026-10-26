@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { loadGraphData } from '@/lib/graph-data';
 import { resolveScenes, buildLightbox, historyQueue } from '@/lib/scenes-lightbox';
 import Lightbox from '@/components/scenes/Lightbox';
 import PlayHistory from '@/components/scenes/PlayHistory';
+import Desk from '@/components/scenes/Desk';
+import Prints, { type HungPrint } from '@/components/scenes/Prints';
+import Binder from '@/components/scenes/Binder';
 import SiteFooter from '@/components/layout/SiteFooter';
 
 // The count and the first year are read from the data, never written out:
@@ -23,10 +25,18 @@ export const metadata: Metadata = {
 export default function ScenesIndexPage() {
   const scenes = resolveScenes(loadGraphData());
   const layout = buildLightbox(scenes);
+  // The prints drying under the lightbox: the band "Play the history" plays
+  // from each room (historyQueue's pick), so the one on air is the one that swings.
+  const prints: HungPrint[] = scenes.flatMap(s => {
+    const m = s.members.find(x => x.id === s.starId && x.previewUrl) ?? s.members.find(x => x.previewUrl);
+    return m?.imageUrl ? [{ sceneId: s.id, sceneName: s.name, era: s.era, bandId: m.id, bandName: m.name, imageUrl: m.imageUrl }] : [];
+  });
+  const stray = [scenes[0], scenes[scenes.length - 1]].flatMap(s => s?.members.find(m => m.imageUrl)?.imageUrl ?? []).map(imageUrl => ({ imageUrl }));
 
   return (
     <div className="scenes-overlay">
       <div className="scenes-page" role="region" aria-labelledby="scenes-title">
+        <Desk prints={stray} at="lightbox" />
         <header className="scenes-head">
           <h1 id="scenes-title" className="scenes-head__title">Scenes</h1>
           <p className="scenes-head__key">
@@ -45,28 +55,8 @@ export default function ScenesIndexPage() {
 
         <Lightbox layout={layout} />
 
-        <section className="scenes-log" aria-labelledby="scenes-log-title">
-          <h2 id="scenes-log-title" className="scenes-log__title">The log</h2>
-          <ol className="scenes-log__list">
-            {scenes.map(s => (
-              <li key={s.id} className="scenes-log__item">
-                <span className="scenes-log__when">{s.era}</span>
-                <span>
-                  <Link
-                    href={`/scene/${s.id}`}
-                    className="scenes-log__name"
-                    style={{ '--row-color': s.color } as React.CSSProperties}
-                  >
-                    {s.name}
-                  </Link>
-                </span>
-                <span className="scenes-log__who">
-                  <span>{s.city}</span> &middot; <span>{s.members.map(m => m.name).join(', ')}</span>
-                </span>
-              </li>
-            ))}
-          </ol>
-        </section>
+        <Prints prints={prints} />
+        <Binder scenes={scenes} />
       </div>
       <SiteFooter />
     </div>
