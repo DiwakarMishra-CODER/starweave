@@ -128,14 +128,16 @@ describe('buildGenreSession', () => {
     }
   });
 
-  // As wide as a laptop window; as tall as it needs for the rows to breathe
-  // (it once had to fit a ~760px window and the rows were too cramped to
-  // read), but no taller than a short scroll. Raised from 860 to 870 when
-  // Twee pop (Oct 2026) carried Indie pop's road on past 1984 and Dream pop
-  // needed a row of its own (862).
+  // About as wide as a laptop window; as tall as it needs for the rows to
+  // breathe (it once had to fit a ~760px window and the rows were too
+  // cramped to read), but no taller than a short scroll. The width went from
+  // 1400 to 1480 with Twee pop (Oct 2026): on its own road after Noise pop
+  // it pushes the later years right (1,479px, ~5% zoom at 1440), which the
+  // owner chose over a fifth Garage row that ran the city under the index
+  // tab and put the pocket player on Psychedelic (862px tall).
   it('fits a laptop window across, and is only a short scroll tall', () => {
-    expect(session.width).toBeLessThanOrEqual(1400);
-    expect(session.height).toBeLessThanOrEqual(870);
+    expect(session.width).toBeLessThanOrEqual(1480);
+    expect(session.height).toBeLessThanOrEqual(860);
   });
 
   it('fits every name inside its sign', () => {

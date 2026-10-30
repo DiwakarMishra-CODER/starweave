@@ -112,6 +112,14 @@ const DEFAULT_ROOT_COLOR = '#8891F2';
 // 1991, while Psychedelic's reaches 2010 and so sits above the corner. Any
 // family not listed follows, biggest first.
 const FAMILY_ORDER = ['garage-rock', 'art-rock', 'psychedelic-pop', 'singer-songwriter', 'minimalism'];
+// Genres that start a road of their own on a free row, reached by an
+// overpass, instead of carrying their parent's road on. Twee pop (Oct 2026)
+// on Indie pop's road ran past 1984 and pushed Dream pop and Shoegaze onto a
+// fifth row: the city grew 50px, its bottom family went under the index tab
+// and the pocket player landed on Psychedelic. On its own road it fits the
+// gap after Noise pop. Each entry should save its family a row; a rule that
+// cut every such genre also repacked lines the owner had approved.
+const OWN_ROAD = new Set(['twee-pop']);
 const FAMILY_NAME: Record<string, string> = {
   'garage-rock': 'Garage',
   'art-rock': 'Art',
@@ -261,11 +269,14 @@ export function buildGenreSession(graphData: GraphData): GenreSession {
   const subtreeArtists = (id: string): number =>
     (counts.get(id) ?? 0) + (childrenOf.get(id) ?? []).reduce((s, c) => s + subtreeArtists(c), 0);
 
-  // Heavy-path decomposition.
+  // Heavy-path decomposition. A genre in OWN_ROAD starts a road of its own
+  // instead of carrying its parent's on.
   const chainsOf = new Map<string, Chain[]>();
-  const heaviest = (id: string) =>
-    (childrenOf.get(id) ?? []).slice()
+  const heaviest = (id: string) => {
+    const heavy = (childrenOf.get(id) ?? []).slice()
       .sort((a, b) => (counts.get(b) ?? 0) - (counts.get(a) ?? 0) || rankOf.get(a)! - rankOf.get(b)!)[0] ?? null;
+    return heavy && !OWN_ROAD.has(heavy) ? heavy : null;
+  };
   const buildChain = (startId: string, family: string) => {
     const nodeIds: string[] = [];
     let cur: string | null = startId;
