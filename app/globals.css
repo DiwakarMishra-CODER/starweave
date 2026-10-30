@@ -17905,37 +17905,193 @@ a.flyer__act:focus-visible {
   }
 }
 
-/* ── The site footer: the back of a record sleeve ────────────────────
+/* ── The site footer: the lid of a band's flight case ────────────────
    On every content page, not the map (components/layout/SiteFooter.tsx): a
-   full-width band at the very bottom of the page -- a red rule and a
-   perforated fold along its top, credits, sources and the track list in
-   three columns on the page's grid, then the small print. It carries the
-   room the pocket player needs at the end of a page (which used to be bare
-   padding under every page): its columns stay left of the player on a
-   laptop, and on a phone it runs on under the player's bar. */
+   full-width band at the very bottom of the page, the lid of a road case --
+   aluminium trim along its top edge, a corner cap at each end, a dark
+   textured board so faint it never shows behind the words -- with credits,
+   sources and the setlist in three columns, then the small print. Four
+   stickers sit on the trim, half on the page above (nothing with words on
+   it is tilted). It carries the room the pocket player needs at the end of
+   a page: its columns stay left of the player on a laptop, and on a phone
+   it runs on under the player's bar. */
 .site-foot {
   position: relative;
   z-index: 3;
-  margin-top: 5rem;
-  background: #110d15;
-  border-top: 3px solid #a8261e;
+  margin-top: 6rem;
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.022) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 5px),
+    #1d1714;
   color: #ede2c9;
 }
 
+/* The aluminium extrusion along the lid's edge. */
 .site-foot::before {
   content: '';
   position: absolute;
-  top: 7px;
+  top: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: repeating-linear-gradient(90deg, rgba(237, 226, 201, 0.28) 0 6px, transparent 6px 12px);
+  height: 12px;
+  background: linear-gradient(180deg, #e3e6ea 0%, #a9afb6 40%, #cfd3d8 58%, #7f858c 100%);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* Ball corners: a pressed-steel cap at each top corner, with two rivets. */
+.site-foot__corner {
+  position: absolute;
+  top: -6px;
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  background:
+    radial-gradient(circle at 30% 64%, #5c6168 0 2.5px, transparent 3px),
+    radial-gradient(circle at 64% 30%, #5c6168 0 2.5px, transparent 3px),
+    linear-gradient(145deg, #eef0f2, #a3a9b0 55%, #6f757c);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.site-foot__corner--left {
+  left: 0;
+  border-radius: 0 0 22px 0;
+}
+
+.site-foot__corner--right {
+  right: 0;
+  border-radius: 0 0 0 22px;
 }
 
 .site-foot__inner {
+  position: relative;
   width: min(1080px, calc(100% - 2.5rem));
   margin: 0 auto;
-  padding: 2.4rem 0 2rem;
+  padding: 3.4rem 0 2rem;
+}
+
+/* Stickers on the trim, half on the page above. */
+.site-foot__stickers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  transform: translateY(-50%);
+}
+
+.site-foot__sticker {
+  margin: 0;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.35), 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+.site-foot__sticker--hype {
+  display: grid;
+  place-content: center;
+  width: 94px;
+  height: 94px;
+  border: 3px solid #fff2dc;
+  border-radius: 50%;
+  background: #c8321f;
+  color: #fff6e6;
+  text-align: center;
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 13px;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.site-foot__sticker--hype b {
+  display: block;
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: 0.01em;
+}
+
+.site-foot__sticker--hype span {
+  display: block;
+  max-width: 64px;
+  margin: 2px auto 0;
+  font-size: 10px;
+  line-height: 1.1;
+}
+
+.site-foot .site-foot__sticker--genre {
+  padding: 7px 14px 6px;
+  border: 3px solid #fff2dc;
+  border-radius: 999px;
+  background: var(--sticker);
+  color: var(--sticker-ink);
+  font-family: var(--font-poster), Impact, sans-serif;
+  font-size: 19px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.site-foot__sticker--empty {
+  visibility: hidden;
+  width: 120px;
+  height: 38px;
+}
+
+.site-foot .site-foot__sticker--ask {
+  padding: 7px 11px;
+  border-radius: 3px;
+  background: #f2c94c;
+  color: #1c1724;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.site-foot .site-foot__sticker--cover {
+  display: block;
+  width: 64px;
+  height: 64px;
+  padding: 3px;
+  border-radius: 3px;
+  background: #fff2dc;
+}
+
+.site-foot__sticker--cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1px;
+}
+
+/* The site's own stickers sit on the right; the favourites by the credits. */
+.site-foot__sticker--hype {
+  margin-left: auto;
+}
+
+/* Linked stickers lift a little when pointed at. */
+a.site-foot__sticker {
+  border-bottom: 0;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+a.site-foot__sticker:hover,
+a.site-foot__sticker:focus-visible {
+  color: var(--sticker-ink, #1c1724);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.35), 0 8px 14px rgba(0, 0, 0, 0.4);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-foot__sticker--genre:not(.site-foot__sticker--empty) {
+    animation: site-foot-slap 260ms cubic-bezier(0.3, 1.4, 0.5, 1) both;
+  }
+}
+
+@keyframes site-foot-slap {
+  from { transform: scale(1.18); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 @media (min-width: 901px) {
@@ -17952,7 +18108,7 @@ a.flyer__act:focus-visible {
 
 .site-foot__card {
   display: grid;
-  grid-template-columns: 1fr 1.35fr 0.9fr;
+  grid-template-columns: 1fr 0.8fr 1.35fr;
   gap: 1.6rem 2.6rem;
 }
 
@@ -18012,6 +18168,35 @@ a.flyer__act:focus-visible {
   font-weight: 600;
 }
 
+/* The setlist: written in marker on a scrap of paper, gaffer-taped down. */
+.site-foot__setlist {
+  position: relative;
+  max-width: 200px;
+  padding: 12px 16px 10px;
+  background: #f4eddd;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
+}
+
+.site-foot__setlist::before,
+.site-foot__setlist::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  width: 44px;
+  height: 16px;
+  background: rgba(58, 58, 64, 0.92);
+}
+
+.site-foot__setlist::before {
+  left: -10px;
+  transform: rotate(-24deg);
+}
+
+.site-foot__setlist::after {
+  right: -10px;
+  transform: rotate(24deg);
+}
+
 .site-foot__tracks {
   margin: 0;
   padding: 0;
@@ -18019,26 +18204,44 @@ a.flyer__act:focus-visible {
 }
 
 .site-foot__tracks li {
-  display: flex;
-  align-items: baseline;
-  gap: 0.65rem;
-  padding: 0.3rem 0;
-  border-bottom: 1px dashed rgba(237, 226, 201, 0.18);
-  font-size: 0.9rem;
-}
-
-.site-foot__tracks li:last-child {
-  border-bottom: 0;
-}
-
-.site-foot__no {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: rgba(237, 226, 201, 0.6);
+  padding: 1px 0;
+  font-family: var(--font-marker), 'Marker Felt', cursive;
+  font-size: 1.05rem;
+  line-height: 1.35;
 }
 
 .site-foot__tracks a {
+  color: #1c1724;
   border-bottom: 0;
+  background-image: linear-gradient(#f2c94c, #f2c94c);
+  background-repeat: no-repeat;
+  background-position: 0 80%;
+  background-size: 0 45%;
+  transition: background-size 180ms ease;
+}
+
+.site-foot__tracks a:hover,
+.site-foot__tracks a:focus-visible {
+  color: #1c1724;
+  background-size: 100% 45%;
+}
+
+/* "Map last pressed" as a red rubber stamp. */
+.site-foot__stamp {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 1px;
+  margin: 0.3rem 0 0;
+  padding: 5px 9px;
+  border: 2px solid #e2533f;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 2px #1d1714, inset 0 0 0 3px #e2533f;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #e2533f;
 }
 
 .site-foot__bottom {
@@ -18080,6 +18283,52 @@ a.flyer__act:focus-visible {
 
   .site-foot__copy {
     margin-left: 0;
+  }
+
+  .site-foot__stickers {
+    right: 14px;
+    gap: 0.7rem;
+  }
+
+  .site-foot__sticker--hype {
+    width: 62px;
+    height: 62px;
+    font-size: 10px;
+  }
+
+  .site-foot__sticker--hype b {
+    font-size: 19px;
+  }
+
+  .site-foot__sticker--hype span {
+    max-width: 46px;
+    font-size: 7.5px;
+  }
+
+  /* Five don't fit across a phone: the ask goes (the "Spotted a wrong
+     link?" line at the bottom still offers it). */
+  .site-foot .site-foot__sticker--ask {
+    display: none;
+  }
+
+  .site-foot__sticker--genre {
+    font-size: 15px;
+    padding: 6px 10px 5px;
+  }
+
+  .site-foot__sticker--ask {
+    font-size: 10.5px;
+    padding: 6px 8px;
+  }
+
+  .site-foot .site-foot__sticker--cover {
+    width: 48px;
+    height: 48px;
+  }
+
+  .site-foot__corner {
+    width: 30px;
+    height: 30px;
   }
 }
 

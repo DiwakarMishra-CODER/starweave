@@ -3,14 +3,24 @@ import { resolve } from 'path';
 import Link from 'next/link';
 import { loadGraphData } from '@/lib/graph-data';
 import { resolveCitationStatus } from '@/data/types';
+import { buildGenreSession } from '@/lib/genre-session';
+import { readableInk } from '@/lib/colors';
+import { sizedImageUrl } from '@/lib/image-url';
+import { GENRE_PAGES } from '@/data/genre-pages';
+import GenreSticker, { type StickerGenre } from './GenreSticker';
 
 // The footer on every content page (not the map, which is all canvas): a
-// full-width band at the very bottom, set like the back of a record sleeve,
-// in small print. Credits -- who compiled it and
-// where to find them; sources -- the map's one big claim, that its links
-// have named sources, with the real counts, and where the pictures and the
-// previews come from; and the track list, the site's pages. Along the
-// bottom, a way to say a link is wrong, and a barcode.
+// full-width band at the very bottom, in small print, on the lid of a band's
+// flight case (owner, Oct 2026: the plain band read as bland, and a zine
+// sheet in its place no longer read as a footer). Credits -- who compiled it
+// and where to find them, the date the map was pressed as a rubber stamp;
+// sources -- the map's one big claim, that its links have named sources,
+// with the real counts, and where the pictures and the previews come from;
+// and the site's pages as a setlist taped to the lid. Stickers on the case's
+// top edge: on the left, by the credits, the compiler's two favourite records
+// (their own words, on the Mixtape page); on the right, the count of sourced
+// links, a genre (a different one each visit) and an ask for missing links.
+// Along the bottom, a way to say a link is wrong, and a barcode.
 //
 // Every number is read from the map itself, and "last pressed" is when the
 // map's data was last built, so none of it can go stale.
@@ -20,6 +30,11 @@ const GITHUB = 'https://github.com/DiwakarMishra-CODER';
 const LINKEDIN = 'https://www.linkedin.com/in/diwakar-mishra-dev';
 const REPO = 'https://github.com/DiwakarMishra-CODER/starweave';
 
+// The two favourite bands, and their records, from data/about.ts ("Cocteau
+// Twins and My Bloody Valentine are the two I always come back to"; "I can't
+// choose between Heaven or Las Vegas and Loveless"): each band's major album.
+const FAVOURITES = ['cocteau-twins', 'my-bloody-valentine'];
+
 const TRACKS: { label: string; href: string }[] = [
   { label: 'The map', href: '/' },
   { label: 'Browse', href: '/browse' },
@@ -28,6 +43,18 @@ const TRACKS: { label: string; href: string }[] = [
   { label: 'How it works', href: '/?tour' },
   { label: 'Mixtape', href: '/about' },
 ];
+
+// Every genre with a feature page, in its family's colour, for the sticker.
+function stickerGenres(data: ReturnType<typeof loadGraphData>): StickerGenre[] {
+  const session = buildGenreSession(data);
+  const colour = new Map(session.families.map(f => [f.id, f.color]));
+  return session.clips
+    .filter(c => GENRE_PAGES[c.id])
+    .map(c => {
+      const color = colour.get(c.familyId)!;
+      return { id: c.id, name: c.name, color, ink: readableInk('#1c1724', color) };
+    });
+}
 
 function pressed(): string | null {
   try {
@@ -46,10 +73,39 @@ export default function SiteFooter() {
   const when = pressed();
   const catalogue = `SW-${data.artists.length}`;
   const year = new Date().getFullYear();
+  const n = (x: number) => x.toLocaleString('en-GB');
+  const favourites = FAVOURITES.flatMap(id => {
+    const artist = data.artists.find(a => a.id === id);
+    const album = artist?.classicAlbums?.[0];
+    return artist && album?.imageUrl ? [{ id, name: artist.name, title: album.title, cover: album.imageUrl }] : [];
+  });
 
   return (
     <footer className="site-foot">
+      <span className="site-foot__corner site-foot__corner--left" aria-hidden />
+      <span className="site-foot__corner site-foot__corner--right" aria-hidden />
       <div className="site-foot__inner">
+      <div className="site-foot__stickers">
+        {favourites.map(f => (
+          <Link key={f.id} href={`/artist/${f.id}`} className="site-foot__sticker site-foot__sticker--cover">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={sizedImageUrl(f.cover, 160)} alt={`${f.title}, ${f.name}`} loading="lazy" />
+          </Link>
+        ))}
+        <p className="site-foot__sticker site-foot__sticker--hype">
+          <b>{n(links.length)}</b> links
+          <span>{cited === links.length ? 'Every one sourced' : `${n(cited)} sourced`}</span>
+        </p>
+        <GenreSticker genres={stickerGenres(data)} />
+        <a
+          className="site-foot__sticker site-foot__sticker--ask"
+          href={`${REPO}/issues/new?title=${encodeURIComponent('Missing link: ')}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Know a missing link? &rarr;
+        </a>
+      </div>
       <div className="site-foot__card">
         <section className="site-foot__col" aria-labelledby="site-foot-credits">
           <h2 id="site-foot-credits" className="site-foot__head">Credits</h2>
@@ -63,10 +119,24 @@ export default function SiteFooter() {
             <span aria-hidden> &middot; </span>
             <a href={REPO} target="_blank" rel="noreferrer">The code</a>
           </p>
-          <p className="site-foot__small">
-            {when && <>Map last pressed {when} &middot; </>}Cat. no. {catalogue}
+          <p className="site-foot__stamp">
+            {when && <span>Map last pressed {when}</span>}
+            <span>Cat. no. {catalogue}</span>
           </p>
         </section>
+
+        <nav className="site-foot__col" aria-labelledby="site-foot-tracks">
+          <h2 id="site-foot-tracks" className="site-foot__head">Set list</h2>
+          <div className="site-foot__setlist">
+            <ol className="site-foot__tracks">
+              {TRACKS.map(t => (
+                <li key={t.href}>
+                  <Link href={t.href}>{t.label}</Link>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </nav>
 
         <section className="site-foot__col" aria-labelledby="site-foot-sources">
           <h2 id="site-foot-sources" className="site-foot__head">Sources</h2>
@@ -79,18 +149,6 @@ export default function SiteFooter() {
             Covers: Apple Music and the Cover Art Archive. Song previews: Apple Music.
           </p>
         </section>
-
-        <nav className="site-foot__col" aria-labelledby="site-foot-tracks">
-          <h2 id="site-foot-tracks" className="site-foot__head">Track list</h2>
-          <ol className="site-foot__tracks">
-            {TRACKS.map((t, i) => (
-              <li key={t.href}>
-                <span className="site-foot__no" aria-hidden>{String(i + 1).padStart(2, '0')}</span>
-                <Link href={t.href}>{t.label}</Link>
-              </li>
-            ))}
-          </ol>
-        </nav>
       </div>
 
       <div className="site-foot__bottom">
