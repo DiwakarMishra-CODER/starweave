@@ -130,10 +130,12 @@ describe('buildGenreSession', () => {
 
   // As wide as a laptop window; as tall as it needs for the rows to breathe
   // (it once had to fit a ~760px window and the rows were too cramped to
-  // read), but no taller than a short scroll.
+  // read), but no taller than a short scroll. Raised from 860 to 870 when
+  // Twee pop (Oct 2026) carried Indie pop's road on past 1984 and Dream pop
+  // needed a row of its own (862).
   it('fits a laptop window across, and is only a short scroll tall', () => {
     expect(session.width).toBeLessThanOrEqual(1400);
-    expect(session.height).toBeLessThanOrEqual(860);
+    expect(session.height).toBeLessThanOrEqual(870);
   });
 
   it('fits every name inside its sign', () => {

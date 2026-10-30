@@ -169,6 +169,49 @@ Files in `research/source-pass/bakers-dozen/`; tool
   off-map `influence` picks go to `off-map.json`. Scan citations before
   merging, as with checkers.
 
+## Amoeba's "What's In My Bag?" sweep (owner said yes, 30 Oct) -- step 1 done
+
+The same idea as the Baker's Dozens, from YouTube captions instead of pages.
+Files in `research/source-pass/amoeba/`; needs `yt-dlp` (installed via brew).
+- Done: `channel.tsv` is every video on youtube.com/@amoeba (1,331; 964 are
+  episodes). `match.ts` writes `episodes.json`: 95 episodes by 79 artists on
+  the map, matched on the guest's name, plus `MEMBERS` for guests filed under
+  a member's own name (Kim Gordon, Johnny Marr, J Mascis...). False matches
+  dropped: Barry Can't Swim (not Can), Shonen Knife (not the Knife), DOMi & JD
+  BECK, Mexican Institute of Sound, "Bentley (Nirvana fan)"; Lenny Kaye left
+  out (his taste isn't Patti Smith's).
+- Captions: `yt-dlp --skip-download --write-auto-subs --sub-langs en
+  --sub-format vtt -o "subs/%(id)s" <url>`. Tested on Alvvays (0lcSdEublRI):
+  Molly Rankin's "I'm a big fan of the Fall" is at 6:25, and the machine
+  heard *Bend Sinister* as "Ben Sinister" -- auto captions mishear names, so
+  nothing goes in from a caption alone.
+- 30 Oct: `fetch.sh` got 36 of 95 before YouTube answered 429 and "Sign in
+  to confirm you're not a bot"; stopped. `failed.txt` lists the rest; re-run
+  `fetch.sh` (it resumes) after a cool-off, with a longer `sleep`, or with
+  `--cookies-from-browser` only if the owner agrees. The 36 went to two
+  judges (`prep.ts 2` -> `judge-1/2.json`, results `judged-1/2.json`).
+- 30 Oct, written from the 36 (owner went with the recommendations without
+  listening): husker-du -> buzzcocks, get-up-kids -> fugazi, gang-of-four ->
+  bob-dylan (the episode opens "with John... and Andy"), mac-demarco ->
+  the-modern-lovers, the-last-dinner-party -> st-vincent, and two close calls
+  the owner chose to keep at 0.55 (tortoise -> television, cocteau-twins ->
+  patti-smith). Gary Numan's denial of Kraftwerk recorded as a contested
+  rejectedEdge beside the existing link. Ledger `found` = the caption words;
+  `ledger.ts check` reads a YouTube source's saved transcript. Rejected on
+  dates: husker-du -> my-bloody-valentine, the-postal-service -> charli-xcx.
+  `fetch.sh` now sleeps 60s; re-run it for the other 59, then `prep.ts`
+  (it rewrites judge-*.json: judge only episodes not in judged-1/2).
+- Next: fetch captions for all 95 (slowly: YouTube rate-limits), judge with
+  the Baker's Dozen rules (fan/loved/grew up on counts; a bare pick or
+  "sounds like" doesn't), off-map picks into the tally. Every keeper goes to
+  the owner as the quote plus a `youtu.be/<id>?t=<sec>` link to confirm by ear;
+  confirmed ones enter the ledger at `first-person`, url = that link, `found`
+  = the corrected quote.
+- Already known: `alvvays -> the-fall` (Rankin, 6:07-6:35; owner has the exact
+  wording); Black Country, New Road's Tyler Hyde calling King Crimson's "Red"
+  the greatest rock song of all time (owner's find; source and timestamp to
+  pin down; King Crimson not on the map yet).
+
 ## After the pass: publish the dataset (owner said yes, 26 Oct) -- for the resume
 
 Once the decide list is settled (not before: unchecked claims shouldn't go

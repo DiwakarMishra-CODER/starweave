@@ -1302,6 +1302,14 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         artistIds: ['the-smiths', 'the-stone-roses', 'belle-and-sebastian', 'camera-obscura'],
       },
       {
+        title: "Twee pop's founders",
+        blurb:
+          "The C86-era bands who made indie pop small, sweet and homemade on purpose, in " +
+          "Glasgow, Oxford, Olympia and suburban Maryland. Their story is told in full on twee " +
+          "pop's own page.",
+        artistIds: ['the-pastels', 'talulah-gosh', 'beat-happening', 'black-tambourine', 'heavenly'],
+      },
+      {
         title: 'Into dream-pop and shoegaze',
         blurb:
           "Where indie-pop's melody meets dream-pop's haze. These artists carry both tags, and " +
@@ -1331,6 +1339,74 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "A 2010s–2020s generation absorbed indie-pop's melodic instinct into bedroom-pop's " +
           "laptop-and-webcam production — the tradition's newest chapter, not a break from it.",
         artistIds: ['beach-house', 'blood-orange', 'clairo', 'snail-mail', 'japanese-breakfast', 'mac-demarco', 'waxahatchee', 'beabadoobee'],
+      },
+    ],
+  },
+
+  // Added Oct 2026 (the twee pass): the founders' research and sourcing is in
+  // research/twee-founders-DRAFT.md.
+  'twee-pop': {
+    deck:
+      "Indie pop made small and sweet on purpose: a few chords played a little too fast, " +
+      "untrained voices, songs about crushes and childhood sung as if nobody was listening. " +
+      "The word began as a sneer from the music press in the mid-1980s, and it stuck to a " +
+      "sound that has long outlasted the sneer.",
+    originParagraphs: [
+      "In 1986 the NME gave away C86, a cassette of new British guitar bands, the Pastels " +
+        "among them, and its name became shorthand for a whole attitude. The Pastels had been " +
+        "making wobbly, tender records in Glasgow since the early 1980s, drawing on the Velvet " +
+        "Underground; in Oxford, Talulah Gosh set sixties girl-group tunes to the speed of the " +
+        "Ramones, and the press mocked them as \"twee\". In Olympia, Washington, Beat Happening " +
+        "were doing much the same on their own, three people and no bass, on Calvin Johnson's " +
+        "K Records.",
+      "The sound spread through small labels more than charts: Sarah in Bristol, K in " +
+        "Olympia, Slumberland in Maryland, where Black Tambourine buried girl-group tunes in " +
+        "Mary Chain fuzz. In the 1990s it grew in two directions. Talulah Gosh's members, " +
+        "regrouped as Heavenly, met riot grrrl in Olympia and got louder and angrier, while " +
+        "Belle and Sebastian and Camera Obscura carried the hushed, literate side of it out of " +
+        "Glasgow to a far wider audience. Alvvays and Kero Kero Bonito show how far its " +
+        "sweetness has travelled since.",
+    ],
+    soundParagraph:
+      "Short, bright songs on clean or fuzzy guitars, often just a few chords, with drums kept " +
+      "simple and sometimes barely there. Voices are plain and unschooled, often a woman's or " +
+      "a boy and a girl together, singing melodies borrowed from sixties girl groups. The " +
+      "innocence is the style, but the best of it has an edge underneath: sadness, anger or " +
+      "punk speed beneath the sweetness.",
+    // Alvvays' Blue Rev (shoegaze-leaning dream pop) and Kero Kero Bonito's
+    // Time 'n' Place (electronic and noisy) fail the album test: both bands
+    // carry twee in their songs, not in these records.
+    definingAlbums: [
+      'belle-and-sebastian',
+      'beat-happening',
+      'talulah-gosh',
+      'the-pastels',
+      'heavenly',
+      'camera-obscura',
+      'black-tambourine',
+    ],
+    sections: [
+      {
+        title: 'The founders',
+        blurb:
+          "Glasgow, Oxford, Olympia and suburban Maryland in the mid-to-late 1980s: bands who " +
+          "chose to sound small, sweet and homemade, and the tiny labels that put them out.",
+        artistIds: ['the-pastels', 'beat-happening', 'talulah-gosh', 'black-tambourine'],
+      },
+      {
+        title: 'Growing up',
+        blurb:
+          "In the 1990s the sound went two ways: Heavenly got louder after meeting riot grrrl in " +
+          "Olympia, while Belle and Sebastian and Camera Obscura made it hushed, literate and " +
+          "orchestral.",
+        artistIds: ['heavenly', 'belle-and-sebastian', 'camera-obscura'],
+      },
+      {
+        title: 'Where it went next',
+        blurb:
+          "Twee's sweetness carried into newer music: Alvvays' jangle under a dream-pop haze, " +
+          "and Kero Kero Bonito's playground melodies made on laptops.",
+        artistIds: ['alvvays', 'kero-kero-bonito'],
       },
     ],
   },
@@ -2796,7 +2872,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Television, Talking Heads), Bowie's persona-driven glam, and a UK post-punk wing " +
           "(Wire, X-Ray Spex) that carried the same ambition into a rawer, more confrontational " +
           "register.",
-        artistIds: ['velvet-underground', 'nico', 'david-bowie', 'roxy-music', 'kate-bush', 'can', 'television', 'talking-heads', 'patti-smith', 'wire', 'x-ray-spex'],
+        artistIds: ['velvet-underground', 'nico', 'david-bowie', 'roxy-music', 'kate-bush', 'can', 'king-crimson', 'television', 'talking-heads', 'patti-smith', 'wire', 'x-ray-spex'],
       },
       {
         title: "Art-rock's 1980s and 90s turn",
@@ -3359,8 +3435,8 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
   'noise-pop': {
     deck:
       "Pop melody run straight through a wall of guitar feedback — hooks intact, but coated in " +
-      "distortion instead of polished clean. Noise-pop is a small, tightly-sourced lineage in " +
-      "this map: two artists, one shared point of origin.",
+      "distortion instead of polished clean. Noise-pop is a small, tightly-sourced lineage " +
+      "with one shared point of origin.",
     originParagraphs: [
       "The Jesus and Mary Chain's Psychocandy (1985) is the record that essentially invents the " +
         "genre in one move — Velvet Underground-style drones and Phil Spector-style pop " +
@@ -3383,13 +3459,15 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
       "pushed into feedback and distortion territory that a straightforward pop or punk " +
       "recording would treat as a mistake, but the drums and vocal melody stay driving and " +
       "direct, keeping the songs anchored even as the guitars threaten to swallow them.",
-    // Only 2 artists carry this tag in the graph — the list below is
+    // Only a few artists carry this tag in the graph — the list below is
     // necessarily short, not padded. Don't force it to 4.
-    // The Breeders' Last Splash in.
+    // The Breeders' Last Splash in; Black Tambourine's collected songs in
+    // (Oct 2026, the twee pass).
     definingAlbums: [
       'the-jesus-and-mary-chain',
       'the-breeders',
       'husker-du',
+      'black-tambourine',
     ],
     sections: [
       {
@@ -3399,6 +3477,14 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Minneapolis hardcore — but arriving within a year of each other at the same basic " +
           "move: real pop songs, buried under more distortion than pop is supposed to carry.",
         artistIds: ['the-jesus-and-mary-chain', 'husker-du', 'the-breeders'],
+      },
+      {
+        title: 'The girl-group wing',
+        blurb:
+          "Psychocandy's lesson taken literally in suburban Maryland: sixties girl-group tunes, " +
+          "sung sweet and flat, drowned in fuzz on a shoestring. A few singles that became a " +
+          "template for American noise pop and twee alike.",
+        artistIds: ['black-tambourine'],
       },
     ],
   },

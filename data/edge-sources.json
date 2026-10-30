@@ -1023,6 +1023,76 @@
     "checked": "2026-10-26",
     "by": "rescue-4"
   },
+  "black-tambourine>beat-happening": {
+    "url": "https://www.clashmusic.com/?p=202734",
+    "found": "We always knew of American bands like Beat Happening, Galaxie 500, The Feelies – any of those bands were also hugely influential to us.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
+  "black-tambourine>big-black": {
+    "url": "https://ink19.com/2010/06/magazine/interviews/nucemb-black-tambourine",
+    "found": "Lots of noisy stuff like Big Black, Head of David, Pussy Galore and the Birthday Party.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
+  "black-tambourine>galaxie-500": {
+    "url": "https://www.clashmusic.com/?p=202734",
+    "found": "We always knew of American bands like Beat Happening, Galaxie 500, The Feelies – any of those bands were also hugely influential to us.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
+  "black-tambourine>glenn-branca": {
+    "url": "https://ink19.com/2010/06/magazine/interviews/nucemb-black-tambourine",
+    "found": "For the noise stuff, I was especially interested in the NYC scene: Swans, Glenn Branca, Sonic Youth, Unsane, Dustdevils, Drunk Tank. While we were consciously trying to explore the more pop-influenced side of the spectrum, I think our collective interest in noise was big factor in how BT sounded.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
+  "black-tambourine>sonic-youth": {
+    "url": "https://ink19.com/2010/06/magazine/interviews/nucemb-black-tambourine",
+    "found": "For the noise stuff, I was especially interested in the NYC scene: Swans, Glenn Branca, Sonic Youth, Unsane, Dustdevils, Drunk Tank. While we were consciously trying to explore the more pop-influenced side of the spectrum, I think our collective interest in noise was big factor in how BT sounded.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
+  "black-tambourine>swans": {
+    "url": "https://ink19.com/2010/06/magazine/interviews/nucemb-black-tambourine",
+    "found": "For the noise stuff, I was especially interested in the NYC scene: Swans, Glenn Branca, Sonic Youth, Unsane, Dustdevils, Drunk Tank. While we were consciously trying to explore the more pop-influenced side of the spectrum, I think our collective interest in noise was big factor in how BT sounded.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
+  "black-tambourine>the-birthday-party": {
+    "url": "https://ink19.com/2010/06/magazine/interviews/nucemb-black-tambourine",
+    "found": "Lots of noisy stuff like Big Black, Head of David, Pussy Galore and the Birthday Party.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
+  "black-tambourine>the-jesus-and-mary-chain": {
+    "url": "https://www.clashmusic.com/?p=202734",
+    "found": "But as well, The Jesus And Mary Chain were an enormous influence on us and they took a lot from the girl group, 60s sound.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
+  "black-tambourine>velvet-underground": {
+    "url": "https://ink19.com/2010/06/magazine/interviews/nucemb-black-tambourine",
+    "found": "Some ’60s rock like the Velvet Underground, Love, and the Byrds.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
+  "black-tambourine>yo-la-tengo": {
+    "url": "https://www.clashmusic.com/?p=202734",
+    "found": "So it wasn’t necessarily a conscious Anglophile thing, in that we weren’t trying to copy the way British bands sounded – Galaxie 500, Yo La Tengo and things equally influenced us like that.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
   "blonde-redhead>lush": {
     "url": "https://pitchfork.com/features/5-10-15-20/blonde-redhead-kazu-makino-on-the-music-that-made-her/",
     "found": "It was Lush and My Bloody Valentine. I went to those shows and I just remember falling apart every time. Like, “Oh my god, this is what I want to do. I want this noise.”",
@@ -1801,6 +1871,13 @@
     "note": "PRINT: Bill Prince, 'New 2 U: Cocteau Twins', Sounds, 11 September 1982 (print-only magazine, as Wikipedia's footnote gives it; no page number). It is a contemporary reviewer's reading ('mixing strong Siouxsie and the Banshees and Joy Division influences'), not the band's. Owner may prefer to keep at critic or look for a Guthrie/Fraser quote.",
     "print": "Bill Prince, \"New 2 U: Cocteau Twins\", Sounds, 11 September 1982",
     "by": "c21"
+  },
+  "cocteau-twins>patti-smith": {
+    "url": "https://youtu.be/lC2pol5qeAA?t=149",
+    "found": "But seeing Patty Smith was I don't know she was just such an ethereal beautiful soul. She became one of my heroins for many many years and now I am living the",
+    "note": "Amoeba sweep: YouTube auto captions, checked against research/source-pass/amoeba/transcripts/; the citation is the cleaned reading.",
+    "checked": "2026-10-30",
+    "verdict": "ok"
   },
   "cocteau-twins>ramones": {
     "url": "https://cocteautwins.com/press-and-news/2011/12/01/2011-robin-guthrie-interview-mojo-magazine/",
@@ -2628,6 +2705,13 @@
     "checked": "2026-10-26",
     "by": "series-pitchfork"
   },
+  "gang-of-four>bob-dylan": {
+    "url": "https://youtu.be/VJPKkan97o8?t=255",
+    "found": "time Bob Dylan Don't Look Back The Man Who transformed my life when I first heard you know Highway 61 Revisited this",
+    "note": "Amoeba sweep: YouTube auto captions, checked against research/source-pass/amoeba/transcripts/; the citation is the cleaned reading.",
+    "checked": "2026-10-30",
+    "verdict": "ok"
+  },
   "gang-of-four>velvet-underground": {
     "url": "https://www.pocklingtonpost.co.uk/whats-on/arts-and-entertainment/jon-king-of-gang-of-four-i-wanted-it-to-mean-something-and-to-try-to-change-the-world-4274482",
     "found": "“It was really a pilgrimage because The Velvet Underground was really the marker for me and Andy of what bands should sound like and we came back and thought we’d have a band.",
@@ -2741,6 +2825,13 @@
     "note": "Real quote on the archived page (page dated January 28, 2011; Pryor named as the speaker). It is about one song on one album, so a thin first-person influence; owner may judge. NB: the project notes say this quote was fabricated by a search summary; the Internet Archive copy of the Alt Press page does carry it.",
     "by": "u2"
   },
+  "get-up-kids>fugazi": {
+    "url": "https://youtu.be/b93A3Jl1-1c?t=782",
+    "found": "it ain't no fugazi is like probably one of the most important bands for me personally of like how I found about punk rock so this record I was I saw",
+    "note": "Amoeba sweep: YouTube auto captions, checked against research/source-pass/amoeba/transcripts/; the citation is the cleaned reading.",
+    "checked": "2026-10-30",
+    "verdict": "ok"
+  },
   "get-up-kids>the-jesus-lizard": {
     "checked": "2026-10-26",
     "verdict": "fixed",
@@ -2829,6 +2920,13 @@
     "sourceTier": "first-person",
     "note": "Page opened. Rossen also says 'I didn’t hear Talk Talk until after we made Veckatimest' and that Chris Taylor loves those records, so Talk Talk is a Shields-era influence. My guessed URL was refused; the real slug is above (redirected from /features/listomania/...).",
     "by": "retry4"
+  },
+  "guided-by-voices>king-crimson": {
+    "url": "https://www.spinmagazine.com/2004/09/records-changed-my-life-robert-pollard-guided-voices/",
+    "found": "First, I couldn’t get into it because the songs were so long and jazzy, but after a while I got into a complete prog-rock phase.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "King Crimson pass: re-opened on its page by hand."
   },
   "guided-by-voices>rem": {
     "verdict": "fixed",
@@ -2925,6 +3023,20 @@
     "checked": "2026-10-26",
     "by": "c19"
   },
+  "heavenly>bikini-kill": {
+    "url": "https://quinnmoreland.substack.com/p/52924-an-interview-with-heavenly",
+    "found": "So there’s a lyrical difference but also a musical one because we were inspired by the slightly more aggressive sound of riot grrrl, even though we never really sounded like a riot grrrl band.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
+  "heavenly>bratmobile": {
+    "url": "https://aestheticsforbirds.com/?p=673",
+    "found": "Heavenly’s US record label was K Records, one of the centres for this movement, and when we toured in the USA in the early 1990s we met and played with Bratmobile and other riot grrrl acts, and found them kindred spirits. This reawakened our punk rock tendencies, which had been to the fore in our previous band Talulah Gosh, and so our music became noisier from our 1993 releases till we finished in 1996.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
   "hot-chip>neil-young": {
     "url": "https://thequietus.com/interviews/bakers-dozen/alexis-taylor-hot-chip-favourite-albums-interview/5/",
     "found": "Neil Young was the first songwriter whose songs I learned to play on the guitar.",
@@ -2942,6 +3054,13 @@
     "sourceTier": "reported",
     "note": "the old Wikipedia/Guardian 'homage' wording was not found on the Guardian page; Hi-Fi News is the footnote behind Wikipedia's sentence",
     "by": "c21"
+  },
+  "husker-du>buzzcocks": {
+    "url": "https://youtu.be/kNPJJBYKwTQ?t=53",
+    "found": "the first buzz cox album another music in a different kitchen peach shelley is like one of the main influences on my work buzzcocks i'm sure",
+    "note": "Amoeba sweep: YouTube auto captions, checked against research/source-pass/amoeba/transcripts/; the citation is the cleaned reading.",
+    "checked": "2026-10-30",
+    "verdict": "ok"
   },
   "husker-du>joy-division": {
     "url": "https://thequietus.com/interviews/bakers-dozen/bob-mould-favourite-albums-interview/6/",
@@ -3726,6 +3845,13 @@
     "sourceTier": "first-person",
     "note": "Page opened. In the same answer DeMarco says they covered 'Unknown Legend' almost every night and 'Zuma, we actually used to listen to on tour all the time'. The Guardian ('dry, crisp 70s') and thrift-store dollar-bin details were not found and not used. Original MTV News page archived at https://web.archive.org/web/20230124162752/https://www.mtv.com/news/pki19y/mac-demarco-five-easy-hot-dogs-interview (link from the newsletter; not opened).",
     "by": "retry4"
+  },
+  "mac-demarco>the-modern-lovers": {
+    "url": "https://youtu.be/YCgn_DM7cn4?t=140",
+    "found": "I love Jonathon. Huge inspiration for me. Really cool.",
+    "note": "Amoeba sweep: YouTube auto captions, checked against research/source-pass/amoeba/transcripts/; the citation is the cleaned reading.",
+    "checked": "2026-10-30",
+    "verdict": "ok"
   },
   "mac-demarco>the-smiths": {
     "checked": "2026-10-26",
@@ -5935,6 +6061,13 @@
     "verdict": "ok",
     "by": "retry2"
   },
+  "snail-mail>beat-happening": {
+    "url": "https://www.tumblr.com/930club/149701778786/930-interview-lindsey-jordan-snail-mail",
+    "found": "While writing Habit I was definitely listening to a lot of Grouper, Broadcast, Joni Mitchell, Psychic TV, Beat Happening, and Liz Phair. Not all of these artists influenced the sound of the album stylistically, but I feel like I've learned a lot from their songwriting.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
   "snail-mail>bratmobile": {
     "url": "https://themoderngirlsco.wordpress.com/2017/01/31/moderngirlcrush-lindsey-jordan/",
     "found": "In middle school, I started taking a lot of interest in punk, so I was really into Sleater Kinney and Bratmobile, as well as indie bands with thorough songwriting like Beach House and Sharon Van Etten (two faves that will always be faves).",
@@ -6801,6 +6934,20 @@
     "note": "Original quote 'a big reason I moved to New York' was a mangled join of two sentences; page says 'a big reason I moved to NY'. Not a 'tribute' piece but Byrne's statement to Rolling Stone.",
     "checked": "2026-10-26"
   },
+  "talulah-gosh>ramones": {
+    "url": "https://aestheticsforbirds.com/?p=673",
+    "found": "The basis of our music was the bringing-together of our two main influences, 1960s girl groups and the Ramones.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
+  "talulah-gosh>the-pastels": {
+    "url": "https://thequietus.com/?p=14200",
+    "found": "What was interesting was at that time bands like that The Pastels, for instance, twinned leather trousers with anoraks; it was that combination of seeing the world through a child’s eye but also having a darker, harsher side which we wanted to get across.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
   "tame-impala>my-bloody-valentine": {
     "checked": "2026-10-26",
     "verdict": "fixed",
@@ -7228,6 +7375,13 @@
     "checked": "2026-10-26",
     "by": "c15"
   },
+  "the-last-dinner-party>st-vincent": {
+    "url": "https://youtu.be/8CkdgJt1gag?t=492",
+    "found": "kind of everything I have a guitar I play her guitar my dad introduced her to me probably when I was about like 14",
+    "note": "Amoeba sweep: YouTube auto captions, checked against research/source-pass/amoeba/transcripts/; the citation is the cleaned reading.",
+    "checked": "2026-10-30",
+    "verdict": "ok"
+  },
   "the-marias>radiohead": {
     "checked": "2026-10-26",
     "verdict": "fixed",
@@ -7337,6 +7491,27 @@
     "citation": "Matt Berninger to The Scenestar (2007), asked about his early inspirations: \"The band that I first really started falling in love with were The Smiths, Violent Femmes, Tom Waits, Nick Cave.\"",
     "note": "Coordinator opened the Internet Archive copy (2008) of the Scenestar interview, June 2007 (date from the URL).",
     "by": "retry3"
+  },
+  "the-pastels>kraftwerk": {
+    "url": "https://thequietus.com/interviews/bakers-dozen/the-pastels-stephen-mcrobbie-favourite-albums/5/",
+    "found": "The Ralf & Florian record has got really beautiful inventiveness to it and there is a lot of fluid electronics on it. To a certain extent, that has influenced some of Tom Crossley’s – who plays with us – flute playing.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
+  "the-pastels>the-modern-lovers": {
+    "url": "https://encyclopedia.com/education/news-wires-white-papers-and-books/pastels",
+    "found": "The band's two greatest influences include the Swell Maps and the Modern Lovers, two bands known for endearing simplicity and a sense of adventure, respectively.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
+  },
+  "the-pastels>velvet-underground": {
+    "url": "https://thequietus.com/interviews/bakers-dozen/the-pastels-stephen-mcrobbie-favourite-albums/13/",
+    "found": "This record was such a big influence on The Pastels, as was all The Velvet Underground’s music.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Twee pass: re-opened on its page by hand."
   },
   "the-postal-service>bjork": {
     "url": "https://lifeoftherecord.com/the-postal-service-notes",
@@ -7819,6 +7994,13 @@
     "note": "A reviewer's claim, not a Tortoise quote (Wikipedia's Neu! article reads it as Tortoise \"cited Neu! as an influence\", which the page does not say). Page shows no date on the text read.",
     "by": "u2"
   },
+  "tortoise>television": {
+    "url": "https://youtu.be/XEQMIIvghyQ?t=62",
+    "found": "Television is sort of ground zero for me. I mean, they weren't my first favorite band, but they are my favorite band. I'm really into lots of Verlaine",
+    "note": "Amoeba sweep: YouTube auto captions, checked against research/source-pass/amoeba/transcripts/; the citation is the cleaned reading.",
+    "checked": "2026-10-30",
+    "verdict": "ok"
+  },
   "townes-van-zandt>bob-dylan": {
     "checked": "2026-10-26",
     "verdict": "ok",
@@ -8278,6 +8460,13 @@
     "note": "Slide is about a Velvet Underground member's solo record (check which: page says 'his solo music'); she says she is a fan of VU. Thin: owner may prefer remove.",
     "by": "u1"
   },
+  "wilco>king-crimson": {
+    "url": "https://www.guitarplayer.com/guitarists/nels-cline-10-records-that-changed-my-life",
+    "found": "Pretty much the mood of the music, the amount of improvisation they did, the mastering of their various instruments and language — along with, in my case, listening to Wayne Shorter and Joe Zawinul compositions with Weather Report — made me want to write music that sounded like that, in my way.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "King Crimson pass: re-opened on its page by hand."
+  },
   "wilco>minutemen": {
     "url": "https://pitchfork.com/features/5-10-15-20/the-music-that-made-wilcos-jeff-tweedy/",
     "found": "They felt attainable. And they were making music with so few moving parts that you could hear what was going on and learn what each instrument was doing.",
@@ -8304,6 +8493,13 @@
     "citation": "Rolling Stone Australia, on Wire's album Silver/Lead: \"full of regular-length songs with bells and whistles and the heavy influence of Berlin-era Bowie.\"",
     "note": "The page is about Silver/Lead (2017), not 154 as the old citation said; Billboard liner-notes page and any 154 page not found (2 searches). Wikipedia's Wire and 154 articles don't mention Bowie as an influence. Direction right but thin; owner may prefer remove.",
     "by": "c18"
+  },
+  "wire>king-crimson": {
+    "url": "https://pitchfork.com/features/5-10-15-20/10015-wires-colin-newman-on-the-music-that-made-him/",
+    "found": "In the period before I was living in London, I saw King Crimson more than any other band, and they had the biggest effect on me.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "King Crimson pass: re-opened on its page by hand."
   },
   "wire>neil-young": {
     "url": "https://thequietus.com/interviews/bakers-dozen/graham-lewis-wire-favourite-albums-interview/4/",

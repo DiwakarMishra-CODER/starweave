@@ -1,0 +1,345 @@
+[
+ {
+  "id": "n3S8wsfwU4Y",
+  "guest": "TV Girl & George Clanton",
+  "title": "TV Girl & George Clanton's “What’s In My Bag?” | Amoeba Music",
+  "speakers": [
+   "george-clanton"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/n3S8wsfwU4Y.txt",
+  "lines": 364,
+  "alreadyLinked": {
+   "george-clanton": [
+    "the-human-league"
+   ]
+  }
+ },
+ {
+  "id": "8CkdgJt1gag",
+  "guest": "The Last Dinner Party",
+  "title": "The Last Dinner Party's “What’s In My Bag?” | Amoeba Music",
+  "speakers": [
+   "the-last-dinner-party"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/8CkdgJt1gag.txt",
+  "lines": 348,
+  "alreadyLinked": {
+   "the-last-dinner-party": [
+    "david-bowie"
+   ]
+  }
+ },
+ {
+  "id": "_rPly-3zCTk",
+  "guest": "Black Country, New Road",
+  "title": "Black Country, New Road's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "black-country-new-road"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/_rPly-3zCTk.txt",
+  "lines": 271,
+  "alreadyLinked": {
+   "black-country-new-road": [
+    "arcade-fire",
+    "velvet-underground",
+    "can",
+    "the-fall"
+   ]
+  }
+ },
+ {
+  "id": "kNPJJBYKwTQ",
+  "guest": "Bob Mould",
+  "title": "Bob Mould's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "husker-du"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/kNPJJBYKwTQ.txt",
+  "lines": 200,
+  "alreadyLinked": {
+   "husker-du": [
+    "ramones",
+    "joy-division"
+   ]
+  }
+ },
+ {
+  "id": "WehmkxHSdaY",
+  "guest": "Explosions In The Sky",
+  "title": "Explosions In The Sky's “What’s In My Bag?” | Amoeba Music",
+  "speakers": [
+   "explosions-in-the-sky"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/WehmkxHSdaY.txt",
+  "lines": 190,
+  "alreadyLinked": {
+   "explosions-in-the-sky": [
+    "mogwai",
+    "tortoise"
+   ]
+  }
+ },
+ {
+  "id": "mtFeERv8r0Q",
+  "guest": "Jimmy Tamborello (Dntel/Postal Service)",
+  "title": "Jimmy Tamborello (Dntel/Postal Service)'s \"What's In My Bag?\" [Home Edition] | Amoeba Music",
+  "speakers": [
+   "the-postal-service"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/mtFeERv8r0Q.txt",
+  "lines": 171,
+  "alreadyLinked": {
+   "the-postal-service": [
+    "kraftwerk",
+    "depeche-mode",
+    "the-human-league",
+    "omd",
+    "bjork"
+   ]
+  }
+ },
+ {
+  "id": "npNyPflHako",
+  "guest": "Lee Ranaldo",
+  "title": "Lee Ranaldo's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "sonic-youth"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/npNyPflHako.txt",
+  "lines": 160,
+  "alreadyLinked": {
+   "sonic-youth": [
+    "velvet-underground",
+    "television",
+    "wire",
+    "the-stooges",
+    "minor-threat",
+    "faust",
+    "black-flag",
+    "glenn-branca",
+    "this-heat",
+    "rhys-chatham",
+    "new-york-dolls",
+    "teenage-jesus-and-the-jerks",
+    "james-chance-and-the-contortions",
+    "mars",
+    "dna",
+    "patti-smith",
+    "talking-heads",
+    "joni-mitchell",
+    "pavement",
+    "minutemen",
+    "leonard-cohen",
+    "neil-young"
+   ]
+  }
+ },
+ {
+  "id": "0lcSdEublRI",
+  "guest": "Alvvays",
+  "title": "Alvvays' \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "alvvays"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/0lcSdEublRI.txt",
+  "lines": 157,
+  "alreadyLinked": {
+   "alvvays": [
+    "the-smiths",
+    "cocteau-twins",
+    "pavement",
+    "the-replacements",
+    "yo-la-tengo",
+    "rem",
+    "my-bloody-valentine",
+    "camera-obscura"
+   ]
+  }
+ },
+ {
+  "id": "m3ZORstB6os",
+  "guest": "Waxahatchee & Allison Crutchfield",
+  "title": "Waxahatchee & Allison Crutchfield's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "waxahatchee"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/m3ZORstB6os.txt",
+  "lines": 149,
+  "alreadyLinked": {
+   "waxahatchee": [
+    "bright-eyes",
+    "fiona-apple",
+    "velvet-underground",
+    "lucinda-williams",
+    "rem"
+   ]
+  }
+ },
+ {
+  "id": "ce0JXv5937c",
+  "guest": "Dave Grohl",
+  "title": "Dave Grohl's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "nirvana"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/ce0JXv5937c.txt",
+  "lines": 123,
+  "alreadyLinked": {
+   "nirvana": [
+    "pixies",
+    "sonic-youth",
+    "dinosaur-jr",
+    "rem",
+    "the-jesus-lizard",
+    "velvet-underground",
+    "the-stooges",
+    "black-flag",
+    "ramones",
+    "wipers",
+    "the-breeders"
+   ]
+  }
+ },
+ {
+  "id": "Y3SiMLdPa_c",
+  "guest": "Courtney Barnett and Kurt Vile",
+  "title": "Courtney Barnett and Kurt Vile's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "kurt-vile"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/Y3SiMLdPa_c.txt",
+  "lines": 117,
+  "alreadyLinked": {
+   "kurt-vile": [
+    "john-prine",
+    "bob-dylan",
+    "neil-young",
+    "velvet-underground",
+    "pavement",
+    "yo-la-tengo",
+    "dinosaur-jr",
+    "sonic-youth",
+    "pj-harvey",
+    "beck"
+   ]
+  }
+ },
+ {
+  "id": "jeOJotFpMUY",
+  "guest": "Ariel Pink",
+  "title": "Ariel Pink's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "ariel-pink"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/jeOJotFpMUY.txt",
+  "lines": 107,
+  "alreadyLinked": {
+   "ariel-pink": [
+    "the-cure"
+   ]
+  }
+ },
+ {
+  "id": "YCgn_DM7cn4",
+  "guest": "Mac DeMarco",
+  "title": "Mac DeMarco's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "mac-demarco"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/YCgn_DM7cn4.txt",
+  "lines": 96,
+  "alreadyLinked": {
+   "mac-demarco": [
+    "neil-young",
+    "the-smiths"
+   ]
+  }
+ },
+ {
+  "id": "aLGVGvO1YeE",
+  "guest": "Car Seat Headrest",
+  "title": "Car Seat Headrest's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "car-seat-headrest"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/aLGVGvO1YeE.txt",
+  "lines": 73,
+  "alreadyLinked": {
+   "car-seat-headrest": [
+    "guided-by-voices",
+    "nirvana",
+    "destroyer"
+   ]
+  }
+ },
+ {
+  "id": "d0Okv3M0JxY",
+  "guest": "Lou Barlow",
+  "title": "Lou Barlow's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "dinosaur-jr"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/d0Okv3M0JxY.txt",
+  "lines": 68,
+  "alreadyLinked": {
+   "dinosaur-jr": [
+    "husker-du",
+    "sonic-youth",
+    "minutemen",
+    "neil-young",
+    "the-birthday-party",
+    "the-replacements",
+    "wipers"
+   ]
+  }
+ },
+ {
+  "id": "i4SYy5_2Wn4",
+  "guest": "Jody Stephens (Big Star)",
+  "title": "Jody Stephens (Big Star)'s \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "big-star"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/i4SYy5_2Wn4.txt",
+  "lines": 61,
+  "alreadyLinked": {
+   "big-star": []
+  }
+ },
+ {
+  "id": "0Q4MDl_Iws0",
+  "guest": "Mitski",
+  "title": "Mitski's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "mitski"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/0Q4MDl_Iws0.txt",
+  "lines": 50,
+  "alreadyLinked": {
+   "mitski": [
+    "jeff-buckley",
+    "bjork",
+    "sheena-ringo",
+    "st-vincent"
+   ]
+  }
+ },
+ {
+  "id": "-u2sn4NdBxw",
+  "guest": "Keith Morris",
+  "title": "Keith Morris' \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "black-flag"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/-u2sn4NdBxw.txt",
+  "lines": 39,
+  "alreadyLinked": {
+   "black-flag": [
+    "the-stooges",
+    "bad-brains",
+    "ramones",
+    "suicide"
+   ]
+  }
+ }
+]

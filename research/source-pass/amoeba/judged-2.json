@@ -1,0 +1,766 @@
+{
+ "agent": "judge-2",
+ "finished": true,
+ "entries": [
+  {
+   "episode": "n3S8wsfwU4Y",
+   "speaker": "george-clanton",
+   "speakerName": "George Clanton",
+   "target": "velvet-underground",
+   "artist": "The Velvet Underground",
+   "record": "Loaded",
+   "kind": "new",
+   "verdict": "unclear",
+   "t": 31,
+   "link": "https://youtu.be/n3S8wsfwU4Y?t=28",
+   "heard": "I'm going to start from the top. My true north, The Velvet Underground, of course. I picked this one in particular. This is Loaded.",
+   "quote": "I'm going to start from the top. My true north, The Velvet Underground, of course. I picked this one in particular. This is Loaded.",
+   "citation": "",
+   "note": "Speaker is Brad of TV Girl (he says he pitched the project to George); not George Clanton. Praise only, no tie to his own music."
+  },
+  {
+   "episode": "n3S8wsfwU4Y",
+   "speaker": "george-clanton",
+   "speakerName": "Brad (TV Girl)",
+   "target": "sex-pistols",
+   "artist": "Sex Pistols",
+   "record": "Great Rock 'n' Roll Swindle poster",
+   "kind": "new",
+   "verdict": "unclear",
+   "t": 990,
+   "link": "https://youtu.be/n3S8wsfwU4Y?t=987",
+   "heard": "George is going to hate this one, so I",
+   "quote": "George is going to hate this one, so I had to get the Malcolm McLaren Sex Pistols poster cuz",
+   "citation": "",
+   "note": "Speaker is Brad of TV Girl, buying a poster; no influence claim."
+  },
+  {
+   "episode": "8CkdgJt1gag",
+   "speaker": "the-last-dinner-party",
+   "speakerName": "A member of The Last Dinner Party",
+   "target": "st-vincent",
+   "artist": "St. Vincent",
+   "record": "Actor",
+   "kind": "new",
+   "verdict": "influence",
+   "t": 495,
+   "link": "https://youtu.be/8CkdgJt1gag?t=492",
+   "heard": "kind of everything I have a guitar I play her guitar my dad introduced her to me probably when I was about like 14",
+   "quote": "I have a guitar, I play her guitar. My dad introduced her to me, probably when I was about, like, 14.",
+   "citation": "A member of The Last Dinner Party says on Amoeba Music's What's In My Bag? of St. Vincent: \"I have a guitar, I play her guitar. My dad introduced her to me, probably when I was about, like, 14.\"",
+   "note": "Which member speaks is unclear. Preceded by 'we are very big St. Vincent fans in this band'. Second album = Actor. Moderate: fandom tied to formative years and playing her guitar."
+  },
+  {
+   "episode": "8CkdgJt1gag",
+   "speaker": "the-last-dinner-party",
+   "speakerName": "A member of The Last Dinner Party",
+   "target": "fontaines-dc",
+   "artist": "Fontaines D.C.",
+   "record": "Nick Drake tribute compilation (they cover 'Cello Song')",
+   "kind": "new",
+   "verdict": "favourite",
+   "t": 878,
+   "link": "https://youtu.be/8CkdgJt1gag?t=875",
+   "heard": "Drake covers record um cuz I love fontaine's DC and I saw that they covered Cello Song",
+   "quote": "I love Fontaines D.C., and I saw that they covered 'Cello Song'.",
+   "citation": "",
+   "note": "Picked for Fontaines' cover on a Nick Drake tribute; nick-drake not judged (cover record)."
+  },
+  {
+   "episode": "_rPly-3zCTk",
+   "speaker": "black-country-new-road",
+   "speakerName": "A member of Black Country, New Road",
+   "target": "modest-mouse",
+   "artist": "Modest Mouse",
+   "record": "The Lonesome Crowded West",
+   "kind": "new",
+   "verdict": "favourite",
+   "t": 303,
+   "link": "https://youtu.be/_rPly-3zCTk?t=300",
+   "heard": "I really like the production on the album I think it's so good I think just like the way the band play and the way",
+   "quote": "I really like the production on the album. I think it's so good.",
+   "citation": "",
+   "note": "Album title mis-captioned; 'a long drive for someone with nothing to think about' is from Modest Mouse's 'Trailer Trash'... likely The Lonesome Crowded West (record not certain). Praise only."
+  },
+  {
+   "episode": "_rPly-3zCTk",
+   "speaker": "black-country-new-road",
+   "speakerName": "A member of Black Country, New Road",
+   "target": "joanna-newsom",
+   "artist": "Joanna Newsom",
+   "record": "Divers (probable)",
+   "kind": "new",
+   "verdict": "favourite",
+   "t": 335,
+   "link": "https://youtu.be/_rPly-3zCTk?t=332",
+   "heard": "maybe the kind of bread and butter of my existence existence I maybe listen to this sometimes both in a day every day every",
+   "quote": "Maybe the kind of bread and butter of my existence. I maybe listen to this sometimes both in a day, every day.",
+   "citation": "",
+   "note": "Artist not named in the captions; inferred from 'Time, as a Symptom' and 'Have One on Me' (Joanna Newsom). Praise/listening habit, no tie to the band's own music."
+  },
+  {
+   "episode": "kNPJJBYKwTQ",
+   "speaker": "husker-du",
+   "speakerName": "Bob Mould",
+   "target": "buzzcocks",
+   "artist": "Buzzcocks",
+   "record": "Another Music in a Different Kitchen",
+   "kind": "new",
+   "verdict": "influence",
+   "t": 56,
+   "link": "https://youtu.be/kNPJJBYKwTQ?t=53",
+   "heard": "the first buzz cox album another music in a different kitchen peach shelley is like one of the main influences on my work buzzcocks i'm sure",
+   "quote": "The first Buzzcocks album, Another Music in a Different Kitchen. Pete Shelley is like one of the main influences on my work.",
+   "citation": "Bob Mould of Hüsker Dü says on Amoeba Music's What's In My Bag? of Buzzcocks' first album: \"Pete Shelley is like one of the main influences on my work.\"",
+   "note": "Buzzcocks' Another Music in a Different Kitchen is 1978, Mould heard them live in Minnesota autumn 1978 (before Hüsker Dü)."
+  },
+  {
+   "episode": "kNPJJBYKwTQ",
+   "speaker": "husker-du",
+   "speakerName": "Bob Mould",
+   "target": "my-bloody-valentine",
+   "artist": "My Bloody Valentine",
+   "record": "Loveless",
+   "kind": "new",
+   "verdict": "influence",
+   "t": 226,
+   "link": "https://youtu.be/kNPJJBYKwTQ?t=223",
+   "heard": "i mean this is a this one changed everything for me i think it changed everything for anybody who heard it",
+   "quote": "I mean, this one changed everything for me. I think it changed everything for anybody who heard it.",
+   "citation": "Bob Mould of Hüsker Dü says on Amoeba Music's What's In My Bag? of My Bloody Valentine's Loveless: \"this one changed everything for me. I think it changed everything for anybody who heard it.\"",
+   "note": "Heard Dec 1991, after Hüsker Dü split (1988): it shaped his later work, not the band's. Also says 'for me it's like Loveless and then this' at 8:32."
+  },
+  {
+   "episode": "mtFeERv8r0Q",
+   "speaker": "the-postal-service",
+   "speakerName": "Jimmy Tamborello",
+   "target": "charli-xcx",
+   "artist": "Charli XCX",
+   "record": "how i'm feeling now",
+   "kind": "new",
+   "verdict": "influence",
+   "t": 71,
+   "link": "https://youtu.be/mtFeERv8r0Q?t=68",
+   "heard": "videos of the process and every time i watched one of the videos it would make me want to go work on my own stuff and besides that",
+   "quote": "...videos of the process, and every time I watched one of the videos it would make me want to go work on my own stuff.",
+   "citation": "Jimmy Tamborello (Dntel, The Postal Service) says on Amoeba Music's What's In My Bag? that Charli XCX's lockdown videos for how i'm feeling now \"would make me want to go work on my own stuff.\"",
+   "note": "Introduced as 'speaking of inspiration'. Inspires his current work (2020); Postal Service far earlier. Quote is trimmed from the sentence's start."
+  },
+  {
+   "episode": "npNyPflHako",
+   "speaker": "sonic-youth",
+   "speakerName": "Lee Ranaldo",
+   "target": "teenage-jesus-and-the-jerks",
+   "artist": "Teenage Jesus and the Jerks",
+   "record": "No New York (compilation)",
+   "kind": "existing",
+   "verdict": "favourite",
+   "t": 70,
+   "link": "https://youtu.be/npNyPflHako?t=67",
+   "heard": "like sort of noise slide guitar and it was it was just absolutely amazing. It really reduced rock back to its essentials in like the most fantastic",
+   "quote": "Lydia was just playing like sort of noise slide guitar and it was just absolutely amazing. It really reduced rock back to its essentials in the most fantastic way.",
+   "citation": "",
+   "note": "Speaks of the No New York bands collectively (Teenage Jesus, Contortions, Mars, DNA, all already linked); worn-out copies, but no stated tie to his own music."
+  },
+  {
+   "episode": "npNyPflHako",
+   "speaker": "sonic-youth",
+   "speakerName": "Lee Ranaldo",
+   "target": "talking-heads",
+   "artist": "Talking Heads",
+   "record": "Chronology (video)",
+   "kind": "existing",
+   "verdict": "favourite",
+   "t": 93,
+   "link": "https://youtu.be/npNyPflHako?t=90",
+   "heard": "I saw Talking Heads in their their very earliest days when they were touring in a station wagon, touring little towns in New York and",
+   "quote": "I saw Talking Heads in their very earliest days when they were touring in a station wagon, touring little towns in New York and was completely hooked.",
+   "citation": "",
+   "note": "Fan from their earliest days, but no claim about his own music or Sonic Youth."
+  },
+  {
+   "episode": "0lcSdEublRI",
+   "speaker": "alvvays",
+   "speakerName": "Molly Rankin",
+   "target": "the-fall",
+   "artist": "The Fall",
+   "record": "Bend Sinister",
+   "kind": "new",
+   "verdict": "favourite",
+   "t": 385,
+   "link": "https://youtu.be/0lcSdEublRI?t=382",
+   "heard": "I'm a big fan of of the fall and uh this is probably my favorite record from them",
+   "quote": "I'm a big fan of the Fall, and this is probably my favorite record from them.",
+   "citation": "",
+   "note": "Big fan, no tie to her own music."
+  },
+  {
+   "episode": "m3ZORstB6os",
+   "speaker": "waxahatchee",
+   "speakerName": "Katie Crutchfield",
+   "target": "lucinda-williams",
+   "artist": "Lucinda Williams",
+   "record": "Lucinda Williams",
+   "kind": "existing",
+   "verdict": "favourite",
+   "t": 290,
+   "link": "https://youtu.be/m3ZORstB6os?t=287",
+   "heard": "I mean, Lucinda Williams is a whole thing for Allison and I. She's probably my favorite songwriter of all time and",
+   "quote": "I mean, Lucinda Williams is a whole thing for Allison and I. She's probably my favorite songwriter of all time...",
+   "citation": "",
+   "note": "Speaker is Katie ('Allison and I'). Says she discovered Lucinda later in life and 'hadn't spent a lot of time with this record'; no tie to her music."
+  },
+  {
+   "episode": "m3ZORstB6os",
+   "speaker": "waxahatchee",
+   "speakerName": "Katie or Allison Crutchfield",
+   "target": "songs-ohia",
+   "artist": "Songs: Ohia",
+   "record": "Farewell Transmission",
+   "kind": "new",
+   "verdict": "unclear",
+   "t": 175,
+   "link": "https://youtu.be/m3ZORstB6os?t=172",
+   "heard": "I got Songs: Ohia, one of my favorite albums as of recently. People have sort of talked to me about Jason Molina's music for as long as I can remember but I sort of slept on his music for a long time and recently I've just had such a moment with this record.",
+   "quote": "I got Songs: Ohia, one of my favorite albums as of recently. People have sort of talked to me about Jason Molina's music for as long as I can remember, but I sort of slept on his music for a long time...",
+   "citation": "",
+   "note": "Speaker not clear; either way a recent discovery (favourite at most)."
+  },
+  {
+   "episode": "m3ZORstB6os",
+   "speaker": "waxahatchee",
+   "speakerName": "Allison Crutchfield",
+   "target": "cocteau-twins",
+   "artist": "Cocteau Twins",
+   "record": "Heaven or Las Vegas",
+   "kind": "new",
+   "verdict": "unclear",
+   "t": 334,
+   "link": "https://youtu.be/m3ZORstB6os?t=331",
+   "heard": "I picked 'Heaven or Las Vegas' by the Cocteau Twins. Predictably you picked... Predictably, yeah. I listened to it constantly when I was making my record 'Tourist in This Town'",
+   "quote": "I picked 'Heaven or Las Vegas' by the Cocteau Twins. Predictably you picked... Predictably, yeah. I listened to it constantly when I was making my record 'Tourist in This Town'",
+   "citation": "",
+   "note": "'Tourist in This Town' is Allison Crutchfield's solo album, not Waxahatchee: speaker is Allison (not on the map). Would be influence if it were Katie."
+  },
+  {
+   "episode": "m3ZORstB6os",
+   "speaker": "waxahatchee",
+   "speakerName": "Katie or Allison Crutchfield",
+   "target": "guided-by-voices",
+   "artist": "Guided by Voices",
+   "record": "Moonflower Plastic (Tobin Sprout, solo)",
+   "kind": "new",
+   "verdict": "unclear",
+   "t": 408,
+   "link": "https://youtu.be/m3ZORstB6os?t=405",
+   "heard": "This is Tobin Sprout from Guided By Voices' solo album 'Moonflower Plastic.' It's a really, really great record, cover to cover.",
+   "quote": "This is Tobin Sprout from Guided By Voices' solo album 'Moonflower Plastic.' It's a really, really great record, cover to cover.",
+   "citation": "",
+   "note": "Speaker not clear; Sprout solo record, praise only."
+  },
+  {
+   "episode": "ce0JXv5937c",
+   "speaker": "nirvana",
+   "speakerName": "Dave Grohl",
+   "target": "nomeansno",
+   "artist": "NoMeansNo",
+   "record": "(compilation single)",
+   "kind": "new",
+   "verdict": "favourite",
+   "t": 108,
+   "link": "https://youtu.be/ce0JXv5937c?t=105",
+   "heard": "You've got No Means No, one of my favorite bands, from Victoria, Canada They were....besides the Bad Brains No Means No were the best hard hardcore band ever. I think. Live. They were amazing.",
+   "quote": "You've got NoMeansNo, one of my favorite bands, from Victoria, Canada. Besides the Bad Brains, NoMeansNo were the best hardcore band ever, I think. Live, they were amazing.",
+   "citation": "",
+   "note": "Praise for the band live, spoken while looking at a comp; no tie to Nirvana's music."
+  },
+  {
+   "episode": "Y3SiMLdPa_c",
+   "speaker": "kurt-vile",
+   "speakerName": "Kurt Vile",
+   "target": "john-prine",
+   "artist": "John Prine",
+   "record": "John Prine",
+   "kind": "existing",
+   "verdict": "favourite",
+   "t": 134,
+   "link": "https://youtu.be/Y3SiMLdPa_c?t=131",
+   "heard": "This is a another must. This guy's my hero. I think he's the greatest living American songwriter. John Prine and this is his first album. Do you have it? Maybe Jen has it but now you have your own copy.",
+   "quote": "This is another must. This guy's my hero. I think he's the greatest living American songwriter. John Prine and this is his first album.",
+   "citation": "",
+   "note": "Speaker probably Kurt (picking for Courtney; 'Jen' is Courtney's partner); 'my hero' with no tie to his own music."
+  },
+  {
+   "episode": "Y3SiMLdPa_c",
+   "speaker": "kurt-vile",
+   "speakerName": "Kurt Vile",
+   "target": "townes-van-zandt",
+   "artist": "Townes Van Zandt",
+   "record": "Flying Shoes",
+   "kind": "new",
+   "verdict": "favourite",
+   "t": 303,
+   "link": "https://youtu.be/Y3SiMLdPa_c?t=300",
+   "heard": "Alright, this is my favorite record by this iconic sad artist. Country/folk artist Townes Van Zandt. Do you have any of his records?",
+   "quote": "Alright, this is my favorite record by this iconic sad artist. Country/folk artist Townes Van Zandt.",
+   "citation": "",
+   "note": "Probably Kurt picking for Courtney; praise only."
+  },
+  {
+   "episode": "Y3SiMLdPa_c",
+   "speaker": "kurt-vile",
+   "speakerName": "Kurt or Courtney",
+   "target": "grouper",
+   "artist": "Grouper",
+   "record": "Dragging a Dead Deer Up a Hill",
+   "kind": "new",
+   "verdict": "unclear",
+   "t": 223,
+   "link": "https://youtu.be/Y3SiMLdPa_c?t=220",
+   "heard": "Ok, this... I was actually looking for her latest album but it's out of stock. But this is the first one I heard. This is Grouper. This very cool, kind of shy experimental girl.",
+   "quote": "Okay, this... I was actually looking for her latest album but it's out of stock. But this is the first one I heard. This is Grouper.",
+   "citation": "",
+   "note": "Who is picking is unclear; praise only."
+  },
+  {
+   "episode": "Y3SiMLdPa_c",
+   "speaker": "kurt-vile",
+   "speakerName": "Kurt or Courtney",
+   "target": "sleater-kinney",
+   "artist": "Sleater-Kinney",
+   "record": "The Woods",
+   "kind": "new",
+   "verdict": "unclear",
+   "t": 272,
+   "link": "https://youtu.be/Y3SiMLdPa_c?t=269",
+   "heard": "You've probably got this, right? Do you have this? 'The Woods?' Sleater-Kinney? I figured because we're touring with Janet. But I love it, and my favorite song 'A Modern Girl' is on it.",
+   "quote": "You've probably got this, right? Do you have this? 'The Woods'? Sleater-Kinney? I figured because we're touring with Janet. But I love it, and my favorite song 'A Modern Girl' is on it.",
+   "citation": "",
+   "note": "Speaker unclear (likely Courtney); praise only."
+  },
+  {
+   "episode": "jeOJotFpMUY",
+   "speaker": "ariel-pink",
+   "speakerName": "Ariel Pink",
+   "target": "can",
+   "artist": "Can",
+   "record": "(Can box set)",
+   "kind": "new",
+   "verdict": "favourite",
+   "t": 106,
+   "link": "https://youtu.be/jeOJotFpMUY?t=103",
+   "heard": "bucks yeah these guys what can you say about them that hasn't already been said nakam Mooney was my first show in La think I was underage but I managed to",
+   "quote": "Yeah, these guys, what can you say about them that hasn't already been said? Malcolm Mooney was my first show in LA, I think I was underage, but I managed to...",
+   "citation": "",
+   "note": "Captions garbled ('nakam Mooney'); first LA show with Malcolm Mooney; 'if my mom hadn't given birth to me I wouldn't have ever heard Can'. No stated tie to his music."
+  },
+  {
+   "episode": "YCgn_DM7cn4",
+   "speaker": "mac-demarco",
+   "speakerName": "Mac DeMarco",
+   "target": "the-modern-lovers",
+   "artist": "The Modern Lovers",
+   "record": "The Modern Lovers",
+   "kind": "new",
+   "verdict": "influence",
+   "t": 143,
+   "link": "https://youtu.be/YCgn_DM7cn4?t=140",
+   "heard": "I love Jonathon. Huge inspiration for me. Really cool.",
+   "quote": "I love Jonathan. Huge inspiration for me. Really cool.",
+   "citation": "Mac DeMarco says on Amoeba Music's What's In My Bag?, of Jonathan Richman and The Modern Lovers: \"I love Jonathan. Huge inspiration for me.\"",
+   "note": "The inspiration line follows a story about watching Jonathan Richman at FYF; also 'classic for me, love it' on the album at 1:49. Refers to Jonathan Richman himself, the Modern Lovers' leader."
+  },
+  {
+   "episode": "aLGVGvO1YeE",
+   "speaker": "car-seat-headrest",
+   "speakerName": "Will Toledo",
+   "target": "nirvana",
+   "artist": "Nirvana",
+   "record": "Kurt Cobain collection (Montage of Heck)",
+   "kind": "existing",
+   "verdict": "favourite",
+   "t": 129,
+   "link": "https://youtu.be/aLGVGvO1YeE?t=126",
+   "heard": "New Kurt Cobain collection also supposed to be really bad but, again, 12 year old me would've eaten it up",
+   "quote": "New Kurt Cobain collection, also supposed to be really bad, but again 12-year-old me would've eaten it up.",
+   "citation": "",
+   "note": "Solo Cobain collection, not the band. 'Would've eaten it up' implies childhood fandom but is not an influence claim."
+  },
+  {
+   "episode": "i4SYy5_2Wn4",
+   "speaker": "big-star",
+   "speakerName": "Jody Stephens",
+   "target": "elliott-smith",
+   "artist": "Elliott Smith",
+   "record": "(record not specified)",
+   "kind": "new",
+   "verdict": "unclear",
+   "t": 190,
+   "link": "https://youtu.be/i4SYy5_2Wn4?t=187",
+   "heard": "Ah let's see, Elliot Smith. I came to Amoeba here a few years ago and I had to buy a Big Star CD for someone",
+   "quote": "Ah, let's see, Elliott Smith. I came to Amoeba here a few years ago and I had to buy a Big Star CD for someone",
+   "citation": "",
+   "note": "No praise: anecdote about Elliott Smith's sister and a recording session together (collaboration). The influence ran Big Star to Elliott, not the reverse."
+  },
+  {
+   "episode": "-u2sn4NdBxw",
+   "speaker": "black-flag",
+   "speakerName": "Keith Morris",
+   "target": "chk-chk-chk",
+   "artist": "!!!",
+   "record": "(not specified)",
+   "kind": "new",
+   "verdict": "unclear",
+   "t": 35,
+   "link": "https://youtu.be/-u2sn4NdBxw?t=32",
+   "heard": "Tick Demon's claws chick chick chick miscellaneous",
+   "quote": "Tick, Demon's Claws, Chk Chk Chk, miscellaneous...",
+   "citation": "",
+   "note": "Caption 'chick chick chick' probably !!!; a bare purchase list, no comment."
+  }
+ ],
+ "offMap": [
+  {
+   "episode": "n3S8wsfwU4Y",
+   "speaker": "george-clanton",
+   "artist": "Primal Scream",
+   "verdict": "influence",
+   "t": 420,
+   "quote": "It was a lot of fun to sort of steal all the ideas on this album."
+  },
+  {
+   "episode": "n3S8wsfwU4Y",
+   "speaker": "george-clanton",
+   "artist": "Saint Etienne",
+   "verdict": "favourite",
+   "t": 917
+  },
+  {
+   "episode": "n3S8wsfwU4Y",
+   "speaker": "george-clanton",
+   "artist": "Beastie Boys",
+   "verdict": "favourite",
+   "t": 1708
+  },
+  {
+   "episode": "n3S8wsfwU4Y",
+   "speaker": "george-clanton",
+   "artist": "Seal",
+   "verdict": "favourite",
+   "t": 128
+  },
+  {
+   "episode": "8CkdgJt1gag",
+   "speaker": "the-last-dinner-party",
+   "artist": "Emily Remler",
+   "verdict": "influence",
+   "t": 242,
+   "quote": "She kind of inspired me and I thought about quitting so many times, but I came back to this. I was like, no, she can do it, so can you."
+  },
+  {
+   "episode": "8CkdgJt1gag",
+   "speaker": "the-last-dinner-party",
+   "artist": "Pauline Oliveros",
+   "verdict": "influence",
+   "t": 679,
+   "quote": "She kind of changed my thinking about listening to music."
+  },
+  {
+   "episode": "8CkdgJt1gag",
+   "speaker": "the-last-dinner-party",
+   "artist": "Joe Satriani",
+   "verdict": "influence",
+   "t": 1006,
+   "quote": "That kind of got me into this, and yeah, I just went through a massive phase of trying to learn the songs."
+  },
+  {
+   "episode": "8CkdgJt1gag",
+   "speaker": "the-last-dinner-party",
+   "artist": "Donny Hathaway",
+   "verdict": "favourite",
+   "t": 337
+  },
+  {
+   "episode": "8CkdgJt1gag",
+   "speaker": "the-last-dinner-party",
+   "artist": "The Slits",
+   "verdict": "favourite",
+   "t": 785
+  },
+  {
+   "episode": "_rPly-3zCTk",
+   "speaker": "black-country-new-road",
+   "artist": "The Roches",
+   "verdict": "influence",
+   "t": 463,
+   "quote": "The Roches are one of my favorite groups at the moment and are very inspirational I think for current and future sounds of BCNR."
+  },
+  {
+   "episode": "_rPly-3zCTk",
+   "speaker": "black-country-new-road",
+   "artist": "Kenny Garrett",
+   "verdict": "influence",
+   "t": 57,
+   "quote": "Probably quite inspiring to me when I was like learning to play the saxophone. I want to sound like him as much as possible."
+  },
+  {
+   "episode": "_rPly-3zCTk",
+   "speaker": "black-country-new-road",
+   "artist": "King Crimson",
+   "verdict": "favourite",
+   "t": 518
+  },
+  {
+   "episode": "_rPly-3zCTk",
+   "speaker": "black-country-new-road",
+   "artist": "Arthur Russell",
+   "verdict": "favourite",
+   "t": 640
+  },
+  {
+   "episode": "_rPly-3zCTk",
+   "speaker": "black-country-new-road",
+   "artist": "Judee Sill",
+   "verdict": "favourite",
+   "t": 742
+  },
+  {
+   "episode": "kNPJJBYKwTQ",
+   "speaker": "husker-du",
+   "artist": "Richard Thompson",
+   "verdict": "favourite",
+   "t": 103
+  },
+  {
+   "episode": "kNPJJBYKwTQ",
+   "speaker": "husker-du",
+   "artist": "Daft Punk",
+   "verdict": "favourite",
+   "t": 355
+  },
+  {
+   "episode": "kNPJJBYKwTQ",
+   "speaker": "husker-du",
+   "artist": "The Armed",
+   "verdict": "favourite",
+   "t": 460
+  },
+  {
+   "episode": "WehmkxHSdaY",
+   "speaker": "explosions-in-the-sky",
+   "artist": "The Turtles",
+   "verdict": "influence",
+   "t": 402,
+   "quote": "The way these guys are putting music together and melody is very influential for me and how I play guitar and contribute the melodies that I do to the band."
+  },
+  {
+   "episode": "WehmkxHSdaY",
+   "speaker": "explosions-in-the-sky",
+   "artist": "De La Soul",
+   "verdict": "favourite",
+   "t": 244
+  },
+  {
+   "episode": "WehmkxHSdaY",
+   "speaker": "explosions-in-the-sky",
+   "artist": "Bill Evans",
+   "verdict": "favourite",
+   "t": 327
+  },
+  {
+   "episode": "mtFeERv8r0Q",
+   "speaker": "the-postal-service",
+   "artist": "Roedelius",
+   "verdict": "influence",
+   "t": 29,
+   "quote": "I've gotten a lot of inspiration from this photo in the album of his little studio setup."
+  },
+  {
+   "episode": "npNyPflHako",
+   "speaker": "sonic-youth",
+   "artist": "Paul McCartney (McCartney)",
+   "verdict": "influence",
+   "t": 254,
+   "quote": "We stole some musical elements from this for one of the songs on my record."
+  },
+  {
+   "episode": "npNyPflHako",
+   "speaker": "sonic-youth",
+   "artist": "Sandy Bull",
+   "verdict": "favourite",
+   "t": 146
+  },
+  {
+   "episode": "0lcSdEublRI",
+   "speaker": "alvvays",
+   "artist": "Celine Dion",
+   "verdict": "influence",
+   "t": 294,
+   "quote": "One of my favorite records growing up."
+  },
+  {
+   "episode": "0lcSdEublRI",
+   "speaker": "alvvays",
+   "artist": "The Byrds",
+   "verdict": "favourite",
+   "t": 427
+  },
+  {
+   "episode": "0lcSdEublRI",
+   "speaker": "alvvays",
+   "artist": "TV Personalities",
+   "verdict": "favourite",
+   "t": 159
+  },
+  {
+   "episode": "0lcSdEublRI",
+   "speaker": "alvvays",
+   "artist": "Cleaners from Venus",
+   "verdict": "favourite",
+   "t": 43
+  },
+  {
+   "episode": "m3ZORstB6os",
+   "speaker": "waxahatchee",
+   "artist": "The Softies",
+   "verdict": "influence",
+   "t": 234,
+   "quote": "Rose Melberg is our idol, I would say. We both are completely obsessed with her."
+  },
+  {
+   "episode": "m3ZORstB6os",
+   "speaker": "waxahatchee",
+   "artist": "Team Dresch",
+   "verdict": "favourite",
+   "t": 36
+  },
+  {
+   "episode": "m3ZORstB6os",
+   "speaker": "waxahatchee",
+   "artist": "Mirah",
+   "verdict": "favourite",
+   "t": 457
+  },
+  {
+   "episode": "ce0JXv5937c",
+   "speaker": "nirvana",
+   "artist": "Scream",
+   "verdict": "influence",
+   "t": 218,
+   "quote": "This is what made me wanna join the band Scream was this single right here, a song called 'Walking By Myself.'"
+  },
+  {
+   "episode": "ce0JXv5937c",
+   "speaker": "nirvana",
+   "artist": "Boredoms",
+   "verdict": "favourite",
+   "t": 84
+  },
+  {
+   "episode": "Y3SiMLdPa_c",
+   "speaker": "kurt-vile",
+   "artist": "John Fahey",
+   "verdict": "favourite",
+   "t": 48
+  },
+  {
+   "episode": "Y3SiMLdPa_c",
+   "speaker": "kurt-vile",
+   "artist": "Carole King",
+   "verdict": "favourite",
+   "t": 461
+  },
+  {
+   "episode": "Y3SiMLdPa_c",
+   "speaker": "kurt-vile",
+   "artist": "Randy Newman",
+   "verdict": "favourite",
+   "t": 399
+  },
+  {
+   "episode": "jeOJotFpMUY",
+   "speaker": "ariel-pink",
+   "artist": "Messiaen",
+   "verdict": "favourite",
+   "t": 64
+  },
+  {
+   "episode": "YCgn_DM7cn4",
+   "speaker": "mac-demarco",
+   "artist": "Haruomi Hosono",
+   "verdict": "favourite",
+   "t": 202
+  },
+  {
+   "episode": "aLGVGvO1YeE",
+   "speaker": "car-seat-headrest",
+   "artist": "Kanye West",
+   "verdict": "favourite",
+   "t": 41
+  },
+  {
+   "episode": "aLGVGvO1YeE",
+   "speaker": "car-seat-headrest",
+   "artist": "Weezer",
+   "verdict": "favourite",
+   "t": 92
+  },
+  {
+   "episode": "d0Okv3M0JxY",
+   "speaker": "dinosaur-jr",
+   "artist": "Blotto",
+   "verdict": "favourite",
+   "t": 22
+  },
+  {
+   "episode": "d0Okv3M0JxY",
+   "speaker": "dinosaur-jr",
+   "artist": "The Elevators",
+   "verdict": "favourite",
+   "t": 117
+  },
+  {
+   "episode": "d0Okv3M0JxY",
+   "speaker": "dinosaur-jr",
+   "artist": "Ty Segall",
+   "verdict": "favourite",
+   "t": 58
+  },
+  {
+   "episode": "d0Okv3M0JxY",
+   "speaker": "dinosaur-jr",
+   "artist": "Unknown Mortal Orchestra",
+   "verdict": "favourite",
+   "t": 197
+  },
+  {
+   "episode": "i4SYy5_2Wn4",
+   "speaker": "big-star",
+   "artist": "The Beatles",
+   "verdict": "influence",
+   "t": 96,
+   "quote": "The Beatles got me into music."
+  },
+  {
+   "episode": "i4SYy5_2Wn4",
+   "speaker": "big-star",
+   "artist": "T. Rex",
+   "verdict": "favourite",
+   "t": 63
+  },
+  {
+   "episode": "0Q4MDl_Iws0",
+   "speaker": "mitski",
+   "artist": "Spirit of the Beehive",
+   "verdict": "favourite",
+   "t": 237
+  },
+  {
+   "episode": "0Q4MDl_Iws0",
+   "speaker": "mitski",
+   "artist": "Bartok",
+   "verdict": "favourite",
+   "t": 160
+  }
+ ]
+}

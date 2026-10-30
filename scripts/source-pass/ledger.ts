@@ -30,6 +30,16 @@ const MERGED = resolve(RESULTS, 'merged');
 const CANDIDATES = resolve(DIR, 'candidates.json');
 const OFF_MAP = resolve(DIR, 'off-map.json');
 const CHECK_REPORT = resolve(DIR, 'check-report.json');
+// A video's words are its captions: the Amoeba sweep saves them here, one
+// `[m:ss] words` line each, and a YouTube source is checked against them.
+const TRANSCRIPTS = resolve(DIR, 'amoeba/transcripts');
+const youtubeId = (url: string) => url.match(/(?:youtu\.be\/|youtube\.com\/watch\?v=)([\w-]{11})/)?.[1];
+const captions = (url: string): string | null => {
+  const id = youtubeId(url);
+  const file = id && resolve(TRANSCRIPTS, `${id}.txt`);
+  if (!file || !existsSync(file)) return null;
+  return readFileSync(file, 'utf-8').split('\n').map(l => l.replace(/^\[\d+:\d\d\] /, '')).join(' ');
+};
 
 type Phase = 'why' | 'first-person' | 'reported' | 'critic' | 'unsourceable';
 const PHASES: Phase[] = ['why', 'first-person', 'reported', 'critic', 'unsourceable'];
@@ -374,6 +384,8 @@ async function check(all: boolean) {
   console.log(`checking ${todo.length} pages…`);
   const pageCache = new Map<string, Promise<string | null>>();
   const page = (u: string) => {
+    const said = captions(u);
+    if (said !== null) return Promise.resolve(said);
     if (!pageCache.has(u)) pageCache.set(u, fetchText(u.replace(/(web\.archive\.org\/web\/\d+)(?:id_)?\//, '$1id_/')));
     return pageCache.get(u)!;
   };

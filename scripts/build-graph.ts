@@ -328,6 +328,7 @@ const ARTIST_PHOTO: Record<string, PhotoOverride> = {
   'destroyer':           { deezer: 75819 },
   'geese':               { deezer: 137555232 },
   'grouper':             { deezer: 402944 },
+  'heavenly':            { deezer: 10864328 },
   'joy-division':        { deezer: 1249 },
   'low':                 { deezer: 4377 },
   'mono':                { deezer: 3075 },
@@ -356,6 +357,8 @@ const ARTIST_PHOTO: Record<string, PhotoOverride> = {
   'spacemen-3': { file: '/photos/spacemen-3.jpg', credit: { author: 'Greg Neate', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Spacemen_3.jpg' } },
   'bon-iver': { file: '/photos/bon-iver.jpg', credit: { author: 'Simon.Appelblad', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Bon_Iver_3.jpg' } },
   'bonnie-prince-billy': { file: '/photos/bonnie-prince-billy.jpg', credit: { author: 'Neff Conner', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Bonnie-Prince-Billy-060609_(614bw)_(3606166772)_(cropped).jpg' } },
+  // Deezer has no picture of King Crimson at all.
+  'king-crimson': { file: '/photos/king-crimson.jpg', credit: { author: 'Atlantic Records (press photo, 1974)', license: 'Public domain', url: 'https://commons.wikimedia.org/wiki/File:King_crimson_1974_press_photo.jpg' } },
   'bratmobile': { file: '/photos/bratmobile.jpg', credit: { author: 'Greg Neate', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Bratmobile.jpg' } },
   'christie-front-drive': { file: '/photos/christie-front-drive.jpg', credit: { author: 'denverkid', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Christie_Front_Drive.jpg' } },
   // Arto Lindsay alone, decades on: no photo of DNA as a band is free to use

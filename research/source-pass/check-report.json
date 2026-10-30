@@ -133,7 +133,7 @@
   },
   "alvvays>pavement": {
     "result": "missing",
-    "at": "2026-10-26",
+    "at": "2026-10-30",
     "url": "https://en.wikipedia.org/wiki/Alvvays",
     "found": "Rankin's personal influences include The Magnetic Fields, Teenage Fanclub, Dolly Mixture, The Smiths, Celine Dion, Pavement, The Primitives, Cocteau Twins, Oasis and Australian indie-pop group The Hummingbirds."
   },
@@ -692,6 +692,66 @@
     "at": "2026-10-26",
     "url": "https://floodmagazine.com/88701/in-conversation-black-midi-on-the-colorful-world-of-cavalcade",
     "found": "We used to say Talking Heads, Deerhoof, and Danny Brown were our three main reference points."
+  },
+  "black-tambourine>beat-happening": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://www.clashmusic.com/?p=202734",
+    "found": "We always knew of American bands like Beat Happening, Galaxie 500, The Feelies – any of those bands were also hugely influential to us."
+  },
+  "black-tambourine>big-black": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://ink19.com/2010/06/magazine/interviews/nucemb-black-tambourine",
+    "found": "Lots of noisy stuff like Big Black, Head of David, Pussy Galore and the Birthday Party."
+  },
+  "black-tambourine>galaxie-500": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://www.clashmusic.com/?p=202734",
+    "found": "We always knew of American bands like Beat Happening, Galaxie 500, The Feelies – any of those bands were also hugely influential to us."
+  },
+  "black-tambourine>glenn-branca": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://ink19.com/2010/06/magazine/interviews/nucemb-black-tambourine",
+    "found": "For the noise stuff, I was especially interested in the NYC scene: Swans, Glenn Branca, Sonic Youth, Unsane, Dustdevils, Drunk Tank. While we were consciously trying to explore the more pop-influenced side of the spectrum, I think our collective interest in noise was big factor in how BT sounded."
+  },
+  "black-tambourine>sonic-youth": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://ink19.com/2010/06/magazine/interviews/nucemb-black-tambourine",
+    "found": "For the noise stuff, I was especially interested in the NYC scene: Swans, Glenn Branca, Sonic Youth, Unsane, Dustdevils, Drunk Tank. While we were consciously trying to explore the more pop-influenced side of the spectrum, I think our collective interest in noise was big factor in how BT sounded."
+  },
+  "black-tambourine>swans": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://ink19.com/2010/06/magazine/interviews/nucemb-black-tambourine",
+    "found": "For the noise stuff, I was especially interested in the NYC scene: Swans, Glenn Branca, Sonic Youth, Unsane, Dustdevils, Drunk Tank. While we were consciously trying to explore the more pop-influenced side of the spectrum, I think our collective interest in noise was big factor in how BT sounded."
+  },
+  "black-tambourine>the-birthday-party": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://ink19.com/2010/06/magazine/interviews/nucemb-black-tambourine",
+    "found": "Lots of noisy stuff like Big Black, Head of David, Pussy Galore and the Birthday Party."
+  },
+  "black-tambourine>the-jesus-and-mary-chain": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://www.clashmusic.com/?p=202734",
+    "found": "But as well, The Jesus And Mary Chain were an enormous influence on us and they took a lot from the girl group, 60s sound."
+  },
+  "black-tambourine>velvet-underground": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://ink19.com/2010/06/magazine/interviews/nucemb-black-tambourine",
+    "found": "Some ’60s rock like the Velvet Underground, Love, and the Byrds."
+  },
+  "black-tambourine>yo-la-tengo": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://www.clashmusic.com/?p=202734",
+    "found": "So it wasn’t necessarily a conscious Anglophile thing, in that we weren’t trying to copy the way British bands sounded – Galaxie 500, Yo La Tengo and things equally influenced us like that."
   },
   "blonde-redhead>lush": {
     "result": "found",
@@ -1259,6 +1319,12 @@
     "result": "owner",
     "at": "2026-10-26"
   },
+  "cocteau-twins>patti-smith": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://youtu.be/lC2pol5qeAA?t=149",
+    "found": "But seeing Patty Smith was I don't know she was just such an ethereal beautiful soul. She became one of my heroins for many many years and now I am living the"
+  },
   "cocteau-twins>ramones": {
     "result": "owner",
     "at": "2026-10-26"
@@ -1481,13 +1547,13 @@
   },
   "dinosaur-jr>husker-du": {
     "result": "missing",
-    "at": "2026-10-26",
+    "at": "2026-10-30",
     "url": "https://www.pressreader.com/uk/mojo-uk/20210501/281496459032582",
     "found": "We loved the Minutemen, Hüsker Dü and the Meat Puppets, and our ambition was to tour like they did and sign to SST Records, the label they were on."
   },
   "dinosaur-jr>minutemen": {
     "result": "missing",
-    "at": "2026-10-26",
+    "at": "2026-10-30",
     "url": "https://www.pressreader.com/uk/mojo-uk/20210501/281496459032582",
     "found": "We loved the Minutemen, Hüsker Dü and the Meat Puppets, and our ambition was to tour like they did and sign to SST Records, the label they were on."
   },
@@ -1845,6 +1911,12 @@
     "url": "https://pitchfork.com/features/5-10-15-20/8454-5-10-15-20-damon-naomi/",
     "found": "We were listening to the Velvet Underground's self-titled third album-- almost to a crazy extreme."
   },
+  "gang-of-four>bob-dylan": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://youtu.be/VJPKkan97o8?t=255",
+    "found": "time Bob Dylan Don't Look Back The Man Who transformed my life when I first heard you know Highway 61 Revisited this"
+  },
   "gang-of-four>velvet-underground": {
     "result": "found",
     "at": "2026-10-26",
@@ -1929,6 +2001,12 @@
     "url": "https://web.archive.org/web/20110128074729/https://www.altpress.com/features/entry/track_by_track_the_get_up_kids",
     "found": "The front half has an almost Latin feel, then it gets so quiet until the chaotic and tense outro. My guitar is attempting to channel Drive Like Jehu."
   },
+  "get-up-kids>fugazi": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://youtu.be/b93A3Jl1-1c?t=782",
+    "found": "it ain't no fugazi is like probably one of the most important bands for me personally of like how I found about punk rock so this record I was I saw"
+  },
   "get-up-kids>the-jesus-lizard": {
     "result": "found",
     "at": "2026-10-26",
@@ -1988,6 +2066,12 @@
     "at": "2026-10-26",
     "url": "https://www.thelineofbestfit.com/features/lists/grizzly-bear-choose-nine-favourite-songs",
     "found": "This was a real touchstone going into Shields, not so much for Painted Ruins, but it’s still something I always want to get back to, because it’s a trance-like state that feels like it came from no one, it just came out of the ether."
+  },
+  "guided-by-voices>king-crimson": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://www.spinmagazine.com/2004/09/records-changed-my-life-robert-pollard-guided-voices/",
+    "found": "First, I couldn’t get into it because the songs were so long and jazzy, but after a while I got into a complete prog-rock phase."
   },
   "guided-by-voices>rem": {
     "result": "found",
@@ -2049,6 +2133,18 @@
     "url": "https://web.archive.org/web/20080530043559/http://www.myspace.com/haveanicelife",
     "found": "Influences My Bloody Valentine, Joy Division, New Order, Earth, Sunn, Xasthur, Lurker of Chalice, Nine Inch Nails, the periodic \"starving times\" of native Alaskans dependent on herds of migrant caribou, Swans, Sisters of Mercy, Kraftwerk, Nietzsche"
   },
+  "heavenly>bikini-kill": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://quinnmoreland.substack.com/p/52924-an-interview-with-heavenly",
+    "found": "So there’s a lyrical difference but also a musical one because we were inspired by the slightly more aggressive sound of riot grrrl, even though we never really sounded like a riot grrrl band."
+  },
+  "heavenly>bratmobile": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://aestheticsforbirds.com/?p=673",
+    "found": "Heavenly’s US record label was K Records, one of the centres for this movement, and when we toured in the USA in the early 1990s we met and played with Bratmobile and other riot grrrl acts, and found them kindred spirits. This reawakened our punk rock tendencies, which had been to the fore in our previous band Talulah Gosh, and so our music became noisier from our 1993 releases till we finished in 1996."
+  },
   "hot-chip>four-tet": {
     "result": "found",
     "at": "2026-10-26",
@@ -2090,6 +2186,12 @@
     "at": "2026-10-26",
     "url": "https://web.archive.org/web/2012/http://www.h-u-m.net/bio/",
     "found": "Some of Matt's (and Hum's) favorite bands are Dinosaur Jr., Failure, Bitch Magnet, The Flaming Lips, Rush, The Police, R.E.M., Love Cup, and My Bloody Valentine."
+  },
+  "husker-du>buzzcocks": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://youtu.be/kNPJJBYKwTQ?t=53",
+    "found": "the first buzz cox album another music in a different kitchen peach shelley is like one of the main influences on my work buzzcocks i'm sure"
   },
   "husker-du>joy-division": {
     "result": "found",
@@ -2441,7 +2543,7 @@
   },
   "kurt-vile>yo-la-tengo": {
     "result": "unreachable",
-    "at": "2026-10-26",
+    "at": "2026-10-30",
     "url": "https://m.lasvegassun.com/news/2010/sep/30/q-kurt-vile/",
     "found": "I really love that I Can Feel the Heart Beating as One Yo La Tengo record a lot"
   },
@@ -2630,6 +2732,12 @@
     "at": "2026-10-26",
     "url": "https://mediumrotation.substack.com/p/weekly-neil-a-quick-chat-with-mac",
     "found": "I go back to Harvest more often than his other records just because I'm intrigued by the way it sounds. He recorded this in his barn."
+  },
+  "mac-demarco>the-modern-lovers": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://youtu.be/YCgn_DM7cn4?t=140",
+    "found": "I love Jonathon. Huge inspiration for me. Really cool."
   },
   "mac-demarco>the-smiths": {
     "result": "found",
@@ -3490,8 +3598,8 @@
     "found": "I also listened to this album right before I wrote all of my first album, and I kind of credit it with connecting part of my brain that allowed me to write for the first time."
   },
   "perfume-genius>talk-talk": {
-    "result": "unreachable",
-    "at": "2026-10-26",
+    "result": "found",
+    "at": "2026-10-30",
     "url": "https://web.archive.org/web/2020/https://tidal.com/magazine/article/perfume-genius-5-albums-that-changed-my-life/1-37705",
     "found": "So I decided to listen and then I became really obsessed with them and now I really do count them as an influence."
   },
@@ -4265,6 +4373,12 @@
     "url": "https://themoderngirlsco.wordpress.com/2017/01/31/moderngirlcrush-lindsey-jordan/",
     "found": "In middle school, I started taking a lot of interest in punk, so I was really into Sleater Kinney and Bratmobile, as well as indie bands with thorough songwriting like Beach House and Sharon Van Etten (two faves that will always be faves)."
   },
+  "snail-mail>beat-happening": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://www.tumblr.com/930club/149701778786/930-interview-lindsey-jordan-snail-mail",
+    "found": "While writing Habit I was definitely listening to a lot of Grouper, Broadcast, Joni Mitchell, Psychic TV, Beat Happening, and Liz Phair. Not all of these artists influenced the sound of the album stylistically, but I feel like I've learned a lot from their songwriting."
+  },
   "snail-mail>bratmobile": {
     "result": "found",
     "at": "2026-10-26",
@@ -4883,6 +4997,18 @@
     "url": "https://www.rollingstone.com/music/music-news/david-byrne-remembers-the-brave-lou-reed-91939/",
     "found": "No surprise I was a big fan, and his music, with and without the Velvets, was a big influence on myself and Talking Heads."
   },
+  "talulah-gosh>ramones": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://aestheticsforbirds.com/?p=673",
+    "found": "The basis of our music was the bringing-together of our two main influences, 1960s girl groups and the Ramones."
+  },
+  "talulah-gosh>the-pastels": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://thequietus.com/?p=14200",
+    "found": "What was interesting was at that time bands like that The Pastels, for instance, twinned leather trousers with anoraks; it was that combination of seeing the world through a child’s eye but also having a darker, harsher side which we wanted to get across."
+  },
   "tame-impala>my-bloody-valentine": {
     "result": "found",
     "at": "2026-10-26",
@@ -4932,8 +5058,8 @@
     "found": "according to Strummer: \"It can't be stressed how great the first Ramones album was to the scene... It was the first word of Punk, a fantastic record\"."
   },
   "the-clash>sex-pistols": {
-    "result": "unreachable",
-    "at": "2026-10-26",
+    "result": "missing",
+    "at": "2026-10-30",
     "url": "https://web.archive.org/web/20111005220200/http://www.joestrummer.us/?n9P81fmSnwwFUbhFAMuAAxe6bb31IUP&p=2&aOHDhtT57WPxn9Z7bWGQa3BBQbFVu17LfZSa&c=1&CxeQAdg5hVrrDtzOUCasLrnVGV7&XUZHs",
     "found": "Something that inspired Strummer much more than the struggles of the 101ers was seeing a bunch of young unknowns who supported them at the Nashville on 3rd April 1976. The band went by the name of the Sex Pistols."
   },
@@ -5207,6 +5333,12 @@
     "url": "https://en.wikipedia.org/wiki/The_Last_Dinner_Party",
     "found": "The band have been compared to David Bowie, Fleetwood Mac,[41]Kate Bush,[16]Siouxsie and the Banshees, Sparks,[42]Roxy Music,[43]ABBA,[44]Queen,[45]Florence and the Machine[46] and Warpaint.[40] The band's members have cited Queen, St. Vincent,[47]Chappell Roan, and Lana Del Rey[48] as influences."
   },
+  "the-last-dinner-party>st-vincent": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://youtu.be/8CkdgJt1gag?t=492",
+    "found": "kind of everything I have a guitar I play her guitar my dad introduced her to me probably when I was about like 14"
+  },
   "the-marias>radiohead": {
     "result": "found",
     "at": "2026-10-26",
@@ -5257,7 +5389,7 @@
   },
   "the-national>leonard-cohen": {
     "result": "missing",
-    "at": "2026-10-26",
+    "at": "2026-10-30",
     "url": "https://philnel.com/?p=2813",
     "found": "In September 2011, Berninger told The Phoenix ’s Michael Christopher , “when I was in high school I became obsessed with Leonard Cohen and Tom Waits.”"
   },
@@ -5290,6 +5422,24 @@
     "at": "2026-10-26",
     "url": "https://web.archive.org/web/2008/http://thescenestar.typepad.com/ss/2007/06/interview-matt-.html",
     "found": "Matt: The band that I first really started falling in love with were The Smiths, Violent Femmes, Tom Waits, Nick Cave, but then, [for] the other guys, it’s a big motley selection of Simon & Garfunkel, Grateful Dead."
+  },
+  "the-pastels>kraftwerk": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://thequietus.com/interviews/bakers-dozen/the-pastels-stephen-mcrobbie-favourite-albums/5/",
+    "found": "The Ralf & Florian record has got really beautiful inventiveness to it and there is a lot of fluid electronics on it. To a certain extent, that has influenced some of Tom Crossley’s – who plays with us – flute playing."
+  },
+  "the-pastels>the-modern-lovers": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://encyclopedia.com/education/news-wires-white-papers-and-books/pastels",
+    "found": "The band's two greatest influences include the Swell Maps and the Modern Lovers, two bands known for endearing simplicity and a sense of adventure, respectively."
+  },
+  "the-pastels>velvet-underground": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://thequietus.com/interviews/bakers-dozen/the-pastels-stephen-mcrobbie-favourite-albums/13/",
+    "found": "This record was such a big influence on The Pastels, as was all The Velvet Underground’s music."
   },
   "the-postal-service>bjork": {
     "result": "found",
@@ -5328,14 +5478,14 @@
     "found": "We were in the right place at the right time to resurrect the craftsmanship of that early ’80s electronic music via Orchestral Manoeuvres in the Dark, Depeche Mode, or the Human League."
   },
   "the-radio-dept>broadcast": {
-    "result": "unreachable",
-    "at": "2026-10-26",
+    "result": "found",
+    "at": "2026-10-30",
     "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm",
     "found": "When it comes to influences we should mention that we're not huge fans of slowdive and we hardly ever listen to jamc these days"
   },
   "the-radio-dept>joy-division": {
-    "result": "unreachable",
-    "at": "2026-10-26",
+    "result": "found",
+    "at": "2026-10-30",
     "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm",
     "found": "INFLUENCES When it comes to influences we should mention that we're not huge fans of slowdive and we hardly ever listen to jamc these days, not that we ever did, apart from a few songs from the first record (just like honey is one of the best tracks ever recorded). instead we listen to: - charles aznavour - st ettienne - broadcast - frank sinatra - joy division"
   },
@@ -5352,14 +5502,14 @@
     "found": "mbv I like because they had a genuine interest in both melody and sound."
   },
   "the-radio-dept>neu": {
-    "result": "unreachable",
-    "at": "2026-10-26",
+    "result": "found",
+    "at": "2026-10-30",
     "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm",
     "found": "INFLUENCES When it comes to influences we should mention that we're not huge fans of slowdive and we hardly ever listen to jamc these days, not that we ever did, apart from a few songs from the first record (just like honey is one of the best tracks ever recorded). instead we listen to: - charles aznavour - st ettienne - broadcast - frank sinatra - joy division - pet shop boys - chet baker - fennesz - nick drake - kevin rowland - P R E F A B S P R O U T - paddy mcaloon - junior boys - orange juice - kraftwerk - neu!"
   },
   "the-radio-dept>nick-drake": {
-    "result": "unreachable",
-    "at": "2026-10-26",
+    "result": "found",
+    "at": "2026-10-30",
     "url": "https://web.archive.org/web/20070215145227/http://www.theradiodept.frih.net/Band.htm",
     "found": "- nick drake"
   },
@@ -5638,6 +5788,12 @@
     "at": "2026-10-26",
     "url": "https://www.billboard.com/articles/news/79057/neu-neu2-neu75",
     "found": "The pioneering rhythms and sparse atmospherics of guitarist Michael Rother and drummer Klaus Dinger have been reflected in the works of David Bowie, the Sex Pistols, Sonic Youth, Stereolab, and Tortoise, among others."
+  },
+  "tortoise>television": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://youtu.be/XEQMIIvghyQ?t=62",
+    "found": "Television is sort of ground zero for me. I mean, they weren't my first favorite band, but they are my favorite band. I'm really into lots of Verlaine"
   },
   "townes-van-zandt>bob-dylan": {
     "result": "found",
@@ -5963,6 +6119,12 @@
     "url": "https://thequietus.com/interviews/bakers-dozen/weyes-blood-natalie-mering-bakers-dozen-favourite-albums/5/",
     "found": "I think it was just being a fan of The Velvet Underground and wanting to check out his solo music."
   },
+  "wilco>king-crimson": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://www.guitarplayer.com/guitarists/nels-cline-10-records-that-changed-my-life",
+    "found": "Pretty much the mood of the music, the amount of improvisation they did, the mastering of their various instruments and language — along with, in my case, listening to Wayne Shorter and Joe Zawinul compositions with Weather Report — made me want to write music that sounded like that, in my way."
+  },
   "wilco>minutemen": {
     "result": "found",
     "at": "2026-10-26",
@@ -5980,6 +6142,12 @@
     "at": "2026-10-26",
     "url": "https://au.rollingstone.com/music/music-news/wire-reflect-on-40-years-as-punks-ultimate-cult-band-1670",
     "found": "Wire’s members have always fancied themselves to be Dadaists, thumbing their noses at tradition, but here they’ve created a work of anti-Dada – a stark inverse of Pink Flag , full of regular-length songs with bells and whistles and the heavy influence of Berlin-era Bowie."
+  },
+  "wire>king-crimson": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://pitchfork.com/features/5-10-15-20/10015-wires-colin-newman-on-the-music-that-made-him/",
+    "found": "In the period before I was living in London, I saw King Crimson more than any other band, and they had the biggest effect on me."
   },
   "wire>neil-young": {
     "result": "found",
