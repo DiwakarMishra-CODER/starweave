@@ -714,6 +714,13 @@
     "sourceTier": "first-person",
     "by": "chat3"
   },
+  "beabadoobee>deftones": {
+    "url": "https://youtu.be/AN7Lhm5To00?t=559",
+    "found": "&gt;&gt; Yeah. I love him so much. He's like my main inspiration of how I move on stage, especially with like this new record.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Amoeba sweep, round two: YouTube captions, checked against research/source-pass/amoeba/transcripts/; the citation is the cleaned reading. Owner's close call."
+  },
   "beabadoobee>dinosaur-jr": {
     "url": "https://theboar.org/2020/11/beabadoobee-interview/",
     "found": "“All of these massively inspired me in making Fake It Flowers , both sonically and in certain ways that I would incorporate into my lyric writing: being quick-loose with it but speaking from personal experience, and also not having to be too serious and being playful with what I say.”",
@@ -1962,6 +1969,34 @@
     "note": "Footnoted to six unidentified references [42][60][71][81][82][24]; the 2001 Radio Inferno / Dutch Radio 4 interview in the old citation was searched once and not found. Weak: 'expressed interest', Wikipedia only.",
     "by": "c20"
   },
+  "converge>black-flag": {
+    "url": "https://www.westword.com/music/jacob-bannon-on-the-accessibility-of-converges-music-were-not-made-for-first-level-listeners-5673267",
+    "found": "Any early punk and hardcore, especially the work ethic that I personally have and that I know, collectively, my band members have, is something that’s inspired by people like early Black Flag members",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Heavy strand: re-opened on its page by hand."
+  },
+  "converge>drive-like-jehu": {
+    "url": "https://www.vice.com/en/article/rank-your-records-converge-jacob-bannon",
+    "found": "He wasn’t listening to Drive Like Jehu at the time.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Heavy strand: re-opened on its page by hand."
+  },
+  "converge>nomeansno": {
+    "url": "https://youtu.be/BgWeiEQh69Y?t=312",
+    "found": "&gt;&gt; YOU NEED TO GET INTO THIS RECORD. IT'S huge huge influence on both of us. This was a game-changing record for me.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Amoeba sweep, round two: YouTube captions, checked against research/source-pass/amoeba/transcripts/; the citation is the cleaned reading."
+  },
+  "converge>the-cure": {
+    "url": "https://thequietus.com/interviews/bakers-dozen/jacob-bannon-converge-favourite-albums-interview-bakers-dozen/7/",
+    "found": "When I heard that record, it made me feel like it was okay to do that – where I could write from a personal perspective and not feel like the world was going to end",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Heavy strand: re-opened on its page by hand."
+  },
   "david-bowie>kraftwerk": {
     "url": "https://www.npr.org/2020/05/07/852081716/how-florian-schneider-and-kraftwerk-created-pops-future",
     "found": "Bowie would credit Autobahn with redirecting his cultural focus away from America and R&B towards Europe and electronic music, ultimately causing him to move to Berlin, where he would make the most adventurous music of his life and produce two career-changing albums for Iggy Pop, The Idiot and Lust for Life .",
@@ -2275,6 +2310,48 @@
     "checked": "2026-10-26",
     "by": "candidates-check",
     "note": "New link found during the source pass; re-opened and ruled (research/source-pass/candidates-check/)."
+  },
+  "dillinger-escape-plan>bad-brains": {
+    "url": "https://machinemusic.net/2021/04/15/pillars-of-the-90s-an-interview-with-the-dillinger-escape-plan/",
+    "found": "For me, it was about being punk and energetic and bringing to people what seemed to be the feeling and experience that people were getting from the original hardcore bands like Bad Brains",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Heavy strand: re-opened on its page by hand."
+  },
+  "dillinger-escape-plan>black-flag": {
+    "url": "https://machinemusic.net/2021/04/15/pillars-of-the-90s-an-interview-with-the-dillinger-escape-plan/",
+    "found": "For me, it was about being punk and energetic and bringing to people what seemed to be the feeling and experience that people were getting from the original hardcore bands like Bad Brains",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Heavy strand: re-opened on its page by hand."
+  },
+  "dillinger-escape-plan>depeche-mode": {
+    "url": "https://machinemusic.net/2021/04/15/pillars-of-the-90s-an-interview-with-the-dillinger-escape-plan/",
+    "found": "I'm sure melodically it inspired me and definitely culturally.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Heavy strand: re-opened on its page by hand."
+  },
+  "dillinger-escape-plan>fugazi": {
+    "url": "https://www.theskinny.co.uk/music/features/306232-under_influence_dillinger_escape_plans_ben_weinman",
+    "found": "Repeater was a record that was meant to be performed. And no band put on a better show then Fugazi.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Heavy strand: re-opened on its page by hand."
+  },
+  "dillinger-escape-plan>king-crimson": {
+    "url": "https://www.theskinny.co.uk/music/features/306232-under_influence_dillinger_escape_plans_ben_weinman",
+    "found": "This band represented a time when music truly had no boundaries",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Heavy strand: re-opened on its page by hand."
+  },
+  "dillinger-escape-plan>mr-bungle": {
+    "url": "https://web.archive.org/web/20200605033618/https://www.mondosonoro.com/blog-musica/california-mr-bungle-especial/",
+    "found": "En nuestra sed de diversidad y en la ironía en nuestra música.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Interview printed in Spanish; the question is how Mr. Bungle most influenced the Dillinger Escape Plan, and the answer is Ben Weinman's (the same article also quotes The Locust)."
   },
   "dinosaur-jr>husker-du": {
     "url": "https://www.pressreader.com/uk/mojo-uk/20210501/281496459032582",
@@ -2803,6 +2880,13 @@
     "checked": "2026-10-30",
     "verdict": "ok"
   },
+  "gang-of-four>david-bowie": {
+    "url": "https://youtu.be/O9DWlVcc6Wk?t=177",
+    "found": "growing up so then the record that changed my life our lives many of us that just did it took us into a whole new world",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Amoeba sweep, round two: YouTube captions, checked against research/source-pass/amoeba/transcripts/; the citation is the cleaned reading."
+  },
   "gang-of-four>velvet-underground": {
     "url": "https://www.pocklingtonpost.co.uk/whats-on/arts-and-entertainment/jon-king-of-gang-of-four-i-wanted-it-to-mean-something-and-to-try-to-change-the-world-4274482",
     "found": "“It was really a pilgrimage because The Velvet Underground was really the marker for me and Andy of what bands should sound like and we came back and thought we’d have a band.",
@@ -3198,6 +3282,20 @@
     "note": "Borderline: Talbot answers in general terms ('you are definitely part of that heritage'), not 'I loved them'. Page does not show it is Talbot rather than Bowen answering beyond the headline context; the citation attributes it to Talbot as before. Owner may prefer lowering confidence.",
     "by": "c13"
   },
+  "interpol>aphex-twin": {
+    "url": "https://youtu.be/JeHhgcYhe7c?t=448",
+    "found": "I think he's one of the great songwriters, period. And he certainly had a big influence on me.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Amoeba sweep, round two: YouTube captions, checked against research/source-pass/amoeba/transcripts/; the citation is the cleaned reading."
+  },
+  "interpol>bad-brains": {
+    "url": "https://youtu.be/JeHhgcYhe7c?t=35",
+    "found": "D.C. is sort of a hub for hardcore music and stuff like that and I was kind of weaned on that and being around that. This is the record that really reeled me in and to this day I think it's one of the best hardcore records ever and I'll never tire of it.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Amoeba sweep, round two: YouTube captions, checked against research/source-pass/amoeba/transcripts/; the citation is the cleaned reading."
+  },
   "interpol>fugazi": {
     "checked": "2026-10-26",
     "verdict": "fixed",
@@ -3245,6 +3343,13 @@
     "sourceTier": "first-person",
     "note": "Pitchfork, \"Japanese Breakfast Is Working the Pain Away\". Page text read has no date (Wikipedia gives March 2021). Same passage supports japanese-breakfast>wilco.",
     "by": "u2"
+  },
+  "japanese-breakfast>cat-power": {
+    "url": "https://youtu.be/SaF121UDEAs?t=269",
+    "found": "It's just super dark and intense and I really love this album and it inspires my writing a lot. Cat Power has always been a huge inspiration to me, so, love it.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Amoeba sweep, round two: YouTube captions, checked against research/source-pass/amoeba/transcripts/; the citation is the cleaned reading."
   },
   "japanese-breakfast>elliott-smith": {
     "url": "https://thequietus.com/interviews/bakers-dozen/japanese-breakfast-bakers-dozen-favourite-albums/4/",
@@ -4423,6 +4528,13 @@
     "sourceTier": "first-person",
     "note": "Lyrics (Genius page, opened), each line its own paragraph. Original quote wording 'I brought home belief that I could create eternity' differs from the lyric 'I brought back home belief I could create eternity'. Lyrics carry the claim in his own voice; owner may judge a song lyric tier-wise.",
     "checked": "2026-10-26"
+  },
+  "mr-bungle>nomeansno": {
+    "url": "https://en.wikipedia.org/wiki/Mike_Patton",
+    "found": "In 1992, he cited Nomeansno and The Residents as influences.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Wikipedia cites Guitar Magazine (Sep 1992) and Decibel #101 (2013); the original article could not be opened. The owner remembers a Patton top-ten list naming Wrong (\"fucked happy\"); not found online."
   },
   "mudhoney>black-flag": {
     "url": "https://cvindependent.com/2015/09/gods-of-grunge-mark-your-calendars-for-mudhoney-s-show-at-pappy-and-harriet-s/",
@@ -7038,6 +7150,20 @@
     "checked": "2026-10-30",
     "verdict": "ok",
     "note": "Twee pass: re-opened on its page by hand."
+  },
+  "tame-impala>can": {
+    "url": "https://youtu.be/I1_IFXFJi4U?t=428",
+    "found": "of like taught me that band music can feel like electronic music. To me, these guys were like electronic music before electronic music started. It was like",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Amoeba sweep, round two: YouTube captions, checked against research/source-pass/amoeba/transcripts/; the citation is the cleaned reading."
+  },
+  "tame-impala>deftones": {
+    "url": "https://youtu.be/I1_IFXFJi4U?t=334",
+    "found": "fan of music, but was obsessed with this album. I had been into a lot of new metal and stuff from like when I was a kid. Deaf Tones was the one that like",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Amoeba sweep, round two: YouTube captions, checked against research/source-pass/amoeba/transcripts/; the citation is the cleaned reading. Owner's close call."
   },
   "tame-impala>my-bloody-valentine": {
     "checked": "2026-10-26",

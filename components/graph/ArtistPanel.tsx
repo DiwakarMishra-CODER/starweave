@@ -12,6 +12,7 @@ import StreamingLinks from '@/components/ui/StreamingLinks';
 import RadioDial from '@/components/panel/RadioDial';
 import { useNarrowLayout } from '@/lib/use-media-query';
 import { useAudioPreview } from '@/lib/use-audio-preview';
+import { LOUD_GAIN } from '@/lib/player';
 import { whyFor } from '@/lib/home-story';
 import { storyCamera } from '@/lib/story-store';
 import SourceLink, { SourceStampIcon } from '@/components/ui/SourceLink';
@@ -138,7 +139,7 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
   // The peek bar's play button: their own song, on the panel's one <audio>
   // (see lib/use-audio-preview). The radio dial has its own and the two
   // never play at once.
-  const { audioRef, audioProps, playing, toggle, stop: stopAudio } = useAudioPreview();
+  const { audioRef, audioProps, playing, toggle, stop: stopAudio } = useAudioPreview(artist?.loud ? LOUD_GAIN : 1);
   const artistMap = Object.fromEntries(graphData.artists.map(a => [a.id, a]));
 
   // Their own words about who shaped them (or, for an artist nobody came
@@ -310,11 +311,12 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                   </span>
                 </span>
 
+                {artist.previewUrl && artist.loud && <span className="loud-tag" aria-hidden>Loud</span>}
                 {artist.previewUrl && (
                   <button
                     className={`panel-peek__play${playing ? ' panel-peek__play--playing' : ''}`}
                     onClick={e => { e.stopPropagation(); toggle(); }}
-                    aria-label={playing ? 'Pause preview' : 'Play preview'}
+                    aria-label={playing ? 'Pause preview' : artist.loud ? 'Play preview (it’s loud)' : 'Play preview'}
                   >
                     {playing ? (
                       <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor" aria-hidden>

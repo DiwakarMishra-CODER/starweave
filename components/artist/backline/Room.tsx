@@ -674,7 +674,7 @@ export default function Room({ backline, genres, finish, ribbon, seed, page = '.
     if (now.at !== null && now.paused) player.resume();
     else if (now.at === null && onPlay) onPlay();
     else if (now.at === null && queue) player.play(queue, 0);
-    else if (now.at === null && now.context) player.play(now.context.queue, now.context.start);
+    else if (now.at === null && now.context) player.play(now.context.queue, now.context.start, true);
     else poke.current(false);
   };
 

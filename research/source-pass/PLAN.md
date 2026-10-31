@@ -201,6 +201,15 @@ Files in `research/source-pass/amoeba/`; needs `yt-dlp` (installed via brew).
   dates: husker-du -> my-bloody-valentine, the-postal-service -> charli-xcx.
   `fetch.sh` now sleeps 60s; re-run it for the other 59, then `prep.ts`
   (it rewrites judge-*.json: judge only episodes not in judged-1/2).
+- 31 Oct, round two: `fetch.sh` (60s apart) brought the total to 78 caption
+  files; 19 failed (5 have no English captions, the rest hit 429 again and
+  sit in `failed.txt` for another try). Round one's batches moved to
+  `round1/`; 41 new episodes plus Converge's and Deafheaven's own went to two
+  judges. Written (owner said yes to all): converge -> nomeansno,
+  gang-of-four -> david-bowie (Hugo Burnham), tame-impala -> can,
+  interpol -> bad-brains and -> aphex-twin, japanese-breakfast -> cat-power,
+  and the owner's two close calls beabadoobee -> deftones (0.65) and
+  tame-impala -> deftones (0.6). Deafheaven's episode had nothing on the map.
 - Next: fetch captions for all 95 (slowly: YouTube rate-limits), judge with
   the Baker's Dozen rules (fan/loved/grew up on counts; a bare pick or
   "sounds like" doesn't), off-map picks into the tally. Every keeper goes to

@@ -19,6 +19,7 @@ export interface Playable {
   previewUrl?: string | null;
   previewTrack?: string | null;
   activeFrom?: number | null;
+  loud?: boolean;
 }
 
 export const toTrack = (a: Playable): Track => ({
@@ -28,6 +29,7 @@ export const toTrack = (a: Playable): Track => ({
   previewUrl: a.previewUrl ?? null,
   previewTrack: a.previewTrack ?? null,
   activeFrom: a.activeFrom ?? null,
+  ...(a.loud ? { loud: true } : {}),
 });
 
 const oldestFirst = (a: Artist, b: Artist) =>

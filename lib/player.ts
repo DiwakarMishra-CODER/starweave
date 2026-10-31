@@ -30,6 +30,9 @@ export interface Track {
   ms?: number;
   /** How loud, against the rest (1 = as usual): a loud song can come in gentler. */
   gain?: number;
+  /** A loud artist's song (Artist.loud): it plays only when it's the track a
+   *  press chose, never as a queue moves on, and at LOUD_GAIN. */
+  loud?: boolean;
 }
 
 export interface Queue {
@@ -77,6 +80,8 @@ const GIVE_UP_MS = 12000;     // a song that won't load in this long is skipped
 const FLOW_DELAY_MS = 300;    // a linked queue's light leaves this long into a track...
 const FLOW_MS = 1500;         // ...and takes this long to cross the line
 const VOLUME = 0.8;
+/** A loud song comes in at half volume (the loud rule; the About tape's "Prancer" too). */
+export const LOUD_GAIN = 0.5;
 const OWNER = Symbol('player');
 
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
@@ -117,6 +122,21 @@ let flowFrom: string | null = null;
 let startedAt = 0;
 let pausedAt = 0;
 let waitingSince = 0;
+// The loud rule: a loud track plays only if it's the one a press chose (its
+// index here); starting or moving on through a queue steps past every other.
+let chosenAt: number | null = null;
+// Loud artists by id, handed over once by the map shell (GraphView), so a
+// track built anywhere (a scene's room, a genre's tape) is known as loud.
+let loudIds: ReadonlySet<string> = new Set();
+const isLoud = (t: Track) => !!t.loud || loudIds.has(t.id);
+/** The loud rule, for the site's other players (the radio, the road, the crossfader). */
+export const isLoudArtist = (id: string | null | undefined) => !!id && loudIds.has(id);
+const allowed = (queue: Queue, i: number) => !isLoud(queue.tracks[i]) || i === chosenAt;
+/** The first track from `from` in the direction of `step` that may play. */
+function nextAllowed(queue: Queue, from: number, step: 1 | -1): number | null {
+  for (let i = from; i >= 0 && i < queue.tracks.length; i += step) if (allowed(queue, i)) return i;
+  return null;
+}
 // Elements that show how far through its turn the track on air is
 // (--player-progress), written every frame rather than through React.
 const progressEls = new Set<HTMLElement>();
@@ -160,8 +180,8 @@ function warm(url: string | null, whole: boolean) {
 function warmNext() {
   const { queue, at } = state;
   if (!queue || at === null) return;
-  const next = queue.tracks[at + 1];
-  if (next) warm(next.previewUrl, true);
+  const n = nextAllowed(queue, at + 1, 1);
+  if (n !== null) warm(queue.tracks[n].previewUrl, true);
 }
 
 /** How far into its turn the track on air is, ms: the song's own position,
@@ -214,7 +234,8 @@ function fadeThen(next: () => void) {
 function advance() {
   const { queue, at } = state;
   if (!queue || at === null) return;
-  if (at < queue.tracks.length - 1) { begin(at + 1); return; }
+  const n = nextAllowed(queue, at + 1, 1);
+  if (n !== null) { begin(n); return; }
   player.stop();
   if (queue.after) set({ offer: queue.after });
 }
@@ -228,7 +249,7 @@ function tick(now: number) {
   // on one that never comes.
   if (state.loading && now - waitingSince > GIVE_UP_MS) { advance(); return; }
   const t = elapsed(track, now);
-  if (track.previewUrl && audio) audio.volume = VOLUME * (track.gain ?? 1) * clamp01(Math.min(t / FADE_MS, (turn - t) / FADE_MS));
+  if (track.previewUrl && audio) audio.volume = VOLUME * (track.gain ?? (isLoud(track) ? LOUD_GAIN : 1)) * clamp01(Math.min(t / FADE_MS, (turn - t) / FADE_MS));
   storyFrame.level = readLevel(audio);
   readBands(audio, storyFrame.bands);
   showProgress(clamp01(t / turn));
@@ -243,12 +264,21 @@ function tick(now: number) {
 }
 
 export const player = {
-  /** Play a queue from a track. Call it from a press, so the browser lets it make a sound. */
-  play(queue: Queue, from = 0) {
+  /** Play a queue from a track. Call it from a press, so the browser lets it
+   *  make a sound. `chosen`: the press picked that very track (a face, a
+   *  record, a row), so it plays even if it's loud; any other loud track is
+   *  stepped past, and a queue started on one begins at the next that isn't.
+   *  A queue of one song is always a pick: a random one (Surprise me) has to
+   *  leave loud artists out itself. */
+  play(queue: Queue, from = 0, chosen = false) {
     if (queue.tracks.length === 0) return;
+    const at = Math.min(queue.tracks.length - 1, Math.max(0, from));
+    chosenAt = chosen || queue.tracks.length === 1 ? at : null;
+    const start = nextAllowed(queue, at, 1) ?? nextAllowed(queue, at, -1);
+    if (start === null) return;
     claimAudio(OWNER);
     set({ queue });
-    begin(Math.min(queue.tracks.length - 1, Math.max(0, from)));
+    begin(start);
   },
   pause() {
     if (state.at === null || state.paused) return;
@@ -296,10 +326,13 @@ export const player = {
       player.play(context.queue, context.start);
       return;
     }
-    begin(at >= queue.tracks.length - 1 ? 0 : at + 1);
+    const n = nextAllowed(queue, at + 1, 1) ?? nextAllowed(queue, 0, 1);
+    if (n !== null) begin(n);
   },
   prev() {
-    if (state.at !== null) begin(Math.max(0, state.at - 1));
+    const { queue, at } = state;
+    if (!queue || at === null) return;
+    begin(nextAllowed(queue, at - 1, -1) ?? at);
   },
   stop() {
     cancelAnimationFrame(raf);
@@ -312,6 +345,10 @@ export const player = {
     storyFrame.bands.fill(0);
     showProgress(0);
     set({ at: null, paused: false, loading: false });
+  },
+  /** Which artists are loud (Artist.loud), from the map shell. */
+  setLoudArtists(ids: Iterable<string>) {
+    loudIds = new Set(ids);
   },
   /** Let the "keep going" offer go. */
   dismissOffer() {

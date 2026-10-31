@@ -43,7 +43,7 @@ export default function Records({ records, tapeId, queue }: { records: FeatureRe
       return;
     }
     const at = queue.tracks.findIndex(t => t.id === artistId);
-    if (at >= 0) player.play(queue, at);
+    if (at >= 0) player.play(queue, at, true);
   };
   const playable = queue.tracks.length;
 
@@ -105,11 +105,12 @@ export default function Records({ records, tapeId, queue }: { records: FeatureRe
                   <button
                     type="button"
                     className="frecord__play"
-                    aria-label={`${isSpinning ? 'Pause' : 'Play'} "${r.song}", from ${r.title}`}
+                    aria-label={`${isSpinning ? 'Pause' : 'Play'} "${r.song}", from ${r.title}${r.loud ? ' (it’s loud)' : ''}`}
                     onClick={() => play(r.artistId)}
                   >
                     <span className="frecord__play-icon" data-pause={isSpinning || undefined} aria-hidden />
                     <span className="frecord__play-song">&ldquo;{r.song}&rdquo;</span>
+                    {r.loud && <span className="loud-tag" aria-hidden>Loud</span>}
                     <span className="frecord__eq" aria-hidden><i /><i /><i /></span>
                   </button>
                 )}

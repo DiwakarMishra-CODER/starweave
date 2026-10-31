@@ -307,7 +307,9 @@ export default function BrowseClient({ lineup, genres, scenes }: Props) {
 
   // ── Surprise me ──────────────────────────────────────────────────────────
   const surprise = () => {
-    const pool = artists.map((_, i) => i).filter(i => artists[i].hasSong && i !== billOf && (!matches || matches.has(i)));
+    // Never a loud artist (the loud rule): a surprise isn't a choice.
+    const loud = new Set(data?.artists.filter(a => a.loud).map(a => a.id));
+    const pool = artists.map((_, i) => i).filter(i => artists[i].hasSong && !loud.has(artists[i].id) && i !== billOf && (!matches || matches.has(i)));
     if (!pool.length) return;
     const i = pool[Math.floor(Math.random() * pool.length)];
     openBill(i);

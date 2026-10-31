@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 import type { GraphData } from '@/data/types';
+import { player } from '@/lib/player';
 
 // Loads public/graph.json once, client-side, and hands it to every route in
 // the (graph) group via context instead of the graph being embedded as a
@@ -34,6 +35,8 @@ export function GraphDataProvider({ children }: { children: React.ReactNode }) {
         return res.json();
       })
       .then((json: GraphData) => {
+        // The loud rule: the player steps past these artists unless pressed.
+        player.setLoudArtists(json.artists.filter(a => a.loud).map(a => a.id));
         if (!cancelled) setData(json);
       })
       .catch((err: unknown) => {

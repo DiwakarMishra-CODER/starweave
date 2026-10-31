@@ -105,7 +105,9 @@
   "id": "BgWeiEQh69Y",
   "title": "Converge's \"What's In My Bag?\" | Amoeba Music",
   "guest": "Converge",
-  "artistIds": [],
+  "artistIds": [
+   "converge"
+  ],
   "url": "https://www.youtube.com/watch?v=BgWeiEQh69Y"
  },
  {

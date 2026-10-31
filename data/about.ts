@@ -40,9 +40,9 @@ export const TAPE_SONGS: TapeSong[] = [
   { key: 'dreams-tonite', artistId: 'alvvays', song: 'Dreams Tonite', album: 'Antisocialites' },
   { key: 'get-me-away', artistId: 'belle-and-sebastian', song: "Get Me Away from Here, I'm Dying", album: "If You're Feeling Sinister" },
   // Mathcore, and loud: it never plays by itself on the tape, only when
-  // pressed, and comes in at half volume. The Dillinger Escape Plan aren't on
-  // the map.
-  { key: 'prancer', artistName: 'The Dillinger Escape Plan', song: 'Prancer', album: 'One of Us Is the Killer', onTape: false, gain: 0.5 },
+  // pressed, and comes in at half volume. On the map since Oct 2026, under
+  // the same loud rule.
+  { key: 'prancer', artistId: 'dillinger-escape-plan', song: 'Prancer', album: 'One of Us Is the Killer', onTape: false, gain: 0.5 },
   // Black metal and blackgaze: loud too, so the same care.
   { key: 'transilvanian-hunger', artistName: 'Darkthrone', song: 'Transilvanian Hunger', album: 'Transilvanian Hunger', onTape: false, gain: 0.5 },
   { key: 'dream-house', artistName: 'Deafheaven', song: 'Dream House', album: 'Sunbather', onTape: false, gain: 0.5 },
@@ -280,7 +280,7 @@ export const SIDE_B_WHY = [
 export const ONE_FAMILY = {
   root: 'punk',
   soft: { road: ['post-punk', 'indie-pop'], end: 'Twee pop', song: 'get-me-away', band: 'belle-and-sebastian' },
-  loud: { road: ['hardcore-punk', 'post-hardcore', 'math-rock'], end: 'Mathcore', song: 'prancer', bandName: 'The Dillinger Escape Plan' },
+  loud: { road: ['hardcore-punk', 'post-hardcore', 'math-rock'], end: 'Mathcore', song: 'prancer', band: 'dillinger-escape-plan' },
   /** And the other way: two families meeting. The owner's own words. */
   merge: {
     words: [

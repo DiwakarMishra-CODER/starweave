@@ -20277,3 +20277,21 @@ a.site-foot__sticker:focus-visible {
   .tfork__ends--three { grid-template-columns: 1fr; }
   .tend__tape { height: 200px; max-width: 320px; }
 }
+
+/* The loud rule (Artist.loud): a small red tag on a loud artist's play
+   buttons, so nobody presses one without knowing. */
+.loud-tag {
+  display: inline-block;
+  margin-left: 0.45em;
+  padding: 1px 5px 0;
+  border: 1.5px solid #c8321f;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c8321f;
+  vertical-align: middle;
+}

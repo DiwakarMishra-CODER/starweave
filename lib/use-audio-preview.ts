@@ -43,7 +43,8 @@ export interface AudioPreviewController {
   };
 }
 
-export function useAudioPreview(): AudioPreviewController {
+/** `gain`: how loud against the usual (a loud artist's song comes in at LOUD_GAIN). */
+export function useAudioPreview(gain = 1): AudioPreviewController {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -69,11 +70,12 @@ export function useAudioPreview(): AudioPreviewController {
     if (!audio) return;
     if (audio.paused) {
       claim();
+      audio.volume = gain;
       audio.play().catch(() => {});
     } else {
       audio.pause();
     }
-  }, [claim]);
+  }, [claim, gain]);
 
   const seek = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const audio = audioRef.current;

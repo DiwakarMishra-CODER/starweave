@@ -587,6 +587,14 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Minneapolis, Vancouver, Umeå — proof the sound never needed a single hometown.",
         artistIds: ['dead-kennedys', 'husker-du', 'nomeansno', 'refused'],
       },
+      {
+        title: 'Into metallic hardcore',
+        blurb:
+          "In the 1990s hardcore met metal's weight and jazz's time signatures: Converge " +
+          "turned it on their own lives, and the Dillinger Escape Plan pushed it into chaos " +
+          "they wanted to feel like the first time they saw Bad Brains and Black Flag.",
+        artistIds: ['converge', 'dillinger-escape-plan'],
+      },
     ],
   },
 
@@ -847,6 +855,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           'trail-of-dead',
           'nomeansno',
           'refused',
+          'converge',
         ],
       },
       {
@@ -1535,7 +1544,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "The sound scattered well past its American post-hardcore roots — Japan's toe built an " +
           "entire instrumental tradition around it, San Diego's Pinback folded it into something " +
           "poppier, and London's black midi pushed the same geometry toward 2020s art-rock excess.",
-        artistIds: ['toe', 'black-midi', 'pinback'],
+        artistIds: ['toe', 'black-midi', 'pinback', 'dillinger-escape-plan'],
       },
       {
         title: 'Into midwest emo',
@@ -2809,7 +2818,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Silver Apples built the template decades before the genre had a name; Xiu Xiu, " +
           "Animal Collective, and Julia Holter each found their own way to wrap genuinely " +
           "strange production around real melody.",
-        artistIds: ['silver-apples', 'scott-walker', 'ween', 'xiu-xiu', 'animal-collective', 'julia-holter', 'stereolab', 'olivia-tremor-control'],
+        artistIds: ['silver-apples', 'scott-walker', 'ween', 'mr-bungle', 'xiu-xiu', 'animal-collective', 'julia-holter', 'stereolab', 'olivia-tremor-control'],
       },
       {
         title: 'The 21st-century pop-collage generation',
@@ -2891,7 +2900,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "post-rock-adjacent directions — Nick Cave's baroque menace, Talk Talk's dissolution " +
           "into near-classical calm, Godspeed's orchestral maximalism, and a handful of artists " +
           "(Broadcast, Tom Waits) building entirely idiosyncratic versions of the same idea.",
-        artistIds: ['the-fall', 'nick-cave-and-the-bad-seeds', 'pj-harvey', 'talk-talk', 'jeff-buckley', 'godspeed-you-black-emperor', 'broadcast', 'tom-waits'],
+        artistIds: ['the-fall', 'mr-bungle', 'nick-cave-and-the-bad-seeds', 'pj-harvey', 'talk-talk', 'jeff-buckley', 'godspeed-you-black-emperor', 'broadcast', 'tom-waits'],
       },
       {
         title: 'The 21st-century UK wing',

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useGraphData } from '@/components/graph/GraphDataProvider';
 import StreamingLinks from '@/components/ui/StreamingLinks';
 import { sizedImageUrl } from '@/lib/image-url';
-import { onAir, player, usePlayer, type Queue, type Track } from '@/lib/player';
+import { isLoudArtist, onAir, player, usePlayer, type Queue, type Track } from '@/lib/player';
 import { artistThenFamily, searchArtists, shuffled, stations, wholeStory } from '@/lib/player-library';
 import { BackIcon, NextIcon, PauseIcon, PlayIcon, PrevIcon } from './icons';
 
@@ -87,7 +87,8 @@ export default function PlayerDevice({ variant, children }: Props) {
   const shownOnMap = !!shown && !!data?.artists.some(a => a.id === shown.id);
 
   const go = (next: Screen, at = 0) => { setScreen(next); setSel(at); };
-  const playFrom = (queue: Queue, from: number) => { player.play(queue, from); go({ kind: 'now' }); };
+  // `chosen`: a row picked by hand plays even if it's loud (the loud rule).
+  const playFrom = (queue: Queue, from: number, chosen = false) => { player.play(queue, from, chosen); go({ kind: 'now' }); };
   const toggle = () => {
     if (!playing) { if (offer) player.play(offer.queue, offerAt); }
     else if (s.paused) player.resume();
@@ -129,19 +130,19 @@ export default function PlayerDevice({ variant, children }: Props) {
       ...q.tracks.map((t, i) => ({
         key: t.id,
         label: t.name,
-        sub: t.activeFrom ? String(t.activeFrom) : '',
+        sub: isLoudArtist(t.id) ? 'Loud' : t.activeFrom ? String(t.activeFrom) : '',
         current: s.queue?.id === q.id && s.at === i,
-        act: () => playFrom(q, i),
+        act: () => playFrom(q, i, true),
       })),
     ];
   } else if (screen.kind === 'search') {
     rows = results.map(a => ({
       key: a.id,
       label: a.name,
-      sub: a.previewUrl ? (a.activeFrom ? String(a.activeFrom) : '') : 'no song',
+      sub: a.previewUrl ? (a.loud ? 'Loud' : a.activeFrom ? String(a.activeFrom) : '') : 'no song',
       act: () => {
         const q = data && artistThenFamily(data, a.id);
-        if (q) playFrom(q, 0);
+        if (q) playFrom(q, 0, true);
       },
     }));
   }

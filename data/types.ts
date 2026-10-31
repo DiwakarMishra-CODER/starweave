@@ -178,6 +178,13 @@ export interface Artist {
   // The chosen signature song — used at build time to find the correct iTunes preview.
   signatureSong?: string;
 
+  // Music harsh or loud enough to startle someone who didn't choose it (the
+  // loud rule, owner, Oct 2026): it never plays by surprise -- shuffles,
+  // stations, a genre's tape, a scene's room, the radio and the road all
+  // skip it -- it plays only when pressed, at half volume, and its play
+  // buttons say "Loud". The same treatment the About tape gives "Prancer".
+  loud?: boolean;
+
   // Realm/lineage — see the Realm/Lineage type comments above.
   realm?: Realm;
   lineage?: Lineage;

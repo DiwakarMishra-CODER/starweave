@@ -272,7 +272,7 @@ export default function SceneTable({ scene, place, bands, frameW, frameH, filmW,
     if (loaded && now.at === k) {
       if (now.paused) player.resume();
       else player.pause();
-    } else player.play(queue, k);
+    } else player.play(queue, k, true);
   };
 
   const from = { start: scene.yearStart, end: scene.yearEnd, open: scene.isOpenEnded };

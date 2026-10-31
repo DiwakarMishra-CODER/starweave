@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { GraphData } from '@/data/types';
+import { LOUD_GAIN, isLoudArtist } from '@/lib/player';
 import { requestFullIntro, storyCamera, storyFrame } from '@/lib/story-store';
 import { readMs, roadToRoot, stepWords, TOUR_DEFAULT, TOUR_PICKS } from '@/lib/tour';
 import { findBestSourcedPath } from '@/lib/graph-utils';
@@ -503,7 +504,7 @@ function Picker({ data, onChoose, onClose }: { data: GraphData; onChoose: (id: s
     const audio = audioRef.current;
     if (!audio) return;
     audio.src = url;
-    audio.volume = 0.8;
+    audio.volume = 0.8 * (isLoudArtist(id) ? LOUD_GAIN : 1); // the loud rule: half volume
     claim();
     void audio.play().catch(() => {});
     setPlaying(id);

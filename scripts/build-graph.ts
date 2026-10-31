@@ -358,6 +358,8 @@ const ARTIST_PHOTO: Record<string, PhotoOverride> = {
   'spacemen-3': { file: '/photos/spacemen-3.jpg', credit: { author: 'Greg Neate', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Spacemen_3.jpg' } },
   'bon-iver': { file: '/photos/bon-iver.jpg', credit: { author: 'Simon.Appelblad', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Bon_Iver_3.jpg' } },
   'bonnie-prince-billy': { file: '/photos/bonnie-prince-billy.jpg', credit: { author: 'Neff Conner', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Bonnie-Prince-Billy-060609_(614bw)_(3606166772)_(cropped).jpg' } },
+  // Deezer's picture is a 2023 festival shot fronted by a guest singer (Max Cavalera).
+  'mr-bungle': { file: '/photos/mr-bungle.jpg', credit: { author: 'Heather Leah Kennedy', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:MrBungle99.JPG' } },
   // Deezer has no picture of King Crimson at all.
   'king-crimson': { file: '/photos/king-crimson.jpg', credit: { author: 'Atlantic Records (press photo, 1974)', license: 'Public domain', url: 'https://commons.wikimedia.org/wiki/File:King_crimson_1974_press_photo.jpg' } },
   'bratmobile': { file: '/photos/bratmobile.jpg', credit: { author: 'Greg Neate', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Bratmobile.jpg' } },

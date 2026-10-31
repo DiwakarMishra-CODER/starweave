@@ -1,0 +1,309 @@
+[
+ {
+  "id": "lC2pol5qeAA",
+  "guest": "Simon Raymonde",
+  "title": "Simon Raymonde's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "cocteau-twins"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/lC2pol5qeAA.txt",
+  "lines": 395,
+  "alreadyLinked": {
+   "cocteau-twins": [
+    "siouxsie-and-the-banshees",
+    "sex-pistols",
+    "ramones",
+    "the-birthday-party",
+    "joy-division"
+   ]
+  }
+ },
+ {
+  "id": "b93A3Jl1-1c",
+  "guest": "The Get Up Kids",
+  "title": "The Get Up Kids' “What’s In My Bag?” | Amoeba Music",
+  "speakers": [
+   "get-up-kids"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/b93A3Jl1-1c.txt",
+  "lines": 343,
+  "alreadyLinked": {
+   "get-up-kids": [
+    "drive-like-jehu",
+    "the-jesus-lizard"
+   ]
+  }
+ },
+ {
+  "id": "pB_3QD4U4XY",
+  "guest": "The Mountain Goats",
+  "title": "The Mountain Goats' \"What's In My Bag?\" [Home Edition] | Amoeba Music",
+  "speakers": [
+   "the-mountain-goats"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/pB_3QD4U4XY.txt",
+  "lines": 241,
+  "alreadyLinked": {
+   "the-mountain-goats": [
+    "the-cure"
+   ]
+  }
+ },
+ {
+  "id": "XEQMIIvghyQ",
+  "guest": "Tortoise",
+  "title": "Tortoise's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "tortoise"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/XEQMIIvghyQ.txt",
+  "lines": 216,
+  "alreadyLinked": {
+   "tortoise": [
+    "can",
+    "neu"
+   ]
+  }
+ },
+ {
+  "id": "nmuX5Y9MQ8I",
+  "guest": "Squid",
+  "title": "Squid's “What’s In My Bag?” | Amoeba Music",
+  "speakers": [
+   "squid"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/nmuX5Y9MQ8I.txt",
+  "lines": 186,
+  "alreadyLinked": {
+   "squid": [
+    "neu",
+    "stereolab",
+    "burial"
+   ]
+  }
+ },
+ {
+  "id": "kZKyvgkQeOk",
+  "guest": "Hot Chip",
+  "title": "Hot Chip's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "hot-chip"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/kZKyvgkQeOk.txt",
+  "lines": 168,
+  "alreadyLinked": {
+   "hot-chip": [
+    "omd",
+    "neil-young"
+   ]
+  }
+ },
+ {
+  "id": "cxuIOC0LJVY",
+  "guest": "Gary Numan",
+  "title": "Gary Numan's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "gary-numan"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/cxuIOC0LJVY.txt",
+  "lines": 159,
+  "alreadyLinked": {
+   "gary-numan": [
+    "can",
+    "kraftwerk",
+    "david-bowie",
+    "brian-eno",
+    "depeche-mode"
+   ]
+  }
+ },
+ {
+  "id": "3TMVavpE5E4",
+  "guest": "Brendan Canning",
+  "title": "Brendan Canning's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "broken-social-scene"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/3TMVavpE5E4.txt",
+  "lines": 155,
+  "alreadyLinked": {
+   "broken-social-scene": [
+    "dinosaur-jr"
+   ]
+  }
+ },
+ {
+  "id": "_tsYfowWmyE",
+  "guest": "Rostam",
+  "title": "Rostam's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "vampire-weekend"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/_tsYfowWmyE.txt",
+  "lines": 145,
+  "alreadyLinked": {
+   "vampire-weekend": [
+    "talking-heads",
+    "the-walkmen"
+   ]
+  }
+ },
+ {
+  "id": "e8oexqhDaEo",
+  "guest": "King Gizzard and the Lizard Wizard",
+  "title": "King Gizzard and the Lizard Wizard's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "king-gizzard-and-the-lizard-wizard"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/e8oexqhDaEo.txt",
+  "lines": 138,
+  "alreadyLinked": {
+   "king-gizzard-and-the-lizard-wizard": [
+    "kraftwerk",
+    "bob-dylan"
+   ]
+  }
+ },
+ {
+  "id": "VJPKkan97o8",
+  "guest": "Gang of Four",
+  "title": "Gang of Four's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "gang-of-four"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/VJPKkan97o8.txt",
+  "lines": 113,
+  "alreadyLinked": {
+   "gang-of-four": [
+    "velvet-underground"
+   ]
+  }
+ },
+ {
+  "id": "YZn74oGAADc",
+  "guest": "Superchunk",
+  "title": "Superchunk's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "superchunk"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/YZn74oGAADc.txt",
+  "lines": 102,
+  "alreadyLinked": {
+   "superchunk": [
+    "new-order",
+    "cocteau-twins",
+    "the-cure"
+   ]
+  }
+ },
+ {
+  "id": "XxqQke4kYPU",
+  "guest": "Blonde Redhead",
+  "title": "Blonde Redhead's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "blonde-redhead"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/XxqQke4kYPU.txt",
+  "lines": 78,
+  "alreadyLinked": {
+   "blonde-redhead": [
+    "my-bloody-valentine",
+    "lush",
+    "unwound"
+   ]
+  }
+ },
+ {
+  "id": "ahnUH7wnW30",
+  "guest": "Grimes",
+  "title": "Grimes' \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "grimes"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/ahnUH7wnW30.txt",
+  "lines": 74,
+  "alreadyLinked": {
+   "grimes": [
+    "cocteau-twins",
+    "aphex-twin",
+    "burial",
+    "animal-collective"
+   ]
+  }
+ },
+ {
+  "id": "3x9cQnV2Bk0",
+  "guest": "Flaming Lips (Kliph Scurlock)",
+  "title": "Flaming Lips (Kliph Scurlock)'s \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "the-flaming-lips"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/3x9cQnV2Bk0.txt",
+  "lines": 68,
+  "alreadyLinked": {
+   "the-flaming-lips": [
+    "husker-du",
+    "black-flag",
+    "minutemen",
+    "the-replacements",
+    "yo-la-tengo"
+   ]
+  }
+ },
+ {
+  "id": "XQjp00sun3k",
+  "guest": "Phoebe Bridgers",
+  "title": "Phoebe Bridgers' \"What's In My Bag?\" [Home Edition] | Amoeba Music",
+  "speakers": [
+   "phoebe-bridgers"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/XQjp00sun3k.txt",
+  "lines": 61,
+  "alreadyLinked": {
+   "phoebe-bridgers": [
+    "bright-eyes",
+    "big-thief",
+    "elliott-smith",
+    "mitski",
+    "bon-iver",
+    "john-prine"
+   ]
+  }
+ },
+ {
+  "id": "i6qQmh8nAKc",
+  "guest": "Cat Power",
+  "title": "Cat Power's \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "cat-power"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/i6qQmh8nAKc.txt",
+  "lines": 51,
+  "alreadyLinked": {
+   "cat-power": [
+    "velvet-underground",
+    "the-replacements",
+    "nico",
+    "siouxsie-and-the-banshees",
+    "the-cure",
+    "husker-du",
+    "bob-dylan"
+   ]
+  }
+ },
+ {
+  "id": "_G78dxojn8I",
+  "guest": "Parquet Courts",
+  "title": "Parquet Courts' \"What's In My Bag?\" | Amoeba Music",
+  "speakers": [
+   "parquet-courts"
+  ],
+  "transcript": "research/source-pass/amoeba/transcripts/_G78dxojn8I.txt",
+  "lines": 48,
+  "alreadyLinked": {
+   "parquet-courts": [
+    "the-fall"
+   ]
+  }
+ }
+]

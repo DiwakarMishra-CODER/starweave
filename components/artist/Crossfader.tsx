@@ -4,6 +4,7 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { sizedImageUrl } from '@/lib/image-url';
 import { claimAudio, onAudioClaimed } from '@/lib/audio-focus';
+import { LOUD_GAIN, isLoudArtist } from '@/lib/player';
 
 // "Hear the link", in a face's card on the artist page: a DJ's crossfader
 // between the influence (left) and the artist they shaped (right) -- time
@@ -14,6 +15,8 @@ import { claimAudio, onAudioClaimed } from '@/lib/audio-focus';
 // `onStart` runs first, so the card holding it can stay open.
 
 interface Side {
+  /** The artist, so a loud one comes in at half volume (the loud rule). */
+  id?: string;
   name: string;
   imageUrl?: string | null;
   previewUrl: string;
@@ -30,7 +33,8 @@ export default function Crossfader({ left, right, onStart }: { left: Side; right
 
   const level = (m: number) => {
     const x = m / 100;
-    return [Math.cos((x * Math.PI) / 2) * VOLUME, Math.sin((x * Math.PI) / 2) * VOLUME];
+    const [ga, gb] = [left, right].map(s => (isLoudArtist(s.id) ? LOUD_GAIN : 1));
+    return [Math.cos((x * Math.PI) / 2) * VOLUME * ga, Math.sin((x * Math.PI) / 2) * VOLUME * gb];
   };
 
   const stop = useCallback(() => {

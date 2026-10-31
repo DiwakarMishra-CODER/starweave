@@ -166,10 +166,11 @@ export default function FamilyPhoto({ artist, intro, genres, country, portrait }
   const playing = onAir !== null;
   const paused = now.paused;
   const sampler = now.at !== null && now.queue?.id === samplerQueue.id;
-  const playSongs = (from: number) => player.play(familyQueue, from);
-  const playFamily = (from = 0) => player.play(samplerQueue, from);
+  // A face pressed is a choice, so it plays even if it's loud (the loud rule).
+  const playSongs = (from: number) => player.play(familyQueue, from, true);
+  const playFamily = (from = 0, chosen = false) => player.play(samplerQueue, from, chosen);
   // Tapping a face while something plays moves the music to them.
-  const playFrom = (i: number) => (sampler ? playFamily(i) : playSongs(i));
+  const playFrom = (i: number) => (sampler ? playFamily(i, true) : playSongs(i));
 
   // The page listens (lib/music-motion): --energy and --beat on the photo
   // while music plays; the faces dance only to their own family's music.
@@ -400,7 +401,7 @@ export default function FamilyPhoto({ artist, intro, genres, country, portrait }
           face is on air), or the card would close under it. */}
       {m.previewUrl && artist.previewUrl && (
         backFlat.includes(m)
-          ? <Crossfader left={{ name: m.name, imageUrl: m.imageUrl, previewUrl: m.previewUrl }} right={{ name: artist.name, imageUrl: artist.imageUrl, previewUrl: artist.previewUrl }} onStart={() => setOpen({ kind: 'member', side: 'back', id: m.id })} />
+          ? <Crossfader left={{ id: m.id, name: m.name, imageUrl: m.imageUrl, previewUrl: m.previewUrl }} right={{ id: artist.id, name: artist.name, imageUrl: artist.imageUrl, previewUrl: artist.previewUrl }} onStart={() => setOpen({ kind: 'member', side: 'back', id: m.id })} />
           : <Crossfader left={{ name: artist.name, imageUrl: artist.imageUrl, previewUrl: artist.previewUrl }} right={{ name: m.name, imageUrl: m.imageUrl, previewUrl: m.previewUrl }} onStart={() => setOpen({ kind: 'member', side: 'front', id: m.id })} />
       )}
       <p className="family-card__actions">
@@ -408,7 +409,7 @@ export default function FamilyPhoto({ artist, intro, genres, country, portrait }
           Their page <span aria-hidden>→</span>
         </Link>
         {m.previewUrl && onAir?.id !== m.id && (
-          <button type="button" className="family-card__play" onClick={() => playFamily(running.findIndex(s => s.id === m.id))}>
+          <button type="button" className="family-card__play" onClick={() => playFamily(running.findIndex(s => s.id === m.id), true)}>
             ▶ Play the family from here
           </button>
         )}

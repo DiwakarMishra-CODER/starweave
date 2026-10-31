@@ -50,6 +50,8 @@ export interface FeatureRecord {
   /** A song from this very record (scripts/build-graph's album songs). */
   song: string | null;
   previewUrl: string | null;
+  /** A loud artist (the loud rule): its play button says so. */
+  loud?: boolean;
 }
 
 export interface FeatureSign {
@@ -192,6 +194,7 @@ export function resolveGenreFeature(data: GraphData, id: string): GenreFeature |
         imageUrl: album.imageUrl ?? null, review: album.classicReason ?? '',
         song: album.previewUrl ? album.previewTrack ?? null : null,
         previewUrl: album.previewUrl ?? null,
+        ...(a.loud ? { loud: true } : {}),
       };
     });
   // In the page's own order: most essential first (data/genre-pages.ts ranks them).

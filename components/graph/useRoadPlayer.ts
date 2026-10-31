@@ -1,10 +1,11 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { Artist } from '@/data/types';
 import { storyFrame } from '@/lib/story-store';
 import { connectAnalyser, readLevel } from '@/lib/use-audio-level';
 import { useAudioFocus } from '@/lib/audio-focus';
+import { isLoudArtist } from '@/lib/player';
 
 // "Play the road": a few seconds of each stop on a Connect two road, in
 // order, from the first artist to the last (or from any stop, and skipping
@@ -56,9 +57,15 @@ interface Live {
 }
 
 export function useRoadPlayer<E extends HTMLElement = HTMLOListElement>(
-  stops: Stop[],
+  allStops: Stop[],
   { stopMs = STOP_MS }: { stopMs?: number } = {},
 ): RoadPlayer<E> {
+  // The road plays itself stop after stop, so a loud artist's stop stays
+  // silent (the loud rule): the van still stops and the stop still lights.
+  const stops = useMemo(
+    () => allStops.map(s => (isLoudArtist(s.id) ? { ...s, previewUrl: null } : s)),
+    [allStops],
+  );
   const [at, setAt] = useState<number | null>(null);
   const [paused, setPaused] = useState(false);
   const progressRef = useRef<E>(null);

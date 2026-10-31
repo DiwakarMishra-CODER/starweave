@@ -133,7 +133,7 @@
   },
   "alvvays>pavement": {
     "result": "missing",
-    "at": "2026-10-30",
+    "at": "2026-10-31",
     "url": "https://en.wikipedia.org/wiki/Alvvays",
     "found": "Rankin's personal influences include The Magnetic Fields, Teenage Fanclub, Dolly Mixture, The Smiths, Celine Dion, Pavement, The Primitives, Cocteau Twins, Oasis and Australian indie-pop group The Hummingbirds."
   },
@@ -476,6 +476,12 @@
     "at": "2026-10-26",
     "url": "https://insheepsclothinghifi.com/bark-psychosis-to-boymerang/",
     "found": "It’s weird that you mention AR Kane and Talk Talk because I’m really into them…I’ve been into Talk Talk since I was 14 years old."
+  },
+  "beabadoobee>deftones": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://youtu.be/AN7Lhm5To00?t=559",
+    "found": "&gt;&gt; Yeah. I love him so much. He's like my main inspiration of how I move on stage, especially with like this new record."
   },
   "beabadoobee>dinosaur-jr": {
     "result": "found",
@@ -1389,6 +1395,30 @@
     "url": "https://en.wikipedia.org/wiki/Coil_(band)",
     "found": "Rock musicians and groups Coil have expressed interest in are: Angus Maclise, Captain Beefheart, Flipper, Leonard Cohen, Lou Reed, Nico, Pere Ubu, Butthole Surfers, Napalm Death, The Birthday Party, The Velvet Underground and The Virgin Prunes."
   },
+  "converge>black-flag": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://www.westword.com/music/jacob-bannon-on-the-accessibility-of-converges-music-were-not-made-for-first-level-listeners-5673267",
+    "found": "Any early punk and hardcore, especially the work ethic that I personally have and that I know, collectively, my band members have, is something that’s inspired by people like early Black Flag members"
+  },
+  "converge>drive-like-jehu": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://www.vice.com/en/article/rank-your-records-converge-jacob-bannon",
+    "found": "He wasn’t listening to Drive Like Jehu at the time."
+  },
+  "converge>nomeansno": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://youtu.be/BgWeiEQh69Y?t=312",
+    "found": "&gt;&gt; YOU NEED TO GET INTO THIS RECORD. IT'S huge huge influence on both of us. This was a game-changing record for me."
+  },
+  "converge>the-cure": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://thequietus.com/interviews/bakers-dozen/jacob-bannon-converge-favourite-albums-interview-bakers-dozen/7/",
+    "found": "When I heard that record, it made me feel like it was okay to do that – where I could write from a personal perspective and not feel like the world was going to end"
+  },
   "david-bowie>kraftwerk": {
     "result": "found",
     "at": "2026-10-26",
@@ -1615,15 +1645,51 @@
     "url": "https://pitchfork.com/features/5-10-15-20/8896-destroyer/",
     "found": "At 15, I was deep in the clutches of the Jesus and Mary Chain."
   },
+  "dillinger-escape-plan>bad-brains": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://machinemusic.net/2021/04/15/pillars-of-the-90s-an-interview-with-the-dillinger-escape-plan/",
+    "found": "For me, it was about being punk and energetic and bringing to people what seemed to be the feeling and experience that people were getting from the original hardcore bands like Bad Brains"
+  },
+  "dillinger-escape-plan>black-flag": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://machinemusic.net/2021/04/15/pillars-of-the-90s-an-interview-with-the-dillinger-escape-plan/",
+    "found": "For me, it was about being punk and energetic and bringing to people what seemed to be the feeling and experience that people were getting from the original hardcore bands like Bad Brains"
+  },
+  "dillinger-escape-plan>depeche-mode": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://machinemusic.net/2021/04/15/pillars-of-the-90s-an-interview-with-the-dillinger-escape-plan/",
+    "found": "I'm sure melodically it inspired me and definitely culturally."
+  },
+  "dillinger-escape-plan>fugazi": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://www.theskinny.co.uk/music/features/306232-under_influence_dillinger_escape_plans_ben_weinman",
+    "found": "Repeater was a record that was meant to be performed. And no band put on a better show then Fugazi."
+  },
+  "dillinger-escape-plan>king-crimson": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://www.theskinny.co.uk/music/features/306232-under_influence_dillinger_escape_plans_ben_weinman",
+    "found": "This band represented a time when music truly had no boundaries"
+  },
+  "dillinger-escape-plan>mr-bungle": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://web.archive.org/web/20200605033618/https://www.mondosonoro.com/blog-musica/california-mr-bungle-especial/",
+    "found": "En nuestra sed de diversidad y en la ironía en nuestra música."
+  },
   "dinosaur-jr>husker-du": {
     "result": "missing",
-    "at": "2026-10-30",
+    "at": "2026-10-31",
     "url": "https://www.pressreader.com/uk/mojo-uk/20210501/281496459032582",
     "found": "We loved the Minutemen, Hüsker Dü and the Meat Puppets, and our ambition was to tour like they did and sign to SST Records, the label they were on."
   },
   "dinosaur-jr>minutemen": {
     "result": "missing",
-    "at": "2026-10-30",
+    "at": "2026-10-31",
     "url": "https://www.pressreader.com/uk/mojo-uk/20210501/281496459032582",
     "found": "We loved the Minutemen, Hüsker Dü and the Meat Puppets, and our ambition was to tour like they did and sign to SST Records, the label they were on."
   },
@@ -1993,6 +2059,12 @@
     "url": "https://youtu.be/VJPKkan97o8?t=255",
     "found": "time Bob Dylan Don't Look Back The Man Who transformed my life when I first heard you know Highway 61 Revisited this"
   },
+  "gang-of-four>david-bowie": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://youtu.be/O9DWlVcc6Wk?t=177",
+    "found": "growing up so then the record that changed my life our lives many of us that just did it took us into a whole new world"
+  },
   "gang-of-four>velvet-underground": {
     "result": "found",
     "at": "2026-10-26",
@@ -2299,6 +2371,18 @@
     "url": "https://irishnews.com/arts/2019/04/19/news/idles-we-re-a-subversive-band-that-disagrees-vehemently-with-our-government-1599379",
     "found": "\"So, if you are a subversive act, then you probably are in some way influenced by The Clash, because at that point in time, their bravery to do what they did and to push boundaries and to break down rules, as Malcolm McLaren did in very different ways, you can’t ignore that. You are definitely part of that heritage, whether you want to be or not."
   },
+  "interpol>aphex-twin": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://youtu.be/JeHhgcYhe7c?t=448",
+    "found": "I think he's one of the great songwriters, period. And he certainly had a big influence on me."
+  },
+  "interpol>bad-brains": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://youtu.be/JeHhgcYhe7c?t=35",
+    "found": "D.C. is sort of a hub for hardcore music and stuff like that and I was kind of weaned on that and being around that. This is the record that really reeled me in and to this day I think it's one of the best hardcore records ever and I'll never tire of it."
+  },
   "interpol>fugazi": {
     "result": "found",
     "at": "2026-10-26",
@@ -2346,6 +2430,12 @@
     "at": "2026-10-26",
     "url": "https://pitchfork.com/features/profile/japanese-breakfast-interview-jubilee-crying-in-h-mart/",
     "found": "“I was thinking about what musicians with long careers do with their third albums,” she says, pointing to Björk’s Homogenic and Wilco’s Summerteeth ."
+  },
+  "japanese-breakfast>cat-power": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://youtu.be/SaF121UDEAs?t=269",
+    "found": "It's just super dark and intense and I really love this album and it inspires my writing a lot. Cat Power has always been a huge inspiration to me, so, love it."
   },
   "japanese-breakfast>elliott-smith": {
     "result": "found",
@@ -2619,7 +2709,7 @@
   },
   "kurt-vile>yo-la-tengo": {
     "result": "unreachable",
-    "at": "2026-10-30",
+    "at": "2026-10-31",
     "url": "https://m.lasvegassun.com/news/2010/sep/30/q-kurt-vile/",
     "found": "I really love that I Can Feel the Heart Beating as One Yo La Tengo record a lot"
   },
@@ -3144,6 +3234,12 @@
     "at": "2026-10-26",
     "url": "https://genius.com/The-microphones-microphones-in-2020-lyrics",
     "found": "I saw Stereolab in Bellingham and they played one chord for fifteen minutes"
+  },
+  "mr-bungle>nomeansno": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://en.wikipedia.org/wiki/Mike_Patton",
+    "found": "In 1992, he cited Nomeansno and The Residents as influences."
   },
   "mudhoney>black-flag": {
     "result": "found",
@@ -5085,6 +5181,18 @@
     "url": "https://thequietus.com/?p=14200",
     "found": "What was interesting was at that time bands like that The Pastels, for instance, twinned leather trousers with anoraks; it was that combination of seeing the world through a child’s eye but also having a darker, harsher side which we wanted to get across."
   },
+  "tame-impala>can": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://youtu.be/I1_IFXFJi4U?t=428",
+    "found": "of like taught me that band music can feel like electronic music. To me, these guys were like electronic music before electronic music started. It was like"
+  },
+  "tame-impala>deftones": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://youtu.be/I1_IFXFJi4U?t=334",
+    "found": "fan of music, but was obsessed with this album. I had been into a lot of new metal and stuff from like when I was a kid. Deaf Tones was the one that like"
+  },
   "tame-impala>my-bloody-valentine": {
     "result": "found",
     "at": "2026-10-26",
@@ -5135,7 +5243,7 @@
   },
   "the-clash>sex-pistols": {
     "result": "missing",
-    "at": "2026-10-30",
+    "at": "2026-10-31",
     "url": "https://web.archive.org/web/20111005220200/http://www.joestrummer.us/?n9P81fmSnwwFUbhFAMuAAxe6bb31IUP&p=2&aOHDhtT57WPxn9Z7bWGQa3BBQbFVu17LfZSa&c=1&CxeQAdg5hVrrDtzOUCasLrnVGV7&XUZHs",
     "found": "Something that inspired Strummer much more than the struggles of the 101ers was seeing a bunch of young unknowns who supported them at the Nashville on 3rd April 1976. The band went by the name of the Sex Pistols."
   },
@@ -5471,7 +5579,7 @@
   },
   "the-national>leonard-cohen": {
     "result": "missing",
-    "at": "2026-10-30",
+    "at": "2026-10-31",
     "url": "https://philnel.com/?p=2813",
     "found": "In September 2011, Berninger told The Phoenix ’s Michael Christopher , “when I was in high school I became obsessed with Leonard Cohen and Tom Waits.”"
   },

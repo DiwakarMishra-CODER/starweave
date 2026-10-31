@@ -17,7 +17,7 @@ import SleeveArrivals from './SleeveArrivals';
 
 interface Props {
   album: Album | null;
-  artist: { id: string; name: string };
+  artist: { id: string; name: string; loud?: boolean };
   bio: string | null;
   /** "Since 1976 · United Kingdom", the back sleeve's small print. */
   credits: string | null;
@@ -46,7 +46,7 @@ export default function RecordSleeve({ album, artist, bio, credits, scene }: Pro
       <div className={`sleeve__spread${album ? '' : ' sleeve__spread--back-only'}`}>
         {album && (
           <div className="sleeve__front">
-            <RecordObject album={album} artistId={artist.id} artistName={artist.name} />
+            <RecordObject album={album} artistId={artist.id} artistName={artist.name} loud={artist.loud} />
 
             <div className="sleeve__card" data-arrive>
               <p className="sleeve__tag">Start here</p>

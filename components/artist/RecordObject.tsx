@@ -25,13 +25,15 @@ interface Props {
   album: Album;
   artistId: string;
   artistName: string;
+  /** A loud artist (the loud rule): the listening post says so. */
+  loud?: boolean;
 }
 
 const TILT_X = 9;  // degrees, top and bottom
 const TILT_Y = 12; // degrees, either side
 const COAST = 0.955; // how much spin is left each frame after letting go
 
-export default function RecordObject({ album, artistId, artistName }: Props) {
+export default function RecordObject({ album, artistId, artistName, loud }: Props) {
   const coverRef = useRef<HTMLElement>(null);
   const discRef = useRef<HTMLDivElement>(null);
   const spin = useRef({ angle: 0, velocity: 0, raf: 0, grab: null as null | { last: number; at: number } });
@@ -167,10 +169,10 @@ export default function RecordObject({ album, artistId, artistName }: Props) {
       </div>
       <div className="crate">
         {queue ? (
-          <button type="button" className="crate__play" onClick={toggle} aria-label={`${playing ? 'Pause' : 'Play'} ${album.previewTrack ?? album.title}, from ${album.title}`}>
+          <button type="button" className="crate__play" onClick={toggle} aria-label={`${playing ? 'Pause' : 'Play'} ${album.previewTrack ?? album.title}, from ${album.title}${loud ? ' (it’s loud)' : ''}`}>
             <span className="crate__icon" data-pause={playing || undefined} aria-hidden />
             <span className="crate__song" aria-hidden>
-              <span className="crate__kicker">{playing ? (now.loading ? 'Loading…' : 'Now playing') : 'Listen'}</span>
+              <span className="crate__kicker">{playing ? (now.loading ? 'Loading…' : 'Now playing') : 'Listen'}{loud && <span className="loud-tag">Loud</span>}</span>
               <span className="crate__name">{album.previewTrack ?? album.title}</span>
             </span>
           </button>

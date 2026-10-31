@@ -354,7 +354,7 @@ export function resolveAboutTape(data: GraphData): AboutTape {
       loud: {
         road: ONE_FAMILY.loud.road.map(sign),
         end: offMap(ONE_FAMILY.loud.end),
-        band: offMapFace(ONE_FAMILY.loud.bandName, ONE_FAMILY.loud.song),
+        band: face(ONE_FAMILY.loud.band),
         title: song.get(ONE_FAMILY.loud.song)!.title,
         listen: loudQueue('about:loud', ONE_FAMILY.loud.song),
       },

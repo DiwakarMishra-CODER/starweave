@@ -95,7 +95,7 @@ export default async function ArtistPage({ params }: Props) {
 
         <RecordSleeve
           album={album ?? null}
-          artist={{ id: artist.id, name: artist.name }}
+          artist={{ id: artist.id, name: artist.name, loud: artist.loud }}
           bio={artist.bio ?? null}
           credits={credits}
           scene={scene ? {

@@ -5,6 +5,7 @@ import type { Artist, GraphData } from '@/data/types';
 import { familyOf } from '@/lib/family';
 import { storyFrame } from '@/lib/story-store';
 import { claimAudio, onAudioClaimed } from '@/lib/audio-focus';
+import { LOUD_GAIN } from '@/lib/player';
 import { connectAnalyser, readLevel, startStatic, type RadioStatic } from '@/lib/use-audio-level';
 
 // A pocket radio that plays the artist's song and tunes through their musical
@@ -29,6 +30,8 @@ interface Station {
   track: string | null;
   url: string;
   role: 'parent' | 'child' | 'self';
+  /** Against the usual volume: a loud artist (the loud rule) at LOUD_GAIN. */
+  gain: number;
 }
 
 interface Props {
@@ -61,8 +64,10 @@ export default function RadioDial({ artist, data, silenced, onSound }: Props) {
     const list: Station[] = [];
     const add = (id: string, role: Station['role']) => {
       const a = byId.get(id);
-      if (!a?.previewUrl) return;
-      list.push({ id, name: a.name, year: a.activeFrom ?? null, track: a.previewTrack ?? null, url: a.previewUrl, role });
+      // The radio tunes on by itself, so a loud artist is never one of its
+      // stations unless the panel is about them (the loud rule).
+      if (!a?.previewUrl || (a.loud && role !== 'self')) return;
+      list.push({ id, name: a.name, year: a.activeFrom ?? null, track: a.previewTrack ?? null, url: a.previewUrl, role, gain: a.loud ? LOUD_GAIN : 1 });
     };
     add(artist.id, 'self');
     parents.forEach(id => add(id, 'parent'));
@@ -136,8 +141,8 @@ export default function RadioDial({ artist, data, silenced, onSound }: Props) {
     const tuned = off < SNAP ? nearest : null;
     setTuned(tuned);
     const audio = audioRef.current;
-    if (audio && tuned !== null) audio.volume = VOLUME * (1 - (off / SNAP) * 0.7);
-  }, [n, nearestTo, setTuned]);
+    if (audio && tuned !== null) audio.volume = VOLUME * stations[nearest].gain * (1 - (off / SNAP) * 0.7);
+  }, [n, nearestTo, setTuned, stations]);
 
   // Ease the needle onto a station. A swing further than one station stays
   // quiet until it lands.
