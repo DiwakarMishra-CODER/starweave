@@ -329,6 +329,7 @@ const ARTIST_PHOTO: Record<string, PhotoOverride> = {
   'geese':               { deezer: 137555232 },
   'grouper':             { deezer: 402944 },
   'heavenly':            { deezer: 10864328 },
+  'boris':               { deezer: 11507431 },
   'joy-division':        { deezer: 1249 },
   'low':                 { deezer: 4377 },
   'mono':                { deezer: 3075 },
@@ -571,6 +572,8 @@ const ALBUM_COVER: Record<string, string> = {
   'james-chance-and-the-contortions::buy':     `${CAA}/398cb433-376c-4ce4-8884-01c555021d4a/17936278882-500.jpg`,
   'dna::a-taste-of-dna':                       `${CAA}/9dc553dd-2807-4aac-84d7-ee5b11528823/46213543258-500.jpg`,
   '2814::birth-of-a-new-day':                  `${CAA}/ffb1c808-7e37-4415-9449-9cd839545dfb/22277033080-500.jpg`,
+  // Apple only has a 2013 live performance of Flood, whose cover the search took.
+  'boris::flood':                              `${CAA}/51838493-3a1b-48cf-b7d3-a1dd35aec471/36357353321-500.jpg`,
 };
 
 async function enrichAlbumCovers(
@@ -788,7 +791,10 @@ async function fetchAlbumTracks(artistName: string, albumTitle: string): Promise
       // The plain edition first: an anniversary box set can come back on top
       // with previews only on its demos (For Your Pleasure's 50th played a
       // "Pyjamarama" rough take instead of the record).
-      const hits = data.results.filter(r => titleMatches(albumTitle, r.collectionName) && normKey(r.artistName).includes(artistKey));
+      // A live performance of the record isn't the record ("Boris performing
+      // 'flood'" matched Flood, Oct 2026), unless the record is itself live.
+      const hits = data.results.filter(r => titleMatches(albumTitle, r.collectionName) && normKey(r.artistName).includes(artistKey)
+        && (LIVE_ALBUM.test(albumTitle) || !LIVE_ALBUM.test(r.collectionName)));
       const hit = hits.find(r => normKey(r.collectionName) === normKey(albumTitle)) ?? hits[0];
       if (hit) {
         await new Promise(r => setTimeout(r, 80));
@@ -803,8 +809,11 @@ async function fetchAlbumTracks(artistName: string, albumTitle: string): Promise
   // Keyword search misses some records that are plainly in the catalogue.
   const artistId = await resolveItunesArtistId(artistName);
   if (artistId === null) return [];
-  return (await fetchItunesCatalogue(artistId)).filter(t => t.collectionName && titleMatches(albumTitle, t.collectionName));
+  return (await fetchItunesCatalogue(artistId)).filter(t => t.collectionName && titleMatches(albumTitle, t.collectionName)
+    && (LIVE_ALBUM.test(albumTitle) || !LIVE_ALBUM.test(t.collectionName)));
 }
+
+const LIVE_ALBUM = /\blive\b|\bperforming\b|\bin concert\b/i;
 
 function pickAlbumSong(tracks: CatalogueTrack[], wants: string[]): AlbumPreview | null {
   const usable = tracks.filter(t => t.previewUrl && t.trackName && !/[[(](live|demo)[^)\]]*[)\]]/i.test(t.trackName));

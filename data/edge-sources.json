@@ -1282,6 +1282,27 @@
     "found": "His musical education came not from musty Americana LPs, but from catching Big Black and H&uuml;sker D&uuml; shows, and tagging along when his childhood buddies (future members of Slint) toured with Glenn Danzig.",
     "by": "c21"
   },
+  "boris>nick-cave-and-the-bad-seeds": {
+    "url": "https://web.archive.org/web/20051024095418/http://www.radcompany.net/Storys/NewsStorys/BORIS/BORIS.html",
+    "found": "I want to be Nick Cave as a drummer.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Boris pass: re-opened on its page by hand."
+  },
+  "boris>nick-drake": {
+    "url": "https://web.archive.org/web/20051024095418/http://www.radcompany.net/Storys/NewsStorys/BORIS/BORIS.html",
+    "found": "So people might understand Nick Drake's music has influenced our music.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Boris pass: re-opened on its page by hand."
+  },
+  "boris>the-stooges": {
+    "url": "https://web.archive.org/web/20051024095418/http://www.radcompany.net/Storys/NewsStorys/BORIS/BORIS.html",
+    "found": "But aside from drummers, Iggy Pop, Ted Nugent, Nick Cave. Those people influenced me more than any drummers.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Boris pass: re-opened on its page by hand."
+  },
   "brand-new>fugazi": {
     "url": "https://web.archive.org/web/20151012113752/http://drownedinsound.com/in_depth/4137854-i-like-talking-to-people---brand-news-jesse-lacey-chats-to-dis",
     "found": "I think for a lot of this record we were listening to stuff that we listened to when we were younger. We were listening to Superchunk, Archers Of Loaf, Polvo, Modest Mouse, and even a lot of hardcore bands that we listened to when we were younger, like Fugazi.",
@@ -2017,6 +2038,69 @@
     "note": "From the speaker's Quietus Baker's Dozen pick; replaces fixed (critic) by c22: https://www.nytimes.com/2008/12/10/arts/music/10deer.html",
     "by": "quietus"
   },
+  "deftones>depeche-mode": {
+    "url": "https://www.rollingstone.com/music/music-features/are-depeche-mode-metals-biggest-secret-influence-56191/2/",
+    "found": "I have a feeling it’s what launched me into wanting to make music, just by seeing the energy.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Deftones pass: re-opened on its page by hand."
+  },
+  "deftones>hum": {
+    "url": "https://thequietus.com/interviews/bakers-dozen/deftones-chino-interview-favourite-records/7/",
+    "found": "This is a heavy record, and it’s where Deftones get a big part of our influence from, tone-wise.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Deftones pass: re-opened on its page by hand."
+  },
+  "deftones>my-bloody-valentine": {
+    "url": "https://web.archive.org/web/20130827093828/http://www.revolvermag.com/lists-2/five-non-metal-albums-that-rock-deftones-frontman-chino-moreno%E2%80%99s-world.html",
+    "found": "I played Loveless for Terry; I was like, ‘I want to get the record to sound like this!’",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Deftones pass: re-opened on its page by hand."
+  },
+  "deftones>omd": {
+    "url": "https://web.archive.org/web/2021/https://www.revolvermag.com/music/deftones-talk-ohms-album-year-nod-black-stallion-fave-music-2020",
+    "found": "They've been a constant influence in pretty much all the music I've made throughout my life, I think.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Deftones pass: re-opened on its page by hand."
+  },
+  "deftones>portishead": {
+    "url": "https://web.archive.org/web/2021/https://www.revolvermag.com/music/deftones-talk-ohms-album-year-nod-black-stallion-fave-music-2020",
+    "found": "DJ Shadow, of course, and even earlier stuff from the Nineties, like Portishead and other stuff that used drum samples from old records",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Deftones pass: re-opened on its page by hand."
+  },
+  "deftones>radiohead": {
+    "url": "https://www.youtube.com/watch?v=Z__YyKbkZmY&t=2508s",
+    "found": "when I watched them do that, I was like, 'You know, we could do anything,'",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Zane Lowe interview, 41:48-43:10. Transcript from the video, sent by the owner (opened in a browser by the owner); YouTube's bot wall blocked a re-fetch here. \"that band was a huge influence\" is Lowe's line, not Chino's."
+  },
+  "deftones>the-cure": {
+    "url": "https://web.archive.org/web/20130827093828/http://www.revolvermag.com/lists-2/five-non-metal-albums-that-rock-deftones-frontman-chino-moreno%E2%80%99s-world.html",
+    "found": "lyrically, that record has influenced me through a lot of the things that I’ve done.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Deftones pass: re-opened on its page by hand."
+  },
+  "deftones>the-human-league": {
+    "url": "https://web.archive.org/web/2021/https://www.revolvermag.com/music/deftones-talk-ohms-album-year-nod-black-stallion-fave-music-2020",
+    "found": "They've been a constant influence in pretty much all the music I've made throughout my life, I think.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Deftones pass: re-opened on its page by hand."
+  },
+  "deftones>the-smiths": {
+    "url": "https://www.npr.org/sections/therecord/2016/05/03/476636845/deftones-chino-moreno-on-surviving-evolving-and-gore",
+    "found": "They introduced me to metal at that point, so were basically just figuring it all out while we were also creating music.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Deftones pass: re-opened on its page by hand."
+  },
   "depeche-mode>david-bowie": {
     "verdict": "fixed",
     "url": "https://edition.cnn.com/2012/06/07/showbiz/music/dave-gahan-depeche-mode",
@@ -2640,6 +2724,13 @@
     "citation": "Rolling Stone (2020) on Fleet Foxes' \"Sunblind\": \"the stunning litany of thanks for musicians gone before their time,\" reciting the names of Judee Sill, John Prine, Elliott Smith, Silver Jews' David Berman and more, \"in a cosmic scroll of appreciation.\"",
     "note": "Under Pecknold's own song lyrics naming them (Wikipedia Shore page: lyrics reference his musical heroes). Rolling Stone describes it as thanks to musicians; Under the Radar quote not opened (cannot be). Tier lowered to reported (writer's description, no Pecknold quote about this artist). Wording of the 'litany of thanks' phrase: from a separate paragraph on the same page.",
     "by": "c7"
+  },
+  "fontaines-dc>deftones": {
+    "url": "https://guitarworld.com/artists/guitarists/conor-curley-fontaines-dc-romance",
+    "found": "I was a lot more inspired by early 2000s, heavier rock music like Deftones.",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Deftones pass: re-opened on its page by hand."
   },
   "fontaines-dc>pixies": {
     "url": "https://news.pollstar.com/2022/09/19/fontaines-d-c-dublins-latest-export-makes-punk-rock-poetic/",
@@ -7197,6 +7288,13 @@
     "citation": "Wayne Coyne to Westword: \"We did sound for Black Flag, the Meat Puppets, Die Kreuzen--all kinds of bands. Those groups kind of put a light bulb into our head.\" The paper says the early Lips were influenced by the punk groups that played Oklahoma City.",
     "note": "Westword article 'Lips Service', year not shown in the text I read (mid-1990s from context). The 2013 Coyne line cited could not be found. Also SPIN 2013: 'You'd admit to people that you liked the Beatles and Black Flag.'",
     "by": "c8"
+  },
+  "the-flaming-lips>boris": {
+    "url": "https://thequietus.com/interviews/bakers-dozen/flaming-lips-wayne-coyne-interview-favourite-albums/5/",
+    "found": "We’ve really embraced that in the past couple of years",
+    "checked": "2026-10-30",
+    "verdict": "ok",
+    "note": "Boris pass: re-opened on its page by hand."
   },
   "the-flaming-lips>husker-du": {
     "url": "https://spinmagazine.com/2013/04/spin-interview-wayne-coyne/",

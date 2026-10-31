@@ -34,8 +34,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4f/4f/d7/4f4fd781-75fa-d0f7-b6b6-54f4eb525f03/mzaf_1100325313778209968.plus.aac.p.m4a",
       "previewTrack": "Sunday Morning",
       "previewAlbum": "The Velvet Underground & Nico (45th Anniversary Edition)",
-      "x": -0.22,
-      "y": 5.9
+      "x": -8.12,
+      "y": -3.54
     },
     {
       "id": "nico",
@@ -71,8 +71,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/16/9a/1a/169a1a2b-af8e-4942-1519-94f84164dd49/mzaf_11472083960511048748.plus.aac.p.m4a",
       "previewTrack": "These Days",
       "previewAlbum": "Chelsea Girl",
-      "x": -193.09,
-      "y": -78.34
+      "x": -167.34,
+      "y": -41.4
     },
     {
       "id": "television",
@@ -108,8 +108,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/e7/f9/36/e7f936cc-4902-6d36-856d-f757e00b43af/mzaf_15216285374598129354.plus.aac.p.m4a",
       "previewTrack": "Marquee Moon",
       "previewAlbum": "Marquee Moon",
-      "x": -212.8,
-      "y": -93.33
+      "x": -201.81,
+      "y": -80.92
     },
     {
       "id": "talking-heads",
@@ -145,8 +145,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/bd/a5/d5/bda5d529-d316-cb8b-6846-7fcd4ddd5ec5/mzaf_15954399121800890128.plus.aac.p.m4a",
       "previewTrack": "This Must Be the Place (Naive Melody)",
       "previewAlbum": "The Best of Talking Heads",
-      "x": -234.38,
-      "y": -7.42
+      "x": -225.18,
+      "y": 1.14
     },
     {
       "id": "big-star",
@@ -182,8 +182,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/31/2b/ef/312befb9-e8c0-8aba-8677-653d4d5a24a2/mzaf_3841545422152361381.plus.aac.p.m4a",
       "previewTrack": "September Gurls",
       "previewAlbum": "#1 Record Radio City",
-      "x": -223.89,
-      "y": 69.54
+      "x": -247.21,
+      "y": 78.46
     },
     {
       "id": "the-stooges",
@@ -214,13 +214,13 @@
       ],
       "bio": "The Stooges formed in Ann Arbor, Michigan in 1967 around Iggy Pop (born James Osterberg) and brothers Ron and Scott Asheton, with Dave Alexander on bass — a group of Midwestern teenagers with almost no technical ability who arrived, somehow, at something entirely new. Signed to Elektra alongside their Michigan peers the MC5, they made a debut so primitive and confrontational that it barely registered as rock music by the standards of 1969; it registers, in retrospect, as the moment punk was invented years before anyone needed the word.\n\nFun House (1970) pushed further into repetition and noise, adding saxophonist Steve Mackay for something closer to free jazz collapsing into garage rock, while Iggy's live performances — stage-diving, self-mutilation, peanut butter — became as central to the band's legend as the records. Commercial indifference and drug problems broke the band apart; Raw Power (1973), recorded with guitarist James Williamson and mixed by David Bowie, is a different, more overtly violent record that punk bands would treat as scripture. The Stooges sold almost nothing while they existed and shaped nearly everything that came after.",
       "realm": "region-one",
-      "influenceScore": 19,
+      "influenceScore": 20,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/8e2ec19ce739191647d8d3e4ee5cb532/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/55/95/dd/5595dd0e-7dce-37f2-82d3-a5200cf3e7ff/mzaf_729219191203085620.plus.aac.p.m4a",
       "previewTrack": "I Wanna Be Your Dog",
       "previewAlbum": "The Stooges",
-      "x": -202.67,
-      "y": -124.8
+      "x": -179.92,
+      "y": -132.07
     },
     {
       "id": "new-york-dolls",
@@ -255,8 +255,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/dd/b4/a1/ddb4a1f3-1141-1cb5-8e3a-b5b17255f9c5/mzaf_15234022429592009773.plus.aac.p.m4a",
       "previewTrack": "Personality Crisis",
       "previewAlbum": "New York Dolls",
-      "x": -286.35,
-      "y": 47.58
+      "x": -282.77,
+      "y": 6.22
     },
     {
       "id": "kraftwerk",
@@ -292,8 +292,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/43/b2/b0/43b2b010-156f-b321-30ab-48a5aff07d02/mzaf_3115365669483405076.plus.aac.p.m4a",
       "previewTrack": "Trans-Europe Express",
       "previewAlbum": "Trans-Europe Express",
-      "x": 44.66,
-      "y": 8.06
+      "x": 8.19,
+      "y": -45.39
     },
     {
       "id": "can",
@@ -329,8 +329,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/a4/b6/c6/a4b6c661-17b4-5e03-f723-e5e867ab073a/mzaf_17886584606019013110.plus.aac.p.m4a",
       "previewTrack": "Halleluwah",
       "previewAlbum": "The Singles",
-      "x": 20.34,
-      "y": -60.95
+      "x": 29.53,
+      "y": 19.19
     },
     {
       "id": "neu",
@@ -365,8 +365,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/43/ac/d5/43acd546-890b-fdd0-5d3b-0ebaa0a3299e/mzaf_15932360912249293535.plus.aac.p.m4a",
       "previewTrack": "Hallogallo",
       "previewAlbum": "Neu!",
-      "x": -3.75,
-      "y": -35.39
+      "x": 44.09,
+      "y": -48.72
     },
     {
       "id": "joy-division",
@@ -401,8 +401,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/2f/2f/79/2f2f7971-992e-5e2d-026d-03e4ada2851f/mzaf_17434098696813033314.plus.aac.p.m4a",
       "previewTrack": "Love Will Tear Us Apart",
       "previewAlbum": "Total",
-      "x": -132.03,
-      "y": -17.7
+      "x": -117.45,
+      "y": -90.15
     },
     {
       "id": "new-order",
@@ -438,8 +438,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/0f/43/1c/0f431c1a-119c-6614-2736-3fbc4c8a597c/mzaf_3646998447648845325.plus.aac.p.m4a",
       "previewTrack": "Blue Monday",
       "previewAlbum": "iTunes Originals: New Order",
-      "x": -99.12,
-      "y": -11.98
+      "x": -129.98,
+      "y": -1.48
     },
     {
       "id": "the-cure",
@@ -470,7 +470,7 @@
       ],
       "bio": "Robert Smith has been doing one of the more peculiar things in pop music for nearly five decades: maintaining a recognizable, emotionally coherent artistic persona across a bewildering range of styles, from the angular post-punk of Three Imaginary Boys (1979) to the eight-minute gothic anthems of Disintegration (1989) to the pop gleam of Kiss Me Kiss Me Kiss Me (1987), without any of it feeling discontinuous. The Cure's secret is that Smith's voice — its liquid self-pity, its specific timbre of wounded romanticism — is consistent even when the arrangement around it changes entirely.\n\nPornography (1982) remains the hardest record in the catalog: a wall of distortion and despair that influenced an entire school of shoegaze and gothic doom. The Head on the Door (1985) pivoted to something more approachable without any real loss of intensity. Disintegration found the balance: orchestral, melancholic, genuinely sad, and also full of songs that have played at proms for thirty years. There is no other band quite like them.",
       "realm": "region-one",
-      "influenceScore": 14,
+      "influenceScore": 15,
       "imageUrl": "/photos/the-cure.jpg",
       "imageCredit": {
         "author": "Raph_PH",
@@ -480,8 +480,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/03/8e/e5/038ee567-32f6-43de-d0bf-c92df39db748/mzaf_3971362557824001.plus.aac.p.m4a",
       "previewTrack": "Pictures of You",
       "previewAlbum": "Galore",
-      "x": -112.31,
-      "y": 17.21
+      "x": -218.17,
+      "y": 64.96
     },
     {
       "id": "siouxsie-and-the-banshees",
@@ -517,8 +517,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/61/c3/3c/61c33c60-b1b1-e807-669b-b5e55ea50865/mzaf_14744696204040940587.plus.aac.p.m4a",
       "previewTrack": "Cities In Dust",
       "previewAlbum": "Tinderbox (Remastered & Expanded)",
-      "x": -112.53,
-      "y": -78.15
+      "x": -175.21,
+      "y": -96.95
     },
     {
       "id": "the-smiths",
@@ -550,13 +550,13 @@
       ],
       "bio": "The Smiths resolved a tension that seemed irresolvable: Morrissey's literary self-pity and bedroom despair married to Johnny Marr's exultant, sunlit jangle, and somehow the combination produced music that was simultaneously the most melancholic and the most joyful thing British indie had managed. The Smiths (1984), Meat Is Murder (1985), The Queen Is Dead (1986), and Strangeways, Here We Come (1987) — four studio albums in four years, each essentially complete, each finding new things to do with the same vocabulary.\n\nThe specificity of Morrissey's lyrics — Oscar Wilde quotations, provincial disaffection, suburban loneliness — prevented the music from generalizing into mere sadness, and the emotional precision made the despair funny in a way that still disarms people hearing it for the first time. Marr's guitar parts, which sound inevitable, were actually elaborately constructed: overdubbing four or five guitar tracks, using open tunings, playing lines that functioned as both melody and rhythm simultaneously. No band has been more cited as formative by British indie artists across three subsequent generations.",
       "realm": "region-one",
-      "influenceScore": 17,
+      "influenceScore": 18,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/458e4ee61a7fc57a79ac2b9b20c47bd9/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/20/11/51/20115114-e6d1-bd5b-e958-9562ab58d19b/mzaf_13954921709237051462.plus.aac.p.m4a",
       "previewTrack": "There Is a Light That Never Goes Out",
       "previewAlbum": "The Queen Is Dead",
-      "x": -106.52,
-      "y": -44.01
+      "x": -243.65,
+      "y": -118.6
     },
     {
       "id": "gang-of-four",
@@ -592,8 +592,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/43/40/b7/4340b723-cdd3-1366-1b6b-58082c531eec/mzaf_378140571503420964.plus.aac.p.m4a",
       "previewTrack": "Damaged Goods",
       "previewAlbum": "Entertainment!",
-      "x": -179.35,
-      "y": -39.08
+      "x": -200.13,
+      "y": 19.01
     },
     {
       "id": "nick-cave-and-the-bad-seeds",
@@ -624,13 +624,13 @@
       ],
       "bio": "Nick Cave arrived from Melbourne with the Birthday Party, one of the most genuinely extreme bands in post-punk — gothic noise-blues that resembled nothing else and made almost no concessions to listenability. When the Birthday Party imploded in 1983, Cave formed the Bad Seeds with Mick Harvey and Blixa Bargeld, and began the second act of one of rock's great careers. From Her to Eternity (1984), The Firstborn Is Dead (1985), Tender Prey (1988) — each album drew on American gothic, Delta blues, Old Testament violence, and a kind of literary excess that Cave shared with very few of his contemporaries.\n\nWhat distinguished Cave from the merely transgressive was craft: as the albums accumulated, the songwriting became more intricate, the arrangements more purposeful, the character studies more fully inhabited. The Boatman's Call (1997) stunned people who thought they knew him by presenting something almost bare — piano songs, a decimated relationship, a quiet that was more devastating than anything louder. The Bad Seeds' forty-year arc, still continuing, remains one of the most sustained artistic achievements in rock.",
       "realm": "region-one",
-      "influenceScore": 2,
+      "influenceScore": 3,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/c81acb9b05e8b29b4699f2c2bd05213b/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/c4/40/77/c44077e7-c4de-4124-cf20-4c0f7a036e56/mzaf_3069497708474917243.plus.aac.p.m4a",
       "previewTrack": "Into My Arms",
       "previewAlbum": "The Boatman's Call (2011 - Remaster)",
-      "x": -143.3,
-      "y": 38.47
+      "x": -162.16,
+      "y": 55.63
     },
     {
       "id": "wire",
@@ -667,8 +667,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/71/b4/34/71b43425-07c0-cbba-eda4-b5591ec02ea6/mzaf_15020022396392261893.plus.aac.p.m4a",
       "previewTrack": "Three Girl Rhumba",
       "previewAlbum": "Pink Flag",
-      "x": -144.52,
-      "y": 13.69
+      "x": -176.63,
+      "y": -65.16
     },
     {
       "id": "the-birthday-party",
@@ -704,8 +704,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f9/c0/b9/f9c0b9f3-5520-0c37-8b23-d84c6f8210a5/mzaf_4127462043472931760.plus.aac.p.m4a",
       "previewTrack": "Release The Bats",
       "previewAlbum": "Live 81-82",
-      "x": -144.59,
-      "y": -81.07
+      "x": -145.56,
+      "y": -109.56
     },
     {
       "id": "fontaines-dc",
@@ -741,8 +741,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/41/6f/06/416f06d2-fc8d-add1-7c4a-162798c338fb/mzaf_439660816361103893.plus.aac.p.m4a",
       "previewTrack": "Starburster[Mixed]",
       "previewAlbum": "HYPERHOUSE 042: Anna Lunoe",
-      "x": -291.14,
-      "y": -32.95
+      "x": -242.58,
+      "y": -47.26
     },
     {
       "id": "idles",
@@ -778,8 +778,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/89/34/d1/8934d10e-20d4-c1d6-6b4b-93ac9427985e/mzaf_2856690852404657968.plus.aac.p.m4a",
       "previewTrack": "Danny Nedelko",
       "previewAlbum": "Sounds Like LiBella Vol. 1",
-      "x": -268.01,
-      "y": -76.79
+      "x": -251.56,
+      "y": -56.64
     },
     {
       "id": "the-jesus-and-mary-chain",
@@ -815,8 +815,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/7d/11/2d/7d112ded-a7db-261e-fe05-018752f7a883/mzaf_4838722881600777777.plus.aac.p.m4a",
       "previewTrack": "Just Like Honey",
       "previewAlbum": "Psychocandy",
-      "x": -286.17,
-      "y": -53.68
+      "x": -260.71,
+      "y": -89.25
     },
     {
       "id": "cocteau-twins",
@@ -852,8 +852,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/46/03/91/460391bc-4154-31ed-7a6d-3e8e5c36dd64/mzaf_4069160857181811263.plus.aac.p.m4a",
       "previewTrack": "Cherry-Coloured Funk",
       "previewAlbum": "Heaven Or Las Vegas",
-      "x": -220.82,
-      "y": -62.06
+      "x": -101.72,
+      "y": -17.74
     },
     {
       "id": "this-mortal-coil",
@@ -888,8 +888,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/e6/5c/5d/e65c5d43-55e2-37b1-bf02-214284567b80/mzaf_2907439581542056677.plus.aac.p.m4a",
       "previewTrack": "Song to the Siren",
       "previewAlbum": "It'll End in Tears",
-      "x": -256.38,
-      "y": -37.56
+      "x": -218.69,
+      "y": -64.96
     },
     {
       "id": "the-sundays",
@@ -926,8 +926,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/17/21/5b/17215be7-ac0e-6a52-c632-dfbc35248910/mzaf_17531130369878537559.plus.aac.p.m4a",
       "previewTrack": "Here's Where The Story Ends",
       "previewAlbum": "Reading, Writing And Arithmetic",
-      "x": -296.77,
-      "y": -7.65
+      "x": -299.89,
+      "y": 23.21
     },
     {
       "id": "mazzy-star",
@@ -963,8 +963,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4c/db/e8/4cdbe88c-b737-617d-0c1c-35ba36445750/mzaf_4038354414747356567.plus.aac.p.m4a",
       "previewTrack": "Fade into You",
       "previewAlbum": "So Tonight That I Might See",
-      "x": -265.35,
-      "y": 12.24
+      "x": -282.04,
+      "y": 30.31
     },
     {
       "id": "my-bloody-valentine",
@@ -994,13 +994,13 @@
       ],
       "bio": "Kevin Shields spent approximately £250,000 making Loveless (1991) and nearly bankrupted Creation Records in the process. The budget was not wasted. Loveless remains the most fully realized statement in shoegaze — a record where the guitars are not so much distorted as liquefied, where the songs underneath the processing are immaculate pop songs that you can just barely hear, where Bilinda Butcher's and Shields's vocals float inside the music rather than sitting above it. It sounds like it was engineered by someone who wanted to make a record you could feel in your body before your ears processed it.\n\nThe route to Loveless was Isn't Anything (1988), which had done something no one had done before — used the tremolo arm not as a flourish but as a texture-making device, creating waves in the guitar sound that were controlled to the point of being compositional. Shields's technique involves a specific application of the whammy bar while the note is sustaining that produces an inhuman shimmer. It's been imitated for three decades and not replicated. The twenty-two-year gap between Loveless and m b v (2013) seemed to prove the point: there was nowhere further to take it.",
       "realm": "region-one",
-      "influenceScore": 22,
+      "influenceScore": 23,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/3a27ec1beff8cae3a0196f32a6361195/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/6c/7d/32/6c7d3231-a35a-a64e-c77e-e5dd24a7ea0f/mzaf_10441325985140857715.plus.aac.p.m4a",
       "previewTrack": "Only Shallow",
       "previewAlbum": "Amateur",
-      "x": -173.57,
-      "y": -100.57
+      "x": -125.72,
+      "y": -52.97
     },
     {
       "id": "slowdive",
@@ -1036,8 +1036,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/72/45/03/724503da-39dc-8062-2280-c11ee391c550/mzaf_2817547000883931084.plus.aac.p.m4a",
       "previewTrack": "Alison",
       "previewAlbum": "Souvlaki",
-      "x": -158.78,
-      "y": -26.54
+      "x": -172.83,
+      "y": -14.64
     },
     {
       "id": "ride",
@@ -1073,8 +1073,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/ca/bf/62/cabf62a5-9fdc-b749-090a-ede96629241f/mzaf_3929897465640394453.plus.aac.p.m4a",
       "previewTrack": "Vapour Trail",
       "previewAlbum": "Nowhere (Expanded)",
-      "x": -228.96,
-      "y": -34.58
+      "x": -244.8,
+      "y": -17.81
     },
     {
       "id": "lush",
@@ -1111,8 +1111,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/e5/94/fe/e594fe52-6da9-8cd3-15ce-a497ee554cc3/mzaf_79097081841657859.plus.aac.p.m4a",
       "previewTrack": "Sweetness and Light",
       "previewAlbum": "Gala",
-      "x": -251.25,
-      "y": -59.33
+      "x": -225.77,
+      "y": -47.33
     },
     {
       "id": "broadcast",
@@ -1148,8 +1148,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/b3/9d/f5/b39df589-fc89-8a12-d94a-bf1d2bef29ca/mzaf_8870053508917063565.plus.aac.p.m4a",
       "previewTrack": "Come On Let's Go",
       "previewAlbum": "Come On Let's Go - EP",
-      "x": -259.92,
-      "y": 35.73
+      "x": -246.18,
+      "y": 49.5
     },
     {
       "id": "beach-house",
@@ -1185,8 +1185,44 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/4b/1d/64/4b1d6431-295b-2683-d180-cf3cba4eb943/mzaf_10508096473229016789.plus.aac.p.m4a",
       "previewTrack": "Space Song",
       "previewAlbum": "Depression Cherry",
-      "x": -181.98,
-      "y": -4.55
+      "x": -209.17,
+      "y": 40.38
+    },
+    {
+      "id": "deftones",
+      "name": "Deftones",
+      "layer": "shoegaze-dreampop",
+      "genres": [
+        "alt-rock",
+        "shoegaze"
+      ],
+      "scope": [
+        "underground"
+      ],
+      "country": "US",
+      "activeFrom": 1988,
+      "realm": "region-one",
+      "signatureSong": "Change (In the House of Flies)",
+      "bio": "Deftones formed in Sacramento in 1988 around Chino Moreno, Stephen Carpenter and Abe Cunningham, soon joined by Chi Cheng on bass and later by Frank Delgado on keyboards and turntables. They came up in the late-90s alternative metal boom, but Moreno's own taste ran to the Smiths, the Cure and Depeche Mode, and the band's sound kept bending toward atmosphere and melody.\n\nWhite Pony (2000) made the turn plain: a heavy record built on My Bloody Valentine's walls of guitar and the beats of trip-hop, and everything since has kept that balance of crush and haze. Chi Cheng was badly injured in a car crash in 2008 and died in 2013; the band carried on, and a younger generation of shoegaze and heavy-rock bands has grown up on them.",
+      "classicAlbums": [
+        {
+          "id": "white-pony",
+          "title": "White Pony",
+          "year": 2000,
+          "isClassic": true,
+          "classicReason": "White Pony is where Deftones stopped sounding like a metal band and started sounding like nobody else: Stephen Carpenter's riffs still crush, but they sit inside a haze of reverb, programmed beats and Chino Moreno's half-whispered, half-screamed vocals. \"Change (In the House of Flies)\" is the heart of it, a slow, swaying song that builds and builds without ever exploding the way the genre expected. Moreno played the producer Loveless while they were making it and told him that was the sound he wanted. It became the bridge between heavy music and shoegaze that a whole later generation crossed.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/96/51/57/96515710-cf91-0663-6f5a-942acf6ea31b/093624919797.jpg/600x600bb.jpg",
+          "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/86/a3/cd/86a3cd88-0036-3828-a67b-8174790c0355/mzaf_17335092681325376243.plus.aac.p.m4a",
+          "previewTrack": "Change (In the House of Flies)"
+        }
+      ],
+      "influenceScore": 1,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/a4fab59f82dc48f2c636ce8497282e67/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/86/a3/cd/86a3cd88-0036-3828-a67b-8174790c0355/mzaf_17335092681325376243.plus.aac.p.m4a",
+      "previewTrack": "Change (In the House of Flies)",
+      "previewAlbum": "White Pony",
+      "x": -127.22,
+      "y": -24.78
     },
     {
       "id": "deerhunter",
@@ -1222,8 +1258,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview124/v4/54/c6/c7/54c6c76b-354e-a100-9fb7-38331426e5ac/mzaf_66148974537978658.plus.aac.p.m4a",
       "previewTrack": "Helicopter",
       "previewAlbum": "Halcyon Digest",
-      "x": -186.01,
-      "y": -19.18
+      "x": -180.02,
+      "y": 3.41
     },
     {
       "id": "alvvays",
@@ -1261,8 +1297,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/26/73/fd/2673fdaa-6bfe-54e3-c0dd-884afb19bce0/mzaf_11273602793506297863.plus.aac.p.m4a",
       "previewTrack": "Dreams Tonite",
       "previewAlbum": "Antisocialites",
-      "x": -244.9,
-      "y": -27.6
+      "x": -220.65,
+      "y": 23.43
     },
     {
       "id": "wolf-alice",
@@ -1298,8 +1334,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/3a/3f/c9/3a3fc933-e513-a990-f1ca-ace45079db02/mzaf_850590614970864490.plus.aac.p.m4a",
       "previewTrack": "Don't Delete the Kisses",
       "previewAlbum": "Visions of a Life",
-      "x": -299.66,
-      "y": 8.19
+      "x": -273.24,
+      "y": -12.47
     },
     {
       "id": "sweet-trip",
@@ -1335,8 +1371,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/0b/3c/f4/0b3cf42d-cc85-8618-f091-c5639f7f20f6/mzaf_2304721557443187365.plus.aac.p.m4a",
       "previewTrack": "Dsco",
       "previewAlbum": "velocity : design : comfort.",
-      "x": -193.68,
-      "y": -58.45
+      "x": -183.84,
+      "y": -30.28
     },
     {
       "id": "parannoul",
@@ -1372,8 +1408,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/32/a7/cb/32a7cb17-97c6-4a0a-a2fd-83eb46d8725d/mzaf_8573370185319350055.plus.aac.p.m4a",
       "previewTrack": "Analog Sentimentalism",
       "previewAlbum": "To See the Next Part of the Dream",
-      "x": -242.27,
-      "y": -73.5
+      "x": -259.64,
+      "y": -31.98
     },
     {
       "id": "pixies",
@@ -1410,8 +1446,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/f2/94/56/f2945690-8739-02b1-86da-034f98db1c8b/mzaf_13477163061266397683.plus.aac.p.m4a",
       "previewTrack": "Where Is My Mind?",
       "previewAlbum": "Surfer Rosa",
-      "x": -142.55,
-      "y": 64.05
+      "x": -37.85,
+      "y": 70
     },
     {
       "id": "sonic-youth",
@@ -1448,8 +1484,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/e4/e8/3a/e4e83a53-027f-2eef-0d3f-e9558fd2867d/mzaf_11611864741895325008.plus.aac.p.m4a",
       "previewTrack": "Teen Age Riot",
       "previewAlbum": "Daydream Nation",
-      "x": -54.06,
-      "y": 30.14
+      "x": -71.69,
+      "y": 18.85
     },
     {
       "id": "dinosaur-jr",
@@ -1486,8 +1522,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/6b/b8/62/6bb8625f-ce3c-6469-377f-c9633dd83b2f/mzaf_15196045924922004.plus.aac.p.m4a",
       "previewTrack": "Little Fury Things",
       "previewAlbum": "You're Living All Over Me",
-      "x": -100.14,
-      "y": 73.39
+      "x": -67.48,
+      "y": 116.42
     },
     {
       "id": "husker-du",
@@ -1525,8 +1561,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/53/7b/f6/537bf643-68a5-e6db-52e8-3a4bee9441cc/mzaf_17078063292998381920.plus.aac.p.m4a",
       "previewTrack": "Makes No Sense At All",
       "previewAlbum": "Flip Your Wig",
-      "x": -86.21,
-      "y": 46.34
+      "x": -73.56,
+      "y": 54.8
     },
     {
       "id": "the-replacements",
@@ -1563,8 +1599,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/b3/72/0a/b3720a7e-4412-6ea7-e6f5-76f356533eeb/mzaf_14325701908279843393.plus.aac.p.m4a",
       "previewTrack": "Bastards of Young",
       "previewAlbum": "Tim (Expanded Edition)",
-      "x": -168.2,
-      "y": 143.14
+      "x": -167.09,
+      "y": 152.1
     },
     {
       "id": "pavement",
@@ -1603,8 +1639,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/3f/c6/08/3fc608d6-090e-9a2e-1c7b-391f7832dbfc/mzaf_17312437127209948202.plus.aac.p.m4a",
       "previewTrack": "Gold Soundz",
       "previewAlbum": "Crooked Rain, Crooked Rain: LA's Desert Origins",
-      "x": -61.15,
-      "y": 113.72
+      "x": -161.13,
+      "y": 83.24
     },
     {
       "id": "yo-la-tengo",
@@ -1642,8 +1678,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/af/1c/6d/af1c6d98-4856-7a10-9e30-d0266a1f919d/mzaf_7998613698970017223.plus.aac.p.m4a",
       "previewTrack": "Autumn Sweater",
       "previewAlbum": "I Can Hear the Heart Beating As One",
-      "x": -116.19,
-      "y": 48.86
+      "x": -135.64,
+      "y": 67.96
     },
     {
       "id": "rem",
@@ -1681,8 +1717,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/af/be/f5/afbef592-8f00-fe28-8ab4-5c070827b2f8/mzaf_4959761764791628207.plus.aac.p.m4a",
       "previewTrack": "Losing My Religion",
       "previewAlbum": "In Time: The Best of R.E.M. 1988-2003",
-      "x": -92.82,
-      "y": 158.94
+      "x": -71.71,
+      "y": 170.61
     },
     {
       "id": "radiohead",
@@ -1714,7 +1750,7 @@
         }
       ],
       "bio": "Radiohead's career can be divided into the years before OK Computer (1997) and the years after, but that division is misleading. Pablo Honey and The Bends were the records of a band finding out what they were by elimination — finding that grunge would not do, that Britpop would not do, that the guitar band was a container that kept spilling. OK Computer's arrival was the moment the container broke: songs that addressed late-capitalist anxiety and alienation without the vocabulary of protest music, production that made guitar rock sound like it had no precedent.\n\nKid A (2000) is the riskiest record in mainstream rock: Thom Yorke had apparently decided that guitar music was finished and that electronic music was the future, and the record — all digital textures, Ondes Martenot, distorted voices — announced that decision without apology. The subsequent catalog has maintained the ambition without replicating the shock. Their influence on any band that operates in the space between art-rock ambition and pop accessibility is total.",
-      "influenceScore": 8,
+      "influenceScore": 9,
       "imageUrl": "/photos/radiohead.jpg",
       "imageCredit": {
         "author": "Raph_PH",
@@ -1724,8 +1760,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/70/22/d6/7022d661-b3e0-9c64-5e18-dd6edaaa53d2/mzaf_12758650973786995732.plus.aac.p.m4a",
       "previewTrack": "Paranoid Android",
       "previewAlbum": "OK Computer",
-      "x": -39.41,
-      "y": 92.41
+      "x": -103.45,
+      "y": 46.05
     },
     {
       "id": "the-stone-roses",
@@ -1762,8 +1798,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/3e/f0/ba/3ef0babf-0941-7ea1-c6f8-802bd3341990/mzaf_2530605196338347629.plus.aac.p.m4a",
       "previewTrack": "I Wanna Be Adored",
       "previewAlbum": "The Very Best of the Stone Roses",
-      "x": -236.4,
-      "y": -88.5
+      "x": -284.27,
+      "y": -82.76
     },
     {
       "id": "interpol",
@@ -1800,8 +1836,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/3a/34/2c/3a342c4c-ec92-b544-f7f0-c99e88e11e85/mzaf_3954536090126478201.plus.aac.p.m4a",
       "previewTrack": "Obstacle 1",
       "previewAlbum": "Turn On the Bright Lights",
-      "x": -55.2,
-      "y": 74.44
+      "x": -66.46,
+      "y": 92.77
     },
     {
       "id": "the-strokes",
@@ -1839,8 +1875,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/2e/e7/74/2ee774ae-2257-3220-3b87-2306d88324b4/mzaf_16463872203751091452.plus.aac.p.m4a",
       "previewTrack": "Last Nite",
       "previewAlbum": "Is This It",
-      "x": -123.39,
-      "y": 80.88
+      "x": -137.91,
+      "y": 91.92
     },
     {
       "id": "yeah-yeah-yeahs",
@@ -1877,8 +1913,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/fa/6d/b6/fa6db6f5-328d-418d-d65f-e91477b40160/mzaf_13143394283385603955.plus.aac.p.m4a",
       "previewTrack": "Maps",
       "previewAlbum": "Maps - Single",
-      "x": -111.65,
-      "y": 96.94
+      "x": -123.59,
+      "y": 144.84
     },
     {
       "id": "geese",
@@ -1915,8 +1951,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a2/90/67/a290675e-246b-6a4f-978b-76376dbca022/mzaf_17012130112191688969.plus.aac.p.m4a",
       "previewTrack": "Taxes",
       "previewAlbum": "Getting Killed",
-      "x": -128.48,
-      "y": 159.75
+      "x": -109.26,
+      "y": 171.47
     },
     {
       "id": "built-to-spill",
@@ -1953,8 +1989,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/ae/70/3e/ae703ebf-4642-1434-aa0d-d2d7fb6accb8/mzaf_17576947637223972088.plus.aac.p.m4a",
       "previewTrack": "Carry the Zero",
       "previewAlbum": "Keep It Like a Secret",
-      "x": -68.48,
-      "y": 150.13
+      "x": -95.42,
+      "y": 181.04
     },
     {
       "id": "modest-mouse",
@@ -1991,8 +2027,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/3e/bb/4c/3ebb4c9d-9d29-a9a1-b392-022066fc17d9/mzaf_15334468133818986794.plus.aac.p.m4a",
       "previewTrack": "Cowboy Dan",
       "previewAlbum": "The Lonesome Crowded West",
-      "x": -64.1,
-      "y": 58.43
+      "x": -49.51,
+      "y": 47.25
     },
     {
       "id": "blur",
@@ -2030,8 +2066,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/e2/a9/25/e2a925e5-035c-4e1f-41e5-e7029d200642/mzaf_9036647603216322704.plus.aac.p.m4a",
       "previewTrack": "Song 2",
       "previewAlbum": "Birra Al Pub",
-      "x": -48.19,
-      "y": 60.96
+      "x": -51.84,
+      "y": 87.55
     },
     {
       "id": "stereolab",
@@ -2070,8 +2106,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/05/69/15/056915a3-e09f-2349-2b53-3920a977763e/mzaf_7344572683257438889.plus.aac.p.m4a",
       "previewTrack": "Cybele's Reverie",
       "previewAlbum": "Emperor Tomato Ketchup",
-      "x": 195.28,
-      "y": -8.74
+      "x": 219.14,
+      "y": -39.64
     },
     {
       "id": "fugazi",
@@ -2108,8 +2144,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/21/0a/ab/210aab71-f5db-d274-da95-39dfa175b42f/mzaf_6491175075837001289.plus.aac.p.m4a",
       "previewTrack": "Waiting Room",
       "previewAlbum": "13 Songs",
-      "x": 159.39,
-      "y": -129.61
+      "x": 161.48,
+      "y": -136.04
     },
     {
       "id": "minor-threat",
@@ -2146,8 +2182,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/4f/e5/67/4fe567aa-c4aa-1740-25e2-5d8cbffdd86c/mzaf_11358505943177981545.plus.aac.p.m4a",
       "previewTrack": "Straight Edge",
       "previewAlbum": "First Two Seven Inches",
-      "x": 135.4,
-      "y": -172.31
+      "x": 153.49,
+      "y": -163.26
     },
     {
       "id": "david-bowie",
@@ -2185,7 +2221,7 @@
       "previewTrack": "Heroes",
       "previewAlbum": "Re:Call 3",
       "x": -137.07,
-      "y": -116.24
+      "y": 33.02
     },
     {
       "id": "brian-eno",
@@ -2221,8 +2257,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/f3/33/ac/f333ac76-e0da-52ef-eeda-62d92d749ef8/mzaf_17760722708356190070.plus.aac.p.m4a",
       "previewTrack": "An Ending (Ascent)",
       "previewAlbum": "Apollo: Atmospheres and Soundtracks",
-      "x": 28.59,
-      "y": -25.56
+      "x": 32.35,
+      "y": -17.02
     },
     {
       "id": "silver-apples",
@@ -2259,8 +2295,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/b9/11/1f/b9111f32-ff2c-c537-c37d-40f60aa27f8b/mzaf_13045051276869613430.plus.aac.p.m4a",
       "previewTrack": "Oscillations",
       "previewAlbum": "Silver Apples",
-      "x": 249.43,
-      "y": 22.31
+      "x": 257.91,
+      "y": 18.97
     },
     {
       "id": "suicide",
@@ -2296,8 +2332,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/56/a6/01/56a60108-249e-a2fc-455d-af86bdb28608/mzaf_5103570349034271337.plus.aac.p.m4a",
       "previewTrack": "Ghost Rider",
       "previewAlbum": "Suicide",
-      "x": 168.74,
-      "y": -64.82
+      "x": 162.31,
+      "y": -54.87
     },
     {
       "id": "cabaret-voltaire",
@@ -2333,8 +2369,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/f8/43/42/f843423a-bafd-894a-a66a-23e2be7e0f5c/mzaf_621257469612642846.plus.aac.p.m4a",
       "previewTrack": "Nag Nag Nag",
       "previewAlbum": "Original Sound of Sheffield",
-      "x": 167.96,
-      "y": -38.93
+      "x": 161.19,
+      "y": -11.36
     },
     {
       "id": "faust",
@@ -2370,8 +2406,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/02/01/b6/0201b6c3-d3a1-481c-a61a-fb975dc751a8/mzaf_13737535068429779219.plus.aac.p.m4a",
       "previewTrack": "Krautrock",
       "previewAlbum": "Faust IV (Deluxe Edition)",
-      "x": 214.39,
-      "y": 21.03
+      "x": 209.01,
+      "y": 13.28
     },
     {
       "id": "depeche-mode",
@@ -2402,13 +2438,13 @@
         }
       ],
       "country": "UK",
-      "influenceScore": 5,
+      "influenceScore": 6,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/b18856da7850c8b8cb10476fefc15657/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/2f/ed/58/2fed5854-1c88-31ec-0e98-66b9706dd42d/mzaf_11845437215964282853.plus.aac.p.m4a",
       "previewTrack": "Enjoy the Silence",
       "previewAlbum": "Violator  The 12\" Singles",
-      "x": 217.97,
-      "y": -18.75
+      "x": 190.78,
+      "y": -64.61
     },
     {
       "id": "the-human-league",
@@ -2439,13 +2475,13 @@
         }
       ],
       "country": "UK",
-      "influenceScore": 5,
+      "influenceScore": 6,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/06f77120f73572daef39f5c740d88396/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/fb/bd/8f/fbbd8f96-b30d-40f6-c91a-7668330390bb/mzaf_5831637823041295870.plus.aac.p.m4a",
       "previewTrack": "Don't You Want Me",
       "previewAlbum": "Dare",
-      "x": 216.56,
-      "y": -73.33
+      "x": 183.42,
+      "y": -0.35
     },
     {
       "id": "omd",
@@ -2476,13 +2512,13 @@
         }
       ],
       "country": "UK",
-      "influenceScore": 6,
+      "influenceScore": 7,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/5f1af4ba28f3136c03fd1196092e7c22/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/3b/0b/d0/3b0bd0ae-b450-00dd-3a31-2d372f503b37/mzaf_1265393616095927658.plus.aac.p.m4a",
       "previewTrack": "Enola Gay",
       "previewAlbum": "Organisation",
-      "x": 170.49,
-      "y": -7.72
+      "x": 178.77,
+      "y": -29.29
     },
     {
       "id": "gary-numan",
@@ -2518,8 +2554,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/5d/fc/fa/5dfcfa0f-6100-50d9-7439-5d881b26d7fd/mzaf_13372794333841493078.plus.aac.p.m4a",
       "previewTrack": "Cars",
       "previewAlbum": "The Pleasure Principle (Bonus Tracks)",
-      "x": 234.21,
-      "y": -58.28
+      "x": 217.66,
+      "y": -8.25
     },
     {
       "id": "the-knife",
@@ -2556,8 +2592,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/8e/69/c4/8e69c412-60df-b624-892a-d5c2d5e4b952/mzaf_10130459464750694171.plus.aac.p.m4a",
       "previewTrack": "Heartbeats",
       "previewAlbum": "Deep Cuts",
-      "x": 182.98,
-      "y": -27.27
+      "x": 202.24,
+      "y": -30.96
     },
     {
       "id": "sparks",
@@ -2594,8 +2630,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/de/6e/d8/de6ed8b6-aaec-51e5-8b88-d339621c467b/mzaf_6918461029616554146.plus.aac.p.m4a",
       "previewTrack": "This Town Ain't Big Enough for the Both of Us",
       "previewAlbum": "Kimono My House (21st Century Edition)",
-      "x": 250.34,
-      "y": -64.82
+      "x": 251.25,
+      "y": -47.73
     },
     {
       "id": "aphex-twin",
@@ -2632,8 +2668,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/88/07/1d/88071df2-b7b3-dca3-0cb1-e4cc6b036674/mzaf_1785616371015459389.plus.aac.p.m4a",
       "previewTrack": "Xtal",
       "previewAlbum": "Selected Ambient Works 85-92",
-      "x": 197.01,
-      "y": -48.72
+      "x": 222.14,
+      "y": -66.72
     },
     {
       "id": "autechre",
@@ -2669,8 +2705,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/6f/05/24/6f0524d0-4385-e928-c447-904067a04d48/mzaf_11392310461210155367.plus.aac.p.m4a",
       "previewTrack": "Second Bad Vilbel",
       "previewAlbum": "Anvil Vapre",
-      "x": 284.5,
-      "y": -54.29
+      "x": 292.72,
+      "y": -36.94
     },
     {
       "id": "boards-of-canada",
@@ -2707,8 +2743,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/c5/fe/9b/c5fe9bbd-3511-6797-560c-bd77759d63d0/mzaf_7238585652863500053.plus.aac.p.m4a",
       "previewTrack": "Roygbiv",
       "previewAlbum": "Music Has the Right to Children",
-      "x": 235.15,
-      "y": -36.64
+      "x": 236.48,
+      "y": -10.88
     },
     {
       "id": "squarepusher",
@@ -2744,8 +2780,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/88/3b/cd/883bcd1b-f087-c6d0-190b-ccc72aada026/mzaf_16715282628378590385.plus.aac.p.m4a",
       "previewTrack": "Come On My Selector",
       "previewAlbum": "Big Loada",
-      "x": 302.88,
-      "y": -49.42
+      "x": 328.4,
+      "y": -25.4
     },
     {
       "id": "burial",
@@ -2782,8 +2818,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/ef/6e/fa/ef6efa09-ae7e-aec6-2eb2-6bd11b22703c/mzaf_18137613516381741140.plus.aac.p.m4a",
       "previewTrack": "Archangel",
       "previewAlbum": "Untrue",
-      "x": 290.22,
-      "y": -34.48
+      "x": 281.94,
+      "y": -54.52
     },
     {
       "id": "oneohtrix-point-never",
@@ -2820,8 +2856,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/65/17/4a/65174a95-caf5-612d-9b1a-13535ad878d6/mzaf_12356752689850143890.plus.aac.p.m4a",
       "previewTrack": "Sleep Dealer",
       "previewAlbum": "Replica",
-      "x": 220.1,
-      "y": -52.64
+      "x": 205.84,
+      "y": -49.9
     },
     {
       "id": "tim-hecker",
@@ -2858,8 +2894,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/88/15/32/88153298-bfe6-03f7-11ee-e7777717ae41/mzaf_15726685663758683960.plus.aac.p.m4a",
       "previewTrack": "The Piano Drop",
       "previewAlbum": "Ravedeath, 1972",
-      "x": 195.6,
-      "y": -72.1
+      "x": 194.3,
+      "y": -43.91
     },
     {
       "id": "stars-of-the-lid",
@@ -2896,8 +2932,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/37/0a/f8/370af83b-bc53-0d08-fd74-93501d4f74ce/mzaf_2776725883652459462.plus.aac.p.m4a",
       "previewTrack": "Even If You're Never Awake",
       "previewAlbum": "And Their Refinement of the Decline",
-      "x": 266.64,
-      "y": -38.25
+      "x": 261.23,
+      "y": -32.38
     },
     {
       "id": "grouper",
@@ -2935,8 +2971,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/3a/ca/bd/3acabd5b-50e9-f23c-569c-5db42a71f971/mzaf_8600946146977863642.plus.aac.p.m4a",
       "previewTrack": "Alien Observer",
       "previewAlbum": "A I A: Alien Observer",
-      "x": 288.26,
-      "y": 13.45
+      "x": 296.91,
+      "y": 7.82
     },
     {
       "id": "harold-budd",
@@ -2972,8 +3008,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d6/90/4d/d6904dee-3d75-9dde-6e45-6e7e447fa617/mzaf_7987061308404767736.plus.aac.p.m4a",
       "previewTrack": "Late October",
       "previewAlbum": "The Pearl",
-      "x": 302.23,
-      "y": -22.72
+      "x": 278.33,
+      "y": -26
     },
     {
       "id": "lcd-soundsystem",
@@ -3009,8 +3045,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/c1/a3/ba/c1a3ba8d-0d85-2a0a-1cad-a0103118b9ce/mzaf_13105396904990412068.plus.aac.p.m4a",
       "previewTrack": "All My Friends",
       "previewAlbum": "Sound of Silver",
-      "x": 150.55,
-      "y": -40.1
+      "x": 140.98,
+      "y": -34.62
     },
     {
       "id": "hot-chip",
@@ -3046,8 +3082,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/55/44/93/55449377-f319-c5dc-2bcb-e009de80ee5a/mzaf_10653306136927036639.plus.aac.p.m4a",
       "previewTrack": "Over and Over",
       "previewAlbum": "The Warning",
-      "x": 273.99,
-      "y": -12.37
+      "x": 268.6,
+      "y": 0.91
     },
     {
       "id": "the-postal-service",
@@ -3083,8 +3119,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/18/7d/1f/187d1fd4-4bd1-a49c-eb0a-2c7ca9ebbdef/mzaf_14974770182978206000.plus.aac.p.m4a",
       "previewTrack": "Such Great Heights",
       "previewAlbum": "Give Up (Deluxe 10th Anniversary Edition)",
-      "x": 276.17,
-      "y": -25.26
+      "x": 266.47,
+      "y": -47.61
     },
     {
       "id": "four-tet",
@@ -3121,8 +3157,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/30/8c/85/308c85b3-bb15-b7d0-7da6-b1b851b94416/mzaf_5947964598929185174.plus.aac.p.m4a",
       "previewTrack": "She Moves She",
       "previewAlbum": "Rounds",
-      "x": 265.63,
-      "y": -56.53
+      "x": 261.32,
+      "y": -61.91
     },
     {
       "id": "caribou",
@@ -3159,8 +3195,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/64/ac/d0/64acd0a1-60c8-0175-357c-5b2893189c63/mzaf_17543590282261970804.plus.aac.p.m4a",
       "previewTrack": "Odessa",
       "previewAlbum": "Swim",
-      "x": 281.5,
-      "y": -1.77
+      "x": 298.63,
+      "y": -10.6
     },
     {
       "id": "the-rapture",
@@ -3196,8 +3232,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/cb/78/59/cb78591c-7613-40f6-10d5-c5817bb25755/mzaf_14614449904758602566.plus.aac.p.m4a",
       "previewTrack": "House of Jealous Lovers",
       "previewAlbum": "DFA Records Compilation #1",
-      "x": 209.71,
-      "y": 0.55
+      "x": 196.19,
+      "y": -17.02
     },
     {
       "id": "chk-chk-chk",
@@ -3233,8 +3269,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/64/27/3b/64273bbb-f2de-4f85-53a7-65f24844e787/mzaf_15688801010400344490.plus.aac.p.m4a",
       "previewTrack": "Must Be the Moon",
       "previewAlbum": "Myth Takes",
-      "x": 307.03,
-      "y": -34.8
+      "x": 299.05,
+      "y": -52.51
     },
     {
       "id": "massive-attack",
@@ -3270,8 +3306,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f0/31/78/f0317854-f180-d1cd-a974-8acc48834b7b/mzaf_8992917226755403839.plus.aac.p.m4a",
       "previewTrack": "Teardrop",
       "previewAlbum": "Mezzanine",
-      "x": 250.8,
-      "y": -47.43
+      "x": 241.5,
+      "y": -33.32
     },
     {
       "id": "portishead",
@@ -3302,13 +3338,13 @@
         }
       ],
       "country": "UK",
-      "influenceScore": 2,
+      "influenceScore": 3,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/a78ec8e6fa844b473c4cea87b8ebfcf5/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/e9/12/99/e91299a5-115b-85d5-c6a5-7d7ffca699cf/mzaf_16022543165233599469.plus.aac.p.m4a",
       "previewTrack": "Glory Box",
       "previewAlbum": "Dummy",
-      "x": 243.14,
-      "y": -18.39
+      "x": 233.1,
+      "y": 19.21
     },
     {
       "id": "tricky",
@@ -3344,8 +3380,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/90/83/69/9083694b-5ed9-eece-241b-7fa701d8a7f8/mzaf_11622485665730319919.plus.aac.p.m4a",
       "previewTrack": "Hell Is Round the Corner",
       "previewAlbum": "Maxinquaye (Deluxe Edition)",
-      "x": 233.8,
-      "y": -4.96
+      "x": 228.4,
+      "y": -25.61
     },
     {
       "id": "sophie",
@@ -3381,8 +3417,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/d6/c4/1d/d6c41d7c-3eb7-4ecd-ffb0-506d8bea4674/mzaf_3897489882727584281.plus.aac.p.m4a",
       "previewTrack": "Immaterial",
       "previewAlbum": "OIL OF EVERY PEARL'S UN-INSIDES",
-      "x": 310.77,
-      "y": -7.56
+      "x": 296.49,
+      "y": -69.95
     },
     {
       "id": "a-g-cook",
@@ -3418,8 +3454,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/a1/af/ab/a1afab5e-444c-3a2b-d92a-09068ddffe2b/mzaf_5993107106681688712.plus.aac.p.m4a",
       "previewTrack": "Oh Yeah",
       "previewAlbum": "Apple",
-      "x": 275.23,
-      "y": -68.3
+      "x": 302.77,
+      "y": -22.91
     },
     {
       "id": "100-gecs",
@@ -3455,8 +3491,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/07/09/ef/0709ef82-9c32-9f77-ee95-df43c32ab92c/mzaf_7827850772499171841.plus.aac.p.m4a",
       "previewTrack": "money machine",
       "previewAlbum": "1000 gecs",
-      "x": 330.37,
-      "y": -33.74
+      "x": 335.35,
+      "y": -54.72
     },
     {
       "id": "charli-xcx",
@@ -3492,8 +3528,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/12/ff/aa/12ffaa08-86d7-1a23-f6ef-b65e5a3c4ca7/mzaf_14059732344187185199.plus.aac.p.m4a",
       "previewTrack": "Track 10",
       "previewAlbum": "Pop 2",
-      "x": 318.35,
-      "y": -57.37
+      "x": 323.42,
+      "y": -42.07
     },
     {
       "id": "arca",
@@ -3529,8 +3565,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/7f/b1/fa/7fb1fa1e-c7f9-ad3a-d866-5ec5383774f6/mzaf_15010408580460088965.plus.aac.p.m4a",
       "previewTrack": "Piel",
       "previewAlbum": "Arca",
-      "x": 269.56,
-      "y": 9.04
+      "x": 283.27,
+      "y": -5.72
     },
     {
       "id": "caroline-polachek",
@@ -3566,8 +3602,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/a4/01/3d/a4013d58-cb6c-ce8e-da86-4c80f1619b67/mzaf_17921091304913387405.plus.aac.p.m4a",
       "previewTrack": "So Hot You're Hurting My Feelings",
       "previewAlbum": "So Hot You're Hurting My Feelings - Single",
-      "x": 261.3,
-      "y": -20.74
+      "x": 267.62,
+      "y": -15.22
     },
     {
       "id": "underscores",
@@ -3608,8 +3644,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/bc/e3/ac/bce3ac13-5f93-d8aa-ab83-94a018a1d5ae/mzaf_15989893082458291847.plus.aac.p.m4a",
       "previewTrack": "Locals (Girls like us)",
       "previewAlbum": "Locals (Girls like us) - Single",
-      "x": 294.5,
-      "y": -1.4
+      "x": 280.98,
+      "y": 10.22
     },
     {
       "id": "jane-remover",
@@ -3645,8 +3681,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/83/89/47/838947d6-d89b-75da-47db-4962223ea90c/mzaf_3729081078717424503.plus.aac.p.m4a",
       "previewTrack": "Dancing with your eyes closed",
       "previewAlbum": "Revengeseekerz",
-      "x": 325.73,
-      "y": -17.14
+      "x": 325.33,
+      "y": -10.52
     },
     {
       "id": "oklou",
@@ -3683,8 +3719,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/53/45/f1/5345f142-eb8c-2fa0-ecd1-5fd658a0ddeb/mzaf_12432568085229942852.plus.aac.p.m4a",
       "previewTrack": "blade bird",
       "previewAlbum": "choke enough (Deluxe)",
-      "x": 320.85,
-      "y": 6.62
+      "x": 312.5,
+      "y": 11.9
     },
     {
       "id": "ninajirachi",
@@ -3720,8 +3756,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/2d/cb/5d/2dcb5d7d-9827-87f6-0d10-d7a8594c677f/mzaf_13223693110374767797.plus.aac.p.m4a",
       "previewTrack": "iPod Touch",
       "previewAlbum": "I Love My Computer",
-      "x": 339.17,
-      "y": -46.12
+      "x": 327.15,
+      "y": 2.35
     },
     {
       "id": "yeule",
@@ -3757,8 +3793,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/00/91/5d/00915de4-a7e9-3704-990a-048ca51a67b3/mzaf_7250814614318612231.plus.aac.p.m4a",
       "previewTrack": "dazies",
       "previewAlbum": "softscars",
-      "x": 234.02,
-      "y": 8.04
+      "x": 242.05,
+      "y": 4.99
     },
     {
       "id": "porter-robinson",
@@ -3799,8 +3835,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/6d/e2/52/6de252c0-f6db-739c-cc25-9b060a6e15df/mzaf_15968163618230611254.plus.aac.p.m4a",
       "previewTrack": "Musician",
       "previewAlbum": "Nurture",
-      "x": 302.89,
-      "y": -68.43
+      "x": 314.6,
+      "y": -58.91
     },
     {
       "id": "bjork",
@@ -3836,8 +3872,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/9f/66/27/9f662755-0dc2-678d-2986-2f62f18e8ccb/mzaf_3045265892977245319.plus.aac.p.m4a",
       "previewTrack": "Jóga",
       "previewAlbum": "Homogenic",
-      "x": 276.23,
-      "y": 35.16
+      "x": 287.68,
+      "y": 30.87
     },
     {
       "id": "imogen-heap",
@@ -3873,8 +3909,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f3/03/45/f3034552-daac-5b2d-1caf-63459a3be96a/mzaf_445692818289550563.plus.aac.p.m4a",
       "previewTrack": "Hide and Seek",
       "previewAlbum": "Speak for Yourself",
-      "x": 340.71,
-      "y": -19.74
+      "x": 340.34,
+      "y": -38.06
     },
     {
       "id": "nick-drake",
@@ -3905,13 +3941,13 @@
         }
       ],
       "country": "UK",
-      "influenceScore": 7,
+      "influenceScore": 8,
       "imageUrl": "https://cdn-images.dzcdn.net/images/artist/6e8750b76709a75f37d5556735c8f17a/250x250-000000-80-0-0.jpg",
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/21/47/d6/2147d68f-efc9-df0d-a1e9-4e9451877534/mzaf_2167308747012001247.plus.aac.p.m4a",
       "previewTrack": "Pink Moon",
       "previewAlbum": "Pink Moon",
-      "x": 108.42,
-      "y": 55.14
+      "x": 96.06,
+      "y": 45.25
     },
     {
       "id": "leonard-cohen",
@@ -3947,8 +3983,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/13/12/6d/13126d08-fad7-2896-c5c8-1ec039718db4/mzaf_5406071501697087536.plus.aac.p.m4a",
       "previewTrack": "Suzanne",
       "previewAlbum": "The Essential Leonard Cohen",
-      "x": 63.57,
-      "y": 133.35
+      "x": 62.11,
+      "y": 130.77
     },
     {
       "id": "vashti-bunyan",
@@ -3984,8 +4020,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/64/e0/25/64e0250c-b2bb-bfbc-0b89-bce252628977/mzaf_1169651843947797411.plus.aac.p.m4a",
       "previewTrack": "Diamond Day",
       "previewAlbum": "Just Another Diamond Day",
-      "x": 182.06,
-      "y": 132.41
+      "x": 189.2,
+      "y": 163.45
     },
     {
       "id": "townes-van-zandt",
@@ -4021,8 +4057,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/bd/36/18/bd361865-5e02-fd09-348c-efcb516c93ac/mzaf_17122119956100876724.plus.aac.p.m4a",
       "previewTrack": "Waiting Around to Die",
       "previewAlbum": "Townes Van Zandt",
-      "x": 179.71,
-      "y": 150.93
+      "x": 170.9,
+      "y": 163.15
     },
     {
       "id": "joni-mitchell",
@@ -4058,8 +4094,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/bc/8e/e6/bc8ee6e2-9fb8-75a1-bdf9-37f97a009fef/mzaf_1734596607807807485.plus.aac.p.m4a",
       "previewTrack": "A Case of You",
       "previewAlbum": "Blue",
-      "x": 132.19,
-      "y": 136.57
+      "x": 136.18,
+      "y": 116.55
     },
     {
       "id": "bob-dylan",
@@ -4095,8 +4131,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/0d/07/ce/0d07cef9-c7a5-013c-1414-aa9f9370ebfe/mzaf_10130407559827284152.plus.aac.p.m4a",
       "previewTrack": "Like a Rolling Stone",
       "previewAlbum": "Highway 61 Revisited",
-      "x": 89.12,
-      "y": 159.96
+      "x": 114.03,
+      "y": 75.03
     },
     {
       "id": "neil-young",
@@ -4132,8 +4168,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f8/7a/8d/f87a8d65-e804-2530-be75-66a5c49539c1/mzaf_2822679759160215635.plus.aac.p.m4a",
       "previewTrack": "Heart of Gold",
       "previewAlbum": "Harvest",
-      "x": 86.26,
-      "y": 90.92
+      "x": 88.55,
+      "y": 157.53
     },
     {
       "id": "bert-jansch",
@@ -4169,8 +4205,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/0f/62/cf/0f62cff2-0240-7d7a-381b-e37e263b0e6b/mzaf_10556800775513812631.plus.aac.p.m4a",
       "previewTrack": "Needle of Death",
       "previewAlbum": "Bert Jansch",
-      "x": 97.66,
-      "y": 118.99
+      "x": 97.28,
+      "y": 114.23
     },
     {
       "id": "roy-harper",
@@ -4206,8 +4242,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/2c/52/aa/2c52aa26-b046-46a2-0e84-13727fee9103/mzaf_3231628795420444062.plus.aac.p.m4a",
       "previewTrack": "Me and My Woman",
       "previewAlbum": "Stormcock",
-      "x": 209.02,
-      "y": 147.25
+      "x": 207.19,
+      "y": 156.7
     },
     {
       "id": "karen-dalton",
@@ -4243,8 +4279,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/91/13/b5/9113b593-564b-1109-93ab-2675cd6a39fd/mzaf_4834893831104568586.plus.aac.p.m4a",
       "previewTrack": "Something on Your Mind",
       "previewAlbum": "Something on Your Mind - Single",
-      "x": 117.25,
-      "y": 115.41
+      "x": 112.87,
+      "y": 127.82
     },
     {
       "id": "incredible-string-band",
@@ -4280,8 +4316,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/15/9a/88/159a88a6-8595-3d19-5044-446f3cc1e106/mzaf_15417912483259284033.plus.aac.p.m4a",
       "previewTrack": "A Very Cellular Song",
       "previewAlbum": "The Hangman's Beautiful Daughter",
-      "x": 200.86,
-      "y": 130.86
+      "x": 197.47,
+      "y": 128.76
     },
     {
       "id": "john-prine",
@@ -4317,8 +4353,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/23/29/c2/2329c2d8-c3b2-37c6-faf7-328f9d8d1562/mzaf_6535545099195832062.plus.aac.p.m4a",
       "previewTrack": "Angel From Montgomery",
       "previewAlbum": "John Prine",
-      "x": 178.5,
-      "y": 169.89
+      "x": 171,
+      "y": 182.15
     },
     {
       "id": "joanna-newsom",
@@ -4354,8 +4390,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/ea/e4/13/eae41322-58de-f346-f682-12e1a8866d9b/mzaf_12402789342095452240.plus.aac.p.m4a",
       "previewTrack": "Emily",
       "previewAlbum": "Ys",
-      "x": 162.88,
-      "y": 182.26
+      "x": 186.57,
+      "y": 114.04
     },
     {
       "id": "sufjan-stevens",
@@ -4392,8 +4428,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/b1/9d/f2/b19df2ea-b4ec-9cde-039c-9eb54efceee3/mzaf_9376866141038229291.plus.aac.p.m4a",
       "previewTrack": "Come On! Feel the Illinoise!",
       "previewAlbum": "Illinois",
-      "x": 171.44,
-      "y": 115.56
+      "x": 178.81,
+      "y": 132.39
     },
     {
       "id": "big-thief",
@@ -4429,8 +4465,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/56/1d/e1/561de1dd-a7ca-f053-9c08-15023dd15741/mzaf_13452211018978895983.plus.aac.p.m4a",
       "previewTrack": "Simulation Swarm",
       "previewAlbum": "Dragon New Warm Mountain I Believe In You",
-      "x": 157.06,
-      "y": 129.35
+      "x": 162.14,
+      "y": 147.08
     },
     {
       "id": "adrianne-lenker",
@@ -4466,8 +4502,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/17/b9/7d/17b97d21-5b90-980b-26fd-5df5e888a7a2/mzaf_14920702728886256522.plus.aac.p.m4a",
       "previewTrack": "anything",
       "previewAlbum": "songs",
-      "x": 166.04,
-      "y": 157.58
+      "x": 178.02,
+      "y": 149.73
     },
     {
       "id": "fleet-foxes",
@@ -4503,8 +4539,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/5c/b0/eb/5cb0ebdb-50a7-4526-3806-e073ba475e0f/mzaf_1079519765754305784.plus.aac.p.m4a",
       "previewTrack": "Helplessness Blues",
       "previewAlbum": "Helplessness Blues",
-      "x": 152.65,
-      "y": 164.77
+      "x": 153.5,
+      "y": 163.21
     },
     {
       "id": "bon-iver",
@@ -4545,8 +4581,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/d2/2f/a4/d22fa4db-97d9-4d99-7272-5ae5ed58de21/mzaf_2631945908793863176.plus.aac.p.m4a",
       "previewTrack": "Skinny Love",
       "previewAlbum": "For Emma, Forever Ago",
-      "x": 182.78,
-      "y": 96.12
+      "x": 187.84,
+      "y": 95.78
     },
     {
       "id": "bright-eyes",
@@ -4582,8 +4618,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/42/07/f8/4207f8f1-6c11-4b08-aff8-ce6a26a9c436/mzaf_10134483815704243837.plus.aac.p.m4a",
       "previewTrack": "First Day of My Life",
       "previewAlbum": "I'm Wide Awake, It's Morning",
-      "x": 119.73,
-      "y": 174.66
+      "x": 119.8,
+      "y": 158.59
     },
     {
       "id": "elliott-smith",
@@ -4619,8 +4655,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/2a/8e/d5/2a8ed519-9c7e-7551-2eab-5e37e7e86106/mzaf_4334506789554821027.plus.aac.p.m4a",
       "previewTrack": "Between the Bars",
       "previewAlbum": "Either/Or",
-      "x": 149.82,
-      "y": 70.62
+      "x": 165.05,
+      "y": 73.34
     },
     {
       "id": "fiona-apple",
@@ -4656,8 +4692,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/99/50/1d/99501d11-479a-12ed-a01c-1146fa48f9ce/mzaf_5647240714669625685.plus.aac.p.m4a",
       "previewTrack": "Paper Bag",
       "previewAlbum": "When the Pawn...",
-      "x": 192.51,
-      "y": 113.14
+      "x": 206.92,
+      "y": 111.6
     },
     {
       "id": "jeff-buckley",
@@ -4693,8 +4729,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/3d/f9/7f/3df97f47-c0a4-bdf8-53fa-19e99fa891f1/mzaf_16433687184189443153.plus.aac.p.m4a",
       "previewTrack": "Hallelujah",
       "previewAlbum": "Grace",
-      "x": 124.45,
-      "y": 73.57
+      "x": 85.62,
+      "y": 81.6
     },
     {
       "id": "mitski",
@@ -4730,8 +4766,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f9/b8/59/f9b859dc-1c06-b90a-3c4a-826310b6c98b/mzaf_14017863719091862115.plus.aac.p.m4a",
       "previewTrack": "First Love/Late Spring",
       "previewAlbum": "Bury Me At Makeout Creek",
-      "x": 117.16,
-      "y": 156.54
+      "x": 145.33,
+      "y": 139.8
     },
     {
       "id": "phoebe-bridgers",
@@ -4767,8 +4803,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/49/86/d0/4986d0e4-c8d3-9dce-2d74-541b1367f388/mzaf_10104850253181162188.plus.aac.p.m4a",
       "previewTrack": "Kyoto",
       "previewAlbum": "Punisher",
-      "x": 193.24,
-      "y": 144.01
+      "x": 207.01,
+      "y": 140.59
     },
     {
       "id": "sharon-van-etten",
@@ -4805,8 +4841,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/77/1d/b9/771db970-78b3-e7de-6d21-e73c7a6375b7/mzaf_5057206027833221270.plus.aac.p.m4a",
       "previewTrack": "Seventeen",
       "previewAlbum": "Remind Me Tomorrow",
-      "x": 60.22,
-      "y": 78.87
+      "x": 67.93,
+      "y": 86.29
     },
     {
       "id": "angel-olsen",
@@ -4842,8 +4878,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/3d/cd/eb/3dcdebfb-62fa-114f-9c40-db4994854122/mzaf_14655508052689964579.plus.aac.p.m4a",
       "previewTrack": "Shut Up Kiss Me",
       "previewAlbum": "MY WOMAN",
-      "x": 168.33,
-      "y": 140.84
+      "x": 158.5,
+      "y": 111.97
     },
     {
       "id": "weyes-blood",
@@ -4880,8 +4916,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/4e/37/50/4e375009-696b-b435-ec15-2f8043e92fe3/mzaf_13244431307274795740.plus.aac.p.m4a",
       "previewTrack": "Andromeda",
       "previewAlbum": "Titanic Rising",
-      "x": 108.46,
-      "y": 76.45
+      "x": 120.15,
+      "y": 100.34
     },
     {
       "id": "ethel-cain",
@@ -4917,8 +4953,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/af/60/00/af600089-b27c-faf2-5def-004364bd1ba7/mzaf_5009179962954744897.plus.aac.p.m4a",
       "previewTrack": "American Teenager",
       "previewAlbum": "American Teenager - Single",
-      "x": 148.63,
-      "y": 93.55
+      "x": 131.63,
+      "y": 94.22
     },
     {
       "id": "snail-mail",
@@ -4954,8 +4990,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/86/4d/7a/864d7a21-0aa2-4b42-c5b1-ef2ffaf85f3a/mzaf_7154981903600308242.plus.aac.p.m4a",
       "previewTrack": "Pristine",
       "previewAlbum": "Lush",
-      "x": 85.89,
-      "y": 131
+      "x": 84.55,
+      "y": 131.34
     },
     {
       "id": "japanese-breakfast",
@@ -4993,8 +5029,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c0/64/67/c0646729-fcb6-0ad1-b996-fd3408b4f4f4/mzaf_679024772755085459.plus.aac.p.m4a",
       "previewTrack": "Be Sweet",
       "previewAlbum": "Jubilee",
-      "x": 110.31,
-      "y": 142.97
+      "x": 97.5,
+      "y": 132.6
     },
     {
       "id": "clairo",
@@ -5030,8 +5066,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/67/b9/3d/67b93d4e-07cb-cd11-7d64-88762c42a230/mzaf_15744728589488284514.plus.aac.p.m4a",
       "previewTrack": "Bags",
       "previewAlbum": "Immunity",
-      "x": 126.87,
-      "y": 102.5
+      "x": 107.16,
+      "y": 100.63
     },
     {
       "id": "julia-holter",
@@ -5067,8 +5103,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/30/84/4b/30844ba2-fca7-9acc-0c5c-4eeef65c84c0/mzaf_8584564298047652699.plus.aac.p.m4a",
       "previewTrack": "Feel You",
       "previewAlbum": "Have You in My Wilderness",
-      "x": 110.37,
-      "y": 129.97
+      "x": 111.23,
+      "y": 143.85
     },
     {
       "id": "liz-phair",
@@ -5104,8 +5140,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/ff/89/96/ff89966e-387a-fa56-d14f-d6d67fb17151/mzaf_15897941274586219896.plus.aac.p.m4a",
       "previewTrack": "F**k and Run (2018 Remaster)",
       "previewAlbum": "Exile In Guyville (2018 Remaster)",
-      "x": 115.86,
-      "y": 90.76
+      "x": 127.04,
+      "y": 140.78
     },
     {
       "id": "cat-power",
@@ -5141,8 +5177,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/02/04/36/02043634-fadc-f367-1009-2afc6a0d4c0c/mzaf_9418990919528813717.plus.aac.p.m4a",
       "previewTrack": "Cross Bones Style",
       "previewAlbum": "Moon Pix",
-      "x": 70.01,
-      "y": 111.84
+      "x": 64.45,
+      "y": 108.43
     },
     {
       "id": "red-house-painters",
@@ -5177,8 +5213,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/9e/d9/d9/9ed9d97f-c11d-2b11-27e0-54a7b23c90b3/mzaf_17717852993235532896.plus.aac.p.m4a",
       "previewTrack": "Katy Song",
       "previewAlbum": "Red House Painters I",
-      "x": 164.48,
-      "y": 96.45
+      "x": 159.37,
+      "y": 128.05
     },
     {
       "id": "mount-eerie",
@@ -5214,8 +5250,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/43/08/d2/4308d26c-6670-3ec4-4195-83524fc463db/mzaf_4645528971415407973.plus.aac.p.m4a",
       "previewTrack": "I Want Wind To Blow",
       "previewAlbum": "The Glow, Pt. 2",
-      "x": 155.62,
-      "y": 109.9
+      "x": 170.66,
+      "y": 116.57
     },
     {
       "id": "low",
@@ -5251,8 +5287,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/41/63/9f/41639f33-753a-1ccf-71d4-cc99681d69aa/mzaf_10619482486331739791.plus.aac.p.m4a",
       "previewTrack": "Sunflower",
       "previewAlbum": "Things We Lost In the Fire",
-      "x": 83.68,
-      "y": 48.15
+      "x": 73.75,
+      "y": 58.82
     },
     {
       "id": "have-a-nice-life",
@@ -5289,8 +5325,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/9c/2a/fa/9c2afa40-8e5a-f67b-b50d-3f4d2825fe30/mzaf_13822864806010121062.plus.aac.p.m4a",
       "previewTrack": "Bloodhail",
       "previewAlbum": "Deathconsciousness",
-      "x": 89.33,
-      "y": 64.6
+      "x": 89.6,
+      "y": 65.98
     },
     {
       "id": "silver-jews",
@@ -5327,8 +5363,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/e8/70/73/e87073d3-6b60-87ca-05c0-af2cdce84259/mzaf_8455626949038637481.plus.aac.p.m4a",
       "previewTrack": "Random Rules",
       "previewAlbum": "American Water",
-      "x": 195.07,
-      "y": 159.1
+      "x": 192.62,
+      "y": 145.47
     },
     {
       "id": "kurt-vile",
@@ -5364,8 +5400,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/ea/02/07/ea0207d6-e543-e82e-1e15-2d8477cc670c/mzaf_6997964826682801438.plus.aac.p.m4a",
       "previewTrack": "Wakin On a Pretty Day",
       "previewAlbum": "Wakin On a Pretty Daze",
-      "x": 80.85,
-      "y": 119.03
+      "x": 81.1,
+      "y": 118.81
     },
     {
       "id": "mac-demarco",
@@ -5403,8 +5439,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/6e/8b/6b/6e8b6b9d-0881-6810-11d9-fa081cf37d81/mzaf_15689875906597339969.plus.aac.p.m4a",
       "previewTrack": "Chamber Of Reflection",
       "previewAlbum": "Salad Days",
-      "x": 98.74,
-      "y": 135.77
+      "x": 96.05,
+      "y": 93.87
     },
     {
       "id": "the-mountain-goats",
@@ -5440,8 +5476,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b1/30/67/b1306751-5363-51eb-c371-36c849049991/mzaf_10522323723100045338.plus.aac.p.m4a",
       "previewTrack": "This Year",
       "previewAlbum": "The Sunset Tree",
-      "x": 133.27,
-      "y": 113.82
+      "x": 113.9,
+      "y": 111.75
     },
     {
       "id": "minutemen",
@@ -5476,8 +5512,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview124/v4/d8/68/ab/d868ab97-546a-d1c8-5d91-6ac296254a0a/mzaf_12662163878567951995.plus.aac.p.m4a",
       "previewTrack": "History Lesson",
       "previewAlbum": "Post-Mersh, Vol. 1",
-      "x": 80.88,
-      "y": -135.56
+      "x": 93.53,
+      "y": -110.16
     },
     {
       "id": "black-flag",
@@ -5513,8 +5549,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/80/d8/52/80d8528a-3194-e94e-8ee5-923363293e33/mzaf_6091794628974884857.plus.aac.p.m4a",
       "previewTrack": "Rise Above",
       "previewAlbum": "Damaged",
-      "x": 75.21,
-      "y": -104.32
+      "x": 62.88,
+      "y": -118.39
     },
     {
       "id": "bad-brains",
@@ -5549,8 +5585,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/27/b0/6d/27b06db4-d2ad-fa02-61af-bbf4fab8551f/mzaf_15300162170780699555.plus.aac.p.m4a",
       "previewTrack": "Banned In D.C.",
       "previewAlbum": "Black Dots",
-      "x": 85.1,
-      "y": -176.22
+      "x": 115.76,
+      "y": -162.47
     },
     {
       "id": "dead-kennedys",
@@ -5585,8 +5621,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e7/f0/9a/e7f09aa4-d62d-b7eb-b456-c59b6a85cf12/mzaf_18072613066045509889.plus.aac.p.m4a",
       "previewTrack": "Holiday in Cambodia",
       "previewAlbum": "Give Me Convenience or Give Me Death",
-      "x": 146.05,
-      "y": -154.65
+      "x": 134.93,
+      "y": -126.04
     },
     {
       "id": "descendents",
@@ -5621,8 +5657,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/8c/bd/26/8cbd264b-9152-6fda-8e99-879b3529f655/mzaf_10082769739911366049.plus.aac.p.m4a",
       "previewTrack": "Suburban Home",
       "previewAlbum": "Milo Goes to College",
-      "x": 127.05,
-      "y": -155.25
+      "x": 118.55,
+      "y": -185.82
     },
     {
       "id": "rites-of-spring",
@@ -5659,8 +5695,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/56/5f/6d/565f6d4c-f66e-0e5b-a2e9-f1c6b83c7490/mzaf_14209889878350474435.plus.aac.p.m4a",
       "previewTrack": "For Want Of",
       "previewAlbum": "Rites of Spring",
-      "x": 67.47,
-      "y": -157.5
+      "x": 75,
+      "y": -165.26
     },
     {
       "id": "slint",
@@ -5697,8 +5733,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/45/8f/1b/458f1b94-c031-4bcc-61f9-d1e58f0e7e0b/mzaf_15096264711929810037.plus.aac.p.m4a",
       "previewTrack": "Good Morning, Captain",
       "previewAlbum": "Spiderland",
-      "x": 156.02,
-      "y": -172.7
+      "x": 136.28,
+      "y": -176.98
     },
     {
       "id": "drive-like-jehu",
@@ -5734,8 +5770,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/23/1d/67/231d67e9-3225-9573-5f80-337dbb9229ca/mzaf_2190581925182969410.plus.aac.p.m4a",
       "previewTrack": "Here Come the Rome Plows",
       "previewAlbum": "Yank Crime",
-      "x": 127.29,
-      "y": -191.91
+      "x": 133.86,
+      "y": -198.04
     },
     {
       "id": "the-jesus-lizard",
@@ -5771,8 +5807,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/13/43/84/13438476-14c7-6b71-5180-15a0dc6833bc/mzaf_18411978456549649515.plus.aac.p.m4a",
       "previewTrack": "Mouth Breather",
       "previewAlbum": "Bang",
-      "x": 103.9,
-      "y": -153.72
+      "x": 111.26,
+      "y": -133.5
     },
     {
       "id": "unwound",
@@ -5808,8 +5844,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/36/4f/0a/364f0a6a-ab0d-06ce-06f2-7a359b6cb4ce/mzaf_4463717839596237660.plus.aac.p.m4a",
       "previewTrack": "Corpse Pose",
       "previewAlbum": "Repetition",
-      "x": 56.08,
-      "y": -139.61
+      "x": 70.6,
+      "y": -144.51
     },
     {
       "id": "nomeansno",
@@ -5845,8 +5881,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/b8/0c/2a/b80c2a4d-3bf5-baff-049e-d63e942dd396/mzaf_6884269495765258162.plus.aac.p.m4a",
       "previewTrack": "It's Catching Up",
       "previewAlbum": "Terminal City Ricochet",
-      "x": 187.35,
-      "y": -182.66
+      "x": 195.89,
+      "y": -193.66
     },
     {
       "id": "refused",
@@ -5882,8 +5918,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/b5/98/4a/b5984a5f-4e0c-41de-96e5-1438737ff20d/mzaf_13972513821853713809.plus.aac.p.m4a",
       "previewTrack": "New Noise",
       "previewAlbum": "The Shape of Punk to Come (Deluxe Edition)",
-      "x": 160.61,
-      "y": -200
+      "x": 166.76,
+      "y": -206.95
     },
     {
       "id": "at-the-drive-in",
@@ -5919,8 +5955,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/c2/82/bd/c282bdd3-7719-493b-538b-2eaea00f747c/mzaf_9989361049792294619.plus.aac.p.m4a",
       "previewTrack": "One Armed Scissor",
       "previewAlbum": "Relationship of Command",
-      "x": 113.48,
-      "y": -132.59
+      "x": 95.5,
+      "y": -150.52
     },
     {
       "id": "trail-of-dead",
@@ -5956,8 +5992,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/ea/1c/9a/ea1c9a5f-04b9-8474-f13d-edca94318f0b/mzaf_1356582103255306466.plus.aac.p.m4a",
       "previewTrack": "Another Morning Stoner",
       "previewAlbum": "Source Tags & Codes",
-      "x": 119.11,
-      "y": -168.2
+      "x": 136.96,
+      "y": -160.19
     },
     {
       "id": "big-black",
@@ -5993,8 +6029,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/c7/5d/69/c75d6935-8776-b032-8a17-a34ac047e17f/mzaf_13736160081081451898.plus.aac.p.m4a",
       "previewTrack": "Kerosene",
       "previewAlbum": "Atomizer (Remastered)",
-      "x": 103.03,
-      "y": -199.42
+      "x": 95.55,
+      "y": -188.84
     },
     {
       "id": "toe",
@@ -6030,8 +6066,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d4/9c/95/d49c9514-83d3-0469-ca8b-36379af3d9fc/mzaf_17319043912274360078.plus.aac.p.m4a",
       "previewTrack": "Goodbye",
       "previewAlbum": "I Am Shark: Confessions Under Water, Vol. 3",
-      "x": 148.85,
-      "y": -216.31
+      "x": 152.7,
+      "y": -214.88
     },
     {
       "id": "sunny-day-real-estate",
@@ -6067,8 +6103,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/ed/ca/b7/edcab757-53bc-8a5a-a7b8-f1cf459b8414/mzaf_5122844513648167892.plus.aac.p.m4a",
       "previewTrack": "Seven",
       "previewAlbum": "Diary",
-      "x": 145.48,
-      "y": -201.48
+      "x": 153.4,
+      "y": -199.7
     },
     {
       "id": "american-football",
@@ -6105,8 +6141,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/53/2b/d9/532bd9e7-5f04-ab94-fe30-e85b911d15ce/mzaf_13111898941128044078.plus.aac.p.m4a",
       "previewTrack": "Never Meant",
       "previewAlbum": "American Football (Deluxe Edition)",
-      "x": 99.9,
-      "y": -121.72
+      "x": 88.08,
+      "y": -133.02
     },
     {
       "id": "cap-n-jazz",
@@ -6142,8 +6178,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/9d/bd/62/9dbd62be-90be-8e8c-600f-b9dbe8a435ee/mzaf_14670529132088086159.plus.aac.p.m4a",
       "previewTrack": "Little League",
       "previewAlbum": "Shmap'n Shmazz",
-      "x": 171.17,
-      "y": -189.06
+      "x": 181.26,
+      "y": -184.25
     },
     {
       "id": "duster",
@@ -6180,8 +6216,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/42/36/96/42369643-9f29-4892-c667-ee543a40f6a7/mzaf_13031833301279653512.plus.aac.p.m4a",
       "previewTrack": "Inside Out",
       "previewAlbum": "Stratosphere",
-      "x": 134.53,
-      "y": -139.53
+      "x": 136.26,
+      "y": -145
     },
     {
       "id": "far-apart",
@@ -6217,8 +6253,46 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/38/b0/ba/38b0ba83-1f79-c8d0-69f5-abc516ea320f/mzaf_8380317306927182375.plus.aac.p.m4a",
       "previewTrack": "Hazel",
       "previewAlbum": "Hazel- Single",
-      "x": 184.09,
-      "y": -197.51
+      "x": 178.84,
+      "y": -212.09
+    },
+    {
+      "id": "hum",
+      "name": "Hum",
+      "layer": "outside",
+      "genres": [
+        "alt-rock",
+        "shoegaze",
+        "indie-rock"
+      ],
+      "scope": [
+        "underground"
+      ],
+      "country": "US",
+      "activeFrom": 1989,
+      "realm": "american-underground",
+      "lineage": "noise-alt",
+      "signatureSong": "Stars",
+      "bio": "Hum formed in Champaign, Illinois in 1989, led by guitarist and vocalist Matt Talbott, developing a sound that layered heavily processed, downtuned guitars with melodic, almost dreamy vocal lines — a combination that placed the band at the intersection of shoegaze, space rock, and the heavier alternative rock of the era without fitting comfortably into any single one of those categories.\n\nYou'd Prefer an Astronaut (1995) brought the band its widest recognition, its dense wall of guitar and Talbott's detached, melodic delivery finding an audience on rock radio and television that few of their underground peers reached. Hum's sound — massive, textured guitar tones paired with an almost shoegaze-like sense of atmosphere — proved durably influential on later heavy alternative and post-shoegaze bands even as the group itself moved in and out of activity over the following decades, releasing only sporadically while its reputation continued to grow among musicians who cited them directly.",
+      "classicAlbums": [
+        {
+          "id": "youd-prefer-an-astronaut",
+          "title": "You'd Prefer an Astronaut",
+          "year": 1995,
+          "isClassic": true,
+          "classicReason": "You'd Prefer an Astronaut buries melody under layers of thick, downtuned guitar, the two never quite competing so much as fusing into a single dense texture. \"Stars\" pairs Matt Talbott's detached, almost weightless vocal with a guitar tone heavy enough to fill a room, the contrast giving the song a pull that heavier and lighter bands alike have chased since. The record sits at an unusual midpoint between shoegaze's atmosphere and alternative rock's muscle. Decades on, its guitar tone alone remains a reference point for bands trying to sound simultaneously massive and hazy.",
+          "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Features115/v4/21/7e/9c/217e9cb2-93f5-5a87-a7ec-3569d876cc3f/dj.bzfzcihp.jpg/600x600bb.jpg",
+          "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/75/f8/fc/75f8fcc3-9d04-f43f-e7b7-cd403f31f999/mzaf_6531437314727717986.plus.aac.p.m4a",
+          "previewTrack": "Stars"
+        }
+      ],
+      "influenceScore": 1,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/4f035d3e6f6605d4fe96f4603b2a288c/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/75/f8/fc/75f8fcc3-9d04-f43f-e7b7-cd403f31f999/mzaf_6531437314727717986.plus.aac.p.m4a",
+      "previewTrack": "Stars",
+      "previewAlbum": "You'd Prefer An Astronaut",
+      "x": -134.97,
+      "y": 160.07
     },
     {
       "id": "the-dismemberment-plan",
@@ -6254,8 +6328,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/b1/b1/0a/b1b10a49-a2ca-75a1-6fbe-e5de23676ce0/mzaf_1788588742503595901.plus.aac.p.m4a",
       "previewTrack": "The City",
       "previewAlbum": "Emergency & I",
-      "x": 172.67,
-      "y": -170.36
+      "x": 169.36,
+      "y": -168.79
     },
     {
       "id": "brand-new",
@@ -6291,8 +6365,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/51/c1/7c/51c17c6c-e970-bcea-bfd8-6495bdb7ca94/mzaf_17431394449230306890.plus.aac.p.m4a",
       "previewTrack": "Jesus Christ",
       "previewAlbum": "The Devil and God Are Raging Inside Me",
-      "x": 62.83,
-      "y": -124.22
+      "x": 54.35,
+      "y": -140.21
     },
     {
       "id": "la-dispute",
@@ -6328,8 +6402,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/47/9f/cb/479fcbca-4097-db27-08f6-39b1a8f11977/mzaf_11918860642557024503.plus.aac.p.m4a",
       "previewTrack": "King Park",
       "previewAlbum": "Wildlife",
-      "x": 144.73,
-      "y": -186.3
+      "x": 151.24,
+      "y": -184.65
     },
     {
       "id": "jeff-rosenstock",
@@ -6365,8 +6439,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d4/ee/37/d4ee37b7-5472-4d72-c187-3a04599939d0/mzaf_13857915468906167397.plus.aac.p.m4a",
       "previewTrack": "Festival Song",
       "previewAlbum": "WORRY.",
-      "x": 114.34,
-      "y": -180.3
+      "x": 116.71,
+      "y": -200.91
     },
     {
       "id": "get-up-kids",
@@ -6402,8 +6476,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/89/e2/d5/89e2d5f8-c096-b648-5f5a-9baa8b1397b2/mzaf_2567463733898181544.plus.aac.p.m4a",
       "previewTrack": "Action & Action",
       "previewAlbum": "Something to Write Home About (Deluxe Edition)",
-      "x": 172.93,
-      "y": -204.16
+      "x": 169.88,
+      "y": -194.33
     },
     {
       "id": "codeine",
@@ -6438,8 +6512,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/99/68/08/99680874-60ea-6553-7e10-4a1be2771dc7/mzaf_17227332619990580710.plus.aac.p.m4a",
       "previewTrack": "D",
       "previewAlbum": "Frigid Stars",
-      "x": 174.29,
-      "y": 79.11
+      "x": 169.1,
+      "y": 98.91
     },
     {
       "id": "godspeed-you-black-emperor",
@@ -6480,8 +6554,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/62/f1/39/62f139ba-97f2-d223-3e51-4684187473d4/mzaf_12198717839946392670.plus.aac.p.m4a",
       "previewTrack": "Sleep (Mixed)",
       "previewAlbum": "MODERAT FM",
-      "x": -72.57,
-      "y": -181.91
+      "x": -88.29,
+      "y": -173.15
     },
     {
       "id": "sigur-ros",
@@ -6517,8 +6591,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/8d/e0/46/8de0466b-dbaa-6f50-60be-6167b6122173/mzaf_1369980178126299888.plus.aac.p.m4a",
       "previewTrack": "Svefn-G-Englar",
       "previewAlbum": "Ágætis Byrjun",
-      "x": -101.62,
-      "y": -154.93
+      "x": -93.14,
+      "y": -157.78
     },
     {
       "id": "mogwai",
@@ -6559,8 +6633,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/68/96/94/68969423-5346-aad6-591e-627cdf2739b7/mzaf_7968106465459436073.plus.aac.p.m4a",
       "previewTrack": "Mogwai Fear Satan",
       "previewAlbum": "Young Team",
-      "x": -88.6,
-      "y": -123.34
+      "x": -86.87,
+      "y": -124.59
     },
     {
       "id": "bark-psychosis",
@@ -6595,8 +6669,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/58/c6/c5/58c6c5a9-245c-91f0-cc20-7843958021ae/mzaf_2793358689516479803.plus.aac.p.m4a",
       "previewTrack": "Absent Friend",
       "previewAlbum": "Hex",
-      "x": -124.68,
-      "y": -172.23
+      "x": -90.88,
+      "y": -195.07
     },
     {
       "id": "mono",
@@ -6632,8 +6706,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/0e/c9/9f/0ec99f80-16c5-c7c9-cb7e-c86a745243f9/mzaf_15953675492146231206.plus.aac.p.m4a",
       "previewTrack": "Ashes In The Snow",
       "previewAlbum": "Holy Ground: NYC Live With The Wordless Music Orchestra",
-      "x": -113.19,
-      "y": -166.14
+      "x": -132.71,
+      "y": -164.57
     },
     {
       "id": "explosions-in-the-sky",
@@ -6668,8 +6742,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/93/11/0c/93110cd7-91d9-85fc-52fb-07357b1aef7b/mzaf_1502388509077194502.plus.aac.p.m4a",
       "previewTrack": "Your Hand In Mine",
       "previewAlbum": "The Earth Is Not a Cold Dead Place",
-      "x": -127.62,
-      "y": -204.27
+      "x": -127.88,
+      "y": -205.21
     },
     {
       "id": "tortoise",
@@ -6705,8 +6779,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/e8/52/82/e85282ca-42ee-1a5b-00f0-f67cdb21ad3a/mzaf_14168451375296199788.plus.aac.p.m4a",
       "previewTrack": "TNT",
       "previewAlbum": "TNT",
-      "x": -81.91,
-      "y": -168.79
+      "x": -74.98,
+      "y": -164.09
     },
     {
       "id": "do-make-say-think",
@@ -6741,8 +6815,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/e3/e1/87/e3e187c8-3262-df48-b1b7-e7054933c1d7/mzaf_9725306398015621951.plus.aac.p.m4a",
       "previewTrack": "Classic Noodlanding",
       "previewAlbum": "& Yet & Yet",
-      "x": -115.53,
-      "y": -209.05
+      "x": -116.98,
+      "y": -212.28
     },
     {
       "id": "swans",
@@ -6780,8 +6854,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/07/da/3e/07da3e3d-9c51-2721-6b4b-c31d78871d54/mzaf_13441231706208255891.plus.aac.p.m4a",
       "previewTrack": "Helpless Child",
       "previewAlbum": "Soundtracks For the Blind",
-      "x": -66.33,
-      "y": -123.22
+      "x": -67.28,
+      "y": -124
     },
     {
       "id": "glenn-branca",
@@ -6817,8 +6891,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/01/1a/18/011a18d3-4b88-ae35-a7e0-24051d6ebcb7/mzaf_1267553778267092422.plus.aac.p.m4a",
       "previewTrack": "The Spectacular Commodity",
       "previewAlbum": "The Ascension",
-      "x": -127,
-      "y": -188.17
+      "x": -116.62,
+      "y": -165.35
     },
     {
       "id": "this-heat",
@@ -6859,8 +6933,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/db/42/f7/db42f79d-2297-2cfb-7648-0271d00ce6b0/mzaf_6498147158372508659.plus.aac.p.m4a",
       "previewTrack": "Sleep",
       "previewAlbum": "Deceit",
-      "x": -54.41,
-      "y": -146.32
+      "x": -61.56,
+      "y": -145.04
     },
     {
       "id": "rhys-chatham",
@@ -6896,8 +6970,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/a9/43/2c/a9432ceb-961f-c203-33f1-7705f77e2194/mzaf_2290675384659698596.plus.aac.p.m4a",
       "previewTrack": "Guitar Trio (1977)",
       "previewAlbum": "From the Kitchen Archives No. 3 - Amplified: New Music Meets Rock 1981-1986",
-      "x": -120.59,
-      "y": -151.83
+      "x": -106.08,
+      "y": -200.42
     },
     {
       "id": "teenage-jesus-and-the-jerks",
@@ -6933,8 +7007,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/80/01/7e/80017eae-0825-06f5-eba7-1181b6e93d24/mzaf_3028533782008051697.plus.aac.p.m4a",
       "previewTrack": "Orphans",
       "previewAlbum": "Rust",
-      "x": -98.53,
-      "y": -201.94
+      "x": -137.98,
+      "y": -193.85
     },
     {
       "id": "james-chance-and-the-contortions",
@@ -6975,8 +7049,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c7/e5/aa/c7e5aa50-e446-e57f-cacd-7a5cb79ce6f5/mzaf_12171711692065258843.plus.aac.p.m4a",
       "previewTrack": "Contort Yourself",
       "previewAlbum": "James Chance & The Contortions - February 4,1978@CBGB's (NYC)",
-      "x": -87.83,
-      "y": -187.08
+      "x": -77.94,
+      "y": -185.49
     },
     {
       "id": "mars",
@@ -7012,8 +7086,8 @@
       "previewUrl": null,
       "previewTrack": null,
       "previewAlbum": null,
-      "x": -143.62,
-      "y": -178.52
+      "x": -127.32,
+      "y": -149.39
     },
     {
       "id": "dna",
@@ -7054,8 +7128,8 @@
       "previewUrl": null,
       "previewTrack": null,
       "previewAlbum": null,
-      "x": -99.7,
-      "y": -173.14
+      "x": -111.6,
+      "y": -182.96
     },
     {
       "id": "blonde-redhead",
@@ -7091,8 +7165,45 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/f3/96/d5/f396d599-f53d-7e5e-f0f9-d9e1b857e05a/mzaf_7525480354355102510.plus.aac.p.m4a",
       "previewTrack": "In Particular",
       "previewAlbum": "Melody of Certain Damaged Lemons",
-      "x": -135.86,
-      "y": -161.94
+      "x": -128.59,
+      "y": -179.2
+    },
+    {
+      "id": "boris",
+      "name": "Boris",
+      "layer": "outside",
+      "genres": [
+        "drone",
+        "noise-rock"
+      ],
+      "scope": [
+        "underground"
+      ],
+      "country": "JP",
+      "activeFrom": 1992,
+      "realm": "post-rock-drone-noise",
+      "lineage": "drone",
+      "signatureSong": "Farewell",
+      "bio": "Boris formed in Tokyo in 1992 and took their name from a Melvins song. The trio of Atsuo, Takeshi and Wata have since made records in almost every heavy and quiet shape there is: slow, crushing drone, garage-punk rushes, shoegaze haze and near-silent ambient pieces, sometimes all on one album.\n\nAmplifier Worship and Flood made their name in drone around the turn of the century, and Pink (2005) carried them to listeners far beyond it. They have kept moving since, recording with Sunn O))), Merzbow and Ghost's Michio Kurihara, and wearing their loves openly: the sleeve of Akuma no Uta copies Nick Drake's Bryter Layter, and Atsuo has said Drake's music shaped theirs.",
+      "classicAlbums": [
+        {
+          "id": "flood",
+          "title": "Flood",
+          "year": 2000,
+          "isClassic": true,
+          "classicReason": "Flood is one seventy-minute piece in four parts that rises out of near-silence and takes its time getting anywhere. \"Flood I\" opens on a single clean guitar figure repeated almost to stillness, and only much later does the band let it swell into a long, crushing roar before it ebbs away again. Nothing is hurried; the patience is the point, and it lets a heavy band sound close to ambient music. It's the record that shows drone can be beautiful, not just loud.",
+          "imageUrl": "https://coverartarchive.org/release/51838493-3a1b-48cf-b7d3-a1dd35aec471/36357353321-500.jpg",
+          "previewUrl": null,
+          "previewTrack": null
+        }
+      ],
+      "influenceScore": 1,
+      "imageUrl": "https://cdn-images.dzcdn.net/images/artist/4d3ea1b634e21a6615603a7820d3f170/250x250-000000-80-0-0.jpg",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/56/78/8f/56788f37-b2ea-4cda-cf31-47f58f69d44d/mzaf_2450452555059901002.plus.aac.p.m4a",
+      "previewTrack": "Farewell",
+      "previewAlbum": "Pink",
+      "x": -109.02,
+      "y": -148.68
     },
     {
       "id": "anna-von-hausswolff",
@@ -7128,8 +7239,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4b/e4/f9/4be4f997-a04c-d887-5b36-cd2edb015004/mzaf_10867999856031983760.plus.aac.p.m4a",
       "previewTrack": "The Mysterious Vanishing of Electra",
       "previewAlbum": "Dead Magic",
-      "x": -139.3,
-      "y": -198.57
+      "x": -122.79,
+      "y": -193.25
     },
     {
       "id": "spiritualized",
@@ -7165,8 +7276,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/44/e1/85/44e18545-a703-0051-d3e4-1dde11ff83ac/mzaf_5029924211394673858.plus.aac.p.m4a",
       "previewTrack": "Ladies and gentlemen we are floating in space",
       "previewAlbum": "Ladies and gentlemen we are floating in space",
-      "x": -113.67,
-      "y": -179.13
+      "x": -101.7,
+      "y": -171.44
     },
     {
       "id": "spacemen-3",
@@ -7207,8 +7318,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f8/14/14/f8141405-638d-fdaa-b69d-d8a0a4e46126/mzaf_15911486978501140799.plus.aac.p.m4a",
       "previewTrack": "Walkin' with Jesus",
       "previewAlbum": "The Perfect Prescription",
-      "x": -102.09,
-      "y": -135.72
+      "x": -81.88,
+      "y": -142.21
     },
     {
       "id": "talk-talk",
@@ -7244,8 +7355,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/02/19/02/021902c1-3c85-7187-5966-4e1f0aceda01/mzaf_17439664143096951279.plus.aac.p.m4a",
       "previewTrack": "New Grass",
       "previewAlbum": "Laughing Stock",
-      "x": -79.76,
-      "y": -144.78
+      "x": -110.05,
+      "y": -125.52
     },
     {
       "id": "dirty-three",
@@ -7281,8 +7392,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/6a/7e/47/6a7e479e-e6bf-38ae-d11e-4350c1120eb5/mzaf_10397387344337285227.plus.aac.p.m4a",
       "previewTrack": "Sue's Last Ride",
       "previewAlbum": "Horse Stories",
-      "x": -103.93,
-      "y": -187.74
+      "x": -96.41,
+      "y": -183.31
     },
     {
       "id": "nirvana",
@@ -7318,8 +7429,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/a6/53/1e/a6531efa-397c-eb73-ecab-9b2790c1471e/mzaf_16440344883389407474.plus.aac.p.m4a",
       "previewTrack": "Smells Like Teen Spirit",
       "previewAlbum": "Nevermind",
-      "x": -99.11,
-      "y": 113.99
+      "x": -112.91,
+      "y": 79.25
     },
     {
       "id": "guided-by-voices",
@@ -7356,8 +7467,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/63/5f/19/635f19ca-d0f0-60ce-5e28-c7c16b7e6973/mzaf_30451997816575296.plus.aac.p.m4a",
       "previewTrack": "I Am a Scientist",
       "previewAlbum": "I Am a Scientist - EP",
-      "x": -134.16,
-      "y": 174.82
+      "x": -133.33,
+      "y": 110.59
     },
     {
       "id": "wilco",
@@ -7393,8 +7504,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/44/86/ea/4486ea54-6e7f-48ab-6d5c-f283fd8bfe50/mzaf_15749072995880483661.plus.aac.p.m4a",
       "previewTrack": "Jesus, Etc.",
       "previewAlbum": "Yankee Hotel Foxtrot",
-      "x": -75.07,
-      "y": 75.05
+      "x": -80.35,
+      "y": 79.8
     },
     {
       "id": "sleater-kinney",
@@ -7431,8 +7542,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/90/1b/ba/901bba26-e2f1-d057-4a88-526f3f31c9dd/mzaf_5325863054690202139.plus.aac.p.m4a",
       "previewTrack": "Dig Me Out",
       "previewAlbum": "Dig Me Out",
-      "x": -135.72,
-      "y": 118.98
+      "x": -115.36,
+      "y": 113.96
     },
     {
       "id": "violent-femmes",
@@ -7468,8 +7579,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/33/d0/88/33d088db-65e3-ea70-e8a5-e0d19774ddf2/mzaf_12883542085691579801.plus.aac.p.m4a",
       "previewTrack": "Blister In The Sun",
       "previewAlbum": "Violent Femmes",
-      "x": -124.71,
-      "y": 134.46
+      "x": -101.74,
+      "y": 100.68
     },
     {
       "id": "superchunk",
@@ -7505,8 +7616,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d4/09/27/d40927b4-9472-8e0a-b681-cdbd625bdcc7/mzaf_8596142144246502250.plus.aac.p.m4a",
       "previewTrack": "Driveway to Driveway",
       "previewAlbum": "Driveway to Driveway - EP",
-      "x": -118.59,
-      "y": 115.94
+      "x": -120.44,
+      "y": 97.33
     },
     {
       "id": "parquet-courts",
@@ -7542,8 +7653,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/e0/90/80/e0908028-33d9-6eda-6cd8-2ce084bf04e0/mzaf_11677691844297567168.plus.aac.p.m4a",
       "previewTrack": "Wide Awake",
       "previewAlbum": "Wide Awake!",
-      "x": -134.51,
-      "y": 148.12
+      "x": -149.58,
+      "y": 164.25
     },
     {
       "id": "spoon",
@@ -7579,8 +7690,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/1f/2e/16/1f2e16f4-a532-d768-6b7e-966545273bc4/mzaf_7534836677086530251.plus.aac.p.m4a",
       "previewTrack": "The Way We Get By",
       "previewAlbum": "Kill the Moonlight",
-      "x": -171.74,
-      "y": 122.11
+      "x": -146.68,
+      "y": 119.6
     },
     {
       "id": "car-seat-headrest",
@@ -7617,8 +7728,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/47/fe/5c/47fe5c86-ca7f-f373-4ca5-119a4a32f248/mzaf_10572137679335071180.plus.aac.p.m4a",
       "previewTrack": "Beach Life-In-Death",
       "previewAlbum": "Beach Life-In-Death - EP",
-      "x": -155.01,
-      "y": 159.87
+      "x": -142.95,
+      "y": 175.43
     },
     {
       "id": "the-national",
@@ -7654,8 +7765,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/1f/ab/46/1fab468b-302b-2212-2990-51b8c9f210bf/mzaf_3536227167195289031.plus.aac.p.m4a",
       "previewTrack": "Fake Empire",
       "previewAlbum": "Boxer",
-      "x": -57.46,
-      "y": 135.51
+      "x": -73.76,
+      "y": 136.78
     },
     {
       "id": "destroyer",
@@ -7691,8 +7802,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/79/58/69/795869bb-df4e-fb84-807a-6d0fffb4b3ed/mzaf_17835230455707365382.plus.aac.p.m4a",
       "previewTrack": "Kaputt",
       "previewAlbum": "Kaputt",
-      "x": -129.78,
-      "y": 102.63
+      "x": -133.9,
+      "y": 128.88
     },
     {
       "id": "peter-cat-recording-co",
@@ -7728,8 +7839,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/8d/f9/3c/8df93c36-2a1f-bc67-1c8d-f7831e55daff/mzaf_7328787612241656112.plus.aac.p.m4a",
       "previewTrack": "Floated By",
       "previewAlbum": "Bismillah",
-      "x": -109.11,
-      "y": 128.22
+      "x": -105.73,
+      "y": 129.37
     },
     {
       "id": "the-walkmen",
@@ -7765,8 +7876,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/7e/a5/0e/7ea50e1e-5518-d908-b1ce-741baa7a78cc/mzaf_8164671344865807492.plus.aac.p.m4a",
       "previewTrack": "The Rat",
       "previewAlbum": "Bows + Arrows",
-      "x": -152.47,
-      "y": 174.85
+      "x": -174.49,
+      "y": 129.79
     },
     {
       "id": "the-white-stripes",
@@ -7802,8 +7913,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/61/54/97/61549744-a83b-1c4d-58cf-e56b36beb4a7/mzaf_1246579179619940831.plus.aac.p.m4a",
       "previewTrack": "Seven Nation Army",
       "previewAlbum": "Elephant",
-      "x": -105.1,
-      "y": 140.58
+      "x": -118.71,
+      "y": 128.78
     },
     {
       "id": "pulp",
@@ -7839,8 +7950,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/74/69/18/7469188f-7b9e-a200-dae8-8710da15b5f4/mzaf_1292802368291136038.plus.aac.p.m4a",
       "previewTrack": "Common People",
       "previewAlbum": "Hits",
-      "x": -94.85,
-      "y": 97.15
+      "x": -53.37,
+      "y": 100.46
     },
     {
       "id": "the-shins",
@@ -7877,8 +7988,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/9c/d5/d3/9cd5d3ba-fc78-517c-1a16-5b26328cec9b/mzaf_12032531091979728601.plus.aac.p.m4a",
       "previewTrack": "New Slang",
       "previewAlbum": "Oh, Inverted World",
-      "x": -156.56,
-      "y": 122.72
+      "x": -150.75,
+      "y": 104.96
     },
     {
       "id": "neutral-milk-hotel",
@@ -7914,8 +8025,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f5/f1/05/f5f1052a-d76f-89ef-9b47-d60ad0eeb1cd/mzaf_7342123959777370070.plus.aac.p.m4a",
       "previewTrack": "In the Aeroplane Over the Sea",
       "previewAlbum": "In the Aeroplane Over the Sea",
-      "x": -43.38,
-      "y": 154.78
+      "x": -35.22,
+      "y": 151.2
     },
     {
       "id": "of-montreal",
@@ -7952,8 +8063,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/f2/07/64/f20764dd-ac7c-e870-c2cd-35d2af769fe2/mzaf_7322967187124414344.plus.aac.p.m4a",
       "previewTrack": "Gronlandic Edit",
       "previewAlbum": "Hissing Fauna, Are You the Destroyer?",
-      "x": -76.11,
-      "y": 97.87
+      "x": -88.45,
+      "y": 112.73
     },
     {
       "id": "the-flaming-lips",
@@ -7989,8 +8100,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/19/f5/3a/19f53ae0-bc45-9874-a950-a8645268aebc/mzaf_2975609157599388084.plus.aac.p.m4a",
       "previewTrack": "Race for the Prize",
       "previewAlbum": "The Soft Bulletin",
-      "x": -82.52,
-      "y": 124.43
+      "x": -82.83,
+      "y": 98.63
     },
     {
       "id": "mgmt",
@@ -8026,8 +8137,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/63/a8/19/63a819cb-938a-3f82-49c9-d898d52a1d67/mzaf_8967626079243486198.plus.aac.p.m4a",
       "previewTrack": "Time to Pretend",
       "previewAlbum": "Oracular Spectacular",
-      "x": -85.13,
-      "y": 88.51
+      "x": -100.57,
+      "y": 117.44
     },
     {
       "id": "grizzly-bear",
@@ -8063,8 +8174,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/4f/be/29/4fbe295f-907e-bb4a-1065-a362c758c9e1/mzaf_14597126517946721595.plus.aac.p.m4a",
       "previewTrack": "Two Weeks",
       "previewAlbum": "Two Weeks - Single",
-      "x": -63.5,
-      "y": 169.4
+      "x": -84.57,
+      "y": 148.96
     },
     {
       "id": "olivia-tremor-control",
@@ -8101,8 +8212,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/c5/59/fe/c559fe26-7c23-1de8-3f69-a80c8aa52353/mzaf_8138965618236964844.plus.aac.p.m4a",
       "previewTrack": "Jumping Fences",
       "previewAlbum": "Music From The Unrealized Film Script: Dusk At Cubist Castle",
-      "x": -115.66,
-      "y": 169.59
+      "x": -144,
+      "y": 144.16
     },
     {
       "id": "beck",
@@ -8138,8 +8249,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/bf/c4/1d/bfc41d5a-5ea7-05bd-e3e3-cc0ceda0986f/mzaf_6710208481892173061.plus.aac.p.m4a",
       "previewTrack": "Lost Cause",
       "previewAlbum": "Sea Change",
-      "x": -42.33,
-      "y": 129.98
+      "x": -56.35,
+      "y": 138.17
     },
     {
       "id": "st-vincent",
@@ -8175,8 +8286,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/ff/37/74/ff3774c4-a8fa-c938-f37d-eeb95f3d3f89/mzaf_16166352228586443349.plus.aac.p.m4a",
       "previewTrack": "Cruel",
       "previewAlbum": "Strange Mercy",
-      "x": -148.92,
-      "y": 105.33
+      "x": -88.91,
+      "y": 129.52
     },
     {
       "id": "arcade-fire",
@@ -8212,8 +8323,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/48/06/30/4806304b-864b-2245-3132-2a7afb024cda/mzaf_3214310670253708667.plus.aac.p.m4a",
       "previewTrack": "Wake Up",
       "previewAlbum": "Funeral",
-      "x": -167.81,
-      "y": 107.43
+      "x": -164.59,
+      "y": 115.48
     },
     {
       "id": "tame-impala",
@@ -8249,8 +8360,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/83/5a/2b/835a2b42-cfad-2bd0-117b-8150f6f0cb30/mzaf_733122625819472017.plus.aac.p.m4a",
       "previewTrack": "The Less I Know the Better",
       "previewAlbum": "Currents",
-      "x": -143.72,
-      "y": 134.44
+      "x": -156.74,
+      "y": 131
     },
     {
       "id": "king-gizzard-and-the-lizard-wizard",
@@ -8286,8 +8397,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/44/a4/92/44a492e1-5665-ec3f-119a-a743e89b2476/mzaf_15891660360505722801.plus.aac.p.m4a",
       "previewTrack": "Robot Stop",
       "previewAlbum": "Nonagon Infinity",
-      "x": -78.35,
-      "y": 175.64
+      "x": -46.69,
+      "y": 111.61
     },
     {
       "id": "vampire-weekend",
@@ -8323,8 +8434,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/c6/5c/6b/c65c6bf2-8866-1c1b-90e5-6e1c44e9bc8d/mzaf_4899234497665483910.plus.aac.p.m4a",
       "previewTrack": "Step",
       "previewAlbum": "Modern Vampires of the City",
-      "x": -147.75,
-      "y": 149.09
+      "x": -129.99,
+      "y": 174.43
     },
     {
       "id": "galaxie-500",
@@ -8361,8 +8472,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/46/c0/d0/46c0d00f-7575-db03-7143-db619140c3df/mzaf_13976250149983055192.plus.aac.p.m4a",
       "previewTrack": "Tugboat",
       "previewAlbum": "Today",
-      "x": 56.87,
-      "y": 100.45
+      "x": 80.37,
+      "y": 101.43
     },
     {
       "id": "echo-and-the-bunnymen",
@@ -8397,8 +8508,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/be/ea/05/beea05d3-da20-5856-5552-bebb1d7c1f4c/mzaf_18275892302936094611.plus.aac.p.m4a",
       "previewTrack": "The Killing Moon",
       "previewAlbum": "Songs to Learn and Sing",
-      "x": -257.42,
-      "y": 64.59
+      "x": -274.91,
+      "y": 53.34
     },
     {
       "id": "the-modern-lovers",
@@ -8433,8 +8544,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/78/b0/c7/78b0c7c4-c7ed-cc53-b58e-5869a8ceb74b/mzaf_7682775308196299062.plus.aac.p.m4a",
       "previewTrack": "Roadrunner (Once)",
       "previewAlbum": "The Modern Lovers",
-      "x": -293.73,
-      "y": 23.91
+      "x": -262.13,
+      "y": 30.51
     },
     {
       "id": "animal-collective",
@@ -8471,8 +8582,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/be/8f/fd/be8ffd04-1cee-2e2a-2c44-86670ffd609f/mzaf_17079070247245279859.plus.aac.p.m4a",
       "previewTrack": "My Girls",
       "previewAlbum": "Merriweather Post Pavilion",
-      "x": -32.81,
-      "y": 67.76
+      "x": -37.08,
+      "y": 96.25
     },
     {
       "id": "patti-smith",
@@ -8508,8 +8619,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f4/ac/0f/f4ac0f16-d919-d024-8b6e-2140467311fe/mzaf_5175574562412187547.plus.aac.p.m4a",
       "previewTrack": "Gloria",
       "previewAlbum": "Horses",
-      "x": -193.87,
-      "y": 71.74
+      "x": -173.08,
+      "y": 32.15
     },
     {
       "id": "ramones",
@@ -8544,8 +8655,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/07/66/3f/07663f2e-8f1a-c22f-a688-a8599002214c/mzaf_1731743994284736681.plus.aac.p.m4a",
       "previewTrack": "Blitzkrieg Bop",
       "previewAlbum": "Ramones (40th Anniversary Deluxe Edition)",
-      "x": -204.79,
-      "y": 11.05
+      "x": -209.12,
+      "y": -111.44
     },
     {
       "id": "the-clash",
@@ -8580,8 +8691,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/fb/f5/b4/fbf5b472-dd9d-5984-c8c5-114716c105cb/mzaf_14673080368047782781.plus.aac.p.m4a",
       "previewTrack": "London Calling",
       "previewAlbum": "London Calling",
-      "x": -139.08,
-      "y": -50.75
+      "x": -149.29,
+      "y": -78.5
     },
     {
       "id": "the-fall",
@@ -8616,8 +8727,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/93/30/42/93304210-552d-4b0c-dfc0-483114254f31/mzaf_596304229321779067.plus.aac.p.m4a",
       "previewTrack": "The Classical",
       "previewAlbum": "The Classical",
-      "x": -195.49,
-      "y": 41.39
+      "x": -158.81,
+      "y": 5.3
     },
     {
       "id": "the-chameleons",
@@ -8652,8 +8763,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/cf/cb/5d/cfcb5ddf-ab2f-61e5-9e4b-8f8a3c2ede34/mzaf_8826864079753576500.plus.aac.p.m4a",
       "previewTrack": "Second Skin",
       "previewAlbum": "Script of the Bridge (25th Anniversary Edition)",
-      "x": -303.8,
-      "y": -24.55
+      "x": -319.86,
+      "y": -33.38
     },
     {
       "id": "the-sound",
@@ -8687,8 +8798,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/df/e8/ed/dfe8ed18-badc-781c-4e75-24b85406ab71/mzaf_3762774303284794777.plus.aac.p.m4a",
       "previewTrack": "I Can't Escape Myself",
       "previewAlbum": "Jeopardy",
-      "x": -243,
-      "y": -44.7
+      "x": -247.02,
+      "y": -35.05
     },
     {
       "id": "buzzcocks",
@@ -8723,8 +8834,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/58/6d/da/586ddab3-793a-a2da-aa2a-84cff03e701a/mzaf_4483556395080542610.plus.aac.p.m4a",
       "previewTrack": "Ever Fallen in Love (With Someone You Shouldn't've?)",
       "previewAlbum": "Love Bites (Special Edition)",
-      "x": -234.51,
-      "y": -112.52
+      "x": -271.78,
+      "y": -62.12
     },
     {
       "id": "x-ray-spex",
@@ -8759,8 +8870,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/6b/94/8b/6b948bd8-7d0f-4c89-7835-adf179ec9037/mzaf_12275598936620441210.plus.aac.p.m4a",
       "previewTrack": "Identity",
       "previewAlbum": "Germ Free Adolescents",
-      "x": -200.89,
-      "y": -26.89
+      "x": -259.63,
+      "y": -2.65
     },
     {
       "id": "roxy-music",
@@ -8795,8 +8906,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/1b/09/d0/1b09d087-2be6-fd42-1cef-f70d5666c038/mzaf_7829975988089780628.plus.aac.p.m4a",
       "previewTrack": "Virginia Plain",
       "previewAlbum": "Roxy Music",
-      "x": -162.38,
-      "y": -5.34
+      "x": -201.5,
+      "y": -55.57
     },
     {
       "id": "kate-bush",
@@ -8831,8 +8942,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/9d/b4/87/9db487bc-9aa6-390d-911d-7e234bc227f0/mzaf_571823162673168934.plus.aac.p.m4a",
       "previewTrack": "Running Up That Hill (A Deal With God)",
       "previewAlbum": "Hounds of Love",
-      "x": -174.01,
-      "y": 17.2
+      "x": -186.75,
+      "y": 58.97
     },
     {
       "id": "scott-walker",
@@ -8867,8 +8978,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/2f/08/7d/2f087d96-59d6-4553-8386-eb31496c86af/mzaf_209363440247863725.plus.aac.p.m4a",
       "previewTrack": "It's Raining Today",
       "previewAlbum": "Scott Walker & The Walker Brothers - 1965-1970",
-      "x": -233.71,
-      "y": 23.33
+      "x": -196.4,
+      "y": -9.7
     },
     {
       "id": "the-slits",
@@ -8903,8 +9014,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/7b/55/3f/7b553fbf-e299-1992-404d-176f263503f7/mzaf_3148528104263814017.plus.aac.p.m4a",
       "previewTrack": "Typical Girls",
       "previewAlbum": "Cut",
-      "x": -258.75,
-      "y": -18.09
+      "x": -285.43,
+      "y": -41.39
     },
     {
       "id": "pj-harvey",
@@ -8939,8 +9050,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ae/04/2e/ae042e17-8d3d-eb63-bb62-d31085bae82e/mzaf_15941729863414158524.plus.aac.p.m4a",
       "previewTrack": "Down by the Water",
       "previewAlbum": "To Bring You My Love",
-      "x": -166.45,
-      "y": 45.2
+      "x": -106.54,
+      "y": 16.09
     },
     {
       "id": "wipers",
@@ -8975,8 +9086,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/2d/ec/46/2dec4611-37a2-7f24-80c4-7a814946afcb/mzaf_14158693383832591380.plus.aac.p.m4a",
       "previewTrack": "Return of the Rat",
       "previewAlbum": "Is This Real?",
-      "x": -171.11,
-      "y": -66.87
+      "x": -150.37,
+      "y": -23.33
     },
     {
       "id": "the-cranberries",
@@ -9011,8 +9122,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/77/66/37/77663729-e773-ec0f-8a19-b026bcdc27c8/mzaf_2992994050246771751.plus.aac.p.m4a",
       "previewTrack": "Dreams (Remastered 2026)",
       "previewAlbum": "Everybody Else Is Doing It, So Why Can't We? (Remastered 2026)",
-      "x": -199.95,
-      "y": -43.64
+      "x": -215.02,
+      "y": -19.4
     },
     {
       "id": "airiel",
@@ -9047,8 +9158,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/27/a7/db/27a7db63-1018-8c4e-eda9-e6e7e98c4898/mzaf_4149474130424542232.plus.aac.p.m4a",
       "previewTrack": "In Your Room",
       "previewAlbum": "Winks & Kisses (20th Anniversary Deluxe Edition)",
-      "x": -275.54,
-      "y": -14.74
+      "x": -255.99,
+      "y": -44.45
     },
     {
       "id": "panchiko",
@@ -9084,8 +9195,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/33/cd/9f/33cd9f51-bb1f-3744-9064-dda00e8f2e2c/mzaf_2313306040953006719.plus.aac.p.m4a",
       "previewTrack": "D>E>A>T>H>M>E>T>A>L",
       "previewAlbum": "D>E>A>T>H>M>E>T>A>L",
-      "x": -256.37,
-      "y": -1.46
+      "x": -227.86,
+      "y": -21.47
     },
     {
       "id": "beabadoobee",
@@ -9121,8 +9232,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e1/b0/8b/e1b08be3-25de-0c42-6ee3-c29bc111d66f/mzaf_14078666469678526928.plus.aac.p.m4a",
       "previewTrack": "All I Did Was Dream of You (feat. The Marías)",
       "previewAlbum": "All I Did Was Dream of You (feat. The Marías) - Single",
-      "x": -195.85,
-      "y": -10.72
+      "x": -194.05,
+      "y": 39.11
     },
     {
       "id": "the-radio-dept",
@@ -9159,8 +9270,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/08/30/90/0830906b-4821-e23f-0a81-dcfc2ade4f76/mzaf_10721044513745636946.plus.aac.p.m4a",
       "previewTrack": "Heaven's on Fire",
       "previewAlbum": "Clinging to a Scheme",
-      "x": -249.49,
-      "y": 9.55
+      "x": -210.42,
+      "y": -40.65
     },
     {
       "id": "belle-and-sebastian",
@@ -9198,8 +9309,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/6e/5c/ca/6e5cca84-d1c4-37d7-358d-e0c8f9905ca5/mzaf_12362573083358710500.plus.aac.p.m4a",
       "previewTrack": "Get Me Away from Here, I'm Dying",
       "previewAlbum": "If You're Feeling Sinister",
-      "x": -267.45,
-      "y": -63.81
+      "x": -262.15,
+      "y": -19.24
     },
     {
       "id": "camera-obscura",
@@ -9237,8 +9348,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/e9/d6/ba/e9d6ba07-732d-0fb7-a85b-41136fba85f4/mzaf_7323674812092512751.plus.aac.p.m4a",
       "previewTrack": "Lloyd, I'm Ready to Be Heartbroken",
       "previewAlbum": "Lloyd, I'm Ready to Be Heartbroken - Single",
-      "x": -317.98,
-      "y": -36.14
+      "x": -311.56,
+      "y": -17.07
     },
     {
       "id": "the-pastels",
@@ -9273,8 +9384,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview124/v4/d1/e8/0a/d1e80a6c-cdf4-2567-614a-8867b9490635/mzaf_2879451327060486674.plus.aac.p.m4a",
       "previewTrack": "Baby Honey",
       "previewAlbum": "Big Gold Dreams: a Story of Scottish Independent Music 1977-1989",
-      "x": -283.21,
-      "y": -77
+      "x": -302.46,
+      "y": -32.96
     },
     {
       "id": "talulah-gosh",
@@ -9309,8 +9420,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/47/e0/bd/47e0bdaa-edc4-616b-27ca-7e107ea27ac4/mzaf_5130119621879041374.plus.aac.p.m4a",
       "previewTrack": "Talulah Gosh",
       "previewAlbum": "Was It Just a Dream?",
-      "x": -302.25,
-      "y": -39.66
+      "x": -292.11,
+      "y": -56.81
     },
     {
       "id": "heavenly",
@@ -9345,8 +9456,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e4/fe/51/e4fe5133-5f44-b3ae-9d00-20fc12c75f05/mzaf_9360809646520559173.plus.aac.p.m4a",
       "previewTrack": "P.U.N.K. Girl",
       "previewAlbum": "Atta Girl - EP",
-      "x": -307.4,
-      "y": -51.6
+      "x": -252.2,
+      "y": -69.63
     },
     {
       "id": "black-tambourine",
@@ -9382,8 +9493,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d7/b1/25/d7b12555-84b1-25d2-7685-632b760dae36/mzaf_16911192825381960972.plus.aac.p.m4a",
       "previewTrack": "Throw Aggi Off the Bridge",
       "previewAlbum": "Black Tambourine",
-      "x": -208.76,
-      "y": -11.99
+      "x": -205.73,
+      "y": -28.5
     },
     {
       "id": "beat-happening",
@@ -9418,8 +9529,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/1a/d3/e7/1ad3e773-5f17-e472-3bd2-f2c59868038b/mzaf_15793773341151805507.plus.aac.p.m4a",
       "previewTrack": "Indian Summer",
       "previewAlbum": "Jamboree",
-      "x": -283.65,
-      "y": 6.38
+      "x": -237.1,
+      "y": -63.69
     },
     {
       "id": "the-blue-nile",
@@ -9454,8 +9565,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/de/b6/e2/deb6e240-e300-f3c9-f3ff-60de00a86f0b/mzaf_2327394596491550715.plus.aac.p.m4a",
       "previewTrack": "The Downtown Lights",
       "previewAlbum": "Hats",
-      "x": -305.76,
-      "y": -66.71
+      "x": -298.1,
+      "y": -70.77
     },
     {
       "id": "prefab-sprout",
@@ -9490,8 +9601,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/64/e8/f0/64e8f04f-eef3-b8a4-1bac-3de440a33a4b/mzaf_13945395199513543583.plus.aac.p.m4a",
       "previewTrack": "Bonny",
       "previewAlbum": "Steve McQueen (Legacy Edition)",
-      "x": -218.36,
-      "y": 47.02
+      "x": -226.33,
+      "y": 37.54
     },
     {
       "id": "black-midi",
@@ -9528,8 +9639,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/e6/61/26/e66126e3-4422-2b58-2de7-e822274fb164/mzaf_4248898334202044363.plus.aac.p.m4a",
       "previewTrack": "Sugar/Tzu",
       "previewAlbum": "Hellfire",
-      "x": -269.24,
-      "y": -3.38
+      "x": -271.95,
+      "y": -27.79
     },
     {
       "id": "black-country-new-road",
@@ -9565,8 +9676,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/55/00/2d/55002d7b-49dc-eaf0-0c27-304bfa32adda/mzaf_14321217240820982700.plus.aac.p.m4a",
       "previewTrack": "The Place Where He Inserted the Blade",
       "previewAlbum": "Ants From Up There",
-      "x": -287.15,
-      "y": -20.57
+      "x": -234.24,
+      "y": -32.8
     },
     {
       "id": "squid",
@@ -9608,8 +9719,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/4c/e2/02/4ce202bd-c120-5d94-68e3-389760fa5877/mzaf_6245098959850246306.plus.aac.p.m4a",
       "previewTrack": "Narrator",
       "previewAlbum": "Bright Green Field",
-      "x": -160.68,
-      "y": -48.65
+      "x": -157.44,
+      "y": -54.99
     },
     {
       "id": "jockstrap",
@@ -9645,8 +9756,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b2/1a/d9/b21ad96a-1a7c-f76b-8df6-fd59fe874fae/mzaf_16501383736942719653.plus.aac.p.m4a",
       "previewTrack": "Concrete Over Water",
       "previewAlbum": "Concrete Over Water - Single",
-      "x": -214.72,
-      "y": 32.27
+      "x": -258.42,
+      "y": 14.13
     },
     {
       "id": "everything-everything",
@@ -9682,8 +9793,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/7f/35/b8/7f35b845-dc02-7e5e-6c4e-bee1deac81c4/mzaf_5594368715849944567.plus.aac.p.m4a",
       "previewTrack": "Distant Past",
       "previewAlbum": "Get To Heaven",
-      "x": -212.21,
-      "y": -39.32
+      "x": -197.58,
+      "y": -38.61
     },
     {
       "id": "the-last-dinner-party",
@@ -9719,8 +9830,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/81/ef/b3/81efb3ef-f0a3-5b9b-70ea-c28fe2f1a5bf/mzaf_6235088223664714645.plus.aac.p.m4a",
       "previewTrack": "Nothing Matters",
       "previewAlbum": "Nothing Matters - Single",
-      "x": -255.08,
-      "y": -75.69
+      "x": -246.84,
+      "y": 8.23
     },
     {
       "id": "bikini-kill",
@@ -9756,8 +9867,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/3a/14/67/3a1467db-a3fe-9c11-238b-aea2f186a471/mzaf_11450236995038389667.plus.aac.p.m4a",
       "previewTrack": "Rebel Girl",
       "previewAlbum": "The Punk Singer (Original Motion Picture Soundtrack)",
-      "x": -320,
-      "y": -16.03
+      "x": -307.34,
+      "y": 5.5
     },
     {
       "id": "bratmobile",
@@ -9797,8 +9908,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/d9/5a/b5/d95ab538-20db-ebd0-be68-5db95df5ea37/mzaf_11944277002812746935.plus.aac.p.m4a",
       "previewTrack": "Cool Schmool (Remastered)",
       "previewAlbum": "Pottymouth (Remastered Version)",
-      "x": -237.91,
-      "y": 48.38
+      "x": -241.06,
+      "y": 24.64
     },
     {
       "id": "coil",
@@ -9835,8 +9946,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/af/72/95/af729537-4453-2b5f-688a-d8b7de80f7b8/mzaf_16225036087961257329.plus.aac.p.m4a",
       "previewTrack": "Fire of the Mind",
       "previewAlbum": "The Ape of Naples",
-      "x": 251.36,
-      "y": -32.24
+      "x": 250.07,
+      "y": -20.76
     },
     {
       "id": "steve-roach",
@@ -9872,8 +9983,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/ae/21/83/ae21832c-c206-b3ea-4d28-2cb49c54b632/mzaf_17563128072023375009.plus.aac.p.m4a",
       "previewTrack": "Structures From Silence",
       "previewAlbum": "Structures From Silence (30th Anniversary Deluxe Remastered Edition)",
-      "x": 288.85,
-      "y": -15.52
+      "x": 276.23,
+      "y": -72.64
     },
     {
       "id": "sneaker-pimps",
@@ -9909,8 +10020,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/25/f0/67/25f0670f-327e-1f20-83d8-d84df553a3a1/mzaf_7882065199860008452.plus.aac.p.m4a",
       "previewTrack": "6 Underground",
       "previewAlbum": "Becoming X",
-      "x": 317.73,
-      "y": -42.18
+      "x": 308.27,
+      "y": -43.34
     },
     {
       "id": "slayyyter",
@@ -9946,8 +10057,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4e/60/aa/4e60aab6-ffb7-b319-1b12-1be05eb56832/mzaf_6344798636293333887.plus.aac.p.m4a",
       "previewTrack": "BEAT UP CHANEL$",
       "previewAlbum": "WOR$T GIRL IN AMERICA",
-      "x": 346.45,
-      "y": -33.82
+      "x": 337.75,
+      "y": -6.7
     },
     {
       "id": "kero-kero-bonito",
@@ -9985,8 +10096,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/c7/5b/50/c75b50ee-463a-c566-119c-cd239a0d6b63/mzaf_663979713176091147.plus.aac.p.m4a",
       "previewTrack": "Make Believe",
       "previewAlbum": "Make Believe - Single",
-      "x": 198.04,
-      "y": -25.32
+      "x": 215.34,
+      "y": -23.27
     },
     {
       "id": "deaths-dynamic-shroud",
@@ -10023,8 +10134,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/75/28/cb/7528cb83-9154-0b60-6a75-874a5de0df87/mzaf_2892556025188591661.plus.aac.p.m4a",
       "previewTrack": "내 마음은 떨고",
       "previewAlbum": "I'll Try Living Like This",
-      "x": 262.88,
-      "y": -5.62
+      "x": 276.01,
+      "y": -38.78
     },
     {
       "id": "2814",
@@ -10060,8 +10171,8 @@
       "previewUrl": null,
       "previewTrack": null,
       "previewAlbum": null,
-      "x": 286.99,
-      "y": -73.86
+      "x": 312.82,
+      "y": -31.16
     },
     {
       "id": "george-clanton",
@@ -10097,8 +10208,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/96/94/b5/9694b503-9dd5-8b9c-abc0-6d9389e2bdd4/mzaf_17144101658277353389.plus.aac.p.m4a",
       "previewTrack": "Make It Forever",
       "previewAlbum": "Make It Forever - Single",
-      "x": 315.09,
-      "y": -24.61
+      "x": 290.04,
+      "y": -20.35
     },
     {
       "id": "fka-twigs",
@@ -10134,8 +10245,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/5d/e3/d3/5de3d30c-89e7-9586-fb02-b4aee1ed677a/mzaf_8601142887561379104.plus.aac.p.m4a",
       "previewTrack": "Two Weeks",
       "previewAlbum": "LP1",
-      "x": 218.63,
-      "y": -39.72
+      "x": 234.38,
+      "y": -46.75
     },
     {
       "id": "sheena-ringo",
@@ -10171,8 +10282,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/f5/9a/ac/f59aaca1-c190-38a0-6d1a-cc32b2a64c24/mzaf_5961229579638378306.plus.aac.p.m4a",
       "previewTrack": "Honnou - Instinct",
       "previewAlbum": "The Best 3 Sheena Ringo - Single",
-      "x": 306.47,
-      "y": 11.56
+      "x": 311.96,
+      "y": -3.28
     },
     {
       "id": "grimes",
@@ -10209,8 +10320,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/68/38/04/683804f6-b156-1cf8-ab01-e782d9a16808/mzaf_3277375761780317207.plus.aac.p.m4a",
       "previewTrack": "Oblivion",
       "previewAlbum": "Visions",
-      "x": 248.44,
-      "y": -0.87
+      "x": 254.24,
+      "y": -4.09
     },
     {
       "id": "magdalena-bay",
@@ -10247,8 +10358,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b1/ee/26/b1ee26e6-d5f7-f80c-fcbd-6fea2e2a65ba/mzaf_17740731281939045477.plus.aac.p.m4a",
       "previewTrack": "Death & Romance",
       "previewAlbum": "Imaginal Disk",
-      "x": 327.87,
-      "y": -4.32
+      "x": 314.95,
+      "y": -18.34
     },
     {
       "id": "xiu-xiu",
@@ -10284,8 +10395,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/9d/c5/e5/9dc5e564-6443-44fb-7707-e2f40dd18d8c/mzaf_5605602541214244349.plus.aac.p.m4a",
       "previewTrack": "I Luv the Valley OH!",
       "previewAlbum": "Fabulous Muscles",
-      "x": 156.78,
-      "y": -24.32
+      "x": 157.51,
+      "y": -27.75
     },
     {
       "id": "mid-air-thief",
@@ -10321,8 +10432,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/b5/5a/33/b55a3387-7d24-6dd3-e668-69898c0d08c6/mzaf_586205901028936094.plus.aac.p.m4a",
       "previewTrack": "These Chains",
       "previewAlbum": "Crumbling",
-      "x": 222.65,
-      "y": 1.73
+      "x": 227.53,
+      "y": 3.36
     },
     {
       "id": "candy-claws",
@@ -10358,8 +10469,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/f4/e2/d0/f4e2d0e3-4050-c428-2b4f-3000947bd006/mzaf_5496008696542774690.plus.aac.p.m4a",
       "previewTrack": "Pangaea Girls (Magic Feeling)",
       "previewAlbum": "Ceres & Calypso in the Deep Time (10th Anniversary)",
-      "x": -173.03,
-      "y": -19.08
+      "x": -186.94,
+      "y": -46.07
     },
     {
       "id": "the-marias",
@@ -10394,8 +10505,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/46/59/68/465968ed-5c6d-0f97-167d-6f53b74793fc/mzaf_12576584058255046082.plus.aac.p.m4a",
       "previewTrack": "No One Noticed",
       "previewAlbum": "Submarine",
-      "x": -276.94,
-      "y": 23.43
+      "x": -298.34,
+      "y": -7.85
     },
     {
       "id": "alex-g",
@@ -10432,8 +10543,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/a1/20/2a/a1202adc-c31d-5e5e-8db6-a8a3fede25f7/mzaf_5302984910528423530.plus.aac.p.m4a",
       "previewTrack": "Gretel",
       "previewAlbum": "House of Sugar",
-      "x": -39.43,
-      "y": 114.13
+      "x": -56.7,
+      "y": 154.28
     },
     {
       "id": "mj-lenderman",
@@ -10470,8 +10581,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e3/a0/dd/e3a0dd77-84c8-2667-942f-3683dcaaa989/mzaf_5123523057144259219.plus.aac.p.m4a",
       "previewTrack": "She's Leaving You",
       "previewAlbum": "Manning Fireworks",
-      "x": -70.27,
-      "y": 133.43
+      "x": -68.48,
+      "y": 148.78
     },
     {
       "id": "wednesday",
@@ -10508,8 +10619,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/5e/07/95/5e07950d-f723-82c9-2fc2-808861b503d6/mzaf_6055761411072954691.plus.aac.p.m4a",
       "previewTrack": "Bull Believer",
       "previewAlbum": "Rat Saw God",
-      "x": -82.13,
-      "y": 139.61
+      "x": -47.76,
+      "y": 124.56
     },
     {
       "id": "bonnie-prince-billy",
@@ -10550,8 +10661,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/f9/f7/8e/f9f78e5a-2f93-0bda-37e1-5398f3a0c802/mzaf_6508692992897483242.plus.aac.p.m4a",
       "previewTrack": "I See a Darkness",
       "previewAlbum": "Now Here's My Plan - EP",
-      "x": 134.09,
-      "y": 89.12
+      "x": 145.08,
+      "y": 87.17
     },
     {
       "id": "turnstile",
@@ -10592,8 +10703,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/55/72/96/55729631-b8bb-9bb4-eed1-2ef01d77768d/mzaf_11256081667780001792.plus.aac.p.m4a",
       "previewTrack": "BLACKOUT",
       "previewAlbum": "GLOW ON",
-      "x": 163.16,
-      "y": -212.74
+      "x": 181.83,
+      "y": -199.44
     },
     {
       "id": "ariel-pink",
@@ -10635,8 +10746,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/95/b3/27/95b327c3-748e-0445-b69f-976830189281/mzaf_1220471610033150690.plus.aac.p.m4a",
       "previewTrack": "Round and Round",
       "previewAlbum": "Before Today",
-      "x": -115.87,
-      "y": 151.29
+      "x": -97.29,
+      "y": 162.14
     },
     {
       "id": "perfume-genius",
@@ -10672,8 +10783,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/b1/05/b1/b105b127-b37c-9c66-0f11-230d1604c33f/mzaf_4571571251304469432.plus.aac.p.m4a",
       "previewTrack": "Slip Away",
       "previewAlbum": "No Shape",
-      "x": 143.12,
-      "y": 105.33
+      "x": 139.99,
+      "y": 72.86
     },
     {
       "id": "editors",
@@ -10708,8 +10819,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/db/a4/37/dba4377e-f01e-d133-7ad2-382eec63cffa/mzaf_18400919124755902119.plus.aac.p.m4a",
       "previewTrack": "Munich",
       "previewAlbum": "The Back Room",
-      "x": -265.2,
-      "y": -49.94
+      "x": -268.62,
+      "y": -41.38
     },
     {
       "id": "mudhoney",
@@ -10746,8 +10857,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/34/21/e1/3421e1b4-04c5-7646-dc2f-b37c34828fa9/mzaf_16071112075389051796.plus.aac.p.m4a",
       "previewTrack": "Touch Me I'm Sick",
       "previewAlbum": "Superfuzz Bigmuff (Deluxe Edition)",
-      "x": -139.99,
-      "y": 88.55
+      "x": -96.11,
+      "y": 69.19
     },
     {
       "id": "tom-waits",
@@ -10783,8 +10894,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/20/7d/9d/207d9dc5-89c1-96b5-803b-01974a2d9d8f/mzaf_85614726812640927.plus.aac.p.m4a",
       "previewTrack": "Time",
       "previewAlbum": "Rain Dogs",
-      "x": 154.67,
-      "y": 147.49
+      "x": 137.9,
+      "y": 155.53
     },
     {
       "id": "songs-ohia",
@@ -10821,8 +10932,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c8/a8/9b/c8a89b7a-6d8c-e2fe-3fd2-b8e2429baa9e/mzaf_15018426431118022018.plus.aac.p.m4a",
       "previewTrack": "Farewell Transmission",
       "previewAlbum": "Magnolia Electric Co. (Deluxe Edition)",
-      "x": 134.51,
-      "y": 162.37
+      "x": 151.09,
+      "y": 181.36
     },
     {
       "id": "pinback",
@@ -10858,8 +10969,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/57/44/ba/5744baef-b9fe-5009-853a-9c0ff2614247/mzaf_9336018848423806239.plus.aac.p.m4a",
       "previewTrack": "Penelope",
       "previewAlbum": "Apollo: Past, Present, Future",
-      "x": -82.39,
-      "y": 109.24
+      "x": -96.41,
+      "y": 84.75
     },
     {
       "id": "waxahatchee",
@@ -10897,8 +11008,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ba/8d/da/ba8dda28-c14e-00ed-f155-10271e93d828/mzaf_10951341806997722453.plus.aac.p.m4a",
       "previewTrack": "Fire",
       "previewAlbum": "Saint Cloud",
-      "x": 145.54,
-      "y": 118.1
+      "x": 152.37,
+      "y": 100.51
     },
     {
       "id": "broken-social-scene",
@@ -10934,8 +11045,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f0/3d/cc/f03dccd2-3e75-ea9a-a315-e0822f948ecd/mzaf_10801373534506060729.plus.aac.p.m4a",
       "previewTrack": "Anthems For A Seventeen Year-Old Girl",
       "previewAlbum": "You Forgot It In People",
-      "x": -141.46,
-      "y": 160.47
+      "x": -120.72,
+      "y": 165.34
     },
     {
       "id": "drive-by-truckers",
@@ -10971,8 +11082,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/6d/76/fb/6d76fbe7-b847-0743-bf76-fd217adfb44c/mzaf_14382237820742796512.plus.aac.p.m4a",
       "previewTrack": "Let There Be Rock",
       "previewAlbum": "Ugly Buildings, Whores and Politicians",
-      "x": -119.89,
-      "y": 188.34
+      "x": -117.9,
+      "y": 185.07
     },
     {
       "id": "lucinda-williams",
@@ -11008,8 +11119,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/76/f9/ce/76f9ce2f-dc59-a99e-e3e3-cda4bd3a8503/mzaf_13740932759544870309.plus.aac.p.m4a",
       "previewTrack": "Right In Time",
       "previewAlbum": "Car Wheels On a Gravel Road",
-      "x": 142.29,
-      "y": 180.7
+      "x": 132.67,
+      "y": 173.8
     },
     {
       "id": "king-crimson",
@@ -11048,8 +11159,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b8/69/2a/b8692a14-8c29-be18-dc39-9c816491bca4/mzaf_15484084826981176262.plus.aac.p.m4a",
       "previewTrack": "21st Century Schizoid Man (Including \"Mirrors\")",
       "previewAlbum": "In the Court of the Crimson King (Expanded Edition)",
-      "x": -274.39,
-      "y": -31.51
+      "x": -287.75,
+      "y": -20.91
     },
     {
       "id": "mc5",
@@ -11085,8 +11196,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/b1/aa/03/b1aa031d-80ac-8741-a9c6-02acc6efa1ff/mzaf_15326406089926160373.plus.aac.p.m4a",
       "previewTrack": "Kick Out the Jams",
       "previewAlbum": "Anthology 1965-1971",
-      "x": -312.98,
-      "y": 0.87
+      "x": -305.72,
+      "y": -50.05
     },
     {
       "id": "sex-pistols",
@@ -11121,8 +11232,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/a8/79/b3/a879b34b-829b-a885-1ea0-9384ee35c531/mzaf_12546193188708162429.plus.aac.p.m4a",
       "previewTrack": "God Save the Queen",
       "previewAlbum": "Never Mind the Bollocks, Here's the Sex Pistols",
-      "x": -259.76,
-      "y": -96.88
+      "x": -230.72,
+      "y": -87.68
     },
     {
       "id": "mary-timony",
@@ -11158,8 +11269,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/26/85/ad/2685adb1-7ca0-3ba0-54cf-34a2ea5b4759/mzaf_3957103612176042832.plus.aac.p.m4a",
       "previewTrack": "Dungeon Dance",
       "previewAlbum": "Mountains (20th Anniversary Expanded Edition)",
-      "x": -63.18,
-      "y": 89.88
+      "x": -61.72,
+      "y": 76.02
     },
     {
       "id": "blood-orange",
@@ -11195,8 +11306,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4e/e1/7f/4ee17fe6-b996-f46f-0b00-d5361b802cef/mzaf_6942069272625135481.plus.aac.p.m4a",
       "previewTrack": "Charcoal Baby",
       "previewAlbum": "Negro Swan",
-      "x": -216.99,
-      "y": -22.05
+      "x": -219.79,
+      "y": -31.63
     },
     {
       "id": "natural-snow-buildings",
@@ -11233,8 +11344,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/20/cc/41/20cc4165-f559-7c36-6a68-cfad32a507ba/mzaf_3201329143973522862.plus.aac.p.m4a",
       "previewTrack": "The Winter Ray",
       "previewAlbum": "The Winter Ray",
-      "x": -65.23,
-      "y": -159.95
+      "x": -58.97,
+      "y": -162.24
     },
     {
       "id": "the-breeders",
@@ -11271,8 +11382,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/ba/87/50/ba8750e4-02a3-c4da-285d-e35091e131f0/mzaf_8573149686237400465.plus.aac.p.m4a",
       "previewTrack": "Cannonball",
       "previewAlbum": "Last Splash",
-      "x": -101.78,
-      "y": 181.53
+      "x": -102.24,
+      "y": 144.17
     },
     {
       "id": "ween",
@@ -11309,8 +11420,8 @@
       "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/be/78/4b/be784b63-35e9-ae39-0500-0ccf5067e31d/mzaf_13282504756331858940.plus.aac.p.m4a",
       "previewTrack": "Transdermal Celebration",
       "previewAlbum": "Quebec",
-      "x": -96.16,
-      "y": 131.15
+      "x": -111.33,
+      "y": 156.34
     }
   ],
   "genres": [
@@ -22180,6 +22291,146 @@
       "citation": "Simon Raymonde of Cocteau Twins, on Amoeba Music's What's In My Bag?, on seeing Patti Smith as a teenager: \"She was just such an ethereal, beautiful soul. She became one of my heroines for many, many years.\"",
       "sourceTier": "first-person",
       "sourceUrl": "https://youtu.be/lC2pol5qeAA?t=149"
+    },
+    {
+      "source": "boris",
+      "target": "nick-drake",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.85,
+      "citation": "Atsuo of Boris to Rad Company (c. 2005), on Akuma no Uta's sleeve copying Bryter Layter: \"I love Nick Drake. I respect him... So people might understand Nick Drake's music has influenced our music.\"",
+      "sourceTier": "first-person",
+      "sourceUrl": "https://web.archive.org/web/20051024095418/http://www.radcompany.net/Storys/NewsStorys/BORIS/BORIS.html"
+    },
+    {
+      "source": "boris",
+      "target": "nick-cave-and-the-bad-seeds",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.8,
+      "citation": "Atsuo of Boris to Rad Company (c. 2005): \"as a musician, I'm influenced by people like Nick Cave,\" and \"I want to be Nick Cave as a drummer.\"",
+      "sourceTier": "first-person",
+      "sourceUrl": "https://web.archive.org/web/20051024095418/http://www.radcompany.net/Storys/NewsStorys/BORIS/BORIS.html"
+    },
+    {
+      "source": "boris",
+      "target": "the-stooges",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.6,
+      "citation": "Atsuo of Boris to Rad Company (c. 2005), asked about his favourite drummers: \"But aside from drummers, Iggy Pop, Ted Nugent, Nick Cave. Those people influenced me more than any drummers.\"",
+      "sourceTier": "first-person",
+      "sourceUrl": "https://web.archive.org/web/20051024095418/http://www.radcompany.net/Storys/NewsStorys/BORIS/BORIS.html"
+    },
+    {
+      "source": "the-flaming-lips",
+      "target": "boris",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.65,
+      "citation": "Wayne Coyne of the Flaming Lips, in his Quietus Baker's Dozen (2011), on putting on \"a record like Boris or Yo La Tengo\" on long drives, \"big soundscapes that just dig into oblivion\": \"We've really embraced that in the past couple of years: to find this perfect goal, a sound you can play over and over... to get to the edge and stay there.\"",
+      "sourceTier": "first-person",
+      "sourceUrl": "https://thequietus.com/interviews/bakers-dozen/flaming-lips-wayne-coyne-interview-favourite-albums/5/"
+    },
+    {
+      "source": "deftones",
+      "target": "hum",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.85,
+      "citation": "Chino Moreno of Deftones, choosing Hum's You'd Prefer an Astronaut for his Quietus Baker's Dozen (2010): \"it's where Deftones get a big part of our influence from, tone-wise... a lot of that has directly inspired certain songs.\"",
+      "sourceTier": "first-person",
+      "sourceUrl": "https://thequietus.com/interviews/bakers-dozen/deftones-chino-interview-favourite-records/7/"
+    },
+    {
+      "source": "deftones",
+      "target": "my-bloody-valentine",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.85,
+      "citation": "Chino Moreno of Deftones to Revolver (2011), on Loveless: making White Pony, \"I played Loveless for Terry; I was like, 'I want to get the record to sound like this!'\"",
+      "sourceTier": "first-person",
+      "sourceUrl": "https://web.archive.org/web/20130827093828/http://www.revolvermag.com/lists-2/five-non-metal-albums-that-rock-deftones-frontman-chino-moreno%E2%80%99s-world.html"
+    },
+    {
+      "source": "deftones",
+      "target": "the-cure",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.85,
+      "citation": "Chino Moreno of Deftones to Revolver (2011), on Pornography: \"lyrically, that record has influenced me through a lot of the things that I've done.\"",
+      "sourceTier": "first-person",
+      "sourceUrl": "https://web.archive.org/web/20130827093828/http://www.revolvermag.com/lists-2/five-non-metal-albums-that-rock-deftones-frontman-chino-moreno%E2%80%99s-world.html"
+    },
+    {
+      "source": "deftones",
+      "target": "depeche-mode",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.85,
+      "citation": "Chino Moreno of Deftones to Rolling Stone (2015), on seeing Depeche Mode at his first concert: \"I have a feeling it's what launched me into wanting to make music.\"",
+      "sourceTier": "first-person",
+      "sourceUrl": "https://www.rollingstone.com/music/music-features/are-depeche-mode-metals-biggest-secret-influence-56191/2/"
+    },
+    {
+      "source": "deftones",
+      "target": "the-smiths",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.8,
+      "citation": "Chino Moreno of Deftones to NPR (2016): \"my favorite band was like The Smiths or The Cure... so were basically just figuring it all out while we were also creating music.\"",
+      "sourceTier": "first-person",
+      "sourceUrl": "https://www.npr.org/sections/therecord/2016/05/03/476636845/deftones-chino-moreno-on-surviving-evolving-and-gore"
+    },
+    {
+      "source": "deftones",
+      "target": "omd",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.8,
+      "citation": "Chino Moreno of Deftones to Revolver (2020), on early new wave \"from OMD to Depeche Mode\": \"They've been a constant influence in pretty much all the music I've made throughout my life, I think.\"",
+      "sourceTier": "first-person",
+      "sourceUrl": "https://web.archive.org/web/2021/https://www.revolvermag.com/music/deftones-talk-ohms-album-year-nod-black-stallion-fave-music-2020"
+    },
+    {
+      "source": "deftones",
+      "target": "the-human-league",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.8,
+      "citation": "Chino Moreno of Deftones to Revolver (2020), on first hearing the Human League's early records and the new wave around them: \"They've been a constant influence in pretty much all the music I've made throughout my life, I think.\"",
+      "sourceTier": "first-person",
+      "sourceUrl": "https://web.archive.org/web/2021/https://www.revolvermag.com/music/deftones-talk-ohms-album-year-nod-black-stallion-fave-music-2020"
+    },
+    {
+      "source": "deftones",
+      "target": "portishead",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.8,
+      "citation": "Chino Moreno of Deftones to Revolver (2020), asked which artists influenced White Pony's rock-meets-trip-hop sound: \"DJ Shadow, of course, and even earlier stuff from the Nineties, like Portishead.\"",
+      "sourceTier": "first-person",
+      "sourceUrl": "https://web.archive.org/web/2021/https://www.revolvermag.com/music/deftones-talk-ohms-album-year-nod-black-stallion-fave-music-2020"
+    },
+    {
+      "source": "deftones",
+      "target": "radiohead",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.8,
+      "citation": "Chino Moreno of Deftones to Zane Lowe (2025), on watching the \"Paranoid Android\" video while writing Around the Fur: \"just having my mind blown, like how music can be anything... when I watched them do that, I was like, 'You know, we could do anything.'\"",
+      "sourceTier": "first-person",
+      "sourceUrl": "https://www.youtube.com/watch?v=Z__YyKbkZmY&t=2508s"
+    },
+    {
+      "source": "fontaines-dc",
+      "target": "deftones",
+      "type": "influence",
+      "status": "verified",
+      "confidence": 0.85,
+      "citation": "Conor Curley of Fontaines D.C. to Guitar World (2024), on the guitars of Romance: \"I was a lot more inspired by early 2000s, heavier rock music like Deftones.\"",
+      "sourceTier": "first-person",
+      "sourceUrl": "https://guitarworld.com/artists/guitarists/conor-curley-fontaines-dc-romance"
     }
   ],
   "rejectedEdges": [

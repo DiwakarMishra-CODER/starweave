@@ -903,6 +903,24 @@
     "url": "https://www.timeout.com/newyork/music/review-will-oldham-on-bonnie-prince-billy",
     "found": "His musical education came not from musty Americana LPs, but from catching Big Black and H&uuml;sker D&uuml; shows, and tagging along when his childhood buddies (future members of Slint) toured with Glenn Danzig."
   },
+  "boris>nick-cave-and-the-bad-seeds": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://web.archive.org/web/20051024095418/http://www.radcompany.net/Storys/NewsStorys/BORIS/BORIS.html",
+    "found": "I want to be Nick Cave as a drummer."
+  },
+  "boris>nick-drake": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://web.archive.org/web/20051024095418/http://www.radcompany.net/Storys/NewsStorys/BORIS/BORIS.html",
+    "found": "So people might understand Nick Drake's music has influenced our music."
+  },
+  "boris>the-stooges": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://web.archive.org/web/20051024095418/http://www.radcompany.net/Storys/NewsStorys/BORIS/BORIS.html",
+    "found": "But aside from drummers, Iggy Pop, Ted Nugent, Nick Cave. Those people influenced me more than any drummers."
+  },
   "brand-new>fugazi": {
     "result": "found",
     "at": "2026-10-26",
@@ -1419,6 +1437,58 @@
     "url": "https://thequietus.com/interviews/bakers-dozen/bradford-cox-deerhunter-atlas-sound-favourite-albums/5/",
     "found": "I said when I first heard this album, it was when I realised there was a lot of sonic opportunity out there."
   },
+  "deftones>depeche-mode": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://www.rollingstone.com/music/music-features/are-depeche-mode-metals-biggest-secret-influence-56191/2/",
+    "found": "I have a feeling it’s what launched me into wanting to make music, just by seeing the energy."
+  },
+  "deftones>hum": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://thequietus.com/interviews/bakers-dozen/deftones-chino-interview-favourite-records/7/",
+    "found": "This is a heavy record, and it’s where Deftones get a big part of our influence from, tone-wise."
+  },
+  "deftones>my-bloody-valentine": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://web.archive.org/web/20130827093828/http://www.revolvermag.com/lists-2/five-non-metal-albums-that-rock-deftones-frontman-chino-moreno%E2%80%99s-world.html",
+    "found": "I played Loveless for Terry; I was like, ‘I want to get the record to sound like this!’"
+  },
+  "deftones>omd": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://web.archive.org/web/2021/https://www.revolvermag.com/music/deftones-talk-ohms-album-year-nod-black-stallion-fave-music-2020",
+    "found": "They've been a constant influence in pretty much all the music I've made throughout my life, I think."
+  },
+  "deftones>portishead": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://web.archive.org/web/2021/https://www.revolvermag.com/music/deftones-talk-ohms-album-year-nod-black-stallion-fave-music-2020",
+    "found": "DJ Shadow, of course, and even earlier stuff from the Nineties, like Portishead and other stuff that used drum samples from old records"
+  },
+  "deftones>radiohead": {
+    "result": "owner",
+    "at": "2026-10-30"
+  },
+  "deftones>the-cure": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://web.archive.org/web/20130827093828/http://www.revolvermag.com/lists-2/five-non-metal-albums-that-rock-deftones-frontman-chino-moreno%E2%80%99s-world.html",
+    "found": "lyrically, that record has influenced me through a lot of the things that I’ve done."
+  },
+  "deftones>the-human-league": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://web.archive.org/web/2021/https://www.revolvermag.com/music/deftones-talk-ohms-album-year-nod-black-stallion-fave-music-2020",
+    "found": "They've been a constant influence in pretty much all the music I've made throughout my life, I think."
+  },
+  "deftones>the-smiths": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://www.npr.org/sections/therecord/2016/05/03/476636845/deftones-chino-moreno-on-surviving-evolving-and-gore",
+    "found": "They introduced me to metal at that point, so were basically just figuring it all out while we were also creating music."
+  },
   "depeche-mode>david-bowie": {
     "result": "found",
     "at": "2026-10-26",
@@ -1856,6 +1926,12 @@
     "at": "2026-10-26",
     "url": "https://www.rollingstone.com/music/music-features/fleet-foxes-shore-robin-pecknold-interview-1064060/",
     "found": "“Sunblind” keeps going from there, reciting the names of Judee Sill, John Prine, Elliott Smith (a &#x201C;hugely, hugely formative&#x201D; artist for Pecknold, who remembers going to Smith fansite sweetadeline.net in the early 2000s to look up guitar tabs), Silver Jews’ David Berman, and more, mingling recent tragedies with older ones in a cosmic scroll of appreciation."
+  },
+  "fontaines-dc>deftones": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://guitarworld.com/artists/guitarists/conor-curley-fontaines-dc-romance",
+    "found": "I was a lot more inspired by early 2000s, heavier rock music like Deftones."
   },
   "fontaines-dc>pixies": {
     "result": "found",
@@ -5194,6 +5270,12 @@
     "at": "2026-10-26",
     "url": "https://www.westword.com/music/lips-service-5054009/",
     "found": "“Michael and I would always do sound for all the hardcore bands that came through town back in ’82 and ’83,” he enthuses. “We did sound for Black Flag, the Meat Puppets, Die Kreuzen–all kinds of bands. Those groups kind of put a light bulb into our head."
+  },
+  "the-flaming-lips>boris": {
+    "result": "found",
+    "at": "2026-10-30",
+    "url": "https://thequietus.com/interviews/bakers-dozen/flaming-lips-wayne-coyne-interview-favourite-albums/5/",
+    "found": "We’ve really embraced that in the past couple of years"
   },
   "the-flaming-lips>husker-du": {
     "result": "found",

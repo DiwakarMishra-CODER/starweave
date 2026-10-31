@@ -114,6 +114,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           'slowdive',
           'ride',
           'lush',
+          'hum',
         ],
       },
       {
@@ -125,6 +126,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "different cultural contexts, while a whole undercurrent of bedroom and internet-era " +
           "acts kept the wall of sound alive outside the industry's notice.",
         artistIds: [
+          'deftones',
           'deerhunter',
           'wolf-alice',
           'sweet-trip',
@@ -1007,7 +1009,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         blurb:
           "Artists for whom noise-rock is one real ingredient among several — post-hardcore, " +
           "post-rock, dream-pop, and art-rock all get fuller tellings on their own pages.",
-        artistIds: ['unwound', 'trail-of-dead', 'mogwai', 'blonde-redhead', 'black-midi', 'black-flag'],
+        artistIds: ['unwound', 'trail-of-dead', 'mogwai', 'blonde-redhead', 'black-midi', 'black-flag', 'boris'],
       },
     ],
   },
@@ -2590,9 +2592,10 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
     // below.
     // Low out (Things We Lost in the Fire is slowcore, on that page); Natural
     // Snow Buildings' The Winter Ray and Have a Nice Life's Deathconsciousness
-    // in.
+    // in. Boris's Flood in (Oct 2026): the owner's "drone masterpiece".
     definingAlbums: [
       'stars-of-the-lid',
+      'boris',
       'tim-hecker',
       'grouper',
       'natural-snow-buildings',
@@ -2628,6 +2631,13 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "guitar or synthesizer — a stranger, more liturgical register than anywhere else on " +
           "this page.",
         artistIds: ['anna-von-hausswolff'],
+      },
+      {
+        title: 'Heavy drone',
+        blurb:
+          "Drone played at crushing volume by a rock band: Boris stretch a single riff or " +
+          "guitar figure until it becomes a place to stand in, then let it swell into a roar.",
+        artistIds: ['boris'],
       },
     ],
   },
@@ -2971,7 +2981,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Nevermind's crossover pulled a whole underground into the mainstream at once — some " +
           "of it (Nirvana itself, Beck) genuinely mainstream-scale, some of it (Bikini Kill, " +
           "Pavement) still resolutely independent despite carrying the same new label.",
-        artistIds: ['nirvana', 'pavement', 'pj-harvey', 'built-to-spill', 'modest-mouse', 'the-cranberries', 'blur', 'bikini-kill', 'beck', 'the-breeders', 'ween'],
+        artistIds: ['nirvana', 'pavement', 'pj-harvey', 'built-to-spill', 'modest-mouse', 'hum', 'the-cranberries', 'blur', 'bikini-kill', 'beck', 'the-breeders', 'ween'],
       },
       {
         title: 'Alt-rock as marketing category, 1997–2010s',
@@ -2980,7 +2990,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "stretched to cover almost anything guitar-based and not-quite-mainstream — a 2000s " +
           "rock revival, Radiohead's studio ambition, and a decade-plus of bands that inherited " +
           "the shelf label without inheriting a sound.",
-        artistIds: ['radiohead', 'the-strokes', 'the-white-stripes', 'the-flaming-lips'],
+        artistIds: ['radiohead', 'deftones', 'the-strokes', 'the-white-stripes', 'the-flaming-lips'],
       },
       {
         title: 'The 21st-century wing',
@@ -3079,6 +3089,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           'modest-mouse',
           'liz-phair',
           'duster',
+          'hum',
           'the-dismemberment-plan',
           'guided-by-voices',
           'wilco',
