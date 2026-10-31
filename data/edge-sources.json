@@ -339,6 +339,13 @@
     "checked": "2026-10-26",
     "by": "c5"
   },
+  "american-football>steve-reich": {
+    "url": "https://www.vice.com/en/article/never-meant-the-complete-oral-history-of-american-football/",
+    "found": "Steve Holmes: With this band, we really did make a conscious shift away from the post-hardcore, emo, whatever sound and scene that we had come out of. Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
+  },
   "american-football>the-smiths": {
     "url": "https://www.vice.com/en/article/never-meant-the-complete-oral-history-of-american-football/",
     "found": "Steve Holmes: With this band, we really did make a conscious shift away from the post-hardcore, emo, whatever sound and scene that we had come out of. Freshman year, I was turned on to a lot of the bands that would influence our sound: Nick Drake, Red House Painters, Elliott Smith, Codeine, the Sea and Cake, The Smiths/Morrissey, Slowdive, My Bloody Valentine, Can, Steve Reich, etc.",
@@ -959,6 +966,13 @@
     "note": "The Dork quote (\"not dissimilar to Arcade Fire... touchpoint\") was not found (searched, Bush Hall review opened). Verbatim in found: the page prints a curly apostrophe in It's.",
     "by": "c8"
   },
+  "black-country-new-road>arthur-russell": {
+    "url": "https://thequietus.com/interviews/bakers-dozen/god-tier-tyler-hyde-of-black-country-new-roads-favourite-albums/13/",
+    "found": "I have embarrassingly tried to use his influence with my lyrics in the past",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
+  },
   "black-country-new-road>can": {
     "url": "https://thequietus.com/interviews/bakers-dozen/god-tier-tyler-hyde-of-black-country-new-roads-favourite-albums/",
     "found": "in four songs, has everything that I love about krautrock.",
@@ -1125,6 +1139,13 @@
     "checked": "2026-10-26",
     "by": "candidates-check",
     "note": "New link found during the source pass; re-opened and ruled (research/source-pass/candidates-check/)."
+  },
+  "blood-orange>arthur-russell": {
+    "url": "https://thequietus.com/interviews/bakers-dozen/dev-hynes-blood-orange-favourite-albums-essex-honey/2/",
+    "found": "an understatement to say it changed my music and my life in general.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
   },
   "blood-orange>kate-bush": {
     "url": "https://thequietus.com/interviews/bakers-dozen/dev-hynes-blood-orange-favourite-albums-essex-honey/10/",
@@ -1432,6 +1453,13 @@
     "by": "candidates-check",
     "note": "New link found during the source pass; re-opened and ruled (research/source-pass/candidates-check/)."
   },
+  "brian-eno>steve-reich": {
+    "url": "https://thequietus.com/interviews/bakers-dozen/brian-eno-favourite-records-interview/9/",
+    "found": "That became my go-to technique for making something interesting straight away.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
+  },
   "brian-eno>velvet-underground": {
     "url": "https://thequietus.com/interviews/bakers-dozen/brian-eno-favourite-records-interview/8/",
     "found": "This was probably the most important pop album for me in that I think it’s the moment where I realised that I could be a musician.",
@@ -1681,6 +1709,13 @@
     "note": "Series sweep, fandom rule (listening while making his own first music, before Caribou/Manitoba's 2001 debut). Borderline: a list, not singled out. Was not-found.",
     "checked": "2026-10-26",
     "by": "series-pitchfork"
+  },
+  "caribou>arthur-russell": {
+    "url": "https://thequietus.com/interviews/bakers-dozen/caribou-dan-snaith-favourite-albums-interview/7/",
+    "found": "people like Arthur Russell are the reason that I figured out how to make it work.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
   },
   "caribou>boards-of-canada": {
     "url": "https://xlr8r.com/features/rewind-caribou/",
@@ -2073,6 +2108,13 @@
     "note": "From the speaker's Quietus Baker's Dozen pick; replaces fixed (critic) by c22: https://www.nytimes.com/2008/12/10/arts/music/10deer.html",
     "by": "quietus"
   },
+  "deerhunter>steve-reich": {
+    "url": "https://pitchfork.com/features/5-10-15-20/8506-5-10-15-20-bradford-cox/",
+    "found": "I was searching for this minimalist mindset where you could be calm and tranced out.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
+  },
   "deftones>depeche-mode": {
     "url": "https://www.rollingstone.com/music/music-features/are-depeche-mode-metals-biggest-secret-influence-56191/2/",
     "found": "I have a feeling it’s what launched me into wanting to make music, just by seeing the energy.",
@@ -2310,6 +2352,13 @@
     "checked": "2026-10-26",
     "by": "candidates-check",
     "note": "New link found during the source pass; re-opened and ruled (research/source-pass/candidates-check/)."
+  },
+  "devo>brian-eno": {
+    "url": "https://ultimateclassicrock.com/mark-mothersbaugh-brian-eno-devo-unprepared/",
+    "found": "it totally helped me turn my world upside down",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
   },
   "dillinger-escape-plan>bad-brains": {
     "url": "https://machinemusic.net/2021/04/15/pillars-of-the-90s-an-interview-with-the-dillinger-escape-plan/",
@@ -3096,6 +3145,13 @@
     "note": "Page opened. Rossen also says 'I didn’t hear Talk Talk until after we made Veckatimest' and that Chris Taylor loves those records, so Talk Talk is a Shields-era influence. My guessed URL was refused; the real slug is above (redirected from /features/listomania/...).",
     "by": "retry4"
   },
+  "guided-by-voices>devo": {
+    "url": "https://www.spinmagazine.com/2004/09/records-changed-my-life-robert-pollard-guided-voices/",
+    "found": "But I kept listening, and it just blew my mind how good it was.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
+  },
   "guided-by-voices>king-crimson": {
     "url": "https://www.spinmagazine.com/2004/09/records-changed-my-life-robert-pollard-guided-voices/",
     "found": "First, I couldn’t get into it because the songs were so long and jazzy, but after a while I got into a complete prog-rock phase.",
@@ -3666,6 +3722,13 @@
     "sourceTier": "first-person",
     "note": "Quote corrected: the page uses ellipses and a bracketed gloss. The page continues '...Yeah, there’s stacks.'",
     "by": "retry4"
+  },
+  "king-gizzard-and-the-lizard-wizard>devo": {
+    "url": "https://loudwire.com/king-gizzard-lizard-wizard-stu-mackenzie-explains-recording-two-versions-silver-cord-liberating-creatively/",
+    "found": "You mentioned Kraftwerk and Devo, that type of thing definitely has influenced Gizz a lot over the years and I think found its way into the sound of this record.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
   },
   "king-gizzard-and-the-lizard-wizard>kraftwerk": {
     "url": "https://loudwire.com/king-gizzard-lizard-wizard-stu-mackenzie-explains-recording-two-versions-silver-cord-liberating-creatively/",
@@ -4836,6 +4899,13 @@
     "checked": "2026-10-26",
     "citation": "Kurt Cobain to Interview magazine (1991), collected by Flavorwire: \"I sold my Aerosmith and Led Zepplin collection for twelve dollars. I completely threw away my hard-rock roots and was into MDC and Black Flag.\""
   },
+  "nirvana>devo": {
+    "url": "https://faroutmagazine.co.uk/kurt-cobain-grossest-period-music-history/",
+    "found": "The interviewer then mentioned the new wave genre, which Nirvana liked, saying, “The whole new wave concept, when it began, was very pop, I don’t know if you can name any bands (that influenced you),” to which Cobain responded, “The B-52’s, Devo, you know, anything… Ramones”.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
+  },
   "nirvana>dinosaur-jr": {
     "url": "https://www.rollingstone.com/music/music-news/nirvana-inside-the-heart-and-mind-of-kurt-cobain-2-235093/3/",
     "found": "Cobain is happier to reel off a list of some of the bands he does like: the Breeders, the Pixies, R.E.M., Jesus Lizard, Urge Overkill, Beat Happening, Dinosaur Jr and Flipper.",
@@ -5116,6 +5186,13 @@
     "verdict": "ok",
     "note": "Page text has stray spaces before commas; citation quote is the same sentence.",
     "by": "c11"
+  },
+  "parquet-courts>devo": {
+    "url": "https://www.hppr.org/2018-05-18/the-outrage-angst-and-optimism-of-parquet-courts-wide-awake-track-by-track",
+    "found": "The bass line of the song was inspired by Devo.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
   },
   "parquet-courts>the-fall": {
     "url": "https://lavocedinewyork.com/arts/musica/2014/06/25/dal-texas-a-williamsburg-il-post-punk-dei-parquet-courts",
@@ -5515,6 +5592,13 @@
     "note": "This is a Goodreads repost of Mordue's SMH piece, reprinted at markmordue.com. The original SMH page may be better if you can reach it. It is the journalist's own statement with no Cocker quote on Bowie, hence 'reported'. The Big Issue Cocker piece (2020) only mentions Bowie at Radio City as a source of early dreams, which I read as not clear influence, so I didn't use it.",
     "by": "retry6"
   },
+  "pulp>devo": {
+    "url": "https://pitchfork.com/features/5-10-15-20/10048-jarvis-cocker-on-the-music-of-his-life/",
+    "found": "One of the first songs that Pulp learned how to play was the Devo song",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
+  },
   "pulp>leonard-cohen": {
     "url": "https://pitchfork.com/features/5-10-15-20/10048-jarvis-cocker-on-the-music-of-his-life/",
     "found": "If you listen to that first Pulp record, it is just a direct rip off of his first album—though I’m not saying it was as good as that.",
@@ -5736,6 +5820,13 @@
     "by": "blocked-retry",
     "verdict": "fixed",
     "sourceTier": "first-person"
+  },
+  "rhys-chatham>steve-reich": {
+    "url": "https://thequietus.com/interviews/bakers-dozen/rhys-chatham-favourite-albums-interview/12/",
+    "found": "That cascading phasing riff effect was directly inspired by Steve Reich",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
   },
   "ride>dinosaur-jr": {
     "verdict": "ok",
@@ -6118,6 +6209,13 @@
     "citation": "Wikipedia's Slint article: \"After being influenced by the music of the Minutemen, Pajo and Walford's musical direction became too obtuse for the other members of Maurice, who parted ways.\"",
     "note": "Wikipedia cites the documentary Breadcrumb Trail (Lance Bangs, Touch and Go, 2014) for it; no online text. Minutemen not in the Fact interview or New Yorker 'Slow Fade'. Could be marked print/film if the owner wants.",
     "by": "c18"
+  },
+  "slint>steve-reich": {
+    "url": "https://thequietus.com/interviews/bakers-dozen/david-pajo-slint-favourite-albums/5/",
+    "found": "spent decades trying to make music that recreates the uplifting feeling this record gives me",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
   },
   "slowdive>aphex-twin": {
     "url": "https://thequietus.com/interviews/bakers-dozen/slowdive-neil-halstead-interview-favourite-albums/9/",
@@ -6739,6 +6837,13 @@
     "citation": "Louis Borlase to The Amherst Student (23 February 2021), asked about a favourite guitarist who has influenced him: \"I love the guitarist Tim Gane. I think he’s just one of the best guitar players in that he’s managed to kind of make that band’s music so memorable and unique for them.\"",
     "sourceTier": "first-person",
     "by": "chat5"
+  },
+  "squid>steve-reich": {
+    "url": "https://music.apple.com/album/1544474458",
+    "found": "It was quite Steve Reich-inspired",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
   },
   "st-vincent>nirvana": {
     "url": "https://www.timteeman.com/2014/02/02/st-vincent/",
@@ -8208,6 +8313,13 @@
     "checked": "2026-10-26",
     "by": "c22"
   },
+  "tortoise>devo": {
+    "url": "https://thequietus.com/interviews/bakers-dozen/doug-mccombs-tortoise-eleventh-dream-day-favourite-albums-interview/2/",
+    "found": "I have no idea what appealed to me about it other than the sheer strangeness.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
+  },
   "tortoise>neu": {
     "checked": "2026-10-26",
     "verdict": "fixed",
@@ -8740,6 +8852,13 @@
     "citation": "Colin Newman to Eastwood Guitars: \"Well, the Ramones laid out the blueprint for what punk rock should sound like.\" Asked about punk, he said Wire were never a punk band: \"You could list the Ramones as one of our influences, but we were never interested in just doing that genre.\"",
     "note": "Old citation said Newman 'denied Wire had influences at all'; page says only that Wire were never a punk band. Page also has Newman calling the Ramones 'the main group that made you think yeah you can do something with that'. Hedged line 'You could list the Ramones...' is on the page with capital Y. Interview unattributed in paragraph form but it is the Newman interview.",
     "checked": "2026-10-26"
+  },
+  "wire>steve-reich": {
+    "url": "https://thequietus.com/interviews/bakers-dozen/colin-newman-interview-favourite-albums-wire-immersion/10/",
+    "found": "It completely blew my mind.",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
   },
   "wolf-alice>yeah-yeah-yeahs": {
     "url": "https://www.thelineofbestfit.com/features/interviews/wolf-alice-126334",

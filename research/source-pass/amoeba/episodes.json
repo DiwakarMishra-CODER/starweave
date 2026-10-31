@@ -5498,7 +5498,9 @@
   "id": "oVRvF_N1NI0",
   "title": "Gerald Casale (DEVO)'s \"What's In My Bag?\" | Amoeba Music",
   "guest": "Gerald Casale (DEVO)",
-  "artistIds": [],
+  "artistIds": [
+   "devo"
+  ],
   "url": "https://www.youtube.com/watch?v=oVRvF_N1NI0"
  },
  {

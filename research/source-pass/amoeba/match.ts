@@ -19,6 +19,7 @@ const MEMBERS: Record<string, string> = {
   'At The Drive-In (Cedric Bixler-Zavala)': 'at-the-drive-in', 'Jody Stephens (Big Star)': 'big-star', 'Matt Berninger (The National)': 'the-national',
   'Jimmy Tamborello (Dntel/Postal Service)': 'the-postal-service', 'Flaming Lips (Kliph Scurlock)': 'the-flaming-lips',
   'Flaming Lips (Michael Ivins)': 'the-flaming-lips',
+  'Gerald Casale (DEVO)': 'devo',
 };
 const rows = readFileSync(`${__dirname}/channel.tsv`, 'utf8').trim().split('\n')
   .map(l => l.split('\t')).filter(([, t]) => /in my bag/i.test(t));

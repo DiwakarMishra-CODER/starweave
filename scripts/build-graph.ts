@@ -574,6 +574,8 @@ const ALBUM_COVER: Record<string, string> = {
   'james-chance-and-the-contortions::buy':     `${CAA}/398cb433-376c-4ce4-8884-01c555021d4a/17936278882-500.jpg`,
   'dna::a-taste-of-dna':                       `${CAA}/9dc553dd-2807-4aac-84d7-ee5b11528823/46213543258-500.jpg`,
   '2814::birth-of-a-new-day':                  `${CAA}/ffb1c808-7e37-4415-9449-9cd839545dfb/22277033080-500.jpg`,
+  // The search took the 1998 Nonesuch re-recording's sleeve; the record on the map is ECM's 1978 original.
+  'steve-reich::music-for-18-musicians':      `${APPLE}/Music124/v4/3f/f3/1f/3ff31f10-a505-440f-4639-1d5640b529e5/00042282141729.rgb.jpg/600x600bb.jpg`,
   // Apple only has a 2013 live performance of Flood, whose cover the search took.
   'boris::flood':                              `${CAA}/51838493-3a1b-48cf-b7d3-a1dd35aec471/36357353321-500.jpg`,
 };

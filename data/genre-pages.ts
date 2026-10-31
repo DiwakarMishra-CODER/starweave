@@ -319,7 +319,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "A smaller but real American lineage, running from Talking Heads' original CBGB-era " +
           "art-funk through a 2000s New York revival and into the genre's more recent noise and " +
           "riot-grrrl-adjacent corners.",
-        artistIds: ['talking-heads', 'interpol', 'have-a-nice-life', 'sleater-kinney', 'parquet-courts'],
+        artistIds: ['talking-heads', 'devo', 'interpol', 'have-a-nice-life', 'sleater-kinney', 'parquet-courts'],
       },
     ],
   },
@@ -419,6 +419,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "The genre's largest and most contemporary wing — production-forward avant-pop where " +
           "the studio isn't just a tool but the entire compositional starting point.",
         artistIds: [
+          'arthur-russell',
           'stereolab',
           'the-knife',
           'sparks',
@@ -2818,7 +2819,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Silver Apples built the template decades before the genre had a name; Xiu Xiu, " +
           "Animal Collective, and Julia Holter each found their own way to wrap genuinely " +
           "strange production around real melody.",
-        artistIds: ['silver-apples', 'scott-walker', 'ween', 'mr-bungle', 'xiu-xiu', 'animal-collective', 'julia-holter', 'stereolab', 'olivia-tremor-control'],
+        artistIds: ['silver-apples', 'scott-walker', 'arthur-russell', 'ween', 'mr-bungle', 'xiu-xiu', 'animal-collective', 'julia-holter', 'stereolab', 'olivia-tremor-control'],
       },
       {
         title: 'The 21st-century pop-collage generation',
@@ -2891,7 +2892,7 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "Television, Talking Heads), Bowie's persona-driven glam, and a UK post-punk wing " +
           "(Wire, X-Ray Spex) that carried the same ambition into a rawer, more confrontational " +
           "register.",
-        artistIds: ['velvet-underground', 'nico', 'david-bowie', 'roxy-music', 'kate-bush', 'can', 'king-crimson', 'television', 'talking-heads', 'patti-smith', 'wire', 'x-ray-spex'],
+        artistIds: ['velvet-underground', 'nico', 'david-bowie', 'roxy-music', 'kate-bush', 'can', 'king-crimson', 'devo', 'television', 'talking-heads', 'patti-smith', 'wire', 'x-ray-spex'],
       },
       {
         title: "Art-rock's 1980s and 90s turn",
@@ -3511,43 +3512,47 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
 
   minimalism: {
     deck:
-      "Not the classical downtown-composition tradition the name usually calls to mind — no " +
-      "Terry Riley, Steve Reich, or Philip Glass here. In this map, minimalism means a " +
-      "specific, later branch: massed electric guitars droning and pulsing in place of an " +
-      "orchestra, grown out of no-wave rather than out of a conservatory.",
+      "Music built from repetition: short patterns played over and over, drifting slowly out " +
+      "of step with each other until the shifting itself becomes the music. It began with " +
+      "composers in 1960s New York, and a generation later it was being played on massed " +
+      "electric guitars in the same city's rock clubs.",
     originParagraphs: [
-      "The term's usual reference point is real and worth naming: Terry Riley's In C (1964) is " +
-        "the piece that gives classical minimalism its starting date, a set of short melodic " +
-        "cells repeated and layered by a variable ensemble until the overlapping patterns became " +
-        "the entire composition. Riley, Reich, and Glass built a whole downtown-composition " +
-        "tradition from that idea over the following decade — but none of them are on " +
-        "this map, and that tradition isn't what the artists tagged with this genre here " +
-        "actually represent.",
-      "What the map actually has is Glenn Branca and Rhys Chatham, two composers who came up " +
-        "through New York's no-wave scene at the turn of the 1980s and pointed minimalism's " +
-        "repetition-and-drift logic at massed electric guitars instead of an ensemble of " +
-        "acoustic or orchestral instruments — a dozen or more guitars, all detuned and " +
-        "overdriven, built into a single wall of harmonic overtone. Branca's The Ascension " +
-        "(1981) and Chatham's Die Donnergötter (1985) are the two records that define this " +
-        "branch: minimalism's structural idea, transplanted into a rock club instead of a " +
-        "concert hall.",
+      "Terry Riley's In C (1964) gives minimalism its starting date: short melodic cells, " +
+        "repeated and layered by an ensemble until the overlapping patterns become the whole " +
+        "piece. Steve Reich took the idea somewhere new the next year, letting two tape loops " +
+        "of the same voice drift out of sync in It's Gonna Rain, then asking two pianists to do " +
+        "it live in Piano Phase. His ensemble works of the 1970s, Drumming and Music for 18 " +
+        "Musicians, are the records that carried it out of the concert hall: Brian Eno built " +
+        "his studio method on Reich's out-of-sync loops, and Slint, Squid and American Football " +
+        "all say he shaped their music.",
+      "New York's no-wave scene pointed the same logic at the electric guitar. Glenn Branca " +
+        "and Rhys Chatham, who says his own phasing riffs were directly inspired by Piano " +
+        "Phase, built pieces for a dozen or more detuned, overdriven guitars, minimalism's " +
+        "repetition and drift turned into a wall of harmonic overtones: Branca's The Ascension " +
+        "(1981) and Chatham's Die Donnergötter (1985) define that branch.",
     ],
     soundParagraph:
-      "Dozens of guitars, sometimes literally, are tuned to the same droning open interval and " +
-      "layered until individual notes disappear into a single mass of ringing overtones — the " +
-      "compositional unit is the overall drone and its slow harmonic drift, not a melody any " +
-      "one guitarist is playing. Rhythms tend toward a steady, motorik pulse underneath the " +
-      "wall of sound, giving these long-form pieces a physical, almost orchestral weight that " +
-      "has more in common with a symphony's crescendo than with a rock song's structure.",
-    // Only 2 artists carry this tag in the graph, both from the same no-wave-
-    // adjacent massed-guitar branch rather than the classical tradition the
-    // genre name usually implies — see the deck and Origin above. The list
-    // below is necessarily short, not padded.
+      "A short pattern repeats, again and again, while something changes so slowly you notice " +
+      "it only afterwards: two parts sliding out of phase, a note added or taken away, the " +
+      "harmony shifting under a steady pulse. In the composers' hands it's marimbas, pianos and " +
+      "voices; in the no-wave branch it's dozens of guitars tuned to the same droning interval " +
+      "until single notes disappear into one ringing mass.",
+    // Reich joined the map in Oct 2026 under the owner's outside-roots rule;
+    // before that this page could only tell the no-wave branch. Riley and
+    // Glass are still off the map.
     definingAlbums: [
+      'steve-reich',
       'glenn-branca',
       'rhys-chatham',
     ],
     sections: [
+      {
+        title: 'The composers',
+        blurb:
+          "Steve Reich's phasing, tape loops and pulsing ensembles: the root that Brian Eno, " +
+          "Slint, Squid and American Football all name.",
+        artistIds: ['steve-reich'],
+      },
       {
         title: 'Massed-guitar minimalism',
         blurb:
