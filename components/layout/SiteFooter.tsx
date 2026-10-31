@@ -13,16 +13,16 @@ import GenreSticker, { type StickerGenre } from './GenreSticker';
 // full-width band at the very bottom, in small print, on the lid of a band's
 // flight case (owner, Oct 2026: the plain band read as bland, and a zine
 // sheet in its place no longer read as a footer). Credits -- who compiled it
-// and where to find them, the date the map was pressed as a rubber stamp;
+// and where to find them, when the map was last updated as a rubber stamp;
 // sources -- the map's one big claim, that its links have named sources,
-// with the real counts, and where the pictures and the previews come from;
+// in plain words (the count is the sticker's, said once), and where the pictures and the previews come from;
 // and the site's pages as a setlist taped to the lid. Stickers on the case's
 // top edge: on the left, by the credits, the compiler's two favourite records
 // (their own words, on the Mixtape page); on the right, the count of sourced
 // links, a genre (a different one each visit) and an ask for missing links.
 // Along the bottom, a way to say a link is wrong, and a barcode.
 //
-// Every number is read from the map itself, and "last pressed" is when the
+// Every number is read from the map itself, and "last updated" is when the
 // map's data was last built, so none of it can go stale.
 
 const PORTFOLIO = 'https://diwakar-mishra-portfolio.vercel.app/';
@@ -71,7 +71,6 @@ export default function SiteFooter() {
   const cited = links.filter(e => resolveCitationStatus(e) === 'cited').length;
   const commons = data.artists.filter(a => a.imageCredit).length;
   const when = pressed();
-  const catalogue = `SW-${data.artists.length}`;
   const year = new Date().getFullYear();
   const n = (x: number) => x.toLocaleString('en-GB');
   const favourites = FAVOURITES.flatMap(id => {
@@ -120,8 +119,8 @@ export default function SiteFooter() {
             <a href={REPO} target="_blank" rel="noreferrer">The code</a>
           </p>
           <p className="site-foot__stamp">
-            {when && <span>Map last pressed {when}</span>}
-            <span>Cat. no. {catalogue}</span>
+            {when && <span>Last updated {when}</span>}
+            <span>{n(data.artists.length)} artists</span>
           </p>
         </section>
 
@@ -140,9 +139,10 @@ export default function SiteFooter() {
 
         <section className="site-foot__col" aria-labelledby="site-foot-sources">
           <h2 id="site-foot-sources" className="site-foot__head">Sources</h2>
+          {/* The count is on the sticker above; this says what a source is. */}
           <p className="site-foot__lead">
-            <b>{links.length.toLocaleString('en-GB')}</b> influence links, <b>{cited.toLocaleString('en-GB')}</b> with a named
-            source: an interview, a review or a book.
+            {cited === links.length ? 'Every link' : `${n(cited)} of ${n(links.length)} links`} names where it comes from: an
+            interview, a review or a book.
           </p>
           <p className="site-foot__small">
             Photos: Deezer and Apple Music, and {commons} from Wikimedia Commons, credited where they appear.
@@ -157,7 +157,7 @@ export default function SiteFooter() {
         </a>
         <span className="site-foot__copy">&copy; {year} Diwakar Mishra</span>
         <svg className="site-foot__barcode" width="64" height="26" aria-hidden>
-          {[...catalogue.replace(/\D/g, '').padStart(6, '0') + String(links.length).padStart(4, '0') + String(cited).padStart(4, '0')].flatMap((d, i) => {
+          {[...String(data.artists.length).padStart(6, '0') + String(links.length).padStart(4, '0') + String(cited).padStart(4, '0')].flatMap((d, i) => {
             const n = Number(d);
             return [0, 1].map(k => (
               <rect key={`${i}:${k}`} x={1 + i * 4.4 + k * 2.1} y="0" width={((n + k * 3) % 3) * 0.5 + 0.7} height="20" />

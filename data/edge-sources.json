@@ -973,12 +973,26 @@
     "verdict": "ok",
     "note": "Reich/Devo/Russell pass: re-opened on its page by hand or by the researcher (research/reich-devo-russell-DRAFT.md)."
   },
+  "black-country-new-road>boris": {
+    "url": "https://www.tokyoweekender.com/entertainment/music/black-country-new-roads-interview/",
+    "found": "Wayne brings up Japanese bands such as Boris, The Pillows and Fishmans as major influences on his drumming in high school",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Tokyo Weekender, 20 Nov 2025. The writer's paraphrase of drummer Charlie Wayne, so reported, not first-person."
+  },
   "black-country-new-road>can": {
     "url": "https://thequietus.com/interviews/bakers-dozen/god-tier-tyler-hyde-of-black-country-new-roads-favourite-albums/",
     "found": "in four songs, has everything that I love about krautrock.",
     "checked": "2026-10-26",
     "verdict": "ok",
     "note": "Opened in a browser by the owner (the body is paywalled for bots); the passages were pasted from it in an earlier session, and the citation's quotes are that text."
+  },
+  "black-country-new-road>fishmans": {
+    "url": "https://www.tokyoweekender.com/entertainment/music/black-country-new-roads-interview/",
+    "found": "Wayne brings up Japanese bands such as Boris, The Pillows and Fishmans as major influences on his drumming in high school",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "Tokyo Weekender, 20 Nov 2025. The writer's paraphrase of drummer Charlie Wayne, so reported, not first-person."
   },
   "black-country-new-road>the-fall": {
     "url": "https://thequietus.com/interviews/bakers-dozen/god-tier-tyler-hyde-of-black-country-new-roads-favourite-albums/",
@@ -5530,6 +5544,13 @@
     "checked": "2026-10-26",
     "verdict": "ok",
     "by": "c10"
+  },
+  "porter-robinson>ninajirachi": {
+    "url": "https://www.youtube.com/watch?v=WbioqPnfZh8&t=430s",
+    "found": "And I've been trying to carry that with me in the studio",
+    "checked": "2026-10-31",
+    "verdict": "ok",
+    "note": "triple j's Breakfast with Abby and Tyrone, 7:10-9:30; Robinson is the speaker. The video pointed to by the owner; captions fetched to research/source-pass/amoeba/transcripts/WbioqPnfZh8.txt."
   },
   "portishead>can": {
     "url": "https://thequietus.com/interviews/bakers-dozen/portishead-bakers-dozen/14/",

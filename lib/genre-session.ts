@@ -1,6 +1,7 @@
 import type { GraphData } from '@/data/types';
 import { compareNames } from './sort';
 import { readableInk } from './colors';
+import { ROOT_COLOR, DEFAULT_ROOT_COLOR } from './genre-family';
 
 // The /genres page: the history of these sounds drawn as a studio track
 // sheet, all of it on one screen. Each row is a track, grouped by family;
@@ -95,17 +96,6 @@ const ENTRY_IN = 14; // and drops onto the clip this far in from its left edge
 const CORNER_R = 6;
 const RUN_STEP = 4; // cables sharing a gap run side by side
 
-// The family founders' colours, from the app's palette (lib/colors.ts):
-// gold for the earliest and biggest, magenta for the krautrock/electronic
-// line, rose, folk olive, and a neutral for minimalism.
-const ROOT_COLOR: Record<string, string> = {
-  'garage-rock': '#E8C87A',
-  'art-rock': '#C77DD1',
-  'psychedelic-pop': '#F2A8C4',
-  'singer-songwriter': '#78963C',
-  minimalism: '#9b96b8',
-};
-const DEFAULT_ROOT_COLOR = '#8891F2';
 // Top to bottom. The pocket player floats over the sheet's bottom-right
 // corner (PLAYER_CORNER), so the families whose right ends sit low and late
 // go last: Songwriter's runs out by 2006 short of the edge, Minimalism's in

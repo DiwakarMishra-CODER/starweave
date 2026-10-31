@@ -8,7 +8,7 @@ import { IN_VIEW } from '@/components/ui/Reveal';
 import TapeCase from './TapeCase';
 import { Static, Disappear, RoadIn, Rotation } from './SideA';
 import TwoDays from './TwoDays';
-import { Dig, Learned, OneFamily, Between, TapeEnd } from './SideB';
+import { Dig, Learned, OneFamily, Scenes, Between, TapeEnd } from './SideB';
 
 // The About page: the maker's story as a mixtape for the visitor. Each part
 // of the story is a track; pressing play once starts the tape, and from then
@@ -143,6 +143,7 @@ export default function TapePage({ tape, room }: { tape: AboutTape; room: AboutR
           {section('dig', <Dig />)}
           {section('learned', <Learned />)}
           {section('one-family', <OneFamily />)}
+          {section('scenes', <Scenes />)}
           {section('between', <Between />)}
           {section('end', <TapeEnd />)}
         </div>

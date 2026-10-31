@@ -363,6 +363,10 @@ const ARTIST_PHOTO: Record<string, PhotoOverride> = {
   // Deezer has no picture of King Crimson at all.
   'king-crimson': { file: '/photos/king-crimson.jpg', credit: { author: 'Atlantic Records (press photo, 1974)', license: 'Public domain', url: 'https://commons.wikimedia.org/wiki/File:King_crimson_1974_press_photo.jpg' } },
   'bratmobile': { file: '/photos/bratmobile.jpg', credit: { author: 'Greg Neate', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Bratmobile.jpg' } },
+  // Deezer's was a lightbulb (Oct 2026); Geordie Greep and Cameron Picton at a
+  // Rough Trade in-store, 2019. Apple's artist image is a masked surgeon shoot
+  // that can't be told for the band.
+  'black-midi': { file: '/photos/black-midi.jpg', credit: { author: 'Paul Hudson from United Kingdom', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:2019_Black_Midi_(48128805937).jpg' } },
   'christie-front-drive': { file: '/photos/christie-front-drive.jpg', credit: { author: 'denverkid', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Christie_Front_Drive.jpg' } },
   // Arto Lindsay alone, decades on: no photo of DNA as a band is free to use
   'dna': { file: '/photos/dna.jpg', credit: { author: 'Kaethe17', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Arto-lindsay-2026.jpg' } },
@@ -577,6 +581,10 @@ const ALBUM_COVER: Record<string, string> = {
   // The search took the 1998 Nonesuch re-recording's sleeve; the record on the map is ECM's 1978 original.
   'steve-reich::music-for-18-musicians':      `${APPLE}/Music124/v4/3f/f3/1f/3ff31f10-a505-440f-4639-1d5640b529e5/00042282141729.rgb.jpg/600x600bb.jpg`,
   // Apple only has a 2013 live performance of Flood, whose cover the search took.
+  // The Cover Art Archive's copy took ~9s to arrive (Oct 2026), leaving the
+  // footer's Loveless sticker blank; Apple's (UK/Japan stores) is the same sleeve.
+  'my-bloody-valentine::loveless':             `${APPLE}/Music221/v4/4c/e1/51/4ce15131-7ac5-daf5-bf62-0202f27d691d/887830015998.png/600x600bb.jpg`,
+  'fishmans::long-season':                     `${APPLE}/Music128/v4/16/e3/2d/16e32ddd-32b0-f0a0-91aa-c847a1094df5/00602567908678.rgb.jpg/600x600bb.jpg`,
   'boris::flood':                              `${CAA}/51838493-3a1b-48cf-b7d3-a1dd35aec471/36357353321-500.jpg`,
 };
 
@@ -644,7 +652,14 @@ function cleanTitle(s: string): string {
     .trim();
 }
 
-async function fetchItunesPreview(artistName: string, songTitle: string): Promise<ItunesPreview | null> {
+// Artists whose records the US store no longer carries but another store
+// does: Fishmans' studio Long Season (1996) left Apple's US store in 2025,
+// leaving only a 1997 live recording there; the Japanese store has it.
+const ITUNES_STORE: Record<string, string> = {
+  fishmans: 'jp',
+};
+
+async function fetchItunesPreview(artistName: string, songTitle: string, country = 'us'): Promise<ItunesPreview | null> {
   // Strip parenthetical subtitles for matching (e.g. "This Must Be the Place (Naive Melody)" → "this must be the place")
   const songKey = (songTitle.toLowerCase().replace(/\s*\([^)]*\)\s*/g, '').trim() || songTitle.toLowerCase()).slice(0, 25);
   // Skip very short first words like "My", "Yo", "A" — they match too broadly
@@ -659,12 +674,13 @@ async function fetchItunesPreview(artistName: string, songTitle: string): Promis
   type Track = { artistName: string; trackName: string; collectionName: string; previewUrl?: string };
   const isUnwanted = (t: Track) => {
     const combined = `${t.trackName} ${t.collectionName}`.toLowerCase();
-    return /([\[(]live[)\]]|\blive\s+(at|in|from|version)\b|[\[(]demo[)\]]|[\[(]acoustic[)\]]|\bcover\b|movie clip)/.test(combined);
+    // "(Live)", "(LIVE / 1997.7.4 ...)", "live at ...": a live recording isn't the song.
+    return /([\[(]live\b|\blive\s+(at|in|from|version)\b|[\[(]demo[)\]]|[\[(]acoustic[)\]]|\bcover\b|movie clip)/.test(combined);
   };
 
   const tryFetch = async (term: string) => {
     try {
-      const url = `https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=music&entity=song&limit=15`;
+      const url = `https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=music&entity=song&limit=15&country=${country}`;
       const res = await fetchItunesWithBackoff(url);
       if (!res?.ok) return null;
       const data = await res.json() as { results: Track[] };
@@ -704,6 +720,7 @@ async function fetchItunesPreview(artistName: string, songTitle: string): Promis
   await new Promise(r => setTimeout(r, 100));
   const byTitle = await tryFetch(songTitle);
   if (byTitle) return byTitle;
+  if (country !== 'us') return null;
 
   // Same catalogue fallback as the cover fetcher. Recovers stylised titles the
   // keyword search cannot reach -- Slayyyter's "BEAT UP CHANEL$" against our
@@ -747,7 +764,7 @@ async function enrichItunesPreviews(
   const misses: string[] = [];
   for (const artist of artists) {
     const song = PREVIEW_TRACK_OVERRIDES[artist.id] ?? artist.signatureSong ?? artist.name;
-    const preview = await fetchItunesPreview(artist.name, song);
+    const preview = await fetchItunesPreview(artist.name, song, ITUNES_STORE[artist.id]);
     result.set(artist.id, preview);
     if (preview) {
       hits++;
@@ -785,10 +802,10 @@ function namedTracks(reason: string): string[] {
 
 const songIs = (want: string, track: string) => normKey(want).length >= 4 ? titleMatches(want, track) : normKey(want) === normKey(stripEdition(track));
 
-async function fetchAlbumTracks(artistName: string, albumTitle: string): Promise<CatalogueTrack[]> {
+async function fetchAlbumTracks(artistName: string, albumTitle: string, country = 'us'): Promise<CatalogueTrack[]> {
   const artistKey = normKey(artistName.replace(/^(the|a|an)\s+/i, '')).split(' ').find(w => w.length >= 3) ?? normKey(artistName);
   try {
-    const url = `https://itunes.apple.com/search?term=${encodeURIComponent(`${artistName} ${albumTitle}`)}&media=music&entity=album&limit=10`;
+    const url = `https://itunes.apple.com/search?term=${encodeURIComponent(`${artistName} ${albumTitle}`)}&media=music&entity=album&limit=10&country=${country}`;
     const res = await fetchItunesWithBackoff(url);
     if (res?.ok) {
       const data = await res.json() as { results: Array<{ artistName: string; collectionName: string; collectionId: number }> };
@@ -802,7 +819,7 @@ async function fetchAlbumTracks(artistName: string, albumTitle: string): Promise
       const hit = hits.find(r => normKey(r.collectionName) === normKey(albumTitle)) ?? hits[0];
       if (hit) {
         await new Promise(r => setTimeout(r, 80));
-        const songs = await fetchItunesWithBackoff(`https://itunes.apple.com/lookup?id=${hit.collectionId}&entity=song`);
+        const songs = await fetchItunesWithBackoff(`https://itunes.apple.com/lookup?id=${hit.collectionId}&entity=song&country=${country}`);
         if (songs?.ok) {
           const tracks = ((await songs.json()) as { results: CatalogueTrack[] }).results.filter(t => t.wrapperType === 'track');
           if (tracks.length) return tracks;
@@ -810,6 +827,7 @@ async function fetchAlbumTracks(artistName: string, albumTitle: string): Promise
       }
     }
   } catch { /* fall through to the catalogue */ }
+  if (country !== 'us') return [];
   // Keyword search misses some records that are plainly in the catalogue.
   const artistId = await resolveItunesArtistId(artistName);
   if (artistId === null) return [];
@@ -844,7 +862,7 @@ async function enrichAlbumPreviews(
       reused++;
       continue;
     }
-    const tracks = await fetchAlbumTracks(artistName, album.title);
+    const tracks = await fetchAlbumTracks(artistName, album.title, ITUNES_STORE[artistId]);
     const song = pickAlbumSong(tracks, [...named, ...(signatureSong ? [signatureSong] : [])]);
     result.set(key, song);
     if (song) fetched++; else misses++;

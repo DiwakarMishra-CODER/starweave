@@ -9,6 +9,7 @@ import FamilyPhoto from '@/components/artist/FamilyPhoto';
 import RecordSleeve from '@/components/artist/RecordSleeve';
 import Room from '@/components/artist/backline/Room';
 import { resolveBackline } from '@/lib/backline';
+import { genreFamilyColor } from '@/lib/genre-family';
 import SiteFooter from '@/components/layout/SiteFooter';
 
 interface Props {
@@ -88,7 +89,7 @@ export default async function ArtistPage({ params }: Props) {
             signatureSong: artist.signatureSong,
           }}
           intro={artist.bio ? introLine(artist.bio) : null}
-          genres={artist.genres.map(g => ({ id: g, name: genreMap[g] ?? g }))}
+          genres={artist.genres.map(g => ({ id: g, name: genreMap[g] ?? g, color: genreFamilyColor(data.genres, g) }))}
           country={country}
           portrait={portrait}
         />

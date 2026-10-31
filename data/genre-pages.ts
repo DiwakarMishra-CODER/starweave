@@ -197,8 +197,9 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
         blurb:
           "Dream-pop's first generation, working before the genre had settled into a single " +
           "sound — from Nico's icy chamber-drone to Cocteau Twins' glossolalia to the " +
-          "Sundays' sunlit jangle.",
-        artistIds: ['nico', 'cocteau-twins', 'this-mortal-coil', 'the-sundays'],
+          "Sundays' sunlit jangle, and Japan's Fishmans building an entirely parallel " +
+          "version of the same idea.",
+        artistIds: ['nico', 'cocteau-twins', 'this-mortal-coil', 'the-sundays', 'fishmans'],
       },
       {
         title: 'Into shoegaze',
@@ -2900,8 +2901,9 @@ export const GENRE_PAGES: Record<string, GenrePageContent> = {
           "A second generation took the same seriousness in gothic, chamber, and " +
           "post-rock-adjacent directions — Nick Cave's baroque menace, Talk Talk's dissolution " +
           "into near-classical calm, Godspeed's orchestral maximalism, and a handful of artists " +
-          "(Broadcast, Tom Waits) building entirely idiosyncratic versions of the same idea.",
-        artistIds: ['the-fall', 'mr-bungle', 'nick-cave-and-the-bad-seeds', 'pj-harvey', 'talk-talk', 'jeff-buckley', 'godspeed-you-black-emperor', 'broadcast', 'tom-waits'],
+          "(Fishmans, Broadcast, Tom Waits) building entirely idiosyncratic versions of the " +
+          "same idea.",
+        artistIds: ['the-fall', 'mr-bungle', 'nick-cave-and-the-bad-seeds', 'pj-harvey', 'talk-talk', 'jeff-buckley', 'godspeed-you-black-emperor', 'fishmans', 'broadcast', 'tom-waits'],
       },
       {
         title: 'The 21st-century UK wing',

@@ -14,8 +14,9 @@ import { useTape } from './TapePage';
 //   iridescent colours, slow lights rising;
 // - stressed or tired: Loveless, the real sleeve layered four deep, each
 //   layer drifting and bending like glide guitar until it fills the section;
-//   when the song stops or you scroll on, the layers part and you come out
-//   "refreshed".
+//   while it plays you read every line but the last; when the song stops or
+//   you scroll on, the layers part and the last line, coming out
+//   "refreshed", appears.
 // The words always sit on a solid card, crisp. Colour changes are slow;
 // nothing flashes.
 
@@ -123,7 +124,7 @@ export default function TwoDays() {
           <div className="tworld__card" key={day}>
             <p className="tworld__when">{record.when}</p>
             <p className="tworld__title">{record.title}</p>
-            {(day === 'tired' ? record.words.slice(0, parted ? undefined : 1) : record.words).map((w, i) => (
+            {(day === 'tired' ? record.words.slice(0, parted ? undefined : -1) : record.words).map((w, i) => (
               <p key={i} className="tworld__words">{w}</p>
             ))}
           </div>

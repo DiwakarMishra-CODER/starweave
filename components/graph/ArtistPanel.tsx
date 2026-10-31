@@ -14,6 +14,7 @@ import { useNarrowLayout } from '@/lib/use-media-query';
 import { useAudioPreview } from '@/lib/use-audio-preview';
 import { LOUD_GAIN } from '@/lib/player';
 import { whyFor } from '@/lib/home-story';
+import { genreFamilyColor } from '@/lib/genre-family';
 import { storyCamera } from '@/lib/story-store';
 import SourceLink, { SourceStampIcon } from '@/components/ui/SourceLink';
 
@@ -414,14 +415,15 @@ export default function ArtistPanel({ artist, graphData, onClose, onSelectArtist
                 <span className="zine__highlight">{artist.name}</span>
               </Link>
             </h2>
-            <p className="zine__typed">
-              {artist.genres.map((g, i) => (
-                <span key={g}>
-                  {i > 0 && ' · '}
-                  <Link href={`/genre/${g}`} className="zine__genre">{genreMap[g] ?? g}</Link>
-                </span>
+            <ul className="zine__genres genre-tags" aria-label="Genres">
+              {artist.genres.map(g => (
+                <li key={g}>
+                  <Link href={`/genre/${g}`} className="genre-tag" style={{ '--tag': genreFamilyColor(graphData.genres, g) } as React.CSSProperties}>
+                    {genreMap[g] ?? g}<span className="genre-tag__go" aria-hidden>→</span>
+                  </Link>
+                </li>
               ))}
-            </p>
+            </ul>
 
             {/* Their song first, up front: the pocket radio, and the whole
                 songs on the apps. */}

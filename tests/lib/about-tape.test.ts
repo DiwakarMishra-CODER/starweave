@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import type { GraphData } from '@/data/types';
-import { ONE_FAMILY, SOUNDS_LIKE, TAPE_SONGS, TAPE_TRACKS } from '@/data/about';
+import { DIGGING, ONE_FAMILY, SCENE_STORIES, SOUNDS_LIKE, TAPE_SONGS, TAPE_TRACKS } from '@/data/about';
 import { aboutCards, notSoundQuote, resolveAboutTape } from '@/lib/about-tape';
 
 const data = JSON.parse(readFileSync(resolve(__dirname, '../../public/graph.json'), 'utf-8')) as GraphData;
@@ -99,10 +99,24 @@ describe('the About tape', () => {
     for (const c of tape.rotation) expect(c.at !== null || !!c.track?.previewUrl, c.title).toBe(true);
   });
 
+  it('tells each scene with bands that were in it, every one with a photo and a sound', () => {
+    expect(tape.scenes.map(s => s.id)).toEqual(SCENE_STORIES.map(s => s.sceneId));
+    for (const s of tape.scenes) {
+      const scene = data.scenes.find(x => x.id === s.id)!;
+      for (const b of s.bands) {
+        expect(scene.memberIds, `${b.id} in ${s.id}`).toContain(b.id);
+        expect(b.imageUrl, b.id).toBeTruthy();
+        expect(b.sounds.length, b.id).toBeGreaterThan(0);
+      }
+    }
+  });
+
   it('says nothing in the map’s own jargon', () => {
     // The hidden track names the library the map is drawn with; that's a name, not jargon.
-    const words = JSON.stringify([TAPE_TRACKS, tape.label, tape.constants, tape.learned.notSound.words, tape.between.lead, tape.liner.lines])
-      .replace('react-force-graph', '');
+    // "Straight edge" is the movement's name (and its song's key), not jargon.
+    const words = JSON.stringify([TAPE_TRACKS, tape.label, tape.constants, tape.learned.notSound.words, tape.between.lead, tape.liner.lines, SCENE_STORIES, DIGGING])
+      .replace('react-force-graph', '')
+      .replace(/straight[- ]edge/gi, '');
     expect(words).not.toMatch(/\b(graph|nodes?|edges?)\b/i);
   });
 });

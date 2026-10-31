@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import { player, usePlayer } from '@/lib/player';
 import { sizedImageUrl } from '@/lib/image-url';
 import { useMusicMotion } from '@/components/genre/useMusicMotion';
@@ -155,7 +155,10 @@ const CX = 330;
 const CY = 280;
 const arc = (n: number, i: number, rx: number, ry: number, side: 1 | -1, span = 150) => {
   const a = ((-span / 2 + (n > 1 ? (span * i) / (n - 1) : span / 2)) * Math.PI) / 180;
-  return { x: CX + side * rx * Math.cos(a), y: CY + ry * Math.sin(a) };
+  // Rounded: the server and the browser can differ in a sine's last digit,
+  // and an unrounded position then fails hydration.
+  const r2 = (v: number) => Math.round(v * 100) / 100;
+  return { x: r2(CX + side * rx * Math.cos(a)), y: r2(CY + ry * Math.sin(a)) };
 };
 
 /** 7. Sounding alike isn't influence: Alvvays, with the bands an app shows
@@ -362,6 +365,82 @@ export function OneFamily() {
 
       <p className="tfork__last"><Link href="/genres">{f.last} &rarr;</Link></p>
     </div>
+  );
+}
+
+/** Why the map has scenes: the Windmill and DC's straight edge movement,
+ *  each as its strip of film from /scenes -- one frame per band, its sounds
+ *  under it in their families' colours, so the strip shows bands divided by
+ *  sound in one room -- then the story in the owner's words. */
+export function Scenes() {
+  const { tape } = useTape();
+  return (
+    <div className="tscenes">
+      {tape.scenes.map(s => (
+        <section key={s.id} className="tscene" aria-labelledby={`tscene-${s.id}`}>
+          <p id={`tscene-${s.id}`} className="tfork__label">
+            {s.title}
+            <span>
+              <Link href={`/scene/${s.id}`} className="tscene__link">{s.name}, {s.where} <span aria-hidden>&rarr;</span></Link>
+            </span>
+          </p>
+          <ol className="tscene__strip" style={{ '--n': s.bands.length } as React.CSSProperties}>
+            {s.bands.map((b, k) => (
+              <li key={b.id} className="tscene__frame" style={{ '--k': k } as React.CSSProperties}>
+                <Link href={`/artist/${b.id}`} className="tscene__shot" aria-label={b.name}>
+                  {b.imageUrl && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={sizedImageUrl(b.imageUrl, 250)} alt="" width={128} height={160} loading="lazy" />
+                  )}
+                </Link>
+                <Link href={`/artist/${b.id}`} className="tscene__band">{b.name}</Link>
+                <ul className="genre-tags tscene__sounds" aria-label={`${b.name}'s sounds`}>
+                  {b.sounds.map(g => (
+                    <li key={g.id}>
+                      <Link href={`/genre/${g.id}`} className="genre-tag" style={{ '--tag': g.color } as React.CSSProperties}>{g.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ol>
+          <SceneCredits bands={s.bands} />
+          <div className="tmerge__words tscene__words">{s.words.map((w, i) => <p key={i}>{w}</p>)}</div>
+        </section>
+      ))}
+    </div>
+  );
+}
+
+/** The credit the Commons photos' licence asks for, as one line under the
+ *  strip (under each frame it crowded the names): the bands by photographer
+ *  and licence, each band linking to its photo's page. */
+function SceneCredits({ bands }: { bands: ReturnType<typeof useTape>['tape']['scenes'][number]['bands'] }) {
+  const groups = new Map<string, { author: string; license: string; bands: { name: string; url: string }[] }>();
+  for (const b of bands) {
+    if (!b.credit) continue;
+    const k = `${b.credit.author}|${b.credit.license}`;
+    const g = groups.get(k) ?? { author: b.credit.author, license: b.credit.license, bands: [] };
+    g.bands.push({ name: b.name, url: b.credit.url });
+    groups.set(k, g);
+  }
+  if (groups.size === 0) return null;
+  return (
+    <p className="tscene__credits">
+      {[...groups.values()].map((g, i) => (
+        <span key={i}>
+          {i > 0 && ' \u00b7 '}
+          Photos of{' '}
+          {g.bands.map((b, j) => (
+            <Fragment key={b.url}>
+              {j > 0 && (j === g.bands.length - 1 ? ' and ' : ', ')}
+              <a href={b.url} target="_blank" rel="noopener noreferrer">{b.name}</a>
+            </Fragment>
+          ))}
+          : {g.author}, {g.license}
+        </span>
+      ))}
+    </p>
   );
 }
 

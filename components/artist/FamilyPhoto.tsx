@@ -62,7 +62,7 @@ type Self = Pick<Artist, 'id' | 'name' | 'imageUrl' | 'imageCredit' | 'activeFro
 interface Props {
   artist: Self;
   intro: string | null;
-  genres: { id: string; name: string }[];
+  genres: { id: string; name: string; color: string }[];
   country: string | null;
   portrait: Portrait;
 }
@@ -538,14 +538,15 @@ export default function FamilyPhoto({ artist, intro, genres, country, portrait }
               <h1 id={`${uid}-name`} className="family-photo__name">{artist.name}</h1>
               {when && <p className="family-photo__when">{when}</p>}
               {genres.length > 0 && (
-                <p className="family-photo__genres">
-                  {genres.map((g, i) => (
-                    <span key={g.id}>
-                      {i > 0 && <span aria-hidden> · </span>}
-                      <Link href={`/genre/${g.id}`}>{g.name}</Link>
-                    </span>
+                <ul className="family-photo__genres genre-tags" aria-label="Genres">
+                  {genres.map(g => (
+                    <li key={g.id}>
+                      <Link href={`/genre/${g.id}`} className="genre-tag" style={{ '--tag': g.color } as React.CSSProperties}>
+                        {g.name}<span className="genre-tag__go" aria-hidden>→</span>
+                      </Link>
+                    </li>
                   ))}
-                </p>
+                </ul>
               )}
               {intro && (
                 <p className="family-photo__intro">

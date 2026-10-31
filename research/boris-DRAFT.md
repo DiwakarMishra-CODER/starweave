@@ -62,6 +62,8 @@ Research only. Nothing here has been written to `data/seed-data.ts`, `data/edge-
 - **Downstream, by the descendant's own interviews:** Wednesday / Karly Hartzman / MJ Lenderman, Jane Remover, Parannoul, Anna von Hausswolff (she names Earth and Barn Owl; the Sunn O)))/Boris link runs through producer Randall Dunn, which is production, not influence), Have a Nice Life (Scene Point Blank, Machine Music, Bandcamp Daily: no Boris), Deerhunter / Bradford Cox (Quietus favourite LPs: no Boris), Low / Alan Sparhawk, Mogwai / Stuart Braithwaite, King Gizzard / Stu Mackenzie, Turnstile / Brendan Yates, Mono (only the friendship answer above). Nothing found for any of them.
 - **Not attempted for lack of budget (likely low-yield):** Grouper, Geese, Deaths Dynamic Shroud, Silversun Pickups, Explosions in the Sky, the Jesus Lizard, Sigur Rós. A follow-up could check whether any member of Deafheaven, Nothing or Jesu, all off-map, is on the map in another form; none appears to be.
 
+**Found later (31 Oct 2026):** `black-country-new-road -> boris`, reported: Tokyo Weekender (Nov 2025) says drummer Charlie Wayne names Boris, the Pillows and Fishmans as major influences on his drumming in high school.
+
 ## Denials
 None found. No one on the map is on record denying a Boris influence.
 

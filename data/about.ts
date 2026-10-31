@@ -46,6 +46,10 @@ export const TAPE_SONGS: TapeSong[] = [
   // Black metal and blackgaze: loud too, so the same care.
   { key: 'transilvanian-hunger', artistName: 'Darkthrone', song: 'Transilvanian Hunger', album: 'Transilvanian Hunger', onTape: false, gain: 0.5 },
   { key: 'dream-house', artistName: 'Deafheaven', song: 'Dream House', album: 'Sunbather', onTape: false, gain: 0.5 },
+  // Why the map has scenes: the Windmill, then DC's straight edge movement.
+  { key: 'sugar-tzu', artistId: 'black-midi', song: 'Sugar/Tzu', album: 'Hellfire' },
+  { key: 'straight-edge', artistId: 'minor-threat', song: 'Straight Edge', album: 'First Two Seven Inches' },
+  { key: 'waiting-room', artistId: 'fugazi', song: 'Waiting Room', album: '13 Songs' },
   { key: 'alison', artistId: 'slowdive', song: 'Alison', album: 'Souvlaki' },
   { key: 'story-ends', artistId: 'the-sundays', song: "Here's Where the Story Ends", album: 'Reading, Writing and Arithmetic' },
   // Radio City, the Big Star record Todd Jones picked: in the dig crate only.
@@ -156,6 +160,16 @@ export const TAPE_TRACKS: TapeTrack[] = [
     ],
   },
   {
+    id: 'scenes',
+    side: 'B',
+    title: 'Why the map has scenes',
+    songs: ['sugar-tzu', 'straight-edge', 'waiting-room'],
+    heading: 'Why the map has scenes',
+    words: [
+      'Genres divide bands by sound. Scenes bring them back together: divided by sound, united by a venue, a label, a community. Two scenes are why this map has them.',
+    ],
+  },
+  {
     id: 'between',
     side: 'B',
     title: 'How the map knows who influenced whom',
@@ -216,9 +230,14 @@ export const TWO_DAYS = {
     song: 'when-you-sleep',
     ask: 'Stressed, or tired',
     when: "When I'm very stressed or tired",
+    // The rest from their own Album of the Year review of Loveless.
     words: [
       'I step into the world of Loveless. Its layers of guitar overwhelm me, consume me.',
-      'When I come out, I feel refreshed.',
+      "The first time, I didn't get it. A year later I put it on in the background while writing my practicals, and it put me in a trance. I stopped writing. It was overloading my brain and calming it at the same time.",
+      'Someone called it angels singing in a black hole. It\u2019s noisy and heavenly at once, like soft music played heavily. "When You Sleep" is my favourite: a perfect indie pop song inside layers of noisy guitar. "To Here Knows When" can make me cry.',
+      'I play it at 90% volume; it\u2019s meant to be loud.',
+      // Shown once the song stops or you scroll on (TwoDays): coming out of it.
+      'When I come out, I feel alive and refreshed.',
     ],
   },
   /** Dream pop and shoegaze, each linking to its genre's page, then this. */
@@ -243,12 +262,31 @@ export const DIGGING: { name: string; tab?: string; href: string; finds: (({ son
   {
     name: 'Rate Your Music', href: 'https://rateyourmusic.com/',
     finds: [
-      { record: 'black-country-new-road', note: ["Rate Your Music's top album of the 2020s."] },
+      {
+        record: 'black-country-new-road',
+        note: [
+          "Rate Your Music's top album of the 2020s.",
+          "Black Country, New Road don't have one genre: post-rock, noise, chamber pop, prog pop. Their sound changes with every record.",
+          // Isaac Wood left in January 2022, days before it came out.
+          'Isaac Wood, who sang on this one and left just before it came out, is technically a bad singer. His voice cracks, and he half-speaks his lines, the way Slint did. But it\u2019s so emotional, and it matches the music.',
+          'They play like a classical ensemble more than a rock band: violin, piano, saxophone, flute. You rarely hear those in rock now. While people in indie try to be cool, they bring back emotion, complexity and grand, huge-sounding music.',
+        ],
+      },
     ],
   },
   {
     name: 'Album of the Year', href: 'https://www.albumoftheyear.org/',
-    finds: [{ record: 'magdalena-bay', note: ["Album of the Year's top album of the 2020s."] }],
+    finds: [{
+      record: 'magdalena-bay',
+      note: [
+        "Album of the Year's top album of the 2020s.",
+        // The story, as the duo call it, is a loose concept: True has the
+        // disk implanted in her forehead to become her ideal self, and her
+        // body rejects it (Wikipedia's Imaginal Disk page).
+        "A loose concept album about True, who isn't happy with her life. She sees an ad for the Imaginal Disk, put into your head to become the perfect you, the one you want to be. She gets it put in, then feels trapped: her body rejects it. Someone keeps asking for help, and I'm not sure who. Maybe her true self, not wanting to be changed.",
+        'It\u2019s synth pop, but prog-influenced: I didn\u2019t know synth pop could be done this way. Every song grows, layer on layer, and in the second half the songs flow into each other, with amazing transitions. Existential, but cohesive and fun, and very otherworldly. A modern classic, with one of the coolest album covers.',
+      ],
+    }],
   },
   {
     name: 'Amoeba: What’s in My Bag?', tab: 'What’s in My Bag?', href: 'https://www.youtube.com/@amoeba',
@@ -265,6 +303,38 @@ export const DIGGING: { name: string; tab?: string; href: string; finds: (({ son
         "So I listened. It was ahead of its time: it doesn't sound like 1974, it sounds like an 80s or 90s indie record.",
       ],
     }],
+  },
+];
+
+/** Why the map has scenes: the two that made it need them, each drawn as
+ *  its strip of film from /scenes (one frame per band, each band's sounds
+ *  under its frame, from the map's own genres), then the story in the
+ *  owner's words. Bands in the order the story names them. */
+export const SCENE_STORIES: { sceneId: string; title: string; bands: string[]; words: string[] }[] = [
+  {
+    sceneId: 'windmill',
+    title: 'The Windmill',
+    bands: ['black-country-new-road', 'black-midi', 'jockstrap', 'squid'],
+    words: [
+      'The Windmill is a small pub in Brixton, South London. Black Country, New Road, black midi, Squid and Jockstrap all came up playing there, and each sounds like no one else.',
+      "Take the two at its heart, called two of the most creative bands of this decade. Black Country, New Road are slow, emotional and orchestral (their record is in my crate). black midi are the opposite: complex, prog and math rock, and funny. The riff changes every few seconds and the song sounds like it could fall apart at any moment, but it never does. Controlled chaos.",
+      // A livestream in December 2020 to help save the Windmill, where they
+      // also covered "Born to Run" together (Stereogum, NME).
+      "They're close friends, and they've even played as one band, to help save the Windmill.",
+      "Georgia Ellery, Black Country, New Road's violinist, makes inventive prog pop as half of Jockstrap. Squid play Talking Heads-style post-punk.",
+    ],
+  },
+  {
+    sceneId: 'dc-hardcore',
+    title: 'The straight edge movement',
+    bands: ['minor-threat', 'fugazi', 'rites-of-spring', 'bad-brains', 'the-dismemberment-plan'],
+    words: [
+      'In Washington DC there was Ian MacKaye, a legend in hardcore. At a time when drinking, smoking and drugs were what was cool, his band Minor Threat put out a 46-second song, "Straight Edge", saying he didn\u2019t do any of them, and that being in control of yourself was the cool thing. It started the straight edge movement.',
+      // Atlantic's Ahmet Ertegun offered "anything you want", their own label
+      // and more than $10 million (Wikipedia's Fugazi page, from Friedman).
+      'Then Fugazi, on his own label, Dischord: $5 shows, cheap records, benefit shows, and never signing to a major, even when Atlantic offered over $10 million. He showed you could make music, not starve, and stay fiercely independent. So much of indie, punk and hardcore still tries to live by that.',
+      'Hardcore is still one of the most community-based kinds of music there is: the fans are part of the music.',
+    ],
   },
 ];
 

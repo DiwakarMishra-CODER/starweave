@@ -663,9 +663,21 @@
     "url": "https://thequietus.com/interviews/bakers-dozen/god-tier-tyler-hyde-of-black-country-new-roads-favourite-albums/13/",
     "found": "I have embarrassingly tried to use his influence with my lyrics in the past"
   },
+  "black-country-new-road>boris": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://www.tokyoweekender.com/entertainment/music/black-country-new-roads-interview/",
+    "found": "Wayne brings up Japanese bands such as Boris, The Pillows and Fishmans as major influences on his drumming in high school"
+  },
   "black-country-new-road>can": {
     "result": "owner",
     "at": "2026-10-26"
+  },
+  "black-country-new-road>fishmans": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://www.tokyoweekender.com/entertainment/music/black-country-new-roads-interview/",
+    "found": "Wayne brings up Japanese bands such as Boris, The Pillows and Fishmans as major influences on his drumming in high school"
   },
   "black-country-new-road>the-fall": {
     "result": "owner",
@@ -4002,6 +4014,12 @@
     "at": "2026-10-26",
     "url": "https://spinmagazine.com/2014/08/porter-robinson-worlds/",
     "found": "“Flicker” has the head-nodding thump and angular melodies of Boards of Canada"
+  },
+  "porter-robinson>ninajirachi": {
+    "result": "found",
+    "at": "2026-10-31",
+    "url": "https://www.youtube.com/watch?v=WbioqPnfZh8&t=430s",
+    "found": "And I've been trying to carry that with me in the studio"
   },
   "portishead>can": {
     "result": "found",

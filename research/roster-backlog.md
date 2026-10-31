@@ -34,7 +34,7 @@ Still to run: **a genre sweep.** For each of the map's 53 genres, list its found
 ## Artists on the map to review
 
 - **Steve Roach:** drop. New-age ambient, 2 links, neither first-person; the one sound that's out of place.
-- **Fishmans:** 1 link, no source, no road back to the Velvet Underground. Drop unless research finds a real link.
+- **Fishmans:** 1 link, no source, no road back to the Velvet Underground. Drop unless research finds a real link. *(Dropped 26 Oct 2026; back 31 Oct as a root: Black Country, New Road's drummer Charlie Wayne names them, with Boris, as major influences on his drumming in high school, Tokyo Weekender, Nov 2025. Their own influences are reggae and dub, none on the map.)*
 - **Silversun Pickups:** 1 link, no source. Fixed by Smashing Pumpkins; otherwise drop.
 - **Harold Budd, Do Make Say Think, Dead Can Dance, Get Up Kids, Angel Olsen:** belong, but every link is `unsourceable`. Source them.
 - **Realm name:** "American underground" holds Radiohead, Blur, Pulp, Arcade Fire, Broken Social Scene, Destroyer, Tame Impala and King Gizzard. A rename, not a move.

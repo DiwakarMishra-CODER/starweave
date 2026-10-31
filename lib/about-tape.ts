@@ -1,10 +1,11 @@
-import type { Artist, GraphData } from '@/data/types';
+import type { Artist, GraphData, ImageCredit } from '@/data/types';
 import {
-  DIGGING, type DigNote, HOW_WE_KNOW, LINER_NOTES, NOT_SOUND, ONE_FAMILY, ROAD_IN, SIDE_B_WHY, SIDES, SOUNDS_LIKE, TAPE_LABEL, TAPE_SONGS, TAPE_TRACKS, TWO_DAYS, type TapeTrack,
+  DIGGING, type DigNote, HOW_WE_KNOW, LINER_NOTES, NOT_SOUND, ONE_FAMILY, ROAD_IN, SCENE_STORIES, SIDE_B_WHY, SIDES, SOUNDS_LIKE, TAPE_LABEL, TAPE_SONGS, TAPE_TRACKS, TWO_DAYS, type TapeTrack,
 } from '@/data/about';
 import { DEFAULT_GENRE_COLOR, GENRE_COLORS, resolveNodeColor, risoInk, roomWall } from '@/lib/colors';
 import { SHELF_RECORDS, type Backline, type ShelfRecord } from '@/lib/backline';
 import type { Queue, Track } from '@/lib/player';
+import { genreFamilyColor } from '@/lib/genre-family';
 
 // The About page, "I made you a tape": the maker's story as a mixtape for
 // the visitor (data/about.ts holds the words and songs). Pure, worked out on
@@ -38,6 +39,17 @@ export interface ForkSign {
 export interface TapeTrackView extends Omit<TapeTrack, 'songs'> {
   n: number;
   songs: TapeSongView[];
+}
+
+export interface SceneStory {
+  id: string;
+  title: string;
+  /** The scene's own name, city and years, as on /scenes. */
+  name: string;
+  where: string;
+  /** credit: the photo's licence credit, for the Commons photos that ask for one. */
+  bands: (Face & { credit: ImageCredit | null; sounds: { id: string; name: string; color: string }[] })[];
+  words: string[];
 }
 
 export interface Face {
@@ -96,6 +108,8 @@ export interface AboutTape {
   between: { ct: Face; mbv: Face; ctCount: number; mbvCount: number; both: Face[]; lead: string; cards: SourceCard[] };
   /** Side B opens with why. */
   sideBWhy: string[];
+  /** Why the map has scenes: each scene's strip, every band with its sounds. */
+  scenes: SceneStory[];
   /** Twee pop and mathcore, both from punk. */
   oneFamily: {
     root: ForkSign;
@@ -343,6 +357,24 @@ export function resolveAboutTape(data: GraphData): AboutTape {
     },
     liner: LINER_NOTES,
     sideBWhy: SIDE_B_WHY,
+    scenes: SCENE_STORIES.map(({ sceneId, title, bands, words }) => {
+      const scene = data.scenes.find(s => s.id === sceneId);
+      if (!scene) throw new Error(`About tape: no scene ${sceneId}`);
+      for (const id of bands) if (!scene.memberIds.includes(id)) throw new Error(`About tape: ${id} isn't in ${sceneId}`);
+      const genreName = new Map(data.genres.map(g => [g.id, g.name]));
+      return {
+        id: sceneId,
+        title,
+        name: scene.name,
+        where: `${scene.city} \u00b7 ${scene.yearStart}\u2013${scene.yearEnd ?? 'now'}`,
+        bands: bands.map(id => ({
+          ...face(id),
+          credit: artist(id).imageCredit ?? null,
+          sounds: artist(id).genres.slice(0, 3).map(g => ({ id: g, name: genreName.get(g) ?? g, color: genreFamilyColor(data.genres, g) })),
+        })),
+        words,
+      };
+    }),
     oneFamily: {
       root: sign(ONE_FAMILY.root),
       soft: {
