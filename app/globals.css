@@ -90,6 +90,13 @@ h2 { font-size: clamp(1.25rem, 3vw, 2rem); }
 h3 { font-size: 1.1rem; }
 
 /* ── Nav ──────────────────────────────────────────────────────── */
+/* A click that drifts a hair on a trackpad mustn't turn into dragging the
+   link (its name and address under the pointer, and no page change). */
+.topnav a,
+.site-foot a {
+  -webkit-user-drag: none;
+}
+
 .topnav {
   position: fixed;
   top: 0;
@@ -17871,6 +17878,13 @@ a.flyer__act:focus-visible {
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 260ms;
+}
+
+/* The transition's snapshot lies over the whole window while it runs; let
+   the pointer see through it, so a link under the cursor keeps its hand
+   instead of flicking to the arrow and back. */
+::view-transition {
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

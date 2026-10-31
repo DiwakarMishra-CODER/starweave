@@ -26,7 +26,10 @@ export default function TopNav() {
 
   return (
     <nav className="topnav" aria-label="Main navigation">
-      <Link href="/" className="topnav__wordmark" aria-label="Starweave home">
+      {/* Links can't be dragged: on a trackpad a click that moves a hair
+          became a drag (the link's name and address under the pointer, and
+          no page change). */}
+      <Link href="/" className="topnav__wordmark" aria-label="Starweave home" draggable={false}>
         <ChromaTitle text="Starweave" size="sm" />
       </Link>
 
@@ -35,6 +38,7 @@ export default function TopNav() {
           <li key={link.href}>
             <Link
               href={link.href}
+              draggable={false}
               className={`topnav__link${isActive(link.href) ? ' topnav__link--active' : ''}`}
               aria-current={isActive(link.href) ? 'page' : undefined}
             >
@@ -61,6 +65,7 @@ export default function TopNav() {
             <li key={link.href}>
               <Link
                 href={link.href}
+                draggable={false}
                 className={isActive(link.href) ? 'active' : ''}
                 onClick={() => setMenuOpen(false)}
                 aria-current={isActive(link.href) ? 'page' : undefined}
