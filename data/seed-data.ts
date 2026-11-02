@@ -1793,7 +1793,6 @@ const edges: Edge[] = [
   // qualification kept in the citation because he is dismissive of Kraftwerk's
   // approach even while affirming the debt. Ultravox is not a graph node, so
   // no second edge follows.
-  inf("gary-numan", "kraftwerk", 0.75, 'verified', "Gary Numan to the Manchester Evening News (December 1979): \"Of course I've learned from Kraftwerk and Ultravox. But I've added all sorts of textures. I find Kraftwerk very staccato and basic. I've given it a richer feel.\"", undefined, 'first-person'),
   // hot-chip -> kraftwerk NOT written, closing that open decision. The only
   // evidence is a remix credit -- an explicitly excluded relationship type --
   // plus an unattributed claim. Nothing has changed since; do not re-propose
@@ -3749,8 +3748,10 @@ const rejectedEdges: RejectedEdge[] = [
     citation: "Kurt Cobain to Jon Savage (New York, 22 July 1993), asked directly about his influences: \"I stayed away from Joy Division. I've heard a few of their songs and I know I would really like it, but just the mystique about it and the stories I've heard, I know that's the band to listen to, of all of them. I'm just waiting.\" The handwritten top-50 album list in his Journals carries no Joy Division entry either.",
   },
   {
-    // The map keeps gary-numan -> kraftwerk on his 1979 words crediting them;
-    // he has since said the opposite, so both stand (owner, 30 Oct 2026).
+    // Both stood from 30 Oct 2026 on his 1979 words crediting them, but that
+    // quote was never found on a page, and the one that was (Shortlist) only
+    // says he admired them. The denial wins: link removed (owner, 2 Nov 2026;
+    // research/source-pass/removed.json).
     source: 'gary-numan',
     target: 'kraftwerk',
     strength: 'contested',

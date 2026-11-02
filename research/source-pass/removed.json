@@ -2782,5 +2782,18 @@
     "removed": "2026-10-26",
     "ruling": "denial",
     "why": "The page says Jónsi had not heard them when the comparison was made, so the influence did not run."
+  },
+  "gary-numan>kraftwerk": {
+    "url": "https://shortlist.com/news/theyre-cold-geeky-geniuses",
+    "found": "Kraftwerk were completely electronic and non-conventional, and I really admired it.",
+    "checked": "2026-10-26",
+    "verdict": "fixed",
+    "sourceTier": "first-person",
+    "citation": "Gary Numan to Shortlist: \"The sort of music I wanted to do when I got involved in electronic music, though, wasn’t what Kraftwerk were doing... Kraftwerk were completely electronic and non-conventional, and I really admired it.\"",
+    "note": "Original Manchester Evening News Dec 1979 quote ('very staccato and basic') not found on any page searched; Shortlist page is Numan on Kraftwerk, an admiring fan who wanted to add a layer to their approach. Citation rewritten to this page. Quote in citation has a cut; check 'found' is one sentence only.",
+    "by": "c11",
+    "removed": "2026-11-02",
+    "ruling": "denial",
+    "why": "Owner: the denial wins. Numan on Amoeba's What's In My Bag?: \"no influence at all, just wasn't what I wanted to do\"; the 1979 crediting quote was never found on a page, and Shortlist only shows admiration. Kept in rejectedEdges."
   }
 }
