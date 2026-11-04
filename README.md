@@ -4,7 +4,9 @@
 
 **Live:** [starweaves.vercel.app](https://starweaves.vercel.app/) · **By** Diwakar Mishra · [GitHub](https://github.com/DiwakarMishra-CODER) · [LinkedIn](https://www.linkedin.com/in/diwakar-mishra-dev) · [Portfolio](https://diwakar-mishra-portfolio.vercel.app/)
 
-![The opening: every artist on a spinning record by the year they started, then the record becomes the map](docs/screens/clip-opening.webp)
+![Radiohead's musical family: the music comes in from R.E.M. and the bands before them, and Radiohead passes it on to the bands below](docs/screens/clip-family.webp)
+
+*How to read it: Radiohead in the middle. Above, the 13 artists who shaped them (the light travels in from R.E.M., with Thom Yorke saying so in his own words). Below, the bands Radiohead shaped in turn. The whole map is chains like this, 312 artists deep.*
 
 | 312 artists | 1,024 links | 771 in the artist's own words | 54 genres | 16 scenes | 309 songs to hear |
 |---|---|---|---|---|---|
