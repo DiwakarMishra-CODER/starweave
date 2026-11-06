@@ -59,6 +59,24 @@ export interface Face {
   color: string;
 }
 
+/** How we know a line: its citation, and the page or book it's from. */
+export interface ThreadLinkSource {
+  citation: string;
+  url: string | null;
+  print: string | null;
+}
+
+/** One line from a learner to Cocteau Twins or MBV, and how we know it. */
+export interface ThreadLink extends ThreadLinkSource {
+  to: 'ct' | 'mbv';
+}
+
+/** A band that learned from one or both, hanging by its line(s). */
+export interface Thread extends Face {
+  since: number;
+  links: ThreadLink[];
+}
+
 export interface Cover {
   title: string;
   artistId: string;
@@ -100,12 +118,17 @@ export interface AboutTape {
   dig: { name: string; tab: string; href: string; finds: (Cover & { note: DigNote[]; song: string })[] }[];
   learned: {
     band: Face;
-    from: Face[];
+    /** Who they learned from, each with how we know it. */
+    from: (Face & ThreadLinkSource)[];
     /** The bands an app shows beside them: a shared sound, no line between. */
     soundsLike: Face[];
     notSound: { from: Face; to: Face; words: string; quote: string; source: string; listen: Queue };
   };
-  between: { ct: Face; mbv: Face; ctCount: number; mbvCount: number; both: Face[]; lead: string; cards: SourceCard[] };
+  between: {
+    ct: Face; mbv: Face; ctCount: number; mbvCount: number; both: Face[]; lead: string; cards: SourceCard[];
+    /** Everyone who learned from them, oldest first: only Cocteau Twins, both, only MBV. */
+    threads: { ct: Thread[]; both: Thread[]; mbv: Thread[] };
+  };
   /** Side B opens with why. */
   sideBWhy: string[];
   /** Why the map has scenes: each scene's strip, every band with its sounds. */
@@ -144,16 +167,16 @@ const ROAD_COLOR: Record<string, string> = {
 // the map's own citations (tests check every phrase is in them).
 const BETWEEN_CARDS: (SourceCard & { edge: [string, string] })[] = [
   {
-    edge: ['alvvays', 'cocteau-twins'],
-    who: 'Molly Rankin, Alvvays',
-    quote: 'otherworldly beauty and also menacing at the same time',
-    source: 'Asked by Pitchfork for a perfect album, she chose Heaven or Las Vegas',
+    edge: ['weyes-blood', 'cocteau-twins'],
+    who: 'Natalie Mering, Weyes Blood',
+    quote: 'she gave me confidence to not have to always make sense, because a lot of their lyrics are nonsense, but it doesn\u2019t take away from the emotional quality of the song',
+    source: 'On Liz Fraser, picking Treasure for The Quietus',
   },
   {
-    edge: ['alvvays', 'my-bloody-valentine'],
-    who: "Alec O'Hanley, Alvvays",
-    quote: 'One thing we loved about Kevin Shields was the limitations he put on his stuff',
-    source: 'Tape Op, May 2023',
+    edge: ['blonde-redhead', 'my-bloody-valentine'],
+    who: 'Kazu Makino, Blonde Redhead',
+    quote: 'I just remember falling apart every time. Like, \'Oh my god, this is what I want to do. I want this noise.\'',
+    source: 'On seeing them live, to Pitchfork, 2023',
   },
 ];
 
@@ -162,6 +185,10 @@ const NOT_SOUND_SOURCE = "Benjamin Nugent's biography, Elliott Smith and the Big
 
 export const aboutCards = BETWEEN_CARDS;
 export const notSoundQuote = { quote: NOT_SOUND_QUOTE, source: NOT_SOUND_SOURCE };
+
+/** A small count as a word, as the tape's words write it ("one of the five"). */
+const COUNT_WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
+const countWord = (n: number) => COUNT_WORDS[n] ?? String(n);
 
 export function resolveAboutTape(data: GraphData): AboutTape {
   const byId = new Map(data.artists.map(a => [a.id, a]));
@@ -263,7 +290,7 @@ export function resolveAboutTape(data: GraphData): AboutTape {
   const learnedFrom = data.edges
     .filter(e => e.type === 'influence' && e.source === 'alvvays' && byId.has(e.target))
     .sort((a, b) => b.confidence - a.confidence)
-    .map(e => face(e.target));
+    .map(e => ({ ...face(e.target), citation: e.citation ?? '', url: e.sourceUrl ?? null, print: e.sourcePrint ?? null }));
   const soundsLike = SOUNDS_LIKE.map(id => {
     if (data.edges.some(e => (e.source === id && e.target === 'alvvays') || (e.source === 'alvvays' && e.target === id))) {
       throw new Error(`About tape: ${id} is linked to Alvvays, so it can't stand for "sounds like, no line"`);
@@ -287,9 +314,17 @@ export function resolveAboutTape(data: GraphData): AboutTape {
   const sign = (id: string): ForkSign => {
     const g = data.genres.find(x => x.id === id);
     if (!g) throw new Error(`About tape: no genre ${id} on the map`);
-    return { id, name: g.name, emerged: g.emerged ?? null, color: GENRE_COLORS[id] ?? DEFAULT_GENRE_COLOR };
+    // A genre without a colour of its own (Twee pop) takes its parent's.
+    let at: string | null | undefined = id;
+    while (at && !GENRE_COLORS[at]) at = data.genres.find(x => x.id === at)?.parent;
+    return { id, name: g.name, emerged: g.emerged ?? null, color: (at && GENRE_COLORS[at]) || DEFAULT_GENRE_COLOR };
   };
-  const offMap = (name: string): ForkSign => ({ id: null, name, emerged: null, color: '#9a99a0' });
+  // Named by its name in data/about.ts; once the genre joins the map (Twee pop
+  // did, on 30 Oct 2026, after the tape called it off the map) it links.
+  const offMap = (name: string): ForkSign => {
+    const g = data.genres.find(x => x.name.toLowerCase() === name.toLowerCase());
+    return g ? sign(g.id) : { id: null, name, emerged: null, color: '#9a99a0' };
+  };
   // A band who isn't on the map: their name and photo, nothing to link to.
   const offMapFace = (name: string, key: string): Face => ({ id: '', name, imageUrl: data.songs?.[key]?.artistImageUrl ?? null, color: '#e0457b' });
   // A loud song, on its own: only when pressed, and quieter (its gain).
@@ -300,12 +335,29 @@ export function resolveAboutTape(data: GraphData): AboutTape {
   const learnersOf = (id: string) => new Set(data.edges.filter(e => e.type === 'influence' && e.target === id).map(e => e.source));
   const ct = learnersOf('cocteau-twins');
   const mbv = learnersOf('my-bloody-valentine');
+  const thread = (ids: string[]): Thread[] => ids
+    .map(id => ({
+      ...face(id),
+      since: artist(id).activeFrom ?? 0,
+      links: (['ct', 'mbv'] as const).flatMap(to => data.edges
+        .filter(e => e.type === 'influence' && e.source === id && e.target === (to === 'ct' ? 'cocteau-twins' : 'my-bloody-valentine'))
+        .map(e => ({ to, citation: e.citation ?? '', url: e.sourceUrl ?? null, print: e.sourcePrint ?? null }))),
+    }))
+    .sort((a, b) => a.since - b.since || a.name.localeCompare(b.name));
+  const sourced = data.edges.filter(e => e.sourceUrl || e.sourcePrint).length;
   const both = [...ct].filter(id => mbv.has(id)).sort((a, b) => artist(a).name.localeCompare(artist(b).name)).map(face);
 
   return {
     tracks,
     queue,
-    label: TAPE_LABEL,
+    label: {
+      ...TAPE_LABEL,
+      about: TAPE_LABEL.about.map(l => l
+        .replace('{artists}', data.artists.length.toLocaleString('en-US'))
+        .replace('{links}', data.edges.length.toLocaleString('en-US'))
+        .replace('{sourced}', sourced === data.edges.length ? 'each backed by a source' : `${sourced.toLocaleString('en-US')} of them backed by a source`)
+        .replace('{denied}', String(data.rejectedEdges.length))),
+    },
     sides: SIDES,
     road,
     roadQueue,
@@ -352,7 +404,12 @@ export function resolveAboutTape(data: GraphData): AboutTape {
       ctCount: ct.size,
       mbvCount: mbv.size,
       both,
-      lead: HOW_WE_KNOW,
+      threads: {
+        ct: thread([...ct].filter(id => !mbv.has(id))),
+        both: thread([...ct].filter(id => mbv.has(id))),
+        mbv: thread([...mbv].filter(id => !ct.has(id))),
+      },
+      lead: HOW_WE_KNOW.replace('{both}', countWord(both.length)),
       cards: BETWEEN_CARDS.map(({ who, quote, source }) => ({ who, quote, source })),
     },
     liner: LINER_NOTES,

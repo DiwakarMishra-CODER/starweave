@@ -107,7 +107,7 @@ export const TAPE_TRACKS: TapeTrack[] = [
     words: [
       "Rate Your Music's list of the greatest albums of all time had the Cure's Disintegration in its top 25. I'd heard the Cure pioneered gothic rock, so I put it on.",
       "Then I read that Robert Smith got ready for his wedding listening to Cocteau Twins' Treasure, and called it the most romantic music he'd ever heard. That's how I got to Cocteau Twins.",
-      "From there it was a short step to My Bloody Valentine. Shoegaze grew out of dream pop: turn the guitars up and distort them until the noise becomes a wall of sound. Cocteau Twins pioneered dream pop; My Bloody Valentine pioneered shoegaze.",
+      "From there it was a short step to My Bloody Valentine. Shoegaze grew out of dream pop and the Jesus and Mary Chain's noise: turn the guitars up and distort them until the noise becomes a wall of sound. Cocteau Twins pioneered dream pop; My Bloody Valentine pioneered shoegaze.",
     ],
   },
   {
@@ -166,7 +166,7 @@ export const TAPE_TRACKS: TapeTrack[] = [
     songs: ['sugar-tzu', 'straight-edge', 'waiting-room'],
     heading: 'Why the map has scenes',
     words: [
-      'Genres divide bands by sound. Scenes bring them back together: divided by sound, united by a venue, a label, a community. Two scenes are why this map has them.',
+      'Genres divide bands by sound. Scenes bring them back together: divided by sound, united by a venue, a label, a community. These two scenes are why the map has scenes at all.',
     ],
   },
   {
@@ -201,6 +201,13 @@ export const TAPE_LABEL = {
   headline: ['I was never interested in music.', 'Then I heard Radiohead.'],
   /** What this page is, in one plain line. */
   intro: 'Why I made Starweave, told as a mixtape: each part comes with a song.',
+  /** What the map is, under the intro. {artists}, {links}, {sourced} and
+   *  {denied} are filled from the map by lib/about-tape.ts, so they never go
+   *  stale. */
+  about: [
+    'Starweave is a map of which artists influenced which: {artists} artists and {links} influences, {sourced}. It even keeps the {denied} times an artist said \u201cno, they didn\u2019t influence me.\u201d',
+    'Music apps show you who sounds alike. This map shows who actually learned from whom.',
+  ],
 };
 
 /** Their road in: each band, in the order they found them, and what led
@@ -243,7 +250,7 @@ export const TWO_DAYS = {
   /** Dream pop and shoegaze, each linking to its genre's page, then this. */
   genres: {
     ids: ['dream-pop', 'shoegaze'],
-    after: ' are my favourite genres for the same reason: no other genre does it the way these two do.',
+    after: ' are my favourite genres for the same reason: no other genre makes the voice just one more layer in the sound.',
   },
 };
 
@@ -376,8 +383,9 @@ export const ONE_FAMILY = {
   last: 'Every genre, and what it grew out of',
 };
 
-/** Before the two sources on the "between" track. */
-export const HOW_WE_KNOW = 'How does the map know? Here\u2019s Alvvays, one of the seven who learned from both, in their own words.';
+/** Before the two sources on the "between" track. {both} is filled from the
+ *  map (it said "seven" by hand once, after the count had fallen to five). */
+export const HOW_WE_KNOW = 'How does the map know? Every line has a source, tagged like Slowdive\u2019s, one of the {both} who learned from both. Point at anyone to see theirs, and turn the tag over for their own words.';
 
 /** How it's made: the hidden track after the tape runs out. Facts only. */
 export const LINER_NOTES = {

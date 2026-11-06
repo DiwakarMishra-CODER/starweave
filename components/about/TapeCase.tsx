@@ -49,7 +49,7 @@ export default function TapeCase() {
         <div className="tcase__lid">
           <div className="tcase__front">
             <span className="tcase__to">{tape.label.to}</span>
-            <span className="tcase__from">&mdash; {tape.label.from}</span>
+            <span className="tcase__from">from {tape.label.from}</span>
           </div>
         </div>
       </div>
@@ -59,8 +59,11 @@ export default function TapeCase() {
         <h1 className="tcard__title">
           {tape.label.headline.map(l => <span key={l} className="tcard__title-line">{l}</span>)}
         </h1>
-        <p className="tcard__line">{tape.label.to} &mdash; {tape.label.from}</p>
+        <p className="tcard__line">{tape.label.to}, from {tape.label.from}</p>
         <p className="tcard__intro">{tape.label.intro}</p>
+        <div className="tcard__about">
+          {tape.label.about.map(l => <p key={l}>{l}</p>)}
+        </div>
         <button type="button" className="tcard__play" onClick={start}>
           <span className="tcard__play-icon" data-pause={onAir !== null || undefined} aria-hidden />
           {onAir !== null ? 'Pause the tape' : loaded ? 'Carry on' : 'Play the tape'}

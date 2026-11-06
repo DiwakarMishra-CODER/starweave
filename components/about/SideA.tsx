@@ -118,7 +118,7 @@ export function RoadIn() {
         onClick={() => (loaded ? (now.paused ? player.resume() : player.pause()) : player.play(tape.roadQueue, 0))}
       >
         <span className="tbutton__icon" data-pause={playing || undefined} aria-hidden />
-        {playing ? 'Pause my road' : loaded ? 'Carry on' : 'Play my road'}
+        {playing ? 'Pause' : loaded ? 'Carry on' : 'Play how I got here'}
       </button>
     </div>
   );

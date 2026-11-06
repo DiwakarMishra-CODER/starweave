@@ -92,7 +92,7 @@ describe('the About tape', () => {
     expect(tape.between.ctCount).toBe(ct.size);
     expect(tape.between.mbvCount).toBe(mbv.size);
     expect(tape.between.both.map(f => f.id).sort()).toEqual([...ct].filter(id => mbv.has(id)).sort());
-    expect(tape.between.both.map(f => f.id)).toContain('alvvays');
+    expect(tape.between.both.map(f => f.id)).toContain('slowdive');
   });
 
   it('gives every record in the rotation something to play', () => {
@@ -107,6 +107,28 @@ describe('the About tape', () => {
         expect(scene.memberIds, `${b.id} in ${s.id}`).toContain(b.id);
         expect(b.imageUrl, b.id).toBeTruthy();
         expect(b.sounds.length, b.id).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it('counts its numbers from the map, never by hand', () => {
+    expect(tape.between.both.map(f => f.name)).toContain('Alvvays');
+    const words = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
+    expect(tape.between.lead).toContain(`one of the ${words[tape.between.both.length] ?? tape.between.both.length} who`);
+    expect(tape.label.about.join(' ')).not.toMatch(/\{\w+\}/);
+    expect(tape.label.about[0]).toContain(`${tape.counts.denied} times`);
+  });
+
+  it('hangs everyone who learned from either on a cited thread', () => {
+    const { threads, ctCount, mbvCount, both } = tape.between;
+    expect(threads.ct.length + threads.both.length).toBe(ctCount);
+    expect(threads.mbv.length + threads.both.length).toBe(mbvCount);
+    expect(threads.both.map(t => t.id)).toEqual(expect.arrayContaining(both.map(f => f.id)));
+    for (const t of [...threads.ct, ...threads.both, ...threads.mbv]) {
+      expect(t.links.length, t.id).toBe(threads.both.includes(t) ? 2 : 1);
+      for (const l of t.links) {
+        expect(l.citation.trim(), t.id).not.toBe('');
+        expect(l.url ?? l.print, t.id).toBeTruthy();
       }
     }
   });

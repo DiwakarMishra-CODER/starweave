@@ -1,11 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { Fragment, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { player, usePlayer } from '@/lib/player';
 import { sizedImageUrl } from '@/lib/image-url';
 import { useMusicMotion } from '@/components/genre/useMusicMotion';
-import type { Cover, Face, ForkSign } from '@/lib/about-tape';
+import type { Cover, Face, ForkSign, Thread } from '@/lib/about-tape';
+import SourceLink from '@/components/ui/SourceLink';
+import { sourcePlace } from '@/lib/source-place';
 import Reveal from '@/components/ui/Reveal';
 import { useTape } from './TapePage';
 import Cassette from './Cassette';
@@ -166,6 +168,128 @@ const arc = (n: number, i: number, rx: number, ry: number, side: 1 | -1, span = 
  *  the map) and the bands they actually learned from drawn in on the other
  *  (the map's own links); then Fugazi and Elliott Smith, nothing alike and
  *  still a line. */
+/** A line's paper tag. Pointing at a face (or a first tap) hangs a small
+ *  tag off it on a string, naming where we know the line from; clicking the
+ *  tag (or the face again) turns it over to the line itself, in the
+ *  citation's words, with its Source ticket. A band with no line gets a tag
+ *  that says so and doesn't turn. Shared by "Sounding alike isn't influence"
+ *  and the threads. (A card under each diagram did this first; nobody saw
+ *  it appear.) */
+type TagRow = { key: string; label: string; color: string; citation?: string; url?: string | null; print?: string | null; note?: string };
+type Align = 'start' | 'center' | 'end';
+const alignAt = (x: number, of: number): Align => (x / of < 0.16 ? 'start' : x / of > 0.84 ? 'end' : 'center');
+const placeOf = (r: TagRow) => (r.url ? sourcePlace(r.url).name : r.print ?? '');
+
+function Tag({ rows, open, page, align, onTurn, hold }: {
+  rows: TagRow[];
+  open: boolean;
+  page?: string;
+  align: Align;
+  onTurn: () => void;
+  hold: { onPointerEnter: () => void; onPointerLeave: () => void; onFocus: () => void; onBlur: () => void };
+}) {
+  const turns = rows.some(r => r.citation);
+  const front = rows.map(r => (
+    <span key={r.key} className="ttag__row" style={{ '--glow': r.color } as React.CSSProperties}>
+      <span className="ttag__label">{r.label}</span>
+      <span className="ttag__place">{r.note ?? placeOf(r)}</span>
+    </span>
+  ));
+  return (
+    <div className={`ttag ttag--${align}`} data-open={open || undefined} {...hold}>
+      {!open ? (
+        turns ? (
+          <button type="button" className="ttag__card" onClick={onTurn}>
+            {front}
+            <span className="ttag__turn">Turn over for their words &#8635;</span>
+          </button>
+        ) : (
+          <div className="ttag__card">{front}</div>
+        )
+      ) : (
+        <div className="ttag__card ttag__card--back">
+          {rows.map(r => (
+            <div key={r.key} className="ttag__line" style={{ '--glow': r.color } as React.CSSProperties}>
+              <p className="ttag__label">{r.label}</p>
+              <p className="ttag__cite">{r.citation}</p>
+              <SourceLink url={r.url} print={r.print} size="small" />
+            </div>
+          ))}
+          <div className="ttag__foot">
+            {page && <Link href={`/artist/${page}`}>Their page &rarr;</Link>}
+            <button type="button" onClick={onTurn}>Turn back</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** Which face's tag is out, and whether it's turned over. A mouse shows the
+ *  tag while it points (with a moment's grace to reach the tag) and a click
+ *  turns it; a tap hangs it and a second tap turns it; a click anywhere else
+ *  or Esc puts it away. `initial` hangs one tag to begin with, on a wide
+ *  screen only: on a phone the tag is fixed above the pocket player, so it
+ *  would follow the reader down the page; there, scrolling on puts it away. */
+function useTags(initial: string | null) {
+  const [hover, setHover] = useState<string | null>(null);
+  const [pinned, setPinned] = useState<string | null>(null);
+  const [open, setOpen] = useState<string | null>(null);
+  const ptr = useRef('mouse');
+  const narrow = () => window.matchMedia('(max-width: 760px)').matches;
+  const timer = useRef<number | undefined>(undefined);
+  const enter = (id: string) => { window.clearTimeout(timer.current); setHover(id); };
+  const leave = (id: string) => {
+    window.clearTimeout(timer.current);
+    timer.current = window.setTimeout(() => setHover(h => (h === id ? null : h)), 240);
+  };
+  useEffect(() => () => window.clearTimeout(timer.current), []);
+  // After hydration, so the server's page and the first paint agree.
+  useEffect(() => {
+    if (!initial || narrow()) return;
+    const t = window.setTimeout(() => setPinned(p => p ?? initial), 0);
+    return () => window.clearTimeout(t);
+  }, [initial]);
+  useEffect(() => {
+    if ((!open && !pinned) || !narrow()) return;
+    let start: number | null = null;
+    const scrolled = (e: Event) => {
+      const el = e.target instanceof Element ? e.target : document.scrollingElement;
+      const top = el?.scrollTop ?? 0;
+      if (start === null) start = top;
+      else if (Math.abs(top - start) > 120) { setOpen(null); setPinned(null); setHover(null); }
+    };
+    document.addEventListener('scroll', scrolled, { capture: true, passive: true });
+    return () => document.removeEventListener('scroll', scrolled, { capture: true });
+  }, [open, pinned]);
+  useEffect(() => {
+    if (!open && !pinned) return;
+    const away = (e: PointerEvent) => {
+      if (!(e.target instanceof Element) || !e.target.closest('.tspot')) { setOpen(null); setPinned(null); }
+    };
+    document.addEventListener('pointerdown', away);
+    return () => document.removeEventListener('pointerdown', away);
+  }, [open, pinned]);
+  const shown = hover && hover !== open ? hover : open ?? pinned;
+  const turn = (id: string) => { setPinned(id); setOpen(o => (o === id ? null : id)); };
+  const face = (id: string) => ({
+    'aria-expanded': shown === id,
+    onPointerDown: (e: React.PointerEvent) => { ptr.current = e.pointerType; },
+    onPointerEnter: (e: React.PointerEvent) => { if (e.pointerType === 'mouse') enter(id); },
+    onPointerLeave: (e: React.PointerEvent) => { if (e.pointerType === 'mouse') leave(id); },
+    onFocus: () => enter(id),
+    onBlur: () => leave(id),
+    onClick: () => {
+      if (open === id) setOpen(null);
+      else if (pinned === id || (hover === id && ptr.current === 'mouse')) turn(id);
+      else { setPinned(id); setOpen(null); }
+    },
+  });
+  const hold = (id: string) => ({ onPointerEnter: () => enter(id), onPointerLeave: () => leave(id), onFocus: () => enter(id), onBlur: () => leave(id) });
+  const clear = () => { setHover(null); setPinned(null); setOpen(null); };
+  return { shown, isOpen: (id: string) => open === id && shown === id, face, hold, turn, clear };
+}
+
 export function Learned() {
   const { tape } = useTape();
   const { band, from, soundsLike, notSound } = tape.learned;
@@ -174,32 +298,39 @@ export function Learned() {
   const learned = from.map((f, i) => ({ f, ...arc(from.length, i, 380, 238, 1, 164) }));
   const alike = soundsLike.map((f, i) => ({ f, ...arc(soundsLike.length, i, 290, 210, -1, 120) }));
   const pct = (v: number, of: number) => `${(v / of) * 100}%`;
+  const tags = useTags('cocteau-twins');
+  const shownId = tags.shown;
+  const spot = (f: Face, x: number, y: number, i: number, kind: 'from' | 'like', rows: TagRow[]) => (
+    <div key={f.id} className="tspot" data-shown={shownId === f.id || undefined} style={{ left: pct(x, STAGE_W), top: pct(y, STAGE_H), '--i': i } as React.CSSProperties}>
+      <button type="button" className={`tlearn__${kind}`} data-on={shownId === f.id || undefined} aria-label={`${f.name}: how the map knows`} {...tags.face(f.id)}>
+        <Photo f={f} size={kind === 'from' ? 60 : 52} />
+        <span className="tface__name">{f.name}</span>
+      </button>
+      {shownId === f.id && (
+        <Tag key={tags.isOpen(f.id) ? 'back' : 'front'} rows={rows} open={tags.isOpen(f.id)} page={f.id} align={kind === 'from' ? 'start' : alignAt(x, STAGE_W)} onTurn={() => tags.turn(f.id)} hold={tags.hold(f.id)} />
+      )}
+    </div>
+  );
   return (
-    <div className="tlearn">
+    <div className="tlearn" onKeyDown={e => { if (e.key === 'Escape') tags.clear(); }}>
       <div className="tlearn__stage">
         <svg className="tlearn__lines" viewBox={`0 0 ${STAGE_W} ${STAGE_H}`} preserveAspectRatio="none" aria-hidden>
           {learned.map(({ f, x, y }, i) => (
-            <line key={f.id} x1={CX} y1={CY} x2={x} y2={y} style={{ '--i': i } as React.CSSProperties} />
+            <line key={f.id} x1={CX} y1={CY} x2={x} y2={y} data-on={shownId === f.id || undefined} style={{ '--i': i } as React.CSSProperties} />
           ))}
         </svg>
         <p className="tlearn__tag tlearn__tag--like" style={{ left: pct(CX - 270, STAGE_W) }}>sounds like<span>no line to them</span></p>
         <p className="tlearn__tag tlearn__tag--from" style={{ left: pct(CX + 380, STAGE_W) }}>learned from<span>a line, with its source</span></p>
-        {alike.map(({ f, x, y }, i) => (
-          <Link key={f.id} href={`/artist/${f.id}`} className="tlearn__like" style={{ left: pct(x, STAGE_W), top: pct(y, STAGE_H), '--i': i } as React.CSSProperties}>
-            <Photo f={f} size={52} />
-            <span className="tface__name">{f.name}</span>
-          </Link>
-        ))}
+        {alike.map(({ f, x, y }, i) => spot(f, x, y, i, 'like', [
+          { key: 'like', label: `Sounds like ${band.name}`, color: '#8a8992', note: 'No line: just a similar sound' },
+        ]))}
         <Link href={`/artist/${band.id}`} className="tlearn__band" style={{ left: pct(CX, STAGE_W), top: pct(CY, STAGE_H) }}>
           <Photo f={band} size={120} />
           <span className="tface__name">{band.name}</span>
         </Link>
-        {learned.map(({ f, x, y }, i) => (
-          <Link key={f.id} href={`/artist/${f.id}`} className="tlearn__from" style={{ left: pct(x, STAGE_W), top: pct(y, STAGE_H), '--i': i } as React.CSSProperties}>
-            <Photo f={f} size={60} />
-            <span className="tface__name">{f.name}</span>
-          </Link>
-        ))}
+        {learned.map(({ f, x, y }, i) => spot(f, x, y, i, 'from', [
+          { key: 'from', label: `${band.name} learned from them`, color: 'var(--vfd)', citation: f.citation, url: f.url, print: f.print },
+        ]))}
       </div>
 
       <div className="tnot">
@@ -373,42 +504,57 @@ export function OneFamily() {
  *  under it in their families' colours, so the strip shows bands divided by
  *  sound in one room -- then the story in the owner's words. */
 export function Scenes() {
-  const { tape } = useTape();
+  const { tape, onAir } = useTape();
+  // The band on air, if a song of theirs is playing (the track's own songs:
+  // black midi, Minor Threat, Fugazi).
+  const onAirId = onAir === null ? null : tape.tracks.flatMap(t => t.songs).find(x => x.at === onAir)?.artistId ?? null;
   return (
     <div className="tscenes">
-      {tape.scenes.map(s => (
-        <section key={s.id} className="tscene" aria-labelledby={`tscene-${s.id}`}>
-          <p id={`tscene-${s.id}`} className="tfork__label">
-            {s.title}
-            <span>
-              <Link href={`/scene/${s.id}`} className="tscene__link">{s.name}, {s.where} <span aria-hidden>&rarr;</span></Link>
-            </span>
-          </p>
-          <ol className="tscene__strip" style={{ '--n': s.bands.length } as React.CSSProperties}>
-            {s.bands.map((b, k) => (
-              <li key={b.id} className="tscene__frame" style={{ '--k': k } as React.CSSProperties}>
-                <Link href={`/artist/${b.id}`} className="tscene__shot" aria-label={b.name}>
-                  {b.imageUrl && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={sizedImageUrl(b.imageUrl, 250)} alt="" width={128} height={160} loading="lazy" />
-                  )}
-                </Link>
-                <Link href={`/artist/${b.id}`} className="tscene__band">{b.name}</Link>
-                <ul className="genre-tags tscene__sounds" aria-label={`${b.name}'s sounds`}>
-                  {b.sounds.map(g => (
-                    <li key={g.id}>
-                      <Link href={`/genre/${g.id}`} className="genre-tag" style={{ '--tag': g.color } as React.CSSProperties}>{g.name}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ol>
-          <SceneCredits bands={s.bands} />
-          <div className="tmerge__words tscene__words">{s.words.map((w, i) => <p key={i}>{w}</p>)}</div>
-        </section>
-      ))}
+      {tape.scenes.map(s => <SceneStrip key={s.id} s={s} onAirId={onAirId} />)}
     </div>
+  );
+}
+
+/** One scene: when it scrolls into view the film runs in through the gate,
+ *  frame after frame, each photo developing from grey into colour; the
+ *  scene's name gets a pencil stroke; then the words rise in. Pointing at a
+ *  frame lifts it off the film. The band on air steps up and bumps on the
+ *  beat (everyone else stays as they are). */
+function SceneStrip({ s, onAirId }: { s: ReturnType<typeof useTape>['tape']['scenes'][number]; onAirId: string | null }) {
+  const strip = useRef<HTMLOListElement>(null);
+  const live = !!onAirId && s.bands.some(b => b.id === onAirId);
+  useMusicMotion(strip, live);
+  return (
+    <Reveal className="tscene" aria-labelledby={`tscene-${s.id}`}>
+      <p id={`tscene-${s.id}`} className="tfork__label tscene__title">
+        {s.title}
+        <span>
+          <Link href={`/scene/${s.id}`} className="tscene__link">{s.name}, {s.where} <span aria-hidden>&rarr;</span></Link>
+        </span>
+      </p>
+      <ol ref={strip} className="tscene__strip" data-live={live || undefined} style={{ '--n': s.bands.length } as React.CSSProperties}>
+        {s.bands.map((b, k) => (
+          <li key={b.id} className="tscene__frame" data-on={onAirId === b.id || undefined} style={{ '--k': k } as React.CSSProperties}>
+            <Link href={`/artist/${b.id}`} className="tscene__shot" aria-label={b.name}>
+              {b.imageUrl && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={sizedImageUrl(b.imageUrl, 250)} alt="" width={128} height={160} loading="lazy" />
+              )}
+            </Link>
+            <Link href={`/artist/${b.id}`} className="tscene__band">{b.name}</Link>
+            <ul className="genre-tags tscene__sounds" aria-label={`${b.name}'s sounds`}>
+              {b.sounds.map(g => (
+                <li key={g.id}>
+                  <Link href={`/genre/${g.id}`} className="genre-tag" style={{ '--tag': g.color } as React.CSSProperties}>{g.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ol>
+      <SceneCredits bands={s.bands} />
+      <div className="tmerge__words tscene__words">{s.words.map((w, i) => <p key={i} style={{ '--w': i } as React.CSSProperties}>{w}</p>)}</div>
+    </Reveal>
   );
 }
 
@@ -444,42 +590,132 @@ function SceneCredits({ bands }: { bands: ReturnType<typeof useTape>['tape']['sc
   );
 }
 
-/** 8. Between my two constants: Cocteau Twins and My Bloody Valentine as two
- *  records sliding together; the bands on the map that learned from both sit
- *  in the overlap. Then how the map knows: two of those lines' sources, and
- *  the tallies for all of them. */
+
+/** 8. Between my two constants: Cocteau Twins and My Bloody Valentine at
+ *  either side, everyone on the map who learned from them hanging round them
+ *  on a thread -- the map's own picture, a line for each influence -- and the
+ *  five who learned from both in the middle, held by a thread from each.
+ *  Pointing at anyone lights their thread(s) and shows how we know it (the
+ *  citation and its source); a click or tap pins them. Slowdive is pinned to
+ *  begin with: their line names both bands. Then two more in their own
+ *  words, and the tallies. */
+const TW = 1000;
+const TH = 720;
+const CT_AT = { x: 235, y: 355 };
+const MBV_AT = { x: 760, y: 355 };
+// Rounded: the server's and the browser's Math.cos can differ in the last
+// digit, which React reports as a hydration mismatch.
+const r2 = (v: number) => Math.round(v * 100) / 100;
+type Spot = { t: Thread; x: number; y: number; i: number };
+function threadSpots(th: { ct: Thread[]; both: Thread[]; mbv: Thread[] }) {
+  const rad = (d: number) => (d * Math.PI) / 180;
+  // Each band's own learners round it, leaving open the side facing the
+  // middle, where the threads to the five run. MBV's 18 alternate between
+  // two rings, so a thread to the outer ring passes between inner faces.
+  const ct = th.ct.map((t, i): Spot => {
+    const a = rad(45 + ((i + 0.5) * 270) / th.ct.length);
+    return { t, i, x: r2(CT_AT.x + 185 * Math.cos(a)), y: r2(CT_AT.y + 215 * Math.sin(a)) };
+  });
+  const mbv = th.mbv.map((t, i): Spot => {
+    const a = rad(225 + ((i + 0.5) * 270) / th.mbv.length);
+    const [rx, ry] = i % 2 ? [240, 300] : [168, 192];
+    return { t, i: i + th.ct.length, x: r2(MBV_AT.x + rx * Math.cos(a)), y: r2(MBV_AT.y + ry * Math.sin(a)) };
+  });
+  // Newest at the top, so the oldest (Slowdive, whose tag is out to begin
+  // with) hangs at the bottom, its tag over empty space rather than a face.
+  const both = [...th.both].reverse().map((t, i): Spot => ({ t, i: i + th.ct.length + th.mbv.length, x: 500, y: MBV_AT.y + (i - (th.both.length - 1) / 2) * 96 }));
+  return { ct, mbv, both };
+}
+
+/** A thread from a band to a face, sagging a little like a real one. */
+const threadPath = (from: { x: number; y: number }, to: { x: number; y: number }) =>
+  `M${from.x} ${from.y} Q${r2((from.x + to.x) / 2)} ${r2(Math.max(from.y, to.y) + 24)} ${to.x} ${to.y}`;
+
 export function Between() {
   const { tape, onAir } = useTape();
-  const { ct, mbv, ctCount, mbvCount, both, cards } = tape.between;
+  const { ct, mbv, ctCount, mbvCount, both, cards, threads } = tape.between;
   const alison = tape.tracks.find(t => t.id === 'between')!.songs[0];
   const ref = useRef<HTMLDivElement>(null);
   const live = onAir === alison.at;
   useMusicMotion(ref, live);
   const c = tape.counts;
+  const spots = threadSpots(threads);
+  const all = [...spots.ct, ...spots.both, ...spots.mbv];
+  const tags = useTags(threads.both.some(t => t.id === 'slowdive') ? 'slowdive' : null);
+  const shown = all.find(s => s.t.id === tags.shown)?.t ?? null;
+  const pct = (v: number, of: number) => `${(v / of) * 100}%`;
+  const bandOf = (to: 'ct' | 'mbv') => (to === 'ct' ? ct : mbv);
+  const lines = (s: Spot) => s.t.links.map(l => ({ key: `${s.t.id}-${l.to}`, to: l.to, d: threadPath(l.to === 'ct' ? CT_AT : MBV_AT, s) }));
+
+  const face = (s: Spot, group: string) => (
+    <div key={s.t.id} className="tspot" data-shown={shown?.id === s.t.id || undefined} style={{ left: pct(s.x, TW), top: pct(s.y, TH), '--i': s.i } as React.CSSProperties}>
+      <button
+        type="button"
+        className={`tthreads__face tthreads__face--${group}`}
+        data-on={shown?.id === s.t.id || undefined}
+        aria-label={`${s.t.name}: how the map knows`}
+        {...tags.face(s.t.id)}
+      >
+        <Photo f={s.t} size={52} />
+        <span className="tface__name">{s.t.name}</span>
+      </button>
+      {shown?.id === s.t.id && (
+        <Tag
+          key={tags.isOpen(s.t.id) ? 'back' : 'front'}
+          rows={s.t.links.map(l => ({ key: l.to, label: `Learned from ${bandOf(l.to).name}`, color: bandOf(l.to).color, citation: l.citation, url: l.url, print: l.print }))}
+          open={tags.isOpen(s.t.id)}
+          page={s.t.id}
+          align={alignAt(s.x, TW)}
+          onTurn={() => tags.turn(s.t.id)}
+          hold={tags.hold(s.t.id)}
+        />
+      )}
+    </div>
+  );
+
+  const anchor = (f: Face, at: { x: number; y: number }, count: number, side: string) => (
+    <Link href={`/artist/${f.id}`} className={`tthreads__band tthreads__band--${side}`} data-lit={shown?.links.some(l => l.to === side) || undefined} style={{ left: pct(at.x, TW), top: pct(at.y, TH), '--glow': f.color } as React.CSSProperties}>
+      <Photo f={f} size={104} />
+      <span className="tface__name">{f.name}</span>
+      <span className="tthreads__count"><b>{count}</b> learned from them</span>
+    </Link>
+  );
+
   return (
     <div className="tbetween">
-      <div ref={ref} className="tvenn" data-live={live || undefined}>
-        <div className="tvenn__disc tvenn__disc--a" style={{ '--glow': ct.color } as React.CSSProperties}>
-          <span className="tvenn__label" />
-          <p className="tvenn__count"><b>{ctCount}</b> learned from {ct.name}</p>
+      <p className="tknow__lead">{tape.between.lead}</p>
+      <div
+        ref={ref}
+        className="tthreads"
+        data-live={live || undefined}
+        data-active={shown ? true : undefined}
+        style={{ '--ct': ct.color, '--mbv': mbv.color } as React.CSSProperties}
+        onKeyDown={e => { if (e.key === 'Escape') tags.clear(); }}
+      >
+        <svg className="tthreads__lines" viewBox={`0 0 ${TW} ${TH}`} aria-hidden>
+          {all.flatMap(s => lines(s).map(l => (
+            <path key={l.key} d={l.d} className={`tthreads__line tthreads__line--${l.to}`} data-on={shown?.id === s.t.id || undefined} style={{ '--i': s.i } as React.CSSProperties} />
+          )))}
+        </svg>
+        <p className="tthreads__both-label" style={{ left: pct(500, TW), top: pct(MBV_AT.y - ((threads.both.length - 1) / 2) * 96 - 74, TH) }}>
+          {both.length} learned from both
+        </p>
+        {anchor(ct, CT_AT, ctCount, 'ct')}
+        {anchor(mbv, MBV_AT, mbvCount, 'mbv')}
+        <div className="tthreads__group tthreads__group--ct">
+          <p className="tthreads__group-label">Only {ct.name}</p>
+          {spots.ct.map(s => face(s, 'ct'))}
         </div>
-        <div className="tvenn__disc tvenn__disc--b" style={{ '--glow': mbv.color } as React.CSSProperties}>
-          <span className="tvenn__label" />
-          <p className="tvenn__count"><b>{mbvCount}</b> learned from {mbv.name}</p>
+        <div className="tthreads__group tthreads__group--both">
+          <p className="tthreads__group-label">Learned from both</p>
+          {spots.both.map(s => face(s, 'both'))}
         </div>
-        <ul className="tvenn__both">
-          {both.map((f, i) => (
-            <li key={f.id} style={{ '--i': i } as React.CSSProperties}>
-              <Link href={`/artist/${f.id}`} title={f.name} aria-label={f.name}>
-                <Photo f={f} size={46} />
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <p className="tvenn__both-label">{both.length} learned from both</p>
+        <div className="tthreads__group tthreads__group--mbv">
+          <p className="tthreads__group-label">Only {mbv.name}</p>
+          {spots.mbv.map(s => face(s, 'mbv'))}
+        </div>
       </div>
 
-      <p className="tknow__lead">{tape.between.lead}</p>
       <div className="tknow__cards">
         {cards.map((card, i) => (
           <blockquote key={card.who} className="tknow__card" style={{ '--i': i } as React.CSSProperties}>
@@ -490,7 +726,7 @@ export function Between() {
         ))}
       </div>
       <ul className="tknow__tally">
-        <li style={{ '--i': 0 } as React.CSSProperties}><b>{c.links.toLocaleString()}</b> influences on the map, {c.cited.toLocaleString()} of them with a named source</li>
+        <li style={{ '--i': 0 } as React.CSSProperties}><b>{c.links.toLocaleString()}</b> influences on the map, {c.cited === c.links ? 'every one' : `${c.cited.toLocaleString()} of them`} with a named source</li>
         <li style={{ '--i': 1 } as React.CSSProperties}><b>{c.firstPerson.toLocaleString()}</b> of those sources are the artist, in their own words</li>
         <li style={{ '--i': 2 } as React.CSSProperties}><b>{c.denied}</b> times an artist denied an influence people assume; those are kept too</li>
       </ul>
@@ -534,7 +770,7 @@ export function TapeEnd() {
         <div className="tcass tcass--end">
           <Cassette side="B" to={tape.label.to} title={tape.sides.B} wound={1} leader />
         </div>
-        <p className="tend__sign">&mdash; {tape.label.from}</p>
+        <p className="tend__sign">from {tape.label.from}</p>
       </div>
     </div>
     <div className="tkey">
@@ -543,7 +779,7 @@ export function TapeEnd() {
       <Link href="/?tour" className="tkey__tour">Take the tour on the map &rarr;</Link>
     </div>
     <aside className="thidden" aria-labelledby="hidden-track">
-      <p className="thidden__no" id="hidden-track">Hidden track &middot; How it&rsquo;s made</p>
+      <p className="thidden__no" id="hidden-track">How it&rsquo;s made</p>
       {tape.liner.lines.map((l, i) => <p key={i}>{l}</p>)}
       <a href={tape.liner.code} target="_blank" rel="noopener noreferrer" className="thidden__code">The code is on GitHub &rarr;</a>
     </aside>

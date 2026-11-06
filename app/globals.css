@@ -18686,11 +18686,21 @@ a.site-foot__sticker:focus-visible {
 }
 
 .tcard__intro {
-  margin: -8px 0 16px;
+  margin: -8px 0 10px;
   font-family: var(--font-mono);
   font-size: 13px;
   line-height: 1.5;
 }
+
+/* What the map is, under the intro: the same mono, a step quieter. */
+.tcard__about {
+  margin: 0 0 16px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.tcard__about p { margin: 0; }
+.tcard__about p + p { margin-top: 4px; }
 
 .tdays__genres a { color: var(--vfd); }
 
@@ -18769,7 +18779,10 @@ a.site-foot__sticker:focus-visible {
 /* ── The sticky label: where you are on the tape ── */
 .tlabel {
   position: sticky;
-  top: var(--nav-height);
+  /* 0, not the nav's height: the overlay that scrolls already starts under
+     the nav (its padding), so the nav's height here hung the label 46px
+     lower, with the page showing above it. */
+  top: 0;
   z-index: 6;
   display: flex;
   align-items: center;
@@ -19034,15 +19047,60 @@ a.site-foot__sticker:focus-visible {
 .photo-credit--tape span { white-space: normal; }
 .tscene__sounds .genre-tag { font-size: 0.66rem; }
 
+/* A frame lifts off the film when pointed at; the band on air steps up. */
+.tscene__frame { transition: translate 260ms cubic-bezier(0.3, 1.4, 0.5, 1), rotate 260ms ease; }
+.tscene__frame:has(.tscene__shot:hover, .tscene__shot:focus-visible) { translate: 0 -10px; rotate: -1.5deg; }
+.tscene__frame:has(.tscene__shot:hover, .tscene__shot:focus-visible) .tscene__shot { box-shadow: 0 14px 24px rgba(0, 0, 0, 0.5); }
+.tscene__frame[data-on] { translate: 0 -8px; }
+.tscene__frame[data-on] .tscene__shot { box-shadow: 0 0 0 2px var(--vfd), 0 12px 22px rgba(0, 0, 0, 0.5); }
+.tscene__frame[data-on] .tscene__shot img { scale: calc(1 + var(--beat, 0) * 0.05); }
+.tscene__frame[data-on] .tscene__band { color: var(--vfd); }
+
+/* The scene's name, with a pencil stroke under it once it's in view. */
+.tscene__title { position: relative; }
+.tscene__title::after {
+  content: '';
+  display: block;
+  width: min(340px, 70%);
+  height: 3px;
+  margin-top: 8px;
+  border-radius: 2px;
+  background: var(--vfd);
+  transform-origin: left;
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  /* The film feeds in frame by frame, then the sounds are tagged on. */
-  .ttrack[data-reveal='wait'] .tscene__frame { opacity: 0; }
-  .ttrack[data-reveal='in'] .tscene__frame { animation: tscene-feed 520ms cubic-bezier(0.2, 0.8, 0.3, 1) both; animation-delay: calc(120ms + var(--k) * 110ms); }
-  .ttrack[data-reveal='in'] .tscene__sounds { animation: sc-rise 380ms ease-out both; animation-delay: calc(560ms + var(--k) * 110ms); }
+  /* The film runs in through the gate: the strip slides in from the right
+     with its sprocket holes running, frame after frame lands, and each photo
+     develops from grey into colour (gradual: no flash). The pencil stroke
+     draws under the name, the sounds are tagged on, then the words rise. */
+  .tscene[data-reveal='wait'] :is(.tscene__frame, .tscene__words p) { opacity: 0; }
+  .tscene[data-reveal='wait'] .tscene__title::after { transform: scaleX(0); }
+  .tscene[data-reveal='in'] .tscene__title::after { animation: tscene-pencil 700ms cubic-bezier(0.6, 0, 0.3, 1) 150ms both; }
+  .tscene[data-reveal='in'] .tscene__frame { animation: tscene-feed 760ms cubic-bezier(0.2, 0.8, 0.3, 1) both; animation-delay: calc(200ms + var(--k) * 140ms); }
+  .tscene[data-reveal='in'] .tscene__shot { animation: tscene-run 760ms linear both; animation-delay: calc(200ms + var(--k) * 140ms); }
+  .tscene[data-reveal='in'] .tscene__shot img { animation: tscene-develop 1300ms ease-out both; animation-delay: calc(500ms + var(--k) * 160ms); }
+  .tscene[data-reveal='in'] .tscene__sounds { animation: sc-rise 380ms ease-out both; animation-delay: calc(900ms + var(--k) * 140ms); }
+  .tscene[data-reveal='in'] .tscene__words p { animation: sc-rise 520ms ease-out both; animation-delay: calc(1300ms + var(--w) * 220ms); }
 }
 
 @keyframes tscene-feed {
-  from { opacity: 0; transform: translateX(28px); }
+  from { opacity: 0; transform: translateX(90px); }
+  40% { opacity: 1; }
+}
+
+/* The sprocket holes run past as the film moves. */
+@keyframes tscene-run {
+  from { background-position: 60px 4px, 60px calc(100% - 4px), 0 0; }
+  to { background-position: 0 4px, 0 calc(100% - 4px), 0 0; }
+}
+
+@keyframes tscene-develop {
+  from { filter: grayscale(1) sepia(0.35) contrast(0.7) brightness(0.65); }
+}
+
+@keyframes tscene-pencil {
+  from { transform: scaleX(0); }
 }
 
 .tfork__road {
@@ -19990,6 +20048,139 @@ a.site-foot__sticker:focus-visible {
 .tlearn__band .tface__name { max-width: none; }
 .tlearn__band .tface__name { font-size: 20px; }
 :is(.tlearn__band, .tlearn__from, .tnot__face):hover .tface__name { color: var(--vfd); }
+/* The faces are buttons now: pointing shows how we know, under the stage. */
+:is(.tlearn__from, .tlearn__like) { padding: 0; border: 0; background: none; font: inherit; cursor: pointer; }
+:is(.tlearn__from, .tlearn__like) .tface__name { transition: translate 200ms ease; }
+
+/* A face on a diagram, and the paper tag that hangs off it (SideB Tag). The
+   spot is a point at the face's centre; the face and its tag hang from it. */
+.tspot { position: absolute; z-index: 1; width: 0; height: 0; }
+.tspot[data-shown] { z-index: 6; }
+/* The spot has no width, so the face sizes to itself, not to it. */
+.tspot > button { width: max-content; }
+.tthreads .tspot { --tag-top: 52px; }
+.tlearn .tspot:has(.tlearn__from) { --tag-top: 58px; }
+.tlearn .tspot:has(.tlearn__like) { --tag-top: 52px; }
+
+.ttag {
+  position: absolute;
+  top: var(--tag-top, 50px);
+  left: 0;
+  width: max-content;
+  max-width: 230px;
+  translate: -50% 0;
+  transform-origin: 50% -16px;
+}
+.ttag--start { translate: -44px 0; transform-origin: 44px -16px; }
+.ttag--end { translate: calc(-100% + 44px) 0; transform-origin: calc(100% - 44px) -16px; }
+.ttag[data-open] { width: 310px; max-width: 310px; }
+
+/* The string, from the face down to the tag's hole. */
+.ttag::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  width: 1.5px;
+  height: 24px;
+  background: #cfc4ad;
+}
+.ttag--start::before { left: 44px; }
+.ttag--end::before { left: calc(100% - 44px); }
+
+.ttag__card {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 18px 14px 11px;
+  background: #efe6d2;
+  color: #1d1712;
+  border: 1.5px solid #1d1712;
+  border-radius: 3px 3px 7px 7px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.45);
+  font: inherit;
+  text-align: left;
+}
+button.ttag__card { cursor: pointer; }
+button.ttag__card:hover .ttag__turn,
+button.ttag__card:focus-visible .ttag__turn { text-decoration: underline; text-underline-offset: 2px; }
+button.ttag__card:focus-visible { outline: 2px solid var(--vfd); outline-offset: 3px; }
+
+/* The punched hole the string goes through. */
+.ttag__card::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  margin-left: -3.5px;
+  border-radius: 50%;
+  background: #1a1520;
+  box-shadow: 0 0 0 1.5px #1d1712;
+}
+.ttag--start .ttag__card::before { left: 44px; }
+.ttag--end .ttag__card::before { left: calc(100% - 44px); }
+
+.ttag__row { display: block; }
+.ttag__row + .ttag__row { margin-top: 7px; }
+.ttag__label {
+  display: block;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #5b5048;
+}
+/* Which band the line runs to, as a dot in its colour (the colours are too
+   light to letter in on paper). */
+.ttag__label::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: var(--glow);
+  box-shadow: 0 0 0 1px #1d1712;
+  vertical-align: -0.5px;
+}
+.ttag__place { display: block; font-family: var(--font-display); font-size: 15.5px; font-weight: 600; line-height: 1.25; }
+.ttag__turn { display: block; margin-top: 8px; font-family: var(--font-mono); font-size: 10.5px; color: #b3261e; }
+
+.ttag__line + .ttag__line { margin-top: 12px; padding-top: 10px; border-top: 1px dashed rgba(29, 23, 18, 0.35); }
+.ttag__cite { margin: 4px 0 8px; font-family: var(--font-display); font-size: 14.5px; line-height: 1.45; }
+.ttag__foot { display: flex; justify-content: space-between; gap: 10px; margin-top: 11px; font-family: var(--font-mono); font-size: 11.5px; }
+.ttag__foot a, .ttag__foot button { padding: 0; border: 0; background: none; color: #1d1712; font: inherit; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+.ttag__foot a:hover, .ttag__foot button:hover { color: #b3261e; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* It swings in on its string, and turns over like a card. */
+  .ttag { animation: ttag-swing 900ms cubic-bezier(0.3, 1, 0.5, 1) both; }
+  .ttag[data-open] { animation: ttag-turn 380ms ease-out both; }
+}
+@keyframes ttag-swing {
+  0% { opacity: 0; rotate: -14deg; }
+  25% { opacity: 1; rotate: 9deg; }
+  50% { rotate: -5deg; }
+  72% { rotate: 2deg; }
+  100% { rotate: 0deg; }
+}
+@keyframes ttag-turn {
+  from { transform: perspective(700px) rotateY(88deg); }
+}
+
+:is(.tlearn__from, .tlearn__like)[data-on] .tface__name { translate: 0 5px; }
+.tlearn__from[data-on] .tface__photo { box-shadow: 0 0 0 3px #1a1520, 0 0 0 6px var(--vfd); }
+.tlearn__from[data-on] .tface__name { color: var(--vfd); }
+.tlearn__like[data-on] img { filter: none; opacity: 1; }
+.tlearn__like[data-on] .tface__name { color: #efe3cb; }
+:is(.tlearn__from, .tlearn__like):focus-visible { outline: none; }
+:is(.tlearn__from, .tlearn__like):focus-visible .tface__photo { outline: 2px solid var(--vfd); outline-offset: 5px; }
+.tlearn__lines line[data-on] { stroke: var(--vfd); stroke-width: 2.6; stroke-dasharray: none; }
+
 
 .tnot {
   max-width: 900px;
@@ -20026,76 +20217,77 @@ a.site-foot__sticker:focus-visible {
 .tnot__quote { font-family: var(--font-marker), 'Marker Felt', cursive; font-size: 22px; color: var(--vfd); }
 .tnot__source { font-family: var(--font-mono); font-size: 11px; color: #cfc4ad; }
 
-/* 8. Between the two constants. */
-.tvenn {
+/* 8. Between the two constants: everyone who learned from them, hanging on
+   threads (components/about/SideB Between). */
+.tthreads {
   position: relative;
-  width: 700px;
-  max-width: 100%;
-  height: 380px;
+  width: 100%;
+  max-width: 1000px;
+  aspect-ratio: 1000 / 720;
   margin: 30px auto 0;
 }
 
-.tvenn__disc {
-  position: absolute;
-  top: 20px;
-  width: 340px;
-  height: 340px;
-  border-radius: 50%;
-  background: repeating-radial-gradient(circle, #141117 0 2px, #0c0a0e 2px 4px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+.tthreads__lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+.tthreads__line {
+  fill: none;
+  stroke-width: 1.3;
+  opacity: 0.42;
+  transition: opacity 200ms ease, stroke-width 200ms ease;
 }
+.tthreads__line--ct { stroke: var(--ct); }
+.tthreads__line--mbv { stroke: var(--mbv); }
+/* The shown band's thread(s) stand out; the rest only soften a touch, so the
+   whole picture stays readable (dimming everything read as greyed out). */
+.tthreads[data-active] .tthreads__line { opacity: 0.3; }
+.tthreads .tthreads__line[data-on] { opacity: 1; stroke-width: 2.8; }
+.tthreads[data-live] .tthreads__line:not([data-on]) { opacity: calc(0.3 + var(--energy, 0) * 0.5); }
 
-.tvenn__disc--a { left: 70px; }
-.tvenn__disc--b { right: 70px; opacity: 0.94; }
-
-.tvenn__label {
+.tthreads__band,
+.tthreads__face {
   position: absolute;
-  inset: 38%;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle closest-side, #f3ead6 0 14%, transparent 17%),
-    conic-gradient(from 20deg, var(--glow) 0 72%, #f3ead6 72% 76%, var(--glow) 76%);
-}
-
-.tvenn[data-live] .tvenn__label { animation: tcass-spin 1.8s linear infinite; }
-
-.tvenn__count {
-  position: absolute;
-  top: 50%;
-  width: 90px;
-  margin: 0;
-  translate: 0 -50%;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  line-height: 1.35;
-  color: #efe3cb;
-}
-
-.tvenn__count b { display: block; font-family: var(--font-poster), Impact, sans-serif; font-size: 34px; font-weight: 400; line-height: 1; color: var(--glow); }
-.tvenn__disc--a .tvenn__count { left: 18px; }
-.tvenn__disc--b .tvenn__count { right: 18px; text-align: right; }
-
-.tvenn__both {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(2, 46px);
-  gap: 8px;
-  margin: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  translate: -50% -26px;
   padding: 0;
-  list-style: none;
-  translate: -50% -50%;
+  border: 0;
+  background: none;
+  color: #efe3cb;
+  text-decoration: none;
+  cursor: pointer;
+  font: inherit;
 }
 
-.tvenn__both li:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; }
-.tvenn__both a { display: block; }
+.tthreads__band { z-index: 2; translate: -50% -52px; }
+.tthreads__band .tface__name { max-width: 230px; font-size: 18px; }
+.tthreads__band:hover .tface__name { color: var(--vfd); }
+/* Threads run behind the band's name and count, not through the letters. */
+.tthreads__band :is(.tface__name, .tthreads__count) { padding: 1px 6px; border-radius: 4px; background: rgba(18, 14, 22, 0.92); }
+.tthreads__count { font-family: var(--font-mono); font-size: 11.5px; color: #cfc4ad; white-space: nowrap; }
+.tthreads__count b { font-family: var(--font-poster), Impact, sans-serif; font-size: 18px; font-weight: 400; color: var(--glow); }
 
-.tvenn__both-label {
+.tthreads__face .tface__name { max-width: 92px; font-size: 11.5px; }
+.tthreads__face--both .tface__photo { box-shadow: 0 0 0 3px #1a1520, 0 0 0 5px var(--vfd); }
+.tthreads__face .tface__name { transition: translate 200ms ease; }
+.tthreads__face { transition: opacity 200ms ease; }
+.tthreads__face[data-on] { z-index: 3; }
+/* No zoom: the ring alone marks it, and the name steps down clear of it. */
+.tthreads__face[data-on] .tface__photo { box-shadow: 0 0 0 3px #1a1520, 0 0 0 6px var(--vfd); }
+.tthreads__face[data-on] .tface__name { translate: 0 5px; }
+.tthreads__band[data-lit] .tface__photo { box-shadow: 0 0 0 3px #1a1520, 0 0 0 7px var(--glow); }
+.tthreads__face[data-on] .tface__name { color: var(--vfd); }
+.tthreads__face:focus-visible { outline: none; }
+.tthreads__face:focus-visible .tface__photo { outline: 2px solid var(--vfd); outline-offset: 5px; }
+
+/* The groups only label themselves on a phone, where there are no threads. */
+.tthreads__group { display: contents; }
+.tthreads__group-label { display: none; }
+
+.tthreads__both-label {
   position: absolute;
-  left: 50%;
-  bottom: -18px;
   margin: 0;
   translate: -50% 0;
   font-family: var(--font-marker), 'Marker Felt', cursive;
@@ -20104,9 +20296,11 @@ a.site-foot__sticker:focus-visible {
   color: var(--vfd);
 }
 
-.tknow__lead { max-width: 680px; margin: 70px 0 18px; font-family: var(--font-display); font-size: 21px; line-height: 1.55; }
+
+.tknow__lead { max-width: 680px; margin: 36px auto 0; font-family: var(--font-display); font-size: 21px; line-height: 1.55; }
 
 .tknow__cards {
+  margin-top: 36px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 22px;
@@ -20287,18 +20481,16 @@ a.site-foot__sticker:focus-visible {
 
   /* Learned from: the lines draw out from Alvvays, the faces come up, the
      faceless fade. */
-  .ttrack--learned[data-reveal='wait'] :is(.tlearn__from, .tlearn__lines line) { opacity: 0; }
-  .ttrack--learned[data-reveal='in'] .tlearn__lines line { animation: tlearn-draw 700ms ease-out both; animation-delay: calc(400ms + var(--i) * 120ms); }
+  .ttrack--learned[data-reveal='wait'] .tlearn__from { opacity: 0; }
   .ttrack--learned[data-reveal='in'] .tlearn__from { animation: sc-pop 420ms cubic-bezier(0.3, 1.6, 0.5, 1) both; animation-delay: calc(700ms + var(--i) * 120ms); }
   .ttrack--learned[data-reveal='wait'] .tlearn__like { opacity: 0; }
   .ttrack--learned[data-reveal='in'] .tlearn__like { animation: sc-rise 420ms ease-out both; animation-delay: calc(200ms + var(--i) * 70ms); }
 
   /* Between: the two records slide together, the bands in both drop in. */
-  .ttrack--between[data-reveal='wait'] :is(.tvenn__both li, .tvenn__both-label, .tknow__card, .tknow__tally li) { opacity: 0; }
-  .ttrack--between[data-reveal='in'] .tvenn__disc--a { animation: tvenn-a 1100ms cubic-bezier(0.3, 1, 0.4, 1) 200ms both; }
-  .ttrack--between[data-reveal='in'] .tvenn__disc--b { animation: tvenn-b 1100ms cubic-bezier(0.3, 1, 0.4, 1) 200ms both; }
-  .ttrack--between[data-reveal='in'] .tvenn__both li { animation: sc-pop 420ms cubic-bezier(0.3, 1.6, 0.5, 1) both; animation-delay: calc(1300ms + var(--i) * 110ms); }
-  .ttrack--between[data-reveal='in'] .tvenn__both-label { animation: sc-rise 420ms ease-out 2100ms both; }
+  .ttrack--between[data-reveal='wait'] :is(.tthreads__face, .tthreads__band, .tthreads__both-label, .tknow__card, .tknow__tally li) { opacity: 0; }
+  .ttrack--between[data-reveal='in'] .tthreads__band { animation: sc-rise 500ms ease-out 150ms both; }
+  .ttrack--between[data-reveal='in'] .tthreads__face { animation: tthreads-hang 600ms cubic-bezier(0.3, 1.5, 0.5, 1) both; animation-delay: calc(800ms + var(--i) * 40ms); }
+  .ttrack--between[data-reveal='in'] .tthreads__both-label { animation: sc-rise 420ms ease-out 2400ms both; }
   .ttrack--between[data-reveal='in'] .tknow__card { animation: tknow-drop 520ms cubic-bezier(0.3, 1.3, 0.5, 1) both; animation-delay: calc(2300ms + var(--i) * 180ms); }
   .ttrack--between[data-reveal='in'] .tknow__tally li { animation: tknow-stamp 380ms cubic-bezier(0.3, 1.6, 0.5, 1) both; animation-delay: calc(2800ms + var(--i) * 160ms); }
 
@@ -20355,9 +20547,8 @@ a.site-foot__sticker:focus-visible {
 @keyframes tlove-in { from { translate: -100% 0; } }
 @keyframes tlove-in-r { from { translate: 100% 0; } }
 @keyframes tlove-drift { from { transform: translateX(-3%) skewX(-2deg) scaleY(1.02); } to { transform: translateX(3%) skewX(2.5deg) scaleY(1.06); } }
-@keyframes tlearn-draw { from { opacity: 0; stroke-dashoffset: 60; } to { opacity: 0.55; stroke-dashoffset: 0; } }
-@keyframes tvenn-a { from { translate: -90px 0; } }
-@keyframes tvenn-b { from { translate: 90px 0; } }
+@keyframes tthreads-draw { from { opacity: 0; } }
+@keyframes tthreads-hang { from { opacity: 0; translate: -50% -60px; } }
 @keyframes tknow-drop { from { opacity: 0; translate: 0 -24px; } to { opacity: 1; translate: 0 0; } }
 @keyframes tknow-stamp { from { opacity: 0; scale: 1.4; } to { opacity: 1; scale: 1; } }
 @keyframes tfork-light { from { opacity: 0; translate: var(--dx, 0) 0; } to { opacity: 1; translate: 0 0; } }
@@ -20392,6 +20583,8 @@ a.site-foot__sticker:focus-visible {
   .tlearn__stage { aspect-ratio: auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
   .tlearn__lines { display: none; }
   .tlearn__band, .tlearn__from, .tlearn__like { position: static; translate: none; }
+  .tlearn__stage > .tspot:has(.tlearn__like) { order: 1; }
+  .tlearn__stage > .tspot:has(.tlearn__from) { order: 4; }
   /* Stacked: the grey group under its label, Alvvays, then the other under its own. */
   .tlearn__tag { position: static; flex-basis: 100%; translate: none; margin-top: 10px; text-align: center; }
   .tlearn__tag--like { order: 0; }
@@ -20402,12 +20595,22 @@ a.site-foot__sticker:focus-visible {
   .tlearn__band { flex-basis: 100%; }
   .tnot__pair { flex-direction: column; align-items: center; gap: 70px; }
   .tnot__line { left: 0; right: 0; top: 50%; }
-  .tvenn { height: 300px; }
-  .tvenn__disc { width: 230px; height: 230px; top: 30px; }
-  .tvenn__disc--a { left: calc(50% - 190px); }
-  .tvenn__disc--b { right: calc(50% - 190px); }
-  .tvenn__count { width: 70px; font-size: 11px; }
-  .tvenn__count b { font-size: 24px; }
+  .tthreads { aspect-ratio: auto; display: flex; flex-direction: column; gap: 22px; }
+  .tthreads__lines, .tthreads__both-label { display: none; }
+  .tthreads__band { position: static; translate: none; flex-direction: row; gap: 12px; }
+  .tthreads__band .tface__photo, .tthreads__band img { flex: none; width: 64px !important; height: 64px !important; }
+  .tthreads__band--ct { order: 0; }
+  .tthreads__group--ct { order: 1; }
+  .tthreads__group--both { order: 2; }
+  .tthreads__band--mbv { order: 3; }
+  .tthreads__group--mbv { order: 4; }
+  .tthreads__group { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 10px; }
+  .tthreads__group-label { display: block; flex-basis: 100%; margin: 0; text-align: center; font-family: var(--font-marker), 'Marker Felt', cursive; font-size: 20px; color: var(--vfd); }
+  .tthreads__face { position: static; translate: none; width: 76px; }
+  .tspot { position: static; width: auto; height: auto; }
+  .ttag, .ttag[data-open] { position: fixed; z-index: 40; top: auto; right: 12px; bottom: 130px; left: 12px; width: auto; max-width: none; translate: none; transform-origin: 50% 0; }
+  .ttag::before { display: none; }
+  .ttag .ttag__card::before { left: 50%; }
   .tknow__tally { grid-template-columns: 1fr; }
   .tend { grid-template-columns: 1fr; }
   .tape__why-words { font-size: 20px; }
