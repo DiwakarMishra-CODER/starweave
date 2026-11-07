@@ -175,8 +175,18 @@ function hasRecord(a: Artist): boolean {
   return !!a.previewUrl && !!a.classicAlbums?.[0]?.imageUrl;
 }
 
+// The pool scans every edge once per artist, so it's worked out once per
+// dataset (the graph is loaded once and never changed) rather than per draw.
+const poolCache = new WeakMap<StoryData, string[]>();
+
 /** Every artist who can be today's record, sorted, so a day's draw is stable. */
 export function pickPool(data: StoryData): string[] {
+  let pool = poolCache.get(data);
+  if (!pool) poolCache.set(data, pool = buildPool(data));
+  return pool.slice();
+}
+
+function buildPool(data: StoryData): string[] {
   const children = new Map<string, number>();
   for (const e of data.edges) {
     if (e.type === 'influence') children.set(e.target, (children.get(e.target) ?? 0) + 1);
