@@ -8,7 +8,7 @@
 
 *How to read it: Radiohead in the middle. Above, the 13 artists who shaped them (the light travels in from R.E.M., with Thom Yorke saying so in his own words). Below, the bands Radiohead shaped in turn. The whole map is chains like this, 312 artists deep.*
 
-| 312 artists | 1,024 links | 771 in the artist's own words | 54 genres | 16 scenes | 309 songs to hear |
+| 312 artists | 1,024 links | 772 in the artist's own words | 54 genres | 16 scenes | 309 songs to hear |
 |---|---|---|---|---|---|
 
 ---
@@ -34,9 +34,9 @@
 
 Starweave is a map of influence in indie music. Each star is an artist. Each line is one artist saying, or being reported as saying, that another artist shaped them. Follow the lines back far enough and almost all of them reach the Velvet Underground.
 
-**Every link has a source.** Wherever a link appears (an artist's panel, their family photo, a road between two artists) it comes with the sentence that proves it and a **Source ↗** button that opens the interview, article, video or book page it came from. 771 of the 1,024 links are the artist speaking for themselves ("I grew up on…", "we were obsessed with…"). The rest are reported by a publication (225) or argued by a critic (28). Nothing on the map is a guess, and nothing is there just because two bands sound alike.
+**Every link has a source.** Wherever a link appears (an artist's panel, their family photo, a road between two artists) it comes with the sentence that proves it and a **Source ↗** button that opens the interview, article, video or book page it came from. 772 of the 1,024 links are the artist speaking for themselves ("I grew up on…", "we were obsessed with…"). The rest are reported by a publication (224) or argued by a critic (28). Nothing on the map is a guess, and nothing is there just because two bands sound alike.
 
-**Denials count too.** When an artist has said "no, we were never influenced by them", the denial is recorded (36 of them) so the link is never added by mistake later. Car Seat Headrest denying Pavement, Sonic Youth, Dinosaur Jr. and the Strokes is one.
+**Denials count too.** When an artist has said "no, we were never influenced by them", the denial is recorded (18 of them, each with its source) so the link is never added by mistake later. Car Seat Headrest's Will Toledo saying he grew up on the Beatles and the Kinks, not Pavement, Sonic Youth or Dinosaur Jr., is one. They show on the artist's page under their family photo.
 
 **Every page is a room in the indie world.** The map is a night sky, an artist's page is a Tiny Desk-style room with their band set up in it, the genres page is a music paper with a pull-out poster of a city at night, the scenes page is slide film on a lightbox, the browse page is a festival bill, and the About page is a mixtape. Everything that looks playable can be played.
 
@@ -199,11 +199,11 @@ This is the part the whole project depends on. Anyone can draw lines between ban
 
 | Level | Links | Meaning |
 |---|---|---|
-| **The artist's own words** | 771 (75%) | They said it themselves, in an interview, a video, a book or their own writing |
-| **Reported** | 225 | A publication states it, without quoting them |
+| **The artist's own words** | 772 (75%) | They said it themselves, in an interview, a video, a book or their own writing |
+| **Reported** | 224 | A publication states it, without quoting them |
 | **A critic's argument** | 28 | A critic argues that one drew on the other |
 
-**And each link points to its proof.** Every link was checked against the page that carries it: the exact sentence was found on the page, the right person was speaking, the dates work, and the link points that way round. That page is the **Source ↗** button. The sources come from 242 different websites (The Quietus, Pitchfork, the Guardian, Rolling Stone, YouTube interviews and many more), plus 22 books cited by page. A page that has gone offline is linked through its Internet Archive copy.
+**And each link points to its proof.** Every link was checked against the page that carries it: the exact sentence was found on the page, the right person was speaking, the dates work, and the link points that way round. That page is the **Source ↗** button. The sources come from 242 different websites (The Quietus, Pitchfork, the Guardian, Rolling Stone, YouTube interviews and many more), plus 21 books cited by page. Each **Source ↗** opens on the sentence itself, highlighted, in browsers that support it. A page that has gone offline is linked through its Internet Archive copy.
 
 **What doesn't count, learned the hard way:**
 - **Sounding alike.** "Fans of X will love Y" is a comparison, not influence. Streaming apps already show you the soundalikes; this map shows who an artist actually learned from.
@@ -270,7 +270,7 @@ npm run dev           # http://localhost:3000
 
 After rebuilding `public/graph.json`, restart the dev server: the data is cached in memory.
 
-**Tests:** `npm test` runs 174 tests in 22 files, on every push through GitHub Actions (which also rebuilds the data, type-checks, lints and does a production build). They cover the build (a link to a missing artist fails it), the road finder, the sourcing ledger, the genre city and its labels, the day's paper, the skyline, the scenes lightbox and scene pages, the genre features, the browse bill, the family photo, the artist rooms and their instruments' string physics, music-driven motion, the player's library, the tour, today's record and the Mixtape (every song plays, and every quote matches its link's citation).
+**Tests:** `npm test` runs 180 tests in 22 files, on every push through GitHub Actions (which also rebuilds the data, type-checks, lints and does a production build). They cover the build (a link to a missing artist fails it), the road finder, the sourcing ledger, the genre city and its labels, the day's paper, the skyline, the scenes lightbox and scene pages, the genre features, the browse bill, the family photo, the artist rooms and their instruments' string physics, music-driven motion, the player's library, the tour, today's record and the Mixtape (every song plays, and every quote matches its link's citation).
 
 ## Project structure
 
