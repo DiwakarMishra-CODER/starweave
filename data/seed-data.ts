@@ -3529,13 +3529,15 @@ const rejectedEdges: RejectedEdge[] = [
     source: 'sex-pistols',
     target: 'television',
     strength: 'clean',
-    citation: "John Lydon, in Pitchfork's 5-10-15-20: \"I had little time for what was coming out of America; bands like Television never really grabbed me, I just couldn't connect.\"",
+    citation: "John Lydon, quoted by Far Out Magazine: \"I had little time for what was coming out of America. Bands like Television never really grabbed me, I just couldn't connect. It was all too clever for its own good.\"",
+    sourceUrl: 'https://faroutmagazine.co.uk/band-john-lydon-called-too-clever/',
   },
   {
     source: 'wire',
     target: 'joy-division',
     strength: 'contested',
     citation: "Colin Newman of Wire, in Pitchfork's 5-10-15-20, on 1979: \"We studiously ignored Joy Division because they seemed a little too derivative of us.\"",
+    sourceUrl: 'https://pitchfork.com/features/5-10-15-20/10015-wires-colin-newman-on-the-music-that-made-him/',
   },
   // -- Decide list (26 Oct 2026): the source pass's open links, ruled --
   {
@@ -3543,12 +3545,14 @@ const rejectedEdges: RejectedEdge[] = [
     target: 'glenn-branca',
     strength: 'contested',
     citation: "Michael Gira, interviewed by The Wire (republished by Young God Records), on playing under Glenn Branca: it was an inspiration, \"But Branca was NOT a musical influence, more an ideal of what it's possible to achieve through sound.\"",
+    sourceUrl: 'https://younggodrecords.com/blogs/press/13026841-michael-gira-interview',
   },
   {
     source: 'sigur-ros',
     target: 'cocteau-twins',
     strength: 'clean',
     citation: "The Guardian (18 Aug 2020): Elizabeth Fraser \"was often cited as an influence on Birgisson at the start of his career, only he'd never heard a note of her music.\"",
+    sourceUrl: 'https://www.theguardian.com/music/2020/aug/18/jonsi-birgisson-the-sigur-ros-singer-on-his-bold-new-direction',
   },
   // -- Additions batch 1 (Oct 2026) --
   {
@@ -3556,20 +3560,16 @@ const rejectedEdges: RejectedEdge[] = [
     target: 'pj-harvey',
     strength: 'clean',
     citation: "Angel Olsen to Time Out Istanbul, asked about songwriters from Patti Smith to PJ Harvey: \"I didn't grow up listening to any of those ladies.\"",
+    sourceUrl: 'https://www.timeout.com/istanbul/music/interview-angel-olsen',
   },
   {
     source: 'pj-harvey',
     target: 'patti-smith',
     strength: 'contested',
     citation: "Clash reports that PJ Harvey says she hadn't heard of Patti Smith until critics started comparing them.",
+    sourceUrl: 'https://www.clashmusic.com/features/10-things-you-never-knew-about-pj-harvey',
   },
   // -- Wikipedia citation audit (Aug 2026) --
-  {
-    source: 'fugazi',
-    target: 'gang-of-four',
-    strength: 'contested',
-    citation: "Ian MacKaye to Gothamist: \"I remember in the beginning of Fugazi everyone was saying 'Oh clearly these guys have listened to a lot of Gang of Four.' But I had never listened to Gang of Four so it wasn't actually accurate.\" He adds that the songs being compared were his own, written before Guy Picciotto began contributing: \"Guy was a fan of Gang of Four but the stuff people were comparing to Gang of Four was written by me before Guy started contributing compositions.\" Logged contested rather than clean precisely because MacKaye confirms Picciotto's fandom -- the denial covers the songs at issue and MacKaye's own listening, not every member.",
-  },
   // -- Unchecked-edges disposition pass (31 Jul 2026): in five of six denial
   // cases resolved in this pass, the denied edge was that band's single
   // most-repeated critical comparison -- see CLAUDE.md.
@@ -3577,121 +3577,50 @@ const rejectedEdges: RejectedEdge[] = [
     source: 'interpol',
     target: 'joy-division',
     strength: 'clean',
-    citation: "Paul Banks/Interpol guitarist Daniel Kessler has denied the comparison across 2002, 2007 and 2012 interviews: \"It has absolutely nothing to do with me. I don't know where that shit comes from.\"",
-  },
-  {
-    source: 'cat-power',
-    target: 'sonic-youth',
-    strength: 'clean',
-    citation: "The only documented connection is that Steve Shelley drummed on Cat Power's first two albums -- personnel, not a stated influence.",
-  },
-  {
-    source: 'television',
-    target: 'velvet-underground',
-    strength: 'clean',
-    citation: "Tom Verlaine resisted the comparison across numerous interviews, naming Albert Ayler and John Coltrane as his real touchstones instead.",
-  },
-  {
-    source: 'yeah-yeah-yeahs',
-    target: 'siouxsie-and-the-banshees',
-    strength: 'contested',
-    citation: "Nick Zinner has rejected the comparison; the only positive evidence found for it was an editorially-curated Apple Music playlist, not an artist statement.",
-  },
-  {
-    source: 'weyes-blood',
-    target: 'nico',
-    strength: 'contested',
-    citation: "Natalie Mering has said she has always liked Nico but could never fully relate to her, unable to relate to her life and feeling Nico had the advantage of being extremely beautiful -- admiration paired with an explicit reservation.",
-  },
-  {
-    source: 'liz-phair',
-    target: 'joni-mitchell',
-    strength: 'contested',
-    citation: "Producer Brad Wood has said Liz Phair's chord shapes \"have more to do with like, Glenn Branca than Joni Mitchell\" -- an insider contradicting a comparison Phair herself hasn't addressed.",
-  },
-  {
-    source: 'the-fall',
-    target: 'david-bowie',
-    strength: 'clean',
-    citation: "Mark E. Smith called David Bowie \"crap,\" grouping him with Genesis, Pink Floyd and James Taylor.",
-  },
-  {
-    source: 'the-fall',
-    target: 'bob-dylan',
-    strength: 'clean',
-    citation: "MOJO reported that Mark E. Smith visibly shivers at the comparison to Bob Dylan.",
-  },
-  {
-    source: 'ramones',
-    target: 'television',
-    strength: 'clean',
-    citation: "Tommy Ramone's Rock and Roll Hall of Fame induction remarks explicitly separated the band's CBGB-era peers, including Television, from the artists who actually influenced them.",
-  },
-  {
-    source: 'ramones',
-    target: 'talking-heads',
-    strength: 'clean',
-    citation: "The same Rock and Roll Hall of Fame remarks in which Tommy Ramone separated Television from the band's influences apply equally to Talking Heads, another CBGB-era peer rather than a stated influence.",
+    citation: "Interpol guitarist Daniel Kessler, asked by The Skinny's Fest magazine (2007) whether his band sounds like Joy Division: \"You know what? It has absolutely nothing to do with me. I don't know where that shit comes from, and I have no answer to that question.\"",
+    sourceUrl: 'https://www.theskinny.co.uk/festivals/edinburgh-fringe/fest-magazine/interpol-turn-out-the-bright-lights',
   },
   {
     source: 'swans',
     target: 'joy-division',
     strength: 'contested',
     citation: "Far Out Magazine, asked whether Swans' live cover of \"Love Will Tear Us Apart\" was a tribute to Ian Curtis, Michael Gira dispelled the argument that he is in any way indebted to the Joy Division frontman.",
+    sourceUrl: 'https://faroutmagazine.co.uk/ian-curtis-influence-swans-michael-gira/',
   },
   {
     source: 'parquet-courts',
     target: 'pavement',
     strength: 'clean',
-    citation: "Louder Than War (2014), Andrew Savage by email: says Pavement isn't a big influence and that Parquet Courts share similar influences instead, naming the Velvet Underground, Roxy Music and the Fall. Malkmus's remark about mistaking a Parquet Courts song for his own band is a third-party comparison; Savage's response in Hot Press is bemusement.",
+    citation: "Andrew Savage to Hot Press (2014): \"They're a great band. A legendary band. They're not a huge influence on Parquet Courts, though. It's more that both bands are into the Velvet Underground and Roxy Music.\"",
+    sourceUrl: 'https://hotpress.com/music/parquet-courts-interview-brooklyn-heights-11914250',
   },
   {
     source: 'car-seat-headrest',
     target: 'pavement',
     strength: 'clean',
     citation: "NOW Magazine (2016), Will Toledo asked directly: he grew up on the Beatles, the Who, the Kinks and the Beach Boys, explicitly not Pavement, Sonic Youth or Dinosaur Jr, attributing the resemblance to those bands having listened to the same older music he did.",
+    sourceUrl: 'https://nowtoronto.com/music/car-seat-headrest-will-toledo-breaks-down-the-influence-behind-his-new-record/',
   },
   {
     source: 'car-seat-headrest',
     target: 'sonic-youth',
     strength: 'clean',
-    citation: "Same NOW Magazine (2016) quote as the Pavement denial -- Toledo names the Beatles, the Who, the Kinks and the Beach Boys as his actual upbringing, explicitly not Sonic Youth.",
+    citation: "NOW Magazine (2016), Will Toledo asked directly: he grew up on the Beatles, the Who, the Kinks and the Beach Boys, explicitly not Pavement, Sonic Youth or Dinosaur Jr.",
+    sourceUrl: 'https://nowtoronto.com/music/car-seat-headrest-will-toledo-breaks-down-the-influence-behind-his-new-record/',
   },
   {
     source: 'car-seat-headrest',
     target: 'dinosaur-jr',
     strength: 'clean',
-    citation: "Same NOW Magazine (2016) quote as the Pavement denial -- Toledo names the Beatles, the Who, the Kinks and the Beach Boys as his actual upbringing, explicitly not Dinosaur Jr.",
-  },
-  {
-    source: 'car-seat-headrest',
-    target: 'the-strokes',
-    strength: 'clean',
-    citation: "Westword: a \"pet peeve\" Toledo says he's heard since 2011; he never really listened to the Strokes -- a commonality of influence, not descent.",
-  },
-  {
-    source: 'destroyer',
-    target: 'gary-numan',
-    strength: 'clean',
-    citation: "INDY Week interview: the interviewer proposes Prefab Sprout, Thomas Dolby and Gary Numan as reference points for ken; Dan Bejar redirects to something more basic -- New Order, the Cure, Echo & the Bunnymen. The Numan framing came from the interviewer's question, not Bejar's answer.",
+    citation: "NOW Magazine (2016), Will Toledo asked directly: he grew up on the Beatles, the Who, the Kinks and the Beach Boys, explicitly not Pavement, Sonic Youth or Dinosaur Jr.",
+    sourceUrl: 'https://nowtoronto.com/music/car-seat-headrest-will-toledo-breaks-down-the-influence-behind-his-new-record/',
   },
   {
     source: 'st-vincent',
     target: 'kate-bush',
     strength: 'contested',
-    citation: "Westword (2010), asked about Tori Amos/Kate Bush comparisons: Annie Clark says she loves Kate Bush but doesn't feel she's carrying on her tradition, and was \"probably more influenced by Stravinsky\" on that record -- then discusses \"Wuthering Heights\" admiringly and technically (the harmony, the bar of fifths in the chorus) as a valuable lesson. Georgia Straight's fourteen-year retrospective does list Kate Bush among her invaluable influences. Admiration and technical study alongside an explicit refusal of the lineage framing. Recorded for its own sake -- kate-bush isn't a graph node.",
-  },
-  {
-    source: 'the-national',
-    target: 'the-strokes',
-    strength: 'clean',
-    citation: "Matt Berninger's much-quoted line: the Strokes influenced more bands in ten years than the artists he named did in twenty-five -- a claim about their importance, not his own descent.",
-  },
-  {
-    source: 'the-national',
-    target: 'arcade-fire',
-    strength: 'clean',
-    citation: "Berninger calls Arcade Fire \"hugely influential to aspiring musicians\" with a direct connection to people's hearts -- a compliment about their reach, not a stated influence on The National; also chronologically awkward.",
+    citation: "Westword (2010), asked about Tori Amos/Kate Bush comparisons: Annie Clark says she loves Kate Bush but doesn't feel she's carrying on her tradition, and was \"probably more influenced by Stravinsky\" on that record -- then discusses \"Wuthering Heights\" admiringly and technically (the harmony, the bar of fifths in the chorus) as a valuable lesson. Georgia Straight's fourteen-year retrospective does list Kate Bush among her invaluable influences. Admiration and technical study alongside an explicit refusal of the lineage framing.",
+    sourceUrl: 'https://web.archive.org/web/2010/http://blogs.westword.com/backbeat/2010/02/qa_with_annie_clark_of_st_vinc.php',
   },
   // -- region-one extension (2026 research pass), see research/region-one-audit-DRAFT.md --
   {
@@ -3699,35 +3628,33 @@ const rejectedEdges: RejectedEdge[] = [
     target: 'the-chameleons',
     strength: 'clean',
     citation: "Westword: asked whether the Chameleons, Comsat Angels and the Sound informed Interpol's sound alongside Joy Division, Paul Banks said he'd never heard any of those bands before starting Interpol, and has only heard the Chameleons since the band put out records.",
+    sourceUrl: 'https://www.westword.com/?p=40613804',
   },
   {
     source: 'the-chameleons',
     target: 'joy-division',
     strength: 'contested',
-    citation: "Louder Than War: Mark Burgess says he saw Joy Division live five or six times and found them \"a bit of a mess early on\" without feeling musically influenced by them, though he took notice once Closer came out, calling it \"on a different level.\"",
+    citation: "Mark Burgess to Louder Than War: \"Interestingly I don't get Joy Division, obviously I was aware of the band and went to see them numerous times in Manchester.\" He says he \"wasn't gaga with Joy Division\" until he saw them play the songs from Closer.",
+    sourceUrl: 'http://louderthanwar.com/interview-mark-burgess-talks-in-depth-on-the-chameleons-and-this-weekends-home-shows/',
   },
   {
     source: 'the-cranberries',
     target: 'the-sundays',
     strength: 'clean',
     citation: "Rolling Stone, \"The Cranberries: The Hidden Power of Dreams\": Noel Hogan says \"If we do sound like other bands, like the Sundays, then that's coincidence.\"",
+    sourceUrl: 'https://www.rollingstone.com/music/features/the-hidden-power-of-dreams-19940421',
   },
   {
     source: 'the-radio-dept',
     target: 'the-jesus-and-mary-chain',
     strength: 'clean',
-    citation: "Labrador Records interview: Johan Duncanson, asked about the constant My Bloody Valentine/Jesus and Mary Chain comparisons, dismissed the latter directly -- \"jamc is a boring and very heterosexual rock band that wrote a few good songs\" -- while affirming a genuine appreciation for My Bloody Valentine in the same breath.",
+    citation: "Johan Duncanson, interviewed by Alexander Kovalev for the Radio Dept.'s site, asked about the constant My Bloody Valentine/Jesus and Mary Chain comparisons, dismissed the latter directly -- \"jamc is a boring and very heterosexual rock band that wrote a few good songs\" -- while affirming a genuine appreciation for My Bloody Valentine in the same breath.",
+    sourceUrl: 'https://www.theradiodept.com/news/radio-dept-interview-alexander-kovalev-and-johan-duncanson/',
   },
   // perfume-genius -> talk-talk was recorded here as a denial (he'd never
   // heard them before Too Bright); removed Oct 2026 for the influence link:
   // he went on to say they "reformed my brain" and now count as an
   // influence, i.e. on the records after Too Bright.
-  {
-    source: 'songs-ohia',
-    target: 'leonard-cohen',
-    strength: 'clean',
-    citation: "A Fall 2006 Q&A archived at content.jasonmolina.org: asked about Leonard Cohen comparisons, Jason Molina said he \"didn't hear a single song I know of by Leonard Cohen until I was about out of college, so it would be hard to call him a regular influence.\"",
-  },
 
   // -- Final unchecked-edges disposition (Aug 2026). The last 22 edges in the
   // graph with no citation were researched; these three are the denials that
@@ -3736,32 +3663,15 @@ const rejectedEdges: RejectedEdge[] = [
   // descend from, which is why journalists kept asking and the band kept
   // saying no.
   {
-    source: 'beach-house',
-    target: 'cocteau-twins',
-    strength: 'contested',
-    citation: "Victoria Legrand to Drowned In Sound (Nov 2007): \"I personally don't hear the ostentatious similarity with our music and the Cocteau Twins.\" Alex Scally, separately: \"We didn't really listen to them. Strangely, they weren't part of us.\" Contested rather than clean because an unverified later report has Legrand professing admiration for the band -- but a favourites statement is a weaker claim than a shaping influence two members explicitly reject.",
-  },
-  {
-    source: 'nirvana',
-    target: 'joy-division',
-    strength: 'clean',
-    citation: "Kurt Cobain to Jon Savage (New York, 22 July 1993), asked directly about his influences: \"I stayed away from Joy Division. I've heard a few of their songs and I know I would really like it, but just the mystique about it and the stories I've heard, I know that's the band to listen to, of all of them. I'm just waiting.\" The handwritten top-50 album list in his Journals carries no Joy Division entry either.",
-  },
-  {
     // Both stood from 30 Oct 2026 on his 1979 words crediting them, but that
     // quote was never found on a page, and the one that was (Shortlist) only
     // says he admired them. The denial wins: link removed (owner, 2 Nov 2026;
     // research/source-pass/removed.json).
     source: 'gary-numan',
     target: 'kraftwerk',
-    strength: 'contested',
-    citation: "Gary Numan on Amoeba Music's What's In My Bag?: \"A lot of people think I was influenced by Kraftwerk. I wasn't, actually, other than it was electronic,\" adding that it \"was no influence at all, just wasn't what I wanted to do.\" In 1979 he had credited them.",
-  },
-  {
-    source: 'modest-mouse',
-    target: 'pavement',
-    strength: 'contested',
-    citation: "Isaac Brock to The Rocket (summer 1997): \"I'm scared to death of becoming a band like Pavement\" -- they \"put out a really amazing album, Slanted and Enchanted, that had a really great feeling, and somewhere they lost it. They got overproduced.\" Contested rather than clean because he praises the record in the same breath; what he rejects is Pavement as a model, not their existence in his listening.",
+    strength: 'clean',
+    citation: "Gary Numan on Amoeba Music's What's In My Bag?: \"A lot of people think I was influenced by Kraftwerk. I wasn't, actually, other than it was electronic,\" adding that it \"was no influence at all, just wasn't what I wanted to do.\" He has said he admired them: \"Kraftwerk were completely electronic and non-conventional, and I really admired it\" (Shortlist).",
+    sourceUrl: 'https://youtu.be/cxuIOC0LJVY?t=226',
   },
 ];
 

@@ -627,6 +627,7 @@ export default function FamilyPhoto({ artist, intro, genres, country, portrait }
                 <span className="family-card__tier">{openDenial.contested ? 'Denied, though contested' : 'Denied'}</span>
               </p>
               <p className="family-card__quote">{openDenial.citation}</p>
+              <SourceLink url={openDenial.sourceUrl} print={null} className="family-card__source" />
             </div>
           )}
           {everyone.length > 0 && (

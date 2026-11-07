@@ -351,4 +351,5 @@ export interface RejectedEdge {
   target: string;    // the claimed influence
   citation: string;  // source + what was actually said
   strength: 'clean' | 'contested';
+  sourceUrl?: string; // the page or video where the denial is said
 }

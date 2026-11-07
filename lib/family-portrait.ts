@@ -36,6 +36,7 @@ export interface Denial {
   name: string;
   citation: string;
   contested: boolean;
+  sourceUrl: string | null;
 }
 
 export interface Portrait {
@@ -123,7 +124,7 @@ export function buildPortrait(
       .filter(r => (side === 'back' ? r.source === artistId : r.target === artistId))
       .flatMap(r => {
         const other = byId.get(side === 'back' ? r.target : r.source);
-        return other ? [{ id: other.id, name: other.name, citation: r.citation, contested: r.strength === 'contested' }] : [];
+        return other ? [{ id: other.id, name: other.name, citation: r.citation, contested: r.strength === 'contested', sourceUrl: r.sourceUrl ?? null }] : [];
       });
 
   const after = members('front');
