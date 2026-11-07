@@ -1651,7 +1651,7 @@
     "by": "chat5"
   },
   "candy-claws>boards-of-canada": {
-    "url": "https://breakyrlegs.tumblr.com/post/81455889764/interview-candy-claws",
+    "url": "https://www.tumblr.com/breakyrlegs/81455889764/interview-candy-claws",
     "found": "I was actually reading through your blog and you got me really into The Knife and I’ve been listening to lots of Boards of Canada, so that might come off in our future work.",
     "checked": "2026-10-26",
     "verdict": "fixed",
@@ -1660,7 +1660,7 @@
     "by": "chat5"
   },
   "candy-claws>my-bloody-valentine": {
-    "url": "https://breakyrlegs.tumblr.com/post/81455889764/interview-candy-claws",
+    "url": "https://www.tumblr.com/breakyrlegs/81455889764/interview-candy-claws",
     "found": "I loved Beach Boys too, and I listened to Starflyer and My Bloody Valentine during my high school years. I am influenced by stuff I grew up with, and now I want to do my own answer to those bands.",
     "checked": "2026-10-26",
     "verdict": "fixed",
@@ -1669,7 +1669,7 @@
     "by": "chat5"
   },
   "candy-claws>the-knife": {
-    "url": "https://breakyrlegs.tumblr.com/post/81455889764/interview-candy-claws",
+    "url": "https://www.tumblr.com/breakyrlegs/81455889764/interview-candy-claws",
     "found": "I was actually reading through your blog and you got me really into The Knife and I’ve been listening to lots of Boards of Canada, so that might come off in our future work.",
     "checked": "2026-10-26",
     "verdict": "fixed",
@@ -1945,6 +1945,7 @@
     "checked": "2026-10-26",
     "verdict": "print",
     "url": "https://en.wikipedia.org/wiki/Cocteau_Twins",
+    "found": "Sounds wrote that the style of the band was \"mixing strong Siouxsie and the Banshees and Joy Division influences\".",
     "note": "PRINT: Bill Prince, 'New 2 U: Cocteau Twins', Sounds, 11 September 1982 (print-only magazine, as Wikipedia's footnote gives it; no page number). It is a contemporary reviewer's reading ('mixing strong Siouxsie and the Banshees and Joy Division influences'), not the band's. Owner may prefer to keep at critic or look for a Guthrie/Fraser quote.",
     "print": "Bill Prince, \"New 2 U: Cocteau Twins\", Sounds, 11 September 1982",
     "by": "c21"
@@ -7030,11 +7031,13 @@
     "by": "c20"
   },
   "sunny-day-real-estate>nomeansno": {
-    "checked": "2026-10-26",
-    "verdict": "print",
     "url": "https://en.wikipedia.org/wiki/Sunny_Day_Real_Estate",
-    "note": "Print only: Eric Grubbs, POST: A Look at the Influence of Post-Hardcore 1985-2007 (iUniverse, 2008), p. 72, as in the old citation; not searched online.",
-    "print": "Eric Grubbs, POST: A Look at the Influence of Post-Hardcore 1985-2007 (iUniverse), 2008, p. 72",
+    "found": "we all shared passion and appreciation for Lungfish, obviously Fugazi we had in common, Nomeansno...",
+    "citation": "Sunny Day Real Estate on the Washed Up Emo podcast (episode 250, October 2024), as quoted by Wikipedia: \"we all shared passion and appreciation for Lungfish, obviously Fugazi we had in common, Nomeansno...\"",
+    "sourceTier": "first-person",
+    "checked": "2026-11-07",
+    "verdict": "fixed",
+    "note": "Wikipedia's footnote quotes the band on Washed Up Emo #250 (Enigk, Goldsmith, Hoerner; at 7m); the speaker isn't named, so it is credited to the band. Was print-only (Eric Grubbs, POST, 2008, p. 72) until 7 Nov 2026.",
     "by": "c20"
   },
   "sunny-day-real-estate>rites-of-spring": {

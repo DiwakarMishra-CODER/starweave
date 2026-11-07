@@ -7,6 +7,7 @@
 // The plan is research/source-pass/PLAN.md.
 
 import type { Edge, SourceTier } from '../data/types';
+import { highlightUrl } from '@/lib/source-highlight';
 
 // ok        the citation stands as written; the page carries it
 // fixed     the page carries the claim, and the citation or tier was corrected
@@ -72,7 +73,7 @@ export function applyEdgeSources(edges: Edge[], sources: EdgeSources): Edge[] {
       ...e,
       ...(s!.citation ? { citation: s!.citation } : {}),
       ...(s!.sourceTier ? { sourceTier: s!.sourceTier, confidence: Math.min(e.confidence, TIER_CONFIDENCE_CAP[s!.sourceTier]) } : {}),
-      ...(s!.url ? { sourceUrl: s!.url } : {}),
+      ...(s!.url ? { sourceUrl: highlightUrl(s!.url, s!.found) } : {}),
       ...(s!.print ? { sourcePrint: s!.print } : {}),
     };
   });

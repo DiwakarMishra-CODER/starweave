@@ -3,6 +3,7 @@ import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import type { Edge, GraphData } from '@/data/types';
 import { applyEdgeSources, ledgerProblems, hasProof, type EdgeSources } from '@/lib/edge-sources';
+import { highlightUrl, withoutHighlight } from '@/lib/source-highlight';
 
 const ledger = JSON.parse(readFileSync(resolve(__dirname, '../../data/edge-sources.json'), 'utf-8')) as EdgeSources;
 const data = JSON.parse(readFileSync(resolve(__dirname, '../../public/graph.json'), 'utf-8')) as GraphData;
@@ -17,7 +18,7 @@ describe('applyEdgeSources', () => {
     const [e] = applyEdgeSources([edge()], {
       'a>b': { url: 'https://x.org/a', found: 'words', citation: 'A to X (2001): "words".', sourceTier: 'reported', checked: '2026-10-26', verdict: 'fixed' },
     });
-    expect(e.sourceUrl).toBe('https://x.org/a');
+    expect(e.sourceUrl).toBe('https://x.org/a#:~:text=words');
     expect(e.citation).toBe('A to X (2001): "words".');
     expect(e.sourceTier).toBe('reported');
   });
@@ -79,8 +80,25 @@ describe('the ledger', () => {
     for (const [k, s] of Object.entries(ledger)) {
       if (!hasProof(s)) continue;
       const e = byKey.get(k)!;
-      expect(e.sourceUrl ?? e.sourcePrint, k).toBe(s.url ?? s.print);
+      expect(e.sourceUrl ? withoutHighlight(e.sourceUrl) : e.sourcePrint, k).toBe(s.url ?? s.print);
       if (s.citation) expect(e.citation, k).toBe(s.citation);
     }
+  });
+});
+
+describe('highlightUrl', () => {
+  it('opens a long sentence on its first and last words', () => {
+    expect(highlightUrl('https://x.org/a', '"A lot of people think I was influenced by Kraftwerk. I wasn\'t, actually."'))
+      .toBe('https://x.org/a#:~:text=A%20lot%20of%20people,Kraftwerk.%20I%20wasn\'t%2C%20actually');
+  });
+  it('escapes the characters a fragment treats as syntax', () => {
+    expect(highlightUrl('https://x.org/a', 'post-punk & more')).toBe('https://x.org/a#:~:text=post%2Dpunk%20%26%20more');
+  });
+  it('leaves video, PDFs and links with a fragment alone', () => {
+    for (const u of ['https://youtu.be/x?t=3', 'https://www.youtube.com/watch?v=x', 'https://x.org/a.pdf', 'https://x.org/a#top'])
+      expect(highlightUrl(u, 'some words here')).toBe(u);
+  });
+  it('round-trips', () => {
+    expect(withoutHighlight(highlightUrl('https://x.org/a?b=1', 'one two three'))).toBe('https://x.org/a?b=1');
   });
 });
