@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import type { Edge, GraphData } from '@/data/types';
-import { applyEdgeSources, ledgerProblems, hasProof, type EdgeSources } from '@/lib/edge-sources';
+import { applyEdgeSources, ledgerProblems, hasProof, unprovenLinks, type EdgeSources } from '@/lib/edge-sources';
 import { highlightUrl, withoutHighlight } from '@/lib/source-highlight';
 
 const ledger = JSON.parse(readFileSync(resolve(__dirname, '../../data/edge-sources.json'), 'utf-8')) as EdgeSources;
@@ -70,9 +70,24 @@ describe('ledgerProblems', () => {
   });
 });
 
+describe('unprovenLinks', () => {
+  it('names every link with no entry, or an entry without proof', () => {
+    const edges = [edge(), edge({ target: 'c' }), edge({ target: 'd' }), edge({ target: 'e' })];
+    expect(unprovenLinks(edges, {
+      'a>b': { url: 'https://x.org', found: 'w', checked: '2026-10-26', verdict: 'ok' },
+      'a>c': { print: 'A book, p. 1', checked: '2026-10-26', verdict: 'print' },
+      'a>d': { note: 'searched twice', checked: '2026-10-26', verdict: 'not-found' },
+    })).toEqual(['a>d: no proven source', 'a>e: no proven source']);
+  });
+});
+
 describe('the ledger', () => {
   it('is sound against the links on the map', () => {
     expect(ledgerProblems(data.edges, ledger)).toEqual([]);
+  });
+
+  it('proves every link on the map', () => {
+    expect(unprovenLinks(data.edges, ledger)).toEqual([]);
   });
 
   it('is merged into graph.json', () => {

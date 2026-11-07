@@ -6,7 +6,7 @@ import type { Artist, Album, ExtraSong, GraphData, ImageCredit } from '../data/t
 import { TAPE_SONGS, type TapeSong } from '../data/about';
 import { validateEdges, computeInfluenceScores } from './pipeline';
 import { presettleLayout, type LayoutNode, type LayoutLink } from '../lib/graph-layout';
-import { applyEdgeSources, hasProof, ledgerProblems, type EdgeSources } from '../lib/edge-sources';
+import { applyEdgeSources, hasProof, ledgerProblems, unprovenLinks, type EdgeSources } from '../lib/edge-sources';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -994,7 +994,7 @@ async function main() {
 
   // The source pass's ledger: each link's proof, merged onto its edge.
   const edgeSources = JSON.parse(readFileSync(resolve(ROOT, 'data/edge-sources.json'), 'utf-8')) as EdgeSources;
-  const ledgerErrors = ledgerProblems(graphData.edges, edgeSources);
+  const ledgerErrors = [...ledgerProblems(graphData.edges, edgeSources), ...unprovenLinks(graphData.edges, edgeSources)];
   if (ledgerErrors.length > 0) {
     console.error('❌ Source ledger problems:\n');
     ledgerErrors.forEach(e => console.error('   ', e));

@@ -79,6 +79,14 @@ export function applyEdgeSources(edges: Edge[], sources: EdgeSources): Edge[] {
   });
 }
 
+/** Links on the map with no proven source. The build refuses to ship any:
+ *  every connection must carry a page or print reference. Kept apart from
+ *  `ledgerProblems` because the ledger tool merges work in progress, where a
+ *  new link can rightly have no proof yet. */
+export function unprovenLinks(edges: Pick<Edge, 'source' | 'target'>[], sources: EdgeSources): string[] {
+  return edges.map(edgeKey).filter(k => !hasProof(sources[k])).map(k => `${k}: no proven source`);
+}
+
 /** Problems with the ledger itself: entries for links that don't exist, and
  *  entries missing what their verdict needs. Empty when it's sound. */
 export function ledgerProblems(edges: Pick<Edge, 'source' | 'target'>[], sources: EdgeSources): string[] {
