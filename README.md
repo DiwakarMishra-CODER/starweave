@@ -2,7 +2,7 @@
 
 **A map of who influenced whom in indie music: 312 artists and 1,024 links, every link backed by a source you can open and read. It starts from the Velvet Underground.**
 
-**Live:** [starweaves.vercel.app](https://starweaves.vercel.app/) · **By** Diwakar Mishra · [GitHub](https://github.com/DiwakarMishra-CODER) · [LinkedIn](https://www.linkedin.com/in/diwakar-mishra-dev) · [Portfolio](https://diwakar-mishra-portfolio.vercel.app/)
+**Live:** [starweaves.vercel.app](https://starweaves.vercel.app/) · **By** Diwakar Mishra · [GitHub](https://github.com/DiwakarMishra-CODER) · [LinkedIn](https://www.linkedin.com/in/diwakar-mishra-dev) · [Portfolio](https://diwakar-mishra-portfolio.vercel.app/) · **Also by me:** [Arthouse Atlas](https://arthouse-atlas.vercel.app), world cinema
 
 ![Radiohead's musical family: the music comes in from R.E.M. and the bands before them, and Radiohead passes it on to the bands below](docs/screens/clip-family.webp)
 
@@ -301,4 +301,4 @@ docs/screens/           the pictures in this README
 - **Album covers:** Apple Music and the [Cover Art Archive](https://coverartarchive.org/).
 - **Song previews:** 30-second previews from Apple Music. The full songs are a click away on Spotify, Apple Music and YouTube.
 
-Made by **Diwakar Mishra**.
+Made by **Diwakar Mishra**. Also by me: **[Arthouse Atlas](https://arthouse-atlas.vercel.app)** ([code](https://github.com/DiwakarMishra-CODER/Arthouse-Atlas)), an atlas of arthouse cinema: 1,120 films ordered by what critics' polls, year-end lists and festival juries agree on, with a search that reads a description like "something slow and sad from the 60s".

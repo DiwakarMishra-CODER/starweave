@@ -29,6 +29,8 @@ const PORTFOLIO = 'https://diwakar-mishra-portfolio.vercel.app/';
 const GITHUB = 'https://github.com/DiwakarMishra-CODER';
 const LINKEDIN = 'https://www.linkedin.com/in/diwakar-mishra-dev';
 const REPO = 'https://github.com/DiwakarMishra-CODER/starweave';
+// The compiler's other site, a film one: its ticket sits in the credits.
+const ARTHOUSE = 'https://arthouse-atlas.vercel.app';
 
 // The two favourite bands, and their records, from data/about.ts ("Cocteau
 // Twins and My Bloody Valentine are the two I always come back to"; "I can't
@@ -122,6 +124,24 @@ export default function SiteFooter() {
             {when && <span>Last updated {when}</span>}
             <span>{n(data.artists.length)} artists</span>
           </p>
+          {/* A cinema ticket to the compiler's film atlas: its own picture, the world
+              at night, lights up when pointed at, as its countries do over there. */}
+          <a className="site-foot__ticket" href={ARTHOUSE} target="_blank" rel="noreferrer">
+            <span className="site-foot__ticket-paper">
+              <span className="site-foot__ticket-still">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/elsewhere/arthouse-atlas.jpg" alt="" width={420} height={206} loading="lazy" />
+              </span>
+              <span className="site-foot__ticket-text">
+                <span className="site-foot__ticket-kicker">Also by Diwakar</span>
+                <span className="site-foot__ticket-title">Arthouse Atlas</span>
+                <span className="site-foot__ticket-line">A century of cinema, around the world</span>
+              </span>
+              <span className="site-foot__ticket-stub" aria-hidden>
+                <span>Admit one</span>
+              </span>
+            </span>
+          </a>
         </section>
 
         <nav className="site-foot__col" aria-labelledby="site-foot-tracks">

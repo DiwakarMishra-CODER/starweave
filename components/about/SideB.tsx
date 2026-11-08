@@ -782,6 +782,11 @@ export function TapeEnd() {
       <p className="thidden__no" id="hidden-track">How it&rsquo;s made</p>
       {tape.liner.lines.map((l, i) => <p key={i}>{l}</p>)}
       <a href={tape.liner.code} target="_blank" rel="noopener noreferrer" className="thidden__code">The code is on GitHub &rarr;</a>
+      <p className="thidden__also">
+        {tape.liner.also.lead}{' '}
+        <a href={tape.liner.also.href} target="_blank" rel="noopener noreferrer">{tape.liner.also.name}</a>
+        {tape.liner.also.rest}
+      </p>
     </aside>
     </>
   );

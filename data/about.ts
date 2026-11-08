@@ -394,6 +394,8 @@ export const LINER_NOTES = {
     'Built with Next.js, TypeScript and react-force-graph, from a static data file; photos, covers and song previews come from Deezer, Apple Music, the Cover Art Archive and Wikimedia Commons.',
   ],
   code: 'https://github.com/DiwakarMishra-CODER/starweave',
+  /** The owner's other site (their wording, 8 Nov 2026). */
+  also: { lead: 'Also by me:', name: 'Arthouse Atlas', rest: ', an atlas of arthouse cinema.', href: 'https://arthouse-atlas.vercel.app' },
 };
 
 /** The bands a streaming app shows beside Alvvays (the owner's list): they
