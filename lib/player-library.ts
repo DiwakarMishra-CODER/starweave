@@ -4,6 +4,9 @@ import { buildPortrait } from './family-portrait';
 import { SONG_MS, type Queue, type Track } from './player';
 
 // What the site's player can play (lib/player), built from the graph:
+// - start here, what it offers when nothing is on: the compiler's favourite
+//   song first (Cocteau Twins, "Cherry-Coloured Funk"), then everyone with a
+//   song, the most influential first (the most artists on the map name them);
 // - the whole story: every song on the map, oldest first, from the earliest
 //   start (Karen Dalton, 1960) to today;
 // - a station per realm, oldest first;
@@ -39,6 +42,19 @@ const playable = (artists: Artist[]) => artists.filter(a => a.previewUrl);
 
 export function wholeStory(artists: Artist[]): Queue {
   return { id: 'story', title: 'The whole story', tracks: playable(artists).sort(oldestFirst).map(toTrack), stopMs: SONG_MS };
+}
+
+/** The song "Start here" opens on (the owner's pick, 8 Nov 2026). */
+export const FIRST_SONG = 'cocteau-twins';
+
+export function startHere(data: GraphData): Queue {
+  const named = new Map<string, number>();
+  for (const e of data.edges) if (e.type === 'influence') named.set(e.target, (named.get(e.target) ?? 0) + 1);
+  const n = (a: Artist) => named.get(a.id) ?? 0;
+  const tracks = playable(data.artists)
+    .sort((a, b) => (a.id === FIRST_SONG ? -1 : b.id === FIRST_SONG ? 1 : n(b) - n(a) || oldestFirst(a, b)))
+    .map(toTrack);
+  return { id: 'start', title: 'Start here', tracks, stopMs: SONG_MS };
 }
 
 export function station(artists: Artist[], realm: Realm): Queue {

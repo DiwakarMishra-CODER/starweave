@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import type { GraphData } from '@/data/types';
-import { artistThenFamily, searchArtists, shuffled, station, stations, todaysRoad, wholeStory } from '@/lib/player-library';
+import { artistThenFamily, FIRST_SONG, searchArtists, shuffled, startHere, station, stations, todaysRoad, wholeStory } from '@/lib/player-library';
 
 const data = JSON.parse(readFileSync(resolve(__dirname, '../../public/graph.json'), 'utf-8')) as GraphData;
 const withSong = data.artists.filter(a => a.previewUrl);
@@ -15,6 +15,21 @@ describe('wholeStory', () => {
     const years = q.tracks.map(t => t.activeFrom ?? 9999);
     expect(years).toEqual([...years].sort((a, b) => a - b));
     expect(q.tracks.every(t => t.previewUrl)).toBe(true);
+  });
+});
+
+describe('startHere', () => {
+  it('opens on "Cherry-Coloured Funk", then the most influential first, every song once', () => {
+    const q = startHere(data);
+    expect(q.tracks[0].id).toBe(FIRST_SONG);
+    expect(q.tracks[0].previewTrack).toBe('Cherry-Coloured Funk');
+    expect(q.tracks).toHaveLength(withSong.length);
+    expect(new Set(q.tracks.map(t => t.id)).size).toBe(q.tracks.length);
+    const named = new Map<string, number>();
+    for (const e of data.edges) if (e.type === 'influence') named.set(e.target, (named.get(e.target) ?? 0) + 1);
+    const counts = q.tracks.slice(1).map(t => named.get(t.id) ?? 0);
+    expect(counts).toEqual([...counts].sort((a, b) => b - a));
+    expect(q.tracks[1].id).toBe('velvet-underground');
   });
 });
 

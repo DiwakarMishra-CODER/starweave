@@ -7,7 +7,7 @@ import { useGraphData } from '@/components/graph/GraphDataProvider';
 import StreamingLinks from '@/components/ui/StreamingLinks';
 import { sizedImageUrl } from '@/lib/image-url';
 import { isLoudArtist, onAir, player, usePlayer, type Queue, type Track } from '@/lib/player';
-import { artistThenFamily, searchArtists, shuffled, stations, wholeStory } from '@/lib/player-library';
+import { artistThenFamily, searchArtists, shuffled, startHere, stations, wholeStory } from '@/lib/player-library';
 import { BackIcon, NextIcon, PauseIcon, PlayIcon, PrevIcon } from './icons';
 
 // The site's music player (lib/player) as a pocket player with a click
@@ -59,6 +59,7 @@ export default function PlayerDevice({ variant, children }: Props) {
   const listRef = useRef<HTMLOListElement>(null);
   const drag = useRef<{ angle: number; spun: number } | null>(null);
 
+  const start = useMemo(() => (data ? startHere(data) : null), [data]);
   const story = useMemo(() => (data ? wholeStory(data.artists) : null), [data]);
   const allStations = useMemo(() => (data ? stations(data.artists) : []), [data]);
 
@@ -75,8 +76,8 @@ export default function PlayerDevice({ variant, children }: Props) {
   // While its song is still on its way, it says so instead of pretending to play.
   const loading = live && s.loading;
   // What play starts when nothing is on: a "keep going" offer if there is
-  // one, else this page's family at the artist, else the whole story.
-  const offer = (s.offer && { queue: s.offer.queue, start: 0 }) ?? s.context ?? (story ? { queue: story, start: 0 } : null);
+  // one, else this page's family at the artist, else "Start here".
+  const offer = (s.offer && { queue: s.offer.queue, start: 0 }) ?? s.context ?? (start ? { queue: start, start: 0 } : null);
   // Before anything plays, ⏮ ⏭ step through what's on offer, and play
   // plays whoever is on the screen (kept per list, so a new page starts
   // at its own artist).
@@ -105,6 +106,12 @@ export default function PlayerDevice({ variant, children }: Props) {
         label: s.context.queue.title,
         sub: `${s.context.queue.tracks.length}`,
         act: () => go({ kind: 'list', queue: s.context!.queue, from: 'menu' }, s.context!.start + 1),
+      }] : []),
+      ...(start ? [{
+        key: 'start',
+        label: start.title,
+        sub: `${start.tracks.length}`,
+        act: () => go({ kind: 'list', queue: start, from: 'menu' }),
       }] : []),
       ...(story ? [{
         key: 'story',

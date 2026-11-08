@@ -7,7 +7,7 @@ import { useGraphData } from '@/components/graph/GraphDataProvider';
 import { resolveNodeColor } from '@/lib/colors';
 import { sizedImageUrl } from '@/lib/image-url';
 import { onAir, player, usePlayer } from '@/lib/player';
-import { wholeStory } from '@/lib/player-library';
+import { startHere } from '@/lib/player-library';
 import { useStory } from '@/lib/story-store';
 import { FoldIcon, NextIcon, PauseIcon, PlayIcon, PrevIcon } from './icons';
 import PlayerDevice from './PlayerDevice';
@@ -32,12 +32,12 @@ export default function FloatingPlayer() {
   const progressRef = useRef<HTMLSpanElement>(null);
 
   const colorOf = useMemo(() => new Map(data?.artists.map(a => [a.id, resolveNodeColor(a)]) ?? []), [data]);
-  const story = useMemo(() => (data ? wholeStory(data.artists) : null), [data]);
+  const start = useMemo(() => (data ? startHere(data) : null), [data]);
   const current = onAir(s);
   const live = current !== null && !s.paused;
   // What play starts when nothing is on: a "keep going" offer if there is
-  // one, else this page's family, else the whole story.
-  const offer = (s.offer && { queue: s.offer.queue, start: 0 }) ?? s.context ?? (story ? { queue: story, start: 0 } : null);
+  // one, else this page's family, else "Start here".
+  const offer = (s.offer && { queue: s.offer.queue, start: 0 }) ?? s.context ?? (start ? { queue: start, start: 0 } : null);
   const shown = current ?? (offer ? offer.queue.tracks[offer.start] : null);
   const color = (shown && colorOf.get(shown.id)) ?? '#e8c87a';
   // The artist page's docked player stands in for this one while it's on
@@ -107,9 +107,9 @@ export default function FloatingPlayer() {
               </button>
             </div>
           )}
-          {!s.browsed && !s.offer && story && (
+          {!s.browsed && !s.offer && start && (
             <p className="player-float__note">
-              <span><b>Menu</b>: all {story.tracks.length} songs</span>
+              <span><b>Menu</b>: all {start.tracks.length} songs</span>
               <svg className="player-float__note-arrow" viewBox="0 0 40 24" aria-hidden>
                 <path d="M2 8 C14 6 24 9 33 15 M26 15 L34 16 L32 8" />
               </svg>
